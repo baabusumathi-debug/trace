@@ -2,7 +2,7 @@
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG } from './config.js';
-import { S, emit, recount, setNeet, deckMeta, today } from './store.js';
+import { S, emit, recount, setNeet, deckMeta, today, off } from './store.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -70,14 +70,15 @@ export async function buildLogRows(force) {
   }
   const rows = [];
   for (const evs of groups.values()) {
-    const deck = evs[0].deck;
+    const deck = evs[0].deck, o = off(deck);            // Log and Chunks use the War Map's card numbers
     const before = coveredSet(deck);
-    for (const e of views) if (e.logged && e.deck === deck) before.add(e.no);
+    for (const e of views) if (e.logged && e.deck === deck) before.add(e.no + o);
     const byNo = new Map();
     for (const e of evs) {
-      const x = byNo.get(e.no) || { no: e.no, ms: 0, ts: e.ts };
+      const wn = e.no + o;
+      const x = byNo.get(wn) || { no: wn, ms: 0, ts: e.ts };
       x.ms += e.ms || 0; x.ts = Math.min(x.ts, e.ts);
-      byNo.set(e.no, x);
+      byNo.set(wn, x);
     }
     const nos = [...byNo.values()].sort((a, b) => a.no - b.no);
     let run = [];
@@ -148,10 +149,10 @@ export async function sync({ downloadAll = true } = {}) {
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();
   try {
     await buildLogRows();
-    if ((await db.kv.get('logVer')) !== 2) {          // v2 also keeps hours per day: read the Log again from the top
-      await db.kv.set('logRow', 1); await db.kv.set('logBase', {}); await db.kv.set('logDaily', {}); await db.kv.set('logChron', []);
+    if ((await db.kv.get('logVer')) !== 3) {          // v3: War Map card numbering + hours per day: read the Log again from the top
+      await db.kv.set('logRow', 1); await db.kv.set('logBase', {}); await db.kv.set('logDaily', {}); await db.kv.set('logChron', []); await db.kv.set('covered', {}); await db.kv.set('chunksAt', 0);
       S.logBase = {}; S.logDaily = {}; S.logChron = [];
-      await db.kv.set('logVer', 2);
+      await db.kv.set('logVer', 3);
     }
     const k = {
       evRow: (await db.kv.get('evRow')) || 1,
@@ -168,7 +169,7 @@ export async function sync({ downloadAll = true } = {}) {
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'library.json' }
     ];
     const needChunks = Date.now() - k.chunksAt > 12 * 3600e3;
-    if (needChunks) ops.push({ op: 'sheetRead', tab: 'Chunks', fromRow: 2 });
+    if (needChunks) ops.push({ op: 'sheetRead', tab: 'Chunks', fromRow: 2 }, { op: 'sheetRead', tab: 'Decks', fromRow: 2 }, { op: 'sheetRead', tab: 'Signals', fromRow: 2 });
     const r = await batch(ops);
     // 1. library (found by name: Claude replaces the file when decks change)
     let libRes = r[0];
@@ -199,6 +200,16 @@ export async function sync({ downloadAll = true } = {}) {
         (chunks[deck] = chunks[deck] || []).push({ id: cid, from: +from, to: +to });
       }
       S.chunks = chunks; await db.kv.set('chunks', chunks); await db.kv.set('chunksAt', Date.now());
+      if (r[6] && r[6].ok) {
+        const df = {};
+        for (const v of r[6].data.values) if (v[0] && +v[6] > 0) df[v[0]] = +v[6];
+        S.deckFrom = df; await db.kv.set('deckFrom', df);
+      }
+      if (r[7] && r[7].ok) {
+        const gd = {};
+        for (const v of r[7].data.values) { const d = normDate(v[1]); if (d && v[0]) gd[d] = /mock|gt/i.test(v[0]) ? 'GT' : String(v[0]).slice(0, 4); }
+        S.gtDays = gd; await db.kv.set('gtDays', gd);
+      }
     }
     // 5. card edits (shared file)
     await syncEdits(r[3].ok ? r[3].data : null, k.editsId);
@@ -396,7 +407,8 @@ export async function addTarget(parts) {      // parts: [{ deck, label, nos }]
   const t = curTarget();
   for (const p of parts) {
     if (!p.nos.length) continue;
-    t.items.push({ id: uid('i'), item_id: 'T' + Math.random().toString(36).slice(2, 13), deck: p.deck, label: p.label, nos: p.nos, status: 'active', synced: 0, created: Date.now() });
+    const o = off(p.deck);   // targets are kept in the War Map's card numbers
+    t.items.push({ id: uid('i'), item_id: 'T' + Math.random().toString(36).slice(2, 13), deck: p.deck, label: p.label, nos: p.nos.map(n => n + o), wm: 1, status: 'active', synced: 0, created: Date.now() });
   }
   await db.kv.set('target', t); emit();
 }
@@ -406,7 +418,10 @@ export async function removeTarget(id) {
   it.status = 'pulled'; it.synced = 0;
   await db.kv.set('target', t); emit();
 }
-export function targetItems() { return curTarget().items.filter(i => i.status !== 'pulled'); }
+/** active target parts, with card numbers converted to this app's numbering */
+export function targetItems() {
+  return curTarget().items.filter(i => i.status !== 'pulled').map(i => i.wm ? { ...i, nos: i.nos.map(n => n - off(i.deck)) } : i);
+}
 const stamp = d => ymd(d) + ' ' + hm(d) + ':' + String(d.getSeconds()).padStart(2, '0');
 async function syncTargets() {
   const t = curTarget();
@@ -436,8 +451,8 @@ async function syncTargets() {
       let nos = [];
       if (card_nums) nos = expandNos(card_nums);
       else if (chunk_ids) for (const cid of String(chunk_ids).split(/[,\s]+/)) { const ch = (S.chunks[deck] || []).find(c => c.id === cid); if (ch) for (let n = ch.from; n <= ch.to; n++) nos.push(n); }
-      if (!nos.length) { const m = deckMeta(deck); if (m) nos = expandNos('', m.cards); }
-      t.items.push({ id: uid('i'), item_id, deck, label: card_nums ? 'cards ' + card_nums : (chunk_ids || 'whole deck'), nos, status: 'active', synced: 1, created: Date.now(), from: 'War Map' });
+      if (!nos.length) { const m = deckMeta(deck); if (m) nos = expandNos('', m.cards).map(n => n + off(deck)); }
+      t.items.push({ id: uid('i'), wm: 1, item_id, deck, label: card_nums ? 'cards ' + card_nums : (chunk_ids || 'whole deck'), nos, status: 'active', synced: 1, created: Date.now(), from: 'War Map' });
     }
   }
   await db.kv.set('target', t);

@@ -13,7 +13,9 @@ export const S = {
   chunks: {},             // deck -> [{ id, from, to }]
   logDaily: {},           // 'yyyy-mm-dd' -> { min, cards } from the old War Map flow (not Trace)
   logChron: [],           // recent owner Log rows from the War Map flow: [date, time, deck, from, to, cards, min]
-  target: null,           // { date, items:[{ id, deck, label, nos:[], item_id, synced, status }] }
+  target: null,
+  deckFrom: {},           // deck -> first card number in the War Map's numbering (Decks tab card_from)
+  gtDays: {},             // 'yyyy-mm-dd' -> 'GT'           // { date, items:[{ id, deck, label, nos:[], item_id, synced, status }] }
   device: null,
   listeners: new Set()
 };
@@ -33,6 +35,8 @@ export async function loadAll() {
   S.logDaily = (await db.kv.get('logDaily')) || {};
   S.logChron = (await db.kv.get('logChron')) || [];
   S.target = (await db.kv.get('target')) || null;
+  S.deckFrom = (await db.kv.get('deckFrom')) || {};
+  S.gtDays = (await db.kv.get('gtDays')) || {};
   S.device = await db.kv.get('device');
   if (!S.device) {
     const ua = navigator.userAgent;
@@ -74,7 +78,19 @@ let traceDaily = {};          // date -> { ms, cards:Set }
 const dkey = ts => { const d = new Date(ts); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 export const today = () => dkey(Date.now());
 export { dkey };
+// The War Map numbers split decks continuously (HEMO01B = cards 10–22); some converted decks restart at 1.
+// off(deck) converts: War Map number = Trace no + off(deck).
+const offCache = new Map();
+export function off(deck) {
+  if (offCache.has(deck)) return offCache.get(deck);
+  const d = S.decks.get(deck), f = +S.deckFrom[deck] || 0;
+  let o = 0;
+  if (d && d.cards.length && f > 1) { const min = Math.min(...d.cards.map(c => c.no)); if (min === 1) o = f - 1; }
+  offCache.set(deck, o);
+  return o;
+}
 export function recount() {
+  offCache.clear();
   seenMap = new Map(); lastMap = new Map(); deckLast = new Map(); traceDaily = {};
   for (const e of S.events) {
     if (S.undone.has(e.id)) continue;
@@ -89,12 +105,14 @@ export function recount() {
   if (!S.library) return;
   for (const d of S.library.decks) {
     let n = 0;
-    for (let i = 1; i <= d.cards; i++) if (seen(d.deck, i) > 0) n++;
+    const dd = S.decks.get(d.deck);
+    if (dd && dd.cards.length) { for (const c of dd.cards) if (seen(d.deck, c.no) > 0) n++; }
+    else for (let i = 1; i <= d.cards; i++) if (seen(d.deck, i) > 0) n++;
     deckSeen.set(d.deck, n);
   }
 }
 export function seen(deck, no) {
-  return (seenMap.get(deck + '|' + no) || 0) + ((S.logBase[deck] || {})[no] || 0);
+  return (seenMap.get(deck + '|' + no) || 0) + ((S.logBase[deck] || {})[no + off(deck)] || 0);
 }
 export const walked = deck => deckSeen.get(deck) || 0;
 export const lastSeen = (deck, no) => lastMap.get(deck + '|' + no) || 0;

@@ -505,57 +505,79 @@ function renderFlowTab() {
 function keep(fn) { const sc = app.querySelector('.scroll'), y = sc ? sc.scrollTop : 0; fn(); const s2 = app.querySelector('.scroll'); if (s2) s2.scrollTop = y; }
 
 /* ============================ the Loft ============================ */
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+let loftMonth = null, loftDay = null;
 function renderLoft() {
   const unit = P.get('heatUnit', 'h');
-  const days = allDays(), first = days.length ? days[0] : today();
-  // heat map: weeks as columns, Sunday on top, from the first study day (max 26 weeks)
-  const start = new Date(first + 'T12:00'); start.setDate(start.getDate() - start.getDay());
-  const end = new Date(); end.setHours(12, 0, 0, 0);
-  let weeks = Math.ceil(((end - start) / 864e5 + 1) / 7);
-  if (weeks < 12) { start.setDate(start.getDate() - (12 - weeks) * 7); weeks = 12; }
-  if (weeks > 26) { start.setDate(start.getDate() + (weeks - 26) * 7); weeks = 26; }
-  const cells = [];
-  for (let i = 0; i < weeks * 7; i++) {
-    const d = new Date(start); d.setDate(start.getDate() + i);
-    const k = dkey(d.getTime()), v = daily(k), future = d > end;
-    const val = unit === 'h' ? v.min / 60 : v.cards;
-    cells.push(`<span title="${k}: ${fmtHM(v.min)} · ${v.cards} cards" style="background:${future ? 'transparent' : heatColour(val, unit === 'h' ? 1 : 20)}${future ? ';border-color:transparent' : ''}"></span>`);
+  const now = new Date();
+  if (!loftMonth) loftMonth = { y: now.getFullYear(), m: now.getMonth() };
+  if (!loftDay) loftDay = today();
+  const { y, m } = loftMonth, first = new Date(y, m, 1, 12), days = new Date(y, m + 1, 0).getDate();
+  const lead = (first.getDay() + 6) % 7;                      // Monday first, like the War Map
+  const exam = CONFIG.exam.date, tdy = today();
+  let cells = '';
+  for (let i = 0; i < lead; i++) cells += '<span class="cd blank"></span>';
+  for (let d = 1; d <= days; d++) {
+    const k = y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+    const v = daily(k), val = unit === 'h' ? v.min / 60 : v.cards, has = unit === 'h' ? v.min >= 3 : v.cards > 0;
+    const lvl = !has ? 0 : unit === 'h' ? Math.min(5, 1 + Math.floor(val)) : Math.min(5, 1 + Math.floor(val / 20));
+    const txt = !has ? '' : unit === 'h' ? (Math.round(val * 10) / 10) + 'h' : String(v.cards);
+    const mark = k === exam ? 'EX' : (S.gtDays[k] || '');
+    cells += `<button class="cd l${lvl}${k === tdy ? ' today' : ''}${k === loftDay ? ' sel' : ''}${k > tdy ? ' future' : ''}" data-day="${k}" aria-label="${k}: ${fmtHM(v.min)}, ${v.cards} cards">
+      <span class="cd-n">${d}</span>${mark ? `<span class="cd-m">${mark}</span>` : ''}<b>${txt}</b></button>`;
   }
+  // the selected day, as in the War Map's "Day in the chronicle"
+  const dv = daily(loftDay), dItems = buildChronicle().filter(c => c.day === loftDay);
+  const dd = new Date(loftDay + 'T12:00');
+  const dayCard = `<div class="dayc">
+    <span class="mono kick">DAY IN THE CHRONICLE</span>
+    <span class="dc-d">${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dd.getDay()]} ${dd.getDate()} ${MONTHS[dd.getMonth()].slice(0, 3)}</span>
+    <div class="dc-stats"><span><b>${fmtHM(dv.min)}</b><i>STUDIED</i></span><span><b>${dv.cards}</b><i>CARDS</i></span><span><b>${dv.cards ? (dv.min / dv.cards).toFixed(1) : '–'}</b><i>MIN / CARD</i></span></div>
+    ${dItems.length ? `<div class="chron">${dItems.map(c => `<div class="ch-i"><span class="mono">${esc(c.when.replace(/^(Today|Yday) /, ''))}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('')}</div>` : '<p class="muted small">No study logged on this day.</p>'}
+  </div>`;
   const d14 = lastDays(14), mx = Math.max(60, ...d14.map(d => daily(d).min));
   const bars = d14.map((d, i) => `<span style="height:${Math.max(2, Math.round(daily(d).min / mx * 66))}px" class="${i === 13 ? 'now' : ''}" title="${d}: ${fmtHM(daily(d).min)}"></span>`).join('');
   const avg14 = d14.reduce((a, d) => a + daily(d).min, 0) / 14;
-  // cards walked to date (distinct cards, from the shelf) against an even plan to the exam
   const totalCards = S.library ? S.library.decks.reduce((a, d) => a + d.cards, 0) : 0;
   const walkedNow = S.library ? S.library.decks.reduce((a, d) => a + walked(d.deck), 0) : 0;
   const cum = []; let run = 0;
-  const span = lastDays(35); for (const d of span) { run += daily(d).cards; cum.push(run); }
+  for (const d of lastDays(35)) { run += daily(d).cards; cum.push(run); }
   const scale = Math.max(1, run);
   const line = cum.map((v, i) => `${(i * 140 / 34).toFixed(1)} ${(66 - v / scale * 58).toFixed(1)}`).join(' L');
-  const chron = buildChronicle().slice(0, 30);
+  const chron = buildChronicle();
   app.innerHTML = `<div class="screen loft">
     <header class="top"><a class="iconbtn" href="#/" aria-label="Back to the shelf">${ICON.back}</a>
       <span class="tt"><span class="mono kick">${daysLeft()} · ${CONFIG.exam.name} 11 DEC</span><span class="h1s">The Loft</span></span><span></span></header>
     <div class="scroll pad loftbody">
-      ${targetBlock(false)}
-      <div class="paper">
-        <div class="pp-h"><span class="mono">CHRONICLE · HEAT MAP</span>
-          <span class="seg light"><button class="${unit === 'h' ? 'on' : ''}" data-unit="h">Hours</button><button class="${unit === 'c' ? 'on' : ''}" data-unit="c">Cards</button></span></div>
-        <div class="heat"><span class="hd mono"><i>S</i><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i></span><span class="hg" style="--w:${weeks}">${cells.join('')}</span></div>
-        <div class="pp-f mono"><span>${weeks} weeks to today</span><span class="hk">0${HEAT.map(c => `<i style="background:${c}"></i>`).join('')}${unit === 'h' ? '5 h+' : '100+'}</span></div>
+      <div class="loft-a">
+        ${targetBlock(false)}
+        <div class="paper cal">
+          <div class="cal-h"><button class="iconbtn sm" data-mo="-1" aria-label="Previous month">‹</button><span class="cal-t">${MONTHS[m]} ${y}</span><button class="iconbtn sm" data-mo="1" aria-label="Next month">›</button></div>
+          <div class="cal-sw"><span class="seg light"><button class="${unit === 'h' ? 'on' : ''}" data-unit="h">Hours</button><button class="${unit === 'c' ? 'on' : ''}" data-unit="c">Cards</button></span></div>
+          <div class="cal-g"><span class="cw">M</span><span class="cw">T</span><span class="cw">W</span><span class="cw">T</span><span class="cw">F</span><span class="cw">S</span><span class="cw">S</span>${cells}</div>
+          <div class="pp-f mono"><span>GT = grand test · EX = exam</span><span class="hk">less${HEAT.slice(1).map(c => `<i style="background:${c}"></i>`).join('')}more ${unit === 'h' ? 'hours' : 'cards'}</span></div>
+        </div>
+        ${dayCard}
       </div>
-      <div class="charts">
-        <div class="chart"><span class="mono lab">HOURS · 14 DAYS</span><span class="bars">${bars}</span><span class="mono">avg ${fmtHM(avg14)} / day</span></div>
-        <div class="chart"><span class="mono lab">CARDS · 35 DAYS</span>
-          <svg viewBox="0 0 140 70" width="100%" height="70" aria-hidden="true"><path d="M${line}" stroke="#d1b77c" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
-          <span class="mono">${walkedNow.toLocaleString()} / ${totalCards.toLocaleString()} walked</span></div>
+      <div class="loft-b">
+        <div class="charts">
+          <div class="chart"><span class="mono lab">HOURS · 14 DAYS</span><span class="bars">${bars}</span><span class="mono">avg ${fmtHM(avg14)} / day</span></div>
+          <div class="chart"><span class="mono lab">CARDS · 35 DAYS</span>
+            <svg viewBox="0 0 140 70" width="100%" height="70" aria-hidden="true"><path d="M${line}" stroke="#d1b77c" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+            <span class="mono">${walkedNow.toLocaleString()} / ${totalCards.toLocaleString()} walked</span></div>
+        </div>
+        <details class="chrond"${P.get('chronOpen', false) ? ' open' : ''}><summary><span class="mono kick">CHRONICLES</span><span class="mono muted small">${chron.length} entries</span></summary>
+          <div class="chron">${chron.slice(0, 80).map(c => `<div class="ch-i"><span class="mono">${esc(c.when)}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
+        </details>
       </div>
-      <span class="mono lab">CHRONICLES</span>
-      <div class="chron">${chron.map(c => `<div class="ch-i"><span class="mono">${esc(c.when)}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
     </div>
     ${nav('')}
   </div>`;
   bindGo(); bindTarget(renderLoft);
-  app.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { P.set('heatUnit', b.dataset.unit); renderLoft(); });
+  app.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { P.set('heatUnit', b.dataset.unit); keep(renderLoft); });
+  app.querySelectorAll('[data-mo]').forEach(b => b.onclick = () => { let mm = loftMonth.m + +b.dataset.mo, yy = loftMonth.y; if (mm < 0) { mm = 11; yy--; } if (mm > 11) { mm = 0; yy++; } loftMonth = { y: yy, m: mm }; keep(renderLoft); });
+  app.querySelectorAll('[data-day]').forEach(b => b.onclick = () => { loftDay = b.dataset.day; keep(renderLoft); });
+  const cd = app.querySelector('details.chrond'); if (cd) cd.addEventListener('toggle', () => P.set('chronOpen', cd.open));
 }
 function buildChronicle() {
   const items = [];
@@ -571,11 +593,11 @@ function buildChronicle() {
   }
   for (const s of by.values()) {
     const parts = [...s.decks.entries()].map(([d, nos]) => d + ' ' + compressNos(nos));
-    items.push({ ts: s.ts, when: whenLabel(s.ts), what: 'Flow · ' + parts.slice(0, 2).join(', ') + (parts.length > 2 ? ` +${parts.length - 2}` : ''), size: `${s.n} · ${fmtHM(s.ms / 60000)}` });
+    items.push({ ts: s.ts, day: dkey(s.ts), when: whenLabel(s.ts), what: 'Flow · ' + parts.slice(0, 2).join(', ') + (parts.length > 2 ? ` +${parts.length - 2}` : ''), size: `${s.n} · ${fmtHM(s.ms / 60000)}` });
   }
   for (const r of S.logChron) {
     const ts = new Date(r[0] + 'T' + (/^\d{1,2}:\d{2}/.test(r[1]) ? r[1].padStart(5, '0') : '12:00')).getTime();
-    items.push({ ts, when: whenLabel(ts), what: 'War Map · ' + r[2] + ' ' + r[3] + (r[4] !== r[3] ? '–' + r[4] : ''), size: `${r[5]} · ${fmtHM(r[6])}` });
+    items.push({ ts, day: r[0], when: whenLabel(ts), what: 'War Map · ' + r[2] + ' ' + r[3] + (r[4] !== r[3] ? '–' + r[4] : ''), size: `${r[5]} · ${fmtHM(r[6])}` });
   }
   return items.sort((a, b) => b.ts - a.ts);
 }
