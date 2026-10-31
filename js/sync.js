@@ -60,7 +60,7 @@ export async function buildLogRows(force) {
   const pending = views.filter(e => !e.logged && (e.session === force || now - e.ts > CONFIG.logIdleMs));
   if (!pending.length) return 0;
   // cards already walked before (old War Map rows + earlier Trace sessions)
-  const covered = (await db.kv.get('covered')) || {};
+  const covered = (await db.kv.get('logCovered')) || {};
   const coveredSet = deck => new Set(covered[deck] || []);
   const groups = new Map();
   for (const e of pending) {
@@ -104,7 +104,6 @@ export async function buildLogRows(force) {
   await db.putMany('logrows', rows);
   for (const e of pending) e.logged = 1;
   await db.putMany('events', pending);
-  await db.kv.set('covered', covered);
   return rows.length;
 }
 
@@ -149,10 +148,10 @@ export async function sync({ downloadAll = true } = {}) {
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();
   try {
     await buildLogRows();
-    if ((await db.kv.get('logVer')) !== 3) {          // v3: War Map card numbering + hours per day: read the Log again from the top
+    if ((await db.kv.get('logVer')) !== 4) {          // v4: War Map card numbering + hours per day: read the Log again from the top
       await db.kv.set('logRow', 1); await db.kv.set('logBase', {}); await db.kv.set('logDaily', {}); await db.kv.set('logChron', []); await db.kv.set('covered', {}); await db.kv.set('chunksAt', 0);
       S.logBase = {}; S.logDaily = {}; S.logChron = [];
-      await db.kv.set('logVer', 3);
+      await db.kv.set('logVer', 4);
     }
     const k = {
       evRow: (await db.kv.get('evRow')) || 1,
@@ -164,7 +163,7 @@ export async function sync({ downloadAll = true } = {}) {
     const ops = [
       { op: 'readFile', id: libId },
       { op: 'sheetRead', tab: 'TraceEvents', fromRow: k.evRow + 1 },
-      { op: 'sheetRead', tab: 'Log', fromRow: k.logRow + 1 },
+      { op: 'sheetRead', tab: 'Log', fromRow: 2 },          // always the whole Log: rebuilt from scratch, never added up
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'edits.json' },
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'library.json' }
     ];
@@ -190,7 +189,7 @@ export async function sync({ downloadAll = true } = {}) {
     // 2. events from other devices
     if (r[1].ok) await mergeRemoteEvents(r[1].data, k.evRow);
     // 3. old War Map Log rows -> "times seen" base + covered cards
-    if (r[2].ok) await absorbLog(r[2].data, k.logRow);
+    if (r[2].ok) await absorbLog(r[2].data);
     // 4. chunk ranges
     if (needChunks && r[5] && r[5].ok) {
       const chunks = {};
@@ -264,11 +263,10 @@ function normDate(x) {
   if (m) return m[3] + '-' + m[2].padStart(2, '0') + '-' + m[1].padStart(2, '0');
   return '';
 }
-async function absorbLog(data, fromRow) {
-  const vals = data.values || [];
-  if (fromRow <= 1 && vals.length && vals[0][0] === 'date') vals.shift();
-  const base = S.logBase;
-  const covered = (await db.kv.get('covered')) || {};
+async function absorbLog(data) {
+  // Rebuilt from the full Log on every sync, so several open copies of the app can never double-count.
+  const vals = (data.values || []).filter(v => v[0] !== 'date');
+  const base = {}, covered = {}, daily = {}, chron = [];
   for (const v of vals) {
     const [, , who, deck, , stage, , , note, from, to] = v;
     if (!deck || !OWNER.has(String(who || '').trim().toLowerCase())) continue;
@@ -276,28 +274,25 @@ async function absorbLog(data, fromRow) {
     const a = parseInt(from, 10), b = parseInt(to, 10);
     if (!(a > 0) || !(b >= a)) continue;
     const fromTrace = String(note || '').startsWith('Trace app');
-    if (!fromTrace) {
-      const day = normDate(v[0]);
-      if (day) {
-        const dd = S.logDaily[day] || (S.logDaily[day] = { min: 0, cards: 0 });
-        dd.min += Math.min(parseFloat(v[7]) || 0, 600); dd.cards += parseInt(v[6], 10) || (b - a + 1);
-        S.logChron.push([day, v[1] || '', deck, a, b, parseInt(v[6], 10) || (b - a + 1), Math.round(parseFloat(v[7]) || 0)]);
-      }
-    }
-    const cov = new Set(covered[deck] || []);
+    const cov = covered[deck] || (covered[deck] = new Set());
     for (let n = a; n <= b; n++) {
       cov.add(n);
       if (!fromTrace) { base[deck] = base[deck] || {}; base[deck][n] = (base[deck][n] || 0) + 1; }
     }
-    covered[deck] = [...cov];
+    if (!fromTrace) {
+      const day = normDate(v[0]);
+      if (day) {
+        const dd = daily[day] || (daily[day] = { min: 0, cards: 0 });
+        dd.min += Math.min(parseFloat(v[7]) || 0, 600); dd.cards += parseInt(v[6], 10) || (b - a + 1);
+        chron.push([day, v[1] || '', deck, a, b, parseInt(v[6], 10) || (b - a + 1), Math.round(parseFloat(v[7]) || 0)]);
+      }
+    }
   }
-  S.logBase = base;
-  if (S.logChron.length > 400) S.logChron = S.logChron.slice(-400);
-  await db.kv.set('logDaily', S.logDaily);
-  await db.kv.set('logChron', S.logChron);
-  await db.kv.set('logBase', base);
-  await db.kv.set('covered', covered);
-  if (data.lastRow) await db.kv.set('logRow', Math.max(data.lastRow, 1));
+  const cov = {};
+  for (const [d, set] of Object.entries(covered)) cov[d] = [...set];
+  S.logBase = base; S.logDaily = daily; S.logChron = chron.slice(-400);
+  await db.kv.set('logBase', base); await db.kv.set('logDaily', daily); await db.kv.set('logChron', S.logChron);
+  await db.kv.set('logCovered', cov);
 }
 
 async function syncEdits(found, knownId) {

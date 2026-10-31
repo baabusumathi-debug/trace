@@ -1,6 +1,6 @@
 // Trace service worker: keeps the whole app on the device so it opens with no internet.
 // Card data lives in IndexedDB (not here). Bump VERSION on every release.
-const VERSION = 'trace-v1.2.1';
+const VERSION = 'trace-v1.2.2';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/app.js', 'js/api.js', 'js/config.js', 'js/db.js', 'js/emblems.js', 'js/md.js', 'js/store.js', 'js/sync.js',
