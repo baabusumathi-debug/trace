@@ -6,6 +6,7 @@ import { S, loadAll, emit, cardsOf, deckMeta, neetTag, seen, walked, avgPace, ti
 import { status, sync, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
+import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const app = $('#app');
@@ -47,6 +48,7 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
+  await loadVisuals();
   if (demo && !S.library) {
     status.state = 'syncing';
   }
@@ -58,6 +60,10 @@ async function boot() {
   route();
   if (hasBackend()) { await countPending(); startAutoSync(); }
   registerSW();
+  // visual decks: look for new versions a little after opening, then every 30 minutes (each check is skipped if done < 6 h ago)
+  const vcheck = (force) => syncVisuals(d => (S.decks.get(d) || { cards: [] }).cards, { force }).then(() => { if (!flow && /^#\/status/.test(location.hash)) route(); });
+  window._vcheck = vcheck;
+  setTimeout(() => vcheck(false), 8000); setInterval(() => vcheck(false), 30 * 60000);
 }
 
 /* ============================ router ============================ */
@@ -646,6 +652,7 @@ async function endFlow() {
   if (!flow) return;
   clearInterval(flow.tick);
   document.removeEventListener('keydown', flowKeys);
+  closePanel(); releaseUrls();
   const sid = flow.session, back = flow.returnTo, browse = flow.browse;
   flow = null;
   if (!browse) { await buildLogRows(sid); await countPending(); }
@@ -722,13 +729,20 @@ function drawCard() {
       ${rest ? `<details class="qrecap"><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       <div class="ans">${render(c.a)}</div>
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
-      ${c.why ? `<div class="box why"><span class="mono">WHY</span>${render(c.why)}</div>` : ''}
-      ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span>${render(c.watch)}</div>` : ''}
+      ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
+      ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
     </div>`;
   }
   el.innerHTML = top + body;
   el.classList.toggle('ng', !!tag);
+  closePanel();
+  if (hasVisual(c)) {
+    const chip = document.createElement('button'); chip.className = 'vchip mono'; chip.textContent = isQ ? '◈ visual after reveal' : '◈ Visual';
+    if (isQ) chip.disabled = true; else chip.onclick = e => { e.stopPropagation(); const t = el.querySelector('.vl-head'); if (t) t.click(); else { const v = el.querySelector('.vl'); v && v.click(); } };
+    el.querySelector('.c-tags').appendChild(chip);
+    if (!isQ) linkCard(el, c, openPanel);
+  }
   el.scrollTop = 0;
   const a = el.querySelector('.c-a'); if (a) a.scrollTop = 0;
   big.innerHTML = isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
@@ -825,9 +839,27 @@ async function undo() {
   flow.idx = h.idx; flow.face = 'q'; flow.done = false; flow.cardT0 = Date.now();
   drawCard(); updateFlowChrome();
 }
+/* the visual panel: beside the card on wide screens, over it on the phone */
+let vstate = null;
+function openPanel(o) {
+  vstate = { deck: o.deck, code: o.code, stack: o.ov ? [{ ov: o.ov }] : [{ seq: o.seq, i: 0 }] };
+  let host = $('#vpanel');
+  if (!host) { host = document.createElement('aside'); host.id = 'vpanel'; host.className = 'vpanel'; $('.screen.flow').appendChild(host); }
+  $('.screen.flow').classList.add('vp-open');
+  drawPanel(host, vstate, { P, onClose: closePanel });
+}
+function closePanel() {
+  vstate = null;
+  const h = $('#vpanel'); if (h) h.remove();
+  const f = $('.screen.flow'); if (f) f.classList.remove('vp-open');
+}
 function flowKeys(e) {
   if (!flow || e.target.matches('input, textarea')) return;
   if ($('.modal')) return;
+  if (vstate) {
+    if (e.key === 'Escape') { e.preventDefault(); closePanel(); return; }
+    if (panelKey(vstate, e)) { drawPanel($('#vpanel'), vstate, { P, onClose: closePanel }); return; }
+  }
   if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
   else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); }
   else if (e.key === 'a' || e.key === 'A') { if (flow.face === 'a' && !flow.browse) next(true); }
@@ -898,12 +930,18 @@ async function renderStatus() {
         <button class="btn primary" data-act="sync" ${status.busy ? 'disabled' : ''}>Sync now</button>
         <button class="btn ghost" data-act="dl">Re-check all decks</button>
       </div>
+      <div class="vstat"><span class="mono kick">VISUAL DECKS</span>
+        ${V.packs.size ? `<ul>${[...V.packs.values()].map(p => `<li><b class="mono">${esc(p.deck)}</b> v${p.version} · ${p.scenes.length} scenes · checked ${new Date(p.checkedAt).toLocaleString()}</li>`).join('')}</ul>` : '<p class="muted small">None on this device yet.</p>'}
+        ${Object.entries(V.status.problems || {}).map(([d, m]) => `<p class="vprob"><b class="mono">${esc(d === '*' ? 'Visual check' : d)}</b> ${esc(m)}${d === '*' ? '' : ' — keeping the previous accepted version.'}</p>`).join('')}
+        <p class="muted small">${V.status.busy ? 'Checking now…' : V.status.checked ? 'Last checked ' + new Date(V.status.checked).toLocaleString() : 'Not checked yet'}</p>
+        <button class="btn ghost" data-act="vis" ${V.status.busy ? 'disabled' : ''}>Check visual decks now</button></div>
       ${isDemo() ? '<p class="muted small">You are in demo mode with sample decks. <a href="./">Leave demo</a></p>' : ''}
     </div>
     ${nav('')}
   </div>`;
   bindGo();
   $('[data-act=sync]').onclick = () => sync();
+  $('[data-act=vis]').onclick = () => { if (window._vcheck) { window._vcheck(true); setTimeout(route, 300); } };
   $('[data-act=dl]').onclick = async () => {
     for (const d of S.decks.values()) d.verified = false;
     try { await downloadDecks(); toast('All decks downloaded and checked.'); } catch (e) { toast(e.message); }

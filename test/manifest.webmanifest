@@ -1,7 +1,7 @@
 {
   "name": "Trace Test",
   "short_name": "Trace Test",
-  "description": "Trace test build \u2014 palace home and meditation. Reads your data; writes nothing to the Sheet.",
+  "description": "Trace test build \u2014 palace home, meditation, visual decks. Reads your data; writes nothing to the Sheet.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

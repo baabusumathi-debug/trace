@@ -4,7 +4,9 @@ const STORES = {
   decks: 'deck',                  // { deck, version, cards[], verified, downloadedAt }
   events: 'id',                   // card views (the source of truth for "times seen")
   logrows: 'id',                  // War Map Log rows waiting to be appended
-  edits: 'key'                    // card edits: key = deck|code
+  edits: 'key',                   // card edits: key = deck|code
+  visuals: 'deck',                // accepted visual-deck package per deck (from ChatGPT, validated)
+  vimg: 'key'                     // visual images: key = deck|file, value { blob }
 };
 
 let dbp = null;
@@ -15,7 +17,7 @@ export function useDbName(n) { DBNAME = n; dbp = null; }
 function open() {
   if (dbp) return dbp;
   dbp = new Promise((resolve, reject) => {
-    const req = indexedDB.open(DBNAME, 1);
+    const req = indexedDB.open(DBNAME, 2);
     req.onupgradeneeded = () => {
       const db = req.result;
       for (const [name, key] of Object.entries(STORES)) {

@@ -16,7 +16,7 @@ var TABS = {            // what the app may do with each tab
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 2;
+var VERSION = 3;          // 3: visual decks (visualIndex, readBinary)
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
@@ -48,6 +48,8 @@ function run_(o) {
     case 'sheetRead': return sheetRead_(o.tab, o.fromRow);
     case 'sheetAppend': return sheetAppend_(o.tab, o.rows, o.header, o.dedupe);
     case 'sheetUpdate': return sheetUpdate_(o.tab, o.keyCol, o.key, o.set);
+    case 'visualIndex': return visualIndex_();
+    case 'readBinary': return readBinary_(o.id);
     default: throw new Error('unknown op ' + o.op);
   }
 }
@@ -104,6 +106,44 @@ function writeFile_(folderId, name, text, mime) {
     var nf = dir.createFile(name, text, mime || 'text/plain');
     return { id: nf.getId(), created: true };
   } finally { lock.releaseLock(); }
+}
+
+/* ---------- visual decks: Trace › decks › <DECK> › visual › {current.json, images/, versions/v<N>/} ---------- */
+function filesOf_(dir) {
+  var out = [], it = dir.getFiles();
+  while (it.hasNext()) { var f = it.next(); if (f.isTrashed()) continue; out.push({ id: f.getId(), name: f.getName(), size: f.getSize(), modified: f.getLastUpdated().toISOString() }); }
+  return out;
+}
+function sub_(dir, name) { var it = dir.getFoldersByName(name); while (it.hasNext()) { var d = it.next(); if (!d.isTrashed()) return d; } return null; }
+function visualIndex_() {
+  var out = [], it = DriveApp.searchFolders("title = 'visual' and trashed = false");
+  while (it.hasNext()) {
+    var v = it.next();
+    if (!insideTrace_(v)) continue;
+    var deckDir = v.getParents().hasNext() ? v.getParents().next() : null;
+    if (!deckDir) continue;
+    var row = { deck: deckDir.getName(), visualId: v.getId() };
+    try {
+      var cur = null, cf = v.getFilesByName('current.json');
+      while (cf.hasNext()) { var f = cf.next(); if (!f.isTrashed() && (!cur || f.getLastUpdated() > cur.getLastUpdated())) cur = f; }
+      if (!cur) { row.error = 'no current.json'; out.push(row); continue; }
+      row.current = cur.getBlob().getDataAsString('UTF-8');
+      var c = JSON.parse(row.current), vers = sub_(v, 'versions'), imgs = sub_(v, 'images');
+      var vd = vers && sub_(vers, 'v' + c.live_version);
+      if (!vd) { row.error = 'versions/v' + c.live_version + ' not found'; out.push(row); continue; }
+      row.files = filesOf_(vd);
+      row.images = imgs ? filesOf_(imgs) : [];
+    } catch (err) { row.error = String(err && err.message || err); }
+    out.push(row);
+  }
+  return out;
+}
+function readBinary_(id) {
+  var f = DriveApp.getFileById(id);
+  if (!insideTrace_(f)) throw new Error('file outside Trace');
+  if (f.getSize() > 8 * 1024 * 1024) throw new Error('file too large');
+  var b = f.getBlob();
+  return { id: id, name: f.getName(), mime: b.getContentType(), size: f.getSize(), b64: Utilities.base64Encode(b.getBytes()) };
 }
 
 /* ---------- Sheet ---------- */
