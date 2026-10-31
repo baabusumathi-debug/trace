@@ -2,9 +2,9 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — docs: record real Journal round-trip proof — 2026-10-31 21:55 IST
+In progress: none
 
-## State (as of entry T-014)
+## State (as of entry T-015)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
@@ -16,10 +16,23 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Guidance | `AGENTS.md` guidance version **4** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | No package published in Drive yet. ChatGPT's real GI02B PANC-14 package passed the validator **locally** (31 Oct). Publication, device download and offline acceptance are **still outstanding**. Claude's earlier test pass used **placeholder** images only. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Real file verified in Naven's Chrome on 31 Oct: found, downloaded (6,381,340 bytes), decoded (531.72 s), and actually played to 0:12. Pause held and resume advanced. Not yet checked: offline playback, and whether the sound was actually heard. Nothing is automated or scheduled, and the producer's capabilities are unverified. |
-| Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. So far proven only with a simulated reply on a mock bridge. **A real Journal round trip hasn't been run yet**, and it will be an active-session pilot, not unattended automation. |
+| Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. **One real round trip passed on 31 Oct (T-015)**, as an active-session pilot. Journal's watch was started by hand in chat, so this is **not** unattended automation. |
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-015 — 2026-10-31 — Claude — docs
+- **Real Journal round trip, verified:**
+  - The actual test build at `/test/#/pilot`, in Naven's Chrome, wrote request `req-fm-20261031-214807-v9ye30.json` (641 bytes, `text/plain`) at 21:48:11 IST.
+  - Journal, watching for one bounded active session started in chat, read the file's actual contents. **No request content was relayed by hand.**
+  - Journal wrote `res-fm-20261031-214807-v9ye30.json` (315 bytes, `application/json`) at 21:49:05 IST.
+  - The app showed the reply text under the card, labelled "on PANC-14".
+  - Dismiss removed it, and Next continued to PANC-16.
+- **Read-only checks by Claude afterwards:**
+  - `Trace › flowmsg` holds exactly this one request and one reply, both owner-only.
+  - The request ID matches in both files.
+- **What this proves:** a file handoff during an active session, after a one-time chat start. It does **not** prove unattended wake-up.
+- **Note on the reply's wording:** it says "Seen once, not yet owned". That's a judgement of mastery, which the request explicitly says isn't measured. This is a content issue for Journal's prompt, not an app defect.
 
 ## T-014 — 2026-10-31 — Claude — test — 1.3.5
 - **Journal Flow-message pilot (test only):**
