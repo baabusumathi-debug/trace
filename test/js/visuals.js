@@ -268,7 +268,9 @@ export async function drawPanel(host, st, { P, onClose }) {
   const url = await imgUrl(st.deck, scene.image);
   const story = (p.stories || []).find(s => s.scene_id === scene.scene_id);
   const cues = p.cues.filter(c => c.scene_id === scene.scene_id).sort((a, b) => a.order - b.order);
-  const notes = p.notes.filter(n => n.scene_id === scene.scene_id || (top.ov && n.level === 'card' && n.card_code === scene.card_code));
+  // scene notes belong to this scene only; card notes belong to every scene of the card (overview or direct entry)
+  const sceneNotes = p.notes.filter(n => n.level === 'scene' && n.scene_id === scene.scene_id);
+  const cardNotes = p.notes.filter(n => n.level === 'card' && n.card_code === scene.card_code);
   const hs = top.ov ? p.hotspots.filter(h => h.overview_id === scene.scene_id) : [];
   const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   host.innerHTML = `<div class="vp-top">
@@ -281,11 +283,17 @@ export async function drawPanel(host, st, { P, onClose }) {
       <div class="vp-img">${url ? `<img src="${url}" alt="${esc(scene.title || 'Scene')}">` : '<p class="muted small">Image not on this device yet.</p>'}
         ${hs.map(h => `<button class="hot" data-seq="${esc(h.sequence_id)}" style="left:${+h.x}%;top:${+h.y}%;width:${+h.w}%;height:${+h.h}%" aria-label="${esc(h.label || 'Open scene')}"><span>${esc(h.label || '')}</span></button>`).join('')}</div>
       ${seqList && seqList.length > 1 ? `<div class="vp-seq"><button class="iconbtn sm" data-si="-1" ${top.i ? '' : 'disabled'} aria-label="Previous scene">‹</button><span class="mono">${(top.i || 0) + 1} / ${seqList.length}</span><button class="iconbtn sm" data-si="1" ${top.i >= seqList.length - 1 ? 'disabled' : ''} aria-label="Next scene">›</button></div>` : ''}
-      ${notes.map(n => `<div class="vnote"><span class="mono">CLINICAL NOTE · ${esc(n.kind.toUpperCase())}</span><div>${inline(n.text)}</div>${n.source ? `<i class="mono">${esc(n.source)}</i>` : ''}</div>`).join('')}
-      ${cues.length ? `<details class="vcues" open><summary><span class="mono kick">CUES → MEANINGS</span></summary><ol>${cues.map(c => `<li><b>${inline(c.cue)}</b>${learn ? `<span>${inline(c.meaning)}</span>` : `<button class="reveal-m">Reveal meaning</button><span hidden>${inline(c.meaning)}</span>`}</li>`).join('')}</ol></details>` : ''}
+      ${!cues.length ? '' : learn
+        // Learn: every cue sits beside its meaning on first view — no taps
+        ? `<section class="vpairs" aria-label="Cues and meanings"><span class="mono kick">CUE → MEANING</span><ol>${cues.map(c => `<li class="vpair"><b class="vp-cue">${inline(c.cue)}</b><span class="vp-ar" aria-hidden="true">→</span><span class="vp-mean">${inline(c.meaning)}</span></li>`).join('')}</ol></section>`
+        // Self-test: unchanged — meanings stay hidden until revealed one by one
+        : `<details class="vcues" open><summary><span class="mono kick">CUES → MEANINGS</span></summary><ol>${cues.map(c => `<li><b>${inline(c.cue)}</b><button class="reveal-m">Reveal meaning</button><span hidden>${inline(c.meaning)}</span></li>`).join('')}</ol></details>`}
+      ${sceneNotes.map(n => noteHtml(n)).join('')}
+      ${cardNotes.length ? `<details class="vcardnotes"><summary><span class="mono kick">CARD CLINICAL NOTES · ${cardNotes.length}</span><span class="muted small">for all of ${esc(scene.card_code)}</span></summary>${cardNotes.map(n => noteHtml(n)).join('')}</details>` : ''}
       ${story ? `<details class="vstory"><summary><span class="mono kick">STORY${story.setting ? ' · ' + esc(story.setting.toUpperCase()) : ''}</span></summary>${story.title ? `<h3>${esc(story.title)}</h3>` : ''}${render(story.text || '')}</details>` : ''}
     </div>`;
   const redraw = () => drawPanel(host, st, { P, onClose });
+  const cn = host.querySelector('details.vcardnotes'); if (cn) cn.open = false;   // card notes always start closed
   host.querySelector('[data-vx]').onclick = onClose;
   host.querySelector('[data-vf]').onclick = () => host.classList.toggle('full');
   const vb = host.querySelector('[data-vb]'); if (vb) vb.onclick = () => { st.stack.pop(); redraw(); };
@@ -293,6 +301,10 @@ export async function drawPanel(host, st, { P, onClose }) {
   host.querySelectorAll('.hot').forEach(b => b.onclick = () => { st.stack.push({ seq: b.dataset.seq, i: 0 }); redraw(); });
   host.querySelectorAll('[data-si]').forEach(b => b.onclick = () => { top.i = Math.max(0, Math.min(seqList.length - 1, (top.i || 0) + +b.dataset.si)); redraw(); });
   host.querySelectorAll('.reveal-m').forEach(b => b.onclick = () => { b.nextElementSibling.hidden = false; b.remove(); });
+}
+function noteHtml(n) {
+  const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return `<div class="vnote"><span class="mono">CLINICAL NOTE · ${esc(String(n.kind || '').toUpperCase())}</span><div>${inline(n.text)}</div>${n.source ? `<i class="mono">${esc(n.source)}</i>` : ''}</div>`;
 }
 export function panelKey(st, e) {
   const p = st && V.packs.get(st.deck); if (!p) return false;

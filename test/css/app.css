@@ -600,3 +600,13 @@ a.brand{text-decoration:none;color:inherit}
   .vpanel.full{position:fixed;inset:0}
   @keyframes vpside{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
 }
+
+/* Learn: cue and meaning side by side, visible on first view */
+.vpairs{border:1px solid #80b7af55;border-radius:10px;padding:10px 12px;background:#80b7af0d}
+.vpairs ol{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column}
+.vpair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);gap:8px;align-items:baseline;padding:8px 0;border-top:1px solid #ffffff12;font-size:15px;line-height:1.4}
+.vpair:first-child{border-top:0}
+.vp-cue{color:var(--gold2);font-weight:600}.vp-ar{color:#80b7af}.vp-mean{color:#e2e7df}
+.vcardnotes{border:1px solid #e1a35b55;border-radius:10px;padding:10px 12px}
+.vcardnotes summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.vcardnotes summary .kick{color:#e1a35b}
+.vcardnotes .vnote{margin-top:10px}

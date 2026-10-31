@@ -726,7 +726,7 @@ function drawCard() {
   } else {
     body = `<div class="c-a">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
-      ${rest ? `<details class="qrecap"><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
+      ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       <div class="ans">${render(c.a)}</div>
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}

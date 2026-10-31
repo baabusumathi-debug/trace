@@ -1,6 +1,12 @@
 # Trace — change log
 
-In progress: Claude — test UI: open question recap, card notes on all scenes (closed), Learn cue pairs up front — 2026-10-31 19:06 IST
+In progress: none
+
+## 1.3.3 — 2026-10-31 — Claude — test
+- Text card answer view: "Question parts" starts open (touch to close). The question side is unchanged and Reveal never opens the visual viewer.
+- Visual viewer: card-level clinical notes are available on every scene of the card (overview and scenes entered directly), in a section that starts closed (touch to open). Scene notes stay on their own scene.
+- Visual viewer, Learn: each cue sits beside its meaning, right under the image, with no taps. Self-test is unchanged: meanings stay hidden until "Reveal meaning".
+- Live app untouched (still 1.2.3).
 
 ## bridge v3 — 2026-10-31 — Claude — bridge
 - Bridge v3 deployed by Naven: Targets tab (two-way targets with the War Map), visualIndex + readBinary for visual decks.
