@@ -1,6 +1,6 @@
 # AGENTS.md — working on Trace
 
-**Guidance version: 3 (2026-10-31).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
+**Guidance version: 4 (2026-10-31).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
 
 This file is written for **any AI assistant** working on this project (Claude, ChatGPT, Grok bots, Muse or others) and for Naven. Read it in full the first time, and whenever §12 says to. Keep it accurate when you finish a task.
 
@@ -120,7 +120,7 @@ Plain JavaScript modules, with no build step and no framework. Fonts are self-ho
 - **What the test build does on its own:**
   - It uses its own database, `trace-test`.
   - It reads the live connection once and never alters the live database.
-  - It **never writes** to the Sheet or Drive.
+  - It **never writes** to the Sheet or Drive, with one isolated exception: the Flow-message pilot (§10) writes `req-*.json` files into `Trace › flowmsg` only.
   - It shows a teal **TEST** tag.
 - **Cache prefixes:** `trace-v` for live and `tracetest-v` for test. Each worker deletes only caches with its own prefix.
 - **Release to test:**
@@ -211,6 +211,9 @@ Keep bridge changes rare, and batch them.
 - **Journal pilot recording (test only, built in T-013):**
   - Plays **one** file named `*_trace_pilot*.mp3` from `Trace › meditation`, read through the existing bridge, at most 8 MB.
   - This is a one-off pilot, not the planned pipeline. Don't extend it to other audio without Naven's approval.
+- **Flow-message pilot (test only, built in T-014):**
+  - Started at `#/pilot`. One reviewed card produces one `req-<id>.json` in `Trace › flowmsg`, and the app shows one plain-text Journal reply, `res-<id>.json`, within 5 minutes. The request and reply format is in T-014 and in `js/flowmsg.js`.
+  - It's an active-session pilot, **not** unattended automation. No webhooks or secrets.
 - **Palace and meditation home:** in the test build, waiting for Naven's "promote".
 
 ## 11. Writing CHANGELOG.md

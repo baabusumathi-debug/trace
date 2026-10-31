@@ -4,7 +4,7 @@
 export const CHANNEL = /\/test\//.test(location.pathname) ? 'test' : 'live';
 export const CONFIG = {
   readOnly: CHANNEL === 'test',
-  appVersion: '1.3.4',
+  appVersion: '1.3.5',
   traceFolderId: '1e_lx6kl_MhG4aOracgTr_HG3NUp7OsYs',
   libraryId: '1b3tMq38gqAE_m7eb5PeeJ53LjKqdggHI',   // fallback; the app looks library.json up by name
   exam: { name: 'NEET-SS', date: '2026-12-11' },

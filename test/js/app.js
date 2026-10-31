@@ -6,6 +6,7 @@ import { S, loadAll, emit, cardsOf, deckMeta, neetTag, seen, walked, avgPace, ti
 import { status, sync, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
+import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -88,6 +89,7 @@ function routeInner() {
   if (page === 'changes') return renderChanges();
   if (page === 'shelf') return renderCabinet();
   if (page === 'meditation') return renderMeditation(app, { nav: nav(''), back: '#/loft', P });
+  if (page === 'pilot') return startPilot();
   renderPalace(app, { nav: nav('palace'), top: topBar() });
   bindGo();
 }
@@ -641,7 +643,7 @@ function startFlow(list, opts = {}) {
   if (!list || !list.length) return;
   const at = Math.max(0, opts.start || 0);
   const queue = list.slice(at).concat(list.slice(0, at));
-  flow = { deck: queue[0].deck, label: opts.label || '', browse: !!opts.browse, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
+  flow = { deck: queue[0].deck, label: opts.label || '', browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
     queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
   _lastDeck = queue[0].deck;
   renderFlow();
@@ -653,6 +655,7 @@ async function endFlow() {
   clearInterval(flow.tick);
   document.removeEventListener('keydown', flowKeys);
   closePanel(); releaseUrls();
+  if (flow.pilot) stopPolling();
   const sid = flow.session, back = flow.returnTo, browse = flow.browse;
   flow = null;
   if (!browse) { await buildLogRows(sid); await countPending(); }
@@ -688,6 +691,7 @@ function renderFlow() {
     </aside>
     <main class="f-main">
       <div class="card-wrap"><article class="card" id="card"></article></div>
+      ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
       <button class="big press" id="f-big"></button>
     </main>
   </div>`;
@@ -811,6 +815,11 @@ function reveal() {
 async function next(again) {
   if (!flow || flow.busy || flow.done) return;
   if (flow.face === 'q') return reveal();
+  if (flow.pilot && !flow.pilotSent) {                  // the one reviewed card of this pilot session (not logged anywhere)
+    flow.pilotSent = true;
+    const c = current(), m = deckMeta(c.deck) || {};
+    sendRequest(c, m.title, (Date.now() - flow.cardT0) / 1000, false);
+  }
   if (flow.browse) {
     animate('deal', () => { flow.idx++; flow.face = 'q'; if (flow.idx >= flow.queue.length) flow.done = true; drawCard(); updateFlowChrome(); });
     return;
@@ -839,6 +848,38 @@ async function undo() {
   flow.idx = h.idx; flow.face = 'q'; flow.done = false; flow.cardT0 = Date.now();
   drawCard(); updateFlowChrome();
 }
+/* ============ Journal Flow-message pilot (TEST build only) ============ */
+function startPilot() {
+  if (!pilotAllowed()) { go('#/'); return; }
+  // an explicit, isolated session: look-mode Flow (nothing logged), starting at GI02B PANC-14 when it is on this device
+  const pick = (cardsOf('GI02B') || []).length ? 'GI02B' : (S.library && S.library.decks.find(d => isReady(d.deck)) || {}).deck;
+  const cards = pick ? cardsOf(pick) : [];
+  if (!cards.length) { toast('No downloaded deck for the pilot yet.'); go('#/'); return; }
+  const at = Math.max(0, cards.findIndex(c => c.code === 'PANC-14'));
+  startFlow(cards, { browse: true, pilot: true, start: at, label: 'Journal pilot', returnTo: '#/' });
+  resumePending(drawFm).then(resumed => { if (resumed && flow) { flow.pilotSent = true; } drawFm(); });
+}
+function drawFm() {
+  const slot = document.getElementById('fm-slot'); if (!slot || !flow || !flow.pilot) return;
+  const st = FM.state, about = FM.card ? ` · on ${esc(FM.card)}` : '';
+  if (st === 'idle') { slot.innerHTML = '<p class="fm-hint mono">JOURNAL PILOT · reveal a card, then tap Next once</p>'; return; }
+  if (FM.dismissed) { slot.innerHTML = ''; return; }
+  if (st === 'reply') {
+    if (slot.querySelector('.fm-note[data-id="' + FM.requestId + '"]')) return;       // one appearance per reply
+    slot.innerHTML = `<div class="fm-note" data-id="${esc(FM.requestId)}" role="status">
+      <div class="fm-h"><span class="mono">✦ JOURNAL${about}</span><button class="fm-x" aria-label="Dismiss">×</button></div>
+      <p class="fm-t"></p><button class="fm-more" hidden>Read more</button></div>`;
+    const t = slot.querySelector('.fm-t'); t.textContent = FM.text;                 // plain text only
+    requestAnimationFrame(() => { const more = slot.querySelector('.fm-more'); if (t.scrollHeight > t.clientHeight + 2) { more.hidden = false; more.onclick = () => { t.classList.add('open'); more.remove(); }; } });
+  } else {
+    const end = st === 'timeout' || st === 'error' || st === 'invalid';
+    slot.innerHTML = `<div class="fm-wait${end ? ' end' : ''}" role="status"><span class="mono">${end ? '✦' : '<i class="fm-dot"></i>'} ${esc(FM.note || 'Asking Journal…')}</span>
+      ${end ? '<a class="fm-new" href="#/" data-fmnew>New pilot session</a>' : ''}<button class="fm-x" aria-label="Dismiss">×</button></div>`;
+    const nw = slot.querySelector('[data-fmnew]'); if (nw) nw.onclick = e => { e.preventDefault(); endFlow().then(() => setTimeout(() => go('#/pilot'), 50)); };
+  }
+  const x = slot.querySelector('.fm-x'); if (x) x.onclick = () => { FM.dismissed = true; slot.innerHTML = ''; };
+}
+
 /* the visual panel: beside the card on wide screens, over it on the phone */
 let vstate = null;
 function openPanel(o) {

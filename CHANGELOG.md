@@ -2,23 +2,36 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — test: Journal Flow-message pilot (flowmsg req/res, test only) — 2026-10-31 21:40 IST
+In progress: none
 
-## State (as of entry T-013)
+## State (as of entry T-014)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.4** · last code commit: see entry T-013 (`git log -- test/`) |
+| Test build (`test/`) | **1.3.5** · last code commit: see entry T-014 (`git log -- test/`) |
 | Bridge (Apps Script) | **v3** deployed by Naven 31 Oct · repo source `backend/Code.gs` |
-| Guidance | `AGENTS.md` guidance version **3** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
+| Guidance | `AGENTS.md` guidance version **4** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | No package published in Drive yet. ChatGPT's real GI02B PANC-14 package passed the validator **locally** (31 Oct). Publication, device download and offline acceptance are **still outstanding**. Claude's earlier test pass used **placeholder** images only. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Playback has been verified only against a stand-in MP3 on a mock bridge. **Real-file playback on Naven's device is not yet confirmed.** Nothing is automated or scheduled, and the producer's capabilities are unverified. |
+| Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. So far proven only with a simulated reply on a mock bridge. **A real Journal round trip hasn't been run yet**, and it will be an active-session pilot, not unattended automation. |
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-014 — 2026-10-31 — Claude — test — 1.3.5
+- **Journal Flow-message pilot (test only):**
+  - The explicit entry is `#/pilot`. It runs a look-mode Flow from GI02B PANC-14, which logs nothing to the device's history or the Sheet.
+  - The first Next after Reveal writes **one** request, `req-<requestId>.json`, into `My Drive › Trace › flowmsg` using the existing bridge `writeFile`.
+  - This is the **only** write the test build makes. `CONFIG.readOnly` is unchanged.
+  - The app then checks every 15 seconds for `res-<requestId>.json`, for at most 5 minutes and only while the pilot Flow is open.
+- **Reply rules:** it must have the type `trace.flowmsg.response`, an exact matching requestId, and plain text of 1–280 characters. It's shown as text only, and anything else is rejected and reported.
+- **Display:** the note sits beneath the card and above the controls. It's labelled with the card it answers, can be dismissed and never blocks the controls. It rises 6 px and fades in over 220 ms with one faint glow, and with reduced motion there's no animation.
+- **Reload safety:** a pending request is resumed rather than duplicated. A timeout or error offers "New pilot session".
+- The Flow folder `Trace › flowmsg` was created (owner only, sharing unchanged).
+- No bridge changes and no new permissions. Live app untouched (1.2.3).
 
 ## T-013 — 2026-10-31 — Claude — test — 1.3.4
 - Meditation alcove, test only:
