@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: Claude — test: Journal pilot audio loader (existing bridge + player hook), test only — 2026-10-31 20:50 IST
 
 ## State (as of entry T-012)
 
