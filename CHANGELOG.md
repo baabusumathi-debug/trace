@@ -2,23 +2,35 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — test: Journal pilot audio loader (existing bridge + player hook), test only — 2026-10-31 20:50 IST
+In progress: none
 
-## State (as of entry T-012)
+## State (as of entry T-013)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.3** · last code commit `0ccae2d` |
+| Test build (`test/`) | **1.3.4** · last code commit: see entry T-013 (`git log -- test/`) |
 | Bridge (Apps Script) | **v3** deployed by Naven 31 Oct · repo source `backend/Code.gs` |
-| Guidance | `AGENTS.md` guidance version **2** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
+| Guidance | `AGENTS.md` guidance version **3** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | No package published in Drive yet. ChatGPT's real GI02B PANC-14 package passed the validator **locally** (31 Oct). Publication, device download and offline acceptance are **still outstanding**. Claude's earlier test pass used **placeholder** images only. |
-| Meditation | Sample scripts read by the device voice (test build only). An automated producer is planned: "Journal bot", on a platform Naven calls "Graphbots". Its identity and capabilities are **unverified**. Nothing is built, connected or scheduled. |
+| Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Playback has been verified only against a stand-in MP3 on a mock bridge. **Real-file playback on Naven's device is not yet confirmed.** Nothing is automated or scheduled, and the producer's capabilities are unverified. |
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-013 — 2026-10-31 — Claude — test — 1.3.4
+- Meditation alcove, test only:
+  - A loader finds **one** pilot recording, a file matching `*_trace_pilot*.mp3` in `My Drive › Trace › meditation`.
+  - It uses only the existing bridge operations `listFolder` and `readBinary`. There are no bridge changes, no new permissions and no file IDs in the repo.
+  - It refuses anything over the bridge's 8 MB limit, and checks that the downloaded byte count matches.
+  - It keeps the file on this device (key `medPilot` in the device's own storage) and checks that it decodes.
+  - It plays the file through the player's existing recording hook.
+  - The screen shows four separate steps: **found**, **downloaded**, **decoded** and **actually played** (the audio has advanced past 5 seconds).
+- Recording controls: a progress line with a seek bar and time, plus play, pause, resume and stop. Device-voice samples are unchanged.
+- **Offline:** it falls back to the copy already on the device. Errors show "Try again".
+- Writes nothing to the Sheet or Drive, and creates no study activity. Live app untouched (1.2.3).
 
 ## T-012 — 2026-10-31 — Claude — docs
 - `AGENTS.md` guidance version 2:

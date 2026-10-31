@@ -1,6 +1,8 @@
 // The Palace of the Work (home) and the meditation alcove inside the Loft.
 // Four entrances: Loft (see), Decks (choose), Flow (work), Meditation (release). The open window has no function.
 import { db } from './db.js';
+import { batch, hasBackend, isDemo } from './api.js';
+import { CONFIG, CHANNEL } from './config.js';
 
 const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -71,6 +73,77 @@ const SCEN = [['restart', 'When momentum is lost', 'A small, honest return.'], [
 const istHour = () => Number(new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false }).format(new Date()));
 export const defaultSlot = () => { const h = istHour(); return h < 12 ? 'morning' : h < 18 ? 'afternoon' : 'night'; };
 
+/* ============ Journal pilot recording (TEST build only) ============
+   Finds one pilot file in Trace › meditation through the existing bridge (listFolder + readBinary),
+   keeps it on this device (kv store) and hands it to the player's recording hook. Read-only: nothing is
+   written to Drive or the Sheet, and listening is not study activity. No file IDs live in the repo. */
+const PILOT_RE = /_trace_pilot[\w-]*\.mp3$/i;
+const BRIDGE_MAX = 8 * 1024 * 1024;                     // readBinary refuses larger files
+export const PILOT = { state: 'idle', note: '', title: '', url: '', duration: 0, steps: {} };
+const mb = n => (n / 1048576).toFixed(2) + ' MB';
+export const mmss = t => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+const titleOf = name => name.replace(PILOT_RE, '').replace(/[_-]+/g, ' ').trim() || 'Pilot recording';
+function decode(url) {
+  return new Promise((res, rej) => {
+    const a = new Audio(); let done = false;
+    const t = setTimeout(() => { if (!done) { done = true; rej(new Error('decode timed out')); } }, 20000);
+    a.preload = 'metadata';
+    a.onloadedmetadata = () => { if (done) return; done = true; clearTimeout(t); isFinite(a.duration) && a.duration > 0 ? res(a.duration) : rej(new Error('no playable duration')); };
+    a.onerror = () => { if (done) return; done = true; clearTimeout(t); rej(new Error('this device could not decode the file')); };
+    a.src = url;
+  });
+}
+async function useBlob(rec, from) {
+  if (PILOT.url) URL.revokeObjectURL(PILOT.url);
+  const url = URL.createObjectURL(rec.blob);
+  const dur = await decode(url);
+  Object.assign(PILOT, { state: 'ready', url, duration: dur, title: titleOf(rec.name), name: rec.name, size: rec.size, note: from });
+  PILOT.steps.decoded = mmss(dur) + ' (' + Math.round(dur * 100) / 100 + ' s)';
+}
+export async function loadPilot(onChange) {
+  const ch = () => { try { onChange && onChange(); } catch (e) { /* screen gone */ } };
+  if (CHANNEL !== 'test' || isDemo() || !hasBackend()) return;
+  if (PILOT.state === 'checking' || PILOT.state === 'downloading') return;
+  const cached = await db.kv.get('medPilot').catch(() => null);
+  PILOT.state = 'checking'; PILOT.note = 'Looking in Trace › meditation…'; PILOT.steps = {}; ch();
+  try {
+    const [root] = await batch([{ op: 'listFolder', id: CONFIG.traceFolderId }]);
+    if (!root.ok) throw new Error(root.error);
+    const dir = (root.data || []).find(x => x.kind === 'folder' && x.name === 'meditation');
+    if (!dir) { PILOT.state = 'missing'; PILOT.note = 'No Trace › meditation folder yet.'; return ch(); }
+    const [ls] = await batch([{ op: 'listFolder', id: dir.id }]);
+    if (!ls.ok) throw new Error(ls.error);
+    const f = (ls.data || []).filter(x => x.kind === 'file' && PILOT_RE.test(x.name)).sort((a, b) => String(b.modified).localeCompare(String(a.modified)))[0];
+    if (!f) { PILOT.state = 'missing'; PILOT.note = 'No pilot recording (…_trace_pilot….mp3) in Trace › meditation yet.'; return ch(); }
+    PILOT.steps.found = f.name + ' · ' + f.size.toLocaleString() + ' bytes';
+    if (f.size > BRIDGE_MAX) { PILOT.state = 'error'; PILOT.note = `${f.name} is ${mb(f.size)}, over the bridge's 8 MB limit.`; return ch(); }
+    let rec = cached && cached.id === f.id && cached.size === f.size && cached.modified === f.modified ? cached : null;
+    if (rec) PILOT.steps.downloaded = rec.blob.size.toLocaleString() + ' bytes (already on this device)';
+    else {
+      PILOT.state = 'downloading'; PILOT.note = 'Downloading ' + mb(f.size) + '…'; ch();
+      const [b] = await batch([{ op: 'readBinary', id: f.id }]);
+      if (!b.ok) throw new Error(b.error);
+      const bin = atob(b.data.b64), u8 = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+      if (u8.length !== f.size) throw new Error(`download incomplete: ${u8.length} of ${f.size} bytes`);
+      rec = { id: f.id, name: f.name, size: f.size, modified: f.modified, blob: new Blob([u8], { type: 'audio/mpeg' }) };
+      await db.kv.set('medPilot', rec);
+      PILOT.steps.downloaded = u8.length.toLocaleString() + ' bytes (saved on this device)';
+    }
+    await useBlob(rec, 'From Trace › meditation');
+  } catch (e) {
+    const msg = String(e.message || e);
+    if (cached && cached.blob) {                       // offline or the bridge failed: use this device's copy
+      try { await useBlob(cached, 'Offline copy on this device (' + msg + ')'); PILOT.steps.downloaded = cached.size.toLocaleString() + ' bytes (earlier copy)'; return ch(); } catch (e2) { /* fall through */ }
+    }
+    PILOT.state = 'error'; PILOT.note = msg;
+  }
+  ch();
+}
+export function pilotRecordings() {
+  return PILOT.state === 'ready' ? { pilot: { url: PILOT.url, title: PILOT.title, category: 'Journal pilot · recording (test)', description: 'One pilot recording from Journal, played from this device.', text: 'No transcript came with this pilot recording.' } } : {};
+}
+
 // one player for the whole app, so leaving the alcove always silences it
 const M = { sel: null, state: 'idle', token: 0, voices: [], startedAt: 0, heard: 0, audio: null };
 export function stopMeditation() {
@@ -91,8 +164,9 @@ async function logListen() {
 export async function lastMeditation() { try { const l = (await db.kv.get('meditations')) || []; return l[l.length - 1] || null; } catch (e) { return null; } }
 
 export function renderMeditation(app, { nav, back, P, recordings }) {
-  if (!M.sel || !TRACKS[M.sel]) M.sel = defaultSlot();
-  const recs = recordings || {};          // { morning: {url, title, text, date}, ... } once personal recordings exist
+  const recsOf = () => ({ ...(recordings || {}), ...pilotRecordings() });   // { trackId: {url, title, text, …} }
+  const recs = recsOf();
+  if (!M.sel || (!TRACKS[M.sel] && !recs[M.sel])) M.sel = defaultSlot();
   app.innerHTML = `<div class="screen medit">
     <header class="top"><a class="iconbtn" href="${back}" aria-label="Back">${'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>'}</a>
       <span class="tt"><span class="mono kick teal">THE LOFT · THE QUIET ALCOVE</span><span class="h1s">Return to your centre.</span></span><span></span></header>
@@ -103,6 +177,7 @@ export function renderMeditation(app, { nav, back, P, recordings }) {
         <h2 class="m-title" id="mtitle"></h2>
         <p class="m-desc" id="mdesc"></p>
         <div class="m-row"><button class="m-sm" id="mre" aria-label="Restart">↺</button><button class="m-play" id="mplay" aria-label="Play">▶</button><button class="m-sm" id="mstop" aria-label="Stop">■</button></div>
+        <div class="m-prog" id="mprog" hidden><input type="range" id="mseek" min="0" max="1000" value="0" aria-label="Position"><span class="mono" id="mtime">0:00 / 0:00</span></div>
         <div class="m-status" id="mstat" role="status"></div>
         <div class="m-voice"><label for="mvoice">Voice</label><select id="mvoice"><option value="">Device default</option></select></div>
         <details class="m-tr"><summary>Read the guidance</summary><p id="mtext"></p></details>
@@ -112,13 +187,14 @@ export function renderMeditation(app, { nav, back, P, recordings }) {
         <div class="m-daily" role="tablist">${DAILY.map(([k, i, l]) => `<button role="tab" data-track="${k}"><span aria-hidden="true">${i}</span>${l}${recs[k] ? '<i class="m-new">yours</i>' : ''}</button>`).join('')}</div>
         <span class="mono kick">MEET THE MOMENT</span>
         <div class="m-scen">${SCEN.map(([k, t, s]) => `<button class="scen" data-track="${k}"><span><strong>${t}</strong><small>${s}</small></span><span class="gold">↗</span></button>`).join('')}</div>
+        ${CHANNEL === 'test' ? '<span class="mono kick">RECORDINGS · TEST</span><div class="m-pilot" id="mpilot"></div>' : ''}
         <p class="m-note">Sample guidance for now, spoken by this device’s voice. Later, three recordings each day — morning, afternoon, night — written from your actual work and kept here for offline listening.</p>
       </div>
     </div>
     ${nav}
   </div>`;
   const $ = s => app.querySelector(s);
-  const track = () => recs[M.sel] ? { ...TRACKS[M.sel], ...recs[M.sel] } : TRACKS[M.sel];
+  const track = () => { const r = recsOf(); return r[M.sel] ? { ...(TRACKS[M.sel] || {}), ...r[M.sel] } : TRACKS[M.sel] || TRACKS[defaultSlot()]; };
   const ui = () => {
     const playing = M.state === 'playing';
     $('#mplay').textContent = playing ? 'Ⅱ' : '▶';
@@ -129,8 +205,27 @@ export function renderMeditation(app, { nav, back, P, recordings }) {
     const t = track();
     $('#mcat').textContent = t.category; $('#mtitle').textContent = t.title; $('#mdesc').textContent = t.description; $('#mtext').textContent = t.text;
     app.querySelectorAll('[data-track]').forEach(b => b.classList.toggle('on', b.dataset.track === M.sel));
-    $('#mstat').textContent = t.url ? 'Your recording · plays offline' : 'Sample guidance · this device’s voice';
+    $('#mstat').textContent = t.url ? 'Recording · from this device' : 'Sample guidance · this device’s voice';
+    $('#mprog').hidden = !t.url; $('.m-voice').hidden = !!t.url;
+    if (t.url) $('#mtime').textContent = '0:00 / ' + mmss(M.sel === 'pilot' ? PILOT.duration : 0);
     ui();
+  };
+  const prog = () => {
+    const a = M.audio, el = app.querySelector('#mtime'); if (!a || !el) return;
+    const d = isFinite(a.duration) ? a.duration : PILOT.duration;
+    el.textContent = mmss(a.currentTime) + ' / ' + mmss(d);
+    const sk = app.querySelector('#mseek'); if (sk && !sk.matches(':active')) sk.value = d ? Math.round(a.currentTime / d * 1000) : 0;
+    if (M.playing === 'pilot' && a.currentTime >= 5 && !PILOT.steps.played) { PILOT.steps.played = 'audio advanced to ' + mmss(a.currentTime) + ' on this device'; drawPilot(); }
+  };
+  const drawPilot = () => {
+    const box = app.querySelector('#mpilot'); if (!box) return;
+    const st = PILOT.steps, row = (k, l) => `<li class="${st[k] ? 'ok' : ''}"><b>${st[k] ? '✓' : '·'}</b> ${l}${st[k] ? ' — ' + esc(st[k]) : ''}</li>`;
+    box.innerHTML = (PILOT.state === 'ready'
+      ? `<button class="scen${M.sel === 'pilot' ? ' on' : ''}" data-ptrack="pilot"><span><strong>${esc(PILOT.title)}</strong><small>Journal pilot · ${mmss(PILOT.duration)} · ${esc(PILOT.note)}</small></span><span class="gold">▶</span></button>`
+      : `<p class="m-pst ${PILOT.state}">${esc(PILOT.note || 'Not checked yet.')}${PILOT.state === 'error' || PILOT.state === 'missing' ? ' <button class="btn ghost sm" data-pretry>Try again</button>' : ''}</p>`)
+      + `<ol class="m-steps">${row('found', 'found')}${row('downloaded', 'downloaded')}${row('decoded', 'decoded')}${row('played', 'actually played')}</ol>`;
+    const pb = box.querySelector('[data-ptrack]'); if (pb) pb.onclick = () => { stop(); M.sel = 'pilot'; show(); play(); drawPilot(); };
+    const rt = box.querySelector('[data-pretry]'); if (rt) rt.onclick = () => loadPilot(drawPilot);
   };
   const loadVoices = () => {
     if (!('speechSynthesis' in window)) return;
@@ -156,6 +251,8 @@ export function renderMeditation(app, { nav, back, P, recordings }) {
     const tok = M.token; M.playing = M.sel;
     if (t.url) {                                         // a stored recording
       M.audio = new Audio(t.url);
+      M.audio.ontimeupdate = prog;
+      M.audio.onerror = () => { if (tok !== M.token) return; M.state = 'idle'; ui(); $('#mstat').textContent = 'This device could not play the recording.'; };
       M.audio.onended = () => { if (tok !== M.token) return; stopMeditation(); ui(); $('#mstat').textContent = 'Guidance complete. Return in your own time.'; };
       M.audio.play().catch(() => { $('#mstat').textContent = 'Tap ▶ again to play.'; M.state = 'idle'; ui(); });
     } else {
@@ -172,7 +269,9 @@ export function renderMeditation(app, { nav, back, P, recordings }) {
   app.querySelectorAll('[data-track]').forEach(b => b.onclick = () => { stop(); M.sel = b.dataset.track; show(); play(); });
   $('#mplay').onclick = play; $('#mstop').onclick = () => { stop(); $('#mstat').textContent = 'Stopped.'; };
   $('#mre').onclick = () => { stop(); play(); };
+  $('#mseek').oninput = () => { const a = M.audio, d = a && (isFinite(a.duration) ? a.duration : PILOT.duration); if (a && d) { a.currentTime = $('#mseek').value / 1000 * d; prog(); } };
   $('#mvoice').onchange = () => { P.set('medVoice', $('#mvoice').value); if (M.state !== 'idle') { stop(); play(); } };
   if ('speechSynthesis' in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
   show();
+  if (CHANNEL === 'test') { drawPilot(); if (PILOT.state === 'idle') loadPilot(drawPilot); }
 }

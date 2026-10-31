@@ -1,6 +1,6 @@
 # AGENTS.md — working on Trace
 
-**Guidance version: 2 (2026-10-31).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
+**Guidance version: 3 (2026-10-31).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
 
 This file is written for **any AI assistant** working on this project (Claude, ChatGPT, Grok bots, Muse or others) and for Naven. Read it in full the first time, and whenever §12 says to. Keep it accurate when you finish a task.
 
@@ -87,7 +87,7 @@ Trace is Naven's (Dr. Harish's) offline card app for the **NEET-SS DM Critical C
 
 Plain JavaScript modules, with no build step and no framework. Fonts are self-hosted.
 
-**The root and `test/` are separate copies.** Today the root holds live **1.2.3** and `test/` holds **1.3.3**. Some files exist only in `test/` until the next promotion.
+**The root and `test/` are separate copies.** Their current versions are in the CHANGELOG State block. Some files exist only in `test/` until the next promotion.
 
 | File | Responsibility | In root (live)? |
 |---|---|---|
@@ -208,6 +208,9 @@ Keep bridge changes rare, and batch them.
   - Files are written as immutable revisions: `Trace › meditation › <date> › <slot>.r<N>.json/.mp3`.
   - A single mutable pointer per slot, `<slot>.current.json`, is written last.
 - **Still open:** voice, the three daily times, the input source, scenario coverage and retention, all Naven's decisions. Any API keys stay out of the app, the repo and Drive files.
+- **Journal pilot recording (test only, built in T-013):**
+  - Plays **one** file named `*_trace_pilot*.mp3` from `Trace › meditation`, read through the existing bridge, at most 8 MB.
+  - This is a one-off pilot, not the planned pipeline. Don't extend it to other audio without Naven's approval.
 - **Palace and meditation home:** in the test build, waiting for Naven's "promote".
 
 ## 11. Writing CHANGELOG.md
