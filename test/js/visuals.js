@@ -81,6 +81,7 @@ export function validate(pk, cards, imageNames) {
     needOverview.add(r.card_code);
     if (!seqs.has(r.sequence_id)) errors.push(`${where}: unknown sequence ${r.sequence_id}`);
     if (!['q', 'a', 'why', 'watch'].includes(r.field)) { errors.push(`${where}: field "${r.field}" must be q, a, why or watch`); return; }
+    if (r.part === 'heading') { errors.push(`${where}: the heading opens the overview by itself; link a sub-part, list line or phrase instead`); return; }
     const parts = cardParts(c, r.field), text = parts[r.part];
     if (text == null) { errors.push(`${where}: ${r.card_code} ${r.field} has no part "${r.part}" (has ${Object.keys(parts).join(', ')})`); return; }
     if (!r.phrase) return;

@@ -21,7 +21,7 @@ The phrase rules here are the same ones the Trace app uses on every device:
 """
 import csv, io, json, os, re, sys
 
-SOFT = ' '
+SOFT = '\u2028'
 SUB_B = re.compile(r'^\s*\*\*([a-h])[.)]?\*\*\s+(.*)$')
 SUB_P = re.compile(r'^\s*([a-h])[.)]?\s+(?=[A-Z0-9*(“"\'≥≤<>])(.*)$')
 CONT_START = re.compile(r'^[a-z0-9(\[→←↑↓–\-/,;:%+×=<>≥≤~&·]')
@@ -104,9 +104,6 @@ def card_parts(c, field):
         m = sub_match(l)
         if m and m.group(2):
             out[m.group(1)] = norm(m.group(2)); whole.append(m.group(2)); segs.append(out[m.group(1)]); continue
-        if re.match(r'^\s*[-•]\s+', l):
-            li += 1
-            out['li%d' % li] = norm(re.sub(r'^\s*[-•]\s+', '', l)); whole.append(out['li%d' % li]); segs.append(out['li%d' % li]); continue
         whole.append(' '.join(l.split(' | ')))
         segs.extend(norm(x) for x in l.split(' | ') if norm(x))
     out['whole'] = norm(' '.join(whole))
@@ -184,6 +181,8 @@ def validate(visual, cards_path, version=None):
         need_ov.add(r['card_code'])
         if r.get('sequence_id') not in seqs: errors.append('%s: unknown sequence %s' % (where, r.get('sequence_id')))
         if r.get('field') not in ('q', 'a', 'why', 'watch'): errors.append('%s: field "%s" must be q, a, why or watch' % (where, r.get('field'))); continue
+        if r.get('part') == 'heading':
+            errors.append('%s: the heading opens the overview by itself; link a sub-part, list line or phrase instead' % where); continue
         parts, segs = card_parts(c, r['field']); text = parts.get(r.get('part'))
         if text is None: errors.append('%s: %s %s has no part "%s" (has %s)' % (where, r['card_code'], r['field'], r.get('part'), ', '.join(parts))); continue
         if not r.get('phrase'): continue
