@@ -925,7 +925,11 @@ function toast(msg) {
 }
 function registerSW() {
   if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
-  navigator.serviceWorker.register('sw.js').then(reg => {
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
+    // look for a new version every 10 minutes and whenever the app comes back to the front
+    const check = () => reg.update().catch(() => {});
+    setInterval(check, 10 * 60000);
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(); });
     reg.addEventListener('updatefound', () => {
       const nw = reg.installing;
       nw && nw.addEventListener('statechange', () => {
@@ -939,7 +943,13 @@ function registerSW() {
     });
     let reloaded = false;
     const hadController = !!navigator.serviceWorker.controller;      // first install: no reload needed
-    navigator.serviceWorker.addEventListener('controllerchange', () => { if (hadController && !reloaded && !flow) { reloaded = true; location.reload(); } });
+    let pendingReload = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloaded) return;
+      if (flow) { pendingReload = true; return; }          // never interrupt a flow: reload after it ends
+      reloaded = true; location.reload();
+    });
+    setInterval(() => { if (pendingReload && !flow && !reloaded) { reloaded = true; location.reload(); } }, 3000);
   }).catch(() => {});
 }
 

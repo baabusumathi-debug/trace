@@ -1,6 +1,6 @@
 // Trace service worker: keeps the whole app on the device so it opens with no internet.
 // Card data lives in IndexedDB (not here). Bump VERSION on every release.
-const VERSION = 'trace-v1.2.0';
+const VERSION = 'trace-v1.2.1';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/app.js', 'js/api.js', 'js/config.js', 'js/db.js', 'js/emblems.js', 'js/md.js', 'js/store.js', 'js/sync.js',
@@ -11,7 +11,8 @@ const SHELL = [
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' })))));
+  // take over as soon as the new files are cached; the page reloads itself unless a flow is running
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 self.addEventListener('message', e => { if (e.data === 'skip') self.skipWaiting(); });
 self.addEventListener('activate', e => {
