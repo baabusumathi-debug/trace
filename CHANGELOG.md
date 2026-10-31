@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: Claude — docs: record real Journal round-trip proof — 2026-10-31 21:55 IST
 
 ## State (as of entry T-014)
 
