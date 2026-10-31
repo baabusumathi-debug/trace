@@ -1,6 +1,6 @@
 # Trace — change log
 
-In progress: none
+In progress: Claude — handover docs: checkpoints/delta workflow, state block, stale-doc corrections (docs only) — 2026-10-31 19:46 IST
 
 ## 1.3.3 — 2026-10-31 — Claude — test
 - Text card answer view: "Question parts" starts open (touch to close). The question side is unchanged and Reveal never opens the visual viewer.
