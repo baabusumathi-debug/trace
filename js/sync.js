@@ -267,17 +267,25 @@ async function absorbLog(data) {
   // Rebuilt from the full Log on every sync, so several open copies of the app can never double-count.
   const vals = (data.values || []).filter(v => v[0] !== 'date');
   const base = {}, covered = {}, daily = {}, chron = [];
+  const rowSeen = new Set(), cardDay = new Set();
   for (const v of vals) {
     const [, , who, deck, , stage, , , note, from, to] = v;
     if (!deck || !OWNER.has(String(who || '').trim().toLowerCase())) continue;
     if (!/^pass[12]/.test(stage || '')) continue;
     const a = parseInt(from, 10), b = parseInt(to, 10);
     if (!(a > 0) || !(b >= a)) continue;
+    // the War Map sometimes saves the same flow part two or three times: count each part once
+    const rk = [normDate(v[0]), String(who).trim().toLowerCase(), deck, stage, a, b, String(v[1] || '')].join('|');
+    if (rowSeen.has(rk)) continue;
+    rowSeen.add(rk);
     const fromTrace = String(note || '').startsWith('Trace app');
     const cov = covered[deck] || (covered[deck] = new Set());
+    const day0 = normDate(v[0]);
     for (let n = a; n <= b; n++) {
       cov.add(n);
-      if (!fromTrace) { base[deck] = base[deck] || {}; base[deck][n] = (base[deck][n] || 0) + 1; }
+      // a card counts at most once per day from the War Map's history
+      const ck = deck + '|' + n + '|' + day0;
+      if (!fromTrace && !cardDay.has(ck)) { cardDay.add(ck); base[deck] = base[deck] || {}; base[deck][n] = (base[deck][n] || 0) + 1; }
     }
     if (!fromTrace) {
       const day = normDate(v[0]);
