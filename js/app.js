@@ -33,23 +33,17 @@ async function boot() {
   await initApi(demo);
 
   // private setup link: #setup=<base64url {"u":..., "k":...}>
-  const m = location.hash.match(/^#setup=([\w\-]+)/);
-  if (m && !demo) {
-    try {
-      const j = JSON.parse(atob(m[1].replace(/-/g, '+').replace(/_/g, '/')));
-      await setBackend(j.u, j.k);
-      await initApi(false);
-      history.replaceState(null, '', location.pathname);
-      toast('Connected to your Drive. Downloading your decks…');
-    } catch (e) { toast('That setup link did not work: ' + e.message); }
-  }
+  if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
   if (demo && !S.library) {
     status.state = 'syncing';
   }
   S.listeners.add(() => { if (!flow) route(); else updateFlowChrome(); });
-  window.addEventListener('hashchange', route);
+  window.addEventListener('hashchange', async () => {
+    if (/#setup=/.test(location.hash) && !isDemo()) { if (await trySetup(location.href)) { await countPending(); startAutoSync(); } }
+    route();
+  });
   route();
   if (hasBackend()) { await countPending(); startAutoSync(); }
   registerSW();
@@ -98,12 +92,35 @@ let _lastDeck = null;
 const lastFlowTarget = () => _lastDeck;
 
 /* ============================ welcome ============================ */
+// Accepts the full setup link (or just the part after #setup=). Returns true when connected.
+async function trySetup(text) {
+  const m = String(text || '').match(/setup=([\w\-]+)/);
+  if (!m) return false;
+  try {
+    let b = m[1].replace(/-/g, '+').replace(/_/g, '/');
+    while (b.length % 4) b += '=';
+    const j = JSON.parse(atob(b));
+    if (!j.u || !j.k) throw new Error('incomplete link');
+    await setBackend(j.u, j.k);
+    await initApi(false);
+    history.replaceState(null, '', location.pathname + '#/');
+    toast('Connected to your Drive. Downloading your decks…');
+    return true;
+  } catch (e) { toast('That setup link did not work: ' + e.message); return false; }
+}
+
 function renderWelcome() {
   app.innerHTML = `<div class="screen welcome">
-    <div class="brand big">${brandMark()}<span class="brand-t"><span class="b1">TRACE</span><span class="b2">THE MAGICIAN’S CABINET</span></span></div>
-    <h1>Open your setup link on this device.</h1>
-    <p class="muted">Trace connects to your Google Drive through a private link that Claude gives you. Open that link once on each device (phone, tab, Mac). After that, Trace works offline and syncs by itself.</p>
+    <div class="brand wbrand">${brandMark()}<span class="brand-t"><span class="b1">TRACE</span><span class="b2">THE MAGICIAN’S CABINET</span></span></div>
+    <h1>Connect this device.</h1>
+    <p class="muted">Paste the private setup link Claude gave you, then tap Connect. You do this once on each device (phone, tab, Mac). After that, Trace works offline and syncs by itself.</p>
+    <textarea id="setup-in" rows="4" placeholder="https://baabusumathi-debug.github.io/trace/#setup=…" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea>
+    <button class="btn primary press" id="setup-go">Connect</button>
   </div>`;
+  $('#setup-go').onclick = async () => {
+    const ok = await trySetup($('#setup-in').value);
+    if (ok) { await loadAll(); route(); await countPending(); startAutoSync(); }
+  };
 }
 function brandMark() { return '<span class="mark"><span>✦</span></span>'; }
 
