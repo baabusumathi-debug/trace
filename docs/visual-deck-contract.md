@@ -1,9 +1,11 @@
-# Trace: visual deck contract (app ↔ ChatGPT), version 3
+# Trace: visual deck contract (app ↔ ChatGPT)
 
-*For ChatGPT, which owns the visual decks. 31 Oct 2026. Replaces v2. General rules for every assistant are in `AGENTS.md`.*
+**Contract version: 3.1 (2026-10-31).** Version 3.1 changes only the presentation (§2) and the pilot example (§9). The files, columns, matching rules, publishing steps and validator rules are **unchanged from 3**, so a package that passes for 3 passes for 3.1.
 
-**What changed in v3:**
-- Trace's side is built. It is in the Trace **test build** (1.3.2), and the live app is untouched until Naven approves.
+*For ChatGPT, which owns the visual decks. General rules for every assistant are in `AGENTS.md`. Raise the contract version with any change.*
+
+**What changed in v3** (relative to v2):
+- Trace's side is built. It is in the Trace **test build** (now 1.3.3). The live app (1.2.3) has no visual-deck support until Naven approves a promotion.
 - The validator is ready: `trace_validate.py` (section 7).
 - This version spells out the **exact matching rules** the app uses (section 5a), and the pilot card's addressable parts (section 9).
 - The folder layout, files and columns are **unchanged** from v2.
@@ -28,21 +30,26 @@
   - It downloads any images it doesn't have yet. Images are never replaced, so a file name is enough.
   - Only then does it switch to the new version.
   - If anything fails, the device keeps its previous accepted version and shows the reason on the This device screen.
-- **In Flow, on the answer side of a card**, and only when its deck has a package:
+- **In Flow, on the answer side of a card** (shown after Reveal), and only when its deck has a package:
   - A teal **◈ Visual** chip appears beside "seen ×".
   - **The heading** is dotted-underlined and opens the card's **overview**.
   - **Linked phrases or parts** are underlined in teal and open their **scene sequence**.
   - The visuals don't appear on the question side, so self-testing isn't spoiled. The chip there reads "visual after reveal".
+  - Reveal **never opens the viewer by itself**. Only a tap on the heading, a linked phrase or the chip opens it.
+  - The text card's **"Question parts"** section on the answer side starts **open**, and one touch closes it. Linked question sub-parts (field `q`, parts `a`, `b`, …) are therefore visible and tappable straight away.
 - **The panel:**
   - On the Tab and Mac in landscape, it opens beside the card, with a ⤢ button for full screen.
   - On the phone, it opens full screen.
-  - It contains, in order:
-    - the image, with hotspot boxes on overviews,
-    - a 1 / n stepper for sequences of more than one scene,
-    - correction notes, marked **CLINICAL NOTE · CORRECTION / QUALIFICATION / UPDATE** with their source,
-    - **Cues → meanings**, with a Learn / Self-test switch (in Self-test each meaning sits behind *Reveal meaning*),
-    - the **Story**, which can be expanded.
-  - Card-level notes show on the overview, and scene-level notes on their scene.
+  - It contains, in this order (from test 1.3.3):
+    1. the image, with hotspot boxes on overviews,
+    2. a 1 / n stepper for sequences of more than one scene,
+    3. **cues and meanings**:
+       - In **Learn** (the default), each cue sits **beside its meaning**, all visible at first view with no taps.
+       - In **Self-test**, each meaning stays hidden behind **Reveal meaning**. Self-test hiding is unchanged.
+    4. **scene-level notes** for this scene, shown open and marked **CLINICAL NOTE · CORRECTION / QUALIFICATION / UPDATE** with their source,
+    5. **card-level notes**, available on **every** scene of the card (the overview and any scene entered directly), inside a "Card clinical notes" section that starts **closed** (one touch opens it),
+    6. the **Story**, which can be expanded.
+  - Scene notes appear only on their own scene.
   - Esc closes the panel. `[` and `]` step through a sequence. The panel closes when the card changes.
 
 ## 3. Where to read card wording
@@ -161,15 +168,25 @@ Here is the card text, exactly as it is in Drive (`Trace › decks › GI02B ›
 | a | d | Moderate, goal-directed resuscitation. |
 | watch | whole | Avoid Ringer's lactate only in hypercalcaemic pancreatitis (standard teaching, not in your notes). |
 
-**Example rows that pass:**
+**The real pilot mapping** (from ChatGPT's preserved artwork, reported 31 Oct): the authoritative rows are in ChatGPT's own `links.csv`.
+- `gi02b-seq-01` is **"The green carafe"**.
+- `gi02b-seq-03` is **"The hose at the goal"**. The **hypercalcaemia exception** in the watch line belongs here: `watch / whole / Ringer's lactate → gi02b-seq-03`.
+- The question sub-parts map **a → seq-01**, **b and c → seq-02**, and **d → seq-03**.
+
+**Format illustration only** (sequence IDs follow the real mapping; check phrases against the parts table above):
 
 ```
 card_code,field,part,phrase,occurrence,sequence_id
-PANC-14,a,a,Ringer's lactate,,gi02b-seq-01
-PANC-14,a,c,abdominal compartment syndrome,,gi02b-seq-02
-PANC-14,a,d,,,gi02b-seq-03
-PANC-14,watch,whole,hypercalcaemic pancreatitis,,gi02b-seq-01
+PANC-14,q,a,,,gi02b-seq-01
+PANC-14,q,d,,,gi02b-seq-03
+PANC-14,watch,whole,Ringer's lactate,,gi02b-seq-03
 ```
+
+**Status (31 Oct):**
+- ChatGPT's **real** PANC-14 package passed `trace_validate.py` **locally**, with no errors or warnings: 4 images, 11 links, 3 hotspots, 10 cues, 4 stories and 3 notes.
+- It **hasn't been published** to Drive, and no `GI02B › visual` folder exists yet.
+- **Device download, display and offline acceptance are still outstanding.**
+- The app maintainer's earlier passes used a **placeholder** package with stand-in images on a local mock. Those passes prove the app's mechanics only, not the real package.
 
 **Steps:**
 1. Stage `GI02B/visual/versions/v1`, validate it, and switch `current.json`.
