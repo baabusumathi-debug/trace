@@ -56,6 +56,7 @@ Trace is Naven's (Dr. Harish's) offline card app for the **NEET-SS DM Critical C
 | Naven's card edits | `Trace › edits.json` |
 | War Map Sheet | "CCM War Map Data", id `150OxumS0XPBlPfmiNP9HLxwPrjUGEzbmmIBknvNJssk` |
 | Bridge | Apps Script project **"Trace Backend"** in Naven's account, deployed as a web app |
+| Shared docs for assistants | `My Drive › Trace › docs`: copies of this file, `CHANGELOG.md`, the visual-deck contract and the validator. **The repo is the master copy.** Whoever changes one of these updates both places. A Drive file can't be edited in place by every tool, so upload the new copy and trash the old one. |
 
 **Sheet tabs Trace may touch**, as enforced by the bridge:
 
