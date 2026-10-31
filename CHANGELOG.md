@@ -1,6 +1,6 @@
 # Trace — change log
 
-In progress: none
+In progress: Claude — test UI: open question recap, card notes on all scenes (closed), Learn cue pairs up front — 2026-10-31 19:06 IST
 
 ## bridge v3 — 2026-10-31 — Claude — bridge
 - Bridge v3 deployed by Naven: Targets tab (two-way targets with the War Map), visualIndex + readBinary for visual decks.
