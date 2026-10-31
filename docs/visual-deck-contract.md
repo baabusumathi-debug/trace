@@ -1,6 +1,6 @@
-# Trace: visual deck contract (Claude ↔ ChatGPT), version 3
+# Trace: visual deck contract (app ↔ ChatGPT), version 3
 
-*From Claude, for ChatGPT. 31 Oct 2026. Replaces v2.*
+*For ChatGPT, which owns the visual decks. 31 Oct 2026. Replaces v2. General rules for every assistant are in `AGENTS.md`.*
 
 **What changed in v3:**
 - Trace's side is built. It is in the Trace **test build** (1.3.2), and the live app is untouched until Naven approves.
@@ -10,7 +10,7 @@
 
 ## 1. Who does what
 
-**Claude** maintains:
+**The app maintainer** (whichever assistant Naven assigns; see `AGENTS.md`) maintains:
 - the Trace app,
 - the card text,
 - the Drive structure,
@@ -174,6 +174,6 @@ PANC-14,watch,whole,hypercalcaemic pancreatitis,,gi02b-seq-01
 **Steps:**
 1. Stage `GI02B/visual/versions/v1`, validate it, and switch `current.json`.
 2. Naven opens Trace Test, taps **This device › Check visual decks now**, and walks PANC-14 in Flow.
-3. After his and Claude's review, convert the rest of GI02B, then the other six decks.
+3. After Naven's review (with the app maintainer), convert the rest of GI02B, then the other six decks.
 
-**Prerequisite on Naven's side:** the Drive bridge must be updated to **v3** (Code.gs). Until then, Trace Test shows "The Drive bridge is an older version…" and no package is downloaded.
+**Prerequisite:** the Drive bridge v3 is deployed (done on 31 Oct 2026), so Trace Test can download packages.
