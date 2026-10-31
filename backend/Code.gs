@@ -11,11 +11,12 @@ var SHEET_ID = '150OxumS0XPBlPfmiNP9HLxwPrjUGEzbmmIBknvNJssk';
 var TABS = {            // what the app may do with each tab
   TraceEvents: 'rw',
   Log: 'ra',            // read + append only
+  Targets: 'rau',       // today's target, shared with the War Map: read, append, update status
   Chunks: 'r',
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 1;
+var VERSION = 2;
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
@@ -46,6 +47,7 @@ function run_(o) {
     case 'writeFile': return writeFile_(o.folderId, o.name, o.text, o.mime);
     case 'sheetRead': return sheetRead_(o.tab, o.fromRow);
     case 'sheetAppend': return sheetAppend_(o.tab, o.rows, o.header, o.dedupe);
+    case 'sheetUpdate': return sheetUpdate_(o.tab, o.keyCol, o.key, o.set);
     default: throw new Error('unknown op ' + o.op);
   }
 }
@@ -145,6 +147,25 @@ function sheetAppend_(tab, rows, header, dedupe) {
       sh.getRange(sh.getLastRow() + 1, 1, todo.length, width).setValues(todo);
     }
     return { appended: todo.length, skipped: rows.length - todo.length };
+  } finally { lock.releaseLock(); }
+}
+
+/** set = { <0-based column>: value } on the row whose keyCol equals key */
+function sheetUpdate_(tab, keyCol, key, set) {
+  var mode = TABS[tab];
+  if (!mode || mode.indexOf('u') < 0) throw new Error('tab not updatable: ' + tab);
+  var lock = LockService.getScriptLock(); lock.waitLock(20000);
+  try {
+    var sh = SpreadsheetApp.openById(SHEET_ID).getSheetByName(tab);
+    if (!sh || sh.getLastRow() < 2) return { updated: 0 };
+    var keys = sh.getRange(2, keyCol + 1, sh.getLastRow() - 1, 1).getDisplayValues();
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i][0] === String(key)) {
+        Object.keys(set || {}).forEach(function (c) { sh.getRange(i + 2, Number(c) + 1).setValue(set[c]); });
+        return { updated: 1 };
+      }
+    }
+    return { updated: 0 };
   } finally { lock.releaseLock(); }
 }
 

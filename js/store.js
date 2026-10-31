@@ -11,6 +11,9 @@ export const S = {
   undone: new Set(),      // ids cancelled by an undo event
   logBase: {},            // deck -> { no: times seen in the old War Map flow }
   chunks: {},             // deck -> [{ id, from, to }]
+  logDaily: {},           // 'yyyy-mm-dd' -> { min, cards } from the old War Map flow (not Trace)
+  logChron: [],           // recent owner Log rows from the War Map flow: [date, time, deck, from, to, cards, min]
+  target: null,           // { date, items:[{ id, deck, label, nos:[], item_id, synced, status }] }
   device: null,
   listeners: new Set()
 };
@@ -27,6 +30,9 @@ export async function loadAll() {
   S.undone = new Set(evs.filter(e => e.kind === 'undo').map(e => e.ref));
   S.logBase = (await db.kv.get('logBase')) || {};
   S.chunks = (await db.kv.get('chunks')) || {};
+  S.logDaily = (await db.kv.get('logDaily')) || {};
+  S.logChron = (await db.kv.get('logChron')) || [];
+  S.target = (await db.kv.get('target')) || null;
   S.device = await db.kv.get('device');
   if (!S.device) {
     const ua = navigator.userAgent;
@@ -62,12 +68,22 @@ export function neetTag(c) {
 /* ---------- times seen ---------- */
 let seenMap = new Map();      // 'DECK|no' -> count from this app
 let deckSeen = new Map();     // deck -> number of distinct cards seen at least once
+let lastMap = new Map();      // 'DECK|no' -> last view ts
+let deckLast = new Map();     // deck -> last view ts
+let traceDaily = {};          // date -> { ms, cards:Set }
+const dkey = ts => { const d = new Date(ts); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+export const today = () => dkey(Date.now());
+export { dkey };
 export function recount() {
-  seenMap = new Map();
+  seenMap = new Map(); lastMap = new Map(); deckLast = new Map(); traceDaily = {};
   for (const e of S.events) {
     if (S.undone.has(e.id)) continue;
     const k = e.deck + '|' + e.no;
     seenMap.set(k, (seenMap.get(k) || 0) + 1);
+    if (!(lastMap.get(k) > e.ts)) lastMap.set(k, e.ts);
+    if (!(deckLast.get(e.deck) > e.ts)) deckLast.set(e.deck, e.ts);
+    const dk = dkey(e.ts), t = traceDaily[dk] || (traceDaily[dk] = { ms: 0, cards: new Set() });
+    t.ms += Math.min(e.ms || 0, 20 * 60000); t.cards.add(k);
   }
   deckSeen = new Map();
   if (!S.library) return;
@@ -81,6 +97,15 @@ export function seen(deck, no) {
   return (seenMap.get(deck + '|' + no) || 0) + ((S.logBase[deck] || {})[no] || 0);
 }
 export const walked = deck => deckSeen.get(deck) || 0;
+export const lastSeen = (deck, no) => lastMap.get(deck + '|' + no) || 0;
+export const deckLastTs = deck => deckLast.get(deck) || 0;
+export const seenOn = (deck, no, day) => { const t = traceDaily[day]; return !!(t && t.cards.has(deck + '|' + no)); };
+/** minutes and cards per day: War Map flow rows + Trace views */
+export function daily(day) {
+  const a = S.logDaily[day] || { min: 0, cards: 0 }, t = traceDaily[day];
+  return { min: a.min + (t ? t.ms / 60000 : 0), cards: a.cards + (t ? t.cards.size : 0) };
+}
+export function allDays() { return [...new Set([...Object.keys(S.logDaily), ...Object.keys(traceDaily)])].sort(); }
 
 /* ---------- pace ---------- */
 export function avgPace() {

@@ -2,9 +2,9 @@
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG } from './config.js';
-import { S, emit, recount, setNeet, deckMeta } from './store.js';
+import { S, emit, recount, setNeet, deckMeta, today } from './store.js';
 
-export const status = { state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
+export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
 const OWNER = new Set(['trace', 'naven', '']);
 
@@ -148,6 +148,11 @@ export async function sync({ downloadAll = true } = {}) {
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();
   try {
     await buildLogRows();
+    if ((await db.kv.get('logVer')) !== 2) {          // v2 also keeps hours per day: read the Log again from the top
+      await db.kv.set('logRow', 1); await db.kv.set('logBase', {}); await db.kv.set('logDaily', {}); await db.kv.set('logChron', []);
+      S.logBase = {}; S.logDaily = {}; S.logChron = [];
+      await db.kv.set('logVer', 2);
+    }
     const k = {
       evRow: (await db.kv.get('evRow')) || 1,
       logRow: (await db.kv.get('logRow')) || 1,
@@ -201,6 +206,7 @@ export async function sync({ downloadAll = true } = {}) {
     // 6. push my study to the Sheet
     await buildLogRows();
     await pushOutbox();
+    await syncTargets();
 
     // 7. decks: new or changed versions
     if (downloadAll) await downloadDecks();
@@ -239,6 +245,14 @@ async function mergeRemoteEvents(data, fromRow) {
   if (data.lastRow) await db.kv.set('evRow', Math.max(data.lastRow, 1));
 }
 
+function normDate(x) {
+  x = String(x || '').trim();
+  let m = x.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if (m) return m[1] + '-' + m[2].padStart(2, '0') + '-' + m[3].padStart(2, '0');
+  m = x.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);          // d/m/yyyy or m/d/yyyy: assume day first (India)
+  if (m) return m[3] + '-' + m[2].padStart(2, '0') + '-' + m[1].padStart(2, '0');
+  return '';
+}
 async function absorbLog(data, fromRow) {
   const vals = data.values || [];
   if (fromRow <= 1 && vals.length && vals[0][0] === 'date') vals.shift();
@@ -251,6 +265,14 @@ async function absorbLog(data, fromRow) {
     const a = parseInt(from, 10), b = parseInt(to, 10);
     if (!(a > 0) || !(b >= a)) continue;
     const fromTrace = String(note || '').startsWith('Trace app');
+    if (!fromTrace) {
+      const day = normDate(v[0]);
+      if (day) {
+        const dd = S.logDaily[day] || (S.logDaily[day] = { min: 0, cards: 0 });
+        dd.min += Math.min(parseFloat(v[7]) || 0, 600); dd.cards += parseInt(v[6], 10) || (b - a + 1);
+        S.logChron.push([day, v[1] || '', deck, a, b, parseInt(v[6], 10) || (b - a + 1), Math.round(parseFloat(v[7]) || 0)]);
+      }
+    }
     const cov = new Set(covered[deck] || []);
     for (let n = a; n <= b; n++) {
       cov.add(n);
@@ -259,6 +281,9 @@ async function absorbLog(data, fromRow) {
     covered[deck] = [...cov];
   }
   S.logBase = base;
+  if (S.logChron.length > 400) S.logChron = S.logChron.slice(-400);
+  await db.kv.set('logDaily', S.logDaily);
+  await db.kv.set('logChron', S.logChron);
   await db.kv.set('logBase', base);
   await db.kv.set('covered', covered);
   if (data.lastRow) await db.kv.set('logRow', Math.max(data.lastRow, 1));
@@ -344,3 +369,76 @@ export const deckState = code => {
   if (m && d.version < m.version) return 'old';
   return 'ready';
 };
+
+
+/* ---------------- today's target (shared with the War Map's Targets tab) ---------------- */
+export function compressNos(nos) {
+  const a = [...new Set(nos)].sort((x, y) => x - y), out = [];
+  for (let i = 0; i < a.length; i++) {
+    let j = i; while (j + 1 < a.length && a[j + 1] === a[j] + 1) j++;
+    out.push(i === j ? String(a[i]) : a[i] + '-' + a[j]); i = j;
+  }
+  return out.join(',');
+}
+export function expandNos(txt, deckCards) {
+  const out = [];
+  String(txt || '').split(/[,\s]+/).forEach(p => {
+    const m = p.match(/^(\d+)(?:-(\d+))?$/); if (!m) return;
+    const a = +m[1], b = m[2] ? +m[2] : a; for (let n = a; n <= b; n++) out.push(n);
+  });
+  return out.length ? out : (deckCards ? Array.from({ length: deckCards }, (_, i) => i + 1) : []);
+}
+function curTarget() {
+  if (!S.target || S.target.date !== today()) S.target = { date: today(), items: [] };
+  return S.target;
+}
+export async function addTarget(parts) {      // parts: [{ deck, label, nos }]
+  const t = curTarget();
+  for (const p of parts) {
+    if (!p.nos.length) continue;
+    t.items.push({ id: uid('i'), item_id: 'T' + Math.random().toString(36).slice(2, 13), deck: p.deck, label: p.label, nos: p.nos, status: 'active', synced: 0, created: Date.now() });
+  }
+  await db.kv.set('target', t); emit();
+}
+export async function removeTarget(id) {
+  const t = curTarget(), it = t.items.find(x => x.id === id);
+  if (!it) return;
+  it.status = 'pulled'; it.synced = 0;
+  await db.kv.set('target', t); emit();
+}
+export function targetItems() { return curTarget().items.filter(i => i.status !== 'pulled'); }
+const stamp = d => ymd(d) + ' ' + hm(d) + ':' + String(d.getSeconds()).padStart(2, '0');
+async function syncTargets() {
+  const t = curTarget();
+  const ops = [{ op: 'sheetRead', tab: 'Targets', fromRow: 2 }];
+  const add = t.items.filter(i => !i.synced && i.status === 'active');
+  const pulled = t.items.filter(i => !i.synced && i.status === 'pulled');
+  if (add.length) ops.push({ op: 'sheetAppend', tab: 'Targets', dedupe: { col: 2 }, rows: add.map((i, n) => {
+    const d = new Date(i.created || Date.now());
+    return [t.date, CONFIG.who, i.item_id, i.deck, '', 1, i.nos.length, compressNos(i.nos), n + 1, 'active', stamp(d), stamp(new Date()), ''];
+  }) });
+  for (const i of pulled) ops.push({ op: 'sheetUpdate', tab: 'Targets', keyCol: 2, key: i.item_id, set: { 9: 'pulled', 11: stamp(new Date()) } });
+  const res = await batch(ops);
+  status.targetNote = '';
+  if (res.slice(1).some(r => !r.ok)) {
+    const e = res.slice(1).find(r => !r.ok).error || '';
+    status.targetNote = /not allowed|not writable|unknown op/.test(e) ? 'Your target stays on this device until the bridge script is updated.' : 'Target not sent: ' + e;
+  } else {
+    add.forEach(i => { i.synced = 1; }); pulled.forEach(i => { i.synced = 1; });
+  }
+  if (res[0].ok) {           // bring in targets set in the War Map (or on another device) for today
+    for (const v of res[0].data.values || []) {
+      const [date, who, item_id, deck, chunk_ids, , , card_nums, , st] = v;
+      if (normDate(date) !== t.date || !OWNER.has(String(who || '').trim().toLowerCase()) || !deck) continue;
+      const mine = t.items.find(i => i.item_id === item_id);
+      if (mine) { if (st === 'pulled' && mine.status !== 'pulled') { mine.status = 'pulled'; mine.synced = 1; } continue; }
+      if (st === 'pulled') continue;
+      let nos = [];
+      if (card_nums) nos = expandNos(card_nums);
+      else if (chunk_ids) for (const cid of String(chunk_ids).split(/[,\s]+/)) { const ch = (S.chunks[deck] || []).find(c => c.id === cid); if (ch) for (let n = ch.from; n <= ch.to; n++) nos.push(n); }
+      if (!nos.length) { const m = deckMeta(deck); if (m) nos = expandNos('', m.cards); }
+      t.items.push({ id: uid('i'), item_id, deck, label: card_nums ? 'cards ' + card_nums : (chunk_ids || 'whole deck'), nos, status: 'active', synced: 1, created: Date.now(), from: 'War Map' });
+    }
+  }
+  await db.kv.set('target', t);
+}
