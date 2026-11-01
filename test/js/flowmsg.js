@@ -10,7 +10,7 @@ import { db } from './db.js';
 const FOLDER = 'flowmsg', WINDOW_MS = 5 * 60e3, EVERY_MS = 15e3, MAX_CHARS = 280;
 const ID_RE = /^fm-\d{8}-\d{6}-[a-z0-9]{6}$/;
 
-export const FM = { state: 'idle', requestId: '', card: '', created: 0, text: '', note: '', dismissed: false, timer: null, onChange: null, folderId: '' };
+export const FM = { wake: '', state: 'idle', requestId: '', card: '', created: 0, text: '', note: '', dismissed: false, timer: null, onChange: null, folderId: '' };
 const changed = () => { try { FM.onChange && FM.onChange(); } catch (e) { /* screen gone */ } };
 const ist = ts => new Date(ts + 5.5 * 3600e3).toISOString().slice(0, 19) + '+05:30';
 function newId(ts) {
@@ -47,7 +47,7 @@ export async function resumePending(onChange) {
 export async function sendRequest(card, deckTitle, secs, sentBackAgain) {
   if (!pilotAllowed() || FM.state !== 'idle') return;
   const created = Date.now(), requestId = newId(created);
-  Object.assign(FM, { state: 'sending', requestId, card: card.code, created, text: '', note: 'Asking Journal…', dismissed: false }); changed();
+  Object.assign(FM, { wake: '', state: 'sending', requestId, card: card.code, created, text: '', note: 'Asking Journal…', dismissed: false }); changed();
   const req = {
     type: 'trace.flowmsg.request', version: 1, requestId, created: ist(created), expires: ist(created + WINDOW_MS),
     test: true, bot: 'Journal', event: 'card_reviewed',
@@ -63,7 +63,22 @@ export async function sendRequest(card, deckTitle, secs, sentBackAgain) {
     if (!w.ok) throw new Error(w.error);
     FM.state = 'waiting'; FM.note = 'Journal is listening… (up to 5 minutes)'; await save(); changed();
     poll();
+    notify(requestId);                                   // bridge v4 wakes Journal (if enabled there); never awaited by Flow
   } catch (e) { FM.state = 'error'; FM.note = 'Could not send the request: ' + (e.message || e); await save(); changed(); }
+}
+
+// Ask the bridge to notify Journal about this request. The bridge holds the webhook URL and key; this file never sees them.
+// The bridge refuses anything but a matching, unexpired TEST request, sends once per ID and at most once a minute.
+async function notify(id) {
+  let msg;
+  try {
+    const [n] = await batch([{ op: 'notifyJournal', requestId: id }]);
+    if (!n.ok) msg = /unknown op/.test(n.error || '') ? 'bridge is older than v4' : n.error;
+    else if (n.data && n.data.sent) msg = (n.data.status >= 200 && n.data.status < 300) ? 'Journal notified' : 'Journal notify answered HTTP ' + n.data.status;
+    else msg = 'Journal not notified: ' + ((n.data && n.data.reason) || 'unknown');
+  } catch (e) { msg = 'Journal not notified: ' + (e.message || e); }
+  FM.wake = msg;
+  if (FM.state === 'waiting') changed();
 }
 
 function clean(t) { return String(t).replace(/[\u0000-\u001F\u007F\u2028\u2029]+/g, ' ').replace(/\s+/g, ' ').trim(); }

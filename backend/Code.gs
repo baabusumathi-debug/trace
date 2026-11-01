@@ -16,7 +16,7 @@ var TABS = {            // what the app may do with each tab
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 3;          // 3: visual decks (visualIndex, readBinary)
+var VERSION = 4;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default)
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
@@ -50,6 +50,7 @@ function run_(o) {
     case 'sheetUpdate': return sheetUpdate_(o.tab, o.keyCol, o.key, o.set);
     case 'visualIndex': return visualIndex_();
     case 'readBinary': return readBinary_(o.id);
+    case 'notifyJournal': return notifyJournal_(o.requestId);
     default: throw new Error('unknown op ' + o.op);
   }
 }
@@ -217,4 +218,49 @@ function out_(obj) {
 function authorise() {
   DriveApp.getFolderById(TRACE_FOLDER_ID).getName();
   SpreadsheetApp.openById(SHEET_ID).getName();
+}
+
+/* ---------- v4: notify Journal about one TEST flow-message request (off unless JOURNAL_ENABLED=true) ---------- */
+function notifyJournal_(id) {
+  var p = PropertiesService.getScriptProperties();
+  if (p.getProperty('JOURNAL_ENABLED') !== 'true') return { sent: false, reason: 'disabled' };
+  if (!/^fm-\d{8}-\d{6}-[a-z0-9]{6}$/.test(String(id || ''))) return { sent: false, reason: 'bad requestId' };
+  var url = p.getProperty('JOURNAL_WEBHOOK_URL') || '', key = p.getProperty('JOURNAL_WEBHOOK_KEY') || '';
+  if (!/^https:\/\/\S+$/.test(url) || !key) return { sent: false, reason: 'not configured' };
+  if (/^bearer\s/i.test(key) || /\s/.test(key)) return { sent: false, reason: 'key must be the raw token only' };
+  // TEST allowlist: an existing, matching, unexpired test request in Trace › flowmsg
+  var dir = sub_(DriveApp.getFolderById(TRACE_FOLDER_ID), 'flowmsg');
+  if (!dir) return { sent: false, reason: 'no flowmsg folder' };
+  var f = findFile_(dir.getId(), 'req-' + id + '.json');
+  if (!f) return { sent: false, reason: 'no such request' };
+  var req;
+  try { req = JSON.parse(DriveApp.getFileById(f.id).getBlob().getDataAsString('UTF-8')); } catch (e) { return { sent: false, reason: 'request unreadable' }; }
+  if (!req || req.type !== 'trace.flowmsg.request' || req.requestId !== id || req.test !== true) return { sent: false, reason: 'not a matching test request' };
+  var exp = Date.parse(req.expires);
+  if (!(exp > Date.now())) return { sent: false, reason: 'expired' };
+  // once per requestId (6 h), at most one notification per 60 s
+  var cache = CacheService.getScriptCache(), lock = LockService.getScriptLock();
+  if (!lock.tryLock(5000)) return { sent: false, reason: 'busy' };
+  try {
+    if (cache.get('fm_' + id)) return { sent: false, reason: 'duplicate' };
+    if (Date.now() - Number(p.getProperty('JOURNAL_LAST_SENT') || 0) < 60000) return { sent: false, reason: 'rate-limited' };
+    p.setProperty('JOURNAL_LAST_SENT', String(Date.now()));
+    cache.put('fm_' + id, '1', 21600);
+  } finally { lock.releaseLock(); }
+  try {
+    var res = UrlFetchApp.fetch(url, {
+      method: 'post', contentType: 'application/json',
+      headers: { Authorization: 'Bearer ' + key },
+      payload: JSON.stringify({ requestId: id, test: true }),
+      muteHttpExceptions: true, followRedirects: false
+    });
+    return { sent: true, status: res.getResponseCode() };    // no body, URL or key is ever returned or logged
+  } catch (e) { return { sent: false, reason: 'network' }; }
+}
+
+/** v4: run this once from the editor (Run › authoriseJournal) to grant "Connect to an external service".
+ *  getRequest() only builds a request object; nothing is sent and no secret is read. */
+function authoriseJournal() {
+  UrlFetchApp.getRequest('https://example.com/');
+  return 'external-service permission is granted';
 }

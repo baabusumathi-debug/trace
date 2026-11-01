@@ -1,6 +1,6 @@
 # AGENTS.md — working on Trace
 
-**Guidance version: 4 (2026-10-31).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
+**Guidance version: 5 (2026-11-01).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
 
 This file is written for **any AI assistant** working on this project (Claude, ChatGPT, Grok bots, Muse or others) and for Naven. Read it in full the first time, and whenever §12 says to. Keep it accurate when you finish a task.
 
@@ -143,8 +143,9 @@ Plain JavaScript modules, with no build step and no framework. Fonts are self-ho
 
 ## 7. The bridge (Apps Script)
 
-- **Version: 3.**
-- **Operations:** `ping, readFile, listFolder, findFile, writeFile, sheetRead, sheetAppend (dedupe), sheetUpdate, visualIndex, readBinary, batch`.
+- **Version: 4.**
+- **Operations:** `ping, readFile, listFolder, findFile, writeFile, sheetRead, sheetAppend (dedupe), sheetUpdate, visualIndex, readBinary, notifyJournal, batch`.
+- **Private Script Properties:** `JOURNAL_ENABLED` (kill switch, `false` by default), `JOURNAL_WEBHOOK_URL` and `JOURNAL_WEBHOOK_KEY`. Naven enters these himself. **Never read, copy or ask for their values.** `JOURNAL_LAST_SENT` is a timestamp the code writes itself.
 - **Reach:** Drive files only inside `My Drive › Trace`, and only the Sheet tabs in §4.
 
 **To change it:**
@@ -213,7 +214,9 @@ Keep bridge changes rare, and batch them.
   - This is a one-off pilot, not the planned pipeline. Don't extend it to other audio without Naven's approval.
 - **Flow-message pilot (test only, built in T-014):**
   - Started at `#/pilot`. One reviewed card produces one `req-<id>.json` in `Trace › flowmsg`, and the app shows one plain-text Journal reply, `res-<id>.json`, within 5 minutes. The request and reply format is in T-014 and in `js/flowmsg.js`.
-  - It's an active-session pilot, **not** unattended automation. No webhooks or secrets.
+  - Since T-016, the app also asks the bridge (`notifyJournal`) to wake Journal's webhook routine. This only works when Naven sets `JOURNAL_ENABLED=true`.
+  - An unattended wake isn't proven until a bounded test passes. Before that, the only proven route is the chat-started watch.
+  - No secret may ever appear in the app, the repo or any chat.
 - **Palace and meditation home:** in the test build, waiting for Naven's "promote".
 
 ## 11. Writing CHANGELOG.md

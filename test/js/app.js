@@ -873,7 +873,7 @@ function drawFm() {
     requestAnimationFrame(() => { const more = slot.querySelector('.fm-more'); if (t.scrollHeight > t.clientHeight + 2) { more.hidden = false; more.onclick = () => { t.classList.add('open'); more.remove(); }; } });
   } else {
     const end = st === 'timeout' || st === 'error' || st === 'invalid';
-    slot.innerHTML = `<div class="fm-wait${end ? ' end' : ''}" role="status"><span class="mono">${end ? '✦' : '<i class="fm-dot"></i>'} ${esc(FM.note || 'Asking Journal…')}</span>
+    slot.innerHTML = `<div class="fm-wait${end ? ' end' : ''}" role="status"><span class="mono">${end ? '✦' : '<i class="fm-dot"></i>'} ${esc(FM.note || 'Asking Journal…')}</span>${FM.wake && !end ? `<span class="mono fm-wake">${esc(FM.wake)}</span>` : ''}
       ${end ? '<a class="fm-new" href="#/" data-fmnew>New pilot session</a>' : ''}<button class="fm-x" aria-label="Dismiss">×</button></div>`;
     const nw = slot.querySelector('[data-fmnew]'); if (nw) nw.onclick = e => { e.preventDefault(); endFlow().then(() => setTimeout(() => go('#/pilot'), 50)); };
   }

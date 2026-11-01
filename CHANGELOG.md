@@ -2,24 +2,42 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — test 1.3.6: notify Journal via bridge v4 after pilot request — 2026-11-01 15:52 IST
+In progress: none
 
-## State (as of entry T-015)
+## State (as of entry T-016)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.5** · last code commit: see entry T-014 (`git log -- test/`) |
-| Bridge (Apps Script) | **v3** deployed by Naven 31 Oct · repo source `backend/Code.gs` |
-| Guidance | `AGENTS.md` guidance version **4** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
+| Test build (`test/`) | **1.3.6** · last code commit: see entry T-016 (`git log -- test/`) |
+| Bridge (Apps Script) | **v4** deployed by Naven 1 Nov (adds `notifyJournal`, off by default via `JOURNAL_ENABLED`) · repo source `backend/Code.gs` (no secrets) |
+| Guidance | `AGENTS.md` guidance version **5** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | No package published in Drive yet. ChatGPT's real GI02B PANC-14 package passed the validator **locally** (31 Oct). Publication, device download and offline acceptance are **still outstanding**. Claude's earlier test pass used **placeholder** images only. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Real file verified in Naven's Chrome on 31 Oct: found, downloaded (6,381,340 bytes), decoded (531.72 s), and actually played to 0:12. Pause held and resume advanced. Not yet checked: offline playback, and whether the sound was actually heard. Nothing is automated or scheduled, and the producer's capabilities are unverified. |
-| Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. **One real round trip passed on 31 Oct (T-015)**, as an active-session pilot. Journal's watch was started by hand in chat, so this is **not** unattended automation. |
+| Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. **One real round trip passed on 31 Oct (T-015)**, as an active-session pilot. Journal's watch was started by hand in chat, so that was **not** unattended automation. Since T-016, the test build also asks bridge v4 to wake Journal's webhook routine. **An unattended wake hasn't been tested yet** (`JOURNAL_ENABLED` is still `false`). |
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-016 — 2026-11-01 — Claude — test + bridge — 1.3.6 / v4
+- **Bridge v4,** pasted and deployed by Naven on the same link:
+  - It adds `notifyJournal(requestId)`, which only acts when the Script Property `JOURNAL_ENABLED` is `true`. The default is `false`.
+  - It only notifies for an existing, matching, unexpired `test:true` request in `Trace › flowmsg`, once per request ID and at most once a minute.
+  - It sends `POST {requestId, test:true}` with `Authorization: Bearer <JOURNAL_WEBHOOK_KEY>` to `JOURNAL_WEBHOOK_URL`.
+  - Naven entered those values privately. **No secret is in the repo, the app or any chat.** Incoming authentication is unchanged.
+  - The only new Google permission is `script.external_request`, granted by Naven through `authoriseJournal()`, which sends nothing.
+  - Sync was confirmed working after deployment.
+- **Test 1.3.6:**
+  - After writing the pilot request, the app asks the bridge to notify Journal, without waiting for the answer.
+  - The status line shows "Journal notified", "Journal not notified: <reason>" or "bridge is older than v4".
+  - Checking for the reply and displaying it are unchanged.
+- **Mock tests only:**
+  - The request was written once and notify called once with the same ID; there was no second notify on the next card.
+  - All three states displayed correctly.
+  - A simulated reply showed.
+- **Rollback:** set `JOURNAL_ENABLED=false`, or redeploy bridge version 3.
 
 ## T-015 — 2026-10-31 — Claude — docs
 - **Real Journal round trip, verified:**
