@@ -2,16 +2,16 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — 2026-11-01 17:25 IST — CHANGELOG T-018 (record Mac acceptance of 1.3.7)
+In progress: none
 
-## State (as of entry T-017)
+## State (as of entry T-018)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.7** · last code commit: see entry T-017 (`git log -- test/`) |
+| Test build (`test/`) | **1.3.7** · last code commit: see entry T-017 (`git log -- test/`). Panel image fix accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **5** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -20,6 +20,18 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-018 — 2026-11-01 — Claude — docs
+- **Real device evidence, reported by Naven: test 1.3.7 on his connected Mac.**
+  - This device showed 1.3.7, with GI02B v2 (53 scenes) kept and 0 waiting.
+  - Naven was in **Look**, not Flow, so no study activity was logged.
+  - Tapping the PANC-25 answer phrase "High-volume haemofiltration" opened its scene (the experimental washing machine) directly.
+  - The **full original 3:2 image** now shows. Before the fix it was a strip about 90 px tall.
+  - The first 3 Learn cue–meaning pairs are visible below the image, and the rest of the panel scrolls.
+- **What this doesn't cover:**
+  - Claude's phone (390×844) and tablet results in T-017 are browser runs with **synthetic** data on a mock bridge. They are **not** device acceptance.
+  - The phone and the Tab are still to be checked on the real devices. Use **Look** for those checks, so no study activity is logged.
+- No app code, live app, bridge, visual package or Journal changed.
 
 ## T-017 — 2026-11-01 — Claude — test — 1.3.7
 - **Visual panel fix:**
