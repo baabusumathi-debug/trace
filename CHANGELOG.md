@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: Claude — test 1.3.6: notify Journal via bridge v4 after pilot request — 2026-11-01 15:52 IST
 
 ## State (as of entry T-015)
 
