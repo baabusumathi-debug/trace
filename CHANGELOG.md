@@ -2,24 +2,35 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — test 1.3.7: visual panel image no longer shrinks (flex-shrink fix) — 2026-11-01 17:12 IST
+In progress: none
 
-## State (as of entry T-016)
+## State (as of entry T-017)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.6** · last code commit: see entry T-016 (`git log -- test/`) |
+| Test build (`test/`) | **1.3.7** · last code commit: see entry T-017 (`git log -- test/`) |
 | Bridge (Apps Script) | **v4** deployed by Naven 1 Nov (adds `notifyJournal`, off by default via `JOURNAL_ENABLED`) · repo source `backend/Code.gs` (no secrets) |
 | Guidance | `AGENTS.md` guidance version **5** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
-| Visual decks | No package published in Drive yet. ChatGPT's real GI02B PANC-14 package passed the validator **locally** (31 Oct). Publication, device download and offline acceptance are **still outstanding**. Claude's earlier test pass used **placeholder** images only. |
+| Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Real file verified in Naven's Chrome on 31 Oct: found, downloaded (6,381,340 bytes), decoded (531.72 s), and actually played to 0:12. Pause held and resume advanced. Not yet checked: offline playback, and whether the sound was actually heard. Nothing is automated or scheduled, and the producer's capabilities are unverified. |
 | Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. **One real round trip passed on 31 Oct (T-015)**, as an active-session pilot. Journal's watch was started by hand in chat, so that was **not** unattended automation. Since T-016, the test build also asks bridge v4 to wake Journal's webhook routine. **An unattended wake hasn't been tested yet** (`JOURNAL_ENABLED` is still `false`). |
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-017 — 2026-11-01 — Claude — test — 1.3.7
+- **Visual panel fix:**
+  - **Cause:** in `.vp-scroll`, a flex column, children could shrink. The image box (`.vp-img`, which has `overflow:hidden` and so a minimum height of 0) absorbed all the shrinking when the text was long. Naven saw about 354 px on PANC-15 and about 90 px on PANC-25, and the image was cropped.
+  - **Fix:** one CSS rule, `.vp-scroll>*{flex-shrink:0}`. Every block now keeps its natural height, and the panel scrolls.
+- **Tests,** browser runs on a mock bridge with a **synthetic** long-content package (framed 1536×1024 images, 10 long cue pairs, long notes and story), at desktop 1437×872, tablet 1480×924 and phone 390×844:
+  - **Before the fix:** the image box was 2 px tall in all three sizes.
+  - **After the fix:** the box is 690×460, 711×475 and 362×242, showing the full image with no clipping in all three sizes.
+  - **Unchanged:** overview hotspots stay at 14/28, 38/3 and 77/35 %; in Learn the first pair is visible with its meaning; in Self-test all 10 meanings stay hidden; card notes start closed.
+- **Not yet done:** acceptance with the real GI02B v2 package on Naven's device.
+- Live app untouched (1.2.3).
 
 ## T-016 — 2026-11-01 — Claude — test + bridge — 1.3.6 / v4
 - **Bridge v4,** pasted and deployed by Naven on the same link:
