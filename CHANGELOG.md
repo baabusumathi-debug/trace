@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: Claude — 2026-11-01 17:25 IST — CHANGELOG T-018 (record Mac acceptance of 1.3.7)
 
 ## State (as of entry T-017)
 
