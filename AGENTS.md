@@ -150,8 +150,8 @@ Plain JavaScript modules, with no build step and no framework. Fonts are self-ho
 
 **To change it:**
 1. Edit `backend/Code.gs` and bump `VERSION`.
-2. Give Naven the full file privately, with the real key filled in.
-3. Naven pastes it over Code.gs, then goes to Deploy › Manage deployments › pencil › Version: **New version** › Deploy. **Not** "New deployment", which would change the link.
+2. Give Naven a **secret-free patch**: small insertions with exact anchor lines, plus a short guide. His existing `var KEY = '…';` line stays untouched. **Never produce, send or store a file with any key filled in**, even privately.
+3. Naven applies the patch in his editor. If new Google permissions are needed, he runs a helper that sends nothing to grant them. Then he goes to Deploy › Manage deployments › pencil › Version: **New version** › Deploy. **Not** "New deployment", which would change the link.
 4. Verify with a sync, or with This device › Check visual decks now.
 
 Keep bridge changes rare, and batch them.
