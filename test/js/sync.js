@@ -2,7 +2,7 @@
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG } from './config.js';
-import { S, emit, recount, setNeet, setQb, realCount, deckMeta, today, off } from './store.js';
+import { S, emit, recount, setNeet, setQb, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -193,7 +193,7 @@ export async function sync({ downloadAll = true } = {}) {
     if (!libRes.ok) throw new Error('library: ' + libRes.error);
     const lib = JSON.parse(libRes.data.text);
     const oldNeet = S.library && S.library.neet_version;
-    S.library = lib; await db.kv.set('library', lib);
+    S.library = lib; await db.kv.set('library', lib); applyTopupDecks();
     if (lib.neet_id && (lib.neet_version !== oldNeet || !S.neet.size)) {
       const [n] = await batch([{ op: 'readFile', id: lib.neet_id }]);
       if (n.ok) { const nj = JSON.parse(n.data.text); setNeet(nj); await db.kv.set('neet', nj); }

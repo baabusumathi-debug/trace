@@ -4,23 +4,31 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-020)
+## State (as of entry T-021)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.9** · last code commit: see entry T-020 (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.10** · last code commit: see entry T-021 (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **5** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Real file verified in Naven's Chrome on 31 Oct: found, downloaded (6,381,340 bytes), decoded (531.72 s), and actually played to 0:12. Pause held and resume advanced. Not yet checked: offline playback, and whether the sound was actually heard. Nothing is automated or scheduled, and the producer's capabilities are unverified. |
 | Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. **One real round trip passed on 31 Oct (T-015)**, as an active-session pilot. Journal's watch was started by hand in chat, so that was **not** unattended automation. Since T-016, the test build also asks bridge v4 to wake Journal's webhook routine. **Two automatic wakes passed on 1 Nov with no chat watch** (request/reply pairs `fm-20261101-160706-k5qi7c` and `fm-20261101-161241-a2n8vw` are in Drive). Each took about 37–61 s from request to reply, nearly all of it on Journal's side. Naven then paused Journal work. **The current `JOURNAL_ENABLED` value is unconfirmed.** |
-| QBank/GT layer | Test 1.3.8 only. `test/data/qbank.json` (version in the file) holds, per card: bank chips (NEET 25 recall · Marrow · DocT · DocT GT), Top-up lines, Crossfire lines and checked corrections; plus 271 Top-up cards in 96 decks. Built by Claude from the DocT QBank, 20 DocT GTs and the Marrow map; every item was approved by Naven on 2 Nov. Source of truth for its content: the CCM project files `claude/QMap_FINAL_*.csv`. |
+| QBank/GT layer | Test 1.3.8 only. `test/data/qbank.json` (version in the file) holds, per card: bank chips (NEET 25 recall · Marrow · DocT · DocT GT), Top-up lines, Crossfire lines and checked corrections; plus 242 Top-up cards in 94 decks and 5 Top-up decks (80 cards: TU-NEURO 24, TU-IE 15, TU-TX 15, TU-AIR 13, TU-SAFE 13). Built by Claude from the DocT QBank, 20 DocT GTs and the Marrow map; every item was approved by Naven on 2 Nov. Source of truth for its content: the CCM project files `claude/QMap_FINAL_*.csv`. |
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-021 — 2026-11-02 — Claude — test — 1.3.10
+- **Top-up decks** (Naven asked for them on 2 Nov): five homeless Top-up clusters became decks built from their source questions — TU-NEURO *Stroke, Seizures & Coma* (24), TU-IE *Infective Endocarditis* (15), TU-TX *Transplant & Immunosuppression* (15), TU-AIR *Airway: Infection, Trauma & RSI* (13), TU-SAFE *Patient Safety & Family Communication* (13). Their 29 Top-ups were removed from the decks they were parked in.
+  - They live in the layer (`qbank.json` → `decks[]`), not in Drive: `applyTopupDecks()` adds them to the library and the deck store on every load (`virtual: true`, `topupDeck: true` in the library entry). `downloadDecks` skips them (no `cards_id`). Their views never become War Map Log rows (`realCount` = 0).
+  - Each card carries `src` (source questions) and `banks`; the answer side shows a "From:" line. Numbered steps are stored as list lines so reflow keeps them apart (also for Top-up cards).
+- **Recognition (coral = Top-up):** Top-up deck spines are striped coral with "TU"; decks holding Top-up cards get a coral "+" badge; deck backs show "TOP-UP DECK" or "+n TOP-UP"; Top-up cards get a coral corner in the mosaic, the deck strip and Flow tiles, and a coral top edge on deck tiles; Flow-tab rows tag Top-up decks.
+- **Mosaic:** pool chips (All … Marrow) and Seen chips light matching cards and dim the rest, with "n of N cards lit"; new sort "Most lit". **Eagle view** (`#/sys/all`, button on the shelf): one mosaic of every deck, grouped by system.
+- **Tests:** demo mode with 8 real decks plus the 5 Top-up decks at 1400×900: shelf marks, eagle view (Any hit: 180 of 247 lit), Top-up deck Look, numbered algorithm lines; no page errors. Not device acceptance.
 
 ## T-020 — 2026-11-02 — Claude — test — 1.3.9
 - **Hit pools,** one set used everywhere (deck filters, the deck's "What to take" sheet, the Flow tab), widest first: `All` · `Any hit` (real NEET tag, NEET 25 recall, any Marrow / DocT / DocT GT hit, and every Top-up) · `NEET + GT` · `NEET` (real NEET tag or NEET 25 recall) · `Top-up` · `DocT QBank` · `Marrow`. Top-up cards join each pool by the banks they came from (from the layer's `banks`), and show those bank chips.

@@ -29,6 +29,7 @@ export async function loadAll() {
   setQb((await db.kv.get('qbank')) || null);
   for (const d of await db.all('decks')) S.decks.set(d.deck, d);
   for (const e of await db.all('edits')) S.edits.set(e.key, e);
+  applyTopupDecks();
   const evs = await db.all('events');
   S.events = evs.filter(e => e.kind === 'view');
   S.undone = new Set(evs.filter(e => e.kind === 'undo').map(e => e.ref));
@@ -64,21 +65,30 @@ export function cardsOf(deck) {
   return d.cards.map(c => withEdits(c)).concat(topupsOf(deck, d.cards).map(c => withEdits(c)));
 }
 /* ---------- QBank/GT layer: never changes card text; Top-ups are extra cards at the end of their deck ---------- */
-export function setQb(q) { S.qb = q && q.cards ? q : { version: '', cards: {}, topups: {} }; }
+export function setQb(q) { S.qb = q && q.cards ? q : { version: '', cards: {}, topups: {}, decks: [] }; applyTopupDecks(); }
+// Top-up decks live in the layer, not in Drive: they are added to the library and to the deck store on every load.
+export function applyTopupDecks() {
+  const list = (S.qb && S.qb.decks) || [];
+  if (S.library) S.library = { ...S.library, decks: S.library.decks.filter(d => !d.topupDeck).concat(list.map(t => ({ deck: t.deck, title: t.title, system: t.system, version: 1, cards: t.cards.length, star: 0, topupDeck: true }))) };
+  for (const [k, d] of [...S.decks]) if (d.virtual) S.decks.delete(k);
+  for (const t of list) S.decks.set(t.deck, { deck: t.deck, version: 1, verified: true, virtual: true, cards: t.cards.map(c => ({ ...c, deck: t.deck, tdeck: true })) });
+}
+export const isTopupDeck = deck => { const d = S.decks.get(deck); return !!(d && d.virtual); };
+export const hasTopups = deck => !!(S.qb.topups[deck] && S.qb.topups[deck].length);
 export function qbOf(c) { return (c && S.qb.cards[c.deck + '|' + c.code]) || null; }
 // What hit a card, and how much it is worth. Pools (narrow → wide): NEET ⊂ NEET + GT ⊂ Any hit. Top-ups count by the banks they came from.
 const W = { recall: 5, gt: 2, doct: 1, marrow: 1 };
 export function hitsOf(c) {
   const h = new Set(); let score = 0;
   if (neetTag(c)) { h.add('neet'); score += 6; }
-  if (c.topup) {
+  if (c.topup || c.tdeck) {
     h.add('topup');
     const b = c.banks || '';
     if (c.recall || /Recall/i.test(b)) { h.add('recall'); score += 5; }
     if (/\bGT\b/.test(b)) h.add('gt');
     if (/\bDocT\b/.test(b)) h.add('doct');
     if (/Marrow/i.test(b)) h.add('marrow');
-    score += 1.5 * (c.nq || 1) + (c.tier === 1 ? 3 : 0);
+    score += c.tdeck ? 3 : 1.5 * (c.nq || 1) + (c.tier === 1 ? 3 : 0);
   } else {
     const q = qbOf(c);
     if (q && q.chips) for (const x of q.chips) { h.add(x.k); score += (W[x.k] || 1) * (x.k === 'recall' ? 1 : Math.min(x.n, 6)); }
@@ -94,14 +104,14 @@ export function inPool(c, p) {
   if (p === 'neet') return h.has('neet') || h.has('recall');
   return h.has(p);
 }
-export function realCount(deck) { const d = S.decks.get(deck); return d ? Math.max(0, ...d.cards.map(c => +c.no || 0)) : Infinity; }
+export function realCount(deck) { const d = S.decks.get(deck); return d ? (d.virtual ? 0 : Math.max(0, ...d.cards.map(c => +c.no || 0))) : Infinity; }
 function topupsOf(deck, cards) {
   const list = S.qb.topups[deck];
   if (!list || !list.length) return [];
   const base = Math.max(0, ...cards.map(c => +c.no || 0));
-  const lineOf = l => /^\s*(\d+[.)]|[-•]|\w[^|]* \| )/.test(l) ? l : '- ' + l;
+  const lineOf = l => /^\s*([-•]|\w[^|]* \| )/.test(l) ? l : '- ' + l;   // numbered steps become list lines too, so reflow keeps them apart
   return list.map((t, i) => ({ deck, code: 'TU-' + String(i + 1).padStart(2, '0'), no: base + i + 1, section: 'Top-up', topup: true, tier: t.tier, ttype: t.type, tid: t.id,
-    q: t.q, a: t.a.map(lineOf).join('\n'), why: '', watch: '', hook: '', banks: t.banks, nq: t.n, recall: t.recall }));
+    q: t.q, a: t.a.map(lineOf).join('\n'), why: '', watch: '', hook: '', banks: t.banks, nq: t.n, recall: t.recall, src: t.src || '' }));
 }
 export function withEdits(c) {
   const e = S.edits.get(c.deck + '|' + c.code);

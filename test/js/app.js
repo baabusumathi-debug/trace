@@ -2,7 +2,7 @@ import { CONFIG, CHANNEL } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, POOLS, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, POOLS, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
 import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
@@ -205,8 +205,8 @@ function spine(d, out) {
   const t = tier(d.star || 0), w = walked(d.deck), size = P.get('spine', 'm');
   const k = size === 's' ? 0.8 : size === 'l' ? 1.25 : 1;
   const h = Math.round((92 + Math.min(d.cards, 36) / 36 * 46) * k);
-  return `<button class="spine t-${t}${out ? ' out' : ''}${isReady(d.deck) ? '' : ' notready'}" data-deck="${esc(d.deck)}" style="--h:${h}px;--tone:${emblem(d.system, d.deck).tone}" aria-label="${esc(d.deck)}: ${esc(d.title)}, ${d.star || 0} NEET questions, ${w} of ${d.cards} walked">
-    <span class="sp-star mono">${d.star ? '✦' + d.star : ''}</span><span class="sp-code mono">${esc(d.deck)}</span>
+  return `<button class="spine t-${t}${out ? ' out' : ''}${isReady(d.deck) ? '' : ' notready'}${d.topupDeck ? ' tu' : hasTopups(d.deck) ? ' hastu' : ''}" data-deck="${esc(d.deck)}" style="--h:${h}px;--tone:${emblem(d.system, d.deck).tone}" aria-label="${esc(d.deck)}: ${esc(d.title)}, ${d.star || 0} NEET questions, ${w} of ${d.cards} walked">
+    <span class="sp-star mono">${d.topupDeck ? 'TU' : d.star ? '✦' + d.star : ''}</span><span class="sp-code mono">${esc(d.deck)}</span>
     <span class="sp-bar"><i style="width:${Math.round(100 * w / Math.max(1, d.cards))}%"></i></span></button>`;
 }
 function pulledPanel(d) {
@@ -217,7 +217,7 @@ function pulledPanel(d) {
     <div class="pl-main">${deckBack(d, true)}
       <div class="pl-info"><span class="mono kick">${esc(d.deck)} · ${TIER_NAME[t]}</span><span class="pl-title">${esc(d.title)}</span>
         <span class="mono pl-facts">✦ ${d.star || 0} real NEET Qs<br>${d.cards} cards · ${w} walked${neetN ? ` · ${neetN} NEET cards` : ''}${ago != null ? `<br>last walked ${ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + ' days ago'}` : ''}</span></div></div>
-    ${cards.length ? `<div class="pl-strip" aria-hidden="true">${cards.map(c => `<i class="s${shade(seen(c.deck, c.no))}${neetTag(c) ? ' ng' : ''}"></i>`).join('')}</div>` : ''}
+    ${cards.length ? `<div class="pl-strip" aria-hidden="true">${cards.map(c => `<i class="s${shade(seen(c.deck, c.no))}${neetTag(c) ? ' ng' : ''}${c.topup || c.tdeck ? ' tu' : ''}"></i>`).join('')}</div>` : ''}
     <div class="pl-btns"><a class="btn primary press" href="#/deck/${encodeURIComponent(d.deck)}">Open deck</a>
       <button class="btn ghost" data-scope="flow">▶ Flow now</button><button class="btn ghost" data-scope="add">+ Add to flow</button></div>
   </div>`;
@@ -245,7 +245,7 @@ function renderCabinet() {
       <div class="shelf-side">${loftButton()}
       <div class="shelf-ctl">
         <div class="chips nowrap-row">${SORTS.map(([k, l]) => `<button class="chip${sort === k ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</div>
-        <div class="ctl-row"><span class="seg"><button class="${group === 'sys' ? 'on' : ''}" data-group="sys">By system</button><button class="${group === 'all' ? 'on' : ''}" data-group="all">All decks</button></span>
+        <div class="ctl-row"><span class="seg"><button class="${group === 'sys' ? 'on' : ''}" data-group="sys">By system</button><button class="${group === 'all' ? 'on' : ''}" data-group="all">All decks</button></span><a class="chip dash" href="#/sys/all" aria-label="Mosaic of every card">▦ Eagle view</a>
           <span class="sizes mono" aria-label="Spine size">${['s', 'm', 'l'].map(z => `<button class="${size === z ? 'on' : ''}" data-size="${z}">${z.toUpperCase()}</button>`).join('')}</span></div>
       </div></div>
       <div class="shelf-main">${body}</div>
@@ -275,12 +275,12 @@ function renderCabinet() {
 function deckBack(d, mini) {
   const t = tier(d.star || 0), w = walked(d.deck), ok = isReady(d.deck);
   const pct = d.cards ? Math.round(100 * w / d.cards) : 0;
-  const face = `<span class="back t-${t}${mini ? ' mini' : ''}" style="--tone:${emblem(d.system, d.deck).tone}">
+  const face = `<span class="back t-${t}${mini ? ' mini' : ''}${d.topupDeck ? ' tu' : ''}" style="--tone:${emblem(d.system, d.deck).tone}">
       <span class="frame1"></span><span class="frame2"></span>
       <span class="back-top mono"><span>${esc(d.deck)}</span><span>✦ ${d.star || 0}</span></span>
       <span class="back-seal">${seal(d.system, '', d.deck)}</span>
       <span class="back-title">${esc(d.title)}</span>
-      <span class="back-foot mono"><span>${d.cards} CARDS</span><span>${ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
+      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' · +' + S.qb.topups[d.deck].length + ' TOP-UP' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
     </span>`;
   if (mini) return face;
   return `<a class="deck${ok ? '' : ' notready'}" href="#/deck/${encodeURIComponent(d.deck)}" aria-label="Open ${esc(d.title)}">${face}
@@ -289,28 +289,32 @@ function deckBack(d, mini) {
 
 /* ============================ one system: fanned out, or as a mosaic ============================ */
 function renderSystem(num) {
-  const s = systems().find(x => sysNum(x.name) === num);
+  const all = num === 'all';
+  const s = all ? (S.library ? { name: 'all', label: 'Eagle view · every card', decks: S.library.decks } : null) : systems().find(x => sysNum(x.name) === num);
   if (!s) return renderCabinet();
-  const tab = P.get('sysTab', 'decks'), sort = P.get('sort', 'neet');
-  const decks = sortDecks(s.decks, sort);
+  const tab = all ? 'mosaic' : P.get('sysTab', 'decks'), sort = P.get('sort', 'neet'), mp = P.get('moPool', 'all'), mst = P.get('moState', 'any');
+  const hitN = d => pick2(d.deck, mp, mst).length;
+  const decks = sort === 'hits' ? s.decks.slice().sort((a, b) => hitN(b) - hitN(a) || a.deck.localeCompare(b.deck, undefined, { numeric: true })) : sortDecks(s.decks, sort);
   const stars = decks.reduce((t, d) => t + (d.star || 0), 0), cards = decks.reduce((t, d) => t + d.cards, 0), w = decks.reduce((t, d) => t + walked(d.deck), 0);
   let body;
   if (tab === 'mosaic') {
-    body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span></div>
-      <div class="mosaic">${decks.map(d => {
-        const cs = cardsOf(d.deck);
-        return `<div class="mo-row"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.star ? '✦ ' + d.star : ''}</span></a>
-          <span class="mo-cells">${cs.length ? cs.map(c => `<button class="mo s${shade(seen(c.deck, c.no))}${neetTag(c) ? ' ng' : ''}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" aria-label="${esc(c.code)}, seen ${seen(c.deck, c.no)}"></button>`).join('') : '<span class="muted small">not downloaded</span>'}</span></div>`;
-      }).join('')}</div>`;
+    body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span><span class="lg-n"><i class="lg-tu"></i>coral corner = Top-up</span></div>
+      <div class="chips mo-pools">${POOLS.map(([k, l]) => `<button class="chip${mp === k ? ' on' : ''}" data-mp="${k}">${l}</button>`).join('')}</div>
+      <div class="chips mo-pools">${STATES.map(([k, l]) => `<button class="chip${mst === k ? ' on' : ''}" data-mst="${k}">${l}</button>`).join('')}<span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
+      <div class="mosaic">${(all ? systems().map(g => ({ g, ds: decks.filter(d => d.system === g.name) })) : [{ g: null, ds: decks }]).map(({ g, ds }) => (g ? `<div class="mo-sys mono">${esc(g.label)} · ${ds.reduce((t, d) => t + hitN(d), 0)}</div>` : '') + ds.map(d => {
+        const cs = cardsOf(d.deck), lit = c => inPool(c, mp) && inState(c, mst);
+        return `<div class="mo-row${d.topupDeck ? ' tu' : ''}"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.topupDeck ? 'TOP-UP' : d.star ? '✦ ' + d.star : ''}${mp !== 'all' || mst !== 'any' ? ' · ' + hitN(d) : ''}</span></a>
+          <span class="mo-cells">${cs.length ? cs.map(c => `<button class="mo s${shade(seen(c.deck, c.no))}${neetTag(c) ? ' ng' : ''}${c.topup || c.tdeck ? ' tu' : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" aria-label="${esc(c.code)}, seen ${seen(c.deck, c.no)}"></button>`).join('') : '<span class="muted small">not downloaded</span>'}</span></div>`;
+      }).join('')).join('')}</div>`;
   } else {
     body = `<div class="spread">${decks.map((d, i) => `<div class="fan" style="--rot:${[-1.5, 1.2, 0.8, -1, 1.4, -0.8, -1.2, 1][i % 8]}deg">${deckBack(d)}</div>`).join('')}</div>`;
   }
   app.innerHTML = `<div class="screen sysv">
     <header class="top col">
       <div class="row"><a class="iconbtn" href="#/shelf" aria-label="Back to the shelf">${ICON.back}</a>
-        <span class="tt"><span class="mono kick">${num} · ✦ ${stars} · ${decks.length} DECKS · ${cards} CARDS · ${w} WALKED</span><span class="h1s">${esc(s.label)}</span></span></div>
-      <div class="row sb"><span class="seg"><button class="${tab === 'decks' ? 'on' : ''}" data-tab="decks">Decks</button><button class="${tab === 'mosaic' ? 'on' : ''}" data-tab="mosaic">Mosaic</button></span>
-        <span class="chips nowrap-row small">${SORTS.slice(0, 3).map(([k, l]) => `<button class="chip${sort === k ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</span></div>
+        <span class="tt"><span class="mono kick">${all ? 'ALL' : num} · ✦ ${stars} · ${decks.length} DECKS · ${cards} CARDS · ${w} WALKED</span><span class="h1s">${esc(s.label)}</span></span></div>
+      <div class="row sb">${all ? '<span></span>' : `<span class="seg"><button class="${tab === 'decks' ? 'on' : ''}" data-tab="decks">Decks</button><button class="${tab === 'mosaic' ? 'on' : ''}" data-tab="mosaic">Mosaic</button></span>`}
+        <span class="chips nowrap-row small">${SORTS.slice(0, 3).concat(tab === 'mosaic' ? [['hits', 'Most lit']] : []).map(([k, l]) => `<button class="chip${sort === k ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</span></div>
     </header>
     <div class="scroll pad">${body}</div>
     ${nav('shelf')}
@@ -318,6 +322,8 @@ function renderSystem(num) {
   bindGo();
   app.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { P.set('sysTab', b.dataset.tab); renderSystem(num); });
   app.querySelectorAll('[data-sort]').forEach(b => b.onclick = () => { P.set('sort', b.dataset.sort); renderSystem(num); });
+  app.querySelectorAll('[data-mp]').forEach(b => b.onclick = () => { P.set('moPool', b.dataset.mp); renderSystem(num); });
+  app.querySelectorAll('[data-mst]').forEach(b => b.onclick = () => { P.set('moState', b.dataset.mst); renderSystem(num); });
   app.querySelectorAll('.mo').forEach(b => b.onclick = () => {
     const list = cardsOf(b.dataset.deck);
     startFlow(list, { browse: true, start: list.findIndex(c => c.code === b.dataset.code), label: 'Look', returnTo: location.hash });
@@ -387,7 +393,7 @@ function renderDeck(code) {
 }
 function tile(c, active) {
   const n = seen(c.deck, c.no), tag = neetTag(c);
-  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup ? ' tu' : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
+  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup || c.tdeck ? ' tu' : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
     <span class="tl-top mono"><span>${c.topup ? 'TOP-UP' : tag ? '✦' : esc(c.code)}</span><span>×${n}</span></span>
     <span class="tl-no">${c.no}</span>
     <span class="tl-tag mono">${esc(tag)}${c.edited ? ' ✎' : ''}</span></button>`;
@@ -521,7 +527,7 @@ function renderFlowTab() {
           const decks = sortDecks(s.decks, 'neet');
           return `<details class="sysg" data-sys="${esc(s.name)}"${builder.open.has(s.name) || n ? ' open' : ''}>
             <summary><input type="checkbox" data-all="${esc(s.name)}" ${n === s.decks.length ? 'checked' : ''} aria-label="All of ${esc(s.label)}"><span class="sg-n">${esc(s.label)}</span><span class="mono">${n} of ${s.decks.length} · ✦ ${stars}</span></summary>
-            ${decks.map(d => `<label class="dr"><input type="checkbox" data-d="${esc(d.deck)}" ${builder.sel.has(d.deck) ? 'checked' : ''}><span class="foil t-${tier(d.star || 0)}" style="--tone:${emblem(d.system, d.deck).tone}"></span><span class="mono dc">${esc(d.deck)}</span><span class="dt">${esc(d.title)}</span><span class="mono">${pick2(d.deck, builder.pool, builder.state).length}</span></label>`).join('')}
+            ${decks.map(d => `<label class="dr"><input type="checkbox" data-d="${esc(d.deck)}" ${builder.sel.has(d.deck) ? 'checked' : ''}><span class="foil t-${tier(d.star || 0)}" style="--tone:${emblem(d.system, d.deck).tone}"></span><span class="mono dc">${esc(d.deck)}</span><span class="dt">${d.topupDeck ? '<span class="tutag mono">TOP-UP</span>' : ''}${esc(d.title)}</span><span class="mono">${pick2(d.deck, builder.pool, builder.state).length}</span></label>`).join('')}
           </details>`;
         }).join('')}</div>
       </div>
@@ -799,12 +805,14 @@ function drawCard() {
 /* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
 function qbChips(c) {
   if (c.topup) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${[['recall', 'NEET 25 recall'], ['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
+  if (c.tdeck) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up deck</span>${[['recall', 'NEET 25 recall'], ['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
   const q = qbOf(c);
   if (!q || !q.chips) return '';
   return q.chips.map(x => `<span class="qc qc-${x.k} mono" title="${x.n} question${x.n > 1 ? 's' : ''}">${esc(x.t)}${x.n > 1 ? ' ×' + x.n : ''}</span>`).join('');
 }
 const bankLine = l => { const m = l.match(/^([A-Za-z0-9 +·]{2,40}?):\s+(.*)$/s); return m ? `<p><b class="bk">${esc(m[1])}</b> ${inline(m[2])}</p>` : `<p>${inline(l)}</p>`; };
 function qbBoxes(c) {
+  if (c.tdeck || c.topup) { const src = c.src || ''; return src ? `<p class="qsrc-card mono">From: ${esc(src)}</p>` : ''; }
   const q = qbOf(c);
   if (!q) return '';
   let h = '';
@@ -847,7 +855,7 @@ function updateFlowChrome() {
   } else $('#f-diff').textContent = '–';
   $('#f-undo').classList.toggle('dimmed', flow.browse ? flow.idx === 0 : !flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
-  $('#f-tiles').innerHTML = flow.queue.slice(0, 60).map((c, i) => `<span class="ft s${shade(seen(c.deck, c.no))}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
+  $('#f-tiles').innerHTML = flow.queue.slice(0, 60).map((c, i) => `<span class="ft s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? ' tu' : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
 }
 
 function animate(kind, swap) {
