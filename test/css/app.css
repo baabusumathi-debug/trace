@@ -680,3 +680,20 @@ a.brand{text-decoration:none;color:inherit}
 .tile.tu.tu1{box-shadow:none}.tile.tu.tu1::after{content:'';position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:#c46a4a}
 .tile{position:relative}
 .back-title{overflow-wrap:anywhere;hyphens:auto}
+
+/* T-025: chunk gaps, chunk names, hover label, lit bar, Flow desk */
+.cgap{flex:0 0 7px;width:7px}
+.mo-cells{align-items:center}
+.cname{flex:0 0 auto;font-size:9.5px;color:var(--gold2);background:#24262b;border:1px solid #3a3832;border-radius:3px;padding:1px 5px;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-strip{display:flex;flex-wrap:wrap;gap:3px;align-items:center}
+.pl-strip i{width:14px;flex:0 0 14px}
+.f-tiles .ft.cs{grid-column-start:1;margin-top:6px}
+.hovtip{position:fixed;z-index:60;pointer-events:none;background:#f5efdf;color:#25241f;border:1px solid #b9ae94;border-radius:5px;padding:4px 8px;font-size:11px;max-width:320px;box-shadow:0 6px 16px rgba(0,0,0,.45)}
+.hovtip[hidden]{display:none}
+.litbar .big{flex:1.2}
+.desk .dk-box{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:10px;background:#181b20;display:flex;flex-direction:column;gap:10px}
+.dk-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dk-h>span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.dk-t{font-family:var(--serif);font-size:20px;font-weight:600}
+.desk .dk-box p{margin:0}
+.desk .chips a.chip{display:inline-flex;align-items:center;text-decoration:none}

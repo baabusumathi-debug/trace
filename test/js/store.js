@@ -150,6 +150,7 @@ let deckSeen = new Map();     // deck -> number of distinct cards seen at least 
 let lastMap = new Map();      // 'DECK|no' -> last view ts
 let deckLast = new Map();     // deck -> last view ts
 let traceDaily = {};          // date -> { ms, cards:Set }
+let againMap = new Map();     // 'DECK|no' -> last Again view not yet cleared by a later session
 const dkey = ts => { const d = new Date(ts); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 export const today = () => dkey(Date.now());
 export { dkey };
@@ -175,6 +176,14 @@ export function recount() {
     if (!(deckLast.get(e.deck) > e.ts)) deckLast.set(e.deck, e.ts);
     const dk = dkey(e.ts), t = traceDaily[dk] || (traceDaily[dk] = { ms: 0, cards: new Set() });
     t.ms += Math.min(e.ms || 0, 20 * 60000); t.cards.add(k);
+  }
+  // Again pile: a card marked Again stays until it is walked without Again in a later session.
+  againMap = new Map();
+  for (const e of [...S.events].sort((a, b) => a.ts - b.ts)) {
+    if (S.undone.has(e.id)) continue;
+    const k = e.deck + '|' + e.no, a = againMap.get(k);
+    if (e.again) againMap.set(k, { deck: e.deck, no: e.no, code: e.code, ts: e.ts, session: e.session });
+    else if (a && e.ts > a.ts && e.session !== a.session) againMap.delete(k);
   }
   deckSeen = new Map();
   if (!S.library) return;
@@ -202,6 +211,8 @@ export function seen(deck, no) {
   return (seenMap.get(deck + '|' + no) || 0) + ((S.logBase[deck] || {})[no + off(deck)] || 0);
 }
 export const walked = deck => deckSeen.get(deck) || 0;
+/** cards in the Again pile, newest first: [{ deck, no, code, ts }] */
+export const againList = () => [...againMap.values()].sort((a, b) => b.ts - a.ts);
 export const lastSeen = (deck, no) => lastMap.get(deck + '|' + no) || 0;
 export const deckLastTs = deck => deckLast.get(deck) || 0;
 export const seenOn = (deck, no, day) => { const t = traceDaily[day]; return !!(t && t.cards.has(deck + '|' + no)); };
