@@ -2,7 +2,7 @@ import { CONFIG, CHANNEL } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, POOLS, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
 import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
@@ -201,25 +201,29 @@ function loftButton() {
 
 /* ============================ shelf (home) ============================ */
 let pulled = null;
+// Top-up cards not walked yet in a deck: the spine's coral "+n" badge counts these and disappears once they are walked.
+const tuLeft = deck => hasTopups(deck) ? cardsOf(deck).filter(c => c.topup && !seen(deck, c.no)).length : 0;
+// Long titles shrink instead of being cut off.
+const titleSize = (t, mini) => { const n = (t || '').length, f = n <= 26 ? 18.5 : n <= 40 ? 15.5 : n <= 56 ? 13.5 : n <= 72 ? 12 : 11; return (mini ? Math.max(9.5, f * 0.7) : f).toFixed(1) + 'px'; };
 function spine(d, out) {
   const t = tier(d.star || 0), w = walked(d.deck), size = P.get('spine', 'm');
   const k = size === 's' ? 0.8 : size === 'l' ? 1.25 : 1;
   const h = Math.round((92 + Math.min(d.cards, 36) / 36 * 46) * k);
-  return `<button class="spine t-${t}${out ? ' out' : ''}${isReady(d.deck) ? '' : ' notready'}${d.topupDeck ? ' tu' : hasTopups(d.deck) ? ' hastu' : ''}" data-deck="${esc(d.deck)}" style="--h:${h}px;--tone:${emblem(d.system, d.deck).tone}" aria-label="${esc(d.deck)}: ${esc(d.title)}, ${d.star || 0} NEET questions, ${w} of ${d.cards} walked">
+  return `<button class="spine t-${t}${out ? ' out' : ''}${isReady(d.deck) ? '' : ' notready'}${d.topupDeck ? ' tu' : tuLeft(d.deck) ? ' hastu' : ''}" data-tu="+${tuLeft(d.deck)}" data-deck="${esc(d.deck)}" style="--h:${h}px;--tone:${emblem(d.system, d.deck).tone}" aria-label="${esc(d.deck)}: ${esc(d.title)}, ${d.star || 0} NEET questions, ${w} of ${d.cards} walked">
     <span class="sp-star mono">${d.topupDeck ? 'TU' : d.star ? '✦' + d.star : ''}</span><span class="sp-code mono">${esc(d.deck)}</span>
     <span class="sp-bar"><i style="width:${Math.round(100 * w / Math.max(1, d.cards))}%"></i></span></button>`;
 }
 function pulledPanel(d) {
   const t = tier(d.star || 0), cards = cardsOf(d.deck), w = walked(d.deck);
-  const neetN = cards.filter(c => neetTag(c)).length, last = deckLastTs(d.deck);
+  const neetN = cards.filter(c => isNeet(c)).length, last = deckLastTs(d.deck);
   const ago = last ? Math.max(0, Math.round((Date.now() - last) / 864e5)) : null;
   return `<div class="pulled" id="pulled">
     <div class="pl-main">${deckBack(d, true)}
       <div class="pl-info"><span class="mono kick">${esc(d.deck)} · ${TIER_NAME[t]}</span><span class="pl-title">${esc(d.title)}</span>
         <span class="mono pl-facts">✦ ${d.star || 0} real NEET Qs<br>${d.cards} cards · ${w} walked${neetN ? ` · ${neetN} NEET cards` : ''}${ago != null ? `<br>last walked ${ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + ' days ago'}` : ''}</span></div></div>
-    ${cards.length ? `<div class="pl-strip" aria-hidden="true">${cards.map(c => `<i class="s${shade(seen(c.deck, c.no))}${neetTag(c) ? ' ng' : ''}${c.topup || c.tdeck ? ' tu' : ''}"></i>`).join('')}</div>` : ''}
+    ${cards.length ? `<div class="pl-strip" aria-hidden="true">${cards.map(c => `<i class="s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}"></i>`).join('')}</div>` : ''}
     <div class="pl-btns"><a class="btn primary press" href="#/deck/${encodeURIComponent(d.deck)}">Open deck</a>
-      <button class="btn ghost" data-scope="flow">▶ Flow now</button><button class="btn ghost" data-scope="add">+ Add to flow</button></div>
+      <button class="btn ghost" data-scope="flow">▶ Flow now</button><button class="btn ghost" data-scope="add">+ Add to flow</button><button class="btn ghost" data-putback>↩ Put back</button></div>
   </div>`;
 }
 function renderCabinet() {
@@ -258,18 +262,18 @@ function renderCabinet() {
   app.querySelectorAll('[data-size]').forEach(b => b.onclick = () => { P.set('spine', b.dataset.size); renderCabinet(); });
   app.querySelectorAll('.spine').forEach(b => b.onclick = () => {
     const d = b.dataset.deck;
-    if (pulled === d) {                                   // second tap: the deck comes out and opens
-      b.classList.add('leaving');
-      setTimeout(() => go('#/deck/' + encodeURIComponent(d)), 260);
-      return;
-    }
     const sc = app.querySelector('.scroll'), y = sc.scrollTop;
-    pulled = d; renderCabinet();
+    pulled = pulled === d ? null : d;                     // second tap on the same spine puts the deck back
+    renderCabinet();
     const s2 = app.querySelector('.scroll'); s2.scrollTop = y;
     const pl = $('#pulled'); if (pl) setTimeout(() => pl.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 60);
   });
   const pl = $('#pulled');
-  if (pl) pl.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(pulled, b.dataset.scope));
+  if (pl) {
+    pl.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(pulled, b.dataset.scope));
+    const pb = pl.querySelector('[data-putback]');
+    if (pb) pb.onclick = () => { const sc = app.querySelector('.scroll'), y = sc.scrollTop; pulled = null; renderCabinet(); app.querySelector('.scroll').scrollTop = y; };
+  }
 }
 
 function deckBack(d, mini) {
@@ -279,8 +283,8 @@ function deckBack(d, mini) {
       <span class="frame1"></span><span class="frame2"></span>
       <span class="back-top mono"><span>${esc(d.deck)}</span><span>✦ ${d.star || 0}</span></span>
       <span class="back-seal">${seal(d.system, '', d.deck)}</span>
-      <span class="back-title">${esc(d.title)}</span>
-      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' · +' + S.qb.topups[d.deck].length + ' TOP-UP' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
+      <span class="back-title" style="font-size:${titleSize(d.title, mini)}" title="${esc(d.title)}">${esc(d.title)}</span>
+      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' +' + S.qb.topups[d.deck].length + ' TU' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
     </span>`;
   if (mini) return face;
   return `<a class="deck${ok ? '' : ' notready'}" href="#/deck/${encodeURIComponent(d.deck)}" aria-label="Open ${esc(d.title)}">${face}
@@ -299,12 +303,12 @@ function renderSystem(num) {
   let body;
   if (tab === 'mosaic') {
     body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span><span class="lg-n"><i class="lg-tu"></i>coral corner = Top-up</span></div>
-      <div class="chips mo-pools">${POOLS.map(([k, l]) => `<button class="chip${mp === k ? ' on' : ''}" data-mp="${k}">${l}</button>`).join('')}</div>
+      ${poolChips(mp, 'data-mp')}
       <div class="chips mo-pools">${STATES.map(([k, l]) => `<button class="chip${mst === k ? ' on' : ''}" data-mst="${k}">${l}</button>`).join('')}<span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
       <div class="mosaic">${(all ? systems().map(g => ({ g, ds: decks.filter(d => d.system === g.name) })) : [{ g: null, ds: decks }]).map(({ g, ds }) => (g ? `<div class="mo-sys mono">${esc(g.label)} · ${ds.reduce((t, d) => t + hitN(d), 0)}</div>` : '') + ds.map(d => {
         const cs = cardsOf(d.deck), lit = c => inPool(c, mp) && inState(c, mst);
         return `<div class="mo-row${d.topupDeck ? ' tu' : ''}"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.topupDeck ? 'TOP-UP' : d.star ? '✦ ' + d.star : ''}${mp !== 'all' || mst !== 'any' ? ' · ' + hitN(d) : ''}</span></a>
-          <span class="mo-cells">${cs.length ? cs.map(c => `<button class="mo s${shade(seen(c.deck, c.no))}${neetTag(c) ? ' ng' : ''}${c.topup || c.tdeck ? ' tu' : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" aria-label="${esc(c.code)}, seen ${seen(c.deck, c.no)}"></button>`).join('') : '<span class="muted small">not downloaded</span>'}</span></div>`;
+          <span class="mo-cells">${cs.length ? cs.map(c => `<button class="mo s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" aria-label="${esc(c.code)}, seen ${seen(c.deck, c.no)}"></button>`).join('') : '<span class="muted small">not downloaded</span>'}</span></div>`;
       }).join('')).join('')}</div>`;
   } else {
     body = `<div class="spread">${decks.map((d, i) => `<div class="fan" style="--rot:${[-1.5, 1.2, 0.8, -1, 1.4, -0.8, -1.2, 1][i % 8]}deg">${deckBack(d)}</div>`).join('')}</div>`;
@@ -322,7 +326,7 @@ function renderSystem(num) {
   bindGo();
   app.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { P.set('sysTab', b.dataset.tab); renderSystem(num); });
   app.querySelectorAll('[data-sort]').forEach(b => b.onclick = () => { P.set('sort', b.dataset.sort); renderSystem(num); });
-  app.querySelectorAll('[data-mp]').forEach(b => b.onclick = () => { P.set('moPool', b.dataset.mp); renderSystem(num); });
+  app.querySelectorAll('[data-mp]').forEach(b => b.onclick = () => { P.set('moPool', togglePool(mp, b.dataset.mp)); renderSystem(num); });
   app.querySelectorAll('[data-mst]').forEach(b => b.onclick = () => { P.set('moState', b.dataset.mst); renderSystem(num); });
   app.querySelectorAll('.mo').forEach(b => b.onclick = () => {
     const list = cardsOf(b.dataset.deck);
@@ -353,11 +357,10 @@ function renderDeck(code) {
   if (!m) return renderCabinet();
   _lastDeck = code;
   const cards = cardsOf(code), t = tier(m.star || 0), size = P.get('tile', 'm');
-  const fs = filtersFor(code, cards);
-  const fk = fs.find(f => f.key === deckFilter[code]) ? deckFilter[code] : 'all';
-  const cur = fs.find(f => f.key === fk);
+  const df = deckFilter[code] || (deckFilter[code] = { pool: 'all', st: 'any' });
+  const cur = { list: pick2(code, df.pool, df.st) };
   const inSet = new Set(cur.list.map(c => c.code));
-  const st = deckState(code), neetN = cards.filter(c => neetTag(c)).length;
+  const st = deckState(code), neetN = cards.filter(c => isNeet(c)).length;
   const tiles = sectionsOf(cards).map(sec => `<section class="dsec"><div class="rule-h"><span class="h3">${esc(sec.name || 'Cards')}</span><span class="line"></span><span class="mono muted small">${sec.cards[0].no}–${sec.cards[sec.cards.length - 1].no}</span></div>
     <div class="tiles tz-${size}">${sec.cards.map(c => tile(c, inSet.has(c.code))).join('')}</div></section>`).join('');
   app.innerHTML = `<div class="screen deckv">
@@ -369,7 +372,8 @@ function renderDeck(code) {
     </div>
     <div class="scroll pad">
       ${st !== 'ready' ? `<div class="notice">${st === 'missing' ? 'This deck is not on this device yet.' : 'A newer version of this deck is waiting.'} <button class="link" data-act="dl">Download now</button></div>` : ''}
-      <div class="chips">${fs.map(f => `<button class="chip${f.key === fk ? ' on' : ''}" data-f="${f.key}">${f.label} · ${f.list.length}</button>`).join('')}</div>
+      ${poolChips(df.pool, 'data-dp', k => pick2(code, k === 'all' || k === 'hit' ? k : k, df.st).length)}
+      <div class="chips">${STATES_DECK.map(([k, l]) => { const n = pick2(code, df.pool, k).length; return n || k === 'any' || k === df.st ? `<button class="chip${df.st === k ? ' on' : ''}" data-ds="${k}">${l} · ${n}</button>` : ''; }).join('')}<span class="mono muted small lit">${cur.list.length} of ${cards.length} lit</span></div>
       <div class="ctl-row mt"><span class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}</span>
         <span class="sizes mono" aria-label="Card tile size">${['s', 'm', 'l'].map(z => `<button class="${size === z ? 'on' : ''}" data-size="${z}">${z.toUpperCase()}</button>`).join('')}</span></div>
       ${cards.length ? tiles : '<p class="muted">No cards on this device yet.</p>'}
@@ -381,11 +385,12 @@ function renderDeck(code) {
     </div>
   </div>`;
   bindGo();
-  app.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { deckFilter[code] = b.dataset.f; renderDeck(code); });
+  app.querySelectorAll('[data-dp]').forEach(b => b.onclick = () => { df.pool = togglePool(df.pool, b.dataset.dp); renderDeck(code); });
+  app.querySelectorAll('[data-ds]').forEach(b => b.onclick = () => { df.st = b.dataset.ds; renderDeck(code); });
   app.querySelectorAll('[data-size]').forEach(b => b.onclick = () => { P.set('tile', b.dataset.size); renderDeck(code); });
   const dl = app.querySelector('[data-act=dl]');
   if (dl) dl.onclick = async () => { dl.disabled = true; try { await downloadDecks([code]); toast('Downloaded and checked.'); } catch (e) { toast(e.message); } emit(); };
-  app.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(code, b.dataset.scope, fk !== 'all' ? fk : null));
+  app.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(code, b.dataset.scope, df));
   app.querySelectorAll('.tile').forEach(el => el.onclick = () => {
     const list = cur.list.find(c => c.code === el.dataset.code) ? cur.list : cards;
     startFlow(list, { browse: true, start: list.findIndex(c => c.code === el.dataset.code), label: 'Look', returnTo: location.hash });
@@ -393,7 +398,7 @@ function renderDeck(code) {
 }
 function tile(c, active) {
   const n = seen(c.deck, c.no), tag = neetTag(c);
-  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup || c.tdeck ? ' tu' : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
+  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
     <span class="tl-top mono"><span>${c.topup ? 'TOP-UP' : tag ? '✦' : esc(c.code)}</span><span>×${n}</span></span>
     <span class="tl-no">${c.no}</span>
     <span class="tl-tag mono">${esc(tag)}${c.edited ? ' ✎' : ''}</span></button>`;
@@ -401,13 +406,21 @@ function tile(c, active) {
 
 /* ============================ scope sheet: Flow now / Add to flow from one deck ============================ */
 const STATES = [['any', 'Any'], ['new', 'Unseen'], ['low', 'Seen ≤ 1'], ['stale', 'Not seen 7+ days']];
-const poolLabel = k => (POOLS.find(p => p[0] === k) || ['', k])[1];
+const STATES_DECK = STATES.concat([['edited', 'Edited']]);
+const poolLabel = k => poolName(k);
+// All · Any hit · then components that add up (tap several: NEET + DocT GT, DocT + Marrow, …). count(k) optional.
+function poolChips(cur, attr, count) {
+  const parts = poolParts(cur), on = k => k === 'all' ? !parts.length : k === 'hit' ? parts[0] === 'hit' : parts.includes(k);
+  const n = k => count ? ' · ' + count(k) : '';
+  return `<div class="chips pool">${[['all', 'All'], ['hit', 'Any hit']].map(([k, l]) => `<button class="chip${on(k) ? ' on' : ''}" ${attr}="${k}">${l}${n(k)}</button>`).join('')}<span class="pool-sep" aria-hidden="true">|</span>${COMPONENTS.map(([k, l]) => `<button class="chip comp${on(k) ? ' on' : ''}" ${attr}="${k}" aria-pressed="${on(k)}">${on(k) ? '✓ ' : '+ '}${l}${n(k)}</button>`).join('')}</div>`;
+}
 const stateLabel = k => (STATES.find(p => p[0] === k) || ['', k])[1];
 function inState(c, st) {
   if (!st || st === 'any') return true;
   if (st === 'new') return seen(c.deck, c.no) === 0;
   if (st === 'low') return seen(c.deck, c.no) <= 1;
   if (st === 'stale') return lastSeen(c.deck, c.no) < Date.now() - 7 * 864e5;
+  if (st === 'edited') return !!c.edited;
   return true;
 }
 const pick2 = (deck, pool, st) => cardsOf(deck).filter(c => inPool(c, pool) && inState(c, st));
@@ -426,8 +439,8 @@ function openScope(deck, mode, preset) {
   if (!m) return;
   if (!cards.length) { toast('This deck is not on this device yet.'); return; }
   const secs = sectionsOf(cards);
-  let pool = preset && POOLS.some(p => p[0] === preset) ? preset : 'all';
-  let st = preset && STATES.some(p => p[0] === preset) ? preset : 'any';
+  let pool = (preset && preset.pool) || 'all';
+  let st = preset && STATES.some(p => p[0] === preset.st) ? preset.st : 'any';
   const secPick = new Set();
   const wrap = document.createElement('div');
   wrap.className = 'modal';
@@ -440,7 +453,7 @@ function openScope(deck, mode, preset) {
       <span class="grab" aria-hidden="true"></span>
       <div class="sheet-h"><span><span class="mono kick">${esc(deck)} · WHAT TO TAKE</span><span class="sh-t">${esc(m.title)}</span></span><button class="iconbtn" data-x aria-label="Close">${ICON.close}</button></div>
       <span class="mono lab">WHICH CARDS · widest pool first</span>
-      <div class="chips">${POOLS.map(([k, l]) => { const n = pick2(deck, k, st).length; return n || k === 'all' ? `<button class="chip${!secPick.size && pool === k ? ' on' : ''}" data-k="${k}">${!secPick.size && pool === k ? '✓ ' : ''}${l} · ${n}</button>` : ''; }).join('')}</div>
+      ${poolChips(secPick.size ? '' : pool, 'data-k', k => pick2(deck, k, st).length)}
       <span class="mono lab">SEEN</span>
       <div class="chips">${STATES.map(([k, l]) => `<button class="chip${!secPick.size && st === k ? ' on' : ''}" data-st="${k}">${!secPick.size && st === k ? '✓ ' : ''}${l} · ${pick2(deck, pool, k).length}</button>`).join('')}</div>
       <span class="mono lab">OR PICK SECTIONS (CHUNKS)</span>
@@ -449,7 +462,7 @@ function openScope(deck, mode, preset) {
       <div class="sheet-f"><button class="big press" data-go-flow ${sel.length ? '' : 'disabled'}>${ICON.walkS}FLOW NOW</button><button class="btn ghost" data-add ${sel.length ? '' : 'disabled'}>+ Add to flow<small>today’s target</small></button></div>
     </div>`;
     wrap.querySelector('[data-x]').onclick = () => wrap.remove();
-    wrap.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { secPick.clear(); pool = b.dataset.k; draw(); });
+    wrap.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { secPick.clear(); pool = togglePool(pool, b.dataset.k); draw(); });
     wrap.querySelectorAll('[data-st]').forEach(b => b.onclick = () => { secPick.clear(); st = b.dataset.st; draw(); });
     wrap.querySelectorAll('[data-s]').forEach(b => b.onchange = () => { const i = +b.dataset.s; b.checked ? secPick.add(i) : secPick.delete(i); draw(); });
     const label = secPick.size ? secs.filter((s, i) => secPick.has(i)).map(s => s.name).join(', ') : [pool !== 'all' ? poolLabel(pool) : '', st !== 'any' ? stateLabel(st) : ''].filter(Boolean).join(' · ');
@@ -465,7 +478,7 @@ function openScope(deck, mode, preset) {
 /* ============================ Flow tab: build from many decks ============================ */
 const builder = { pool: 'hit', state: 'any', order: 'decks', sel: new Set(), open: new Set() };
 const ORDERS = [['decks', 'Best decks first'], ['cards', 'Best cards first'], ['shelf', 'Shelf order']];
-const POOL_NOTE = { all: 'every card', hit: 'NEET, any QBank or GT hit, and Top-ups', neetgt: 'real NEET, NEET 25 recall and DocT GT hits', neet: 'real NEET and NEET 25 recall', topup: 'new cards not walked yet', doct: 'DocT QBank hits', marrow: 'Marrow QBank hits' };
+const POOL_NOTE = { all: 'every card', hit: 'NEET, any QBank or GT hit, and Top-ups', neet: 'cards asked in the real NEET-SS papers (2024, 2025)', topup: 'new cards not walked yet', doct: 'DocT QBank hits', marrow: 'Marrow QBank hits', gt: 'DocT Grand Test hits' };
 // Highest yield first: a deck's worth = the summed worth of the cards it gives; within a deck, cards keep their order.
 function buildQueue(decks, pool, state, order) {
   const lib = S.library ? S.library.decks.map(d => d.deck) : [];
@@ -511,8 +524,8 @@ function renderFlowTab() {
       <div class="scroll pad">
         ${targetBlock(true)}
         <span class="mono lab">WHICH CARDS · widest pool first</span>
-        <div class="chips">${POOLS.map(([k, l]) => `<button class="chip${builder.pool === k ? ' on' : ''}" data-pool="${k}">${l}</button>`).join('')}</div>
-        <p class="muted small pnote">${esc(POOL_NOTE[builder.pool] || '')}</p>
+        ${poolChips(builder.pool, 'data-pool')}
+        <p class="muted small pnote">${esc(POOL_NOTE[builder.pool] || 'Taps add up: any card hit by ' + poolName(builder.pool))}</p>
         <span class="mono lab">SEEN</span>
         <div class="chips">${STATES.map(([k, l]) => `<button class="chip${builder.state === k ? ' on' : ''}" data-state="${k}">${l}</button>`).join('')}</div>
         <span class="mono lab">ORDER</span>
@@ -538,7 +551,7 @@ function renderFlowTab() {
       ${nav('flow')}
     </div>`;
     bindGo(); bindTarget(draw);
-    app.querySelectorAll('[data-pool]').forEach(b => b.onclick = () => { builder.pool = b.dataset.pool; keep(draw); });
+    app.querySelectorAll('[data-pool]').forEach(b => b.onclick = () => { builder.pool = togglePool(builder.pool, b.dataset.pool); keep(draw); });
     app.querySelectorAll('[data-state]').forEach(b => b.onclick = () => { builder.state = b.dataset.state; keep(draw); });
     app.querySelectorAll('[data-order]').forEach(b => b.onclick = () => { builder.order = b.dataset.order; keep(draw); });
     app.querySelectorAll('[data-d]').forEach(b => b.onchange = () => { b.checked ? builder.sel.add(b.dataset.d) : builder.sel.delete(b.dataset.d); keep(draw); });
@@ -781,7 +794,7 @@ function drawCard() {
     </div>`;
   }
   el.innerHTML = top + body;
-  el.classList.toggle('ng', !!tag);
+  el.classList.toggle('ng', isNeet(c));
   closePanel();
   if (hasVisual(c)) {
     const chip = document.createElement('button'); chip.className = 'vchip mono'; chip.textContent = isQ ? '◈ visual after reveal' : '◈ Visual';
@@ -804,11 +817,11 @@ function drawCard() {
 }
 /* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
 function qbChips(c) {
-  if (c.topup) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${[['recall', 'NEET 25 recall'], ['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
-  if (c.tdeck) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up deck</span>${[['recall', 'NEET 25 recall'], ['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
+  if (c.topup) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${[['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
+  if (c.tdeck) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up deck</span>${[['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
   const q = qbOf(c);
   if (!q || !q.chips) return '';
-  return q.chips.map(x => `<span class="qc qc-${x.k} mono" title="${x.n} question${x.n > 1 ? 's' : ''}">${esc(x.t)}${x.n > 1 ? ' ×' + x.n : ''}</span>`).join('');
+  return q.chips.filter(x => x.k !== 'recall').map(x => `<span class="qc qc-${x.k} mono" title="${x.n} question${x.n > 1 ? 's' : ''}">${esc(x.t)}${x.n > 1 ? ' ×' + x.n : ''}</span>`).join('');
 }
 const bankLine = l => { const m = l.match(/^([A-Za-z0-9 +·]{2,40}?):\s+(.*)$/s); return m ? `<p><b class="bk">${esc(m[1])}</b> ${inline(m[2])}</p>` : `<p>${inline(l)}</p>`; };
 function qbBoxes(c) {
@@ -855,7 +868,7 @@ function updateFlowChrome() {
   } else $('#f-diff').textContent = '–';
   $('#f-undo').classList.toggle('dimmed', flow.browse ? flow.idx === 0 : !flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
-  $('#f-tiles').innerHTML = flow.queue.slice(0, 60).map((c, i) => `<span class="ft s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? ' tu' : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
+  $('#f-tiles').innerHTML = flow.queue.slice(0, 60).map((c, i) => `<span class="ft s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
 }
 
 function animate(kind, swap) {

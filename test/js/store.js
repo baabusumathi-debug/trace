@@ -81,29 +81,42 @@ const W = { recall: 5, gt: 2, doct: 1, marrow: 1 };
 export function hitsOf(c) {
   const h = new Set(); let score = 0;
   if (neetTag(c)) { h.add('neet'); score += 6; }
+  const recallOnly = k => k === 'recall';   // NEET 2025 recall is part of the NEET tag now, not a separate bank
   if (c.topup || c.tdeck) {
     h.add('topup');
     const b = c.banks || '';
-    if (c.recall || /Recall/i.test(b)) { h.add('recall'); score += 5; }
+    if (c.recall || /Recall/i.test(b)) { h.add('neet'); score += 5; }
     if (/\bGT\b/.test(b)) h.add('gt');
     if (/\bDocT\b/.test(b)) h.add('doct');
     if (/Marrow/i.test(b)) h.add('marrow');
     score += c.tdeck ? 3 : 1.5 * (c.nq || 1) + (c.tier === 1 ? 3 : 0);
   } else {
     const q = qbOf(c);
-    if (q && q.chips) for (const x of q.chips) { h.add(x.k); score += (W[x.k] || 1) * (x.k === 'recall' ? 1 : Math.min(x.n, 6)); }
+    if (q && q.chips) for (const x of q.chips) { if (recallOnly(x.k)) continue; h.add(x.k); score += (W[x.k] || 1) * Math.min(x.n, 6); }
   }
   return { h, score };
 }
-export const POOLS = [['all', 'All'], ['hit', 'Any hit'], ['neetgt', 'NEET + GT'], ['neet', 'NEET'], ['topup', 'Top-up'], ['doct', 'DocT QBank'], ['marrow', 'Marrow']];
+// Pools are built from components that add up (union): e.g. 'neet+gt', 'doct+marrow', 'doct+marrow+gt'. 'hit' = any component; 'all' = every card.
+// The gold ring and the NEET pool are the same set: a real NEET-SS paper tag, or the DocT NEET 2025 recall paper.
+export const isNeet = c => !!neetTag(c);
+export const COMPONENTS = [['neet', 'NEET'], ['gt', 'DocT GT'], ['doct', 'DocT QBank'], ['marrow', 'Marrow'], ['topup', 'Top-up']];
+export const POOLS = [['all', 'All'], ['hit', 'Any hit'], ...COMPONENTS];
+const LEGACY = { neetgt: 'neet+gt' };
+export const poolParts = p => (!p || p === 'all' || p === 'entire') ? [] : p === 'hit' ? ['hit'] : String(LEGACY[p] || p).split('+').filter(Boolean);
 export function inPool(c, p) {
-  if (!p || p === 'all' || p === 'entire') return true;
+  const parts = poolParts(p);
+  if (!parts.length) return true;
   const { h } = hitsOf(c);
-  if (p === 'hit') return h.size > 0;
-  if (p === 'neetgt') return h.has('neet') || h.has('recall') || h.has('gt');
-  if (p === 'neet') return h.has('neet') || h.has('recall');
-  return h.has(p);
+  if (parts[0] === 'hit') return h.size > 0;
+  return parts.some(k => h.has(k));
 }
+export function togglePool(cur, k) {
+  if (k === 'all' || k === 'hit') return k;
+  const set = new Set(poolParts(cur).filter(x => x !== 'hit'));
+  set.has(k) ? set.delete(k) : set.add(k);
+  return set.size ? COMPONENTS.map(c => c[0]).filter(x => set.has(x)).join('+') : 'all';
+}
+export const poolName = p => { const parts = poolParts(p); if (!parts.length) return 'All'; if (parts[0] === 'hit') return 'Any hit'; return parts.map(k => (COMPONENTS.find(c => c[0] === k) || [k, k])[1]).join(' + '); };
 export function realCount(deck) { const d = S.decks.get(deck); return d ? (d.virtual ? 0 : Math.max(0, ...d.cards.map(c => +c.no || 0))) : Infinity; }
 function topupsOf(deck, cards) {
   const list = S.qb.topups[deck];
@@ -117,8 +130,18 @@ export function withEdits(c) {
   const e = S.edits.get(c.deck + '|' + c.code);
   return e && e.fields && Object.keys(e.fields).length ? { ...c, ...e.fields, edited: true } : c;
 }
-export function neetTag(c) {
+function rawNeetTag(c) {
   return S.neet.get(c.deck + '|' + c.code) || S.neet.get('*|' + c.code) || S.neet.get(c.deck + '|' + (c.section || '')) || '';
+}
+// NEET tag (gold ring). 2024 = the 2024 recall tags (no full paper exists). 2025 = DocT's full NEET-SS 2025 recall paper
+// (the layer's recall chip) plus the Marrow-only 2025 recall items the DocT paper lacks (layer: neet25extra). The old
+// merged 2025 tags are no longer used.
+export function neetTag(c) {
+  if (!c) return '';
+  const raw = rawNeetTag(c), has24 = /24/.test(raw);
+  const q = qbOf(c), ex = S.qb.neet25extra || {};
+  const has25 = !!(q && q.chips && q.chips.some(x => x.k === 'recall')) || !!ex[c.deck + '|' + c.code] || !!c.recall || /Recall/i.test(c.banks || '');
+  return has24 && has25 ? 'NEET 24·25' : has24 ? 'NEET 24' : has25 ? 'NEET 25' : '';
 }
 
 /* ---------- times seen ---------- */

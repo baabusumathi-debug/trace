@@ -660,7 +660,7 @@ a.brand{text-decoration:none;color:inherit}
 /* Top-up marks: coral = new material from the QBanks/GTs (Top-up cards and Top-up decks). Shape carries it, colour helps. */
 .spine.tu{background:repeating-linear-gradient(135deg,#f3dcd1 0 6px,#ead0c3 6px 12px);--ln:#c46a4a;--ink2:#6e2c12;border:1.5px solid #c46a4a}
 .spine.tu .sp-star{color:#7a3317;font-weight:700}
-.spine.hastu::after{content:'+';position:absolute;top:-7px;right:-6px;width:14px;height:14px;border-radius:50%;background:#c46a4a;color:#fff;font:700 11px/14px var(--mono);text-align:center}
+.spine.hastu::after{content:attr(data-tu);position:absolute;top:-8px;right:-9px;min-width:16px;height:15px;padding:0 3px;border-radius:8px;background:#c46a4a;color:#fff;font:700 9.5px/15px var(--mono);text-align:center}
 .back.tu{outline:2px dashed #c46a4a;outline-offset:-6px}
 .back.tu .back-foot span:last-child{color:#c46a4a;font-weight:700}
 .mo.tu,.pl-strip i.tu,.ft.tu{background-image:linear-gradient(135deg,#c46a4a 0 38%,transparent 38%)}
@@ -672,3 +672,11 @@ a.brand{text-decoration:none;color:inherit}
 .mo.off{opacity:.16;box-shadow:none!important}
 .mo-pools{margin:4px 0 6px}.mo-sum{font-size:11px;color:#b9a77d;align-self:center;margin-left:6px}
 .mo-sys{font-size:11px;letter-spacing:.12em;color:#d8c08a;margin:16px 0 6px;text-transform:uppercase;border-bottom:1px solid rgba(216,192,138,.25);padding-bottom:4px}
+.chips.pool .pool-sep{color:#6b5f45;align-self:center;padding:0 2px}
+.chip.comp:not(.on){border-style:dashed}
+.lit{align-self:center;margin-left:6px}
+/* walked Top-up cards: the coral ear shrinks to a dot (the TU marks and the Top-up pool stay) */
+.mo.tu.tu1,.pl-strip i.tu.tu1,.ft.tu.tu1{background-image:radial-gradient(circle at 78% 22%,#c46a4a 0 22%,transparent 24%)}
+.tile.tu.tu1{box-shadow:none}.tile.tu.tu1::after{content:'';position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:#c46a4a}
+.tile{position:relative}
+.back-title{overflow-wrap:anywhere;hyphens:auto}
