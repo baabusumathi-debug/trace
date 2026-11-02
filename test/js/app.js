@@ -2,7 +2,7 @@ import { CONFIG, CHANNEL } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList } from './store.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf } from './store.js';
 import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
@@ -359,11 +359,11 @@ function filtersFor(deck, cards) {
     { key: 'edited', label: 'Edited', list: cards.filter(c => c.edited) }
   ].filter(f => f.key === 'all' || f.list.length);
 }
-function sectionsOf(cards) {
+function sectionsOf(cards) {            // chunks, in card order (War Map Chunks tab; see chunkOf)
   const out = [];
   for (const c of cards) {
-    const last = out[out.length - 1];
-    if (last && last.name === (c.section || '')) last.cards.push(c); else out.push({ name: c.section || '', cards: [c] });
+    const ch = chunkOf(c), last = out[out.length - 1];
+    if (last && last.key === ch.key) last.cards.push(c); else out.push({ key: ch.key, name: ch.name, cards: [c] });
   }
   return out;
 }
@@ -371,17 +371,17 @@ function sectionsOf(cards) {
 function chunked(cards, tileFn, names) {
   let out = '', prev = null;
   cards.forEach((c, i) => {
-    const sec = c.section || '';
-    if (i === 0 || sec !== prev) {
+    const ch = chunkOf(c);
+    if (i === 0 || ch.key !== prev) {
       if (i > 0) out += '<span class="cgap" aria-hidden="true"></span>';
-      if (names) out += `<span class="cname mono">${esc(sec || 'Cards')}</span>`;
+      if (names) out += `<span class="cname mono">${esc(ch.name)}</span>`;
     }
-    prev = sec;
+    prev = ch.key;
     out += tileFn(c);
   });
   return out;
 }
-const tipOf = c => `${c.deck} · ${c.section || 'Cards'} · card ${c.no}${neetTag(c) ? ' · ' + neetTag(c) : ''}${c.topup ? ' · Top-up' : ''}`;
+const tipOf = c => `${c.deck} · ${chunkOf(c).name} · card ${c.no}${neetTag(c) ? ' · ' + neetTag(c) : ''}${c.topup ? ' · Top-up' : ''}`;
 // Hover label for tiles: mouse on the Mac, S Pen hovering on the Tab and the phone (touch never shows it).
 function bindTips(root) {
   let tip = document.getElementById('hovtip');
@@ -767,8 +767,8 @@ async function endFlow() {
 function current() { return flow.queue[flow.idx]; }
 function sectionRange() {
   const c = current(); if (!c) return '';
-  const same = flow.queue.filter(x => x.deck === c.deck && x.section === c.section).map(x => x.no);
-  return (c.section || 'Cards') + (same.length > 1 ? ' · ' + Math.min(...same) + '–' + Math.max(...same) : '');
+  const ch = chunkOf(c), same = flow.queue.filter(x => x.deck === c.deck && chunkOf(x).key === ch.key).map(x => x.no);
+  return ch.name + (same.length > 1 ? ' · ' + Math.min(...same) + '–' + Math.max(...same) : '');
 }
 
 function renderFlow() {
@@ -918,7 +918,7 @@ function updateFlowChrome() {
   $('#f-undo').classList.toggle('dimmed', flow.browse ? flow.idx === 0 : !flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
   const fq = flow.queue.slice(0, 60);
-  $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.section !== fq[i - 1].section || c.deck !== fq[i - 1].deck) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
+  $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
 }
 
 function animate(kind, swap) {

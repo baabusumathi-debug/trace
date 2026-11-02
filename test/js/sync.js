@@ -180,7 +180,7 @@ export async function sync({ downloadAll = true } = {}) {
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'edits.json' },
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'library.json' }
     ];
-    const needChunks = Date.now() - k.chunksAt > 12 * 3600e3;
+    const needChunks = Date.now() - k.chunksAt > 12 * 3600e3 || !(await db.kv.get('chunksNamed'));   // re-read once to pick up chunk names
     if (needChunks) ops.push({ op: 'sheetRead', tab: 'Chunks', fromRow: 2 }, { op: 'sheetRead', tab: 'Decks', fromRow: 2 }, { op: 'sheetRead', tab: 'Signals', fromRow: 2 });
     const r = await batch(ops);
     // 1. library (found by name: Claude replaces the file when decks change)
@@ -207,11 +207,11 @@ export async function sync({ downloadAll = true } = {}) {
     if (needChunks && r[5] && r[5].ok) {
       const chunks = {};
       for (const v of r[5].data.values) {
-        const [cid, deck, , from, to] = v;
+        const [cid, deck, name, from, to] = v;
         if (!cid || !deck) continue;
-        (chunks[deck] = chunks[deck] || []).push({ id: cid, from: +from, to: +to });
+        (chunks[deck] = chunks[deck] || []).push({ id: cid, name: String(name || '').trim(), from: +from, to: +to });
       }
-      S.chunks = chunks; await db.kv.set('chunks', chunks); await db.kv.set('chunksAt', Date.now());
+      S.chunks = chunks; await db.kv.set('chunks', chunks); await db.kv.set('chunksAt', Date.now()); await db.kv.set('chunksNamed', 1);
       if (r[6] && r[6].ok) {
         const df = {};
         for (const v of r[6].data.values) if (v[0] && +v[6] > 0) df[v[0]] = +v[6];
