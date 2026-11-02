@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-023)
+## State (as of entry T-024)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.2.3** · last code commit `c780cce` |
-| Test build (`test/`) | **1.3.12** · last code commit: see entry T-023 (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.13** · last code commit: see entry T-024 (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **5** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,12 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-024 — 2026-11-02 — Claude — test — 1.3.13
+- **T-023's board is withdrawn (Naven, 2 Nov):** `test/js/app.js` and `test/css/app.css` are back to their 1.3.11 state (commit `6af4d8c`). The shelf, mosaic, Eagle view and Flow tab look and work as in 1.3.11.
+- **Kept from T-023: ✦ stars from the current NEET set.** `recountStars()` in `store.js` sets a downloaded deck's ✦ to its gold-ring NEET cards; other decks keep the library count. `sync.js` recounts after deck downloads. The shelf panel says "✦ n NEET cards" instead of "real NEET Qs".
+- The mosaic and Flow selection redesign is under discussion with Naven; nothing more ships until he approves.
+- Tests: demo mode at 1180×740: shelf stars and panel, Eagle mosaic, Flow tab; no page errors.
 
 ## T-023 — 2026-11-02 — Claude — test — 1.3.12
 - **One board everywhere** (Naven's design, 2 Nov): the Flow tab, the Eagle view (`#/sys/all`), a system's Mosaic tab and the shelf's pulled deck now share one board. Each deck is **one horizontal row** of tiles that stretch to the width; a gold bar separates chunks (card `section`), and a thin band under each chunk shows how much of it is walked. The label shows deck code, title, ✦, **card count** and lit count.
