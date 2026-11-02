@@ -4,23 +4,30 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-025)
+## State (as of entry T-026)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
-| Live app (repo root) | **1.2.3** · last code commit `c780cce` |
+| Live app (repo root) | **1.4.0** · promoted from test 1.3.14 on 2 Nov (T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
 | Test build (`test/`) | **1.3.14** · last code commit: see entry T-025 (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
-| Guidance | `AGENTS.md` guidance version **5** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
+| Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Real file verified in Naven's Chrome on 31 Oct: found, downloaded (6,381,340 bytes), decoded (531.72 s), and actually played to 0:12. Pause held and resume advanced. Not yet checked: offline playback, and whether the sound was actually heard. Nothing is automated or scheduled, and the producer's capabilities are unverified. |
 | Flow message pilot | Test build only. The route `#/pilot` sends **one** request, `req-<id>.json`, to `Trace › flowmsg` on the first Next after Reveal, and shows **one** plain-text reply from Journal, `res-<id>.json`, within 5 minutes. **One real round trip passed on 31 Oct (T-015)**, as an active-session pilot. Journal's watch was started by hand in chat, so that was **not** unattended automation. Since T-016, the test build also asks bridge v4 to wake Journal's webhook routine. **Two automatic wakes passed on 1 Nov with no chat watch** (request/reply pairs `fm-20261101-160706-k5qi7c` and `fm-20261101-161241-a2n8vw` are in Drive). Each took about 37–61 s from request to reply, nearly all of it on Journal's side. Naven then paused Journal work. **The current `JOURNAL_ENABLED` value is unconfirmed.** |
 | QBank/GT layer | Test 1.3.8 only. `test/data/qbank.json` (version in the file) holds, per card: bank chips (NEET 25 recall · Marrow · DocT · DocT GT), Top-up lines, Crossfire lines and checked corrections; plus 242 Top-up cards in 94 decks and 5 Top-up decks (80 cards: TU-NEURO 24, TU-IE 15, TU-TX 15, TU-AIR 13, TU-SAFE 13). Built by Claude from the DocT QBank, 20 DocT GTs and the Marrow map; every item was approved by Naven on 2 Nov. Source of truth for its content: the CCM project files `claude/QMap_FINAL_*.csv`. |
-| Waiting on Naven | Promote test to live · meditation producer, times and input source · sign-off after the visual pilot |
+| Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-026 — 2026-11-02 — Claude — live — 1.4.0
+- **Promoted on Naven's "proceed" (2 Nov, 21:01 IST)**: test 1.3.14 copied to the repo root. Root differs from `test/` only in `appVersion` (1.4.0), the service-worker version and the page title "Trace"; the root manifest is unchanged. The code picks live behaviour from the URL path: database `trace`, writes to the Sheet and Drive as before, no TEST tag, pilots off.
+- **Now live:** palace home and Loft; meditation (no recording pilot); visual decks (GI01A, GI01B, GI01C, GI02A, GI02B v2, GI03, GI04, GI05 published by ChatGPT; GI06, GI07A, GI07B not yet); the QBank/GT layer with bank chips, Top-up lines, Crossfire, corrections, 242 Top-up cards and 5 Top-up decks; additive pool chips; NEET tag from DocT's 2025 recall paper + 2024 tags; ✦ = NEET cards; spine put-back; Top-up marks; chunk gaps, chunk names, hover label, lit bar; the Flow desk (target, Continue, Again pile, Add more).
+- **New in live writes:** views of Top-up cards and Top-up-deck cards go to `TraceEvents` (codes `TU-nn`, deck codes `TU-…` for the Top-up decks); they never become `Log` rows (T-019/T-021 rules). Database upgrades from version 1 to 2 (adds `visuals`, `vimg`); an old Trace tab left open can hold the upgrade until it is closed.
+- `AGENTS.md` → guidance version 6 (file table, routes, §10 palace line).
+- Tests: the root copy served at a non-`/test/` path in demo mode: palace, shelf, Eagle, Flow desk, deck, Loft, status; lit flow; offline reopen (13 spines from cache); no page errors. Not device acceptance.
 
 ## T-025 — 2026-11-02 — Claude — test — 1.3.14
 Four changes Naven agreed in conversation on 2 Nov (talked through first, then approved to build):

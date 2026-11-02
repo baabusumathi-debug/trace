@@ -2,7 +2,7 @@
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG } from './config.js';
-import { S, emit, recount, setNeet, deckMeta, today, off } from './store.js';
+import { S, emit, recount, setNeet, setQb, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -57,6 +57,8 @@ export async function buildLogRows(force) {
   const all = await db.all('events');
   const undone = new Set(all.filter(e => e.kind === 'undo').map(e => e.ref));
   const views = all.filter(e => e.kind === 'view' && !undone.has(e.id));
+  const extra = views.filter(e => !e.logged && e.no > realCount(e.deck));
+  if (extra.length) { extra.forEach(e => e.logged = 1); await db.putMany('events', extra); }
   const pending = views.filter(e => !e.logged && (e.session === force || now - e.ts > CONFIG.logIdleMs));
   if (!pending.length) return 0;
   // cards already walked before (old War Map rows + earlier Trace sessions)
@@ -142,7 +144,18 @@ export async function countPending() {
   return status.pending;
 }
 
+// The QBank/GT layer ships with the app (same origin), so it works without the bridge and offline once fetched.
+export async function loadQbank() {
+  try {
+    const r = await fetch('./data/qbank.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    const q = await r.json();
+    if (q && q.version && q.version !== S.qb.version) { setQb(q); await db.kv.set('qbank', q); recount(); emit(); }
+  } catch (e) { /* offline: keep the stored copy */ }
+}
+
 export async function sync({ downloadAll = true } = {}) {
+  loadQbank();
   if (status.busy || !hasBackend()) return;
   if (!navigator.onLine && !isDemo()) { status.state = 'offline'; emit(); return; }
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();
@@ -180,7 +193,7 @@ export async function sync({ downloadAll = true } = {}) {
     if (!libRes.ok) throw new Error('library: ' + libRes.error);
     const lib = JSON.parse(libRes.data.text);
     const oldNeet = S.library && S.library.neet_version;
-    S.library = lib; await db.kv.set('library', lib);
+    S.library = lib; await db.kv.set('library', lib); applyTopupDecks();
     if (lib.neet_id && (lib.neet_version !== oldNeet || !S.neet.size)) {
       const [n] = await batch([{ op: 'readFile', id: lib.neet_id }]);
       if (n.ok) { const nj = JSON.parse(n.data.text); setNeet(nj); await db.kv.set('neet', nj); }
@@ -325,7 +338,7 @@ async function syncEdits(found, knownId) {
     if (!mine || r.ts > mine.ts) apply.push({ key, deck: r.deck, code: r.code, fields: r.reset ? {} : r.fields, ts: r.ts, dev: r.dev, synced: 1, reset: !!r.reset });
   }
   if (apply.length) { await db.putMany('edits', apply); apply.forEach(a => S.edits.set(a.key, a)); }
-  if (dirty.length) {
+  if (dirty.length && !CONFIG.readOnly) {
     const text = JSON.stringify({ note: 'Card edits made in the Trace app. Newest edit per card wins.', updated: new Date().toISOString(), edits: merged }, null, 1);
     const [w] = await batch([{ op: 'writeFile', folderId: CONFIG.traceFolderId, name: 'edits.json', text, mime: 'application/json' }]);
     if (!w.ok) throw new Error('edits: ' + w.error);
@@ -336,6 +349,7 @@ async function syncEdits(found, knownId) {
 }
 
 async function pushOutbox() {
+  if (CONFIG.readOnly) return;            // test build: study stays on this device
   const evs = (await db.all('events')).filter(e => !e.synced).sort((a, b) => a.ts - b.ts);
   const rows = (await db.all('logrows')).filter(r => !r.synced);
   const ops = [];
@@ -371,6 +385,7 @@ export async function downloadDecks(only) {
     });
     await db.putMany('decks', good);
     good.forEach(d => S.decks.set(d.deck, d));
+    recount();
     status.downloading = Math.max(0, need.length - i - part.length); emit();
   }
   if (failures.length) throw new Error('Some decks did not verify: ' + failures.slice(0, 3).join('; '));
@@ -431,6 +446,7 @@ async function syncTargets() {
   const ops = [{ op: 'sheetRead', tab: 'Targets', fromRow: 2 }];
   const add = t.items.filter(i => !i.synced && i.status === 'active');
   const pulled = t.items.filter(i => !i.synced && i.status === 'pulled');
+  if (CONFIG.readOnly) { add.length = 0; pulled.length = 0; }
   if (add.length) ops.push({ op: 'sheetAppend', tab: 'Targets', dedupe: { col: 2 }, rows: add.map((i, n) => {
     const d = new Date(i.created || Date.now());
     return [t.date, CONFIG.who, i.item_id, i.deck, '', 1, i.nos.length, compressNos(i.nos), n + 1, 'active', stamp(d), stamp(new Date()), ''];

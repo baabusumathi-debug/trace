@@ -4,17 +4,20 @@ const STORES = {
   decks: 'deck',                  // { deck, version, cards[], verified, downloadedAt }
   events: 'id',                   // card views (the source of truth for "times seen")
   logrows: 'id',                  // War Map Log rows waiting to be appended
-  edits: 'key'                    // card edits: key = deck|code
+  edits: 'key',                   // card edits: key = deck|code
+  visuals: 'deck',                // accepted visual-deck package per deck (from ChatGPT, validated)
+  vimg: 'key'                     // visual images: key = deck|file, value { blob }
 };
 
 let dbp = null;
 let DBNAME = 'trace';
 export function useDemoDb() { DBNAME = 'trace-demo'; dbp = null; }
+export function useDbName(n) { DBNAME = n; dbp = null; }
 
 function open() {
   if (dbp) return dbp;
   dbp = new Promise((resolve, reject) => {
-    const req = indexedDB.open(DBNAME, 1);
+    const req = indexedDB.open(DBNAME, 2);
     req.onupgradeneeded = () => {
       const db = req.result;
       for (const [name, key] of Object.entries(STORES)) {
@@ -55,3 +58,20 @@ export const db = {
     set: (key, val) => tx('kv', 'readwrite', st => { st.put(val, key); })
   }
 };
+
+// Read one value from another Trace database on this device without ever creating or changing it.
+export async function peekDb(name, store, key) {
+  try {
+    if (indexedDB.databases) { const all = await indexedDB.databases(); if (!all.some(d => d.name === name)) return null; }
+    return await new Promise(resolve => {
+      const req = indexedDB.open(name);
+      req.onupgradeneeded = () => { req.transaction.abort(); };     // it did not exist: leave no trace
+      req.onerror = () => resolve(null);
+      req.onsuccess = () => {
+        const d = req.result;
+        try { const g = d.transaction(store, 'readonly').objectStore(store).get(key); g.onsuccess = () => { resolve(g.result || null); d.close(); }; g.onerror = () => { resolve(null); d.close(); }; }
+        catch (e) { resolve(null); d.close(); }
+      };
+    });
+  } catch (e) { return null; }
+}

@@ -1,6 +1,6 @@
 # AGENTS.md — working on Trace
 
-**Guidance version: 5 (2026-11-01).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
+**Guidance version: 6 (2026-11-02).** Raise this number with every change to the rules. A higher number means every assistant must read this file again in full.
 
 This file is written for **any AI assistant** working on this project (Claude, ChatGPT, Grok bots, Muse or others) and for Naven. Read it in full the first time, and whenever §12 says to. Keep it accurate when you finish a task.
 
@@ -92,7 +92,7 @@ Plain JavaScript modules, with no build step and no framework. Fonts are self-ho
 | File | Responsibility | In root (live)? |
 |---|---|---|
 | `index.html`, `manifest.webmanifest`, `icons/`, `fonts/` | shell, install metadata | yes |
-| `img/` | palace artwork | test only |
+| `img/` | palace artwork | yes (since 1.4.0) |
 | `css/app.css` | all styles | yes |
 | `sw.js` | offline cache. **Bump `VERSION` on every release.** | yes |
 | `js/config.js` | `appVersion`; `CHANNEL` (`live` or `test`, from the URL path); `readOnly` (true in test) | yes (no `CHANNEL` in live) |
@@ -103,14 +103,15 @@ Plain JavaScript modules, with no build step and no framework. Fonts are self-ho
 | `js/md.js` | card text → HTML: `reflow`, `render`, `splitQ`, `plain` (**also decides how visual-link phrases match**) | yes |
 | `js/emblems.js` | system and deck emblems | yes |
 | `js/app.js` | router and screens | yes |
-| `js/palace.js` | palace home; meditation alcove and player | test only |
-| `js/visuals.js` | visual decks: download, validation, tappable phrases, viewer panel | test only |
+| `js/palace.js` | palace home; meditation alcove and player (recording pilot shows only in test) | yes (since 1.4.0) |
+| `js/visuals.js` | visual decks: download, validation, tappable phrases, viewer panel | yes (since 1.4.0) |
 | `backend/Code.gs` | the bridge (placeholder key) | n/a |
 | `backend/trace_validate.py` | visual-deck validator | n/a |
 
 **Routes:**
 - Test: `#/` palace · `#/shelf` · `#/sys/<nn>` · `#/deck/<CODE>` · `#/flow` · `#/loft` · `#/meditation` · `#/changes` · `#/status`.
-- Live 1.2.3: `#/` is the shelf, and there is no palace or meditation.
+- Live (since 1.4.0) has the same routes. `js/flowmsg.js` and the `#/pilot` route exist in both copies, but the pilots run only in test (`CHANNEL === 'test'`).
+- `data/qbank.json` (QBank/GT layer) is served from each copy's own `data/` folder; the service worker never caches it.
 
 ## 6. Test build and release
 
@@ -217,7 +218,7 @@ Keep bridge changes rare, and batch them.
   - Since T-016, the app also asks the bridge (`notifyJournal`) to wake Journal's webhook routine. This only works when Naven sets `JOURNAL_ENABLED=true`.
   - An unattended wake isn't proven until a bounded test passes. Before that, the only proven route is the chat-started watch.
   - No secret may ever appear in the app, the repo or any chat.
-- **Palace and meditation home:** in the test build, waiting for Naven's "promote".
+- **Palace and meditation home:** live since 1.4.0 (T-026). The Journal recording pilot and the Flow-message pilot stay test-only.
 
 ## 11. Writing CHANGELOG.md
 
