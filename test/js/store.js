@@ -185,6 +185,18 @@ export function recount() {
     else for (let i = 1; i <= d.cards; i++) if (seen(d.deck, i) > 0) n++;
     deckSeen.set(d.deck, n);
   }
+  recountStars();
+}
+// ✦ stars = NEET (gold-ring) cards in the deck, from the current NEET set (2024 tags + DocT's 2025 recall paper).
+// Decks not on this device yet keep the library's old count until they download.
+export function recountStars() {
+  if (!S.library) return;
+  for (const d of S.library.decks) {
+    if (d.topupDeck) continue;
+    if (d.star0 === undefined) d.star0 = d.star || 0;
+    const dd = S.decks.get(d.deck);
+    d.star = dd && dd.cards.length ? cardsOf(d.deck).filter(isNeet).length : d.star0;
+  }
 }
 export function seen(deck, no) {
   return (seenMap.get(deck + '|' + no) || 0) + ((S.logBase[deck] || {})[no + off(deck)] || 0);

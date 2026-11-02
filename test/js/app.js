@@ -209,8 +209,8 @@ function spine(d, out) {
   const t = tier(d.star || 0), w = walked(d.deck), size = P.get('spine', 'm');
   const k = size === 's' ? 0.8 : size === 'l' ? 1.25 : 1;
   const h = Math.round((92 + Math.min(d.cards, 36) / 36 * 46) * k);
-  return `<button class="spine t-${t}${out ? ' out' : ''}${isReady(d.deck) ? '' : ' notready'}${d.topupDeck ? ' tu' : tuLeft(d.deck) ? ' hastu' : ''}" data-tu="+${tuLeft(d.deck)}" data-deck="${esc(d.deck)}" style="--h:${h}px;--tone:${emblem(d.system, d.deck).tone}" aria-label="${esc(d.deck)}: ${esc(d.title)}, ${d.star || 0} NEET questions, ${w} of ${d.cards} walked">
-    <span class="sp-star mono">${d.topupDeck ? 'TU' : d.star ? '✦' + d.star : ''}</span><span class="sp-code mono">${esc(d.deck)}</span>
+  return `<button class="spine t-${t}${out ? ' out' : ''}${isReady(d.deck) ? '' : ' notready'}${d.topupDeck ? ' tu' : tuLeft(d.deck) ? ' hastu' : ''}" data-tu="+${tuLeft(d.deck)}" data-deck="${esc(d.deck)}" style="--h:${h}px;--tone:${emblem(d.system, d.deck).tone}" aria-label="${esc(d.deck)}: ${esc(d.title)}, ${d.star || 0} NEET cards, ${w} of ${d.cards} walked">
+    <span class="sp-star mono">${d.topupDeck ? 'TU' : d.star ? '✦' + d.star : ''}</span><span class="sp-code mono">${esc(d.deck)}</span><span class="sp-n mono">${d.cards}</span>
     <span class="sp-bar"><i style="width:${Math.round(100 * w / Math.max(1, d.cards))}%"></i></span></button>`;
 }
 function pulledPanel(d) {
@@ -220,10 +220,10 @@ function pulledPanel(d) {
   return `<div class="pulled" id="pulled">
     <div class="pl-main">${deckBack(d, true)}
       <div class="pl-info"><span class="mono kick">${esc(d.deck)} · ${TIER_NAME[t]}</span><span class="pl-title">${esc(d.title)}</span>
-        <span class="mono pl-facts">✦ ${d.star || 0} real NEET Qs<br>${d.cards} cards · ${w} walked${neetN ? ` · ${neetN} NEET cards` : ''}${ago != null ? `<br>last walked ${ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + ' days ago'}` : ''}</span></div></div>
-    ${cards.length ? `<div class="pl-strip" aria-hidden="true">${cards.map(c => `<i class="s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}"></i>`).join('')}</div>` : ''}
+        <span class="mono pl-facts">✦ ${d.star || 0} NEET cards<br>${d.cards} cards · ${w} walked${ago != null ? `<br>last walked ${ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + ' days ago'}` : ''}</span></div></div>
+    ${cards.length ? `<div class="pl-board">${boardControls(cards, false, true)}${boardHTML([d], 'look', false)}</div>` : ''}
     <div class="pl-btns"><a class="btn primary press" href="#/deck/${encodeURIComponent(d.deck)}">Open deck</a>
-      <button class="btn ghost" data-scope="flow">▶ Flow now</button><button class="btn ghost" data-scope="add">+ Add to flow</button><button class="btn ghost" data-putback>↩ Put back</button></div>
+      <button class="btn ghost" data-pflow>▶ Flow ${cards.filter(litOf).length} lit</button><button class="btn ghost" data-padd>+ Add lit to flow</button><button class="btn ghost" data-putback>↩ Put back</button></div>
   </div>`;
 }
 function renderCabinet() {
@@ -270,7 +270,10 @@ function renderCabinet() {
   });
   const pl = $('#pulled');
   if (pl) {
-    pl.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(pulled, b.dataset.scope));
+    const lab = () => pulled + ' · ' + litLabel();
+    pl.querySelector('[data-pflow]').onclick = () => flowCards(takeOf(cardsOf(pulled), 'look'), lab());
+    pl.querySelector('[data-padd]').onclick = () => addCards(takeOf(cardsOf(pulled), 'look'), lab());
+    bindBoard(pl, { mode: 'look', grouped: false, decks: () => [deckMeta(pulled)], rerender: renderCabinet });
     const pb = pl.querySelector('[data-putback]');
     if (pb) pb.onclick = () => { const sc = app.querySelector('.scroll'), y = sc.scrollTop; pulled = null; renderCabinet(); app.querySelector('.scroll').scrollTop = y; };
   }
@@ -296,20 +299,16 @@ function renderSystem(num) {
   const all = num === 'all';
   const s = all ? (S.library ? { name: 'all', label: 'Eagle view · every card', decks: S.library.decks } : null) : systems().find(x => sysNum(x.name) === num);
   if (!s) return renderCabinet();
-  const tab = all ? 'mosaic' : P.get('sysTab', 'decks'), sort = P.get('sort', 'neet'), mp = P.get('moPool', 'all'), mst = P.get('moState', 'any');
-  const hitN = d => pick2(d.deck, mp, mst).length;
-  const decks = sort === 'hits' ? s.decks.slice().sort((a, b) => hitN(b) - hitN(a) || a.deck.localeCompare(b.deck, undefined, { numeric: true })) : sortDecks(s.decks, sort);
+  const tab = all ? 'mosaic' : P.get('sysTab', 'decks'), sort = P.get('sort', 'neet');
+  const decks = sortDecks(s.decks, sort);
   const stars = decks.reduce((t, d) => t + (d.star || 0), 0), cards = decks.reduce((t, d) => t + d.cards, 0), w = decks.reduce((t, d) => t + walked(d.deck), 0);
+  const draw = () => renderSystem(num);
   let body;
   if (tab === 'mosaic') {
-    body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span><span class="lg-n"><i class="lg-tu"></i>coral corner = Top-up</span></div>
-      ${poolChips(mp, 'data-mp')}
-      <div class="chips mo-pools">${STATES.map(([k, l]) => `<button class="chip${mst === k ? ' on' : ''}" data-mst="${k}">${l}</button>`).join('')}<span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
-      <div class="mosaic">${(all ? systems().map(g => ({ g, ds: decks.filter(d => d.system === g.name) })) : [{ g: null, ds: decks }]).map(({ g, ds }) => (g ? `<div class="mo-sys mono">${esc(g.label)} · ${ds.reduce((t, d) => t + hitN(d), 0)}</div>` : '') + ds.map(d => {
-        const cs = cardsOf(d.deck), lit = c => inPool(c, mp) && inState(c, mst);
-        return `<div class="mo-row${d.topupDeck ? ' tu' : ''}"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.topupDeck ? 'TOP-UP' : d.star ? '✦ ' + d.star : ''}${mp !== 'all' || mst !== 'any' ? ' · ' + hitN(d) : ''}</span></a>
-          <span class="mo-cells">${cs.length ? cs.map(c => `<button class="mo s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" aria-label="${esc(c.code)}, seen ${seen(c.deck, c.no)}"></button>`).join('') : '<span class="muted small">not downloaded</span>'}</span></div>`;
-      }).join('')).join('')}</div>`;
+    body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span><span class="lg-n"><i class="lg-tu"></i>coral corner = Top-up</span><span class="lg-n">bar = chunk</span></div>
+      ${boardControls(s.decks.flatMap(d => cardsOf(d.deck)), all)}
+      ${boardHTML(s.decks, 'look', all)}
+      <p class="muted small mt">Tap a deck’s tiles to zoom into a chunk${coarse() ? '' : ', or click one tile to look at that card'}.</p>`;
   } else {
     body = `<div class="spread">${decks.map((d, i) => `<div class="fan" style="--rot:${[-1.5, 1.2, 0.8, -1, 1.4, -0.8, -1.2, 1][i % 8]}deg">${deckBack(d)}</div>`).join('')}</div>`;
   }
@@ -318,24 +317,19 @@ function renderSystem(num) {
       <div class="row"><a class="iconbtn" href="#/shelf" aria-label="Back to the shelf">${ICON.back}</a>
         <span class="tt"><span class="mono kick">${all ? 'ALL' : num} · ✦ ${stars} · ${decks.length} DECKS · ${cards} CARDS · ${w} WALKED</span><span class="h1s">${esc(s.label)}</span></span></div>
       <div class="row sb">${all ? '<span></span>' : `<span class="seg"><button class="${tab === 'decks' ? 'on' : ''}" data-tab="decks">Decks</button><button class="${tab === 'mosaic' ? 'on' : ''}" data-tab="mosaic">Mosaic</button></span>`}
-        <span class="chips nowrap-row small">${SORTS.slice(0, 3).concat(tab === 'mosaic' ? [['hits', 'Most lit']] : []).map(([k, l]) => `<button class="chip${sort === k ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</span></div>
+        ${tab === 'mosaic' ? '' : `<span class="chips nowrap-row small">${SORTS.slice(0, 3).map(([k, l]) => `<button class="chip${sort === k ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</span>`}</div>
     </header>
     <div class="scroll pad">${body}</div>
+    ${tab === 'mosaic' ? boardFoot(takeDecks(s.decks, 'look', all), 'look') : ''}
     ${nav('shelf')}
   </div>`;
   bindGo();
   app.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { P.set('sysTab', b.dataset.tab); renderSystem(num); });
   app.querySelectorAll('[data-sort]').forEach(b => b.onclick = () => { P.set('sort', b.dataset.sort); renderSystem(num); });
-  app.querySelectorAll('[data-mp]').forEach(b => b.onclick = () => { P.set('moPool', togglePool(mp, b.dataset.mp)); renderSystem(num); });
-  app.querySelectorAll('[data-mst]').forEach(b => b.onclick = () => { P.set('moState', b.dataset.mst); renderSystem(num); });
-  app.querySelectorAll('.mo').forEach(b => b.onclick = () => {
-    const list = cardsOf(b.dataset.deck);
-    startFlow(list, { browse: true, start: list.findIndex(c => c.code === b.dataset.code), label: 'Look', returnTo: location.hash });
-  });
+  if (tab === 'mosaic') bindBoard(app, { mode: 'look', grouped: all, decks: () => s.decks, rerender: draw });
 }
 
 /* ============================ deck ============================ */
-const deckFilter = {};
 function filtersFor(deck, cards) {
   return [
     ...POOLS.map(([key, label]) => ({ key, label, list: cards.filter(c => inPool(c, key)) })),
@@ -357,7 +351,7 @@ function renderDeck(code) {
   if (!m) return renderCabinet();
   _lastDeck = code;
   const cards = cardsOf(code), t = tier(m.star || 0), size = P.get('tile', 'm');
-  const df = deckFilter[code] || (deckFilter[code] = { pool: 'all', st: 'any' });
+  const df = { pool: bPool(), st: bSt() };   // the same lit chips as every other view
   const cur = { list: pick2(code, df.pool, df.st) };
   const inSet = new Set(cur.list.map(c => c.code));
   const st = deckState(code), neetN = cards.filter(c => isNeet(c)).length;
@@ -385,8 +379,8 @@ function renderDeck(code) {
     </div>
   </div>`;
   bindGo();
-  app.querySelectorAll('[data-dp]').forEach(b => b.onclick = () => { df.pool = togglePool(df.pool, b.dataset.dp); renderDeck(code); });
-  app.querySelectorAll('[data-ds]').forEach(b => b.onclick = () => { df.st = b.dataset.ds; renderDeck(code); });
+  app.querySelectorAll('[data-dp]').forEach(b => b.onclick = () => { P.set('pool', togglePool(df.pool, b.dataset.dp)); renderDeck(code); });
+  app.querySelectorAll('[data-ds]').forEach(b => b.onclick = () => { P.set('pst', b.dataset.ds); renderDeck(code); });
   app.querySelectorAll('[data-size]').forEach(b => b.onclick = () => { P.set('tile', b.dataset.size); renderDeck(code); });
   const dl = app.querySelector('[data-act=dl]');
   if (dl) dl.onclick = async () => { dl.disabled = true; try { await downloadDecks([code]); toast('Downloaded and checked.'); } catch (e) { toast(e.message); } emit(); };
@@ -396,9 +390,9 @@ function renderDeck(code) {
     startFlow(list, { browse: true, start: list.findIndex(c => c.code === el.dataset.code), label: 'Look', returnTo: location.hash });
   });
 }
-function tile(c, active) {
+function tile(c, active, extra = '') {
   const n = seen(c.deck, c.no), tag = neetTag(c);
-  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
+  return `<button class="tile s${shade(n)}${extra}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
     <span class="tl-top mono"><span>${c.topup ? 'TOP-UP' : tag ? '✦' : esc(c.code)}</span><span>×${n}</span></span>
     <span class="tl-no">${c.no}</span>
     <span class="tl-tag mono">${esc(tag)}${c.edited ? ' ✎' : ''}</span></button>`;
@@ -475,19 +469,6 @@ function openScope(deck, mode, preset) {
   if (mode === 'flow') { /* same sheet; Flow now is the primary button */ }
 }
 
-/* ============================ Flow tab: build from many decks ============================ */
-const builder = { pool: 'hit', state: 'any', order: 'decks', sel: new Set(), open: new Set() };
-const ORDERS = [['decks', 'Best decks first'], ['cards', 'Best cards first'], ['shelf', 'Shelf order']];
-const POOL_NOTE = { all: 'every card', hit: 'NEET, any QBank or GT hit, and Top-ups', neet: 'cards asked in the real NEET-SS papers (2024, 2025)', topup: 'new cards not walked yet', doct: 'DocT QBank hits', marrow: 'Marrow QBank hits', gt: 'DocT Grand Test hits' };
-// Highest yield first: a deck's worth = the summed worth of the cards it gives; within a deck, cards keep their order.
-function buildQueue(decks, pool, state, order) {
-  const lib = S.library ? S.library.decks.map(d => d.deck) : [];
-  const per = [...decks].sort((a, b) => lib.indexOf(a) - lib.indexOf(b)).map(d => ({ d, cs: pick2(d, pool, state) })).filter(x => x.cs.length);
-  if (order === 'shelf') return per.flatMap(x => x.cs);
-  if (order === 'cards') return per.flatMap(x => x.cs).map((c, i) => ({ c, i, w: hitsOf(c).score, n: seen(c.deck, c.no) })).sort((a, b) => b.w - a.w || a.n - b.n || a.i - b.i).map(x => x.c);
-  return per.map(x => ({ ...x, w: x.cs.reduce((t, c) => t + hitsOf(c).score, 0) })).sort((a, b) => b.w - a.w).flatMap(x => x.cs);
-}
-const flowLabel = () => [builder.pool !== 'all' ? poolLabel(builder.pool) : 'Entire', builder.state !== 'any' ? stateLabel(builder.state) : ''].filter(Boolean).join(' · ');
 function targetProgress() {
   const items = targetItems(), day = today();
   return items.map(i => ({ ...i, done: i.nos.filter(n => seenOn(i.deck, n, day)).length }));
@@ -514,68 +495,187 @@ function bindTarget(rerender) {
   if (st) st.onclick = e => { e.preventDefault(); const q = targetQueue(); if (q.length) startFlow(q, { label: 'Target', returnTo: location.hash }); };
   app.querySelectorAll('[data-rm]').forEach(b => b.onclick = async () => { await removeTarget(b.dataset.rm); rerender(); if (hasBackend()) sync({ downloadAll: false }); });
 }
+/* ============================ the board: one row per deck, chunks split by bars ============================ */
+// The same board is used by the Flow tab, the Eagle view, a system's Mosaic and the shelf's pulled deck.
+// Which cards are lit (pool chips + Seen) and the order are shared by every view and remembered on this device.
+const BV = { open: new Set(), shut: new Set(), zoom: null, ex: new Set() };   // systems opened/closed, zoomed chunk { deck, ci }, cards left out (Flow tab)
+const bPool = () => P.get('pool', 'hit'), bSt = () => P.get('pst', 'any'), bOrder = () => P.get('order', 'yield');
+const litOf = c => inPool(c, bPool()) && inState(c, bSt());
+const coarse = () => { try { return matchMedia('(pointer: coarse)').matches; } catch (e) { return false; } };
+const natDeck = (a, b) => a.deck.localeCompare(b.deck, undefined, { numeric: true });
+const exKey = c => c.deck + '|' + c.code;
+// Yield = average worth of the lit cards, so a small rich deck is not buried under a big thin one.
+function yieldOf(cards) { const l = cards.filter(litOf); return l.length ? l.reduce((t, c) => t + hitsOf(c).score, 0) / l.length : 0; }
+function orderDecks(decks) {
+  if (bOrder() !== 'yield') return decks.slice().sort(natDeck);
+  const y = new Map(decks.map(d => [d.deck, yieldOf(cardsOf(d.deck))]));
+  return decks.slice().sort((a, b) => y.get(b.deck) - y.get(a.deck) || natDeck(a, b));
+}
+function boardGroups(decks) {
+  const set = new Set(decks.map(d => d.deck));
+  const gs = systems().map(g => ({ ...g, decks: orderDecks(g.decks.filter(d => set.has(d.deck))) })).filter(g => g.decks.length);
+  if (bOrder() !== 'yield') return gs;
+  const y = new Map(gs.map(g => [g.name, yieldOf(g.decks.flatMap(d => cardsOf(d.deck)))]));
+  return gs.sort((a, b) => y.get(b.name) - y.get(a.name));
+}
+// The cards a ▶ or + takes: the lit ones, in board order (cards left out on the Flow tab are skipped there).
+const takeOf = (cards, mode) => cards.filter(c => litOf(c) && !(mode === 'flow' && BV.ex.has(exKey(c))));
+const takeDecks = (decks, mode, grouped) => (grouped ? boardGroups(decks).flatMap(g => g.decks) : orderDecks(decks)).flatMap(d => takeOf(cardsOf(d.deck), mode));
+const litLabel = () => [poolName(bPool()), bSt() !== 'any' ? stateLabel(bSt()) : ''].filter(Boolean).join(' · ');
+
+function boardControls(scopeCards, grouped, single) {
+  const all = scopeCards.length, lit = scopeCards.filter(litOf).length, st = bSt();
+  const cnt = k => scopeCards.filter(c => inPool(c, k) && inState(c, st)).length;
+  return `<div class="bctl">
+    ${poolChips(bPool(), 'data-bpool', cnt)}
+    <div class="chips small">${STATES.map(([k, l]) => `<button class="chip${st === k ? ' on' : ''}" data-bst="${k}">${l}</button>`).join('')}</div>
+    <div class="ctl-row"><span class="bseg">${single ? '' : `<span class="seg" aria-label="Order"><button class="${bOrder() === 'yield' ? 'on' : ''}" data-border="yield">Yield</button><button class="${bOrder() === 'shelf' ? 'on' : ''}" data-border="shelf">Shelf</button></span>`}
+      ${grouped ? `<span class="seg" aria-label="View"><button class="${P.get('bopen', false) ? '' : 'on'}" data-bview="shut">Collapsed</button><button class="${P.get('bopen', false) ? 'on' : ''}" data-bview="open">Open</button></span>` : ''}</span>
+      <span class="mono muted small">${lit} of ${all} lit</span></div>
+  </div>`;
+}
+function deckRow(d, mode) {
+  const cs = cardsOf(d.deck), title = d.title || '';
+  const label = `<a class="bd-l" href="#/deck/${encodeURIComponent(d.deck)}" title="${esc(title)}"><b class="mono">${esc(d.deck)}</b><span class="bd-t">${d.topupDeck ? '<span class="tutag mono">TOP-UP</span>' : ''}${esc(title)}</span>`;
+  if (!cs.length) return `<div class="bd-deck" data-bdeck="${esc(d.deck)}"><div class="bd-line">${label}</a><span class="muted small bd-row">not on this device yet</span></div></div>`;
+  const secs = sectionsOf(cs), litN = cs.filter(litOf).length, z = BV.zoom && BV.zoom.deck === d.deck ? Math.min(BV.zoom.ci, secs.length - 1) : -1;
+  return `<div class="bd-deck${d.topupDeck ? ' tu' : ''}${litN ? '' : ' none'}" data-bdeck="${esc(d.deck)}">
+    <div class="bd-line">${label}<span class="mono bd-n">${d.star ? '✦' + d.star + ' · ' : ''}<b>${cs.length}</b> cards${litN < cs.length ? ' · ' + litN + ' lit' : ''}</span></a>
+      <div class="bd-row" role="group" aria-label="${esc(d.deck)}: ${secs.length} chunks. Tap a chunk to zoom.">${secs.map((s, i) => {
+        const w = s.cards.filter(c => seen(c.deck, c.no)).length;
+        return `<span class="bd-ck${i === z ? ' zoomed' : ''}" data-ci="${i}" style="flex:${s.cards.length} 1 0" title="${esc(s.name || 'Cards')} · ${s.cards.length} cards">
+          <span class="bd-tiles">${s.cards.map(c => `<i class="bt s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${litOf(c) ? '' : ' off'}${mode === 'flow' && BV.ex.has(exKey(c)) ? ' x' : ''}" data-code="${esc(c.code)}"></i>`).join('')}</span>
+          <span class="bd-band"><i style="width:${Math.round(100 * w / s.cards.length)}%"></i></span></span>`;
+      }).join('')}</div>
+      <span class="bd-act"><button class="bd-b" data-bflow="deck" aria-label="Flow the lit cards of ${esc(d.deck)}">▶</button><button class="bd-b" data-badd="deck" aria-label="Add the lit cards of ${esc(d.deck)} to today’s target">+</button></span>
+    </div>
+    ${z >= 0 ? zoomPanel(secs, z, mode) : ''}
+  </div>`;
+}
+function zoomPanel(secs, i, mode) {
+  const s = secs[i], lit = s.cards.filter(litOf).length, take = takeOf(s.cards, mode), w = s.cards.filter(c => seen(c.deck, c.no)).length;
+  const n = take.length || s.cards.length;
+  return `<div class="bd-zoom" role="region" aria-label="Chunk: ${esc(s.name || 'Cards')}">
+    <div class="z-h"><button class="iconbtn sm" data-zgo="-1" ${i ? '' : 'disabled'} aria-label="Previous chunk">‹</button>
+      <span class="z-t"><span class="mono kick">CHUNK ${i + 1} OF ${secs.length} · CARDS ${s.cards[0].no}–${s.cards[s.cards.length - 1].no}</span><span class="z-n">${esc(s.name || 'Cards')}</span>
+        <span class="mono muted small">${lit} lit · ${w} of ${s.cards.length} walked</span></span>
+      <button class="iconbtn sm" data-zgo="1" ${i < secs.length - 1 ? '' : 'disabled'} aria-label="Next chunk">›</button><button class="iconbtn sm" data-zx aria-label="Close the zoom">${ICON.close}</button></div>
+    <div class="tiles tz-s z-tiles">${s.cards.map(c => tile(c, litOf(c), mode === 'flow' && BV.ex.has(exKey(c)) ? ' x' : '')).join('')}</div>
+    <div class="z-btns"><button class="btn primary press" data-zflow>▶ Flow ${take.length ? '' : 'all '}${n}</button><button class="btn ghost" data-zadd>+ Add to flow</button>${i < secs.length - 1 ? '<button class="btn ghost" data-zaddnext>+ Add, next ›</button>' : ''}</div>
+    <p class="muted small z-note">${mode === 'flow' ? 'Tap a card to leave it out of this flow; tap it again to bring it back.' : 'Tap a card to look at it.'}${take.length ? '' : ' No lit cards here, so ▶ and + take the whole chunk.'}</p>
+  </div>`;
+}
+function boardHTML(decks, mode, grouped) {
+  if (!grouped) return `<div class="board">${orderDecks(decks).map(d => deckRow(d, mode)).join('')}</div>`;
+  const openAll = P.get('bopen', false);
+  return `<div class="board">${boardGroups(decks).map(g => {
+    const cs = g.decks.flatMap(d => cardsOf(d.deck)), litN = cs.filter(litOf).length, w = cs.filter(c => seen(c.deck, c.no)).length;
+    const isOpen = openAll ? !BV.shut.has(g.name) : BV.open.has(g.name);
+    return `<section class="bd-sys${isOpen ? ' open' : ''}${litN ? '' : ' none'}" data-bsys="${esc(g.name)}">
+      <div class="bd-sh" data-bsh role="button" aria-expanded="${isOpen}"><span class="chev" aria-hidden="true">${isOpen ? '▾' : '▸'}</span><span class="bd-sn">${esc(g.label)}</span>
+        <span class="mono bd-ss">${g.decks.length} deck${g.decks.length === 1 ? '' : 's'} · <b>${litN}</b> lit · ${cs.length ? Math.round(100 * w / cs.length) : 0}% walked</span>
+        <span class="bd-act"><button class="bd-b" data-bflow="sys" aria-label="Flow the lit cards of ${esc(g.label)}">▶</button><button class="bd-b" data-badd="sys" aria-label="Add the lit cards of ${esc(g.label)} to today’s target">+</button></span></div>
+      ${isOpen ? g.decks.map(d => deckRow(d, mode)).join('') : ''}</section>`;
+  }).join('')}</div>`;
+}
+function boardFoot(cards, mode) {
+  const avg = avgPace() || 75000, out = mode === 'flow' ? BV.ex.size : 0;
+  return `<div class="buildfoot">
+    <div class="sumrow mono"><span><b>${cards.length}</b> lit cards${out ? ` · ${out} left out <button class="link" data-bunex>bring back</button>` : ''}</span><span>≈ ${Math.max(cards.length ? 1 : 0, Math.round(cards.length * avg / 60000))} min</span></div>
+    <div class="two"><button class="big press" data-bnow ${cards.length ? '' : 'disabled'}>▶ FLOW ALL LIT</button><button class="btn ghost" data-ball ${cards.length ? '' : 'disabled'}>+ Add all to target</button></div>
+  </div>`;
+}
+async function addCards(cards, label) {
+  if (!cards.length) { toast('No cards to add.'); return; }
+  const by = new Map();
+  cards.forEach(c => { if (!by.has(c.deck)) by.set(c.deck, []); by.get(c.deck).push(c.no); });
+  await addTarget([...by].map(([deck, nos]) => ({ deck, label, nos })));
+  toast(`Added ${cards.length} card${cards.length === 1 ? '' : 's'} to today’s target.`);
+  if (hasBackend()) sync({ downloadAll: false });
+}
+function flowCards(cards, label) {
+  if (!cards.length) { toast('No lit cards here. Change the chips above.'); return; }
+  startFlow(cards, { label, returnTo: location.hash });
+}
+// opts: { mode: 'flow' | 'look', grouped, decks: () => decks in scope, rerender }
+function bindBoard(root, opts) {
+  const { mode, grouped, rerender } = opts;
+  const redo = () => keep(rerender);
+  root.querySelectorAll('[data-bpool]').forEach(b => b.onclick = () => { P.set('pool', togglePool(bPool(), b.dataset.bpool)); redo(); });
+  root.querySelectorAll('[data-bst]').forEach(b => b.onclick = () => { P.set('pst', b.dataset.bst); redo(); });
+  root.querySelectorAll('[data-border]').forEach(b => b.onclick = () => { P.set('order', b.dataset.border); redo(); });
+  root.querySelectorAll('[data-bview]').forEach(b => b.onclick = () => { P.set('bopen', b.dataset.bview === 'open'); BV.open.clear(); BV.shut.clear(); redo(); });
+  const now = root.querySelector('[data-bnow]'), all = root.querySelector('[data-ball]'), unex = root.querySelector('[data-bunex]');
+  if (now) now.onclick = () => flowCards(takeDecks(opts.decks(), mode, grouped), litLabel());
+  if (all) all.onclick = () => addCards(takeDecks(opts.decks(), mode, grouped), litLabel());
+  if (unex) unex.onclick = () => { BV.ex.clear(); redo(); };
+  const board = root.querySelector('.board');
+  if (!board) return;
+  board.onclick = e => {
+    const t = e.target, deckEl = t.closest('[data-bdeck]'), sysEl = t.closest('[data-bsys]');
+    const deck = deckEl && deckEl.dataset.bdeck;
+    const act = t.closest('[data-bflow],[data-badd]');
+    if (act) {
+      e.preventDefault(); e.stopPropagation();
+      const scope = deckEl ? [deckMeta(deck)] : (systems().find(g => g.name === sysEl.dataset.bsys) || { decks: [] }).decks;
+      const cards = orderDecks(scope).flatMap(d => takeOf(cardsOf(d.deck), mode));
+      const label = (deckEl ? deck : sysLabel(sysEl.dataset.bsys)) + ' · ' + litLabel();
+      return act.dataset.bflow ? flowCards(cards, label) : addCards(cards, label);
+    }
+    if (t.closest('[data-bsh]') && sysEl) {
+      const n = sysEl.dataset.bsys, openAll = P.get('bopen', false);
+      if (openAll) BV.shut.has(n) ? BV.shut.delete(n) : BV.shut.add(n); else BV.open.has(n) ? BV.open.delete(n) : BV.open.add(n);
+      return redo();
+    }
+    if (!deckEl) return;
+    const secs = sectionsOf(cardsOf(deck)), z = BV.zoom && BV.zoom.deck === deck ? BV.zoom.ci : -1;
+    if (t.closest('[data-zx]')) { BV.zoom = null; return redo(); }
+    const gz = t.closest('[data-zgo]');
+    if (gz) { BV.zoom = { deck, ci: Math.max(0, Math.min(secs.length - 1, z + +gz.dataset.zgo)) }; return redo(); }
+    if (z >= 0 && t.closest('[data-zflow],[data-zadd],[data-zaddnext]')) {
+      const s = secs[z], take = takeOf(s.cards, mode), cards = take.length ? take : s.cards, label = deck + ' · ' + (s.name || 'Cards');
+      if (t.closest('[data-zflow]')) return flowCards(cards, label);
+      addCards(cards, label);
+      if (t.closest('[data-zaddnext]')) { BV.zoom = { deck, ci: Math.min(secs.length - 1, z + 1) }; redo(); }
+      return;
+    }
+    const zt = t.closest('.z-tiles .tile');
+    if (zt) return cardTap(deck, zt.dataset.code, mode, redo);
+    const ck = t.closest('.bd-ck');
+    if (ck) {
+      const bt = t.closest('.bt');
+      if (bt && !coarse()) return cardTap(deck, bt.dataset.code, mode, redo);   // mouse: a small tile is precise enough
+      const ci = +ck.dataset.ci;
+      BV.zoom = z === ci ? null : { deck, ci };
+      redo();
+    }
+  };
+}
+// One card: on the Flow tab it is left out of (or brought back into) the flow; everywhere else it opens to look at.
+function cardTap(deck, code, mode, redo) {
+  if (mode === 'flow') { const k = deck + '|' + code; BV.ex.has(k) ? BV.ex.delete(k) : BV.ex.add(k); return redo(); }
+  const list = cardsOf(deck);
+  startFlow(list, { browse: true, start: list.findIndex(c => c.code === code), label: 'Look', returnTo: location.hash });
+}
+
+/* ============================ Flow tab: the whole shelf as one board ============================ */
 function renderFlowTab() {
-  const sys = systems();
-  const selCards = () => buildQueue(builder.sel, builder.pool, builder.state, builder.order);
+  const decks = () => (S.library ? S.library.decks : []);
   const draw = () => {
-    const chosen = selCards(), avg = avgPace() || 75000;
+    const ds = decks(), all = ds.flatMap(d => cardsOf(d.deck));
     app.innerHTML = `<div class="screen flowtab">
       <header class="top col"><span class="mono kick">FLOW</span><span class="h1s">Build a flow.</span></header>
       <div class="scroll pad">
-        ${targetBlock(true)}
-        <span class="mono lab">WHICH CARDS · widest pool first</span>
-        ${poolChips(builder.pool, 'data-pool')}
-        <p class="muted small pnote">${esc(POOL_NOTE[builder.pool] || 'Taps add up: any card hit by ' + poolName(builder.pool))}</p>
-        <span class="mono lab">SEEN</span>
-        <div class="chips">${STATES.map(([k, l]) => `<button class="chip${builder.state === k ? ' on' : ''}" data-state="${k}">${l}</button>`).join('')}</div>
-        <span class="mono lab">ORDER</span>
-        <div class="chips">${ORDERS.map(([k, l]) => `<button class="chip${builder.order === k ? ' on' : ''}" data-order="${k}">${l}</button>`).join('')}</div>
-        <span class="mono lab">QUICK PICKS</span>
-        <div class="chips">
-          <button class="chip dash" data-q="all">All decks</button><button class="chip dash" data-q="hits">Decks with hits</button>
-          <button class="chip dash" data-q="gold">Gold decks</button><button class="chip dash" data-q="silver">Gold + silver</button>
-          <button class="chip dash" data-q="least">Least walked · 10</button><button class="chip dash" data-q="clear">Clear</button></div>
-        <div class="syslist">${sys.map(s => {
-          const n = s.decks.filter(d => builder.sel.has(d.deck)).length, stars = s.decks.reduce((t, d) => t + (d.star || 0), 0);
-          const decks = sortDecks(s.decks, 'neet');
-          return `<details class="sysg" data-sys="${esc(s.name)}"${builder.open.has(s.name) || n ? ' open' : ''}>
-            <summary><input type="checkbox" data-all="${esc(s.name)}" ${n === s.decks.length ? 'checked' : ''} aria-label="All of ${esc(s.label)}"><span class="sg-n">${esc(s.label)}</span><span class="mono">${n} of ${s.decks.length} · ✦ ${stars}</span></summary>
-            ${decks.map(d => `<label class="dr"><input type="checkbox" data-d="${esc(d.deck)}" ${builder.sel.has(d.deck) ? 'checked' : ''}><span class="foil t-${tier(d.star || 0)}" style="--tone:${emblem(d.system, d.deck).tone}"></span><span class="mono dc">${esc(d.deck)}</span><span class="dt">${d.topupDeck ? '<span class="tutag mono">TOP-UP</span>' : ''}${esc(d.title)}</span><span class="mono">${pick2(d.deck, builder.pool, builder.state).length}</span></label>`).join('')}
-          </details>`;
-        }).join('')}</div>
+        ${targetBlock(false)}
+        ${boardControls(all, true)}
+        ${boardHTML(ds, 'flow', true)}
+        <p class="muted small mt">Lit cards are the ones the chips pick. ▶ flows them at once; + adds them to today’s target. Tap a deck’s tiles to zoom into a chunk.</p>
       </div>
-      <div class="buildfoot">
-        <div class="sumrow mono"><span><b>${builder.sel.size}</b> deck${builder.sel.size === 1 ? '' : 's'} · <b>${chosen.length}</b> cards</span><span>≈ ${Math.max(chosen.length ? 1 : 0, Math.round(chosen.length * avg / 60000))} min</span></div>
-        <div class="two"><button class="big press" data-now ${chosen.length ? '' : 'disabled'}>FLOW NOW</button><button class="btn ghost" data-add ${chosen.length ? '' : 'disabled'}>+ Add to target</button></div>
-      </div>
+      ${boardFoot(takeDecks(ds, 'flow', true), 'flow')}
       ${nav('flow')}
     </div>`;
     bindGo(); bindTarget(draw);
-    app.querySelectorAll('[data-pool]').forEach(b => b.onclick = () => { builder.pool = togglePool(builder.pool, b.dataset.pool); keep(draw); });
-    app.querySelectorAll('[data-state]').forEach(b => b.onclick = () => { builder.state = b.dataset.state; keep(draw); });
-    app.querySelectorAll('[data-order]').forEach(b => b.onclick = () => { builder.order = b.dataset.order; keep(draw); });
-    app.querySelectorAll('[data-d]').forEach(b => b.onchange = () => { b.checked ? builder.sel.add(b.dataset.d) : builder.sel.delete(b.dataset.d); keep(draw); });
-    app.querySelectorAll('[data-all]').forEach(b => {
-      b.onclick = e => e.stopPropagation();
-      b.onchange = () => { const s = sys.find(x => x.name === b.dataset.all); s.decks.forEach(d => b.checked ? builder.sel.add(d.deck) : builder.sel.delete(d.deck)); builder.open.add(s.name); keep(draw); };
-    });
-    app.querySelectorAll('details.sysg').forEach(d => d.addEventListener('toggle', () => { d.open ? builder.open.add(d.dataset.sys) : builder.open.delete(d.dataset.sys); }));
-    app.querySelectorAll('[data-q]').forEach(b => b.onclick = () => {
-      const all = S.library ? S.library.decks : [];
-      if (b.dataset.q === 'clear') builder.sel.clear();
-      if (b.dataset.q === 'all') all.forEach(d => builder.sel.add(d.deck));
-      if (b.dataset.q === 'hits') all.filter(d => pick2(d.deck, builder.pool === 'all' ? 'hit' : builder.pool, builder.state).length).forEach(d => builder.sel.add(d.deck));
-      if (b.dataset.q === 'gold') all.filter(d => (d.star || 0) >= 5).forEach(d => builder.sel.add(d.deck));
-      if (b.dataset.q === 'silver') all.filter(d => (d.star || 0) >= 3).forEach(d => builder.sel.add(d.deck));
-      if (b.dataset.q === 'least') sortDecks(all, 'least').slice(0, 10).forEach(d => builder.sel.add(d.deck));
-      keep(draw);
-    });
-    app.querySelector('[data-now]').onclick = () => startFlow(selCards(), { label: flowLabel(), returnTo: '#/flow' });
-    app.querySelector('[data-add]').onclick = async () => {
-      const lab = flowLabel();
-      await addTarget([...builder.sel].map(d => ({ deck: d, label: lab, nos: pick2(d, builder.pool, builder.state).map(c => c.no) })).filter(x => x.nos.length));
-      toast('Added to today’s target.'); builder.sel.clear(); draw(); if (hasBackend()) sync({ downloadAll: false });
-    };
+    bindBoard(app, { mode: 'flow', grouped: true, decks, rerender: draw });
   };
   draw();
 }
@@ -856,7 +956,7 @@ function updateFlowChrome() {
   $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
   const cc = !flow.done && current(), cm = cc ? deckMeta(cc.deck) || {} : {};
-  $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cm.star ? ' · ✦ ' + cm.star : '') + (flow.label && flow.label !== 'Look' ? ' · ' + flow.label.toUpperCase() : '');
+  $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cc ? ' · ' + cardsOf(cc.deck).length + ' CARDS' : '') + (cm.star ? ' · ✦ ' + cm.star : '') + (flow.label && flow.label !== 'Look' ? ' · ' + flow.label.toUpperCase() : '');
   $('#f-sub').textContent = cm.title || '';
   const n = flow.times.length;
   const mine = n ? flow.times.reduce((a, b) => a + b, 0) / n : 0;

@@ -385,6 +385,7 @@ export async function downloadDecks(only) {
     });
     await db.putMany('decks', good);
     good.forEach(d => S.decks.set(d.deck, d));
+    recount();
     status.downloading = Math.max(0, need.length - i - part.length); emit();
   }
   if (failures.length) throw new Error('Some decks did not verify: ' + failures.slice(0, 3).join('; '));
