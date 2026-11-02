@@ -66,6 +66,34 @@ export function cardsOf(deck) {
 /* ---------- QBank/GT layer: never changes card text; Top-ups are extra cards at the end of their deck ---------- */
 export function setQb(q) { S.qb = q && q.cards ? q : { version: '', cards: {}, topups: {} }; }
 export function qbOf(c) { return (c && S.qb.cards[c.deck + '|' + c.code]) || null; }
+// What hit a card, and how much it is worth. Pools (narrow → wide): NEET ⊂ NEET + GT ⊂ Any hit. Top-ups count by the banks they came from.
+const W = { recall: 5, gt: 2, doct: 1, marrow: 1 };
+export function hitsOf(c) {
+  const h = new Set(); let score = 0;
+  if (neetTag(c)) { h.add('neet'); score += 6; }
+  if (c.topup) {
+    h.add('topup');
+    const b = c.banks || '';
+    if (c.recall || /Recall/i.test(b)) { h.add('recall'); score += 5; }
+    if (/\bGT\b/.test(b)) h.add('gt');
+    if (/\bDocT\b/.test(b)) h.add('doct');
+    if (/Marrow/i.test(b)) h.add('marrow');
+    score += 1.5 * (c.nq || 1) + (c.tier === 1 ? 3 : 0);
+  } else {
+    const q = qbOf(c);
+    if (q && q.chips) for (const x of q.chips) { h.add(x.k); score += (W[x.k] || 1) * (x.k === 'recall' ? 1 : Math.min(x.n, 6)); }
+  }
+  return { h, score };
+}
+export const POOLS = [['all', 'All'], ['hit', 'Any hit'], ['neetgt', 'NEET + GT'], ['neet', 'NEET'], ['topup', 'Top-up'], ['doct', 'DocT QBank'], ['marrow', 'Marrow']];
+export function inPool(c, p) {
+  if (!p || p === 'all' || p === 'entire') return true;
+  const { h } = hitsOf(c);
+  if (p === 'hit') return h.size > 0;
+  if (p === 'neetgt') return h.has('neet') || h.has('recall') || h.has('gt');
+  if (p === 'neet') return h.has('neet') || h.has('recall');
+  return h.has(p);
+}
 export function realCount(deck) { const d = S.decks.get(deck); return d ? Math.max(0, ...d.cards.map(c => +c.no || 0)) : Infinity; }
 function topupsOf(deck, cards) {
   const list = S.qb.topups[deck];

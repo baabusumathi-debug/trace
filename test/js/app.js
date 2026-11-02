@@ -2,7 +2,7 @@ import { CONFIG, CHANNEL } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, POOLS, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
 import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
@@ -328,13 +328,10 @@ function renderSystem(num) {
 const deckFilter = {};
 function filtersFor(deck, cards) {
   return [
-    { key: 'all', label: 'All', list: cards },
-    { key: 'neet', label: 'NEET', list: cards.filter(c => neetTag(c)) },
+    ...POOLS.map(([key, label]) => ({ key, label, list: cards.filter(c => inPool(c, key)) })),
     { key: 'low', label: 'Seen ≤ 1', list: cards.filter(c => seen(deck, c.no) <= 1) },
     { key: 'new', label: 'Unseen', list: cards.filter(c => seen(deck, c.no) === 0) },
-    { key: 'edited', label: 'Edited', list: cards.filter(c => c.edited) },
-    { key: 'topup', label: 'Top-up', list: cards.filter(c => c.topup) },
-    { key: 'qbank', label: 'QBank hit', list: cards.filter(c => qbOf(c) || c.topup) }
+    { key: 'edited', label: 'Edited', list: cards.filter(c => c.edited) }
   ].filter(f => f.key === 'all' || f.list.length);
 }
 function sectionsOf(cards) {
@@ -362,7 +359,7 @@ function renderDeck(code) {
       <div class="dhead-row"><a class="iconbtn on-foil" href="#/shelf" aria-label="Back to the shelf">${ICON.back}</a>
         <span class="dh-t"><span class="mono kick">${esc(code)} · ${TIER_NAME[t]} · ✦ ${m.star || 0}</span><span class="dh-n">${esc(m.title)}</span></span>
         ${seal(m.system, 'hseal', code)}</div>
-      <div class="dstats mono"><span><b>${m.cards}</b> cards</span><span><b>${walked(code)}</b> walked</span><span><b>${neetN}</b> NEET cards</span></div>
+      <div class="dstats mono"><span><b>${m.cards}</b> cards</span><span><b>${walked(code)}</b> walked</span><span><b>${neetN}</b> NEET cards</span>${cards.some(c => c.topup) ? `<span><b>${cards.filter(c => c.topup).length}</b> Top-up</span><span><b>${cards.filter(c => inPool(c, 'hit')).length}</b> with a hit</span>` : ''}</div>
     </div>
     <div class="scroll pad">
       ${st !== 'ready' ? `<div class="notice">${st === 'missing' ? 'This deck is not on this device yet.' : 'A newer version of this deck is waiting.'} <button class="link" data-act="dl">Download now</button></div>` : ''}
@@ -397,16 +394,25 @@ function tile(c, active) {
 }
 
 /* ============================ scope sheet: Flow now / Add to flow from one deck ============================ */
-const SCOPES = [['entire', 'Entire'], ['neet', 'NEET'], ['new', 'Unseen'], ['low', 'Seen ≤ 1'], ['topup', 'Top-up']];
+const STATES = [['any', 'Any'], ['new', 'Unseen'], ['low', 'Seen ≤ 1'], ['stale', 'Not seen 7+ days']];
+const poolLabel = k => (POOLS.find(p => p[0] === k) || ['', k])[1];
+const stateLabel = k => (STATES.find(p => p[0] === k) || ['', k])[1];
+function inState(c, st) {
+  if (!st || st === 'any') return true;
+  if (st === 'new') return seen(c.deck, c.no) === 0;
+  if (st === 'low') return seen(c.deck, c.no) <= 1;
+  if (st === 'stale') return lastSeen(c.deck, c.no) < Date.now() - 7 * 864e5;
+  return true;
+}
+const pick2 = (deck, pool, st) => cardsOf(deck).filter(c => inPool(c, pool) && inState(c, st));
 function scopeCards(deck, key) {
   const cards = cardsOf(deck);
   if (key === 'entire' || key === 'all') return cards;
-  if (key === 'neet') return cards.filter(c => neetTag(c));
+  if (POOLS.some(p => p[0] === key)) return cards.filter(c => inPool(c, key));
   if (key === 'new') return cards.filter(c => seen(deck, c.no) === 0);
   if (key === 'low') return cards.filter(c => seen(deck, c.no) <= 1);
   if (key === 'stale') { const lim = Date.now() - 7 * 864e5; return cards.filter(c => lastSeen(deck, c.no) < lim); }
   if (key === 'edited') return cards.filter(c => c.edited);
-  if (key === 'topup') return cards.filter(c => c.topup);
   return cards;
 }
 function openScope(deck, mode, preset) {
@@ -414,30 +420,34 @@ function openScope(deck, mode, preset) {
   if (!m) return;
   if (!cards.length) { toast('This deck is not on this device yet.'); return; }
   const secs = sectionsOf(cards);
-  const pick = new Set([preset && SCOPES.some(s => s[0] === preset) ? preset : 'entire']);
+  let pool = preset && POOLS.some(p => p[0] === preset) ? preset : 'all';
+  let st = preset && STATES.some(p => p[0] === preset) ? preset : 'any';
   const secPick = new Set();
   const wrap = document.createElement('div');
   wrap.className = 'modal';
   const draw = () => {
     let sel;
     if (secPick.size) sel = secs.filter((s, i) => secPick.has(i)).flatMap(s => s.cards);
-    else { const set = new Set(); for (const k of pick) scopeCards(deck, k).forEach(c => set.add(c.code)); sel = cards.filter(c => set.has(c.code)); }
+    else sel = pick2(deck, pool, st);
     const avg = avgPace() || 75000;
     wrap.innerHTML = `<div class="sheet scope" role="dialog" aria-label="What to take from ${esc(deck)}">
       <span class="grab" aria-hidden="true"></span>
       <div class="sheet-h"><span><span class="mono kick">${esc(deck)} · WHAT TO TAKE</span><span class="sh-t">${esc(m.title)}</span></span><button class="iconbtn" data-x aria-label="Close">${ICON.close}</button></div>
-      <span class="mono lab">THE WHOLE DECK</span>
-      <div class="chips">${SCOPES.map(([k, l]) => `<button class="chip${!secPick.size && pick.has(k) ? ' on' : ''}" data-k="${k}">${!secPick.size && pick.has(k) ? '✓ ' : ''}${l} · ${scopeCards(deck, k).length}</button>`).join('')}</div>
+      <span class="mono lab">WHICH CARDS · widest pool first</span>
+      <div class="chips">${POOLS.map(([k, l]) => { const n = pick2(deck, k, st).length; return n || k === 'all' ? `<button class="chip${!secPick.size && pool === k ? ' on' : ''}" data-k="${k}">${!secPick.size && pool === k ? '✓ ' : ''}${l} · ${n}</button>` : ''; }).join('')}</div>
+      <span class="mono lab">SEEN</span>
+      <div class="chips">${STATES.map(([k, l]) => `<button class="chip${!secPick.size && st === k ? ' on' : ''}" data-st="${k}">${!secPick.size && st === k ? '✓ ' : ''}${l} · ${pick2(deck, pool, k).length}</button>`).join('')}</div>
       <span class="mono lab">OR PICK SECTIONS (CHUNKS)</span>
       <div class="seclist">${secs.map((s, i) => `<label><input type="checkbox" data-s="${i}" ${secPick.has(i) ? 'checked' : ''}><span>${esc(s.name || 'Cards')}</span><span class="mono">${s.cards[0].no}–${s.cards[s.cards.length - 1].no} · ${s.cards.length}</span></label>`).join('')}</div>
       <div class="sumrow mono"><span><b>${sel.length}</b> cards selected</span><span>≈ ${Math.max(1, Math.round(sel.length * avg / 60000))} min at your pace</span></div>
       <div class="sheet-f"><button class="big press" data-go-flow ${sel.length ? '' : 'disabled'}>${ICON.walkS}FLOW NOW</button><button class="btn ghost" data-add ${sel.length ? '' : 'disabled'}>+ Add to flow<small>today’s target</small></button></div>
     </div>`;
     wrap.querySelector('[data-x]').onclick = () => wrap.remove();
-    wrap.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { secPick.clear(); if (b.dataset.k === 'entire') { pick.clear(); pick.add('entire'); } else { pick.delete('entire'); pick.has(b.dataset.k) ? pick.delete(b.dataset.k) : pick.add(b.dataset.k); if (!pick.size) pick.add('entire'); } draw(); });
+    wrap.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { secPick.clear(); pool = b.dataset.k; draw(); });
+    wrap.querySelectorAll('[data-st]').forEach(b => b.onclick = () => { secPick.clear(); st = b.dataset.st; draw(); });
     wrap.querySelectorAll('[data-s]').forEach(b => b.onchange = () => { const i = +b.dataset.s; b.checked ? secPick.add(i) : secPick.delete(i); draw(); });
-    const label = secPick.size ? secs.filter((s, i) => secPick.has(i)).map(s => s.name).join(', ') : [...pick].map(k => (SCOPES.find(s => s[0] === k) || [k, k])[1]).join(' + ');
-    wrap.querySelector('[data-go-flow]').onclick = () => { wrap.remove(); startFlow(sel, { label: label === 'Entire' ? '' : label, returnTo: location.hash }); };
+    const label = secPick.size ? secs.filter((s, i) => secPick.has(i)).map(s => s.name).join(', ') : [pool !== 'all' ? poolLabel(pool) : '', st !== 'any' ? stateLabel(st) : ''].filter(Boolean).join(' · ');
+    wrap.querySelector('[data-go-flow]').onclick = () => { wrap.remove(); startFlow(sel, { label, returnTo: location.hash }); };
     wrap.querySelector('[data-add]').onclick = async () => { await addTarget([{ deck, label, nos: sel.map(c => c.no) }]); wrap.remove(); toast(`Added ${sel.length} cards to today’s target.`); if (hasBackend()) sync({ downloadAll: false }); };
   };
   wrap.onclick = e => { if (e.target === wrap) wrap.remove(); };
@@ -447,8 +457,18 @@ function openScope(deck, mode, preset) {
 }
 
 /* ============================ Flow tab: build from many decks ============================ */
-const builder = { take: 'neet', sel: new Set(), open: new Set() };
-const TAKES = [['entire', 'Entire'], ['neet', 'NEET'], ['new', 'Unseen'], ['low', 'Seen ≤ 1'], ['stale', 'Not seen 7+ days']];
+const builder = { pool: 'hit', state: 'any', order: 'decks', sel: new Set(), open: new Set() };
+const ORDERS = [['decks', 'Best decks first'], ['cards', 'Best cards first'], ['shelf', 'Shelf order']];
+const POOL_NOTE = { all: 'every card', hit: 'NEET, any QBank or GT hit, and Top-ups', neetgt: 'real NEET, NEET 25 recall and DocT GT hits', neet: 'real NEET and NEET 25 recall', topup: 'new cards not walked yet', doct: 'DocT QBank hits', marrow: 'Marrow QBank hits' };
+// Highest yield first: a deck's worth = the summed worth of the cards it gives; within a deck, cards keep their order.
+function buildQueue(decks, pool, state, order) {
+  const lib = S.library ? S.library.decks.map(d => d.deck) : [];
+  const per = [...decks].sort((a, b) => lib.indexOf(a) - lib.indexOf(b)).map(d => ({ d, cs: pick2(d, pool, state) })).filter(x => x.cs.length);
+  if (order === 'shelf') return per.flatMap(x => x.cs);
+  if (order === 'cards') return per.flatMap(x => x.cs).map((c, i) => ({ c, i, w: hitsOf(c).score, n: seen(c.deck, c.no) })).sort((a, b) => b.w - a.w || a.n - b.n || a.i - b.i).map(x => x.c);
+  return per.map(x => ({ ...x, w: x.cs.reduce((t, c) => t + hitsOf(c).score, 0) })).sort((a, b) => b.w - a.w).flatMap(x => x.cs);
+}
+const flowLabel = () => [builder.pool !== 'all' ? poolLabel(builder.pool) : 'Entire', builder.state !== 'any' ? stateLabel(builder.state) : ''].filter(Boolean).join(' · ');
 function targetProgress() {
   const items = targetItems(), day = today();
   return items.map(i => ({ ...i, done: i.nos.filter(n => seenOn(i.deck, n, day)).length }));
@@ -477,17 +497,23 @@ function bindTarget(rerender) {
 }
 function renderFlowTab() {
   const sys = systems();
-  const selCards = () => { const out = []; for (const d of builder.sel) out.push(...scopeCards(d, builder.take)); return out; };
+  const selCards = () => buildQueue(builder.sel, builder.pool, builder.state, builder.order);
   const draw = () => {
     const chosen = selCards(), avg = avgPace() || 75000;
     app.innerHTML = `<div class="screen flowtab">
       <header class="top col"><span class="mono kick">FLOW</span><span class="h1s">Build a flow.</span></header>
       <div class="scroll pad">
         ${targetBlock(true)}
-        <span class="mono lab">TAKE FROM EACH DECK</span>
-        <div class="chips">${TAKES.map(([k, l]) => `<button class="chip${builder.take === k ? ' on' : ''}" data-take="${k}">${l}</button>`).join('')}</div>
+        <span class="mono lab">WHICH CARDS · widest pool first</span>
+        <div class="chips">${POOLS.map(([k, l]) => `<button class="chip${builder.pool === k ? ' on' : ''}" data-pool="${k}">${l}</button>`).join('')}</div>
+        <p class="muted small pnote">${esc(POOL_NOTE[builder.pool] || '')}</p>
+        <span class="mono lab">SEEN</span>
+        <div class="chips">${STATES.map(([k, l]) => `<button class="chip${builder.state === k ? ' on' : ''}" data-state="${k}">${l}</button>`).join('')}</div>
+        <span class="mono lab">ORDER</span>
+        <div class="chips">${ORDERS.map(([k, l]) => `<button class="chip${builder.order === k ? ' on' : ''}" data-order="${k}">${l}</button>`).join('')}</div>
         <span class="mono lab">QUICK PICKS</span>
         <div class="chips">
+          <button class="chip dash" data-q="all">All decks</button><button class="chip dash" data-q="hits">Decks with hits</button>
           <button class="chip dash" data-q="gold">Gold decks</button><button class="chip dash" data-q="silver">Gold + silver</button>
           <button class="chip dash" data-q="least">Least walked · 10</button><button class="chip dash" data-q="clear">Clear</button></div>
         <div class="syslist">${sys.map(s => {
@@ -495,7 +521,7 @@ function renderFlowTab() {
           const decks = sortDecks(s.decks, 'neet');
           return `<details class="sysg" data-sys="${esc(s.name)}"${builder.open.has(s.name) || n ? ' open' : ''}>
             <summary><input type="checkbox" data-all="${esc(s.name)}" ${n === s.decks.length ? 'checked' : ''} aria-label="All of ${esc(s.label)}"><span class="sg-n">${esc(s.label)}</span><span class="mono">${n} of ${s.decks.length} · ✦ ${stars}</span></summary>
-            ${decks.map(d => `<label class="dr"><input type="checkbox" data-d="${esc(d.deck)}" ${builder.sel.has(d.deck) ? 'checked' : ''}><span class="foil t-${tier(d.star || 0)}" style="--tone:${emblem(d.system, d.deck).tone}"></span><span class="mono dc">${esc(d.deck)}</span><span class="dt">${esc(d.title)}</span><span class="mono">${scopeCards(d.deck, builder.take).length}</span></label>`).join('')}
+            ${decks.map(d => `<label class="dr"><input type="checkbox" data-d="${esc(d.deck)}" ${builder.sel.has(d.deck) ? 'checked' : ''}><span class="foil t-${tier(d.star || 0)}" style="--tone:${emblem(d.system, d.deck).tone}"></span><span class="mono dc">${esc(d.deck)}</span><span class="dt">${esc(d.title)}</span><span class="mono">${pick2(d.deck, builder.pool, builder.state).length}</span></label>`).join('')}
           </details>`;
         }).join('')}</div>
       </div>
@@ -506,7 +532,9 @@ function renderFlowTab() {
       ${nav('flow')}
     </div>`;
     bindGo(); bindTarget(draw);
-    app.querySelectorAll('[data-take]').forEach(b => b.onclick = () => { builder.take = b.dataset.take; keep(draw); });
+    app.querySelectorAll('[data-pool]').forEach(b => b.onclick = () => { builder.pool = b.dataset.pool; keep(draw); });
+    app.querySelectorAll('[data-state]').forEach(b => b.onclick = () => { builder.state = b.dataset.state; keep(draw); });
+    app.querySelectorAll('[data-order]').forEach(b => b.onclick = () => { builder.order = b.dataset.order; keep(draw); });
     app.querySelectorAll('[data-d]').forEach(b => b.onchange = () => { b.checked ? builder.sel.add(b.dataset.d) : builder.sel.delete(b.dataset.d); keep(draw); });
     app.querySelectorAll('[data-all]').forEach(b => {
       b.onclick = e => e.stopPropagation();
@@ -516,15 +544,17 @@ function renderFlowTab() {
     app.querySelectorAll('[data-q]').forEach(b => b.onclick = () => {
       const all = S.library ? S.library.decks : [];
       if (b.dataset.q === 'clear') builder.sel.clear();
+      if (b.dataset.q === 'all') all.forEach(d => builder.sel.add(d.deck));
+      if (b.dataset.q === 'hits') all.filter(d => pick2(d.deck, builder.pool === 'all' ? 'hit' : builder.pool, builder.state).length).forEach(d => builder.sel.add(d.deck));
       if (b.dataset.q === 'gold') all.filter(d => (d.star || 0) >= 5).forEach(d => builder.sel.add(d.deck));
       if (b.dataset.q === 'silver') all.filter(d => (d.star || 0) >= 3).forEach(d => builder.sel.add(d.deck));
       if (b.dataset.q === 'least') sortDecks(all, 'least').slice(0, 10).forEach(d => builder.sel.add(d.deck));
       keep(draw);
     });
-    app.querySelector('[data-now]').onclick = () => startFlow(selCards(), { label: (TAKES.find(t => t[0] === builder.take) || ['', ''])[1], returnTo: '#/flow' });
+    app.querySelector('[data-now]').onclick = () => startFlow(selCards(), { label: flowLabel(), returnTo: '#/flow' });
     app.querySelector('[data-add]').onclick = async () => {
-      const lab = (TAKES.find(t => t[0] === builder.take) || ['', ''])[1];
-      await addTarget([...builder.sel].map(d => ({ deck: d, label: lab, nos: scopeCards(d, builder.take).map(c => c.no) })));
+      const lab = flowLabel();
+      await addTarget([...builder.sel].map(d => ({ deck: d, label: lab, nos: pick2(d, builder.pool, builder.state).map(c => c.no) })).filter(x => x.nos.length));
       toast('Added to today’s target.'); builder.sel.clear(); draw(); if (hasBackend()) sync({ downloadAll: false });
     };
   };
@@ -768,7 +798,7 @@ function drawCard() {
 }
 /* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
 function qbChips(c) {
-  if (c.topup) return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${c.recall ? '<span class="qc qc-recall mono">NEET 25 recall</span>' : ''}`;
+  if (c.topup) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${[['recall', 'NEET 25 recall'], ['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
   const q = qbOf(c);
   if (!q || !q.chips) return '';
   return q.chips.map(x => `<span class="qc qc-${x.k} mono" title="${x.n} question${x.n > 1 ? 's' : ''}">${esc(x.t)}${x.n > 1 ? ' ×' + x.n : ''}</span>`).join('');
