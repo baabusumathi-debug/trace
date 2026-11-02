@@ -2,7 +2,7 @@
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG } from './config.js';
-import { S, emit, recount, setNeet, deckMeta, today, off } from './store.js';
+import { S, emit, recount, setNeet, setQb, realCount, deckMeta, today, off } from './store.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -57,6 +57,8 @@ export async function buildLogRows(force) {
   const all = await db.all('events');
   const undone = new Set(all.filter(e => e.kind === 'undo').map(e => e.ref));
   const views = all.filter(e => e.kind === 'view' && !undone.has(e.id));
+  const extra = views.filter(e => !e.logged && e.no > realCount(e.deck));
+  if (extra.length) { extra.forEach(e => e.logged = 1); await db.putMany('events', extra); }
   const pending = views.filter(e => !e.logged && (e.session === force || now - e.ts > CONFIG.logIdleMs));
   if (!pending.length) return 0;
   // cards already walked before (old War Map rows + earlier Trace sessions)
@@ -142,7 +144,18 @@ export async function countPending() {
   return status.pending;
 }
 
+// The QBank/GT layer ships with the app (same origin), so it works without the bridge and offline once fetched.
+export async function loadQbank() {
+  try {
+    const r = await fetch('./data/qbank.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    const q = await r.json();
+    if (q && q.version && q.version !== S.qb.version) { setQb(q); await db.kv.set('qbank', q); recount(); emit(); }
+  } catch (e) { /* offline: keep the stored copy */ }
+}
+
 export async function sync({ downloadAll = true } = {}) {
+  loadQbank();
   if (status.busy || !hasBackend()) return;
   if (!navigator.onLine && !isDemo()) { status.state = 'offline'; emit(); return; }
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();

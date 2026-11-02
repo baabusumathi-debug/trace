@@ -640,3 +640,19 @@ a.brand{text-decoration:none;color:inherit}
 .fm-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.7;vertical-align:1px}
 @media(prefers-reduced-motion:reduce){.fm-note{animation:none}}
 .fm-wake{flex-basis:100%;font-size:10.5px;color:var(--faint)}
+
+/* QBank/GT layer: bank chips and boxes (labels carry the meaning; colours only help) */
+.qc{font-size:10px;letter-spacing:.04em;border-radius:3px;padding:3px 7px;border:1px solid transparent}
+.qc-marrow{background:#e8e0f3;color:#4b2f7a;border-color:#8a6fb8}
+.qc-doct{background:#d9ece9;color:#1d5a52;border-color:#4f9488}
+.qc-gt{background:transparent;color:#1d5a52;border-color:#4f9488;border-style:dashed}
+.qc-recall{background:#f5e3bf;color:#6b4708;border-color:#b98a2e}
+.qc-top{background:#f6ddd3;color:#7a3317;border-color:#c46a4a}
+.qc-tier{background:transparent;color:#7a3317;border-color:#d9a894}
+.qlines{background:#e2ece9;border-left:3px solid #4f9488}.qlines>.mono{color:#1d5a52}
+.qcross{background:#efe4f5;border-left:3px solid #8a6fb8}.qcross>.mono{color:#4b2f7a}
+.qfix{background:#f6e6dd;border-left:3px solid #c46a4a;margin-bottom:12px}.qfix>.mono{color:#7a3317}
+.qfix .qsrc{font-size:12px;color:#7a6a55}.qfix a{color:inherit}
+.box .bk{font-family:var(--mono);font-size:11px;letter-spacing:.03em}
+.qlines p+p,.qcross p+p{margin-top:6px}
+.tile.tu .tl-top span:first-child{color:#c46a4a}

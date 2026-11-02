@@ -2,7 +2,7 @@
 // Card data lives in IndexedDB (not here). Bump VERSION on every release.
 // the test build (/trace/test/) keeps caches under its own prefix so the two never clear each other
 const PREFIX = self.registration.scope.includes('/test/') ? 'tracetest-v' : 'trace-v';
-const VERSION = PREFIX + '1.3.7';
+const VERSION = PREFIX + '1.3.8';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/app.js', 'js/api.js', 'js/config.js', 'js/db.js', 'js/emblems.js', 'js/md.js', 'js/store.js', 'js/sync.js', 'js/palace.js', 'js/visuals.js', 'js/flowmsg.js', 'img/palace-land.webp', 'img/palace-port.webp',
@@ -26,6 +26,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;   // backend calls go straight to the network
+  if (url.pathname.endsWith('/data/qbank.json')) return;                       // QBank layer: always fresh; the app keeps its own offline copy
   e.respondWith((async () => {
     const cache = await caches.open(VERSION);
     const hit = await cache.match(e.request, { ignoreSearch: url.pathname.endsWith('/') || url.pathname.endsWith('index.html') });

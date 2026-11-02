@@ -5,6 +5,7 @@ import { CONFIG } from './config.js';
 export const S = {
   library: null,          // { decks:[...], generated, changes? }
   neet: new Map(),        // 'DECK|CODE' or '*|CODE' -> 'NEET 24·25'
+  qb: { version: '', cards: {}, topups: {} },   // QBank/GT layer (data/qbank.json): chips, lines, Crossfire, fixes, Top-up cards
   decks: new Map(),       // deck -> { deck, version, cards[], verified, downloadedAt }
   edits: new Map(),       // 'DECK|CODE' -> { key, deck, code, fields, ts, dev, synced }
   events: [],             // view events (all devices)
@@ -25,6 +26,7 @@ export const emit = () => S.listeners.forEach(f => { try { f(); } catch (e) { co
 export async function loadAll() {
   S.library = (await db.kv.get('library')) || null;
   setNeet((await db.kv.get('neet')) || null);
+  setQb((await db.kv.get('qbank')) || null);
   for (const d of await db.all('decks')) S.decks.set(d.deck, d);
   for (const e of await db.all('edits')) S.edits.set(e.key, e);
   const evs = await db.all('events');
@@ -59,7 +61,19 @@ export function deckMeta(code) { return S.library ? S.library.decks.find(d => d.
 export function cardsOf(deck) {
   const d = S.decks.get(deck);
   if (!d) return [];
-  return d.cards.map(c => withEdits(c));
+  return d.cards.map(c => withEdits(c)).concat(topupsOf(deck, d.cards).map(c => withEdits(c)));
+}
+/* ---------- QBank/GT layer: never changes card text; Top-ups are extra cards at the end of their deck ---------- */
+export function setQb(q) { S.qb = q && q.cards ? q : { version: '', cards: {}, topups: {} }; }
+export function qbOf(c) { return (c && S.qb.cards[c.deck + '|' + c.code]) || null; }
+export function realCount(deck) { const d = S.decks.get(deck); return d ? Math.max(0, ...d.cards.map(c => +c.no || 0)) : Infinity; }
+function topupsOf(deck, cards) {
+  const list = S.qb.topups[deck];
+  if (!list || !list.length) return [];
+  const base = Math.max(0, ...cards.map(c => +c.no || 0));
+  const lineOf = l => /^\s*(\d+[.)]|[-•]|\w[^|]* \| )/.test(l) ? l : '- ' + l;
+  return list.map((t, i) => ({ deck, code: 'TU-' + String(i + 1).padStart(2, '0'), no: base + i + 1, section: 'Top-up', topup: true, tier: t.tier, ttype: t.type, tid: t.id,
+    q: t.q, a: t.a.map(lineOf).join('\n'), why: '', watch: '', hook: '', banks: t.banks, nq: t.n, recall: t.recall }));
 }
 export function withEdits(c) {
   const e = S.edits.get(c.deck + '|' + c.code);

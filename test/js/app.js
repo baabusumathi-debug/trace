@@ -2,8 +2,8 @@ import { CONFIG, CHANNEL } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
-import { status, sync, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey } from './store.js';
+import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
@@ -49,6 +49,7 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
+  loadQbank();
   await loadVisuals();
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -331,7 +332,9 @@ function filtersFor(deck, cards) {
     { key: 'neet', label: 'NEET', list: cards.filter(c => neetTag(c)) },
     { key: 'low', label: 'Seen ≤ 1', list: cards.filter(c => seen(deck, c.no) <= 1) },
     { key: 'new', label: 'Unseen', list: cards.filter(c => seen(deck, c.no) === 0) },
-    { key: 'edited', label: 'Edited', list: cards.filter(c => c.edited) }
+    { key: 'edited', label: 'Edited', list: cards.filter(c => c.edited) },
+    { key: 'topup', label: 'Top-up', list: cards.filter(c => c.topup) },
+    { key: 'qbank', label: 'QBank hit', list: cards.filter(c => qbOf(c) || c.topup) }
   ].filter(f => f.key === 'all' || f.list.length);
 }
 function sectionsOf(cards) {
@@ -387,14 +390,14 @@ function renderDeck(code) {
 }
 function tile(c, active) {
   const n = seen(c.deck, c.no), tag = neetTag(c);
-  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
-    <span class="tl-top mono"><span>${tag ? '✦' : esc(c.code)}</span><span>×${n}</span></span>
+  return `<button class="tile s${shade(n)}${active ? '' : ' dim'}${tag ? ' ng' : ''}${c.topup ? ' tu' : ''}" data-code="${esc(c.code)}" aria-label="Card ${c.no}, seen ${n} times${tag ? ', ' + tag : ''}">
+    <span class="tl-top mono"><span>${c.topup ? 'TOP-UP' : tag ? '✦' : esc(c.code)}</span><span>×${n}</span></span>
     <span class="tl-no">${c.no}</span>
     <span class="tl-tag mono">${esc(tag)}${c.edited ? ' ✎' : ''}</span></button>`;
 }
 
 /* ============================ scope sheet: Flow now / Add to flow from one deck ============================ */
-const SCOPES = [['entire', 'Entire'], ['neet', 'NEET'], ['new', 'Unseen'], ['low', 'Seen ≤ 1']];
+const SCOPES = [['entire', 'Entire'], ['neet', 'NEET'], ['new', 'Unseen'], ['low', 'Seen ≤ 1'], ['topup', 'Top-up']];
 function scopeCards(deck, key) {
   const cards = cardsOf(deck);
   if (key === 'entire' || key === 'all') return cards;
@@ -403,6 +406,7 @@ function scopeCards(deck, key) {
   if (key === 'low') return cards.filter(c => seen(deck, c.no) <= 1);
   if (key === 'stale') { const lim = Date.now() - 7 * 864e5; return cards.filter(c => lastSeen(deck, c.no) < lim); }
   if (key === 'edited') return cards.filter(c => c.edited);
+  if (key === 'topup') return cards.filter(c => c.topup);
   return cards;
 }
 function openScope(deck, mode, preset) {
@@ -722,7 +726,7 @@ function drawCard() {
   const { head, rest } = splitQ(c.q);
   const isQ = flow.face === 'q';
   const top = `<div class="c-head mono"><span>${esc((c.section || '').toUpperCase())}</span><span>${esc(c.code)}</span></div>
-    <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}
+    <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}${qbChips(c)}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}
       ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
@@ -731,10 +735,12 @@ function drawCard() {
     body = `<div class="c-a">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
+      ${qbFix(c)}
       <div class="ans">${render(c.a)}</div>
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
+      ${qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
     </div>`;
   }
@@ -759,6 +765,27 @@ function drawCard() {
     hk.onchange = save; hk.onblur = save;
     hk.onkeydown = e => { e.stopPropagation(); if (e.key === 'Enter') hk.blur(); };
   }
+}
+/* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
+function qbChips(c) {
+  if (c.topup) return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${c.recall ? '<span class="qc qc-recall mono">NEET 25 recall</span>' : ''}`;
+  const q = qbOf(c);
+  if (!q || !q.chips) return '';
+  return q.chips.map(x => `<span class="qc qc-${x.k} mono" title="${x.n} question${x.n > 1 ? 's' : ''}">${esc(x.t)}${x.n > 1 ? ' ×' + x.n : ''}</span>`).join('');
+}
+const bankLine = l => { const m = l.match(/^([A-Za-z0-9 +·]{2,40}?):\s+(.*)$/s); return m ? `<p><b class="bk">${esc(m[1])}</b> ${inline(m[2])}</p>` : `<p>${inline(l)}</p>`; };
+function qbBoxes(c) {
+  const q = qbOf(c);
+  if (!q) return '';
+  let h = '';
+  if (q.lines && q.lines.length) h += `<div class="box qlines"><span class="mono">TOP-UP LINES</span><div class="bx">${q.lines.map(bankLine).join('')}</div></div>`;
+  if (q.cross && q.cross.length) h += `<div class="box qcross"><span class="mono">CROSSFIRE</span><div class="bx">${q.cross.map(l => `<p>${inline(l)}</p>`).join('')}</div></div>`;
+  return h;
+}
+function qbFix(c) {
+  const q = qbOf(c);
+  if (!q || !q.fix || !q.fix.length) return '';
+  return `<div class="box qfix"><span class="mono">CORRECTION · CHECKED</span><div class="bx">${q.fix.map(f => `<p>${inline(f.t)}</p>${f.src ? `<p class="qsrc">${f.url ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.src)}</a>` : esc(f.src)}</p>` : ''}`).join('')}</div></div>`;
 }
 async function saveHook(c, v) {
   const e = S.edits.get(c.deck + '|' + c.code);
