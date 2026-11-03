@@ -799,3 +799,10 @@ a.brand{text-decoration:none;color:inherit}
 @media (max-width:640px){.top-r{gap:8px}.top-r .goout{padding:0 9px;font-size:12px}}
 @media (max-width:760px){.brk{top:auto;bottom:calc(74px + var(--safe-b));white-space:nowrap}}
 @media (max-width:760px){.f-live{padding:0 16px}.goout.sm:not(.top-r .goout){display:block;width:auto;margin:6px 16px 0 auto;height:32px}}
+
+/* T-048 peak-week preview (test) */
+.peekbar{display:flex;align-items:center;gap:12px;justify-content:space-between;border:1px dashed #6b6f78;border-radius:12px;padding:10px 12px;margin-bottom:14px;font-size:12.5px}
+.peekbar span{display:flex;flex-direction:column;gap:2px}.peekbar i{font-style:normal;color:var(--muted,#9a9ca3)}
+.peekbar.on{border:1px solid #d1b77c;background:#24221c}.peekbar.on b{color:#e6b66a}
+.peekbar .btn{width:auto;flex-shrink:0;height:34px;font-size:12.5px;padding:0 12px}
+.tm-hn b b{font:inherit;font-size:inherit}

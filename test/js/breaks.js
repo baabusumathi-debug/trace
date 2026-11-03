@@ -1,6 +1,7 @@
 // Breaks and time away: "Going out" before leaving, or "where were you?" after coming back. Kept on this device,
 // per profile. Reminders at the end of a break go to the profile's own Google Calendar ("Trace" / "Trace · HT").
 import { CHANNEL, IS_HT } from './config.js';
+import { peekOn, peekBreaks } from './peek.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { dkey } from './store.js';
 
@@ -19,7 +20,7 @@ export const MEALS = ['breakfast', 'lunch', 'dinner'], TEAS = ['eveningtea', 'te
 export const AWAY_MIN = 5;           // minutes away before "where were you?"
 
 export const current = () => get('onBreak', null);
-export function breaksOn(day) { return (get('breaks', {})[day] || []); }
+export function breaksOn(day) { return peekOn() ? peekBreaks(day) : (get('breaks', {})[day] || []); }
 function save(rec) {
   const all = get('breaks', {}), d = dkey(rec.start);
   (all[d] = all[d] || []).push(rec);

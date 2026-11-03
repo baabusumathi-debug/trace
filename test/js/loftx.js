@@ -1,5 +1,6 @@
 // Loft numbers: Phase 1 chase, cards per day, study time, best hours, GT trend. Pure calculations, no screens.
 import { S, seen, off, cardsOf, inPool, today, dkey, walked } from './store.js';
+import { peekOn, peekViews } from './peek.js';
 
 export const PHASE1_END = '2026-11-30';
 export const PHASE1_START = '2026-11-01';
@@ -12,6 +13,7 @@ export const addDays = (d, n) => dkey(new Date(d + 'T12:00:00').getTime() + n * 
 export const daysBetween = (a, b) => Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / DAY);
 
 function views() {
+  if (peekOn()) return peekViews().map(e => ({ ...e, no: e.no - off(e.deck) }));
   return S.events.filter(e => e.kind === 'view' && !S.undone.has(e.id)).sort((a, b) => a.ts - b.ts);
 }
 
@@ -31,14 +33,32 @@ function firstWalks() {
 export function chase(pool) {
   const first = firstWalks(), td = today(), dates = [];
   let total = 0, walkedNow = 0;
+  const pk = peekOn() ? new Set(views().map(e => e.deck + '|' + e.no)) : null;
   for (const d of (S.library ? S.library.decks : [])) {
     const cs = cardsOf(d.deck);
-    if (!cs.length) { if (!pool || pool === 'all') { total += d.cards; walkedNow += walked(d.deck); for (let i = 0; i < walked(d.deck); i++) dates.push(0); } continue; }
+    if (!cs.length) {
+      if (!pool || pool === 'all') {
+        const pkHere = pk ? [...pk].filter(k => k.startsWith(d.deck + '|')).length : 0, w = Math.max(0, walked(d.deck) - pkHere);
+        total += d.cards; walkedNow += w; for (let i = 0; i < w; i++) dates.push(0);
+      }
+      continue;
+    }
     for (const c of cs) {
       if (!inPool(c, pool)) continue;
       total++;
+      if (pk && pk.has(c.deck + '|' + c.no)) continue;            // preview: counted below at the peak-week time
       if (seen(c.deck, c.no) > 0) { walkedNow++; const t = first.get(c.deck + '|' + c.no); dates.push(t == null ? 0 : t); }
     }
+  }
+  if (peekOn()) {                                 // test preview: the peak week's cards count as newly walked
+    const done = new Set();
+    for (const e of views()) {
+      const k = e.deck + '|' + e.no; if (done.has(k)) continue; done.add(k);
+      const card = cardsOf(e.deck).find(c => c.no === e.no);
+      const deckIn = (S.library ? S.library.decks : []).some(d => d.deck === e.deck);
+      if (card ? inPool(card, pool) : deckIn && (!pool || pool === 'all')) { dates.push(e.ts); walkedNow++; }
+    }
+    walkedNow = Math.min(walkedNow, total);
   }
   const by = day => dates.filter(t => t < winEnd(day) + 3 * 3600e3).length;     // walked by the end of that day (to midnight)
   const startDay = PHASE1_START, nDays = daysBetween(startDay, PHASE1_END) + 1;
@@ -88,11 +108,11 @@ export function cardsPerDay(n) {
     if (want.has(d) && !done.has(dk)) {
       done.add(dk);
       const o = out[d];
-      if (lastAgain.get(k)) o.repair++; else if (nth === 1) o.new++; else if (nth === 2) o.x2++; else o.x3++;
+      if (e.first) o.new++; else if (lastAgain.get(k)) o.repair++; else if (nth === 1) o.new++; else if (nth === 2) o.x2++; else o.x3++;
     }
     count.set(k, prior + 1); lastAgain.set(k, !!e.again);
   }
-  for (const d of days) { const l = S.logDaily[d]; if (l) out[d].wm = l.cards || 0; }
+  if (!peekOn()) for (const d of days) { const l = S.logDaily[d]; if (l) out[d].wm = l.cards || 0; }
   return days.map(d => out[d]);
 }
 
@@ -107,7 +127,7 @@ export function studyIntervals(day) {
   }
   return iv;
 }
-export const studyMs = day => studyIntervals(day).reduce((t, [s, e]) => t + (e - s), 0) + ((S.logDaily[day] || {}).min || 0) * 60000;
+export const studyMs = day => studyIntervals(day).reduce((t, [s, e]) => t + (e - s), 0) + (peekOn() ? 0 : ((S.logDaily[day] || {}).min || 0) * 60000);
 
 /** Cards per hour of the window, averaged over the days with study in the last 14. */
 export function bestHours() {

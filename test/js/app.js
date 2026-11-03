@@ -8,6 +8,7 @@ import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
 import { chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
+import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
@@ -959,6 +960,7 @@ function renderLoft() {
         ${dayCard}
       </div>
       <div class="loft-b">
+        ${CHANNEL === 'test' ? `<div class="peekbar${peekOn() ? ' on' : ''}"><span><b>${peekOn() ? 'PREVIEW · your peak week' : 'Preview your peak week'}</b><i>${peekOn() ? `${PEAK_LABEL}, laid onto the last 7 days. Study times are real (War Map Log); break reasons are assumed from the gaps. Calendar and Coverage stay real. Nothing is saved.` : `${PEAK_LABEL}: see the chase, cards per day and time charts filled with it.`}</i></span><button class="btn ghost" data-peek>${peekOn() ? 'Back to my data' : 'Show it'}</button></div>` : ''}
         ${coverCard()}
         ${chaseCard()}
         ${cardsDayCard()}
@@ -972,6 +974,7 @@ function renderLoft() {
     ${nav('')}
   </div>`;
   bindGo(); bindTarget(renderLoft); bindLoftParts(); bindGoingOut();
+  const pkb = app.querySelector('[data-peek]'); if (pkb) pkb.onclick = () => { setPeek(!peekOn()); keep(renderLoft); };
   lastMeditation().then(m => { const el = app.querySelector('#al-last'); if (m && el && TRACKS[m.track]) el.textContent = `Last: ${TRACKS[m.track].title} · ${whenLabel(m.ts)} · ${Math.max(1, Math.round(m.sec / 60))} min`; });
   app.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { P.set('heatUnit', b.dataset.unit); keep(renderLoft); });
   app.querySelectorAll('[data-cov]').forEach(b => b.onclick = () => { P.set('covPool', b.dataset.cov); keep(renderLoft); });

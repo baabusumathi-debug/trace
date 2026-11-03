@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-047)
+## State (as of entry T-048)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.6** · promoted from test 1.3.28 on 3 Nov (T-047; earlier T-040, first T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.28** · last code commit: see entry T-046. Live is 1.4.6 (= test 1.3.28). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.29** · last code commit: see entry T-048. Live is 1.4.6 (= test 1.3.28). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-048 — 2026-11-03 — Claude — test — 1.3.29
+- **Peak-week preview in the Loft** (Naven, 3 Nov: "take my peak performance … before INI … assume timings … test version"): a test-only switch at the top of the Loft ("Show it" / "Back to my data") lays Naven's War Map Log rows for **17–23 Oct** (the week before INI-SS: 382 cards, 36 h 19 m; best day 21 Oct, 89 cards) onto the last 7 days. Session start times and minutes are real; cards are spread evenly inside each session. Break reasons are **assumed** from the gaps (9:30 to first session = breakfast; 12:30–15:30 = lunch; 16–18 h = evening tea; 19–21:30 = dinner; short gaps tea/restroom; others rest; a meal or tea counts up to twice its allowance, rest up to 30 min, the remainder stays Unexplained). Drives the Phase 1 chase, cards per day, time, live pace (Loft only); Calendar and Coverage stay real; nothing is saved. Data: `js/peakdata.js` (from the Log tab), logic `js/peek.js`; off on live by design.
+- Tests: demo with the peak decks in the library → chase 52.3/day (finish 15 Nov in the demo pool), cards per day and study strips filled, breakdown shows study, meals, rest and unexplained; no page errors.
 
 ## T-047 — 2026-11-03 — Claude — live — 1.4.6
 - Promoted test 1.3.28 on Naven's explicit approval (3 Nov, 19:50 IST: "i approve to put all these into live"): save/discard on leaving a flow (T-044), test-reminder button (T-041), Loft redesign and Going out / breaks with calendar reminders (T-045), Going out on the palace (T-046). ✦ stars recount from the current NEET set on load.
