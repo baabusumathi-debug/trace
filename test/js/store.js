@@ -258,6 +258,8 @@ export function setDoct(files) {
     for (const q of r.questions) { const o = qs.get(q.mcqid) || {}; const n = { ...o }; for (const [f, v] of Object.entries(q)) if (v != null && v !== '' && !(Array.isArray(v) && !v.length)) n[f] = v; qs.set(q.mcqid, n); }
     m.questions = [...qs.values()];
     if (!m.module && r.module) m.module = r.module;
+    if (r.anchor && !m.anchor) m.anchor = r.anchor;
+    if (r.lists) { m.lists = { ...(m.lists || {}) }; for (const [f, nos] of Object.entries(r.lists)) m.lists[f] = [...new Set([...(m.lists[f] || []), ...nos])]; }
     if (r.saved_at > (m.saved_at || '')) m.saved_at = r.saved_at;
     by.set(k, m);
   }
@@ -271,16 +273,44 @@ function qStatus(q) {
   if (guessed && (q.correct || flags.includes('Guessed Right'))) return 'Guessed right';
   return '';
 }
+// "Module Q7" -> DocT question ID, from the map's labels (for lists read in one tap from the review's question grid)
+let labelIdx = null, labelVer = '';
+function byLabel(l) {
+  if (!labelIdx || labelVer !== S.qmap.version) { labelIdx = new Map(); labelVer = S.qmap.version; for (const [id, e] of Object.entries(S.qmap.q || {})) if (e.l) labelIdx.set(e.l, id); }
+  return labelIdx.get(l);
+}
+// a sitting's questions, plus the Wrong / Guessed lists read from the grid (numbers -> IDs via the anchor question's paper)
+function sittingQuestions(a, qm) {
+  const qs = new Map((a.questions || []).map(q => [q.mcqid, { ...q }]));
+  const an = a.anchor, ae = an && qm[an.mcqid];
+  if (an && qs.has(an.mcqid)) qs.get(an.mcqid).qno = an.qno;          // in a filtered review DocT numbers questions 1…n of the list
+  if (a.lists && ae && ae.l && ae.l.endsWith(' Q' + an.qno)) {
+    const paper = ae.l.slice(0, ae.l.lastIndexOf(' Q'));
+    for (const [f, nos] of Object.entries(a.lists)) for (const n of nos) {
+      const id = byLabel(paper + ' Q' + n) || ('?' + paper + ' Q' + n);
+      const q = qs.get(id) || { mcqid: id, qno: n, flags: [] };
+      q.qno = n; q.flags = [...new Set([...(q.flags || []), f])]; if (/^Guessed/.test(f)) q.guess = true;
+      qs.set(id, q);
+    }
+  } else if (a.lists) {                       // paper not in the map: count the misses as "no card yet"
+    for (const [f, nos] of Object.entries(a.lists)) for (const n of nos) {
+      if (an && an.qno === n && qs.has(an.mcqid)) continue;          // already there as the question on screen
+      const id = '?' + (a.module || 'paper') + ' Q' + n;
+      if (!qs.has(id)) qs.set(id, { mcqid: id, qno: n, flags: [f], guess: /^Guessed/.test(f) });
+    }
+  }
+  return [...qs.values()];
+}
 function buildRepairs() {
   missMap = new Map(); unmapped = [];
   const latest = new Map();
   const qm = (S.qmap && S.qmap.q) || {};
   for (const a of S.doct) {
     const ts = Date.parse(a.saved_at || a.started) || 0, kind = a.kind === 'gt' ? 'gt' : 'qbank';
-    for (const q of a.questions || []) {
+    for (const q of sittingQuestions(a, qm)) {
       const why = qStatus(q);
       if (!why) continue;
-      const e = qm[q.mcqid], label = (a.module || (e && e.l ? e.l.replace(/ Q\d+$/, '') : kind === 'gt' ? 'GT' : 'QBank')) + ' Q' + (q.qno || '?');
+      const e = qm[q.mcqid], label = e && e.l ? e.l : (a.module || (kind === 'gt' ? 'GT' : 'QBank')) + ' Q' + (q.qno || '?');
       if (!e || !e.c || !e.c.length) { unmapped.push({ mcqid: q.mcqid, label, deck: e ? e.d : '', why, ts }); continue; }
       for (const key of e.c) {
         const i = key.indexOf('|'), item = { deck: key.slice(0, i), code: key.slice(i + 1), why, label, cohort: q.cohort, ts, kind };

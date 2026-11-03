@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-032)
+## State (as of entry T-033)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.2** · promoted from test 1.3.16 on 3 Nov (T-029; first promotion T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.19** · last code commit: see entry T-032. Live is 1.4.2 (= test 1.3.16). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.20** · last code commit: see entry T-033. Live is 1.4.2 (= test 1.3.16). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-033 — 2026-11-03 — Claude — test — 1.3.20
+- **One-tap miss lists** (recorder v2.2, delivered in chat): in a DocT review, ticking **Wrong**, **Guessed Wrong** or **Guessed Right** narrows the Questions grid beside the filters to those questions' original numbers (confirmed on Naven's snapshots, 3 Nov: QBank Wrong → 2, 3, 5, 6; GT Guessed Wrong → 2). The recorder reads the whole grid at once into `lists`, plus an `anchor` (the question on screen and its original number), so stepping through each question is no longer needed. Trace (`sittingQuestions` in `store.js`) turns the numbers into DocT IDs through the anchor's paper/module in `qmap.json` (label "Module Qn"), only when the anchor's label matches its number; papers not in the map count as "no card yet".
+- Recorder v2.1 (also in chat): a QBank sitting needs no review — QBank solving shows the key on each question, so leaving the module saves, sends and switches Off. GTs still need the review (the key is only there).
+- Recorder fix: a `const isRev` used before its declaration threw on every page tick while recording was off (since v1.x); now a function.
+- Repair labels use the map's own "Module Qn" (in a filtered review DocT numbers the list 1…n).
+- Tests: v2.2 in jsdom against the four 3 Nov snapshots (lists and anchors read; upload payload; auto-off); Trace demo with injected lists (Shock Wrong 1, 3 → three cards; unmapped GT paper → one "no card yet"); no page errors.
 
 ## T-032 — 2026-11-03 — Claude — test — 1.3.19
 - Coverage bars use the card colours (Naven): empty = not seen (`--s0`), then seen once / twice / three times or more (`--s1`–`--s3`), as on the shelf, deck and card tiles.
