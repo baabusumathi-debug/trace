@@ -895,3 +895,4 @@ a.brand{text-decoration:none;color:inherit}
 .mo.anc{outline:0;box-shadow:0 0 0 2px #14171c,0 0 0 4px var(--gold2);position:relative;z-index:2}
 .loftbody{align-items:stretch!important}
 @media (max-width:640px){.pgrid .nm{min-width:108px;max-width:130px}.pc,.dh{min-width:40px}}
+.ch-ed{width:26px;height:26px;margin-left:4px;vertical-align:middle}.ed-list{display:flex;flex-direction:column;gap:6px}.ed-i{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;font-size:13.5px}.ed-i .btn{width:auto;height:34px}

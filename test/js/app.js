@@ -9,7 +9,7 @@ import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
 import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, DAY_TYPES } from './plan.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
@@ -927,13 +927,14 @@ const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const dHead = d => { const x = new Date(d + 'T12:00'); return [WD[x.getDay()], x.getDate()]; };
 const dShort = d => { const [w, n] = dHead(d); return `${w} ${n} ${MONTHS[new Date(d + 'T12:00').getMonth()].slice(0, 3)}`; };
 function paceBand(p) { return p <= 55 ? ['comfortable', 'ok'] : p <= 70 ? ['a stretch', 'mid'] : ['more than your best week (55)', 'hi']; }
-let planPending = null;            // cards picked in the Mosaic, waiting to become a subject
+let planPending = null;
+const startSelect = (st, cur, attr) => `<label>Starts on <select ${attr}>${planDays(st).map((d, i) => `<option value="${i ? d : ''}"${(cur || '') === (i ? d : '') ? ' selected' : ''}>${i ? dShort(d) + ' (day ' + (i + 1) + ')' : 'the first day'}</option>`).join('')}</select></label>`;            // cards picked in the Mosaic, waiting to become a subject
 
 function renderPlan() {
   const p = loadPlan(), st = currentStretch();
   if (!st) return renderPlanNew();
   const r = compute(st), days = r.days, td = r.td, band = paceBand(st.pace);
-  const rows = [{ id: 'repair', name: 'Repair pile', sub: st.repair.on ? `${r.repairTotal} waiting · up to ${st.repair.cap} a day` : 'off', auto: true }].concat(st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards${s.mode === 'daily' ? ' · ' + (s.daily ? s.daily + ' a day' : 'spread') : ''}` })));
+  const rows = [{ id: 'repair', name: 'Repair pile', sub: st.repair.on ? `${r.repairTotal} waiting · up to ${st.repair.cap} a day` : 'off', auto: true }].concat(st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards${s.mode === 'daily' ? ' · ' + (s.daily ? s.daily + ' a day' : 'spread') : ''}${s.from ? ' · from ' + dShort(s.from) : ''}` })));
   const anyOver = r.over > 0;
   const cell = (row, d) => {
     const plan = r.cells[row.id][d] || 0, did = r.actual[row.id][d] || 0, pin = st.pins[row.id + '|' + d] != null;
@@ -963,7 +964,7 @@ function renderPlan() {
       </table></div>
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button></div>
-      ${r.active ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}
+      ${r.active && r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}
       <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
       <button class="linkbtn muted small" data-delstretch>Delete ${esc(st.name)}</button>
     </div>
@@ -1034,7 +1035,7 @@ function subjectSheet(st, id, re) {
   const s = st.subjects.find(x => x.id === id); if (!s) return;
   const i = st.subjects.indexOf(s), done = subjectDone(s);
   planSheet(s.name, 'SUBJECT', `<p class="muted small">${s.keys.length} cards · ${done} walked since you added it${s.sub ? ' · ' + esc(s.sub) : ''}</p>
-    <div class="pnew"><label>Name <input type="text" value="${esc(s.name)}" data-sname></label></div>
+    <div class="pnew"><label>Name <input type="text" value="${esc(s.name)}" data-sname></label>${startSelect(st, s.from, 'data-sfrom')}</div>
     <div class="seg wide"><button class="${s.mode !== 'daily' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${s.mode === 'daily' ? 'on' : ''}" data-smode="daily">A little every day</button></div>
     <div class="pnew" data-dailybox ${s.mode === 'daily' ? '' : 'hidden'}><label>Cards a day <input type="number" min="0" max="150" value="${s.daily || ''}" placeholder="spread evenly" data-sdaily></label><label>Last day <input type="date" value="${s.to || ''}" data-sto></label></div>
     <div class="sheet-f"><button class="btn ghost" data-sup ${i === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${i === st.subjects.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
@@ -1043,7 +1044,7 @@ function subjectSheet(st, id, re) {
     const mv = k => { st.subjects.splice(i, 1); st.subjects.splice(i + k, 0, s); savePlan(); c(); re(); };
     w.querySelector('[data-sup]').onclick = () => mv(-1); w.querySelector('[data-sdown]').onclick = () => mv(1);
     w.querySelector('[data-sdel]').onclick = () => { st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); };
-    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode; s.daily = +w.querySelector('[data-sdaily]').value || null; s.to = w.querySelector('[data-sto]').value || null; savePlan(); c(); re(); };
+    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode; s.daily = +w.querySelector('[data-sdaily]').value || null; s.to = w.querySelector('[data-sto]').value || null; s.from = w.querySelector('[data-sfrom]').value || null; savePlan(); c(); re(); };
   });
 }
 // Quick add: a system (or all), a pool and walk counts → live count → subject
@@ -1061,20 +1062,20 @@ function addSubjectSheet(st, re) {
     w.querySelectorAll('[data-apool]').forEach(b => b.onclick = () => { pool = b.dataset.apool; draw(w); });
     w.querySelectorAll('[data-awalk]').forEach(b => b.onclick = () => { wk = toggleWalk(wk, b.dataset.awalk); draw(w); });
   };
-  planSheet('Add a subject', 'THE PLAN', `<div data-abody></div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
+  planSheet('Add a subject', 'THE PLAN', `<div data-abody></div><div class="pnew">${startSelect(st, '', 'data-afrom')}</div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
     draw(w);
     w.querySelector('[data-apick]').onclick = () => { c(); P.set('pickOn', true); P.set('pickForPlan', true); P.set('moPool', pool); P.set('moWalk', wk); go('#/sys/' + sk); };
     w.querySelector('[data-aadd]').onclick = () => {
       const list = pick(); if (!list.length) { toast('No cards match.'); return; }
       const g = sys.find(x => sysNum(x.name) === sk);
-      addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code) });
+      addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code), from: w.querySelector('[data-afrom]').value || null });
       c(); re();
     };
   });
 }
 function nameSubjectSheet(st, pend, re) {
-  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label></div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
-    w.querySelector('[data-nadd]').onclick = () => { addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys }); c(); re(); };
+  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label>${startSelect(st, '', 'data-nfrom')}</div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
+    w.querySelector('[data-nadd]').onclick = () => { addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys, from: w.querySelector('[data-nfrom]').value || null }); c(); re(); };
   });
 }
 // Loft card: the plan at a glance
@@ -1189,7 +1190,7 @@ function renderLoft() {
     <span class="mono kick">DAY IN THE CHRONICLE</span>
     <span class="dc-d">${['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][dd.getDay()]} ${dd.getDate()} ${MONTHS[dd.getMonth()].slice(0, 3)}</span>
     <div class="dc-stats"><span><b>${fmtHM(dv.min)}</b><i>STUDIED</i></span><span><b>${dv.cards}</b><i>CARDS</i></span><span><b>${dv.cards ? (dv.min / dv.cards).toFixed(1) : '–'}</b><i>MIN / CARD</i></span></div>
-    ${dItems.length ? `<div class="chron">${dItems.map(c => `<div class="ch-i"><span class="mono">${esc(c.when.replace(/^(Today|Yday) /, ''))}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('')}</div>` : '<p class="muted small">No study logged on this day.</p>'}
+    ${dItems.length ? `<div class="chron">${dItems.map(c => `<div class="ch-i"><span class="mono">${esc(c.when.replace(/^(Today|Yday) /, ''))}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}${c.key ? ` <button class="iconbtn sm ch-ed" data-chedit="${esc(c.key)}" aria-label="Edit this entry">${ICON.edit}</button>` : ''}</span></div>`).join('')}</div>` : '<p class="muted small">No study logged on this day.</p>'}
   </div>`;
   const chron = buildChronicle();
   app.innerHTML = `<div class="screen loft">
@@ -1216,7 +1217,7 @@ function renderLoft() {
           ${coverCard()}
           ${tilesRow(chron.length)}
           <details class="chrond${P.get('chronOpen', false) ? '' : ' hid'}"${P.get('chronOpen', false) ? ' open' : ''}><summary><span class="mono kick">CHRONICLES</span><span class="mono muted small">${chron.length} entries</span></summary>
-          <div class="chron">${chron.slice(0, 80).map(c => `<div class="ch-i"><span class="mono">${esc(c.when)}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
+          <div class="chron">${chron.slice(0, 80).map(c => `<div class="ch-i"><span class="mono">${esc(c.when)}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}${c.key ? ` <button class="iconbtn sm ch-ed" data-chedit="${esc(c.key)}" aria-label="Edit this entry">${ICON.edit}</button>` : ''}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
         </details>
         </div>
       </div>
@@ -1224,6 +1225,7 @@ function renderLoft() {
     ${nav('')}
   </div>`;
   bindGo(); bindTarget(renderLoft); bindLoftParts(); bindGoingOut();
+  app.querySelectorAll('[data-chedit]').forEach(b => b.onclick = e => { e.preventDefault(); e.stopPropagation(); editEntrySheet(b.dataset.chedit); });
   const pkb = app.querySelector('[data-peek]'); if (pkb) pkb.onclick = () => { setPeek(!peekOn()); keep(renderLoft); };
   lastMeditation().then(m => { const el = app.querySelector('#al-last'); if (m && el && TRACKS[m.track]) el.textContent = `Last: ${TRACKS[m.track].title} · ${whenLabel(m.ts)} · ${Math.max(1, Math.round(m.sec / 60))} min`; });
   app.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { P.set('heatUnit', b.dataset.unit); keep(renderLoft); });
@@ -1232,21 +1234,34 @@ function renderLoft() {
   app.querySelectorAll('[data-day]').forEach(b => b.onclick = () => { loftDay = b.dataset.day; keep(renderLoft); });
   const cd = app.querySelector('details.chrond'); if (cd) cd.addEventListener('toggle', () => P.set('chronOpen', cd.open));
 }
+// Edit a Flow entry: remove single cards or the whole entry (an undo, as Undo in Flow does; synced to the Sheet's TraceEvents)
+function editEntrySheet(key) {
+  const evs = S.events.filter(e => e.kind === 'view' && !S.undone.has(e.id) && (e.session || e.id) === key).sort((a, b) => a.ts - b.ts);
+  if (!evs.length) return;
+  const hm = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  planSheet('Flow entry · ' + whenLabel(evs[0].ts), 'EDIT', `<p class="muted small">Remove a card that got walked by mistake, or the whole entry. Removed cards count as never walked in this entry.</p>
+    <div class="ed-list">${evs.map(e => `<div class="ed-i"><span class="mono">${hm(e.ts)}</span><span><b>${esc(e.deck)}</b> ${esc(e.code || '')} · card ${e.no}${e.again ? ' · Again' : ''}</span><button class="btn ghost" data-edrm="${esc(e.id)}">Remove</button></div>`).join('')}</div>
+    <div class="sheet-f"><button class="btn ghost" data-x>Keep all</button><button class="btn primary" data-edall>Remove whole entry (${evs.length})</button></div>`, (w, c) => {
+    const done = async list => { for (const e of list) await undoView(e); c(); toast(list.length === 1 ? 'Card removed.' : list.length + ' cards removed.'); keep(renderLoft); if (hasBackend()) sync({ downloadAll: false }); };
+    w.querySelectorAll('[data-edrm]').forEach(b => b.onclick = () => done(evs.filter(e => e.id === b.dataset.edrm)));
+    w.querySelector('[data-edall]').onclick = () => done(evs);
+  });
+}
 function buildChronicle() {
   const items = [];
   // Trace sessions: group views by session
   const by = new Map();
   for (const e of S.events) {
-    if (S.undone.has(e.id)) continue;
+    if (S.undone.has(e.id) || e.kind !== 'view') continue;
     const k = e.session || e.id;
-    const s = by.get(k) || { ts: e.ts, end: e.ts, decks: new Map(), ms: 0, n: 0 };
+    const s = by.get(k) || { key: k, ts: e.ts, end: e.ts, decks: new Map(), ms: 0, n: 0 };
     s.ts = Math.min(s.ts, e.ts); s.end = Math.max(s.end, e.ts); s.ms += Math.min(e.ms || 0, 20 * 60000); s.n++;
     const d = s.decks.get(e.deck) || []; d.push(e.no); s.decks.set(e.deck, d);
     by.set(k, s);
   }
   for (const s of by.values()) {
     const parts = [...s.decks.entries()].map(([d, nos]) => d + ' ' + compressNos(nos));
-    items.push({ ts: s.ts, day: dkey(s.ts), when: whenLabel(s.ts), what: 'Flow · ' + parts.slice(0, 2).join(', ') + (parts.length > 2 ? ` +${parts.length - 2}` : ''), size: `${s.n} · ${fmtHM(s.ms / 60000)}` });
+    items.push({ key: s.key, ts: s.ts, day: dkey(s.ts), when: whenLabel(s.ts), what: 'Flow · ' + parts.slice(0, 2).join(', ') + (parts.length > 2 ? ` +${parts.length - 2}` : ''), size: `${s.n} · ${fmtHM(s.ms / 60000)}` });
   }
   for (const r of S.logChron) {
     const ts = new Date(r[0] + 'T' + (/^\d{1,2}:\d{2}/.test(r[1]) ? r[1].padStart(5, '0') : '12:00')).getTime();
