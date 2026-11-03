@@ -1,6 +1,6 @@
 // In-memory view of everything in IndexedDB, plus the derived numbers the screens need.
 import { db } from './db.js';
-import { CONFIG } from './config.js';
+import { CONFIG, IS_HT } from './config.js';
 
 export const S = {
   library: null,          // { decks:[...], generated, changes? }
@@ -44,7 +44,7 @@ export async function loadAll() {
   if (!S.device) {
     const ua = navigator.userAgent;
     const kind = /Mac/.test(ua) && !('ontouchend' in document) ? 'mac' : (Math.min(screen.width, screen.height) >= 700 ? 'tab' : 'phone');
-    S.device = kind + '-' + Math.random().toString(36).slice(2, 6);
+    S.device = (IS_HT ? 'HT-' : '') + kind + '-' + Math.random().toString(36).slice(2, 6);
     await db.kv.set('device', S.device);
   }
   recount();
@@ -125,6 +125,18 @@ function topupsOf(deck, cards) {
   const lineOf = l => /^\s*([-•]|\w[^|]* \| )/.test(l) ? l : '- ' + l;   // numbered steps become list lines too, so reflow keeps them apart
   return list.map((t, i) => ({ deck, code: 'TU-' + String(i + 1).padStart(2, '0'), no: base + i + 1, section: 'Top-up', topup: true, tier: t.tier, ttype: t.type, tid: t.id,
     q: t.q, a: t.a.map(lineOf).join('\n'), why: '', watch: '', hook: '', banks: t.banks, nq: t.n, recall: t.recall, src: t.src || '' }));
+}
+// A card's chunk = the War Map Chunks tab range that holds it (card numbers converted with off()). Top-up cards
+// form one chunk at the end of their deck; decks with no Chunks rows (e.g. Top-up decks) fall back to section headings.
+export function chunkOf(c) {
+  if (!c) return { key: '', name: '' };
+  if (c.topup) return { key: 'TU', name: 'Top-up' };
+  const list = S.chunks[c.deck];
+  if (list && list.length && !c.tdeck) {
+    const n = +c.no + off(c.deck), ch = list.find(x => n >= x.from && n <= x.to);
+    if (ch) return { key: ch.id, name: ch.name || c.section || ch.id };
+  }
+  return { key: 's:' + (c.section || ''), name: c.section || 'Cards' };
 }
 export function withEdits(c) {
   const e = S.edits.get(c.deck + '|' + c.code);

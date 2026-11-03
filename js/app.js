@@ -1,8 +1,8 @@
-import { CONFIG, CHANNEL } from './config.js';
+import { CONFIG, CHANNEL, PROFILE, IS_HT, setProfile } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList } from './store.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf } from './store.js';
 import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
@@ -37,11 +37,21 @@ async function boot() {
   const params = new URLSearchParams(location.search);
   const demo = params.has('demo');
   if (demo) useDemoDb();
-  else if (CHANNEL === 'test') {
-    // the test build keeps its own copy of everything; it borrows only the connection from the live app on this device
-    useDbName('trace-test');
-    if (!(await db.kv.get('backend'))) { const b = await peekDb('trace', 'kv', 'backend'); if (b) await db.kv.set('backend', b); }
-    document.documentElement.classList.add('ch-test');
+  else {
+    // Profile first: Naven's existing devices (a live connection already saved) are Trace without asking.
+    if (!PROFILE) {
+      const b = await peekDb('trace', 'kv', 'backend').catch(() => null);
+      if (b) { if (setProfile('trace')) { location.reload(); return; } }   // if storage is blocked, carry on as Trace
+      else return renderProfilePick();
+    }
+    const base = CHANNEL === 'test' ? 'trace-test' : 'trace';
+    // each profile keeps its own copy of everything; HT's is a separate database
+    if (IS_HT || CHANNEL === 'test') useDbName(base + (IS_HT ? '-ht' : ''));
+    if (!(await db.kv.get('backend'))) {        // borrow the connection already saved on this device, never study data
+      for (const n of ['trace', 'trace-ht']) { const b = await peekDb(n, 'kv', 'backend').catch(() => null); if (b) { await db.kv.set('backend', b); break; } }
+    }
+    if (CHANNEL === 'test') document.documentElement.classList.add('ch-test');
+    if (IS_HT) document.documentElement.classList.add('pf-ht');
   }
   await initApi(demo);
 
@@ -50,7 +60,7 @@ async function boot() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
   loadQbank();
-  await loadVisuals();
+  if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
   }
@@ -65,7 +75,22 @@ async function boot() {
   // visual decks: look for new versions a little after opening, then every 30 minutes (each check is skipped if done < 6 h ago)
   const vcheck = (force) => syncVisuals(d => (S.decks.get(d) || { cards: [] }).cards, { force }).then(() => { if (!flow && /^#\/status/.test(location.hash)) route(); });
   window._vcheck = vcheck;
-  setTimeout(() => vcheck(false), 8000); setInterval(() => vcheck(false), 30 * 60000);
+  if (!IS_HT) { setTimeout(() => vcheck(false), 8000); setInterval(() => vcheck(false), 30 * 60000); }
+}
+
+// A two-tap switch (no browser dialog): the first tap arms it for 4 seconds.
+let _pfArm = 0;
+function confirmSwitch() { if (Date.now() - _pfArm < 4000) return true; _pfArm = Date.now(); toast('Tap again to switch profile. Each profile keeps its own data.'); return false; }
+function renderProfilePick() {
+  app.innerHTML = `<div class="screen welcome"><div class="scroll pad pfpick">
+    <span class="mono kick">TRACE · FIRST OPEN ON THIS DEVICE</span>
+    <h1 class="h1s">Who studies on this device?</h1>
+    <p class="muted">Each profile keeps its own cards seen, targets and flows, and writes to the War Map under its own name.</p>
+    <div class="pf-btns"><button class="btn primary press" data-pf="trace">Naven<small>War Map name: Trace</small></button>
+      <button class="btn ghost press" data-pf="ht">HT<small>War Map name: HT</small></button></div>
+    <p class="muted small">You can change this later on the This device page.</p>
+  </div></div>`;
+  app.querySelectorAll('[data-pf]').forEach(b => b.onclick = () => { setProfile(b.dataset.pf); location.reload(); });
 }
 
 /* ============================ router ============================ */
@@ -150,14 +175,14 @@ function renderWelcome() {
 }
 function topBar() {
   return `<header class="top">
-      <a class="brand" href="#/" aria-label="The palace">${brandMark()}<span class="brand-t"><span class="b1">TRACE${CHANNEL === 'test' ? ' <i class="testpill">TEST</i>' : ''}</span><span class="b2">THE MAGICIAN’S CABINET</span></span></a>
+      <a class="brand" href="#/" aria-label="The palace">${brandMark()}<span class="brand-t"><span class="b1">TRACE${CHANNEL === 'test' ? ' <i class="testpill">TEST</i>' : ''}${IS_HT ? ' <i class="testpill htpill">HT</i>' : ''}</span><span class="b2">THE MAGICIAN’S CABINET</span></span></a>
       <div class="top-r">${syncPill()}<span class="exam mono"><span class="gold">${CONFIG.exam.name}</span>${daysLeft()}</span></div>
     </header>`;
 }
 function brandMark() { return '<span class="mark"><span>✦</span></span>'; }
 
 /* ============================ preferences (per device) ============================ */
-const PK = CHANNEL === 'test' ? 'trace-test.' : 'trace.';
+const PK = (CHANNEL === 'test' ? 'trace-test.' : 'trace.') + (IS_HT ? 'ht.' : '');   // per-profile view settings and last flow
 const P = {
   get(k, d) { try { const v = localStorage.getItem(PK + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(PK + k, JSON.stringify(v)); } catch (e) { /* private mode */ } }
@@ -359,11 +384,11 @@ function filtersFor(deck, cards) {
     { key: 'edited', label: 'Edited', list: cards.filter(c => c.edited) }
   ].filter(f => f.key === 'all' || f.list.length);
 }
-function sectionsOf(cards) {
+function sectionsOf(cards) {            // chunks, in card order (War Map Chunks tab; see chunkOf)
   const out = [];
   for (const c of cards) {
-    const last = out[out.length - 1];
-    if (last && last.name === (c.section || '')) last.cards.push(c); else out.push({ name: c.section || '', cards: [c] });
+    const ch = chunkOf(c), last = out[out.length - 1];
+    if (last && last.key === ch.key) last.cards.push(c); else out.push({ key: ch.key, name: ch.name, cards: [c] });
   }
   return out;
 }
@@ -371,17 +396,17 @@ function sectionsOf(cards) {
 function chunked(cards, tileFn, names) {
   let out = '', prev = null;
   cards.forEach((c, i) => {
-    const sec = c.section || '';
-    if (i === 0 || sec !== prev) {
+    const ch = chunkOf(c);
+    if (i === 0 || ch.key !== prev) {
       if (i > 0) out += '<span class="cgap" aria-hidden="true"></span>';
-      if (names) out += `<span class="cname mono">${esc(sec || 'Cards')}</span>`;
+      if (names) out += `<span class="cname mono">${esc(ch.name)}</span>`;
     }
-    prev = sec;
+    prev = ch.key;
     out += tileFn(c);
   });
   return out;
 }
-const tipOf = c => `${c.deck} · ${c.section || 'Cards'} · card ${c.no}${neetTag(c) ? ' · ' + neetTag(c) : ''}${c.topup ? ' · Top-up' : ''}`;
+const tipOf = c => `${c.deck} · ${chunkOf(c).name} · card ${c.no}${neetTag(c) ? ' · ' + neetTag(c) : ''}${c.topup ? ' · Top-up' : ''}`;
 // Hover label for tiles: mouse on the Mac, S Pen hovering on the Tab and the phone (touch never shows it).
 function bindTips(root) {
   let tip = document.getElementById('hovtip');
@@ -767,8 +792,8 @@ async function endFlow() {
 function current() { return flow.queue[flow.idx]; }
 function sectionRange() {
   const c = current(); if (!c) return '';
-  const same = flow.queue.filter(x => x.deck === c.deck && x.section === c.section).map(x => x.no);
-  return (c.section || 'Cards') + (same.length > 1 ? ' · ' + Math.min(...same) + '–' + Math.max(...same) : '');
+  const ch = chunkOf(c), same = flow.queue.filter(x => x.deck === c.deck && chunkOf(x).key === ch.key).map(x => x.no);
+  return ch.name + (same.length > 1 ? ' · ' + Math.min(...same) + '–' + Math.max(...same) : '');
 }
 
 function renderFlow() {
@@ -845,7 +870,7 @@ function drawCard() {
   el.innerHTML = top + body;
   el.classList.toggle('ng', isNeet(c));
   closePanel();
-  if (hasVisual(c)) {
+  if (!IS_HT && hasVisual(c)) {
     const chip = document.createElement('button'); chip.className = 'vchip mono'; chip.textContent = isQ ? '◈ visual after reveal' : '◈ Visual';
     if (isQ) chip.disabled = true; else chip.onclick = e => { e.stopPropagation(); const t = el.querySelector('.vl-head'); if (t) t.click(); else { const v = el.querySelector('.vl'); v && v.click(); } };
     el.querySelector('.c-tags').appendChild(chip);
@@ -918,7 +943,7 @@ function updateFlowChrome() {
   $('#f-undo').classList.toggle('dimmed', flow.browse ? flow.idx === 0 : !flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
   const fq = flow.queue.slice(0, 60);
-  $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.section !== fq[i - 1].section || c.deck !== fq[i - 1].deck) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
+  $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
 }
 
 function animate(kind, swap) {
@@ -1093,6 +1118,7 @@ async function renderStatus() {
         <dt>Last sync</dt><dd>${last ? new Date(last).toLocaleString() : 'never'}</dd>
         <dt>Waiting to send</dt><dd>${status.pending} item${status.pending === 1 ? '' : 's'}</dd>
         <dt>Storage</dt><dd>${persisted ? 'Protected from clean-up' : 'Browser may clear it if space runs low'}${est ? ` · ${(est.usage / 1048576).toFixed(1)} MB used` : ''}</dd>
+        <dt>Profile</dt><dd>${IS_HT ? 'HT' : 'Naven (Trace)'} · <button class="link" data-act="profile">switch to ${IS_HT ? 'Naven (Trace)' : 'HT'}</button></dd>
         <dt>Device</dt><dd class="mono">${esc(S.device)}</dd>
         <dt>App</dt><dd class="mono">${CONFIG.appVersion}</dd>
       </dl>
@@ -1111,6 +1137,8 @@ async function renderStatus() {
   </div>`;
   bindGo();
   $('[data-act=sync]').onclick = () => sync();
+  const pf = $('[data-act=profile]');
+  if (pf) pf.onclick = () => { if (confirmSwitch()) { setProfile(IS_HT ? 'trace' : 'ht'); location.reload(); } };
   $('[data-act=vis]').onclick = () => { if (window._vcheck) { window._vcheck(true); setTimeout(route, 300); } };
   $('[data-act=dl]').onclick = async () => {
     for (const d of S.decks.values()) d.verified = false;

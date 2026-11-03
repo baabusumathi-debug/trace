@@ -697,3 +697,11 @@ a.brand{text-decoration:none;color:inherit}
 .dk-t{font-family:var(--serif);font-size:20px;font-weight:600}
 .desk .dk-box p{margin:0}
 .desk .chips a.chip{display:inline-flex;align-items:center;text-decoration:none}
+
+/* T-028: chunk bar, profiles */
+.cgap{flex:0 0 2px;width:2px;height:14px;background:var(--gold);opacity:.75;margin:0 3px;border-radius:1px;align-self:center}
+.pl-strip .cgap{height:16px}
+.htpill{background:#c9a6d6!important;color:#3b2347!important}
+.pfpick{max-width:560px;margin:10vh auto 0;display:flex;flex-direction:column;gap:14px}
+.pf-btns{display:flex;gap:12px;flex-wrap:wrap}.pf-btns .btn{flex:1;min-width:180px;height:72px;flex-direction:column;line-height:1.25;width:auto}
+.pf-btns .btn small{font-size:11px;font-weight:400;opacity:.8}
