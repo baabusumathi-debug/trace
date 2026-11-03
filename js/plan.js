@@ -39,8 +39,8 @@ export function newStretch({ start, days, pace } = {}) {
   return s;
 }
 export function deleteStretch(id) { const p = loadPlan(); p.stretches = p.stretches.filter(s => s.id !== id); if (p.current === id) p.current = null; savePlan(); }
-export function addSubject(st, { name, sub, keys }) {
-  const s = { id: rid(), name, sub: sub || '', keys: [...new Set(keys)], mode: 'seq', daily: null, addedAt: Date.now() };
+export function addSubject(st, { name, sub, keys, from }) {
+  const s = { id: rid(), name, sub: sub || '', keys: [...new Set(keys)], mode: 'seq', daily: null, from: from && from > st.start ? from : null, addedAt: Date.now() };
   st.subjects.push(s); savePlan(); return s;
 }
 export const dayList = st => [...Array(st.days)].map((_, i) => addDays(st.start, i));
@@ -117,7 +117,7 @@ export function compute(st) {
   for (const s of subs.filter(x => x.mode !== 'daily')) {
     for (const d of future) {
       if (left[s.id] <= 0) break;
-      if (st.pins[s.id + '|' + d] != null || room[d] <= 0) continue;
+      if (st.pins[s.id + '|' + d] != null || room[d] <= 0 || (s.from && d < s.from)) continue;
       const v = Math.min(left[s.id], room[d]); cells[s.id][d] = (cells[s.id][d] || 0) + v; room[d] -= v; left[s.id] -= v;
     }
   }
