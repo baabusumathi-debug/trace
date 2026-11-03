@@ -22,6 +22,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-052 — 2026-11-04 — Claude — recorder — v2.7 (given to Naven)
+- HT review batch (4 Nov, 00:42–00:47 IST, recorder 2.6): SIADH & DI (14 wrong), Adrenal Insufficiency & Crisis (12), Metabolic Encephalopathy (6), Substance-Related Disorders Part 1 (6), Part 2 (12), Part 3 (10), Drug-Related Disorders (15) — all sent automatically, lists match DocT's incorrect counts, no skipped questions in these modules, anchors correct (Q1). 65 wrong questions; 55 mapped to cards, 10 have no card yet.
+- Substance Part 2 was sent at 00:44:57; Naven re-opened it, and since nothing new was captured, leaving sent nothing and recording stayed on "HT review" (looked like a failure). **v2.7:** leaving a review that was already sent flashes "nothing new · already sent" and switches recording Off.
+
 ## T-051 — 2026-11-04 — Claude — live — 1.4.7
 - Promoted test 1.3.31 on Naven's explicit approval (4 Nov, 00:33 IST): skipped DocT questions become repairs "Skipped" (T-049/T-050), combined Wrong+Skipped lists; the peak-week preview (T-048) is copied too but only shows on the test app.
 
