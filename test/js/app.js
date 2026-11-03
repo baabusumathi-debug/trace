@@ -1,7 +1,7 @@
 import { CONFIG, CHANNEL, PROFILE, IS_HT, setProfile } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
-import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
+import { initApi, hasBackend, isDemo, setBackend, call, batch } from './api.js';
 import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf, repairsDueLater, unmappedMisses, missOf } from './store.js';
 import { status, sync, loadQbank, loadQmap, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
@@ -1154,6 +1154,7 @@ async function renderStatus() {
         <dt>Waiting to send</dt><dd>${status.pending} item${status.pending === 1 ? '' : 's'}</dd>
         <dt>Storage</dt><dd>${persisted ? 'Protected from clean-up' : 'Browser may clear it if space runs low'}${est ? ` · ${(est.usage / 1048576).toFixed(1)} MB used` : ''}</dd>
         <dt>Setup link</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="copylink">Copy it, to connect another device</button><div id="setup-out" hidden><textarea class="mono" readonly rows="4"></textarea><span class="mono muted small so-n"></span></div>' : '—'}</dd>
+        <dt>Reminders</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="testrem">Send a test reminder (in 2 minutes)</button>' : '—'}</dd>
         <dt>Profile</dt><dd>${IS_HT ? 'HT' : 'Naven (Trace)'} · <button class="link" data-act="profile">switch to ${IS_HT ? 'Naven (Trace)' : 'HT'}</button></dd>
         <dt>Device</dt><dd class="mono">${esc(S.device)}</dd>
         <dt>App</dt><dd class="mono">${CONFIG.appVersion}</dd>
@@ -1185,6 +1186,16 @@ async function renderStatus() {
     if (box) { box.hidden = false; box.querySelector('textarea').value = link; box.querySelector('.so-n').textContent = `${link.length} characters · connection ${bu ? '✓' : '✗ no address'} · key ${bk ? '✓' : '✗ missing'}`; }
     try { await navigator.clipboard.writeText(link); toast('Setup link copied (' + link.length + ' characters). Keep it private.'); }
     catch (e) { toast('Select the link in the box and copy it by hand.'); }
+  };
+  const tr = $('[data-act=testrem]');
+  if (tr) tr.onclick = async () => {
+    tr.disabled = true;
+    try {
+      const [r] = await batch([{ op: 'calendar', action: 'add', who: IS_HT ? 'HT' : 'Trace', at: new Date(Date.now() + 2 * 60000).toISOString(), title: 'Trace · test reminder', note: 'Sent from This device to check reminders.' }]);
+      if (r.ok) toast('Added to the "' + r.data.calendar + '" calendar for ' + new Date(Date.now() + 2 * 60000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + '. Your phone should notify you then.');
+      else toast(/unknown op/.test(r.error) ? 'The connection script needs the calendar update first.' : 'Reminder not added: ' + r.error);
+    } catch (e) { toast('Reminder not added: ' + e.message); }
+    tr.disabled = false;
   };
   const pf = $('[data-act=profile]');
   if (pf) pf.onclick = () => { if (confirmSwitch()) { setProfile(IS_HT ? 'trace' : 'ht'); location.reload(); } };

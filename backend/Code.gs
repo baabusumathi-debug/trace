@@ -16,7 +16,7 @@ var TABS = {            // what the app may do with each tab
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 4;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default)
+var VERSION = 5;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
@@ -51,6 +51,7 @@ function run_(o) {
     case 'visualIndex': return visualIndex_();
     case 'readBinary': return readBinary_(o.id);
     case 'notifyJournal': return notifyJournal_(o.requestId);
+    case 'calendar': return calendar_(o);
     default: throw new Error('unknown op ' + o.op);
   }
 }
@@ -263,4 +264,36 @@ function notifyJournal_(id) {
 function authoriseJournal() {
   UrlFetchApp.getRequest('https://example.com/');
   return 'external-service permission is granted';
+}
+
+/* ---------- v5: break and start-of-day reminders, only in two calendars of their own ---------- */
+// "Trace" holds Naven's reminders; "Trace · HT" holds HT's (Naven shares that one calendar with her).
+// The app can only add or remove short events in these two calendars; it never reads or touches any other calendar.
+var CAL_NAMES = { Trace: 'Trace', HT: 'Trace · HT' };
+function cal_(who) {
+  var name = CAL_NAMES[who === 'HT' ? 'HT' : 'Trace'];
+  var list = CalendarApp.getOwnedCalendarsByName(name);
+  if (list.length) return list[0];
+  return CalendarApp.createCalendar(name, { summary: 'Reminders from the Trace study app only' });
+}
+function calendar_(o) {
+  var c = cal_(o.who);
+  if (o.action === 'add') {
+    var at = new Date(o.at);
+    if (isNaN(at.getTime())) throw new Error('bad time');
+    var ev = c.createEvent(String(o.title || 'Trace').slice(0, 80), at, new Date(at.getTime() + 5 * 60000), { description: String(o.note || '').slice(0, 300) });
+    ev.removeAllReminders();
+    ev.addPopupReminder(0);           // a notification at the event time
+    return { id: ev.getId(), calendar: c.getName() };
+  }
+  if (o.action === 'remove') {
+    var e = o.id ? c.getEventById(String(o.id)) : null;
+    if (e) e.deleteEvent();
+    return { removed: !!e };
+  }
+  throw new Error('unknown calendar action');
+}
+/** v5: run this once from the editor (Run › authoriseCalendar) to grant Calendar access and create the two calendars. */
+function authoriseCalendar() {
+  return 'Calendar access granted · ready: ' + cal_('Trace').getName() + ', ' + cal_('HT').getName();
 }
