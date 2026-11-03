@@ -44,6 +44,7 @@ export async function loadAll() {
   S.target = (await db.kv.get('target')) || null;
   S.deckFrom = (await db.kv.get('deckFrom')) || {};
   S.gtDays = (await db.kv.get('gtDays')) || {};
+  S.gtScores = (await db.kv.get('gtScores')) || {};
   S.device = await db.kv.get('device');
   if (!S.device) {
     const ua = navigator.userAgent;

@@ -7,6 +7,8 @@ import { status, sync, loadQbank, loadQmap, startAutoSync, recordView, undoView,
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
+import { chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
+import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -73,6 +75,7 @@ async function boot() {
   route();
   if (hasBackend()) { await countPending(); startAutoSync(); }
   registerSW();
+  watchAway();
   // visual decks: look for new versions a little after opening, then every 30 minutes (each check is skipped if done < 6 h ago)
   const vcheck = (force) => syncVisuals(d => (S.decks.get(d) || { cards: [] }).cards, { force }).then(() => { if (!flow && /^#\/status/.test(location.hash)) route(); });
   window._vcheck = vcheck;
@@ -625,7 +628,7 @@ function renderFlowTab() {
     const lf = lastFlowCards(), ag = againCards(), avg = avgPace() || 75000, mins = n => Math.max(1, Math.round(n * avg / 60000));
     const sys = systems();
     app.innerHTML = `<div class="screen flowtab">
-      <header class="top col"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></header>
+      <header class="top"><span class="tt"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></span>${goingOutButton()}</header>
       <div class="scroll pad desk">
         ${targetBlock(true)}
         <section class="dk-box">
@@ -651,7 +654,7 @@ function renderFlowTab() {
       </div>
       ${nav('flow')}
     </div>`;
-    bindGo(); bindTarget(draw); hideTip(); bindTips(app);
+    bindGo(); bindTarget(draw); hideTip(); bindTips(app); bindGoingOut();
     app.querySelectorAll('[data-mosaic]').forEach(a => a.addEventListener('click', () => P.set('sysTab', 'mosaic')));
     const c = app.querySelector('[data-cont]');
     if (c) c.onclick = () => startFlow(lf.cards, { label: lf.label || 'Continue', returnTo: '#/flow' });
@@ -688,9 +691,230 @@ function coverCard() {
     <span class="mono kick">COVERAGE · WALKED AT LEAST ONCE</span>
     <div class="cv-tiles">${all.map(x => `<button class="cv-t${x.k === sel.k ? ' on' : ''}" data-cov="${x.k}"><b>${pct(x.c.w, x.c.t)}%</b><span>${x.l}</span><i class="mono">${x.c.w.toLocaleString()} / ${x.c.t.toLocaleString()}</i></button>`).join('')}</div>
     <div class="cv-sys">${sel.c.sys.map(g => `<div class="cv-r"><span class="cv-n">${esc(sysLabel(g.name))}</span><span class="cv-bar" title="${g.a} of ${g.n} walked · ${g.b} twice or more · ${g.c} three times or more"><i class="s3" style="width:${pct(g.c, g.n)}%"></i><i class="s2" style="width:${pct(g.b - g.c, g.n)}%"></i><i class="s1" style="width:${pct(g.a - g.b, g.n)}%"></i></span><span class="mono cv-p">${pct(g.a, g.n)}%</span></div>`).join('')}</div>
-    <p class="muted small">${sel.l}: ${sel.c.w.toLocaleString()} of ${sel.c.t.toLocaleString()} cards walked, ${sel.c.w2.toLocaleString()} twice or more. Bars use the card colours: seen once, twice, three times or more; empty = not seen.${sel.c.missing ? ` ${sel.c.missing} deck${sel.c.missing === 1 ? ' is' : 's are'} not on this device yet and ${sel.c.missing === 1 ? 'is' : 'are'} left out.` : ''}</p>
+    ${SEEN_LEGEND}
+    <p class="muted small">${sel.l}: ${sel.c.w.toLocaleString()} of ${sel.c.t.toLocaleString()} cards walked, ${sel.c.w2.toLocaleString()} twice or more.${sel.c.missing ? ` ${sel.c.missing} deck${sel.c.missing === 1 ? ' is' : 's are'} not on this device yet and ${sel.c.missing === 1 ? 'is' : 'are'} left out.` : ''}</p>
   </div>`;
 }
+/* ============================ Loft sections (T-045) ============================ */
+const SEEN_LEGEND = `<div class="lg-row mono"><span><i class="sq s0"></i>not seen</span><span><i class="sq s1"></i>once</span><span><i class="sq s2"></i>twice</span><span><i class="sq s3"></i>3+ times</span></div>`;
+const CHASE_POOLS = [['all', 'All cards'], ['hit', 'Any hit'], ['neet+gt', 'NEET + GT'], ['neet', 'NEET']];
+const shortDay = d => { const x = new Date(d + 'T12:00'); return x.getDate() + ' ' + MONTHS[x.getMonth()].slice(0, 3); };
+function chaseCard() {
+  const pool = P.get('chasePool', 'all'), c = chase(pool), lp = livePace(c), slide = P.get('whatIf', 0);
+  const W = 600, H = 150, x0 = 8, x1 = W - 8, y0 = 128, y1 = 16;
+  const X = i => x0 + (x1 - x0) * i / (c.nDays - 1), Y = v => y0 - (y0 - y1) * Math.min(1, v / Math.max(1, c.total));
+  const ti = c.series.length - 1;
+  const actual = c.series.map((p, i) => `${X(i).toFixed(1)},${Y(p.walked).toFixed(1)}`).join(' ');
+  const need = ti >= 0 ? `${X(ti).toFixed(1)},${Y(c.walkedNow).toFixed(1)} ${X(c.nDays - 1).toFixed(1)},${Y(c.total).toFixed(1)}` : '';
+  const rate = slide || c.rate, projDays = rate > 0 ? Math.ceil(c.left / rate) : null;
+  const projEndI = projDays == null ? null : Math.min(c.nDays - 1, ti + projDays);
+  const proj = ti >= 0 && projEndI != null ? `${X(ti).toFixed(1)},${Y(c.walkedNow).toFixed(1)} ${X(projEndI).toFixed(1)},${Y(c.walkedNow + rate * (projEndI - ti)).toFixed(1)}` : '';
+  const finish = rate > 0 ? addDays(today(), projDays) : null, late = finish ? daysBetween(PHASE1_END, finish) : null;
+  const verdict = c.left === 0 ? 'Phase 1 done for this pool.' : !finish ? 'No pace yet: walk some new cards to see where you land.'
+    : late > 0 ? `At ${rate}/day you finish <b class="behind">${shortDay(finish)}: ${late} day${late === 1 ? '' : 's'} late</b>.`
+    : `At ${rate}/day you finish <b class="ahead">${shortDay(finish)}: ${-late === 0 ? 'on the day' : -late + ' day' + (late === -1 ? '' : 's') + ' early'}</b>.`;
+  const wmax = Math.max(1, ...c.weeks.map(w => Math.max(w.done, w.need)));
+  const ringP = c.requiredToday ? Math.min(1, c.doneToday / c.requiredToday) : 1, circ = 2 * Math.PI * 26;
+  const pace = lp.before ? `Your window opens at ${WIN_START}.` : lp.after ? 'The day window has closed.'
+    : `${lp.diff >= 0 ? `<b class="ahead">▲ ${lp.diff} ahead</b>` : `<b class="behind">▼ ${-lp.diff} behind</b>`} · should be ${lp.should} by now · ${lp.perHour != null ? lp.perHour + ' an hour needed' : ''}`;
+  return `<div class="lcard chase">
+    <div class="lc-h"><span class="mono kick">PHASE 1 CHASE · EVERY CARD ONCE BY 30 NOV</span></div>
+    <div class="chips small">${CHASE_POOLS.map(([k, l]) => `<button class="chip${pool === k ? ' on' : ''}" data-cpool="${k}">${l}</button>`).join('')}</div>
+    <div class="cs-board">
+      <div class="cs-ring"><svg viewBox="0 0 64 64" width="72" height="72" aria-hidden="true"><circle cx="32" cy="32" r="26" class="r0"/><circle cx="32" cy="32" r="26" class="r1${ringP >= 1 ? ' full' : ''}" stroke-dasharray="${(circ * ringP).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 32 32)"/></svg><span><b>${c.doneToday}</b><i>of ${c.requiredToday} today</i></span></div>
+      <div class="cs-nums"><span><b>${c.walkedNow.toLocaleString()}</b> / ${c.total.toLocaleString()} walked · <b>${c.left.toLocaleString()}</b> to go · ${c.daysLeft} day${c.daysLeft === 1 ? '' : 's'} left</span>
+        <span class="cs-rr"><span>Current <b>${c.rate}</b>/day ${c.rate >= c.required ? '▲' : '▼'}</span><span>Required <b>${c.required}</b>/day</span></span>
+        <span class="cs-v">${verdict}</span><span class="cs-live">${pace}</span></div>
+    </div>
+    <svg viewBox="0 0 ${W} ${H}" width="100%" class="worm" role="img" aria-label="Cards walked against the path to 30 November">
+      <line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" class="gl"/><line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" class="gl"/>
+      <text x="${x0}" y="${y1 - 4}" class="tx">${c.total.toLocaleString()}</text><text x="${x0}" y="${H - 4}" class="tx">1 Nov</text><text x="${x1}" y="${H - 4}" class="tx" text-anchor="end">30 Nov</text>
+      ${need ? `<polyline points="${need}" class="need"/>` : ''}${proj ? `<polyline points="${proj}" class="proj"/>` : ''}
+      ${actual ? `<polyline points="${actual}" class="act"/>` : ''}${ti >= 0 ? `<circle cx="${X(ti).toFixed(1)}" cy="${Y(c.walkedNow).toFixed(1)}" r="3.5" class="dot"/>` : ''}
+    </svg>
+    <div class="lg-row mono"><span><i class="ln act"></i>walked</span><span><i class="ln need"></i>needed</span><span><i class="ln proj"></i>${slide ? 'what-if' : 'your 7-day pace'}</span></div>
+    <div class="wk">${c.weeks.map(w => `<div class="wk-c${w.future ? ' fut' : ''}" title="${w.a} – ${w.b}: ${w.done} walked, ${w.need} needed"><span class="wk-b"><i style="height:${Math.round(w.done / wmax * 100)}%"></i><em style="bottom:${Math.round(w.need / wmax * 100)}%"></em></span><span class="mono">${shortDay(w.a)}</span></div>`).join('')}</div>
+    <label class="whatif mono">What if I walk <input type="range" min="0" max="200" step="5" value="${slide}" data-whatif> <b>${slide || 'my pace'}</b>${slide ? ' a day' : ''}</label>
+  </div>`;
+}
+const CPD = [['all', 'All'], ['new', 'New'], ['x2', '×2'], ['x3', '×3+'], ['repair', 'Repairs']];
+const CPD_COL = { new: 'var(--s1)', x2: 'var(--s2)', x3: 'var(--s3)', repair: '#c9a6d6', wm: '#6b6f78' };
+function cardsDayCard() {
+  const f = P.get('cpdFilter', 'all'), n = P.get('cpdRange', 14), rows = cardsPerDay(n);
+  const keys = f === 'all' ? ['new', 'x2', 'x3', 'repair', 'wm'] : [f];
+  const goal = 65, mx = Math.max(goal + 10, ...rows.map(r => keys.reduce((t, k) => t + r[k], 0)));
+  const W = 600, H = 130, w = W / n, td = today();
+  const bars = rows.map((r, i) => {
+    let y = H - 14, s = '';
+    for (const k of keys) { const h = r[k] / mx * (H - 26); if (h > 0) { y -= h; s += `<rect x="${(i * w + w * 0.15).toFixed(1)}" y="${y.toFixed(1)}" width="${(w * 0.7).toFixed(1)}" height="${h.toFixed(1)}" rx="1.5" fill="${CPD_COL[k]}"/>`; } }
+    const lab = n <= 14 || i % 5 === 0 || r.day === td ? `<text x="${(i * w + w / 2).toFixed(1)}" y="${H - 2}" text-anchor="middle" class="tx${r.day === td ? ' now' : ''}">${n <= 14 ? 'SMTWTFS'[new Date(r.day + 'T12:00').getDay()] : new Date(r.day + 'T12:00').getDate()}</text>` : '';
+    return `<g data-day="${r.day}" class="cpd-b">${s}<rect x="${(i * w).toFixed(1)}" y="0" width="${w.toFixed(1)}" height="${H}" fill="transparent"/>${lab}</g>`;
+  }).join('');
+  const gy = (H - 14 - goal / mx * (H - 26)).toFixed(1);
+  const tot = rows.reduce((t, r) => t + keys.reduce((a, k) => a + r[k], 0), 0), met = rows.filter(r => r.new + r.x2 + r.x3 + r.repair + r.wm >= goal).length;
+  return `<div class="lcard">
+    <div class="lc-h"><span class="mono kick">CARDS PER DAY</span><span class="seg">${[7, 14, 30].map(k => `<button class="${n === k ? 'on' : ''}" data-cpdr="${k}">${k}</button>`).join('')}</span></div>
+    <div class="chips small">${CPD.map(([k, l]) => `<button class="chip${f === k ? ' on' : ''}" data-cpdf="${k}">${l}</button>`).join('')}</div>
+    <svg viewBox="0 0 ${W} ${H}" width="100%" class="cpd" role="img" aria-label="Cards per day">${f === 'all' ? `<line x1="0" y1="${gy}" x2="${W}" y2="${gy}" class="goal"/><text x="${W - 2}" y="${(+gy - 3).toFixed(1)}" text-anchor="end" class="tx gold">goal ${goal}</text>` : ''}${bars}</svg>
+    <div class="lg-row mono"><span><i class="sq s1"></i>new</span><span><i class="sq s2"></i>×2</span><span><i class="sq s3"></i>×3+</span><span><i class="sq" style="background:#c9a6d6"></i>repair</span><span><i class="sq" style="background:#6b6f78"></i>War Map flow</span><span class="lg-r">tap a bar → that day</span></div>
+    <p class="muted small">${CPD.find(x => x[0] === f)[1]}: ${Math.round(tot / n)} a day on average over ${n} days${f === 'all' ? ` · goal met ${met} of ${n} days` : ''}.</p>
+  </div>`;
+}
+const fmtMin = ms => fmtHM(ms / 60000);
+function dayBreakdown(day) {
+  const study = studyMs(day), list = breaksOn(day), byR = {};
+  for (const b of list) byR[b.reason] = (byR[b.reason] || 0) + Math.max(0, (b.end || Date.now()) - b.start);
+  const cur = curBreak(); if (cur && dkey(cur.start) === day) byR[cur.reason] = (byR[cur.reason] || 0) + (Date.now() - cur.start);
+  const a = winStart(day), b = Math.min(winEnd(day), Date.now()), elapsed = Math.max(0, b - a);
+  const brk = Object.values(byR).reduce((t, v) => t + v, 0), unexpl = Math.max(0, elapsed - study - brk);
+  const rows = [['Study', study]].concat(Object.entries(byR).map(([k, v]) => [reasonOf(k)[1], v, k])).concat(unexpl > 60000 ? [['Unexplained', unexpl]] : []);
+  return { rows: rows.sort((x, y) => y[1] - x[1]), study, elapsed, byR };
+}
+function allowanceNote(byR) {
+  const meals = MEALS.reduce((t, k) => t + (byR[k] || 0), 0), teas = TEAS.reduce((t, k) => t + (byR[k] || 0), 0);
+  const mealsAllowed = MEALS.filter(k => byR[k]).length * 30 * 60000, teaAllowed = (byR.eveningtea ? 30 : 0) * 60000 + (byR.tea ? Math.ceil(byR.tea / (15 * 60000)) * 15 * 60000 : 0);
+  const over = (v, al) => v > al ? ` <b class="behind">(+${fmtMin(v - al)})</b>` : '';
+  return `Meals ${fmtMin(meals)}${over(meals, mealsAllowed)} · tea ${fmtMin(teas)}${over(teas, teaAllowed)}`;
+}
+function dayList(day) {
+  const items = studyIntervals(day).map(([s, e]) => ({ s, e, what: 'Study' }))
+    .concat(breaksOn(day).map(b => ({ s: b.start, e: b.end || Date.now(), what: reasonOf(b.reason)[1] + (b.allowed && b.end - b.start > b.allowed * 60000 ? ` (+${fmtMin(b.end - b.start - b.allowed * 60000)})` : '') })))
+    .sort((x, y) => x.s - y.s);
+  const hm = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  return items.length ? `<div class="daylist">${items.map(i => `<div><span class="mono">${hm(i.s)}–${hm(i.e)}</span><span>${esc(i.what)}</span><span class="mono">${fmtMin(i.e - i.s)}</span></div>`).join('')}</div>` : '<p class="muted small">Nothing recorded on this day.</p>';
+}
+function timeCard() {
+  const td = today(), selDay = P.get('timeDay', td), span = P.get('bdSpan', 'day'), hr = P.get('hoursRange', 14);
+  const tb = dayBreakdown(td), cardsToday = cardsPerDay(1)[0], studyH = tb.study / 3600e3;
+  const perH = studyH > 0.05 ? Math.round((cardsToday.new + cardsToday.x2 + cardsToday.x3 + cardsToday.repair) / studyH * 10) / 10 : 0;
+  const days7 = []; for (let i = 6; i >= 0; i--) days7.push(addDays(td, -i));
+  const strip = d => { const a = winStart(d), L = winEnd(d) - a; return studyIntervals(d).map(([s, e]) => { const x = Math.max(0, (s - a) / L), y = Math.min(1, (e - a) / L); return y > x ? `<i style="left:${(x * 100).toFixed(2)}%;width:${((y - x) * 100).toFixed(2)}%"></i>` : ''; }).join(''); };
+  // breakdown for the day or the last 7 days
+  let bd;
+  if (span === 'week') { const acc = {}; for (const d of days7) for (const [l, v] of dayBreakdown(d).rows) acc[l] = (acc[l] || 0) + v; bd = Object.entries(acc).sort((x, y) => y[1] - x[1]); }
+  else bd = dayBreakdown(selDay).rows.map(r => [r[0], r[1]]);
+  const bmax = Math.max(1, ...bd.map(r => r[1]));
+  const hdays = []; for (let i = hr - 1; i >= 0; i--) hdays.push(addDays(td, -i));
+  const hv = hdays.map(d => studyMs(d) / 3600e3), hmx = Math.max(STUDY_GOAL_H + 1, ...hv), W = 600, H = 110, w = W / hr;
+  const hbars = hv.map((v, i) => `<rect x="${(i * w + w * 0.15).toFixed(1)}" y="${(H - 12 - v / hmx * (H - 22)).toFixed(1)}" width="${(w * 0.7).toFixed(1)}" height="${(v / hmx * (H - 22)).toFixed(1)}" rx="1.5" fill="var(--s2)"><title>${hdays[i]}: ${v.toFixed(1)} h</title></rect>${hr <= 14 ? `<text x="${(i * w + w / 2).toFixed(1)}" y="${H - 1}" text-anchor="middle" class="tx">${'SMTWTFS'[new Date(hdays[i] + 'T12:00').getDay()]}</text>` : ''}`).join('');
+  const gy = (H - 12 - STUDY_GOAL_H / hmx * (H - 22)).toFixed(1);
+  const bh = bestHours(), bmx = Math.max(1, ...bh);
+  const shade4 = v => v <= 0 ? 0 : v >= bmx * 0.85 ? 3 : v >= bmx * 0.55 ? 2 : 1;
+  return `<div class="lcard time">
+    <div class="lc-h"><span class="mono kick">TIME · ${WIN_START}–${WIN_END} WINDOW</span></div>
+    <div class="tm-hn"><span><b>${fmtMin(tb.study)}</b><i>study${tb.elapsed ? ' · ' + Math.round(tb.study / tb.elapsed * 100) + '% so far' : ''}</i></span><span><b>${perH || '–'}</b><i>cards per study hour</i></span><span><b class="sm">${allowanceNote(tb.byR)}</b><i>breaks vs allowance</i></span></div>
+    <span class="mono lab">WHEN YOU STUDIED · LAST 7 DAYS</span>
+    <div class="strips">${days7.map(d => `<button class="strip-r${d === selDay ? ' on' : ''}" data-tday="${d}"><span class="mono">${'SMTWTFS'[new Date(d + 'T12:00').getDay()]} ${new Date(d + 'T12:00').getDate()}</span><span class="strip">${strip(d)}</span><span class="mono">${fmtMin(studyMs(d))}</span></button>`).join('')}
+      <div class="strip-ax mono"><span></span><span><i>9:30</i><i>12</i><i>3 pm</i><i>6 pm</i><i>9:30</i></span><span></span></div></div>
+    <div class="lc-h"><span class="mono lab">WHERE DID MY ${span === 'week' ? 'WEEK' : '12 HOURS'} GO? · ${span === 'week' ? 'LAST 7 DAYS' : shortDay(selDay).toUpperCase()}</span><span class="seg"><button class="${span === 'day' ? 'on' : ''}" data-bdspan="day">Day</button><button class="${span === 'week' ? 'on' : ''}" data-bdspan="week">Week</button></span></div>
+    <div class="bd">${bd.map(([l, v]) => `<div class="bd-r${l === 'Unexplained' ? ' unx' : ''}"><span>${esc(l)}</span><span class="bd-bar"><i style="width:${(v / bmax * 100).toFixed(1)}%"></i></span><span class="mono">${fmtMin(v)}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
+    ${span === 'day' ? `<details class="dl"${P.get('dlOpen', false) ? ' open' : ''}><summary class="mono muted small">The day, in order</summary>${dayList(selDay)}</details>` : ''}
+    <div class="lc-h"><span class="mono lab">STUDY HOURS PER DAY</span><span class="seg">${[7, 14, 30].map(k => `<button class="${hr === k ? 'on' : ''}" data-hr="${k}">${k}</button>`).join('')}</span></div>
+    <svg viewBox="0 0 ${W} ${H}" width="100%" class="cpd" role="img" aria-label="Study hours per day"><line x1="0" y1="${gy}" x2="${W}" y2="${gy}" class="goal"/><text x="${W - 2}" y="${(+gy - 3).toFixed(1)}" text-anchor="end" class="tx gold">goal ${STUDY_GOAL_H} h</text>${hbars}</svg>
+    <span class="mono lab">YOUR BEST HOURS · CARDS PER HOUR, 14-DAY AVERAGE</span>
+    <div class="heat">${bh.map((v, i) => `<span class="sq-h s${shade4(v)}" title="${i + 9}:30–${i + 10}:30">${v ? Math.round(v) : ''}</span>`).join('')}</div>
+    <div class="strip-ax mono heat-ax"><span><i>9:30</i><i>12</i><i>3 pm</i><i>6 pm</i><i>9:30</i></span></div>
+    <p class="muted small">Breaks and their reasons are recorded from Going out and the "where were you?" question; until then gaps count as unexplained.</p>
+  </div>`;
+}
+function tilesRow(chronN) {
+  const ag = againList().length, gts = gtTrend(), last = gts[gts.length - 1];
+  return `<div class="ltiles">
+    <a class="lt" href="#/meditation"><span class="mono kick teal">QUIET ALCOVE</span><b id="al-last">Guidance</b><i>morning · afternoon · night</i></a>
+    <button class="lt" data-chron><span class="mono kick">CHRONICLES</span><b>${chronN} entries</b><i>${P.get('chronOpen', false) ? 'hide the list' : 'open the list'}</i></button>
+    <a class="lt" href="#/flow"><span class="mono kick">AGAIN PILE</span><b>${ag} to repair</b><i>to the Flow desk</i></a>
+    <button class="lt" data-gt><span class="mono kick">GT TREND</span><b>${last ? last.pct + '% · ' + esc(last.gt) : 'No GT yet'}</b><i>${gts.length ? gts.length + ' paper' + (gts.length === 1 ? '' : 's') : 'from the War Map'}</i></button>
+  </div>
+  ${P.get('gtOpen', false) && gts.length ? `<div class="lcard"><span class="mono kick">GT TREND · NET % (+4 / −1)</span><div class="gtt">${gts.map(g => `<span title="${esc(g.gt)} · ${g.date}: ${g.right} right, ${g.wrong} wrong of ${g.total}"><i style="height:${Math.max(4, g.pct)}%"></i><b class="mono">${g.pct}%</b><em class="mono">${esc(String(g.gt).replace(/NEET-?/i, ''))}</em></span>`).join('')}</div></div>` : ''}`;
+}
+function bindLoftParts() {
+  const r = () => keep(renderLoft);
+  app.querySelectorAll('[data-cpool]').forEach(b => b.onclick = () => { P.set('chasePool', b.dataset.cpool); r(); });
+  const wi = app.querySelector('[data-whatif]'); if (wi) wi.onchange = () => { P.set('whatIf', +wi.value); r(); };
+  app.querySelectorAll('[data-cpdf]').forEach(b => b.onclick = () => { P.set('cpdFilter', b.dataset.cpdf); r(); });
+  app.querySelectorAll('[data-cpdr]').forEach(b => b.onclick = () => { P.set('cpdRange', +b.dataset.cpdr); r(); });
+  app.querySelectorAll('.cpd-b').forEach(g => g.addEventListener('click', () => { loftDay = g.dataset.day; P.set('timeDay', g.dataset.day); r(); }));
+  app.querySelectorAll('[data-tday]').forEach(b => b.onclick = () => { P.set('timeDay', b.dataset.tday); P.set('bdSpan', 'day'); loftDay = b.dataset.tday; r(); });
+  app.querySelectorAll('[data-bdspan]').forEach(b => b.onclick = () => { P.set('bdSpan', b.dataset.bdspan); r(); });
+  app.querySelectorAll('[data-hr]').forEach(b => b.onclick = () => { P.set('hoursRange', +b.dataset.hr); r(); });
+  const dl = app.querySelector('details.dl'); if (dl) dl.addEventListener('toggle', () => P.set('dlOpen', dl.open));
+  const ch = app.querySelector('[data-chron]'); if (ch) ch.onclick = () => { P.set('chronOpen', !P.get('chronOpen', false)); r(); };
+  const gt = app.querySelector('[data-gt]'); if (gt) gt.onclick = () => { P.set('gtOpen', !P.get('gtOpen', false)); r(); };
+}
+
+/* ============================ Going out, breaks and "where were you?" (T-045) ============================ */
+const curBreak = () => currentBreak();
+const hmT = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout>⏏ Going out</button>`; }
+function bindGoingOut(root = app) { root.querySelectorAll('[data-goout]').forEach(b => b.onclick = e => { e.preventDefault(); goingOutSheet(); }); }
+function reasonButtons(attr) {
+  const h = new Date().getHours(), eveningOk = h >= 16 && h < 18 && !breaksOn(today()).some(b => b.reason === 'eveningtea');
+  return REASONS.filter(r => r[0] !== 'other' || attr === 'data-away').map(([k, l, a, rem]) => {
+    if (k === 'eveningtea' && !eveningOk && attr === 'data-go') return '';
+    return `<button class="btn ghost rs" ${attr}="${k}"><b>${esc(l)}</b><small>${a ? a + ' min' : rem ? 'nudge at ' + rem + ' min' : 'counted'}</small></button>`;
+  }).join('');
+}
+function goingOutSheet() {
+  if (curBreak()) { toast('You are already on a break. Tap I’m back first.'); return; }
+  const wrap = document.createElement('div'); wrap.className = 'modal';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-label="Going out"><div class="sheet-h"><span><span class="mono kick">GOING OUT</span><span class="sh-t">Where are you going?</span></span><button class="iconbtn" data-x aria-label="Close">${ICON.close}</button></div>
+    <div class="rs-grid">${reasonButtons('data-go')}</div>
+    <p class="muted small">The flow pauses while you are out. ${hasBackend() && !isDemo() ? 'Timed breaks set a reminder in your Google Calendar.' : ''} Opening Trace during the break doesn’t end it: tap I’m back.</p></div>`;
+  wrap.onclick = e => { if (e.target === wrap || e.target.closest('[data-x]')) wrap.remove(); };
+  wrap.querySelectorAll('[data-go]').forEach(b => b.onclick = async () => {
+    wrap.remove();
+    if (flow && !flow.browse) flow.pausedAt = Date.now();
+    await startBreak(b.dataset.go); drawBanner();
+    toast(reasonOf(b.dataset.go)[1] + ': timer started.');
+  });
+  document.body.appendChild(wrap);
+}
+async function iamBack() {
+  const rec = await endBreak(); if (!rec) return;
+  if (flow && flow.pausedAt) { const d = Date.now() - flow.pausedAt; flow.cardT0 += d; flow.t0 += d; flow.pausedAt = null; }
+  drawBanner();
+  const over = rec.allowed ? rec.end - rec.start - rec.allowed * 60000 : 0;
+  toast(`Back after ${fmtHM((rec.end - rec.start) / 60000)}${over > 60000 ? ` (+${fmtHM(over / 60000)} over)` : ''}.`);
+  if (!flow && /^#\/(loft|flow)/.test(location.hash)) route();
+}
+function drawBanner() {
+  let el = document.getElementById('brk');
+  const b = curBreak();
+  if (!b) { if (el) el.remove(); return; }
+  if (!el) { el = document.createElement('div'); el.id = 'brk'; el.className = 'brk'; document.body.appendChild(el); }
+  const used = Date.now() - b.start, left = b.allowed ? b.allowed * 60000 - used : null;
+  const t = left == null ? `${fmtHM(used / 60000)} so far` : left >= 0 ? `${Math.ceil(left / 60000)} min left` : `<b>+${Math.ceil(-left / 60000)} min over</b>`;
+  el.className = 'brk' + (left != null && left < 0 ? ' over' : '');
+  el.innerHTML = `<span>On ${esc(reasonOf(b.reason)[1].toLowerCase())} · ${t}</span><button class="pillbtn" data-back>I’m back</button>`;
+  el.querySelector('[data-back]').onclick = iamBack;
+}
+function awayPrompt(start, end) {
+  if (document.querySelector('.modal.away')) return;
+  const wrap = document.createElement('div'); wrap.className = 'modal away';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-label="Where were you"><div class="sheet-h"><span><span class="mono kick">WELCOME BACK</span><span class="sh-t">Away ${fmtHM((end - start) / 60000)} (${hmT(start)}–${hmT(end)}). What was it?</span></span></div>
+    <div class="rs-grid">${reasonButtons('data-away')}</div>
+    <div class="sheet-f"><button class="btn ghost" data-still>Still away, just checking</button><button class="btn ghost" data-study>I was studying (off Trace)</button></div></div>`;
+  const done = () => { wrap.remove(); setPendingAway(null); };
+  wrap.querySelectorAll('[data-away]').forEach(b => b.onclick = () => { logAway(b.dataset.away, start, end); done(); if (/^#\/loft/.test(location.hash) && !flow) route(); });
+  wrap.querySelector('[data-still]').onclick = () => { setPendingAway({ start }); wrap.remove(); };
+  wrap.querySelector('[data-study]').onclick = done;
+  document.body.appendChild(wrap);
+}
+function watchAway() {
+  document.addEventListener('visibilitychange', () => {
+    const now = Date.now();
+    if (document.visibilityState === 'hidden') { if (!hiddenAt()) markHidden(now); return; }
+    const h = hiddenAt(); markHidden(null);
+    if (!h) return;
+    if (flow && !flow.browse && !flow.pausedAt) { flow.cardT0 += now - h; flow.t0 += now - h; }      // time away never counts as card time
+    if (curBreak()) { drawBanner(); return; }
+    const pend = pendingAway(), start = pend ? pend.start : h, d = dkey(start);
+    if (now - start >= AWAY_MIN * 60000 && start < winEnd(d) && now > winStart(d)) awayPrompt(Math.max(start, winStart(d)), now);
+  });
+  setInterval(drawBanner, 15000);
+  drawBanner();
+}
+
 function renderLoft() {
   const unit = P.get('heatUnit', 'h');
   const now = new Date();
@@ -719,19 +943,10 @@ function renderLoft() {
     <div class="dc-stats"><span><b>${fmtHM(dv.min)}</b><i>STUDIED</i></span><span><b>${dv.cards}</b><i>CARDS</i></span><span><b>${dv.cards ? (dv.min / dv.cards).toFixed(1) : '–'}</b><i>MIN / CARD</i></span></div>
     ${dItems.length ? `<div class="chron">${dItems.map(c => `<div class="ch-i"><span class="mono">${esc(c.when.replace(/^(Today|Yday) /, ''))}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('')}</div>` : '<p class="muted small">No study logged on this day.</p>'}
   </div>`;
-  const d14 = lastDays(14), mx = Math.max(60, ...d14.map(d => daily(d).min));
-  const bars = d14.map((d, i) => `<span style="height:${Math.max(2, Math.round(daily(d).min / mx * 66))}px" class="${i === 13 ? 'now' : ''}" title="${d}: ${fmtHM(daily(d).min)}"></span>`).join('');
-  const avg14 = d14.reduce((a, d) => a + daily(d).min, 0) / 14;
-  const totalCards = S.library ? S.library.decks.reduce((a, d) => a + d.cards, 0) : 0;
-  const walkedNow = S.library ? S.library.decks.reduce((a, d) => a + walked(d.deck), 0) : 0;
-  const cum = []; let run = 0;
-  for (const d of lastDays(35)) { run += daily(d).cards; cum.push(run); }
-  const scale = Math.max(1, run);
-  const line = cum.map((v, i) => `${(i * 140 / 34).toFixed(1)} ${(66 - v / scale * 58).toFixed(1)}`).join(' L');
   const chron = buildChronicle();
   app.innerHTML = `<div class="screen loft">
     <header class="top"><a class="iconbtn" href="#/" aria-label="Back to the palace">${ICON.back}</a>
-      <span class="tt"><span class="mono kick">${daysLeft()} · ${CONFIG.exam.name} 11 DEC</span><span class="h1s">The Loft</span></span><span></span></header>
+      <span class="tt"><span class="mono kick">${daysLeft()} · ${CONFIG.exam.name} 11 DEC</span><span class="h1s">The Loft</span></span>${goingOutButton()}</header>
     <div class="scroll pad loftbody">
       <div class="loft-a">
         ${targetBlock(false)}
@@ -745,21 +960,18 @@ function renderLoft() {
       </div>
       <div class="loft-b">
         ${coverCard()}
-        <div class="charts">
-          <div class="chart"><span class="mono lab">HOURS · 14 DAYS</span><span class="bars">${bars}</span><span class="mono">avg ${fmtHM(avg14)} / day</span></div>
-          <div class="chart"><span class="mono lab">CARDS · 35 DAYS</span>
-            <svg viewBox="0 0 140 70" width="100%" height="70" aria-hidden="true"><path d="M${line}" stroke="#d1b77c" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
-            <span class="mono">${walkedNow.toLocaleString()} / ${totalCards.toLocaleString()} walked</span></div>
-        </div>
-        <a class="alcove" href="#/meditation"><span class="al-t"><span class="mono kick teal">WITHIN THE LOFT</span><span class="al-h">The quiet alcove.</span><span class="al-s" id="al-last">Morning, afternoon and night guidance · scenario playlists</span></span><span class="al-go"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8.5" stroke-dasharray="1.2 3.1"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></span></a>
-        <details class="chrond"${P.get('chronOpen', false) ? ' open' : ''}><summary><span class="mono kick">CHRONICLES</span><span class="mono muted small">${chron.length} entries</span></summary>
+        ${chaseCard()}
+        ${cardsDayCard()}
+        ${timeCard()}
+        ${tilesRow(chron.length)}
+        <details class="chrond${P.get('chronOpen', false) ? '' : ' hid'}"${P.get('chronOpen', false) ? ' open' : ''}><summary><span class="mono kick">CHRONICLES</span><span class="mono muted small">${chron.length} entries</span></summary>
           <div class="chron">${chron.slice(0, 80).map(c => `<div class="ch-i"><span class="mono">${esc(c.when)}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
         </details>
       </div>
     </div>
     ${nav('')}
   </div>`;
-  bindGo(); bindTarget(renderLoft);
+  bindGo(); bindTarget(renderLoft); bindLoftParts(); bindGoingOut();
   lastMeditation().then(m => { const el = app.querySelector('#al-last'); if (m && el && TRACKS[m.track]) el.textContent = `Last: ${TRACKS[m.track].title} · ${whenLabel(m.ts)} · ${Math.max(1, Math.round(m.sec / 60))} min`; });
   app.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { P.set('heatUnit', b.dataset.unit); keep(renderLoft); });
   app.querySelectorAll('[data-cov]').forEach(b => b.onclick = () => { P.set('covPool', b.dataset.cov); keep(renderLoft); });
@@ -878,6 +1090,7 @@ function renderFlow() {
         <span><i>PER CARD</i><b id="f-pace">–</b></span>
         <span><i>VS AVERAGE</i><b id="f-diff">–</b></span>
       </div>
+      ${flow.browse ? '' : `<div class="f-live mono" id="f-live"></div>${goingOutButton('sm')}`}
       <div class="f-tiles-wrap"><span class="mono muted small">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div></div>
       <p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Again cards come back at the end of this flow. Space reveals and moves on · A = Again · U = Undo · E = Edit · Esc ends.'}</p>
     </aside>
@@ -893,6 +1106,7 @@ function renderFlow() {
     P.set('cardScale', v); $('.screen.flow').style.setProperty('--cs', v);
   });
   $('#f-undo').onclick = undo;
+  bindGoingOut();
   $('#f-big').onclick = () => flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
   drawCard();
   updateFlowChrome();
@@ -996,6 +1210,8 @@ function updateFlowChrome() {
   const circ = 2 * Math.PI * 22;
   $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
+  const fl = $('#f-live');
+  if (fl) { try { const c = chase(P.get('chasePool', 'all')), lp = livePace(c); fl.innerHTML = lp.before || lp.after ? `Today ${c.doneToday} / ${c.requiredToday} new` : `Today ${c.doneToday} / ${c.requiredToday} new · ${lp.diff >= 0 ? `<b class="ahead">▲ ${lp.diff}</b>` : `<b class="behind">▼ ${-lp.diff}</b>`}${lp.perHour != null ? ' · ' + lp.perHour + '/h needed' : ''}`; } catch (e) { fl.textContent = ''; } }
   const cc = !flow.done && current(), cm = cc ? deckMeta(cc.deck) || {} : {};
   $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cm.star ? ' · ✦ ' + cm.star : '') + (flow.label && flow.label !== 'Look' ? ' · ' + flow.label.toUpperCase() : '');
   $('#f-sub').textContent = cm.title || '';

@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-044)
+## State (as of entry T-045)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.5** · promoted from test 1.3.24 on 3 Nov (T-040; first promotion T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.26** · last code commit: see entry T-044. Live is 1.4.5 (= test 1.3.24). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.27** · last code commit: see entry T-045. Live is 1.4.5 (= test 1.3.24). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-045 — 2026-11-03 — Claude — test — 1.3.27
+- **Loft redesigned** (Naven, 3 Nov): right column is now Coverage (with colour legend) · **Phase 1 chase** (every card walked once by 30 Nov; pools All cards / Any hit / NEET + GT / NEET; current vs required rate, finish-date verdict, live pace, worm chart, weekly bars, today's ring, what-if slider) · **Cards per day** (stacked new / ×2 / ×3+ / repairs + War Map flow; filters; 7/14/30; goal 65) · **Time** (today's 3 numbers, 7-day study strips 9:30–21:30, "Where did my 12 hours go?" Day/Week, the day as a list, study hours per day with 8 h goal, best hours heat row) · small tiles Quiet alcove · Chronicles · Again pile · GT trend. Old hours/cards charts and the big alcove removed. New pure-calculation module `js/loftx.js`.
+- **Going out / breaks** (`js/breaks.js`): sheet with breakfast, lunch, dinner 30 · evening tea (4–6 pm) 30 · tea 15 · restroom (counted) · rest (nudge at 20) · duty · phone. Banner stays until **I'm back** (opening Trace doesn't end it). Timed breaks add a calendar reminder at the end (profile's own calendar; removed if back early). After ≥5 min away inside the window: "Away n min, what was it?" with "Still away, just checking". The card clock pauses while away or on a break. Live pace line in the Flow header/aside. Breaks are stored per profile on the device (45 days).
+- ✦ stars recounted from the current NEET set on load (`recountStars`).
+- Tests: demo Loft on Mac width and Pixel 7, demo tea break → banner → I'm back, Flow live line; no page errors.
+- Deferred to next update: time left after scheduled breaks; evening "start tomorrow at 7:30 / 7:00" plan.
 
 ## T-044 — 2026-11-03 — Claude — test — 1.3.26
 - **Leaving a flow always asks** (Naven, 3 Nov): closing (✕ or Esc) after walking at least one card opens "Save this flow?" with **SAVE**, **Discard n cards** and **Keep going**. The end-of-flow screen's button is now **SAVE**, with "Discard this flow" under it. Discard undoes every view of that flow (unsynced views are deleted; synced ones get an undo event, as Undo already does), clears Continue, and writes no Log rows. Look mode and a flow with no card walked close without asking.
