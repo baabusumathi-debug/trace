@@ -121,8 +121,8 @@ function routeInner() {
   if (page === 'shelf') return renderCabinet();
   if (page === 'meditation') return renderMeditation(app, { nav: nav(''), back: '#/loft', P });
   if (page === 'pilot') return startPilot();
-  renderPalace(app, { nav: nav('palace'), top: topBar() });
-  bindGo();
+  renderPalace(app, { nav: nav('palace'), top: topBar(true) });
+  bindGo(); bindGoingOut();
 }
 const go = h => { location.hash = h; };
 
@@ -182,10 +182,10 @@ function renderWelcome() {
     if (ok) { await loadAll(); route(); await countPending(); startAutoSync(); }
   };
 }
-function topBar() {
+function topBar(goOut = false) {
   return `<header class="top">
       <a class="brand" href="#/" aria-label="The palace">${brandMark()}<span class="brand-t"><span class="b1">TRACE${CHANNEL === 'test' ? ' <i class="testpill">TEST</i>' : ''}${IS_HT ? ' <i class="testpill htpill">HT</i>' : ''}</span><span class="b2">THE MAGICIAN’S CABINET</span></span></a>
-      <div class="top-r">${syncPill()}<span class="exam mono"><span class="gold">${CONFIG.exam.name}</span>${daysLeft()}</span></div>
+      <div class="top-r">${syncPill()}<span class="exam mono"><span class="gold">${CONFIG.exam.name}</span>${daysLeft()}</span>${goOut ? goingOutButton('sm') : ''}</div>
     </header>`;
 }
 function brandMark() { return '<span class="mark"><span>✦</span></span>'; }
