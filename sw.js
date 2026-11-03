@@ -2,10 +2,10 @@
 // Card data lives in IndexedDB (not here). Bump VERSION on every release.
 // the test build (/trace/test/) keeps caches under its own prefix so the two never clear each other
 const PREFIX = self.registration.scope.includes('/test/') ? 'tracetest-v' : 'trace-v';
-const VERSION = PREFIX + '1.4.6';
+const VERSION = PREFIX + '1.4.7';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
-  'js/app.js', 'js/api.js', 'js/config.js', 'js/db.js', 'js/emblems.js', 'js/md.js', 'js/store.js', 'js/sync.js', 'js/palace.js', 'js/visuals.js', 'js/flowmsg.js', 'js/loftx.js', 'js/breaks.js', 'img/palace-land.webp', 'img/palace-port.webp',
+  'js/app.js', 'js/api.js', 'js/config.js', 'js/db.js', 'js/emblems.js', 'js/md.js', 'js/store.js', 'js/sync.js', 'js/palace.js', 'js/visuals.js', 'js/flowmsg.js', 'js/loftx.js', 'js/breaks.js', 'js/peek.js', 'js/peakdata.js', 'img/palace-land.webp', 'img/palace-port.webp',
   'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
   'fonts/cormorant-garamond-latin-500-normal.woff2', 'fonts/cormorant-garamond-latin-600-normal.woff2', 'fonts/cormorant-garamond-latin-700-normal.woff2',
   'fonts/inter-latin-400-normal.woff2', 'fonts/inter-latin-400-italic.woff2', 'fonts/inter-latin-500-normal.woff2', 'fonts/inter-latin-600-normal.woff2', 'fonts/inter-latin-700-normal.woff2',
