@@ -25,6 +25,7 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 ## T-050 — 2026-11-04 — Claude — test + recorder — 1.3.31 / recorder v2.5
 - Naven's Skipped pass on HT's Glucose review (00:24 IST) arrived as `…_review_3of25.json` (recorder 2.4) without a Skipped list: the questions seen carry both Wrong and Skipped flags, so both filters were ticked together and v2.4 only reads a list when one filter is ticked.
 - **Recorder v2.5:** Wrong + Skipped ticked together is read too (Skipped = the grid minus the Wrong list already read; if Wrong isn't known yet, the union is kept as "Wrong+Skipped"); a note flashes the filters the recorder sees ticked; a warning shows if the question grid can't be found.
+- **Recorder v2.6:** keeps the first anchor (question ID ↔ paper number) instead of re-setting it on every list read: after a filter change DocT can leave the old question on screen while the grid already shows the new list, which would have tied the wrong number to that ID.
 - **Trace 1.3.31:** a combined list flag containing Skipped counts as "Skipped" (unless the question is also wrong).
 
 ## T-049 — 2026-11-03 — Claude — test + recorder — 1.3.30 / recorder v2.3
