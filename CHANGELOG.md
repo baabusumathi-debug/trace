@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-038)
+## State (as of entry T-039)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.4** · promoted from test 1.3.21 on 3 Nov (T-036; first promotion T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.23** · last code commit: see entry T-038. Live is 1.4.4 (= test 1.3.21). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.24** · last code commit: see entry T-039. Live is 1.4.4 (= test 1.3.21). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,11 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-039 — 2026-11-03 — Claude — test — 1.3.24
+- **Fix: new devices downloaded no decks** ("5 decks" = only the Top-up decks; Naven's Tab, 3 Nov). The newest `Trace › library.json` (file `1v7sYavDrSS5a2tWvA-9fLR-e0HyUteNx`, written 1 Nov 21:15 UTC, 157 decks) has `folder_id` and `deck_json_id` but **no `cards_id`** for any deck, and `downloadDecks` skipped decks without `cards_id`. Devices that had downloaded from the older library kept working. Now a deck without `cards_id` is found by `findFile(folder_id, 'cards.jsonl')` first (batches of 20) and the found ID is kept in the saved library.
+- Deck downloads run in batches of 6 with a 150 s wait; a failed or timed-out batch is reported and the rest continue (before: 25 per batch, and one failure stopped the sync).
+- Who wrote the 1 Nov library without `cards_id` is not recorded; whoever writes `library.json` should keep `cards_id` (AGENTS §4 lists it as the deck file).
 
 ## T-038 — 2026-11-03 — Claude — test — 1.3.23
 - This device › Setup link also shows the link in a box on screen with its length and a check that the saved connection has an address and a key (✓/✗, values not shown separately), so a failed clipboard copy can be seen and the link selected by hand. Naven's paste showed only the link's fixed start.

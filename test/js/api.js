@@ -31,10 +31,10 @@ async function post(body, timeoutMs = 60000) {
 }
 
 /** Run several operations in one round trip. Returns [{ok, data|error}] in order. */
-export async function batch(ops) {
+export async function batch(ops, timeoutMs) {
   if (!ops.length) return [];
   if (demo) return Promise.all(ops.map(demoOp));
-  const j = await post({ op: 'batch', ops });
+  const j = await post({ op: 'batch', ops }, timeoutMs);
   return j.results;
 }
 export async function call(op) {

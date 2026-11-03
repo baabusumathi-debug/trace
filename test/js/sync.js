@@ -395,14 +395,29 @@ async function pushOutbox() {
 export async function downloadDecks(only) {
   const lib = S.library;
   if (!lib) return;
-  const need = lib.decks.filter(m => (!only || only.includes(m.deck)) && m.cards_id && (() => {
+  const need = lib.decks.filter(m => (!only || only.includes(m.deck)) && (m.cards_id || m.folder_id) && (() => {
     const d = S.decks.get(m.deck); return !d || !d.verified || d.version < m.version;
   })());
   status.downloading = need.length; emit();
   const failures = [];
-  for (let i = 0; i < need.length; i += 25) {
-    const part = need.slice(i, i + 25);
-    const res = await batch(part.map(m => ({ op: 'readFile', id: m.cards_id })));
+  // A library written without card-file IDs (the newest library.json from 1 Nov has only folder_id): find each deck's
+  // cards.jsonl in its folder first. Found IDs are kept in the saved library so this happens once per deck.
+  const noId = need.filter(m => !m.cards_id);
+  for (let i = 0; i < noId.length; i += 20) {
+    const part = noId.slice(i, i + 20);
+    try {
+      const res = await batch(part.map(m => ({ op: 'findFile', folderId: m.folder_id, name: 'cards.jsonl' })), 120000);
+      res.forEach((r, j) => { if (r.ok && r.data && r.data.id) part[j].cards_id = r.data.id; else failures.push(part[j].deck + ': no cards.jsonl in its folder'); });
+    } catch (e) { part.forEach(m => failures.push(m.deck + ': ' + e.message)); }
+  }
+  if (noId.length) await db.kv.set('library', S.library);
+  for (let k = need.length - 1; k >= 0; k--) if (!need[k].cards_id) need.splice(k, 1);
+  // small batches with a long wait: one slow or failed batch no longer stops every other deck (seen on the Tab, 3 Nov)
+  for (let i = 0; i < need.length; i += 6) {
+    const part = need.slice(i, i + 6);
+    let res;
+    try { res = await batch(part.map(m => ({ op: 'readFile', id: m.cards_id })), 150000); }
+    catch (e) { part.forEach(m => failures.push(m.deck + ': ' + (e.name === 'AbortError' ? 'timed out' : e.message))); status.downloading = Math.max(0, need.length - i - part.length); emit(); continue; }
     const good = [];
     res.forEach((r, j) => {
       const m = part[j];
