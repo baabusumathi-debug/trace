@@ -4,7 +4,7 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-041)
+## State (as of entry T-042)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
@@ -12,7 +12,7 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 |---|---|
 | Live app (repo root) | **1.4.5** · promoted from test 1.3.24 on 3 Nov (T-040; first promotion T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
 | Test build (`test/`) | **1.3.25** · last code commit: see entry T-041. Live is 1.4.5 (= test 1.3.24). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
-| Bridge (Apps Script) | **v5 prepared** (calendar reminders, T-041; waiting for Naven to paste and redeploy) · **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
+| Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
 | Meditation | Test build only. Sample scripts are read by the device voice, and **one Journal pilot recording** (`Trace › meditation › …_trace_pilot….mp3`) is loaded through the existing bridge. Real file verified in Naven's Chrome on 31 Oct: found, downloaded (6,381,340 bytes), decoded (531.72 s), and actually played to 0:12. Pause held and resume advanced. Not yet checked: offline playback, and whether the sound was actually heard. Nothing is automated or scheduled, and the producer's capabilities are unverified. |
@@ -21,6 +21,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-042 — 2026-11-03 — Claude — bridge — v5
+- Naven pasted the v5 patch into "Trace Backend", ran `authoriseCalendar` (Calendar access granted; calendars "Trace" and "Trace · HT" created) and deployed it as a new version of the existing deployment (same link). Verified end to end at 18:56 IST: test 1.3.25 › This device › "Send a test reminder" added an event to "Trace" and his phone showed the Calendar notification two minutes later.
 
 ## T-041 — 2026-11-03 — Claude — bridge + test — v5 (prepared) / 1.3.25
 - **Bridge v5 (prepared, not yet deployed):** new op `calendar` (`action: add | remove`, `who: Trace | HT`, `at`, `title`, `note`, `id`). It only adds or removes short events (5 min, one pop-up at the event time) in two calendars of its own, **"Trace"** (Naven) and **"Trace · HT"** (HT; Naven shares this one with her), creating them on first use. It never reads or touches any other calendar. `authoriseCalendar()` grants Calendar access and creates both calendars. Repo `backend/Code.gs` updated (placeholder key unchanged).
