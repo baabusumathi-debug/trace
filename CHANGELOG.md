@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-043)
+## State (as of entry T-044)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.5** · promoted from test 1.3.24 on 3 Nov (T-040; first promotion T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.25** · last code commit: see entry T-041. Live is 1.4.5 (= test 1.3.24). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.26** · last code commit: see entry T-044. Live is 1.4.5 (= test 1.3.24). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-044 — 2026-11-03 — Claude — test — 1.3.26
+- **Leaving a flow always asks** (Naven, 3 Nov): closing (✕ or Esc) after walking at least one card opens "Save this flow?" with **SAVE**, **Discard n cards** and **Keep going**. The end-of-flow screen's button is now **SAVE**, with "Discard this flow" under it. Discard undoes every view of that flow (unsynced views are deleted; synced ones get an undo event, as Undo already does), clears Continue, and writes no Log rows. Look mode and a flow with no card walked close without asking.
+- Tests: demo flow of 2 cards → close → Save keeps 2 walked; Discard returns to 0; no page errors.
 
 ## T-043 — 2026-11-03 — Claude — bridge — v5.1 (given to Naven)
 - HT's test reminder also rang on Naven's phone: the calendar "Trace · HT" is owned by Naven's account, and an event's own pop-up reminder applies to the owner. Fix given to Naven as a one-line edit: events for HT get no reminder of their own (`if (o.who !== 'HT') ev.addPopupReminder(0);`), so HT's ring comes from her calendar default ("0 minutes", set 3 Nov) and Naven's from his (set to none / hidden). Repo `backend/Code.gs` updated to match.

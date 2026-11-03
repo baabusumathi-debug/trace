@@ -812,6 +812,36 @@ function startFlow(list, opts = {}) {
   flow.tick = setInterval(updateClock, 1000);
   document.addEventListener('keydown', flowKeys);
 }
+// Leaving a flow always asks: save the cards walked, discard them, or keep going (Naven, 3 Nov).
+function walkedNow() { return flow ? flow.hist.filter(h => h.ev).length : 0; }
+function askEnd(discardOnly) {
+  if (!flow) return;
+  if (flow.browse || flow.pilot || !walkedNow()) return endFlow();
+  const n = walkedNow(), tot = (Date.now() - flow.t0) / 1000;
+  const wrap = document.createElement('div'); wrap.className = 'modal endask';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-label="End this flow">
+    <div class="sheet-h"><span><span class="mono kick">${flow.done ? 'FLOW COMPLETE' : 'LEAVING THE FLOW'}</span><span class="sh-t">${discardOnly ? 'Discard this flow?' : 'Save this flow?'}</span></span></div>
+    <p>You walked <b>${n}</b> card${n === 1 ? '' : 's'} in ${clock(tot)}.${flow.done ? '' : ` ${flow.queue.length - flow.idx} left; a saved flow waits under Continue on the Flow tab.`}</p>
+    <div class="sheet-f end-btns">
+      ${discardOnly ? '' : '<button class="big press" data-save>SAVE</button>'}
+      <button class="btn ghost" data-drop>Discard ${n} card${n === 1 ? '' : 's'}</button>
+      <button class="btn ghost" data-stay>${flow.done ? 'Back' : 'Keep going'}</button>
+    </div></div>`;
+  const close = () => wrap.remove();
+  wrap.onclick = e => { if (e.target === wrap) close(); };
+  const sv = wrap.querySelector('[data-save]'); if (sv) sv.onclick = () => { close(); endFlow(); };
+  wrap.querySelector('[data-stay]').onclick = close;
+  wrap.querySelector('[data-drop]').onclick = async () => { close(); await discardFlow(); };
+  document.body.appendChild(wrap);
+}
+async function discardFlow() {
+  if (!flow) return;
+  for (const h of [...flow.hist].reverse()) if (h.ev) await undoView(h.ev);
+  flow.hist = []; flow.times = [];
+  P.set(LASTFLOW, null);
+  toast('Flow discarded. Nothing from it counts.');
+  await endFlow();
+}
 async function endFlow() {
   if (!flow) return;
   clearInterval(flow.tick);
@@ -857,7 +887,7 @@ function renderFlow() {
       <button class="big press" id="f-big"></button>
     </main>
   </div>`;
-  $('[data-act=close]').onclick = endFlow;
+  $('[data-act=close]').onclick = () => askEnd();
   app.querySelectorAll('[data-ts]').forEach(b => b.onclick = () => {
     const v = Math.max(0.8, Math.min(1.5, Math.round((P.get('cardScale', 1) + 0.1 * +b.dataset.ts) * 10) / 10));
     P.set('cardScale', v); $('.screen.flow').style.setProperty('--cs', v);
@@ -876,8 +906,10 @@ function drawCard() {
     if (flow.browse) { el.innerHTML = `<div class="c-done"><span class="mono kick dark">END OF THE DECK</span><h2>You looked through ${flow.queue.length} card${flow.queue.length === 1 ? '' : 's'}</h2><p class="muted-d">Nothing was logged. Use Flow now when you want it to count.</p></div>`; big.innerHTML = 'CLOSE'; return; }
     el.innerHTML = `<div class="c-done"><span class="mono kick dark">FLOW COMPLETE</span><h2>${n} card${n === 1 ? '' : 's'} walked</h2>
       <p>${clock(tot)} in total · ${n ? fmtDur(flow.times.reduce((a, b) => a + b, 0) / n / 1000) : '–'} per card</p>
-      <p class="muted-d">Your progress is saved on this device and goes to the War Map Sheet as soon as you are online.</p></div>`;
-    big.innerHTML = 'DONE';
+      <p class="muted-d">Save sends these cards to your counts and the War Map Sheet. Discard removes them as if this flow never happened.</p>
+      <button class="link" data-discard>Discard this flow</button></div>`;
+    big.innerHTML = 'SAVE';
+    const dc = el.querySelector('[data-discard]'); if (dc) dc.onclick = () => askEnd(true);
     return;
   }
   const c = current(), tag = neetTag(c), n = seen(c.deck, c.no);
@@ -1095,7 +1127,7 @@ function flowKeys(e) {
   else if (e.key === 'a' || e.key === 'A') { if (flow.face === 'a' && !flow.browse) next(true); }
   else if (e.key === 'u' || e.key === 'U' || e.key === 'Backspace' || (e.key === 'z' && (e.metaKey || e.ctrlKey))) { e.preventDefault(); undo(); }
   else if (e.key === 'e' || e.key === 'E') { if (flow.face === 'a') openEditor(current()); }
-  else if (e.key === 'Escape') endFlow();
+  else if (e.key === 'Escape') { if ($('.modal.endask')) $('.modal.endask').remove(); else askEnd(); }
 }
 
 /* ============================ editor ============================ */
