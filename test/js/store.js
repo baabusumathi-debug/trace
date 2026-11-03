@@ -239,7 +239,9 @@ export function againList() {
   for (const a of againMap.values()) out.set(a.deck + '|' + a.code, { ...a, why: 'Marked Again in Flow' });
   const t = today();
   for (const r of repairs) if (dkey(r.first || r.ts) < t && !out.has(r.deck + '|' + r.code)) out.set(r.deck + '|' + r.code, r);
-  return [...out.values()].sort((a, b) => b.ts - a.ts);
+  // most urgent first: wrong-and-sure, then guessed wrong, then guessed right; within each, misses most of the cohort got right
+  const rank = w => /^Wrong and sure/.test(w) ? 0 : /^Guessed wrong/.test(w) ? 1 : /^Guessed right/.test(w) ? 2 : 3;
+  return [...out.values()].sort((a, b) => rank(a.why) - rank(b.why) || (+b.cohort || 0) - (+a.cohort || 0) || b.ts - a.ts);
 }
 export const repairsDueLater = () => repairs.filter(r => dkey(r.first || r.ts) >= today());
 export const unmappedMisses = () => unmapped;

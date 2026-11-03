@@ -717,7 +717,7 @@ a.brand{text-decoration:none;color:inherit}
 .cv-sys{display:flex;flex-direction:column;gap:5px}
 .cv-r{display:grid;grid-template-columns:minmax(0,150px) 1fr 40px;align-items:center;gap:8px;font-size:12px}
 .cv-n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cv-bar{height:8px;border-radius:4px;background:#2c3038;display:flex;overflow:hidden}.cv-bar .b2{background:var(--s3)}.cv-bar .b1{background:var(--s2)}
+.cv-bar{height:10px;border-radius:4px;background:var(--s0);display:flex;overflow:hidden}.cv-bar .s1{background:var(--s1)}.cv-bar .s2{background:var(--s2)}.cv-bar .s3{background:var(--s3)}
 .cv-p{text-align:right;font-size:11px;color:var(--muted)}
 .cover p{margin:0}
 @media (max-width:520px){.cv-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}

@@ -666,11 +666,12 @@ function coverage(pool) {
   for (const d of (S.library ? S.library.decks : [])) {
     const cs = cardsOf(d.deck);
     let n, a, b;
-    if (cs.length) { const l = cs.filter(c => inPool(c, pool)); n = l.length; a = l.filter(c => seen(c.deck, c.no) > 0).length; b = l.filter(c => seen(c.deck, c.no) > 1).length; }
+    let x3 = 0;
+    if (cs.length) { const l = cs.filter(c => inPool(c, pool)); n = l.length; a = l.filter(c => seen(c.deck, c.no) > 0).length; b = l.filter(c => seen(c.deck, c.no) > 1).length; x3 = l.filter(c => seen(c.deck, c.no) > 2).length; }
     else if (pool === 'all') { n = d.cards; a = walked(d.deck); b = 0; }
     else { missing++; continue; }
     t += n; w += a; w2 += b;
-    const g = sys.get(d.system) || { name: d.system, n: 0, a: 0, b: 0 }; g.n += n; g.a += a; g.b += b; sys.set(d.system, g);
+    const g = sys.get(d.system) || { name: d.system, n: 0, a: 0, b: 0, c: 0 }; g.n += n; g.a += a; g.b += b; g.c += x3; sys.set(d.system, g);
   }
   return { t, w, w2, missing, sys: [...sys.values()].filter(g => g.n).sort((x, y) => x.name.localeCompare(y.name, undefined, { numeric: true })) };
 }
@@ -680,8 +681,8 @@ function coverCard() {
   return `<div class="cover">
     <span class="mono kick">COVERAGE · WALKED AT LEAST ONCE</span>
     <div class="cv-tiles">${all.map(x => `<button class="cv-t${x.k === sel.k ? ' on' : ''}" data-cov="${x.k}"><b>${pct(x.c.w, x.c.t)}%</b><span>${x.l}</span><i class="mono">${x.c.w.toLocaleString()} / ${x.c.t.toLocaleString()}</i></button>`).join('')}</div>
-    <div class="cv-sys">${sel.c.sys.map(g => `<div class="cv-r"><span class="cv-n">${esc(sysLabel(g.name))}</span><span class="cv-bar" title="${g.a} of ${g.n} walked · ${g.b} twice or more"><i class="b2" style="width:${pct(g.b, g.n)}%"></i><i class="b1" style="width:${pct(g.a - g.b, g.n)}%"></i></span><span class="mono cv-p">${pct(g.a, g.n)}%</span></div>`).join('')}</div>
-    <p class="muted small">${sel.l}: ${sel.c.w.toLocaleString()} of ${sel.c.t.toLocaleString()} cards walked, ${sel.c.w2.toLocaleString()} twice or more (darker bar).${sel.c.missing ? ` ${sel.c.missing} deck${sel.c.missing === 1 ? ' is' : 's are'} not on this device yet and ${sel.c.missing === 1 ? 'is' : 'are'} left out.` : ''}</p>
+    <div class="cv-sys">${sel.c.sys.map(g => `<div class="cv-r"><span class="cv-n">${esc(sysLabel(g.name))}</span><span class="cv-bar" title="${g.a} of ${g.n} walked · ${g.b} twice or more · ${g.c} three times or more"><i class="s3" style="width:${pct(g.c, g.n)}%"></i><i class="s2" style="width:${pct(g.b - g.c, g.n)}%"></i><i class="s1" style="width:${pct(g.a - g.b, g.n)}%"></i></span><span class="mono cv-p">${pct(g.a, g.n)}%</span></div>`).join('')}</div>
+    <p class="muted small">${sel.l}: ${sel.c.w.toLocaleString()} of ${sel.c.t.toLocaleString()} cards walked, ${sel.c.w2.toLocaleString()} twice or more. Bars use the card colours: seen once, twice, three times or more; empty = not seen.${sel.c.missing ? ` ${sel.c.missing} deck${sel.c.missing === 1 ? ' is' : 's are'} not on this device yet and ${sel.c.missing === 1 ? 'is' : 'are'} left out.` : ''}</p>
   </div>`;
 }
 function renderLoft() {
