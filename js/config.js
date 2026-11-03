@@ -9,8 +9,9 @@ export function setProfile(p) { try { localStorage.setItem(PKEY, JSON.stringify(
 export const IS_HT = PROFILE === 'ht';
 export const CONFIG = {
   readOnly: CHANNEL === 'test',
-  appVersion: '1.4.2',
+  appVersion: '1.4.3',
   traceFolderId: '1e_lx6kl_MhG4aOracgTr_HG3NUp7OsYs',
+  doctFolderId: '1wqRbRG-nqldfafFL-AughcBEBfo6atQo',   // Trace › doct: finished DocT attempts sent by the recorder (v2.0+)
   libraryId: '1b3tMq38gqAE_m7eb5PeeJ53LjKqdggHI',   // fallback; the app looks library.json up by name
   exam: { name: 'NEET-SS', date: '2026-12-11' },
   who: IS_HT ? 'HT' : 'Trace',  // Log "who": Trace for Naven, HT for HT, as the War Map expects
