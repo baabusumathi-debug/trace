@@ -147,9 +147,13 @@ const lastFlowTarget = () => _lastDeck;
 /* ============================ welcome ============================ */
 // Accepts the full setup link (or just the part after #setup=). Returns true when connected.
 async function trySetup(text) {
-  const m = String(text || '').match(/setup=([\w\-]+)/);
-  if (!m) return false;
+  const t = String(text || ''), at = t.indexOf('setup=');
+  if (at < 0) return false;
+  // tolerate a link that a message app split onto several lines, or wrapped in quotes/brackets
+  const m = [null, (t.slice(at + 6).replace(/\s+/g, '').match(/^[\w\-]+/) || [''])[0]];
+  if (!m[1]) return false;
   try {
+    if (m[1].length % 4 === 1) throw new Error('the link looks cut off (' + m[1].length + ' characters after setup=). Copy it again in one piece');
     let b = m[1].replace(/-/g, '+').replace(/_/g, '/');
     while (b.length % 4) b += '=';
     const j = JSON.parse(atob(b));
@@ -159,7 +163,7 @@ async function trySetup(text) {
     history.replaceState(null, '', location.pathname + '#/');
     toast('Connected to your Drive. Downloading your decks…');
     return true;
-  } catch (e) { toast('That setup link did not work: ' + e.message); return false; }
+  } catch (e) { toast('That setup link did not work: ' + (/cut off|incomplete/.test(e.message) ? e.message : 'it looks incomplete or changed. Copy it again in one piece.')); return false; }
 }
 
 function renderWelcome() {
@@ -1149,7 +1153,7 @@ async function renderStatus() {
         <dt>Last sync</dt><dd>${last ? new Date(last).toLocaleString() : 'never'}</dd>
         <dt>Waiting to send</dt><dd>${status.pending} item${status.pending === 1 ? '' : 's'}</dd>
         <dt>Storage</dt><dd>${persisted ? 'Protected from clean-up' : 'Browser may clear it if space runs low'}${est ? ` · ${(est.usage / 1048576).toFixed(1)} MB used` : ''}</dd>
-        <dt>Setup link</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="copylink">Copy it, to connect another device</button>' : '—'}</dd>
+        <dt>Setup link</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="copylink">Copy it, to connect another device</button><div id="setup-out" hidden><textarea class="mono" readonly rows="4"></textarea><span class="mono muted small so-n"></span></div>' : '—'}</dd>
         <dt>Profile</dt><dd>${IS_HT ? 'HT' : 'Naven (Trace)'} · <button class="link" data-act="profile">switch to ${IS_HT ? 'Naven (Trace)' : 'HT'}</button></dd>
         <dt>Device</dt><dd class="mono">${esc(S.device)}</dd>
         <dt>App</dt><dd class="mono">${CONFIG.appVersion}</dd>
@@ -1173,10 +1177,14 @@ async function renderStatus() {
   if (cl) cl.onclick = async () => {
     if (!confirmCopy()) return;
     const b = await db.kv.get('backend'); if (!b) return;
-    const enc = btoa(JSON.stringify({ u: b.url, k: b.key })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const bu = b.url || b.u, bk = b.key || b.k;
+    const enc = btoa(JSON.stringify({ u: bu, k: bk })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     const link = 'https://baabusumathi-debug.github.io/trace/#setup=' + enc;
-    try { await navigator.clipboard.writeText(link); toast('Setup link copied. Paste it only on your own devices or send it to HT privately.'); }
-    catch (e) { prompt('Copy this setup link (keep it private):', link); }
+    // shown on screen as well, so it can be checked by eye and selected by hand if the clipboard fails
+    const box = document.getElementById('setup-out');
+    if (box) { box.hidden = false; box.querySelector('textarea').value = link; box.querySelector('.so-n').textContent = `${link.length} characters · connection ${bu ? '✓' : '✗ no address'} · key ${bk ? '✓' : '✗ missing'}`; }
+    try { await navigator.clipboard.writeText(link); toast('Setup link copied (' + link.length + ' characters). Keep it private.'); }
+    catch (e) { toast('Select the link in the box and copy it by hand.'); }
   };
   const pf = $('[data-act=profile]');
   if (pf) pf.onclick = () => { if (confirmSwitch()) { setProfile(IS_HT ? 'trace' : 'ht'); location.reload(); } };
