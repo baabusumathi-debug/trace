@@ -240,8 +240,8 @@ export function againList() {
   for (const a of againMap.values()) out.set(a.deck + '|' + a.code, { ...a, why: 'Marked Again in Flow' });
   const t = today();
   for (const r of repairs) if (dkey(r.first || r.ts) < t && !out.has(r.deck + '|' + r.code)) out.set(r.deck + '|' + r.code, r);
-  // most urgent first: wrong-and-sure, then guessed wrong, then guessed right; within each, misses most of the cohort got right
-  const rank = w => /^Wrong and sure/.test(w) ? 0 : /^Guessed wrong/.test(w) ? 1 : /^Guessed right/.test(w) ? 2 : 3;
+  // most urgent first: wrong-and-sure, then guessed wrong, then skipped, then guessed right; within each, misses most of the cohort got right
+  const rank = w => /^Wrong and sure/.test(w) ? 0 : /^Guessed wrong/.test(w) ? 1 : /^Skipped/.test(w) ? 2 : /^Guessed right/.test(w) ? 3 : 4;
   return [...out.values()].sort((a, b) => rank(a.why) - rank(b.why) || (+b.cohort || 0) - (+a.cohort || 0) || b.ts - a.ts);
 }
 export const repairsDueLater = () => repairs.filter(r => dkey(r.first || r.ts) >= today());
@@ -271,6 +271,7 @@ function qStatus(q) {
   const wrong = !!q.marked_wrong || flags.includes('Wrong') || flags.includes('Guessed Wrong') || !!(q.chosen && q.correct && q.chosen !== q.correct);
   const guessed = !!q.guess || flags.some(f => /^Guessed/.test(f));
   if (wrong) return guessed ? 'Guessed wrong' : 'Wrong and sure';
+  if (flags.includes('Skipped')) return 'Skipped';
   if (guessed && (q.correct || flags.includes('Guessed Right'))) return 'Guessed right';
   return '';
 }
