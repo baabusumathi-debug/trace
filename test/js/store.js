@@ -271,7 +271,7 @@ function qStatus(q) {
   const wrong = !!q.marked_wrong || flags.includes('Wrong') || flags.includes('Guessed Wrong') || !!(q.chosen && q.correct && q.chosen !== q.correct);
   const guessed = !!q.guess || flags.some(f => /^Guessed/.test(f));
   if (wrong) return guessed ? 'Guessed wrong' : 'Wrong and sure';
-  if (flags.includes('Skipped')) return 'Skipped';
+  if (flags.some(f => /Skipped/.test(f))) return 'Skipped';
   if (guessed && (q.correct || flags.includes('Guessed Right'))) return 'Guessed right';
   return '';
 }
