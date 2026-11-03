@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-029)
+## State (as of entry T-030)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.2** · promoted from test 1.3.16 on 3 Nov (T-029; first promotion T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.16** · last code commit: see entry T-028. Live 1.4.2 = this build. (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.17** · last code commit: see entry T-030. Live is 1.4.2 (= test 1.3.16). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,14 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-030 — 2026-11-03 — Claude — test — 1.3.17
+- **DocT misses → next-day repair cards** (Naven's first loop update, agreed 3 Nov).
+  - **Recorder v2.0** (Tampermonkey, delivered in chat, not in the repo): one mode chosen before each sitting — Off · Trace solving · HT solving · HT review — shown in a pill on every DocT page; the mode switches itself Off once a review (or learning-mode capture) is saved, so reopening an old review is never recorded by accident. Every saved file is also sent through the bridge (`writeFile`) to **Drive › Trace › doct** (folder `1wqRbRG-nqldfafFL-AughcBEBfo6atQo`, created 3 Nov) as `doct_Trace_…json` / `doct_HT_…json`, a compact record without stems, options or explanations. The connection comes from the private setup link pasted once into the recorder (menu › Connect to Trace) and stays in Tampermonkey's storage on Naven's Mac. The recorder's old QBank on/off switch is replaced by the modes; Downloads copies continue as a backup.
+  - **`data/qmap.json`** (new, served like the layer and never cached by the service worker): 3,190 DocT question IDs (DT… QBank, TS… GT) → Trace cards (`deck|code`, each code resolved to the deck that actually holds it); 2,456 have cards. IDs and labels only.
+  - **Trace** (`syncDoct` in `sync.js`) reads new files for the current profile from that folder; `setDoct`/`buildRepairs` in `store.js` merge attempt + review files of one sitting, mark each question **Wrong and sure / Guessed wrong / Guessed right**, and map it to its cards. A card joins the **Again pile from the day after the test** with its reason (e.g. "Wrong and sure · Shock Q1 · 88% got it") and leaves once walked without Again after that test. Misses with no card are counted ("n missed questions have no card yet").
+  - **New pool chips:** `Missed · QBank`, `Missed · GT`, `Guessed` (all-time DocT misses), usable everywhere the chips are.
+- Tests: recorder v2.0 in jsdom against the saved GT review page (mode menu, pill, upload payload and folder, auto-off after the review save); Trace demo with injected attempts (merge, reasons, due tomorrow, no-card count, chips); no page errors. Not yet tried against the real DocT site or Drive.
 
 ## T-029 — 2026-11-03 — Claude — live — 1.4.2
 - Promoted test 1.3.16 on Naven's explicit approval (3 Nov, 13:27 IST): War Map Chunks-tab chunking (T-027), the chunk bar and Trace/HT profiles (T-028). Root differs from `test/` only in version and title.

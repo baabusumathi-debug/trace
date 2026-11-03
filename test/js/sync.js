@@ -2,7 +2,7 @@
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG, IS_HT } from './config.js';
-import { S, emit, recount, setNeet, setQb, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
+import { S, emit, recount, setNeet, setQb, setDoct, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -158,8 +158,32 @@ export async function loadQbank() {
   } catch (e) { /* offline: keep the stored copy */ }
 }
 
+// DocT question -> card map, shipped with the app like the layer
+export async function loadQmap() {
+  try {
+    const r = await fetch('./data/qmap.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    const q = await r.json();
+    if (q && q.version && q.version !== (S.qmap && S.qmap.version)) { S.qmap = q; await db.kv.set('qmap', q); recount(); emit(); }
+  } catch (e) { /* offline: keep the stored copy */ }
+}
+// Attempts the recorder sent to Trace › doct (doct_Trace_… / doct_HT_…): read new or changed files for this profile.
+async function syncDoct() {
+  if (!CONFIG.doctFolderId) return;
+  const [l] = await batch([{ op: 'listFolder', id: CONFIG.doctFolderId }]);
+  if (!l.ok) return;
+  const prefix = IS_HT ? 'doct_HT_' : 'doct_Trace_';
+  const have = (await db.kv.get('doctAtt')) || {}, seenAt = (await db.kv.get('doctSeen')) || {};
+  const want = (l.data || []).filter(f => f.kind === 'file' && f.name.startsWith(prefix) && seenAt[f.id] !== f.modified);
+  for (let i = 0; i < want.length; i += 20) {
+    const part = want.slice(i, i + 20), res = await batch(part.map(f => ({ op: 'readFile', id: f.id })));
+    res.forEach((r, j) => { if (!r.ok) return; try { const rec = JSON.parse(r.data.text); if (rec.type === 'trace.doct.attempt') have[part[j].id] = rec; seenAt[part[j].id] = part[j].modified; } catch (e) { /* skip a bad file */ } });
+  }
+  if (want.length) { await db.kv.set('doctAtt', have); await db.kv.set('doctSeen', seenAt); setDoct(have); }
+}
+
 export async function sync({ downloadAll = true } = {}) {
-  loadQbank();
+  loadQbank(); loadQmap();
   if (status.busy || !hasBackend()) return;
   if (!navigator.onLine && !isDemo()) { status.state = 'offline'; emit(); return; }
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();
@@ -234,6 +258,7 @@ export async function sync({ downloadAll = true } = {}) {
     await buildLogRows();
     await pushOutbox();
     await syncTargets();
+    try { await syncDoct(); } catch (e) { console.warn('doct', e); }
 
     // 7. decks: new or changed versions
     if (downloadAll) await downloadDecks();

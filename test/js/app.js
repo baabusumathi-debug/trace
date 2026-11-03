@@ -2,8 +2,8 @@ import { CONFIG, CHANNEL, PROFILE, IS_HT, setProfile } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf } from './store.js';
-import { status, sync, loadQbank, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
+import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf, repairsDueLater, unmappedMisses, missOf } from './store.js';
+import { status, sync, loadQbank, loadQmap, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
@@ -59,7 +59,7 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
-  loadQbank();
+  loadQbank(); loadQmap();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -586,7 +586,7 @@ function lastFlowCards() {
   return left.length ? { cards: left, done: out.length - left.length, total: out.length, label: lf.label, ts: lf.ts } : null;
 }
 function againCards() {
-  return againList().map(a => { const cs = cardsOf(a.deck); return cs.find(c => c.code === a.code) || cs.find(c => c.no === a.no); }).filter(Boolean);
+  return againList().map(a => { const cs = cardsOf(a.deck); const c = cs.find(x => x.code === a.code) || cs.find(x => x.no === a.no); return c ? ({ ...c, _why: a.why + (a.label ? ' · ' + a.label : '') + (a.cohort != null && a.cohort !== '' ? ' · ' + a.cohort + '% got it' : '') }) : null; }).filter(Boolean);
 }
 function targetProgress() {
   const items = targetItems(), day = today();
@@ -630,8 +630,9 @@ function renderFlowTab() {
         <section class="dk-box">
           <div class="dk-h"><span><span class="mono kick">AGAIN PILE</span><span class="dk-t">${ag.length ? ag.length + ' card' + (ag.length === 1 ? '' : 's') + ' to repair' : 'Nothing to repair'}</span></span>
             ${ag.length ? `<button class="pillbtn" data-again>${ICON.walkS}Repair</button>` : ''}</div>
-          ${ag.length ? `<div class="pl-strip">${ag.slice(0, 80).map(c => `<i class="s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}" data-tip="${esc(tipOf(c))}"></i>`).join('')}</div>` : ''}
-          <p class="muted small">Cards you mark Again stay here until you walk them without Again in a later session. DocT test misses will land here too once the recorder link is built.</p>
+          ${ag.length ? `<div class="pl-strip">${ag.slice(0, 120).map(c => `<i class="s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}" data-tip="${esc(tipOf(c) + ' · ' + c._why)}"></i>`).join('')}</div>` : ''}
+          ${ag.length ? `<div class="ag-why">${ag.slice(0, 6).map(c => `<span class="mono small"><b>${esc(c.deck)}</b> ${esc(chunkOf(c).name)} · ${esc(c._why)}</span>`).join('')}${ag.length > 6 ? `<span class="muted small">+ ${ag.length - 6} more</span>` : ''}</div>` : ''}
+          <p class="muted small">Cards you mark Again, and cards behind DocT questions you got wrong or guessed (from the day after the test). A card leaves the pile once you walk it without Again.${repairsDueLater().length ? ` <b>${repairsDueLater().length}</b> more join${repairsDueLater().length === 1 ? 's' : ''} tomorrow.` : ''}${unmappedMisses().length ? ` ${unmappedMisses().length} missed question${unmappedMisses().length === 1 ? ' has' : 's have'} no card yet.` : ''}</p>
         </section>
         <section class="dk-box">
           <div class="dk-h"><span><span class="mono kick">ADD MORE</span><span class="dk-t">Pick cards, then + Add to flow</span></span></div>
