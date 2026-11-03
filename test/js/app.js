@@ -1153,7 +1153,7 @@ async function renderStatus() {
         <dt>Last sync</dt><dd>${last ? new Date(last).toLocaleString() : 'never'}</dd>
         <dt>Waiting to send</dt><dd>${status.pending} item${status.pending === 1 ? '' : 's'}</dd>
         <dt>Storage</dt><dd>${persisted ? 'Protected from clean-up' : 'Browser may clear it if space runs low'}${est ? ` · ${(est.usage / 1048576).toFixed(1)} MB used` : ''}</dd>
-        <dt>Setup link</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="copylink">Copy it, to connect another device</button>' : '—'}</dd>
+        <dt>Setup link</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="copylink">Copy it, to connect another device</button><div id="setup-out" hidden><textarea class="mono" readonly rows="4"></textarea><span class="mono muted small so-n"></span></div>' : '—'}</dd>
         <dt>Profile</dt><dd>${IS_HT ? 'HT' : 'Naven (Trace)'} · <button class="link" data-act="profile">switch to ${IS_HT ? 'Naven (Trace)' : 'HT'}</button></dd>
         <dt>Device</dt><dd class="mono">${esc(S.device)}</dd>
         <dt>App</dt><dd class="mono">${CONFIG.appVersion}</dd>
@@ -1177,10 +1177,14 @@ async function renderStatus() {
   if (cl) cl.onclick = async () => {
     if (!confirmCopy()) return;
     const b = await db.kv.get('backend'); if (!b) return;
-    const enc = btoa(JSON.stringify({ u: b.url, k: b.key })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const bu = b.url || b.u, bk = b.key || b.k;
+    const enc = btoa(JSON.stringify({ u: bu, k: bk })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
     const link = 'https://baabusumathi-debug.github.io/trace/#setup=' + enc;
-    try { await navigator.clipboard.writeText(link); toast('Setup link copied. Paste it only on your own devices or send it to HT privately.'); }
-    catch (e) { prompt('Copy this setup link (keep it private):', link); }
+    // shown on screen as well, so it can be checked by eye and selected by hand if the clipboard fails
+    const box = document.getElementById('setup-out');
+    if (box) { box.hidden = false; box.querySelector('textarea').value = link; box.querySelector('.so-n').textContent = `${link.length} characters · connection ${bu ? '✓' : '✗ no address'} · key ${bk ? '✓' : '✗ missing'}`; }
+    try { await navigator.clipboard.writeText(link); toast('Setup link copied (' + link.length + ' characters). Keep it private.'); }
+    catch (e) { toast('Select the link in the box and copy it by hand.'); }
   };
   const pf = $('[data-act=profile]');
   if (pf) pf.onclick = () => { if (confirmSwitch()) { setProfile(IS_HT ? 'trace' : 'ht'); location.reload(); } };
