@@ -4,7 +4,7 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-042)
+## State (as of entry T-043)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
@@ -21,6 +21,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-043 — 2026-11-03 — Claude — bridge — v5.1 (given to Naven)
+- HT's test reminder also rang on Naven's phone: the calendar "Trace · HT" is owned by Naven's account, and an event's own pop-up reminder applies to the owner. Fix given to Naven as a one-line edit: events for HT get no reminder of their own (`if (o.who !== 'HT') ev.addPopupReminder(0);`), so HT's ring comes from her calendar default ("0 minutes", set 3 Nov) and Naven's from his (set to none / hidden). Repo `backend/Code.gs` updated to match.
 
 ## T-042 — 2026-11-03 — Claude — bridge — v5
 - Naven pasted the v5 patch into "Trace Backend", ran `authoriseCalendar` (Calendar access granted; calendars "Trace" and "Trace · HT" created) and deployed it as a new version of the existing deployment (same link). Verified end to end at 18:56 IST: test 1.3.25 › This device › "Send a test reminder" added an event to "Trace" and his phone showed the Calendar notification two minutes later.

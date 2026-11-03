@@ -16,7 +16,7 @@ var TABS = {            // what the app may do with each tab
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 5;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders
+var VERSION = 5;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders (5.1: HT events carry no owner reminder)
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
@@ -283,7 +283,7 @@ function calendar_(o) {
     if (isNaN(at.getTime())) throw new Error('bad time');
     var ev = c.createEvent(String(o.title || 'Trace').slice(0, 80), at, new Date(at.getTime() + 5 * 60000), { description: String(o.note || '').slice(0, 300) });
     ev.removeAllReminders();
-    ev.addPopupReminder(0);           // a notification at the event time
+    if (o.who !== 'HT') ev.addPopupReminder(0);   // HT's ring comes from her own calendar setting, not the owner's (v5.1)
     return { id: ev.getId(), calendar: c.getName() };
   }
   if (o.action === 'remove') {
