@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-051)
+## State (as of entry T-053)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.7** · promoted from test 1.3.31 on 4 Nov (T-051; earlier T-047, T-040, first T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.31** · last code commit: see entry T-050. Live is 1.4.7 (= test 1.3.31). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.32** · last code commit: see entry T-053. Live is 1.4.7 (= test 1.3.31). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,15 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-053 — 2026-11-04 — Claude — test — 1.3.32
+- **The Plan** (Naven + HT's idea, designed with Naven 4 Nov): Loft › "The Plan" opens a full-screen planner (`#/plan`, `js/plan.js`). A stretch = start date + days + pace (+ a catch-up ceiling). Rows are subjects, columns are days, every cell is a **number** (no colour coding; Naven is colour-blind). Repair pile is an automatic first row (pile ÷ days left, up to a daily cap). Subjects fill the days in order, or "a little every day" (n a day, or spread to a last day). Tap a day header → Normal / GT (20) / Half (30) / Off; tap a number → fix it (• mark); tap a subject → rename, order, mode, remove. "Doesn't fit" column + verdict with the three ways out (pace, days, narrow a subject). Re-planned from what was walked: past days show walked, today walked/planned, later days re-spread; extra cards never lower tomorrow; a short day raises normal days up to the ceiling.
+- **Adding subjects:** quick add (system + pool + walk count, live count) or **Pick in the Mosaic**.
+- **Mosaic:** walk chips are now *Not walked · ×1 · ×2 · ×3+* (combine with the pool chips); **Pick** toggle — tap a first then a last tile (range of lit cards), tap a deck name or chunk name for all of it; picked tiles get a white frame, the first tap a gold dashed frame; tray: Add to plan / Add to flow / Clear.
+- **Flow:** "Today's thread" above the card: one bead per card walked today against today's planned number (or 65): light = new, mid = ×2, dark = ×3+, ring = repair, gold edge = past the target, notch = where you should be by now; "day sealed" in gold at the target; parts of the plan underneath. Flow desk: "Today from the plan" with Start (repairs first, then subjects in plan order).
+- **Loft re-laid:** plan card full width at the top; chase, cards per day and time in the main column; today's target, a compact calendar, day in the chronicle, coverage and tiles in a side column (stacked on the phone).
+- Plan storage: per profile on the device; the live app also syncs it to Drive (`Trace/plan.json`, `plan-ht.json`, newer copy wins); the test build only reads.
+- ✦ stars recounted from the current NEET set on load.
 
 ## T-052 — 2026-11-04 — Claude — recorder — v2.7 (given to Naven)
 - HT review batch (4 Nov, 00:42–00:47 IST, recorder 2.6): SIADH & DI (14 wrong), Adrenal Insufficiency & Crisis (12), Metabolic Encephalopathy (6), Substance-Related Disorders Part 1 (6), Part 2 (12), Part 3 (10), Drug-Related Disorders (15) — all sent automatically, lists match DocT's incorrect counts, no skipped questions in these modules, anchors correct (Q1). 65 wrong questions; 55 mapped to cards, 10 have no card yet.

@@ -1,5 +1,5 @@
 // Loft numbers: Phase 1 chase, cards per day, study time, best hours, GT trend. Pure calculations, no screens.
-import { S, seen, off, cardsOf, inPool, today, dkey, walked } from './store.js';
+import { S, seen, off, cardsOf, inPool, today, dkey, walked, missOf } from './store.js';
 import { peekOn, peekViews } from './peek.js';
 
 export const PHASE1_END = '2026-11-30';
@@ -145,4 +145,19 @@ export function bestHours() {
 export function gtTrend() {
   return Object.values(S.gtScores || {}).filter(g => g.total).map(g => ({ ...g, pct: Math.round((4 * g.right - g.wrong) / (4 * g.total) * 100) }))
     .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+}
+
+/** Today's walks as beads for the Flow thread: 'n' new · 'x2' second walk · 'x3' third or later · 'r' repair. */
+export function todayBeads() {
+  const td = today(), count = new Map(), lastAgain = new Map(), out = [], seenToday = new Set();
+  for (const e of views()) {
+    const k = e.deck + '|' + e.no, prior = count.get(k) || 0, base = (S.logBase[e.deck] || {})[e.no + off(e.deck)] || 0;
+    if (dkey(e.ts) === td && !seenToday.has(k)) {
+      seenToday.add(k);
+      const nth = base + prior + 1, c = cardsOf(e.deck).find(x => x.no === e.no);
+      out.push(lastAgain.get(k) || (c && missOf(c)) ? 'r' : nth === 1 ? 'n' : nth === 2 ? 'x2' : 'x3');
+    }
+    count.set(k, prior + 1); lastAgain.set(k, !!e.again);
+  }
+  return out;
 }

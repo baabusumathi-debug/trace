@@ -7,8 +7,9 @@ import { status, sync, loadQbank, loadQmap, startAutoSync, recordView, undoView,
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
-import { chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
+import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, DAY_TYPES } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
@@ -117,6 +118,7 @@ function routeInner() {
   if (page === 'sys' && arg) return renderSystem(arg);
   if (page === 'flow') return renderFlowTab();
   if (page === 'loft') return renderLoft();
+  if (page === 'plan') return renderPlan();
   if (page === 'status') return renderStatus();
   if (page === 'changes') return renderChanges();
   if (page === 'shelf') return renderCabinet();
@@ -333,21 +335,22 @@ function renderSystem(num) {
   const all = num === 'all';
   const s = all ? (S.library ? { name: 'all', label: 'Eagle view · every card', decks: S.library.decks } : null) : systems().find(x => sysNum(x.name) === num);
   if (!s) return renderCabinet();
-  const tab = all ? 'mosaic' : P.get('sysTab', 'decks'), sort = P.get('sort', 'neet'), mp = P.get('moPool', 'all'), mst = P.get('moState', 'any');
-  const hitN = d => pick2(d.deck, mp, mst).length, cn = P.get('cnames', false);
+  const tab = all ? 'mosaic' : P.get('sysTab', 'decks'), sort = P.get('sort', 'neet'), mp = P.get('moPool', 'all'), mw = P.get('moWalk', ''), mst = 'any';
+  const pickW = deck => cardsOf(deck).filter(c => inPool(c, mp) && walkOk(c, mw));
+  const hitN = d => pickW(d.deck).length, cn = P.get('cnames', false), pk = P.get('pickOn', false);
   const decks = sort === 'hits' ? s.decks.slice().sort((a, b) => hitN(b) - hitN(a) || a.deck.localeCompare(b.deck, undefined, { numeric: true })) : sortDecks(s.decks, sort);
   const stars = decks.reduce((t, d) => t + (d.star || 0), 0), cards = decks.reduce((t, d) => t + d.cards, 0), w = decks.reduce((t, d) => t + walked(d.deck), 0);
   let body, litList = [];
   if (tab === 'mosaic') {
     // lit cards in the order the mosaic shows them (Eagle view: system by system)
     const shown = all ? systems().flatMap(g => decks.filter(d => d.system === g.name)) : decks;
-    litList = shown.flatMap(d => pick2(d.deck, mp, mst));
+    litList = shown.flatMap(d => pickW(d.deck));
     body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span><span class="lg-n"><i class="lg-tu"></i>coral corner = Top-up</span></div>
       ${poolChips(mp, 'data-mp')}
-      <div class="chips mo-pools">${STATES.map(([k, l]) => `<button class="chip${mst === k ? ' on' : ''}" data-mst="${k}">${l}</button>`).join('')}<button class="chip dash${cn ? ' on' : ''}" data-cnames aria-pressed="${cn}">${cn ? '✓ ' : ''}Chunk names</button><span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
+      <div class="chips mo-pools">${WALKS.map(([k, l]) => `<button class="chip${walkParts(mw).includes(k) ? ' on' : ''}" data-mw="${k}" aria-pressed="${walkParts(mw).includes(k)}">${walkParts(mw).includes(k) ? '✓ ' : ''}${l}</button>`).join('')}<span class="pool-sep" aria-hidden="true">|</span><button class="chip dash${cn ? ' on' : ''}" data-cnames aria-pressed="${cn}">${cn ? '✓ ' : ''}Chunk names</button><button class="chip pickchip${pk ? ' on' : ''}" data-pick aria-pressed="${pk}">${pk ? '✓ Pick on' : 'Pick'}</button><span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
       <div class="mosaic">${(all ? systems().map(g => ({ g, ds: decks.filter(d => d.system === g.name) })) : [{ g: null, ds: decks }]).map(({ g, ds }) => (g ? `<div class="mo-sys mono">${esc(g.label)} · ${ds.reduce((t, d) => t + hitN(d), 0)}</div>` : '') + ds.map(d => {
-        const cs = cardsOf(d.deck), lit = c => inPool(c, mp) && inState(c, mst);
-        return `<div class="mo-row${d.topupDeck ? ' tu' : ''}"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.topupDeck ? 'TOP-UP' : d.star ? '✦ ' + d.star : ''}${mp !== 'all' || mst !== 'any' ? ' · ' + hitN(d) : ''}</span></a>
+        const cs = cardsOf(d.deck), lit = c => inPool(c, mp) && walkOk(c, mw);
+        return `<div class="mo-row${d.topupDeck ? ' tu' : ''}"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.topupDeck ? 'TOP-UP' : d.star ? '✦ ' + d.star : ''}${mp !== 'all' || mw ? ' · ' + hitN(d) : ''}</span></a>
           <span class="mo-cells${cn ? ' named' : ''}">${cs.length ? chunked(cs, c => `<button class="mo s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" data-tip="${esc(tipOf(c))}" aria-label="${esc(tipOf(c))}, seen ${seen(c.deck, c.no)}"></button>`, cn) : '<span class="muted small">not downloaded</span>'}</span></div>`;
       }).join('')).join('')}</div>`;
   } else {
@@ -361,17 +364,20 @@ function renderSystem(num) {
         <span class="chips nowrap-row small">${SORTS.slice(0, 3).concat(tab === 'mosaic' ? [['hits', 'Most lit']] : []).map(([k, l]) => `<button class="chip${sort === k ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</span></div>
     </header>
     <div class="scroll pad">${body}</div>
-    ${tab === 'mosaic' ? litBar(litList) : ''}
+    ${tab === 'mosaic' ? (pk ? pickBar() : litBar(litList)) : ''}
     ${nav('shelf')}
   </div>`;
   bindGo(); hideTip();
   if (tab === 'mosaic') {
     bindTips(app);
-    const lab = (all ? 'All decks' : s.label) + ' · ' + [poolName(mp), mst !== 'any' ? stateLabel(mst) : ''].filter(Boolean).join(' · ');
+    const lab = (all ? 'All decks' : s.label) + ' · ' + [poolName(mp), walkName(mw)].filter(Boolean).join(' · ');
     const lf = app.querySelector('[data-litflow]'), la = app.querySelector('[data-litadd]');
     if (lf) lf.onclick = () => { hideTip(); startFlow(litList, { label: lab, returnTo: location.hash }); };
     if (la) la.onclick = () => addLit(litList, lab);
     const cb = app.querySelector('[data-cnames]'); if (cb) cb.onclick = () => { P.set('cnames', !cn); keep(() => renderSystem(num)); };
+    const pb = app.querySelector('[data-pick]'); if (pb) pb.onclick = () => { P.set('pickOn', !pk); if (pk) { pickSel.clear(); pickAnchor = null; P.set('pickForPlan', false); } keep(() => renderSystem(num)); };
+    app.querySelectorAll('[data-mw]').forEach(b => b.onclick = () => { P.set('moWalk', toggleWalk(mw, b.dataset.mw)); keep(() => renderSystem(num)); });
+    if (pk) bindPick(litList, lab, all ? 'All decks' : s.label, [poolName(mp), walkName(mw)].filter(x => x && x !== 'All').join(' · '));
   }
   app.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => { P.set('sysTab', b.dataset.tab); renderSystem(num); });
   app.querySelectorAll('[data-sort]').forEach(b => b.onclick = () => { P.set('sort', b.dataset.sort); renderSystem(num); });
@@ -379,6 +385,7 @@ function renderSystem(num) {
   app.querySelectorAll('[data-mst]').forEach(b => b.onclick = () => { P.set('moState', b.dataset.mst); renderSystem(num); });
   app.querySelectorAll('.mo').forEach(b => b.onclick = () => {
     hideTip();
+    if (P.get('pickOn', false) && tab === 'mosaic') return;          // Pick mode: tiles select (bindPick), they don't open
     const list = cardsOf(b.dataset.deck);
     startFlow(list, { browse: true, start: list.findIndex(c => c.code === b.dataset.code), label: 'Look', returnTo: location.hash });
   });
@@ -442,6 +449,57 @@ async function addLit(list, label) {
   await addTarget([...by].map(([deck, nos]) => ({ deck, label, nos })));
   toast(`Added ${list.length} card${list.length === 1 ? '' : 's'} to today’s target.`);
   if (hasBackend()) sync({ downloadAll: false });
+}
+// Pick mode: tap a first tile, then a last tile (a range of lit cards); tap a deck name or a chunk name for all of it.
+const pickSel = new Set(); let pickAnchor = null;
+function pickBar() {
+  return `<div class="buildfoot litbar pickbar">
+    <div class="sumrow mono"><span data-pick-sum></span><span data-pick-hint></span></div>
+    <div class="two"><button class="big press" data-pick-plan>ADD TO PLAN</button><button class="btn ghost" data-pick-flow>+ Add to flow</button><button class="btn ghost" data-pick-clear>Clear</button></div>
+  </div>`;
+}
+function bindPick(litList, lab, name, sub) {
+  const order = litList.map(c => c.deck + '|' + c.code), byKey = new Map(litList.map(c => [c.deck + '|' + c.code, c]));
+  const tiles = new Map(); app.querySelectorAll('.mo').forEach(b => tiles.set(b.dataset.deck + '|' + b.dataset.code, b));
+  const paint = () => {
+    tiles.forEach((b, k) => { b.classList.toggle('sel', pickSel.has(k)); b.classList.toggle('anc', pickAnchor === k); });
+    const list = order.filter(k => pickSel.has(k)).map(k => byKey.get(k)), nNew = list.filter(c => !seen(c.deck, c.no)).length;
+    app.querySelector('[data-pick-sum]').innerHTML = list.length ? `<b>${list.length}</b> picked · ${nNew} new · ${list.length - nNew} to revise` : '<b>0</b> picked';
+    app.querySelector('[data-pick-hint]').textContent = pickAnchor ? 'now tap the last tile' : list.length ? 'tap more, or a deck name' : 'tap a first tile, then a last tile';
+  };
+  const toggleKeys = keys => { const all = keys.every(k => pickSel.has(k)); keys.forEach(k => all ? pickSel.delete(k) : pickSel.add(k)); };
+  tiles.forEach((b, k) => b.addEventListener('click', () => {
+    if (b.classList.contains('off')) return;
+    if (pickAnchor && pickAnchor !== k) {
+      const a = order.indexOf(pickAnchor), z = order.indexOf(k);
+      if (a >= 0 && z >= 0) order.slice(Math.min(a, z), Math.max(a, z) + 1).forEach(x => pickSel.add(x));
+      pickAnchor = null;
+    } else if (pickAnchor === k) { pickAnchor = null; }
+    else if (pickSel.has(k)) { pickSel.delete(k); }
+    else { pickSel.add(k); pickAnchor = k; }
+    paint();
+  }));
+  app.querySelectorAll('.mo-l').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); const deck = decodeURIComponent(a.getAttribute('href').split('/').pop());
+    toggleKeys(order.filter(k => k.startsWith(deck + '|'))); pickAnchor = null; paint();
+  }));
+  app.querySelectorAll('.cname').forEach(el => el.addEventListener('click', () => {
+    const keys = []; let n = el.nextElementSibling;
+    while (n && !n.classList.contains('cgap') && !n.classList.contains('cname')) { if (n.classList.contains('mo') && !n.classList.contains('off')) keys.push(n.dataset.deck + '|' + n.dataset.code); n = n.nextElementSibling; }
+    toggleKeys(keys); pickAnchor = null; paint();
+  }));
+  const chosen = () => order.filter(k => pickSel.has(k));
+  app.querySelector('[data-pick-plan]').onclick = () => {
+    const keys = chosen(); if (!keys.length) { toast('Pick some cards first.'); return; }
+    const decks = [...new Set(keys.map(k => k.split('|')[0]))];
+    planPending = { name: decks.length <= 3 ? decks.join(' + ') : name, sub, keys };
+    pickSel.clear(); pickAnchor = null; P.set('pickOn', false); P.set('pickForPlan', false);
+    if (!currentStretch()) newStretch({});
+    go('#/plan');
+  };
+  app.querySelector('[data-pick-flow]').onclick = () => { const keys = chosen(); if (!keys.length) { toast('Pick some cards first.'); return; } addLit(keys.map(k => byKey.get(k)), lab); };
+  app.querySelector('[data-pick-clear]').onclick = () => { pickSel.clear(); pickAnchor = null; paint(); };
+  paint();
 }
 function litBar(list) {
   const avg = avgPace() || 75000;
@@ -631,7 +689,8 @@ function renderFlowTab() {
     app.innerHTML = `<div class="screen flowtab">
       <header class="top"><span class="tt"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></span>${goingOutButton()}</header>
       <div class="scroll pad desk">
-        ${targetBlock(true)}
+        ${planDesk()}
+        ${targetBlock(!currentStretch())}
         <section class="dk-box">
           <div class="dk-h"><span><span class="mono kick">CONTINUE</span><span class="dk-t">${lf ? esc(lf.label || 'Last flow') : 'No flow left open'}</span></span>
             ${lf ? `<button class="pillbtn" data-cont>${ICON.walkS}Continue</button>` : ''}</div>
@@ -661,8 +720,23 @@ function renderFlowTab() {
     if (c) c.onclick = () => startFlow(lf.cards, { label: lf.label || 'Continue', returnTo: '#/flow' });
     const r = app.querySelector('[data-again]');
     if (r) r.onclick = () => startFlow(ag, { label: 'Again pile', returnTo: '#/flow' });
+    const pt = app.querySelector('[data-plantoday]');
+    if (pt) pt.onclick = () => { const st = currentStretch(), q = st ? todayCards(st) : []; if (q.length) startFlow(q, { label: 'The Plan · today', returnTo: '#/flow' }); else toast('Today’s plan is done.'); };
   };
   draw();
+}
+// Flow desk: today's slice of the plan, with the thread as it stands
+function planDesk() {
+  const st = currentStretch();
+  if (!st) return `<section class="dk-box"><div class="dk-h"><span><span class="mono kick">THE PLAN</span><span class="dk-t">No plan yet</span></span><a class="pillbtn" href="#/plan">Plan</a></div><p class="muted small">Make a stretch in the Loft’s planner and today’s cards will wait here every morning.</p></section>`;
+  const r = compute(st), parts = todayParts(st, r), left = todayCards(st, r).length, done = todayBeads().length;
+  if (!r.active) return `<section class="dk-box"><div class="dk-h"><span><span class="mono kick">THE PLAN · ${esc(st.name.toUpperCase())}</span><span class="dk-t">${r.td < r.days[0] ? 'Starts ' + dShort(r.days[0]) : 'Stretch finished'}</span></span><a class="pillbtn" href="#/plan">Open</a></div></section>`;
+  return `<section class="dk-box plandesk">
+    <div class="dk-h"><span><span class="mono kick">TODAY FROM THE PLAN · ${esc(st.name.toUpperCase())}</span><span class="dk-t">${done} of ${r.todayPlan} walked today${left ? ` · ${left} waiting` : ' · plan done'}</span></span>
+      ${left ? `<button class="pillbtn" data-plantoday>${ICON.walkS}Start</button>` : ''}</div>
+    <div class="pd-parts">${parts.map(x => `<span><i>${esc(x.name)}</i><b>${x.done}/${x.n}</b></span>`).join('')}</div>
+    <p class="muted small">Repairs first, then the subjects in plan order. <a href="#/plan">Open the planner</a></p>
+  </section>`;
 }
 function keep(fn) { const sc = app.querySelector('.scroll'), y = sc ? sc.scrollTop : 0; fn(); const s2 = app.querySelector('.scroll'); if (s2) s2.scrollTop = y; }
 
@@ -843,6 +917,179 @@ function bindLoftParts() {
   const gt = app.querySelector('[data-gt]'); if (gt) gt.onclick = () => { P.set('gtOpen', !P.get('gtOpen', false)); r(); };
 }
 
+/* ============================ The Plan (T-053): stretches → subjects → today's slice ============================ */
+const WALKS = [['w0', 'Not walked'], ['w1', '×1'], ['w2', '×2'], ['w3', '×3+']];
+const walkParts = v => String(v || '').split('+').filter(x => /^w[0-3]$/.test(x));
+function walkOk(c, v) { const p = walkParts(v); if (!p.length) return true; const n = Math.min(3, seen(c.deck, c.no)); return p.includes('w' + n); }
+const walkName = v => walkParts(v).map(k => WALKS.find(w => w[0] === k)[1]).join(' + ');
+function toggleWalk(cur, k) { const s = new Set(walkParts(cur)); s.has(k) ? s.delete(k) : s.add(k); return WALKS.map(w => w[0]).filter(x => s.has(x)).join('+'); }
+const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const dHead = d => { const x = new Date(d + 'T12:00'); return [WD[x.getDay()], x.getDate()]; };
+const dShort = d => { const [w, n] = dHead(d); return `${w} ${n} ${MONTHS[new Date(d + 'T12:00').getMonth()].slice(0, 3)}`; };
+function paceBand(p) { return p <= 55 ? ['comfortable', 'ok'] : p <= 70 ? ['a stretch', 'mid'] : ['more than your best week (55)', 'hi']; }
+let planPending = null;            // cards picked in the Mosaic, waiting to become a subject
+
+function renderPlan() {
+  const p = loadPlan(), st = currentStretch();
+  if (!st) return renderPlanNew();
+  const r = compute(st), days = r.days, td = r.td, band = paceBand(st.pace);
+  const rows = [{ id: 'repair', name: 'Repair pile', sub: st.repair.on ? `${r.repairTotal} waiting · up to ${st.repair.cap} a day` : 'off', auto: true }].concat(st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards${s.mode === 'daily' ? ' · ' + (s.daily ? s.daily + ' a day' : 'spread') : ''}` })));
+  const anyOver = r.over > 0;
+  const cell = (row, d) => {
+    const plan = r.cells[row.id][d] || 0, did = r.actual[row.id][d] || 0, pin = st.pins[row.id + '|' + d] != null;
+    if (d < td) return `<td class="pc past${did ? ' on' : ''}">${did || ''}</td>`;
+    if (d === td) return `<td class="pc today${plan || did ? ' on' : ''}${!row.auto ? ' tap' : ''}" data-cell="${row.id}|${d}">${plan || did ? `<b>${did}</b><i>/${plan}</i>` : ''}${pin ? '<span class="pin" aria-label="fixed">•</span>' : ''}</td>`;
+    return `<td class="pc${plan ? ' on' : ''}${!row.auto ? ' tap' : ''}" data-cell="${row.id}|${d}">${plan || ''}${pin ? '<span class="pin" aria-label="fixed">•</span>' : ''}</td>`;
+  };
+  const verdict = r.over > 0
+    ? `<span class="behind">${r.cards} cards, room for ${r.room}. ${r.over} don’t fit.</span> Three ways out: pace ${r.needPace} a day, add ${Math.ceil(r.over / st.pace * 10) / 10} days, or narrow a subject.`
+    : r.raised ? `<span class="mid">Fits by raising normal days to ${r.effPace} a day</span> (your pace ${st.pace}, ceiling ${st.ceiling}).`
+    : `<span class="ahead">${r.cards} cards, room for ${r.room}. It fits, ${r.spare} spare.</span>`;
+  app.innerHTML = `<div class="screen plan">
+    <header class="top"><a class="iconbtn" href="#/loft" aria-label="Back to the Loft">${ICON.back}</a>
+      <span class="tt"><span class="mono kick">${esc(st.name.toUpperCase())} · ${dShort(days[0]).toUpperCase()} – ${dShort(days[days.length - 1]).toUpperCase()} · ${st.days} DAYS</span><span class="h1s">The Plan</span></span>${goingOutButton()}</header>
+    <div class="scroll pad planbody">
+      ${p.stretches.length > 1 ? `<div class="chips small">${p.stretches.map(s => `<button class="chip${s.id === st.id ? ' on' : ''}" data-stretch="${s.id}">${esc(s.name)}</button>`).join('')}<button class="chip dash" data-newstretch>+ New stretch</button></div>` : ''}
+      <ol class="steps">
+        <li><b>Days.</b> <span class="stp">Starts <input type="date" value="${st.start}" data-pstart> · <button class="iconbtn sm" data-pdays="-1" aria-label="One day fewer">−</button> <b>${st.days}</b> days <button class="iconbtn sm" data-pdays="1" aria-label="One day more">+</button></span></li>
+        <li><b>Pace.</b> <span class="stp"><input type="range" min="30" max="110" step="1" value="${st.pace}" data-ppace> <b data-ppace-out>${st.pace} a day</b> <span class="band ${band[1]}">· ${band[0]}</span></span>
+          <span class="stp muted small">Ceiling when catching up: <button class="iconbtn sm" data-pceil="-5" aria-label="Lower ceiling">−</button> ${st.ceiling} <button class="iconbtn sm" data-pceil="5" aria-label="Raise ceiling">+</button> · your best week 55 a day, best day 89</span></li>
+        <li><b>Subjects.</b> Trace counts the cards and writes how many go on each day. Tap a day to make it a GT, half or off day; tap a number to fix it; tap a subject to change it.</li>
+      </ol>
+      <div class="pgrid-wrap"><table class="pgrid">
+        <thead><tr><th class="nm"></th>${days.map(d => { const [w, n] = dHead(d), t = dayType(st, d); return `<th class="dh${d === td ? ' today' : ''}${d < td ? ' past' : ''}" data-dtype="${d}"><span>${w}</span><b>${n}</b>${t !== 'normal' ? `<em>${t === 'gt' ? 'GT' : t === 'half' ? 'half' : 'off'}</em>` : ''}</th>`; }).join('')}${anyOver ? '<th class="dh ovh"><span>Doesn’t</span><b>fit</b></th>' : ''}</tr></thead>
+        <tbody>${rows.map(row => `<tr><td class="nm${row.auto ? '' : ' tap'}" data-subj="${row.id}"><b>${esc(row.name)}</b><i>${esc(row.sub)}</i></td>${days.map(d => cell(row, d)).join('')}${anyOver ? `<td class="pc ov${r.overflow[row.id] ? ' on' : ''}">${r.overflow[row.id] || ''}</td>` : ''}</tr>`).join('')}
+          <tr class="tot"><td class="nm"><i>Day total</i></td>${days.map(d => `<td>${d < td ? (r.done[d] || '–') : d === td ? `${r.done[d] || 0}/${r.total[d] || 0}` : `${r.total[d] || 0}/${r.cap(d)}`}${d < td && r.done[d] >= st.pace ? ' ✓' : ''}</td>`).join('')}${anyOver ? '<td></td>' : ''}</tr></tbody>
+      </table></div>
+      <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
+      <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button></div>
+      ${r.active ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}
+      <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
+      <button class="linkbtn muted small" data-delstretch>Delete ${esc(st.name)}</button>
+    </div>
+    ${nav('')}
+  </div>`;
+  bindGo(); bindGoingOut();
+  const re = () => keep(renderPlan);
+  app.querySelectorAll('[data-stretch]').forEach(b => b.onclick = () => { p.current = b.dataset.stretch; savePlan(false); re(); });
+  const ns = app.querySelector('[data-newstretch]'); if (ns) ns.onclick = () => { newStretch({}); re(); };
+  app.querySelector('[data-pstart]').onchange = e => { if (e.target.value) { st.start = e.target.value; savePlan(); re(); } };
+  app.querySelectorAll('[data-pdays]').forEach(b => b.onclick = () => { st.days = Math.max(1, Math.min(60, st.days + +b.dataset.pdays)); savePlan(); re(); });
+  app.querySelectorAll('[data-pceil]').forEach(b => b.onclick = () => { st.ceiling = Math.max(st.pace, Math.min(150, st.ceiling + +b.dataset.pceil)); savePlan(); re(); });
+  const pr = app.querySelector('[data-ppace]');
+  pr.oninput = () => { app.querySelector('[data-ppace-out]').textContent = pr.value + ' a day'; };
+  pr.onchange = () => { st.pace = +pr.value; if (st.ceiling < st.pace) st.ceiling = st.pace; savePlan(); re(); };
+  app.querySelectorAll('[data-dtype]').forEach(th => th.onclick = () => dayTypeSheet(st, th.dataset.dtype, re));
+  app.querySelectorAll('td.tap[data-cell]').forEach(td2 => td2.onclick = () => { const [id, d] = td2.dataset.cell.split('|'); pinSheet(st, id, d, r.cells[id][d] || 0, re); });
+  app.querySelectorAll('td.nm[data-subj]').forEach(t => t.onclick = () => { const id = t.dataset.subj; if (id === 'repair') repairSheet(st, re); else subjectSheet(st, id, re); });
+  app.querySelector('[data-addsubj]').onclick = () => addSubjectSheet(st, re);
+  app.querySelector('[data-pickmosaic]').onclick = () => { P.set('pickOn', true); P.set('pickForPlan', true); go('#/sys/all'); };
+  const pt = app.querySelector('[data-plantoday]'); if (pt) pt.onclick = () => { const q = todayCards(st); if (q.length) startFlow(q, { label: 'The Plan · today', returnTo: location.hash }); else toast('Today’s plan is done.'); };
+  app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); });
+  if (planPending) { const pend = planPending; planPending = null; nameSubjectSheet(st, pend, re); }
+}
+function renderPlanNew() {
+  app.innerHTML = `<div class="screen plan">
+    <header class="top"><a class="iconbtn" href="#/loft" aria-label="Back to the Loft">${ICON.back}</a><span class="tt"><span class="mono kick">PHASE 1 · TO 30 NOV</span><span class="h1s">The Plan</span></span></header>
+    <div class="scroll pad planbody"><div class="lcard">
+      <span class="mono kick">FIRST STRETCH</span>
+      <p>A stretch is a run of days with the subjects you want to finish in it. Trace counts the cards, spreads them over the days at your pace, and re-plans every morning.</p>
+      <div class="pnew"><label>Starts <input type="date" value="${today()}" data-nstart></label><label>Days <input type="number" min="1" max="60" value="10" data-ndays></label><label>Pace <input type="number" min="20" max="150" value="65" data-npace> a day</label></div>
+      <button class="btn primary" data-ncreate>Create stretch</button>
+    </div></div>${nav('')}</div>`;
+  bindGo();
+  app.querySelector('[data-ncreate]').onclick = () => { newStretch({ start: app.querySelector('[data-nstart]').value || today(), days: +app.querySelector('[data-ndays]').value || 10, pace: +app.querySelector('[data-npace]').value || 65 }); renderPlan(); };
+}
+function planSheet(title, kick, html, bind) {
+  const wrap = document.createElement('div'); wrap.className = 'modal';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-label="${esc(title)}"><div class="sheet-h"><span><span class="mono kick">${esc(kick)}</span><span class="sh-t">${esc(title)}</span></span><button class="iconbtn" data-x aria-label="Close">${ICON.close}</button></div>${html}</div>`;
+  const close = () => wrap.remove();
+  wrap.onclick = e => { if (e.target === wrap || e.target.closest('[data-x]')) close(); };
+  document.body.appendChild(wrap); bind(wrap, close);
+}
+function confirmSheet(text, yes, fn) { planSheet(text, 'CONFIRM', `<div class="sheet-f"><button class="btn ghost" data-x>Keep</button><button class="btn primary" data-yes>${esc(yes)}</button></div>`, (w, c) => { w.querySelector('[data-yes]').onclick = () => { c(); fn(); }; }); }
+function dayTypeSheet(st, d, re) {
+  const cur = dayType(st, d);
+  planSheet(dShort(d), 'DAY TYPE', `<div class="rs-grid">${DAY_TYPES.map(([k, l, n]) => `<button class="btn ghost rs${cur === k ? ' on' : ''}" data-t="${k}"><b>${l}</b><small>${n == null ? st.pace + ' cards (your pace)' : n + ' cards'}</small></button>`).join('')}</div>`, (w, c) => {
+    w.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { if (b.dataset.t === 'normal') delete st.dayType[d]; else st.dayType[d] = b.dataset.t; savePlan(); c(); re(); });
+  });
+}
+function pinSheet(st, id, d, n, re) {
+  const s = st.subjects.find(x => x.id === id), key = id + '|' + d, pinned = st.pins[key] != null;
+  planSheet(`${s ? s.name : ''} · ${dShort(d)}`, 'FIX THIS NUMBER', `<p class="muted small">Trace planned ${n}. Fix your own number for this day; the days around it adjust.</p>
+    <div class="pnew"><label>Cards <input type="number" min="0" max="200" value="${pinned ? st.pins[key] : n}" data-pin></label></div>
+    <div class="sheet-f">${pinned ? '<button class="btn ghost" data-unpin>Let Trace decide</button>' : ''}<button class="btn primary" data-setpin>Fix it</button></div>`, (w, c) => {
+    w.querySelector('[data-setpin]').onclick = () => { st.pins[key] = Math.max(0, +w.querySelector('[data-pin]').value || 0); savePlan(); c(); re(); };
+    const u = w.querySelector('[data-unpin]'); if (u) u.onclick = () => { delete st.pins[key]; savePlan(); c(); re(); };
+  });
+}
+function repairSheet(st, re) {
+  planSheet('Repair pile', 'AUTOMATIC ROW', `<p class="muted small">Cards waiting from DocT misses and Again marks, spread over the days left. It grows by itself after each GT or module review.</p>
+    <div class="pnew"><label><input type="checkbox" data-ron ${st.repair.on ? 'checked' : ''}> Plan repairs first every day</label><label>Never more than <input type="number" min="0" max="100" value="${st.repair.cap}" data-rcap> a day</label></div>
+    <div class="sheet-f"><button class="btn primary" data-rsave>Save</button></div>`, (w, c) => {
+    w.querySelector('[data-rsave]').onclick = () => { st.repair.on = w.querySelector('[data-ron]').checked; st.repair.cap = Math.max(0, +w.querySelector('[data-rcap]').value || 0); savePlan(); c(); re(); };
+  });
+}
+function subjectSheet(st, id, re) {
+  const s = st.subjects.find(x => x.id === id); if (!s) return;
+  const i = st.subjects.indexOf(s), done = subjectDone(s);
+  planSheet(s.name, 'SUBJECT', `<p class="muted small">${s.keys.length} cards · ${done} walked since you added it${s.sub ? ' · ' + esc(s.sub) : ''}</p>
+    <div class="pnew"><label>Name <input type="text" value="${esc(s.name)}" data-sname></label></div>
+    <div class="seg wide"><button class="${s.mode !== 'daily' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${s.mode === 'daily' ? 'on' : ''}" data-smode="daily">A little every day</button></div>
+    <div class="pnew" data-dailybox ${s.mode === 'daily' ? '' : 'hidden'}><label>Cards a day <input type="number" min="0" max="150" value="${s.daily || ''}" placeholder="spread evenly" data-sdaily></label><label>Last day <input type="date" value="${s.to || ''}" data-sto></label></div>
+    <div class="sheet-f"><button class="btn ghost" data-sup ${i === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${i === st.subjects.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
+    let mode = s.mode || 'seq';
+    w.querySelectorAll('[data-smode]').forEach(b => b.onclick = () => { mode = b.dataset.smode; w.querySelectorAll('[data-smode]').forEach(x => x.classList.toggle('on', x === b)); w.querySelector('[data-dailybox]').hidden = mode !== 'daily'; });
+    const mv = k => { st.subjects.splice(i, 1); st.subjects.splice(i + k, 0, s); savePlan(); c(); re(); };
+    w.querySelector('[data-sup]').onclick = () => mv(-1); w.querySelector('[data-sdown]').onclick = () => mv(1);
+    w.querySelector('[data-sdel]').onclick = () => { st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); };
+    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode; s.daily = +w.querySelector('[data-sdaily]').value || null; s.to = w.querySelector('[data-sto]').value || null; savePlan(); c(); re(); };
+  });
+}
+// Quick add: a system (or all), a pool and walk counts → live count → subject
+function addSubjectSheet(st, re) {
+  const sys = systems();
+  let sk = sys[0] ? sysNum(sys[0].name) : '', pool = 'hit', wk = '';
+  const pick = () => { const g = sys.find(x => sysNum(x.name) === sk); return g ? g.decks.flatMap(d => cardsOf(d.deck)).filter(c => inPool(c, pool) && walkOk(c, wk)) : []; };
+  const draw = w => {
+    const list = pick(), nNew = list.filter(c => !seen(c.deck, c.no)).length;
+    w.querySelector('[data-abody]').innerHTML = `<label class="pnew">System <select data-asys>${sys.map(g => `<option value="${sysNum(g.name)}"${sysNum(g.name) === sk ? ' selected' : ''}>${esc(g.label)}</option>`).join('')}</select></label>
+      <div class="chips small">${[['all', 'All'], ['hit', 'Any hit'], ['neet', 'NEET'], ['neet+gt', 'NEET + GT']].map(([k, l]) => `<button class="chip${pool === k ? ' on' : ''}" data-apool="${k}">${l}</button>`).join('')}</div>
+      <div class="chips small">${WALKS.map(([k, l]) => `<button class="chip${walkParts(wk).includes(k) ? ' on' : ''}" data-awalk="${k}">${walkParts(wk).includes(k) ? '✓ ' : ''}${l}</button>`).join('')}</div>
+      <p class="acount"><b>${list.length}</b> cards · ${nNew} new · ${list.length - nNew} to revise${list.length && !cardsOf((sys.find(x => sysNum(x.name) === sk) || { decks: [] }).decks[0]?.deck || '').length ? ' <span class="muted small">(download the decks to count them all)</span>' : ''}</p>`;
+    w.querySelector('[data-asys]').onchange = e => { sk = e.target.value; draw(w); };
+    w.querySelectorAll('[data-apool]').forEach(b => b.onclick = () => { pool = b.dataset.apool; draw(w); });
+    w.querySelectorAll('[data-awalk]').forEach(b => b.onclick = () => { wk = toggleWalk(wk, b.dataset.awalk); draw(w); });
+  };
+  planSheet('Add a subject', 'THE PLAN', `<div data-abody></div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
+    draw(w);
+    w.querySelector('[data-apick]').onclick = () => { c(); P.set('pickOn', true); P.set('pickForPlan', true); P.set('moPool', pool); P.set('moWalk', wk); go('#/sys/' + sk); };
+    w.querySelector('[data-aadd]').onclick = () => {
+      const list = pick(); if (!list.length) { toast('No cards match.'); return; }
+      const g = sys.find(x => sysNum(x.name) === sk);
+      addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code) });
+      c(); re();
+    };
+  });
+}
+function nameSubjectSheet(st, pend, re) {
+  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label></div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
+    w.querySelector('[data-nadd]').onclick = () => { addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys }); c(); re(); };
+  });
+}
+// Loft card: the plan at a glance
+function planCard() {
+  const st = currentStretch();
+  if (!st) return `<a class="lcard plancard" href="#/plan"><span class="mono kick">THE PLAN</span><span class="pc-t">Plan your next days</span><span class="muted small">Split Phase 1 into stretches, choose subjects, and let Trace spread them at your pace.</span><span class="pc-go mono">Open the planner →</span></a>`;
+  const r = compute(st), parts = todayParts(st, r), td = r.td;
+  const verdict = r.over > 0 ? `<b class="behind">${r.over} cards don’t fit</b>` : r.raised ? `<b class="mid">fits at ${r.effPace} a day</b>` : `<b class="ahead">on track · ${r.spare} spare</b>`;
+  return `<a class="lcard plancard" href="#/plan"><span class="mono kick">THE PLAN · ${esc(st.name.toUpperCase())} · ${dShort(r.days[0]).toUpperCase()} – ${dShort(r.days[r.days.length - 1]).toUpperCase()}</span>
+    <span class="pc-t">${r.active ? `Today ${r.done[td] || 0} of ${r.todayPlan}` : td < r.days[0] ? `Starts ${dShort(r.days[0])}` : 'Stretch finished'} · ${verdict}</span>
+    ${parts.length ? `<span class="pc-parts">${parts.map(x => `<span><i>${esc(x.name)}</i><b>${x.done}/${x.n}</b></span>`).join('')}</span>` : ''}
+    <span class="pc-strip" aria-hidden="true">${r.days.map(d => `<i class="${d < td ? 'p' : d === td ? 't' : ''}${dayType(st, d) !== 'normal' ? ' x' : ''}" title="${d}"></i>`).join('')}</span>
+    <span class="pc-go mono">Open the planner →</span></a>`;
+}
+
 /* ============================ Going out, breaks and "where were you?" (T-045) ============================ */
 const curBreak = () => currentBreak();
 const hmT = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
@@ -949,26 +1196,29 @@ function renderLoft() {
     <header class="top"><a class="iconbtn" href="#/" aria-label="Back to the palace">${ICON.back}</a>
       <span class="tt"><span class="mono kick">${daysLeft()} · ${CONFIG.exam.name} 11 DEC</span><span class="h1s">The Loft</span></span>${goingOutButton()}</header>
     <div class="scroll pad loftbody">
-      <div class="loft-a">
-        ${targetBlock(false)}
-        <div class="paper cal">
+        ${CHANNEL === 'test' ? `<div class="peekbar${peekOn() ? ' on' : ''}"><span><b>${peekOn() ? 'PREVIEW · your peak week' : 'Preview your peak week'}</b><i>${peekOn() ? `${PEAK_LABEL}, laid onto the last 7 days. Study times are real (War Map Log); break reasons are assumed from the gaps. Calendar and Coverage stay real. Nothing is saved.` : `${PEAK_LABEL}: see the chase, cards per day and time charts filled with it.`}</i></span><button class="btn ghost" data-peek>${peekOn() ? 'Back to my data' : 'Show it'}</button></div>` : ''}
+        ${planCard()}
+      <div class="loft-grid">
+        <div class="loft-main">
+          ${chaseCard()}
+          ${cardsDayCard()}
+          ${timeCard()}
+        </div>
+        <div class="loft-side">
+          ${targetBlock(false)}
+          <div class="paper cal">
           <div class="cal-h"><button class="iconbtn sm" data-mo="-1" aria-label="Previous month">‹</button><span class="cal-t">${MONTHS[m]} ${y}</span><button class="iconbtn sm" data-mo="1" aria-label="Next month">›</button></div>
           <div class="cal-sw"><span class="seg light"><button class="${unit === 'h' ? 'on' : ''}" data-unit="h">Hours</button><button class="${unit === 'c' ? 'on' : ''}" data-unit="c">Cards</button></span></div>
           <div class="cal-g"><span class="cw">M</span><span class="cw">T</span><span class="cw">W</span><span class="cw">T</span><span class="cw">F</span><span class="cw">S</span><span class="cw">S</span>${cells}</div>
           <div class="pp-f mono"><span>GT = grand test · EX = exam</span><span class="hk">less${HEAT.slice(1).map(c => `<i style="background:${c}"></i>`).join('')}more ${unit === 'h' ? 'hours' : 'cards'}</span></div>
         </div>
-        ${dayCard}
-      </div>
-      <div class="loft-b">
-        ${CHANNEL === 'test' ? `<div class="peekbar${peekOn() ? ' on' : ''}"><span><b>${peekOn() ? 'PREVIEW · your peak week' : 'Preview your peak week'}</b><i>${peekOn() ? `${PEAK_LABEL}, laid onto the last 7 days. Study times are real (War Map Log); break reasons are assumed from the gaps. Calendar and Coverage stay real. Nothing is saved.` : `${PEAK_LABEL}: see the chase, cards per day and time charts filled with it.`}</i></span><button class="btn ghost" data-peek>${peekOn() ? 'Back to my data' : 'Show it'}</button></div>` : ''}
-        ${coverCard()}
-        ${chaseCard()}
-        ${cardsDayCard()}
-        ${timeCard()}
-        ${tilesRow(chron.length)}
-        <details class="chrond${P.get('chronOpen', false) ? '' : ' hid'}"${P.get('chronOpen', false) ? ' open' : ''}><summary><span class="mono kick">CHRONICLES</span><span class="mono muted small">${chron.length} entries</span></summary>
+          ${dayCard}
+          ${coverCard()}
+          ${tilesRow(chron.length)}
+          <details class="chrond${P.get('chronOpen', false) ? '' : ' hid'}"${P.get('chronOpen', false) ? ' open' : ''}><summary><span class="mono kick">CHRONICLES</span><span class="mono muted small">${chron.length} entries</span></summary>
           <div class="chron">${chron.slice(0, 80).map(c => `<div class="ch-i"><span class="mono">${esc(c.when)}</span><span>${esc(c.what)}</span><span class="mono">${esc(c.size)}</span></div>`).join('') || '<p class="muted small">Nothing yet.</p>'}</div>
         </details>
+        </div>
       </div>
     </div>
     ${nav('')}
@@ -1098,6 +1348,7 @@ function renderFlow() {
       <p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Again cards come back at the end of this flow. Space reveals and moves on · A = Again · U = Undo · E = Edit · Esc ends.'}</p>
     </aside>
     <main class="f-main">
+      ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div>'}
       <div class="card-wrap"><article class="card" id="card"></article></div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
       <button class="big press" id="f-big"></button>
@@ -1207,12 +1458,31 @@ function updateClock() {
   if (!flow) return;
   const t = $('#f-time'); if (t) t.textContent = clock((Date.now() - flow.t0) / 1000);
 }
+// Today's thread: one bead per card walked today, against today's planned number. Read by lightness and shape, never by
+// hue alone: new = light, ×2 = mid, ×3+ = dark, repair = ring; beads past the target carry a gold edge; at the target
+// the whole thread is sealed in gold.
+function dayGoal() { const st = currentStretch(); if (st) { const r = compute(st); if (r.active && r.todayPlan) return { n: r.todayPlan, st, r }; } return { n: P.get('dayGoal', 65) }; }
+function drawThread() {
+  const el = $('#f-thread'); if (!el) return;
+  const beads = todayBeads(), g = dayGoal(), n = g.n, done = beads.length;
+  const td = today(), a = winStart(td), b = winEnd(td), f = Math.min(1, Math.max(0, (Date.now() - a) / (b - a)));
+  const should = Math.round(n * f), diff = done - should, sealed = done >= n;
+  const slots = Math.max(n, done);
+  let h = '';
+  for (let i = 0; i < slots; i++) h += `<i class="bd${i < done ? ' ' + beads[i] : ''}${i >= n ? ' ex' : ''}${i === should - 1 && !sealed ? ' now' : ''}"></i>`;
+  const parts = g.st ? todayParts(g.st, g.r) : [];
+  el.className = 'thread' + (sealed ? ' sealed' : '');
+  el.innerHTML = `<div class="th-h mono"><span>TODAY’S THREAD</span><span><b>${done}</b> / ${n}${sealed ? ' · <b class="gold">day sealed</b>' : f > 0 && f < 1 ? ` · ${diff >= 0 ? `<b class="ahead">${diff} ahead</b>` : `<b class="behind">${-diff} behind</b>`}` : ''}</span></div>
+    <div class="th-b" style="--n:${slots}">${h}</div>
+    ${parts.length ? `<div class="th-p mono"><span>From the plan</span> · ${parts.map(x => `${esc(x.name)} ${x.done}/${x.n}`).join(' · ')}</div>` : ''}`;
+}
 function updateFlowChrome() {
   if (!flow || !$('#f-ring')) return;
   const total = flow.queue.length, step = Math.min(total, flow.idx + (flow.done ? 0 : 1));
   const circ = 2 * Math.PI * 22;
   $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
+  drawThread();
   const fl = $('#f-live');
   if (fl) { try { const c = chase(P.get('chasePool', 'all')), lp = livePace(c); fl.innerHTML = lp.before || lp.after ? `Today ${c.doneToday} / ${c.requiredToday} new` : `Today ${c.doneToday} / ${c.requiredToday} new · ${lp.diff >= 0 ? `<b class="ahead">▲ ${lp.diff}</b>` : `<b class="behind">▼ ${-lp.diff}</b>`}${lp.perHour != null ? ' · ' + lp.perHour + '/h needed' : ''}`; } catch (e) { fl.textContent = ''; } }
   const cc = !flow.done && current(), cm = cc ? deckMeta(cc.deck) || {} : {};

@@ -3,6 +3,7 @@ import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG, IS_HT } from './config.js';
 import { S, emit, recount, setNeet, setQb, setDoct, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
+import { planJson, replacePlan } from './plan.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -268,6 +269,7 @@ export async function sync({ downloadAll = true } = {}) {
     await pushOutbox();
     await syncTargets();
     try { await syncDoct(); } catch (e) { console.warn('doct', e); }
+    try { await syncPlan(); } catch (e) { console.warn('plan', e); }
 
     // 7. decks: new or changed versions
     if (downloadAll) await downloadDecks();
@@ -352,6 +354,19 @@ async function absorbLog(data) {
   S.logBase = base; S.logDaily = daily; S.logChron = chron.slice(-400);
   await db.kv.set('logBase', base); await db.kv.set('logDaily', daily); await db.kv.set('logChron', S.logChron);
   await db.kv.set('logCovered', cov);
+}
+
+// The Plan: one file per profile in the Trace folder; the newer copy wins (test build only reads).
+async function syncPlan() {
+  const name = IS_HT ? 'plan-ht.json' : 'plan.json';
+  const [f] = await batch([{ op: 'findFile', folderId: CONFIG.traceFolderId, name }]);
+  let remote = null;
+  if (f.ok && f.data && f.data.id) { const [r] = await batch([{ op: 'readFile', id: f.data.id }]); if (r.ok) { try { remote = JSON.parse(r.data.text); } catch (e) { remote = null; } } }
+  const local = planJson();
+  if (remote && (remote.updated || 0) > (local.updated || 0)) { replacePlan(remote); emit(); return; }
+  if (!CONFIG.readOnly && local.updated && (!remote || local.updated > (remote.updated || 0))) {
+    await batch([{ op: 'writeFile', folderId: CONFIG.traceFolderId, name, text: JSON.stringify(local), mime: 'application/json' }]);
+  }
 }
 
 async function syncEdits(found, knownId) {
