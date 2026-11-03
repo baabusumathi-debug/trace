@@ -1,12 +1,16 @@
 // Keeps the device and Drive/Sheet in step. Safe to call any time; it never blocks studying.
 import { db } from './db.js';
 import { batch, hasBackend, isDemo } from './api.js';
-import { CONFIG } from './config.js';
+import { CONFIG, IS_HT } from './config.js';
 import { S, emit, recount, setNeet, setQb, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
-const OWNER = new Set(['trace', 'naven', '']);
+// rows that belong to this profile ('who' column of Log and Targets)
+const OWNER = IS_HT ? new Set(['ht', 'harshita', 'harshita tiwari']) : new Set(['trace', 'naven', '']);
+// TraceEvents has no 'who' column: HT's devices are named HT-… so each profile keeps only its own views
+const mineDev = d => IS_HT ? /^HT-/.test(String(d || '')) : !/^HT-/.test(String(d || ''));
+const EDITS_FILE = IS_HT ? 'edits-ht.json' : 'edits.json';
 
 const pad = n => String(n).padStart(2, '0');
 export const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
@@ -177,7 +181,7 @@ export async function sync({ downloadAll = true } = {}) {
       { op: 'readFile', id: libId },
       { op: 'sheetRead', tab: 'TraceEvents', fromRow: k.evRow + 1 },
       { op: 'sheetRead', tab: 'Log', fromRow: 2 },          // always the whole Log: rebuilt from scratch, never added up
-      { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'edits.json' },
+      { op: 'findFile', folderId: CONFIG.traceFolderId, name: EDITS_FILE },
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'library.json' }
     ];
     const needChunks = Date.now() - k.chunksAt > 12 * 3600e3 || !(await db.kv.get('chunksNamed'));   // re-read once to pick up chunk names
@@ -254,7 +258,7 @@ async function mergeRemoteEvents(data, fromRow) {
   const add = [];
   for (const v of vals) {
     const o = Object.fromEntries(EV_HEADER.map((h, i) => [h, v[i]]));
-    if (!o.id || have.has(o.id)) continue;
+    if (!o.id || have.has(o.id) || !mineDev(o.device)) continue;
     add.push({ id: o.id, ts: +o.ts, dev: o.device, session: o.session, deck: o.deck, code: o.code, no: +o.no, ms: +o.ms,
       again: o.again === 'TRUE' || o.again === '1' || o.again === 'true', kind: o.kind || 'view', ref: o.ref || undefined, synced: 1, logged: 1 });
   }
@@ -340,7 +344,7 @@ async function syncEdits(found, knownId) {
   if (apply.length) { await db.putMany('edits', apply); apply.forEach(a => S.edits.set(a.key, a)); }
   if (dirty.length && !CONFIG.readOnly) {
     const text = JSON.stringify({ note: 'Card edits made in the Trace app. Newest edit per card wins.', updated: new Date().toISOString(), edits: merged }, null, 1);
-    const [w] = await batch([{ op: 'writeFile', folderId: CONFIG.traceFolderId, name: 'edits.json', text, mime: 'application/json' }]);
+    const [w] = await batch([{ op: 'writeFile', folderId: CONFIG.traceFolderId, name: EDITS_FILE, text, mime: 'application/json' }]);
     if (!w.ok) throw new Error('edits: ' + w.error);
     if (w.data && w.data.id) await db.kv.set('editsId', w.data.id);
     for (const e of dirty) e.synced = 1;

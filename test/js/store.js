@@ -1,6 +1,6 @@
 // In-memory view of everything in IndexedDB, plus the derived numbers the screens need.
 import { db } from './db.js';
-import { CONFIG } from './config.js';
+import { CONFIG, IS_HT } from './config.js';
 
 export const S = {
   library: null,          // { decks:[...], generated, changes? }
@@ -44,7 +44,7 @@ export async function loadAll() {
   if (!S.device) {
     const ua = navigator.userAgent;
     const kind = /Mac/.test(ua) && !('ontouchend' in document) ? 'mac' : (Math.min(screen.width, screen.height) >= 700 ? 'tab' : 'phone');
-    S.device = kind + '-' + Math.random().toString(36).slice(2, 6);
+    S.device = (IS_HT ? 'HT-' : '') + kind + '-' + Math.random().toString(36).slice(2, 6);
     await db.kv.set('device', S.device);
   }
   recount();

@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-027)
+## State (as of entry T-028)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.0** · promoted from test 1.3.14 on 2 Nov (T-026): palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.15** · last code commit: see entry T-027. Live is still 1.4.0 (= test 1.3.14). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.16** · last code commit: see entry T-028. Live is still 1.4.0 (= test 1.3.14) until promoted. (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,14 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-028 — 2026-11-03 — Claude — test — 1.3.16
+- **Profiles: Naven = Trace, HT = HT** (agreed 3 Nov). First open on a device asks "Who studies on this device?"; a device that already holds the live connection (Naven's) is set to Trace without asking. Stored in local storage (`trace.profile` / `trace-test.profile`); switch on This device (two taps).
+  - HT's profile has its own database (`trace-ht`, test: `trace-test-ht`), its own view settings and last flow (local-storage prefix `…ht.`), and borrows only the connection already saved on the device.
+  - Sheet: HT's Log and Targets rows carry `who = HT`; her profile reads only Log/Targets rows whose who is HT (also accepts "Harshita"), so her War Map history (cards seen, walked, Loft minutes, chronicle, targets) shows in Trace. TraceEvents has no who column: HT's device ids start `HT-` and each profile merges only its own devices' events. Card edits: `edits-ht.json` for HT, `edits.json` for Naven.
+  - HT's profile shows no visual decks (not loaded or checked); Top-up lines, Crossfire and corrections still show. An `HT` pill sits beside the brand.
+- **Chunk marker:** the gap between chunks is now a thin gold bar (Naven: the gap didn't look good).
+- Tests: fresh device at `/test/` → chooser → HT → own database (`trace-test-ht`) and setup screen; device with a saved live connection → Trace, no chooser; demo regressions (Chunks-tab chunking, lit flow, Continue, Again pile); no page errors.
 
 ## T-027 — 2026-11-02 — Claude — test — 1.3.15
 - **Chunks now come from the War Map Chunks tab** (Naven, 2 Nov): before, a chunk was any run of cards with the same `section` heading, so decks where every card has its own heading (many CVS and GI decks) showed one chunk per card. Now `chunkOf(card)` in `store.js` finds the Chunks-tab range (`card_from`–`card_to`, War Map numbering via `off()`) holding the card and uses that row's `section_name`. Top-up cards form one "Top-up" chunk at the end; decks with no Chunks rows (the Top-up decks) fall back to section headings.
