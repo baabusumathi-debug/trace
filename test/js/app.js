@@ -147,9 +147,13 @@ const lastFlowTarget = () => _lastDeck;
 /* ============================ welcome ============================ */
 // Accepts the full setup link (or just the part after #setup=). Returns true when connected.
 async function trySetup(text) {
-  const m = String(text || '').match(/setup=([\w\-]+)/);
-  if (!m) return false;
+  const t = String(text || ''), at = t.indexOf('setup=');
+  if (at < 0) return false;
+  // tolerate a link that a message app split onto several lines, or wrapped in quotes/brackets
+  const m = [null, (t.slice(at + 6).replace(/\s+/g, '').match(/^[\w\-]+/) || [''])[0]];
+  if (!m[1]) return false;
   try {
+    if (m[1].length % 4 === 1) throw new Error('the link looks cut off (' + m[1].length + ' characters after setup=). Copy it again in one piece');
     let b = m[1].replace(/-/g, '+').replace(/_/g, '/');
     while (b.length % 4) b += '=';
     const j = JSON.parse(atob(b));
@@ -159,7 +163,7 @@ async function trySetup(text) {
     history.replaceState(null, '', location.pathname + '#/');
     toast('Connected to your Drive. Downloading your decks…');
     return true;
-  } catch (e) { toast('That setup link did not work: ' + e.message); return false; }
+  } catch (e) { toast('That setup link did not work: ' + (/cut off|incomplete/.test(e.message) ? e.message : 'it looks incomplete or changed. Copy it again in one piece.')); return false; }
 }
 
 function renderWelcome() {
