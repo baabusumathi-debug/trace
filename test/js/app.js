@@ -659,6 +659,31 @@ function keep(fn) { const sc = app.querySelector('.scroll'), y = sc ? sc.scrollT
 /* ============================ the Loft ============================ */
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 let loftMonth = null, loftDay = null;
+// Coverage: walked ÷ cards in a pool; each pool is its own denominator. Walked = seen at least once (War Map history + Trace).
+const COVER = [['all', 'All cards'], ['hit', 'Any hit'], ['neet', 'NEET'], ['neet+gt', 'NEET + GT']];
+function coverage(pool) {
+  const sys = new Map(); let t = 0, w = 0, w2 = 0, missing = 0;
+  for (const d of (S.library ? S.library.decks : [])) {
+    const cs = cardsOf(d.deck);
+    let n, a, b;
+    if (cs.length) { const l = cs.filter(c => inPool(c, pool)); n = l.length; a = l.filter(c => seen(c.deck, c.no) > 0).length; b = l.filter(c => seen(c.deck, c.no) > 1).length; }
+    else if (pool === 'all') { n = d.cards; a = walked(d.deck); b = 0; }
+    else { missing++; continue; }
+    t += n; w += a; w2 += b;
+    const g = sys.get(d.system) || { name: d.system, n: 0, a: 0, b: 0 }; g.n += n; g.a += a; g.b += b; sys.set(d.system, g);
+  }
+  return { t, w, w2, missing, sys: [...sys.values()].filter(g => g.n).sort((x, y) => x.name.localeCompare(y.name, undefined, { numeric: true })) };
+}
+const pct = (a, n) => n ? Math.round(100 * a / n) : 0;
+function coverCard() {
+  const cp = P.get('covPool', 'neet'), all = COVER.map(([k, l]) => ({ k, l, c: coverage(k) })), sel = all.find(x => x.k === cp) || all[2];
+  return `<div class="cover">
+    <span class="mono kick">COVERAGE · WALKED AT LEAST ONCE</span>
+    <div class="cv-tiles">${all.map(x => `<button class="cv-t${x.k === sel.k ? ' on' : ''}" data-cov="${x.k}"><b>${pct(x.c.w, x.c.t)}%</b><span>${x.l}</span><i class="mono">${x.c.w.toLocaleString()} / ${x.c.t.toLocaleString()}</i></button>`).join('')}</div>
+    <div class="cv-sys">${sel.c.sys.map(g => `<div class="cv-r"><span class="cv-n">${esc(sysLabel(g.name))}</span><span class="cv-bar" title="${g.a} of ${g.n} walked · ${g.b} twice or more"><i class="b2" style="width:${pct(g.b, g.n)}%"></i><i class="b1" style="width:${pct(g.a - g.b, g.n)}%"></i></span><span class="mono cv-p">${pct(g.a, g.n)}%</span></div>`).join('')}</div>
+    <p class="muted small">${sel.l}: ${sel.c.w.toLocaleString()} of ${sel.c.t.toLocaleString()} cards walked, ${sel.c.w2.toLocaleString()} twice or more (darker bar).${sel.c.missing ? ` ${sel.c.missing} deck${sel.c.missing === 1 ? ' is' : 's are'} not on this device yet and ${sel.c.missing === 1 ? 'is' : 'are'} left out.` : ''}</p>
+  </div>`;
+}
 function renderLoft() {
   const unit = P.get('heatUnit', 'h');
   const now = new Date();
@@ -712,6 +737,7 @@ function renderLoft() {
         ${dayCard}
       </div>
       <div class="loft-b">
+        ${coverCard()}
         <div class="charts">
           <div class="chart"><span class="mono lab">HOURS · 14 DAYS</span><span class="bars">${bars}</span><span class="mono">avg ${fmtHM(avg14)} / day</span></div>
           <div class="chart"><span class="mono lab">CARDS · 35 DAYS</span>
@@ -729,6 +755,7 @@ function renderLoft() {
   bindGo(); bindTarget(renderLoft);
   lastMeditation().then(m => { const el = app.querySelector('#al-last'); if (m && el && TRACKS[m.track]) el.textContent = `Last: ${TRACKS[m.track].title} · ${whenLabel(m.ts)} · ${Math.max(1, Math.round(m.sec / 60))} min`; });
   app.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { P.set('heatUnit', b.dataset.unit); keep(renderLoft); });
+  app.querySelectorAll('[data-cov]').forEach(b => b.onclick = () => { P.set('covPool', b.dataset.cov); keep(renderLoft); });
   app.querySelectorAll('[data-mo]').forEach(b => b.onclick = () => { let mm = loftMonth.m + +b.dataset.mo, yy = loftMonth.y; if (mm < 0) { mm = 11; yy--; } if (mm > 11) { mm = 0; yy++; } loftMonth = { y: yy, m: mm }; keep(renderLoft); });
   app.querySelectorAll('[data-day]').forEach(b => b.onclick = () => { loftDay = b.dataset.day; keep(renderLoft); });
   const cd = app.querySelector('details.chrond'); if (cd) cd.addEventListener('toggle', () => P.set('chronOpen', cd.open));
