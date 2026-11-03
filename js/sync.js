@@ -208,7 +208,7 @@ export async function sync({ downloadAll = true } = {}) {
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: EDITS_FILE },
       { op: 'findFile', folderId: CONFIG.traceFolderId, name: 'library.json' }
     ];
-    const needChunks = Date.now() - k.chunksAt > 12 * 3600e3 || !(await db.kv.get('chunksNamed'));   // re-read once to pick up chunk names
+    const needChunks = Date.now() - k.chunksAt > 12 * 3600e3 || !(await db.kv.get('chunksNamed')) || !(await db.kv.get('gtScores'));   // re-read once to pick up chunk names
     if (needChunks) ops.push({ op: 'sheetRead', tab: 'Chunks', fromRow: 2 }, { op: 'sheetRead', tab: 'Decks', fromRow: 2 }, { op: 'sheetRead', tab: 'Signals', fromRow: 2 });
     const r = await batch(ops);
     // 1. library (found by name: Claude replaces the file when decks change)
@@ -248,6 +248,15 @@ export async function sync({ downloadAll = true } = {}) {
       if (r[7] && r[7].ok) {
         const gd = {};
         for (const v of r[7].data.values) { const d = normDate(v[1]); if (d && v[0]) gd[d] = /mock|gt/i.test(v[0]) ? 'GT' : String(v[0]).slice(0, 4); }
+        // this profile's GT results per paper (Signals: gt, date, who, q, system, domain, result)
+        const gs = {};
+        for (const v of r[7].data.values) {
+          if (!v[0] || !OWNER.has(String(v[2] || '').trim().toLowerCase())) continue;
+          const g = gs[v[0]] || (gs[v[0]] = { gt: v[0], date: normDate(v[1]), right: 0, wrong: 0, total: 0 });
+          g.total++; const res = String(v[6] || '').toLowerCase();
+          if (res === 'right') g.right++; else if (res === 'wrong') g.wrong++;
+        }
+        S.gtScores = gs; await db.kv.set('gtScores', gs);
         S.gtDays = gd; await db.kv.set('gtDays', gd);
       }
     }
