@@ -40,7 +40,8 @@ async function boot() {
   else {
     // Profile first: Naven's existing devices (a live connection already saved) are Trace without asking.
     if (!PROFILE) {
-      const b = await peekDb('trace', 'kv', 'backend').catch(() => null);
+      let b = null;
+      for (const n of ['trace', 'trace-test']) { b = await peekDb(n, 'kv', 'backend').catch(() => null); if (b) break; }   // Naven's devices: a connection from either copy
       if (b) { if (setProfile('trace')) { location.reload(); return; } }   // if storage is blocked, carry on as Trace
       else return renderProfilePick();
     }
@@ -48,7 +49,7 @@ async function boot() {
     // each profile keeps its own copy of everything; HT's is a separate database
     if (IS_HT || CHANNEL === 'test') useDbName(base + (IS_HT ? '-ht' : ''));
     if (!(await db.kv.get('backend'))) {        // borrow the connection already saved on this device, never study data
-      for (const n of ['trace', 'trace-ht']) { const b = await peekDb(n, 'kv', 'backend').catch(() => null); if (b) { await db.kv.set('backend', b); break; } }
+      for (const n of ['trace', 'trace-ht', 'trace-test', 'trace-test-ht']) { const b = await peekDb(n, 'kv', 'backend').catch(() => null); if (b) { await db.kv.set('backend', b); break; } }
     }
     if (CHANNEL === 'test') document.documentElement.classList.add('ch-test');
     if (IS_HT) document.documentElement.classList.add('pf-ht');
@@ -79,7 +80,8 @@ async function boot() {
 }
 
 // A two-tap switch (no browser dialog): the first tap arms it for 4 seconds.
-let _pfArm = 0;
+let _pfArm = 0, _clArm = 0;
+function confirmCopy() { if (Date.now() - _clArm < 4000) return true; _clArm = Date.now(); toast('Tap again to copy the private setup link. It opens your Drive and Sheet: keep it private.'); return false; }
 function confirmSwitch() { if (Date.now() - _pfArm < 4000) return true; _pfArm = Date.now(); toast('Tap again to switch profile. Each profile keeps its own data.'); return false; }
 function renderProfilePick() {
   app.innerHTML = `<div class="screen welcome"><div class="scroll pad pfpick">
@@ -1147,6 +1149,7 @@ async function renderStatus() {
         <dt>Last sync</dt><dd>${last ? new Date(last).toLocaleString() : 'never'}</dd>
         <dt>Waiting to send</dt><dd>${status.pending} item${status.pending === 1 ? '' : 's'}</dd>
         <dt>Storage</dt><dd>${persisted ? 'Protected from clean-up' : 'Browser may clear it if space runs low'}${est ? ` · ${(est.usage / 1048576).toFixed(1)} MB used` : ''}</dd>
+        <dt>Setup link</dt><dd>${hasBackend() && !isDemo() ? '<button class="link" data-act="copylink">Copy it, to connect another device</button>' : '—'}</dd>
         <dt>Profile</dt><dd>${IS_HT ? 'HT' : 'Naven (Trace)'} · <button class="link" data-act="profile">switch to ${IS_HT ? 'Naven (Trace)' : 'HT'}</button></dd>
         <dt>Device</dt><dd class="mono">${esc(S.device)}</dd>
         <dt>App</dt><dd class="mono">${CONFIG.appVersion}</dd>
@@ -1166,6 +1169,15 @@ async function renderStatus() {
   </div>`;
   bindGo();
   $('[data-act=sync]').onclick = () => sync();
+  const cl = $('[data-act=copylink]');
+  if (cl) cl.onclick = async () => {
+    if (!confirmCopy()) return;
+    const b = await db.kv.get('backend'); if (!b) return;
+    const enc = btoa(JSON.stringify({ u: b.url, k: b.key })).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    const link = 'https://baabusumathi-debug.github.io/trace/#setup=' + enc;
+    try { await navigator.clipboard.writeText(link); toast('Setup link copied. Paste it only on your own devices or send it to HT privately.'); }
+    catch (e) { prompt('Copy this setup link (keep it private):', link); }
+  };
   const pf = $('[data-act=profile]');
   if (pf) pf.onclick = () => { if (confirmSwitch()) { setProfile(IS_HT ? 'trace' : 'ht'); location.reload(); } };
   $('[data-act=vis]').onclick = () => { if (window._vcheck) { window._vcheck(true); setTimeout(route, 300); } };
