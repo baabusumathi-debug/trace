@@ -470,7 +470,7 @@ export function attachPointer(surface, opts) {
       if (act && (act.draw || act.shape || act.snapHl)) { surface.live = null; surface.pred = null; clearTimeout(holdT); act = { erase: true, r: (S.er.size / 2) * opts.unitPerPx() }; surface.render(); }
     }
   });
-  cv.addEventListener('pointerout', e => { if (e.pointerType === 'mouse') { logPen(e); btnEnd(); if (!(act && act.erase)) arm(false); } });
+  cv.addEventListener('pointerout', e => { if (e.pointerType === 'pen' && act && act.btnPen) { act = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); } if (e.pointerType === 'mouse') { logPen(e); btnEnd(); if (!(act && act.erase)) arm(false); } });
   cv.addEventListener('selectstart', e => { if (opts.writing()) e.preventDefault(); });
   const units = e => opts.toUnits(e.clientX, e.clientY);
   const pr = e => (e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.5);
@@ -539,6 +539,16 @@ export function attachPointer(surface, opts) {
       return;
     }
     if (e.pointerType === 'pen') penSeen = Date.now();
+    // Third look at the Tab (4 Nov 16:03): with the side button held, touching the glass sends NO pointerdown;
+    // the pen arrives under a new id as moves with buttons 1 and pressure 0. That is the side-button signature: erase.
+    if (e.pointerType === 'pen' && opts.writing() && (!act || act.btnPen)) {
+      if ((e.buttons & 1) && !(e.pressure > 0)) {
+        if (!act) { surface.snapshot(); surface.live = null; act = { erase: true, btnPen: true, r: (S.er.size / 2) * opts.unitPerPx() }; if (opts.armChanged) opts.armChanged(true); logPen(e, 'side-erase'); }
+        const evs2 = e.getCoalescedEvents ? e.getCoalescedEvents() : []; let ch = false;
+        for (const ev of (evs2.length ? evs2 : [e])) ch = eraseAt(units(ev), act.r) || ch;
+        if (ch) surface.request(); return;
+      } else if (act && act.btnPen) { act = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); }
+    }
     if (e.pointerType === 'pen') { if (e.buttons !== lastPen.buttons) { lastPen = { buttons: e.buttons, button: e.button, at: Date.now() }; logPen(e); } if (!act) hoverSide = !!sideButton(e); }
     if (!act) return;
     // the S Pen side button pressed in the middle of a stroke: switch to the eraser at once
