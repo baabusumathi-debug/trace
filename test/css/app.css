@@ -896,3 +896,54 @@ a.brand{text-decoration:none;color:inherit}
 .loftbody{align-items:stretch!important}
 @media (max-width:640px){.pgrid .nm{min-width:108px;max-width:130px}.pc,.dh{min-width:40px}}
 .ch-ed{width:26px;height:26px;margin-left:4px;vertical-align:middle}.ed-list{display:flex;flex-direction:column;gap:6px}.ed-i{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;font-size:13.5px}.ed-i .btn{width:auto;height:34px}
+
+/* ===== T-057 ink: Samsung Notes style toolbar, overlay, rooms ===== */
+.ik-host{margin:0 auto 10px;width:100%;position:relative;z-index:5}
+.ik-bar{display:flex;align-items:center;gap:2px;background:#232326;border:1px solid #333;border-radius:14px;padding:5px 8px;overflow-x:auto;scrollbar-width:none}
+.ik-ic{width:44px;height:44px;flex-shrink:0;border-radius:50%;border:0;background:transparent;color:#ececed;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.ik-ic svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ik-ic .tipc{fill:var(--tip,#e6c229);stroke:var(--tip,#e6c229)}
+.ik-ic.on{background:#3e3e43}
+.ik-sep{width:1px;height:26px;background:#3a3a3e;margin:0 6px;flex-shrink:0}
+.ik-fill{flex:1}
+.ik-cur{width:18px;height:18px;border-radius:50%;background:var(--c);border:2px solid #ececed;margin:0 8px;flex-shrink:0}
+.ik-pop{margin-top:8px;background:#1d1d20;border:1px solid #333;border-radius:16px;padding:12px 14px;color:#ececed;font-size:13px;max-width:620px}
+.ik-row{display:flex;align-items:center;gap:10px;margin:8px 0;flex-wrap:wrap}
+.ik-row>label{color:#a6a6ab;min-width:78px;font-size:12px}
+.ik-row input[type=range]{flex:1;min-width:140px;accent-color:#ececed}
+.ik-num{min-width:42px;text-align:right;font-family:var(--mono);font-size:13px;color:#fff}
+.ik-pt{display:flex;gap:6px;flex-wrap:wrap}
+.ik-pt button{background:#2a2a2e;border:1px solid #3a3a3e;color:#ddd;border-radius:10px;height:32px;padding:0 10px;font-size:12px;cursor:pointer}
+.ik-pt button.on{border-color:#fff;color:#fff;background:#38383d}
+.ik-pre{display:flex;gap:7px;flex-wrap:wrap;align-items:center;flex:1}
+.ik-dot{width:26px;height:26px;border-radius:50%;border:2px solid #1d1d20;box-shadow:0 0 0 1px #4a4a4e;cursor:pointer}
+.ik-dot.on{box-shadow:0 0 0 2px #fff}
+.ik-more{font-size:12px;color:#cfcfd4;background:none;border:1px solid #3a3a3e;border-radius:12px;height:28px;padding:0 10px;cursor:pointer}
+.ik-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin:6px 0}
+.ik-grid i{aspect-ratio:1;border-radius:4px;cursor:pointer;border:1px solid #2c2c2e}
+.ik-grid i.on{outline:2px solid #fff;outline-offset:1px}
+.ik-row input[type=color]{width:44px;height:30px;border:0;background:none;padding:0}
+.ik-prev canvas{width:100%;height:56px;border-radius:10px;display:block}
+.ik-note{color:#a6a6ab;font-size:12px;margin:4px 0}
+.ik-warn{background:#2a2410;color:#e6c229;border-radius:10px;padding:6px 10px;margin-top:6px}
+.ik-selbar{display:flex;gap:6px;align-items:center;margin-top:8px;background:#1d1d20;border:1px solid #2a7fff;border-radius:12px;padding:6px 10px;color:#cfe0ff;font-size:12px;flex-wrap:wrap}
+.ik-selbar button{background:#2a2a2e;border:1px solid #3a3a3e;color:#eee;border-radius:10px;height:30px;padding:0 10px;font-size:12px}
+.ik-text{position:fixed;z-index:200;min-width:160px;background:#fffdf6;border:1px dashed #2a7fff;border-radius:6px;padding:4px 6px;font-family:system-ui,sans-serif;resize:both}
+.inkbtn.on{background:#232326!important;color:#fff!important;border-color:#232326!important}
+.ink-ov{position:absolute;left:0;top:0;z-index:2;pointer-events:none;touch-action:none}
+.c-a.inking,.c-q.inking{cursor:crosshair}
+.c-a.inking .ink-ov,.c-q.inking .ink-ov{pointer-events:auto}
+.rm-line{position:relative;padding-right:34px!important}
+.rm-chev{position:absolute;right:0;top:2px;z-index:4;width:28px;height:28px;border-radius:8px;border:1px solid #d9cba6;background:#f3ecda;color:#8a7848;display:inline-flex;align-items:center;justify-content:center;padding:0;cursor:pointer;transition:transform .2s}
+.rm-chev svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rm-chev.open:not(.has){transform:rotate(180deg)}
+.rm-chev.has{background:#2b2b2f;color:#f3ecda;border-color:#2b2b2f}
+.rm-hold{display:block}
+.rm{position:relative;z-index:3;margin:6px 0 10px;border-radius:10px;border:1px solid #e2d8bf;background:repeating-linear-gradient(#fbf7ec 0 23px,#e9dfc6 23px 24px);overflow:hidden;animation:rmopen .3s ease}
+.rm.writing{border-color:#c9b88c;box-shadow:inset 0 0 0 1px #fff8}
+.rm-cv{display:block;width:100%;touch-action:none}
+.rm.peek{max-height:48px;cursor:pointer}
+.rm.peek::after{content:'';position:absolute;inset:auto 0 0 0;height:32px;background:linear-gradient(rgba(246,241,227,0),var(--paper,#f6f1e3));pointer-events:none}
+.rm.peek::before{content:'⌄';position:absolute;right:10px;bottom:2px;z-index:2;font-size:13px;color:#8a7848}
+@keyframes rmopen{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.ik-selbar[hidden],.ik-pop[hidden]{display:none!important}
