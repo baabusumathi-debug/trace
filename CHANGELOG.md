@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-059)
+## State (as of entry T-060)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.9** · promoted from test 1.3.33 on 4 Nov (T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.36** · last code commit: see entry T-059. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.37** · last code commit: see entry T-060. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,19 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-060 — 2026-11-04 — Claude — test — 1.3.37
+- Ink round 3 (Naven, 4 Nov 15:16):
+  - **S Pen button.** Any pen button beyond plain contact now counts as erase. The eraser settings (tap the eraser twice) have a **Pen test** pad and a log of the last 8 pen events (type, button, buttons). This shows whether the Tab passes the side button to the browser at all.
+  - **Auto shape.** Rewritten as a fit of every candidate shape: ellipse, rectangle, rounded rectangle at three radii, capsule, triangle and other four-sided shapes. The box is refined inward for shaky outlines. Upright four-sided outlines become rectangles; open strokes become lines or V shapes, and scribbles stay handwriting. It also works with the highlighter: a free highlight held still becomes a highlighter-style shape.
+  - **Lasso.** Maximum sensitivity: an object is selected if any part of it lies inside the loop or the loop line passes within about 7 px of it. A single tap selects one mark.
+  - **Selection bar.** Delete, Cut, Copy and Done; 8 colours applied straight to the selection; thinner and thicker. This replaces "Apply pen style", which did nothing.
+  - **Clipboard inside the app.** Copy and Cut store the ink (kept in screen pixels), so it works on this card, the next card, any card or another split-screen window. A Paste button with a count appears on the strip; tap it, then tap where the ink should go, and it lands selected.
+  - **Text.** The editor opens inside the card where the pen tapped. Its mini bar above has A−/A+, Bold, 5 colours, ✓, and Delete when editing. Tapping existing text with the Text tool edits it. Escape cancels; tapping away keeps the text.
+  - **Rooms.** They no longer grow by themselves. A ⌄ at the end of the room adds one full space. When the pen moves to another area or writing ends, the room trims to the space used, in half spaces (2 spaces with half of the second used → 1.5).
+  - **Writing limits.** Short, faint dotted marks at the ends of the top and bottom edges of every writing area (no box). The card gets 180 px of extra writing space at the bottom while writing.
+  - **Multi-window.** Overlay ink is now saved relative to the block it was written on and stretches with it, so it is no longer hidden in a narrower window or at another text size. Snap highlights store their character range and follow their words when lines re-wrap. Ink saved in the old format still shows only on the same screen.
+  - **Toolbar size and position.** The strip sizes itself to the window (30–44 px buttons) and keeps its position as a share of the window. Tapping the grip folds it into one movable round button showing the current tool; tapping that opens the strip again. The floating pen button (not writing) can be dragged too.
 
 ## T-059 — 2026-11-04 — Claude — test — 1.3.36
 - Ink fixes from Naven's Tab trial (4 Nov 14:20):

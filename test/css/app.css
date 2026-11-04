@@ -978,3 +978,40 @@ a.brand{text-decoration:none;color:inherit}
 .ik-fab:active{transform:scale(.94)}
 @keyframes ikpop{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:none}}
 @media (max-width:640px){.ik-host.ik-float{right:6px}.ik-float .ik-ic{width:38px;height:38px}.ik-fab{width:46px;height:46px}}
+
+/* ===== T-060 ink round 3: sized strip, folded button, paste, selection styling, text editor, room space, limits ===== */
+.ik-float{--ik:44px}
+.ik-float .ik-ic,.ik-float .ik-cur,.ik-grip{width:var(--ik);height:var(--ik)}
+.ik-grip{height:calc(var(--ik) * .5)}
+.ik-float .ik-ic svg{width:calc(var(--ik) * .55);height:calc(var(--ik) * .55)}
+.ik-float .ik-cur i{width:calc(var(--ik) * .5);height:calc(var(--ik) * .5)}
+.ik-float .ik-bar{max-height:calc(100vh - 12px);overflow-y:auto;scrollbar-width:none}
+.ik-float.ik-up .ik-pop{top:auto;bottom:0}
+.ik-float .ik-ic{position:relative}
+.ik-badge{position:absolute;right:3px;top:3px;min-width:15px;height:15px;border-radius:8px;background:#2a7fff;color:#fff;font-size:10px;line-height:15px;font-family:var(--mono)}
+.ik-fab{width:calc(var(--ik,44px) * 1.15);height:calc(var(--ik,44px) * 1.15);touch-action:none;position:relative}
+.ik-fab-on{background:#ececed;color:#1d1d20;border-color:#ececed}
+.ik-fab-on .tipc{fill:var(--tip);stroke:var(--tip)}
+.ik-fab-dot{position:absolute;right:4px;bottom:4px;width:10px;height:10px;border-radius:50%;background:#2e9d4f;box-shadow:0 0 0 2px #ececed}
+.ik-fab-on svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ik-float .ik-selbar{flex-direction:column;align-items:stretch;gap:6px}
+.ik-selrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ik-selrow b{color:#cfe0ff;font-size:12px;margin-right:4px}
+.ik-selrow .muted{color:#a6a6ab;font-size:12px}
+.ik-dot.sm{width:22px;height:22px}
+.ik-pastebar{bottom:auto!important;top:0}
+.ik-pentest{flex:1;min-height:70px;border:1px dashed #555;border-radius:10px;display:flex;align-items:center;justify-content:center;text-align:center;color:#a6a6ab;font-size:12px;padding:8px;touch-action:none}
+.ik-penlog{margin:4px 0 0;background:#141416;border-radius:8px;padding:6px 8px;font-size:10.5px;line-height:1.45;color:#cfd;white-space:pre-wrap;max-height:120px;overflow:auto}
+.ik-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:300;background:#1d1d20;color:#ececed;border:1px solid #3a3a3e;border-radius:12px;padding:10px 14px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:opacity .4s;max-width:90vw}
+.ik-toast.out{opacity:0}
+.ink-tx{position:absolute;z-index:6;display:flex;flex-direction:column;gap:4px}
+.ink-txbar{display:flex;gap:4px;align-items:center;background:#1d1d20;border-radius:10px;padding:4px 6px;width:max-content;box-shadow:0 6px 18px rgba(0,0,0,.25);zoom:calc(1 / var(--cs,1))}
+.ink-txbar button{background:#2a2a2e;border:1px solid #3a3a3e;color:#eee;border-radius:8px;height:30px;min-width:34px;padding:0 8px;font-size:12px}
+.ink-txbar button.ok{background:#2e9d4f;border-color:#2e9d4f;color:#fff;font-weight:700}
+.ink-txbar .ik-dot{border-color:#1d1d20}
+.ink-tx .ink-text{position:static;min-width:200px;background:rgba(255,253,246,.92);border:1px dashed #2a7fff;border-radius:6px;padding:2px 6px;font-family:system-ui,sans-serif;line-height:1.3;resize:none;overflow:hidden;outline:0}
+.rm-more{position:absolute;right:8px;bottom:6px;z-index:4;width:30px;height:24px;border-radius:12px;border:1px solid #d1c29a;background:#f3ecda;color:#8a7848;display:none;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.rm-more svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rm.writing .rm-more{display:flex}
+.c-a.inking,.c-q.inking{padding-bottom:180px}
+.ink-tx .ink-txbar{position:absolute;bottom:100%;left:0;margin-bottom:6px}
