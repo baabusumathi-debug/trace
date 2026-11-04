@@ -5,9 +5,9 @@ import { Surface, Toolbar, attachPointer, loadInk, saveInk, settings, INK_ICONS,
 
 const ROOM_W = 1000;                       // rooms use their own units: 1000 = the room's width
 const SPACE = 180;                         // one "space" of a room, in room units
-const CLIP_KEY = 'trace.ink.clip';
+const CLIP_KEY = 'trace.ink.clips', OLD_CLIP = 'trace.ink.clip', CLIP_MAX = 12;
 let cur = null;                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
-let writing = false, pasting = false;
+let writing = false, pasting = null;          // pasting = id of the clipboard item waiting to be placed
 const listeners = { changed: null };
 export const isWriting = () => writing;
 
@@ -184,8 +184,16 @@ function makeRoom(holder, key, data, onChange) {
 }
 
 /* ---------- clipboard: kept by the app, so it pastes on this card, the next card, any card, or another window ---------- */
-function readClip() { try { return JSON.parse(localStorage.getItem(CLIP_KEY) || 'null'); } catch (e) { return null; } }
-function writeClip(c) { try { localStorage.setItem(CLIP_KEY, JSON.stringify(c)); } catch (e) { /* private mode */ } }
+// clipboard history: the last 12 copies, newest first; each can be pasted any number of times on any card
+function readClips() {
+  try {
+    let a = JSON.parse(localStorage.getItem(CLIP_KEY) || 'null');
+    if (!Array.isArray(a)) { const old = JSON.parse(localStorage.getItem(OLD_CLIP) || 'null'); a = old ? [{ id: 'c' + old.ts, ...old }] : []; }
+    return a;
+  } catch (e) { return []; }
+}
+function saveClips(a) { try { localStorage.setItem(CLIP_KEY, JSON.stringify(a.slice(0, CLIP_MAX))); localStorage.removeItem(OLD_CLIP); } catch (e) { /* private mode or full */ } }
+function writeClip(c) { const a = readClips(); a.unshift({ id: 'c' + c.ts + Math.random().toString(36).slice(2, 5), ...c }); saveClips(a); }
 // while writing, no browser text selection or long-press menu anywhere on the card (the S Pen button triggers both on the Tab)
 document.addEventListener('contextmenu', e => { if (writing && cur && cur.box.contains(e.target)) e.preventDefault(); }, true);
 document.addEventListener('selectstart', e => { if (writing && cur && cur.box.contains(e.target) && !e.target.closest('.ink-tx')) e.preventDefault(); }, true);
@@ -199,15 +207,15 @@ function copySel(s) {
   writeClip({ n: objs.length, objs, ts: Date.now() });
 }
 function pasteInto(s, p) {
-  const c = readClip(); if (!c || !cur) return;
+  const c = readClips().find(x => x.id === pasting) || readClips()[0]; if (!c || !cur) return;
   s.snapshot();
   const f = s.unitPerPx(), start = s.objs.length;
   for (const src of c.objs) { const o = JSON.parse(JSON.stringify(src)); scaleObj(o, f); shiftObj(o, p[0], p[1]); if (s === cur.overlay) o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
   s.sel = { ids: c.objs.map((_, j) => start + j) };
-  pasting = false;
+  pasting = null;
   if (s.data) { const b = s.objs.slice(start).map(objBox).reduce((m, q) => Math.max(m, q[3]), 0); if (b > (s.data.h || SPACE) - 10) { s.data.h = Math.ceil((b + 20) / (SPACE / 2)) * (SPACE / 2); s.fit(); } }
   s.render();
-  settings().tool = 'lasso'; cur.last = s; markDirty(); if (cur.toolbar) cur.toolbar.draw();
+  settings().tool = 'lasso'; cur.last = s; markDirty(); if (cur.toolbar) { cur.toolbar.clipOpen = false; cur.toolbar.draw(); }
 }
 
 /* ---------- mount on the current card face ---------- */
@@ -252,7 +260,7 @@ function wireSurface(s) {
       if (st.last && st.last !== surf && st.last.trim && st.last.trim()) st.overlay.relayout();
       st.last = surf;
     },
-    pasting: () => pasting, pasteAt: p => pasteInto(s, p),
+    pasting: () => !!pasting, pasteAt: p => pasteInto(s, p),
     armChanged: on => { const h = st.opts.toolbarHost && st.opts.toolbarHost(); if (h) h.classList.toggle('ik-armed', on); },
     textAt: (p, e, hit) => textAt(s, p, hit),
     changed: o => { st.last = s; if (o && s === st.overlay && !o.a) o.a = s.anchorFor(o.pts[0]); if (s !== st.overlay) drawChevrons(); markDirty(); }
@@ -340,8 +348,8 @@ function drawChevrons() {
 function selAction(a, v) {
   const st = cur, s = st && st.last; if (!s || !s.sel) return;
   const ids = s.sel.ids.filter(i => s.objs[i]);
-  if (a === 'del' || a === 'cut') { if (a === 'cut') copySel(s); s.snapshot(); const set = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !set.has(i))); s.sel = null; if (a === 'cut') toast('Cut · tap Paste on the strip, then tap where it should go'); }
-  else if (a === 'copy') { copySel(s); toast('Copied · tap Paste on the strip, then tap where it should go — this card or any other'); }
+  if (a === 'del' || a === 'cut') { if (a === 'cut') copySel(s); s.snapshot(); const set = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !set.has(i))); s.sel = null; if (a === 'cut') toast('Cut to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
+  else if (a === 'copy') { copySel(s); toast('Copied to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
   else if (a === 'colour') { s.snapshot(); for (const i of ids) s.objs[i].c = v; }
   else if (a === 'width') { s.snapshot(); for (const i of ids) { const o = s.objs[i]; if (o.type === 'hl' && o.snap) { o.h *= v; if (o.rects) o.rects = o.rects.map(r => [r[0], r[1], r[2], r[3] * v]); } else if (o.s) o.s = Math.max(0.3, o.s * v); } }
   else s.sel = null;
@@ -365,9 +373,11 @@ function applyMode() {
       redo: () => { const s = st.last || st.overlay; s.doRedo(); markDirty(); },
       done: () => setWriting(false),
       clear: () => { const s = st.last || st.overlay; s.snapshot(); s.objs.splice(0); s.sel = null; s.render(); markDirty(); },
-      toolChanged: () => { pasting = false; [st.overlay, ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
+      toolChanged: () => { pasting = null; [st.overlay, ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
       hasSel: () => !!(st.last && st.last.sel && st.last.sel.ids.length),
-      clip: () => readClip(), pasting: () => pasting, setPasting: v => { pasting = !!v; },
+      clips: () => readClips(), pasting: () => pasting, setPasting: v => { pasting = v || null; },
+      removeClip: id => { saveClips(readClips().filter(c => c.id !== id)); if (pasting === id) pasting = null; },
+      clearClips: () => { saveClips([]); pasting = null; },
       selAction
     });
     if (st.overlay.hiddenFromOther) toast('Ink written before this update on another screen size is hidden here. New ink and rooms show on every screen.');
@@ -382,7 +392,7 @@ function showFab(host) {
   dragFloat(host, host.querySelector('[data-ink-fab]'), () => setWriting(true));
 }
 export function setWriting(on) {
-  const was = writing; writing = !!on; if (!writing) pasting = false;
+  const was = writing; writing = !!on; if (!writing) pasting = null;
   if (cur) {
     if (was && !writing) { cur.box.querySelectorAll('.ink-tx textarea').forEach(t => t.blur()); cur.rooms.forEach(r => r.trim()); }  // done: every room shrinks to what it uses
     [cur.overlay, ...cur.rooms.values()].forEach(s => { s.sel = null; });

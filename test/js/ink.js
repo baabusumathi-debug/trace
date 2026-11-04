@@ -296,6 +296,15 @@ export function dragFloat(h, handle, onTap) {
     handle.addEventListener('pointermove', mv); handle.addEventListener('pointerup', up); handle.addEventListener('pointercancel', up);
   };
 }
+function ago(ts) { const m = Math.round((Date.now() - ts) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' h ago' : Math.round(m / 1440) + ' d ago'; }
+function thumb(cv, objs) {
+  const g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.fillStyle = '#f6f1e3'; g.fillRect(0, 0, cv.width, cv.height);
+  if (!objs || !objs.length) return;
+  const bb = objs.map(o => objBox(o)).reduce((a, b) => [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[2], b[2]), Math.max(a[3], b[3])]);
+  const pad = 12, w = Math.max(1, bb[2] - bb[0]), h = Math.max(1, bb[3] - bb[1]), k = Math.min((cv.width - 2 * pad) / w, (cv.height - 2 * pad) / h, 2.5);
+  const ox = (cv.width - w * k) / 2 - bb[0] * k, oy = (cv.height - h * k) / 2 - bb[1] * k;
+  paint(g, objs, p => ox + p[0] * k, p => oy + p[1] * k, k, cv.width, cv.height);
+}
 const SEL_COLS = ['#1c1c1e', '#1f4fd8', '#e0312b', '#2e9d4f', '#ff9500', '#8e44ad', '#ffcc00', '#00c7be'];
 export class Toolbar {
   constructor(host, api) {
@@ -309,7 +318,7 @@ export class Toolbar {
   setMin(v) { this.min = v; this.open = false; try { localStorage.setItem(MIN_KEY, v ? '1' : '0'); } catch (e) { /* */ } this.draw(); }
   closePop() { if (this.open) { this.open = false; this.draw(); } }
   draw() {
-    const t = S.tool, sz = railSize(), clip = this.api.clip ? this.api.clip() : null, pasting = this.api.pasting && this.api.pasting();
+    const t = S.tool, sz = railSize(), clips = this.api.clips ? this.api.clips() : [], pasting = this.api.pasting && this.api.pasting();
     const btn = (k, lab, extra = '') => `<button class="ik-ic${t === k ? ' on' : ''}" data-t="${k}" aria-label="${lab}" title="${lab}"${extra}>${ICONS[k]}</button>`;
     const tipOf = k => k === 'hl' ? S.hl.color : k === 'text' ? S.text.color : S.pen.color;
     if (this.min) {
@@ -323,7 +332,7 @@ export class Toolbar {
         <div class="ik-grip" data-grip title="Drag to move · tap to fold the strip into one button">${ICONS.grip}</div>
         ${btn('pen', 'Pen · tap again for settings', ` style="--tip:${S.pen.color}"`)}${btn('hl', 'Highlighter · tap again for settings', ` style="--tip:${S.hl.color}"`)}${btn('er', 'Eraser · tap again for settings')}${btn('lasso', 'Lasso select · tap again for help')}
         ${btn('shape', 'Shapes · tap again for settings')}${btn('text', 'Text · tap again for settings')}
-        ${clip ? `<button class="ik-ic${pasting ? ' on' : ''}" data-paste aria-label="Paste: then tap where it should go" title="Paste (${clip.n} item${clip.n === 1 ? '' : 's'}) · tap where it should go">${ICONS.paste}<span class="ik-badge">${clip.n}</span></button>` : ''}
+        ${clips.length ? `<button class="ik-ic${pasting || this.clipOpen ? ' on' : ''}" data-paste aria-label="Clipboard" title="Clipboard · ${clips.length} item${clips.length === 1 ? '' : 's'}">${ICONS.paste}<span class="ik-badge">${clips.length}</span></button>` : ''}
         <span class="ik-sep"></span>
         <button class="ik-ic" data-undo aria-label="Undo" title="Undo">${ICONS.undo}</button><button class="ik-ic" data-redo aria-label="Redo" title="Redo">${ICONS.redo}</button>
         <span class="ik-sep"></span>
@@ -331,7 +340,10 @@ export class Toolbar {
         <button class="ik-ic ik-done" data-done aria-label="Done writing" title="Done writing">${ICONS.done}</button>
       </div>
       <div class="ik-pop"${this.open ? '' : ' hidden'}><div class="ik-pophead"><b>${{ pen: 'Pen', hl: 'Highlighter', er: 'Eraser', lasso: 'Lasso', shape: 'Shapes', text: 'Text' }[t] || ''}</b><button class="ik-x" data-close aria-label="Close settings">✕</button></div>${this.popHtml()}</div>
-      ${pasting ? '<div class="ik-selbar ik-pastebar"><span>Tap where the copied ink should go — on this card or any other</span><button data-paste-cancel>Cancel</button></div>' : ''}
+      ${this.clipOpen && clips.length ? `<div class="ik-pop ik-clips"><div class="ik-pophead"><b>Clipboard · ${clips.length}</b><button class="ik-x" data-clipclose aria-label="Close clipboard">✕</button></div>
+        <p class="ik-note">${pasting ? 'Now tap where it should go — this card or any other.' : 'Newest first. Pick one, then tap where it should go. Each stays here to paste again.'}</p>
+        <div class="ik-cliplist">${clips.map((c, i) => `<div class="ik-clip${pasting === c.id ? ' on' : ''}" data-clip="${c.id}"><canvas width="300" height="120" data-clipcv="${i}"></canvas><span class="ik-cliptag mono">${i + 1} · ${c.n} mark${c.n === 1 ? '' : 's'} · ${ago(c.ts)}</span><button class="ik-clipx" data-clipdel="${c.id}" aria-label="Remove from clipboard">✕</button></div>`).join('')}</div>
+        <div class="ik-row"><button class="ik-more" data-clipclear>Clear clipboard</button></div></div>` : ''}
       <div class="ik-selbar"${this.api.hasSel() ? '' : ' hidden'}>
         <div class="ik-selrow"><b>Selected</b><button data-sel="del">Delete</button><button data-sel="cut">Cut</button><button data-sel="copy">Copy</button><button data-sel="none">Done</button></div>
         <div class="ik-selrow">${SEL_COLS.map(c => `<span class="ik-dot sm" style="background:${c}" data-selc="${c}" title="Colour ${c}"></span>`).join('')}</div>
@@ -366,12 +378,16 @@ export class Toolbar {
   bind() {
     const h = this.host, set = (path, v) => { const [a, b] = path.split('.'); S[a][b] = v; saveS(); };
     // tap a tool = choose it; tap the chosen tool again = its settings
-    h.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { const k = b.dataset.t; if (S.tool === k) this.open = !this.open; else { S.tool = k; this.open = false; this.more = false; this.api.toolChanged(); } saveS(); this.draw(); });
+    h.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { const k = b.dataset.t; this.clipOpen = false; if (S.tool === k) this.open = !this.open; else { S.tool = k; this.open = false; this.more = false; this.api.toolChanged(); } saveS(); this.draw(); });
     const cc = h.querySelector('[data-curc]'); if (cc) cc.onclick = () => { if (S.tool === 'er' || S.tool === 'lasso') S.tool = 'pen'; this.open = !this.open; saveS(); this.draw(); };
     const cx = h.querySelector('[data-close]'); if (cx) cx.onclick = () => { this.open = false; this.draw(); };
     const gp = h.querySelector('[data-grip]'); if (gp) dragFloat(h, gp, () => this.setMin(true));
-    const ps = h.querySelector('[data-paste]'); if (ps) ps.onclick = () => { this.api.setPasting(!this.api.pasting()); this.draw(); };
-    const pc = h.querySelector('[data-paste-cancel]'); if (pc) pc.onclick = () => { this.api.setPasting(false); this.draw(); };
+    const ps = h.querySelector('[data-paste]'); if (ps) ps.onclick = () => { this.clipOpen = !this.clipOpen; this.open = false; if (!this.clipOpen) this.api.setPasting(null); this.draw(); };
+    const cc2 = h.querySelector('[data-clipclose]'); if (cc2) cc2.onclick = () => { this.clipOpen = false; this.api.setPasting(null); this.draw(); };
+    h.querySelectorAll('[data-clip]').forEach(el => el.onclick = e => { if (e.target.closest('[data-clipdel]')) return; const id = el.dataset.clip; this.api.setPasting(this.api.pasting() === id ? null : id); this.draw(); });
+    h.querySelectorAll('[data-clipdel]').forEach(b => b.onclick = e => { e.stopPropagation(); this.api.removeClip(b.dataset.clipdel); this.draw(); });
+    const ccl = h.querySelector('[data-clipclear]'); if (ccl) ccl.onclick = () => { this.api.clearClips(); this.clipOpen = false; this.draw(); };
+    if (this.clipOpen) (this.api.clips ? this.api.clips() : []).forEach((c, i) => { const cv = h.querySelector(`[data-clipcv="${i}"]`); if (cv) thumb(cv, c.objs); });
     h.querySelectorAll('[data-selc]').forEach(d => d.onclick = () => this.api.selAction('colour', d.dataset.selc));
     h.querySelectorAll('[data-selw]').forEach(d => d.onclick = () => this.api.selAction('width', +d.dataset.selw));
     const lc = h.querySelector('[data-logclear]'); if (lc) lc.onclick = () => { penLog.length = 0; logT0 = 0; const pre = h.querySelector('[data-penlog]'); if (pre) pre.textContent = '—'; };
