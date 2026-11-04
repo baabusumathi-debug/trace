@@ -351,7 +351,7 @@ export class Toolbar {
       + slider('Size', 'er.size', 5, 60, 1, S.er.size, v => v)
       + `<div class="ik-row"><label>Highlighter only</label><div class="ik-pt"><button class="${S.er.hlOnly ? 'on' : ''}" data-hlo="1">On</button><button class="${!S.er.hlOnly ? 'on' : ''}" data-hlo="0">Off</button></div></div>
         <div class="ik-row"><label>S Pen button</label><span class="ik-note">hold the side button while writing to erase · last pen signal: <b class="mono">${penSignal()}</b></span></div>
-        <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><pre class="ik-penlog" data-penlog>${penLog.join('\n') || '—'}</pre>
+        <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><pre class="ik-penlog" data-penlog>${penLines() || '—'}</pre>
         <div class="ik-row"><label></label><button class="ik-more" data-clear>Clear this side</button></div>`;
     if (t === 'lasso') return `<div class="ik-row"><label>Select</label><span class="ik-note">draw a loop round ink or highlights, or tap one mark; drag inside the box to move; Delete in the blue bar</span></div>`;
     if (t === 'shape') return `<div class="ik-row"><label>Draw</label><div class="ik-pt">${[['free', 'Freehand'], ['line', 'Line'], ['arrow', 'Arrow'], ['rect', 'Rectangle'], ['ellipse', 'Ellipse'], ['tri', 'Triangle']].map(([k, l]) => `<button class="${S.shape.kind === k ? 'on' : ''}" data-sk="${k}">${l}</button>`).join('')}</div></div>
@@ -375,10 +375,10 @@ export class Toolbar {
     h.querySelectorAll('[data-selw]').forEach(d => d.onclick = () => this.api.selAction('width', +d.dataset.selw));
     const pt = h.querySelector('[data-pentest]');
     if (pt) {
-      const show = () => { const pre = h.querySelector('[data-penlog]'); if (pre) pre.textContent = penLog.join('\n'); };
+      const show = () => { const pre = h.querySelector('[data-penlog]'); if (pre) pre.textContent = penLines(); };
       let lastB = -1;
-      ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'pointerover', 'pointerout'].forEach(ty => pt.addEventListener(ty, e => { if (ty === 'pointermove' && e.buttons === lastB) return; lastB = e.buttons; logPen(e); show(); if (ty === 'pointerdown') e.preventDefault(); }));
-      pt.addEventListener('contextmenu', e => { e.preventDefault(); logPen(e, 'contextmenu'); show(); });
+      ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'pointerover', 'pointerout'].forEach(ty => pt.addEventListener(ty, e => { if (e.pointerType === 'pen') penSeen = Date.now(); logPen(e); show(); e.preventDefault(); }));
+      pt.addEventListener('contextmenu', e => { e.preventDefault(); logPen(e, 'contextmenu'); show(); }); pt.addEventListener('selectstart', e => e.preventDefault());
     }
     h.querySelector('[data-undo]').onclick = () => this.api.undo();
     h.querySelector('[data-redo]').onclick = () => this.api.redo();
@@ -422,7 +422,17 @@ export const settings = () => S;
 // ---- S Pen signals: every pen event is kept in a short log so the eraser settings can show what the Tab really sends
 let lastPen = { buttons: 0, button: -1, at: 0 };
 export const penLog = [];
-function logPen(e, tag) { penLog.unshift(`${tag || e.type.replace('pointer', '')} · ${e.pointerType} · button ${e.button} · buttons ${e.buttons}${e.pressure ? ' · p ' + e.pressure.toFixed(2) : ''}`); penLog.length = Math.min(penLog.length, 8); }
+let logT0 = 0;
+function logPen(e, tag) {
+  // repeated identical events collapse into one line with a count, so the log shows the real sequence
+  const now = Date.now(); if (!logT0 || now - logT0 > 8000) logT0 = now;
+  const key = `${tag || e.type.replace('pointer', '')} · ${e.pointerType || '-'} · button ${e.button} · buttons ${e.buttons}${e.pressure ? ' · p ' + e.pressure.toFixed(2) : ''}`;
+  if (penLog.length && penLog[0].key === key) { penLog[0].n++; penLog[0].t = now - logT0; }
+  else { penLog.unshift({ key, n: 1, t: now - logT0 }); penLog.length = Math.min(penLog.length, 18); }
+}
+const penLines = () => penLog.map(l => `${String(l.t).padStart(5)}ms  ${l.key}${l.n > 1 ? '  ×' + l.n : ''}`).join('\n');
+let penSeen = 0;                                   // last time a real pen event arrived
+const penRecent = () => Date.now() - penSeen < 20000;
 const penSignal = () => lastPen.at ? `buttons ${lastPen.buttons} · button ${lastPen.button}` : 'none yet';
 // side (barrel) button or the eraser end: any pen button beyond plain contact
 const sideButton = e => (e.pointerType === 'pen' && ((e.buttons & ~1) !== 0 || e.button === 2 || e.button === 5 || e.button === 1)) || (e.pointerType === 'mouse' && (e.buttons & 2));
@@ -438,9 +448,19 @@ export function scaleObj(o, f) {                          // used by paste betwe
 }
 export const objBox = o => bbox(objPts(o));
 export function attachPointer(surface, opts) {
-  const cv = surface.cv; let act = null, holdT = null, hoverSide = false;
-  cv.addEventListener('contextmenu', e => { if (opts.writing()) { e.preventDefault(); e.stopPropagation(); logPen(e, 'contextmenu'); } });
-  cv.addEventListener('pointerover', e => logPen(e));
+  const cv = surface.cv; let act = null, holdT = null, hoverSide = false, btn = null, btnT = null;
+  // On the Galaxy Tab, holding the S Pen side button makes Chrome report the pen as a MOUSE and fire a context menu
+  // (no button number at all). So: a "mouse" pointer shortly after real pen use, or a context menu, means side button = erase.
+  const btnEnd = () => { clearTimeout(btnT); if (!btn) return; btn = null; if (act && act.erase) { act = null; surface.render(); opts.changed(); } };
+  const btnErase = e => {
+    if (!btn) { btn = true; surface.live = null; surface.pred = null; clearTimeout(holdT); surface.snapshot(); act = { erase: true, r: (S.er.size / 2) * opts.unitPerPx() }; }
+    if (act && act.erase && eraseAt(units(e), act.r)) surface.request();
+    clearTimeout(btnT); btnT = setTimeout(btnEnd, 450);
+  };
+  cv.addEventListener('contextmenu', e => { logPen(e, 'contextmenu'); if (!opts.writing()) return; e.preventDefault(); e.stopPropagation(); if (penRecent() || e.pointerType === 'mouse') btnErase(e); });
+  cv.addEventListener('pointerover', e => { logPen(e); if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); } });
+  cv.addEventListener('pointerout', e => { if (e.pointerType === 'mouse') btnEnd(); });
+  cv.addEventListener('selectstart', e => { if (opts.writing()) e.preventDefault(); });
   const units = e => opts.toUnits(e.clientX, e.clientY);
   const pr = e => (e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.5);
   const eraseAt = (p, r) => {
@@ -471,6 +491,8 @@ export function attachPointer(surface, opts) {
   cv.addEventListener('pointerdown', e => {
     logPen(e);
     if (!opts.writing()) return;
+    if (e.pointerType === 'pen') penSeen = Date.now();
+    if (e.pointerType === 'mouse' && penRecent()) { e.preventDefault(); cv.setPointerCapture(e.pointerId); btnErase(e); return; }
     if (e.pointerType === 'touch') { act = { touch: true, y: e.clientY, x: e.clientX }; cv.setPointerCapture(e.pointerId); return; }
     e.preventDefault(); cv.setPointerCapture(e.pointerId);
     if (e.pointerType === 'pen') lastPen = { buttons: e.buttons, button: e.button, at: Date.now() };
@@ -499,6 +521,13 @@ export function attachPointer(surface, opts) {
     act = { draw: true };
   });
   cv.addEventListener('pointermove', e => {
+    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
+      // side-button pen: erase while it is pressed on the glass (buttons/pressure), or while a context-menu press is running
+      if (e.buttons || e.pressure > 0 || btn) { if (e.buttons || e.pressure > 0 || btn) btnErase(e); }
+      else if (e.buttons !== lastPen.buttons) logPen(e);
+      return;
+    }
+    if (e.pointerType === 'pen') penSeen = Date.now();
     if (e.pointerType === 'pen') { if (e.buttons !== lastPen.buttons) { lastPen = { buttons: e.buttons, button: e.button, at: Date.now() }; logPen(e); } if (!act) hoverSide = !!sideButton(e); }
     if (!act) return;
     // the S Pen side button pressed in the middle of a stroke: switch to the eraser at once
@@ -545,7 +574,7 @@ export function attachPointer(surface, opts) {
     } else if (act.erase || (act.move && act.moved)) { surface.render(); opts.changed(); }
     act = null;
   };
-  cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', e => { logPen(e); end(e); });
+  cv.addEventListener('pointerup', e => { if (e.pointerType === 'mouse' && btn) { logPen(e); btnEnd(); return; } end(e); }); cv.addEventListener('pointercancel', e => { logPen(e); end(e); });
 }
 // points along an object's ink, close enough together that a small lasso finds it
 function densePts(o) {

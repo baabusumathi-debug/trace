@@ -1015,3 +1015,6 @@ a.brand{text-decoration:none;color:inherit}
 .rm.writing .rm-more{display:flex}
 .c-a.inking,.c-q.inking{padding-bottom:180px}
 .ink-tx .ink-txbar{position:absolute;bottom:100%;left:0;margin-bottom:6px}
+.ik-pop,.ik-pentest,.ik-penlog,.ik-bar{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.c-a.inking,.c-q.inking{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.ik-penlog{max-height:200px;font-size:10px}

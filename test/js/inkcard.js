@@ -186,6 +186,9 @@ function makeRoom(holder, key, data, onChange) {
 /* ---------- clipboard: kept by the app, so it pastes on this card, the next card, any card, or another window ---------- */
 function readClip() { try { return JSON.parse(localStorage.getItem(CLIP_KEY) || 'null'); } catch (e) { return null; } }
 function writeClip(c) { try { localStorage.setItem(CLIP_KEY, JSON.stringify(c)); } catch (e) { /* private mode */ } }
+// while writing, no browser text selection or long-press menu anywhere on the card (the S Pen button triggers both on the Tab)
+document.addEventListener('contextmenu', e => { if (writing && cur && cur.box.contains(e.target)) e.preventDefault(); }, true);
+document.addEventListener('selectstart', e => { if (writing && cur && cur.box.contains(e.target) && !e.target.closest('.ink-tx')) e.preventDefault(); }, true);
 addEventListener('storage', e => { if (e.key === CLIP_KEY && cur && cur.toolbar) cur.toolbar.draw(); });
 function copySel(s) {
   const objs = s.sel.ids.filter(i => s.objs[i]).map(i => JSON.parse(JSON.stringify(s.objs[i])));
