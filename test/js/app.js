@@ -1402,11 +1402,11 @@ function drawCard() {
   const { head, rest } = splitQ(c.q);
   const isQ = flow.face === 'q';
   const top = `<div class="c-head mono"><span>${esc((c.section || '').toUpperCase())}</span><span>${esc(c.code)}</span></div>
-    <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}${qbChips(c)}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}<button class="tagbtn inkbtn${isWriting() ? ' on' : ''}" data-act="ink" aria-label="Write on this card with the pen" title="Write (S Pen)"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l2.2-6.6L16.8 2.8a2 2 0 0 1 2.8 0l1.6 1.6a2 2 0 0 1 0 2.8L10.6 17.8z"/></svg></button>
+    <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}${qbChips(c)}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}
       ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
-    body = `<button class="c-q" data-act="reveal" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}<span class="star">✦</span></button>`;
+    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}<span class="star">✦</span></div>`;
   } else {
     body = `<div class="c-a">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
@@ -1432,11 +1432,11 @@ function drawCard() {
   el.scrollTop = 0;
   const a = el.querySelector('.c-a'); if (a) a.scrollTop = 0;
   big.innerHTML = isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
-  el.querySelectorAll('[data-act=reveal]').forEach(b => b.onclick = reveal);
+  el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = () => { if (!isWriting()) reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
-  mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: w => { const b = document.querySelector('[data-act=ink]'); if (b) b.classList.toggle('on', w); } });
+  mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {} });
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };

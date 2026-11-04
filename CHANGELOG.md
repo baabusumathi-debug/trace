@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-058)
+## State (as of entry T-059)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.9** · promoted from test 1.3.33 on 4 Nov (T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.35** · last code commit: see entry T-058. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.36** · last code commit: see entry T-059. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,18 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-059 — 2026-11-04 — Claude — test — 1.3.36
+- Ink fixes from Naven's Tab trial (4 Nov 14:20):
+  - **Floating toolbar.** A vertical rail at the screen edge; it no longer pushes or covers the card. It can be dragged by its dotted grip, and a double-tap on the grip resets it. Settings and the selection bar open beside the rail.
+  - **Tap behaviour.** Tapping a tool only chooses it. Tapping the chosen tool again, or the colour dot, opens its settings, and they close as soon as the pen touches the card.
+  - **Pen button.** Removed from the card tags. A round floating pen button at the screen edge starts writing.
+  - **Question side writable.** The question face is now a `div role=button` instead of a `<button>`. A tap reveals only when not writing. The overlay is no longer capped at 920 px.
+  - **Highlights.** Snap-to-text and free highlights can be erased, selected by lasso or by a single tap with the lasso, moved and deleted. The fix is ink hit-testing by distance to segments, with snap highlights tested as a band.
+  - **S Pen side button.** It now erases when held during hover, at touch or mid-stroke. The context menu is blocked while writing. The eraser settings show the last pen signal (`buttons` / `button`) for diagnosis.
+  - **Auto shape.** The hold timer restarts only on movement over 5 px, so pressure jitter no longer resets it; it fires after 550 ms with a short vibration. The recogniser was rewritten: corners found on a closed ring, near-straight vertices dropped, and an ellipse-fit score. It recognises circles, ellipses, rectangles, squares, triangles, other four-sided shapes, lines and V shapes; scribbles stay handwriting. A unit check on synthetic shapes with jitter passed.
+  - **Lag.** Redraws are batched once per frame, finished ink is cached in a layer while a stroke is live, and Chrome's predicted pen points are drawn ahead of the stroke.
+  - **Icons.** All tool icons were redrawn; the pen and highlighter show the colour of their tip.
 
 ## T-058 — 2026-11-04 — Claude — test — 1.3.35
 - Fix (Naven's Tab, 4 Nov 14:07): on the Tab every card showed a black body — the ink canvas was created with Chrome's low-latency `desynchronized` mode, which Android draws as an opaque black layer. Ink canvases now use the normal 2D context (transparent).

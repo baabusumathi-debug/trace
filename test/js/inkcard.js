@@ -1,5 +1,5 @@
 // Ink on a Flow card: the overlay (write anywhere on either side, this screen's layout only) and rooms under lines.
-import { Surface, Toolbar, attachPointer, loadInk, saveInk, settings } from './ink.js';
+import { Surface, Toolbar, attachPointer, loadInk, saveInk, settings, INK_ICONS } from './ink.js';
 
 const ROOM_W = 1000;                       // rooms use their own units: 1000 = the room's width
 let cur = null;                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
@@ -120,6 +120,7 @@ function wireSurface(s) {
     writing: () => writing, toUnits: s.toUnits, unitPerPx: s.unitPerPx, map: () => s.o.map(), snapLine: s.snapLine || null,
     scrollBy: dy => { st.box.scrollTop += dy; },
     selChanged: () => { st.last = s; if (st.toolbar) st.toolbar.draw(); },
+    onDown: () => { if (st.toolbar) st.toolbar.closePop(); },
     textAt: (p, e) => textAt(s, p, e),
     changed: o => { st.last = s; if (o && s === st.overlay && !o.a) o.a = s.anchorFor(o.pts[0][1]); if (s.grow) s.grow(); if (s !== st.overlay) drawChevrons(); markDirty(); }
   });
@@ -191,8 +192,15 @@ function applyMode() {
       }
     });
     if (st.overlay.hiddenFromOther) { const n = document.createElement('div'); n.className = 'ik-note ik-warn'; n.textContent = 'Ink written on another screen size is hidden here. Rooms show on every screen.'; host.appendChild(n); }
-  } else if (host) { host.hidden = true; host.innerHTML = ''; st.toolbar = null; }
+  } else if (host) { st.toolbar = null; showFab(host); }
   if (st.opts.modeChanged) st.opts.modeChanged(writing);
+}
+// not writing: one small round pen button floating at the screen edge (it never sits on the card)
+function showFab(host) {
+  host.hidden = false; host.classList.add('ik-float'); host.classList.remove('ik-left');
+  host.style.left = ''; host.style.top = ''; host.style.right = ''; host.style.transform = '';
+  host.innerHTML = `<button class="ik-fab" data-ink-fab aria-label="Write on this card with the S Pen" title="Write on this card (S Pen)">${INK_ICONS.fab}</button>`;
+  host.querySelector('[data-ink-fab]').onclick = e => { e.stopPropagation(); setWriting(true); };
 }
 export function setWriting(on) { writing = !!on; if (cur) { drawRooms(); applyMode(); cur.overlay.relayout(); } else if (listeners.changed) listeners.changed(writing); }
 function markDirty() { const st = cur; if (!st) return; st.dirty = true; clearTimeout(st.t); st.t = setTimeout(() => flushInk(), 700); }
@@ -203,4 +211,4 @@ export async function flushInk() {
   for (const [k, d] of Object.entries(st.rec.rooms)) if (!(d.objs && d.objs.length) && !st.open.has(k)) delete st.rec.rooms[k];
   await saveInk(st.card, st.rec);
 }
-export function unmountInk() { flushInk(); cur = null; }
+export function unmountInk() { const st = cur; flushInk(); if (st && st.opts && st.opts.toolbarHost) { const h = st.opts.toolbarHost(); if (h) { h.hidden = true; h.innerHTML = ''; } } cur = null; }

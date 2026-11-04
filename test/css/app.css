@@ -947,3 +947,34 @@ a.brand{text-decoration:none;color:inherit}
 .rm.peek::before{content:'⌄';position:absolute;right:10px;bottom:2px;z-index:2;font-size:13px;color:#8a7848}
 @keyframes rmopen{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .ik-selbar[hidden],.ik-pop[hidden]{display:none!important}
+
+/* ===== T-059 ink: floating rail (never on the card), FAB, popover beside the rail ===== */
+.ink-ov{max-width:none!important}
+.c-q[role=button]{cursor:pointer;-webkit-user-select:none;user-select:none}
+.c-q.inking{-webkit-user-select:none;user-select:none}
+.ik-host.ik-float{position:fixed;right:12px;top:50%;transform:translateY(-50%);left:auto;width:auto;margin:0;z-index:80}
+.ik-float .ik-bar{flex-direction:column;overflow:visible;padding:6px 5px;border-radius:26px;gap:3px;background:rgba(30,30,33,.94);border:1px solid #3a3a3e;box-shadow:0 10px 30px rgba(0,0,0,.28),0 2px 6px rgba(0,0,0,.2);backdrop-filter:blur(8px)}
+.ik-float .ik-ic{width:44px;height:44px}
+.ik-float .ik-ic svg{width:24px;height:24px;stroke-width:1.65}
+.ik-float .ik-ic.on{background:#ececed;color:#1d1d20}
+.ik-float .ik-ic.on .tipc{stroke:#1d1d20;stroke-width:.8}
+.ik-float .ik-sep{width:26px;height:1px;margin:3px auto}
+.ik-grip{width:44px;height:22px;display:flex;align-items:center;justify-content:center;color:#8d8d93;cursor:grab;touch-action:none}
+.ik-grip svg{width:22px;height:22px}.ik-grip .dots{fill:currentColor;stroke:none}
+.ik-float .ik-cur{width:44px;height:44px;margin:0;border:0;background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.ik-float .ik-cur i{width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px #1e1e21,0 0 0 4px #ececed}
+.ik-done{color:#9fe3a8!important}
+.ik-float .ik-pop{position:absolute;right:calc(100% + 10px);top:0;margin:0;width:min(440px,calc(100vw - 110px));max-height:calc(100vh - 40px);overflow-y:auto;box-shadow:0 14px 40px rgba(0,0,0,.35);animation:ikpop .16s ease}
+.ik-float.ik-left .ik-pop{right:auto;left:calc(100% + 10px)}
+.ik-pophead{display:flex;align-items:center;justify-content:space-between;margin:-2px 0 4px}.ik-pophead b{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#cfcfd4}
+.ik-x{background:none;border:0;color:#a6a6ab;font-size:15px;width:30px;height:30px;border-radius:50%;cursor:pointer}
+.ik-float .ik-selbar{position:absolute;right:calc(100% + 10px);bottom:0;margin:0;width:max-content;max-width:min(440px,calc(100vw - 110px));box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.ik-float.ik-left .ik-selbar{right:auto;left:calc(100% + 10px)}
+.ik-selbar small{color:#8fb4ff;flex-basis:100%}
+.ik-selbar button[data-sel=del]{border-color:#7a2f2f;color:#ffd4d4}
+.ik-float .ik-warn{position:absolute;right:calc(100% + 10px);bottom:-46px;width:260px}
+.ik-fab{width:52px;height:52px;border-radius:50%;border:1px solid #3a3a3e;background:rgba(30,30,33,.92);color:#f3ecda;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.25);cursor:pointer;padding:0}
+.ik-fab svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ik-fab:active{transform:scale(.94)}
+@keyframes ikpop{from{opacity:0;transform:translateX(6px)}to{opacity:1;transform:none}}
+@media (max-width:640px){.ik-host.ik-float{right:6px}.ik-float .ik-ic{width:38px;height:38px}.ik-fab{width:46px;height:46px}}
