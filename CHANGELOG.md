@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-065)
+## State (as of entry T-066)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.9** · promoted from test 1.3.33 on 4 Nov (T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.42** · last code commit: see entry T-065. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.43** · last code commit: see entry T-066. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,15 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-066 — 2026-11-04 — Claude — test — 1.3.43
+- Resize and rotate a selection (Naven, 4 Nov 16:16).
+  - **Handles:** the selection box has four corner handles and a round rotate handle on a stalk above it (below the box when there is no room above).
+  - **Resize:** dragging a corner scales the selection evenly about the opposite corner; strokes, highlights and text grow with it.
+  - **Rotate:** turns about the centre of the box and snaps at every 15°. Before turning, rectangles, rounded rectangles, ellipses and triangles become point outlines, and highlights snapped to words become free highlight bands. Text turns with a stored angle.
+  - Both are computed from the original marks on every move, so nothing drifts, and both can be undone.
+  - **Checked:** in the demo, doubled a squiggle and turned another by 90°.
+- A Pages deploy had failed with a GitHub server error (502) on the 1.3.41 and 1.3.42 pushes; Naven saw the test build stuck on 1.3.40. One run was re-run; this push deploys everything.
 
 ## T-065 — 2026-11-04 — Claude — test — 1.3.42
 - Clipboard history (Naven, 4 Nov 16:11).

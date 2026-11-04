@@ -144,7 +144,8 @@ function drawShape(g, o, X, Y, k) {
 function drawText(g, o, X, Y, k) {
   g.save(); g.fillStyle = o.c; g.textBaseline = 'top';
   g.font = `${o.b ? '700 ' : ''}${Math.round(o.s * k)}px system-ui, sans-serif`;
-  String(o.t || '').split('\n').forEach((l, i) => g.fillText(l, X(o.pts[0]), Y(o.pts[0]) + i * o.s * k * 1.3));
+  if (o.rot) { g.translate(X(o.pts[0]), Y(o.pts[0])); g.rotate(o.rot); String(o.t || '').split('\n').forEach((l, i) => g.fillText(l, 0, i * o.s * k * 1.3)); }
+  else String(o.t || '').split('\n').forEach((l, i) => g.fillText(l, X(o.pts[0]), Y(o.pts[0]) + i * o.s * k * 1.3));
   g.restore();
 }
 export function paint(g, objs, X, Y, k, w, h) {
@@ -235,6 +236,14 @@ class Surface {
         g.save(); g.fillStyle = 'rgba(42,127,255,.06)'; g.fillRect(x0 - 10, y0 - 10, x1 - x0 + 20, y1 - y0 + 20);
         g.setLineDash([6, 4]); g.strokeStyle = '#2a7fff'; g.lineWidth = 1.4; g.strokeRect(x0 - 10, y0 - 10, x1 - x0 + 20, y1 - y0 + 20); g.restore();
         this.sel.box = [x0 - 10, y0 - 10, x1 + 10, y1 + 10];
+        // handles: four corners resize, the round one on a stalk rotates
+        const b = this.sel.box, hs = selHandles(b, H);
+        g.save(); g.strokeStyle = '#2a7fff'; g.lineWidth = 1.4;
+        g.beginPath(); g.moveTo(hs.rot[0], hs.rot[1] + (hs.rotBelow ? -9 : 9)); g.lineTo(hs.rot[0], hs.rotBelow ? b[3] : b[1]); g.stroke();
+        for (const c of hs.corners) { g.fillStyle = '#fff'; g.fillRect(c[0] - 6, c[1] - 6, 12, 12); g.strokeRect(c[0] - 6, c[1] - 6, 12, 12); }
+        g.beginPath(); g.arc(hs.rot[0], hs.rot[1], 9, 0, Math.PI * 2); g.fillStyle = '#2a7fff'; g.fill();
+        g.strokeStyle = '#fff'; g.lineWidth = 1.6; g.beginPath(); g.arc(hs.rot[0], hs.rot[1], 4.5, -Math.PI * 0.9, Math.PI * 0.55); g.stroke();
+        g.restore();
       }
     }
     if (this.cursor) { const [cx, cy, cr] = this.cursor; g.save(); g.beginPath(); g.arc(m.X([cx, 0]), m.Y([0, cy]), cr * m.k, 0, Math.PI * 2); g.fillStyle = 'rgba(255,159,10,.12)'; g.fill(); g.strokeStyle = 'rgba(255,159,10,.9)'; g.lineWidth = 1.5; g.stroke(); g.restore(); }
@@ -347,7 +356,7 @@ export class Toolbar {
       <div class="ik-selbar"${this.api.hasSel() ? '' : ' hidden'}>
         <div class="ik-selrow"><b>Selected</b><button data-sel="del">Delete</button><button data-sel="cut">Cut</button><button data-sel="copy">Copy</button><button data-sel="none">Done</button></div>
         <div class="ik-selrow">${SEL_COLS.map(c => `<span class="ik-dot sm" style="background:${c}" data-selc="${c}" title="Colour ${c}"></span>`).join('')}</div>
-        <div class="ik-selrow"><span class="muted">Thickness</span><button data-selw="0.8" aria-label="Thinner">− thinner</button><button data-selw="1.25" aria-label="Thicker">+ thicker</button><small>drag inside the box to move</small></div>
+        <div class="ik-selrow"><span class="muted">Thickness</span><button data-selw="0.8" aria-label="Thinner">− thinner</button><button data-selw="1.25" aria-label="Thicker">+ thicker</button><small>drag inside to move · corners resize · round handle rotates (snaps every 15°)</small></div>
       </div>`;
     placeFloat(this.host, sz);
     this.bind();
@@ -454,6 +463,40 @@ const penRecent = () => Date.now() - penSeen < 20000;
 const penSignal = () => lastPen.at ? `buttons ${lastPen.buttons} · button ${lastPen.button}` : 'none yet';
 // side (barrel) button or the eraser end: any pen button beyond plain contact
 const sideButton = e => (e.pointerType === 'pen' && ((e.buttons & ~1) !== 0 || e.button === 2 || e.button === 5 || e.button === 1)) || (e.pointerType === 'mouse' && (e.buttons & 2));
+function selHandles(b, H) {
+  const rotBelow = b[1] < 34 && b[3] + 34 < H;
+  return { corners: [[b[0], b[1]], [b[2], b[1]], [b[2], b[3]], [b[0], b[3]]], rot: [(b[0] + b[2]) / 2, rotBelow ? b[3] + 28 : b[1] - 28], rotBelow };
+}
+// scale an object about (ax, ay) by k (strokes, highlights and text grow with it)
+function scaleAbout(o, ax, ay, k) {
+  const f = q => q.length > 2 ? [ax + (q[0] - ax) * k, ay + (q[1] - ay) * k, q[2]] : [ax + (q[0] - ax) * k, ay + (q[1] - ay) * k];
+  o.pts = o.pts.map(f);
+  if (o.rects) o.rects = o.rects.map(r => [ax + (r[0] - ax) * k, ay + (r[1] - ay) * k, ax + (r[2] - ax) * k, r[3] * k]);
+  if (o.s) o.s *= k; if (o.h) o.h *= k; if (o.r) o.r *= k;
+  delete o.tr;
+}
+// before rotating: shapes kept as two corners and word-snapped highlights become point outlines that can turn
+function rotatable(o) {
+  if (o.type === 'hl' && o.snap) {
+    const rs = o.rects && o.rects.length ? o.rects : [[o.pts[0][0], o.pts[0][1], o.pts[1][0], o.h]];
+    return rs.map(r => ({ type: 'hl', c: o.c, o: o.o, s: r[3], pts: [[r[0], r[1]], [r[2], r[1]]], ...(o.a ? { a: o.a } : {}) }));
+  }
+  if (o.type === 'shape' && (o.kind === 'rect' || o.kind === 'rrect' || o.kind === 'ellipse' || o.kind === 'tri')) {
+    const [a, b] = o.pts, x0 = Math.min(a[0], b[0]), y0 = Math.min(a[1], b[1]), x1 = Math.max(a[0], b[0]), y1 = Math.max(a[1], b[1]); let v;
+    if (o.kind === 'rect') v = [[x0, y0], [x1, y0], [x1, y1], [x0, y1]];
+    else if (o.kind === 'tri') v = [[(x0 + x1) / 2, y0], [x1, y1], [x0, y1]];
+    else if (o.kind === 'ellipse') { const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2; v = [...Array(48)].map((_, i) => [cx + (x1 - x0) / 2 * Math.cos(i / 24 * Math.PI), cy + (y1 - y0) / 2 * Math.sin(i / 24 * Math.PI)]); }
+    else { const r = Math.min(o.r || 0, (x1 - x0) / 2, (y1 - y0) / 2); v = []; [[x1 - r, y1 - r, 0], [x0 + r, y1 - r, 0.5], [x0 + r, y0 + r, 1], [x1 - r, y0 + r, 1.5]].forEach(([cx, cy, st]) => { for (let i = 0; i <= 8; i++) { const t = (st + i / 16) * Math.PI; v.push([cx + r * Math.cos(t), cy + r * Math.sin(t)]); } }); }
+    const c = { ...o, kind: 'poly', pts: v }; delete c.r; delete c.open; return [c];
+  }
+  return [o];
+}
+function rotateAbout(o, cx, cy, a) {
+  const cs = Math.cos(a), sn = Math.sin(a);
+  o.pts = o.pts.map(q => { const x = q[0] - cx, y = q[1] - cy, r = [cx + x * cs - y * sn, cy + x * sn + y * cs]; return q.length > 2 ? [r[0], r[1], q[2]] : r; });
+  if (o.type === 'text') o.rot = (o.rot || 0) + a;
+  delete o.tr;
+}
 export function shiftObj(o, dx, dy) {
   o.pts = o.pts.map(q => q.length > 2 ? [q[0] + dx, q[1] + dy, q[2]] : [q[0] + dx, q[1] + dy]);
   if (o.rects) o.rects = o.rects.map(r => [r[0] + dx, r[1] + dy, r[2] + dx, r[3]]);
@@ -531,6 +574,25 @@ export function attachPointer(surface, opts) {
     if (erasing) { surface.snapshot(); toEraser(); if (eraseAt(p, act.r)) surface.render(); return; }
     if (S.tool === 'lasso') {
       const sel = surface.sel;
+      if (sel && sel.box) {
+        const m = opts.map(), px = m.X(p), py = m.Y(p), hs = selHandles(sel.box, surface.cv.clientHeight), near = (c, r) => Math.hypot(px - c[0], py - c[1]) < r;
+        const ids = sel.ids.filter(i => surface.objs[i]);
+        if (near(hs.rot, 20)) {
+          surface.snapshot();
+          // turn shapes and snapped highlights into outlines first, so they can rotate
+          const keep = surface.objs.filter((o, i) => !ids.includes(i)), turned = ids.flatMap(i => rotatable(surface.objs[i]));
+          surface.objs.splice(0, surface.objs.length, ...keep, ...turned);
+          sel.ids = turned.map((_, j) => keep.length + j);
+          const c = [(sel.box[0] + sel.box[2]) / 2 / m.k, (sel.box[1] + sel.box[3]) / 2 / m.k];
+          act = { rotate: true, c, a0: Math.atan2(p[1] - c[1], p[0] - c[0]), orig: sel.ids.map(i => JSON.parse(JSON.stringify(surface.objs[i]))) }; return;
+        }
+        const ci = hs.corners.findIndex(c => near(c, 20));
+        if (ci >= 0) {
+          surface.snapshot();
+          const opp = hs.corners[(ci + 2) % 4], anchor = [opp[0] / m.k, opp[1] / m.k];
+          act = { scale: true, anchor, d0: Math.max(1, dist(anchor, p)), orig: ids.map(i => JSON.parse(JSON.stringify(surface.objs[i]))), ids }; return;
+        }
+      }
       if (sel && sel.box) { const m = opts.map(), cx = m.X(p), cy = m.Y(p); if (cx > sel.box[0] && cx < sel.box[2] && cy > sel.box[1] && cy < sel.box[3]) { surface.snapshot(); act = { move: true, last: p }; return; } }
       surface.sel = null; surface.lasso = [p]; act = { lasso: true }; surface.render(); opts.selChanged(); return;
     }
@@ -566,6 +628,8 @@ export function attachPointer(surface, opts) {
     const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
     if (act.erase) { let ch = false; for (const ev of evs) ch = eraseAt(units(ev), act.r) || ch; const lp = units(e); surface.cursor = [lp[0], lp[1], act.r]; surface.request(); return; }
     if (act.lasso) { surface.lasso.push(units(e)); surface.request(); return; }
+    if (act.scale) { const p = units(e), k = Math.max(0.1, Math.min(10, dist(act.anchor, p) / act.d0)); act.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); scaleAbout(o, act.anchor[0], act.anchor[1], k); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
+    if (act.rotate) { const p = units(e); let a = Math.atan2(p[1] - act.c[1], p[0] - act.c[0]) - act.a0; const snap = Math.round(a / (Math.PI / 12)) * (Math.PI / 12); if (Math.abs(a - snap) < 0.05) a = snap; surface.sel.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); rotateAbout(o, act.c[0], act.c[1], a); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
     if (act.move) { const p = units(e), dx = p[0] - act.last[0], dy = p[1] - act.last[1]; act.last = p; act.moved = true; for (const i of surface.sel.ids) shiftObj(surface.objs[i], dx, dy); surface.request(); return; }
     if (act.shape) { surface.live.pts[1] = units(e); surface.request(); return; }
     if (act.snapHl) {
@@ -623,7 +687,8 @@ export function attachPointer(surface, opts) {
       const o = surface.live; surface.live = null;
       const ok = o.type === 'text' || o.type === 'pen' || (o.type === 'hl' && o.snap ? (o.rects ? o.rects.some(r => Math.abs(r[2] - r[0]) > 2) : Math.abs(o.pts[1][0] - o.pts[0][0]) > 2) : o.pts.length > 1) || (o.type === 'shape' && dist(o.pts[0], o.pts[o.pts.length - 1]) >= 2) || (o.type === 'shape' && o.kind !== 'line' && o.kind !== 'arrow');
       if (ok) surface.objs.push(o); surface.render(); opts.changed(o);
-    } else if (act.erase || (act.move && act.moved)) { surface.render(); opts.changed(); }
+    } else if (act.erase || ((act.move || act.scale || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
+    else if (act.rotate) { surface.render(); opts.changed(); }
     act = null;
   };
   cv.addEventListener('pointerup', e => { if (e.pointerType === 'mouse' && btn) { logPen(e); btnEnd(); return; } end(e); }); cv.addEventListener('pointercancel', e => { logPen(e); end(e); });
