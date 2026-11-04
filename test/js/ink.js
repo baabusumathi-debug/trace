@@ -237,6 +237,7 @@ class Surface {
         this.sel.box = [x0 - 10, y0 - 10, x1 + 10, y1 + 10];
       }
     }
+    if (this.cursor) { const [cx, cy, cr] = this.cursor; g.save(); g.beginPath(); g.arc(m.X([cx, 0]), m.Y([0, cy]), cr * m.k, 0, Math.PI * 2); g.fillStyle = 'rgba(255,159,10,.12)'; g.fill(); g.strokeStyle = 'rgba(255,159,10,.9)'; g.lineWidth = 1.5; g.stroke(); g.restore(); }
     if (this.o.limits && this.o.limits()) {
       // where the writing area ends: short, faint dotted marks at the ends of the top and bottom edges (not a box)
       g.save(); g.setLineDash([2, 5]); g.strokeStyle = 'rgba(120,98,52,.5)'; g.lineWidth = 1.2; const L = Math.min(48, W / 6);
@@ -351,7 +352,7 @@ export class Toolbar {
       + slider('Size', 'er.size', 5, 60, 1, S.er.size, v => v)
       + `<div class="ik-row"><label>Highlighter only</label><div class="ik-pt"><button class="${S.er.hlOnly ? 'on' : ''}" data-hlo="1">On</button><button class="${!S.er.hlOnly ? 'on' : ''}" data-hlo="0">Off</button></div></div>
         <div class="ik-row"><label>S Pen button</label><span class="ik-note">hold the side button while writing to erase · last pen signal: <b class="mono">${penSignal()}</b></span></div>
-        <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><pre class="ik-penlog" data-penlog>${penLines() || '—'}</pre>
+        <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><button class="ik-more" data-logclear style="margin:4px 0">Clear log</button><pre class="ik-penlog" data-penlog>${penLines() || '—'}</pre>
         <div class="ik-row"><label></label><button class="ik-more" data-clear>Clear this side</button></div>`;
     if (t === 'lasso') return `<div class="ik-row"><label>Select</label><span class="ik-note">draw a loop round ink or highlights, or tap one mark; drag inside the box to move; Delete in the blue bar</span></div>`;
     if (t === 'shape') return `<div class="ik-row"><label>Draw</label><div class="ik-pt">${[['free', 'Freehand'], ['line', 'Line'], ['arrow', 'Arrow'], ['rect', 'Rectangle'], ['ellipse', 'Ellipse'], ['tri', 'Triangle']].map(([k, l]) => `<button class="${S.shape.kind === k ? 'on' : ''}" data-sk="${k}">${l}</button>`).join('')}</div></div>
@@ -373,6 +374,7 @@ export class Toolbar {
     const pc = h.querySelector('[data-paste-cancel]'); if (pc) pc.onclick = () => { this.api.setPasting(false); this.draw(); };
     h.querySelectorAll('[data-selc]').forEach(d => d.onclick = () => this.api.selAction('colour', d.dataset.selc));
     h.querySelectorAll('[data-selw]').forEach(d => d.onclick = () => this.api.selAction('width', +d.dataset.selw));
+    const lc = h.querySelector('[data-logclear]'); if (lc) lc.onclick = () => { penLog.length = 0; logT0 = 0; const pre = h.querySelector('[data-penlog]'); if (pre) pre.textContent = '—'; };
     const pt = h.querySelector('[data-pentest]');
     if (pt) {
       const show = () => { const pre = h.querySelector('[data-penlog]'); if (pre) pre.textContent = penLines(); };
@@ -464,13 +466,13 @@ export function attachPointer(surface, opts) {
   const arm = on => { armed = on ? Date.now() : 0; if (opts.armChanged) opts.armChanged(!!armed); };
   cv.addEventListener('pointerover', e => {
     logPen(e);
-    if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); return; }
+    if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); sideMove(e); return; }
     if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
       arm(true);
       if (act && (act.draw || act.shape || act.snapHl)) { surface.live = null; surface.pred = null; clearTimeout(holdT); act = { erase: true, r: (S.er.size / 2) * opts.unitPerPx() }; surface.render(); }
     }
   });
-  cv.addEventListener('pointerout', e => { if (e.pointerType === 'pen' && act && act.btnPen) { act = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); } if (e.pointerType === 'mouse') { logPen(e); btnEnd(); if (!(act && act.erase)) arm(false); } });
+  cv.addEventListener('pointerout', e => { if (e.pointerType === 'pen' && act && act.btnPen) { act = null; surface.cursor = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); } if (e.pointerType === 'mouse') { logPen(e); btnEnd(); if (!(act && act.erase)) arm(false); } });
   cv.addEventListener('selectstart', e => { if (opts.writing()) e.preventDefault(); });
   const units = e => opts.toUnits(e.clientX, e.clientY);
   const pr = e => (e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.5);
@@ -539,23 +541,14 @@ export function attachPointer(surface, opts) {
       return;
     }
     if (e.pointerType === 'pen') penSeen = Date.now();
-    // Third look at the Tab (4 Nov 16:03): with the side button held, touching the glass sends NO pointerdown;
-    // the pen arrives under a new id as moves with buttons 1 and pressure 0. That is the side-button signature: erase.
-    if (e.pointerType === 'pen' && opts.writing() && (!act || act.btnPen)) {
-      if ((e.buttons & 1) && !(e.pressure > 0)) {
-        if (!act) { surface.snapshot(); surface.live = null; act = { erase: true, btnPen: true, r: (S.er.size / 2) * opts.unitPerPx() }; if (opts.armChanged) opts.armChanged(true); logPen(e, 'side-erase'); }
-        const evs2 = e.getCoalescedEvents ? e.getCoalescedEvents() : []; let ch = false;
-        for (const ev of (evs2.length ? evs2 : [e])) ch = eraseAt(units(ev), act.r) || ch;
-        if (ch) surface.request(); return;
-      } else if (act && act.btnPen) { act = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); }
-    }
+    if (sideMove(e)) return;
     if (e.pointerType === 'pen') { if (e.buttons !== lastPen.buttons) { lastPen = { buttons: e.buttons, button: e.button, at: Date.now() }; logPen(e); } if (!act) hoverSide = !!sideButton(e); }
     if (!act) return;
     // the S Pen side button pressed in the middle of a stroke: switch to the eraser at once
     if (sideButton(e) && (act.draw || act.shape || act.snapHl)) { toEraser(); surface.render(); }
     if (act.touch) { opts.scrollBy(act.y - e.clientY); act.y = e.clientY; return; }
     const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
-    if (act.erase) { let ch = false; for (const ev of evs) ch = eraseAt(units(ev), act.r) || ch; if (ch) surface.request(); return; }
+    if (act.erase) { let ch = false; for (const ev of evs) ch = eraseAt(units(ev), act.r) || ch; const lp = units(e); surface.cursor = [lp[0], lp[1], act.r]; surface.request(); return; }
     if (act.lasso) { surface.lasso.push(units(e)); surface.request(); return; }
     if (act.move) { const p = units(e), dx = p[0] - act.last[0], dy = p[1] - act.last[1]; act.last = p; act.moved = true; for (const i of surface.sel.ids) shiftObj(surface.objs[i], dx, dy); surface.request(); return; }
     if (act.shape) { surface.live.pts[1] = units(e); surface.request(); return; }
@@ -575,8 +568,29 @@ export function attachPointer(surface, opts) {
       }
     }
   });
+  // Third look at the Tab (4 Nov 16:03): with the side button held, touching the glass sends NO pointerdown;
+  // the pen arrives under a new id as moves with buttons 1 and pressure 0. That is the side-button signature: erase.
+  // Handled on pointerrawupdate too (fires sooner than pointermove), with the path between samples filled in.
+  function sideMove(e) {
+    if (e.pointerType !== 'pen' || !opts.writing() || (act && !act.btnPen)) return false;
+    if ((e.buttons & 1) && !(e.pressure > 0)) {
+      if (!act) { surface.snapshot(); surface.live = null; act = { erase: true, btnPen: true, r: (S.er.size / 2) * opts.unitPerPx(), last: null }; if (opts.armChanged) opts.armChanged(true); logPen(e, 'side-erase'); }
+      const evs2 = e.getCoalescedEvents ? e.getCoalescedEvents() : []; let ch = false;
+      for (const ev of (evs2.length ? evs2 : [e])) {
+        const p = units(ev), l = act.last;
+        if (l) { const d = dist(l, p), n = Math.min(12, Math.floor(d / (act.r * 0.7))); for (let i = 1; i <= n; i++) ch = eraseAt([l[0] + (p[0] - l[0]) * i / (n + 1), l[1] + (p[1] - l[1]) * i / (n + 1)], act.r) || ch; }
+        ch = eraseAt(p, act.r) || ch; act.last = p;
+      }
+      surface.cursor = [act.last[0], act.last[1], act.r];
+      if (ch) surface.render(); else surface.request();
+      return true;
+    }
+    if (act && act.btnPen) { act = null; armed = 0; surface.cursor = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); }
+    return false;
+  }
+  if ('onpointerrawupdate' in window) cv.addEventListener('pointerrawupdate', e => { if (e.pointerType === 'pen') sideMove(e); });
   const end = e => {
-    clearTimeout(holdT); surface.pred = null;
+    clearTimeout(holdT); surface.pred = null; surface.cursor = null;
     if (armed && e && e.pointerType === 'pen') arm(false);
     if (e && e.type === 'pointerup') logPen(e);
     if (!act) return;
