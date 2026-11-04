@@ -253,6 +253,7 @@ function wireSurface(s) {
       st.last = surf;
     },
     pasting: () => pasting, pasteAt: p => pasteInto(s, p),
+    armChanged: on => { const h = st.opts.toolbarHost && st.opts.toolbarHost(); if (h) h.classList.toggle('ik-armed', on); },
     textAt: (p, e, hit) => textAt(s, p, hit),
     changed: o => { st.last = s; if (o && s === st.overlay && !o.a) o.a = s.anchorFor(o.pts[0]); if (s !== st.overlay) drawChevrons(); markDirty(); }
   });

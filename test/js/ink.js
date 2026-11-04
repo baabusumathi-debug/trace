@@ -377,7 +377,7 @@ export class Toolbar {
     if (pt) {
       const show = () => { const pre = h.querySelector('[data-penlog]'); if (pre) pre.textContent = penLines(); };
       let lastB = -1;
-      ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'pointerover', 'pointerout'].forEach(ty => pt.addEventListener(ty, e => { if (e.pointerType === 'pen') penSeen = Date.now(); logPen(e); show(); e.preventDefault(); }));
+      ['pointerdown', 'pointermove', 'pointerup', 'pointercancel', 'pointerover', 'pointerout', 'mousedown', 'mouseup', 'auxclick'].forEach(ty => pt.addEventListener(ty, e => { if (e.pointerType === 'pen') penSeen = Date.now(); logPen(e); show(); e.preventDefault(); }));
       pt.addEventListener('contextmenu', e => { e.preventDefault(); logPen(e, 'contextmenu'); show(); }); pt.addEventListener('selectstart', e => e.preventDefault());
     }
     h.querySelector('[data-undo]').onclick = () => this.api.undo();
@@ -426,7 +426,7 @@ let logT0 = 0;
 function logPen(e, tag) {
   // repeated identical events collapse into one line with a count, so the log shows the real sequence
   const now = Date.now(); if (!logT0 || now - logT0 > 8000) logT0 = now;
-  const key = `${tag || e.type.replace('pointer', '')} · ${e.pointerType || '-'} · button ${e.button} · buttons ${e.buttons}${e.pressure ? ' · p ' + e.pressure.toFixed(2) : ''}`;
+  const key = `${tag || e.type.replace('pointer', '')} · ${e.pointerType || (e.type.startsWith('mouse') || e.type === 'auxclick' ? 'mouse-compat' : '-')}${e.pointerId != null ? '#' + e.pointerId : ''} · button ${e.button} · buttons ${e.buttons}${e.pressure ? ' · p ' + e.pressure.toFixed(2) : ''}`;
   if (penLog.length && penLog[0].key === key) { penLog[0].n++; penLog[0].t = now - logT0; }
   else { penLog.unshift({ key, n: 1, t: now - logT0 }); penLog.length = Math.min(penLog.length, 18); }
 }
@@ -458,8 +458,19 @@ export function attachPointer(surface, opts) {
     clearTimeout(btnT); btnT = setTimeout(btnEnd, 450);
   };
   cv.addEventListener('contextmenu', e => { logPen(e, 'contextmenu'); if (!opts.writing()) return; e.preventDefault(); e.stopPropagation(); if (penRecent() || e.pointerType === 'mouse') btnErase(e); });
-  cv.addEventListener('pointerover', e => { logPen(e); if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); } });
-  cv.addEventListener('pointerout', e => { if (e.pointerType === 'mouse') btnEnd(); });
+  // Second signal seen on the Tab (4 Nov 15:56): pressing the side button makes a separate "mouse" pointer appear
+  // over the card (pointerover · mouse) while the pen itself carries on as a pen. That arms the eraser for the next stroke.
+  let armed = 0;
+  const arm = on => { armed = on ? Date.now() : 0; if (opts.armChanged) opts.armChanged(!!armed); };
+  cv.addEventListener('pointerover', e => {
+    logPen(e);
+    if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); return; }
+    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
+      arm(true);
+      if (act && (act.draw || act.shape || act.snapHl)) { surface.live = null; surface.pred = null; clearTimeout(holdT); act = { erase: true, r: (S.er.size / 2) * opts.unitPerPx() }; surface.render(); }
+    }
+  });
+  cv.addEventListener('pointerout', e => { if (e.pointerType === 'mouse') { logPen(e); btnEnd(); if (!(act && act.erase)) arm(false); } });
   cv.addEventListener('selectstart', e => { if (opts.writing()) e.preventDefault(); });
   const units = e => opts.toUnits(e.clientX, e.clientY);
   const pr = e => (e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.5);
@@ -497,7 +508,7 @@ export function attachPointer(surface, opts) {
     e.preventDefault(); cv.setPointerCapture(e.pointerId);
     if (e.pointerType === 'pen') lastPen = { buttons: e.buttons, button: e.button, at: Date.now() };
     if (opts.onDown) opts.onDown(surface);
-    const p = units(e), erasing = sideButton(e) || hoverSide || S.tool === 'er';
+    const p = units(e), erasing = sideButton(e) || hoverSide || !!armed || S.tool === 'er';
     if (opts.pasteAt && opts.pasting && opts.pasting()) { opts.pasteAt(p); return; }
     if (erasing) { surface.snapshot(); toEraser(); if (eraseAt(p, act.r)) surface.render(); return; }
     if (S.tool === 'lasso') {
@@ -556,6 +567,7 @@ export function attachPointer(surface, opts) {
   });
   const end = e => {
     clearTimeout(holdT); surface.pred = null;
+    if (armed && e && e.pointerType === 'pen') arm(false);
     if (e && e.type === 'pointerup') logPen(e);
     if (!act) return;
     if (act.lasso) {
