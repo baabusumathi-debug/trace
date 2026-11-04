@@ -130,7 +130,7 @@ function inPoly(p, poly) { let c = false; for (let i = 0, j = poly.length - 1; i
 class Surface {
   constructor(canvas, objs, opts) {
     this.cv = canvas; this.objs = objs || []; this.o = opts; this.undo = []; this.redo = []; this.sel = null; this.live = null;
-    this.g = canvas.getContext('2d', { desynchronized: true });
+    this.g = canvas.getContext('2d');
   }
   snapshot() { this.undo.push(JSON.stringify(this.objs)); if (this.undo.length > 60) this.undo.shift(); this.redo = []; }
   doUndo() { if (!this.undo.length) return; this.redo.push(JSON.stringify(this.objs)); this.objs.splice(0, this.objs.length, ...JSON.parse(this.undo.pop())); this.sel = null; this.render(); this.o.changed(); }

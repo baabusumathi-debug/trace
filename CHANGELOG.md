@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-057)
+## State (as of entry T-058)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.9** · promoted from test 1.3.33 on 4 Nov (T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.34** · last code commit: see entry T-057. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.35** · last code commit: see entry T-058. Live is 1.4.9 (= test 1.3.33). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-058 — 2026-11-04 — Claude — test — 1.3.35
+- Fix (Naven's Tab, 4 Nov 14:07): on the Tab every card showed a black body — the ink canvas was created with Chrome's low-latency `desynchronized` mode, which Android draws as an opaque black layer. Ink canvases now use the normal 2D context (transparent).
 
 ## T-057 — 2026-11-04 — Claude — test — 1.3.34
 - **Ink on cards, stage 1** (Naven, 4 Nov: Samsung Notes look and tools): a pen button on every Flow card turns on writing. A dark Samsung-Notes-style toolbar opens above the card: Pen (Fountain pen, Pen, Pencil, Calligraphy, Brush; size as a number 0.5–20; 14 preset colours + 84 swatches + any colour), Highlighter (size 4–40, opacity %, **snap to text line** on/off), Eraser (stroke or partial, size, highlighter-only, clear), Lasso (select → move by dragging, apply pen style, copy, delete), Undo/Redo, Shapes (line, arrow, rectangle, ellipse, triangle; **auto shape**: draw, then hold), Text (size, bold, colour). Pen and mouse write; fingers scroll; the S Pen side button / eraser end erases while held; pressure changes width.
