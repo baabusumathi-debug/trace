@@ -1458,8 +1458,9 @@ function qbBoxes(c) {
   const q = qbOf(c);
   if (!q) return '';
   let h = '';
-  if (q.lines && q.lines.length) h += `<div class="box qlines"><span class="mono">TOP-UP LINES</span><div class="bx">${q.lines.map(bankLine).join('')}</div></div>`;
-  if (q.cross && q.cross.length) h += `<div class="box qcross"><span class="mono">CROSSFIRE</span><div class="bx">${q.cross.map(l => `<p>${inline(l)}</p>`).join('')}</div></div>`;
+  // folded by default (4 Nov): the exam add-ons open only when tapped, so the card itself reads as a card
+  if (q.lines && q.lines.length) h += `<details class="box qlines qfold"><summary class="mono">TOP-UP LINES · ${q.lines.length} <span class="qf-hint">tap to open</span></summary><div class="bx">${q.lines.map(bankLine).join('')}</div></details>`;
+  if (q.cross && q.cross.length) h += `<details class="box qcross qfold"><summary class="mono">CROSSFIRE · ${q.cross.length} <span class="qf-hint">tap to open</span></summary><div class="bx">${q.cross.map(l => `<p>${inline(l)}</p>`).join('')}</div></details>`;
   return h;
 }
 function qbFix(c) {

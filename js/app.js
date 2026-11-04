@@ -9,6 +9,7 @@ import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
 import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
+import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
@@ -1326,6 +1327,7 @@ async function endFlow() {
   if (!flow) return;
   clearInterval(flow.tick);
   document.removeEventListener('keydown', flowKeys);
+  unmountInk();
   closePanel(); releaseUrls();
   if (flow.pilot) stopPolling();
   const sid = flow.session, back = flow.returnTo, browse = flow.browse;
@@ -1363,6 +1365,7 @@ function renderFlow() {
       <p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Again cards come back at the end of this flow. Space reveals and moves on · A = Again · U = Undo · E = Edit · Esc ends.'}</p>
     </aside>
     <main class="f-main">
+      <div class="ik-host" id="f-ink" hidden></div>
       ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div>'}
       <div class="card-wrap"><article class="card" id="card"></article></div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
@@ -1403,7 +1406,7 @@ function drawCard() {
       ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
-    body = `<button class="c-q" data-act="reveal" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}<span class="star">✦</span></button>`;
+    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}<span class="star">✦</span></div>`;
   } else {
     body = `<div class="c-a">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
@@ -1429,9 +1432,11 @@ function drawCard() {
   el.scrollTop = 0;
   const a = el.querySelector('.c-a'); if (a) a.scrollTop = 0;
   big.innerHTML = isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
-  el.querySelectorAll('[data-act=reveal]').forEach(b => b.onclick = reveal);
+  el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = () => { if (!isWriting()) reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
+  const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
+  mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {} });
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };
@@ -1453,8 +1458,9 @@ function qbBoxes(c) {
   const q = qbOf(c);
   if (!q) return '';
   let h = '';
-  if (q.lines && q.lines.length) h += `<div class="box qlines"><span class="mono">TOP-UP LINES</span><div class="bx">${q.lines.map(bankLine).join('')}</div></div>`;
-  if (q.cross && q.cross.length) h += `<div class="box qcross"><span class="mono">CROSSFIRE</span><div class="bx">${q.cross.map(l => `<p>${inline(l)}</p>`).join('')}</div></div>`;
+  // folded by default (4 Nov): the exam add-ons open only when tapped, so the card itself reads as a card
+  if (q.lines && q.lines.length) h += `<details class="box qlines qfold"><summary class="mono">TOP-UP LINES · ${q.lines.length} <span class="qf-hint">tap to open</span></summary><div class="bx">${q.lines.map(bankLine).join('')}</div></details>`;
+  if (q.cross && q.cross.length) h += `<details class="box qcross qfold"><summary class="mono">CROSSFIRE · ${q.cross.length} <span class="qf-hint">tap to open</span></summary><div class="bx">${q.cross.map(l => `<p>${inline(l)}</p>`).join('')}</div></details>`;
   return h;
 }
 function qbFix(c) {

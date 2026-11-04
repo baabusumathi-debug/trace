@@ -244,6 +244,7 @@ export async function mountInk(cardEl, card, face, opts) {
   drawRooms();
   st.overlay.relayout();
   applyMode();
+  box.addEventListener('toggle', () => { if (cur === st) st.overlay.relayout(); }, true);
   let lastW = box.clientWidth;
   new ResizeObserver(() => { if (cur !== st) return; st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); if (Math.abs(box.clientWidth - lastW) > 2) lastW = box.clientWidth; }).observe(box);
 }
