@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-072)
+## State (as of entry T-073)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.48** · last code commit: see entry T-072. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.49** · last code commit: see entry T-073. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,21 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-073 — 2026-11-05 — Claude — test — 1.3.49
+Naven's Tab check of 1.3.48.
+- **Draggable divider** between the card and Explain: side by side in landscape, stacked in portrait. Limits 22–78%, remembered per profile and orientation; double-tap resets it.
+- **Lasso over words selects the words** (when no ink is inside the loop), on either pane. Bar: Highlight (snapped highlights that keep their words) · Copy text (system clipboard) · ? Still unclear (Explain only).
+- **Highlighter snap is automatic, with no On/Off.** It snaps only when the stroke starts on words; beside or after a line it draws freely. Before, the snap also caught empty space to the right of the text.
+- **Marks dragged with the lasso from one pane onto the other now move there** (Explain ↔ card), converted to that pane's units. Text-tied highlights become free marks.
+- **No more false orange eraser on the first touch after picking a tool.**
+  - The side-button signature (pen moves with buttons 1, pressure 0, no press) must now hold for 70 ms.
+  - It never counts within 250 ms of, or during, a real pen press anywhere on the page.
+  - A real press cancels it.
+- **Tap a tile in the strip** to look at that walked card (the same look-only Back); the current tile brings you back. The tile you're looking at is outlined.
+- **Readout:** a progress number with a thin bar replaces the round dial; time, per card and versus average sit in one quiet box.
+- Removed the "explain vXXXX" version tag under each explanation.
+- Demo check: divider drag, tile jump (shows 2 cards back), lasso over Explain text shows the bar; no errors.
 
 ## T-072 — 2026-11-05 — Claude — test — 1.3.48
 Naven's notes from the Tab, 5 Nov: more room for the card and Explain, a PDF-like fit, ink on Explain, and the broken timer.

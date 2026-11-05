@@ -1288,3 +1288,36 @@ details.qfold>.bx{margin-top:8px}
 .xp-pane.inking .ink-ov{pointer-events:auto}
 .xp-pane.inking{cursor:crosshair;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .ik-selbar .ik-unclear{background:#6a4fe0;color:#fff;border-color:#6a4fe0}
+/* lasso over words (T-072) */
+.ik-tmark{position:fixed;z-index:70;background:rgba(122,92,255,.18);border-radius:3px;pointer-events:none}
+.ik-tsel{position:fixed;z-index:80;display:flex;gap:4px;background:#2b2b2f;border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.ik-tsel button{border:0;border-radius:7px;background:#3a3b40;color:#fff;font-size:13px;padding:6px 10px;cursor:pointer}
+.ik-tsel .ik-unclear{background:#6a4fe0}
+/* controls stay tappable above the ink layer */
+.fitc,.xp.v2 .xp-bar{position:relative;z-index:5}
+.xp.v2 .xp-bar{position:sticky}
+/* T-072b: progress meter + stats as one quiet readout (no round dial) */
+.flow.v3 .ring{width:auto;height:auto;display:flex;flex-direction:column;align-items:stretch;gap:3px;min-width:74px}
+.flow.v3 .ring .pg-n{font-size:14px;color:var(--ink);line-height:1}.flow.v3 .ring .pg-n small{font-size:10px;color:var(--muted)}
+.flow.v3 .ring .pg{display:block;height:4px;border-radius:2px;background:var(--line2);overflow:hidden}
+.flow.v3 .ring .pg i{display:block;height:100%;background:var(--gold);border-radius:2px}
+.flow.v3 .f-stats{background:#1c1e23;border:1px solid #2f3238!important;border-radius:10px;padding:4px 12px!important;gap:0!important}
+.flow.v3 .f-stats>span{padding:0 10px!important;flex-direction:column!important;align-items:flex-start}
+.flow.v3 .f-stats>span+span{border-left:1px solid #33363c!important}
+.flow.v3 .f-stats i{font-size:8px;letter-spacing:.14em;color:#8d8778}
+.flow.v3 .f-stats b{font-size:14px!important;font-variant-numeric:tabular-nums}
+.flow.v3 .f-strip .ft{cursor:pointer}
+.flow.v3 .f-strip .ft.look{outline:2px solid #7f9bc0;outline-offset:1px}
+/* divider between the card and Explain */
+.a-div{flex:0 0 12px;display:flex;align-items:center;justify-content:center;cursor:row-resize;touch-action:none;background:#f6f2e8;border-top:1px solid #e6dfcf;border-bottom:1px solid #e6dfcf}
+.a-div i{width:48px;height:4px;border-radius:2px;background:#b9ae94}
+.a-split:not(.xp-on)>.a-div{display:none}
+.a-split.xp-on>.c-a{flex:0 0 var(--split,46%)!important;max-height:none!important;border:0!important}
+.a-split.xp-on>.xp-pane{flex:1 1 0!important}
+.a-split.dragging{user-select:none}
+.a-split.dragging .a-div i{background:#2b2b2f}
+@media (orientation:landscape) and (min-width:900px){
+  .a-div{cursor:col-resize;border:0;border-left:1px solid #e6dfcf;border-right:1px solid #e6dfcf}
+  .a-div i{width:4px;height:48px}
+  .a-split.xp-on>.c-a{flex:0 0 var(--split,52%)!important}
+}

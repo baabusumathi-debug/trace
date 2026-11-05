@@ -366,7 +366,7 @@ export class Toolbar {
     if (t === 'pen') return `<div class="ik-row"><label>Type</label><div class="ik-pt">${PEN_TYPES.map(([k, l]) => `<button class="${S.pen.type === k ? 'on' : ''}" data-pt="${k}">${l}</button>`).join('')}</div></div>`
       + slider('Size', 'pen.size', 0.5, 20, 0.5, S.pen.size, v => (+v).toFixed(1)) + colourRow(S.pen.color, this.more)
       + `<div class="ik-prev"><canvas width="560" height="56" data-prev></canvas></div>`;
-    if (t === 'hl') return `<div class="ik-row"><label>Snap to text</label><div class="ik-pt"><button class="${S.hl.snap ? 'on' : ''}" data-snap="1">On</button><button class="${!S.hl.snap ? 'on' : ''}" data-snap="0">Off</button></div></div>`
+    if (t === 'hl') return `<div class="ik-row"><label>Snap</label><span class="ik-note">Automatic: over words it follows the line of text; anywhere else it draws freely</span></div>`
       + slider('Size', 'hl.size', 4, 40, 1, S.hl.size, v => v) + slider('Opacity', 'hl.op', 10, 90, 5, S.hl.op, v => v + '%') + colourRow(S.hl.color, this.more)
       + `<div class="ik-prev"><canvas width="560" height="56" data-prev></canvas></div>`;
     if (t === 'er') return `<div class="ik-row"><label>Eraser</label><div class="ik-pt"><button class="${S.er.mode === 'stroke' ? 'on' : ''}" data-em="stroke">Stroke</button><button class="${S.er.mode === 'partial' ? 'on' : ''}" data-em="partial">Partial</button></div></div>`
@@ -458,7 +458,11 @@ function logPen(e, tag) {
   else { penLog.unshift({ key, n: 1, t: now - logT0 }); penLog.length = Math.min(penLog.length, 18); }
 }
 const penLines = () => penLog.map(l => `${String(l.t).padStart(5)}ms  ${l.key}${l.n > 1 ? '  ×' + l.n : ''}`).join('\n');
-let penSeen = 0;                                   // last time a real pen event arrived
+let penSeen = 0;
+let penDownAt = 0, penIsDown = false;              // T-072: a real pen press anywhere on the page (toolbar included)
+addEventListener('pointerdown', e => { if (e.pointerType === 'pen') { penDownAt = Date.now(); penIsDown = true; } }, true);
+addEventListener('pointerup', e => { if (e.pointerType === 'pen') penIsDown = false; }, true);
+addEventListener('pointercancel', e => { if (e.pointerType === 'pen') penIsDown = false; }, true);                                   // last time a real pen event arrived
 const penRecent = () => Date.now() - penSeen < 20000;
 const penSignal = () => lastPen.at ? `buttons ${lastPen.buttons} · button ${lastPen.button}` : 'none yet';
 // side (barrel) button or the eraser end: any pen button beyond plain contact
@@ -563,7 +567,7 @@ export function attachPointer(surface, opts) {
   cv.addEventListener('pointerdown', e => {
     logPen(e);
     if (!opts.writing()) return;
-    if (e.pointerType === 'pen') penSeen = Date.now();
+    if (e.pointerType === 'pen') { penSeen = Date.now(); sideCand = null; if (act && act.btnPen) { act = null; surface.cursor = null; if (opts.armChanged) opts.armChanged(false); } }
     if (e.pointerType === 'mouse' && penRecent()) { e.preventDefault(); cv.setPointerCapture(e.pointerId); btnErase(e); return; }
     if (e.pointerType === 'touch') { act = { touch: true, y: e.clientY, x: e.clientX }; cv.setPointerCapture(e.pointerId); return; }
     e.preventDefault(); cv.setPointerCapture(e.pointerId);
@@ -605,7 +609,7 @@ export function attachPointer(surface, opts) {
     if (S.tool === 'shape' && S.shape.kind !== 'free') { surface.live = { type: 'shape', kind: S.shape.kind, c: S.pen.color, s: S.pen.size * opts.unitPerPx(), pts: [p, p] }; act = { shape: true }; return; }
     if (S.tool === 'hl') {
       // snap on: over words it snaps to the line of text; anywhere else it draws freely at the set size
-      if (S.hl.snap && opts.snapLine) { const line = opts.snapLine(e); if (line) { surface.live = { type: 'hl', snap: true, c: S.hl.color, o: S.hl.op / 100, h: line.h, pts: [[p[0], line.y], [p[0], line.y]], rects: line.rects || null, tr: line.tr || null }; act = { snapHl: true, line }; return; } }
+      if (opts.snapLine) { const line = opts.snapLine(e); if (line) { surface.live = { type: 'hl', snap: true, c: S.hl.color, o: S.hl.op / 100, h: line.h, pts: [[p[0], line.y], [p[0], line.y]], rects: line.rects || null, tr: line.tr || null }; act = { snapHl: true, line }; return; } }
       surface.live = { type: 'hl', c: S.hl.color, s: S.hl.size * opts.unitPerPx(), o: S.hl.op / 100, pts: [p] }; act = { draw: true }; return;
     }
     surface.live = { type: 'pen', pen: S.pen.type, c: S.pen.color, s: S.pen.size * opts.unitPerPx(), pts: [[p[0], p[1], pr(e)]] };
@@ -654,6 +658,14 @@ export function attachPointer(surface, opts) {
   function sideMove(e) {
     if (e.pointerType !== 'pen' || !opts.writing() || (act && !act.btnPen)) return false;
     if ((e.buttons & 1) && !(e.pressure > 0)) {
+      // the first samples of a normal touch can look like this too (seen right after picking a tool): wait 70 ms and make
+      // sure no real pen press arrived before treating it as the side button
+      if (!act) {
+        const now = Date.now();
+        if (penIsDown || now - penDownAt < 250) { sideCand = null; return false; }
+        if (!sideCand) { sideCand = now; return false; }
+        if (now - sideCand < 70) return false;
+      }
       if (!act) { surface.snapshot(); surface.live = null; act = { erase: true, btnPen: true, r: (S.er.size / 2) * opts.unitPerPx(), last: null }; if (opts.armChanged) opts.armChanged(true); logPen(e, 'side-erase'); }
       const evs2 = e.getCoalescedEvents ? e.getCoalescedEvents() : []; let ch = false;
       for (const ev of (evs2.length ? evs2 : [e])) {
@@ -668,6 +680,7 @@ export function attachPointer(surface, opts) {
     if (act && act.btnPen) { act = null; armed = 0; surface.cursor = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); }
     return false;
   }
+  let sideCand = null;
   if ('onpointerrawupdate' in window) cv.addEventListener('pointerrawupdate', e => { if (e.pointerType === 'pen') sideMove(e); });
   const end = e => {
     clearTimeout(holdT); surface.pred = null; surface.cursor = null;
@@ -683,11 +696,13 @@ export function attachPointer(surface, opts) {
       // most sensitive: any part inside the loop, or the loop line passing over it, selects it
       else ids = surface.objs.map((o, i) => (densePts(o).some(q => inPoly(q, poly)) || poly.some(q => hits(o, q, tol))) ? i : -1).filter(i => i >= 0);
       surface.sel = ids.length ? { ids } : null; surface.render(); opts.selChanged();
+      if (!ids.length && !tiny && opts.lassoText) opts.lassoText(poly);
     } else if (surface.live) {
       const o = surface.live; surface.live = null;
       const ok = o.type === 'text' || o.type === 'pen' || (o.type === 'hl' && o.snap ? (o.rects ? o.rects.some(r => Math.abs(r[2] - r[0]) > 2) : Math.abs(o.pts[1][0] - o.pts[0][0]) > 2) : o.pts.length > 1) || (o.type === 'shape' && dist(o.pts[0], o.pts[o.pts.length - 1]) >= 2) || (o.type === 'shape' && o.kind !== 'line' && o.kind !== 'arrow');
       if (ok) surface.objs.push(o); surface.render(); opts.changed(o);
-    } else if (act.erase || ((act.move || act.scale || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
+    } else if (act.move && act.moved && e && opts.dropOut && opts.dropOut(e)) { /* moved to another area */ }
+    else if (act.erase || ((act.move || act.scale || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
     else if (act.rotate) { surface.render(); opts.changed(); }
     act = null;
   };

@@ -1359,6 +1359,17 @@ function peekBack() {
   flow.peek = (flow.peek || 0) + 1;
   animate('back', () => { drawCard(); updateFlowChrome(); });
 }
+// tap a tile: a walked card opens to look at (nothing changes); the current one brings you back
+function jumpTo(i) {
+  if (!flow || flow.busy || flow.pausedAt) return;
+  if (i === flow.idx) { if (flow.peek) peekForward(true); return; }
+  let k = -1; for (let j = flow.hist.length - 1; j >= 0; j--) if (flow.hist[j].idx === i) { k = j; break; }
+  if (k < 0) { toast(i > flow.idx ? 'That card is still ahead in this flow.' : 'That card was undone.'); return; }
+  const want = flow.hist.length - k; if (want === flow.peek) return;
+  if (!flow.peek) flow.peekT0 = Date.now();
+  const back = want > (flow.peek || 0); flow.peek = want;
+  animate(back ? 'back' : 'deal', () => { drawCard(); updateFlowChrome(); });
+}
 function peekForward(all) {
   if (!flow || !flow.peek) return;
   flow.peek = all ? 0 : flow.peek - 1;
@@ -1413,7 +1424,12 @@ function renderFlow() {
   const gear = $('#f-gear'), pop = $('#f-pop');
   gear.onclick = e => { e.stopPropagation(); pop.hidden = !pop.hidden; gear.setAttribute('aria-expanded', !pop.hidden); };
   if (!window.__fpop) window.__fpop = 1, document.addEventListener('pointerdown', e => { const pp = document.getElementById('f-pop'); if (pp && !pp.hidden && !e.target.closest('#f-pop, #f-gear')) pp.hidden = true; }, { capture: true });
-  const strip = $('#f-strip'); strip.onclick = e => { if (e.target.closest('button, a')) return; strip.classList.toggle('open'); };
+  const strip = $('#f-strip'); strip.onclick = e => {
+    if (e.target.closest('button, a')) return;
+    const t = e.target.closest('[data-ti]');
+    if (t && !flow.browse) { const i = +t.dataset.ti; jumpTo(i); return; }
+    strip.classList.toggle('open');
+  };
   $('[data-act=close]').onclick = () => askEnd();
   app.querySelectorAll('[data-ts]').forEach(b => b.onclick = () => {
     const v = Math.max(0.8, Math.min(1.5, Math.round((P.get('cardScale', 1) + 0.1 * +b.dataset.ts) * 10) / 10));
@@ -1517,6 +1533,22 @@ const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), mod
   for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
   await db.kv.set('xpUnclear', all);
 } });
+/* ---------- T-072: drag the divider between the card and Explain (remembered per profile, per orientation) ---------- */
+function setupSplit(el) {
+  const sp = el.querySelector('.a-split'), dv = sp && sp.querySelector('.a-div'); if (!dv) return;
+  const land = () => matchMedia('(orientation:landscape) and (min-width:900px)').matches, key = () => land() ? 'splitL' : 'splitP';
+  const apply = () => { const v = P.get(key(), land() ? 52 : 46); sp.style.setProperty('--split', v + '%'); };
+  apply();
+  dv.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'pen' && isWriting()) return;
+    e.preventDefault(); dv.setPointerCapture(e.pointerId); sp.classList.add('dragging');
+    const r = sp.getBoundingClientRect();
+    const mv = ev => { const v = land() ? (ev.clientX - r.left) / r.width * 100 : (ev.clientY - r.top) / r.height * 100; const c = Math.max(22, Math.min(78, v)); sp.style.setProperty('--split', c.toFixed(1) + '%'); };
+    const up = ev => { dv.removeEventListener('pointermove', mv); dv.removeEventListener('pointerup', up); dv.removeEventListener('pointercancel', up); sp.classList.remove('dragging'); P.set(key(), parseFloat(sp.style.getPropertyValue('--split')) || 50); fitPane(el, 'Card'); fitPane(el, 'Xp'); };
+    dv.addEventListener('pointermove', mv); dv.addEventListener('pointerup', up); dv.addEventListener('pointercancel', up);
+  });
+  dv.ondblclick = () => { P.set(key(), land() ? 52 : 46); apply(); fitPane(el, 'Card'); fitPane(el, 'Xp'); };
+}
 function bindXp(el, c) {
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
@@ -1569,7 +1601,7 @@ function drawCard() {
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
       ${hasExplain(c) && !v2 ? panelHtml(c, xa, { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : v2 ? '' : qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
-    </div>${v2 ? `<aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></div>` : ''}`;
+    </div>${v2 ? `<div class="a-div" role="separator" aria-label="Drag to resize the card and Explain" tabindex="0"><i></i></div><aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></div>` : ''}`;
   }
   el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + top + body;
   el.classList.toggle('peeking', !!flow.peek);
@@ -1593,6 +1625,7 @@ function drawCard() {
   bindBridges(el);
   bindXp(el, c);
   setupFit(el);
+  setupSplit(el);
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };
@@ -1657,7 +1690,8 @@ function updateFlowChrome() {
   if (!flow || !$('#f-ring')) return;
   const total = flow.queue.length, step = Math.min(total, flow.idx + (flow.done ? 0 : 1));
   const circ = 2 * Math.PI * 22;
-  $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
+  if ($('.flow.v3')) $('#f-ring').innerHTML = `<span class="pg-n mono">${step}<small>/${total}</small></span><span class="pg"><i style="width:${(step / total * 100).toFixed(1)}%"></i></span>`;
+  else $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
   drawThread();
   const fl = $('#f-live');
@@ -1677,7 +1711,7 @@ function updateFlowChrome() {
   const pkb = $('#f-peek'); if (pkb) pkb.classList.toggle('dimmed', !flow.hist.length || (flow.peek || 0) >= flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
   const fq = flow.queue.slice(0, 60);
-  $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
+  $('#f-tiles').innerHTML = fq.map((c, i) => `<span data-ti="${i}" class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}${flow.peek && flow.hist[flow.hist.length - flow.peek] && flow.hist[flow.hist.length - flow.peek].idx === i ? ' look' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
 }
 
 function animate(kind, swap) {

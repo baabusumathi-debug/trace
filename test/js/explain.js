@@ -109,7 +109,7 @@ function learnHtml(c, x, opts) {
     <div class="xp-bar"><button class="xp-tog" data-xp-tog aria-expanded="${opts.open}"><span>Explain</span></button>
       <span class="xv-seg" role="group" aria-label="Explanation depth"><button class="${learn ? 'on' : ''}" data-xp-depth="learn" aria-pressed="${learn}">Learn</button><button class="${learn ? '' : 'on'}" data-xp-depth="revise" aria-pressed="${!learn}">Revise</button></span></div>
     <div class="xp-body"${opts.open ? '' : ' hidden'}>${body}
-      <div class="xp-fb mono"><span>Was this useful?</span><button data-xp-fb="up" aria-label="Useful">👍</button><button data-xp-fb="down" aria-label="Not useful">👎</button><button data-xp-fb="long">too long</button><button data-xp-fb="short">too short</button><span class="xp-src">${x.topup ? 'Top-up · ' : ''}explain v${esc(X.v.slice(0, 4))}</span></div>
+      <div class="xp-fb mono"><span>Was this useful?</span><button data-xp-fb="up" aria-label="Useful">👍</button><button data-xp-fb="down" aria-label="Not useful">👎</button><button data-xp-fb="long">too long</button><button data-xp-fb="short">too short</button></div>
     </div></div>`;
 }
 // extra lettered parts (the rebuilt Top-up lines), shown from the second time a card is seen
