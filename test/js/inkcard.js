@@ -318,7 +318,7 @@ function selBetween(s, c0, c1) {
   for (let i = i0; i <= i1; i++) {
     const el = blocks[i], t = el.textContent; let a = i === i0 ? c0.off : 0, b = i === i1 ? c1.off : t.length;
     [a, b] = wordSnap(t, a, b); if (b - a < 1) continue;
-    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim() });
+    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
   }
   return out;
 }
@@ -334,7 +334,7 @@ function textSelect(s, act, e, phase) {
   const tap = Math.hypot(e.clientX - act.sx, e.clientY - act.sy) < 8;
   if (phase === 'move') { if (tap) return; const c1 = caretIn(s, e.clientX, e.clientY); if (c1) { act.sel = selBetween(s, act.c0, c1); drawMarks(act.sel); } return; }
   let sel = act.sel || [];
-  if (tap) { const el = act.c0.el, t = el.textContent; sel = [{ el, a: 0, b: t.length, text: t.replace(/\s+/g, ' ').trim() }]; }
+  if (tap) { const el = act.c0.el, t = el.textContent; sel = [{ el, a: 0, b: t.length, text: t.replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') }]; }
   if (!sel.length) { drawMarks([]); return; }
   textBar(s, sel, e.clientX, e.clientY);
 }
@@ -352,7 +352,7 @@ function lassoText(s, poly) {
     const a = caretIn(s, f.left + 2, f.top + f.height / 2), b = caretIn(s, l.right - 2, l.top + l.height / 2);
     let A = a && a.el === el ? a.off : 0, B = b && b.el === el ? b.off + 1 : t.length;
     [A, B] = wordSnap(t, A, Math.min(B, t.length)); if (B - A < 1) continue;
-    sel.push({ el, a: A, b: B, text: t.slice(A, B).replace(/\s+/g, ' ').trim() });
+    sel.push({ el, a: A, b: B, text: t.slice(A, B).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
   }
   if (!sel.length) return;
   const last = P.reduce((m, p) => p[1] > m[1] ? p : m, P[0]);
@@ -362,7 +362,7 @@ function textBar(s, sel, x, y) {
   document.querySelectorAll('.ik-tsel').forEach(n => n.remove());
   drawMarks(sel); const marks = tmarks;
   const bar = document.createElement('div'); bar.className = 'ik-tsel';
-  bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
+  bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}${cur && cur.opts.onAsk ? '<button data-t="ask" class="ik-ask">Ask ▸</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
   Object.assign(bar.style, { left: Math.max(8, Math.min(innerWidth - 380, x)) + 'px', top: Math.min(innerHeight - 60, y + 8) + 'px' });
   document.body.appendChild(bar);
   const close = () => { bar.remove(); drawMarks([]); removeEventListener('scroll', close, true); };
@@ -377,6 +377,7 @@ function textBar(s, sel, x, y) {
         o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
       s.render(); markDirty();
     } else if (k === 'copy') { const txt = sel.map(t => t.text).join('\n'); try { await navigator.clipboard.writeText(txt); toast('Text copied'); } catch (er) { toast('Copy was blocked by the browser'); } }
+    else if (k === 'ask' && st && st.opts.onAsk) { const r = b.getBoundingClientRect(); close(); st.opts.onAsk(sel.map(t => t.text).filter(Boolean), s === st.overlayX ? 'Explain' : 'card', r); return; }
     else if (k === 'unclear' && st && st.opts.onUnclear) { st.opts.onUnclear(sel.map(t => t.text).filter(Boolean)); toast('Saved to “Still unclear” · the next rewrite of this deck expands it'); }
     close();
   });

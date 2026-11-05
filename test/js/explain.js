@@ -89,7 +89,7 @@ function learnHtml(c, x, opts) {
   const why = (x.why || []).map(([l, t]) => `<p class="xv-part"><b class="xl">${esc(l)}</b><span>${md(t)}</span></p>`).join('');
   const tbl = x.table ? `<div class="xp-grid">${x.table.title ? `<p class="xv-tt">${md(x.table.title)}</p>` : ''}<table><thead><tr>${x.table.head.map(h => `<th>${md(h)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r => `<tr>${r.map((v, i) => i ? `<td>${md(v)}</td>` : `<th>${md(v)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
   const mim = (x.mimic || []).map(([a, b]) => `<li><b>${md(a)}</b> — ${md(b)}</li>`).join('');
-  const trp = (x.traps || []).map(([a, b]) => `<li><b>${md(a)}</b> is wrong. ${md(b)}</li>`).join('');
+  const trp = (x.traps || []).map(([a, b], i) => `<li><b>${md(a)}</b> is wrong. ${md(b)} <button class="xv-ask mono" data-ask-trap="${i}" title="Ask Claude why">ask why</button></li>`).join('');
   const dec = (x.decode || []).map(([a, b]) => `<li><span class="xv-stem">${md(a)}</span><span class="xv-ar" aria-hidden="true">→</span><b>${md(b)}</b></li>`).join('');
   const traps = trp ? (opts.traps ? sec('xv-trap', 'THE TRAPS', `<ul>${trp}</ul>`) : `<p class="xp-trapoff mono">${x.traps.length} exam trap${x.traps.length > 1 ? 's' : ''} hidden · turn traps on in the Flow panel</p>`) : '';
   const body = learn

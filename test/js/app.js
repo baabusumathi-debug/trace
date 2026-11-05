@@ -1466,7 +1466,8 @@ function drawXpToggles() {
     <span class="mono muted small">PAGE</span>
     <div class="seg">${PAGES.map(([k2, l]) => `<button class="${P.get('page', 'white') === k2 ? 'on' : ''}" data-pg="${k2}"><i class="pgsw pg-${k2}"></i>${l}</button>`).join('')}</div>
     <span class="mono muted small">PEN TOOLS</span>
-    <div class="seg"><button class="${P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:1">In the top bar</button><button class="${!P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:0">Floating</button></div></div></details>`;
+    <div class="seg"><button class="${P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:1">In the top bar</button><button class="${!P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:0">Floating</button></div></div></details>${chatSettingsHtml()}`;
+  bindChatSettings(h);
   h.querySelectorAll('[data-nv]').forEach(b => b.onclick = () => {
     const [k, v] = b.dataset.nv.split(':'); P.set(k, +v);
     if (k === 'inkDock' && flow) { renderFlow(); const p2 = $('#f-pop'); if (p2) p2.hidden = false; return; }
@@ -1578,17 +1579,92 @@ function setupSplit(el) {
 }
 // "Still unclear" (lasso or Select text on the Explain side): kept on this device per profile; Claude reads the list when it is shared
 const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, docked: () => !!P.get('inkDock', 1),
+  onAsk: (texts, from, rect) => askMenu(rect, { c, texts, from }),
   pin: () => { P.set('inkDock', P.get('inkDock', 1) ? 0 : 1); if (flow) renderFlow(); }, onUnclear: async texts => {
   const all = (await db.kv.get('xpUnclear')) || [];
   for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
   await db.kv.set('xpUnclear', all);
 } });
+/* ---------- T-077: Ask Claude — copy a ready question (card context + what you selected) and open one of your chats ----------
+   Claude can't receive a message into an existing chat from a link, so Trace copies the question and opens the chat;
+   you paste and send. Chats (name + claude.ai/chat/… link) are kept per profile in ⚙ › Claude chats. */
+const ASK_TPL = `{deck} · {code} · {title}
+Question: {question}
+Card answer: {answer}
+I selected ({from}): "{selected}"
+Explain this part properly: the mechanism, step by step.`;
+const chats = () => P.get('aiChats', []), activeChat = () => { const a = chats(), id = P.get('aiActive', ''); return a.find(x => x.id === id) || a[0] || null; };
+function askText({ c, texts, from, kind }) {
+  const one = s => plain(String(s || '')).replace(/\s+/g, ' ').trim();
+  const { head, rest } = splitQ(c.q);
+  const sel = texts && texts.length ? texts.join(' … ') : '';
+  let t = P.get('aiTpl', '') || ASK_TPL;
+  if (!sel) t = t.replace(/I selected[^\n]*\n?/, '').replace(/Explain this part properly[^\n]*/, 'Explain this card properly: the mechanism behind each part, step by step.');
+  if (kind === 'trap') t = t.replace(/I selected[^\n]*/, 'Exam trap on this card: "{selected}"').replace(/Explain this part properly[^\n]*/, 'Why is this wrong, and what is right? Show the reasoning.');
+  const m = deckMeta(c.deck) || {};
+  return t.replace(/\{deck\}/g, c.deck + (m.title ? ' (' + m.title + ')' : '')).replace(/\{code\}/g, c.code).replace(/\{title\}/g, one(head).replace(/:$/, ''))
+    .replace(/\{question\}/g, one(rest || head).slice(0, 400)).replace(/\{answer\}/g, one(c.a).slice(0, 700)).replace(/\{selected\}/g, sel).replace(/\{from\}/g, from || 'card');
+}
+async function copyText(t) { try { await navigator.clipboard.writeText(t); return true; } catch (e) { try { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok; } catch (er) { return false; } } }
+async function logAsk(o) { try { const a = (await db.kv.get('askLog')) || []; a.push({ ...o, ts: Date.now() }); await db.kv.set('askLog', a.slice(-500)); } catch (e) { /* */ } }
+async function doAsk(where, payload) {
+  const text = askText(payload), c = payload.c;
+  if (where === 'google') { const q = (payload.texts && payload.texts.length ? payload.texts.join(' ') : plain(splitQ(c.q).head)) + ' ' + ((deckMeta(c.deck) || {}).system || ''); window.open('https://www.google.com/search?q=' + encodeURIComponent(q.trim().slice(0, 300)), 'trace-google'); logAsk({ deck: c.deck, code: c.code, where: 'google', text: q }); return; }
+  const ok = await copyText(text);
+  if (where === 'new') { window.open('https://claude.ai/new?q=' + encodeURIComponent(text), 'trace-claude'); toast(ok ? 'Copied too — if the new chat is empty, paste and send' : 'Opened a new chat'); logAsk({ deck: c.deck, code: c.code, where: 'new', text }); return; }
+  const ch = chats().find(x => x.id === where); if (!ch) return;
+  P.set('aiActive', ch.id);
+  window.open(ch.url, 'trace-claude');
+  toast(ok ? `Copied · in “${ch.name}” long-press, Paste, Send` : 'Could not copy — the browser blocked it');
+  logAsk({ deck: c.deck, code: c.code, where: ch.name, text });
+}
+function askMenu(rect, payload) {
+  document.querySelectorAll('.ask-menu').forEach(n => n.remove());
+  const list = chats(), act = activeChat();
+  const m = document.createElement('div'); m.className = 'ask-menu';
+  m.innerHTML = `<p class="mono am-h">ASK CLAUDE${payload.texts && payload.texts.length ? ' · selection' : payload.kind === 'trap' ? ' · exam trap' : ' · whole card'}</p>
+    ${list.length ? list.map(x => `<button data-ask="${esc(x.id)}" class="${act && act.id === x.id ? 'on' : ''}"><b>${esc(x.name)}</b>${act && act.id === x.id ? '<span class="mono">last used</span>' : ''}</button>`).join('') : '<p class="am-n">No chats yet. Add your Claude chats in ⚙ › Claude chats.</p>'}
+    <button data-ask="new" class="am-sub">New chat (pre-filled)</button>
+    <button data-ask="google" class="am-sub">Search Google</button>
+    <button data-ask="manage" class="am-sub mono">Manage chats…</button>`;
+  document.body.appendChild(m);
+  const w = 260, x = Math.max(8, Math.min(innerWidth - w - 8, (rect ? rect.left : innerWidth / 2 - w / 2))), y = rect ? Math.min(innerHeight - m.offsetHeight - 8, rect.bottom + 6) : 80;
+  Object.assign(m.style, { left: x + 'px', top: Math.max(8, y) + 'px', width: w + 'px' });
+  const off = e => { if (!m.contains(e.target)) { m.remove(); document.removeEventListener('pointerdown', off, true); } };
+  setTimeout(() => document.addEventListener('pointerdown', off, true), 0);
+  m.querySelectorAll('[data-ask]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.ask; m.remove(); document.removeEventListener('pointerdown', off, true);
+    if (k === 'manage') { const pp = $('#f-pop'); if (pp) { pp.hidden = false; const cs = pp.querySelector('.ai-set'); if (cs) cs.open = true; } return; }
+    doAsk(k, payload); });
+}
+function chatSettingsHtml() {
+  const list = chats(), act = activeChat();
+  return `<details class="ai-set"><summary class="mono">CLAUDE CHATS · ${list.length}</summary>
+    <div class="ai-list">${list.map(x => `<div class="ai-row${act && act.id === x.id ? ' on' : ''}"><b>${esc(x.name)}</b><span class="mono">${esc(x.url.replace(/^https?:\/\//, '').slice(0, 34))}…</span><button data-aidel="${esc(x.id)}" aria-label="Remove ${esc(x.name)}">✕</button></div>`).join('') || '<p class="muted small">None yet.</p>'}</div>
+    <div class="ai-add"><input data-ain placeholder="Name (e.g. TOX doubts)"><input data-aiu placeholder="Chat link: https://claude.ai/chat/…"><button data-aiadd>Add</button></div>
+    <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {code} {title} {question} {answer} {selected} {from} are filled in from the card.</p><button data-aitplreset>Reset</button></details>
+  </details>`;
+}
+function bindChatSettings(h) {
+  const add = h.querySelector('[data-aiadd]');
+  if (add) add.onclick = () => {
+    const n = h.querySelector('[data-ain]').value.trim(), u = h.querySelector('[data-aiu]').value.trim();
+    if (!/^https:\/\/(claude\.ai|chatgpt\.com|chat\.openai\.com|gemini\.google\.com)\//.test(u)) { toast('Paste the chat’s link (https://claude.ai/chat/…)'); return; }
+    const a = chats(); a.push({ id: 'c' + Date.now().toString(36), name: n || 'Chat ' + (a.length + 1), url: u }); P.set('aiChats', a); drawXpToggles(); keepOpen();
+  };
+  h.querySelectorAll('[data-aidel]').forEach(b => b.onclick = () => { P.set('aiChats', chats().filter(x => x.id !== b.dataset.aidel)); drawXpToggles(); keepOpen(); });
+  const ta = h.querySelector('[data-aitpl]'); if (ta) { ta.onkeydown = e => e.stopPropagation(); ta.onchange = () => P.set('aiTpl', ta.value.trim() === ASK_TPL.trim() ? '' : ta.value); }
+  const rs = h.querySelector('[data-aitplreset]'); if (rs) rs.onclick = () => { P.set('aiTpl', ''); drawXpToggles(); keepOpen(); };
+  h.querySelectorAll('input').forEach(i => { i.onkeydown = e => e.stopPropagation(); });
+  function keepOpen() { const d = document.querySelector('#f-xp .ai-set'); if (d) d.open = true; }
+}
 // the Explain header (title, size, Learn/Revise) lives above the scrolling explanation, never inside it
 function placeXpBar(el) {
   const head = el.querySelector('.xp-head'), bar = el.querySelector('.xp-pane .xp-bar'); if (!head || !bar) return;
   head.innerHTML = ''; head.appendChild(bar);
 }
 function bindXp(el, c) {
+  el.querySelectorAll('[data-ask-trap]').forEach(b => b.onclick = e => { e.stopPropagation(); const x = xOf(c), t = x && x.traps && x.traps[+b.dataset.askTrap]; if (t) askMenu(b.getBoundingClientRect(), { c, texts: [plain(t[0]) + ' — ' + plain(t[1])], from: 'Explain trap', kind: 'trap' }); });
+  const ab = el.querySelector('[data-act=ask]'); if (ab) ab.onclick = e => { e.stopPropagation(); askMenu(ab.getBoundingClientRect(), { c, texts: [], from: 'card' }); };
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = el.querySelector('.xp-pane .xp') || xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
   el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
@@ -1621,7 +1697,7 @@ function drawCard() {
   const isQ = !flow.peek && flow.face === 'q';
   const top = `<div class="c-head mono"><span>${esc((c.section || '').toUpperCase())}</span><span>${esc(c.code)}</span></div>
     <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}${qbChips(c)}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}
-      ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse || flow.peek ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
+      ${isQ ? '' : `<button class="askbtn mono" data-act="ask" aria-label="Ask Claude about this card">Ask ▸</button><button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse || flow.peek ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
     const xq = xOf(c);
