@@ -42,8 +42,13 @@ function lineEls(box) {
   const out = [];
   const add = (el, sec, i) => out.push({ el, key: sec + ':' + i });
   box.querySelectorAll('.ans > p, .ans > ul > li, .ans > ol > li, .ans > table').forEach((el, i) => add(el, 'ans', i));
+  // T-086: every table row is its own answer point with its own room (the table's old room is kept for ink already in it)
+  box.querySelectorAll('.ans > .tbl').forEach((t, ti) => t.querySelectorAll(':scope > .tr:not(.th)').forEach((tr, ri) => add(tr, 'row' + ti, ri)));
+  // T-086: boxes without a known name were all keyed 'box', so two such boxes shared rooms; the second and later now get their own key
+  let other = 0;
   box.querySelectorAll('.box').forEach(b => {
-    const sec = ['why', 'watch', 'qlines', 'qcross', 'note'].find(c => b.classList.contains(c)) || 'box';
+    let sec = ['why', 'watch', 'qlines', 'qcross', 'note', 'qfix'].find(c => b.classList.contains(c));
+    if (!sec) { sec = other ? 'box' + other : 'box'; other++; }
     b.querySelectorAll('.bx > p, .bx > ul > li').forEach((el, i) => add(el, sec, i));
   });
   return out;
@@ -183,7 +188,10 @@ function makeRoom(holder, key, data, onChange) {
   const cv = document.createElement('canvas'); cv.className = 'rm-cv';
   const more = document.createElement('button'); more.type = 'button'; more.className = 'rm-more'; more.setAttribute('aria-label', 'One more space'); more.title = 'One more space';
   more.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>';
-  wrap.appendChild(cv); wrap.appendChild(more); holder.appendChild(wrap);
+  // T-086: ⌃ takes one empty space back (never below the ink already written)
+  const less = document.createElement('button'); less.type = 'button'; less.className = 'rm-more rm-less'; less.setAttribute('aria-label', 'One space less'); less.title = 'One space less';
+  less.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg>';
+  wrap.appendChild(cv); wrap.appendChild(less); wrap.appendChild(more); holder.appendChild(wrap);
   wrap.addEventListener('click', e => { if (writing) { e.stopPropagation(); } });
   const kNow = () => (cv.clientWidth || wrap.clientWidth || ROOM_W) / ROOM_W;
   // the room grows with the text when the side is zoomed (its height follows the zoom; its ink keeps the room's width)
@@ -200,13 +208,18 @@ function makeRoom(holder, key, data, onChange) {
   s.unitPerPx = () => { const r = cv.getBoundingClientRect(); return (cv.clientWidth / (r.width || 1)) / kNow(); };
   // ⌄ at the end of the room: one more full space. After writing, the room trims to what was used (in half spaces).
   more.onpointerdown = e => e.stopPropagation();
-  more.onclick = e => { e.stopPropagation(); e.preventDefault(); data.h = (data.h || SPACE) + SPACE; fit(); s.render(); onChange(true); if (cur) { cur.last = s; cur.overlay.relayout(); } };
+  more.onclick = e => { e.stopPropagation(); e.preventDefault(); data.h = (data.h || SPACE) + SPACE; fit(); s.render(); showLess(); onChange(true); if (cur) { cur.last = s; cur.overlay.relayout(); } };
+  const usedH = () => s.objs.reduce((m, o) => { const b = objBox(o); return Math.max(m, b[3] + (o.type === 'text' ? 0 : (o.s || o.h || 0) / 2)); }, 0);
+  const showLess = () => { less.hidden = (data.h || SPACE) - SPACE < Math.max(SPACE / 2, usedH() + 6); };
+  less.onpointerdown = e => e.stopPropagation();
+  less.onclick = e => { e.stopPropagation(); e.preventDefault(); const min = Math.max(SPACE / 2, Math.ceil((usedH() + 6) / (SPACE / 2)) * (SPACE / 2)); data.h = Math.max(min, (data.h || SPACE) - SPACE); fit(); s.render(); showLess(); onChange(true); if (cur) cur.overlay.relayout(); };
+  s.showLess = showLess; showLess();
   s.trim = () => {
     if (!s.objs.length) return false;
     const used = s.objs.reduce((m, o) => { const b = objBox(o); return Math.max(m, b[3] + (o.type === 'text' ? 0 : (o.s || o.h || 0) / 2)); }, 0);
     const h = Math.max(SPACE / 2, Math.ceil((used + 6) / (SPACE / 2)) * (SPACE / 2));
     if (h === data.h) return false;
-    data.h = h; fit(); s.render(); onChange(true); return true;
+    data.h = h; fit(); s.render(); showLess(); onChange(true); return true;
   };
   s.wrap = wrap; s.data = data; s.fit = fit; s.parentEl = wrap; s.toCss = p => [p[0] * kNow(), p[1] * kNow()]; s.cssScale = kNow;
   return s;
@@ -253,6 +266,10 @@ export async function mountInk(cardEl, card, face, opts) {
   const box = cardEl.querySelector(face === 'q' ? '.c-q' : '.c-a'); if (!box) { cur = null; return; }
   const rec = await loadInk(card);
   if (!document.body.contains(box)) return;
+  // T-086: mounting again on the same face (e.g. after Learn/Revise) must not leave the old rooms, chevrons and canvases behind —
+  // they showed the same ink several times over (Naven, 5 Nov)
+  box.querySelectorAll('.rm-hold, .rm-chev, canvas.ink-ov, .ink-tx').forEach(n => n.remove());
+  const xb0 = face === 'a' ? cardEl.querySelector('.xp-pane') : null; if (xb0) xb0.querySelectorAll('canvas.ink-ov, .ink-tx').forEach(n => n.remove());
   const st = { card, face, rec, box, rooms: new Map(), open: new Set(Object.keys(rec.rooms || {}).filter(k => rec.rooms[k].objs && rec.rooms[k].objs.length)), last: null, dirty: false, t: null, opts };
   if (cur && cur.toolbar) cur.toolbar.destroy();
   cur = st;
@@ -271,12 +288,11 @@ export async function mountInk(cardEl, card, face, opts) {
       sp.onclick = e => { e.stopPropagation(); e.preventDefault(); toggleRoom(key); };
       continue;
     }
+    const holder = document.createElement('div'); holder.className = 'rm-hold'; holder.dataset.for = key;
     const b = document.createElement('button'); b.type = 'button'; b.className = 'rm-chev' + (has ? ' has' : ''); b.dataset.rk = key;
     b.setAttribute('aria-label', has ? 'Show or hide your note under this line' : 'Open room to write under this line');
     b.innerHTML = has ? PEN : CHEV;
-    el.appendChild(b);
-    const holder = document.createElement('div'); holder.className = 'rm-hold'; holder.dataset.for = key;
-    if (el.tagName === 'LI') el.appendChild(holder); else el.after(holder);
+    el.appendChild(b); if (el.tagName === 'LI') el.appendChild(holder); else el.after(holder);
     b.onclick = e => { e.stopPropagation(); e.preventDefault(); toggleRoom(key); };
   }
   st.overlay = makeOverlay(box, rec, face);
@@ -316,7 +332,7 @@ function wireSurface(s) {
     lassoText: poly => lassoText(s, poly),
     textSel: (act, e, phase) => textSelect(s, act, e, phase),
     dropOut: e => dropOut(s, e),
-    changed: o => { st.last = s; if (o && isOv(st, s) && !o.a) o.a = s.anchorFor(o.pts[0]); if (!isOv(st, s)) drawChevrons(); markDirty(); }
+    changed: o => { st.last = s; if (o && isOv(st, s) && !o.a) o.a = s.anchorFor(o.pts[0]); if (!isOv(st, s)) { drawChevrons(); if (s.showLess) s.showLess(); } markDirty(); }
   });
 }
 
@@ -383,7 +399,7 @@ function textBar(s, sel, x, y) {
   document.querySelectorAll('.ik-tsel').forEach(n => n.remove());
   drawMarks(sel); const marks = tmarks;
   const bar = document.createElement('div'); bar.className = 'ik-tsel';
-  bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}${cur && cur.opts.onAsk ? '<button data-t="ask" class="ik-ask">Ask ▸</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
+  bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="tocard">→ Move to card</button><button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}${cur && cur.opts.onAsk ? '<button data-t="ask" class="ik-ask">Ask ▸</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
   Object.assign(bar.style, { left: Math.max(8, Math.min(innerWidth - 380, x)) + 'px', top: Math.min(innerHeight - 60, y + 8) + 'px' });
   document.body.appendChild(bar);
   const close = () => { bar.remove(); drawMarks([]); removeEventListener('scroll', close, true); };
@@ -399,9 +415,24 @@ function textBar(s, sel, x, y) {
       s.render(); markDirty();
     } else if (k === 'copy') { const txt = sel.map(t => t.text).join('\n'); try { await navigator.clipboard.writeText(txt); toast('Text copied'); } catch (er) { toast('Copy was blocked by the browser'); } }
     else if (k === 'ask' && st && st.opts.onAsk) { const r = b.getBoundingClientRect(); close(); st.opts.onAsk(sel.map(t => t.text).filter(Boolean), s === st.overlayX ? 'Explain' : 'card', r); return; }
+    else if (k === 'tocard' && st) { close(); textToCard(st, sel.map(t => t.text).filter(Boolean).join(' ')); return; }
     else if (k === 'unclear' && st && st.opts.onUnclear) { st.opts.onUnclear(sel.map(t => t.text).filter(Boolean)); toast('Saved to “Still unclear” · the next rewrite of this deck expands it'); }
     close();
   });
+}
+// T-086: selected Explain words become a typed note on the card: selected, so it drags straight away; tap it with the Text tool to add words
+function wrapWords(t, n = 46) { const out = []; let line = ''; for (const w of t.split(/\s+/)) { if (line && (line + ' ' + w).length > n) { out.push(line); line = w; } else line = line ? line + ' ' + w : w; } if (line) out.push(line); return out.join('\n'); }
+function textToCard(st, text) {
+  const to = st.overlay; if (!to || !text) return;
+  const pr = to.parentEl.getBoundingClientRect(), y = Math.max(pr.top, 70) + 40, S = settings();
+  const at = to.toUnits(pr.left + 36, y);
+  to.snapshot();
+  const o = { type: 'text', t: wrapWords(text), c: S.text.color, s: S.text.size * to.unitPerPx(), b: false, bg: '#fff6c4', pts: [at] };
+  o.a = to.anchorFor(at); to.objs.push(o);
+  [...ovs(st), ...st.rooms.values()].forEach(x => { if (x !== to && x.sel) { x.sel = null; x.render(); } });
+  to.sel = { ids: [to.objs.length - 1] }; st.last = to; S.tool = 'lasso';
+  to.render(); markDirty(); if (st.toolbar) st.toolbar.draw();
+  toast('On the card · drag it where you want · to add words, pick the Text tool (T) and tap it');
 }
 /* ---------- T-072: marks dragged out of one writing area land in the area under the pen (Explain ↔ card) ---------- */
 function dropOut(s, e) {
@@ -492,7 +523,7 @@ function drawRooms() {
     const has = r.objs.length > 0;
     r.wrap.classList.toggle('peek', has && !writing && !r.wrap.dataset.opened); r.wrap.classList.toggle('writing', writing); r.cv.style.pointerEvents = writing ? 'auto' : 'none';
     r.wrap.onclick = () => { if (!writing && r.wrap.classList.contains('peek')) { r.wrap.classList.remove('peek'); r.wrap.dataset.opened = '1'; st.overlay.relayout(); } };
-    r.render();
+    r.render(); r.showLess();
   });
   drawChevrons();
 }
