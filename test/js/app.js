@@ -11,7 +11,7 @@ import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, best
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder } from './plan.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
@@ -940,9 +940,9 @@ function renderPlan() {
   if (!st) return renderPlanNew();
   const r = compute(st), days = r.days, td = r.td, band = paceBand(st.pace);
   const R = repairOpts(st);
-  const repRow = { id: 'repair', name: 'Repair pile', sub: R.on ? `${r.repairTotal} waiting · ${R.spread === 'fixed' ? R.fixed + ' a day' : R.spread === 'by' && R.by ? 'done by ' + dShort(R.by) + ', up to ' + R.cap + ' a day' : 'up to ' + R.cap + ' a day'} · walked ${R.pos === 'last' ? 'last' : 'first'}` : 'off', auto: true };
+  const repRow = { id: 'repair', name: 'Repair pile', sub: R.on ? `${r.repairTotal} waiting · ${R.spread === 'fixed' ? R.fixed + ' a day' : R.spread === 'by' && R.by ? 'done by ' + dShort(R.by) + ', up to ' + R.cap + ' a day' : 'up to ' + R.cap + ' a day'}` : 'off', auto: true };
   const subRows = st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards · ${splitName(s)}${s.from && !s.once ? ' · from ' + dShort(s.from) : ''}` }));
-  const rows = R.pos === 'last' ? subRows.concat(repRow) : [repRow].concat(subRows);
+  const rows = rowOrder(st).map(id => id === 'repair' ? repRow : subRows.find(x => x.id === id));
   const anyOver = r.over > 0;
   const cell = (row, d) => {
     const plan = r.cells[row.id][d] || 0, did = r.actual[row.id][d] || 0, pin = st.pins[row.id + '|' + d] != null;
@@ -972,6 +972,7 @@ function renderPlan() {
       </table></div>
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button></div>
+      ${canUndoPlan() ? '<button class="btn ghost pundo" data-pundo>↶ Undo last change</button>' : ''}
       ${r.active ? `<div class="two pbtns">${r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}<button class="btn ghost" data-chtoday>Change today…</button></div>` : ''}
       <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
       <button class="linkbtn muted small" data-delstretch>Delete ${esc(st.name)}</button>
@@ -995,7 +996,8 @@ function renderPlan() {
   app.querySelector('[data-pickmosaic]').onclick = () => { P.set('pickOn', true); P.set('pickForPlan', true); go('#/sys/all'); };
   const pt = app.querySelector('[data-plantoday]'); if (pt) pt.onclick = () => { const q = todayCards(st); if (q.length) startFlow(q, { label: 'The Plan · today', returnTo: location.hash }); else toast('Today’s plan is done.'); };
   const ct = app.querySelector('[data-chtoday]'); if (ct) ct.onclick = () => changeTodaySheet(st, re);
-  app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); });
+  const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); re(); } };
+  app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); toast(`Deleted ${st.name}. Undo is on the Plan.`); });
   if (planPending) { const pend = planPending; planPending = null; nameSubjectSheet(st, pend, re); }
 }
 function renderPlanNew() {
@@ -1006,8 +1008,10 @@ function renderPlanNew() {
       <p>A stretch is a run of days with the subjects you want to finish in it. Trace counts the cards, spreads them over the days at your pace, and re-plans every morning.</p>
       <div class="pnew"><label>Starts <input type="date" value="${today()}" data-nstart></label><label>Days <input type="number" min="1" max="60" value="10" data-ndays></label><label>Pace <input type="number" min="20" max="150" value="65" data-npace> a day</label></div>
       <button class="btn primary" data-ncreate>Create stretch</button>
+      ${canUndoPlan() ? '<button class="btn ghost pundo" data-pundo>↶ Undo last change</button>' : ''}
     </div></div>${nav('')}</div>`;
   bindGo();
+  const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); renderPlan(); } };
   app.querySelector('[data-ncreate]').onclick = () => { newStretch({ start: app.querySelector('[data-nstart]').value || today(), days: +app.querySelector('[data-ndays]').value || 10, pace: +app.querySelector('[data-npace]').value || 65 }); renderPlan(); };
 }
 function planSheet(title, kick, html, bind) {
@@ -1037,19 +1041,19 @@ function repairSheet(st, re) {
   const R = repairOpts(st);
   planSheet('Repair pile', 'AUTOMATIC ROW', `<p class="muted small">Cards waiting from DocT misses and Again marks. It grows by itself after each GT or module review.</p>
     <div class="pnew"><label><input type="checkbox" data-ron ${R.on ? 'checked' : ''}> Plan repairs</label></div>
-    <p class="mono kick">IN THE DAY’S WALK</p>
-    <div class="seg wide"><button class="${R.pos === 'first' ? 'on' : ''}" data-rpos="first">First (before subjects)</button><button class="${R.pos === 'last' ? 'on' : ''}" data-rpos="last">Last (after subjects)</button></div>
     <p class="mono kick">HOW MANY A DAY</p>
     <div class="seg wide"><button class="${R.spread === 'even' ? 'on' : ''}" data-rsp="even">Spread evenly</button><button class="${R.spread === 'by' ? 'on' : ''}" data-rsp="by">Finish by a date</button><button class="${R.spread === 'fixed' ? 'on' : ''}" data-rsp="fixed">Fixed a day</button></div>
     <div class="pnew"><label data-rbox="by">Done by <select data-rby>${planDays(st).map(d => `<option value="${d}"${(R.by || planDays(st).slice(-1)[0]) === d ? ' selected' : ''}>${dShort(d)}</option>`).join('')}</select></label><label data-rbox="fixed">Cards a day <input type="number" min="0" max="100" value="${R.fixed}" data-rfix></label><label data-rbox="cap">Never more than <input type="number" min="0" max="100" value="${R.cap}" data-rcap> a day</label></div>
     <p class="muted small">You can still change today’s number in Change today.</p>
-    <div class="sheet-f"><button class="btn primary" data-rsave>Save</button></div>`, (w, c) => {
-    let pos = R.pos, sp = R.spread;
+    <div class="sheet-f"><button class="btn ghost" data-rup ${R.at === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-rdown ${R.at === st.subjects.length ? 'disabled' : ''}>↓ Later</button><button class="btn primary" data-rsave>Save</button></div>`, (w, c) => {
+    let sp = R.spread;
+    w.querySelector('[data-rup]').onclick = () => { moveRow(st, 'repair', -1); c(); re(); };
+    w.querySelector('[data-rdown]').onclick = () => { moveRow(st, 'repair', 1); c(); re(); };
     const show = () => { w.querySelector('[data-rbox=by]').hidden = sp !== 'by'; w.querySelector('[data-rbox=fixed]').hidden = sp !== 'fixed'; w.querySelector('[data-rbox=cap]').hidden = sp === 'fixed'; };
     const seg = (attr, set) => w.querySelectorAll(`[${attr}]`).forEach(b => b.onclick = () => { set(b.getAttribute(attr)); w.querySelectorAll(`[${attr}]`).forEach(x => x.classList.toggle('on', x === b)); show(); });
-    seg('data-rpos', v => pos = v); seg('data-rsp', v => sp = v); show();
+    seg('data-rsp', v => sp = v); show();
     w.querySelector('[data-rsave]').onclick = () => {
-      Object.assign(st.repair, { on: w.querySelector('[data-ron]').checked, pos, spread: sp, cap: Math.max(0, +w.querySelector('[data-rcap]').value || 0), fixed: Math.max(0, +w.querySelector('[data-rfix]').value || 0), by: w.querySelector('[data-rby]').value || planDays(st).slice(-1)[0] });
+      Object.assign(st.repair, { on: w.querySelector('[data-ron]').checked, spread: sp, cap: Math.max(0, +w.querySelector('[data-rcap]').value || 0), fixed: Math.max(0, +w.querySelector('[data-rfix]').value || 0), by: w.querySelector('[data-rby]').value || planDays(st).slice(-1)[0] });
       savePlan(); c(); re();
     };
   });
@@ -1072,7 +1076,7 @@ function changeTodaySheet(st, re) {
     return { r, td, ids, html: `<p class="muted small">Only today changes. The other days re-plan from what is left. ↑↓ is the order you walk them; − + changes today’s number by 5.</p>
       <div class="ct-list">${rows}</div>
       <p class="ct-tot mono">TODAY ${r.total[td] || 0} · ROOM ${r.cap(td)}${(r.total[td] || 0) > r.cap(td) ? ' · OVER BY ' + ((r.total[td] || 0) - r.cap(td)) : ''}</p>
-      <div class="sheet-f"><button class="btn ghost" data-ctreset>Undo today’s changes</button><button class="btn ghost" data-ctadd>+ Add for today only</button><button class="btn primary" data-x>Done</button></div>` };
+      <div class="sheet-f"><button class="btn ghost" data-ctundo ${canUndoPlan() ? '' : 'disabled'}>↶ Undo</button><button class="btn ghost" data-ctreset>Reset today</button><button class="btn ghost" data-ctadd>+ Add for today only</button><button class="btn primary" data-x>Done</button></div>` };
   };
   planSheet('Change today', 'THE PLAN · TODAY', '<div data-ctbody></div>', (w, c) => {
     const paint = () => {
@@ -1086,6 +1090,7 @@ function changeTodaySheet(st, re) {
         row.querySelector('[data-p]').onclick = () => { st.pins[pinK(id)] = cur + 5; savePlan(); paint(); re(); };
         const dp = row.querySelector('[data-deep]'); if (dp) dp.onclick = () => { st.pins[pinK(id)] = id === 'repair' ? d.r.repairTotal : d.r.leftStart[id]; savePlan(); paint(); re(); };
       });
+      body.querySelector('[data-ctundo]').onclick = () => { if (undoPlan()) { c(); re(); const st2 = currentStretch(); if (st2) changeTodaySheet(st2, re); } };
       body.querySelector('[data-ctreset]').onclick = () => { Object.keys(st.pins).forEach(k => { if (k.endsWith('|' + d.td)) delete st.pins[k]; }); if (st.order) delete st.order[d.td]; savePlan(); paint(); re(); };
       body.querySelector('[data-ctadd]').onclick = () => { c(); addSubjectSheet(st, re, { once: true }); };
     };
@@ -1094,20 +1099,20 @@ function changeTodaySheet(st, re) {
 }
 function subjectSheet(st, id, re) {
   const s = st.subjects.find(x => x.id === id); if (!s) return;
-  const i = st.subjects.indexOf(s), done = subjectDone(s);
+  const i = st.subjects.indexOf(s), done = subjectDone(s), ro = rowOrder(st), ri = ro.indexOf(s.id);
   planSheet(s.name, 'SUBJECT', `<p class="muted small">${s.keys.length} cards · ${done} walked since you added it${s.sub ? ' · ' + esc(s.sub) : ''}</p>
     <div class="pnew"><label>Name <input type="text" value="${esc(s.name)}" data-sname></label>${startSelect(st, s.from, 'data-sfrom')}</div>
     <div class="seg wide"><button class="${splitOf(s) === 'seq' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${splitOf(s) === 'even' ? 'on' : ''}" data-smode="even">Evenly</button><button class="${splitOf(s) === 'fixed' ? 'on' : ''}" data-smode="fixed">Fixed a day</button><button class="${splitOf(s) === 'by' ? 'on' : ''}" data-smode="by">Finish by</button></div>
     <div class="pnew"><label data-sbox="fixed">Cards a day <input type="number" min="0" max="150" value="${s.daily || 10}" data-sdaily></label><label data-sbox="by">Last day <input type="date" value="${s.to || planDays(st).slice(-1)[0]}" data-sto></label></div>
     <p class="muted small" data-shelp></p>
-    <div class="sheet-f"><button class="btn ghost" data-sup ${i === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${i === st.subjects.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
+    <div class="sheet-f"><button class="btn ghost" data-sup ${ri === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${ri === ro.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
     let mode = splitOf(s);
     const HELP = { seq: 'Fills each day after the others, in the order of the rows.', even: 'The same number every day until the last day of the stretch.', fixed: 'This many every day until it is done.', by: 'Spread evenly so it is done by that day.' };
     const show = () => { w.querySelector('[data-sbox=fixed]').hidden = mode !== 'fixed'; w.querySelector('[data-sbox=by]').hidden = mode !== 'by'; w.querySelector('[data-shelp]').textContent = HELP[mode]; };
     w.querySelectorAll('[data-smode]').forEach(b => b.onclick = () => { mode = b.dataset.smode; w.querySelectorAll('[data-smode]').forEach(x => x.classList.toggle('on', x === b)); show(); }); show();
-    const mv = k => { st.subjects.splice(i, 1); st.subjects.splice(i + k, 0, s); savePlan(); c(); re(); };
+    const mv = k => { moveRow(st, s.id, k); c(); re(); };
     w.querySelector('[data-sup]').onclick = () => mv(-1); w.querySelector('[data-sdown]').onclick = () => mv(1);
-    w.querySelector('[data-sdel]').onclick = () => { st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); };
+    w.querySelector('[data-sdel]').onclick = () => { if (st.repair && repairOpts(st).at > i) st.repair.at = repairOpts(st).at - 1; st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); toast(`Removed ${s.name}. Undo is on the Plan.`); };
     w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode === 'seq' ? 'seq' : 'daily'; s.daily = mode === 'fixed' ? (+w.querySelector('[data-sdaily]').value || 10) : null; s.to = mode === 'by' ? (w.querySelector('[data-sto]').value || null) : null; s.once = false; s.from = w.querySelector('[data-sfrom]').value || null; savePlan(); c(); re(); };
   });
 }

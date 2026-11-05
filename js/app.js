@@ -10,7 +10,8 @@ import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flo
 import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES } from './plan.js';
+import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
@@ -26,6 +27,8 @@ const ICON = {
   undo: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
   again: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4"/></svg>',
   flip: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="9" width="9" height="12.5" rx="1.5"/><path d="M4.5 9.5C5.5 5.5 8.5 3.5 12 3.5s6.5 2 7.5 6"/><path d="M19.5 9.5l.3-3.1M19.5 9.5l-3-.9"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></svg>',
+  play: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>',
   next: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   edit: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>',
   decks: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="7" y="3.5" width="12" height="17" rx="1.5"/><path d="M4.5 6.5v12.5a2 2 0 0 0 2 2"/></svg>',
@@ -65,7 +68,8 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
-  loadQbank(); loadQmap();
+  await initExplain();
+  loadQbank(); loadQmap(); loadExplain();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -324,7 +328,7 @@ function deckBack(d, mini) {
       <span class="back-top mono"><span>${esc(d.deck)}</span><span>✦ ${d.star || 0}</span></span>
       <span class="back-seal">${seal(d.system, '', d.deck)}</span>
       <span class="back-title" style="font-size:${titleSize(d.title, mini)}" title="${esc(d.title)}">${esc(d.title)}</span>
-      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' +' + S.qb.topups[d.deck].length + ' TU' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
+      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' +' + ((S.xtopups && S.xtopups[d.deck]) || S.qb.topups[d.deck]).length + ' TU' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
     </span>`;
   if (mini) return face;
   return `<a class="deck${ok ? '' : ' notready'}" href="#/deck/${encodeURIComponent(d.deck)}" aria-label="Open ${esc(d.title)}">${face}
@@ -935,7 +939,10 @@ function renderPlan() {
   const p = loadPlan(), st = currentStretch();
   if (!st) return renderPlanNew();
   const r = compute(st), days = r.days, td = r.td, band = paceBand(st.pace);
-  const rows = [{ id: 'repair', name: 'Repair pile', sub: st.repair.on ? `${r.repairTotal} waiting · up to ${st.repair.cap} a day` : 'off', auto: true }].concat(st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards${s.mode === 'daily' ? ' · ' + (s.daily ? s.daily + ' a day' : 'spread') : ''}${s.from ? ' · from ' + dShort(s.from) : ''}` })));
+  const R = repairOpts(st);
+  const repRow = { id: 'repair', name: 'Repair pile', sub: R.on ? `${r.repairTotal} waiting · ${R.spread === 'fixed' ? R.fixed + ' a day' : R.spread === 'by' && R.by ? 'done by ' + dShort(R.by) + ', up to ' + R.cap + ' a day' : 'up to ' + R.cap + ' a day'}` : 'off', auto: true };
+  const subRows = st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards · ${splitName(s)}${s.from && !s.once ? ' · from ' + dShort(s.from) : ''}` }));
+  const rows = rowOrder(st).map(id => id === 'repair' ? repRow : subRows.find(x => x.id === id));
   const anyOver = r.over > 0;
   const cell = (row, d) => {
     const plan = r.cells[row.id][d] || 0, did = r.actual[row.id][d] || 0, pin = st.pins[row.id + '|' + d] != null;
@@ -965,7 +972,8 @@ function renderPlan() {
       </table></div>
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button></div>
-      ${r.active && r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}
+      ${canUndoPlan() ? '<button class="btn ghost pundo" data-pundo>↶ Undo last change</button>' : ''}
+      ${r.active ? `<div class="two pbtns">${r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}<button class="btn ghost" data-chtoday>Change today…</button></div>` : ''}
       <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
       <button class="linkbtn muted small" data-delstretch>Delete ${esc(st.name)}</button>
     </div>
@@ -987,7 +995,9 @@ function renderPlan() {
   app.querySelector('[data-addsubj]').onclick = () => addSubjectSheet(st, re);
   app.querySelector('[data-pickmosaic]').onclick = () => { P.set('pickOn', true); P.set('pickForPlan', true); go('#/sys/all'); };
   const pt = app.querySelector('[data-plantoday]'); if (pt) pt.onclick = () => { const q = todayCards(st); if (q.length) startFlow(q, { label: 'The Plan · today', returnTo: location.hash }); else toast('Today’s plan is done.'); };
-  app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); });
+  const ct = app.querySelector('[data-chtoday]'); if (ct) ct.onclick = () => changeTodaySheet(st, re);
+  const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); re(); } };
+  app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); toast(`Deleted ${st.name}. Undo is on the Plan.`); });
   if (planPending) { const pend = planPending; planPending = null; nameSubjectSheet(st, pend, re); }
 }
 function renderPlanNew() {
@@ -998,8 +1008,10 @@ function renderPlanNew() {
       <p>A stretch is a run of days with the subjects you want to finish in it. Trace counts the cards, spreads them over the days at your pace, and re-plans every morning.</p>
       <div class="pnew"><label>Starts <input type="date" value="${today()}" data-nstart></label><label>Days <input type="number" min="1" max="60" value="10" data-ndays></label><label>Pace <input type="number" min="20" max="150" value="65" data-npace> a day</label></div>
       <button class="btn primary" data-ncreate>Create stretch</button>
+      ${canUndoPlan() ? '<button class="btn ghost pundo" data-pundo>↶ Undo last change</button>' : ''}
     </div></div>${nav('')}</div>`;
   bindGo();
+  const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); renderPlan(); } };
   app.querySelector('[data-ncreate]').onclick = () => { newStretch({ start: app.querySelector('[data-nstart]').value || today(), days: +app.querySelector('[data-ndays]').value || 10, pace: +app.querySelector('[data-npace]').value || 65 }); renderPlan(); };
 }
 function planSheet(title, kick, html, bind) {
@@ -1026,30 +1038,86 @@ function pinSheet(st, id, d, n, re) {
   });
 }
 function repairSheet(st, re) {
-  planSheet('Repair pile', 'AUTOMATIC ROW', `<p class="muted small">Cards waiting from DocT misses and Again marks, spread over the days left. It grows by itself after each GT or module review.</p>
-    <div class="pnew"><label><input type="checkbox" data-ron ${st.repair.on ? 'checked' : ''}> Plan repairs first every day</label><label>Never more than <input type="number" min="0" max="100" value="${st.repair.cap}" data-rcap> a day</label></div>
-    <div class="sheet-f"><button class="btn primary" data-rsave>Save</button></div>`, (w, c) => {
-    w.querySelector('[data-rsave]').onclick = () => { st.repair.on = w.querySelector('[data-ron]').checked; st.repair.cap = Math.max(0, +w.querySelector('[data-rcap]').value || 0); savePlan(); c(); re(); };
+  const R = repairOpts(st);
+  planSheet('Repair pile', 'AUTOMATIC ROW', `<p class="muted small">Cards waiting from DocT misses and Again marks. It grows by itself after each GT or module review.</p>
+    <div class="pnew"><label><input type="checkbox" data-ron ${R.on ? 'checked' : ''}> Plan repairs</label></div>
+    <p class="mono kick">HOW MANY A DAY</p>
+    <div class="seg wide"><button class="${R.spread === 'even' ? 'on' : ''}" data-rsp="even">Spread evenly</button><button class="${R.spread === 'by' ? 'on' : ''}" data-rsp="by">Finish by a date</button><button class="${R.spread === 'fixed' ? 'on' : ''}" data-rsp="fixed">Fixed a day</button></div>
+    <div class="pnew"><label data-rbox="by">Done by <select data-rby>${planDays(st).map(d => `<option value="${d}"${(R.by || planDays(st).slice(-1)[0]) === d ? ' selected' : ''}>${dShort(d)}</option>`).join('')}</select></label><label data-rbox="fixed">Cards a day <input type="number" min="0" max="100" value="${R.fixed}" data-rfix></label><label data-rbox="cap">Never more than <input type="number" min="0" max="100" value="${R.cap}" data-rcap> a day</label></div>
+    <p class="muted small">You can still change today’s number in Change today.</p>
+    <div class="sheet-f"><button class="btn ghost" data-rup ${R.at === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-rdown ${R.at === st.subjects.length ? 'disabled' : ''}>↓ Later</button><button class="btn primary" data-rsave>Save</button></div>`, (w, c) => {
+    let sp = R.spread;
+    w.querySelector('[data-rup]').onclick = () => { moveRow(st, 'repair', -1); c(); re(); };
+    w.querySelector('[data-rdown]').onclick = () => { moveRow(st, 'repair', 1); c(); re(); };
+    const show = () => { w.querySelector('[data-rbox=by]').hidden = sp !== 'by'; w.querySelector('[data-rbox=fixed]').hidden = sp !== 'fixed'; w.querySelector('[data-rbox=cap]').hidden = sp === 'fixed'; };
+    const seg = (attr, set) => w.querySelectorAll(`[${attr}]`).forEach(b => b.onclick = () => { set(b.getAttribute(attr)); w.querySelectorAll(`[${attr}]`).forEach(x => x.classList.toggle('on', x === b)); show(); });
+    seg('data-rsp', v => sp = v); show();
+    w.querySelector('[data-rsave]').onclick = () => {
+      Object.assign(st.repair, { on: w.querySelector('[data-ron]').checked, spread: sp, cap: Math.max(0, +w.querySelector('[data-rcap]').value || 0), fixed: Math.max(0, +w.querySelector('[data-rfix]').value || 0), by: w.querySelector('[data-rby]').value || planDays(st).slice(-1)[0] });
+      savePlan(); c(); re();
+    };
+  });
+}
+const splitOf = s => s.mode !== 'daily' ? 'seq' : s.daily ? 'fixed' : s.to ? 'by' : 'even';
+function splitName(s) { if (s.once) return 'today only'; const k = splitOf(s); return k === 'seq' ? 'in order' : k === 'fixed' ? s.daily + ' a day' : k === 'by' ? 'finish by ' + dShort(s.to) : 'evenly'; }
+// T-080: change today only — numbers (± fixes today), the order of the walk, add something for today, go deep on one subject
+function changeTodaySheet(st, re) {
+  const draw = () => {
+    const r = compute(st), td = r.td, ids = dayOrder(st, td), R = repairOpts(st);
+    const nameOf = id => id === 'repair' ? 'Repair pile' : (st.subjects.find(x => x.id === id) || {}).name || '';
+    const rows = ids.filter(id => id === 'repair' ? R.on : true).map((id, i, arr) => {
+      const n = r.cells[id][td] || 0, did = r.actual[id][td] || 0, pin = st.pins[id + '|' + td] != null;
+      const left = id === 'repair' ? r.repairTotal : (r.leftStart[id] || 0);
+      return `<div class="ct-row" data-id="${id}"><span class="ct-n"><b>${esc(nameOf(id))}</b><i>${did ? did + ' walked · ' : ''}${left} left${pin ? ' · fixed today' : ''}</i></span>
+        <span class="ct-ord"><button class="iconbtn sm" data-up ${i === 0 ? 'disabled' : ''} aria-label="Walk earlier">↑</button><button class="iconbtn sm" data-dn ${i === arr.length - 1 ? 'disabled' : ''} aria-label="Walk later">↓</button></span>
+        <span class="ct-num"><button class="iconbtn sm" data-m aria-label="5 fewer">−</button><b>${n}</b><button class="iconbtn sm" data-p aria-label="5 more">+</button></span>
+        ${left > n ? `<button class="btn ghost sm" data-deep>Finish today (${left})</button>` : '<span></span>'}</div>`;
+    }).join('');
+    return { r, td, ids, html: `<p class="muted small">Only today changes. The other days re-plan from what is left. ↑↓ is the order you walk them; − + changes today’s number by 5.</p>
+      <div class="ct-list">${rows}</div>
+      <p class="ct-tot mono">TODAY ${r.total[td] || 0} · ROOM ${r.cap(td)}${(r.total[td] || 0) > r.cap(td) ? ' · OVER BY ' + ((r.total[td] || 0) - r.cap(td)) : ''}</p>
+      <div class="sheet-f"><button class="btn ghost" data-ctundo ${canUndoPlan() ? '' : 'disabled'}>↶ Undo</button><button class="btn ghost" data-ctreset>Reset today</button><button class="btn ghost" data-ctadd>+ Add for today only</button><button class="btn primary" data-x>Done</button></div>` };
+  };
+  planSheet('Change today', 'THE PLAN · TODAY', '<div data-ctbody></div>', (w, c) => {
+    const paint = () => {
+      const d = draw(), body = w.querySelector('[data-ctbody]'); body.innerHTML = d.html;
+      const pinK = id => id + '|' + d.td;
+      body.querySelectorAll('.ct-row').forEach(row => {
+        const id = row.dataset.id, cur = d.r.cells[id][d.td] || 0;
+        const mv = k => { const ids = d.ids.slice(), i = ids.indexOf(id); ids.splice(i, 1); ids.splice(i + k, 0, id); setDayOrder(st, d.td, ids); paint(); re(); };
+        row.querySelector('[data-up]').onclick = () => mv(-1); row.querySelector('[data-dn]').onclick = () => mv(1);
+        row.querySelector('[data-m]').onclick = () => { st.pins[pinK(id)] = Math.max(0, cur - 5); savePlan(); paint(); re(); };
+        row.querySelector('[data-p]').onclick = () => { st.pins[pinK(id)] = cur + 5; savePlan(); paint(); re(); };
+        const dp = row.querySelector('[data-deep]'); if (dp) dp.onclick = () => { st.pins[pinK(id)] = id === 'repair' ? d.r.repairTotal : d.r.leftStart[id]; savePlan(); paint(); re(); };
+      });
+      body.querySelector('[data-ctundo]').onclick = () => { if (undoPlan()) { c(); re(); const st2 = currentStretch(); if (st2) changeTodaySheet(st2, re); } };
+      body.querySelector('[data-ctreset]').onclick = () => { Object.keys(st.pins).forEach(k => { if (k.endsWith('|' + d.td)) delete st.pins[k]; }); if (st.order) delete st.order[d.td]; savePlan(); paint(); re(); };
+      body.querySelector('[data-ctadd]').onclick = () => { c(); addSubjectSheet(st, re, { once: true }); };
+    };
+    paint();
   });
 }
 function subjectSheet(st, id, re) {
   const s = st.subjects.find(x => x.id === id); if (!s) return;
-  const i = st.subjects.indexOf(s), done = subjectDone(s);
+  const i = st.subjects.indexOf(s), done = subjectDone(s), ro = rowOrder(st), ri = ro.indexOf(s.id);
   planSheet(s.name, 'SUBJECT', `<p class="muted small">${s.keys.length} cards · ${done} walked since you added it${s.sub ? ' · ' + esc(s.sub) : ''}</p>
     <div class="pnew"><label>Name <input type="text" value="${esc(s.name)}" data-sname></label>${startSelect(st, s.from, 'data-sfrom')}</div>
-    <div class="seg wide"><button class="${s.mode !== 'daily' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${s.mode === 'daily' ? 'on' : ''}" data-smode="daily">A little every day</button></div>
-    <div class="pnew" data-dailybox ${s.mode === 'daily' ? '' : 'hidden'}><label>Cards a day <input type="number" min="0" max="150" value="${s.daily || ''}" placeholder="spread evenly" data-sdaily></label><label>Last day <input type="date" value="${s.to || ''}" data-sto></label></div>
-    <div class="sheet-f"><button class="btn ghost" data-sup ${i === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${i === st.subjects.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
-    let mode = s.mode || 'seq';
-    w.querySelectorAll('[data-smode]').forEach(b => b.onclick = () => { mode = b.dataset.smode; w.querySelectorAll('[data-smode]').forEach(x => x.classList.toggle('on', x === b)); w.querySelector('[data-dailybox]').hidden = mode !== 'daily'; });
-    const mv = k => { st.subjects.splice(i, 1); st.subjects.splice(i + k, 0, s); savePlan(); c(); re(); };
+    <div class="seg wide"><button class="${splitOf(s) === 'seq' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${splitOf(s) === 'even' ? 'on' : ''}" data-smode="even">Evenly</button><button class="${splitOf(s) === 'fixed' ? 'on' : ''}" data-smode="fixed">Fixed a day</button><button class="${splitOf(s) === 'by' ? 'on' : ''}" data-smode="by">Finish by</button></div>
+    <div class="pnew"><label data-sbox="fixed">Cards a day <input type="number" min="0" max="150" value="${s.daily || 10}" data-sdaily></label><label data-sbox="by">Last day <input type="date" value="${s.to || planDays(st).slice(-1)[0]}" data-sto></label></div>
+    <p class="muted small" data-shelp></p>
+    <div class="sheet-f"><button class="btn ghost" data-sup ${ri === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${ri === ro.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
+    let mode = splitOf(s);
+    const HELP = { seq: 'Fills each day after the others, in the order of the rows.', even: 'The same number every day until the last day of the stretch.', fixed: 'This many every day until it is done.', by: 'Spread evenly so it is done by that day.' };
+    const show = () => { w.querySelector('[data-sbox=fixed]').hidden = mode !== 'fixed'; w.querySelector('[data-sbox=by]').hidden = mode !== 'by'; w.querySelector('[data-shelp]').textContent = HELP[mode]; };
+    w.querySelectorAll('[data-smode]').forEach(b => b.onclick = () => { mode = b.dataset.smode; w.querySelectorAll('[data-smode]').forEach(x => x.classList.toggle('on', x === b)); show(); }); show();
+    const mv = k => { moveRow(st, s.id, k); c(); re(); };
     w.querySelector('[data-sup]').onclick = () => mv(-1); w.querySelector('[data-sdown]').onclick = () => mv(1);
-    w.querySelector('[data-sdel]').onclick = () => { st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); };
-    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode; s.daily = +w.querySelector('[data-sdaily]').value || null; s.to = w.querySelector('[data-sto]').value || null; s.from = w.querySelector('[data-sfrom]').value || null; savePlan(); c(); re(); };
+    w.querySelector('[data-sdel]').onclick = () => { if (st.repair && repairOpts(st).at > i) st.repair.at = repairOpts(st).at - 1; st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); toast(`Removed ${s.name}. Undo is on the Plan.`); };
+    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode === 'seq' ? 'seq' : 'daily'; s.daily = mode === 'fixed' ? (+w.querySelector('[data-sdaily]').value || 10) : null; s.to = mode === 'by' ? (w.querySelector('[data-sto]').value || null) : null; s.once = false; s.from = w.querySelector('[data-sfrom]').value || null; savePlan(); c(); re(); };
   });
 }
 // Quick add: a system (or all), a pool and walk counts → live count → subject
-function addSubjectSheet(st, re) {
+function addSubjectSheet(st, re, opt = {}) {
   const sys = systems();
   let sk = sys[0] ? sysNum(sys[0].name) : '', pool = 'hit', wk = '';
   const pick = () => { const g = sys.find(x => sysNum(x.name) === sk); return g ? g.decks.flatMap(d => cardsOf(d.deck)).filter(c => inPool(c, pool) && walkOk(c, wk)) : []; };
@@ -1063,20 +1131,23 @@ function addSubjectSheet(st, re) {
     w.querySelectorAll('[data-apool]').forEach(b => b.onclick = () => { pool = b.dataset.apool; draw(w); });
     w.querySelectorAll('[data-awalk]').forEach(b => b.onclick = () => { wk = toggleWalk(wk, b.dataset.awalk); draw(w); });
   };
-  planSheet('Add a subject', 'THE PLAN', `<div data-abody></div><div class="pnew">${startSelect(st, '', 'data-afrom')}</div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
+  planSheet(opt.once ? 'Add for today only' : 'Add a subject', opt.once ? 'THE PLAN · TODAY' : 'THE PLAN', `<div data-abody></div><div class="pnew">${opt.once ? '<p class="muted small">All of it goes on today. Whatever is not walked today shows under Doesn’t fit, and you can remove it.</p><input type="hidden" data-afrom value="">' : startSelect(st, '', 'data-afrom')}</div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
     draw(w);
-    w.querySelector('[data-apick]').onclick = () => { c(); P.set('pickOn', true); P.set('pickForPlan', true); P.set('moPool', pool); P.set('moWalk', wk); go('#/sys/' + sk); };
+    w.querySelector('[data-apick]').onclick = () => { c(); if (opt.once) P.set('pickOnce', true); P.set('pickOn', true); P.set('pickForPlan', true); P.set('moPool', pool); P.set('moWalk', wk); go('#/sys/' + sk); };
     w.querySelector('[data-aadd]').onclick = () => {
       const list = pick(); if (!list.length) { toast('No cards match.'); return; }
       const g = sys.find(x => sysNum(x.name) === sk);
-      addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code), from: w.querySelector('[data-afrom]').value || null });
+      const ns = addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code), from: w.querySelector('[data-afrom]').value || null });
+      if (opt.once) makeOnce(ns);
       c(); re();
     };
   });
 }
+const makeOnce = s => { s.once = true; s.mode = 'daily'; s.daily = null; s.from = today(); s.to = today(); savePlan(); };
 function nameSubjectSheet(st, pend, re) {
-  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label>${startSelect(st, '', 'data-nfrom')}</div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
-    w.querySelector('[data-nadd]').onclick = () => { addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys, from: w.querySelector('[data-nfrom]').value || null }); c(); re(); };
+  const once = !!P.get('pickOnce', false); P.set('pickOnce', false);
+  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label>${startSelect(st, '', 'data-nfrom')}<label><input type="checkbox" data-nonce ${once ? 'checked' : ''}> Today only</label></div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
+    w.querySelector('[data-nadd]').onclick = () => { const ns = addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys, from: w.querySelector('[data-nfrom]').value || null }); if (w.querySelector('[data-nonce]').checked) makeOnce(ns); c(); re(); };
   });
 }
 // Loft card: the plan at a glance
@@ -1095,7 +1166,7 @@ function planCard() {
 /* ============================ Going out, breaks and "where were you?" (T-045) ============================ */
 const curBreak = () => currentBreak();
 const hmT = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout>⏏ Going out</button>`; }
+function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout title="Going out (a break)" aria-label="Going out">⏏<span class="gol"> Going out</span></button>`; }
 function bindGoingOut(root = app) { root.querySelectorAll('[data-goout]').forEach(b => b.onclick = e => { e.preventDefault(); goingOutSheet(); }); }
 function reasonButtons(attr) {
   const h = new Date().getHours(), eveningOk = h >= 16 && h < 18 && !breaksOn(today()).some(b => b.reason === 'eveningtea');
@@ -1153,14 +1224,22 @@ function awayPrompt(start, end) {
 function watchAway() {
   document.addEventListener('visibilitychange', () => {
     const now = Date.now();
-    if (document.visibilityState === 'hidden') { if (!hiddenAt()) markHidden(now); return; }
+    // T-072: always the latest leave time (a mark left behind when Chrome dropped the tab made the flow clock run
+    // negative and asked "where were you?" on every switch)
+    if (document.visibilityState === 'hidden') { markHidden(now); return; }
     const h = hiddenAt(); markHidden(null);
-    if (!h) return;
-    if (flow && !flow.browse && !flow.pausedAt) { flow.cardT0 += now - h; flow.t0 += now - h; }      // time away never counts as card time
+    if (!h || h > now) return;
+    if (flow && !flow.browse && !flow.pausedAt) {                 // time away never counts as card time — but never more than this flow has run
+      const away = now - Math.max(h, flow.wall0 || h, flow.cardWall || 0);
+      if (away > 0) { flow.cardT0 += away; flow.t0 += away; if (flow.peekT0) flow.peekT0 += away; }
+    }
     if (curBreak()) { drawBanner(); return; }
-    const pend = pendingAway(), start = pend ? pend.start : h, d = dkey(start);
-    if (now - start >= AWAY_MIN * 60000 && start < winEnd(d) && now > winStart(d)) awayPrompt(Math.max(start, winStart(d)), now);
+    if (now - h < AWAY_MIN * 60000) return;                        // a quick switch to another app: nothing to ask
+    let pend = pendingAway(); if (pend && now - pend.start > 12 * 3600e3) { setPendingAway(null); pend = null; }
+    const start = pend ? pend.start : h, d = dkey(start);
+    if (start < winEnd(d) && now > winStart(d)) awayPrompt(Math.max(start, winStart(d)), now);
   });
+  { const h = hiddenAt(); if (h && Date.now() - h > 12 * 3600e3) markHidden(null); }   // a mark from a previous day: drop it
   setInterval(drawBanner, 15000);
   drawBanner();
 }
@@ -1287,7 +1366,7 @@ function startFlow(list, opts = {}) {
   const at = Math.max(0, opts.start || 0);
   const queue = list.slice(at).concat(list.slice(0, at));
   flow = { deck: queue[0].deck, label: opts.label || '', browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
-    queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
+    queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), wall0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
   _lastDeck = queue[0].deck;
   renderFlow();
   flow.tick = setInterval(updateClock, 1000);
@@ -1336,57 +1415,401 @@ async function endFlow() {
   if (location.hash === back) route(); else go(back);
   if (!browse && hasBackend()) sync({ downloadAll: false });
 }
-function current() { return flow.queue[flow.idx]; }
+function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - flow.peek].idx] : flow.queue[flow.idx]; }
+/* Back = look at cards already walked in this flow; nothing is logged or changed, and the time spent looking back is not
+   counted as card time. Pause stops the clock and covers the card. (T-070, Naven's notes 5 Nov) */
+// the left bottom button (T-078): question side → look at the card before; answer side → back to this card's question;
+// looking back → one card further back; browse → previous card
+function leftAction() {
+  if (!flow || flow.busy || flow.userPause || flow.done) return;
+  if (flow.inter) { clearInter(); return; }
+  if (flow.browse) { undo(); return; }
+  if (flow.peek) { peekBack(); return; }
+  if (flow.face === 'a') { animate('flip', () => { flow.face = 'q'; drawCard(); }); return; }
+  peekBack();
+}
+function leftLabel() {
+  if (!flow || flow.done || flow.inter) return '';
+  if (flow.browse) return `${ICON.prev}<span>Back</span>`;
+  if (flow.peek) return `${ICON.prev}<span>Further back</span>`;
+  return flow.face === 'a' ? `${ICON.prev}<span>Question</span>` : `${ICON.prev}<span>Back</span>`;
+}
+function peekBack() {
+  if (!flow || flow.browse || flow.busy || flow.pausedAt) return;
+  if (flow.inter) flow.inter = null;
+  if (!flow.hist.length || (flow.peek || 0) >= flow.hist.length) { toast(flow.hist.length ? 'That is the first card of this flow.' : 'No earlier card in this flow yet.'); return; }
+  if (!flow.peek) flow.peekT0 = Date.now();
+  flow.peek = (flow.peek || 0) + 1;
+  animate('back', () => { drawCard(); updateFlowChrome(); });
+}
+// tap a tile: a walked card opens to look at (nothing changes); the current one brings you back
+function jumpTo(i) {
+  if (!flow || flow.busy || flow.pausedAt) return;
+  if (i === flow.idx) { if (flow.peek) peekForward(true); return; }
+  let k = -1; for (let j = flow.hist.length - 1; j >= 0; j--) if (flow.hist[j].idx === i) { k = j; break; }
+  if (k < 0) { toast(i > flow.idx ? 'That card is still ahead in this flow.' : 'That card was undone.'); return; }
+  const want = flow.hist.length - k; if (want === flow.peek) return;
+  if (!flow.peek) flow.peekT0 = Date.now();
+  const back = want > (flow.peek || 0); flow.peek = want;
+  animate(back ? 'back' : 'deal', () => { drawCard(); updateFlowChrome(); });
+}
+function peekForward(all) {
+  if (!flow || !flow.peek) return;
+  flow.peek = all ? 0 : flow.peek - 1;
+  if (!flow.peek) { const d = Date.now() - (flow.peekT0 || Date.now()); flow.cardT0 += d; flow.peekT0 = null; }
+  animate('deal', () => { drawCard(); updateFlowChrome(); });
+}
+function togglePause() {
+  if (!flow || flow.browse) return;
+  if (flow.pausedAt && !flow.userPause) { toast('You are on a break — tap I’m back.'); return; }
+  if (flow.userPause) { const d = Date.now() - flow.pausedAt; flow.cardT0 += d; flow.t0 += d; if (flow.peekT0) flow.peekT0 += d; flow.pausedAt = null; flow.userPause = false; }
+  else { flow.pausedAt = Date.now(); flow.userPause = true; }
+  const b = $('#f-pause'); if (b) b.innerHTML = flow.userPause ? `${ICON.play}<span class="lbl">Resume</span>` : `${ICON.pause}<span class="lbl">Pause</span>`;
+  $('.screen.flow').classList.toggle('paused', !!flow.userPause);
+  updateClock();
+}
 function sectionRange() {
   const c = current(); if (!c) return '';
   const ch = chunkOf(c), same = flow.queue.filter(x => x.deck === c.deck && chunkOf(x).key === ch.key).map(x => x.no);
-  return ch.name + (same.length > 1 ? ' · ' + Math.min(...same) + '–' + Math.max(...same) : '');
+  return ch.name + (same.length > 1 ? ' · cards ' + Math.min(...same) + '–' + Math.max(...same) : same.length ? ' · card ' + same[0] : '');
 }
 
 function renderFlow() {
   const m = deckMeta(flow.deck) || {};
   const cs = P.get('cardScale', 1);
-  app.innerHTML = `<div class="screen flow${flow.browse ? ' browse' : ''}" style="--cs:${cs}">
-    <aside class="f-side">
-      <div class="f-top">
-        <button class="iconbtn" data-act="close" aria-label="End flow">${ICON.close}</button>
-        <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
-        <span class="tsz"><button class="iconbtn sm" data-ts="-1" aria-label="Smaller text">A−</button><button class="iconbtn sm" data-ts="1" aria-label="Larger text">A+</button></span>
-        <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
-        <span class="ring" id="f-ring"></span>
-      </div>
-      <div class="f-stats mono">
-        <span><i>TIME</i><b id="f-time">0:00</b></span>
-        <span><i>PER CARD</i><b id="f-pace">–</b></span>
-        <span><i>VS AVERAGE</i><b id="f-diff">–</b></span>
-      </div>
-      ${flow.browse ? '' : `<div class="f-live mono" id="f-live"></div>${goingOutButton('sm')}`}
-      <div class="f-tiles-wrap"><span class="mono muted small">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div></div>
-      <p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Again cards come back at the end of this flow. Space reveals and moves on · A = Again · U = Undo · E = Edit · Esc ends.'}</p>
-    </aside>
+  // T-072 layout: one slim bar + one strip; the card and Explain get the rest of the screen
+  app.innerHTML = `<div class="screen flow v3${flow.browse ? ' browse' : ''}" data-page="${esc(P.get('page', 'white'))}" style="--cs:${cs}">
+    <header class="f-bar">
+      <button class="iconbtn sm" data-act="close" aria-label="End flow">${ICON.close}</button>
+      <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
+      <span class="ring" id="f-ring"></span>
+      <div class="f-stats mono"><span><i>TIME</i><b id="f-time">0:00</b></span><span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
+      <span class="f-grow"></span>
+      <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" title="${flow.browse ? 'Previous card' : 'Undo the last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
+      ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" title="Pause (P)" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
+      ${flow.browse ? '' : goingOutButton('sm')}
+      ${P.get('inkDock', 1) ? '<div class="ik-host ik-dock" id="f-ink" hidden></div>' : ''}
+      <span class="f-break" aria-hidden="true"></span>
+      <button class="iconbtn sm" id="f-gear" aria-label="Explain settings" aria-expanded="false">⚙</button>
+      <div class="f-pop" id="f-pop" hidden><div class="f-xp" id="f-xp"></div><p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Space reveals and moves on · ← looks back · P pauses · A = Again · U = Undo · E = Edit · Esc ends.'}</p></div>
+    </header>
+    <div class="f-strip" id="f-strip" role="button" tabindex="0" aria-label="This flow and today: tap for the full view">
+      <span class="mono f-sl" id="f-lab">THIS FLOW</span><span class="mono f-cnt" id="f-cnt"></span><div class="f-tiles" id="f-tiles"></div>
+      ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div><div class="f-live mono" id="f-live"></div>'}
+    </div>
     <main class="f-main">
-      <div class="ik-host" id="f-ink" hidden></div>
-      ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div>'}
-      <div class="card-wrap"><article class="card" id="card"></article></div>
+      ${P.get('inkDock', 1) ? '' : '<div class="ik-host" id="f-ink" hidden></div>'}
+      <div class="card-wrap"><article class="card" id="card"></article>${flow.browse ? '' : '<button class="pause-cover" id="f-cover" aria-label="Resume the flow"><span class="mono">PAUSED</span><b>Tap to resume</b><small>The clock is stopped.</small></button>'}</div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
-      <button class="big press" id="f-big"></button>
+      <div class="f-nav"><button class="big2 press" id="f-left"></button><button class="big press" id="f-big"></button></div>
     </main>
   </div>`;
+  setupGestures($('.card-wrap'));
+  const ikh = $('#f-ink.ik-dock'); if (ikh && window.ResizeObserver) { let t = 0; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(fitBar, 60); }).observe(ikh); }
+  const gear = $('#f-gear'), pop = $('#f-pop');
+  gear.onclick = e => { e.stopPropagation(); pop.hidden = !pop.hidden; gear.setAttribute('aria-expanded', !pop.hidden); };
+  if (!window.__fpop) window.__fpop = 1, document.addEventListener('pointerdown', e => { const pp = document.getElementById('f-pop'); if (pp && !pp.hidden && !e.target.closest('#f-pop, #f-gear')) pp.hidden = true; }, { capture: true });
+  const strip = $('#f-strip'); strip.onclick = e => {
+    if (e.target.closest('button, a')) return;
+    const t = e.target.closest('[data-ti]');
+    if (t && !flow.browse) { const i = +t.dataset.ti; jumpTo(i); return; }
+    strip.classList.toggle('open');
+  };
   $('[data-act=close]').onclick = () => askEnd();
   app.querySelectorAll('[data-ts]').forEach(b => b.onclick = () => {
     const v = Math.max(0.8, Math.min(1.5, Math.round((P.get('cardScale', 1) + 0.1 * +b.dataset.ts) * 10) / 10));
     P.set('cardScale', v); $('.screen.flow').style.setProperty('--cs', v);
   });
   $('#f-undo').onclick = undo;
+  const pk = $('#f-peek'); if (pk) pk.onclick = peekBack;
+  const ps = $('#f-pause'); if (ps) ps.onclick = togglePause;
   bindGoingOut();
-  $('#f-big').onclick = () => flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
+  $('#f-left').onclick = leftAction;
+  $('#f-big').onclick = () => flow.userPause ? togglePause() : flow.peek ? peekForward(true) : flow.inter ? clearInter() : flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
+  const cv = $('#f-cover'); if (cv) cv.onclick = togglePause;
+  drawXpToggles();
   drawCard();
   updateFlowChrome();
 }
+/* ---------- Explain layer in Flow (T-069): toggles, deck map / deck close interstitials ---------- */
+const xpOpenMode = () => P.get('xpOpen', 'new');          // 'new' = open on a card's first sight · 'tap' = only when tapped
+const xpTraps = () => !!P.get('xpTraps', 1);
+const xpDepth = () => P.get('xpDepth', 'auto');   // 'auto' = Learn on a card's first sight, Revise after · or always one of them
+const PAGES = [['white', 'White'], ['grey', 'Soft grey'], ['cream', 'Cream'], ['mint', 'Mint']];
+function drawXpToggles() {
+  const h = document.getElementById('f-xp'); if (!h) return;
+  const o = xpOpenMode(), t = xpTraps();
+  const wasOpen = true;   // T-072: the settings live in the ⚙ pop-up, always unfolded there
+  h.innerHTML = `<details class="f-xpd"${wasOpen ? ' open' : ''}><summary class="mono">EXPLAIN SETTINGS</summary><div class="f-xpg"><span class="mono muted small">EXPLAIN</span>
+    <div class="seg"><button class="${o !== 'tap' ? 'on' : ''}" data-xo="new">Open</button><button class="${o === 'tap' ? 'on' : ''}" data-xo="tap">Only when tapped</button></div>
+    <span class="mono muted small">DEPTH</span>
+    <div class="seg">${[['auto', 'Auto'], ['learn', 'Learn'], ['revise', 'Revise']].map(([k, l]) => `<button class="${xpDepth() === k ? 'on' : ''}" data-xd="${k}">${l}</button>`).join('')}</div>
+    <span class="mono muted small">EXAM TRAPS</span>
+    <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div>
+    <span class="mono muted small">PAGE</span>
+    <div class="seg">${PAGES.map(([k2, l]) => `<button class="${P.get('page', 'white') === k2 ? 'on' : ''}" data-pg="${k2}"><i class="pgsw pg-${k2}"></i>${l}</button>`).join('')}</div>
+    <span class="mono muted small">PEN TOOLS</span>
+    <div class="seg"><button class="${P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:1">In the top bar</button><button class="${!P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:0">Floating</button></div></div></details>${chatSettingsHtml()}`;
+  bindChatSettings(h);
+  h.querySelectorAll('[data-nv]').forEach(b => b.onclick = () => {
+    const [k, v] = b.dataset.nv.split(':'); P.set(k, +v);
+    if (k === 'inkDock' && flow) { renderFlow(); const p2 = $('#f-pop'); if (p2) p2.hidden = false; return; }
+    drawXpToggles();
+  });
+  h.querySelectorAll('[data-pg]').forEach(b => b.onclick = () => { P.set('page', b.dataset.pg); const sc = $('.screen.flow'); if (sc) sc.dataset.page = b.dataset.pg; drawXpToggles(); });
+  h.querySelectorAll('[data-xo]').forEach(b => b.onclick = () => { P.set('xpOpen', b.dataset.xo); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
+  h.querySelectorAll('[data-xd]').forEach(b => b.onclick = () => { P.set('xpDepth', b.dataset.xd); if (flow) flow.depthOver = {}; drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
+  h.querySelectorAll('[data-xt]').forEach(b => b.onclick = () => { P.set('xpTraps', +b.dataset.xt); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
+}
+function clearInter() {
+  if (!flow || !flow.inter) return;
+  flow.inter = null;
+  animate('deal', () => { drawCard(); updateFlowChrome(); });
+}
+function drawInter(el, big) {
+  const it = flow.inter, deck = it.deck, m = deckMeta(deck) || {};
+  unmountInk();
+  const walking = new Set(flow.queue.filter(x => x.deck === deck).map(x => x.code));
+  el.classList.remove('ng');
+  el.innerHTML = it.kind === 'map' ? mapHtml(deck, m.title, walking) : closeHtml(deck);
+  big.innerHTML = it.kind === 'map' ? `START${ICON.next}` : `CONTINUE${ICON.next}`;
+  bindBridges(el);
+}
+function bindBridges(el) { el.querySelectorAll('[data-xp-bridge]').forEach(b => b.onclick = e => { e.stopPropagation(); const a = b.nextElementSibling; if (a) a.hidden = false; b.remove(); }); }
+// was the card just before this one (same deck) left out of this flow? then the bridge lines carry what it taught
+function skippedBefore(c) {
+  if (!c || c.topup || !(+c.no > 1)) return false;
+  const prev = cardsOf(c.deck).find(x => +x.no === +c.no - 1 && !x.topup);
+  return !!prev && !flow.queue.some(x => x.deck === c.deck && x.code === prev.code);
+}
 
+/* ---------- T-075: size per side = one slider (and a pinch), which re-flows the text; the card also has Fit ----------
+   Fit = the whole card in view (the size goes down until it fits, not below 55%). Slider or pinch = your own size. */
+const VZ = k => P.get('vz' + k, 1);
+const fitMode = k => P.get('fit' + k, k === 'Card' && innerWidth >= 700 ? 'page' : 'custom');
+function paneOf(el, k) { return k === 'Card' ? el.querySelector('.c-a, .c-q') : el.querySelector('.xp-pane'); }
+function fitPane(el, k, live) {
+  const box = paneOf(el, k); if (!box) return;
+  box.classList.remove('pv'); box.style.removeProperty('--ts');
+  let z = live != null ? live : VZ(k);
+  if (live == null && fitMode(k) === 'page') {
+    z = 1; box.style.setProperty('--z', 1);
+    box.querySelectorAll(':scope > .ink-ov').forEach(c => { c.style.height = '0px'; });   // the ink layer is re-sized after; don't let its old height count
+    for (let i = 0; i < 5; i++) { const H = box.clientHeight, S2 = box.scrollHeight; if (!H || S2 <= H + 2) break; z = Math.max(0.55, z * Math.pow(H / S2, 0.85)); box.style.setProperty('--z', z.toFixed(3)); if (z <= 0.55) break; }
+  }
+  box.style.setProperty('--z', (+z).toFixed(3));
+  const c = el.querySelector(`[data-szc="${k}"]`);
+  if (c) { c.querySelector('.fz').textContent = Math.round(z * 100) + '%'; const r = c.querySelector('input'); if (r && document.activeElement !== r) r.value = Math.round(z * 100); const f = c.querySelector('[data-fit]'); if (f) f.classList.toggle('on', fitMode(k) === 'page'); }
+  box.dispatchEvent(new Event('toggle'));                       // ink follows the new geometry
+}
+function sizeControl(k) {
+  return `<span class="fitc szc mono" data-szc="${k}" role="group" aria-label="${k === 'Card' ? 'Card' : 'Explain'} size">${k === 'Card' ? '<button data-fit title="Fit the whole card in view">Fit</button>' : ''}<input type="range" min="50" max="200" step="5" value="100" aria-label="Size"><span class="fz"></span></span>`;
+}
+function setupFit(el) {
+  const ct = el.querySelector('.c-tags'); if (ct && !ct.querySelector('[data-szc]')) ct.insertAdjacentHTML('beforeend', sizeControl('Card'));
+  const xb = el.querySelector('.xp-head .xp-bar'); if (xb && !xb.querySelector('[data-szc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', sizeControl('Xp'));
+  el.querySelectorAll('[data-szc]').forEach(c => {
+    const k = c.dataset.szc, r = c.querySelector('input'), f = c.querySelector('[data-fit]');
+    ['pointerdown', 'touchstart'].forEach(t => c.addEventListener(t, e => e.stopPropagation(), { passive: true }));
+    r.oninput = () => { P.set('fit' + k, 'custom'); P.set('vz' + k, +r.value / 100); fitPane(el, k); };
+    if (f) f.onclick = e => { e.stopPropagation(); P.set('fit' + k, fitMode(k) === 'page' ? 'custom' : 'page'); fitPane(el, k); };
+  });
+  requestAnimationFrame(() => { fitPane(el, 'Card'); fitPane(el, 'Xp'); });
+  if (!window.__fitRO) { window.__fitRO = 1; addEventListener('resize', () => { const c = document.getElementById('card'); if (c && flow) { fitPane(c, 'Card'); fitPane(c, 'Xp'); } }); }
+}
+/* ---------- two-finger pinch on either side sets its size (swipes were removed on 5 Nov: not precise enough) ---------- */
+function setupGestures(wrap) {
+  if (!wrap || wrap.dataset.g) return; wrap.dataset.g = 1;
+  let g = null;
+  const pts = e => [...e.touches].slice(0, 2).map(t => [t.clientX, t.clientY]);
+  const dist = q => Math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1]), mid = q => [(q[0][0] + q[1][0]) / 2, (q[0][1] + q[1][1]) / 2];
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length !== 2 || !flow) { if (e.touches.length > 2) g = null; return; }
+    const q = pts(e), m = mid(q), tgt = document.elementFromPoint(m[0], m[1]), k = tgt && tgt.closest('.xp-pane') ? 'Xp' : 'Card', card = document.getElementById('card');
+    const box = card && paneOf(card, k); const z0 = box ? (+getComputedStyle(box).getPropertyValue('--z') || 1) : 1;
+    g = { d0: dist(q), k, z0, card, on: false }; e.preventDefault();
+  }, { passive: false });
+  wrap.addEventListener('touchmove', e => {
+    if (!g || e.touches.length !== 2) return; e.preventDefault();
+    const r = dist(pts(e)) / g.d0; if (!g.on && Math.abs(r - 1) < 0.06) return; g.on = true;
+    g.z = Math.max(0.5, Math.min(2, g.z0 * r)); fitPane(g.card, g.k, g.z);
+  }, { passive: false });
+  wrap.addEventListener('touchend', e => { if (!g || e.touches.length > 1) return; const G = g; g = null; if (G.on) { P.set('fit' + G.k, 'custom'); P.set('vz' + G.k, +G.z.toFixed(3)); fitPane(G.card, G.k); } });
+}
+// +1 = forward (reveal on the question side, next on the answer side); −1 = back (look at the card before)
+function turn(dir, axis) {
+  if (!flow || flow.busy || flow.userPause) return;
+  flow.turnAxis = axis;
+  if (dir > 0) { if (flow.peek) peekForward(false); else if (flow.inter) clearInter(); else if (flow.done) endFlow(); else if (flow.face === 'q') reveal(); else next(false); }
+  else { if (flow.browse) undo(); else peekBack(); }
+  setTimeout(() => { if (flow) flow.turnAxis = null; }, 600);
+}
+/* ---------- T-072: drag the divider between the card and Explain (remembered per profile, per orientation) ---------- */
+function setupSplit(el) {
+  const sp = el.querySelector('.a-split'), dv = sp && sp.querySelector('.a-div'); if (!dv) return;
+  const land = () => matchMedia('(orientation:landscape) and (min-width:900px)').matches, key = () => land() ? 'splitL' : 'splitP';
+  const apply = () => { const v = P.get(key(), land() ? 52 : 46); sp.style.setProperty('--split', v + '%'); };
+  apply();
+  dv.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'pen' && isWriting()) return;
+    e.preventDefault(); dv.setPointerCapture(e.pointerId); sp.classList.add('dragging');
+    const r = sp.getBoundingClientRect();
+    const mv = ev => { const v = land() ? (ev.clientX - r.left) / r.width * 100 : (ev.clientY - r.top) / r.height * 100; const c = Math.max(22, Math.min(78, v)); sp.style.setProperty('--split', c.toFixed(1) + '%'); };
+    const up = ev => { dv.removeEventListener('pointermove', mv); dv.removeEventListener('pointerup', up); dv.removeEventListener('pointercancel', up); sp.classList.remove('dragging'); P.set(key(), parseFloat(sp.style.getPropertyValue('--split')) || 50); fitPane(el, 'Card'); fitPane(el, 'Xp'); };
+    dv.addEventListener('pointermove', mv); dv.addEventListener('pointerup', up); dv.addEventListener('pointercancel', up);
+  });
+  dv.ondblclick = () => { P.set(key(), land() ? 52 : 46); apply(); fitPane(el, 'Card'); fitPane(el, 'Xp'); };
+}
+// "Still unclear" (lasso or Select text on the Explain side): kept on this device per profile; Claude reads the list when it is shared
+const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, docked: () => !!P.get('inkDock', 1),
+  onAsk: (texts, from, rect) => askMenu(rect, { c, texts, from }),
+  pin: () => { P.set('inkDock', P.get('inkDock', 1) ? 0 : 1); if (flow) renderFlow(); }, onUnclear: async texts => {
+  const all = (await db.kv.get('xpUnclear')) || [];
+  for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
+  await db.kv.set('xpUnclear', all);
+} });
+/* ---------- T-077: Ask Claude — copy a ready question (card context + what you selected) and open one of your chats ----------
+   Claude can't receive a message into an existing chat from a link, so Trace copies the question and opens the chat;
+   you paste and send. Chats (name + claude.ai/chat/… link) are kept per profile in ⚙ › Claude chats. */
+const ASK_TPL = `{deck} · {code} · {title}
+Question: {question}
+Card answer: {answer}
+I selected ({from}): "{selected}"
+{ask}
+Look it up first: card {code} in deck {deckid} — Google Drive › Trace › Study desk › 00 INDEX tells you where; link related cards from other decks and cite their IDs.`;
+// T-080: quick intents — the {ask} line. Editable in ⚙ › Claude chats; most-used first. The free box adds your own words.
+const INTENTS = [
+  ['explain', 'Explain', 'Explain this part properly: the mechanism, step by step.'],
+  ['normal', 'Normal value', 'Give the normal values and cut-offs with units, and what moves them up or down.'],
+  ['mech', 'Mechanism', 'Walk me through the mechanism from the cause to this finding, one step at a time.'],
+  ['basics', 'Basics first', 'Start from the basic physiology I need for this, then build up to it.'],
+  ['compare', 'Compare', 'Compare this with its close mimics in a table, and name the one feature that separates them.'],
+  ['why', 'Why wrong', 'What is the common wrong answer here, and why is it wrong? Show the reasoning.'],
+  ['exam', 'Exam angle', 'How is this asked in NEET-SS? The traps, the cut-offs and the wording examiners use.'],
+  ['connect', 'Connect', 'connect: where else does this come up in my other decks and systems? Cite the card IDs.']
+].map(([id, label, line]) => ({ id, label, line }));
+const intents = () => { const a = P.get('aiIntents', null); return Array.isArray(a) && a.length ? a : INTENTS; };
+const intentsSorted = () => { const use = P.get('aiIntentUse', {}); return intents().slice().sort((a, b) => (use[b.id] || 0) - (use[a.id] || 0)); };
+const chats = () => P.get('aiChats', []), activeChat = () => { const a = chats(), id = P.get('aiActive', ''); return a.find(x => x.id === id) || a[0] || null; };
+function askText({ c, texts, from, kind, intent, own }) {
+  const one = s => plain(String(s || '')).replace(/\s+/g, ' ').trim();
+  const { head, rest } = splitQ(c.q);
+  const sel = texts && texts.length ? texts.join(' … ') : '';
+  let t = P.get('aiTpl', '') || ASK_TPL;
+  const it = intent ? intents().find(x => x.id === intent) : null;
+  let ask = kind === 'trap' ? 'Why is this wrong, and what is right? Show the reasoning.'
+    : it ? it.line : (sel ? 'Explain this part properly: the mechanism, step by step.' : 'Explain this card properly: the mechanism behind each part, step by step.');
+  if (it && it.id === 'explain' && !sel) ask = 'Explain this card properly: the mechanism behind each part, step by step.';
+  own = String(own || '').trim();
+  if (own) ask = it || kind === 'trap' ? ask + '\n' + own : own;
+  if (!/\{ask\}/.test(t)) t = /Explain this part properly[^\n]*/.test(t) ? t.replace(/Explain this part properly[^\n]*/, '{ask}') : t + '\n{ask}';
+  t = t.replace(/\{ask\}/g, () => ask.replace(/\$/g, '$$$$'));
+  if (!sel) t = t.replace(/I selected[^\n]*\n?/, '');
+  if (kind === 'trap') t = t.replace(/I selected[^\n]*/, 'Exam trap on this card: "{selected}"');
+  const m = deckMeta(c.deck) || {};
+  return t.replace(/\{deckid\}/g, c.deck).replace(/\{deck\}/g, c.deck + (m.title ? ' (' + m.title + ')' : '')).replace(/\{code\}/g, c.code).replace(/\{title\}/g, one(head).replace(/:$/, ''))
+    .replace(/\{question\}/g, one(rest || head).slice(0, 400)).replace(/\{answer\}/g, one(c.a).slice(0, 700)).replace(/\{selected\}/g, sel).replace(/\{from\}/g, from || 'card');
+}
+async function copyText(t) { try { await navigator.clipboard.writeText(t); return true; } catch (e) { try { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok; } catch (er) { return false; } } }
+async function logAsk(o) { try { const a = (await db.kv.get('askLog')) || []; a.push({ ...o, ts: Date.now() }); await db.kv.set('askLog', a.slice(-500)); } catch (e) { /* */ } }
+async function doAsk(where, payload) {
+  const text = askText(payload), c = payload.c;
+  if (where === 'google') { const q = (payload.texts && payload.texts.length ? payload.texts.join(' ') : plain(splitQ(c.q).head)) + ' ' + ((deckMeta(c.deck) || {}).system || ''); window.open('https://www.google.com/search?q=' + encodeURIComponent(q.trim().slice(0, 300)), 'trace-google'); logAsk({ deck: c.deck, code: c.code, where: 'google', text: q }); return; }
+  const ok = await copyText(text);
+  if (where === 'new') { window.open('https://claude.ai/new?q=' + encodeURIComponent(text), 'trace-claude'); toast(ok ? 'Copied too — if the new chat is empty, paste and send' : 'Opened a new chat'); logAsk({ deck: c.deck, code: c.code, where: 'new', text }); return; }
+  const ch = chats().find(x => x.id === where); if (!ch) return;
+  P.set('aiActive', ch.id);
+  window.open(ch.url, 'trace-claude');
+  toast(ok ? `Copied · in “${ch.name}” long-press, Paste, Send` : 'Could not copy — the browser blocked it');
+  logAsk({ deck: c.deck, code: c.code, where: ch.name, text });
+}
+function askMenu(rect, payload) {
+  document.querySelectorAll('.ask-menu').forEach(n => n.remove());
+  const list = chats(), act = activeChat();
+  const m = document.createElement('div'); m.className = 'ask-menu';
+  const its = intentsSorted();
+  let pick = P.get('aiIntentLast', '') && its.some(x => x.id === P.get('aiIntentLast', '')) ? P.get('aiIntentLast', '') : (its[0] || {}).id;
+  if (payload.kind === 'trap') pick = '';
+  m.innerHTML = `<p class="mono am-h">ASK CLAUDE${payload.texts && payload.texts.length ? ' · selection' : payload.kind === 'trap' ? ' · exam trap' : ' · whole card'}</p>
+    <div class="am-int" role="radiogroup" aria-label="What do you want?">${its.map(x => `<button data-int="${esc(x.id)}" role="radio" aria-checked="${x.id === pick}" class="${x.id === pick ? 'on' : ''}">${x.id === pick ? '✓ ' : ''}${esc(x.label)}</button>`).join('')}</div>
+    <textarea class="am-own" rows="2" placeholder="Or ask in your own words…" data-own></textarea>
+    <p class="mono am-h am-h2">SEND TO</p>
+    ${list.length ? list.map(x => `<button data-ask="${esc(x.id)}" class="${act && act.id === x.id ? 'on' : ''}"><b>${esc(x.name)}</b>${act && act.id === x.id ? '<span class="mono">last used</span>' : ''}</button>`).join('') : '<p class="am-n">No chats yet. Add your Claude chats in ⚙ › Claude chats.</p>'}
+    <button data-ask="new" class="am-sub">New chat (pre-filled)</button>
+    <button data-ask="google" class="am-sub">Search Google</button>
+    <button data-ask="manage" class="am-sub mono">Manage chats…</button>`;
+  document.body.appendChild(m);
+  const own = m.querySelector('[data-own]');
+  own.onkeydown = e => e.stopPropagation();
+  m.querySelectorAll('[data-int]').forEach(b => b.onclick = e => { e.stopPropagation(); pick = pick === b.dataset.int ? '' : b.dataset.int;
+    m.querySelectorAll('[data-int]').forEach(x => { const on = x.dataset.int === pick; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); x.textContent = (on ? '✓ ' : '') + (its.find(i => i.id === x.dataset.int) || {}).label; }); });
+  const w = Math.min(320, innerWidth - 16), x = Math.max(8, Math.min(innerWidth - w - 8, (rect ? rect.left : innerWidth / 2 - w / 2))), y = rect ? Math.min(innerHeight - m.offsetHeight - 8, rect.bottom + 6) : 80;
+  Object.assign(m.style, { left: x + 'px', top: Math.max(8, y) + 'px', width: w + 'px' });
+  const off = e => { if (!m.contains(e.target)) { m.remove(); document.removeEventListener('pointerdown', off, true); } };
+  setTimeout(() => document.addEventListener('pointerdown', off, true), 0);
+  m.querySelectorAll('[data-ask]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.ask; m.remove(); document.removeEventListener('pointerdown', off, true);
+    if (k === 'manage') { const pp = $('#f-pop'); if (pp) { pp.hidden = false; const cs = pp.querySelector('.ai-set'); if (cs) cs.open = true; } return; }
+    if (pick) { const use = P.get('aiIntentUse', {}); use[pick] = (use[pick] || 0) + 1; P.set('aiIntentUse', use); P.set('aiIntentLast', pick); }
+    doAsk(k, { ...payload, intent: pick, own: own.value }); });
+}
+function chatSettingsHtml() {
+  const list = chats(), act = activeChat();
+  return `<details class="ai-set"><summary class="mono">CLAUDE CHATS · ${list.length}</summary>
+    <div class="ai-list">${list.map(x => `<div class="ai-row${act && act.id === x.id ? ' on' : ''}"><b>${esc(x.name)}</b><span class="mono">${esc(x.url.replace(/^https?:\/\//, '').slice(0, 34))}…</span><button data-aidel="${esc(x.id)}" aria-label="Remove ${esc(x.name)}">✕</button></div>`).join('') || '<p class="muted small">None yet.</p>'}</div>
+    <div class="ai-add"><input data-ain placeholder="Name (e.g. TOX doubts)"><input data-aiu placeholder="Chat link: https://claude.ai/chat/…"><button data-aiadd>Add</button></div>
+    <details class="ai-tpl ai-ints"><summary class="mono">QUICK INTENTS · ${intents().length}</summary>
+      <p class="muted small">The button name, and the line it puts into the message. Most-used come first in the Ask menu.</p>
+      ${intents().map((x, i) => `<div class="ai-int" data-i="${i}"><input data-il value="${esc(x.label)}" aria-label="Button name"><textarea data-iline rows="2" aria-label="Line it adds">${esc(x.line)}</textarea><button data-idel aria-label="Remove ${esc(x.label)}">✕</button></div>`).join('')}
+      <div class="ai-add"><button data-iadd>+ Add intent</button><button data-ireset>Reset to defaults</button></div></details>
+    <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {deckid} {code} {title} {question} {answer} {selected} {from} are filled in from the card; {ask} is the quick intent or your own words.</p><button data-aitplreset>Reset</button></details>
+  </details>`;
+}
+function bindChatSettings(h) {
+  const add = h.querySelector('[data-aiadd]');
+  if (add) add.onclick = () => {
+    const n = h.querySelector('[data-ain]').value.trim(), u = h.querySelector('[data-aiu]').value.trim();
+    if (!/^https:\/\/(claude\.ai|chatgpt\.com|chat\.openai\.com|gemini\.google\.com)\//.test(u)) { toast('Paste the chat’s link (https://claude.ai/chat/…)'); return; }
+    const a = chats(); a.push({ id: 'c' + Date.now().toString(36), name: n || 'Chat ' + (a.length + 1), url: u }); P.set('aiChats', a); drawXpToggles(); keepOpen();
+  };
+  h.querySelectorAll('[data-aidel]').forEach(b => b.onclick = () => { P.set('aiChats', chats().filter(x => x.id !== b.dataset.aidel)); drawXpToggles(); keepOpen(); });
+  const ta = h.querySelector('[data-aitpl]'); if (ta) { ta.onkeydown = e => e.stopPropagation(); ta.onchange = () => P.set('aiTpl', ta.value.trim() === ASK_TPL.trim() ? '' : ta.value); }
+  const rs = h.querySelector('[data-aitplreset]'); if (rs) rs.onclick = () => { P.set('aiTpl', ''); drawXpToggles(); keepOpen(); };
+  const saveInts = a => P.set('aiIntents', a);
+  h.querySelectorAll('.ai-int').forEach(row => {
+    const i = +row.dataset.i;
+    row.querySelectorAll('input,textarea').forEach(f => { f.onkeydown = e => e.stopPropagation(); f.onchange = () => { const a = intents().map(x => ({ ...x })); a[i] = { ...a[i], label: row.querySelector('[data-il]').value.trim() || a[i].label, line: row.querySelector('[data-iline]').value.trim() || a[i].line }; saveInts(a); }; });
+    row.querySelector('[data-idel]').onclick = () => { const a = intents().filter((_, j) => j !== i); saveInts(a.length ? a : null); drawXpToggles(); keepOpen(true); };
+  });
+  const ia = h.querySelector('[data-iadd]'); if (ia) ia.onclick = () => { const a = intents().map(x => ({ ...x })); a.push({ id: 'i' + Date.now().toString(36), label: 'New', line: 'Write the line it adds here.' }); saveInts(a); drawXpToggles(); keepOpen(true); };
+  const ir = h.querySelector('[data-ireset]'); if (ir) ir.onclick = () => { P.set('aiIntents', null); drawXpToggles(); keepOpen(true); };
+  h.querySelectorAll('input').forEach(i => { i.onkeydown = e => e.stopPropagation(); });
+  function keepOpen(ints) { const d = document.querySelector('#f-xp .ai-set') || document.querySelector('.ai-set'); if (d) { d.open = true; if (ints) { const e = d.querySelector('.ai-ints'); if (e) e.open = true; } } }
+}
+// the Explain header (title, size, Learn/Revise) lives above the scrolling explanation, never inside it
+function placeXpBar(el) {
+  const head = el.querySelector('.xp-head'), bar = el.querySelector('.xp-pane .xp-bar'); if (!head || !bar) return;
+  head.innerHTML = ''; head.appendChild(bar);
+  if (!bar.querySelector('[data-act=askx]')) bar.insertAdjacentHTML('beforeend', '<button class="askbtn mono" data-act="askx" aria-label="Ask Claude about this explanation">Ask ▸</button>');
+}
+function bindXp(el, c) {
+  const ax = el.querySelector('[data-act=askx]'); if (ax) ax.onclick = e => { e.stopPropagation(); askMenu(ax.getBoundingClientRect(), { c, texts: [], from: 'Explain' }); };
+  const ab = el.querySelector('[data-act=ask]'); if (ab) ab.onclick = e => { e.stopPropagation(); askMenu(ab.getBoundingClientRect(), { c, texts: [], from: 'card' }); };
+  const xt = el.querySelector('[data-xp-tog]');
+  if (xt) xt.onclick = e => { e.stopPropagation(); const xp = el.querySelector('.xp-pane .xp') || xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
+  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
+  el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
+  const nt = el.querySelector('[data-xp-note]');
+  if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
+  el.querySelectorAll('[data-xp-fb]').forEach(b => b.onclick = e => { e.stopPropagation(); feedback(c, b.dataset.xpFb); b.closest('.xp-fb').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); toast('Thanks — noted for the next rewrite.'); });
+}
 function drawCard() {
   const el = $('#card'), big = $('#f-big');
-  if (flow.done) {
+  if (!flow.inter && !flow.done && !flow.peek && flow.face === 'q') {
+    const cd = current(); flow.mapSeen = flow.mapSeen || {};
+    if (cd && mapOf(cd.deck) && !flow.mapSeen[cd.deck]) { flow.mapSeen[cd.deck] = 1; flow.inter = { kind: 'map', deck: cd.deck }; }
+  }
+  if (flow.inter) { drawInter(el, big); return; }
+  if (flow.done && !flow.peek) {
     const n = flow.times.length, tot = (Date.now() - flow.t0) / 1000;
     el.classList.remove('ng');
     if (flow.browse) { el.innerHTML = `<div class="c-done"><span class="mono kick dark">END OF THE DECK</span><h2>You looked through ${flow.queue.length} card${flow.queue.length === 1 ? '' : 's'}</h2><p class="muted-d">Nothing was logged. Use Flow now when you want it to count.</p></div>`; big.innerHTML = 'CLOSE'; return; }
@@ -1400,27 +1823,34 @@ function drawCard() {
   }
   const c = current(), tag = neetTag(c), n = seen(c.deck, c.no);
   const { head, rest } = splitQ(c.q);
-  const isQ = flow.face === 'q';
+  const isQ = !flow.peek && flow.face === 'q';
   const top = `<div class="c-head mono"><span>${esc((c.section || '').toUpperCase())}</span><span>${esc(c.code)}</span></div>
     <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}${qbChips(c)}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}
-      ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
+      ${isQ ? '' : `<button class="askbtn mono" data-act="ask" aria-label="Ask Claude about this card">Ask ▸</button><button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse || flow.peek ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
-    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}<span class="star">✦</span></div>`;
+    const xq = xOf(c);
+    body = `${bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
-    body = `<div class="c-a">
+    const xa = xOf(c), v2 = !!(xa && xa.v === 2), xOpen = xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
+    const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
+    body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
       <div class="ans">${render(c.a)}</div>
+      ${gistHtml(xOf(c))}${n > 0 ? partsAHtml(c, xOf(c)) : ''}
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
-      ${qbBoxes(c)}
+      ${hasExplain(c) && !v2 ? panelHtml(c, xa, { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : v2 ? '' : qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
-    </div>`;
+    </div></div>${v2 ? `</section><div class="a-div" role="separator" aria-label="Drag to resize the card and Explain" tabindex="0"><i></i></div><section class="pane-xp"><div class="xp-head"></div><aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></section></div>` : ''}`;
   }
-  el.innerHTML = top + body;
+  const split = !isQ && el && body.startsWith('<div class="a-split');
+  el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
+  placeXpBar(el);
+  el.classList.toggle('peeking', !!flow.peek);
   el.classList.toggle('ng', isNeet(c));
   closePanel();
   if (!IS_HT && hasVisual(c)) {
@@ -1431,12 +1861,18 @@ function drawCard() {
   }
   el.scrollTop = 0;
   const a = el.querySelector('.c-a'); if (a) a.scrollTop = 0;
-  big.innerHTML = isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
+  const xpn = el.querySelector('.xp-pane'); if (xpn) xpn.scrollTop = 0;
+  big.innerHTML = flow.peek ? `BACK TO CURRENT${ICON.next}` : isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
+  const lb = $('#f-left'); if (lb) { lb.innerHTML = leftLabel(); lb.classList.toggle('dimmed', !flow.browse && !flow.peek && isQ && !flow.hist.length); }
   el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = () => { if (!isWriting()) reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
-  mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {} });
+  mountInk(el, c, isQ ? 'q' : 'a', inkOpts(c));
+  bindBridges(el);
+  bindXp(el, c);
+  setupFit(el);
+  setupSplit(el);
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };
@@ -1475,9 +1911,24 @@ async function saveHook(c, v) {
   if (flow && i >= 0) flow.queue[i] = { ...flow.queue[i], hook: v, edited: true };
 }
 
+// the top bar never pushes ⚙ off screen: first the button labels go, then the pen tools take their own row
+function fitBar() {
+  const b = $('.f-bar'); if (!b) return;
+  // the pinned pen tools keep the width they have when open, folded or not, so nothing else ever moves
+  const dk = b.querySelector('.ik-dock');
+  if (dk) { const bar = dk.querySelector('.ik-bar'); if (bar) { const w = Math.ceil(bar.getBoundingClientRect().width); if (w > 60) try { localStorage.setItem('trace.ink.dockw', w); } catch (e) { /* */ } }
+    let w2 = 510; try { w2 = +(localStorage.getItem('trace.ink.dockw') || 510); } catch (e) { /* */ } dk.style.minWidth = Math.min(w2, innerWidth - 24) + 'px'; }
+  // one row when it fits; otherwise row 1 = title, progress, time, ⚙ and row 2 = Back, Undo, Pause, Going out, pen tools
+  b.classList.remove('tight', 'tworow');
+  const over = () => b.scrollWidth > b.clientWidth + 1;
+  if (over()) b.classList.add('tworow');
+  const row2 = [...b.querySelectorAll('#f-peek, #f-undo, #f-pause, .goout, .ik-dock')];
+  if (b.classList.contains('tworow') && row2.some(x => x.getBoundingClientRect().right > innerWidth - 4)) b.classList.add('tight');
+}
+if (!window.__fitBar) { window.__fitBar = 1; addEventListener('resize', () => fitBar()); }
 function updateClock() {
   if (!flow) return;
-  const t = $('#f-time'); if (t) t.textContent = clock((Date.now() - flow.t0) / 1000);
+  const t = $('#f-time'); if (t) t.textContent = clock(((flow.pausedAt || Date.now()) - flow.t0) / 1000);
 }
 // Today's thread: one bead per card walked today, against today's planned number. Read by lightness and shape, never by
 // hue alone: new = light, ×2 = mid, ×3+ = dark, repair = ring; beads past the target carry a gold edge; at the target
@@ -1501,13 +1952,16 @@ function updateFlowChrome() {
   if (!flow || !$('#f-ring')) return;
   const total = flow.queue.length, step = Math.min(total, flow.idx + (flow.done ? 0 : 1));
   const circ = 2 * Math.PI * 22;
-  $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
+  if ($('.flow.v3')) { $('#f-ring').innerHTML = ''; const fc = $('#f-cnt'); if (fc) fc.innerHTML = `<b>${step}</b>/${total}`; }
+  else $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
+  fitBar();
   drawThread();
   const fl = $('#f-live');
   if (fl) { try { const c = chase(P.get('chasePool', 'all')), lp = livePace(c); fl.innerHTML = lp.before || lp.after ? `Today ${c.doneToday} / ${c.requiredToday} new` : `Today ${c.doneToday} / ${c.requiredToday} new · ${lp.diff >= 0 ? `<b class="ahead">▲ ${lp.diff}</b>` : `<b class="behind">▼ ${-lp.diff}</b>`}${lp.perHour != null ? ' · ' + lp.perHour + '/h needed' : ''}`; } catch (e) { fl.textContent = ''; } }
   const cc = !flow.done && current(), cm = cc ? deckMeta(cc.deck) || {} : {};
-  $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cm.star ? ' · ✦ ' + cm.star : '') + (flow.label && flow.label !== 'Look' ? ' · ' + flow.label.toUpperCase() : '');
+  $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cm.star ? ' · ✦ ' + cm.star : '');
+  const fl2 = $('#f-lab'); if (fl2) { const lb = flow.label && flow.label !== 'Look' ? flow.label.toUpperCase() : ''; fl2.textContent = lb || 'THIS FLOW'; fl2.classList.toggle('chip-lab', !!lb); }
   $('#f-sub').textContent = cm.title || '';
   const n = flow.times.length;
   const mine = n ? flow.times.reduce((a, b) => a + b, 0) / n : 0;
@@ -1518,16 +1972,18 @@ function updateFlowChrome() {
     $('#f-diff').innerHTML = `${fmtDur(Math.abs(d))} <span class="gold">${d < 0 ? '↓' : d > 0 ? '↑' : '='}</span> <small>avg</small>`;
   } else $('#f-diff').textContent = '–';
   $('#f-undo').classList.toggle('dimmed', flow.browse ? flow.idx === 0 : !flow.hist.length);
+  const pkb = $('#f-peek'); if (pkb) pkb.classList.toggle('dimmed', !flow.hist.length || (flow.peek || 0) >= flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
   const fq = flow.queue.slice(0, 60);
-  $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
+  $('#f-tiles').innerHTML = fq.map((c, i) => `<span data-ti="${i}" class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}${flow.peek && flow.hist[flow.hist.length - flow.peek] && flow.hist[flow.hist.length - flow.peek].idx === i ? ' look' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
 }
 
 function animate(kind, swap) {
   const el = $('#card');
   flow.busy = true;
-  const out = kind === 'flip' ? 'anim-flip-out' : 'anim-deal-out';
-  const inn = kind === 'flip' ? 'anim-flip-in' : 'anim-deal-in';
+  if (flow && flow.turnAxis === 'y' && kind !== 'flip') kind = kind === 'back' ? 'down' : 'up';
+  const out = { flip: 'anim-flip-out', back: 'anim-back-out', up: 'anim-up-out', down: 'anim-down-out' }[kind] || 'anim-deal-out';
+  const inn = { flip: 'anim-flip-in', back: 'anim-back-in', up: 'anim-up-in', down: 'anim-down-in' }[kind] || 'anim-deal-in';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { swap(); flow.busy = false; return; }
   el.classList.add(out);
@@ -1539,10 +1995,16 @@ function animate(kind, swap) {
   }, kind === 'flip' ? 170 : 230);
 }
 function reveal() {
+  if (flow && flow.userPause) return;
+  if (flow && flow.peek) return peekForward(true);
+  if (flow && flow.inter) return clearInter();
   if (!flow || flow.busy || flow.face !== 'q' || flow.done) return;
   animate('flip', () => { flow.face = 'a'; drawCard(); });
 }
 async function next(again) {
+  if (flow && flow.userPause) return;
+  if (flow && flow.peek) return peekForward(true);
+  if (flow && flow.inter) return clearInter();
   if (!flow || flow.busy || flow.done) return;
   if (flow.face === 'q') return reveal();
   if (flow.pilot && !flow.pilotSent) {                  // the one reviewed card of this pilot session (not logged anywhere)
@@ -1560,7 +2022,11 @@ async function next(again) {
   flow.hist.push({ idx: flow.idx, ev, appended: !!again, cardT0: flow.cardT0 });
   flow.times.push(ms);
   if (again) flow.queue.push(c);
+  // the last card of a deck in this flow: its deck close comes next (once)
+  flow.closeSeen = flow.closeSeen || {};
+  if (closeOf(c.deck) && !flow.closeSeen[c.deck] && !flow.queue.slice(flow.idx + 1).some(x => x.deck === c.deck)) { flow.closeSeen[c.deck] = 1; flow.pendingClose = c.deck; }
   animate('deal', () => {
+    if (flow.pendingClose) { flow.inter = { kind: 'close', deck: flow.pendingClose }; flow.pendingClose = null; }
     flow.idx++;
     flow.face = 'q';
     flow.cardT0 = Date.now();
@@ -1570,9 +2036,11 @@ async function next(again) {
   });
 }
 async function undo() {
-  if (flow && flow.browse) { if (flow.busy || flow.idx === 0) return; flow.idx--; flow.face = 'q'; flow.done = false; drawCard(); updateFlowChrome(); return; }
+  if (flow && flow.peek) { flow.peek = 0; flow.peekT0 = null; }
+  if (flow && flow.browse) { if (flow.busy || flow.idx === 0) return; animate('back', () => { flow.idx--; flow.face = 'q'; flow.done = false; drawCard(); updateFlowChrome(); }); return; }
   if (!flow || flow.busy || !flow.hist.length) return;
   const h = flow.hist.pop();
+  flow.inter = null;
   await undoView(h.ev);
   if (h.appended) flow.queue.pop();
   flow.times.pop();
@@ -1632,8 +2100,12 @@ function flowKeys(e) {
     if (e.key === 'Escape') { e.preventDefault(); closePanel(); return; }
     if (panelKey(vstate, e)) { drawPanel($('#vpanel'), vstate, { P, onClose: closePanel }); return; }
   }
-  if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
-  else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); }
+  if (flow.userPause) { if (e.key === ' ' || e.key === 'p' || e.key === 'P') { e.preventDefault(); togglePause(); } return; }
+  if (e.key === 'p' || e.key === 'P') { if (!flow.browse) { e.preventDefault(); togglePause(); } return; }
+  if (flow.peek && (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight')) { e.preventDefault(); peekForward(e.key !== 'ArrowRight'); return; }
+  if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.inter ? clearInter() : flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
+  else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); else peekBack(); }
+  else if (e.key === 'q' || e.key === 'Q') { if (flow.face === 'a' && !flow.peek) { e.preventDefault(); leftAction(); } }
   else if (e.key === 'a' || e.key === 'A') { if (flow.face === 'a' && !flow.browse) next(true); }
   else if (e.key === 'u' || e.key === 'U' || e.key === 'Backspace' || (e.key === 'z' && (e.metaKey || e.ctrlKey))) { e.preventDefault(); undo(); }
   else if (e.key === 'e' || e.key === 'E') { if (flow.face === 'a') openEditor(current()); }

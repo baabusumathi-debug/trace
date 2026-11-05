@@ -262,6 +262,8 @@ const ICONS = {
   pen: '<svg viewBox="0 0 24 24"><path d="M14.6 4.6l4.8 4.8L9 19.8l-5.3.9.9-5.3z"/><path d="M12.8 6.4l4.8 4.8"/><path class="tipc" d="M3.7 20.7l.6-3.4 2.8 2.8z"/></svg>',
   hl: '<svg viewBox="0 0 24 24"><path d="M15.2 3.4l5.4 5.4-7.9 7.9-5.4-5.4z"/><path d="M7.3 11.3l-1.6 4.6 2.4 2.4 4.6-1.6"/><path class="tipc" d="M5.7 15.9l-2.4 4.1 1.6.8 3.2-2.5z"/></svg>',
   er: '<svg viewBox="0 0 24 24"><path d="M3.9 15.1l9.5-9.5a2 2 0 0 1 2.8 0l3.2 3.2a2 2 0 0 1 0 2.8L12 19H7.8z"/><path d="M8.6 10.4l5 5"/><path d="M12 19h8.5"/></svg>',
+  pin: '<svg viewBox="0 0 24 24"><path d="M9 3h6l-1 6 4 4H6l4-4z"/><path d="M12 13v8"/></svg>',
+  tsel: '<svg viewBox="0 0 24 24"><path d="M9 4h6M9 20h6M12 4v16"/><path d="M4 9h3v6H4z" opacity=".55"/><path d="M17 9h3v6h-3z" opacity=".55"/></svg>',
   lasso: '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="9.5" rx="8" ry="5" stroke-dasharray="2.6 2.4"/><path d="M8.2 13.6c-1.4.9-1.6 2.6-.4 3.4 1 .7 2.4.2 2.5-1"/><path d="M7.8 17l-1.3 3.5"/></svg>',
   undo: '<svg viewBox="0 0 24 24"><path d="M8.5 5.5L4 10l4.5 4.5"/><path d="M4 10h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
   redo: '<svg viewBox="0 0 24 24"><path d="M15.5 5.5L20 10l-4.5 4.5"/><path d="M20 10H9.5a5.5 5.5 0 0 0 0 11H13"/></svg>',
@@ -283,6 +285,7 @@ const POS_KEY = 'trace.ink.pos', MIN_KEY = 'trace.ink.min';
 // the toolbar's size follows the window: in split screen (multi-window) it shrinks so the whole strip still fits
 export function railSize() { const hgt = window.innerHeight || 800, w = window.innerWidth || 800; return Math.max(30, Math.min(44, Math.floor((hgt - 48) / 13), Math.floor(w / 11))); }
 export function placeFloat(h, size) {
+  if (h.classList.contains('ik-dock')) { h.classList.remove('ik-float', 'ik-left', 'ik-up'); h.style.left = h.style.top = h.style.right = h.style.transform = ''; h.style.setProperty('--ik', '34px'); return; }
   let pos = null; try { pos = JSON.parse(localStorage.getItem(POS_KEY) || 'null'); } catch (e) { pos = null; }
   h.classList.add('ik-float'); h.style.setProperty('--ik', (size || railSize()) + 'px');
   const r = h.getBoundingClientRect();
@@ -295,6 +298,7 @@ export function placeFloat(h, size) {
   h.classList.toggle('ik-up', rr.top > innerHeight * 0.55);
 }
 export function dragFloat(h, handle, onTap) {
+  if (h.classList.contains('ik-dock')) { handle.onpointerdown = e => e.stopPropagation(); handle.onclick = e => { e.stopPropagation(); if (onTap) onTap(); }; return; }
   handle.onpointerdown = e => {
     e.preventDefault(); e.stopPropagation(); handle.setPointerCapture(e.pointerId);
     const r = h.getBoundingClientRect(), ox = e.clientX - r.left, oy = e.clientY - r.top, sx = e.clientX, sy = e.clientY; let moved = false;
@@ -339,13 +343,14 @@ export class Toolbar {
     }
     this.host.innerHTML = `<div class="ik-bar" role="toolbar" aria-label="Pen tools">
         <div class="ik-grip" data-grip title="Drag to move · tap to fold the strip into one button">${ICONS.grip}</div>
-        ${btn('pen', 'Pen · tap again for settings', ` style="--tip:${S.pen.color}"`)}${btn('hl', 'Highlighter · tap again for settings', ` style="--tip:${S.hl.color}"`)}${btn('er', 'Eraser · tap again for settings')}${btn('lasso', 'Lasso select · tap again for help')}
+        ${btn('pen', 'Pen · tap again for settings', ` style="--tip:${S.pen.color}"`)}${btn('hl', 'Highlighter · tap again for settings', ` style="--tip:${S.hl.color}"`)}${btn('er', 'Eraser · tap again for settings')}${btn('tsel', 'Select text · drag across words, or tap a part')}${btn('lasso', 'Lasso: move ink · tap again for help')}
         ${btn('shape', 'Shapes · tap again for settings')}${btn('text', 'Text · tap again for settings')}
         ${clips.length ? `<button class="ik-ic${pasting || this.clipOpen ? ' on' : ''}" data-paste aria-label="Clipboard" title="Clipboard · ${clips.length} item${clips.length === 1 ? '' : 's'}">${ICONS.paste}<span class="ik-badge">${clips.length}</span></button>` : ''}
         <span class="ik-sep"></span>
         <button class="ik-ic" data-undo aria-label="Undo" title="Undo">${ICONS.undo}</button><button class="ik-ic" data-redo aria-label="Redo" title="Redo">${ICONS.redo}</button>
         <span class="ik-sep"></span>
         <button class="ik-cur" data-curc style="--c:${tipOf(t)}" aria-label="Colour and size" title="Colour and size"><i></i></button>
+        ${this.api.pin ? `<button class="ik-ic ik-pin${this.api.docked && this.api.docked() ? ' on' : ''}" data-pin aria-label="${this.api.docked && this.api.docked() ? 'Unpin: let the tools float' : 'Pin the tools to the top bar'}" title="${this.api.docked && this.api.docked() ? 'Pinned to the top bar · tap to float' : 'Floating · tap to pin to the top bar'}">${ICONS.pin}</button>` : ''}
         <button class="ik-ic ik-done" data-done aria-label="Done writing" title="Done writing">${ICONS.done}</button>
       </div>
       <div class="ik-pop"${this.open ? '' : ' hidden'}><div class="ik-pophead"><b>${{ pen: 'Pen', hl: 'Highlighter', er: 'Eraser', lasso: 'Lasso', shape: 'Shapes', text: 'Text' }[t] || ''}</b><button class="ik-x" data-close aria-label="Close settings">✕</button></div>${this.popHtml()}</div>
@@ -354,7 +359,7 @@ export class Toolbar {
         <div class="ik-cliplist">${clips.map((c, i) => `<div class="ik-clip${pasting === c.id ? ' on' : ''}" data-clip="${c.id}"><canvas width="300" height="120" data-clipcv="${i}"></canvas><span class="ik-cliptag mono">${i + 1} · ${c.n} mark${c.n === 1 ? '' : 's'} · ${ago(c.ts)}</span><button class="ik-clipx" data-clipdel="${c.id}" aria-label="Remove from clipboard">✕</button></div>`).join('')}</div>
         <div class="ik-row"><button class="ik-more" data-clipclear>Clear clipboard</button></div></div>` : ''}
       <div class="ik-selbar"${this.api.hasSel() ? '' : ' hidden'}>
-        <div class="ik-selrow"><b>Selected</b><button data-sel="del">Delete</button><button data-sel="cut">Cut</button><button data-sel="copy">Copy</button><button data-sel="none">Done</button></div>
+        <div class="ik-selrow"><b>Selected</b><button data-sel="del">Delete</button><button data-sel="cut">Cut</button><button data-sel="copy">Copy</button>${this.api.selOnExplain && this.api.selOnExplain() ? '<button data-sel="unclear" class="ik-unclear">? Still unclear</button>' : ''}${this.api.canXfer && this.api.canXfer() ? `<button data-sel="xfer">${this.api.xferLabel()}</button>` : ''}<button data-sel="none">Done</button></div>
         <div class="ik-selrow">${SEL_COLS.map(c => `<span class="ik-dot sm" style="background:${c}" data-selc="${c}" title="Colour ${c}"></span>`).join('')}</div>
         <div class="ik-selrow"><span class="muted">Thickness</span><button data-selw="0.8" aria-label="Thinner">− thinner</button><button data-selw="1.25" aria-label="Thicker">+ thicker</button><small>drag inside to move · corners resize · round handle rotates (snaps every 15°)</small></div>
       </div>`;
@@ -366,7 +371,7 @@ export class Toolbar {
     if (t === 'pen') return `<div class="ik-row"><label>Type</label><div class="ik-pt">${PEN_TYPES.map(([k, l]) => `<button class="${S.pen.type === k ? 'on' : ''}" data-pt="${k}">${l}</button>`).join('')}</div></div>`
       + slider('Size', 'pen.size', 0.5, 20, 0.5, S.pen.size, v => (+v).toFixed(1)) + colourRow(S.pen.color, this.more)
       + `<div class="ik-prev"><canvas width="560" height="56" data-prev></canvas></div>`;
-    if (t === 'hl') return `<div class="ik-row"><label>Snap to text</label><div class="ik-pt"><button class="${S.hl.snap ? 'on' : ''}" data-snap="1">On</button><button class="${!S.hl.snap ? 'on' : ''}" data-snap="0">Off</button></div></div>`
+    if (t === 'hl') return `<div class="ik-row"><label>Snap</label><span class="ik-note">Automatic: over words it follows the line of text; anywhere else it draws freely</span></div>`
       + slider('Size', 'hl.size', 4, 40, 1, S.hl.size, v => v) + slider('Opacity', 'hl.op', 10, 90, 5, S.hl.op, v => v + '%') + colourRow(S.hl.color, this.more)
       + `<div class="ik-prev"><canvas width="560" height="56" data-prev></canvas></div>`;
     if (t === 'er') return `<div class="ik-row"><label>Eraser</label><div class="ik-pt"><button class="${S.er.mode === 'stroke' ? 'on' : ''}" data-em="stroke">Stroke</button><button class="${S.er.mode === 'partial' ? 'on' : ''}" data-em="partial">Partial</button></div></div>`
@@ -375,6 +380,7 @@ export class Toolbar {
         <div class="ik-row"><label>S Pen button</label><span class="ik-note">hold the side button while writing to erase · last pen signal: <b class="mono">${penSignal()}</b></span></div>
         <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><button class="ik-more" data-logclear style="margin:4px 0">Clear log</button><pre class="ik-penlog" data-penlog>${penLines() || '—'}</pre>
         <div class="ik-row"><label></label><button class="ik-more" data-clear>Clear this side</button></div>`;
+    if (t === 'tsel') return `<div class="ik-row"><label>Select text</label><span class="ik-note">drag from the first word to the last word — whole words are taken; tap once on a part to take all of it. Then Highlight, Copy or Still unclear.</span></div>`;
     if (t === 'lasso') return `<div class="ik-row"><label>Select</label><span class="ik-note">draw a loop round ink or highlights, or tap one mark; drag inside the box to move; Delete in the blue bar</span></div>`;
     if (t === 'shape') return `<div class="ik-row"><label>Draw</label><div class="ik-pt">${[['free', 'Freehand'], ['line', 'Line'], ['arrow', 'Arrow'], ['rect', 'Rectangle'], ['ellipse', 'Ellipse'], ['tri', 'Triangle']].map(([k, l]) => `<button class="${S.shape.kind === k ? 'on' : ''}" data-sk="${k}">${l}</button>`).join('')}</div></div>
         <div class="ik-row"><label>Auto shape</label><div class="ik-pt"><button class="${S.shape.auto ? 'on' : ''}" data-auto="1">On · draw, keep the pen still ½ s</button><button class="${!S.shape.auto ? 'on' : ''}" data-auto="0">Off</button></div></div>
@@ -388,8 +394,9 @@ export class Toolbar {
     const h = this.host, set = (path, v) => { const [a, b] = path.split('.'); S[a][b] = v; saveS(); };
     // tap a tool = choose it; tap the chosen tool again = its settings
     h.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { const k = b.dataset.t; this.clipOpen = false; if (S.tool === k) this.open = !this.open; else { S.tool = k; this.open = false; this.more = false; this.api.toolChanged(); } saveS(); this.draw(); });
-    const cc = h.querySelector('[data-curc]'); if (cc) cc.onclick = () => { if (S.tool === 'er' || S.tool === 'lasso') S.tool = 'pen'; this.open = !this.open; saveS(); this.draw(); };
+    const cc = h.querySelector('[data-curc]'); if (cc) cc.onclick = () => { if (S.tool === 'er' || S.tool === 'lasso' || S.tool === 'tsel') S.tool = 'pen'; this.open = !this.open; saveS(); this.draw(); };
     const cx = h.querySelector('[data-close]'); if (cx) cx.onclick = () => { this.open = false; this.draw(); };
+    const pn = h.querySelector('[data-pin]'); if (pn) pn.onclick = e => { e.stopPropagation(); this.api.pin(); };
     const gp = h.querySelector('[data-grip]'); if (gp) dragFloat(h, gp, () => this.setMin(true));
     const ps = h.querySelector('[data-paste]'); if (ps) ps.onclick = () => { this.clipOpen = !this.clipOpen; this.open = false; if (!this.clipOpen) this.api.setPasting(null); this.draw(); };
     const cc2 = h.querySelector('[data-clipclose]'); if (cc2) cc2.onclick = () => { this.clipOpen = false; this.api.setPasting(null); this.draw(); };
@@ -458,7 +465,11 @@ function logPen(e, tag) {
   else { penLog.unshift({ key, n: 1, t: now - logT0 }); penLog.length = Math.min(penLog.length, 18); }
 }
 const penLines = () => penLog.map(l => `${String(l.t).padStart(5)}ms  ${l.key}${l.n > 1 ? '  ×' + l.n : ''}`).join('\n');
-let penSeen = 0;                                   // last time a real pen event arrived
+let penSeen = 0;
+let penDownAt = 0, penIsDown = false;              // T-072: a real pen press anywhere on the page (toolbar included)
+addEventListener('pointerdown', e => { if (e.pointerType === 'pen') { penDownAt = Date.now(); penIsDown = true; } }, true);
+addEventListener('pointerup', e => { if (e.pointerType === 'pen') penIsDown = false; }, true);
+addEventListener('pointercancel', e => { if (e.pointerType === 'pen') penIsDown = false; }, true);                                   // last time a real pen event arrived
 const penRecent = () => Date.now() - penSeen < 20000;
 const penSignal = () => lastPen.at ? `buttons ${lastPen.buttons} · button ${lastPen.button}` : 'none yet';
 // side (barrel) button or the eraser end: any pen button beyond plain contact
@@ -518,7 +529,7 @@ export function attachPointer(surface, opts) {
     if (act && act.erase && eraseAt(units(e), act.r)) surface.request();
     clearTimeout(btnT); btnT = setTimeout(btnEnd, 450);
   };
-  cv.addEventListener('contextmenu', e => { logPen(e, 'contextmenu'); if (!opts.writing()) return; e.preventDefault(); e.stopPropagation(); if (penRecent() || e.pointerType === 'mouse') btnErase(e); });
+  cv.addEventListener('contextmenu', e => { logPen(e, 'contextmenu'); if (!opts.writing()) return; e.preventDefault(); e.stopPropagation(); });
   // Second signal seen on the Tab (4 Nov 15:56): pressing the side button makes a separate "mouse" pointer appear
   // over the card (pointerover · mouse) while the pen itself carries on as a pen. That arms the eraser for the next stroke.
   let armed = 0;
@@ -526,7 +537,7 @@ export function attachPointer(surface, opts) {
   cv.addEventListener('pointerover', e => {
     logPen(e);
     if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); sideMove(e); return; }
-    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
+    if (false) {
       arm(true);
       if (act && (act.draw || act.shape || act.snapHl)) { surface.live = null; surface.pred = null; clearTimeout(holdT); act = { erase: true, r: (S.er.size / 2) * opts.unitPerPx() }; surface.render(); }
     }
@@ -563,15 +574,16 @@ export function attachPointer(surface, opts) {
   cv.addEventListener('pointerdown', e => {
     logPen(e);
     if (!opts.writing()) return;
-    if (e.pointerType === 'pen') penSeen = Date.now();
-    if (e.pointerType === 'mouse' && penRecent()) { e.preventDefault(); cv.setPointerCapture(e.pointerId); btnErase(e); return; }
+    if (e.pointerType === 'pen') { penSeen = Date.now(); sideCand = null; if (act && act.btnPen) { act = null; surface.cursor = null; if (opts.armChanged) opts.armChanged(false); } }
+    if (e.pointerType === 'mouse' && penRecent()) { e.preventDefault(); return; }   // a stray "mouse" right after the pen: ignore (T-076)
     if (e.pointerType === 'touch') { act = { touch: true, y: e.clientY, x: e.clientX }; cv.setPointerCapture(e.pointerId); return; }
     e.preventDefault(); cv.setPointerCapture(e.pointerId);
     if (e.pointerType === 'pen') lastPen = { buttons: e.buttons, button: e.button, at: Date.now() };
     if (opts.onDown) opts.onDown(surface);
-    const p = units(e), erasing = sideButton(e) || hoverSide || !!armed || S.tool === 'er';
+    const p = units(e), erasing = sideButton(e) || S.tool === 'er';
     if (opts.pasteAt && opts.pasting && opts.pasting()) { opts.pasteAt(p); return; }
     if (erasing) { surface.snapshot(); toEraser(); if (eraseAt(p, act.r)) surface.render(); return; }
+    if (S.tool === 'tsel') { act = { tsel: true, sx: e.clientX, sy: e.clientY }; if (opts.textSel) opts.textSel(act, e, 'start'); return; }
     if (S.tool === 'lasso') {
       const sel = surface.sel;
       if (sel && sel.box) {
@@ -605,19 +617,14 @@ export function attachPointer(surface, opts) {
     if (S.tool === 'shape' && S.shape.kind !== 'free') { surface.live = { type: 'shape', kind: S.shape.kind, c: S.pen.color, s: S.pen.size * opts.unitPerPx(), pts: [p, p] }; act = { shape: true }; return; }
     if (S.tool === 'hl') {
       // snap on: over words it snaps to the line of text; anywhere else it draws freely at the set size
-      if (S.hl.snap && opts.snapLine) { const line = opts.snapLine(e); if (line) { surface.live = { type: 'hl', snap: true, c: S.hl.color, o: S.hl.op / 100, h: line.h, pts: [[p[0], line.y], [p[0], line.y]], rects: line.rects || null, tr: line.tr || null }; act = { snapHl: true, line }; return; } }
+      if (opts.snapLine) { const line = opts.snapLine(e); if (line) { surface.live = { type: 'hl', snap: true, c: S.hl.color, o: S.hl.op / 100, h: line.h, pts: [[p[0], line.y], [p[0], line.y]], rects: line.rects || null, tr: line.tr || null }; act = { snapHl: true, line }; return; } }
       surface.live = { type: 'hl', c: S.hl.color, s: S.hl.size * opts.unitPerPx(), o: S.hl.op / 100, pts: [p] }; act = { draw: true }; return;
     }
     surface.live = { type: 'pen', pen: S.pen.type, c: S.pen.color, s: S.pen.size * opts.unitPerPx(), pts: [[p[0], p[1], pr(e)]] };
     act = { draw: true };
   });
   cv.addEventListener('pointermove', e => {
-    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
-      // side-button pen: erase while it is pressed on the glass (buttons/pressure), or while a context-menu press is running
-      if (e.buttons || e.pressure > 0 || btn) { if (e.buttons || e.pressure > 0 || btn) btnErase(e); }
-      else if (e.buttons !== lastPen.buttons) logPen(e);
-      return;
-    }
+    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) return;
     if (e.pointerType === 'pen') penSeen = Date.now();
     if (sideMove(e)) return;
     if (e.pointerType === 'pen') { if (e.buttons !== lastPen.buttons) { lastPen = { buttons: e.buttons, button: e.button, at: Date.now() }; logPen(e); } if (!act) hoverSide = !!sideButton(e); }
@@ -627,6 +634,7 @@ export function attachPointer(surface, opts) {
     if (act.touch) { opts.scrollBy(act.y - e.clientY); act.y = e.clientY; return; }
     const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
     if (act.erase) { let ch = false; for (const ev of evs) ch = eraseAt(units(ev), act.r) || ch; const lp = units(e); surface.cursor = [lp[0], lp[1], act.r]; surface.request(); return; }
+    if (act.tsel) { if (opts.textSel) opts.textSel(act, e, 'move'); return; }
     if (act.lasso) { surface.lasso.push(units(e)); surface.request(); return; }
     if (act.scale) { const p = units(e), k = Math.max(0.1, Math.min(10, dist(act.anchor, p) / act.d0)); act.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); scaleAbout(o, act.anchor[0], act.anchor[1], k); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
     if (act.rotate) { const p = units(e); let a = Math.atan2(p[1] - act.c[1], p[0] - act.c[0]) - act.a0; const snap = Math.round(a / (Math.PI / 12)) * (Math.PI / 12); if (Math.abs(a - snap) < 0.05) a = snap; surface.sel.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); rotateAbout(o, act.c[0], act.c[1], a); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
@@ -654,6 +662,14 @@ export function attachPointer(surface, opts) {
   function sideMove(e) {
     if (e.pointerType !== 'pen' || !opts.writing() || (act && !act.btnPen)) return false;
     if ((e.buttons & 1) && !(e.pressure > 0)) {
+      // the first samples of a normal touch can look like this too (seen right after picking a tool): wait 70 ms and make
+      // sure no real pen press arrived before treating it as the side button
+      if (!act) {
+        const now = Date.now();
+        if (penIsDown || now - penDownAt < 250) { sideCand = null; return false; }
+        if (!sideCand) { sideCand = now; return false; }
+        if (now - sideCand < 70) return false;
+      }
       if (!act) { surface.snapshot(); surface.live = null; act = { erase: true, btnPen: true, r: (S.er.size / 2) * opts.unitPerPx(), last: null }; if (opts.armChanged) opts.armChanged(true); logPen(e, 'side-erase'); }
       const evs2 = e.getCoalescedEvents ? e.getCoalescedEvents() : []; let ch = false;
       for (const ev of (evs2.length ? evs2 : [e])) {
@@ -668,12 +684,14 @@ export function attachPointer(surface, opts) {
     if (act && act.btnPen) { act = null; armed = 0; surface.cursor = null; surface.render(); opts.changed(); if (opts.armChanged) opts.armChanged(false); }
     return false;
   }
+  let sideCand = null;
   if ('onpointerrawupdate' in window) cv.addEventListener('pointerrawupdate', e => { if (e.pointerType === 'pen') sideMove(e); });
   const end = e => {
     clearTimeout(holdT); surface.pred = null; surface.cursor = null;
     if (armed && e && e.pointerType === 'pen') arm(false);
     if (e && e.type === 'pointerup') logPen(e);
     if (!act) return;
+    if (act.tsel) { if (opts.textSel && e) opts.textSel(act, e, 'end'); act = null; return; }
     if (act.lasso) {
       const poly = surface.lasso; surface.lasso = null;
       const [lx0, ly0, lx1, ly1] = bbox(poly), tiny = Math.max(lx1 - lx0, ly1 - ly0) < 12 * opts.unitPerPx();
@@ -683,11 +701,13 @@ export function attachPointer(surface, opts) {
       // most sensitive: any part inside the loop, or the loop line passing over it, selects it
       else ids = surface.objs.map((o, i) => (densePts(o).some(q => inPoly(q, poly)) || poly.some(q => hits(o, q, tol))) ? i : -1).filter(i => i >= 0);
       surface.sel = ids.length ? { ids } : null; surface.render(); opts.selChanged();
+      if (!ids.length && !tiny && opts.lassoText) opts.lassoText(poly);
     } else if (surface.live) {
       const o = surface.live; surface.live = null;
       const ok = o.type === 'text' || o.type === 'pen' || (o.type === 'hl' && o.snap ? (o.rects ? o.rects.some(r => Math.abs(r[2] - r[0]) > 2) : Math.abs(o.pts[1][0] - o.pts[0][0]) > 2) : o.pts.length > 1) || (o.type === 'shape' && dist(o.pts[0], o.pts[o.pts.length - 1]) >= 2) || (o.type === 'shape' && o.kind !== 'line' && o.kind !== 'arrow');
       if (ok) surface.objs.push(o); surface.render(); opts.changed(o);
-    } else if (act.erase || ((act.move || act.scale || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
+    } else if (act.move && act.moved && e && opts.dropOut && opts.dropOut(e)) { /* moved to another area */ }
+    else if (act.erase || ((act.move || act.scale || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
     else if (act.rotate) { surface.render(); opts.changed(); }
     act = null;
   };

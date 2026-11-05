@@ -6,13 +6,35 @@ import { Surface, Toolbar, attachPointer, loadInk, saveInk, settings, INK_ICONS,
 const ROOM_W = 1000;                       // rooms use their own units: 1000 = the room's width
 const SPACE = 180;                         // one "space" of a room, in room units
 const CLIP_KEY = 'trace.ink.clips', OLD_CLIP = 'trace.ink.clip', CLIP_MAX = 12;
-let cur = null;                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
-let writing = false, pasting = null;          // pasting = id of the clipboard item waiting to be placed
+let cur = null;
+const ovs = st => [st.overlay, st.overlayX].filter(Boolean);            // the answer overlay and the Explain overlay (T-072)
+const isOv = (st, s) => s === st.overlay || (st.overlayX && s === st.overlayX);                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
+let writing = false, pasting = null;
+// T-078: S Pen side button erases even when the pen tools are closed. The proven side-button signature (pen moves with
+// buttons 1, pressure 0, no press) held 70 ms switches writing on quietly (no toolbar); 700 ms after the pen goes quiet it
+// switches back off.
+let quiet = false, lastPenEv = 0;
+addEventListener('pointermove', e => { if (e.pointerType === 'pen') lastPenEv = Date.now(); }, true);
+setInterval(() => { if (quiet && writing && Date.now() - lastPenEv > 700) { quiet = false; setWriting(false); } }, 250);
+function quietWatch(el) {
+  let t0 = null, downAt = 0;
+  el.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'pen') return;
+    downAt = Date.now(); t0 = null;
+    if (quiet && writing) { quiet = false; setWriting(false); e.stopPropagation(); e.preventDefault(); }   // a normal touch ends the quiet eraser; it never draws
+  }, true);
+  const f = e => {
+    if (writing || e.pointerType !== 'pen') return;
+    if ((e.buttons & 1) && !(e.pressure > 0) && Date.now() - downAt > 250) { if (!t0) t0 = Date.now(); else if (Date.now() - t0 > 70) { t0 = null; quiet = true; setWriting(true); } }
+    else t0 = null;
+  };
+  el.addEventListener('pointermove', f); if ('onpointerrawupdate' in window) el.addEventListener('pointerrawupdate', f);
+}          // pasting = id of the clipboard item waiting to be placed
 const listeners = { changed: null };
 export const isWriting = () => writing;
 
 function anchorsOf(box) {
-  const els = [...box.querySelectorAll('.c-head, .c-tags, .qh, .qr > *, .qr li, .c-title, .qrecap, .ans > *, .ans li, .box, .bx > p, .bx li, .hook, .rm')];
+  const els = [...box.querySelectorAll('.c-head, .c-tags, .qh, .qr > *, .qr li, .c-title, .qrecap, .ans > *, .ans li, .box, .bx > p, .bx li, .hook, .rm, .xv-sub, .xv > h4, .xv > p, .xv li, .xv-part, .xv-tt, .xp-grid tr, .xv-more, .xp-trapoff')];
   els.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = (e.classList.contains('rm') ? 'rm:' + e.dataset.room : 'b' + i); });
   return els;
 }
@@ -134,6 +156,7 @@ function makeOverlay(box, rec, face) {
     const rg = document.createRange(); rg.setStart(c.node, c.off); rg.setEnd(c.node, Math.min(c.node.length, c.off + 1));
     const rr = rg.getClientRects()[0] || c.node.parentElement.getBoundingClientRect();
     if (!rr || !rr.height || rr.height > 70 || e.clientY < rr.top - 8 || e.clientY > rr.bottom + 8) return null;
+    if (e.clientX < rr.left - 14 || e.clientX > rr.right + 14) return null;   // beside the words (margin, end of a line): draw freely
     const r = cv.getBoundingClientRect(), sc = cv.clientWidth / (r.width || 1);
     const off = textOffset(el, c.node, c.off);
     return { y: (rr.top + rr.height / 2 - r.top) * sc, h: rr.height * sc * 0.92, el, off, tr: null, rects: null };
@@ -163,7 +186,13 @@ function makeRoom(holder, key, data, onChange) {
   wrap.appendChild(cv); wrap.appendChild(more); holder.appendChild(wrap);
   wrap.addEventListener('click', e => { if (writing) { e.stopPropagation(); } });
   const kNow = () => (cv.clientWidth || wrap.clientWidth || ROOM_W) / ROOM_W;
-  const fit = () => { cv.style.height = Math.round((data.h || SPACE) * kNow()) + 'px'; };
+  // the room grows with the text when the side is zoomed (its height follows the zoom; its ink keeps the room's width)
+  const zf = () => { const r = cv.getBoundingClientRect().width, c = cv.clientWidth; return r && c ? Math.max(0.5, Math.min(3, r / c)) : 1; };
+  const fit = () => {
+    const used = (data.objs || []).reduce((m, o) => Math.max(m, objBox(o)[3]), 0);
+    if (used + 10 > (data.h || SPACE)) data.h = Math.ceil((used + 20) / (SPACE / 2)) * (SPACE / 2);
+    cv.style.height = Math.round((data.h || SPACE) * kNow() * zf()) + 'px';
+  };
   fit();
   const map = () => { const k = kNow(); return { X: p => p[0] * k, Y: p => p[1] * k, k }; };
   const s = new Surface(cv, data.objs || (data.objs = []), { map, changed: () => {}, limits: () => writing });
@@ -210,7 +239,7 @@ function pasteInto(s, p) {
   const c = readClips().find(x => x.id === pasting) || readClips()[0]; if (!c || !cur) return;
   s.snapshot();
   const f = s.unitPerPx(), start = s.objs.length;
-  for (const src of c.objs) { const o = JSON.parse(JSON.stringify(src)); scaleObj(o, f); shiftObj(o, p[0], p[1]); if (s === cur.overlay) o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
+  for (const src of c.objs) { const o = JSON.parse(JSON.stringify(src)); scaleObj(o, f); shiftObj(o, p[0], p[1]); if (isOv(cur, s)) o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
   s.sel = { ids: c.objs.map((_, j) => start + j) };
   pasting = null;
   if (s.data) { const b = s.objs.slice(start).map(objBox).reduce((m, q) => Math.max(m, q[3]), 0); if (b > (s.data.h || SPACE) - 10) { s.data.h = Math.ceil((b + 20) / (SPACE / 2)) * (SPACE / 2); s.fit(); } }
@@ -231,6 +260,17 @@ export async function mountInk(cardEl, card, face, opts) {
   if (face === 'a') for (const { el, key } of lineEls(box)) {
     const has = rec.rooms[key] && rec.rooms[key].objs && rec.rooms[key].objs.length;
     el.classList.add('rm-line');
+    // T-072: a lettered part opens its room from its own circled letter (no chevron beside it)
+    const sp = el.querySelector(':scope > .sp');
+    if (sp) {
+      sp.classList.add('rm-l'); sp.dataset.rk = key; sp.classList.toggle('has', !!has); sp.setAttribute('role', 'button'); sp.tabIndex = 0;
+      sp.setAttribute('aria-label', has ? 'Show or hide your note under this part' : 'Open room to write under this part');
+      const holder = document.createElement('div'); holder.className = 'rm-hold'; holder.dataset.for = key;
+      if (el.tagName === 'LI') el.appendChild(holder); else el.after(holder);
+      sp.addEventListener('pointerdown', e => e.stopPropagation(), true);
+      sp.onclick = e => { e.stopPropagation(); e.preventDefault(); toggleRoom(key); };
+      continue;
+    }
     const b = document.createElement('button'); b.type = 'button'; b.className = 'rm-chev' + (has ? ' has' : ''); b.dataset.rk = key;
     b.setAttribute('aria-label', has ? 'Show or hide your note under this line' : 'Open room to write under this line');
     b.innerHTML = has ? PEN : CHEV;
@@ -241,10 +281,19 @@ export async function mountInk(cardEl, card, face, opts) {
   }
   st.overlay = makeOverlay(box, rec, face);
   wireSurface(st.overlay);
+  // Explain pane (answer side): its own ink layer, saved per depth (Learn and Revise lay out differently)
+  const xbox = face === 'a' ? cardEl.querySelector('.xp-pane') : null;
+  if (xbox) {
+    const xp = xbox.querySelector('.xp'); st.xface = 'x:' + ((xp && xp.dataset.depth) || 'learn'); st.xbox = xbox;
+    st.overlayX = makeOverlay(xbox, rec, st.xface); wireSurface(st.overlayX);
+    xbox.addEventListener('toggle', () => { if (cur === st) st.overlayX.relayout(); }, true);
+    new ResizeObserver(() => { if (cur === st && st.overlayX) st.overlayX.relayout(); }).observe(xbox);
+  }
   drawRooms();
-  st.overlay.relayout();
+  ovs(st).forEach(o => o.relayout());
+  quietWatch(box); if (st.xbox) quietWatch(st.xbox);
   applyMode();
-  box.addEventListener('toggle', () => { if (cur === st) st.overlay.relayout(); }, true);
+  box.addEventListener('toggle', () => { if (cur === st) { st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); } }, true);
   let lastW = box.clientWidth;
   new ResizeObserver(() => { if (cur !== st) return; st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); if (Math.abs(box.clientWidth - lastW) > 2) lastW = box.clientWidth; }).observe(box);
 }
@@ -253,7 +302,7 @@ function wireSurface(s) {
   const st = cur;
   attachPointer(s, {
     writing: () => writing, toUnits: s.toUnits, unitPerPx: s.unitPerPx, map: () => s.o.map(), snapLine: s.snapLine || null, snapUpdate: s.snapUpdate || null,
-    scrollBy: dy => { st.box.scrollTop += dy; },
+    scrollBy: dy => { (s.parentEl || st.box).scrollTop += dy; },
     selChanged: () => { if (st.last && st.last !== s && st.last.sel) { st.last.sel = null; st.last.render(); } st.last = s; if (st.toolbar) st.toolbar.draw(); },
     onDown: surf => {
       if (st.toolbar) st.toolbar.closePop();
@@ -264,8 +313,117 @@ function wireSurface(s) {
     pasting: () => !!pasting, pasteAt: p => pasteInto(s, p),
     armChanged: on => { const h = st.opts.toolbarHost && st.opts.toolbarHost(); if (h) h.classList.toggle('ik-armed', on); },
     textAt: (p, e, hit) => textAt(s, p, hit),
-    changed: o => { st.last = s; if (o && s === st.overlay && !o.a) o.a = s.anchorFor(o.pts[0]); if (s !== st.overlay) drawChevrons(); markDirty(); }
+    lassoText: poly => lassoText(s, poly),
+    textSel: (act, e, phase) => textSelect(s, act, e, phase),
+    dropOut: e => dropOut(s, e),
+    changed: o => { st.last = s; if (o && isOv(st, s) && !o.a) o.a = s.anchorFor(o.pts[0]); if (!isOv(st, s)) drawChevrons(); markDirty(); }
   });
+}
+
+/* ---------- T-072/T-074: choosing words ----------
+   Select-text tool: drag from the first word to the last (whole words), or tap a part to take all of it.
+   Lasso drawn over words with no ink inside: only the lines whose middle lies inside the loop are taken. */
+const leafBlocks = box => [...box.querySelectorAll('[data-ak]')].filter(el => !el.classList.contains('rm') && !el.querySelector('[data-ak]') && el.textContent.trim());
+const hideOf = s => [s.cv, ...s.parentEl.querySelectorAll('.rm-cv, .ink-tx')];
+function caretIn(s, x, y) {
+  const c = caretAt(x, y, hideOf(s)); if (!c) return null;
+  const el = c.node.parentElement && c.node.parentElement.closest('[data-ak]');
+  if (!el || !s.parentEl.contains(el) || el.classList.contains('rm')) return null;
+  const off = textOffset(el, c.node, c.off); return off == null ? null : { el, off };
+}
+function wordSnap(t, a, b) { while (a > 0 && /\S/.test(t[a - 1])) a--; while (b < t.length && /\S/.test(t[b])) b++; return [a, b]; }
+function selBetween(s, c0, c1) {
+  const blocks = leafBlocks(s.parentEl); let i0 = blocks.indexOf(c0.el), i1 = blocks.indexOf(c1.el); if (i0 < 0 || i1 < 0) return [];
+  if (i1 < i0 || (i1 === i0 && c1.off < c0.off)) { [c0, c1] = [c1, c0]; [i0, i1] = [i1, i0]; }
+  const out = [];
+  for (let i = i0; i <= i1; i++) {
+    const el = blocks[i], t = el.textContent; let a = i === i0 ? c0.off : 0, b = i === i1 ? c1.off : t.length;
+    [a, b] = wordSnap(t, a, b); if (b - a < 1) continue;
+    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
+  }
+  return out;
+}
+let tmarks = [];
+function drawMarks(sel) {
+  tmarks.forEach(m => m.remove()); tmarks = [];
+  sel.forEach(t => { const rg = rangeOf(t.el, t.a, t.b); if (rg) for (const q of rg.getClientRects()) { if (q.width < 1) continue; const m = document.createElement('div'); m.className = 'ik-tmark'; Object.assign(m.style, { left: q.left + 'px', top: q.top + 'px', width: q.width + 'px', height: q.height + 'px' }); document.body.appendChild(m); tmarks.push(m); } });
+}
+function textSelect(s, act, e, phase) {
+  if (!s.parentEl) return;
+  if (phase === 'start') { document.querySelectorAll('.ik-tsel').forEach(n => n.remove()); act.c0 = caretIn(s, e.clientX, e.clientY); act.sel = []; drawMarks([]); return; }
+  if (!act.c0) { const c = caretIn(s, e.clientX, e.clientY); if (c) act.c0 = c; else return; }
+  const tap = Math.hypot(e.clientX - act.sx, e.clientY - act.sy) < 8;
+  if (phase === 'move') { if (tap) return; const c1 = caretIn(s, e.clientX, e.clientY); if (c1) { act.sel = selBetween(s, act.c0, c1); drawMarks(act.sel); } return; }
+  let sel = act.sel || [];
+  if (tap) { const el = act.c0.el, t = el.textContent; sel = [{ el, a: 0, b: t.length, text: t.replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') }]; }
+  if (!sel.length) { drawMarks([]); return; }
+  textBar(s, sel, e.clientX, e.clientY);
+}
+const inPolyS = (pt, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, yi] = poly[i], [xj, yj] = poly[j]; if ((yi > pt[1]) !== (yj > pt[1]) && pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi) c = !c; } return c; };
+function lassoText(s, poly) {
+  const st = cur; if (!st || !s.parentEl) return;
+  const r0 = s.cv.getBoundingClientRect(), k = r0.width / (s.cv.clientWidth || 1);
+  const P = poly.map(p => [r0.left + p[0] * k, r0.top + p[1] * k]);
+  const sel = [];
+  for (const el of leafBlocks(s.parentEl)) {
+    const t = el.textContent, rg = rangeOf(el, 0, t.length); if (!rg) continue;
+    const lines = [...rg.getClientRects()].filter(q => q.width > 2 && inPolyS([q.left + Math.min(q.width / 2, 40), q.top + q.height / 2], P) || (q.width > 2 && inPolyS([q.left + q.width / 2, q.top + q.height / 2], P)));
+    if (!lines.length) continue;
+    const f = lines[0], l = lines[lines.length - 1];
+    const a = caretIn(s, f.left + 2, f.top + f.height / 2), b = caretIn(s, l.right - 2, l.top + l.height / 2);
+    let A = a && a.el === el ? a.off : 0, B = b && b.el === el ? b.off + 1 : t.length;
+    [A, B] = wordSnap(t, A, Math.min(B, t.length)); if (B - A < 1) continue;
+    sel.push({ el, a: A, b: B, text: t.slice(A, B).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
+  }
+  if (!sel.length) return;
+  const last = P.reduce((m, p) => p[1] > m[1] ? p : m, P[0]);
+  textBar(s, sel, Math.min(...P.map(p => p[0])), last[1]);
+}
+function textBar(s, sel, x, y) {
+  document.querySelectorAll('.ik-tsel').forEach(n => n.remove());
+  drawMarks(sel); const marks = tmarks;
+  const bar = document.createElement('div'); bar.className = 'ik-tsel';
+  bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}${cur && cur.opts.onAsk ? '<button data-t="ask" class="ik-ask">Ask ▸</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
+  Object.assign(bar.style, { left: Math.max(8, Math.min(innerWidth - 380, x)) + 'px', top: Math.min(innerHeight - 60, y + 8) + 'px' });
+  document.body.appendChild(bar);
+  const close = () => { bar.remove(); drawMarks([]); removeEventListener('scroll', close, true); };
+  addEventListener('scroll', close, true);
+  bar.addEventListener('pointerdown', e => e.stopPropagation());
+  bar.querySelectorAll('[data-t]').forEach(b => b.onclick = async e => {
+    e.stopPropagation(); const k = b.dataset.t, st = cur;
+    if (k === 'hl' && st) {
+      s.snapshot(); const S = settings();
+      for (const t of sel) { const rg = rangeOf(t.el, t.a, t.b); if (!rg) continue; const rects = bandsOf(rg, s.cv); if (!rects.length) continue;
+        const o = { type: 'hl', snap: true, c: S.hl.color, o: S.hl.op / 100, h: rects[0][3], rects, pts: [[rects[0][0], rects[0][1]], [rects[rects.length - 1][2], rects[rects.length - 1][1]]], tr: { ak: t.el.dataset.ak, s: t.a, e: t.b } };
+        o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
+      s.render(); markDirty();
+    } else if (k === 'copy') { const txt = sel.map(t => t.text).join('\n'); try { await navigator.clipboard.writeText(txt); toast('Text copied'); } catch (er) { toast('Copy was blocked by the browser'); } }
+    else if (k === 'ask' && st && st.opts.onAsk) { const r = b.getBoundingClientRect(); close(); st.opts.onAsk(sel.map(t => t.text).filter(Boolean), s === st.overlayX ? 'Explain' : 'card', r); return; }
+    else if (k === 'unclear' && st && st.opts.onUnclear) { st.opts.onUnclear(sel.map(t => t.text).filter(Boolean)); toast('Saved to “Still unclear” · the next rewrite of this deck expands it'); }
+    close();
+  });
+}
+/* ---------- T-072: marks dragged out of one writing area land in the area under the pen (Explain ↔ card) ---------- */
+function dropOut(s, e) {
+  const st = cur; if (!st || !s.parentEl || !isOv(st, s)) return false;
+  const inside = el => { const q = el.getBoundingClientRect(); return e.clientX >= q.left && e.clientX <= q.right && e.clientY >= q.top && e.clientY <= q.bottom; };
+  if (inside(s.parentEl)) return false;
+  const to = ovs(st).find(o => o !== s && inside(o.parentEl)); if (!to || !s.sel) return false;
+  const r1 = s.cv.getBoundingClientRect(), k1 = r1.width / (s.cv.clientWidth || 1);
+  const conv = q => { const u = to.toUnits(r1.left + q[0] * k1, r1.top + q[1] * k1); return q.length > 2 ? [u[0], u[1], q[2]] : u; };
+  const f = to.unitPerPx() * k1;
+  const ids = s.sel.ids.filter(i => s.objs[i]), moved = ids.map(i => JSON.parse(JSON.stringify(s.objs[i])));
+  to.snapshot();
+  for (const o of moved) {
+    o.pts = o.pts.map(conv);
+    if (o.rects) o.rects = o.rects.map(r => { const a = conv([r[0], r[1]]), b = conv([r[2], r[1]]); return [a[0], a[1], b[0], r[3] * f]; });
+    if (o.s) o.s *= f; if (o.h) o.h *= f; if (o.r) o.r *= f;
+    delete o.tr; delete o.a; o.a = to.anchorFor(o.pts[0]); to.objs.push(o);
+  }
+  const gone = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !gone.has(i)));
+  s.sel = null; to.sel = { ids: moved.map((_, j) => to.objs.length - moved.length + j) }; st.last = to;
+  s.render(); to.render(); markDirty(); if (st.toolbar) st.toolbar.draw();
+  return true;
 }
 
 /* ---------- text: an editor right where the pen tapped, inside the card ---------- */
@@ -297,9 +455,9 @@ function textAt(s, p, hit) {
     if (old && !keep) { delete old.hidden; s.render(); return; }
     if (old && (del || !t)) { s.snapshot(); s.objs.splice(i, 1); }
     else if (old) { s.snapshot(); old.t = t; old.c = style.c; old.b = style.b; old.s = style.size * s.unitPerPx(); delete old.hidden; }
-    else if (keep && t) { s.snapshot(); const o = { type: 'text', t, c: style.c, s: style.size * s.unitPerPx(), b: style.b, pts: [at] }; if (s === st.overlay) o.a = s.anchorFor(at); s.objs.push(o); }
+    else if (keep && t) { s.snapshot(); const o = { type: 'text', t, c: style.c, s: style.size * s.unitPerPx(), b: style.b, pts: [at] }; if (isOv(st, s)) o.a = s.anchorFor(at); s.objs.push(o); }
     if (s.data && s.trim) { const b = s.objs.reduce((m, o) => Math.max(m, objBox(o)[3]), 0); if (b > (s.data.h || SPACE) - 6) { s.data.h = Math.ceil((b + 20) / (SPACE / 2)) * (SPACE / 2); s.fit(); } }
-    s.render(); if (s !== st.overlay) drawChevrons(); markDirty();
+    s.render(); if (!isOv(st, s)) drawChevrons(); markDirty();
   };
   wrap.querySelectorAll('.ink-txbar button, .ink-txbar .ik-dot').forEach(b => b.addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); }));
   wrap.querySelectorAll('[data-tz]').forEach(b => b.onclick = () => { style.size = Math.max(9, Math.min(48, style.size + 2 * +b.dataset.tz)); look(); ta.focus(); });
@@ -340,6 +498,7 @@ function drawRooms() {
 }
 function drawChevrons() {
   const st = cur; if (!st) return;
+  st.box.querySelectorAll('.sp.rm-l').forEach(c => { const d = st.rec.rooms[c.dataset.rk]; c.classList.toggle('open', st.open.has(c.dataset.rk)); c.classList.toggle('has', !!(d && d.objs && d.objs.length)); });
   st.box.querySelectorAll('.rm-chev').forEach(c => {
     const d = st.rec.rooms[c.dataset.rk], has = !!(d && d.objs && d.objs.length);
     c.classList.toggle('open', st.open.has(c.dataset.rk));
@@ -350,11 +509,38 @@ function selAction(a, v) {
   const st = cur, s = st && st.last; if (!s || !s.sel) return;
   const ids = s.sel.ids.filter(i => s.objs[i]);
   if (a === 'del' || a === 'cut') { if (a === 'cut') copySel(s); s.snapshot(); const set = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !set.has(i))); s.sel = null; if (a === 'cut') toast('Cut to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
+  else if (a === 'xfer') {
+    // move the selected marks to the other side, keeping their shape; they land at the top of what that side shows now
+    const to = ovs(st).find(o => o !== s); if (!to || !isOv(st, s)) return;
+    const bb = ids.map(i => objBox(s.objs[i])).reduce((m, q) => [Math.min(m[0], q[0]), Math.min(m[1], q[1]), Math.max(m[2], q[2]), Math.max(m[3], q[3])]);
+    const r1 = s.cv.getBoundingClientRect(), k1 = r1.width / (s.cv.clientWidth || 1), pr = to.parentEl.getBoundingClientRect();
+    const dx = pr.left + 40 - (r1.left + bb[0] * k1), dy = pr.top + 60 - (r1.top + bb[1] * k1);
+    const conv = q => { const u = to.toUnits(r1.left + q[0] * k1 + dx, r1.top + q[1] * k1 + dy); return q.length > 2 ? [u[0], u[1], q[2]] : u; };
+    const f = to.unitPerPx() * k1, moved = ids.map(i => JSON.parse(JSON.stringify(s.objs[i])));
+    to.snapshot(); s.snapshot();
+    for (const o of moved) { o.pts = o.pts.map(conv); if (o.rects) o.rects = o.rects.map(r => { const p0 = conv([r[0], r[1]]), p1 = conv([r[2], r[1]]); return [p0[0], p0[1], p1[0], r[3] * f]; }); if (o.s) o.s *= f; if (o.h) o.h *= f; if (o.r) o.r *= f; delete o.tr; delete o.a; o.a = to.anchorFor(o.pts[0]); to.objs.push(o); }
+    const gone = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !gone.has(i)));
+    s.sel = null; to.sel = { ids: moved.map((_, j) => to.objs.length - moved.length + j) }; st.last = to; to.render();
+    toast(to === st.overlayX ? 'Moved to Explain' : 'Moved to the card · drag it where you want');
+  }
+  else if (a === 'unclear') {
+    // the words under the selected marks: snapped highlights keep their exact words; other marks take the lines they touch
+    const r0 = s.cv.getBoundingClientRect(), sc = s.cv.clientWidth / (r0.width || 1), out = new Set();
+    for (const i of ids) {
+      const o = s.objs[i];
+      if (o.tr) { const el = s.parentEl.querySelector(`[data-ak="${o.tr.ak}"]`); if (el) out.add(el.textContent.slice(Math.min(o.tr.s, o.tr.e), Math.max(o.tr.s, o.tr.e)).replace(/\s+/g, ' ').trim()); continue; }
+      const bb = objBox(o);
+      s.parentEl.querySelectorAll('.xv > p, .xv li, .xv-part').forEach(el => { const q = el.getBoundingClientRect(), y0 = (q.top - r0.top) * sc, y1 = (q.bottom - r0.top) * sc; if (y1 > bb[1] && y0 < bb[3]) out.add(el.textContent.replace(/\s+/g, ' ').trim()); });
+    }
+    const texts = [...out].filter(Boolean);
+    if (texts.length && st.opts.onUnclear) { st.opts.onUnclear(texts); toast('Saved to “Still unclear” · the next rewrite of this deck expands it'); } else toast('Select a highlight or a mark over the explanation first.');
+    s.sel = null;
+  }
   else if (a === 'copy') { copySel(s); toast('Copied to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
   else if (a === 'colour') { s.snapshot(); for (const i of ids) s.objs[i].c = v; }
   else if (a === 'width') { s.snapshot(); for (const i of ids) { const o = s.objs[i]; if (o.type === 'hl' && o.snap) { o.h *= v; if (o.rects) o.rects = o.rects.map(r => [r[0], r[1], r[2], r[3] * v]); } else if (o.s) o.s = Math.max(0.3, o.s * v); } }
   else s.sel = null;
-  s.render(); if (s !== st.overlay) drawChevrons(); markDirty(); if (st.toolbar) st.toolbar.draw();
+  s.render(); if (!isOv(st, s)) drawChevrons(); markDirty(); if (st.toolbar) st.toolbar.draw();
 }
 function toast(msg) {
   const t = document.createElement('div'); t.className = 'ik-toast'; t.textContent = msg; document.body.appendChild(t);
@@ -362,20 +548,23 @@ function toast(msg) {
 }
 function applyMode() {
   const st = cur; if (!st) return;
-  st.box.classList.toggle('inking', writing);
-  [st.overlay, ...st.rooms.values()].forEach(s => { s.cv.style.pointerEvents = writing ? 'auto' : 'none'; s.render(); });
+  st.box.classList.toggle('inking', writing); if (st.xbox) st.xbox.classList.toggle('inking', writing);
+  [...ovs(st), ...st.rooms.values()].forEach(s => { s.cv.style.pointerEvents = writing ? 'auto' : 'none'; s.render(); });
   st.rooms.forEach(r => { r.wrap.classList.toggle('peek', r.objs.length > 0 && !writing && !r.wrap.dataset.opened); r.wrap.classList.toggle('writing', writing); });
   const host = st.opts.toolbarHost();
   if (st.toolbar) { st.toolbar.destroy(); st.toolbar = null; }
-  if (writing && host) {
+  if (writing && host && !quiet) {
     host.hidden = false;
     st.toolbar = new Toolbar(host, {
       undo: () => { const s = st.last || st.overlay; s.doUndo(); markDirty(); },
       redo: () => { const s = st.last || st.overlay; s.doRedo(); markDirty(); },
       done: () => setWriting(false),
       clear: () => { const s = st.last || st.overlay; s.snapshot(); s.objs.splice(0); s.sel = null; s.render(); markDirty(); },
-      toolChanged: () => { pasting = null; [st.overlay, ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
+      toolChanged: () => { pasting = null; [...ovs(st), ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
       hasSel: () => !!(st.last && st.last.sel && st.last.sel.ids.length),
+      selOnExplain: () => !!(st.overlayX && st.last === st.overlayX),
+      canXfer: () => !!(st.overlayX && isOv(st, st.last)), xferLabel: () => st.last === st.overlayX ? '→ Move to card' : '→ Move to Explain',
+      pin: st.opts.pin || null, docked: st.opts.docked || null,
       clips: () => readClips(), pasting: () => pasting, setPasting: v => { pasting = v || null; },
       removeClip: id => { saveClips(readClips().filter(c => c.id !== id)); if (pasting === id) pasting = null; },
       clearClips: () => { saveClips([]); pasting = null; },
@@ -390,14 +579,14 @@ function showFab(host) {
   host.hidden = false; host.classList.add('ik-float');
   host.innerHTML = `<button class="ik-fab" data-ink-fab aria-label="Write on this card with the S Pen" title="Write on this card (drag to move)">${INK_ICONS.fab}</button>`;
   placeFloat(host, railSize());
-  dragFloat(host, host.querySelector('[data-ink-fab]'), () => setWriting(true));
+  dragFloat(host, host.querySelector('[data-ink-fab]'), () => { quiet = false; setWriting(true); });
 }
 export function setWriting(on) {
   const was = writing; writing = !!on; if (!writing) pasting = null;
   if (cur) {
     if (was && !writing) { cur.box.querySelectorAll('.ink-tx textarea').forEach(t => t.blur()); cur.rooms.forEach(r => r.trim()); }  // done: every room shrinks to what it uses
-    [cur.overlay, ...cur.rooms.values()].forEach(s => { s.sel = null; });
-    drawRooms(); applyMode(); cur.overlay.relayout();
+    [...ovs(cur), ...cur.rooms.values()].forEach(s => { s.sel = null; });
+    drawRooms(); applyMode(); ovs(cur).forEach(o => o.relayout());
   } else if (listeners.changed) listeners.changed(writing);
 }
 function markDirty() { const st = cur; if (!st) return; st.dirty = true; clearTimeout(st.t); st.t = setTimeout(() => flushInk(), 700); }
@@ -405,6 +594,7 @@ export async function flushInk() {
   const st = cur; if (!st || !st.dirty) return;
   st.dirty = false; clearTimeout(st.t);
   st.rec.ov[st.face] = st.overlay.serialise();
+  if (st.overlayX) st.rec.ov[st.xface] = st.overlayX.serialise();
   for (const [k, d] of Object.entries(st.rec.rooms)) if (!(d.objs && d.objs.length) && !st.open.has(k)) delete st.rec.rooms[k];
   await saveInk(st.card, st.rec);
 }

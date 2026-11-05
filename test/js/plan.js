@@ -12,16 +12,28 @@ const dayStart = d => new Date(d + 'T00:00:00').getTime();
 const rid = () => Math.random().toString(36).slice(2, 9);
 
 /* ---------- storage (this device; synced to Drive by sync.js on the live app) ---------- */
-let P = null;
+let P = null, lastJson = null;
+const hist = [];                         // T-081: undo — the plan as it was before each change (this session, last 40)
 export function loadPlan() {
   if (P) return P;
   try { P = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { P = null; }
   if (!P || !Array.isArray(P.stretches)) P = { v: 1, stretches: [], current: null, updated: 0 };
+  lastJson = JSON.stringify(P);
   return P;
 }
 export function savePlan(touch = true) {
   if (touch) P.updated = Date.now();
-  try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) { /* private mode */ }
+  const j = JSON.stringify(P);
+  if (touch && lastJson && lastJson !== j) { hist.push(lastJson); if (hist.length > 40) hist.shift(); }
+  lastJson = j;
+  try { localStorage.setItem(KEY, j); } catch (e) { /* private mode */ }
+}
+export const canUndoPlan = () => hist.length > 0;
+export function undoPlan() {
+  if (!hist.length) return false;
+  P = JSON.parse(hist.pop()); P.updated = Date.now(); lastJson = JSON.stringify(P);
+  try { localStorage.setItem(KEY, lastJson); } catch (e) { /* */ }
+  return true;
 }
 export function replacePlan(next) { if (next && Array.isArray(next.stretches)) { P = next; savePlan(false); } }
 export const planJson = () => loadPlan();
@@ -97,7 +109,7 @@ export function compute(st) {
   const effPace = Math.max(st.pace, Math.min(st.ceiling || st.pace, needPace));
   const capOf = d => dayType(st, d) === 'normal' ? effPace : cap(d);
   const room = {}; future.forEach(d => room[d] = capOf(d));
-  // 1. repair pile: its share is kept for it each day (where it sits in the walk is R.pos, used by todayCards).
+  // 1. repair pile: its share is kept for it each day (where it sits in the walk is its row position, used by todayCards).
   //    even = spread over the working days left; by = spread to a date; fixed = a set number a day. Never more than cap (even/by).
   let rep = repairTotal;
   const rDays = (R.spread === 'by' && R.by && workDays.some(d => d <= R.by)) ? workDays.filter(d => d <= R.by) : workDays;
@@ -145,16 +157,24 @@ export function compute(st) {
 /* ---------- repair options (older plans have only on + cap) ---------- */
 export function repairOpts(st) {
   const r = st.repair || (st.repair = { on: true, cap: 20 });
-  return { on: !!r.on, cap: r.cap == null ? 20 : r.cap, pos: r.pos === 'last' ? 'last' : 'first', spread: ['even', 'by', 'fixed'].includes(r.spread) ? r.spread : 'even', by: r.by || null, fixed: r.fixed == null ? 10 : r.fixed };
+  const n = st.subjects.length, at = r.at != null ? Math.max(0, Math.min(n, r.at)) : r.pos === 'last' ? n : 0;
+  return { on: !!r.on, cap: r.cap == null ? 20 : r.cap, at, spread: ['even', 'by', 'fixed'].includes(r.spread) ? r.spread : 'even', by: r.by || null, fixed: r.fixed == null ? 10 : r.fixed };
 }
 /* ---------- the order of a day's walk: st.order[d] (ids), else repair first/last around the subjects ---------- */
 export function dayOrder(st, d) {
-  const ids = st.subjects.map(s => s.id), pos = repairOpts(st).pos;
-  const base = pos === 'last' ? ids.concat('repair') : ['repair'].concat(ids);
+  const base = rowOrder(st);
   const saved = (st.order && st.order[d]) || [];
   const out = saved.filter(id => base.includes(id));
   base.forEach(id => { if (!out.includes(id)) { const j = base.indexOf(id); const after = base.slice(0, j).reverse().find(x => out.includes(x)); out.splice(after ? out.indexOf(after) + 1 : 0, 0, id); } });
   return out;
+}
+// the rows in plan order: the subjects, with the repair pile placed among them like any other row
+export function rowOrder(st) { const ids = st.subjects.map(s => s.id); ids.splice(repairOpts(st).at, 0, 'repair'); return ids; }
+export function moveRow(st, id, k) {
+  const rows = rowOrder(st), i = rows.indexOf(id), j = i + k; if (i < 0 || j < 0 || j >= rows.length) return;
+  rows.splice(i, 1); rows.splice(j, 0, id);
+  st.subjects = rows.filter(x => x !== 'repair').map(x => st.subjects.find(s => s.id === x));
+  st.repair.at = rows.indexOf('repair'); delete st.repair.pos; savePlan();
 }
 export function setDayOrder(st, d, ids) { st.order = st.order || {}; st.order[d] = ids; Object.keys(st.order).forEach(k => { if (k < addDays(today(), -2)) delete st.order[k]; }); savePlan(); }
 

@@ -1519,3 +1519,4 @@ details.qfold>.bx{margin-top:8px}
 .sheet .seg.wide{flex-wrap:wrap}.sheet .seg.wide button{min-width:120px}
 .sheet .mono.kick{display:block;margin:10px 0 4px}
 @media (max-width:600px){.ct-row{grid-template-columns:1fr auto auto}.ct-row>:last-child{grid-column:1/-1;justify-self:start}}
+.pundo{margin-top:8px}

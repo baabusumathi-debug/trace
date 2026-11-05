@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-080)
+## State (as of entry T-082)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
-| Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.56** · last code commit: see entry T-080. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Live app (repo root) | **1.4.11** · promoted from test 1.3.57 on 5 Nov (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
+| Test build (`test/`) | **1.3.57** · last code commit: see entry T-081. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.11 (= test 1.3.57, with every deck). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,19 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-082 — 2026-11-05 — Claude — live — 1.4.11
+- Promoted test 1.3.57 to live on Naven's instruction (5 Nov: "make the app live also").
+  - Copied every file in `test/` to the root except `index.html` and `manifest.webmanifest` (live keeps the name and title "Trace"). New in the root: `js/explain.js`, `data/explain.json` (Explain v2, TOX01 only for now; other decks show the card alone).
+  - `CONFIG.onlyDecks` is `null` on live, so live keeps every deck.
+  - Live gains everything from T-069 to T-081: Explain v2 (Learn/Revise) for TOX01; flow v3 top bar, strip and two-button bottom bar; card | Explain split with per-side size slider, Fit and pinch; page colours; ink on Explain, Select text, move marks between sides, side-button eraser; Ask Claude with quick intents and chats; Study desk look-up line; the flexible Plan, Change today and Undo.
+- Checked before release (demo, live path, decks TOX01 and ABG01, 1400×1000 and 412×915): Flow opens, Reveal and Next work, Explain shows only where it exists, no console errors.
+- Not yet checked on the real Tab: S Pen side-button eraser, pinch, Select text.
+
+## T-081 — 2026-11-05 — Claude — test — 1.3.57
+- **Repair pile moves like a subject** (Naven, 5 Nov). Its sheet has ↑ Earlier / ↓ Later, so it can sit anywhere among the subjects; subjects' ↑↓ now step over it too. Stored as `st.repair.at` (row index); older plans read `pos` first/last as 0/end. The first/last switch is gone.
+- **Undo for the Plan.** Every change keeps the plan as it was (this session, last 40). "↶ Undo last change" on the Plan screen (also after deleting the only stretch) and "↶ Undo" in Change today. Removing a subject or deleting a stretch says where Undo is. Change today's old "Undo today's changes" is now "Reset today".
+- Checked in a demo run: repair moved between two subjects, subject up past it, remove + undo, Change today − then Undo.
 
 ## T-080 — 2026-11-05 — Claude — test — 1.3.56
 - **Quick intents in the Ask menu** (Naven, 5 Nov). The menu now asks *what* before *where*:

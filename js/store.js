@@ -31,7 +31,7 @@ export async function loadAll() {
   setQb((await db.kv.get('qbank')) || null);
   S.qmap = (await db.kv.get('qmap')) || { version: '', q: {} };
   setDoct((await db.kv.get('doctAtt')) || {});
-  for (const d of await db.all('decks')) S.decks.set(d.deck, d);
+  for (const d of await db.all('decks')) if (!CONFIG.onlyDecks || CONFIG.onlyDecks.includes(d.deck)) S.decks.set(d.deck, d);
   for (const e of await db.all('edits')) S.edits.set(e.key, e);
   applyTopupDecks();
   const evs = await db.all('events');
@@ -77,9 +77,16 @@ export function applyTopupDecks() {
   if (S.library) S.library = { ...S.library, decks: S.library.decks.filter(d => !d.topupDeck).concat(list.map(t => ({ deck: t.deck, title: t.title, system: t.system, version: 1, cards: t.cards.length, star: 0, topupDeck: true }))) };
   for (const [k, d] of [...S.decks]) if (d.virtual) S.decks.delete(k);
   for (const t of list) S.decks.set(t.deck, { deck: t.deck, version: 1, verified: true, virtual: true, cards: t.cards.map(c => ({ ...c, deck: t.deck, tdeck: true })) });
+  // test build: only the piloted deck(s) exist (library, downloads, screens)
+  const only = CONFIG.onlyDecks;
+  if (only) {
+    if (S.library) S.library = { ...S.library, decks: S.library.decks.filter(d => only.includes(d.deck)) };
+    for (const k of [...S.decks.keys()]) if (!only.includes(k)) S.decks.delete(k);
+  }
 }
 export const isTopupDeck = deck => { const d = S.decks.get(deck); return !!(d && d.virtual); };
-export const hasTopups = deck => !!(S.qb.topups[deck] && S.qb.topups[deck].length);
+const tuList = deck => (S.xtopups && S.xtopups[deck]) || S.qb.topups[deck];   // Explain layer's rebuilt Top-ups win (T-069)
+export const hasTopups = deck => { const l = tuList(deck); return !!(l && l.length); };
 export function qbOf(c) { return (c && S.qb.cards[c.deck + '|' + c.code]) || null; }
 // What hit a card, and how much it is worth. Pools (narrow → wide): NEET ⊂ NEET + GT ⊂ Any hit. Top-ups count by the banks they came from.
 const W = { recall: 5, gt: 2, doct: 1, marrow: 1 };
@@ -126,12 +133,12 @@ export function togglePool(cur, k) {
 export const poolName = p => { const parts = poolParts(p); if (!parts.length) return 'All'; if (parts[0] === 'hit') return 'Any hit'; return parts.map(k => (COMPONENTS.find(c => c[0] === k) || [k, k])[1]).join(' + '); };
 export function realCount(deck) { const d = S.decks.get(deck); return d ? (d.virtual ? 0 : Math.max(0, ...d.cards.map(c => +c.no || 0))) : Infinity; }
 function topupsOf(deck, cards) {
-  const list = S.qb.topups[deck];
+  const list = tuList(deck);
   if (!list || !list.length) return [];
   const base = Math.max(0, ...cards.map(c => +c.no || 0));
   const lineOf = l => /^\s*([-•]|\w[^|]* \| )/.test(l) ? l : '- ' + l;   // numbered steps become list lines too, so reflow keeps them apart
   return list.map((t, i) => ({ deck, code: 'TU-' + String(i + 1).padStart(2, '0'), no: base + i + 1, section: 'Top-up', topup: true, tier: t.tier, ttype: t.type, tid: t.id,
-    q: t.q, a: t.a.map(lineOf).join('\n'), why: '', watch: '', hook: '', banks: t.banks, nq: t.n, recall: t.recall, src: t.src || '' }));
+    q: t.q, a: t.raw ? t.a.join('\n') : t.a.map(lineOf).join('\n'), why: '', watch: '', hook: '', banks: t.banks, nq: t.n, recall: t.recall, src: t.src || '' }));
 }
 // A card's chunk = the War Map Chunks tab range that holds it (card numbers converted with off()). Top-up cards
 // form one chunk at the end of their deck; decks with no Chunks rows (e.g. Top-up decks) fall back to section headings.
