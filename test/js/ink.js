@@ -262,6 +262,7 @@ const ICONS = {
   pen: '<svg viewBox="0 0 24 24"><path d="M14.6 4.6l4.8 4.8L9 19.8l-5.3.9.9-5.3z"/><path d="M12.8 6.4l4.8 4.8"/><path class="tipc" d="M3.7 20.7l.6-3.4 2.8 2.8z"/></svg>',
   hl: '<svg viewBox="0 0 24 24"><path d="M15.2 3.4l5.4 5.4-7.9 7.9-5.4-5.4z"/><path d="M7.3 11.3l-1.6 4.6 2.4 2.4 4.6-1.6"/><path class="tipc" d="M5.7 15.9l-2.4 4.1 1.6.8 3.2-2.5z"/></svg>',
   er: '<svg viewBox="0 0 24 24"><path d="M3.9 15.1l9.5-9.5a2 2 0 0 1 2.8 0l3.2 3.2a2 2 0 0 1 0 2.8L12 19H7.8z"/><path d="M8.6 10.4l5 5"/><path d="M12 19h8.5"/></svg>',
+  pin: '<svg viewBox="0 0 24 24"><path d="M9 3h6l-1 6 4 4H6l4-4z"/><path d="M12 13v8"/></svg>',
   tsel: '<svg viewBox="0 0 24 24"><path d="M9 4h6M9 20h6M12 4v16"/><path d="M4 9h3v6H4z" opacity=".55"/><path d="M17 9h3v6h-3z" opacity=".55"/></svg>',
   lasso: '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="9.5" rx="8" ry="5" stroke-dasharray="2.6 2.4"/><path d="M8.2 13.6c-1.4.9-1.6 2.6-.4 3.4 1 .7 2.4.2 2.5-1"/><path d="M7.8 17l-1.3 3.5"/></svg>',
   undo: '<svg viewBox="0 0 24 24"><path d="M8.5 5.5L4 10l4.5 4.5"/><path d="M4 10h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
@@ -349,6 +350,7 @@ export class Toolbar {
         <button class="ik-ic" data-undo aria-label="Undo" title="Undo">${ICONS.undo}</button><button class="ik-ic" data-redo aria-label="Redo" title="Redo">${ICONS.redo}</button>
         <span class="ik-sep"></span>
         <button class="ik-cur" data-curc style="--c:${tipOf(t)}" aria-label="Colour and size" title="Colour and size"><i></i></button>
+        ${this.api.pin ? `<button class="ik-ic ik-pin${this.api.docked && this.api.docked() ? ' on' : ''}" data-pin aria-label="${this.api.docked && this.api.docked() ? 'Unpin: let the tools float' : 'Pin the tools to the top bar'}" title="${this.api.docked && this.api.docked() ? 'Pinned to the top bar · tap to float' : 'Floating · tap to pin to the top bar'}">${ICONS.pin}</button>` : ''}
         <button class="ik-ic ik-done" data-done aria-label="Done writing" title="Done writing">${ICONS.done}</button>
       </div>
       <div class="ik-pop"${this.open ? '' : ' hidden'}><div class="ik-pophead"><b>${{ pen: 'Pen', hl: 'Highlighter', er: 'Eraser', lasso: 'Lasso', shape: 'Shapes', text: 'Text' }[t] || ''}</b><button class="ik-x" data-close aria-label="Close settings">✕</button></div>${this.popHtml()}</div>
@@ -394,6 +396,7 @@ export class Toolbar {
     h.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { const k = b.dataset.t; this.clipOpen = false; if (S.tool === k) this.open = !this.open; else { S.tool = k; this.open = false; this.more = false; this.api.toolChanged(); } saveS(); this.draw(); });
     const cc = h.querySelector('[data-curc]'); if (cc) cc.onclick = () => { if (S.tool === 'er' || S.tool === 'lasso' || S.tool === 'tsel') S.tool = 'pen'; this.open = !this.open; saveS(); this.draw(); };
     const cx = h.querySelector('[data-close]'); if (cx) cx.onclick = () => { this.open = false; this.draw(); };
+    const pn = h.querySelector('[data-pin]'); if (pn) pn.onclick = e => { e.stopPropagation(); this.api.pin(); };
     const gp = h.querySelector('[data-grip]'); if (gp) dragFloat(h, gp, () => this.setMin(true));
     const ps = h.querySelector('[data-paste]'); if (ps) ps.onclick = () => { this.clipOpen = !this.clipOpen; this.open = false; if (!this.clipOpen) this.api.setPasting(null); this.draw(); };
     const cc2 = h.querySelector('[data-clipclose]'); if (cc2) cc2.onclick = () => { this.clipOpen = false; this.api.setPasting(null); this.draw(); };

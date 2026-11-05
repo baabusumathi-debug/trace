@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-074)
+## State (as of entry T-075)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.50** · last code commit: see entry T-074. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.51** · last code commit: see entry T-075. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,19 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-075 — 2026-11-05 — Claude — test — 1.3.51
+Naven, 5 Nov: "remove the swipes … go back to the old zoom … page colour … pin".
+- **Swipes removed.** Only the Next button turns cards; the ⚙ Next-button and swipe options are gone.
+- **Size back to re-flowing zoom.** Each side has one slider (50–200%) and a two-finger pinch, both changing the same size, so the text re-flows.
+  - The card also has **Fit** (whole card in view, not below 55%); the slider and pinch turn Fit off.
+  - The T-074 fixed-page layout and the A−/A+ buttons are removed.
+  - Explain's own bar keeps its size while Explain is zoomed.
+- **Page colour** in ⚙: White · Soft grey · Cream · Mint, for the card and Explain (per profile).
+- **Pin button in the pen kit**: pinned in the top bar ↔ floating.
+  - When pinned, the tools keep one fixed slot in the bar (≥500 px on wide screens), folded or open, so the other buttons never move.
+- The colour button is one dot with one thin ring (it had two rings).
+- Demo check: Cream page, Explain at 130%, pin → floating; no errors.
 
 ## T-074 — 2026-11-05 — Claude — test — 1.3.50
 Agreed with Naven on 5 Nov ("Yes, proceed").

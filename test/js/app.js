@@ -1395,7 +1395,7 @@ function renderFlow() {
   const m = deckMeta(flow.deck) || {};
   const cs = P.get('cardScale', 1);
   // T-072 layout: one slim bar + one strip; the card and Explain get the rest of the screen
-  app.innerHTML = `<div class="screen flow v3${flow.browse ? ' browse' : ''}" style="--cs:${cs}">
+  app.innerHTML = `<div class="screen flow v3${flow.browse ? ' browse' : ''}" data-page="${esc(P.get('page', 'white'))}" style="--cs:${cs}">
     <header class="f-bar">
       <button class="iconbtn sm" data-act="close" aria-label="End flow">${ICON.close}</button>
       <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
@@ -1418,7 +1418,7 @@ function renderFlow() {
       ${P.get('inkDock', 1) ? '' : '<div class="ik-host" id="f-ink" hidden></div>'}
       <div class="card-wrap"><article class="card" id="card"></article>${flow.browse ? '' : '<button class="pause-cover" id="f-cover" aria-label="Resume the flow"><span class="mono">PAUSED</span><b>Tap to resume</b><small>The clock is stopped.</small></button>'}</div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
-      <button class="big press${NAV().btn || !(NAV().sx || NAV().sy) ? '' : ' nav-off'}" id="f-big"></button>
+      <button class="big press" id="f-big"></button>
     </main>
   </div>`;
   setupGestures($('.card-wrap'));
@@ -1450,6 +1450,7 @@ function renderFlow() {
 const xpOpenMode = () => P.get('xpOpen', 'new');          // 'new' = open on a card's first sight · 'tap' = only when tapped
 const xpTraps = () => !!P.get('xpTraps', 1);
 const xpDepth = () => P.get('xpDepth', 'auto');   // 'auto' = Learn on a card's first sight, Revise after · or always one of them
+const PAGES = [['white', 'White'], ['grey', 'Soft grey'], ['cream', 'Cream'], ['mint', 'Mint']];
 function drawXpToggles() {
   const h = document.getElementById('f-xp'); if (!h) return;
   const o = xpOpenMode(), t = xpTraps();
@@ -1460,19 +1461,16 @@ function drawXpToggles() {
     <div class="seg">${[['auto', 'Auto'], ['learn', 'Learn'], ['revise', 'Revise']].map(([k, l]) => `<button class="${xpDepth() === k ? 'on' : ''}" data-xd="${k}">${l}</button>`).join('')}</div>
     <span class="mono muted small">EXAM TRAPS</span>
     <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div>
-    <span class="mono muted small">NEXT BUTTON</span>
-    <div class="seg"><button class="${NAV().btn ? 'on' : ''}" data-nv="navBtn:1">Show</button><button class="${!NAV().btn ? 'on' : ''}" data-nv="navBtn:0">Hide</button></div>
-    <span class="mono muted small">2-FINGER SWIPE</span>
-    <div class="seg"><button class="${NAV().sx ? 'on' : ''}" data-nv="navSwipeX:${NAV().sx ? 0 : 1}">↔ sideways</button><button class="${NAV().sy ? 'on' : ''}" data-nv="navSwipeY:${NAV().sy ? 0 : 1}">↕ up / down</button></div>
+    <span class="mono muted small">PAGE</span>
+    <div class="seg">${PAGES.map(([k2, l]) => `<button class="${P.get('page', 'white') === k2 ? 'on' : ''}" data-pg="${k2}"><i class="pgsw pg-${k2}"></i>${l}</button>`).join('')}</div>
     <span class="mono muted small">PEN TOOLS</span>
     <div class="seg"><button class="${P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:1">In the top bar</button><button class="${!P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:0">Floating</button></div></div></details>`;
   h.querySelectorAll('[data-nv]').forEach(b => b.onclick = () => {
     const [k, v] = b.dataset.nv.split(':'); P.set(k, +v);
-    const n = NAV(); if (!n.btn && !n.sx && !n.sy) { P.set('navBtn', 1); toast('With both swipes off, the Next button stays.'); }
     if (k === 'inkDock' && flow) { renderFlow(); const p2 = $('#f-pop'); if (p2) p2.hidden = false; return; }
-    const bg = $('#f-big'); if (bg) bg.classList.toggle('nav-off', !(NAV().btn || !(NAV().sx || NAV().sy)));
     drawXpToggles();
   });
+  h.querySelectorAll('[data-pg]').forEach(b => b.onclick = () => { P.set('page', b.dataset.pg); const sc = $('.screen.flow'); if (sc) sc.dataset.page = b.dataset.pg; drawXpToggles(); });
   h.querySelectorAll('[data-xo]').forEach(b => b.onclick = () => { P.set('xpOpen', b.dataset.xo); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
   h.querySelectorAll('[data-xd]').forEach(b => b.onclick = () => { P.set('xpDepth', b.dataset.xd); if (flow) flow.depthOver = {}; drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
   h.querySelectorAll('[data-xt]').forEach(b => b.onclick = () => { P.set('xpTraps', +b.dataset.xt); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
@@ -1499,39 +1497,40 @@ function skippedBefore(c) {
   return !!prev && !flow.queue.some(x => x.deck === c.deck && x.code === prev.code);
 }
 
-/* ---------- T-074: each side has its own text size; pinch zooms the laid-out page like a PDF ----------
-   Text size (A−/A+ on each side) lays the text out. Zoom then only magnifies or shrinks that page: the lines never
-   re-wrap. Zoomed out, the page sits centred on white; zoomed in, one finger moves around it. */
-const TS = k => P.get('ts' + k, 1), VZ = k => P.get('vz' + k, 1);
+/* ---------- T-075: size per side = one slider (and a pinch), which re-flows the text; the card also has Fit ----------
+   Fit = the whole card in view (the size goes down until it fits, not below 55%). Slider or pinch = your own size. */
+const VZ = k => P.get('vz' + k, 1);
+const fitMode = k => P.get('fit' + k, k === 'Card' && innerWidth >= 700 ? 'page' : 'custom');
 function paneOf(el, k) { return k === 'Card' ? el.querySelector('.c-a, .c-q') : el.querySelector('.xp-pane'); }
 function fitPane(el, k, live) {
   const box = paneOf(el, k); if (!box) return;
-  const ts = TS(k), z = live != null ? live : VZ(k);
-  box.classList.add('pv');
-  box.style.setProperty('--ts', ts); box.style.setProperty('--z', 1);
-  // the page width = what the side shows at zoom 100%, in the box's own units
-  // clientWidth is the layout width in the box's own units (not affected by the flip animation's transform)
-  const cs = getComputedStyle(box), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
-  box.style.setProperty('--pw', Math.max(200, box.clientWidth - pad) + 'px');
-  box.style.setProperty('--z', z);
-  const lab = el.querySelector(`[data-szc="${k}"] .fz`); if (lab) lab.textContent = Math.round(z * 100) + '%';
+  box.classList.remove('pv'); box.style.removeProperty('--ts');
+  let z = live != null ? live : VZ(k);
+  if (live == null && fitMode(k) === 'page') {
+    z = 1; box.style.setProperty('--z', 1);
+    for (let i = 0; i < 5; i++) { const H = box.clientHeight, S2 = box.scrollHeight; if (!H || S2 <= H + 2) break; z = Math.max(0.55, z * Math.pow(H / S2, 0.85)); box.style.setProperty('--z', z.toFixed(3)); if (z <= 0.55) break; }
+  }
+  box.style.setProperty('--z', (+z).toFixed(3));
+  const c = el.querySelector(`[data-szc="${k}"]`);
+  if (c) { c.querySelector('.fz').textContent = Math.round(z * 100) + '%'; const r = c.querySelector('input'); if (r && document.activeElement !== r) r.value = Math.round(z * 100); const f = c.querySelector('[data-fit]'); if (f) f.classList.toggle('on', fitMode(k) === 'page'); }
   box.dispatchEvent(new Event('toggle'));                       // ink follows the new geometry
 }
 function sizeControl(k) {
-  return `<span class="fitc mono" data-szc="${k}" role="group" aria-label="${k === 'Card' ? 'Card' : 'Explain'} text size and zoom"><button data-ts="-1" title="Smaller text">A−</button><button data-ts="1" title="Larger text">A+</button><button class="fz" data-z0 title="Zoom · pinch with two fingers · tap for 100%"></button></span>`;
+  return `<span class="fitc szc mono" data-szc="${k}" role="group" aria-label="${k === 'Card' ? 'Card' : 'Explain'} size">${k === 'Card' ? '<button data-fit title="Fit the whole card in view">Fit</button>' : ''}<input type="range" min="50" max="200" step="5" value="100" aria-label="Size"><span class="fz"></span></span>`;
 }
 function setupFit(el) {
   const ct = el.querySelector('.c-tags'); if (ct && !ct.querySelector('[data-szc]')) ct.insertAdjacentHTML('beforeend', sizeControl('Card'));
   const xb = el.querySelector('.xp-pane .xp-bar'); if (xb && !xb.querySelector('[data-szc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', sizeControl('Xp'));
-  el.querySelectorAll('[data-szc] [data-ts]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.closest('[data-szc]').dataset.szc; P.set('ts' + k, Math.max(0.7, Math.min(1.8, Math.round((TS(k) + 0.1 * +b.dataset.ts) * 10) / 10))); fitPane(el, k); });
-  el.querySelectorAll('[data-szc] [data-z0]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.closest('[data-szc]').dataset.szc; P.set('vz' + k, 1); fitPane(el, k); });
+  el.querySelectorAll('[data-szc]').forEach(c => {
+    const k = c.dataset.szc, r = c.querySelector('input'), f = c.querySelector('[data-fit]');
+    ['pointerdown', 'touchstart'].forEach(t => c.addEventListener(t, e => e.stopPropagation(), { passive: true }));
+    r.oninput = () => { P.set('fit' + k, 'custom'); P.set('vz' + k, +r.value / 100); fitPane(el, k); };
+    if (f) f.onclick = e => { e.stopPropagation(); P.set('fit' + k, fitMode(k) === 'page' ? 'custom' : 'page'); fitPane(el, k); };
+  });
   requestAnimationFrame(() => { fitPane(el, 'Card'); fitPane(el, 'Xp'); });
   if (!window.__fitRO) { window.__fitRO = 1; addEventListener('resize', () => { const c = document.getElementById('card'); if (c && flow) { fitPane(c, 'Card'); fitPane(c, 'Xp'); } }); }
 }
-/* ---------- T-074: two fingers — pinch zooms the side under them; a quick two-finger swipe turns the card ----------
-   Swipe = both fingers move the same way fast (≥ 90 px within 0.7 s) while their distance stays about the same.
-   Pinch = their distance changes. One finger scrolls; the pen writes. Which swipes turn cards is set in ⚙. */
-const NAV = () => ({ btn: P.get('navBtn', 1), sx: P.get('navSwipeX', 1), sy: P.get('navSwipeY', 0) });
+/* ---------- two-finger pinch on either side sets its size (swipes were removed on 5 Nov: not precise enough) ---------- */
 function setupGestures(wrap) {
   if (!wrap || wrap.dataset.g) return; wrap.dataset.g = 1;
   let g = null;
@@ -1539,28 +1538,16 @@ function setupGestures(wrap) {
   const dist = q => Math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1]), mid = q => [(q[0][0] + q[1][0]) / 2, (q[0][1] + q[1][1]) / 2];
   wrap.addEventListener('touchstart', e => {
     if (e.touches.length !== 2 || !flow) { if (e.touches.length > 2) g = null; return; }
-    const q = pts(e), card = document.getElementById('card'), tgt = document.elementFromPoint(mid(q)[0], mid(q)[1]);
-    const k = tgt && tgt.closest('.xp-pane') ? 'Xp' : 'Card';
-    g = { q0: q, d0: dist(q), m0: mid(q), t0: Date.now(), k, z0: VZ(k), mode: null, card };
-    e.preventDefault();
+    const q = pts(e), m = mid(q), tgt = document.elementFromPoint(m[0], m[1]), k = tgt && tgt.closest('.xp-pane') ? 'Xp' : 'Card', card = document.getElementById('card');
+    const box = card && paneOf(card, k); const z0 = box ? (+getComputedStyle(box).getPropertyValue('--z') || 1) : 1;
+    g = { d0: dist(q), k, z0, card, on: false }; e.preventDefault();
   }, { passive: false });
   wrap.addEventListener('touchmove', e => {
-    if (!g || e.touches.length !== 2) return;
-    e.preventDefault();
-    const q = pts(e), r = dist(q) / g.d0, m = mid(q), dx = m[0] - g.m0[0], dy = m[1] - g.m0[1];
-    if (!g.mode) { if (Math.abs(r - 1) > 0.1) g.mode = 'pinch'; else if (Math.hypot(dx, dy) > 40) g.mode = 'swipe'; }
-    if (g.mode === 'pinch' && g.card) { g.z = Math.max(0.4, Math.min(3, g.z0 * r)); fitPane(g.card, g.k, g.z); }
-    g.dx = dx; g.dy = dy;
+    if (!g || e.touches.length !== 2) return; e.preventDefault();
+    const r = dist(pts(e)) / g.d0; if (!g.on && Math.abs(r - 1) < 0.06) return; g.on = true;
+    g.z = Math.max(0.5, Math.min(2, g.z0 * r)); fitPane(g.card, g.k, g.z);
   }, { passive: false });
-  wrap.addEventListener('touchend', e => {
-    if (!g || e.touches.length > 1) return;
-    const G = g; g = null;
-    if (G.mode === 'pinch') { P.set('vz' + G.k, +G.z.toFixed(3)); return; }
-    if (G.mode !== 'swipe' || Date.now() - G.t0 > 700) return;
-    const n = NAV(), ax = Math.abs(G.dx || 0), ay = Math.abs(G.dy || 0);
-    if (ax >= ay && ax > 90 && n.sx) turn(G.dx < 0 ? 1 : -1, 'x');
-    else if (ay > ax && ay > 90 && n.sy) turn(G.dy < 0 ? 1 : -1, 'y');
-  });
+  wrap.addEventListener('touchend', e => { if (!g || e.touches.length > 1) return; const G = g; g = null; if (G.on) { P.set('fit' + G.k, 'custom'); P.set('vz' + G.k, +G.z.toFixed(3)); fitPane(G.card, G.k); } });
 }
 // +1 = forward (reveal on the question side, next on the answer side); −1 = back (look at the card before)
 function turn(dir, axis) {
@@ -1587,7 +1574,8 @@ function setupSplit(el) {
   dv.ondblclick = () => { P.set(key(), land() ? 52 : 46); apply(); fitPane(el, 'Card'); fitPane(el, 'Xp'); };
 }
 // "Still unclear" (lasso or Select text on the Explain side): kept on this device per profile; Claude reads the list when it is shared
-const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, onUnclear: async texts => {
+const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, docked: () => !!P.get('inkDock', 1),
+  pin: () => { P.set('inkDock', P.get('inkDock', 1) ? 0 : 1); if (flow) renderFlow(); }, onUnclear: async texts => {
   const all = (await db.kv.get('xpUnclear')) || [];
   for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
   await db.kv.set('xpUnclear', all);

@@ -521,6 +521,7 @@ function applyMode() {
       toolChanged: () => { pasting = null; [...ovs(st), ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
       hasSel: () => !!(st.last && st.last.sel && st.last.sel.ids.length),
       selOnExplain: () => !!(st.overlayX && st.last === st.overlayX),
+      pin: st.opts.pin || null, docked: st.opts.docked || null,
       clips: () => readClips(), pasting: () => pasting, setPasting: v => { pasting = v || null; },
       removeClip: id => { saveClips(readClips().filter(c => c.id !== id)); if (pasting === id) pasting = null; },
       clearClips: () => { saveClips([]); pasting = null; },

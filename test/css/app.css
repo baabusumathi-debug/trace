@@ -1364,3 +1364,23 @@ details.qfold>.bx{margin-top:8px}
 .anim-down-in{animation:downin 300ms cubic-bezier(.2,.8,.2,1)}
 @keyframes downin{from{transform:translateY(-60%);opacity:0}to{transform:none;opacity:1}}
 .card-wrap{touch-action:pan-x pan-y}
+/* ===== T-075 ===== */
+/* page colours (⚙ › Page) */
+.screen.flow{--page:#fff}
+.screen.flow[data-page=grey]{--page:#f2f3f5}.screen.flow[data-page=cream]{--page:#fbf7ee}.screen.flow[data-page=mint]{--page:#f1f7f2}
+.flow.v3 .card,.flow.v3 .xp.v2 .xp-bar,.flow.v3 .fitc,.flow.v3 .fitc button,.flow.v3 .xv-seg button:not(.on){background:var(--page)}
+.flow.v3 .a-div{background:color-mix(in srgb,var(--page) 92%,#000)}
+.pgsw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:1px solid #888}
+.pg-white{background:#fff}.pg-grey{background:#f2f3f5}.pg-cream{background:#fbf7ee}.pg-mint{background:#f1f7f2}
+.f-xp .seg{flex-wrap:wrap}
+/* one size slider per side */
+.szc input[type=range]{width:110px;accent-color:#2b2b2f;margin:0 4px}
+.szc [data-fit].on{background:#2b2b2f!important;color:#fff}
+/* the colour button: one dot, one thin ring */
+.ik-cur i,.ik-float .ik-cur i,.ik-dock .ik-cur i{box-shadow:0 0 0 1.5px #ececed!important}
+/* pinned tools keep one fixed slot in the bar, folded or open, so nothing else moves */
+@media (min-width:901px){.ik-host.ik-dock{flex:0 0 auto;min-width:500px;justify-content:flex-end}}
+.ik-pin.on{background:#d9bf83!important;color:#1d1d20!important}
+.xp.v2 .xp-bar{zoom:calc(1 / var(--z,1))}
+.ik-dock .ik-cur i{width:18px!important;height:18px!important;border:0!important}
+.ik-cur::before,.ik-cur::after{display:none!important}
