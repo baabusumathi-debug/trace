@@ -1099,7 +1099,7 @@ function planCard() {
 /* ============================ Going out, breaks and "where were you?" (T-045) ============================ */
 const curBreak = () => currentBreak();
 const hmT = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout>⏏ Going out</button>`; }
+function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout>⏏<span class="gol"> Going out</span></button>`; }
 function bindGoingOut(root = app) { root.querySelectorAll('[data-goout]').forEach(b => b.onclick = e => { e.preventDefault(); goingOutSheet(); }); }
 function reasonButtons(attr) {
   const h = new Date().getHours(), eveningOk = h >= 16 && h < 18 && !breaksOn(today()).some(b => b.reason === 'eveningtea');
@@ -1407,6 +1407,7 @@ function renderFlow() {
       ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
       ${flow.browse ? '' : goingOutButton('sm')}
       ${P.get('inkDock', 1) ? '<div class="ik-host ik-dock" id="f-ink" hidden></div>' : ''}
+      <span class="f-break" aria-hidden="true"></span>
       <button class="iconbtn sm" id="f-gear" aria-label="Explain settings" aria-expanded="false">⚙</button>
       <div class="f-pop" id="f-pop" hidden><div class="f-xp" id="f-xp"></div><p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Space reveals and moves on · ← looks back · P pauses · A = Again · U = Undo · E = Edit · Esc ends.'}</p></div>
     </header>
@@ -1422,6 +1423,7 @@ function renderFlow() {
     </main>
   </div>`;
   setupGestures($('.card-wrap'));
+  const ikh = $('#f-ink.ik-dock'); if (ikh && window.ResizeObserver) { let t = 0; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(fitBar, 60); }).observe(ikh); }
   const gear = $('#f-gear'), pop = $('#f-pop');
   gear.onclick = e => { e.stopPropagation(); pop.hidden = !pop.hidden; gear.setAttribute('aria-expanded', !pop.hidden); };
   if (!window.__fpop) window.__fpop = 1, document.addEventListener('pointerdown', e => { const pp = document.getElementById('f-pop'); if (pp && !pp.hidden && !e.target.closest('#f-pop, #f-gear')) pp.hidden = true; }, { capture: true });
@@ -1508,6 +1510,7 @@ function fitPane(el, k, live) {
   let z = live != null ? live : VZ(k);
   if (live == null && fitMode(k) === 'page') {
     z = 1; box.style.setProperty('--z', 1);
+    box.querySelectorAll(':scope > .ink-ov').forEach(c => { c.style.height = '0px'; });   // the ink layer is re-sized after; don't let its old height count
     for (let i = 0; i < 5; i++) { const H = box.clientHeight, S2 = box.scrollHeight; if (!H || S2 <= H + 2) break; z = Math.max(0.55, z * Math.pow(H / S2, 0.85)); box.style.setProperty('--z', z.toFixed(3)); if (z <= 0.55) break; }
   }
   box.style.setProperty('--z', (+z).toFixed(3));
@@ -1520,7 +1523,7 @@ function sizeControl(k) {
 }
 function setupFit(el) {
   const ct = el.querySelector('.c-tags'); if (ct && !ct.querySelector('[data-szc]')) ct.insertAdjacentHTML('beforeend', sizeControl('Card'));
-  const xb = el.querySelector('.xp-pane .xp-bar'); if (xb && !xb.querySelector('[data-szc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', sizeControl('Xp'));
+  const xb = el.querySelector('.xp-head .xp-bar'); if (xb && !xb.querySelector('[data-szc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', sizeControl('Xp'));
   el.querySelectorAll('[data-szc]').forEach(c => {
     const k = c.dataset.szc, r = c.querySelector('input'), f = c.querySelector('[data-fit]');
     ['pointerdown', 'touchstart'].forEach(t => c.addEventListener(t, e => e.stopPropagation(), { passive: true }));
@@ -1580,10 +1583,15 @@ const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), mod
   for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
   await db.kv.set('xpUnclear', all);
 } });
+// the Explain header (title, size, Learn/Revise) lives above the scrolling explanation, never inside it
+function placeXpBar(el) {
+  const head = el.querySelector('.xp-head'), bar = el.querySelector('.xp-pane .xp-bar'); if (!head || !bar) return;
+  head.innerHTML = ''; head.appendChild(bar);
+}
 function bindXp(el, c) {
   const xt = el.querySelector('[data-xp-tog]');
-  if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
-  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
+  if (xt) xt.onclick = e => { e.stopPropagation(); const xp = el.querySelector('.xp-pane .xp') || xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
+  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
   el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
   const nt = el.querySelector('[data-xp-note]');
   if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
@@ -1617,11 +1625,11 @@ function drawCard() {
   let body;
   if (isQ) {
     const xq = xOf(c);
-    body = `${bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div>`;
+    body = `${bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
     const xa = xOf(c), v2 = !!(xa && xa.v === 2), xOpen = xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
-    body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}">` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}">
+    body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
@@ -1632,9 +1640,11 @@ function drawCard() {
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
       ${hasExplain(c) && !v2 ? panelHtml(c, xa, { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : v2 ? '' : qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
-    </div>${v2 ? `<div class="a-div" role="separator" aria-label="Drag to resize the card and Explain" tabindex="0"><i></i></div><aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></div>` : ''}`;
+    </div></div>${v2 ? `</section><div class="a-div" role="separator" aria-label="Drag to resize the card and Explain" tabindex="0"><i></i></div><section class="pane-xp"><div class="xp-head"></div><aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></section></div>` : ''}`;
   }
-  el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + top + body;
+  const split = !isQ && el && body.startsWith('<div class="a-split');
+  el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
+  placeXpBar(el);
   el.classList.toggle('peeking', !!flow.peek);
   el.classList.toggle('ng', isNeet(c));
   closePanel();
@@ -1695,6 +1705,21 @@ async function saveHook(c, v) {
   if (flow && i >= 0) flow.queue[i] = { ...flow.queue[i], hook: v, edited: true };
 }
 
+// the top bar never pushes ⚙ off screen: first the button labels go, then the pen tools take their own row
+function fitBar() {
+  const b = $('.f-bar'); if (!b) return;
+  // the pinned pen tools keep the width they have when open, folded or not, so nothing else ever moves
+  const dk = b.querySelector('.ik-dock');
+  if (dk) { const bar = dk.querySelector('.ik-bar'); if (bar) { const w = Math.ceil(bar.getBoundingClientRect().width); if (w > 60) try { localStorage.setItem('trace.ink.dockw', w); } catch (e) { /* */ } }
+    let w2 = 510; try { w2 = +(localStorage.getItem('trace.ink.dockw') || 510); } catch (e) { /* */ } dk.style.minWidth = Math.min(w2, innerWidth - 24) + 'px'; }
+  // one row when it fits; otherwise row 1 = title, progress, time, ⚙ and row 2 = Back, Undo, Pause, Going out, pen tools
+  b.classList.remove('tight', 'tworow');
+  const over = () => b.scrollWidth > b.clientWidth + 1;
+  if (over()) b.classList.add('tworow');
+  const row2 = [...b.querySelectorAll('#f-peek, #f-undo, #f-pause, .goout, .ik-dock')];
+  if (b.classList.contains('tworow') && row2.some(x => x.getBoundingClientRect().right > innerWidth - 4)) b.classList.add('tight');
+}
+if (!window.__fitBar) { window.__fitBar = 1; addEventListener('resize', () => fitBar()); }
 function updateClock() {
   if (!flow) return;
   const t = $('#f-time'); if (t) t.textContent = clock(((flow.pausedAt || Date.now()) - flow.t0) / 1000);
@@ -1724,6 +1749,7 @@ function updateFlowChrome() {
   if ($('.flow.v3')) $('#f-ring').innerHTML = `<span class="pg-n mono">${step}<small>/${total}</small></span><span class="pg"><i style="width:${(step / total * 100).toFixed(1)}%"></i></span>`;
   else $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
+  fitBar();
   drawThread();
   const fl = $('#f-live');
   if (fl) { try { const c = chase(P.get('chasePool', 'all')), lp = livePace(c); fl.innerHTML = lp.before || lp.after ? `Today ${c.doneToday} / ${c.requiredToday} new` : `Today ${c.doneToday} / ${c.requiredToday} new · ${lp.diff >= 0 ? `<b class="ahead">▲ ${lp.diff}</b>` : `<b class="behind">▼ ${-lp.diff}</b>`}${lp.perHour != null ? ' · ' + lp.perHour + '/h needed' : ''}`; } catch (e) { fl.textContent = ''; } }

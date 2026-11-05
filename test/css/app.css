@@ -1384,3 +1384,79 @@ details.qfold>.bx{margin-top:8px}
 .xp.v2 .xp-bar{zoom:calc(1 / var(--z,1))}
 .ik-dock .ik-cur i{width:18px!important;height:18px!important;border:0!important}
 .ik-cur::before,.ik-cur::after{display:none!important}
+
+/* ===== T-076: each side owns its header; zoom applies to the content inside the scroller (scrolling never jams) ===== */
+.flow .c-q,.flow .c-a,.flow .xp-pane{zoom:1!important}
+.flow .zw{zoom:calc(var(--cs,1) * var(--z,1))}
+.flow .xp-pane>.xp{zoom:calc(var(--cs,1) * var(--z,1))}
+.c-a>.zw{display:flex;flex-direction:column;gap:14px;max-width:none}
+.c-q>.zw{display:flex;flex-direction:column;gap:10px;max-width:none}
+.zw>*{max-width:920px}
+.c-a,.c-q{display:block}
+/* the split: card pane | divider | Explain pane, each with a fixed header and its own scroller */
+.a-split{position:relative}
+.pane-card,.pane-xp{display:flex;flex-direction:column;min-width:0;min-height:0}
+.pane-card{flex:1 1 auto}
+.a-split.xp-on>.pane-card{flex:0 0 var(--split,46%)}
+.pane-xp{flex:0 0 auto}
+.a-split.xp-on>.pane-xp{flex:1 1 0}
+.pane-card>.c-a{flex:1 1 auto;min-height:0;max-height:none!important;border:0!important}
+.pane-xp>.xp-pane{flex:1 1 auto;min-height:0;padding-top:4px}
+.a-split:not(.xp-on)>.pane-xp>.xp-pane{display:none}
+.pane-head{flex-shrink:0;position:relative;z-index:6;background:var(--page,#fff)}
+.pane-head .c-head{padding:12px 22px 0}
+.pane-head .c-tags{padding:6px 18px 6px 22px;min-height:0;border-bottom:1px solid #efefef}
+.xp-head{flex-shrink:0;position:relative;z-index:6;background:var(--page,#fff);padding:0 26px;border-bottom:1px solid #efefef}
+.xp-head .xp-bar{position:static!important;zoom:1!important;border:0!important;padding:10px 0!important;background:transparent!important;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.xp-head .xv-seg{display:flex!important}
+.a-split:not(.xp-on) .xp-head{border-bottom:0}
+@media (orientation:landscape) and (min-width:900px){
+  .a-split{flex-direction:row}
+  .a-split.xp-on>.pane-card{flex:0 0 var(--split,52%)}
+  .xp-head{padding:0 28px}
+  .a-split:not(.xp-on)>.pane-xp{position:absolute;right:24px;bottom:16px;background:var(--page,#fff);border:1px solid #e6e6e6;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+  .a-split:not(.xp-on)>.pane-xp .xp-head{background:transparent;padding:0 14px}
+}
+@media (max-width:640px){.xp-head{padding:0 16px}.pane-head .c-head{padding:10px 14px 0}.pane-head .c-tags{padding:4px 12px 4px 14px}}
+/* subtle size slider: no capsule, thin track, small thumb */
+.fitc.szc{border:0!important;background:transparent!important;gap:6px;margin-left:auto;border-radius:0}
+.c-tags .fitc.szc{margin-left:10px}
+.szc [data-fit]{border:1px solid #d9d4c8!important;background:transparent!important;color:#6b6250;border-radius:10px;padding:2px 8px;font-size:10.5px}
+.szc [data-fit].on{background:#efe9dc!important;color:#3d3628!important;border-color:#cbbf9f!important}
+.szc .fz{min-width:34px;padding:0;color:#8a8070;font-size:10.5px;text-align:right}
+.szc input[type=range]{-webkit-appearance:none;appearance:none;width:96px;height:18px;background:transparent;margin:0;accent-color:auto}
+.szc input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:#dcd6c8}
+.szc input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;border:1.5px solid #9a8a5e;margin-top:-5.5px;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.szc input[type=range]::-moz-range-track{height:3px;border-radius:2px;background:#dcd6c8}
+.szc input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:#fff;border:1.5px solid #9a8a5e}
+/* the top bar: title always readable; when space is short, labels go, then the pen tools take a second row */
+.flow.v3 .f-bar{flex-wrap:wrap;row-gap:6px}
+.flow.v3 .f-title{flex:1 1 220px;min-width:150px;max-width:none}
+.flow.v3 .f-sec{font-size:15px}
+.flow.v3 .f-grow{flex:0 0 0}
+.flow.v3 .f-bar.tight .iconbtn .lbl{display:none}
+.flow.v3 .f-bar.tight .goout.sm{padding:0 10px}
+.flow.v3 .f-bar.tight .goout .gol{display:none}
+.flow.v3 .f-bar.tworow .ik-host.ik-dock{order:30;flex-basis:100%;min-width:0;justify-content:flex-start}
+@media (min-width:901px){.ik-host.ik-dock{min-width:0}}
+.ik-host.ik-dock{flex:0 0 var(--dockw,auto)}
+/* T-076b: bar = one row; title does not grow; controls pushed right */
+.flow.v3 .f-bar{flex-wrap:nowrap}
+.flow.v3 .f-title{flex:0 1 auto;min-width:120px;max-width:34vw}
+.flow.v3 .f-grow{flex:1 1 0;min-width:0}
+.flow.v3 .f-bar.tworow{flex-wrap:wrap}
+.xp-tog[aria-expanded=true]>span:first-child::before{content:'▾ '!important}
+.xp-head .xp-bar{flex-wrap:nowrap}
+.xp-head .fitc.szc{margin-left:12px}
+.xp-head .xv-seg{margin-left:auto}
+.xp-head .xp-tog{width:auto!important;flex:0 0 auto;padding:4px 0!important}
+/* T-076c: two-row bar = info + ⚙ on top, all buttons + pen tools below (no row holds just one button) */
+.flow.v3 .f-break{display:none}
+.flow.v3 .f-bar.tworow .f-break{display:block;order:15;flex-basis:100%;height:0}
+.flow.v3 .f-bar.tworow #f-gear{order:10}
+.flow.v3 .f-bar.tworow #f-peek,.flow.v3 .f-bar.tworow #f-undo,.flow.v3 .f-bar.tworow #f-pause,.flow.v3 .f-bar.tworow .goout{order:20}
+.flow.v3 .f-bar.tworow .ik-host.ik-dock{order:30;flex-basis:auto!important;margin-left:auto}
+.flow.v3 .f-bar.tworow #f-pop{order:40}
+@media (max-width:700px){.ik-dock .ik-bar{flex-wrap:wrap;overflow:visible;max-width:calc(100vw - 24px)}.flow.v3 .f-bar.tworow .ik-host.ik-dock{flex-basis:100%!important;margin-left:0;min-width:0!important}}
+.szc .fz{white-space:nowrap;flex-shrink:0}
+.ik-host.ik-dock{height:38px}.ik-dock .ik-bar{box-sizing:border-box;height:38px}.ik-dock .ik-fab{margin:1px 0}@media (max-width:700px){.ik-host.ik-dock{height:auto}.ik-dock .ik-bar{height:auto}}

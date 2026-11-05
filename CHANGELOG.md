@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-075)
+## State (as of entry T-076)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.51** · last code commit: see entry T-075. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.52** · last code commit: see entry T-076. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,23 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-076 — 2026-11-05 — Claude — test — 1.3.52
+Naven's Tab check of 1.3.51, with photos. An independent QA run (Playwright at 1848×1100, 1100×1700 and 412×915 touch) checked the fixes; its bugs are fixed and re-checked.
+- **Each side owns its header.**
+  - Card: section, code, tags, Edit, Again, Fit and size.
+  - Explain: Explain, size, Learn/Revise.
+  - Both headers sit outside the scrolling area, so no text shows above or behind the Explain header any more.
+- **Zoom is applied to the content inside the scroller** (`.zw` on the card, `.xp` on Explain), not to the scroller itself. This fixes the card scroll jamming after several zooms (zoomed scroll containers in Chrome).
+  - QA ran about 40 scroll checks per screen size across sliders, pinches, Fit, writing mode, Next and Back: all reached the bottom and came back.
+- **Fit measures correctly.** It ignored the ink layer's old height; Fit from 200% fell to 55% even when the card fitted at 100%.
+- **Writing rooms grow with the text** when a side is zoomed (×1.5 at 150%). A room also grows to hold ink written below its edge.
+- **No false eraser.** The "mouse after pen" and context-menu side-button guesses are removed: a tap on the toolbar or a long press had armed or started the eraser. The proven signal (pen moves with buttons 1, pressure 0, no press, held 70 ms) is the only one left.
+- **Top bar.**
+  - The title is always readable and ⚙ always stays on screen, pinned or floating.
+  - The pinned pen tools reserve their open width (510 px until first measured), so writing on/off or folding never moves other buttons. QA: 0 px horizontal shift.
+  - When one row doesn't fit (Tab portrait, phone), row 1 = title, progress, time, ⚙ and row 2 = Back, Undo, Pause, Going out and the pen tools. On the phone the pen tools wrap instead of running off screen.
+- **Subtle size slider.** No black capsule: a thin track, a small white thumb, a muted label; Fit is a light outline chip.
 
 ## T-075 — 2026-11-05 — Claude — test — 1.3.51
 Naven, 5 Nov: "remove the swipes … go back to the old zoom … page colour … pin".

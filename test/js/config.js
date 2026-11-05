@@ -11,7 +11,7 @@ export const CONFIG = {
   readOnly: CHANNEL === 'test',
   // Test build carries only the deck being piloted, so sync and deck download stay fast (T-070: TOX01 Explain v2)
   onlyDecks: CHANNEL === 'test' ? ['TOX01'] : null,
-  appVersion: '1.3.51',
+  appVersion: '1.3.52',
   traceFolderId: '1e_lx6kl_MhG4aOracgTr_HG3NUp7OsYs',
   doctFolderId: '1wqRbRG-nqldfafFL-AughcBEBfo6atQo',   // Trace › doct: finished DocT attempts sent by the recorder (v2.0+)
   libraryId: '1b3tMq38gqAE_m7eb5PeeJ53LjKqdggHI',   // fallback; the app looks library.json up by name

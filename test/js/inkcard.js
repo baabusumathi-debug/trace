@@ -166,7 +166,13 @@ function makeRoom(holder, key, data, onChange) {
   wrap.appendChild(cv); wrap.appendChild(more); holder.appendChild(wrap);
   wrap.addEventListener('click', e => { if (writing) { e.stopPropagation(); } });
   const kNow = () => (cv.clientWidth || wrap.clientWidth || ROOM_W) / ROOM_W;
-  const fit = () => { cv.style.height = Math.round((data.h || SPACE) * kNow()) + 'px'; };
+  // the room grows with the text when the side is zoomed (its height follows the zoom; its ink keeps the room's width)
+  const zf = () => { const r = cv.getBoundingClientRect().width, c = cv.clientWidth; return r && c ? Math.max(0.5, Math.min(3, r / c)) : 1; };
+  const fit = () => {
+    const used = (data.objs || []).reduce((m, o) => Math.max(m, objBox(o)[3]), 0);
+    if (used + 10 > (data.h || SPACE)) data.h = Math.ceil((used + 20) / (SPACE / 2)) * (SPACE / 2);
+    cv.style.height = Math.round((data.h || SPACE) * kNow() * zf()) + 'px';
+  };
   fit();
   const map = () => { const k = kNow(); return { X: p => p[0] * k, Y: p => p[1] * k, k }; };
   const s = new Surface(cv, data.objs || (data.objs = []), { map, changed: () => {}, limits: () => writing });
@@ -266,7 +272,7 @@ export async function mountInk(cardEl, card, face, opts) {
   drawRooms();
   ovs(st).forEach(o => o.relayout());
   applyMode();
-  box.addEventListener('toggle', () => { if (cur === st) st.overlay.relayout(); }, true);
+  box.addEventListener('toggle', () => { if (cur === st) { st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); } }, true);
   let lastW = box.clientWidth;
   new ResizeObserver(() => { if (cur !== st) return; st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); if (Math.abs(box.clientWidth - lastW) > 2) lastW = box.clientWidth; }).observe(box);
 }

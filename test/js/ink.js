@@ -529,7 +529,7 @@ export function attachPointer(surface, opts) {
     if (act && act.erase && eraseAt(units(e), act.r)) surface.request();
     clearTimeout(btnT); btnT = setTimeout(btnEnd, 450);
   };
-  cv.addEventListener('contextmenu', e => { logPen(e, 'contextmenu'); if (!opts.writing()) return; e.preventDefault(); e.stopPropagation(); if (penRecent() || e.pointerType === 'mouse') btnErase(e); });
+  cv.addEventListener('contextmenu', e => { logPen(e, 'contextmenu'); if (!opts.writing()) return; e.preventDefault(); e.stopPropagation(); });
   // Second signal seen on the Tab (4 Nov 15:56): pressing the side button makes a separate "mouse" pointer appear
   // over the card (pointerover · mouse) while the pen itself carries on as a pen. That arms the eraser for the next stroke.
   let armed = 0;
@@ -537,7 +537,7 @@ export function attachPointer(surface, opts) {
   cv.addEventListener('pointerover', e => {
     logPen(e);
     if (e.pointerType === 'pen') { penSeen = Date.now(); btnEnd(); sideMove(e); return; }
-    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
+    if (false) {
       arm(true);
       if (act && (act.draw || act.shape || act.snapHl)) { surface.live = null; surface.pred = null; clearTimeout(holdT); act = { erase: true, r: (S.er.size / 2) * opts.unitPerPx() }; surface.render(); }
     }
@@ -575,12 +575,12 @@ export function attachPointer(surface, opts) {
     logPen(e);
     if (!opts.writing()) return;
     if (e.pointerType === 'pen') { penSeen = Date.now(); sideCand = null; if (act && act.btnPen) { act = null; surface.cursor = null; if (opts.armChanged) opts.armChanged(false); } }
-    if (e.pointerType === 'mouse' && penRecent()) { e.preventDefault(); cv.setPointerCapture(e.pointerId); btnErase(e); return; }
+    if (e.pointerType === 'mouse' && penRecent()) { e.preventDefault(); return; }   // a stray "mouse" right after the pen: ignore (T-076)
     if (e.pointerType === 'touch') { act = { touch: true, y: e.clientY, x: e.clientX }; cv.setPointerCapture(e.pointerId); return; }
     e.preventDefault(); cv.setPointerCapture(e.pointerId);
     if (e.pointerType === 'pen') lastPen = { buttons: e.buttons, button: e.button, at: Date.now() };
     if (opts.onDown) opts.onDown(surface);
-    const p = units(e), erasing = sideButton(e) || hoverSide || !!armed || S.tool === 'er';
+    const p = units(e), erasing = sideButton(e) || S.tool === 'er';
     if (opts.pasteAt && opts.pasting && opts.pasting()) { opts.pasteAt(p); return; }
     if (erasing) { surface.snapshot(); toEraser(); if (eraseAt(p, act.r)) surface.render(); return; }
     if (S.tool === 'tsel') { act = { tsel: true, sx: e.clientX, sy: e.clientY }; if (opts.textSel) opts.textSel(act, e, 'start'); return; }
@@ -624,12 +624,7 @@ export function attachPointer(surface, opts) {
     act = { draw: true };
   });
   cv.addEventListener('pointermove', e => {
-    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) {
-      // side-button pen: erase while it is pressed on the glass (buttons/pressure), or while a context-menu press is running
-      if (e.buttons || e.pressure > 0 || btn) { if (e.buttons || e.pressure > 0 || btn) btnErase(e); }
-      else if (e.buttons !== lastPen.buttons) logPen(e);
-      return;
-    }
+    if (e.pointerType === 'mouse' && opts.writing() && penRecent()) return;
     if (e.pointerType === 'pen') penSeen = Date.now();
     if (sideMove(e)) return;
     if (e.pointerType === 'pen') { if (e.buttons !== lastPen.buttons) { lastPen = { buttons: e.buttons, button: e.button, at: Date.now() }; logPen(e); } if (!act) hoverSide = !!sideButton(e); }
