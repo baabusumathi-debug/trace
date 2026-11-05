@@ -6,7 +6,7 @@
     "TOX-01": {
      "v": 2,
      "sub": "Toxicology → First steps → Coma of unknown cause",
-     "intro": "A patient arrives unconscious and nobody knows why. A few causes of coma injure the brain within minutes yet are reversed by a cheap drug: low glucose, opioid respiratory depression, and thiamine deficiency in the malnourished or alcohol-dependent. The coma cocktail treats these first, before the cause is known — so every drug in it must be harmless if the guess turns out to be wrong.",
+     "intro": "A patient arrives unconscious and nobody knows why. A few causes of coma are dangerous yet reversed by a cheap drug: low glucose and opioid respiratory depression injure the brain within minutes, and thiamine deficiency in the malnourished or alcohol-dependent causes Wernicke’s encephalopathy over hours to days. The coma cocktail treats these first, before the cause is known — so every drug in it must be harmless if the guess turns out to be wrong.",
      "why": [
       [
        "a",
@@ -136,7 +136,7 @@
      "why": [
       [
        "a",
-       "**Skin: sympathomimetic wet; anticholinergic dry and flushed.** A sympathomimetic drives the sympathetic system, including its cholinergic sweat fibres, so the patient sweats. An anticholinergic blocks the muscarinic receptor on the sweat gland, so the skin is dry — and the flushing comes from skin vessels dilating to lose the heat the patient can no longer sweat away."
+       "**Skin: sympathomimetic wet; anticholinergic dry and flushed.** A sympathomimetic raises central sympathetic outflow, and that outflow includes the cholinergic sweat fibres, so the patient sweats. An anticholinergic blocks the muscarinic receptor on the sweat gland, so the skin is dry — and the flushing comes from skin vessels dilating to lose the heat the patient can no longer sweat away."
       ],
       [
        "b",
@@ -319,7 +319,7 @@
      "why": [
       [
        "a",
-       "**Tremor, hyperreflexia, clonus (worse in the legs), ocular clonus, diarrhoea, wet flushed skin, dilated pupils.** Excess serotonin over-stimulates 5-HT₂A receptors in the brainstem and spinal cord, producing neuromuscular excitation — tremor, then brisk reflexes, then inducible or spontaneous clonus, more in the legs than the arms. The same serotonin excess drives the autonomic signs: sweating, diarrhoea, tachycardia and mydriasis. Rising muscle activity generates heat; a temperature above 41 °C is life-threatening."
+       "**Tremor, hyperreflexia, clonus (worse in the legs), ocular clonus, diarrhoea, wet flushed skin, dilated pupils.** Excess serotonin over-stimulates 5-HT₁A and especially 5-HT₂A receptors in the brainstem and spinal cord, producing neuromuscular excitation — tremor, then brisk reflexes, then inducible or spontaneous clonus, more in the legs than the arms. The same serotonin excess drives the autonomic signs: sweating, diarrhoea, tachycardia and mydriasis. Rising muscle activity generates heat; a temperature above 41 °C is life-threatening."
       ],
       [
        "b",
@@ -556,7 +556,7 @@
       ],
       [
        "c",
-       "**Saturation gap over 5%: carbon monoxide, methaemoglobin, cyanide, hydrogen sulphide, sulphaemoglobin.** A pulse oximeter uses only two wavelengths and assumes only oxyhaemoglobin and deoxyhaemoglobin exist. Carboxyhaemoglobin looks like oxyhaemoglobin, so SpO₂ reads falsely normal; methaemoglobin drags the reading toward about 85%. Cyanide and hydrogen sulphide block the cells’ use of oxygen, so venous blood stays bright and oxygen-rich. A co-oximeter measures the abnormal haemoglobins directly."
+       "**Saturation gap over 5%: carbon monoxide, methaemoglobin, cyanide, hydrogen sulphide, sulphaemoglobin.** A pulse oximeter uses only two wavelengths and assumes only oxyhaemoglobin and deoxyhaemoglobin exist. Carboxyhaemoglobin looks like oxyhaemoglobin, so SpO₂ reads falsely normal; methaemoglobin drags the reading toward about 85%. Cyanide and hydrogen sulphide block the cells’ use of oxygen, so venous blood stays bright and oxygen-rich. A co-oximeter measures the abnormal haemoglobins directly. Strictly, cyanide and H₂S create no arterial gap — SpO₂, SaO₂ and PaO₂ all agree; the clue is a narrowed arterial–venous oxygen difference (venous saturation close to arterial)."
       ],
       [
        "d",
@@ -594,7 +594,7 @@
       ],
       [
        "Fire victim, SpO₂ 99%, confused",
-       "Carbon monoxide (co-oximetry)."
+       "Carbon monoxide (co-oximetry) — and cyanide if the lactate is high."
       ]
      ],
      "punch": "A gap means the lab sees something the formula or the oximeter cannot — an extra osmole in the blood, or a haemoglobin that is not carrying oxygen.",
@@ -800,7 +800,7 @@
       ],
       [
        "c",
-       "**Haemoperfusion: barbiturates, carbamazepine, theophylline, valproate — over a charcoal or resin adsorbent.** These are more protein-bound, so dialysis removes little. In haemoperfusion the blood passes over an adsorbent that strips the drug off the protein. Modern high-flux dialysis has narrowed the difference, but the exam list stands."
+       "**Haemoperfusion: barbiturates, carbamazepine, theophylline, valproate — over a charcoal or resin adsorbent.** These are the classic haemoperfusion drugs because they are moderately protein-bound: the blood passes over an adsorbent that strips the drug off the protein. Current EXTRIP guidance prefers high-flux haemodialysis for all four, with haemoperfusion as the alternative; older exam keys still answer ‘haemoperfusion’."
       ]
      ],
      "mimic": [
@@ -834,10 +834,10 @@
       ],
       [
        "Theophylline or carbamazepine toxicity, extracorporeal method",
-       "Haemoperfusion (or high-flux dialysis)."
+       "Haemodialysis (EXTRIP first choice); haemoperfusion is the classic textbook answer."
       ]
      ],
-     "punch": "Dialysis can reach only what is small, free and in the blood; a protein-bound drug needs an adsorbent, and a drug hidden in the tissues cannot be dialysed at all.",
+     "punch": "Dialysis can reach only what is small, free and in the blood; a protein-bound drug classically needs an adsorbent, and a drug hidden in the tissues cannot be dialysed at all.",
      "table": {
       "title": "Why each property matters",
       "head": [
@@ -951,7 +951,7 @@
       ],
       [
        "d",
-       "**Methanol, ethylene glycol — fomepizole 15 mg/kg over 30 minutes, then 10 mg/kg 12-hourly for four doses, then 15 mg/kg 12-hourly.** The alcohols are harmless; their acids (formic acid, glycolate and oxalate) kill. Fomepizole blocks alcohol dehydrogenase so the acids are not made. The dose rises after 48 hours because fomepizole induces its own metabolism."
+       "**Methanol, ethylene glycol — fomepizole 15 mg/kg over 30 minutes, then 10 mg/kg 12-hourly for four doses, then 15 mg/kg 12-hourly.** The parent alcohols are relatively non-toxic (mainly inebriation); their acids (formic acid, glycolate and oxalate) kill. Fomepizole blocks alcohol dehydrogenase so the acids are not made. The dose rises after 48 hours because fomepizole induces its own metabolism."
       ],
       [
        "e",
@@ -1347,7 +1347,7 @@
        ],
        [
         "b",
-        "**Thioridazine and ziprasidone; IV haloperidol is dangerous at high doses.** Thioridazine has the strongest hERG block of the antipsychotics. Haloperidol by mouth carries modest risk, but large intravenous doses for agitated delirium have caused torsades, so the ECG is monitored when it is given that way."
+        "**Thioridazine and ziprasidone; IV haloperidol is dangerous at high doses.** Thioridazine causes the greatest QTc prolongation of the commonly used antipsychotics (pimozide and sertindole are also high-risk). Haloperidol by mouth carries modest risk, but large intravenous doses for agitated delirium have caused torsades, so the ECG is monitored when it is given that way."
        ],
        [
         "c",
@@ -1429,7 +1429,7 @@
        ],
        [
         "d",
-        "**Methylene blue 1–2 mg/kg if symptomatic or MetHb >20–30%; never in G6PD deficiency.** Methylene blue is reduced to leucomethylene blue by NADPH-dependent reductase, and this reduces methaemoglobin back to haemoglobin. The NADPH comes from G6PD; without it the drug does not work and can cause haemolysis."
+        "**Methylene blue 1–2 mg/kg if symptomatic or MetHb >20–30%; never in G6PD deficiency.** Methylene blue is reduced to leucomethylene blue by NADPH-dependent reductase, and this reduces methaemoglobin back to haemoglobin. The NADPH comes from G6PD; without it the drug does not work and can cause haemolysis. It is also an MAO inhibitor, so it can precipitate serotonin syndrome in a patient on an SSRI or SNRI."
        ],
        [
         "e",
@@ -1773,11 +1773,11 @@
        ],
        [
         "c",
-        "**24-h urine arsenic (blood clears in days); chelate with dimercaprol, then DMSA or DMPS.** Arsenic leaves the blood quickly, so a blood level taken at the neuropathy stage is often normal while urine still shows it. Dimercaprol is given intramuscularly in the acute, unwell patient; oral DMSA or DMPS follows when the gut works."
+        "**24-h urine arsenic (blood clears within hours to days); chelate with dimercaprol, then DMSA or DMPS.** Arsenic leaves the blood quickly, so a blood level taken at the neuropathy stage is often normal while urine still shows it. Dimercaprol is given intramuscularly in the acute, unwell patient; oral DMSA or DMPS follows when the gut works."
        ],
        [
         "d",
-        "**Dimercaprol first, then CaNa₂EDTA 4 h later; avoid LP and routine hyperventilation.** EDTA given alone mobilises lead from tissues and can move it into the brain, worsening encephalopathy; dimercaprol first prevents this. Lead encephalopathy causes cerebral oedema, so lumbar puncture risks herniation."
+        "**Dimercaprol first, then CaNa₂EDTA 4 h later; avoid LP and routine hyperventilation.** EDTA given alone mobilises lead from tissues and can move it into the brain, worsening encephalopathy; dimercaprol first prevents this, and both then continue together. Lead encephalopathy causes cerebral oedema, so lumbar puncture risks herniation."
        ],
        [
         "e",
@@ -1920,7 +1920,7 @@
       "why": [
        [
         "a",
-        "**Secure the airway early (fibreoptic or awake): laryngeal oedema worsens over hours.** Intubation becomes harder as the oedema grows, so it is done while it is still possible. A blind or rapid technique can traumatise burned tissue, so the airway is secured under direct vision."
+        "**Secure the airway early (fibreoptic or awake): laryngeal oedema worsens over hours.** Intubation becomes harder as the oedema grows, so it is done while it is still possible. Paralysing a patient with a swollen, distorted airway risks a can’t-intubate, can’t-oxygenate crisis, so spontaneous breathing is kept (awake fibreoptic), and blind nasal intubation is avoided because it can perforate burned tissue."
        ],
        [
         "b",
@@ -2214,7 +2214,7 @@
       "why": [
        [
         "a",
-        "**At toxic levels the Na⁺ block silences inhibitory interneurons → paradoxical seizures.** Inhibitory interneurons fire rapidly and depend heavily on sodium channels, so they may be suppressed first. With less inhibition, excitatory neurons are released and seizures follow."
+        "**At toxic levels the Na⁺ block silences inhibitory interneurons → paradoxical seizures.** The proposed explanation: inhibitory interneurons fire rapidly and depend heavily on sodium channels, so they may be suppressed first. With less inhibition, excitatory neurons are released and seizures follow."
        ],
        [
         "b",
@@ -2245,8 +2245,8 @@
         "It is another sodium-channel blocker and worsens cardiac toxicity."
        ],
        [
-        "“A wide QRS needs lidocaine or a class Ic drug”",
-        "Class I antiarrhythmics add sodium-channel block; give bicarbonate."
+        "“A wide QRS needs procainamide or flecainide”",
+        "Class Ia and Ic add sodium-channel block; give bicarbonate (lidocaine is only a second-line option after bicarbonate)."
        ]
       ],
       "decode": [
@@ -2285,7 +2285,7 @@
       "why": [
        [
         "a",
-        "**Isoniazid — give pyridoxine with the benzodiazepine: gram for gram, or 5 g IV if the amount is unknown.** Isoniazid depletes pyridoxal phosphate, the active form of vitamin B6, which is the cofactor for glutamic acid decarboxylase, the enzyme that makes GABA. With low GABA the brain seizes, and benzodiazepines, which enhance GABA, have too little GABA to work with. Pyridoxine restores GABA synthesis, and the two drugs together stop the seizures. The acidosis comes from lactate produced by prolonged seizures."
+        "**Isoniazid — give pyridoxine with the benzodiazepine: gram for gram, or 5 g IV if the amount is unknown.** Isoniazid depletes pyridoxal phosphate, the active form of vitamin B6, which is the cofactor for glutamic acid decarboxylase, the enzyme that makes GABA. With low GABA the brain seizes, and benzodiazepines, which enhance GABA, have too little GABA to work with. Pyridoxine restores GABA synthesis, and the two drugs together stop the seizures. The acidosis is lactic, mainly from the seizures, and isoniazid also slows lactate clearance."
        ],
        [
         "b",
@@ -2629,5 +2629,5 @@
    ]
   }
  },
- "version": "b7f2c5d0c4"
+ "version": "aae723a344"
 }

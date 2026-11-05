@@ -8,7 +8,7 @@ T['TX1-QT'] = dict(
   intro="Many common ICU drugs block the cardiac potassium channel (hERG) that ends the action potential. Repolarisation is delayed, the QT lengthens, and an early afterdepolarisation can set off torsades de pointes. The risk is cumulative: each extra drug, a low potassium or magnesium, bradycardia or a raised drug level adds to it.",
   parts=[
     ('a', "**Citalopram and escitalopram.** Among the SSRIs these two prolong the QT in a dose-dependent way, which is why their maximum doses were lowered, especially in the elderly. Sertraline is the usual choice when cardiac risk is a concern."),
-    ('b', "**Thioridazine and ziprasidone; IV haloperidol is dangerous at high doses.** Thioridazine has the strongest hERG block of the antipsychotics. Haloperidol by mouth carries modest risk, but large intravenous doses for agitated delirium have caused torsades, so the ECG is monitored when it is given that way."),
+    ('b', "**Thioridazine and ziprasidone; IV haloperidol is dangerous at high doses.** Thioridazine causes the greatest QTc prolongation of the commonly used antipsychotics (pimozide and sertindole are also high-risk). Haloperidol by mouth carries modest risk, but large intravenous doses for agitated delirium have caused torsades, so the ECG is monitored when it is given that way."),
     ('c', "**The one that also blocks CYP3A4 (erythromycin, fluconazole) — it raises the others’ levels.** Such a drug prolongs the QT itself and also slows the clearance of other QT drugs metabolised by CYP3A4, so their levels and effect climb. Removing it removes two sources of risk at once."),
     ('d', "**Potassium and magnesium.** Low potassium reduces the repolarising current and enhances hERG block; low magnesium makes afterdepolarisations more likely. Correcting both raises the threshold for torsades, and intravenous magnesium is also the first treatment once torsades occurs."),
   ],
@@ -35,7 +35,7 @@ T['TX1-SAT'] = dict(
     ('a', "**Falsely normal — COHb looks like oxyhaemoglobin; PaO₂ normal.** Carboxyhaemoglobin absorbs red light much as oxyhaemoglobin does, so it is counted as saturated. PaO₂ measures dissolved oxygen, which is normal. Only co-oximetry measures COHb."),
     ('b', "**Drifts toward ~85% as MetHb rises — it absorbs equally at 660 and 940 nm.** An equal absorption ratio corresponds to a reading of about 85%, so the SpO₂ settles there however high the MetHb climbs. A low SpO₂ with a normal PaO₂ that does not respond to oxygen is the ‘saturation gap’."),
     ('c', "**Benzocaine/prilocaine before endoscopy, dapsone, nitrites/nitrates, primaquine, rasburicase.** These oxidise haem iron from the ferrous to the ferric state, which cannot bind oxygen. Topical anaesthetic sprays are the classic ICU cause."),
-    ('d', "**Methylene blue 1–2 mg/kg if symptomatic or MetHb >20–30%; never in G6PD deficiency.** Methylene blue is reduced to leucomethylene blue by NADPH-dependent reductase, and this reduces methaemoglobin back to haemoglobin. The NADPH comes from G6PD; without it the drug does not work and can cause haemolysis."),
+    ('d', "**Methylene blue 1–2 mg/kg if symptomatic or MetHb >20–30%; never in G6PD deficiency.** Methylene blue is reduced to leucomethylene blue by NADPH-dependent reductase, and this reduces methaemoglobin back to haemoglobin. The NADPH comes from G6PD; without it the drug does not work and can cause haemolysis. It is also an MAO inhibitor, so it can precipitate serotonin syndrome in a patient on an SSRI or SNRI."),
     ('e', "**COHb >25% (>15% in pregnancy), loss of consciousness, ischaemia or neurological signs.** Hyperbaric oxygen shortens the COHb half-life and is given to reduce delayed neurological sequelae. Fetal haemoglobin binds CO more tightly, hence the lower threshold in pregnancy."),
   ],
   mimic=[
@@ -156,8 +156,8 @@ T['TX1-ME'] = dict(
   parts=[
     ('a', "**Binds sulfhydryl groups (blocks pyruvate dehydrogenase); garlic odour, rice-water diarrhoea, QT prolongation.** Blocking pyruvate dehydrogenase stops aerobic energy production in cells. Damage to capillaries in the gut causes profuse watery diarrhoea and fluid loss, and potassium-channel effects prolong the QT, leading to torsades."),
     ('b', "**At 1–3 weeks an ascending axonal neuropathy that mimics GBS; Mees lines.** The neuropathy is sensorimotor, often painful, and can progress to weakness and respiratory failure. Mees lines are white transverse bands across the nails; they appear weeks later as the nail grows out."),
-    ('c', "**24-h urine arsenic (blood clears in days); chelate with dimercaprol, then DMSA or DMPS.** Arsenic leaves the blood quickly, so a blood level taken at the neuropathy stage is often normal while urine still shows it. Dimercaprol is given intramuscularly in the acute, unwell patient; oral DMSA or DMPS follows when the gut works."),
-    ('d', "**Dimercaprol first, then CaNa₂EDTA 4 h later; avoid LP and routine hyperventilation.** EDTA given alone mobilises lead from tissues and can move it into the brain, worsening encephalopathy; dimercaprol first prevents this. Lead encephalopathy causes cerebral oedema, so lumbar puncture risks herniation."),
+    ('c', "**24-h urine arsenic (blood clears within hours to days); chelate with dimercaprol, then DMSA or DMPS.** Arsenic leaves the blood quickly, so a blood level taken at the neuropathy stage is often normal while urine still shows it. Dimercaprol is given intramuscularly in the acute, unwell patient; oral DMSA or DMPS follows when the gut works."),
+    ('d', "**Dimercaprol first, then CaNa₂EDTA 4 h later; avoid LP and routine hyperventilation.** EDTA given alone mobilises lead from tissues and can move it into the brain, worsening encephalopathy; dimercaprol first prevents this, and both then continue together. Lead encephalopathy causes cerebral oedema, so lumbar puncture risks herniation."),
     ('e', "**Swallowed elemental (thermometer): harmless. Inhaled vapour: pneumonitis, ARDS, neurotoxicity.** Elemental mercury is almost not absorbed from the gut. Heated or vaporised, it is absorbed well through the lungs and damages lung and brain."),
   ],
   mimic=[
@@ -206,7 +206,7 @@ T['TX1-CA'] = dict(
   sub="Toxicology → Corrosives → Caustic ingestion",
   intro="A patient has swallowed a strong acid or alkali. The burn to the pharynx and larynx swells over the following hours, so a patient who is talking now can obstruct later. Hoarseness, stridor and drooling show that the larynx is already involved.",
   parts=[
-    ('a', "**Secure the airway early (fibreoptic or awake): laryngeal oedema worsens over hours.** Intubation becomes harder as the oedema grows, so it is done while it is still possible. A blind or rapid technique can traumatise burned tissue, so the airway is secured under direct vision."),
+    ('a', "**Secure the airway early (fibreoptic or awake): laryngeal oedema worsens over hours.** Intubation becomes harder as the oedema grows, so it is done while it is still possible. Paralysing a patient with a swollen, distorted airway risks a can’t-intubate, can’t-oxygenate crisis, so spontaneous breathing is kept (awake fibreoptic), and blind nasal intubation is avoided because it can perforate burned tissue."),
     ('b', "**Endoscopy within 12–24 h for Zargar grading.** Grading the depth of the burn predicts stricture and perforation and guides feeding and steroid decisions. Beyond about 48 hours the healing wall softens, and it is weakest from roughly day 5 to day 15, when endoscopy carries the highest risk of perforation."),
     ('c', "**No emesis, no charcoal, no neutralisation, no blind NG tube.** Vomiting re-exposes the oesophagus and airway to the caustic. Charcoal does not bind caustics and obscures endoscopy. Neutralisation produces heat and adds thermal injury, and a blind tube can perforate a burned oesophagus."),
     ('d', "**No overall benefit; only a deep circumferential grade IIb burn may benefit — never grade III (masks perforation).** Trials have not shown that steroids reduce strictures overall. In grade IIb burns, some data suggest a reduction; in grade III necrosis, steroids add infection risk and hide the signs of perforation."),
@@ -286,7 +286,7 @@ T['TX1-AS'] = dict(
   sub="Toxicology → Sodium-channel blockers → Antiseizure drug overdose",
   intro="Lamotrigine and carbamazepine control seizures by blocking neuronal sodium channels. In overdose the same block appears in the heart, and, paradoxically, the brain can start seizing. Treating these seizures means choosing drugs that do not add more sodium-channel block.",
   parts=[
-    ('a', "**At toxic levels the Na⁺ block silences inhibitory interneurons → paradoxical seizures.** Inhibitory interneurons fire rapidly and depend heavily on sodium channels, so they may be suppressed first. With less inhibition, excitatory neurons are released and seizures follow."),
+    ('a', "**At toxic levels the Na⁺ block silences inhibitory interneurons → paradoxical seizures.** The proposed explanation: inhibitory interneurons fire rapidly and depend heavily on sodium channels, so they may be suppressed first. With less inhibition, excitatory neurons are released and seizures follow."),
     ('b', "**Wide QRS — the same block in the heart.** Cardiac sodium channels conduct the impulse through the ventricles. Blocking them slows conduction and widens the QRS, with risk of ventricular arrhythmia and hypotension."),
     ('c', "**Benzodiazepines, then phenobarbital or propofol.** These work on GABA-A receptors and do not depend on sodium channels. Phenytoin is avoided because it is itself a sodium-channel blocker and adds to cardiac toxicity."),
     ('d', "**Bicarbonate; lipid if refractory.** Raising extracellular sodium and pH reduces drug binding to the channel and narrows the QRS. Intravenous lipid emulsion is a rescue therapy for lipophilic drugs when the patient does not respond."),
@@ -297,7 +297,7 @@ T['TX1-AS'] = dict(
   traps=[
     ("“Seizures in overdose mean the antiseizure level is low”", "In toxicity the drug itself can cause seizures."),
     ("“Phenytoin for the seizures”", "It is another sodium-channel blocker and worsens cardiac toxicity."),
-    ("“A wide QRS needs lidocaine or a class Ic drug”", "Class I antiarrhythmics add sodium-channel block; give bicarbonate."),
+    ("“A wide QRS needs procainamide or flecainide”", "Class Ia and Ic add sodium-channel block; give bicarbonate (lidocaine is only a second-line option after bicarbonate)."),
   ],
   decode=[
     ("Lamotrigine overdose, seizure, QRS 130 ms", "Benzodiazepine and sodium bicarbonate."),
@@ -311,7 +311,7 @@ T['TX1-INH'] = dict(
   sub="Toxicology → Seizures → Isoniazid overdose",
   intro="A patient on tuberculosis treatment is seizing, and the seizures do not stop with a benzodiazepine. Isoniazid in overdose depletes the vitamin the brain needs to make its main inhibitory transmitter. Until that vitamin is replaced, the usual anticonvulsants have little to act on.",
   parts=[
-    ('a', "**Isoniazid — give pyridoxine with the benzodiazepine: gram for gram, or 5 g IV if the amount is unknown.** Isoniazid depletes pyridoxal phosphate, the active form of vitamin B6, which is the cofactor for glutamic acid decarboxylase, the enzyme that makes GABA. With low GABA the brain seizes, and benzodiazepines, which enhance GABA, have too little GABA to work with. Pyridoxine restores GABA synthesis, and the two drugs together stop the seizures. The acidosis comes from lactate produced by prolonged seizures."),
+    ('a', "**Isoniazid — give pyridoxine with the benzodiazepine: gram for gram, or 5 g IV if the amount is unknown.** Isoniazid depletes pyridoxal phosphate, the active form of vitamin B6, which is the cofactor for glutamic acid decarboxylase, the enzyme that makes GABA. With low GABA the brain seizes, and benzodiazepines, which enhance GABA, have too little GABA to work with. Pyridoxine restores GABA synthesis, and the two drugs together stop the seizures. The acidosis is lactic, mainly from the seizures, and isoniazid also slows lactate clearance."),
     ('b', "**Phenytoin does not work.** Phenytoin acts on sodium channels and does nothing to correct the GABA deficit. The seizures are corrected only by replacing pyridoxine."),
   ],
   mimic=[
