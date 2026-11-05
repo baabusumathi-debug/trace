@@ -262,6 +262,7 @@ const ICONS = {
   pen: '<svg viewBox="0 0 24 24"><path d="M14.6 4.6l4.8 4.8L9 19.8l-5.3.9.9-5.3z"/><path d="M12.8 6.4l4.8 4.8"/><path class="tipc" d="M3.7 20.7l.6-3.4 2.8 2.8z"/></svg>',
   hl: '<svg viewBox="0 0 24 24"><path d="M15.2 3.4l5.4 5.4-7.9 7.9-5.4-5.4z"/><path d="M7.3 11.3l-1.6 4.6 2.4 2.4 4.6-1.6"/><path class="tipc" d="M5.7 15.9l-2.4 4.1 1.6.8 3.2-2.5z"/></svg>',
   er: '<svg viewBox="0 0 24 24"><path d="M3.9 15.1l9.5-9.5a2 2 0 0 1 2.8 0l3.2 3.2a2 2 0 0 1 0 2.8L12 19H7.8z"/><path d="M8.6 10.4l5 5"/><path d="M12 19h8.5"/></svg>',
+  tsel: '<svg viewBox="0 0 24 24"><path d="M9 4h6M9 20h6M12 4v16"/><path d="M4 9h3v6H4z" opacity=".55"/><path d="M17 9h3v6h-3z" opacity=".55"/></svg>',
   lasso: '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="9.5" rx="8" ry="5" stroke-dasharray="2.6 2.4"/><path d="M8.2 13.6c-1.4.9-1.6 2.6-.4 3.4 1 .7 2.4.2 2.5-1"/><path d="M7.8 17l-1.3 3.5"/></svg>',
   undo: '<svg viewBox="0 0 24 24"><path d="M8.5 5.5L4 10l4.5 4.5"/><path d="M4 10h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
   redo: '<svg viewBox="0 0 24 24"><path d="M15.5 5.5L20 10l-4.5 4.5"/><path d="M20 10H9.5a5.5 5.5 0 0 0 0 11H13"/></svg>',
@@ -283,6 +284,7 @@ const POS_KEY = 'trace.ink.pos', MIN_KEY = 'trace.ink.min';
 // the toolbar's size follows the window: in split screen (multi-window) it shrinks so the whole strip still fits
 export function railSize() { const hgt = window.innerHeight || 800, w = window.innerWidth || 800; return Math.max(30, Math.min(44, Math.floor((hgt - 48) / 13), Math.floor(w / 11))); }
 export function placeFloat(h, size) {
+  if (h.classList.contains('ik-dock')) { h.classList.remove('ik-float', 'ik-left', 'ik-up'); h.style.left = h.style.top = h.style.right = h.style.transform = ''; h.style.setProperty('--ik', '34px'); return; }
   let pos = null; try { pos = JSON.parse(localStorage.getItem(POS_KEY) || 'null'); } catch (e) { pos = null; }
   h.classList.add('ik-float'); h.style.setProperty('--ik', (size || railSize()) + 'px');
   const r = h.getBoundingClientRect();
@@ -295,6 +297,7 @@ export function placeFloat(h, size) {
   h.classList.toggle('ik-up', rr.top > innerHeight * 0.55);
 }
 export function dragFloat(h, handle, onTap) {
+  if (h.classList.contains('ik-dock')) { handle.onpointerdown = e => e.stopPropagation(); handle.onclick = e => { e.stopPropagation(); if (onTap) onTap(); }; return; }
   handle.onpointerdown = e => {
     e.preventDefault(); e.stopPropagation(); handle.setPointerCapture(e.pointerId);
     const r = h.getBoundingClientRect(), ox = e.clientX - r.left, oy = e.clientY - r.top, sx = e.clientX, sy = e.clientY; let moved = false;
@@ -339,7 +342,7 @@ export class Toolbar {
     }
     this.host.innerHTML = `<div class="ik-bar" role="toolbar" aria-label="Pen tools">
         <div class="ik-grip" data-grip title="Drag to move · tap to fold the strip into one button">${ICONS.grip}</div>
-        ${btn('pen', 'Pen · tap again for settings', ` style="--tip:${S.pen.color}"`)}${btn('hl', 'Highlighter · tap again for settings', ` style="--tip:${S.hl.color}"`)}${btn('er', 'Eraser · tap again for settings')}${btn('lasso', 'Lasso select · tap again for help')}
+        ${btn('pen', 'Pen · tap again for settings', ` style="--tip:${S.pen.color}"`)}${btn('hl', 'Highlighter · tap again for settings', ` style="--tip:${S.hl.color}"`)}${btn('er', 'Eraser · tap again for settings')}${btn('tsel', 'Select text · drag across words, or tap a part')}${btn('lasso', 'Lasso: move ink · tap again for help')}
         ${btn('shape', 'Shapes · tap again for settings')}${btn('text', 'Text · tap again for settings')}
         ${clips.length ? `<button class="ik-ic${pasting || this.clipOpen ? ' on' : ''}" data-paste aria-label="Clipboard" title="Clipboard · ${clips.length} item${clips.length === 1 ? '' : 's'}">${ICONS.paste}<span class="ik-badge">${clips.length}</span></button>` : ''}
         <span class="ik-sep"></span>
@@ -375,6 +378,7 @@ export class Toolbar {
         <div class="ik-row"><label>S Pen button</label><span class="ik-note">hold the side button while writing to erase · last pen signal: <b class="mono">${penSignal()}</b></span></div>
         <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><button class="ik-more" data-logclear style="margin:4px 0">Clear log</button><pre class="ik-penlog" data-penlog>${penLines() || '—'}</pre>
         <div class="ik-row"><label></label><button class="ik-more" data-clear>Clear this side</button></div>`;
+    if (t === 'tsel') return `<div class="ik-row"><label>Select text</label><span class="ik-note">drag from the first word to the last word — whole words are taken; tap once on a part to take all of it. Then Highlight, Copy or Still unclear.</span></div>`;
     if (t === 'lasso') return `<div class="ik-row"><label>Select</label><span class="ik-note">draw a loop round ink or highlights, or tap one mark; drag inside the box to move; Delete in the blue bar</span></div>`;
     if (t === 'shape') return `<div class="ik-row"><label>Draw</label><div class="ik-pt">${[['free', 'Freehand'], ['line', 'Line'], ['arrow', 'Arrow'], ['rect', 'Rectangle'], ['ellipse', 'Ellipse'], ['tri', 'Triangle']].map(([k, l]) => `<button class="${S.shape.kind === k ? 'on' : ''}" data-sk="${k}">${l}</button>`).join('')}</div></div>
         <div class="ik-row"><label>Auto shape</label><div class="ik-pt"><button class="${S.shape.auto ? 'on' : ''}" data-auto="1">On · draw, keep the pen still ½ s</button><button class="${!S.shape.auto ? 'on' : ''}" data-auto="0">Off</button></div></div>
@@ -388,7 +392,7 @@ export class Toolbar {
     const h = this.host, set = (path, v) => { const [a, b] = path.split('.'); S[a][b] = v; saveS(); };
     // tap a tool = choose it; tap the chosen tool again = its settings
     h.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { const k = b.dataset.t; this.clipOpen = false; if (S.tool === k) this.open = !this.open; else { S.tool = k; this.open = false; this.more = false; this.api.toolChanged(); } saveS(); this.draw(); });
-    const cc = h.querySelector('[data-curc]'); if (cc) cc.onclick = () => { if (S.tool === 'er' || S.tool === 'lasso') S.tool = 'pen'; this.open = !this.open; saveS(); this.draw(); };
+    const cc = h.querySelector('[data-curc]'); if (cc) cc.onclick = () => { if (S.tool === 'er' || S.tool === 'lasso' || S.tool === 'tsel') S.tool = 'pen'; this.open = !this.open; saveS(); this.draw(); };
     const cx = h.querySelector('[data-close]'); if (cx) cx.onclick = () => { this.open = false; this.draw(); };
     const gp = h.querySelector('[data-grip]'); if (gp) dragFloat(h, gp, () => this.setMin(true));
     const ps = h.querySelector('[data-paste]'); if (ps) ps.onclick = () => { this.clipOpen = !this.clipOpen; this.open = false; if (!this.clipOpen) this.api.setPasting(null); this.draw(); };
@@ -576,6 +580,7 @@ export function attachPointer(surface, opts) {
     const p = units(e), erasing = sideButton(e) || hoverSide || !!armed || S.tool === 'er';
     if (opts.pasteAt && opts.pasting && opts.pasting()) { opts.pasteAt(p); return; }
     if (erasing) { surface.snapshot(); toEraser(); if (eraseAt(p, act.r)) surface.render(); return; }
+    if (S.tool === 'tsel') { act = { tsel: true, sx: e.clientX, sy: e.clientY }; if (opts.textSel) opts.textSel(act, e, 'start'); return; }
     if (S.tool === 'lasso') {
       const sel = surface.sel;
       if (sel && sel.box) {
@@ -631,6 +636,7 @@ export function attachPointer(surface, opts) {
     if (act.touch) { opts.scrollBy(act.y - e.clientY); act.y = e.clientY; return; }
     const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
     if (act.erase) { let ch = false; for (const ev of evs) ch = eraseAt(units(ev), act.r) || ch; const lp = units(e); surface.cursor = [lp[0], lp[1], act.r]; surface.request(); return; }
+    if (act.tsel) { if (opts.textSel) opts.textSel(act, e, 'move'); return; }
     if (act.lasso) { surface.lasso.push(units(e)); surface.request(); return; }
     if (act.scale) { const p = units(e), k = Math.max(0.1, Math.min(10, dist(act.anchor, p) / act.d0)); act.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); scaleAbout(o, act.anchor[0], act.anchor[1], k); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
     if (act.rotate) { const p = units(e); let a = Math.atan2(p[1] - act.c[1], p[0] - act.c[0]) - act.a0; const snap = Math.round(a / (Math.PI / 12)) * (Math.PI / 12); if (Math.abs(a - snap) < 0.05) a = snap; surface.sel.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); rotateAbout(o, act.c[0], act.c[1], a); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
@@ -687,6 +693,7 @@ export function attachPointer(surface, opts) {
     if (armed && e && e.pointerType === 'pen') arm(false);
     if (e && e.type === 'pointerup') logPen(e);
     if (!act) return;
+    if (act.tsel) { if (opts.textSel && e) opts.textSel(act, e, 'end'); act = null; return; }
     if (act.lasso) {
       const poly = surface.lasso; surface.lasso = null;
       const [lx0, ly0, lx1, ly1] = bbox(poly), tiny = Math.max(lx1 - lx0, ly1 - ly0) < 12 * opts.unitPerPx();

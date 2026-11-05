@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-073)
+## State (as of entry T-074)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.49** · last code commit: see entry T-073. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.50** · last code commit: see entry T-074. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,27 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-074 — 2026-11-05 — Claude — test — 1.3.50
+Agreed with Naven on 5 Nov ("Yes, proceed").
+- **Highlights sit behind the words.** Ink canvases use a multiply blend, so the paper turns yellow and the letters stay black.
+- **New Select-text tool** (I-beam) in the pen kit.
+  - Drag from the first word to the last and exactly those words are taken, snapped to whole words, across lines and parts. A tap takes the whole part.
+  - The same bar follows: Highlight · Copy text · ? Still unclear.
+  - The lasso is now for moving ink. When drawn over words, it only takes lines whose middle lies inside the loop.
+- **Pen tools docked in the top bar.** Folded, they are one pen button; tapping the grip folds them. In portrait they take a second row. ⚙ › Pen tools: In the top bar / Floating.
+- **Each side has its own text size** (A−/A+ on the card and on Explain). The bar's A−/A+ and Fit/Width are gone.
+  - **Zoom is PDF-like.** The text is laid out once at the page width for 100%; a pinch only magnifies or shrinks that page, so lines never re-wrap.
+  - Zoomed out, the page sits centred on white; zoomed in, it scrolls both ways (safe centring).
+  - The zoom readout is a button that resets to 100%. Size and zoom are kept per profile and per side.
+- **Two-finger gestures** on the card area.
+  - Swipe: both fingers move the same way, at least 90 px within 0.7 s, at a steady distance. It turns the card: forward reveals, then goes next; back looks at the previous card.
+  - Pinch: the distance changes. It zooms the side under the fingers.
+  - ⚙ › Next button Show/Hide · 2-finger swipe ↔ sideways / ↕ up-down. Both swipes off forces the button back.
+  - Vertical swipes animate vertically.
+- **The flow's label** (Plan, Any hit …) moved out of the top bar to a gold chip at the start of the strip, where it can't be cut off.
+- **Pure white card and Explain.** Boxes are neutral grey; the NEET gold glow around the card is reduced to a thin grey edge (the NEET tag chip stays).
+- Demo check (Tab landscape, touch via CDP): pinch to 280% and to 45%; a two-finger left swipe reveals; Select-text gives the bar; Highlight lands behind the text. No errors.
 
 ## T-073 — 2026-11-05 — Claude — test — 1.3.49
 Naven's Tab check of 1.3.48.

@@ -287,41 +287,79 @@ function wireSurface(s) {
     armChanged: on => { const h = st.opts.toolbarHost && st.opts.toolbarHost(); if (h) h.classList.toggle('ik-armed', on); },
     textAt: (p, e, hit) => textAt(s, p, hit),
     lassoText: poly => lassoText(s, poly),
+    textSel: (act, e, phase) => textSelect(s, act, e, phase),
     dropOut: e => dropOut(s, e),
     changed: o => { st.last = s; if (o && isOv(st, s) && !o.a) o.a = s.anchorFor(o.pts[0]); if (!isOv(st, s)) drawChevrons(); markDirty(); }
   });
 }
 
-/* ---------- T-072: a lasso drawn over words (no ink inside it) selects the words ---------- */
+/* ---------- T-072/T-074: choosing words ----------
+   Select-text tool: drag from the first word to the last (whole words), or tap a part to take all of it.
+   Lasso drawn over words with no ink inside: only the lines whose middle lies inside the loop are taken. */
+const leafBlocks = box => [...box.querySelectorAll('[data-ak]')].filter(el => !el.classList.contains('rm') && !el.querySelector('[data-ak]') && el.textContent.trim());
+const hideOf = s => [s.cv, ...s.parentEl.querySelectorAll('.rm-cv, .ink-tx')];
+function caretIn(s, x, y) {
+  const c = caretAt(x, y, hideOf(s)); if (!c) return null;
+  const el = c.node.parentElement && c.node.parentElement.closest('[data-ak]');
+  if (!el || !s.parentEl.contains(el) || el.classList.contains('rm')) return null;
+  const off = textOffset(el, c.node, c.off); return off == null ? null : { el, off };
+}
+function wordSnap(t, a, b) { while (a > 0 && /\S/.test(t[a - 1])) a--; while (b < t.length && /\S/.test(t[b])) b++; return [a, b]; }
+function selBetween(s, c0, c1) {
+  const blocks = leafBlocks(s.parentEl); let i0 = blocks.indexOf(c0.el), i1 = blocks.indexOf(c1.el); if (i0 < 0 || i1 < 0) return [];
+  if (i1 < i0 || (i1 === i0 && c1.off < c0.off)) { [c0, c1] = [c1, c0]; [i0, i1] = [i1, i0]; }
+  const out = [];
+  for (let i = i0; i <= i1; i++) {
+    const el = blocks[i], t = el.textContent; let a = i === i0 ? c0.off : 0, b = i === i1 ? c1.off : t.length;
+    [a, b] = wordSnap(t, a, b); if (b - a < 1) continue;
+    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim() });
+  }
+  return out;
+}
+let tmarks = [];
+function drawMarks(sel) {
+  tmarks.forEach(m => m.remove()); tmarks = [];
+  sel.forEach(t => { const rg = rangeOf(t.el, t.a, t.b); if (rg) for (const q of rg.getClientRects()) { if (q.width < 1) continue; const m = document.createElement('div'); m.className = 'ik-tmark'; Object.assign(m.style, { left: q.left + 'px', top: q.top + 'px', width: q.width + 'px', height: q.height + 'px' }); document.body.appendChild(m); tmarks.push(m); } });
+}
+function textSelect(s, act, e, phase) {
+  if (!s.parentEl) return;
+  if (phase === 'start') { document.querySelectorAll('.ik-tsel').forEach(n => n.remove()); act.c0 = caretIn(s, e.clientX, e.clientY); act.sel = []; drawMarks([]); return; }
+  if (!act.c0) { const c = caretIn(s, e.clientX, e.clientY); if (c) act.c0 = c; else return; }
+  const tap = Math.hypot(e.clientX - act.sx, e.clientY - act.sy) < 8;
+  if (phase === 'move') { if (tap) return; const c1 = caretIn(s, e.clientX, e.clientY); if (c1) { act.sel = selBetween(s, act.c0, c1); drawMarks(act.sel); } return; }
+  let sel = act.sel || [];
+  if (tap) { const el = act.c0.el, t = el.textContent; sel = [{ el, a: 0, b: t.length, text: t.replace(/\s+/g, ' ').trim() }]; }
+  if (!sel.length) { drawMarks([]); return; }
+  textBar(s, sel, e.clientX, e.clientY);
+}
+const inPolyS = (pt, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, yi] = poly[i], [xj, yj] = poly[j]; if ((yi > pt[1]) !== (yj > pt[1]) && pt[0] < (xj - xi) * (pt[1] - yi) / (yj - yi) + xi) c = !c; } return c; };
 function lassoText(s, poly) {
   const st = cur; if (!st || !s.parentEl) return;
-  const r0 = s.cv.getBoundingClientRect(), sc = s.cv.clientWidth / (r0.width || 1);
-  const xs = poly.map(p => p[0]), ys = poly.map(p => p[1]);
-  const sx = v => r0.left + v / sc, sy = v => r0.top + v / sc;
-  const X0 = sx(Math.min(...xs)), X1 = sx(Math.max(...xs)), Y0 = sy(Math.min(...ys)), Y1 = sy(Math.max(...ys));
-  const hide = [s.cv, ...s.parentEl.querySelectorAll('.rm-cv, .ink-tx')];
-  const blocks = [...s.parentEl.querySelectorAll('[data-ak]')].filter(el => !el.classList.contains('rm') && !el.querySelector('[data-ak]') && el.textContent.trim())
-    .filter(el => { const q = el.getBoundingClientRect(); return q.bottom > Y0 && q.top < Y1 && q.right > X0 && q.left < X1; });
-  if (!blocks.length) return;
+  const r0 = s.cv.getBoundingClientRect(), k = r0.width / (s.cv.clientWidth || 1);
+  const P = poly.map(p => [r0.left + p[0] * k, r0.top + p[1] * k]);
   const sel = [];
-  blocks.forEach((el, i) => {
-    const len = el.textContent.length; let a = 0, b = len;
-    if (i === 0) { const c = caretAt(X0, Y0 + 4, hide); if (c && el.contains(c.node)) a = textOffset(el, c.node, c.off) || 0; }
-    if (i === blocks.length - 1) { const c = caretAt(X1, Y1 - 4, hide); if (c && el.contains(c.node)) { const o = textOffset(el, c.node, c.off); if (o != null) b = o; } }
-    if (b - a < 1) { a = 0; b = len; }
-    sel.push({ el, a, b, text: el.textContent.slice(a, b).replace(/\s+/g, ' ').trim() });
-  });
-  textBar(s, sel, X0, Y1);
+  for (const el of leafBlocks(s.parentEl)) {
+    const t = el.textContent, rg = rangeOf(el, 0, t.length); if (!rg) continue;
+    const lines = [...rg.getClientRects()].filter(q => q.width > 2 && inPolyS([q.left + Math.min(q.width / 2, 40), q.top + q.height / 2], P) || (q.width > 2 && inPolyS([q.left + q.width / 2, q.top + q.height / 2], P)));
+    if (!lines.length) continue;
+    const f = lines[0], l = lines[lines.length - 1];
+    const a = caretIn(s, f.left + 2, f.top + f.height / 2), b = caretIn(s, l.right - 2, l.top + l.height / 2);
+    let A = a && a.el === el ? a.off : 0, B = b && b.el === el ? b.off + 1 : t.length;
+    [A, B] = wordSnap(t, A, Math.min(B, t.length)); if (B - A < 1) continue;
+    sel.push({ el, a: A, b: B, text: t.slice(A, B).replace(/\s+/g, ' ').trim() });
+  }
+  if (!sel.length) return;
+  const last = P.reduce((m, p) => p[1] > m[1] ? p : m, P[0]);
+  textBar(s, sel, Math.min(...P.map(p => p[0])), last[1]);
 }
 function textBar(s, sel, x, y) {
   document.querySelectorAll('.ik-tsel').forEach(n => n.remove());
-  const marks = [];
-  sel.forEach(t => { const rg = rangeOf(t.el, t.a, t.b); if (rg) for (const q of rg.getClientRects()) { const m = document.createElement('div'); m.className = 'ik-tmark'; Object.assign(m.style, { left: q.left + 'px', top: q.top + 'px', width: q.width + 'px', height: q.height + 'px' }); document.body.appendChild(m); marks.push(m); } });
+  drawMarks(sel); const marks = tmarks;
   const bar = document.createElement('div'); bar.className = 'ik-tsel';
   bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
   Object.assign(bar.style, { left: Math.max(8, Math.min(innerWidth - 380, x)) + 'px', top: Math.min(innerHeight - 60, y + 8) + 'px' });
   document.body.appendChild(bar);
-  const close = () => { bar.remove(); marks.forEach(m => m.remove()); removeEventListener('scroll', close, true); };
+  const close = () => { bar.remove(); drawMarks([]); removeEventListener('scroll', close, true); };
   addEventListener('scroll', close, true);
   bar.addEventListener('pointerdown', e => e.stopPropagation());
   bar.querySelectorAll('[data-t]').forEach(b => b.onclick = async e => {

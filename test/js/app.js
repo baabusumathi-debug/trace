@@ -1406,21 +1406,22 @@ function renderFlow() {
       <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
       ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
       ${flow.browse ? '' : goingOutButton('sm')}
-      <span class="tsz"><button class="iconbtn sm" data-ts="-1" aria-label="Smaller text">A−</button><button class="iconbtn sm" data-ts="1" aria-label="Larger text">A+</button></span>
+      ${P.get('inkDock', 1) ? '<div class="ik-host ik-dock" id="f-ink" hidden></div>' : ''}
       <button class="iconbtn sm" id="f-gear" aria-label="Explain settings" aria-expanded="false">⚙</button>
       <div class="f-pop" id="f-pop" hidden><div class="f-xp" id="f-xp"></div><p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Space reveals and moves on · ← looks back · P pauses · A = Again · U = Undo · E = Edit · Esc ends.'}</p></div>
     </header>
     <div class="f-strip" id="f-strip" role="button" tabindex="0" aria-label="This flow and today: tap for the full view">
-      <span class="mono f-sl">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div>
+      <span class="mono f-sl" id="f-lab">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div>
       ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div><div class="f-live mono" id="f-live"></div>'}
     </div>
     <main class="f-main">
-      <div class="ik-host" id="f-ink" hidden></div>
+      ${P.get('inkDock', 1) ? '' : '<div class="ik-host" id="f-ink" hidden></div>'}
       <div class="card-wrap"><article class="card" id="card"></article>${flow.browse ? '' : '<button class="pause-cover" id="f-cover" aria-label="Resume the flow"><span class="mono">PAUSED</span><b>Tap to resume</b><small>The clock is stopped.</small></button>'}</div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
-      <button class="big press" id="f-big"></button>
+      <button class="big press${NAV().btn || !(NAV().sx || NAV().sy) ? '' : ' nav-off'}" id="f-big"></button>
     </main>
   </div>`;
+  setupGestures($('.card-wrap'));
   const gear = $('#f-gear'), pop = $('#f-pop');
   gear.onclick = e => { e.stopPropagation(); pop.hidden = !pop.hidden; gear.setAttribute('aria-expanded', !pop.hidden); };
   if (!window.__fpop) window.__fpop = 1, document.addEventListener('pointerdown', e => { const pp = document.getElementById('f-pop'); if (pp && !pp.hidden && !e.target.closest('#f-pop, #f-gear')) pp.hidden = true; }, { capture: true });
@@ -1458,7 +1459,20 @@ function drawXpToggles() {
     <span class="mono muted small">DEPTH</span>
     <div class="seg">${[['auto', 'Auto'], ['learn', 'Learn'], ['revise', 'Revise']].map(([k, l]) => `<button class="${xpDepth() === k ? 'on' : ''}" data-xd="${k}">${l}</button>`).join('')}</div>
     <span class="mono muted small">EXAM TRAPS</span>
-    <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div></div></details>`;
+    <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div>
+    <span class="mono muted small">NEXT BUTTON</span>
+    <div class="seg"><button class="${NAV().btn ? 'on' : ''}" data-nv="navBtn:1">Show</button><button class="${!NAV().btn ? 'on' : ''}" data-nv="navBtn:0">Hide</button></div>
+    <span class="mono muted small">2-FINGER SWIPE</span>
+    <div class="seg"><button class="${NAV().sx ? 'on' : ''}" data-nv="navSwipeX:${NAV().sx ? 0 : 1}">↔ sideways</button><button class="${NAV().sy ? 'on' : ''}" data-nv="navSwipeY:${NAV().sy ? 0 : 1}">↕ up / down</button></div>
+    <span class="mono muted small">PEN TOOLS</span>
+    <div class="seg"><button class="${P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:1">In the top bar</button><button class="${!P.get('inkDock', 1) ? 'on' : ''}" data-nv="inkDock:0">Floating</button></div></div></details>`;
+  h.querySelectorAll('[data-nv]').forEach(b => b.onclick = () => {
+    const [k, v] = b.dataset.nv.split(':'); P.set(k, +v);
+    const n = NAV(); if (!n.btn && !n.sx && !n.sy) { P.set('navBtn', 1); toast('With both swipes off, the Next button stays.'); }
+    if (k === 'inkDock' && flow) { renderFlow(); const p2 = $('#f-pop'); if (p2) p2.hidden = false; return; }
+    const bg = $('#f-big'); if (bg) bg.classList.toggle('nav-off', !(NAV().btn || !(NAV().sx || NAV().sy)));
+    drawXpToggles();
+  });
   h.querySelectorAll('[data-xo]').forEach(b => b.onclick = () => { P.set('xpOpen', b.dataset.xo); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
   h.querySelectorAll('[data-xd]').forEach(b => b.onclick = () => { P.set('xpDepth', b.dataset.xd); if (flow) flow.depthOver = {}; drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
   h.querySelectorAll('[data-xt]').forEach(b => b.onclick = () => { P.set('xpTraps', +b.dataset.xt); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
@@ -1485,54 +1499,77 @@ function skippedBefore(c) {
   return !!prev && !flow.queue.some(x => x.deck === c.deck && x.code === prev.code);
 }
 
-/* ---------- T-072: each pane fits like a zoomed-out PDF page — Fit (whole card in view), Width, or a pinch ----------
-   The text stays live (ink, highlights and copying keep working): the pane is scaled with CSS zoom, not turned into an image. */
-const FIT_DEF = { Card: innerWidth < 700 ? 'width' : 'page', Xp: 'width' };   // a phone is too small to fit a whole card
-const fitMode = k => P.get('fit' + k, FIT_DEF[k]);
+/* ---------- T-074: each side has its own text size; pinch zooms the laid-out page like a PDF ----------
+   Text size (A−/A+ on each side) lays the text out. Zoom then only magnifies or shrinks that page: the lines never
+   re-wrap. Zoomed out, the page sits centred on white; zoomed in, one finger moves around it. */
+const TS = k => P.get('ts' + k, 1), VZ = k => P.get('vz' + k, 1);
 function paneOf(el, k) { return k === 'Card' ? el.querySelector('.c-a, .c-q') : el.querySelector('.xp-pane'); }
-function fitPane(el, k) {
+function fitPane(el, k, live) {
   const box = paneOf(el, k); if (!box) return;
-  const mode = fitMode(k);
-  let z = mode === 'custom' ? P.get('z' + k, 1) : 1;
+  const ts = TS(k), z = live != null ? live : VZ(k);
+  box.classList.add('pv');
+  box.style.setProperty('--ts', ts); box.style.setProperty('--z', 1);
+  // the page width = what the side shows at zoom 100%, in the box's own units
+  // clientWidth is the layout width in the box's own units (not affected by the flip animation's transform)
+  const cs = getComputedStyle(box), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+  box.style.setProperty('--pw', Math.max(200, box.clientWidth - pad) + 'px');
   box.style.setProperty('--z', z);
-  if (mode === 'page') {
-    for (let i = 0; i < 5; i++) {
-      const H = box.clientHeight, S = box.scrollHeight;
-      if (!H || S <= H + 2) break;
-      z = Math.max(0.55, z * Math.pow(H / S, 0.85));
-      box.style.setProperty('--z', z.toFixed(3));
-      if (z <= 0.55) break;
-    }
-  }
-  const lab = el.querySelector(`[data-fitc="${k}"] .fz`); if (lab) lab.textContent = Math.round(z * 100) + '%';
+  const lab = el.querySelector(`[data-szc="${k}"] .fz`); if (lab) lab.textContent = Math.round(z * 100) + '%';
+  box.dispatchEvent(new Event('toggle'));                       // ink follows the new geometry
 }
-function fitControl(k) {
-  const m = fitMode(k);
-  return `<span class="fitc mono" data-fitc="${k}" role="group" aria-label="${k === 'Card' ? 'Card' : 'Explain'} size"><button data-fit="page" class="${m === 'page' ? 'on' : ''}" title="Fit the whole ${k === 'Card' ? 'card' : 'explanation'} in view">Fit</button><button data-fit="width" class="${m === 'width' ? 'on' : ''}" title="Full size, scroll down">Width</button><span class="fz"></span></span>`;
+function sizeControl(k) {
+  return `<span class="fitc mono" data-szc="${k}" role="group" aria-label="${k === 'Card' ? 'Card' : 'Explain'} text size and zoom"><button data-ts="-1" title="Smaller text">A−</button><button data-ts="1" title="Larger text">A+</button><button class="fz" data-z0 title="Zoom · pinch with two fingers · tap for 100%"></button></span>`;
 }
 function setupFit(el) {
-  const ct = el.querySelector('.c-tags'); if (ct && !ct.querySelector('[data-fitc]')) ct.insertAdjacentHTML('beforeend', fitControl('Card'));
-  const xb = el.querySelector('.xp-pane .xp-bar'); if (xb && !xb.querySelector('[data-fitc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', fitControl('Xp'));
-  el.querySelectorAll('[data-fit]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.closest('[data-fitc]').dataset.fitc; P.set('fit' + k, b.dataset.fit); b.parentElement.querySelectorAll('[data-fit]').forEach(x => x.classList.toggle('on', x === b)); fitPane(el, k); });
-  for (const k of ['Card', 'Xp']) {
-    const box = paneOf(el, k); if (!box || box.dataset.fitWired) continue;
-    box.dataset.fitWired = 1;
-    // two-finger pinch (fingers only; the S Pen keeps writing) sets a custom size; double-tap switches Fit ↔ Width
-    let pinch = null, lastTap = 0;
-    box.addEventListener('touchstart', e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), z: +getComputedStyle(box).getPropertyValue('--z') || 1 }; e.preventDefault(); } }, { passive: false });
-    box.addEventListener('touchmove', e => { if (!pinch || e.touches.length !== 2) return; e.preventDefault(); const [a, b] = e.touches; const z = Math.max(0.45, Math.min(2, pinch.z * Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) / pinch.d)); box.style.setProperty('--z', z.toFixed(3)); const lab = el.querySelector(`[data-fitc="${k}"] .fz`); if (lab) lab.textContent = Math.round(z * 100) + '%'; }, { passive: false });
-    box.addEventListener('touchend', e => { if (pinch && e.touches.length < 2) { P.set('fit' + k, 'custom'); P.set('z' + k, +getComputedStyle(box).getPropertyValue('--z') || 1); el.querySelectorAll(`[data-fitc="${k}"] [data-fit]`).forEach(x => x.classList.remove('on')); pinch = null; return; }
-      if (e.changedTouches.length === 1 && e.touches.length === 0 && !isWriting()) { const t = Date.now(); if (t - lastTap < 300) { const m = fitMode(k) === 'page' ? 'width' : 'page'; P.set('fit' + k, m); el.querySelectorAll(`[data-fitc="${k}"] [data-fit]`).forEach(x => x.classList.toggle('on', x.dataset.fit === m)); fitPane(el, k); lastTap = 0; } else lastTap = t; } });
-  }
+  const ct = el.querySelector('.c-tags'); if (ct && !ct.querySelector('[data-szc]')) ct.insertAdjacentHTML('beforeend', sizeControl('Card'));
+  const xb = el.querySelector('.xp-pane .xp-bar'); if (xb && !xb.querySelector('[data-szc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', sizeControl('Xp'));
+  el.querySelectorAll('[data-szc] [data-ts]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.closest('[data-szc]').dataset.szc; P.set('ts' + k, Math.max(0.7, Math.min(1.8, Math.round((TS(k) + 0.1 * +b.dataset.ts) * 10) / 10))); fitPane(el, k); });
+  el.querySelectorAll('[data-szc] [data-z0]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.closest('[data-szc]').dataset.szc; P.set('vz' + k, 1); fitPane(el, k); });
   requestAnimationFrame(() => { fitPane(el, 'Card'); fitPane(el, 'Xp'); });
   if (!window.__fitRO) { window.__fitRO = 1; addEventListener('resize', () => { const c = document.getElementById('card'); if (c && flow) { fitPane(c, 'Card'); fitPane(c, 'Xp'); } }); }
 }
-// "Still unclear" (lasso on the Explain side): kept on this device per profile; Claude reads the list when it is shared
-const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, onUnclear: async texts => {
-  const all = (await db.kv.get('xpUnclear')) || [];
-  for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
-  await db.kv.set('xpUnclear', all);
-} });
+/* ---------- T-074: two fingers — pinch zooms the side under them; a quick two-finger swipe turns the card ----------
+   Swipe = both fingers move the same way fast (≥ 90 px within 0.7 s) while their distance stays about the same.
+   Pinch = their distance changes. One finger scrolls; the pen writes. Which swipes turn cards is set in ⚙. */
+const NAV = () => ({ btn: P.get('navBtn', 1), sx: P.get('navSwipeX', 1), sy: P.get('navSwipeY', 0) });
+function setupGestures(wrap) {
+  if (!wrap || wrap.dataset.g) return; wrap.dataset.g = 1;
+  let g = null;
+  const pts = e => [...e.touches].slice(0, 2).map(t => [t.clientX, t.clientY]);
+  const dist = q => Math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1]), mid = q => [(q[0][0] + q[1][0]) / 2, (q[0][1] + q[1][1]) / 2];
+  wrap.addEventListener('touchstart', e => {
+    if (e.touches.length !== 2 || !flow) { if (e.touches.length > 2) g = null; return; }
+    const q = pts(e), card = document.getElementById('card'), tgt = document.elementFromPoint(mid(q)[0], mid(q)[1]);
+    const k = tgt && tgt.closest('.xp-pane') ? 'Xp' : 'Card';
+    g = { q0: q, d0: dist(q), m0: mid(q), t0: Date.now(), k, z0: VZ(k), mode: null, card };
+    e.preventDefault();
+  }, { passive: false });
+  wrap.addEventListener('touchmove', e => {
+    if (!g || e.touches.length !== 2) return;
+    e.preventDefault();
+    const q = pts(e), r = dist(q) / g.d0, m = mid(q), dx = m[0] - g.m0[0], dy = m[1] - g.m0[1];
+    if (!g.mode) { if (Math.abs(r - 1) > 0.1) g.mode = 'pinch'; else if (Math.hypot(dx, dy) > 40) g.mode = 'swipe'; }
+    if (g.mode === 'pinch' && g.card) { g.z = Math.max(0.4, Math.min(3, g.z0 * r)); fitPane(g.card, g.k, g.z); }
+    g.dx = dx; g.dy = dy;
+  }, { passive: false });
+  wrap.addEventListener('touchend', e => {
+    if (!g || e.touches.length > 1) return;
+    const G = g; g = null;
+    if (G.mode === 'pinch') { P.set('vz' + G.k, +G.z.toFixed(3)); return; }
+    if (G.mode !== 'swipe' || Date.now() - G.t0 > 700) return;
+    const n = NAV(), ax = Math.abs(G.dx || 0), ay = Math.abs(G.dy || 0);
+    if (ax >= ay && ax > 90 && n.sx) turn(G.dx < 0 ? 1 : -1, 'x');
+    else if (ay > ax && ay > 90 && n.sy) turn(G.dy < 0 ? 1 : -1, 'y');
+  });
+}
+// +1 = forward (reveal on the question side, next on the answer side); −1 = back (look at the card before)
+function turn(dir, axis) {
+  if (!flow || flow.busy || flow.userPause) return;
+  flow.turnAxis = axis;
+  if (dir > 0) { if (flow.peek) peekForward(false); else if (flow.inter) clearInter(); else if (flow.done) endFlow(); else if (flow.face === 'q') reveal(); else next(false); }
+  else { if (flow.browse) undo(); else peekBack(); }
+  setTimeout(() => { if (flow) flow.turnAxis = null; }, 600);
+}
 /* ---------- T-072: drag the divider between the card and Explain (remembered per profile, per orientation) ---------- */
 function setupSplit(el) {
   const sp = el.querySelector('.a-split'), dv = sp && sp.querySelector('.a-div'); if (!dv) return;
@@ -1549,6 +1586,12 @@ function setupSplit(el) {
   });
   dv.ondblclick = () => { P.set(key(), land() ? 52 : 46); apply(); fitPane(el, 'Card'); fitPane(el, 'Xp'); };
 }
+// "Still unclear" (lasso or Select text on the Explain side): kept on this device per profile; Claude reads the list when it is shared
+const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, onUnclear: async texts => {
+  const all = (await db.kv.get('xpUnclear')) || [];
+  for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
+  await db.kv.set('xpUnclear', all);
+} });
 function bindXp(el, c) {
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
@@ -1697,7 +1740,8 @@ function updateFlowChrome() {
   const fl = $('#f-live');
   if (fl) { try { const c = chase(P.get('chasePool', 'all')), lp = livePace(c); fl.innerHTML = lp.before || lp.after ? `Today ${c.doneToday} / ${c.requiredToday} new` : `Today ${c.doneToday} / ${c.requiredToday} new · ${lp.diff >= 0 ? `<b class="ahead">▲ ${lp.diff}</b>` : `<b class="behind">▼ ${-lp.diff}</b>`}${lp.perHour != null ? ' · ' + lp.perHour + '/h needed' : ''}`; } catch (e) { fl.textContent = ''; } }
   const cc = !flow.done && current(), cm = cc ? deckMeta(cc.deck) || {} : {};
-  $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cm.star ? ' · ✦ ' + cm.star : '') + (flow.label && flow.label !== 'Look' ? ' · ' + flow.label.toUpperCase() : '');
+  $('#f-kick').textContent = (flow.browse ? 'LOOK · ' : 'FLOW · ') + (cc ? cc.deck : flow.deck) + (cm.star ? ' · ✦ ' + cm.star : '');
+  const fl2 = $('#f-lab'); if (fl2) { const lb = flow.label && flow.label !== 'Look' ? flow.label.toUpperCase() : ''; fl2.textContent = lb || 'THIS FLOW'; fl2.classList.toggle('chip-lab', !!lb); }
   $('#f-sub').textContent = cm.title || '';
   const n = flow.times.length;
   const mine = n ? flow.times.reduce((a, b) => a + b, 0) / n : 0;
@@ -1717,8 +1761,9 @@ function updateFlowChrome() {
 function animate(kind, swap) {
   const el = $('#card');
   flow.busy = true;
-  const out = kind === 'flip' ? 'anim-flip-out' : kind === 'back' ? 'anim-back-out' : 'anim-deal-out';
-  const inn = kind === 'flip' ? 'anim-flip-in' : kind === 'back' ? 'anim-back-in' : 'anim-deal-in';
+  if (flow && flow.turnAxis === 'y' && kind !== 'flip') kind = kind === 'back' ? 'down' : 'up';
+  const out = { flip: 'anim-flip-out', back: 'anim-back-out', up: 'anim-up-out', down: 'anim-down-out' }[kind] || 'anim-deal-out';
+  const inn = { flip: 'anim-flip-in', back: 'anim-back-in', up: 'anim-up-in', down: 'anim-down-in' }[kind] || 'anim-deal-in';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { swap(); flow.busy = false; return; }
   el.classList.add(out);
