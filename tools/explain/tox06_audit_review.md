@@ -1,0 +1,6 @@
+# TOX06 audit review (6 Nov) — independent check of audit edits
+
+Fixes: 0.
+
+Checked and correct: ASTCT CRS grading — fever ≥38 °C required; grade 2 = hypotension without vasopressor and/or low-flow nasal oxygen (≤6 L/min); grade 3 one vasopressor ± vasopressin, high-flow/face mask; grade 4 multiple pressors or positive pressure; grade 2 → tocilizumab 8 mg/kg (max 800 mg), repeat after 8 h, max 3 doses/24 h, dexamethasone 10 mg if refractory; grade 3 dexamethasone 10–20 mg 6-hourly; grade 4 methylprednisolone 1 g, anakinra if refractory; tocilizumab = anti-IL-6 receptor (siltuximab binds IL-6); serum IL-6 rises after tocilizumab and it does not cross the BBB, so ICANS can worsen — dexamethasone for ICANS; ICE score 10 points and grade bands (7–9, 3–6, 0–2, 0 unarousable); ICANS grade 3/4 domains (focal vs diffuse oedema, seizure >5 min); checkpoint adrenal insufficiency usually hypophysitis (secondary, low ACTH, no hyperkalaemia), hydrocortisone before thyroxine; mycophenolate not infliximab for refractory hepatitis; irAE steroid doses.
+Cuts: nothing a linked question needs was lost. Note: checkpoint-induced diabetes/DKA (anti-PD-1) was cut entirely with the extras; no linked question, not restored.

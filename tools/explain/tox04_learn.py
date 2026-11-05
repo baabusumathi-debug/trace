@@ -116,7 +116,7 @@ L['REC-05'] = dict(
   ],
   traps=[
     ("“Metoprolol for cocaine chest pain with hypertension and tachycardia”", "Contraindicated — unopposed α. Diltiazem, aspirin and lorazepam are all appropriate (REC-14c)."),
-    ("“Labetalol is safe in cocaine toxicity because it also blocks α”", "Given IV it is mainly a β-blocker (α:β about 1:7). The 2014 AHA guideline permits it in cocaine ACS with hypertension, but against lorazepam, phentolamine and nitroglycerin it is the exam’s ‘least appropriate’ answer."),
+    ("“Labetalol is safe in cocaine toxicity because it also blocks α”", "Given IV it is mainly a β-blocker (α:β about 1:7). AHA guidance (2008 statement, 2012 update) calls it ‘may be reasonable’ in hypertensive cocaine ACS only after a vasodilator, and the 2014 guideline advises against β-blockers during acute intoxication; against lorazepam, phentolamine and nitroglycerin it is the exam’s ‘least appropriate’ answer."),
     ("“Heroin does not cause rhabdomyolysis”", "It does, through immobilisation and compression; among cocaine, methamphetamine, heroin and synthetic cannabinoids, the last is least likely."),
   ],
   decode=[
@@ -272,7 +272,7 @@ L['REC-11'] = dict(
   traps=[
     ("“NMS drug of choice — dantrolene”", "DocT keys bromocriptine; dantrolene is the adjunct. A Marrow item keys dantrolene for antipsychotic-related rigidity and catatonia — if both are offered, bromocriptine is the conventional answer."),
     ("“A trial (HAT, RAMP, DAHS) supports dantrolene in amphetamine hyperthermia”", "No trial does — those names are invented; stimulant heat is central drive and muscle activity, not a ryanodine-receptor leak."),
-    ("“Rigid and febrile 2 weeks after starting olanzapine and clomipramine — the antidepressant”", "No clonus, rigidity, raised CK and transaminases mean NMS from the high-dose antipsychotic; atypicals cause it too. Lithium alone does not."),
+    ("“Rigid and febrile 2 weeks after starting olanzapine and clomipramine — the antidepressant”", "No clonus, rigidity, raised CK and transaminases mean NMS from the high-dose antipsychotic; atypicals cause it too. Lithium alone causes it only rarely (case reports) and is not the answer."),
     ("“Fever, tremor, myoclonus and sweating on antidepressants — NMS or anticholinergic”", "Myoclonus and sweating mean serotonin syndrome; a cold remedy was the second drug (REC-14e)."),
   ],
   decode=[

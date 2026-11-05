@@ -1,0 +1,7 @@
+# TOX05 audit review (6 Nov) — independent check of audit edits
+
+Fixes: 0.
+
+Checked and correct: ASV 1 mL neutralises 0.6 mg cobra/Russell’s, 0.45 mg krait/saw-scaled; one 10 mL vial ≈ 6 mg Russell’s venom; mean Russell’s injection ~63 mg → 10 vials (Indian STG/NCDC snakebite guideline: "each vial neutralizes 6 mg of Russell's Viper venom"); krait delayed onset (paralysis may first appear ~12 h) with 24 h observation for every bite (STG: "keep under observation for 24 hours"); the "up to 13 h" figure is the coral-snake teaching from the Marrow item (StatPearls/ACEP: coral snake signs delayed up to 13 h) — consistent; SC adrenaline 0.25 mg premedication except in known hypertensives (STG 2017) and de Silva 2011 trial (promethazine/hydrocortisone no benefit); PIB only by trained staff when hospital 30 min–3 h away (STG); 20WBCT 6-hourly repeat; INR >1.2; fasciotomy >40 mmHg after coagulopathy corrected; liquid ASV 2 y at 2–8 °C, lyophilised 5 y <25 °C; IM adrenaline 0.5 mg for early reactions (WHO 2016); CroFab 4–6 vials, same dose in children; Million Death Study ~58,000.
+Unverified (left hedged as written): "SAKTI trial" (SNAKE-13a, NEET 2025 decode) — no trial of that name found in a literature search; text already says "as DocT reports it". Indian low- vs high-dose ASV trials do exist.
+Cuts: nothing a linked question needs was lost (vial/10-vial reasoning kept in SNAKE-11/13; AKI with incoagulable blood kept in SNAKE-07).

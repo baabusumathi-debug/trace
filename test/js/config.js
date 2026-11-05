@@ -10,8 +10,8 @@ export const IS_HT = PROFILE === 'ht';
 export const CONFIG = {
   readOnly: CHANNEL === 'test',
   // Test build carries only the deck being piloted, so sync and deck download stay fast (T-070: TOX01 Explain v2)
-  onlyDecks: CHANNEL === 'test' ? ['TOX01', 'TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06'] : null,
-  appVersion: '1.3.61',
+  onlyDecks: CHANNEL === 'test' ? ['TOX01', 'TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06', 'RESP01A'] : null,
+  appVersion: '1.3.62',
   traceFolderId: '1e_lx6kl_MhG4aOracgTr_HG3NUp7OsYs',
   doctFolderId: '1wqRbRG-nqldfafFL-AughcBEBfo6atQo',   // Trace › doct: finished DocT attempts sent by the recorder (v2.0+)
   libraryId: '1b3tMq38gqAE_m7eb5PeeJ53LjKqdggHI',   // fallback; the app looks library.json up by name

@@ -1,0 +1,7 @@
+# TOX02 audit review (6 Nov) — independent check of audit edits
+
+Fixes (1 minor):
+- APAP-11c: the audit cut the sentence giving the original lactate timing, leaving the card's "after 1 hour of fluid resuscitation" uncorrected although FLAGS says the explanation gives the original timing. Restored briefly: early value ~4 h after admission, later at ~12 h after full resuscitation — not at 1 h. [minor] Source: Bernal et al., Lancet 2002.
+
+Checked and correct: metabolism — glucuronidation the main adult route, sulfation second; sulfation predominant in children under ~10 (kept in APAP-03e, trap and decode after the extra was cut); 5–9% CYP2E1 → NAPQI; injury at 70–80% glutathione depletion; nomogram units: µg/mL = mg/L, ×6.6 for µmol/L (150 line ≈ 990 µmol/L); original 200 line at 4 h, US 150 treatment line 25% lower, UK 100 line (2012) to ~15 at 15 h; DocT "mg/dL" read as µg/mL — correctly flagged; APAP-11: King’s pH <7.30, or creatinine >3.4 mg/dL + grade 3–4 HE + INR >6.5; DocT ALT key correctly marked disputed (creatinine is the King’s marker); non-paracetamol King’s and Clichy figures; EXTRIP 2014 thresholds (1000 mg/L without NAC; 700/900 mg/L with mitochondrial dysfunction); RSTI thresholds (7.5 g/24 h, level >20 µg/mL, ALT >50); adducts >1 nmol/mL.
+Cuts: nothing a linked question needs was lost (stopping criteria, no-new-loading-bag rule, early stage III and 8-hour rule all kept in parts).

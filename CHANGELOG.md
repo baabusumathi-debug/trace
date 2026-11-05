@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-087)
+## State (as of entry T-088)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.13** · promoted from test 1.3.61 on 6 Nov (T-087: room fixes, Move to card, Plan undo kept, intent suggestions); earlier 1.4.12 from test 1.3.59 (T-085: Explain v2 and card corrections for all 7 Toxicology decks); earlier 1.4.11 from test 1.3.57 (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.61** · last code commit: see entry T-087. Carries **only the 7 Toxicology decks** (`CONFIG.onlyDecks`), all with Explain v2. Live is 1.4.13 (= test 1.3.61, with every deck). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.62** · last code commit: see entry T-088. Carries **only the 7 Toxicology decks and RESP01A** (`CONFIG.onlyDecks`), all with Explain v2. Live is 1.4.13 (= test 1.3.61, with every deck). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,15 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-088 — 2026-11-06 — Claude — test — 1.3.62
+- **Explain v3: written from the real questions, with a story arc** (Naven, 5–6 Nov: every addition must change answering capacity; give each deck an arc so any card, even in any-hit flows, makes sense).
+  - `tools/explain/qpack.py <DECK>` gathers every real question linked to each card (DocT QBank with cohort % right, DocT GTs, Marrow, NEET 2024/2025 recalls) into `tools/explain/qpack/<DECK>.md`. Writers work from these; "How it is asked" items carry their source tag; traps come from low-cohort distractors.
+  - **Deck story:** `SPINE` (4–6 steps), `PRIMER`, and a `step` per card (`BRIEF_v3.md`, `check_learn.py`). The app shows "STEP n OF N · title" on the explanation; on the question face, the primer the first time a deck appears in a flow, and "BEFORE THIS · THE STORY SO FAR" with the takeaways of earlier steps not yet covered in this flow (each summarised once). Code in `explain.js` (`spineOf`, `stepHtml`, `arcHtml`) and `app.js` (`arcFor`).
+- **RESP01A** (ARDS I, 13 cards): written v3 from 23 linked questions, independently fact-checked (11 fixes). Card corrections on ARDS-04 (HFNO in Berlin vs 2023) and ARDS-07 (TRALI is indirect).
+- **Toxicology audited against the real questions** (all 7 decks, 257 linked questions): about 270 points added where a question needed them, about 310 cut that no question needs; every decode item rewritten from real stems with source tags; every question under 60% right now has its trap. The additions were then fact-checked by two independent agents (9 fixes: e.g. HBO in pregnancy, the osmolal-gap threshold, atenolol dialysability, the labetalol guideline year). Logs: `tools/explain/<deck>_audit.md`, `<deck>_audit_review.md`.
+- Test carries RESP01A as well (`CONFIG.onlyDecks`).
+- Checked in a demo: RESP01A walk (primer and story-so-far on the first card, step line on every card, corrections box on ARDS-04/07) and TOX04 walk; no console errors.
 
 ## T-087 — 2026-11-06 — Claude — live — 1.4.13
 - Promoted test 1.3.61 (= 1.3.60 plus the version bump) to live on Naven's instruction (6 Nov: "Ok promote"). Same copy rules as T-082. Live gains T-086: the duplicated-rooms fix, rooms under table rows, ⌃ one space less, Move to card, Plan Undo kept on the device and always visible, quick-intent suggestions.
