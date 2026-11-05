@@ -354,7 +354,7 @@ export class Toolbar {
         <div class="ik-cliplist">${clips.map((c, i) => `<div class="ik-clip${pasting === c.id ? ' on' : ''}" data-clip="${c.id}"><canvas width="300" height="120" data-clipcv="${i}"></canvas><span class="ik-cliptag mono">${i + 1} · ${c.n} mark${c.n === 1 ? '' : 's'} · ${ago(c.ts)}</span><button class="ik-clipx" data-clipdel="${c.id}" aria-label="Remove from clipboard">✕</button></div>`).join('')}</div>
         <div class="ik-row"><button class="ik-more" data-clipclear>Clear clipboard</button></div></div>` : ''}
       <div class="ik-selbar"${this.api.hasSel() ? '' : ' hidden'}>
-        <div class="ik-selrow"><b>Selected</b><button data-sel="del">Delete</button><button data-sel="cut">Cut</button><button data-sel="copy">Copy</button><button data-sel="none">Done</button></div>
+        <div class="ik-selrow"><b>Selected</b><button data-sel="del">Delete</button><button data-sel="cut">Cut</button><button data-sel="copy">Copy</button>${this.api.selOnExplain && this.api.selOnExplain() ? '<button data-sel="unclear" class="ik-unclear">? Still unclear</button>' : ''}<button data-sel="none">Done</button></div>
         <div class="ik-selrow">${SEL_COLS.map(c => `<span class="ik-dot sm" style="background:${c}" data-selc="${c}" title="Colour ${c}"></span>`).join('')}</div>
         <div class="ik-selrow"><span class="muted">Thickness</span><button data-selw="0.8" aria-label="Thinner">− thinner</button><button data-selw="1.25" aria-label="Thicker">+ thicker</button><small>drag inside to move · corners resize · round handle rotates (snaps every 15°)</small></div>
       </div>`;

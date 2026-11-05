@@ -6,13 +6,15 @@ import { Surface, Toolbar, attachPointer, loadInk, saveInk, settings, INK_ICONS,
 const ROOM_W = 1000;                       // rooms use their own units: 1000 = the room's width
 const SPACE = 180;                         // one "space" of a room, in room units
 const CLIP_KEY = 'trace.ink.clips', OLD_CLIP = 'trace.ink.clip', CLIP_MAX = 12;
-let cur = null;                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
+let cur = null;
+const ovs = st => [st.overlay, st.overlayX].filter(Boolean);            // the answer overlay and the Explain overlay (T-072)
+const isOv = (st, s) => s === st.overlay || (st.overlayX && s === st.overlayX);                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
 let writing = false, pasting = null;          // pasting = id of the clipboard item waiting to be placed
 const listeners = { changed: null };
 export const isWriting = () => writing;
 
 function anchorsOf(box) {
-  const els = [...box.querySelectorAll('.c-head, .c-tags, .qh, .qr > *, .qr li, .c-title, .qrecap, .ans > *, .ans li, .box, .bx > p, .bx li, .hook, .rm')];
+  const els = [...box.querySelectorAll('.c-head, .c-tags, .qh, .qr > *, .qr li, .c-title, .qrecap, .ans > *, .ans li, .box, .bx > p, .bx li, .hook, .rm, .xv-sub, .xv > h4, .xv > p, .xv li, .xv-part, .xv-tt, .xp-grid tr, .xv-more, .xp-trapoff')];
   els.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = (e.classList.contains('rm') ? 'rm:' + e.dataset.room : 'b' + i); });
   return els;
 }
@@ -210,7 +212,7 @@ function pasteInto(s, p) {
   const c = readClips().find(x => x.id === pasting) || readClips()[0]; if (!c || !cur) return;
   s.snapshot();
   const f = s.unitPerPx(), start = s.objs.length;
-  for (const src of c.objs) { const o = JSON.parse(JSON.stringify(src)); scaleObj(o, f); shiftObj(o, p[0], p[1]); if (s === cur.overlay) o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
+  for (const src of c.objs) { const o = JSON.parse(JSON.stringify(src)); scaleObj(o, f); shiftObj(o, p[0], p[1]); if (isOv(cur, s)) o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
   s.sel = { ids: c.objs.map((_, j) => start + j) };
   pasting = null;
   if (s.data) { const b = s.objs.slice(start).map(objBox).reduce((m, q) => Math.max(m, q[3]), 0); if (b > (s.data.h || SPACE) - 10) { s.data.h = Math.ceil((b + 20) / (SPACE / 2)) * (SPACE / 2); s.fit(); } }
@@ -231,6 +233,17 @@ export async function mountInk(cardEl, card, face, opts) {
   if (face === 'a') for (const { el, key } of lineEls(box)) {
     const has = rec.rooms[key] && rec.rooms[key].objs && rec.rooms[key].objs.length;
     el.classList.add('rm-line');
+    // T-072: a lettered part opens its room from its own circled letter (no chevron beside it)
+    const sp = el.querySelector(':scope > .sp');
+    if (sp) {
+      sp.classList.add('rm-l'); sp.dataset.rk = key; sp.classList.toggle('has', !!has); sp.setAttribute('role', 'button'); sp.tabIndex = 0;
+      sp.setAttribute('aria-label', has ? 'Show or hide your note under this part' : 'Open room to write under this part');
+      const holder = document.createElement('div'); holder.className = 'rm-hold'; holder.dataset.for = key;
+      if (el.tagName === 'LI') el.appendChild(holder); else el.after(holder);
+      sp.addEventListener('pointerdown', e => e.stopPropagation(), true);
+      sp.onclick = e => { e.stopPropagation(); e.preventDefault(); toggleRoom(key); };
+      continue;
+    }
     const b = document.createElement('button'); b.type = 'button'; b.className = 'rm-chev' + (has ? ' has' : ''); b.dataset.rk = key;
     b.setAttribute('aria-label', has ? 'Show or hide your note under this line' : 'Open room to write under this line');
     b.innerHTML = has ? PEN : CHEV;
@@ -241,8 +254,16 @@ export async function mountInk(cardEl, card, face, opts) {
   }
   st.overlay = makeOverlay(box, rec, face);
   wireSurface(st.overlay);
+  // Explain pane (answer side): its own ink layer, saved per depth (Learn and Revise lay out differently)
+  const xbox = face === 'a' ? cardEl.querySelector('.xp-pane') : null;
+  if (xbox) {
+    const xp = xbox.querySelector('.xp'); st.xface = 'x:' + ((xp && xp.dataset.depth) || 'learn'); st.xbox = xbox;
+    st.overlayX = makeOverlay(xbox, rec, st.xface); wireSurface(st.overlayX);
+    xbox.addEventListener('toggle', () => { if (cur === st) st.overlayX.relayout(); }, true);
+    new ResizeObserver(() => { if (cur === st && st.overlayX) st.overlayX.relayout(); }).observe(xbox);
+  }
   drawRooms();
-  st.overlay.relayout();
+  ovs(st).forEach(o => o.relayout());
   applyMode();
   box.addEventListener('toggle', () => { if (cur === st) st.overlay.relayout(); }, true);
   let lastW = box.clientWidth;
@@ -253,7 +274,7 @@ function wireSurface(s) {
   const st = cur;
   attachPointer(s, {
     writing: () => writing, toUnits: s.toUnits, unitPerPx: s.unitPerPx, map: () => s.o.map(), snapLine: s.snapLine || null, snapUpdate: s.snapUpdate || null,
-    scrollBy: dy => { st.box.scrollTop += dy; },
+    scrollBy: dy => { (s.parentEl || st.box).scrollTop += dy; },
     selChanged: () => { if (st.last && st.last !== s && st.last.sel) { st.last.sel = null; st.last.render(); } st.last = s; if (st.toolbar) st.toolbar.draw(); },
     onDown: surf => {
       if (st.toolbar) st.toolbar.closePop();
@@ -264,7 +285,7 @@ function wireSurface(s) {
     pasting: () => !!pasting, pasteAt: p => pasteInto(s, p),
     armChanged: on => { const h = st.opts.toolbarHost && st.opts.toolbarHost(); if (h) h.classList.toggle('ik-armed', on); },
     textAt: (p, e, hit) => textAt(s, p, hit),
-    changed: o => { st.last = s; if (o && s === st.overlay && !o.a) o.a = s.anchorFor(o.pts[0]); if (s !== st.overlay) drawChevrons(); markDirty(); }
+    changed: o => { st.last = s; if (o && isOv(st, s) && !o.a) o.a = s.anchorFor(o.pts[0]); if (!isOv(st, s)) drawChevrons(); markDirty(); }
   });
 }
 
@@ -297,9 +318,9 @@ function textAt(s, p, hit) {
     if (old && !keep) { delete old.hidden; s.render(); return; }
     if (old && (del || !t)) { s.snapshot(); s.objs.splice(i, 1); }
     else if (old) { s.snapshot(); old.t = t; old.c = style.c; old.b = style.b; old.s = style.size * s.unitPerPx(); delete old.hidden; }
-    else if (keep && t) { s.snapshot(); const o = { type: 'text', t, c: style.c, s: style.size * s.unitPerPx(), b: style.b, pts: [at] }; if (s === st.overlay) o.a = s.anchorFor(at); s.objs.push(o); }
+    else if (keep && t) { s.snapshot(); const o = { type: 'text', t, c: style.c, s: style.size * s.unitPerPx(), b: style.b, pts: [at] }; if (isOv(st, s)) o.a = s.anchorFor(at); s.objs.push(o); }
     if (s.data && s.trim) { const b = s.objs.reduce((m, o) => Math.max(m, objBox(o)[3]), 0); if (b > (s.data.h || SPACE) - 6) { s.data.h = Math.ceil((b + 20) / (SPACE / 2)) * (SPACE / 2); s.fit(); } }
-    s.render(); if (s !== st.overlay) drawChevrons(); markDirty();
+    s.render(); if (!isOv(st, s)) drawChevrons(); markDirty();
   };
   wrap.querySelectorAll('.ink-txbar button, .ink-txbar .ik-dot').forEach(b => b.addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); }));
   wrap.querySelectorAll('[data-tz]').forEach(b => b.onclick = () => { style.size = Math.max(9, Math.min(48, style.size + 2 * +b.dataset.tz)); look(); ta.focus(); });
@@ -340,6 +361,7 @@ function drawRooms() {
 }
 function drawChevrons() {
   const st = cur; if (!st) return;
+  st.box.querySelectorAll('.sp.rm-l').forEach(c => { const d = st.rec.rooms[c.dataset.rk]; c.classList.toggle('open', st.open.has(c.dataset.rk)); c.classList.toggle('has', !!(d && d.objs && d.objs.length)); });
   st.box.querySelectorAll('.rm-chev').forEach(c => {
     const d = st.rec.rooms[c.dataset.rk], has = !!(d && d.objs && d.objs.length);
     c.classList.toggle('open', st.open.has(c.dataset.rk));
@@ -350,11 +372,24 @@ function selAction(a, v) {
   const st = cur, s = st && st.last; if (!s || !s.sel) return;
   const ids = s.sel.ids.filter(i => s.objs[i]);
   if (a === 'del' || a === 'cut') { if (a === 'cut') copySel(s); s.snapshot(); const set = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !set.has(i))); s.sel = null; if (a === 'cut') toast('Cut to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
+  else if (a === 'unclear') {
+    // the words under the selected marks: snapped highlights keep their exact words; other marks take the lines they touch
+    const r0 = s.cv.getBoundingClientRect(), sc = s.cv.clientWidth / (r0.width || 1), out = new Set();
+    for (const i of ids) {
+      const o = s.objs[i];
+      if (o.tr) { const el = s.parentEl.querySelector(`[data-ak="${o.tr.ak}"]`); if (el) out.add(el.textContent.slice(Math.min(o.tr.s, o.tr.e), Math.max(o.tr.s, o.tr.e)).replace(/\s+/g, ' ').trim()); continue; }
+      const bb = objBox(o);
+      s.parentEl.querySelectorAll('.xv > p, .xv li, .xv-part').forEach(el => { const q = el.getBoundingClientRect(), y0 = (q.top - r0.top) * sc, y1 = (q.bottom - r0.top) * sc; if (y1 > bb[1] && y0 < bb[3]) out.add(el.textContent.replace(/\s+/g, ' ').trim()); });
+    }
+    const texts = [...out].filter(Boolean);
+    if (texts.length && st.opts.onUnclear) { st.opts.onUnclear(texts); toast('Saved to “Still unclear” · the next rewrite of this deck expands it'); } else toast('Select a highlight or a mark over the explanation first.');
+    s.sel = null;
+  }
   else if (a === 'copy') { copySel(s); toast('Copied to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
   else if (a === 'colour') { s.snapshot(); for (const i of ids) s.objs[i].c = v; }
   else if (a === 'width') { s.snapshot(); for (const i of ids) { const o = s.objs[i]; if (o.type === 'hl' && o.snap) { o.h *= v; if (o.rects) o.rects = o.rects.map(r => [r[0], r[1], r[2], r[3] * v]); } else if (o.s) o.s = Math.max(0.3, o.s * v); } }
   else s.sel = null;
-  s.render(); if (s !== st.overlay) drawChevrons(); markDirty(); if (st.toolbar) st.toolbar.draw();
+  s.render(); if (!isOv(st, s)) drawChevrons(); markDirty(); if (st.toolbar) st.toolbar.draw();
 }
 function toast(msg) {
   const t = document.createElement('div'); t.className = 'ik-toast'; t.textContent = msg; document.body.appendChild(t);
@@ -362,8 +397,8 @@ function toast(msg) {
 }
 function applyMode() {
   const st = cur; if (!st) return;
-  st.box.classList.toggle('inking', writing);
-  [st.overlay, ...st.rooms.values()].forEach(s => { s.cv.style.pointerEvents = writing ? 'auto' : 'none'; s.render(); });
+  st.box.classList.toggle('inking', writing); if (st.xbox) st.xbox.classList.toggle('inking', writing);
+  [...ovs(st), ...st.rooms.values()].forEach(s => { s.cv.style.pointerEvents = writing ? 'auto' : 'none'; s.render(); });
   st.rooms.forEach(r => { r.wrap.classList.toggle('peek', r.objs.length > 0 && !writing && !r.wrap.dataset.opened); r.wrap.classList.toggle('writing', writing); });
   const host = st.opts.toolbarHost();
   if (st.toolbar) { st.toolbar.destroy(); st.toolbar = null; }
@@ -374,8 +409,9 @@ function applyMode() {
       redo: () => { const s = st.last || st.overlay; s.doRedo(); markDirty(); },
       done: () => setWriting(false),
       clear: () => { const s = st.last || st.overlay; s.snapshot(); s.objs.splice(0); s.sel = null; s.render(); markDirty(); },
-      toolChanged: () => { pasting = null; [st.overlay, ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
+      toolChanged: () => { pasting = null; [...ovs(st), ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
       hasSel: () => !!(st.last && st.last.sel && st.last.sel.ids.length),
+      selOnExplain: () => !!(st.overlayX && st.last === st.overlayX),
       clips: () => readClips(), pasting: () => pasting, setPasting: v => { pasting = v || null; },
       removeClip: id => { saveClips(readClips().filter(c => c.id !== id)); if (pasting === id) pasting = null; },
       clearClips: () => { saveClips([]); pasting = null; },
@@ -396,8 +432,8 @@ export function setWriting(on) {
   const was = writing; writing = !!on; if (!writing) pasting = null;
   if (cur) {
     if (was && !writing) { cur.box.querySelectorAll('.ink-tx textarea').forEach(t => t.blur()); cur.rooms.forEach(r => r.trim()); }  // done: every room shrinks to what it uses
-    [cur.overlay, ...cur.rooms.values()].forEach(s => { s.sel = null; });
-    drawRooms(); applyMode(); cur.overlay.relayout();
+    [...ovs(cur), ...cur.rooms.values()].forEach(s => { s.sel = null; });
+    drawRooms(); applyMode(); ovs(cur).forEach(o => o.relayout());
   } else if (listeners.changed) listeners.changed(writing);
 }
 function markDirty() { const st = cur; if (!st) return; st.dirty = true; clearTimeout(st.t); st.t = setTimeout(() => flushInk(), 700); }
@@ -405,6 +441,7 @@ export async function flushInk() {
   const st = cur; if (!st || !st.dirty) return;
   st.dirty = false; clearTimeout(st.t);
   st.rec.ov[st.face] = st.overlay.serialise();
+  if (st.overlayX) st.rec.ov[st.xface] = st.overlayX.serialise();
   for (const [k, d] of Object.entries(st.rec.rooms)) if (!(d.objs && d.objs.length) && !st.open.has(k)) delete st.rec.rooms[k];
   await saveInk(st.card, st.rec);
 }

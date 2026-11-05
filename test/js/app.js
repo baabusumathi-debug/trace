@@ -1157,14 +1157,22 @@ function awayPrompt(start, end) {
 function watchAway() {
   document.addEventListener('visibilitychange', () => {
     const now = Date.now();
-    if (document.visibilityState === 'hidden') { if (!hiddenAt()) markHidden(now); return; }
+    // T-072: always the latest leave time (a mark left behind when Chrome dropped the tab made the flow clock run
+    // negative and asked "where were you?" on every switch)
+    if (document.visibilityState === 'hidden') { markHidden(now); return; }
     const h = hiddenAt(); markHidden(null);
-    if (!h) return;
-    if (flow && !flow.browse && !flow.pausedAt) { flow.cardT0 += now - h; flow.t0 += now - h; }      // time away never counts as card time
+    if (!h || h > now) return;
+    if (flow && !flow.browse && !flow.pausedAt) {                 // time away never counts as card time — but never more than this flow has run
+      const away = now - Math.max(h, flow.wall0 || h, flow.cardWall || 0);
+      if (away > 0) { flow.cardT0 += away; flow.t0 += away; if (flow.peekT0) flow.peekT0 += away; }
+    }
     if (curBreak()) { drawBanner(); return; }
-    const pend = pendingAway(), start = pend ? pend.start : h, d = dkey(start);
-    if (now - start >= AWAY_MIN * 60000 && start < winEnd(d) && now > winStart(d)) awayPrompt(Math.max(start, winStart(d)), now);
+    if (now - h < AWAY_MIN * 60000) return;                        // a quick switch to another app: nothing to ask
+    let pend = pendingAway(); if (pend && now - pend.start > 12 * 3600e3) { setPendingAway(null); pend = null; }
+    const start = pend ? pend.start : h, d = dkey(start);
+    if (start < winEnd(d) && now > winStart(d)) awayPrompt(Math.max(start, winStart(d)), now);
   });
+  { const h = hiddenAt(); if (h && Date.now() - h > 12 * 3600e3) markHidden(null); }   // a mark from a previous day: drop it
   setInterval(drawBanner, 15000);
   drawBanner();
 }
@@ -1291,7 +1299,7 @@ function startFlow(list, opts = {}) {
   const at = Math.max(0, opts.start || 0);
   const queue = list.slice(at).concat(list.slice(0, at));
   flow = { deck: queue[0].deck, label: opts.label || '', browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
-    queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
+    queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), wall0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
   _lastDeck = queue[0].deck;
   renderFlow();
   flow.tick = setInterval(updateClock, 1000);
@@ -1349,7 +1357,7 @@ function peekBack() {
   if (!flow.hist.length || (flow.peek || 0) >= flow.hist.length) { toast(flow.hist.length ? 'That is the first card of this flow.' : 'No earlier card in this flow yet.'); return; }
   if (!flow.peek) flow.peekT0 = Date.now();
   flow.peek = (flow.peek || 0) + 1;
-  animate('deal', () => { drawCard(); updateFlowChrome(); });
+  animate('back', () => { drawCard(); updateFlowChrome(); });
 }
 function peekForward(all) {
   if (!flow || !flow.peek) return;
@@ -1375,35 +1383,37 @@ function sectionRange() {
 function renderFlow() {
   const m = deckMeta(flow.deck) || {};
   const cs = P.get('cardScale', 1);
-  app.innerHTML = `<div class="screen flow${flow.browse ? ' browse' : ''}" style="--cs:${cs}">
-    <aside class="f-side">
-      <div class="f-top">
-        <button class="iconbtn" data-act="close" aria-label="End flow">${ICON.close}</button>
-        <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
-        <span class="tsz"><button class="iconbtn sm" data-ts="-1" aria-label="Smaller text">A−</button><button class="iconbtn sm" data-ts="1" aria-label="Larger text">A+</button></span>
-        ${flow.browse ? '' : `<button class="iconbtn" data-act="peek" aria-label="Look at the previous card (nothing changes)" id="f-peek">${ICON.prev}<span class="lbl">Back</span></button>`}
-        <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
-        ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
-        <span class="ring" id="f-ring"></span>
-      </div>
-      <div class="f-stats mono">
-        <span><i>TIME</i><b id="f-time">0:00</b></span>
-        <span><i>PER CARD</i><b id="f-pace">–</b></span>
-        <span><i>VS AVERAGE</i><b id="f-diff">–</b></span>
-      </div>
-      ${flow.browse ? '' : `<div class="f-live mono" id="f-live"></div>${goingOutButton('sm')}`}
-      <div class="f-tiles-wrap"><span class="mono muted small">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div></div>
-      <div class="f-xp" id="f-xp"></div>
-      <p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Again cards come back at the end of this flow. Space reveals and moves on · A = Again · U = Undo · E = Edit · Esc ends.'}</p>
-    </aside>
+  // T-072 layout: one slim bar + one strip; the card and Explain get the rest of the screen
+  app.innerHTML = `<div class="screen flow v3${flow.browse ? ' browse' : ''}" style="--cs:${cs}">
+    <header class="f-bar">
+      <button class="iconbtn sm" data-act="close" aria-label="End flow">${ICON.close}</button>
+      <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
+      <span class="ring" id="f-ring"></span>
+      <div class="f-stats mono"><span><i>TIME</i><b id="f-time">0:00</b></span><span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
+      <span class="f-grow"></span>
+      ${flow.browse ? '' : `<button class="iconbtn" data-act="peek" aria-label="Look at the previous card (nothing changes)" id="f-peek">${ICON.prev}<span class="lbl">Back</span></button>`}
+      <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
+      ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
+      ${flow.browse ? '' : goingOutButton('sm')}
+      <span class="tsz"><button class="iconbtn sm" data-ts="-1" aria-label="Smaller text">A−</button><button class="iconbtn sm" data-ts="1" aria-label="Larger text">A+</button></span>
+      <button class="iconbtn sm" id="f-gear" aria-label="Explain settings" aria-expanded="false">⚙</button>
+      <div class="f-pop" id="f-pop" hidden><div class="f-xp" id="f-xp"></div><p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Space reveals and moves on · ← looks back · P pauses · A = Again · U = Undo · E = Edit · Esc ends.'}</p></div>
+    </header>
+    <div class="f-strip" id="f-strip" role="button" tabindex="0" aria-label="This flow and today: tap for the full view">
+      <span class="mono f-sl">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div>
+      ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div><div class="f-live mono" id="f-live"></div>'}
+    </div>
     <main class="f-main">
       <div class="ik-host" id="f-ink" hidden></div>
-      ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div>'}
       <div class="card-wrap"><article class="card" id="card"></article>${flow.browse ? '' : '<button class="pause-cover" id="f-cover" aria-label="Resume the flow"><span class="mono">PAUSED</span><b>Tap to resume</b><small>The clock is stopped.</small></button>'}</div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
       <button class="big press" id="f-big"></button>
     </main>
   </div>`;
+  const gear = $('#f-gear'), pop = $('#f-pop');
+  gear.onclick = e => { e.stopPropagation(); pop.hidden = !pop.hidden; gear.setAttribute('aria-expanded', !pop.hidden); };
+  if (!window.__fpop) window.__fpop = 1, document.addEventListener('pointerdown', e => { const pp = document.getElementById('f-pop'); if (pp && !pp.hidden && !e.target.closest('#f-pop, #f-gear')) pp.hidden = true; }, { capture: true });
+  const strip = $('#f-strip'); strip.onclick = e => { if (e.target.closest('button, a')) return; strip.classList.toggle('open'); };
   $('[data-act=close]').onclick = () => askEnd();
   app.querySelectorAll('[data-ts]').forEach(b => b.onclick = () => {
     const v = Math.max(0.8, Math.min(1.5, Math.round((P.get('cardScale', 1) + 0.1 * +b.dataset.ts) * 10) / 10));
@@ -1426,7 +1436,7 @@ const xpDepth = () => P.get('xpDepth', 'auto');   // 'auto' = Learn on a card's 
 function drawXpToggles() {
   const h = document.getElementById('f-xp'); if (!h) return;
   const o = xpOpenMode(), t = xpTraps();
-  const wide = innerWidth > 900, wasOpen = h.querySelector('details') ? h.querySelector('details').open : wide;
+  const wasOpen = true;   // T-072: the settings live in the ⚙ pop-up, always unfolded there
   h.innerHTML = `<details class="f-xpd"${wasOpen ? ' open' : ''}><summary class="mono">EXPLAIN SETTINGS</summary><div class="f-xpg"><span class="mono muted small">EXPLAIN</span>
     <div class="seg"><button class="${o !== 'tap' ? 'on' : ''}" data-xo="new">Open</button><button class="${o === 'tap' ? 'on' : ''}" data-xo="tap">Only when tapped</button></div>
     <span class="mono muted small">DEPTH</span>
@@ -1459,10 +1469,58 @@ function skippedBefore(c) {
   return !!prev && !flow.queue.some(x => x.deck === c.deck && x.code === prev.code);
 }
 
+/* ---------- T-072: each pane fits like a zoomed-out PDF page — Fit (whole card in view), Width, or a pinch ----------
+   The text stays live (ink, highlights and copying keep working): the pane is scaled with CSS zoom, not turned into an image. */
+const FIT_DEF = { Card: innerWidth < 700 ? 'width' : 'page', Xp: 'width' };   // a phone is too small to fit a whole card
+const fitMode = k => P.get('fit' + k, FIT_DEF[k]);
+function paneOf(el, k) { return k === 'Card' ? el.querySelector('.c-a, .c-q') : el.querySelector('.xp-pane'); }
+function fitPane(el, k) {
+  const box = paneOf(el, k); if (!box) return;
+  const mode = fitMode(k);
+  let z = mode === 'custom' ? P.get('z' + k, 1) : 1;
+  box.style.setProperty('--z', z);
+  if (mode === 'page') {
+    for (let i = 0; i < 5; i++) {
+      const H = box.clientHeight, S = box.scrollHeight;
+      if (!H || S <= H + 2) break;
+      z = Math.max(0.55, z * Math.pow(H / S, 0.85));
+      box.style.setProperty('--z', z.toFixed(3));
+      if (z <= 0.55) break;
+    }
+  }
+  const lab = el.querySelector(`[data-fitc="${k}"] .fz`); if (lab) lab.textContent = Math.round(z * 100) + '%';
+}
+function fitControl(k) {
+  const m = fitMode(k);
+  return `<span class="fitc mono" data-fitc="${k}" role="group" aria-label="${k === 'Card' ? 'Card' : 'Explain'} size"><button data-fit="page" class="${m === 'page' ? 'on' : ''}" title="Fit the whole ${k === 'Card' ? 'card' : 'explanation'} in view">Fit</button><button data-fit="width" class="${m === 'width' ? 'on' : ''}" title="Full size, scroll down">Width</button><span class="fz"></span></span>`;
+}
+function setupFit(el) {
+  const ct = el.querySelector('.c-tags'); if (ct && !ct.querySelector('[data-fitc]')) ct.insertAdjacentHTML('beforeend', fitControl('Card'));
+  const xb = el.querySelector('.xp-pane .xp-bar'); if (xb && !xb.querySelector('[data-fitc]')) xb.querySelector('.xp-tog').insertAdjacentHTML('afterend', fitControl('Xp'));
+  el.querySelectorAll('[data-fit]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.closest('[data-fitc]').dataset.fitc; P.set('fit' + k, b.dataset.fit); b.parentElement.querySelectorAll('[data-fit]').forEach(x => x.classList.toggle('on', x === b)); fitPane(el, k); });
+  for (const k of ['Card', 'Xp']) {
+    const box = paneOf(el, k); if (!box || box.dataset.fitWired) continue;
+    box.dataset.fitWired = 1;
+    // two-finger pinch (fingers only; the S Pen keeps writing) sets a custom size; double-tap switches Fit ↔ Width
+    let pinch = null, lastTap = 0;
+    box.addEventListener('touchstart', e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), z: +getComputedStyle(box).getPropertyValue('--z') || 1 }; e.preventDefault(); } }, { passive: false });
+    box.addEventListener('touchmove', e => { if (!pinch || e.touches.length !== 2) return; e.preventDefault(); const [a, b] = e.touches; const z = Math.max(0.45, Math.min(2, pinch.z * Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) / pinch.d)); box.style.setProperty('--z', z.toFixed(3)); const lab = el.querySelector(`[data-fitc="${k}"] .fz`); if (lab) lab.textContent = Math.round(z * 100) + '%'; }, { passive: false });
+    box.addEventListener('touchend', e => { if (pinch && e.touches.length < 2) { P.set('fit' + k, 'custom'); P.set('z' + k, +getComputedStyle(box).getPropertyValue('--z') || 1); el.querySelectorAll(`[data-fitc="${k}"] [data-fit]`).forEach(x => x.classList.remove('on')); pinch = null; return; }
+      if (e.changedTouches.length === 1 && e.touches.length === 0 && !isWriting()) { const t = Date.now(); if (t - lastTap < 300) { const m = fitMode(k) === 'page' ? 'width' : 'page'; P.set('fit' + k, m); el.querySelectorAll(`[data-fitc="${k}"] [data-fit]`).forEach(x => x.classList.toggle('on', x.dataset.fit === m)); fitPane(el, k); lastTap = 0; } else lastTap = t; } });
+  }
+  requestAnimationFrame(() => { fitPane(el, 'Card'); fitPane(el, 'Xp'); });
+  if (!window.__fitRO) { window.__fitRO = 1; addEventListener('resize', () => { const c = document.getElementById('card'); if (c && flow) { fitPane(c, 'Card'); fitPane(c, 'Xp'); } }); }
+}
+// "Still unclear" (lasso on the Explain side): kept on this device per profile; Claude reads the list when it is shared
+const inkOpts = c => ({ toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {}, onUnclear: async texts => {
+  const all = (await db.kv.get('xpUnclear')) || [];
+  for (const t of texts) all.push({ deck: c.deck, code: c.code, text: t, ts: Date.now(), ver: X.v });
+  await db.kv.set('xpUnclear', all);
+} });
 function bindXp(el, c) {
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
-  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); } });
+  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
   el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
   const nt = el.querySelector('[data-xp-note]');
   if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
@@ -1531,9 +1589,10 @@ function drawCard() {
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
-  mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {} });
+  mountInk(el, c, isQ ? 'q' : 'a', inkOpts(c));
   bindBridges(el);
   bindXp(el, c);
+  setupFit(el);
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };
@@ -1624,8 +1683,8 @@ function updateFlowChrome() {
 function animate(kind, swap) {
   const el = $('#card');
   flow.busy = true;
-  const out = kind === 'flip' ? 'anim-flip-out' : 'anim-deal-out';
-  const inn = kind === 'flip' ? 'anim-flip-in' : 'anim-deal-in';
+  const out = kind === 'flip' ? 'anim-flip-out' : kind === 'back' ? 'anim-back-out' : 'anim-deal-out';
+  const inn = kind === 'flip' ? 'anim-flip-in' : kind === 'back' ? 'anim-back-in' : 'anim-deal-in';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) { swap(); flow.busy = false; return; }
   el.classList.add(out);
@@ -1679,7 +1738,7 @@ async function next(again) {
 }
 async function undo() {
   if (flow && flow.peek) { flow.peek = 0; flow.peekT0 = null; }
-  if (flow && flow.browse) { if (flow.busy || flow.idx === 0) return; flow.idx--; flow.face = 'q'; flow.done = false; drawCard(); updateFlowChrome(); return; }
+  if (flow && flow.browse) { if (flow.busy || flow.idx === 0) return; animate('back', () => { flow.idx--; flow.face = 'q'; flow.done = false; drawCard(); updateFlowChrome(); }); return; }
   if (!flow || flow.busy || !flow.hist.length) return;
   const h = flow.hist.pop();
   flow.inter = null;
