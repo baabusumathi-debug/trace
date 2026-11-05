@@ -1577,13 +1577,16 @@ function drawInter(el, big) {
 }
 function bindBridges(el) { el.querySelectorAll('[data-xp-bridge]').forEach(b => b.onclick = e => { e.stopPropagation(); const a = b.nextElementSibling; if (a) a.hidden = false; b.remove(); }); }
 // was the card just before this one (same deck) left out of this flow? then the bridge lines carry what it taught
-// T-088: where this card sits in its deck's story, from the cards walked before it in this flow
+// T-088: where this card sits in its deck's story, from the cards walked before it in this flow. A step counts as covered once
+// a card of that step was walked or its takeaway was already shown here, so each earlier step is summarised once, when first needed
 function arcFor(c, x) {
   if (!spineOf(c.deck) || !x || !x.step) return null;
   const i = flow.queue.findIndex(q => q.deck === c.deck && q.code === c.code);
   const before = flow.queue.slice(0, Math.max(0, i)).filter(q => q.deck === c.deck && !q.topup);
-  const last = before.length ? xOf(before[before.length - 1]) : null;
-  return { first: !before.length, prevStep: last && last.step ? last.step : 0 };
+  const covered = new Set();
+  const gapOf = st => { const g = []; for (let k = 1; k < st; k++) if (!covered.has(k)) g.push(k); return g; };
+  for (const q of before) { const xs = xOf(q); if (!xs || !xs.step) continue; gapOf(xs.step).forEach(k => covered.add(k)); covered.add(xs.step); }
+  return { first: !before.length, gap: gapOf(x.step) };
 }
 function skippedBefore(c) {
   if (!c || c.topup || !(+c.no > 1)) return false;
@@ -1856,7 +1859,7 @@ function drawCard() {
   if (isQ) {
     const xq = xOf(c);
     const arc = arcFor(c, xq);
-    body = `${arc ? arcHtml(c, xq, arc.prevStep, arc.first) : bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
+    body = `${arc ? arcHtml(c, xq, arc.gap, arc.first) : bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
     const xa = xOf(c), v2 = !!(xa && xa.v === 2), xOpen = xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
