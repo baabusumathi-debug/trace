@@ -10,6 +10,7 @@ import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flo
 import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
+import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, partsQHtml, partsAHtml, bridgeHtml, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
@@ -65,7 +66,8 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
-  loadQbank(); loadQmap();
+  await initExplain();
+  loadQbank(); loadQmap(); loadExplain();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -324,7 +326,7 @@ function deckBack(d, mini) {
       <span class="back-top mono"><span>${esc(d.deck)}</span><span>✦ ${d.star || 0}</span></span>
       <span class="back-seal">${seal(d.system, '', d.deck)}</span>
       <span class="back-title" style="font-size:${titleSize(d.title, mini)}" title="${esc(d.title)}">${esc(d.title)}</span>
-      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' +' + S.qb.topups[d.deck].length + ' TU' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
+      <span class="back-foot mono"><span>${d.cards} CARDS${!d.topupDeck && hasTopups(d.deck) ? ' +' + ((S.xtopups && S.xtopups[d.deck]) || S.qb.topups[d.deck]).length + ' TU' : ''}</span><span>${d.topupDeck ? 'TOP-UP DECK' : ok ? TIER_NAME[t] : 'NOT DOWNLOADED'}</span></span>
     </span>`;
   if (mini) return face;
   return `<a class="deck${ok ? '' : ' notready'}" href="#/deck/${encodeURIComponent(d.deck)}" aria-label="Open ${esc(d.title)}">${face}
@@ -1362,6 +1364,7 @@ function renderFlow() {
       </div>
       ${flow.browse ? '' : `<div class="f-live mono" id="f-live"></div>${goingOutButton('sm')}`}
       <div class="f-tiles-wrap"><span class="mono muted small">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div></div>
+      <div class="f-xp" id="f-xp"></div>
       <p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Again cards come back at the end of this flow. Space reveals and moves on · A = Again · U = Undo · E = Edit · Esc ends.'}</p>
     </aside>
     <main class="f-main">
@@ -1379,13 +1382,53 @@ function renderFlow() {
   });
   $('#f-undo').onclick = undo;
   bindGoingOut();
-  $('#f-big').onclick = () => flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
+  $('#f-big').onclick = () => flow.inter ? clearInter() : flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
+  drawXpToggles();
   drawCard();
   updateFlowChrome();
+}
+/* ---------- Explain layer in Flow (T-069): toggles, deck map / deck close interstitials ---------- */
+const xpOpenMode = () => P.get('xpOpen', 'new');          // 'new' = open on a card's first sight · 'tap' = only when tapped
+const xpTraps = () => !!P.get('xpTraps', 1);
+function drawXpToggles() {
+  const h = document.getElementById('f-xp'); if (!h) return;
+  const o = xpOpenMode(), t = xpTraps();
+  h.innerHTML = `<span class="mono muted small">EXPLAIN</span>
+    <div class="seg"><button class="${o === 'new' ? 'on' : ''}" data-xo="new">Open on new cards</button><button class="${o === 'tap' ? 'on' : ''}" data-xo="tap">Only when tapped</button></div>
+    <span class="mono muted small">EXAM TRAPS</span>
+    <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div>`;
+  h.querySelectorAll('[data-xo]').forEach(b => b.onclick = () => { P.set('xpOpen', b.dataset.xo); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
+  h.querySelectorAll('[data-xt]').forEach(b => b.onclick = () => { P.set('xpTraps', +b.dataset.xt); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
+}
+function clearInter() {
+  if (!flow || !flow.inter) return;
+  flow.inter = null;
+  animate('deal', () => { drawCard(); updateFlowChrome(); });
+}
+function drawInter(el, big) {
+  const it = flow.inter, deck = it.deck, m = deckMeta(deck) || {};
+  unmountInk();
+  const walking = new Set(flow.queue.filter(x => x.deck === deck).map(x => x.code));
+  el.classList.remove('ng');
+  el.innerHTML = it.kind === 'map' ? mapHtml(deck, m.title, walking) : closeHtml(deck);
+  big.innerHTML = it.kind === 'map' ? `START${ICON.next}` : `CONTINUE${ICON.next}`;
+  bindBridges(el);
+}
+function bindBridges(el) { el.querySelectorAll('[data-xp-bridge]').forEach(b => b.onclick = e => { e.stopPropagation(); const a = b.nextElementSibling; if (a) a.hidden = false; b.remove(); }); }
+// was the card just before this one (same deck) left out of this flow? then the bridge lines carry what it taught
+function skippedBefore(c) {
+  if (!c || c.topup || !(+c.no > 1)) return false;
+  const prev = cardsOf(c.deck).find(x => +x.no === +c.no - 1 && !x.topup);
+  return !!prev && !flow.queue.some(x => x.deck === c.deck && x.code === prev.code);
 }
 
 function drawCard() {
   const el = $('#card'), big = $('#f-big');
+  if (!flow.inter && !flow.done && flow.face === 'q') {
+    const cd = current(); flow.mapSeen = flow.mapSeen || {};
+    if (cd && mapOf(cd.deck) && !flow.mapSeen[cd.deck]) { flow.mapSeen[cd.deck] = 1; flow.inter = { kind: 'map', deck: cd.deck }; }
+  }
+  if (flow.inter) { drawInter(el, big); return; }
   if (flow.done) {
     const n = flow.times.length, tot = (Date.now() - flow.t0) / 1000;
     el.classList.remove('ng');
@@ -1406,17 +1449,19 @@ function drawCard() {
       ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
-    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}<span class="star">✦</span></div>`;
+    const xq = xOf(c);
+    body = `${bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div>`;
   } else {
-    body = `<div class="c-a">
+    body = `<div class="c-a${hasExplain(c) ? ' has-xp' : ''}">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
       <div class="ans">${render(c.a)}</div>
+      ${gistHtml(xOf(c))}${n > 0 ? partsAHtml(c, xOf(c)) : ''}
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
-      ${qbBoxes(c)}
+      ${hasExplain(c) ? panelHtml(c, xOf(c), { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
     </div>`;
   }
@@ -1437,6 +1482,13 @@ function drawCard() {
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
   mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {} });
+  bindBridges(el);
+  const xt = el.querySelector('[data-xp-tog]');
+  if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); xt.querySelector('.xp-hint').textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; };
+  el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
+  const nt = el.querySelector('[data-xp-note]');
+  if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
+  el.querySelectorAll('[data-xp-fb]').forEach(b => b.onclick = e => { e.stopPropagation(); feedback(c, b.dataset.xpFb); b.closest('.xp-fb').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); toast('Thanks — noted for the next rewrite.'); });
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };
@@ -1539,10 +1591,12 @@ function animate(kind, swap) {
   }, kind === 'flip' ? 170 : 230);
 }
 function reveal() {
+  if (flow && flow.inter) return clearInter();
   if (!flow || flow.busy || flow.face !== 'q' || flow.done) return;
   animate('flip', () => { flow.face = 'a'; drawCard(); });
 }
 async function next(again) {
+  if (flow && flow.inter) return clearInter();
   if (!flow || flow.busy || flow.done) return;
   if (flow.face === 'q') return reveal();
   if (flow.pilot && !flow.pilotSent) {                  // the one reviewed card of this pilot session (not logged anywhere)
@@ -1560,7 +1614,11 @@ async function next(again) {
   flow.hist.push({ idx: flow.idx, ev, appended: !!again, cardT0: flow.cardT0 });
   flow.times.push(ms);
   if (again) flow.queue.push(c);
+  // the last card of a deck in this flow: its deck close comes next (once)
+  flow.closeSeen = flow.closeSeen || {};
+  if (closeOf(c.deck) && !flow.closeSeen[c.deck] && !flow.queue.slice(flow.idx + 1).some(x => x.deck === c.deck)) { flow.closeSeen[c.deck] = 1; flow.pendingClose = c.deck; }
   animate('deal', () => {
+    if (flow.pendingClose) { flow.inter = { kind: 'close', deck: flow.pendingClose }; flow.pendingClose = null; }
     flow.idx++;
     flow.face = 'q';
     flow.cardT0 = Date.now();
@@ -1573,6 +1631,7 @@ async function undo() {
   if (flow && flow.browse) { if (flow.busy || flow.idx === 0) return; flow.idx--; flow.face = 'q'; flow.done = false; drawCard(); updateFlowChrome(); return; }
   if (!flow || flow.busy || !flow.hist.length) return;
   const h = flow.hist.pop();
+  flow.inter = null;
   await undoView(h.ev);
   if (h.appended) flow.queue.pop();
   flow.times.pop();
@@ -1632,7 +1691,7 @@ function flowKeys(e) {
     if (e.key === 'Escape') { e.preventDefault(); closePanel(); return; }
     if (panelKey(vstate, e)) { drawPanel($('#vpanel'), vstate, { P, onClose: closePanel }); return; }
   }
-  if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
+  if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.inter ? clearInter() : flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
   else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); }
   else if (e.key === 'a' || e.key === 'A') { if (flow.face === 'a' && !flow.browse) next(true); }
   else if (e.key === 'u' || e.key === 'U' || e.key === 'Backspace' || (e.key === 'z' && (e.metaKey || e.ctrlKey))) { e.preventDefault(); undo(); }

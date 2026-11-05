@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-068)
+## State (as of entry T-069)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.44** · last code commit: see entry T-067. Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.45** · last code commit: see entry T-069. Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,27 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-069 — 2026-11-05 — Claude — test — 1.3.45
+- **Explain layer pilot** (Naven approved the pilot, 5 Nov) for **TOX01 and RESP04**. The design is in the CCM project doc `Explain_Layer_Design_5Nov.md`.
+  - **Data:** `test/data/explain.json`, built by `tools/explain/build_explain.py`. It ships with the app, is stored in IndexedDB and works offline; the service worker does not cache it, like qbank.json. New module: `test/js/explain.js`.
+  - **On the answer side:**
+    - A **WHY** gist line, always visible.
+    - An **Explain** panel. It holds a mechanism chain ending in the answer and one picture (fork, grid, number scale, trio, timeline). Then labelled blocks: Tempting but, Don't confuse, Rule, Numbers, Where it sits. Then an Exam trap block (respects the toggle), pattern chips that open one-page pattern sheets, a tap-to-open Deeper section, a "Your analogy" note saved on the device, and 👍/👎/too-long feedback saved on the device.
+    - On screens 1280 px and wider the panel sits beside the answer; on narrower screens it sits below.
+    - The old Top-up and Crossfire boxes are replaced on cards that have an explanation.
+  - **Exam add-ons:** the useful Top-up lines, rebuilt as extra lettered question/answer parts. They appear from the second time a card is seen.
+  - **Rebuilt Top-up cards:** these replace the dense Top-up layer for these decks (`S.xtopups`, which wins over qbank topups in store.js).
+    - TOX01: 14 cards — three new concept cards (drug-induced long QT; CO vs methaemoglobin; toxic alcohol: block or dialyse), four spot cards, and the 8 old Top-ups rewritten as lettered parts.
+    - RESP04: 1 spot card (Nocardia).
+  - **For Any-hit flows:**
+    - A **deck map** page opens each deck: its ideas, the walked cards numbered, and skipped cards given as one line each.
+    - A **Before this** bridge line appears when the previous card was skipped.
+    - A **bridge card** (RSC-24 inside RSC-25) shows a short question with a Show-answer button. It is not counted.
+    - A **deck close** page follows the deck's last card: a wrap-up and one recall question.
+  - **Flow panel toggles:** Explain "Open on new cards / Only when tapped", and Exam traps "Show / Hide". Each profile keeps its own setting.
+  - **Fact check:** an independent fact-check agent reviewed all content; 4 contradictions and about 15 misleading or minor points were fixed before release (labetalol in cocaine, NIV failure mortality in LUNG SAFE, the QRS scale labels, the QT pattern, phenytoin, charcoal timing for paracetamol, MetHb SpO₂ wording, Nocardia duration, radiation dose, thiamine regimen, gist lengths).
+  - **Tested in the demo** at 1480×924 and on a phone: TOX01 all-cards flow, and RESP04 Any-hit (map → 4 hits with bridges → Top-up spot card → deck close → done). No errors.
 
 ## T-068 — 2026-11-04 — Claude — live — 1.4.10
 - Promoted test 1.3.44 to live on Naven's approval (4 Nov 16:30: "update that also into the live up first"). Live gains:
