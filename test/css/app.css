@@ -1485,3 +1485,16 @@ details.qfold>.bx{margin-top:8px}
 .ai-tpl{margin-top:8px}.ai-tpl summary{cursor:pointer;font-size:9.5px;letter-spacing:.12em;color:#8d8778}
 .ai-tpl textarea{width:100%;box-sizing:border-box;margin:6px 0;font-family:var(--mono);font-size:11.5px}
 .f-pop{max-height:80vh;overflow-y:auto}
+/* ===== T-078: two-button bottom bar, icon-only top bar, one progress strip ===== */
+.flow.v3 .f-nav{display:flex;gap:10px;flex-shrink:0}
+.flow.v3 .f-nav .big{flex:1 1 auto;width:auto}
+.flow.v3 .big2{flex:0 0 22%;max-width:260px;height:48px;border-radius:12px;border:1px solid #4a4d55;background:#24262b;color:#e9e3d2;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--serif);font-size:17px;letter-spacing:.06em;cursor:pointer}
+.flow.v3 .big2:empty{display:none}
+.flow.v3 .big2.dimmed{opacity:.35}
+.flow.v3 .big2 svg{width:18px;height:18px}
+.flow.v3 .f-bar .iconbtn .lbl,.flow.v3 .f-bar .goout .gol{display:none!important}
+.flow.v3 .f-bar .iconbtn,.flow.v3 .f-bar .goout.sm{width:38px;min-width:38px;padding:0!important;justify-content:center}
+.flow.v3 .f-bar .goout.sm{font-size:16px}
+.flow.v3 #f-ring{display:none}
+.flow.v3 .f-cnt{font-size:12px;color:#b9b2a0;flex-shrink:0}.flow.v3 .f-cnt b{color:#f1ead6;font-size:13px}
+@media (max-width:640px){.flow.v3 .big2{flex-basis:30%;font-size:14px}}

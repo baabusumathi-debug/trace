@@ -1099,7 +1099,7 @@ function planCard() {
 /* ============================ Going out, breaks and "where were you?" (T-045) ============================ */
 const curBreak = () => currentBreak();
 const hmT = t => new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout>⏏<span class="gol"> Going out</span></button>`; }
+function goingOutButton(cls = '') { return `<button class="btn ghost goout ${cls}" data-goout title="Going out (a break)" aria-label="Going out">⏏<span class="gol"> Going out</span></button>`; }
 function bindGoingOut(root = app) { root.querySelectorAll('[data-goout]').forEach(b => b.onclick = e => { e.preventDefault(); goingOutSheet(); }); }
 function reasonButtons(attr) {
   const h = new Date().getHours(), eveningOk = h >= 16 && h < 18 && !breaksOn(today()).some(b => b.reason === 'eveningtea');
@@ -1351,6 +1351,22 @@ async function endFlow() {
 function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - flow.peek].idx] : flow.queue[flow.idx]; }
 /* Back = look at cards already walked in this flow; nothing is logged or changed, and the time spent looking back is not
    counted as card time. Pause stops the clock and covers the card. (T-070, Naven's notes 5 Nov) */
+// the left bottom button (T-078): question side → look at the card before; answer side → back to this card's question;
+// looking back → one card further back; browse → previous card
+function leftAction() {
+  if (!flow || flow.busy || flow.userPause || flow.done) return;
+  if (flow.inter) { clearInter(); return; }
+  if (flow.browse) { undo(); return; }
+  if (flow.peek) { peekBack(); return; }
+  if (flow.face === 'a') { animate('flip', () => { flow.face = 'q'; drawCard(); }); return; }
+  peekBack();
+}
+function leftLabel() {
+  if (!flow || flow.done || flow.inter) return '';
+  if (flow.browse) return `${ICON.prev}<span>Back</span>`;
+  if (flow.peek) return `${ICON.prev}<span>Further back</span>`;
+  return flow.face === 'a' ? `${ICON.prev}<span>Question</span>` : `${ICON.prev}<span>Back</span>`;
+}
 function peekBack() {
   if (!flow || flow.browse || flow.busy || flow.pausedAt) return;
   if (flow.inter) flow.inter = null;
@@ -1388,7 +1404,7 @@ function togglePause() {
 function sectionRange() {
   const c = current(); if (!c) return '';
   const ch = chunkOf(c), same = flow.queue.filter(x => x.deck === c.deck && chunkOf(x).key === ch.key).map(x => x.no);
-  return ch.name + (same.length > 1 ? ' · ' + Math.min(...same) + '–' + Math.max(...same) : '');
+  return ch.name + (same.length > 1 ? ' · cards ' + Math.min(...same) + '–' + Math.max(...same) : same.length ? ' · card ' + same[0] : '');
 }
 
 function renderFlow() {
@@ -1402,9 +1418,8 @@ function renderFlow() {
       <span class="ring" id="f-ring"></span>
       <div class="f-stats mono"><span><i>TIME</i><b id="f-time">0:00</b></span><span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
       <span class="f-grow"></span>
-      ${flow.browse ? '' : `<button class="iconbtn" data-act="peek" aria-label="Look at the previous card (nothing changes)" id="f-peek">${ICON.prev}<span class="lbl">Back</span></button>`}
-      <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
-      ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
+      <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" title="${flow.browse ? 'Previous card' : 'Undo the last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
+      ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" title="Pause (P)" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
       ${flow.browse ? '' : goingOutButton('sm')}
       ${P.get('inkDock', 1) ? '<div class="ik-host ik-dock" id="f-ink" hidden></div>' : ''}
       <span class="f-break" aria-hidden="true"></span>
@@ -1412,14 +1427,14 @@ function renderFlow() {
       <div class="f-pop" id="f-pop" hidden><div class="f-xp" id="f-xp"></div><p class="f-note muted small">${flow.browse ? 'Looking only: nothing is timed or logged. Space reveals and moves on · ← back · E = Edit · Esc closes.' : 'Space reveals and moves on · ← looks back · P pauses · A = Again · U = Undo · E = Edit · Esc ends.'}</p></div>
     </header>
     <div class="f-strip" id="f-strip" role="button" tabindex="0" aria-label="This flow and today: tap for the full view">
-      <span class="mono f-sl" id="f-lab">THIS FLOW</span><div class="f-tiles" id="f-tiles"></div>
+      <span class="mono f-sl" id="f-lab">THIS FLOW</span><span class="mono f-cnt" id="f-cnt"></span><div class="f-tiles" id="f-tiles"></div>
       ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div><div class="f-live mono" id="f-live"></div>'}
     </div>
     <main class="f-main">
       ${P.get('inkDock', 1) ? '' : '<div class="ik-host" id="f-ink" hidden></div>'}
       <div class="card-wrap"><article class="card" id="card"></article>${flow.browse ? '' : '<button class="pause-cover" id="f-cover" aria-label="Resume the flow"><span class="mono">PAUSED</span><b>Tap to resume</b><small>The clock is stopped.</small></button>'}</div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
-      <button class="big press" id="f-big"></button>
+      <div class="f-nav"><button class="big2 press" id="f-left"></button><button class="big press" id="f-big"></button></div>
     </main>
   </div>`;
   setupGestures($('.card-wrap'));
@@ -1442,6 +1457,7 @@ function renderFlow() {
   const pk = $('#f-peek'); if (pk) pk.onclick = peekBack;
   const ps = $('#f-pause'); if (ps) ps.onclick = togglePause;
   bindGoingOut();
+  $('#f-left').onclick = leftAction;
   $('#f-big').onclick = () => flow.userPause ? togglePause() : flow.peek ? peekForward(true) : flow.inter ? clearInter() : flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
   const cv = $('#f-cover'); if (cv) cv.onclick = togglePause;
   drawXpToggles();
@@ -1661,9 +1677,10 @@ function bindChatSettings(h) {
 function placeXpBar(el) {
   const head = el.querySelector('.xp-head'), bar = el.querySelector('.xp-pane .xp-bar'); if (!head || !bar) return;
   head.innerHTML = ''; head.appendChild(bar);
+  if (!bar.querySelector('[data-act=askx]')) bar.insertAdjacentHTML('beforeend', '<button class="askbtn mono" data-act="askx" aria-label="Ask Claude about this explanation">Ask ▸</button>');
 }
 function bindXp(el, c) {
-  el.querySelectorAll('[data-ask-trap]').forEach(b => b.onclick = e => { e.stopPropagation(); const x = xOf(c), t = x && x.traps && x.traps[+b.dataset.askTrap]; if (t) askMenu(b.getBoundingClientRect(), { c, texts: [plain(t[0]) + ' — ' + plain(t[1])], from: 'Explain trap', kind: 'trap' }); });
+  const ax = el.querySelector('[data-act=askx]'); if (ax) ax.onclick = e => { e.stopPropagation(); askMenu(ax.getBoundingClientRect(), { c, texts: [], from: 'Explain' }); };
   const ab = el.querySelector('[data-act=ask]'); if (ab) ab.onclick = e => { e.stopPropagation(); askMenu(ab.getBoundingClientRect(), { c, texts: [], from: 'card' }); };
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = el.querySelector('.xp-pane .xp') || xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
@@ -1734,6 +1751,7 @@ function drawCard() {
   const a = el.querySelector('.c-a'); if (a) a.scrollTop = 0;
   const xpn = el.querySelector('.xp-pane'); if (xpn) xpn.scrollTop = 0;
   big.innerHTML = flow.peek ? `BACK TO CURRENT${ICON.next}` : isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
+  const lb = $('#f-left'); if (lb) { lb.innerHTML = leftLabel(); lb.classList.toggle('dimmed', !flow.browse && !flow.peek && isQ && !flow.hist.length); }
   el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = () => { if (!isWriting()) reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
@@ -1822,7 +1840,7 @@ function updateFlowChrome() {
   if (!flow || !$('#f-ring')) return;
   const total = flow.queue.length, step = Math.min(total, flow.idx + (flow.done ? 0 : 1));
   const circ = 2 * Math.PI * 22;
-  if ($('.flow.v3')) $('#f-ring').innerHTML = `<span class="pg-n mono">${step}<small>/${total}</small></span><span class="pg"><i style="width:${(step / total * 100).toFixed(1)}%"></i></span>`;
+  if ($('.flow.v3')) { $('#f-ring').innerHTML = ''; const fc = $('#f-cnt'); if (fc) fc.innerHTML = `<b>${step}</b>/${total}`; }
   else $('#f-ring').innerHTML = `<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" class="r0"/><circle cx="26" cy="26" r="22" class="r1" stroke-dasharray="${(circ * step / total).toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><span>${step}/${total}</span>`;
   $('#f-sec').textContent = flow.done ? 'Done' : sectionRange();
   fitBar();
@@ -1975,6 +1993,7 @@ function flowKeys(e) {
   if (flow.peek && (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight')) { e.preventDefault(); peekForward(e.key !== 'ArrowRight'); return; }
   if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.inter ? clearInter() : flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
   else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); else peekBack(); }
+  else if (e.key === 'q' || e.key === 'Q') { if (flow.face === 'a' && !flow.peek) { e.preventDefault(); leftAction(); } }
   else if (e.key === 'a' || e.key === 'A') { if (flow.face === 'a' && !flow.browse) next(true); }
   else if (e.key === 'u' || e.key === 'U' || e.key === 'Backspace' || (e.key === 'z' && (e.metaKey || e.ctrlKey))) { e.preventDefault(); undo(); }
   else if (e.key === 'e' || e.key === 'E') { if (flow.face === 'a') openEditor(current()); }

@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-077)
+## State (as of entry T-078)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.53** · last code commit: see entry T-077. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.54** · last code commit: see entry T-078. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,16 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-078 — 2026-11-05 — Claude — test — 1.3.54
+- **Bottom bar: two buttons.**
+  - Left button: **‹ Back** (look at the previous card) on the question side; **‹ Question** (flip back to this card's question, nothing logged) on the answer side; **Further back** while looking back.
+  - Right button: Reveal, Next, or Back to current. Q on a keyboard also flips back.
+- **Top bar in one line.** Undo, Pause and Going out are icons only (names on long press), and Back moved to the bottom bar.
+- **One progress strip.** The count (e.g. 4/30) now leads the strip of tiles; the top-bar count and dial are gone. The title reads "Chunk · cards 3–8".
+- **Ask ▸ in the Explain header.** The per-trap "ask why" buttons are removed: they sat under the ink layer and could not be tapped while writing.
+- **"→ Move to card" / "→ Move to Explain"** in the selection bar moves lassoed marks to the other side. Dragging them across the divider also works; checked in the demo.
+- **Side-button eraser with the pen tools closed.** The proven side-button signature (pen moves with buttons 1, pressure 0, no press, held 70 ms) switches writing on quietly (no toolbar) and erases; 700 ms after the pen goes quiet it switches back. A normal pen touch ends it at once and never draws.
 
 ## T-077 — 2026-11-05 — Claude — test — 1.3.53
 - **Ask Claude** (Naven, 5 Nov). Claude can't receive a message into an existing chat from a link, so Trace copies a ready question and opens the chosen chat; you paste and send.

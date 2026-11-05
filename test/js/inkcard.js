@@ -9,7 +9,27 @@ const CLIP_KEY = 'trace.ink.clips', OLD_CLIP = 'trace.ink.clip', CLIP_MAX = 12;
 let cur = null;
 const ovs = st => [st.overlay, st.overlayX].filter(Boolean);            // the answer overlay and the Explain overlay (T-072)
 const isOv = (st, s) => s === st.overlay || (st.overlayX && s === st.overlayX);                            // { card, face, rec, overlay, rooms:Map, toolbar, ... }
-let writing = false, pasting = null;          // pasting = id of the clipboard item waiting to be placed
+let writing = false, pasting = null;
+// T-078: S Pen side button erases even when the pen tools are closed. The proven side-button signature (pen moves with
+// buttons 1, pressure 0, no press) held 70 ms switches writing on quietly (no toolbar); 700 ms after the pen goes quiet it
+// switches back off.
+let quiet = false, lastPenEv = 0;
+addEventListener('pointermove', e => { if (e.pointerType === 'pen') lastPenEv = Date.now(); }, true);
+setInterval(() => { if (quiet && writing && Date.now() - lastPenEv > 700) { quiet = false; setWriting(false); } }, 250);
+function quietWatch(el) {
+  let t0 = null, downAt = 0;
+  el.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'pen') return;
+    downAt = Date.now(); t0 = null;
+    if (quiet && writing) { quiet = false; setWriting(false); e.stopPropagation(); e.preventDefault(); }   // a normal touch ends the quiet eraser; it never draws
+  }, true);
+  const f = e => {
+    if (writing || e.pointerType !== 'pen') return;
+    if ((e.buttons & 1) && !(e.pressure > 0) && Date.now() - downAt > 250) { if (!t0) t0 = Date.now(); else if (Date.now() - t0 > 70) { t0 = null; quiet = true; setWriting(true); } }
+    else t0 = null;
+  };
+  el.addEventListener('pointermove', f); if ('onpointerrawupdate' in window) el.addEventListener('pointerrawupdate', f);
+}          // pasting = id of the clipboard item waiting to be placed
 const listeners = { changed: null };
 export const isWriting = () => writing;
 
@@ -271,6 +291,7 @@ export async function mountInk(cardEl, card, face, opts) {
   }
   drawRooms();
   ovs(st).forEach(o => o.relayout());
+  quietWatch(box); if (st.xbox) quietWatch(st.xbox);
   applyMode();
   box.addEventListener('toggle', () => { if (cur === st) { st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); } }, true);
   let lastW = box.clientWidth;
@@ -488,6 +509,20 @@ function selAction(a, v) {
   const st = cur, s = st && st.last; if (!s || !s.sel) return;
   const ids = s.sel.ids.filter(i => s.objs[i]);
   if (a === 'del' || a === 'cut') { if (a === 'cut') copySel(s); s.snapshot(); const set = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !set.has(i))); s.sel = null; if (a === 'cut') toast('Cut to the clipboard · open it from the strip, pick the item, then tap where it goes'); }
+  else if (a === 'xfer') {
+    // move the selected marks to the other side, keeping their shape; they land at the top of what that side shows now
+    const to = ovs(st).find(o => o !== s); if (!to || !isOv(st, s)) return;
+    const bb = ids.map(i => objBox(s.objs[i])).reduce((m, q) => [Math.min(m[0], q[0]), Math.min(m[1], q[1]), Math.max(m[2], q[2]), Math.max(m[3], q[3])]);
+    const r1 = s.cv.getBoundingClientRect(), k1 = r1.width / (s.cv.clientWidth || 1), pr = to.parentEl.getBoundingClientRect();
+    const dx = pr.left + 40 - (r1.left + bb[0] * k1), dy = pr.top + 60 - (r1.top + bb[1] * k1);
+    const conv = q => { const u = to.toUnits(r1.left + q[0] * k1 + dx, r1.top + q[1] * k1 + dy); return q.length > 2 ? [u[0], u[1], q[2]] : u; };
+    const f = to.unitPerPx() * k1, moved = ids.map(i => JSON.parse(JSON.stringify(s.objs[i])));
+    to.snapshot(); s.snapshot();
+    for (const o of moved) { o.pts = o.pts.map(conv); if (o.rects) o.rects = o.rects.map(r => { const p0 = conv([r[0], r[1]]), p1 = conv([r[2], r[1]]); return [p0[0], p0[1], p1[0], r[3] * f]; }); if (o.s) o.s *= f; if (o.h) o.h *= f; if (o.r) o.r *= f; delete o.tr; delete o.a; o.a = to.anchorFor(o.pts[0]); to.objs.push(o); }
+    const gone = new Set(ids); s.objs.splice(0, s.objs.length, ...s.objs.filter((o, i) => !gone.has(i)));
+    s.sel = null; to.sel = { ids: moved.map((_, j) => to.objs.length - moved.length + j) }; st.last = to; to.render();
+    toast(to === st.overlayX ? 'Moved to Explain' : 'Moved to the card · drag it where you want');
+  }
   else if (a === 'unclear') {
     // the words under the selected marks: snapped highlights keep their exact words; other marks take the lines they touch
     const r0 = s.cv.getBoundingClientRect(), sc = s.cv.clientWidth / (r0.width || 1), out = new Set();
@@ -518,7 +553,7 @@ function applyMode() {
   st.rooms.forEach(r => { r.wrap.classList.toggle('peek', r.objs.length > 0 && !writing && !r.wrap.dataset.opened); r.wrap.classList.toggle('writing', writing); });
   const host = st.opts.toolbarHost();
   if (st.toolbar) { st.toolbar.destroy(); st.toolbar = null; }
-  if (writing && host) {
+  if (writing && host && !quiet) {
     host.hidden = false;
     st.toolbar = new Toolbar(host, {
       undo: () => { const s = st.last || st.overlay; s.doUndo(); markDirty(); },
@@ -528,6 +563,7 @@ function applyMode() {
       toolChanged: () => { pasting = null; [...ovs(st), ...st.rooms.values()].forEach(s => { s.sel = null; s.render(); }); },
       hasSel: () => !!(st.last && st.last.sel && st.last.sel.ids.length),
       selOnExplain: () => !!(st.overlayX && st.last === st.overlayX),
+      canXfer: () => !!(st.overlayX && isOv(st, st.last)), xferLabel: () => st.last === st.overlayX ? '→ Move to card' : '→ Move to Explain',
       pin: st.opts.pin || null, docked: st.opts.docked || null,
       clips: () => readClips(), pasting: () => pasting, setPasting: v => { pasting = v || null; },
       removeClip: id => { saveClips(readClips().filter(c => c.id !== id)); if (pasting === id) pasting = null; },
@@ -543,7 +579,7 @@ function showFab(host) {
   host.hidden = false; host.classList.add('ik-float');
   host.innerHTML = `<button class="ik-fab" data-ink-fab aria-label="Write on this card with the S Pen" title="Write on this card (drag to move)">${INK_ICONS.fab}</button>`;
   placeFloat(host, railSize());
-  dragFloat(host, host.querySelector('[data-ink-fab]'), () => setWriting(true));
+  dragFloat(host, host.querySelector('[data-ink-fab]'), () => { quiet = false; setWriting(true); });
 }
 export function setWriting(on) {
   const was = writing; writing = !!on; if (!writing) pasting = null;
