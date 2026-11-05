@@ -17,6 +17,7 @@ def v2(e, topup=False):
     if e.get('extra'): x['parts'] = e['extra']
     if e.get('before'): x['before'] = e['before']
     if topup: x['topup'] = True
+    if isinstance(e.get('step'), int): x['step'] = e['step']
     return x
 
 cards = {k: v2(e) for k, e in L.items()}
@@ -27,11 +28,14 @@ for t in ns['TOPUPS']['TOX01']:
 decks = {'TOX01': {'cards': cards, 'topups': topups}}
 # T-083: the other Toxicology decks (main cards only; their few bank Top-ups are not explained yet)
 import os
-for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06']:
+for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06', 'RESP01A', 'RESP01B', 'RESP01C', 'RESP02A', 'RESP02B', 'RESP03', 'RESP04', 'RESP05', 'RESP06A', 'RESP06B', 'RESP07A', 'RESP07B']:
     f = dk.lower() + '_learn.py'
     if not os.path.exists(f): print('skip', dk); continue
     n2 = {}; exec(open(f).read(), n2)
     decks[dk] = {'cards': {k: v2(e) for k, e in n2['L'].items()}, 'topups': []}
+    # T-088: the deck's story — spine steps and a primer for arriving cold
+    if n2.get('SPINE'): decks[dk]['spine'] = [list(p) for p in n2['SPINE']]
+    if n2.get('PRIMER'): decks[dk]['primer'] = n2['PRIMER']
 # T-084: approved corrections to the card text, shown on the card and in the Explain pane
 n3 = {}; exec(open('tox_corrections.py').read(), n3)
 for dk, m in n3['FIX'].items():

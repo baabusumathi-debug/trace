@@ -1,0 +1,12 @@
+rid,question,answer,deck,card,note
+2024-M2-Q5,Which does NOT satisfy severe ARDS,P/F 100-200 (moderate),RESP01A,ARDS-04,
+2024-M2-Q4,Better ARDS outcome predictor: high vs low driving pressure,Low driving pressure (<14-15),RESP01B,ARDS-26,
+2024-M2-Q6,OSCAR trial was about,HFO in adult ARDS - no benefit,RESP01C,ARDS-34,
+2024-M2-Q12,Causes of NIV failure in ARDS,"P-SILI, delayed intubation, intolerance, secretions, shock",RESP01B,ARDS-17,"HACOR >5, LUNG SAFE P/F <150 harm"
+2024-M2-Q13,P/F threshold for proning in ARDS,<150 mmHg,RESP01C,ARDS-30,
+2024-M2-Q10,Why auto-PEEP happens,Incomplete exhalation / short expiratory time,RESP02A,COPD-02,
+2024-M2-Q19,Light's criteria,"Exudate if any: protein ratio >0.5, LDH ratio >0.6, LDH >2/3 ULN",RESP07B,PLEU-17,
+2024-M2-Q20,Sinusoid sign on lung US,Pleural effusion,RESP07B,PLEU-16,
+2024-M6-Q4,"Inherited hypercoagulable state (PNH, PV, APS)",PNH (keyed answer),RESP06A,PE-02,recall keyed PNH though acquired
+2024-M7-Q1,"Pregnant, unstable PE: thrombolysis vs LMWH vs UFH",Thrombolysis,RESP06B,PE-25,
+2024-M3-Q4,PA catheter waveforms as catheter advances,RA to RV to PA to PCWP progression,RESP05,SWAN-06,

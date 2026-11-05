@@ -28,3 +28,12 @@ for c in cards:
 extra = set(L) - {c['code'] for c in cards}
 if extra: err('entries not in deck', extra)
 print(deck, len(cards), 'cards', len(L), 'entries', 'OK' if not bad else f'{bad} problems')
+# v3 (from RESP01A on): the deck's story — SPINE of 4–6 steps, a PRIMER, and every card tagged with its step
+if 'SPINE' in ns:
+    SP = ns['SPINE']
+    if not (4 <= len(SP) <= 6) or any(len(x) != 2 for x in SP): print('ERR SPINE must be 4–6 (title, takeaway) pairs'); bad += 1
+    if len(ns.get('PRIMER', '')) < 120: print('ERR PRIMER missing or too short'); bad += 1
+    for c in cards:
+        e = L.get(c['code'], {})
+        if not isinstance(e.get('step'), int) or not (1 <= e['step'] <= len(SP)): print('ERR', c['code'], 'step must be 1..', len(SP)); bad += 1
+    print('v3 spine', len(SP), 'steps', 'OK' if not bad else f'{bad} problems')

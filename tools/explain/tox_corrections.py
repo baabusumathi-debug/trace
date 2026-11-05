@@ -48,4 +48,8 @@ FIX = {
   'ONC-11': [("Trastuzumab causes ACS", "Trastuzumab causes (usually reversible) left-ventricular dysfunction, not ACS. The ACS drugs are 5-FU/capecitabine (coronary spasm) and bevacizumab (arterial thrombosis)."),
              ("Checkpoint myocarditis row", "Add: stop the checkpoint inhibitor permanently at any grade, and give methylprednisolone 500–1000 mg a day.")],
  },
+ 'RESP01A': {
+  'ARDS-04': [("WATCH: PEEP below 5 and not on HFNO", "Two definitions are mixed here. Berlin 2012 needs invasive ventilation or CPAP/NIV with PEEP ≥5 (CPAP allowed for mild only) and never accepts HFNO; the 2023 global definition accepts HFNO ≥30 L/min, but does not grade non-intubated patients.")],
+  'ARDS-07': [("Transfusion (TRALI) listed as a direct cause", "Standard sources (Ware & Matthay; the Berlin risk-factor list) put transfusion with the indirect causes: the injury reaches the lung through the blood.")],
+ },
 }
