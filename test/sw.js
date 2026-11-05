@@ -2,7 +2,7 @@
 // Card data lives in IndexedDB (not here). Bump VERSION on every release.
 // the test build (/trace/test/) keeps caches under its own prefix so the two never clear each other
 const PREFIX = self.registration.scope.includes('/test/') ? 'tracetest-v' : 'trace-v';
-const VERSION = PREFIX + '1.3.57';
+const VERSION = PREFIX + '1.3.58';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/app.js', 'js/api.js', 'js/config.js', 'js/db.js', 'js/emblems.js', 'js/md.js', 'js/store.js', 'js/sync.js', 'js/palace.js', 'js/visuals.js', 'js/flowmsg.js', 'js/loftx.js', 'js/breaks.js', 'js/peek.js', 'js/peakdata.js', 'js/plan.js', 'js/ink.js', 'js/inkcard.js', 'js/explain.js', 'img/palace-land.webp', 'img/palace-port.webp',

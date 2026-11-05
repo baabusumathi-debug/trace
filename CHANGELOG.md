@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-082)
+## State (as of entry T-083)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.11** · promoted from test 1.3.57 on 5 Nov (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.57** · last code commit: see entry T-081. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.11 (= test 1.3.57, with every deck). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.58** · last code commit: see entry T-083. Carries **only the 7 Toxicology decks** (`CONFIG.onlyDecks`), all with Explain v2. Live is 1.4.11 (= test 1.3.57, with every deck; Explain for TOX01 only). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,15 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-083 — 2026-11-05 — Claude — test — 1.3.58
+- **Explain v2 for every Toxicology deck** (Naven, 5 Nov: "rewrite all the toxicology decks… keep an agent for secondary checkup"). TOX02, TOX03A, TOX03B, TOX04, TOX05 and TOX06 (81 cards) now have Learn/Revise explanations in the TOX01 style: what's going on, part by part with the why, mimics, traps, how it is asked, punchline last. No hooks or mnemonics. Card text unchanged.
+  - Each deck was written by one agent and then fact-checked by a second, independent agent with web sources. The reviewers fixed 80 problems in all; about 40 were factual. Examples: physostigmine contraindications and dantrolene in REC-12; ASV premedication (SNAKE-11); the pralidoxime evidence (PEST-11); trastuzumab vs 5-FU/bevacizumab cardiotoxicity (ONC-11); EXTRIP criteria for paracetamol (APAP-12).
+  - Sources: `tools/explain/tox0*_learn.py`, with the reviews in `tox0*_review.md`. The briefs are `BRIEF.md` and `REVIEW_BRIEF.md`; the checker is `check_learn.py`. The build is `build_explain_v2.py`, which now builds every deck that has a `<deck>_learn.py`.
+  - **40 card flags** (where the card text looks wrong or outdated) are in the CCM project doc `claude/TOX_Card_Flags_5Nov.md`. The cards are not edited; Naven decides.
+  - The few bank Top-ups of TOX03B, TOX04 and TOX05 (5 cards) have no Explain yet.
+- Test build now carries the 7 Toxicology decks (`CONFIG.onlyDecks`).
+- Checked in a demo walk through every TOX02–TOX06 card: each shows its Explain with all parts and the punchline; no console errors.
 
 ## T-082 — 2026-11-05 — Claude — live — 1.4.11
 - Promoted test 1.3.57 to live on Naven's instruction (5 Nov: "make the app live also").

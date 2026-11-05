@@ -24,9 +24,17 @@ topups = []
 for t in ns['TOPUPS']['TOX01']:
     t = dict(t); t['x'] = v2(T[t['id']])
     topups.append(t)
-out = {'v': 2, 'decks': {'TOX01': {'cards': cards, 'topups': topups}}, 'patterns': ns['PATTERNS']}
+decks = {'TOX01': {'cards': cards, 'topups': topups}}
+# T-083: the other Toxicology decks (main cards only; their few bank Top-ups are not explained yet)
+import os
+for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06']:
+    f = dk.lower() + '_learn.py'
+    if not os.path.exists(f): print('skip', dk); continue
+    n2 = {}; exec(open(f).read(), n2)
+    decks[dk] = {'cards': {k: v2(e) for k, e in n2['L'].items()}, 'topups': []}
+out = {'v': 2, 'decks': decks, 'patterns': ns['PATTERNS']}
 s = json.dumps(out, ensure_ascii=False, sort_keys=True)
 out['version'] = hashlib.sha1(s.encode()).hexdigest()[:10]
 dest = sys.argv[1] if len(sys.argv) > 1 else 'explain.json'
 json.dump(out, open(dest, 'w'), ensure_ascii=False, indent=1)
-print('written', dest, out['version'], 'cards', len(cards), 'topups', len(topups))
+print('written', dest, out['version'], {k: len(v['cards']) for k, v in decks.items()}, 'topups', len(topups))
