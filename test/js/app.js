@@ -1900,9 +1900,12 @@ function qbBoxes(c) {
   return h;
 }
 function qbFix(c) {
-  const q = qbOf(c);
-  if (!q || !q.fix || !q.fix.length) return '';
-  return `<div class="box qfix"><span class="mono">CORRECTION · CHECKED</span><div class="bx">${q.fix.map(f => `<p>${inline(f.t)}</p>${f.src ? `<p class="qsrc">${f.url ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.src)}</a>` : esc(f.src)}</p>` : ''}`).join('')}</div></div>`;
+  const q = qbOf(c), x = xOf(c);
+  const bank = q && q.fix && q.fix.length ? q.fix.map(f => `<p>${inline(f.t)}</p>${f.src ? `<p class="qsrc">${f.url ? `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.src)}</a>` : esc(f.src)}</p>` : ''}`).join('') : '';
+  // T-084: corrections found while writing and checking the explanations (approved by Naven); the card text stays as it was
+  const xf = x && x.fix && x.fix.length ? x.fix.map(([a, b]) => `<p><span class="qwas">Card: ${inline(a)}</span> → <b>${inline(b)}</b></p>`).join('') : '';
+  if (!bank && !xf) return '';
+  return `<div class="box qfix"><span class="mono">CORRECTION · CHECKED</span><div class="bx">${bank}${xf}</div></div>`;
 }
 async function saveHook(c, v) {
   const e = S.edits.get(c.deck + '|' + c.code);

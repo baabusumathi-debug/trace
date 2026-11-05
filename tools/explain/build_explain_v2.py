@@ -32,6 +32,12 @@ for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06']:
     if not os.path.exists(f): print('skip', dk); continue
     n2 = {}; exec(open(f).read(), n2)
     decks[dk] = {'cards': {k: v2(e) for k, e in n2['L'].items()}, 'topups': []}
+# T-084: approved corrections to the card text, shown on the card and in the Explain pane
+n3 = {}; exec(open('tox_corrections.py').read(), n3)
+for dk, m in n3['FIX'].items():
+    for code, items in m.items():
+        assert code in decks[dk]['cards'], (dk, code)
+        decks[dk]['cards'][code]['fix'] = [list(p) for p in items]
 out = {'v': 2, 'decks': decks, 'patterns': ns['PATTERNS']}
 s = json.dumps(out, ensure_ascii=False, sort_keys=True)
 out['version'] = hashlib.sha1(s.encode()).hexdigest()[:10]

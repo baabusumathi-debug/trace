@@ -1520,3 +1520,9 @@ details.qfold>.bx{margin-top:8px}
 .sheet .mono.kick{display:block;margin:10px 0 4px}
 @media (max-width:600px){.ct-row{grid-template-columns:1fr auto auto}.ct-row>:last-child{grid-column:1/-1;justify-self:start}}
 .pundo{margin-top:8px}
+/* T-084: corrections to the card text */
+.qfix .qwas{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.xv-fix{border-left:3px solid #b5482f;background:#fbefe9;padding:8px 12px;border-radius:0 8px 8px 0}
+.xv-fix h4{color:#9c3b25}
+.xv-fix li{list-style:none;margin:0 0 6px}.xv-fix ul{padding:0;margin:0}
+.xv-fix .xv-was{display:block;color:#6b5f55;text-decoration:line-through;text-decoration-thickness:1px;font-size:.92em}

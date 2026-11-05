@@ -91,17 +91,21 @@ function learnHtml(c, x, opts) {
   const mim = (x.mimic || []).map(([a, b]) => `<li><b>${md(a)}</b> — ${md(b)}</li>`).join('');
   const trp = (x.traps || []).map(([a, b], i) => `<li><b>${md(a)}</b> is wrong. ${md(b)}</li>`).join('');
   const dec = (x.decode || []).map(([a, b]) => `<li><span class="xv-stem">${md(a)}</span><span class="xv-ar" aria-hidden="true">→</span><b>${md(b)}</b></li>`).join('');
+  // T-084: approved corrections to the card text (the card itself is not edited)
+  const fix = (x.fix || []).map(([a, b]) => `<li><span class="xv-was">Card: ${md(a)}</span><b>${md(b)}</b></li>`).join('');
+  const fixSec = fix ? sec('xv-fix', 'CORRECTION TO YOUR CARD', `<ul>${fix}</ul>`) : '';
   const traps = trp ? (opts.traps ? sec('xv-trap', 'THE TRAPS', `<ul>${trp}</ul>`) : `<p class="xp-trapoff mono">${x.traps.length} exam trap${x.traps.length > 1 ? 's' : ''} hidden · turn traps on in the Flow panel</p>`) : '';
   const body = learn
     ? `${x.sub ? `<p class="xv-sub mono">${md(x.sub)}</p>` : ''}
        ${sec('xv-ctx', 'WHAT’S GOING ON', x.intro ? `<p>${md(x.intro)}</p>` : '')}
+       ${fixSec}
        ${sec('xv-why', 'PART BY PART', why)}
        ${tbl}
        ${sec('xv-mim', 'CLOSE MIMICS', mim ? `<ul>${mim}</ul>` : '')}
        ${traps}
        ${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
        ${sec('xv-punch', 'PUNCHLINE', x.punch ? `<p>${md(x.punch)}</p>` : '')}`
-    : `${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
+    : `${fixSec}${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
        ${traps}
        ${sec('xv-punch', 'PUNCHLINE', x.punch ? `<p>${md(x.punch)}</p>` : '')}
        <button class="xv-more" data-xp-depth="learn">Read the full explanation</button>`;

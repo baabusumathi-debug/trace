@@ -2516,7 +2516,13 @@
         "definition of severe hepatotoxicity"
        ]
       ]
-     }
+     },
+     "fix": [
+      [
+       "WATCH: pesticides “dominate”",
+       "Pesticides dominate poisoning deaths in India, but acute liver failure in India is mostly viral hepatitis (HEV, HBV) and anti-TB drug injury."
+      ]
+     ]
     },
     "APAP-02": {
      "v": 2,
@@ -2710,6 +2716,12 @@
        "q": "Children under ~10: main clearance route?",
        "a": "**Sulfation** (adults mainly glucuronidation), with more glutathione — so less NAPQI. The nomogram and NAC rules still apply."
       }
+     ],
+     "fix": [
+      [
+       "Anticonvulsants listed as CYP2E1 inducers",
+       "Only isoniazid and alcohol act mainly on CYP2E1; phenytoin, carbamazepine, phenobarbital and rifampicin induce other CYP isoforms. The evidence that inducers raise risk is weak (the UK dropped its high-risk line in 2012)."
+      ]
      ]
     },
     "APAP-04": {
@@ -2756,7 +2768,13 @@
        "Treat — a level above 20 is an indication."
       ]
      ],
-     "punch": "With repeated dosing there is no time zero to plot, the level understates the danger, and the patient comes late — so treatment is triggered by the dose, any meaningful level, or a rising ALT."
+     "punch": "With repeated dosing there is no time zero to plot, the level understates the danger, and the patient comes late — so treatment is triggered by the dose, any meaningful level, or a rising ALT.",
+     "fix": [
+      [
+       "Repeated ingestion: 7.5 g, or 4 g with risk factors, in 24 h",
+       "Guidelines use ≥10 g or 200 mg/kg in 24 h, or ≥6 g or 150 mg/kg a day for ≥48 h (US consensus 2006, Australia–NZ); Australia–NZ adds ≥4 g or 100 mg/kg in 24 h with risk factors. The level >20 µg/mL and ALT >50 triggers are right."
+      ]
+     ]
     },
     "APAP-05": {
      "v": 2,
@@ -2855,6 +2873,12 @@
        "q": "Severe poisoning: can stage III come early?",
        "a": "**Yes** — jaundice, INR 3 and AKI at 36 h already mean fulminant hepatic failure; the killers are **cerebral oedema** and dysrhythmias with **multi-organ failure**."
       }
+     ],
+     "fix": [
+      [
+       "Stage IV usually complete by day 7",
+       "Recovery runs from about day 4–5 to 2 weeks; the liver tissue takes up to 3 months to heal (Goldfrank’s)."
+      ]
      ]
     },
     "APAP-06": {
@@ -3048,7 +3072,13 @@
        "Give NAC — late treatment still improves outcome."
       ]
      ],
-     "punch": "NAC refills the glutathione that NAPQI drains: given within 8 hours it prevents injury almost completely, and given later it still limits the damage — so it is never withheld for being late."
+     "punch": "NAC refills the glutathione that NAPQI drains: given within 8 hours it prevents injury almost completely, and given later it still limits the damage — so it is never withheld for being late.",
+     "fix": [
+      [
+       "Charcoal within 4 hours",
+       "The usual window is 1 hour; Australia–NZ uses 2 hours for a toxic dose and up to 4 hours only for >30 g or modified-release tablets."
+      ]
+     ]
     },
     "APAP-09": {
      "v": 2,
@@ -3269,7 +3299,13 @@
         "**INR >6.5**, **creatinine >3.4 mg/dL** (300 µmol/L), **grade 3–4 encephalopathy**"
        ]
       ]
-     }
+     },
+     "fix": [
+      [
+       "Lactate after 1 hour of fluid resuscitation",
+       "Bernal 2002: lactate >3.5 mmol/L about 4 h after admission, or >3.0 mmol/L about 12 h after full fluid resuscitation."
+      ]
+     ]
     },
     "APAP-12": {
      "v": 2,
@@ -3530,7 +3566,13 @@
        "Up to 300,000."
       ]
      ],
-     "punch": "The WHO class is only the compound’s intrinsic toxicity read backwards from its LD50 — the reason organophosphates kill 300,000 people a year is availability and dose, not subtlety."
+     "punch": "The WHO class is only the compound’s intrinsic toxicity read backwards from its LD50 — the reason organophosphates kill 300,000 people a year is availability and dose, not subtlety.",
+     "fix": [
+      [
+       "Up to 300,000 deaths a year from organophosphates",
+       "About 250,000–370,000 deaths a year are from all pesticide self-poisoning, organophosphates the largest share."
+      ]
+     ]
     },
     "PEST-02": {
      "v": 2,
@@ -4415,6 +4457,12 @@
        "q": "Why an infusion rather than repeated boluses?",
        "a": "A plasma level above about **4 mg/L** has to be sustained to outrun re-inhibition from drug still being absorbed and released from fat, before ageing fixes the bond."
       }
+     ],
+     "fix": [
+      [
+       "Pralidoxime works if given in time",
+       "The evidence is insufficient either way (Cochrane): the Sri Lankan placebo-controlled trial of the WHO regimen showed no benefit, a small Indian trial of 1 g/h for 48 h showed fewer deaths. WHO regimen: 30 mg/kg (~2 g) over 30 min, then 8 mg/kg/h."
+      ]
      ]
     },
     "PEST-12": {
@@ -4481,7 +4529,17 @@
        "Fresh frozen plasma (the trial evidence shows no benefit)."
       ]
      ],
-     "punch": "The extras are mostly about not adding harm: no succinylcholine, no forced emesis, no dialysis or bicarbonate, never FFP — while the things that do work are washing the patient, protecting the team and keeping the chest dry."
+     "punch": "The extras are mostly about not adding harm: no succinylcholine, no forced emesis, no dialysis or bicarbonate, never FFP — while the things that do work are washing the patient, protecting the team and keeping the chest dry.",
+     "fix": [
+      [
+       "FFP: harmful",
+       "The only randomised pilot (Vellore 2010) showed no benefit, not proven harm: FFP is not recommended. For the exam’s ‘which is harmful’ it is still the intended answer."
+      ],
+      [
+       "Magnesium: no scientific data",
+       "There are four small randomised trials and cohorts with a possible mortality benefit (Brvar 2018), but the evidence is still insufficient to recommend it."
+      ]
+     ]
     },
     "PEST-13": {
      "v": 2,
@@ -4745,7 +4803,13 @@
         "garlic odour only"
        ]
       ]
-     }
+     },
+     "fix": [
+      [
+       "Shock and multi-organ failure within 30 minutes",
+       "Vomiting starts within minutes, but shock usually develops over 1–6 hours and most deaths come within 24 hours."
+      ]
+     ]
     },
     "PEST-16": {
      "v": 2,
@@ -4803,7 +4867,13 @@
        "Liver transplant."
       ]
      ],
-     "punch": "Without an antidote, yellow phosphorus is treated by its timeline: oxidise and avoid fat early, replace clotting factors as the liver fails, exchange plasma to buy time, and transplant if the liver does not come back."
+     "punch": "Without an antidote, yellow phosphorus is treated by its timeline: oxidise and avoid fat early, replace clotting factors as the liver fails, exchange plasma to buy time, and transplant if the liver does not come back.",
+     "fix": [
+      [
+       "WATCH: vegetable oil lavage",
+       "Digestible oils increase phosphorus absorption; older texts used liquid paraffin (not absorbed). Gastric lavage of any kind is not routine now."
+      ]
+     ]
     },
     "PEST-17": {
      "v": 2,
@@ -4869,7 +4939,13 @@
        "Vitamin K antagonism."
       ]
      ],
-     "punch": "Superwarfarins stop new clotting factors being made but leave the old ones, so the INR is normal until they run out at 24–48 hours — and because the drug stays in the liver for weeks, so must the vitamin K."
+     "punch": "Superwarfarins stop new clotting factors being made but leave the old ones, so the INR is normal until they run out at 24–48 hours — and because the drug stays in the liver for weeks, so must the vitamin K.",
+     "fix": [
+      [
+       "A 4-hydroxycoumarin level covers the superwarfarins",
+       "Chlorophacinone is an indandione, not a 4-hydroxycoumarin. The INR rises at 24–48 h, but bleeding may only appear days later."
+      ]
+     ]
     },
     "PEST-18": {
      "v": 2,
@@ -4985,7 +5061,13 @@
        "Bipyridyl herbicide."
       ]
      ],
-     "punch": "Paraquat is lethal only when swallowed, but then a single mouthful of the 20% concentrate can kill — and there is nothing to reverse it."
+     "punch": "Paraquat is lethal only when swallowed, but then a single mouthful of the 20% concentrate can kill — and there is nothing to reverse it.",
+     "fix": [
+      [
+       "Skin contact is not life-threatening",
+       "True for intact skin and diluted spray; fatal poisoning has been reported after prolonged contact of the concentrate with damaged skin."
+      ]
+     ]
     },
     "PEST-20": {
      "v": 2,
@@ -5295,7 +5377,13 @@
        "Cannabis, then opioids."
       ]
      ],
-     "punch": "Alcohol dominates Indian substance use, cannabis and opioids follow — with opioid use three times the world rate — and inhalants are the drug of children."
+     "punch": "Alcohol dominates Indian substance use, cannabis and opioids follow — with opioid use three times the world rate — and inhalants are the drug of children.",
+     "fix": [
+      [
+       "In children: inhalants",
+       "Inhalants are the only class used more by children than by adults (about 1.17% vs 0.58%, 2019 national survey); they are not the commonest substance in children."
+      ]
+     ]
     },
     "REC-02": {
      "v": 2,
@@ -5443,6 +5531,12 @@
        "q": "Pulmonary oedema after naloxone: mechanism?",
        "a": "**Non-cardiogenic**: catecholamine surge with negative-pressure breathing against a closed glottis; uncommon, but commoner after large, rapid doses."
       }
+     ],
+     "fix": [
+      [
+       "Naloxone to a maximum of 2 mg",
+       "2 mg is not a ceiling: up to about 10 mg is given before opioid toxicity is ruled out (more often needed with fentanyl analogues)."
+      ]
      ]
     },
     "REC-04": {
@@ -5866,7 +5960,13 @@
        "Sedative-hypnotic toxidrome."
       ]
      ],
-     "punch": "Flunitrazepam and GHB both deepen GABA inhibition — sedation and amnesia with near-normal vital signs — and GHB adds a sudden coma that ends as suddenly, needing only airway support."
+     "punch": "Flunitrazepam and GHB both deepen GABA inhibition — sedation and amnesia with near-normal vital signs — and GHB adds a sudden coma that ends as suddenly, needing only airway support.",
+     "fix": [
+      [
+       "Flunitrazepam is detected as a benzodiazepine; lasts 4–6 hours",
+       "Routine urine benzodiazepine screens often miss it (specific assays needed), and sedation and amnesia often last 8–12 hours or more."
+      ]
+     ]
     },
     "REC-10": {
      "v": 2,
@@ -6206,7 +6306,13 @@
        "12 mg, then 2 mg every 2 hours."
       ]
      ],
-     "punch": "Serotonin syndrome is diagnosed by clonus (Hunter criteria) and survived by removing the drug and stopping the heat — cyproheptadine eases the symptoms but has never been shown to change the outcome."
+     "punch": "Serotonin syndrome is diagnosed by clonus (Hunter criteria) and survived by removing the drug and stopping the heat — cyproheptadine eases the symptoms but has never been shown to change the outcome.",
+     "fix": [
+      [
+       "Cyproheptadine 2 mg per dose to a maximum of 12 mg",
+       "Standard regimen (Boyer & Shannon, NEJM 2005): 12 mg first, then 2 mg every 2 hours while symptoms persist, then 8 mg 6-hourly — about 12–32 mg a day."
+      ]
+     ]
     },
     "REC-14": {
      "v": 2,
@@ -6376,6 +6482,12 @@
        "q": "Malignant hyperthermia: genetics and triggers?",
        "a": "**Autosomal dominant RYR1** (or CACNA1S) mutation; triggered only by **volatile agents and suxamethonium**."
       }
+     ],
+     "fix": [
+      [
+       "WATCH: temperature climbs 1 °C every 10 minutes; all inhaled agents except nitrous oxide",
+       "In fulminant malignant hyperthermia the temperature rises about 1–2 °C every 5 minutes. Triggers are the volatile agents and suxamethonium (nitrous oxide and xenon do not trigger); most cases start in theatre or within about an hour after."
+      ]
      ]
     }
    },
@@ -6439,7 +6551,13 @@
        "Before reaching hospital."
       ]
      ],
-     "punch": "Most bites never inject venom, so the bite is watched, not treated — but those that do envenom kill mostly on the way to hospital, so speed of transport and antivenom near the patient save lives."
+     "punch": "Most bites never inject venom, so the bite is watched, not treated — but those that do envenom kill mostly on the way to hospital, so speed of transport and antivenom near the patient save lives.",
+     "fix": [
+      [
+       "35,000–50,000 deaths a year",
+       "The Indian guideline 2017 estimates about 45,900 a year; the Million Death Study (2020) about 58,000 a year."
+      ]
+     ]
     },
     "SNAKE-02": {
      "v": 2,
@@ -6522,7 +6640,13 @@
         "**myotoxic** (and neurotoxic)"
        ]
       ]
-     }
+     },
+     "fix": [
+      [
+       "Sea snakes: Hydrophidae, myotoxic",
+       "Sea snakes are now classed within Elapidae, and their venom is neurotoxic as well as myotoxic."
+      ]
+     ]
     },
     "SNAKE-03": {
      "v": 2,
@@ -6584,7 +6708,13 @@
        "Presynaptic phospholipase A₂ (β-bungarotoxin)."
       ]
      ],
-     "punch": "Each venom protein has one target — the vessel wall, the clotting cascade, the cell membrane, the connective tissue or the acetylcholine receptor — and the bite’s picture is their sum."
+     "punch": "Each venom protein has one target — the vessel wall, the clotting cascade, the cell membrane, the connective tissue or the acetylcholine receptor — and the bite’s picture is their sum.",
+     "fix": [
+      [
+       "Hyaluronidase: tissue destruction",
+       "Hyaluronidase is the spreading factor; the tissue destruction comes mainly from metalloproteinases, phospholipase A₂ and cytotoxins."
+      ]
+     ]
     },
     "SNAKE-04": {
      "v": 2,
@@ -7022,7 +7152,13 @@
        "Plastic or detergent-washed tube."
       ]
      ],
-     "punch": "Glass starts clotting, so normal blood clots within 20 minutes; liquid blood means the venom has used up the factors — and because the liver needs 6 hours to replace them, that is when the test is repeated."
+     "punch": "Glass starts clotting, so normal blood clots within 20 minutes; liquid blood means the venom has used up the factors — and because the liver needs 6 hours to replace them, that is when the test is repeated.",
+     "fix": [
+      [
+       "20WBCT every 30 min for 3 h, then hourly",
+       "That is the 2009 protocol. Indian guideline 2017: 6 hours after the loading dose of ASV, and in suspected bites hourly for 3 h, then 6-hourly up to 24 h."
+      ]
+     ]
     },
     "SNAKE-10": {
      "v": 2,
@@ -7084,7 +7220,13 @@
        "50% or more recovery of ptosis at 1 hour."
       ]
      ],
-     "punch": "Neostigmine can only add acetylcholine, so it helps only where the nerve terminal is intact and the receptor is blocked — the cobra — and atropine goes first to stop the muscarinic side effects."
+     "punch": "Neostigmine can only add acetylcholine, so it helps only where the nerve terminal is intact and the receptor is blocked — the cobra — and atropine goes first to stop the muscarinic side effects.",
+     "fix": [
+      [
+       "Neostigmine 0.5–2 mg IM",
+       "Indian guideline 2017: atropine 0.6 mg, then neostigmine 1.5 mg IV; then 0.5 mg with atropine every 30 min for 5 doses (child: atropine 0.05 mg/kg, neostigmine 0.04 mg/kg, repeat 0.01 mg/kg). Positive test: ≥50% recovery of ptosis at 1 hour. WHO gives neostigmine IM (about 0.02 mg/kg)."
+      ]
+     ]
     },
     "SNAKE-11": {
      "v": 2,
@@ -7148,6 +7290,12 @@
        "q": "How much venom does one vial neutralise, and why start with 10?",
        "a": "Each mL neutralises **0.6 mg** of cobra and Russell’s venom (0.45 mg krait and saw-scaled), so a 10 mL vial ≈ **6 mg**. A Russell’s viper injects about **63 mg** on average — hence **10 vials** (~60 mg), and the same dose in children."
       }
+     ],
+     "fix": [
+      [
+       "Premedication not stated as routine",
+       "SC adrenaline 0.25 mg is now advised routinely before ASV (WHO SEARO 2016; Indian 2017 except known hypertensives). Freeze-dried ASV keeps 3–5 years."
+      ]
      ]
     },
     "SNAKE-12": {
@@ -7319,6 +7467,12 @@
        "q": "Is 10 vials a universal rule?",
        "a": "No — it is the Indian polyvalent rule. **CroFab** for North American pit vipers starts at **4–6 vials**. The constant is that **children get the adult dose**."
       }
+     ],
+     "fix": [
+      [
+       "Repeat 5–10 vials 6-hourly",
+       "Indian guideline 2017: neurotoxic — 10 vials over 30 min, another 10 at 1 h if no better (maximum 20). Haemotoxic low-dose — 10 vials (Russell’s) or 6 (saw-scaled), then 2 vials 6-hourly; high-dose — 10, then 6 vials 6-hourly."
+      ]
      ]
     },
     "SNAKE-14": {
@@ -7456,7 +7610,13 @@
         "immune complexes (type III)"
        ]
       ]
-     }
+     },
+     "fix": [
+      [
+       "IM adrenaline if severe",
+       "IM adrenaline 0.5 mg (child 0.01 mg/kg) comes first, at the earliest sign of anaphylaxis; chlorphenamine and hydrocortisone follow as add-ons."
+      ]
+     ]
     },
     "SNAKE-16": {
      "v": 2,
@@ -8071,6 +8231,12 @@
        "q": "Why does serum IL-6 rise after tocilizumab?",
        "a": "Tocilizumab blocks the **IL-6 receptor** (membrane and soluble), so IL-6 is no longer taken up and cleared through it — the level in the blood **rises** even as signalling stops."
       }
+     ],
+     "fix": [
+      [
+       "Tocilizumab: maximum 3 doses",
+       "At most 3 doses in 24 hours and 4 doses in total."
+      ]
      ]
     },
     "ONC-07": {
@@ -8296,7 +8462,13 @@
         "diffuse oedema, papilloedema"
        ]
       ]
-     }
+     },
+     "fix": [
+      [
+       "Grade 4 ICANS: as grade 3",
+       "Grade 4 needs high-dose methylprednisolone 1 g a day (usually 3 days), not dexamethasone alone (ASCO/NCCN)."
+      ]
+     ]
     },
     "ONC-10": {
      "v": 2,
@@ -8358,7 +8530,17 @@
        "Do not rechallenge."
       ]
      ],
-     "punch": "Treat an irAE like an autoimmune disease you caused: hold the drug, rule out infection, give high-dose steroids, add infliximab or mycophenolate if they fail, taper slowly — and do not rechallenge after a severe event unless the gland can just be replaced."
+     "punch": "Treat an irAE like an autoimmune disease you caused: hold the drug, rule out infection, give high-dose steroids, add infliximab or mycophenolate if they fail, taper slowly — and do not rechallenge after a severe event unless the gland can just be replaced.",
+     "fix": [
+      [
+       "Steroid-refractory: no response in 5–7 days",
+       "Now: no improvement after about 48–72 hours of high-dose steroids (ASCO/ESMO)."
+      ],
+      [
+       "Grade 3–4: stop permanently",
+       "Permanent for grade 4 and for myocarditis of any grade; after some grade 3 events (e.g. anti-PD-1 colitis) the drug can be restarted once the event settles to grade 1."
+      ]
+     ]
     },
     "ONC-11": {
      "v": 2,
@@ -8491,6 +8673,16 @@
        "q": "Classic transplant cause of PRES, and its management?",
        "a": "**Calcineurin inhibitors (ciclosporin, tacrolimus)**: seizures, hypertension, cortical blindness, parieto-occipital vasogenic oedema. **Withdraw or switch the CNI and control BP** — usually reversible."
       }
+     ],
+     "fix": [
+      [
+       "Trastuzumab causes ACS",
+       "Trastuzumab causes (usually reversible) left-ventricular dysfunction, not ACS. The ACS drugs are 5-FU/capecitabine (coronary spasm) and bevacizumab (arterial thrombosis)."
+      ],
+      [
+       "Checkpoint myocarditis row",
+       "Add: stop the checkpoint inhibitor permanently at any grade, and give methylprednisolone 500–1000 mg a day."
+      ]
      ]
     },
     "ONC-12": {
@@ -8829,5 +9021,5 @@
    ]
   }
  },
- "version": "aa31ac15c8"
+ "version": "ea2a3c0eb2"
 }
