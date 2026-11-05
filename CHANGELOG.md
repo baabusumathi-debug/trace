@@ -27,7 +27,7 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ## T-084 — 2026-11-05 — Claude — test — 1.3.59
 - **Corrections to the Toxicology cards, shown on the card and in Explain** (Naven, 5 Nov: "wherever you find corrections, put it there… with a mention in the explanation").
-  - 36 corrections on 31 cards (TOX02–TOX06), curated from the writers' and reviewers' flags. Only real errors or outdated guidance; notes like "source-specific" or "card is correct" were left out.
+  - 33 corrections on 30 cards (TOX02–TOX06), curated from the writers' and reviewers' flags. Only real errors or outdated guidance; notes like "source-specific" or "card is correct" were left out.
   - On the card's answer side they appear in the existing **CORRECTION · CHECKED** box (with the bank fixes): "Card: <what it says>" struck through, then the right version in bold.
   - In the Explain pane, a **CORRECTION TO YOUR CARD** section follows "What's going on" (Learn) and comes first in Revise.
   - The card text itself stays unchanged (AGENTS.md §3.6); the corrections sit in `explain.json` as `fix`. Source: `tools/explain/tox_corrections.py`, built by `build_explain_v2.py`.
