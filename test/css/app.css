@@ -1498,3 +1498,24 @@ details.qfold>.bx{margin-top:8px}
 .flow.v3 #f-ring{display:none}
 .flow.v3 .f-cnt{font-size:12px;color:#b9b2a0;flex-shrink:0}.flow.v3 .f-cnt b{color:#f1ead6;font-size:13px}
 @media (max-width:640px){.flow.v3 .big2{flex-basis:30%;font-size:14px}}
+/* T-080: quick intents in the Ask menu; Change today sheet; repair/subject split options */
+.ask-menu{max-height:calc(100vh - 16px);overflow:auto}
+.ask-menu .am-int{display:flex;flex-wrap:wrap;gap:5px;margin:0 2px 4px}
+.ask-menu .am-int button{display:inline-flex;justify-content:center;padding:6px 10px;font-size:12.5px;border-radius:999px;background:#2b2d33;color:#ddd6c4;border:1px solid #3a3d44}
+.ask-menu .am-int button.on{background:#e8dfc8;color:#1d1d20;border-color:#e8dfc8;outline:0;font-weight:600}
+.ask-menu .am-own{background:#15171b;border:1px solid #3a3d44;border-radius:8px;color:#ececed;padding:7px 9px;font:inherit;font-size:13.5px;resize:vertical;margin:0 2px}
+.ask-menu .am-h2{margin-top:8px}
+.ai-int{display:grid;grid-template-columns:1fr auto;gap:4px;margin:6px 0;padding-bottom:6px;border-bottom:1px solid #2b2d33}
+.ai-int input{grid-column:1;background:#15171b;border:1px solid #3a3d44;border-radius:8px;color:#ececed;padding:5px 8px;font:inherit;font-size:13px;font-weight:600}
+.ai-int textarea{grid-column:1/3;margin:0!important;font-family:inherit!important;font-size:12.5px!important}
+.ai-int [data-idel]{grid-column:2;grid-row:1;align-self:center!important;padding:3px 9px!important}
+.ai-ints .ai-add{flex-direction:row}
+.ct-list{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.ct-row{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line,#3a3d44);border-radius:10px}
+.ct-n{display:flex;flex-direction:column;min-width:0}.ct-n i{font-style:normal;font-size:12px;color:var(--muted)}
+.ct-ord,.ct-num{display:flex;align-items:center;gap:4px}.ct-num b{min-width:30px;text-align:center;font-size:16px}
+.ct-row .btn.sm{padding:5px 9px;font-size:12px}
+.ct-tot{font-size:11px;letter-spacing:.1em;color:var(--muted);margin:4px 2px}
+.sheet .seg.wide{flex-wrap:wrap}.sheet .seg.wide button{min-width:120px}
+.sheet .mono.kick{display:block;margin:10px 0 4px}
+@media (max-width:600px){.ct-row{grid-template-columns:1fr auto auto}.ct-row>:last-child{grid-column:1/-1;justify-self:start}}

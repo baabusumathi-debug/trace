@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-079)
+## State (as of entry T-080)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.55** · last code commit: see entry T-079. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.56** · last code commit: see entry T-080. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,19 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-080 — 2026-11-05 — Claude — test — 1.3.56
+- **Quick intents in the Ask menu** (Naven, 5 Nov). The menu now asks *what* before *where*:
+  - Chips: Explain, Normal value, Mechanism, Basics first, Compare, Why wrong, Exam angle, Connect. Most-used first; the last one used is preselected. Tap again to clear.
+  - A free box, "Or ask in your own words…". With a chip it is added under the chip's line; alone it replaces it.
+  - The template's ask line is now `{ask}`. A custom template without `{ask}` gets its old "Explain this part properly…" line replaced, or `{ask}` appended.
+  - ⚙ › Claude chats › Quick intents: edit each button's name and line, add, remove, reset (`P aiIntents`, use counts in `P aiIntentUse`).
+- **Flexible Plan.**
+  - Repair pile: walked first or last in the day; spread evenly, finish by a date, or a fixed number a day; the cap still applies to the spread modes (`st.repair.pos/spread/by/fixed`; older plans read as first + even).
+  - Subjects: In order, Evenly, Fixed a day, Finish by (stored on the existing `mode/daily/to`).
+  - **Change today** sheet (Plan › Change today…): per row ↑↓ for today's walk order (`st.order[day]`), − + by 5 (a today pin; pins may now go over the day's room), "Finish today (n)" to go deep on one subject, "+ Add for today only" (a subject with `once`, from = to = today; it drops out after today), and "Undo today's changes". The other days re-plan from what is left.
+  - `todayCards`/`todayParts` follow the day's order. The grid shows the repair row first or last to match.
+- Checked in a demo run at 1400×1000: plan sheets, Change today (order, ±, finish today, undo, add for today), the Ask menu message with an intent + own words, the intents editor. No console errors.
 
 ## T-079 — 2026-11-05 — Claude — test — 1.3.55
 - **Study desk in Drive** (Naven, 5 Nov). The card library is reachable from a Claude chat through Google Drive.

@@ -34,7 +34,7 @@ export function currentStretch() {
 export function newStretch({ start, days, pace } = {}) {
   const p = loadPlan(), last = p.stretches[p.stretches.length - 1];
   const s = { id: rid(), name: 'Stretch ' + (p.stretches.length + 1), start: start || (last ? addDays(last.start, last.days) : today()), days: days || 10,
-    pace: pace || (last ? last.pace : 65), ceiling: last ? last.ceiling : 75, dayType: {}, subjects: [], pins: {}, repair: { on: true, cap: 20 }, created: Date.now() };
+    pace: pace || (last ? last.pace : 65), ceiling: last ? last.ceiling : 75, dayType: {}, subjects: [], pins: {}, repair: { on: true, cap: 20, pos: 'first', spread: 'even' }, order: {}, created: Date.now() };
   p.stretches.push(s); p.current = s.id; savePlan();
   return s;
 }
@@ -69,6 +69,7 @@ export function compute(st) {
   const td = today(), days = dayList(st), t0 = dayStart(td), now = Date.now();
   const cap = d => { const t = DAY_TYPES.find(x => x[0] === dayType(st, d)); return t && t[2] != null ? t[2] : st.pace; };
   const isFuture = d => d >= td;
+  const R = repairOpts(st);
   const subs = st.subjects;
   const cells = {}, actual = {}, overflow = {};
   for (const s of subs.concat([{ id: 'repair' }])) { cells[s.id] = {}; actual[s.id] = {}; overflow[s.id] = 0; }
@@ -83,8 +84,10 @@ export function compute(st) {
   Object.assign(actual.repair, repairWalks);
   // what is left at the start of today
   const left = {}; for (const s of subs) left[s.id] = s.keys.length - subjectDone(s, t0);
+  for (const s of subs) if (s.once && s.to && s.to < td) left[s.id] = 0;   // a today-only subject from an earlier day is finished with
+  const leftStart = { ...left };
   const future = days.filter(isFuture);
-  const repairTotal = st.repair && st.repair.on ? againList().length + repairsDueLater().filter(r => dkey(r.first || r.ts) <= days[days.length - 1]).length + (actual.repair[td] || 0) : 0;
+  const repairTotal = R.on ? againList().length + repairsDueLater().filter(r => dkey(r.first || r.ts) <= days[days.length - 1]).length + (actual.repair[td] || 0) : 0;
   const workDays = future.filter(d => cap(d) > 0);
   // effective pace: raise normal days (up to the ceiling) when the work left needs it
   const demand = repairTotal + subs.reduce((t, s) => t + Math.max(0, left[s.id]), 0);
@@ -94,15 +97,22 @@ export function compute(st) {
   const effPace = Math.max(st.pace, Math.min(st.ceiling || st.pace, needPace));
   const capOf = d => dayType(st, d) === 'normal' ? effPace : cap(d);
   const room = {}; future.forEach(d => room[d] = capOf(d));
-  // 1. repair pile first, spread over the working days left, at most `cap` a day
+  // 1. repair pile: its share is kept for it each day (where it sits in the walk is R.pos, used by todayCards).
+  //    even = spread over the working days left; by = spread to a date; fixed = a set number a day. Never more than cap (even/by).
   let rep = repairTotal;
-  workDays.forEach((d, i) => { const share = Math.min(st.repair.cap || 20, Math.ceil(rep / (workDays.length - i)), room[d]); if (share > 0) { cells.repair[d] = share; room[d] -= share; rep -= share; } });
+  const rDays = (R.spread === 'by' && R.by && workDays.some(d => d <= R.by)) ? workDays.filter(d => d <= R.by) : workDays;
+  rDays.forEach((d, i) => {
+    const pin = st.pins['repair|' + d];
+    const want = pin != null ? pin : R.spread === 'fixed' ? R.fixed : Math.min(R.cap, Math.ceil(rep / (rDays.length - i)));
+    const share = Math.max(0, Math.min(want, rep, pin != null ? Infinity : room[d]));
+    if (share > 0) { cells.repair[d] = share; room[d] -= share; rep -= share; }
+  });
   overflow.repair = Math.max(0, rep);
-  // 2. pinned cells
+  // 2. pinned cells (a fixed number may go over the day's room: "go deep" today)
   for (const s of subs) for (const d of future) {
     const pin = st.pins[s.id + '|' + d];
     if (pin == null) continue;
-    const v = Math.max(0, Math.min(pin, left[s.id], room[d])); cells[s.id][d] = v; room[d] -= v; left[s.id] -= v;
+    const v = Math.max(0, Math.min(pin, left[s.id])); cells[s.id][d] = v; room[d] -= v; left[s.id] -= v;
   }
   // 3. daily lanes (a number a day, or spread to their last day)
   for (const s of subs.filter(x => x.mode === 'daily')) {
@@ -126,11 +136,27 @@ export function compute(st) {
   const total = {}; days.forEach(d => { total[d] = Object.values(cells).reduce((t, c) => t + (c[d] || 0), 0); });
   const done = {}; days.forEach(d => { done[d] = Object.values(actual).reduce((t, c) => t + (c[d] || 0), 0); });
   const over = Object.values(overflow).reduce((t, v) => t + v, 0);
-  const cards = repairTotal + subs.reduce((t, s) => t + s.keys.length - subjectDone(s, t0), 0);
+  const cards = repairTotal + subs.reduce((t, s) => t + Math.max(0, leftStart[s.id]), 0);
   const roomAll = future.reduce((t, d) => t + capOf(d), 0);
   return { days, td, cap: capOf, cells, actual, overflow, over, total, done, effPace, needPace, raised: effPace > st.pace, cards, room: roomAll,
-    spare: Math.max(0, roomAll - cards), repairTotal, todayPlan: days.includes(td) ? total[td] || 0 : 0, active: days.includes(td), future };
+    spare: Math.max(0, roomAll - cards), repairTotal, leftStart, repairOpts: R, todayPlan: days.includes(td) ? total[td] || 0 : 0, active: days.includes(td), future };
 }
+
+/* ---------- repair options (older plans have only on + cap) ---------- */
+export function repairOpts(st) {
+  const r = st.repair || (st.repair = { on: true, cap: 20 });
+  return { on: !!r.on, cap: r.cap == null ? 20 : r.cap, pos: r.pos === 'last' ? 'last' : 'first', spread: ['even', 'by', 'fixed'].includes(r.spread) ? r.spread : 'even', by: r.by || null, fixed: r.fixed == null ? 10 : r.fixed };
+}
+/* ---------- the order of a day's walk: st.order[d] (ids), else repair first/last around the subjects ---------- */
+export function dayOrder(st, d) {
+  const ids = st.subjects.map(s => s.id), pos = repairOpts(st).pos;
+  const base = pos === 'last' ? ids.concat('repair') : ['repair'].concat(ids);
+  const saved = (st.order && st.order[d]) || [];
+  const out = saved.filter(id => base.includes(id));
+  base.forEach(id => { if (!out.includes(id)) { const j = base.indexOf(id); const after = base.slice(0, j).reverse().find(x => out.includes(x)); out.splice(after ? out.indexOf(after) + 1 : 0, 0, id); } });
+  return out;
+}
+export function setDayOrder(st, d, ids) { st.order = st.order || {}; st.order[d] = ids; Object.keys(st.order).forEach(k => { if (k < addDays(today(), -2)) delete st.order[k]; }); savePlan(); }
 
 /* ---------- today's cards, in plan order ---------- */
 export function todayCards(st, r = compute(st)) {
@@ -138,8 +164,9 @@ export function todayCards(st, r = compute(st)) {
   const td = r.td, out = [], seenK = new Set();
   const doneToday = id => r.actual[id][td] || 0;
   const add = c => { const k = c.deck + '|' + c.code; if (!seenK.has(k)) { seenK.add(k); out.push(c); } };
-  againList().slice(0, Math.max(0, (r.cells.repair[td] || 0) - doneToday('repair'))).forEach(a => { const c = cardOf(a.deck + '|' + a.code); if (c) add(c); });
-  for (const s of st.subjects) {
+  for (const id of dayOrder(st, td)) {
+    if (id === 'repair') { againList().slice(0, Math.max(0, (r.cells.repair[td] || 0) - doneToday('repair'))).forEach(a => { const c = cardOf(a.deck + '|' + a.code); if (c) add(c); }); continue; }
+    const s = st.subjects.find(x => x.id === id); if (!s) continue;
     let n = (r.cells[s.id][td] || 0) - doneToday(s.id);
     for (const k of s.keys) { if (n <= 0) break; if (walkedAfter(k, s.addedAt) != null) continue; const c = cardOf(k); if (c) { add(c); n--; } }
   }
@@ -148,7 +175,10 @@ export function todayCards(st, r = compute(st)) {
 export function todayParts(st, r = compute(st)) {
   if (!r.active) return [];
   const td = r.td, parts = [];
-  if (r.cells.repair[td]) parts.push({ name: 'Repair', n: r.cells.repair[td], done: r.actual.repair[td] || 0 });
-  for (const s of st.subjects) if (r.cells[s.id][td]) parts.push({ name: s.name, n: r.cells[s.id][td], done: r.actual[s.id][td] || 0 });
+  for (const id of dayOrder(st, td)) {
+    if (!r.cells[id] || !r.cells[id][td]) continue;
+    const s = st.subjects.find(x => x.id === id);
+    parts.push({ id, name: id === 'repair' ? 'Repair' : s.name, n: r.cells[id][td], done: r.actual[id][td] || 0 });
+  }
   return parts;
 }

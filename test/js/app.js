@@ -11,7 +11,7 @@ import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, best
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES } from './plan.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
@@ -939,7 +939,10 @@ function renderPlan() {
   const p = loadPlan(), st = currentStretch();
   if (!st) return renderPlanNew();
   const r = compute(st), days = r.days, td = r.td, band = paceBand(st.pace);
-  const rows = [{ id: 'repair', name: 'Repair pile', sub: st.repair.on ? `${r.repairTotal} waiting · up to ${st.repair.cap} a day` : 'off', auto: true }].concat(st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards${s.mode === 'daily' ? ' · ' + (s.daily ? s.daily + ' a day' : 'spread') : ''}${s.from ? ' · from ' + dShort(s.from) : ''}` })));
+  const R = repairOpts(st);
+  const repRow = { id: 'repair', name: 'Repair pile', sub: R.on ? `${r.repairTotal} waiting · ${R.spread === 'fixed' ? R.fixed + ' a day' : R.spread === 'by' && R.by ? 'done by ' + dShort(R.by) + ', up to ' + R.cap + ' a day' : 'up to ' + R.cap + ' a day'} · walked ${R.pos === 'last' ? 'last' : 'first'}` : 'off', auto: true };
+  const subRows = st.subjects.map(s => ({ ...s, sub: `${s.sub ? s.sub + ' · ' : ''}${s.keys.length} cards · ${splitName(s)}${s.from && !s.once ? ' · from ' + dShort(s.from) : ''}` }));
+  const rows = R.pos === 'last' ? subRows.concat(repRow) : [repRow].concat(subRows);
   const anyOver = r.over > 0;
   const cell = (row, d) => {
     const plan = r.cells[row.id][d] || 0, did = r.actual[row.id][d] || 0, pin = st.pins[row.id + '|' + d] != null;
@@ -969,7 +972,7 @@ function renderPlan() {
       </table></div>
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button></div>
-      ${r.active && r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}
+      ${r.active ? `<div class="two pbtns">${r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}<button class="btn ghost" data-chtoday>Change today…</button></div>` : ''}
       <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
       <button class="linkbtn muted small" data-delstretch>Delete ${esc(st.name)}</button>
     </div>
@@ -991,6 +994,7 @@ function renderPlan() {
   app.querySelector('[data-addsubj]').onclick = () => addSubjectSheet(st, re);
   app.querySelector('[data-pickmosaic]').onclick = () => { P.set('pickOn', true); P.set('pickForPlan', true); go('#/sys/all'); };
   const pt = app.querySelector('[data-plantoday]'); if (pt) pt.onclick = () => { const q = todayCards(st); if (q.length) startFlow(q, { label: 'The Plan · today', returnTo: location.hash }); else toast('Today’s plan is done.'); };
+  const ct = app.querySelector('[data-chtoday]'); if (ct) ct.onclick = () => changeTodaySheet(st, re);
   app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); });
   if (planPending) { const pend = planPending; planPending = null; nameSubjectSheet(st, pend, re); }
 }
@@ -1030,10 +1034,62 @@ function pinSheet(st, id, d, n, re) {
   });
 }
 function repairSheet(st, re) {
-  planSheet('Repair pile', 'AUTOMATIC ROW', `<p class="muted small">Cards waiting from DocT misses and Again marks, spread over the days left. It grows by itself after each GT or module review.</p>
-    <div class="pnew"><label><input type="checkbox" data-ron ${st.repair.on ? 'checked' : ''}> Plan repairs first every day</label><label>Never more than <input type="number" min="0" max="100" value="${st.repair.cap}" data-rcap> a day</label></div>
+  const R = repairOpts(st);
+  planSheet('Repair pile', 'AUTOMATIC ROW', `<p class="muted small">Cards waiting from DocT misses and Again marks. It grows by itself after each GT or module review.</p>
+    <div class="pnew"><label><input type="checkbox" data-ron ${R.on ? 'checked' : ''}> Plan repairs</label></div>
+    <p class="mono kick">IN THE DAY’S WALK</p>
+    <div class="seg wide"><button class="${R.pos === 'first' ? 'on' : ''}" data-rpos="first">First (before subjects)</button><button class="${R.pos === 'last' ? 'on' : ''}" data-rpos="last">Last (after subjects)</button></div>
+    <p class="mono kick">HOW MANY A DAY</p>
+    <div class="seg wide"><button class="${R.spread === 'even' ? 'on' : ''}" data-rsp="even">Spread evenly</button><button class="${R.spread === 'by' ? 'on' : ''}" data-rsp="by">Finish by a date</button><button class="${R.spread === 'fixed' ? 'on' : ''}" data-rsp="fixed">Fixed a day</button></div>
+    <div class="pnew"><label data-rbox="by">Done by <select data-rby>${planDays(st).map(d => `<option value="${d}"${(R.by || planDays(st).slice(-1)[0]) === d ? ' selected' : ''}>${dShort(d)}</option>`).join('')}</select></label><label data-rbox="fixed">Cards a day <input type="number" min="0" max="100" value="${R.fixed}" data-rfix></label><label data-rbox="cap">Never more than <input type="number" min="0" max="100" value="${R.cap}" data-rcap> a day</label></div>
+    <p class="muted small">You can still change today’s number in Change today.</p>
     <div class="sheet-f"><button class="btn primary" data-rsave>Save</button></div>`, (w, c) => {
-    w.querySelector('[data-rsave]').onclick = () => { st.repair.on = w.querySelector('[data-ron]').checked; st.repair.cap = Math.max(0, +w.querySelector('[data-rcap]').value || 0); savePlan(); c(); re(); };
+    let pos = R.pos, sp = R.spread;
+    const show = () => { w.querySelector('[data-rbox=by]').hidden = sp !== 'by'; w.querySelector('[data-rbox=fixed]').hidden = sp !== 'fixed'; w.querySelector('[data-rbox=cap]').hidden = sp === 'fixed'; };
+    const seg = (attr, set) => w.querySelectorAll(`[${attr}]`).forEach(b => b.onclick = () => { set(b.getAttribute(attr)); w.querySelectorAll(`[${attr}]`).forEach(x => x.classList.toggle('on', x === b)); show(); });
+    seg('data-rpos', v => pos = v); seg('data-rsp', v => sp = v); show();
+    w.querySelector('[data-rsave]').onclick = () => {
+      Object.assign(st.repair, { on: w.querySelector('[data-ron]').checked, pos, spread: sp, cap: Math.max(0, +w.querySelector('[data-rcap]').value || 0), fixed: Math.max(0, +w.querySelector('[data-rfix]').value || 0), by: w.querySelector('[data-rby]').value || planDays(st).slice(-1)[0] });
+      savePlan(); c(); re();
+    };
+  });
+}
+const splitOf = s => s.mode !== 'daily' ? 'seq' : s.daily ? 'fixed' : s.to ? 'by' : 'even';
+function splitName(s) { if (s.once) return 'today only'; const k = splitOf(s); return k === 'seq' ? 'in order' : k === 'fixed' ? s.daily + ' a day' : k === 'by' ? 'finish by ' + dShort(s.to) : 'evenly'; }
+// T-080: change today only — numbers (± fixes today), the order of the walk, add something for today, go deep on one subject
+function changeTodaySheet(st, re) {
+  const draw = () => {
+    const r = compute(st), td = r.td, ids = dayOrder(st, td), R = repairOpts(st);
+    const nameOf = id => id === 'repair' ? 'Repair pile' : (st.subjects.find(x => x.id === id) || {}).name || '';
+    const rows = ids.filter(id => id === 'repair' ? R.on : true).map((id, i, arr) => {
+      const n = r.cells[id][td] || 0, did = r.actual[id][td] || 0, pin = st.pins[id + '|' + td] != null;
+      const left = id === 'repair' ? r.repairTotal : (r.leftStart[id] || 0);
+      return `<div class="ct-row" data-id="${id}"><span class="ct-n"><b>${esc(nameOf(id))}</b><i>${did ? did + ' walked · ' : ''}${left} left${pin ? ' · fixed today' : ''}</i></span>
+        <span class="ct-ord"><button class="iconbtn sm" data-up ${i === 0 ? 'disabled' : ''} aria-label="Walk earlier">↑</button><button class="iconbtn sm" data-dn ${i === arr.length - 1 ? 'disabled' : ''} aria-label="Walk later">↓</button></span>
+        <span class="ct-num"><button class="iconbtn sm" data-m aria-label="5 fewer">−</button><b>${n}</b><button class="iconbtn sm" data-p aria-label="5 more">+</button></span>
+        ${left > n ? `<button class="btn ghost sm" data-deep>Finish today (${left})</button>` : '<span></span>'}</div>`;
+    }).join('');
+    return { r, td, ids, html: `<p class="muted small">Only today changes. The other days re-plan from what is left. ↑↓ is the order you walk them; − + changes today’s number by 5.</p>
+      <div class="ct-list">${rows}</div>
+      <p class="ct-tot mono">TODAY ${r.total[td] || 0} · ROOM ${r.cap(td)}${(r.total[td] || 0) > r.cap(td) ? ' · OVER BY ' + ((r.total[td] || 0) - r.cap(td)) : ''}</p>
+      <div class="sheet-f"><button class="btn ghost" data-ctreset>Undo today’s changes</button><button class="btn ghost" data-ctadd>+ Add for today only</button><button class="btn primary" data-x>Done</button></div>` };
+  };
+  planSheet('Change today', 'THE PLAN · TODAY', '<div data-ctbody></div>', (w, c) => {
+    const paint = () => {
+      const d = draw(), body = w.querySelector('[data-ctbody]'); body.innerHTML = d.html;
+      const pinK = id => id + '|' + d.td;
+      body.querySelectorAll('.ct-row').forEach(row => {
+        const id = row.dataset.id, cur = d.r.cells[id][d.td] || 0;
+        const mv = k => { const ids = d.ids.slice(), i = ids.indexOf(id); ids.splice(i, 1); ids.splice(i + k, 0, id); setDayOrder(st, d.td, ids); paint(); re(); };
+        row.querySelector('[data-up]').onclick = () => mv(-1); row.querySelector('[data-dn]').onclick = () => mv(1);
+        row.querySelector('[data-m]').onclick = () => { st.pins[pinK(id)] = Math.max(0, cur - 5); savePlan(); paint(); re(); };
+        row.querySelector('[data-p]').onclick = () => { st.pins[pinK(id)] = cur + 5; savePlan(); paint(); re(); };
+        const dp = row.querySelector('[data-deep]'); if (dp) dp.onclick = () => { st.pins[pinK(id)] = id === 'repair' ? d.r.repairTotal : d.r.leftStart[id]; savePlan(); paint(); re(); };
+      });
+      body.querySelector('[data-ctreset]').onclick = () => { Object.keys(st.pins).forEach(k => { if (k.endsWith('|' + d.td)) delete st.pins[k]; }); if (st.order) delete st.order[d.td]; savePlan(); paint(); re(); };
+      body.querySelector('[data-ctadd]').onclick = () => { c(); addSubjectSheet(st, re, { once: true }); };
+    };
+    paint();
   });
 }
 function subjectSheet(st, id, re) {
@@ -1041,19 +1097,22 @@ function subjectSheet(st, id, re) {
   const i = st.subjects.indexOf(s), done = subjectDone(s);
   planSheet(s.name, 'SUBJECT', `<p class="muted small">${s.keys.length} cards · ${done} walked since you added it${s.sub ? ' · ' + esc(s.sub) : ''}</p>
     <div class="pnew"><label>Name <input type="text" value="${esc(s.name)}" data-sname></label>${startSelect(st, s.from, 'data-sfrom')}</div>
-    <div class="seg wide"><button class="${s.mode !== 'daily' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${s.mode === 'daily' ? 'on' : ''}" data-smode="daily">A little every day</button></div>
-    <div class="pnew" data-dailybox ${s.mode === 'daily' ? '' : 'hidden'}><label>Cards a day <input type="number" min="0" max="150" value="${s.daily || ''}" placeholder="spread evenly" data-sdaily></label><label>Last day <input type="date" value="${s.to || ''}" data-sto></label></div>
+    <div class="seg wide"><button class="${splitOf(s) === 'seq' ? 'on' : ''}" data-smode="seq">In order (fills the days)</button><button class="${splitOf(s) === 'even' ? 'on' : ''}" data-smode="even">Evenly</button><button class="${splitOf(s) === 'fixed' ? 'on' : ''}" data-smode="fixed">Fixed a day</button><button class="${splitOf(s) === 'by' ? 'on' : ''}" data-smode="by">Finish by</button></div>
+    <div class="pnew"><label data-sbox="fixed">Cards a day <input type="number" min="0" max="150" value="${s.daily || 10}" data-sdaily></label><label data-sbox="by">Last day <input type="date" value="${s.to || planDays(st).slice(-1)[0]}" data-sto></label></div>
+    <p class="muted small" data-shelp></p>
     <div class="sheet-f"><button class="btn ghost" data-sup ${i === 0 ? 'disabled' : ''}>↑ Earlier</button><button class="btn ghost" data-sdown ${i === st.subjects.length - 1 ? 'disabled' : ''}>↓ Later</button><button class="btn ghost" data-sdel>Remove</button><button class="btn primary" data-ssave>Save</button></div>`, (w, c) => {
-    let mode = s.mode || 'seq';
-    w.querySelectorAll('[data-smode]').forEach(b => b.onclick = () => { mode = b.dataset.smode; w.querySelectorAll('[data-smode]').forEach(x => x.classList.toggle('on', x === b)); w.querySelector('[data-dailybox]').hidden = mode !== 'daily'; });
+    let mode = splitOf(s);
+    const HELP = { seq: 'Fills each day after the others, in the order of the rows.', even: 'The same number every day until the last day of the stretch.', fixed: 'This many every day until it is done.', by: 'Spread evenly so it is done by that day.' };
+    const show = () => { w.querySelector('[data-sbox=fixed]').hidden = mode !== 'fixed'; w.querySelector('[data-sbox=by]').hidden = mode !== 'by'; w.querySelector('[data-shelp]').textContent = HELP[mode]; };
+    w.querySelectorAll('[data-smode]').forEach(b => b.onclick = () => { mode = b.dataset.smode; w.querySelectorAll('[data-smode]').forEach(x => x.classList.toggle('on', x === b)); show(); }); show();
     const mv = k => { st.subjects.splice(i, 1); st.subjects.splice(i + k, 0, s); savePlan(); c(); re(); };
     w.querySelector('[data-sup]').onclick = () => mv(-1); w.querySelector('[data-sdown]').onclick = () => mv(1);
     w.querySelector('[data-sdel]').onclick = () => { st.subjects.splice(i, 1); Object.keys(st.pins).forEach(k => { if (k.startsWith(s.id + '|')) delete st.pins[k]; }); savePlan(); c(); re(); };
-    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode; s.daily = +w.querySelector('[data-sdaily]').value || null; s.to = w.querySelector('[data-sto]').value || null; s.from = w.querySelector('[data-sfrom]').value || null; savePlan(); c(); re(); };
+    w.querySelector('[data-ssave]').onclick = () => { s.name = w.querySelector('[data-sname]').value.trim() || s.name; s.mode = mode === 'seq' ? 'seq' : 'daily'; s.daily = mode === 'fixed' ? (+w.querySelector('[data-sdaily]').value || 10) : null; s.to = mode === 'by' ? (w.querySelector('[data-sto]').value || null) : null; s.once = false; s.from = w.querySelector('[data-sfrom]').value || null; savePlan(); c(); re(); };
   });
 }
 // Quick add: a system (or all), a pool and walk counts → live count → subject
-function addSubjectSheet(st, re) {
+function addSubjectSheet(st, re, opt = {}) {
   const sys = systems();
   let sk = sys[0] ? sysNum(sys[0].name) : '', pool = 'hit', wk = '';
   const pick = () => { const g = sys.find(x => sysNum(x.name) === sk); return g ? g.decks.flatMap(d => cardsOf(d.deck)).filter(c => inPool(c, pool) && walkOk(c, wk)) : []; };
@@ -1067,20 +1126,23 @@ function addSubjectSheet(st, re) {
     w.querySelectorAll('[data-apool]').forEach(b => b.onclick = () => { pool = b.dataset.apool; draw(w); });
     w.querySelectorAll('[data-awalk]').forEach(b => b.onclick = () => { wk = toggleWalk(wk, b.dataset.awalk); draw(w); });
   };
-  planSheet('Add a subject', 'THE PLAN', `<div data-abody></div><div class="pnew">${startSelect(st, '', 'data-afrom')}</div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
+  planSheet(opt.once ? 'Add for today only' : 'Add a subject', opt.once ? 'THE PLAN · TODAY' : 'THE PLAN', `<div data-abody></div><div class="pnew">${opt.once ? '<p class="muted small">All of it goes on today. Whatever is not walked today shows under Doesn’t fit, and you can remove it.</p><input type="hidden" data-afrom value="">' : startSelect(st, '', 'data-afrom')}</div><div class="sheet-f"><button class="btn ghost" data-apick>Pick part of it in the Mosaic</button><button class="btn primary" data-aadd>Add to plan</button></div>`, (w, c) => {
     draw(w);
-    w.querySelector('[data-apick]').onclick = () => { c(); P.set('pickOn', true); P.set('pickForPlan', true); P.set('moPool', pool); P.set('moWalk', wk); go('#/sys/' + sk); };
+    w.querySelector('[data-apick]').onclick = () => { c(); if (opt.once) P.set('pickOnce', true); P.set('pickOn', true); P.set('pickForPlan', true); P.set('moPool', pool); P.set('moWalk', wk); go('#/sys/' + sk); };
     w.querySelector('[data-aadd]').onclick = () => {
       const list = pick(); if (!list.length) { toast('No cards match.'); return; }
       const g = sys.find(x => sysNum(x.name) === sk);
-      addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code), from: w.querySelector('[data-afrom]').value || null });
+      const ns = addSubject(st, { name: g.label, sub: [poolName(pool), walkName(wk)].filter(x => x && x !== 'All').join(' · '), keys: list.map(c2 => c2.deck + '|' + c2.code), from: w.querySelector('[data-afrom]').value || null });
+      if (opt.once) makeOnce(ns);
       c(); re();
     };
   });
 }
+const makeOnce = s => { s.once = true; s.mode = 'daily'; s.daily = null; s.from = today(); s.to = today(); savePlan(); };
 function nameSubjectSheet(st, pend, re) {
-  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label>${startSelect(st, '', 'data-nfrom')}</div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
-    w.querySelector('[data-nadd]').onclick = () => { addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys, from: w.querySelector('[data-nfrom]').value || null }); c(); re(); };
+  const once = !!P.get('pickOnce', false); P.set('pickOnce', false);
+  planSheet('New subject', 'FROM THE MOSAIC', `<p class="muted small">${pend.keys.length} cards picked.</p><div class="pnew"><label>Name <input type="text" value="${esc(pend.name)}" data-nname></label>${startSelect(st, '', 'data-nfrom')}<label><input type="checkbox" data-nonce ${once ? 'checked' : ''}> Today only</label></div><div class="sheet-f"><button class="btn ghost" data-x>Cancel</button><button class="btn primary" data-nadd>Add to plan</button></div>`, (w, c) => {
+    w.querySelector('[data-nadd]').onclick = () => { const ns = addSubject(st, { name: w.querySelector('[data-nname]').value.trim() || pend.name, sub: pend.sub, keys: pend.keys, from: w.querySelector('[data-nfrom]').value || null }); if (w.querySelector('[data-nonce]').checked) makeOnce(ns); c(); re(); };
   });
 }
 // Loft card: the plan at a glance
@@ -1608,16 +1670,37 @@ const ASK_TPL = `{deck} · {code} · {title}
 Question: {question}
 Card answer: {answer}
 I selected ({from}): "{selected}"
-Explain this part properly: the mechanism, step by step.
+{ask}
 Look it up first: card {code} in deck {deckid} — Google Drive › Trace › Study desk › 00 INDEX tells you where; link related cards from other decks and cite their IDs.`;
+// T-080: quick intents — the {ask} line. Editable in ⚙ › Claude chats; most-used first. The free box adds your own words.
+const INTENTS = [
+  ['explain', 'Explain', 'Explain this part properly: the mechanism, step by step.'],
+  ['normal', 'Normal value', 'Give the normal values and cut-offs with units, and what moves them up or down.'],
+  ['mech', 'Mechanism', 'Walk me through the mechanism from the cause to this finding, one step at a time.'],
+  ['basics', 'Basics first', 'Start from the basic physiology I need for this, then build up to it.'],
+  ['compare', 'Compare', 'Compare this with its close mimics in a table, and name the one feature that separates them.'],
+  ['why', 'Why wrong', 'What is the common wrong answer here, and why is it wrong? Show the reasoning.'],
+  ['exam', 'Exam angle', 'How is this asked in NEET-SS? The traps, the cut-offs and the wording examiners use.'],
+  ['connect', 'Connect', 'connect: where else does this come up in my other decks and systems? Cite the card IDs.']
+].map(([id, label, line]) => ({ id, label, line }));
+const intents = () => { const a = P.get('aiIntents', null); return Array.isArray(a) && a.length ? a : INTENTS; };
+const intentsSorted = () => { const use = P.get('aiIntentUse', {}); return intents().slice().sort((a, b) => (use[b.id] || 0) - (use[a.id] || 0)); };
 const chats = () => P.get('aiChats', []), activeChat = () => { const a = chats(), id = P.get('aiActive', ''); return a.find(x => x.id === id) || a[0] || null; };
-function askText({ c, texts, from, kind }) {
+function askText({ c, texts, from, kind, intent, own }) {
   const one = s => plain(String(s || '')).replace(/\s+/g, ' ').trim();
   const { head, rest } = splitQ(c.q);
   const sel = texts && texts.length ? texts.join(' … ') : '';
   let t = P.get('aiTpl', '') || ASK_TPL;
-  if (!sel) t = t.replace(/I selected[^\n]*\n?/, '').replace(/Explain this part properly[^\n]*/, 'Explain this card properly: the mechanism behind each part, step by step.');
-  if (kind === 'trap') t = t.replace(/I selected[^\n]*/, 'Exam trap on this card: "{selected}"').replace(/Explain this part properly[^\n]*/, 'Why is this wrong, and what is right? Show the reasoning.');
+  const it = intent ? intents().find(x => x.id === intent) : null;
+  let ask = kind === 'trap' ? 'Why is this wrong, and what is right? Show the reasoning.'
+    : it ? it.line : (sel ? 'Explain this part properly: the mechanism, step by step.' : 'Explain this card properly: the mechanism behind each part, step by step.');
+  if (it && it.id === 'explain' && !sel) ask = 'Explain this card properly: the mechanism behind each part, step by step.';
+  own = String(own || '').trim();
+  if (own) ask = it || kind === 'trap' ? ask + '\n' + own : own;
+  if (!/\{ask\}/.test(t)) t = /Explain this part properly[^\n]*/.test(t) ? t.replace(/Explain this part properly[^\n]*/, '{ask}') : t + '\n{ask}';
+  t = t.replace(/\{ask\}/g, () => ask.replace(/\$/g, '$$$$'));
+  if (!sel) t = t.replace(/I selected[^\n]*\n?/, '');
+  if (kind === 'trap') t = t.replace(/I selected[^\n]*/, 'Exam trap on this card: "{selected}"');
   const m = deckMeta(c.deck) || {};
   return t.replace(/\{deckid\}/g, c.deck).replace(/\{deck\}/g, c.deck + (m.title ? ' (' + m.title + ')' : '')).replace(/\{code\}/g, c.code).replace(/\{title\}/g, one(head).replace(/:$/, ''))
     .replace(/\{question\}/g, one(rest || head).slice(0, 400)).replace(/\{answer\}/g, one(c.a).slice(0, 700)).replace(/\{selected\}/g, sel).replace(/\{from\}/g, from || 'card');
@@ -1639,26 +1722,41 @@ function askMenu(rect, payload) {
   document.querySelectorAll('.ask-menu').forEach(n => n.remove());
   const list = chats(), act = activeChat();
   const m = document.createElement('div'); m.className = 'ask-menu';
+  const its = intentsSorted();
+  let pick = P.get('aiIntentLast', '') && its.some(x => x.id === P.get('aiIntentLast', '')) ? P.get('aiIntentLast', '') : (its[0] || {}).id;
+  if (payload.kind === 'trap') pick = '';
   m.innerHTML = `<p class="mono am-h">ASK CLAUDE${payload.texts && payload.texts.length ? ' · selection' : payload.kind === 'trap' ? ' · exam trap' : ' · whole card'}</p>
+    <div class="am-int" role="radiogroup" aria-label="What do you want?">${its.map(x => `<button data-int="${esc(x.id)}" role="radio" aria-checked="${x.id === pick}" class="${x.id === pick ? 'on' : ''}">${x.id === pick ? '✓ ' : ''}${esc(x.label)}</button>`).join('')}</div>
+    <textarea class="am-own" rows="2" placeholder="Or ask in your own words…" data-own></textarea>
+    <p class="mono am-h am-h2">SEND TO</p>
     ${list.length ? list.map(x => `<button data-ask="${esc(x.id)}" class="${act && act.id === x.id ? 'on' : ''}"><b>${esc(x.name)}</b>${act && act.id === x.id ? '<span class="mono">last used</span>' : ''}</button>`).join('') : '<p class="am-n">No chats yet. Add your Claude chats in ⚙ › Claude chats.</p>'}
     <button data-ask="new" class="am-sub">New chat (pre-filled)</button>
     <button data-ask="google" class="am-sub">Search Google</button>
     <button data-ask="manage" class="am-sub mono">Manage chats…</button>`;
   document.body.appendChild(m);
-  const w = 260, x = Math.max(8, Math.min(innerWidth - w - 8, (rect ? rect.left : innerWidth / 2 - w / 2))), y = rect ? Math.min(innerHeight - m.offsetHeight - 8, rect.bottom + 6) : 80;
+  const own = m.querySelector('[data-own]');
+  own.onkeydown = e => e.stopPropagation();
+  m.querySelectorAll('[data-int]').forEach(b => b.onclick = e => { e.stopPropagation(); pick = pick === b.dataset.int ? '' : b.dataset.int;
+    m.querySelectorAll('[data-int]').forEach(x => { const on = x.dataset.int === pick; x.classList.toggle('on', on); x.setAttribute('aria-checked', on); x.textContent = (on ? '✓ ' : '') + (its.find(i => i.id === x.dataset.int) || {}).label; }); });
+  const w = Math.min(320, innerWidth - 16), x = Math.max(8, Math.min(innerWidth - w - 8, (rect ? rect.left : innerWidth / 2 - w / 2))), y = rect ? Math.min(innerHeight - m.offsetHeight - 8, rect.bottom + 6) : 80;
   Object.assign(m.style, { left: x + 'px', top: Math.max(8, y) + 'px', width: w + 'px' });
   const off = e => { if (!m.contains(e.target)) { m.remove(); document.removeEventListener('pointerdown', off, true); } };
   setTimeout(() => document.addEventListener('pointerdown', off, true), 0);
   m.querySelectorAll('[data-ask]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.ask; m.remove(); document.removeEventListener('pointerdown', off, true);
     if (k === 'manage') { const pp = $('#f-pop'); if (pp) { pp.hidden = false; const cs = pp.querySelector('.ai-set'); if (cs) cs.open = true; } return; }
-    doAsk(k, payload); });
+    if (pick) { const use = P.get('aiIntentUse', {}); use[pick] = (use[pick] || 0) + 1; P.set('aiIntentUse', use); P.set('aiIntentLast', pick); }
+    doAsk(k, { ...payload, intent: pick, own: own.value }); });
 }
 function chatSettingsHtml() {
   const list = chats(), act = activeChat();
   return `<details class="ai-set"><summary class="mono">CLAUDE CHATS · ${list.length}</summary>
     <div class="ai-list">${list.map(x => `<div class="ai-row${act && act.id === x.id ? ' on' : ''}"><b>${esc(x.name)}</b><span class="mono">${esc(x.url.replace(/^https?:\/\//, '').slice(0, 34))}…</span><button data-aidel="${esc(x.id)}" aria-label="Remove ${esc(x.name)}">✕</button></div>`).join('') || '<p class="muted small">None yet.</p>'}</div>
     <div class="ai-add"><input data-ain placeholder="Name (e.g. TOX doubts)"><input data-aiu placeholder="Chat link: https://claude.ai/chat/…"><button data-aiadd>Add</button></div>
-    <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {deckid} {code} {title} {question} {answer} {selected} {from} are filled in from the card.</p><button data-aitplreset>Reset</button></details>
+    <details class="ai-tpl ai-ints"><summary class="mono">QUICK INTENTS · ${intents().length}</summary>
+      <p class="muted small">The button name, and the line it puts into the message. Most-used come first in the Ask menu.</p>
+      ${intents().map((x, i) => `<div class="ai-int" data-i="${i}"><input data-il value="${esc(x.label)}" aria-label="Button name"><textarea data-iline rows="2" aria-label="Line it adds">${esc(x.line)}</textarea><button data-idel aria-label="Remove ${esc(x.label)}">✕</button></div>`).join('')}
+      <div class="ai-add"><button data-iadd>+ Add intent</button><button data-ireset>Reset to defaults</button></div></details>
+    <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {deckid} {code} {title} {question} {answer} {selected} {from} are filled in from the card; {ask} is the quick intent or your own words.</p><button data-aitplreset>Reset</button></details>
   </details>`;
 }
 function bindChatSettings(h) {
@@ -1671,8 +1769,16 @@ function bindChatSettings(h) {
   h.querySelectorAll('[data-aidel]').forEach(b => b.onclick = () => { P.set('aiChats', chats().filter(x => x.id !== b.dataset.aidel)); drawXpToggles(); keepOpen(); });
   const ta = h.querySelector('[data-aitpl]'); if (ta) { ta.onkeydown = e => e.stopPropagation(); ta.onchange = () => P.set('aiTpl', ta.value.trim() === ASK_TPL.trim() ? '' : ta.value); }
   const rs = h.querySelector('[data-aitplreset]'); if (rs) rs.onclick = () => { P.set('aiTpl', ''); drawXpToggles(); keepOpen(); };
+  const saveInts = a => P.set('aiIntents', a);
+  h.querySelectorAll('.ai-int').forEach(row => {
+    const i = +row.dataset.i;
+    row.querySelectorAll('input,textarea').forEach(f => { f.onkeydown = e => e.stopPropagation(); f.onchange = () => { const a = intents().map(x => ({ ...x })); a[i] = { ...a[i], label: row.querySelector('[data-il]').value.trim() || a[i].label, line: row.querySelector('[data-iline]').value.trim() || a[i].line }; saveInts(a); }; });
+    row.querySelector('[data-idel]').onclick = () => { const a = intents().filter((_, j) => j !== i); saveInts(a.length ? a : null); drawXpToggles(); keepOpen(true); };
+  });
+  const ia = h.querySelector('[data-iadd]'); if (ia) ia.onclick = () => { const a = intents().map(x => ({ ...x })); a.push({ id: 'i' + Date.now().toString(36), label: 'New', line: 'Write the line it adds here.' }); saveInts(a); drawXpToggles(); keepOpen(true); };
+  const ir = h.querySelector('[data-ireset]'); if (ir) ir.onclick = () => { P.set('aiIntents', null); drawXpToggles(); keepOpen(true); };
   h.querySelectorAll('input').forEach(i => { i.onkeydown = e => e.stopPropagation(); });
-  function keepOpen() { const d = document.querySelector('#f-xp .ai-set'); if (d) d.open = true; }
+  function keepOpen(ints) { const d = document.querySelector('#f-xp .ai-set') || document.querySelector('.ai-set'); if (d) { d.open = true; if (ints) { const e = d.querySelector('.ai-ints'); if (e) e.open = true; } } }
 }
 // the Explain header (title, size, Learn/Revise) lives above the scrolling explanation, never inside it
 function placeXpBar(el) {
