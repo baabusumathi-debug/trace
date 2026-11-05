@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-069)
+## State (as of entry T-070)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.10** · promoted from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.45** · last code commit: see entry T-069. Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.46** · last code commit: see entry T-070. Carries **only TOX01** (`CONFIG.onlyDecks`). Live is 1.4.10 (= test 1.3.44). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,19 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-070 — 2026-11-05 — Claude — test — 1.3.46
+- **Explain v2, TOX01 only** (Naven, 5 Nov: "do only one deck, in test also put that only deck"). Based on the analysis of HT's 34 annotated PDFs (CCM project doc `HT_PDF_Additions_Analysis_5Nov.md`) and Naven's handwritten notes.
+  - **Learn** depth (shown on a card's first sight): subcategory line → What's going on → Part by part (each card letter restated, then the why) → table where a decision or comparison needs one → Close mimics → The traps ("X" is wrong. …) → How it is asked (stem → answer) → **Punchline last**. 240–510 words per main card; 14 rebuilt Top-ups get the same treatment.
+  - **Revise** depth (from the second sight): How it is asked, traps, punchline, and a button for the full explanation. A Learn/Revise switch on the panel, and Auto/Learn/Revise in the Flow panel (under "Explain settings").
+  - **No hooks or mnemonics, no deck map or deck close, no WHY gist line** (Naven: map cards confuse a first-time reader; the punchline must come after the explanation).
+  - Data: `test/data/explain.json` v2, built by `tools/explain/build_explain_v2.py` from `tox01_learn.py` and `tox01_topups_learn.py`. RESP04's pilot explanations are no longer shipped.
+- **Explain has its own scroll pane**: beside the answer in landscape, below it in portrait; the answer pane scrolls separately. Ink stays on the answer pane.
+- **Flow: Back and Pause.** Back (‹, or ←) looks at cards already walked in this flow, without changing anything logged; looking-back time is not counted as card time. Pause (⏸, or P) stops the clock and covers the card; tap to resume.
+- **Cards look like the PDFs**: white page, lighter tinted boxes.
+- **Pick fix**: a picked NEET tile now shows the white pick ring outside its gold NEET ring (before, the gold ring hid the pick).
+- **Test carries only TOX01**: `CONFIG.onlyDecks = ['TOX01']` in the test channel filters the library, downloads and screens; live is unaffected.
+- Checked in the demo (Tab landscape, Pixel 7): shelf shows only TOX01; Learn, Revise switch, separate scroll, Back, Pause; no errors. A medical fact-check of the new texts was running at commit time; its corrections follow in the next entry.
 
 ## T-069 — 2026-11-05 — Claude — test — 1.3.45
 - **Explain layer pilot** (Naven approved the pilot, 5 Nov) for **TOX01 and RESP04**. The design is in the CCM project doc `Explain_Layer_Design_5Nov.md`.

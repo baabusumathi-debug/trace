@@ -58,6 +58,7 @@ function chainHtml(steps) {
 export function gistHtml(x) { return x && x.gist ? `<div class="xp-gist"><span class="mono">WHY</span><p>${md(x.gist)}</p></div>` : ''; }
 export function panelHtml(c, x, opts) {
   if (!x) return '';
+  if (x.v === 2) return learnHtml(c, x, opts);
   const blk = (cls, lab, body) => body ? `<div class="xp-b ${cls}"><span class="xp-lab mono">${lab}</span><div>${body}</div></div>` : '';
   const pats = (x.pat || []).filter(k => X.patterns[k]).map(k => `<button class="xp-pat mono" data-pat="${esc(k)}">▦ ${esc(X.patterns[k].name)}</button>`).join('');
   const traps = [x.trap, x.trap2].filter(Boolean);
@@ -76,6 +77,39 @@ export function panelHtml(c, x, opts) {
       ${x.deeper ? `<details class="xp-deep"><summary>Deeper</summary><p>${md(x.deeper)}</p></details>` : ''}
       <label class="xp-note"><span class="mono">YOUR ANALOGY</span><textarea rows="2" data-xp-note placeholder="Your own picture for this — write or type">${esc(opts.note || '')}</textarea></label>
       <div class="xp-fb mono"><span>Was this useful?</span><button data-xp-fb="up" aria-label="Useful">👍</button><button data-xp-fb="down" aria-label="Not useful">👎</button><button data-xp-fb="long">too long</button><span class="xp-src">${x.topup ? 'Top-up · ' : ''}explain v${esc(X.v.slice(0, 4))}</span></div>
+    </div></div>`;
+}
+/* ---------- Explain v2 (T-070): Learn on first sight, Revise afterwards ----------
+   Learn  = what's going on → part by part (why) → table → close mimics → traps → how it is asked → punchline (last).
+   Revise = how it is asked → traps → punchline, with a way back to the full explanation. */
+export const depthOf = (x, n, pref) => !x || x.v !== 2 ? 'learn' : pref === 'learn' || pref === 'revise' ? pref : (n > 0 ? 'revise' : 'learn');
+function learnHtml(c, x, opts) {
+  const depth = opts.depth || 'learn', learn = depth === 'learn';
+  const sec = (cls, lab, body) => body ? `<section class="xv ${cls}"><h4 class="mono">${lab}</h4>${body}</section>` : '';
+  const why = (x.why || []).map(([l, t]) => `<p class="xv-part"><b class="xl">${esc(l)}</b><span>${md(t)}</span></p>`).join('');
+  const tbl = x.table ? `<div class="xp-grid">${x.table.title ? `<p class="xv-tt">${md(x.table.title)}</p>` : ''}<table><thead><tr>${x.table.head.map(h => `<th>${md(h)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r => `<tr>${r.map((v, i) => i ? `<td>${md(v)}</td>` : `<th>${md(v)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
+  const mim = (x.mimic || []).map(([a, b]) => `<li><b>${md(a)}</b> — ${md(b)}</li>`).join('');
+  const trp = (x.traps || []).map(([a, b]) => `<li><b>${md(a)}</b> is wrong. ${md(b)}</li>`).join('');
+  const dec = (x.decode || []).map(([a, b]) => `<li><span class="xv-stem">${md(a)}</span><span class="xv-ar" aria-hidden="true">→</span><b>${md(b)}</b></li>`).join('');
+  const traps = trp ? (opts.traps ? sec('xv-trap', 'THE TRAPS', `<ul>${trp}</ul>`) : `<p class="xp-trapoff mono">${x.traps.length} exam trap${x.traps.length > 1 ? 's' : ''} hidden · turn traps on in the Flow panel</p>`) : '';
+  const body = learn
+    ? `${x.sub ? `<p class="xv-sub mono">${md(x.sub)}</p>` : ''}
+       ${sec('xv-ctx', 'WHAT’S GOING ON', x.intro ? `<p>${md(x.intro)}</p>` : '')}
+       ${sec('xv-why', 'PART BY PART', why)}
+       ${tbl}
+       ${sec('xv-mim', 'CLOSE MIMICS', mim ? `<ul>${mim}</ul>` : '')}
+       ${traps}
+       ${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
+       ${sec('xv-punch', 'PUNCHLINE', x.punch ? `<p>${md(x.punch)}</p>` : '')}`
+    : `${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
+       ${traps}
+       ${sec('xv-punch', 'PUNCHLINE', x.punch ? `<p>${md(x.punch)}</p>` : '')}
+       <button class="xv-more" data-xp-depth="learn">Read the full explanation</button>`;
+  return `<div class="xp v2${opts.open ? ' open' : ''}" data-depth="${depth}">
+    <div class="xp-bar"><button class="xp-tog" data-xp-tog aria-expanded="${opts.open}"><span>Explain</span></button>
+      <span class="xv-seg" role="group" aria-label="Explanation depth"><button class="${learn ? 'on' : ''}" data-xp-depth="learn" aria-pressed="${learn}">Learn</button><button class="${learn ? '' : 'on'}" data-xp-depth="revise" aria-pressed="${!learn}">Revise</button></span></div>
+    <div class="xp-body"${opts.open ? '' : ' hidden'}>${body}
+      <div class="xp-fb mono"><span>Was this useful?</span><button data-xp-fb="up" aria-label="Useful">👍</button><button data-xp-fb="down" aria-label="Not useful">👎</button><button data-xp-fb="long">too long</button><button data-xp-fb="short">too short</button><span class="xp-src">${x.topup ? 'Top-up · ' : ''}explain v${esc(X.v.slice(0, 4))}</span></div>
     </div></div>`;
 }
 // extra lettered parts (the rebuilt Top-up lines), shown from the second time a card is seen

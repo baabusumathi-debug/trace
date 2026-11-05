@@ -10,7 +10,7 @@ import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flo
 import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, bestHours, gtTrend, addDays, daysBetween, winStart, winEnd, PHASE1_END, WIN_START, WIN_END, STUDY_GOAL_H } from './loftx.js';
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
-import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, partsQHtml, partsAHtml, bridgeHtml, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
+import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
@@ -27,6 +27,8 @@ const ICON = {
   undo: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
   again: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4h4"/></svg>',
   flip: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="9" width="9" height="12.5" rx="1.5"/><path d="M4.5 9.5C5.5 5.5 8.5 3.5 12 3.5s6.5 2 7.5 6"/><path d="M19.5 9.5l.3-3.1M19.5 9.5l-3-.9"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></svg>',
+  play: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>',
   next: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   edit: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>',
   decks: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="7" y="3.5" width="12" height="17" rx="1.5"/><path d="M4.5 6.5v12.5a2 2 0 0 0 2 2"/></svg>',
@@ -1338,7 +1340,32 @@ async function endFlow() {
   if (location.hash === back) route(); else go(back);
   if (!browse && hasBackend()) sync({ downloadAll: false });
 }
-function current() { return flow.queue[flow.idx]; }
+function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - flow.peek].idx] : flow.queue[flow.idx]; }
+/* Back = look at cards already walked in this flow; nothing is logged or changed, and the time spent looking back is not
+   counted as card time. Pause stops the clock and covers the card. (T-070, Naven's notes 5 Nov) */
+function peekBack() {
+  if (!flow || flow.browse || flow.busy || flow.pausedAt) return;
+  if (flow.inter) flow.inter = null;
+  if (!flow.hist.length || (flow.peek || 0) >= flow.hist.length) { toast(flow.hist.length ? 'That is the first card of this flow.' : 'No earlier card in this flow yet.'); return; }
+  if (!flow.peek) flow.peekT0 = Date.now();
+  flow.peek = (flow.peek || 0) + 1;
+  animate('deal', () => { drawCard(); updateFlowChrome(); });
+}
+function peekForward(all) {
+  if (!flow || !flow.peek) return;
+  flow.peek = all ? 0 : flow.peek - 1;
+  if (!flow.peek) { const d = Date.now() - (flow.peekT0 || Date.now()); flow.cardT0 += d; flow.peekT0 = null; }
+  animate('deal', () => { drawCard(); updateFlowChrome(); });
+}
+function togglePause() {
+  if (!flow || flow.browse) return;
+  if (flow.pausedAt && !flow.userPause) { toast('You are on a break — tap I’m back.'); return; }
+  if (flow.userPause) { const d = Date.now() - flow.pausedAt; flow.cardT0 += d; flow.t0 += d; if (flow.peekT0) flow.peekT0 += d; flow.pausedAt = null; flow.userPause = false; }
+  else { flow.pausedAt = Date.now(); flow.userPause = true; }
+  const b = $('#f-pause'); if (b) b.innerHTML = flow.userPause ? `${ICON.play}<span class="lbl">Resume</span>` : `${ICON.pause}<span class="lbl">Pause</span>`;
+  $('.screen.flow').classList.toggle('paused', !!flow.userPause);
+  updateClock();
+}
 function sectionRange() {
   const c = current(); if (!c) return '';
   const ch = chunkOf(c), same = flow.queue.filter(x => x.deck === c.deck && chunkOf(x).key === ch.key).map(x => x.no);
@@ -1354,7 +1381,9 @@ function renderFlow() {
         <button class="iconbtn" data-act="close" aria-label="End flow">${ICON.close}</button>
         <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
         <span class="tsz"><button class="iconbtn sm" data-ts="-1" aria-label="Smaller text">A−</button><button class="iconbtn sm" data-ts="1" aria-label="Larger text">A+</button></span>
+        ${flow.browse ? '' : `<button class="iconbtn" data-act="peek" aria-label="Look at the previous card (nothing changes)" id="f-peek">${ICON.prev}<span class="lbl">Back</span></button>`}
         <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
+        ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
         <span class="ring" id="f-ring"></span>
       </div>
       <div class="f-stats mono">
@@ -1370,7 +1399,7 @@ function renderFlow() {
     <main class="f-main">
       <div class="ik-host" id="f-ink" hidden></div>
       ${flow.browse ? '' : '<div class="thread" id="f-thread" aria-live="polite"></div>'}
-      <div class="card-wrap"><article class="card" id="card"></article></div>
+      <div class="card-wrap"><article class="card" id="card"></article>${flow.browse ? '' : '<button class="pause-cover" id="f-cover" aria-label="Resume the flow"><span class="mono">PAUSED</span><b>Tap to resume</b><small>The clock is stopped.</small></button>'}</div>
       ${flow.pilot ? '<div class="fm-slot" id="fm-slot" aria-live="polite"></div>' : ''}
       <button class="big press" id="f-big"></button>
     </main>
@@ -1381,8 +1410,11 @@ function renderFlow() {
     P.set('cardScale', v); $('.screen.flow').style.setProperty('--cs', v);
   });
   $('#f-undo').onclick = undo;
+  const pk = $('#f-peek'); if (pk) pk.onclick = peekBack;
+  const ps = $('#f-pause'); if (ps) ps.onclick = togglePause;
   bindGoingOut();
-  $('#f-big').onclick = () => flow.inter ? clearInter() : flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
+  $('#f-big').onclick = () => flow.userPause ? togglePause() : flow.peek ? peekForward(true) : flow.inter ? clearInter() : flow.done ? endFlow() : (flow.face === 'q' ? reveal() : next(false));
+  const cv = $('#f-cover'); if (cv) cv.onclick = togglePause;
   drawXpToggles();
   drawCard();
   updateFlowChrome();
@@ -1390,14 +1422,19 @@ function renderFlow() {
 /* ---------- Explain layer in Flow (T-069): toggles, deck map / deck close interstitials ---------- */
 const xpOpenMode = () => P.get('xpOpen', 'new');          // 'new' = open on a card's first sight · 'tap' = only when tapped
 const xpTraps = () => !!P.get('xpTraps', 1);
+const xpDepth = () => P.get('xpDepth', 'auto');   // 'auto' = Learn on a card's first sight, Revise after · or always one of them
 function drawXpToggles() {
   const h = document.getElementById('f-xp'); if (!h) return;
   const o = xpOpenMode(), t = xpTraps();
-  h.innerHTML = `<span class="mono muted small">EXPLAIN</span>
-    <div class="seg"><button class="${o === 'new' ? 'on' : ''}" data-xo="new">Open on new cards</button><button class="${o === 'tap' ? 'on' : ''}" data-xo="tap">Only when tapped</button></div>
+  const wide = innerWidth > 900, wasOpen = h.querySelector('details') ? h.querySelector('details').open : wide;
+  h.innerHTML = `<details class="f-xpd"${wasOpen ? ' open' : ''}><summary class="mono">EXPLAIN SETTINGS</summary><div class="f-xpg"><span class="mono muted small">EXPLAIN</span>
+    <div class="seg"><button class="${o !== 'tap' ? 'on' : ''}" data-xo="new">Open</button><button class="${o === 'tap' ? 'on' : ''}" data-xo="tap">Only when tapped</button></div>
+    <span class="mono muted small">DEPTH</span>
+    <div class="seg">${[['auto', 'Auto'], ['learn', 'Learn'], ['revise', 'Revise']].map(([k, l]) => `<button class="${xpDepth() === k ? 'on' : ''}" data-xd="${k}">${l}</button>`).join('')}</div>
     <span class="mono muted small">EXAM TRAPS</span>
-    <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div>`;
+    <div class="seg"><button class="${t ? 'on' : ''}" data-xt="1">Show</button><button class="${!t ? 'on' : ''}" data-xt="0">Hide</button></div></div></details>`;
   h.querySelectorAll('[data-xo]').forEach(b => b.onclick = () => { P.set('xpOpen', b.dataset.xo); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
+  h.querySelectorAll('[data-xd]').forEach(b => b.onclick = () => { P.set('xpDepth', b.dataset.xd); if (flow) flow.depthOver = {}; drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
   h.querySelectorAll('[data-xt]').forEach(b => b.onclick = () => { P.set('xpTraps', +b.dataset.xt); drawXpToggles(); if (flow && flow.face === 'a' && !flow.inter) drawCard(); });
 }
 function clearInter() {
@@ -1422,14 +1459,23 @@ function skippedBefore(c) {
   return !!prev && !flow.queue.some(x => x.deck === c.deck && x.code === prev.code);
 }
 
+function bindXp(el, c) {
+  const xt = el.querySelector('[data-xp-tog]');
+  if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
+  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); } });
+  el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
+  const nt = el.querySelector('[data-xp-note]');
+  if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
+  el.querySelectorAll('[data-xp-fb]').forEach(b => b.onclick = e => { e.stopPropagation(); feedback(c, b.dataset.xpFb); b.closest('.xp-fb').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); toast('Thanks — noted for the next rewrite.'); });
+}
 function drawCard() {
   const el = $('#card'), big = $('#f-big');
-  if (!flow.inter && !flow.done && flow.face === 'q') {
+  if (!flow.inter && !flow.done && !flow.peek && flow.face === 'q') {
     const cd = current(); flow.mapSeen = flow.mapSeen || {};
     if (cd && mapOf(cd.deck) && !flow.mapSeen[cd.deck]) { flow.mapSeen[cd.deck] = 1; flow.inter = { kind: 'map', deck: cd.deck }; }
   }
   if (flow.inter) { drawInter(el, big); return; }
-  if (flow.done) {
+  if (flow.done && !flow.peek) {
     const n = flow.times.length, tot = (Date.now() - flow.t0) / 1000;
     el.classList.remove('ng');
     if (flow.browse) { el.innerHTML = `<div class="c-done"><span class="mono kick dark">END OF THE DECK</span><h2>You looked through ${flow.queue.length} card${flow.queue.length === 1 ? '' : 's'}</h2><p class="muted-d">Nothing was logged. Use Flow now when you want it to count.</p></div>`; big.innerHTML = 'CLOSE'; return; }
@@ -1443,16 +1489,18 @@ function drawCard() {
   }
   const c = current(), tag = neetTag(c), n = seen(c.deck, c.no);
   const { head, rest } = splitQ(c.q);
-  const isQ = flow.face === 'q';
+  const isQ = !flow.peek && flow.face === 'q';
   const top = `<div class="c-head mono"><span>${esc((c.section || '').toUpperCase())}</span><span>${esc(c.code)}</span></div>
     <div class="c-tags">${tag ? `<span class="neet mono">${esc(tag)}</span>` : ''}${qbChips(c)}<span class="mono seen">seen ×${n}</span>${c.edited ? '<span class="mono seen">edited</span>' : ''}
-      ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
+      ${isQ ? '' : `<button class="tagbtn" data-act="edit" aria-label="Edit this card">${ICON.edit}</button>${flow.browse || flow.peek ? '' : `<button class="again" data-act="again" aria-label="Show this card again at the end">${ICON.again}Again</button>`}`}</div>`;
   let body;
   if (isQ) {
     const xq = xOf(c);
     body = `${bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div>`;
   } else {
-    body = `<div class="c-a${hasExplain(c) ? ' has-xp' : ''}">
+    const xa = xOf(c), v2 = !!(xa && xa.v === 2), xOpen = xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
+    const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
+    body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}">` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
@@ -1461,11 +1509,12 @@ function drawCard() {
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
-      ${hasExplain(c) ? panelHtml(c, xOf(c), { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : qbBoxes(c)}
+      ${hasExplain(c) && !v2 ? panelHtml(c, xa, { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : v2 ? '' : qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
-    </div>`;
+    </div>${v2 ? `<aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></div>` : ''}`;
   }
-  el.innerHTML = top + body;
+  el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + top + body;
+  el.classList.toggle('peeking', !!flow.peek);
   el.classList.toggle('ng', isNeet(c));
   closePanel();
   if (!IS_HT && hasVisual(c)) {
@@ -1476,19 +1525,15 @@ function drawCard() {
   }
   el.scrollTop = 0;
   const a = el.querySelector('.c-a'); if (a) a.scrollTop = 0;
-  big.innerHTML = isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
+  const xpn = el.querySelector('.xp-pane'); if (xpn) xpn.scrollTop = 0;
+  big.innerHTML = flow.peek ? `BACK TO CURRENT${ICON.next}` : isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
   el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = () => { if (!isWriting()) reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
   mountInk(el, c, isQ ? 'q' : 'a', { toolbarHost: () => document.getElementById('f-ink'), modeChanged: () => {} });
   bindBridges(el);
-  const xt = el.querySelector('[data-xp-tog]');
-  if (xt) xt.onclick = e => { e.stopPropagation(); const xp = xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); xt.querySelector('.xp-hint').textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; };
-  el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
-  const nt = el.querySelector('[data-xp-note]');
-  if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
-  el.querySelectorAll('[data-xp-fb]').forEach(b => b.onclick = e => { e.stopPropagation(); feedback(c, b.dataset.xpFb); b.closest('.xp-fb').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); toast('Thanks — noted for the next rewrite.'); });
+  bindXp(el, c);
   const hk = el.querySelector('#hook');
   if (hk) {
     const save = () => { const v = hk.value.trim(); const cc = current(); if (v !== (cc.hook || '')) saveHook(cc, v); };
@@ -1529,7 +1574,7 @@ async function saveHook(c, v) {
 
 function updateClock() {
   if (!flow) return;
-  const t = $('#f-time'); if (t) t.textContent = clock((Date.now() - flow.t0) / 1000);
+  const t = $('#f-time'); if (t) t.textContent = clock(((flow.pausedAt || Date.now()) - flow.t0) / 1000);
 }
 // Today's thread: one bead per card walked today, against today's planned number. Read by lightness and shape, never by
 // hue alone: new = light, ×2 = mid, ×3+ = dark, repair = ring; beads past the target carry a gold edge; at the target
@@ -1570,6 +1615,7 @@ function updateFlowChrome() {
     $('#f-diff').innerHTML = `${fmtDur(Math.abs(d))} <span class="gold">${d < 0 ? '↓' : d > 0 ? '↑' : '='}</span> <small>avg</small>`;
   } else $('#f-diff').textContent = '–';
   $('#f-undo').classList.toggle('dimmed', flow.browse ? flow.idx === 0 : !flow.hist.length);
+  const pkb = $('#f-peek'); if (pkb) pkb.classList.toggle('dimmed', !flow.hist.length || (flow.peek || 0) >= flow.hist.length);
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
   const fq = flow.queue.slice(0, 60);
   $('#f-tiles').innerHTML = fq.map((c, i) => `<span class="ft${i && (c.deck !== fq[i - 1].deck || chunkOf(c).key !== chunkOf(fq[i - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`).join('');
@@ -1591,11 +1637,15 @@ function animate(kind, swap) {
   }, kind === 'flip' ? 170 : 230);
 }
 function reveal() {
+  if (flow && flow.userPause) return;
+  if (flow && flow.peek) return peekForward(true);
   if (flow && flow.inter) return clearInter();
   if (!flow || flow.busy || flow.face !== 'q' || flow.done) return;
   animate('flip', () => { flow.face = 'a'; drawCard(); });
 }
 async function next(again) {
+  if (flow && flow.userPause) return;
+  if (flow && flow.peek) return peekForward(true);
   if (flow && flow.inter) return clearInter();
   if (!flow || flow.busy || flow.done) return;
   if (flow.face === 'q') return reveal();
@@ -1628,6 +1678,7 @@ async function next(again) {
   });
 }
 async function undo() {
+  if (flow && flow.peek) { flow.peek = 0; flow.peekT0 = null; }
   if (flow && flow.browse) { if (flow.busy || flow.idx === 0) return; flow.idx--; flow.face = 'q'; flow.done = false; drawCard(); updateFlowChrome(); return; }
   if (!flow || flow.busy || !flow.hist.length) return;
   const h = flow.hist.pop();
@@ -1691,8 +1742,11 @@ function flowKeys(e) {
     if (e.key === 'Escape') { e.preventDefault(); closePanel(); return; }
     if (panelKey(vstate, e)) { drawPanel($('#vpanel'), vstate, { P, onClose: closePanel }); return; }
   }
+  if (flow.userPause) { if (e.key === ' ' || e.key === 'p' || e.key === 'P') { e.preventDefault(); togglePause(); } return; }
+  if (e.key === 'p' || e.key === 'P') { if (!flow.browse) { e.preventDefault(); togglePause(); } return; }
+  if (flow.peek && (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight')) { e.preventDefault(); peekForward(e.key !== 'ArrowRight'); return; }
   if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); flow.inter ? clearInter() : flow.done ? endFlow() : flow.face === 'q' ? reveal() : next(false); }
-  else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); }
+  else if (e.key === 'ArrowLeft') { if (flow.browse) undo(); else peekBack(); }
   else if (e.key === 'a' || e.key === 'A') { if (flow.face === 'a' && !flow.browse) next(true); }
   else if (e.key === 'u' || e.key === 'U' || e.key === 'Backspace' || (e.key === 'z' && (e.metaKey || e.ctrlKey))) { e.preventDefault(); undo(); }
   else if (e.key === 'e' || e.key === 'E') { if (flow.face === 'a') openEditor(current()); }

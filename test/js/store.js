@@ -31,7 +31,7 @@ export async function loadAll() {
   setQb((await db.kv.get('qbank')) || null);
   S.qmap = (await db.kv.get('qmap')) || { version: '', q: {} };
   setDoct((await db.kv.get('doctAtt')) || {});
-  for (const d of await db.all('decks')) S.decks.set(d.deck, d);
+  for (const d of await db.all('decks')) if (!CONFIG.onlyDecks || CONFIG.onlyDecks.includes(d.deck)) S.decks.set(d.deck, d);
   for (const e of await db.all('edits')) S.edits.set(e.key, e);
   applyTopupDecks();
   const evs = await db.all('events');
@@ -77,6 +77,12 @@ export function applyTopupDecks() {
   if (S.library) S.library = { ...S.library, decks: S.library.decks.filter(d => !d.topupDeck).concat(list.map(t => ({ deck: t.deck, title: t.title, system: t.system, version: 1, cards: t.cards.length, star: 0, topupDeck: true }))) };
   for (const [k, d] of [...S.decks]) if (d.virtual) S.decks.delete(k);
   for (const t of list) S.decks.set(t.deck, { deck: t.deck, version: 1, verified: true, virtual: true, cards: t.cards.map(c => ({ ...c, deck: t.deck, tdeck: true })) });
+  // test build: only the piloted deck(s) exist (library, downloads, screens)
+  const only = CONFIG.onlyDecks;
+  if (only) {
+    if (S.library) S.library = { ...S.library, decks: S.library.decks.filter(d => only.includes(d.deck)) };
+    for (const k of [...S.decks.keys()]) if (!only.includes(k)) S.decks.delete(k);
+  }
 }
 export const isTopupDeck = deck => { const d = S.decks.get(deck); return !!(d && d.virtual); };
 const tuList = deck => (S.xtopups && S.xtopups[deck]) || S.qb.topups[deck];   // Explain layer's rebuilt Top-ups win (T-069)

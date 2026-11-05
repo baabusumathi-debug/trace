@@ -1,172 +1,374 @@
 {
- "v": 1,
+ "v": 2,
  "decks": {
   "TOX01": {
-   "map": {
-    "title": "Toxicology I — First steps to antidotes",
-    "ideas": [
-     {
-      "t": "First steps: empirical antidotes that are safe if wrong; the history lies",
-      "cards": [
-       "TOX-01",
-       "TOX-02"
-      ]
-     },
-     {
-      "t": "Toxidromes: pupils and skin sort the poison",
-      "cards": [
-       "TOX-03",
-       "TOX-04",
-       "TOX-05"
-      ]
-     },
-     {
-      "t": "Bedside clues: odours, ECG width, lab gaps",
-      "cards": [
-       "TOX-06",
-       "TOX-07",
-       "TOX-08"
-      ]
-     },
-     {
-      "t": "Getting it out: gut, urine, blood",
-      "cards": [
-       "TOX-09",
-       "TOX-10",
-       "TOX-11"
-      ]
-     },
-     {
-      "t": "Supportive care minus the poison’s own tools",
-      "cards": [
-       "TOX-12"
-      ]
-     },
-     {
-      "t": "Antidotes undo the toxin’s one move",
-      "cards": [
-       "TOX-13",
-       "TOX-14",
-       "TOX-15"
-      ]
-     }
-    ],
-    "skipped": {
-     "TOX-06": "Odours: bitter almonds = cyanide · garlic = organophosphate, arsenic · rotten eggs = H₂S",
-     "TOX-16": "True/false revision of the deck"
-    },
-    "recall": "Classify by the bedside (pupils, skin, QRS, gaps) → get it out (gut, urine, blood) → undo its move (antidote)."
-   },
-   "close": {
-    "wrap": [
-     "Every card here answers one of three questions: what is it (pupils, skin, QRS, gaps), how do I get it out (gut, urine, blood), what undoes it (antidote).",
-     "Sodium-channel block ran through four cards — TCA, cocaine, propranolol, local anaesthetics: bicarbonate or lipid, never class Ia/Ic or phenytoin."
-    ],
-    "q": {
-     "q": "Why does flumazenil fail the ‘empirical antidote’ test while naloxone passes?",
-     "a": "Naloxone is safe if the guess is wrong; flumazenil can unmask seizures (benzodiazepine dependence, TCA co-ingestion) that are then hard to treat."
-    }
-   },
    "cards": {
     "TOX-01": {
-     "gist": "Reverse the two cheap killers — low glucose and opioid apnoea — and withhold the antidote that harms when wrong: flumazenil.",
-     "chain": [
-      "Coma of unknown cause",
-      "Neuroglycopenia injures the brain within minutes",
-      "Dextrose now, thiamine alongside",
-      "Naloxone reverses opioid apnoea",
-      "Flumazenil withheld: it can unmask seizures"
+     "v": 2,
+     "sub": "Toxicology → First steps → Coma of unknown cause",
+     "intro": "A patient arrives unconscious and nobody knows why. A few causes of coma injure the brain within minutes yet are reversed by a cheap drug: low glucose, opioid respiratory depression, and thiamine deficiency in the malnourished or alcohol-dependent. The coma cocktail treats these first, before the cause is known — so every drug in it must be harmless if the guess turns out to be wrong.",
+     "why": [
+      [
+       "a",
+       "**Empirical treatment for coma of unknown cause.** Empirical means given on suspicion, before a diagnosis. It is justified only when the condition is common, dangerous and quickly reversible, and when the drug does no harm to the patients who turn out not to have it."
+      ],
+      [
+       "b",
+       "**Dextrose 50 mL of 50%, thiamine 100 mg IV, naloxone up to 2 mg.** The brain runs almost entirely on glucose and has no store of it, so hypoglycaemia injures neurons within minutes — check a capillary glucose and treat. Thiamine is a cofactor of glucose metabolism; alcohol-dependent and malnourished patients may lack it, and 100 mg is cheap protection against Wernicke’s encephalopathy. Naloxone displaces opioids from the μ receptor and restores breathing within minutes; in a patient who is still breathing and may be opioid-dependent it is given in small steps (from 0.04 mg) to avoid violent withdrawal."
+      ],
+      [
+       "c",
+       "**Yes — glucose goes first if it is needed.** The old teaching was that a glucose load in a thiamine-deficient patient uses up the last thiamine and precipitates Wernicke’s. There is no good evidence that a single dose does this, whereas untreated neuroglycopenia causes certain brain injury. So glucose is never delayed for thiamine; thiamine is given alongside, as soon as possible."
+      ],
+      [
+       "d",
+       "**Flumazenil.** It is a benzodiazepine antagonist, so it looks like a ‘benzodiazepine naloxone’, but it fails the safe-if-wrong test. In a patient dependent on benzodiazepines it precipitates withdrawal seizures. In a mixed overdose with a drug that causes seizures — a tricyclic is the classic — the benzodiazepine was what held the seizures back. Seizures that follow are hard to treat, because the usual first drug, a benzodiazepine, is now blocked."
+      ]
      ],
-     "tempt": "“Thiamine must go before glucose” — no: there is no good evidence glucose first precipitates Wernicke’s, and hypoglycaemia cannot wait.",
-     "rule": "An empirical antidote must be safe even when the guess is wrong.",
-     "nums": "Dextrose 50 mL of 50% · thiamine 100 mg IV · naloxone up to 2 mg",
-     "sits": "Flumazenil fails the ‘safe if wrong’ test: in a benzodiazepine-dependent patient or a mixed overdose with a pro-convulsant (TCA), the benzodiazepine was protecting the brain.",
-     "deeper": "Flumazenil is a competitive GABA-A antagonist. Removing benzodiazepine cover in a dependent patient precipitates withdrawal seizures; in a co-ingestion with a tricyclic it unmasks the tricyclic’s seizures — and those seizures are then hard to treat, because the usual first drug (a benzodiazepine) is now blocked. Naloxone is titrated in opioid-dependent patients (small increments from 0.04 mg) to restore breathing without provoking acute withdrawal or pulmonary oedema.",
+     "mimic": [
+      [
+       "Naloxone vs flumazenil",
+       "Both are competitive antagonists. Opioid apnoea kills and naloxone reverses it safely; benzodiazepines alone rarely stop breathing, so flumazenil adds seizure risk for little gain."
+      ],
+      [
+       "Prophylactic vs treatment thiamine",
+       "100 mg in the cocktail is prophylaxis. Suspected Wernicke’s encephalopathy needs treatment doses (500 mg IV 8-hourly)."
+      ]
+     ],
+     "traps": [
+      [
+       "“Thiamine must always be given before glucose”",
+       "Glucose is never delayed; there is no good evidence a single glucose dose precipitates Wernicke’s."
+      ],
+      [
+       "“Flumazenil belongs in the coma cocktail”",
+       "It is not given empirically — seizures in benzodiazepine dependence or tricyclic co-ingestion."
+      ],
+      [
+       "“100 mL of 50% dextrose”",
+       "The usual dose is 50 mL of 50% (25 g); one page of your notes prints 100 mL."
+      ]
+     ],
+     "decode": [
+      [
+       "Coma of unknown cause — first drugs?",
+       "Dextrose, thiamine, naloxone."
+      ],
+      [
+       "Which antidote is NOT given empirically?",
+       "Flumazenil."
+      ],
+      [
+       "Hypoglycaemic alcohol-dependent patient — thiamine or glucose first?",
+       "Glucose without delay, thiamine alongside."
+      ]
+     ],
+     "punch": "An empirical antidote must be safe even when the guess is wrong: dextrose, thiamine and naloxone pass that test; flumazenil fails it.",
      "parts": [
       {
        "q": "Wernicke encephalopathy suspected: thiamine dose?",
        "a": "**500 mg IV 8-hourly for 3 days** (then 250 mg daily if responding); the 100 mg of the coma cocktail is only prophylaxis."
       }
-     ],
-     "pat": []
+     ]
     },
     "TOX-02": {
-     "gist": "In overdose the history lies, so the examination becomes the history — and two silent, treatable poisons get a level in everyone.",
-     "chain": [
-      "Agent, dose and time are misreported; mixed ingestions are common",
-      "Pupils, skin and temperature sort the toxidrome",
-      "ECG flags channel-blocking drugs",
-      "Urine screen only hints",
-      "Paracetamol + salicylate levels in every overdose"
+     "v": 2,
+     "sub": "Toxicology → First steps → Initial work-up",
+     "intro": "In an overdose the history is the least reliable part of the assessment: the patient may be confused, unconscious or unwilling to say, and mixed ingestions are common. So, after the airway, breathing and circulation are secured, the examination and a few bedside tests become the history. Two poisons are checked in everyone, because they look harmless early and are treatable only if found in time.",
+     "why": [
+      [
+       "a",
+       "**Mental status, pupils, skin temperature and moisture, SpO₂, ECG, capillary glucose; expose the patient.** Pupils and skin sort the patient into a toxidrome (TOX-03, 04). The ECG picks up drugs that block cardiac channels — a wide QRS or a long QT changes treatment at once. A capillary glucose excludes the commonest reversible cause of coma. Exposing the patient finds patches, needle marks, pill packets and injuries."
+      ],
+      [
+       "b",
+       "**Opioids, benzodiazepines, cannabinoids, amphetamines, phencyclidine, cocaine.** A urine immunoassay looks for a fixed panel of drug classes or their metabolites. It answers ‘was a drug from this panel taken recently?’, not ‘what is making this patient ill now?’."
+      ],
+      [
+       "c",
+       "**False negatives below the threshold, false positives with chronic use, and cross-reactivity — so always correlate clinically.** Drugs outside the panel (synthetic cathinones, synthetic cannabinoids, many prescription drugs) are simply not detected. Metabolites linger, so a chronic cannabis user tests positive for weeks. Unrelated drugs can trigger the antibody and give a false positive. The screen supports a diagnosis; it never makes or excludes one."
+      ],
+      [
+       "d",
+       "**Paracetamol and salicylate.** Paracetamol gives almost no symptoms for the first day while liver injury develops, and N-acetylcysteine works best when started early. Salicylate shows only subtle early signs (tinnitus, fast breathing) before acidosis and collapse, and needs alkalinisation or dialysis. Both are common, both are often taken with other drugs, and both are treatable only if measured — so a level is sent in every overdose, whatever the history says."
+      ]
      ],
-     "tempt": "“A negative urine drug screen excludes a drug” — no: immunoassays miss synthetic cathinones, synthetic cannabinoids and many prescription drugs; a positive may also be days old.",
-     "rule": "Quiet early, treatable in time: paracetamol and salicylate are always measured.",
-     "sits": "Why those two: paracetamol is silent early and salicylate only subtle, yet both have time-critical treatment — N-acetylcysteine; alkalinisation or dialysis.",
-     "deeper": "Paracetamol gives almost no symptoms for the first day while hepatic injury develops; a level at 4 h or later is plotted on the treatment nomogram when the time is known. Salicylate shows early as tinnitus and hyperventilation, then a mixed respiratory alkalosis with metabolic acidosis. Urine screens detect metabolites, so chronic users test positive long after use (cannabis for weeks), and cross-reactivity causes false positives. Treat the time of ingestion as unknown whenever in doubt.",
-     "pat": [
-      "toxidrome"
-     ]
+     "mimic": [
+      [
+       "Urine drug screen vs serum drug level",
+       "The urine screen is qualitative (present or absent, possibly days old). A serum level is quantitative and guides treatment — paracetamol, salicylate, lithium, digoxin, iron."
+      ]
+     ],
+     "traps": [
+      [
+       "“A negative drug screen excludes drug toxicity”",
+       "Designer drugs and many prescription drugs are not on the panel; a negative screen means only ‘nothing from the panel above the threshold’."
+      ],
+      [
+       "“The patient denies paracetamol, so no level is needed”",
+       "The history is unreliable and early paracetamol toxicity is silent; the level is sent in every overdose."
+      ],
+      [
+       "“A positive screen explains the coma”",
+       "It may reflect use days ago (cannabis for weeks); look for the cause in the examination."
+      ]
+     ],
+     "decode": [
+      [
+       "Which two levels are sent in every overdose?",
+       "Paracetamol and salicylate."
+      ],
+      [
+       "Sympathomimetic picture, urine screen negative",
+       "A drug the immunoassay misses — synthetic cathinones or cannabinoids."
+      ],
+      [
+       "Main limitation of a urine drug screen",
+       "False negatives and positives — correlate clinically."
+      ]
+     ],
+     "punch": "In overdose the examination is the history, the urine screen only hints, and paracetamol and salicylate are measured in everyone because they are silent early and treatable in time."
     },
     "TOX-03": {
-     "gist": "Both toxidromes run fast, hot and dilated; only the sympathomimetic keeps the sweat glands working — so the skin decides.",
-     "chain": [
-      "Sweat glands get sympathetic fibres that release acetylcholine onto muscarinic receptors",
-      "Anticholinergic blocks that receptor → dry, hot, flushed skin",
-      "Gut and bladder are muscarinic too → silent bowel, retention",
-      "Sympathomimetic leaves the receptor working → wet skin, normal bowel"
+     "v": 2,
+     "sub": "Toxicology → Toxidromes → Sympathomimetic vs anticholinergic",
+     "intro": "Both of these patients arrive hot, fast and agitated with big pupils, so the obvious signs cannot separate them. The difference lies in one odd piece of physiology: sweat glands are supplied by sympathetic nerves, but those nerves release acetylcholine onto muscarinic receptors. That single fact decides the skin — and the skin decides the toxidrome.",
+     "why": [
+      [
+       "a",
+       "**Skin: sympathomimetic wet; anticholinergic dry and flushed.** A sympathomimetic drives the sympathetic system, including its cholinergic sweat fibres, so the patient sweats. An anticholinergic blocks the muscarinic receptor on the sweat gland, so the skin is dry — and the flushing comes from skin vessels dilating to lose the heat the patient can no longer sweat away."
+      ],
+      [
+       "b",
+       "**Pupils: dilated in both.** Sympathetic stimulation contracts the dilator muscle; muscarinic block paralyses the constrictor. Two different routes lead to the same big pupil, which is why the pupils cannot separate them."
+      ],
+      [
+       "c",
+       "**Bowel and bladder: normal in sympathomimetic; reduced bowel sounds and urinary retention in anticholinergic.** Gut movement and bladder emptying run on muscarinic receptors, so muscarinic block silences the bowel and retains urine. Feel for a full bladder and listen to the abdomen."
+      ],
+      [
+       "d",
+       "**Delirium: sympathomimetic agitated and possibly violent; anticholinergic picking at the air with mumbling speech.** The sympathomimetic patient is wired and aggressive. The anticholinergic patient is confused, hallucinating, plucking at invisible objects and speaking unintelligibly."
+      ],
+      [
+       "e",
+       "**Agents: sympathomimetic — amphetamines, cocaine, cathinones, pseudoephedrine; anticholinergic — atropine, antihistamines, tricyclics, datura, phenothiazines.** Datura (thorn apple) seeds contain atropine-like alkaloids. Tricyclics are anticholinergic as well as sodium-channel blockers, so a dry, dilated patient with a wide QRS points to a tricyclic (TOX-07)."
+      ]
      ],
-     "tempt": "“Dilated pupils mean anticholinergic” — both toxidromes dilate the pupils; pupils cannot separate them.",
-     "nbr": "Serotonin syndrome is also wet and dilated, but adds clonus and hyperreflexia (TOX-05).",
-     "rule": "Same fire, different sweat: wet = sympathomimetic, dry = anticholinergic.",
-     "sits": "Anticholinergic hyperthermia is dangerous precisely because the patient cannot sweat. Cocaine is also a sodium-channel blocker — a wide QRS links it to TOX-07.",
-     "deeper": "Sweating is the one sympathetic output that uses acetylcholine at the effector (sympathetic cholinergic fibres), which is why blocking muscarinic receptors stops it while adrenergic excess does not. ‘Picking at the air’ and mumbling speech is the anticholinergic delirium; the sympathomimetic patient is agitated and may be violent. Treatment of both is benzodiazepines and cooling; physostigmine is reserved for pure anticholinergic delirium with a narrow QRS.",
-     "pat": [
-      "toxidrome"
-     ]
-    },
-    "TOX-04": {
-     "gist": "Pinpoint pupils narrow it to opioid or cholinergic; secretions separate them — the opioid patient is dry, the organophosphate patient drowns in his own.",
-     "pic": {
-      "t": "fork",
-      "q": "Coma with pinpoint pupils",
-      "branches": [
+     "mimic": [
+      [
+       "Serotonin syndrome",
+       "Also wet with dilated pupils — but adds tremor, hyperreflexia and clonus (TOX-05)."
+      ],
+      [
+       "Heat stroke",
+       "Hot, tachycardic and confused with dry skin, but without anticholinergic pupils, retention or a drug history."
+      ]
+     ],
+     "traps": [
+      [
+       "“Dilated pupils mean anticholinergic”",
+       "Both toxidromes dilate the pupils; only skin, bowel and bladder separate them."
+      ],
+      [
+       "“Fever, tachycardia, mydriasis — anticholinergic”",
+       "That triad is shared; look at the skin before answering."
+      ],
+      [
+       "“Cool the anticholinergic patient with an antipyretic”",
+       "The heat comes from muscle activity and lost sweating, not a raised set point; cool physically and sedate with a benzodiazepine."
+      ]
+     ],
+     "decode": [
+      [
+       "Agitated, hot, mydriatic and diaphoretic",
+       "Sympathomimetic (cocaine, amphetamine)."
+      ],
+      [
+       "Hot, dry, flushed, urinary retention, picking at the air",
+       "Anticholinergic (antihistamine, datura, tricyclic)."
+      ],
+      [
+       "Which single sign separates the two?",
+       "The skin — wet or dry."
+      ]
+     ],
+     "punch": "Both run hot, fast and dilated; only the sympathomimetic can still sweat, because sweat glands work through muscarinic receptors — so the skin decides.",
+     "table": {
+      "title": "Telling them apart at the bedside",
+      "head": [
+       "",
+       "Sympathomimetic",
+       "Anticholinergic"
+      ],
+      "rows": [
        [
-        "Wet: bronchorrhoea, salivation, fasciculation",
-        "Organophosphate → atropine + pralidoxime"
+        "Temperature, HR, pupils",
+        "↑ ↑ dilated",
+        "↑ ↑ dilated"
        ],
        [
-        "Dry, very slow breathing",
-        "Opioid → naloxone"
+        "Skin",
+        "**wet**",
+        "**dry, flushed**"
        ],
        [
-        "No response to naloxone, bradycardia",
-        "Clonidine → supportive care"
+        "Bowel sounds, bladder",
+        "normal",
+        "reduced, retention"
+       ],
+       [
+        "Delirium",
+        "agitated, violent",
+        "picking at air, mumbling"
        ]
       ]
-     },
-     "tempt": "“Pinpoint pupils + coma = opioid, naloxone settles it” — if it does not reverse, think clonidine, a mixed ingestion, or a pontine haemorrhage.",
-     "nbr": "Benzodiazepines alone do not give pinpoint pupils and rarely stop breathing on their own.",
-     "rule": "Pinpoint + wet = organophosphate; pinpoint + dry + slow = opioid.",
-     "sits": "Sedative-hypnotics (benzodiazepines, barbiturates, alcohols, gabapentinoids, zolpidem) give variable pupils and nystagmus — the ‘quiet’ toxidrome.",
-     "deeper": "Opioid miosis comes from disinhibition of the Edinger–Westphal (parasympathetic) nucleus; cholinergic miosis is direct muscarinic stimulation of the sphincter. Organophosphates add the nicotinic picture — fasciculation then weakness — and the muscarinic ‘wet’ signs (salivation, lacrimation, bronchorrhoea, diarrhoea). Clonidine, a central α2 agonist, mimics opioid coma with bradycardia, hypotension and early transient hypertension; naloxone response is inconsistent, so care is supportive.",
-     "pat": [
-      "toxidrome"
-     ]
+     }
+    },
+    "TOX-04": {
+     "v": 2,
+     "sub": "Toxicology → Toxidromes → Opioid, sedative-hypnotic, cholinergic",
+     "intro": "Three toxidromes give a sleepy or comatose patient, and two of them share small pupils. The first decision is the pupil; the second is the breathing and the secretions. Getting it right matters because each has a different antidote — naloxone for the opioid, atropine and pralidoxime for the organophosphate, and none for most sedatives.",
+     "why": [
+      [
+       "a",
+       "**Pupils: opioid pinpoint; sedative variable; cholinergic constricted.** Opioids remove inhibition of the parasympathetic (Edinger–Westphal) nucleus, so the pupil constricts to a pinpoint. Cholinergic poisons stimulate the muscarinic constrictor directly. Sedative-hypnotics have no consistent effect on the pupil."
+      ],
+      [
+       "b",
+       "**Breathing: opioid slow, with apnoea; sedative slow or normal; cholinergic slow or fast.** Opioids depress the brainstem respiratory centre, so the rate falls first — the hallmark. Sedatives alone usually preserve breathing unless combined with alcohol or opioids. In cholinergic poisoning breathing fails from the airway (bronchorrhoea, bronchospasm) and the muscles (nicotinic weakness), so the rate can be either."
+      ],
+      [
+       "c",
+       "**Skin: opioid variable; sedative variable; cholinergic wet.** Muscarinic stimulation turns on every secretion — sweat, saliva, tears and bronchial fluid — so the organophosphate patient is wet everywhere."
+      ],
+      [
+       "d",
+       "**Extras: opioid — needle marks, pulmonary oedema; sedative — nystagmus; cholinergic — salivation, bronchorrhoea, fasciculation, diarrhoea.** Fasciculation is the nicotinic effect at the neuromuscular junction and is followed by weakness. Nystagmus is typical of the sedative group (and of phenytoin, ketamine and phencyclidine)."
+      ]
+     ],
+     "mimic": [
+      [
+       "Opioid vs clonidine",
+       "Clonidine (a central α₂ agonist) copies opioid coma with miosis, bradycardia and hypotension, but naloxone reverses it inconsistently."
+      ],
+      [
+       "Opioid vs pontine haemorrhage",
+       "Pinpoint pupils and coma with no response to naloxone — think of a structural cause."
+      ]
+     ],
+     "traps": [
+      [
+       "“Pinpoint pupils and coma — give naloxone and it is settled”",
+       "If there is no response, think clonidine, a mixed ingestion or a pontine bleed."
+      ],
+      [
+       "“Benzodiazepine overdose gives pinpoint pupils and apnoea”",
+       "Pupils are variable and breathing is usually preserved, unless alcohol or opioids are added."
+      ],
+      [
+       "“Atropine is titrated to the pupils or the heart rate”",
+       "In organophosphate poisoning it is titrated to drying of bronchial secretions."
+      ]
+     ],
+     "decode": [
+      [
+       "Pinpoint pupils, wet, bronchorrhoea, fasciculations",
+       "Organophosphate."
+      ],
+      [
+       "Pinpoint pupils, RR 6, needle marks",
+       "Opioid."
+      ],
+      [
+       "Comatose, normal breathing, nystagmus",
+       "Sedative-hypnotic."
+      ]
+     ],
+     "punch": "Pinpoint pupils narrow it to opioid or cholinergic, and the secretions decide: the opioid patient is dry with slow breathing, the organophosphate patient drowns in his own secretions.",
+     "table": {
+      "title": "Coma with small pupils",
+      "head": [
+       "Finding",
+       "Points to",
+       "Treat with"
+      ],
+      "rows": [
+       [
+        "Pinpoint + wet, bronchorrhoea, fasciculation",
+        "**Organophosphate**",
+        "atropine + pralidoxime"
+       ],
+       [
+        "Pinpoint + dry + very slow breathing",
+        "**Opioid**",
+        "naloxone"
+       ],
+       [
+        "Pinpoint, slow, no response to naloxone, bradycardia",
+        "Clonidine",
+        "supportive"
+       ]
+      ]
+     }
     },
     "TOX-05": {
-     "gist": "Serotonin excess shows in the reflexes: clonus and hyperreflexia, legs more than arms, on a wet, hot, dilated patient.",
-     "chain": [
-      "More serotonin in the synapse: more release, less reuptake, less breakdown",
-      "5-HT2A over-stimulation",
-      "Neuromuscular: tremor → hyperreflexia → clonus (inducible, ocular)",
-      "Autonomic: sweating, diarrhoea, mydriasis, tachycardia",
-      "Rigidity + temperature >38 °C; >41 °C = life-threatening"
+     "v": 2,
+     "sub": "Toxicology → Toxidromes → Serotonin syndrome and hallucinogens",
+     "intro": "Serotonin syndrome is a drug interaction more often than an overdose: a patient on one serotonergic drug is given a second, and within hours becomes agitated, sweaty and tremulous. It is diagnosed at the bedside, and the examination finding that defines it is in the reflexes. Hallucinogens, by contrast, change perception more than the body.",
+     "why": [
+      [
+       "a",
+       "**Tremor, hyperreflexia, clonus (worse in the legs), ocular clonus, diarrhoea, wet flushed skin, dilated pupils.** Excess serotonin over-stimulates 5-HT₂A receptors in the brainstem and spinal cord, producing neuromuscular excitation — tremor, then brisk reflexes, then inducible or spontaneous clonus, more in the legs than the arms. The same serotonin excess drives the autonomic signs: sweating, diarrhoea, tachycardia and mydriasis. Rising muscle activity generates heat; a temperature above 41 °C is life-threatening."
+      ],
+      [
+       "b",
+       "**MAOIs, SSRIs and SNRIs, tricyclics, dextromethorphan, meperidine (pethidine), tramadol, linezolid.** These raise synaptic serotonin by different routes: less breakdown (MAOIs; linezolid is a weak MAOI), less reuptake (SSRIs, SNRIs, tricyclics, tramadol, pethidine, dextromethorphan). The dangerous combinations pair an MAOI with any of the reuptake blockers."
+      ],
+      [
+       "c",
+       "**Hallucinogenic toxidrome: perceptual distortion, synaesthesia, depersonalisation; nystagmus with phencyclidine and ketamine. Agents: LSD, psilocybin, mescaline, MDMA.** These drugs alter perception (seeing sounds, feeling outside the body) with only mild sympathetic signs. Phencyclidine and ketamine are dissociative NMDA antagonists, which is why they add nystagmus."
+      ]
      ],
-     "tempt": "“Belladonna / datura is serotonergic” — it is anticholinergic: dry skin and no clonus. The classic distractor.",
-     "nbr": "Neuroleptic malignant syndrome: days to develop, lead-pipe rigidity, slow reflexes. Serotonin syndrome: hours, clonus, brisk reflexes.",
-     "rule": "Serotonin means clonus — no clonus, think again.",
-     "sits": "Diagnosis is clinical (Hunter criteria, built around clonus). Treatment: stop the drugs, benzodiazepines, cyproheptadine, cooling; severe hyperthermia needs paralysis and ventilation.",
-     "deeper": "Hunter criteria in a patient on a serotonergic drug: spontaneous clonus; or inducible or ocular clonus with agitation or sweating; or tremor with hyperreflexia; or hypertonia with temperature above 38 °C plus ocular or inducible clonus. Dangerous combinations pair an MAOI with any serotonin-releasing or reuptake-blocking drug, including pethidine, tramadol, dextromethorphan and linezolid (a weak MAOI). Antipyretics do not work: the heat is muscular, not a reset thermostat.",
+     "mimic": [
+      [
+       "Serotonin syndrome vs neuroleptic malignant syndrome",
+       "Serotonin: hours after the drug, clonus and brisk reflexes. NMS: days to develop, lead-pipe rigidity, slow reflexes, after a dopamine antagonist."
+      ],
+      [
+       "Serotonin syndrome vs anticholinergic",
+       "Both are hot with dilated pupils, but the anticholinergic patient is dry with no clonus."
+      ]
+     ],
+     "traps": [
+      [
+       "“Datura (belladonna) is serotonergic”",
+       "It is anticholinergic: dry skin and no clonus."
+      ],
+      [
+       "“Paracetamol will bring the temperature down”",
+       "The heat is muscular, not a reset thermostat; treat with benzodiazepines, cooling, cyproheptadine, and paralysis if severe."
+      ],
+      [
+       "“Rigidity with slow reflexes after an SSRI is serotonin syndrome”",
+       "Slow reflexes and lead-pipe rigidity point to NMS; serotonin syndrome means clonus."
+      ]
+     ],
+     "decode": [
+      [
+       "On an SSRI, given tramadol or linezolid; agitated, sweating, inducible clonus",
+       "Serotonin syndrome."
+      ],
+      [
+       "Ocular clonus or lower-limb clonus",
+       "Serotonin syndrome (Hunter criteria)."
+      ],
+      [
+       "Synaesthesia, depersonalisation, nystagmus after ketamine",
+       "Hallucinogenic (dissociative) toxidrome."
+      ]
+     ],
+     "punch": "Serotonin excess shows in the reflexes — tremor, hyperreflexia and clonus, legs more than arms, on a wet, hot, dilated patient — and no clonus means think again.",
      "parts": [
       {
        "q": "Serotonergic agents beyond the card’s list?",
@@ -176,46 +378,157 @@
        "q": "SSRI overdose: the usual course, and the exception?",
        "a": "Usually benign (tachycardia, drowsiness, tremor). **Citalopram and escitalopram** prolong QTc and cause seizures."
       }
-     ],
-     "pat": [
-      "toxidrome"
      ]
     },
-    "TOX-07": {
-     "before": "Skipped TOX-06, odours: bitter almonds = cyanide, garlic = organophosphate or arsenic, rotten eggs = hydrogen sulphide, wintergreen = methyl salicylate.",
-     "gist": "Sodium channels set the QRS width; block them and it widens toward VT — bicarbonate pushes through the block, class Ia/Ic add to it.",
-     "chain": [
-      "Fast Na⁺ channels drive phase 0 — their speed IS the QRS width",
-      "TCA, cocaine, carbamazepine block them",
-      "Conduction slows → QRS widens → re-entry → VT",
-      "Bicarbonate: Na⁺ load overcomes the block + alkalosis loosens the drug’s grip",
-      "Class Ia/Ic are Na⁺ blockers too → avoid"
+    "TOX-06": {
+     "v": 2,
+     "sub": "Toxicology → Bedside clues → Odours",
+     "intro": "Some poisons can be smelled on the breath, the skin or the vomit before any test is back. An odour is only a clue — many people cannot smell cyanide at all — but in an exam it is often the one word in the stem that names the poison.",
+     "why": [
+      [
+       "a",
+       "**Bitter almonds — cyanide.** Hydrogen cyanide has this smell; a genetic trait means a sizeable minority cannot detect it, so its absence excludes nothing."
+      ],
+      [
+       "b",
+       "**Garlic — organophosphates, arsenic, phosphorus, thallium, selenium.** Sulphur- and phosphorus-containing compounds and some metals give a garlic smell. An organophosphate patient who is also wet with pinpoint pupils is the classic picture."
+      ],
+      [
+       "c",
+       "**Rotten eggs — hydrogen sulphide.** Typical of sewers, manure pits and industrial accidents. At high concentrations it paralyses the sense of smell, so the odour can vanish as the danger rises."
+      ],
+      [
+       "d",
+       "**Freshly mown hay — phosgene.** A choking gas that injures the alveoli, with pulmonary oedema that may be delayed by hours."
+      ],
+      [
+       "e",
+       "**Mothballs — naphthalene; wintergreen — methyl salicylate; fruity or acetone — ethanol, isopropanol, salicylates; kerosene — organophosphates (the solvent).** Isopropanol is metabolised to acetone, which gives the fruity breath without acidosis. Oil of wintergreen is concentrated salicylate. Many organophosphate preparations are dissolved in a hydrocarbon solvent, hence the kerosene smell."
+      ]
      ],
-     "pic": {
-      "t": "scale",
-      "label": "QRS in a tricyclic overdose (ms)",
-      "min": 80,
-      "max": 180,
-      "marks": [
+     "mimic": [
+      [
+       "Fruity breath: DKA vs isopropanol",
+       "Both smell of acetone. DKA has a high anion gap acidosis; isopropanol gives ketosis with no acidosis and a raised osmolal gap."
+      ]
+     ],
+     "traps": [
+      [
+       "“No almond smell, so not cyanide”",
+       "Many people cannot smell it; rely on the lactate and the clinical picture."
+      ],
+      [
+       "“The rotten-egg smell has gone, so the exposure is over”",
+       "Hydrogen sulphide paralyses smell at high concentration."
+      ]
+     ],
+     "decode": [
+      [
+       "Bitter almonds",
+       "Cyanide."
+      ],
+      [
+       "Garlic odour, wet, pinpoint pupils",
+       "Organophosphate."
+      ],
+      [
+       "Rotten eggs in a sewer worker",
+       "Hydrogen sulphide."
+      ]
+     ],
+     "punch": "An odour is a clue rather than a test — but in the stem it usually names the poison: almonds for cyanide, garlic for organophosphates and arsenic, rotten eggs for hydrogen sulphide."
+    },
+    "TOX-07": {
+     "v": 2,
+     "sub": "Toxicology → Bedside clues → ECG in poisoning",
+     "intro": "The ECG is the quickest way to see whether a poison has reached the heart’s ion channels. The width of the QRS reflects how fast the sodium channels conduct the impulse through the ventricles; the length of the QT reflects how fast potassium channels repolarise them. Drugs that block those channels change the ECG long before the patient arrests.",
+     "why": [
+      [
+       "a",
+       "**QRS under 0.12 s (120 ms); QTc under 440 ms.** Ventricular depolarisation (phase 0) depends on fast sodium channels, and their speed is the QRS width. Repolarisation depends on potassium channels (hERG); block them and the QT lengthens. In a tricyclic overdose a QRS above 100 ms already counts as dangerous."
+      ],
+      [
+       "b",
+       "**Tricyclic antidepressants, cocaine, carbamazepine — sodium-channel block — with ventricular tachycardia as the danger.** Blocking sodium channels slows conduction, so the QRS widens; slow, uneven conduction sets up re-entry circuits, which become ventricular tachycardia. A tricyclic adds a tall terminal R wave in aVR."
+      ],
+      [
+       "c",
+       "**IV sodium bicarbonate, 1–2 mEq/kg.** Bicarbonate works in two ways: the sodium load helps push current through the partly blocked channels, and the alkalosis reduces how tightly the drug binds to them. The bolus is repeated until the QRS narrows, aiming for a blood pH of about 7.45–7.55."
+      ],
+      [
+       "d",
+       "**Class Ia and Ic anti-arrhythmics are avoided.** Procainamide, flecainide and their relatives are sodium-channel blockers themselves; adding them deepens the same block and can turn a wide QRS into asystole or VT."
+      ],
+      [
+       "e",
+       "**Bradycardia or AV block: beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics.** These act on the sinus and AV nodes rather than the ventricles: beta- and calcium-channel block directly, digoxin and cholinergics through vagal tone, the rest by central depression or membrane effects."
+      ]
+     ],
+     "mimic": [
+      [
+       "Wide QRS vs long QT",
+       "A wide QRS is sodium-channel block and is treated with bicarbonate; a long QT is potassium-channel block, treated by stopping the drug and giving magnesium and potassium."
+      ]
+     ],
+     "traps": [
+      [
+       "“Wide-complex tachycardia after a tricyclic — give procainamide or flecainide”",
+       "They are sodium-channel blockers too; give sodium bicarbonate."
+      ],
+      [
+       "“QRS 110 ms is normal, so the tricyclic overdose is safe”",
+       "Above 100 ms predicts seizures in a tricyclic overdose; QRS width, not the dose, grades the risk."
+      ],
+      [
+       "“Calcium or glucagon will fix the wide QRS”",
+       "They do not reverse sodium-channel block; bicarbonate does."
+      ]
+     ],
+     "decode": [
+      [
+       "TCA overdose with QRS 140 ms and hypotension",
+       "IV sodium bicarbonate 1–2 mEq/kg."
+      ],
+      [
+       "Which anti-arrhythmics are avoided?",
+       "Class Ia and Ic."
+      ],
+      [
+       "Overdose with bradycardia and AV block",
+       "Nodal agents — β-blocker, calcium-channel blocker, digoxin."
+      ]
+     ],
+     "punch": "Sodium channels set the QRS width: block them and it widens toward VT. Bicarbonate pushes through the block, and class Ia and Ic drugs add to it — wide means sodium, slow means the nodes.",
+     "table": {
+      "title": "What the ECG change points to",
+      "head": [
+       "Change",
+       "Channel",
+       "Think of"
+      ],
+      "rows": [
        [
-        100,
-        "seizure risk — give bicarbonate"
+        "Wide QRS, R in aVR",
+        "Na⁺ block",
+        "tricyclic, cocaine, carbamazepine"
        ],
        [
-        120,
-        "conventional wide-QRS cut-off"
+        "Long QT",
+        "K⁺ (hERG) block",
+        "antipsychotics, antihistamines, sotalol, ondansetron, organophosphates"
        ],
        [
-        160,
-        "ventricular arrhythmia"
+        "Bradycardia, AV block",
+        "nodes",
+        "β-blocker, CCB, digoxin"
+       ],
+       [
+        "SVT",
+        "catecholamine excess",
+        "sympathomimetic, anticholinergic, thyroid, withdrawal"
        ]
       ]
      },
-     "tempt": "Wide QRS with procainamide or flecainide offered against bicarbonate → bicarbonate.",
-     "rule": "Wide = sodium, slow = nodes.",
-     "nums": "QRS <120 ms (card) — but in a TCA >100 ms already counts · QTc <440 ms · NaHCO₃ 1–2 mEq/kg to pH 7.45–7.55",
-     "sits": "The bradycardia list is everything that hits the nodes: β-blockers and calcium-channel blockers, raised vagal tone (digoxin, cholinergics), central depressants (opioids, sedatives), lithium, magnesium. TCAs are also anticholinergic (TOX-03) — the patient is dry and dilated, with a tall terminal R in aVR.",
-     "deeper": "QRS duration, not the dose or the blood level, grades the risk in a tricyclic overdose (Boehnert 1985): QRS ≥100 ms predicts seizures in about a third, ≥160 ms ventricular arrhythmia in about half. The same sodium-channel picture appears with propranolol, diphenhydramine, quinine and the antiseizure sodium-channel blockers — all respond to bicarbonate, and glucagon, insulin or calcium do not fix the conduction defect.",
      "parts": [
       {
        "q": "TCA overdose: what grades the risk?",
@@ -226,23 +539,69 @@
        "a": "**Propranolol** (sodium-channel block): wide QRS and seizures → **sodium bicarbonate**."
       }
      ],
-     "pat": [
-      "nablock"
-     ]
+     "before": "You skipped TOX-06, the odours card. In brief: bitter almonds mean cyanide, garlic means organophosphates or arsenic, rotten eggs mean hydrogen sulphide, and wintergreen means methyl salicylate."
     },
     "TOX-08": {
-     "gist": "A gap means the lab sees something the formula cannot — an extra osmole in the blood, or a haemoglobin that is not carrying oxygen.",
-     "chain": [
-      "Calculated osmolality counts only Na, glucose and urea",
-      "Toxic alcohols are small unmeasured osmoles",
-      "Measured − calculated >10 = osmolal gap",
-      "Pulse oximetry reads only two wavelengths",
-      "Abnormal haemoglobins fool it → saturation gap"
+     "v": 2,
+     "sub": "Toxicology → Bedside clues → Osmolal and saturation gaps",
+     "intro": "A ‘gap’ is a mismatch between what is measured and what is expected. When the lab measures more particles in the blood than a formula predicts, or the oximeter shows a saturation that does not fit the blood gas, something unusual is present. Both gaps point to a short list of poisons, and the radio-opaque list tells you which tablets an X-ray can see.",
+     "why": [
+      [
+       "a",
+       "**Calculated osmolality = 2 × Na + glucose/18 + BUN/2.8; the gap is measured minus calculated, normally under 10.** The formula counts only the main particles: sodium with its anions (hence ×2), glucose and urea (divided to convert mg/dL to mmol/L). Anything else dissolved in the blood is measured by the lab but missed by the formula, and shows up as the gap."
+      ],
+      [
+       "b",
+       "**Methanol, ethylene glycol, ethanol, isopropanol, acetone, propylene glycol, mannitol, glycerol, sorbitol.** These are small, uncharged molecules present in large amounts, so they raise measured osmolality. Ethanol is the commonest cause; the toxic alcohols are the dangerous ones."
+      ],
+      [
+       "c",
+       "**Saturation gap over 5%: carbon monoxide, methaemoglobin, cyanide, hydrogen sulphide, sulphaemoglobin.** A pulse oximeter uses only two wavelengths and assumes only oxyhaemoglobin and deoxyhaemoglobin exist. Carboxyhaemoglobin looks like oxyhaemoglobin, so SpO₂ reads falsely normal; methaemoglobin drags the reading toward about 85%. Cyanide and hydrogen sulphide block the cells’ use of oxygen, so venous blood stays bright and oxygen-rich. A co-oximeter measures the abnormal haemoglobins directly."
+      ],
+      [
+       "d",
+       "**Radio-opaque: chloral hydrate, calcium, heavy metals, iron, iodides, psychotropics, packets, potassium, enteric-coated and sustained-release preparations, salicylates.** These contain dense atoms (metals, iodine, potassium, chlorine) or are compact tablets and packets that hold together. Iron tablets and drug packets in body packers are the practical uses of an abdominal X-ray."
+      ]
      ],
-     "pic": {
-      "t": "grid",
+     "mimic": [
+      [
+       "Osmolal gap vs anion gap",
+       "The osmolal gap is high early, while the alcohol itself is in the blood; as it is metabolised to acids the osmolal gap falls and the anion gap rises. A late presenter can have a normal osmolal gap."
+      ]
+     ],
+     "traps": [
+      [
+       "“Normal SpO₂ and PaO₂ exclude carbon monoxide poisoning”",
+       "Both miss carboxyhaemoglobin; only co-oximetry measures it."
+      ],
+      [
+       "“A normal osmolal gap excludes methanol”",
+       "Not in a late presenter: the alcohol has already become acid (high anion gap)."
+      ],
+      [
+       "“Cyanide lowers the SpO₂”",
+       "SpO₂ and PaO₂ stay normal; the high lactate and high venous oxygen give it away."
+      ]
+     ],
+     "decode": [
+      [
+       "Raised osmolal gap and high anion gap acidosis",
+       "Methanol or ethylene glycol."
+      ],
+      [
+       "SpO₂ 85% that does not rise with oxygen, normal PaO₂",
+       "Methaemoglobinaemia."
+      ],
+      [
+       "Fire victim, SpO₂ 99%, confused",
+       "Carbon monoxide (co-oximetry)."
+      ]
+     ],
+     "punch": "A gap means the lab sees something the formula or the oximeter cannot — an extra osmole in the blood, or a haemoglobin that is not carrying oxygen.",
+     "table": {
+      "title": "A normal SpO₂ that is wrong",
       "head": [
-       "",
+       "Poison",
        "SpO₂",
        "PaO₂",
        "Clue"
@@ -256,7 +615,7 @@
        ],
        [
         "Methaemoglobin",
-        "drifts to ~85%",
+        "drifts toward ~85%",
         "normal",
         "chocolate blood, cyanosis despite O₂"
        ],
@@ -268,64 +627,219 @@
        ]
       ]
      },
-     "tempt": "“Normal PaO₂ and SpO₂ exclude CO poisoning” — both miss carboxyhaemoglobin; only co-oximetry measures it.",
-     "rule": "The oximeter cannot count what it cannot see.",
-     "nums": "Osmolal gap >10 · saturation gap >5% · MetHb drags SpO₂ toward ~85% · HBO if COHb >25% (>15% in pregnancy)",
-     "sits": "The osmolal gap is an early sign: as a toxic alcohol is metabolised to acids, the osmolal gap falls and the anion gap rises — a late presenter can have a normal osmolal gap (see the Top-up card ‘Toxic alcohol: block or dialyse’).",
-     "deeper": "Methaemoglobin absorbs equally at 660 and 940 nm, so the oximeter reads a ratio near 1 — about 85% — whatever the true saturation, while the blood gas calculates a normal SaO₂ from the normal PaO₂. Carbon monoxide hides in the other direction: COHb looks like oxyhaemoglobin to a two-wavelength oximeter, so SpO₂ reads normal while oxygen content falls; late damage targets the globus pallidus.",
      "parts": [
       {
        "q": "Raised osmolal gap: how does the anion gap split it?",
        "a": "**Normal anion gap** → isopropanol (acetone), mannitol. **High anion gap** → methanol, ethylene glycol."
       }
-     ],
-     "pat": [
-      "satgap"
      ]
     },
     "TOX-09": {
-     "gist": "Decontaminate only what is still in the gut and binds or can be flushed out — never at the cost of the airway.",
-     "chain": [
-      "Toxin still in the gut",
-      "Activated charcoal binds most organic drugs — within 1 h",
-      "Multi-dose charcoal pulls drug back from the blood into the gut lumen",
-      "Metals, lithium and alcohols do not bind",
-      "Iron, lithium, packets, slow-release → whole bowel irrigation"
+     "v": 2,
+     "sub": "Toxicology → Decontamination and elimination → Gut decontamination",
+     "intro": "Decontamination tries to stop absorption of a poison that is still in the gut. It only helps while the drug is there, only if the method can bind or move it, and never at the cost of aspiration. So each method has a time window, a list of drugs it works for, and a protected airway as its precondition.",
+     "why": [
+      [
+       "a",
+       "**Activated charcoal within 1 hour, in an awake patient with a protected airway.** Charcoal has a huge surface that binds most organic drug molecules in the gut lumen. After about an hour most drugs have been absorbed, so the benefit falls away. Aspirating charcoal causes severe pneumonitis, hence the airway condition."
+      ],
+      [
+       "b",
+       "**Multi-dose charcoal: carbamazepine, theophylline, dapsone, quinine, phenobarbital.** Repeated doses keep the gut lumen empty of free drug, so drug already in the blood diffuses back across the gut wall and is bound — often called gut dialysis. It also breaks the cycle for drugs that undergo enterohepatic recirculation."
+      ],
+      [
+       "c",
+       "**Whole bowel irrigation: polyethylene glycol at 1500–2000 mL/h until the rectal effluent is clear; for iron, lithium, sustained-release or enteric-coated drugs, and body packers.** The large volume of an isotonic, non-absorbed solution flushes tablets through the gut before they dissolve. It is used for what charcoal cannot bind (iron and lithium, which are ions) and for slow-release tablets that keep releasing drug for hours."
+      ],
+      [
+       "d",
+       "**Induced emesis is not recommended — it is ineffective and risks aspiration.** Ipecac removes little drug, delays charcoal and is dangerous if consciousness falls."
+      ]
      ],
-     "tempt": "“Altered sensorium contraindicates lavage” — not once the airway is protected; corrosives, hydrocarbons and an unprotected airway do.",
-     "rule": "Charcoal binds big organic molecules; metals, ions and alcohols slip through.",
-     "nums": "Charcoal within 1 h · PEG 1500–2000 mL/h until the effluent is clear",
-     "sits": "Multi-dose charcoal works as ‘gut dialysis’: charcoal in the lumen keeps the gradient, so drug diffuses out of the blood back into the gut — useful for carbamazepine, theophylline, dapsone, quinine, phenobarbital.",
-     "deeper": "Gastric lavage and induced emesis have no outcome benefit and add aspiration risk. Lavage is considered only within about an hour of a potentially lethal ingestion of a toxin that charcoal does not bind or that has no antidote, with a protected airway (AACT/EAPCCT 2013). Whole bowel irrigation needs a protected airway and a working gut; it is stopped for ileus, obstruction or perforation.",
+     "mimic": [
+      [
+       "Multi-dose charcoal vs urine alkalinisation",
+       "Multi-dose charcoal pulls drug back into the gut (carbamazepine, theophylline); alkalinisation traps weak acids in the urine (salicylate, phenobarbital)."
+      ]
+     ],
+     "traps": [
+      [
+       "“Charcoal for lithium or iron”",
+       "Ions are not bound by charcoal; use whole bowel irrigation."
+      ],
+      [
+       "“Altered sensorium is an absolute contraindication to decontamination”",
+       "Not once the airway is protected; corrosives, hydrocarbons and an unprotected airway are."
+      ],
+      [
+       "“Charcoal is useful at 6 hours for any drug”",
+       "The window is about 1 hour; paracetamol within 2 hours (up to 4 h only for massive or modified-release ingestions)."
+      ]
+     ],
+     "decode": [
+      [
+       "Sustained-release or iron overdose — decontamination?",
+       "Whole bowel irrigation."
+      ],
+      [
+       "Carbamazepine or theophylline toxicity, rising level",
+       "Multi-dose activated charcoal."
+      ],
+      [
+       "Ipecac or induced vomiting?",
+       "Not recommended."
+      ]
+     ],
+     "punch": "Decontaminate only what is still in the gut and can be bound or flushed out — charcoal binds organic molecules, metals and ions slip through, and the airway always comes first.",
+     "table": {
+      "title": "Which method for which poison",
+      "head": [
+       "Problem",
+       "Method"
+      ],
+      "rows": [
+       [
+        "Most organic drugs, <1 h",
+        "single-dose charcoal"
+       ],
+       [
+        "Carbamazepine, theophylline, dapsone, quinine, phenobarbital",
+        "multi-dose charcoal"
+       ],
+       [
+        "Iron, lithium, slow-release, packets",
+        "whole bowel irrigation"
+       ],
+       [
+        "Corrosives, hydrocarbons, unprotected airway",
+        "no gut decontamination"
+       ]
+      ]
+     },
      "parts": [
       {
        "q": "Gastric lavage: when, if ever?",
        "a": "Not routine. Only within **~1 h** of a potentially lethal ingestion that charcoal does not bind or has no antidote — with a **protected airway**."
       }
-     ],
-     "trap": "Charcoal timing: a general poison → within 1 h; paracetamol → within 2 h, up to 4 h only for massive (≥30 g) or modified-release ingestions.",
-     "pat": []
+     ]
     },
     "TOX-10": {
-     "gist": "Ion trapping: an acid is trapped in alkaline urine — ionised, it cannot cross back through the tubule, so it stays and leaves.",
-     "chain": [
-      "Weak acid filtered into the tubule",
-      "In acid urine it stays un-ionised → reabsorbed",
-      "Bicarbonate raises urine pH ≥7.5",
-      "The acid ionises and is trapped",
-      "Excreted"
+     "v": 2,
+     "sub": "Toxicology → Decontamination and elimination → Urine alkalinisation",
+     "intro": "The kidney filters many drugs, but most are then reabsorbed back into the blood as they pass down the tubule. Only the un-ionised (uncharged) form of a drug can cross the tubular wall. Change the urine pH so the drug becomes ionised, and it is trapped in the urine and excreted — this is ion trapping.",
+     "why": [
+      [
+       "a",
+       "**Urine pH ≥7.5, using IV sodium bicarbonate.** Bicarbonate is excreted by the kidney and raises urine pH. For a weak acid, each unit of pH above its pKa makes it about ten times more ionised, so a small rise in pH greatly increases excretion."
+      ],
+      [
+       "b",
+       "**Weak acids that are renally eliminated and poorly protein-bound.** Only a weak acid is ionised by alkaline urine. The drug must be cleared mainly by the kidney for this route to matter, and must be free in plasma to be filtered at all."
+      ],
+      [
+       "c",
+       "**Salicylates, methotrexate, phenobarbital, 2,4-D (a herbicide), chlorpropamide.** Salicylate is the main indication. Alkalinising the blood has a second benefit: it keeps salicylate ionised in the plasma, so less enters the brain."
+      ],
+      [
+       "d",
+       "**Monitor urine pH and electrolytes, especially potassium.** Bicarbonate drives potassium into cells and increases its loss in urine. When potassium is low the kidney holds on to it by secreting hydrogen ions instead, so the urine stays acid however much bicarbonate is given."
+      ],
+      [
+       "e",
+       "**Renal failure is the contraindication.** A failing kidney cannot filter the drug or handle the sodium load, so alkalinisation achieves nothing and risks fluid overload. Severe salicylate poisoning with renal failure goes to haemodialysis (TOX-11)."
+      ]
      ],
-     "tempt": "“Bicarbonate alone will alkalinise the urine” — not if potassium is low: the kidney keeps K⁺ and spends H⁺, so the urine stays acid. Correct K⁺ first.",
-     "rule": "An acid is trapped in base.",
-     "nums": "Urine pH ≥7.5 · monitor K⁺",
-     "sits": "For salicylate, alkalinising the blood also keeps the drug out of the brain — which is why losing the patient’s hyperventilation at intubation is dangerous. Severe salicylate poisoning goes to dialysis (TOX-11).",
-     "deeper": "By Henderson–Hasselbalch, each unit of pH above a drug’s pKa makes it ten times more ionised. Salicylate (pKa about 3) becomes far more ionised as urine pH rises, increasing its renal clearance many-fold. The same logic explains why the toxins that qualify are weak acids, renally excreted and poorly protein-bound. Renal failure contraindicates it — the drug cannot be filtered and the sodium load cannot be handled.",
-     "pat": []
+     "mimic": [
+      [
+       "Alkalinisation for salicylate vs bicarbonate for tricyclics",
+       "In salicylate poisoning bicarbonate traps the drug in urine; in tricyclic poisoning it overcomes sodium-channel block in the heart. Same drug, different reason."
+      ]
+     ],
+     "traps": [
+      [
+       "“Bicarbonate alone will alkalinise the urine”",
+       "Not if potassium is low — correct K⁺ first."
+      ],
+      [
+       "“Alkalinisation works for weak bases such as amphetamines”",
+       "Alkaline urine traps acids; it does not help bases."
+      ],
+      [
+       "“Intubate the salicylate patient and ventilate normally”",
+       "Losing the patient’s hyperventilation lets the blood become acid and drives salicylate into the brain; match the high minute ventilation."
+      ]
+     ],
+     "decode": [
+      [
+       "Salicylate poisoning, urine pH 6 despite bicarbonate",
+       "Correct hypokalaemia."
+      ],
+      [
+       "Which toxins qualify for alkalinisation?",
+       "Weak acids, renally cleared, low protein binding — salicylate, phenobarbital, methotrexate."
+      ],
+      [
+       "Target urine pH",
+       "≥7.5."
+      ]
+     ],
+     "punch": "An acid is trapped in base: alkaline urine ionises the weak acid so it cannot be reabsorbed — and without enough potassium the kidney will not let the urine turn alkaline."
     },
     "TOX-11": {
-     "gist": "Dialysis can only reach what is in the blood and free: small molecules, unbound, not spread into the tissues.",
-     "pic": {
-      "t": "grid",
+     "v": 2,
+     "sub": "Toxicology → Decontamination and elimination → Extracorporeal removal",
+     "intro": "Dialysis cleans the blood, so it can only remove a drug that is actually in the blood, free to cross the membrane. A drug that is bound to plasma proteins, or that has spread out into fat and tissues, is beyond its reach. Three properties of the molecule therefore decide whether dialysis is worth starting.",
+     "why": [
+      [
+       "a",
+       "**Low molecular weight, low protein binding, small volume of distribution (the drug stays in the extracellular fluid).** A small molecule crosses the dialysis membrane. An unbound molecule is free in plasma rather than carried on albumin. A small volume of distribution means most of the body’s load is in the blood, so cleaning the blood empties the body."
+      ],
+      [
+       "b",
+       "**Haemodialysis removes salicylates, lithium, methanol, ethylene glycol and isopropanol.** All are small and poorly bound, and dialysis also corrects the acidosis and removes toxic metabolites (formate, glycolate). Lithium is the model dialysable toxin — tiny, unbound and confined to body water."
+      ],
+      [
+       "c",
+       "**Haemoperfusion: barbiturates, carbamazepine, theophylline, valproate — over a charcoal or resin adsorbent.** These are more protein-bound, so dialysis removes little. In haemoperfusion the blood passes over an adsorbent that strips the drug off the protein. Modern high-flux dialysis has narrowed the difference, but the exam list stands."
+      ]
+     ],
+     "mimic": [
+      [
+       "Haemodialysis vs haemoperfusion",
+       "Dialysis needs a free, small drug; haemoperfusion can take drug off protein."
+      ]
+     ],
+     "traps": [
+      [
+       "“Calcium-channel blockers and beta-blockers are dialysed”",
+       "Most are protein-bound or widely distributed; only atenolol and sotalol are dialysable."
+      ],
+      [
+       "“Digoxin is removed by dialysis”",
+       "Its volume of distribution is very large; Fab fragments are the treatment."
+      ],
+      [
+       "“Tricyclics can be dialysed”",
+       "Highly protein-bound with a huge volume of distribution — dialysis does not help."
+      ]
+     ],
+     "decode": [
+      [
+       "Which toxin is best removed by haemodialysis?",
+       "Lithium, salicylate, methanol, ethylene glycol."
+      ],
+      [
+       "Properties of a dialysable toxin",
+       "Small, unbound, small volume of distribution."
+      ],
+      [
+       "Theophylline or carbamazepine toxicity, extracorporeal method",
+       "Haemoperfusion (or high-flux dialysis)."
+      ]
+     ],
+     "punch": "Dialysis can reach only what is small, free and in the blood; a protein-bound drug needs an adsorbent, and a drug hidden in the tissues cannot be dialysed at all.",
+     "table": {
+      "title": "Why each property matters",
       "head": [
        "Property",
        "Why it matters"
@@ -345,11 +859,6 @@
        ]
       ]
      },
-     "tempt": "“Calcium-channel and β-blockers are dialysed” — most are protein-bound or widely distributed; only atenolol and sotalol are.",
-     "rule": "Small, free, in the blood — dialysis can reach it.",
-     "nums": "Salicylate: dialyse above 100 mg/dL",
-     "sits": "Protein-bound drugs go to haemoperfusion instead: the adsorbent cartridge strips drug off the protein (barbiturates, carbamazepine, theophylline, valproate).",
-     "deeper": "Lithium is the model dialysable toxin — tiny, unbound, confined to body water. Methanol, ethylene glycol and isopropanol are small and unbound too. Modern high-flux dialysis has eroded the old line between haemodialysis and haemoperfusion, but the exam list stands.",
      "parts": [
       {
        "q": "Salicylate: when to dialyse?",
@@ -359,31 +868,145 @@
        "q": "Carbamazepine: severe toxicity level, and what tips a stable patient over?",
        "a": "**Above 40 µg/mL**; CYP3A4 inhibitors (diltiazem, isoniazid, macrolides); valproate raises the toxic epoxide."
       }
-     ],
-     "pat": []
-    },
-    "TOX-12": {
-     "gist": "Toxic emergencies get the usual tools minus the ones the poison already uses: benzodiazepines first, no phenytoin, no class Ia/Ic.",
-     "chain": [
-      "Toxic seizure",
-      "GABA-A first: benzodiazepine, then barbiturate",
-      "Avoid phenytoin: another Na⁺ blocker, and ineffective",
-      "Toxic VT is usually Na⁺ block → bicarbonate",
-      "Hyperthermia is muscular → active cooling, not antipyretics"
-     ],
-     "tempt": "“A β-blocker for cocaine hypertension” — pure β-block leaves α unopposed; benzodiazepine first, then nitrate, calcium-channel blocker or phentolamine.",
-     "rule": "Sedate the storm: benzodiazepines treat cocaine’s BP, seizures and heat together.",
-     "sits": "The common thread with TOX-07: a sodium-channel poison is never treated with another sodium-channel blocker (phenytoin, class Ia/Ic).",
-     "deeper": "Antipyretics fail in toxic hyperthermia because the hypothalamic set point is normal — the heat comes from muscle activity and failed heat loss — so cooling, sedation and, if needed, paralysis are the treatment. Bradyarrhythmias get atropine and pacing; the specific antidotes (digoxin Fab, high-dose insulin, glucagon) are on TOX-14.",
-     "trap": "Sympathomimetic hypertension: benzodiazepine first, then a vasodilator; labetalol is a later, debated option — never the first answer.",
-     "pat": [
-      "nablock"
      ]
     },
+    "TOX-12": {
+     "v": 2,
+     "sub": "Toxicology → Decontamination and elimination → Supportive care",
+     "intro": "Most poisoned patients survive on good supportive care rather than an antidote. The usual emergency drugs mostly work here too — with one rule added: do not give a drug that does the same harm as the poison. That rule explains every choice on this card.",
+     "why": [
+      [
+       "a",
+       "**Hypertension: a calcium-channel blocker, phentolamine, labetalol or nitroprusside.** Toxic hypertension is usually catecholamine excess (cocaine, amphetamines). A benzodiazepine to calm the sympathetic storm comes first; then a vasodilator. Phentolamine blocks α-receptors directly. A pure beta-blocker is avoided because it leaves α-stimulation unopposed."
+      ],
+      [
+       "b",
+       "**Seizures: benzodiazepines, then barbiturates.** Toxic seizures are treated by strengthening GABA-A inhibition. Phenytoin is avoided — it rarely works for toxic seizures and is itself a sodium-channel blocker, which is dangerous in tricyclic or other sodium-channel poisoning."
+      ],
+      [
+       "c",
+       "**Ventricular tachycardia: sodium bicarbonate; avoid class Ia and Ic.** Toxic VT is usually sodium-channel block (TOX-07), so bicarbonate treats the cause and sodium-channel anti-arrhythmics would deepen it."
+      ],
+      [
+       "d",
+       "**Bradyarrhythmia: atropine and pacing.** Atropine blocks vagal slowing; pacing supports the rate while the specific antidote (digoxin Fab, high-dose insulin, glucagon — TOX-14) takes effect."
+      ],
+      [
+       "e",
+       "**Hyperthermia: active cooling.** Toxic hyperthermia comes from muscle activity and failed heat loss, with a normal hypothalamic set point, so antipyretics do not work. Cool externally, sedate, and paralyse and ventilate if the temperature keeps rising."
+      ]
+     ],
+     "mimic": [
+      [
+       "Toxic seizure vs epileptic seizure",
+       "Both get benzodiazepines first, but phenytoin, a standard second-line drug in epilepsy, is avoided in poisoning."
+      ]
+     ],
+     "traps": [
+      [
+       "“Beta-blocker for cocaine-induced hypertension”",
+       "It leaves α unopposed; benzodiazepine first, then a vasodilator. Labetalol is a later, debated option — never the first answer."
+      ],
+      [
+       "“Phenytoin for a tricyclic seizure”",
+       "Another sodium-channel blocker, and ineffective; use benzodiazepines then barbiturates."
+      ],
+      [
+       "“Paracetamol for drug-induced hyperthermia”",
+       "The set point is normal; cool actively."
+      ]
+     ],
+     "decode": [
+      [
+       "Cocaine chest pain and BP 200/120 — first drug?",
+       "Benzodiazepine."
+      ],
+      [
+       "Status epilepticus after an overdose, benzodiazepines failed",
+       "Barbiturate (phenobarbital) or propofol — not phenytoin."
+      ],
+      [
+       "Temperature 41 °C after amphetamine",
+       "Active cooling, sedation, paralysis if needed."
+      ]
+     ],
+     "punch": "Toxic emergencies get the usual tools minus the ones the poison already uses: benzodiazepines first, no phenytoin, no class Ia or Ic, and cooling rather than antipyretics."
+    },
     "TOX-13": {
-     "gist": "Each antidote undoes the toxin’s one move: refill what it uses up, push it off the receptor, block its toxic enzyme, or grab it.",
-     "pic": {
-      "t": "grid",
+     "v": 2,
+     "sub": "Toxicology → Antidotes → Toxin to antidote (1)",
+     "intro": "An antidote works by undoing the poison’s one key move. Some refill what the poison uses up, some push it off its receptor, some block the enzyme that makes it toxic, and some bind it so it cannot act. If you know the poison’s move, you can work out the antidote — and the reason for its dose.",
+     "why": [
+      [
+       "a",
+       "**Paracetamol — N-acetylcysteine.** Paracetamol becomes toxic when its metabolite NAPQI exhausts the liver’s glutathione. N-acetylcysteine refills glutathione so NAPQI is detoxified."
+      ],
+      [
+       "b",
+       "**Opioids — naloxone, 0.04–2 mg.** Naloxone competes the opioid off the μ receptor. Small doses restore breathing in the opioid-dependent without provoking severe withdrawal; larger doses for apnoea."
+      ],
+      [
+       "c",
+       "**Organophosphate — atropine plus pralidoxime 1–2 g over 30 minutes.** Organophosphates inhibit acetylcholinesterase, so acetylcholine floods every synapse. Atropine blocks the muscarinic excess (secretions, bronchospasm, bradycardia) and is titrated to dry chest secretions. Pralidoxime reactivates the enzyme, but only before the bond ‘ages’ and becomes permanent."
+      ],
+      [
+       "d",
+       "**Methanol, ethylene glycol — fomepizole 15 mg/kg over 30 minutes, then 10 mg/kg 12-hourly for four doses, then 15 mg/kg 12-hourly.** The alcohols are harmless; their acids (formic acid, glycolate and oxalate) kill. Fomepizole blocks alcohol dehydrogenase so the acids are not made. The dose rises after 48 hours because fomepizole induces its own metabolism."
+      ],
+      [
+       "e",
+       "**Carbon monoxide — 100% oxygen, hyperbaric in some.** Oxygen competes CO off haemoglobin and shortens the COHb half-life from about 4 hours on air to about 1 hour on 100% oxygen, and further under hyperbaric pressure."
+      ],
+      [
+       "f",
+       "**Cyanide — sodium nitrite 300 mg IV (hydroxocobalamin 5 g is now first choice).** Nitrite turns some haemoglobin into methaemoglobin, which pulls cyanide off cytochrome oxidase; thiosulphate then converts it to thiocyanate. Hydroxocobalamin binds cyanide directly to form cyanocobalamin, without creating methaemoglobin."
+      ],
+      [
+       "g",
+       "**Methaemoglobinaemia — methylene blue 1–2 mg/kg.** It is reduced to leucomethylene blue, which converts methaemoglobin back to haemoglobin. The reaction needs NADPH from the G6PD pathway, so it fails — and can cause haemolysis — in G6PD deficiency."
+      ],
+      [
+       "h",
+       "**Iron — deferoxamine, up to 15 mg/kg/h.** Deferoxamine chelates free iron into ferrioxamine, which is excreted in the urine and turns it a vin-rosé colour."
+      ]
+     ],
+     "mimic": [
+      [
+       "Cyanide antidotes in a fire victim",
+       "Nitrite makes methaemoglobin, which worsens oxygen carriage when CO is also present; hydroxocobalamin does not."
+      ]
+     ],
+     "traps": [
+      [
+       "“Methylene blue for every methaemoglobinaemia”",
+       "Not in G6PD deficiency — it fails and causes haemolysis."
+      ],
+      [
+       "“Atropine until the pupils dilate or the heart rate is 120”",
+       "Titrate to drying of bronchial secretions."
+      ],
+      [
+       "“Pralidoxime can be given at any time”",
+       "It works only before the enzyme–organophosphate bond ages."
+      ]
+     ],
+     "decode": [
+      [
+       "Methanol with visual blurring — antidote?",
+       "Fomepizole (and dialysis for visual signs)."
+      ],
+      [
+       "Chocolate-brown blood, SpO₂ 85% after benzocaine spray",
+       "Methylene blue 1–2 mg/kg."
+      ],
+      [
+       "House-fire victim with high lactate",
+       "Hydroxocobalamin 5 g."
+      ]
+     ],
+     "punch": "Each antidote undoes the toxin’s one move — refill what it uses up, push it off the receptor, block the enzyme that makes it toxic, or bind it — so name the move and the antidote follows.",
+     "table": {
+      "title": "Each antidote undoes one move",
       "head": [
        "Antidote",
        "Its move"
@@ -395,11 +1018,11 @@
        ],
        [
         "Naloxone",
-        "pushes opioid off the μ receptor"
+        "pushes the opioid off the μ receptor"
        ],
        [
         "Atropine + pralidoxime",
-        "blocks muscarinic excess; reactivates AChE before ‘ageing’"
+        "blocks muscarinic excess; reactivates AChE before ageing"
        ],
        [
         "Fomepizole",
@@ -410,8 +1033,8 @@
         "displaces CO, shortens COHb half-life"
        ],
        [
-        "Sodium nitrite",
-        "makes MetHb, which binds cyanide"
+        "Nitrite / hydroxocobalamin",
+        "pulls cyanide off cytochrome oxidase / binds it"
        ],
        [
         "Methylene blue",
@@ -423,11 +1046,6 @@
        ]
       ]
      },
-     "tempt": "Cyanide: hydroxocobalamin 5 g is now first choice; nitrite’s methaemoglobin is dangerous if CO is also present.",
-     "rule": "Name the toxin’s move; the antidote undoes that move.",
-     "nums": "Fomepizole 15 mg/kg, then 10 mg/kg 12-hourly ×4, then 15 mg/kg · COHb half-life ~4 h air / ~1 h 100% O₂ / 20–30 min hyperbaric",
-     "sits": "Methaemoglobinaemia and CO both sit on the saturation-gap pattern (TOX-08); fomepizole needs the osmolal gap (TOX-08) to be suspected early.",
-     "deeper": "Pralidoxime must be given before the organophosphate–enzyme bond ‘ages’ — after that, reactivation is impossible; atropine is titrated to drying of bronchial secretions, not to heart rate or pupils. Methylene blue needs NADPH, so it fails and can cause haemolysis in G6PD deficiency. Folinic acid speeds the clearance of formate in methanol poisoning.",
      "parts": [
       {
        "q": "Methanol vs ethylene glycol: what separates them?",
@@ -437,19 +1055,82 @@
        "q": "CO: COHb half-life on air, 100% O₂, hyperbaric?",
        "a": "About **4 h · 1 h · 20–30 min**."
       }
-     ],
-     "trap": "Unconscious CO patient: GCS ≤8 or an unprotected airway → intubate and give 100% O₂; otherwise high-flow O₂.",
-     "pat": [
-      "satgap"
      ]
     },
     "TOX-14": {
-     "gist": "When a drug shuts down the heart’s channels or fuel, the antidote goes around the blocked step: insulin refuels the myocardium, glucagon skips the β-receptor.",
-     "pic": {
-      "t": "grid",
+     "v": 2,
+     "sub": "Toxicology → Antidotes → Toxin to antidote (2)",
+     "intro": "Cardiotoxic poisons shut down the heart’s channels, receptors or fuel supply. The antidotes on this card do not usually reverse the poison itself; most go around the blocked step — feeding the heart another way, raising its second messengers through a different receptor, or pulling the drug out of the tissue.",
+     "why": [
+      [
+       "a",
+       "**Digoxin — digoxin-specific Fab: 10–20 vials in acute poisoning, 3–6 in chronic.** Fab fragments bind digoxin directly and the complex is excreted. Acute overdoses carry a large body load, hence more vials; chronic toxicity usually needs only a few."
+      ],
+      [
+       "b",
+       "**Calcium-channel blocker — high-dose insulin 0.5–1 U/kg/h with dextrose; lipid emulsion.** A poisoned heart switches from fatty acids to glucose but cannot take glucose up, because the drug also blocks insulin release. High-dose insulin lets the myocardium use glucose and restores contractility; dextrose is run alongside to prevent hypoglycaemia. Lipid is a rescue for refractory cases."
+      ],
+      [
+       "c",
+       "**Beta-blocker — atropine; glucagon; high-dose insulin.** Glucagon raises cAMP through its own receptor, bypassing the blocked β-receptor, and increases heart rate and contractility. Atropine treats the bradycardia; insulin supports the failing myocardium as in calcium-channel blocker poisoning."
+      ],
+      [
+       "d",
+       "**Tricyclic antidepressant — sodium bicarbonate 1–2 mEq/kg; lipid.** Bicarbonate overcomes the sodium-channel block (TOX-07). Lipid emulsion is a rescue for refractory cardiotoxicity, because tricyclics are lipophilic."
+      ],
+      [
+       "e",
+       "**Sulfonylurea — octreotide 50 µg SC 6-hourly with dextrose.** Sulfonylureas close the β-cell potassium channel and force insulin release. Dextrose alone triggers more insulin and rebound hypoglycaemia; octreotide stops the release."
+      ],
+      [
+       "f",
+       "**Benzodiazepine — flumazenil, rarely, because of the seizure risk.** It is reserved for pure benzodiazepine sedation in a non-dependent patient, such as procedural over-sedation (TOX-01)."
+      ],
+      [
+       "g",
+       "**Local anaesthetic — 20% lipid emulsion.** The lipid creates a fat phase in plasma into which the lipophilic drug partitions out of the heart (TOX-15)."
+      ]
+     ],
+     "mimic": [
+      [
+       "Calcium-channel blocker vs beta-blocker poisoning",
+       "Both give bradycardia and hypotension. Calcium-channel blockers cause hyperglycaemia (insulin release blocked); beta-blockers more often give hypoglycaemia. Propranolol also widens the QRS."
+      ]
+     ],
+     "traps": [
+      [
+       "“Sulfonylurea overdose — give dextrose and wait”",
+       "Dextrose triggers more insulin and rebound hypoglycaemia; octreotide stops it."
+      ],
+      [
+       "“IV calcium will correct heart rate and AV block in verapamil overdose”",
+       "Calcium reliably improves contractility and blood pressure, but is least likely to change heart rate."
+      ],
+      [
+       "“Dialyse the digoxin”",
+       "Its volume of distribution is huge; Fab is the treatment."
+      ]
+     ],
+     "decode": [
+      [
+       "Verapamil overdose, shock despite calcium and pressors",
+       "High-dose insulin euglycaemia therapy."
+      ],
+      [
+       "Recurrent hypoglycaemia after glibenclamide",
+       "Octreotide."
+      ],
+      [
+       "8 mg digoxin ingested — vials of Fab?",
+       "8 × 0.8 ÷ 0.5 ≈ 13 vials."
+      ]
+     ],
+     "punch": "When a drug shuts down the heart’s channels or fuel, the antidote goes around the blocked step: insulin refuels the myocardium, glucagon skips the β-receptor, and octreotide stops the insulin a sulfonylurea forces out.",
+     "table": {
+      "title": "How each antidote goes around the block",
       "head": [
        "Antidote",
-       "How it goes around the block"
+       "Mechanism"
       ],
       "rows": [
        [
@@ -458,7 +1139,7 @@
        ],
        [
         "High-dose insulin",
-        "CCB-poisoned heart runs on glucose — insulin lets it in"
+        "lets the poisoned heart use glucose"
        ],
        [
         "Glucagon",
@@ -466,7 +1147,7 @@
        ],
        [
         "Bicarbonate",
-        "Na⁺ load + alkalosis overcome Na⁺-channel block"
+        "Na⁺ load and alkalosis overcome Na⁺-channel block"
        ],
        [
         "Octreotide",
@@ -478,62 +1159,166 @@
        ]
       ]
      },
-     "tempt": "Sulfonylurea: “give dextrose and wait” — dextrose triggers more insulin release and rebound hypoglycaemia; octreotide stops it.",
-     "rule": "Go around the blocked step.",
-     "nums": "Digoxin Fab vials = body load (mg) ÷ 0.5 · insulin 0.5–1 U/kg/h · octreotide 50 µg SC 6-hourly",
-     "sits": "Tricyclic, propranolol, local anaesthetic: all on the sodium-channel pattern with TOX-07 and TOX-15.",
-     "deeper": "Body load of digoxin for an acute ingestion is the dose taken × 0.8 (bioavailability); each vial binds 0.5 mg. In calcium-channel blocker poisoning, calcium reliably improves contractility and blood pressure but not heart rate or AV conduction. Flumazenil is rarely used because of seizures (TOX-01).",
      "parts": [
       {
        "q": "TCA seizures: first drug, and the one to avoid?",
        "a": "**Benzodiazepines** first (then phenobarbital or propofol); **avoid phenytoin** — another sodium-channel blocker."
       }
-     ],
-     "trap": "Digoxin vials for 8 mg ingested: 8 × 0.8 ÷ 0.5 ≈ 13. Each vial always binds 0.5 mg; drop the ×0.8 only if the stem ignores bioavailability (then 16).",
-     "trap2": "IV calcium in verapamil overdose: reliably raises contractility and BP; least likely to change heart rate.",
-     "pat": [
-      "nablock"
      ]
     },
     "TOX-15": {
-     "gist": "Lipid soaks the fat-soluble drug out of the heart — a lipid sink — so dose by weight, cap the total, and keep adrenaline small.",
-     "chain": [
-      "Bupivacaine is lipophilic and binds cardiac Na⁺ channels",
-      "A lipid bolus creates a fat phase in plasma",
-      "The drug partitions out of the heart into the lipid",
-      "Plus a fatty-acid fuel for the myocardium",
-      "Heart recovers"
+     "v": 2,
+     "sub": "Toxicology → Antidotes → Lipid emulsion for local anaesthetic toxicity",
+     "intro": "Bupivacaine and other local anaesthetics are lipophilic and bind tightly to cardiac sodium channels; an accidental intravascular dose can cause seizures and then cardiac arrest that resists standard resuscitation. A 20% lipid emulsion creates a fat phase in the blood into which the drug moves out of the heart, and also gives the myocardium fuel. The doses are by weight, with a ceiling, and resuscitation itself is modified.",
+     "why": [
+      [
+       "a",
+       "**Bolus: 20% lipid 1.5 mL/kg over 2–3 minutes (100 mL if over 70 kg).** The bolus quickly builds a lipid sink in plasma so the drug can partition out of the heart."
+      ],
+      [
+       "b",
+       "**Infusion: 0.25 mL/kg/min (200–250 mL over 15–20 minutes if over 70 kg). If still unstable, repeat the bolus once or twice and double the rate.** The infusion keeps the lipid level up while the drug is redistributed and cleared."
+      ],
+      [
+       "c",
+       "**Maximum dose: 12 mL/kg.** Larger lipid loads risk pancreatitis, fat overload, lung injury and interference with laboratory tests."
+      ],
+      [
+       "d",
+       "**Changes to resuscitation: adrenaline boluses ≤1 µg/kg; avoid vasopressin, calcium-channel blockers, beta-blockers and lidocaine; benzodiazepines for seizures, avoiding large doses of propofol.** Large adrenaline doses worsen arrhythmia and blunt the lipid response. Lidocaine is another local anaesthetic. Calcium-channel blockers and beta-blockers depress a heart that is already failing, and large propofol doses do the same."
+      ],
+      [
+       "e",
+       "**Monitoring: 4–6 hours after a cardiovascular event; 2 hours after a CNS-only event.** As the lipid is cleared, the drug can move back from fat into plasma and the heart, so toxicity can recur."
+      ]
      ],
-     "pic": {
-      "t": "trio",
-      "items": [
+     "mimic": [
+      [
+       "LAST resuscitation vs standard ACLS",
+       "Smaller adrenaline doses, no vasopressin, and no lidocaine for the arrhythmia."
+      ]
+     ],
+     "traps": [
+      [
+       "“Standard 1 mg adrenaline boluses”",
+       "Use small boluses, ≤1 µg/kg."
+      ],
+      [
+       "“Lidocaine for the ventricular arrhythmia”",
+       "It is another local anaesthetic and adds to the toxicity."
+      ],
+      [
+       "“Patient stable after lipid — discharge to the ward at once”",
+       "Monitor 4–6 hours after a cardiovascular event: toxicity can recur."
+      ]
+     ],
+     "decode": [
+      [
+       "Maximum lipid dose",
+       "12 mL/kg."
+      ],
+      [
+       "Bolus for a 60 kg patient",
+       "90 mL (1.5 mL/kg) over 2–3 min."
+      ],
+      [
+       "Which drugs are avoided in LAST resuscitation?",
+       "Vasopressin, calcium-channel blockers, beta-blockers, lidocaine."
+      ]
+     ],
+     "punch": "Lipid soaks the fat-soluble drug out of the heart, so it is dosed by weight with a ceiling of 12 mL/kg — and resuscitation changes with it: small adrenaline doses and no extra local anaesthetic.",
+     "table": {
+      "title": "Lipid dosing",
+      "head": [
+       "Step",
+       "Dose"
+      ],
+      "rows": [
        [
-        "1.5",
-        "mL/kg bolus over 2–3 min"
+        "Bolus",
+        "**1.5 mL/kg** over 2–3 min"
        ],
        [
-        "0.25",
-        "mL/kg/min infusion"
+        "Infusion",
+        "**0.25 mL/kg/min**"
        ],
        [
-        "12",
-        "mL/kg maximum"
+        "Still unstable",
+        "repeat bolus ×1–2, double rate"
+       ],
+       [
+        "Ceiling",
+        "**12 mL/kg**"
        ]
       ]
      },
-     "tempt": "“Standard 1 mg adrenaline” — use small boluses ≤1 µg/kg; large doses worsen arrhythmia and blunt the lipid response.",
-     "rule": "One-and-a-half, a quarter, twelve: bolus, rate, ceiling.",
-     "sits": "Avoid vasopressin, calcium-channel blockers, β-blockers and lidocaine (another local anaesthetic). Seizures get benzodiazepines; large propofol doses depress the heart further.",
-     "deeper": "Why watch for hours: as the lipid is cleared, bupivacaine redistributes from fat back into plasma and the heart, so toxicity can recur. Why small adrenaline: high doses provoke arrhythmias and lactic acidosis and blunt the lipid effect in experiments. The 12 mL/kg ceiling exists because large lipid loads cause pancreatitis, fat overload and interference with lab tests.",
      "parts": [
       {
        "q": "Lipid emulsion beyond local anaesthetics?",
        "a": "Rescue for **lipophilic cardiotoxins** — propranolol, verapamil/diltiazem, TCAs — after standard antidotes fail; **VA-ECMO** is the next step."
       }
-     ],
-     "pat": [
-      "nablock"
      ]
+    },
+    "TOX-16": {
+     "v": 2,
+     "sub": "Toxicology → Revision → True or false",
+     "intro": "This card tests the deck’s key distinctions. Each statement is either true or turns on one detail from an earlier card; the reason for each answer is the mechanism you met there.",
+     "why": [
+      [
+       "a",
+       "**False — anticholinergic skin is dry.** Sweat glands work through muscarinic receptors, so blocking them stops sweating (TOX-03)."
+      ],
+      [
+       "b",
+       "**True — bitter almonds suggest cyanide** (TOX-06), though many people cannot smell it."
+      ],
+      [
+       "c",
+       "**False — lithium is not bound by charcoal; use whole bowel irrigation.** Charcoal binds organic molecules; ions such as lithium and iron slip through (TOX-09)."
+      ],
+      [
+       "d",
+       "**True — urine alkalinisation is used for salicylates.** A weak acid is ionised and trapped in alkaline urine (TOX-10)."
+      ],
+      [
+       "e",
+       "**False — a tricyclic wide QRS is treated with bicarbonate; avoid class Ia drugs such as procainamide.** Procainamide is itself a sodium-channel blocker (TOX-07)."
+      ],
+      [
+       "f",
+       "**True — octreotide treats sulfonylurea overdose** by stopping insulin release (TOX-14)."
+      ],
+      [
+       "g",
+       "**True — the maximum lipid emulsion dose is 12 mL/kg** (TOX-15)."
+      ],
+      [
+       "h",
+       "**True — methanol raises the osmolal gap,** early, before it is metabolised to formic acid (TOX-08)."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“Charcoal binds everything”",
+       "Not metals, ions or alcohols."
+      ],
+      [
+       "“Any anti-arrhythmic will do for a toxic wide QRS”",
+       "Class Ia and Ic deepen sodium-channel block."
+      ]
+     ],
+     "decode": [
+      [
+       "Statements about skin in toxidromes",
+       "Check sweat: wet sympathomimetic, dry anticholinergic."
+      ],
+      [
+       "Statements about decontamination",
+       "Ask whether charcoal can bind the toxin."
+      ]
+     ],
+     "punch": "Every statement here turns on a mechanism from earlier in the deck — the sweat gland’s muscarinic receptor, what charcoal can bind, ion trapping, and sodium-channel block."
     }
    },
    "topups": [
@@ -552,9 +1337,62 @@
       "**d** **Potassium and magnesium**."
      ],
      "x": {
-      "gist": "QT drugs block potassium (hERG) channels; risk adds up — stacked drugs, low K⁺ or Mg²⁺, or one raising the others’ levels tip into torsades.",
-      "rule": "Stop the drug that multiplies the others.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Cardiac toxicity → Drug-induced long QT",
+      "intro": "Many common ICU drugs block the cardiac potassium channel (hERG) that ends the action potential. Repolarisation is delayed, the QT lengthens, and an early afterdepolarisation can set off torsades de pointes. The risk is cumulative: each extra drug, a low potassium or magnesium, bradycardia or a raised drug level adds to it.",
+      "why": [
+       [
+        "a",
+        "**Citalopram and escitalopram.** Among the SSRIs these two prolong the QT in a dose-dependent way, which is why their maximum doses were lowered, especially in the elderly. Sertraline is the usual choice when cardiac risk is a concern."
+       ],
+       [
+        "b",
+        "**Thioridazine and ziprasidone; IV haloperidol is dangerous at high doses.** Thioridazine has the strongest hERG block of the antipsychotics. Haloperidol by mouth carries modest risk, but large intravenous doses for agitated delirium have caused torsades, so the ECG is monitored when it is given that way."
+       ],
+       [
+        "c",
+        "**The one that also blocks CYP3A4 (erythromycin, fluconazole) — it raises the others’ levels.** Such a drug prolongs the QT itself and also slows the clearance of other QT drugs metabolised by CYP3A4, so their levels and effect climb. Removing it removes two sources of risk at once."
+       ],
+       [
+        "d",
+        "**Potassium and magnesium.** Low potassium reduces the repolarising current and enhances hERG block; low magnesium makes afterdepolarisations more likely. Correcting both raises the threshold for torsades, and intravenous magnesium is also the first treatment once torsades occurs."
+       ]
+      ],
+      "mimic": [
+       [
+        "Torsades vs polymorphic VT from ischaemia",
+        "Torsades arises from a long QT, often pause-dependent; ischaemic polymorphic VT occurs with a normal QT and is treated as ischaemia."
+       ]
+      ],
+      "traps": [
+       [
+        "“All SSRIs carry the same QT risk”",
+        "Citalopram and escitalopram stand out; sertraline is preferred in cardiac patients."
+       ],
+       [
+        "“Oral and IV haloperidol are equally risky”",
+        "The danger is mainly with high intravenous doses."
+       ],
+       [
+        "“Correcting potassium is enough”",
+        "Magnesium must be corrected too; it stabilises the membrane against afterdepolarisations."
+       ]
+      ],
+      "decode": [
+       [
+        "Patient on a QT drug starts erythromycin or fluconazole, then torsades",
+        "The CYP3A4 inhibitor raised the other drug’s level — stop it first."
+       ],
+       [
+        "Delirious patient, large IV haloperidol doses, then polymorphic VT",
+        "Drug-induced torsades: stop haloperidol, give magnesium."
+       ],
+       [
+        "Which SSRI prolongs QT?",
+        "Citalopram (escitalopram)."
+       ]
+      ],
+      "punch": "QT risk adds up, so remove the drug that multiplies the others first, then correct potassium and magnesium."
      }
     },
     {
@@ -573,11 +1411,70 @@
       "**e** COHb **>25%** (>15% in pregnancy), loss of consciousness, ischaemia or neurological signs."
      ],
      "x": {
-      "gist": "Two haemoglobins the oximeter misreads in opposite ways: CO looks like oxygen; MetHb drags the reading toward 85%.",
-      "rule": "The oximeter cannot count what it cannot see.",
-      "pat": [
-       "satgap"
-      ]
+      "v": 2,
+      "sub": "Toxicology → Gases and haemoglobin → Carbon monoxide vs methaemoglobin",
+      "intro": "A pulse oximeter estimates saturation from the ratio of light absorbed at two wavelengths, 660 and 940 nm, and assumes only oxyhaemoglobin and deoxyhaemoglobin are present. Carbon monoxide and methaemoglobin both add a third haemoglobin that carries no oxygen. The oximeter misreads them in opposite directions, and that difference is what the exam tests.",
+      "why": [
+       [
+        "a",
+        "**Falsely normal — COHb looks like oxyhaemoglobin; PaO₂ normal.** Carboxyhaemoglobin absorbs red light much as oxyhaemoglobin does, so it is counted as saturated. PaO₂ measures dissolved oxygen, which is normal. Only co-oximetry measures COHb."
+       ],
+       [
+        "b",
+        "**Drifts toward ~85% as MetHb rises — it absorbs equally at 660 and 940 nm.** An equal absorption ratio corresponds to a reading of about 85%, so the SpO₂ settles there however high the MetHb climbs. A low SpO₂ with a normal PaO₂ that does not respond to oxygen is the ‘saturation gap’."
+       ],
+       [
+        "c",
+        "**Benzocaine/prilocaine before endoscopy, dapsone, nitrites/nitrates, primaquine, rasburicase.** These oxidise haem iron from the ferrous to the ferric state, which cannot bind oxygen. Topical anaesthetic sprays are the classic ICU cause."
+       ],
+       [
+        "d",
+        "**Methylene blue 1–2 mg/kg if symptomatic or MetHb >20–30%; never in G6PD deficiency.** Methylene blue is reduced to leucomethylene blue by NADPH-dependent reductase, and this reduces methaemoglobin back to haemoglobin. The NADPH comes from G6PD; without it the drug does not work and can cause haemolysis."
+       ],
+       [
+        "e",
+        "**COHb >25% (>15% in pregnancy), loss of consciousness, ischaemia or neurological signs.** Hyperbaric oxygen shortens the COHb half-life and is given to reduce delayed neurological sequelae. Fetal haemoglobin binds CO more tightly, hence the lower threshold in pregnancy."
+       ]
+      ],
+      "mimic": [
+       [
+        "CO vs cyanide",
+        "Both give a normal SpO₂ with tissue hypoxia; cyanide gives a very high lactate and high venous oxygen."
+       ],
+       [
+        "Methaemoglobinaemia vs sulfhaemoglobinaemia",
+        "Both cause cyanosis; sulfhaemoglobin does not respond to methylene blue."
+       ]
+      ],
+      "traps": [
+       [
+        "“A normal SpO₂ excludes CO poisoning”",
+        "COHb reads as oxyhaemoglobin; send a co-oximetry sample."
+       ],
+       [
+        "“A normal PaO₂ excludes hypoxia”",
+        "PaO₂ measures dissolved oxygen, not how much haemoglobin can carry."
+       ],
+       [
+        "“Methylene blue works in everyone”",
+        "It needs NADPH from G6PD; in deficiency it fails and haemolyses."
+       ]
+      ],
+      "decode": [
+       [
+        "Cyanosis after endoscopy spray, SpO₂ 85% unchanged on oxygen, PaO₂ normal",
+        "Methaemoglobinaemia → methylene blue."
+       ],
+       [
+        "Headache in a family sharing a heater, SpO₂ 99%",
+        "Carbon monoxide → co-oximetry, 100% oxygen."
+       ],
+       [
+        "Methylene blue given, cyanosis worse, haemolysis",
+        "G6PD deficiency."
+       ]
+      ],
+      "punch": "The oximeter cannot see what it was not built for: carbon monoxide reads as normal, methaemoglobin as about 85%, and only co-oximetry tells the truth."
      }
     },
     {
@@ -595,9 +1492,66 @@
       "**d** **Visual signs, AKI or severe acidosis**."
      ],
      "x": {
-      "gist": "The alcohol is harmless; its acids kill. Block the enzyme early, and dialyse once the acid or organ damage is already there.",
-      "rule": "Block the enzyme; dialyse the damage.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Toxic alcohols → Block or dialyse",
+      "intro": "Methanol and ethylene glycol are not very toxic themselves. Alcohol dehydrogenase converts them to formic acid and glycolic and oxalic acids, which cause the acidosis, blindness and renal failure. Treatment therefore has two parts: stop the enzyme before acid forms, and remove the alcohol and acid once harm has started.",
+      "why": [
+       [
+        "a",
+        "**Empirically when a toxic alcohol is suspected and the level is delayed.** Fomepizole blocks alcohol dehydrogenase, so no new acid forms while waiting. Toxic alcohol levels are rarely available quickly, and every hour of delay lets more acid form."
+       ],
+       [
+        "b",
+        "**No — in a late presenter the alcohol is already metabolised to acid.** The osmolal gap reflects the unmetabolised alcohol; as it is converted, the osmolal gap falls and the anion gap rises. A normal osmolal gap with high anion gap acidosis is consistent with late poisoning. The normal range is also wide, so a small toxic amount can hide inside it."
+       ],
+       [
+        "c",
+        "**Ethanol ≥100 mg/dL saturates alcohol dehydrogenase (10–20× higher affinity).** The enzyme prefers ethanol, so while ethanol is at this level the toxic alcohol is hardly metabolised. Fomepizole becomes necessary as the ethanol level falls."
+       ],
+       [
+        "d",
+        "**Visual signs, AKI or severe acidosis.** These show that acid has already formed and is causing organ damage. Haemodialysis removes both the parent alcohol and the toxic acids, which fomepizole cannot do."
+       ]
+      ],
+      "mimic": [
+       [
+        "Toxic alcohol vs alcoholic ketoacidosis",
+        "Both give high anion gap acidosis in a drinker; ketoacidosis has ketones, often low glucose, and a small osmolal gap."
+       ],
+       [
+        "Isopropanol",
+        "Raises the osmolal gap but makes acetone, a ketone, not an acid — no acidosis."
+       ]
+      ],
+      "traps": [
+       [
+        "“Normal osmolal gap, so not a toxic alcohol”",
+        "A late presenter has converted the alcohol to acid."
+       ],
+       [
+        "“Wait for the level before fomepizole”",
+        "Give it on suspicion; delay lets acid form."
+       ],
+       [
+        "“Fomepizole is enough once the patient is blind”",
+        "Established acid and organ damage need dialysis."
+       ]
+      ],
+      "decode": [
+       [
+        "Drinker, blurred vision, high anion gap acidosis, normal osmolal gap",
+        "Late methanol → fomepizole and dialysis."
+       ],
+       [
+        "Suspected ethylene glycol, level awaited",
+        "Fomepizole now."
+       ],
+       [
+        "Co-ingested ethanol, level 150 mg/dL",
+        "Alcohol dehydrogenase is occupied; fomepizole can follow as ethanol falls."
+       ]
+      ],
+      "punch": "Block the enzyme early, while there is still alcohol to block; dialyse once the acid or the damage is already there."
      }
     },
     {
@@ -613,10 +1567,54 @@
       "Benzodiazepines, cooling, fluids; watch hyperthermia, rhabdomyolysis, hyponatraemia."
      ],
      "x": {
-      "gist": "A screen only finds what it was built to find; designer drugs are built to be missed.",
-      "pat": [
-       "toxidrome"
-      ]
+      "v": 2,
+      "sub": "Toxicology → Toxidromes → Sympathomimetic with a negative screen",
+      "intro": "A patient is agitated, hallucinating, hypertensive, tachycardic and sweating — a sympathomimetic toxidrome. The urine screen is negative for amphetamines and cocaine. That does not exclude a drug; it shows the limits of the test.",
+      "why": [
+       [
+        "a",
+        "**Synthetic cathinones (bath salts, mephedrone) or synthetic cannabinoids — routine immunoassays miss them.** A urine immunoassay detects only the molecules its antibodies were made against. These new psychoactive substances are structurally different enough to escape the amphetamine and cannabinoid assays, and their structures keep changing. The diagnosis is clinical."
+       ],
+       [
+        "b",
+        "**Benzodiazepines, cooling, fluids; watch hyperthermia, rhabdomyolysis, hyponatraemia.** Benzodiazepines reduce central sympathetic drive, which lowers heart rate, blood pressure and heat production. Agitation and muscle activity cause hyperthermia and rhabdomyolysis, which are the main causes of death. Hyponatraemia is reported with mephedrone, as with MDMA, and can cause seizures."
+       ]
+      ],
+      "mimic": [
+       [
+        "Sympathomimetic vs anticholinergic",
+        "Both are hot, agitated and tachycardic; the sympathomimetic patient sweats, the anticholinergic patient has dry skin and urinary retention."
+       ],
+       [
+        "Serotonin syndrome",
+        "Also hot and agitated, but with clonus and hyperreflexia, worse in the legs, after a serotonergic drug."
+       ]
+      ],
+      "traps": [
+       [
+        "“Negative screen, so not drug-induced”",
+        "Immunoassays miss most new psychoactive substances; treat the toxidrome."
+       ],
+       [
+        "“A β-blocker for the tachycardia”",
+        "Sedation with benzodiazepines comes first; it treats the cause of the tachycardia and hypertension."
+       ]
+      ],
+      "decode": [
+       [
+        "Festival-goer, agitation, hypertension, sweating, screen negative",
+        "Synthetic cathinone → benzodiazepines, cooling."
+       ],
+       [
+        "Same picture with dark urine and high CK",
+        "Rhabdomyolysis — fluids."
+       ],
+       [
+        "Same picture with a seizure and sodium 122",
+        "Drug-associated hyponatraemia."
+       ]
+      ],
+      "punch": "A urine screen finds only what it was built to find; a sympathomimetic picture with a negative screen is still a sympathomimetic, and it is treated with sedation and cooling."
      }
     },
     {
@@ -632,10 +1630,54 @@
       "Supportive care; atropine for bradycardia. Naloxone response is inconsistent."
      ],
      "x": {
-      "gist": "Clonidine copies the opioid picture through a different receptor, so the opioid antidote misses.",
-      "pat": [
-       "toxidrome"
-      ]
+      "v": 2,
+      "sub": "Toxicology → Toxidromes → Opioid look-alike",
+      "intro": "Coma, pinpoint pupils and slow breathing look like opioid poisoning, so naloxone is given. When it fails, the question becomes which drug produces the same picture through a different receptor.",
+      "why": [
+       [
+        "a",
+        "**Clonidine (central α₂ agonist).** Clonidine stimulates α₂ receptors in the brainstem, which reduces sympathetic outflow: miosis, sedation, respiratory depression, bradycardia and hypotension. Children are often poisoned by a single tablet or by imidazoline eye or nasal drops, which act the same way. Early transient hypertension can occur from peripheral α stimulation."
+       ],
+       [
+        "b",
+        "**Supportive care; atropine for bradycardia. Naloxone response is inconsistent.** Most patients recover within 24–48 hours with airway and circulatory support. Atropine treats symptomatic bradycardia, and fluids or vasopressors treat hypotension. Naloxone helps some patients, possibly through an indirect opioid link, but its effect cannot be relied upon."
+       ]
+      ],
+      "mimic": [
+       [
+        "Clonidine vs opioid",
+        "Same picture; clonidine adds marked bradycardia and hypotension, and naloxone often fails."
+       ],
+       [
+        "Clonidine vs pontine haemorrhage",
+        "Pontine haemorrhage also gives coma with pinpoint pupils; CT separates them."
+       ]
+      ],
+      "traps": [
+       [
+        "“Pinpoint pupils and apnoea mean opioid”",
+        "Clonidine, imidazolines and pontine haemorrhage give the same picture."
+       ],
+       [
+        "“If naloxone fails, give more until it works”",
+        "Clonidine response is inconsistent; supportive care is the treatment."
+       ],
+       [
+        "“Early hypertension excludes clonidine”",
+        "A brief hypertensive phase can precede hypotension."
+       ]
+      ],
+      "decode": [
+       [
+        "Toddler, coma, miosis, HR 50, naloxone no response",
+        "Clonidine (or imidazoline drops)."
+       ],
+       [
+        "Father’s antihypertensive tablets at home, child drowsy and bradycardic",
+        "Clonidine → supportive care, atropine."
+       ]
+      ],
+      "punch": "Clonidine copies the opioid picture through a different receptor, so the opioid antidote is unreliable and care is supportive."
      }
     },
     {
@@ -651,10 +1693,54 @@
       "**Hydroxocobalamin 5 g** with 100% O₂ (intubate if GCS ≤8); **avoid nitrites** — their methaemoglobin worsens oxygen carriage."
      ],
      "x": {
-      "gist": "Smoke carries two poisons that both hide behind a normal SpO₂; the lactate gives cyanide away.",
-      "pat": [
-       "satgap"
-      ]
+      "v": 2,
+      "sub": "Toxicology → Smoke inhalation → Cyanide and carbon monoxide",
+      "intro": "Burning wool, silk, plastics and foam release hydrogen cyanide as well as carbon monoxide. A house-fire victim can therefore have two poisons that both stop oxygen use, and neither lowers the pulse oximeter reading. The blood lactate is the clue.",
+      "why": [
+       [
+        "a",
+        "**Cyanide plus carbon monoxide.** COHb reads as oxyhaemoglobin, so SpO₂ is normal. Cyanide blocks cytochrome oxidase, so cells cannot use oxygen and switch to anaerobic metabolism; venous blood stays oxygenated and lactate rises. In smoke inhalation a lactate of about 8–10 mmol/L or more strongly suggests cyanide."
+       ],
+       [
+        "b",
+        "**Hydroxocobalamin 5 g with 100% O₂ (intubate if GCS ≤8); avoid nitrites — their methaemoglobin worsens oxygen carriage.** Hydroxocobalamin binds cyanide to form cyanocobalamin, which is excreted in urine; it is given intravenously over 15 minutes and can be repeated. Nitrites work by creating methaemoglobin, which binds cyanide, but with CO already blocking haemoglobin this further reduces oxygen delivery. 100% oxygen speeds removal of CO."
+       ]
+      ],
+      "mimic": [
+       [
+        "Smoke victim vs simple CO poisoning",
+        "CO alone rarely gives a very high lactate; a lactate of 12 with shock points to cyanide."
+       ]
+      ],
+      "traps": [
+       [
+        "“SpO₂ 99%, so oxygenation is fine”",
+        "COHb reads as oxyhaemoglobin and cyanide stops oxygen use, not delivery."
+       ],
+       [
+        "“Use the standard cyanide kit with nitrites”",
+        "Nitrite-induced methaemoglobin adds to the CO deficit in carriage; hydroxocobalamin is safe."
+       ],
+       [
+        "“Wait for the cyanide level”",
+        "The level takes hours; treat on the clinical picture and lactate."
+       ]
+      ],
+      "decode": [
+       [
+        "Fire victim, coma, high lactate, normal SpO₂",
+        "Cyanide with CO → hydroxocobalamin and 100% oxygen."
+       ],
+       [
+        "Which cyanide antidote to avoid in smoke inhalation?",
+        "Nitrites."
+       ],
+       [
+        "Red urine after treatment",
+        "Hydroxocobalamin colouring, expected."
+       ]
+      ],
+      "punch": "In a fire victim with a normal SpO₂, the lactate gives cyanide away: give hydroxocobalamin and oxygen, never nitrites."
      }
     },
     {
@@ -673,9 +1759,66 @@
       "**e** Swallowed elemental (thermometer): **harmless**. Inhaled vapour: **pneumonitis, ARDS**, neurotoxicity."
      ],
      "x": {
-      "gist": "Metals poison enzymes by grabbing their sulfhydryl groups; chelators offer the metal a better partner.",
-      "rule": "Chelators give the metal a better partner.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Heavy metals → Arsenic, lead, mercury",
+      "intro": "Heavy metals poison enzymes by binding their sulfhydryl groups. In the ICU they appear as an unexplained gastroenteritis with arrhythmia, a neuropathy that looks like Guillain–Barré syndrome, or an encephalopathy. Chelators treat them by offering the metal a partner it binds more tightly, which is then excreted.",
+      "why": [
+       [
+        "a",
+        "**Binds sulfhydryl groups (blocks pyruvate dehydrogenase); garlic odour, rice-water diarrhoea, QT prolongation.** Blocking pyruvate dehydrogenase stops aerobic energy production in cells. Damage to capillaries in the gut causes profuse watery diarrhoea and fluid loss, and potassium-channel effects prolong the QT, leading to torsades."
+       ],
+       [
+        "b",
+        "**At 1–3 weeks an ascending axonal neuropathy that mimics GBS; Mees lines.** The neuropathy is sensorimotor, often painful, and can progress to weakness and respiratory failure. Mees lines are white transverse bands across the nails; they appear weeks later as the nail grows out."
+       ],
+       [
+        "c",
+        "**24-h urine arsenic (blood clears in days); chelate with dimercaprol, then DMSA or DMPS.** Arsenic leaves the blood quickly, so a blood level taken at the neuropathy stage is often normal while urine still shows it. Dimercaprol is given intramuscularly in the acute, unwell patient; oral DMSA or DMPS follows when the gut works."
+       ],
+       [
+        "d",
+        "**Dimercaprol first, then CaNa₂EDTA 4 h later; avoid LP and routine hyperventilation.** EDTA given alone mobilises lead from tissues and can move it into the brain, worsening encephalopathy; dimercaprol first prevents this. Lead encephalopathy causes cerebral oedema, so lumbar puncture risks herniation."
+       ],
+       [
+        "e",
+        "**Swallowed elemental (thermometer): harmless. Inhaled vapour: pneumonitis, ARDS, neurotoxicity.** Elemental mercury is almost not absorbed from the gut. Heated or vaporised, it is absorbed well through the lungs and damages lung and brain."
+       ]
+      ],
+      "mimic": [
+       [
+        "Arsenic neuropathy vs GBS",
+        "Both ascend; arsenic follows a gastrointestinal illness with QT prolongation and later Mees lines — check urine arsenic before treating as GBS."
+       ]
+      ],
+      "traps": [
+       [
+        "“Normal blood arsenic excludes poisoning”",
+        "Blood clears in days; 24-hour urine is the test."
+       ],
+       [
+        "“EDTA alone for lead encephalopathy”",
+        "It can move lead into the brain; dimercaprol goes first."
+       ],
+       [
+        "“A swallowed thermometer needs chelation”",
+        "Elemental mercury is not absorbed from the gut."
+       ]
+      ],
+      "decode": [
+       [
+        "Vomiting and diarrhoea, then 2 weeks later ascending weakness",
+        "Arsenic → 24-hour urine arsenic, dimercaprol."
+       ],
+       [
+        "Child with pica, seizures, raised ICP",
+        "Lead encephalopathy → dimercaprol, then EDTA."
+       ],
+       [
+        "Heated mercury in a closed room, then ARDS",
+        "Inhaled mercury vapour."
+       ]
+      ],
+      "punch": "Metals poison by binding sulfhydryl groups and chelators offer them a better partner — but the route and the order of chelation decide whether that helps or harms."
      }
     },
     {
@@ -694,9 +1837,66 @@
       "**e** Not bound by charcoal (an ion) → **whole bowel irrigation**; tablets are radio-opaque; **deferoxamine** up to 15 mg/kg/h (vin-rosé urine), usually stopped by ~24 h (ARDS)."
      ],
      "x": {
-      "gist": "Iron burns the gut first, then hides inside cells and wrecks their mitochondria — the quiet middle stage is the trap.",
-      "rule": "A quiet stage 2 is not recovery.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Metals → Iron poisoning",
+      "intro": "Iron tablets are common in homes, and in children they are a classic cause of death from overdose. Iron first damages the gut directly, then enters the circulation and cells, where free iron damages mitochondria. The stages follow that path, and the quiet middle stage is where patients are wrongly sent home.",
+      "why": [
+       [
+        "a",
+        "**Corrosive GI: vomiting, haematemesis, shock.** Iron is directly corrosive to the gut lining. Vomiting and diarrhoea, sometimes bloody, with fluid loss can cause early hypovolaemic shock. A patient with no gastrointestinal symptoms by 6 hours is unlikely to develop serious toxicity."
+       ],
+       [
+        "b",
+        "**Latent — apparent recovery while iron enters cells: the dangerous reassurance.** Gut symptoms settle, but iron is moving into tissues. In severe poisoning this stage may be short or absent, and a persistent acidosis or tachycardia shows that toxicity is still progressing."
+       ],
+       [
+        "c",
+        "**Shock, high anion gap acidosis, hepatic necrosis, coagulopathy.** Free iron disrupts mitochondrial oxidative phosphorylation, so cells make lactate; iron also causes vasodilatation and capillary leak. The liver receives the iron first through the portal circulation."
+       ],
+       [
+        "d",
+        "**Hepatic failure; gastric outlet stricture at 2–6 weeks.** Survivors of the early stages may develop liver failure. The early corrosive injury heals with scarring, which can obstruct the pylorus weeks later."
+       ],
+       [
+        "e",
+        "**Not bound by charcoal (an ion) → whole bowel irrigation; tablets are radio-opaque; deferoxamine up to 15 mg/kg/h (vin-rosé urine), usually stopped by ~24 h (ARDS).** Charcoal does not bind charged metals, so tablets seen on X-ray are flushed through with polyethylene glycol. Deferoxamine binds free iron to form ferrioxamine, which colours urine red-orange. Infusions beyond about 24 hours are associated with ARDS."
+       ]
+      ],
+      "mimic": [
+       [
+        "Iron vs lithium",
+        "Both are not bound by charcoal and are treated with whole bowel irrigation; iron tablets are radio-opaque and give a corrosive gastroenteritis."
+       ]
+      ],
+      "traps": [
+       [
+        "“Symptoms have settled at 12 hours, so discharge”",
+        "That may be the latent stage; check acidosis and serum iron."
+       ],
+       [
+        "“Give activated charcoal”",
+        "Iron is an ion and is not bound."
+       ],
+       [
+        "“Continue deferoxamine until the urine clears”",
+        "Long infusions cause ARDS; usually stopped by about 24 hours."
+       ]
+      ],
+      "decode": [
+       [
+        "Child, mother’s tablets, vomiting, then well, then shock at 30 h",
+        "Iron poisoning, stage 3."
+       ],
+       [
+        "Radio-opaque tablets on abdominal X-ray",
+        "Iron → whole bowel irrigation."
+       ],
+       [
+        "Urine turns vin-rosé on treatment",
+        "Deferoxamine binding iron."
+       ]
+      ],
+      "punch": "Iron burns the gut, then hides in cells: a quiet middle stage is not recovery, so judge by the acidosis, not by how the patient looks."
      }
     },
     {
@@ -714,8 +1914,91 @@
       "**d** No overall benefit; only a deep circumferential **grade IIb** burn may benefit — never grade III (masks perforation)."
      ],
      "x": {
-      "gist": "The airway swells while the vital signs still look normal — hoarseness and drooling are the warning, so the airway comes first.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Corrosives → Caustic ingestion",
+      "intro": "A patient has swallowed a strong acid or alkali. The burn to the pharynx and larynx swells over the following hours, so a patient who is talking now can obstruct later. Hoarseness, stridor and drooling show that the larynx is already involved.",
+      "why": [
+       [
+        "a",
+        "**Secure the airway early (fibreoptic or awake): laryngeal oedema worsens over hours.** Intubation becomes harder as the oedema grows, so it is done while it is still possible. A blind or rapid technique can traumatise burned tissue, so the airway is secured under direct vision."
+       ],
+       [
+        "b",
+        "**Endoscopy within 12–24 h for Zargar grading.** Grading the depth of the burn predicts stricture and perforation and guides feeding and steroid decisions. Beyond about 48 hours the healing wall softens, and it is weakest from roughly day 5 to day 15, when endoscopy carries the highest risk of perforation."
+       ],
+       [
+        "c",
+        "**No emesis, no charcoal, no neutralisation, no blind NG tube.** Vomiting re-exposes the oesophagus and airway to the caustic. Charcoal does not bind caustics and obscures endoscopy. Neutralisation produces heat and adds thermal injury, and a blind tube can perforate a burned oesophagus."
+       ],
+       [
+        "d",
+        "**No overall benefit; only a deep circumferential grade IIb burn may benefit — never grade III (masks perforation).** Trials have not shown that steroids reduce strictures overall. In grade IIb burns, some data suggest a reduction; in grade III necrosis, steroids add infection risk and hide the signs of perforation."
+       ]
+      ],
+      "mimic": [
+       [
+        "Alkali vs acid",
+        "Alkali causes liquefactive necrosis, penetrating deeply, mainly in the oesophagus; acid causes coagulative necrosis, often worse in the stomach."
+       ]
+      ],
+      "traps": [
+       [
+        "“No mouth burns, so no oesophageal injury”",
+        "The oesophagus can be burned without visible oral injury; symptoms guide endoscopy."
+       ],
+       [
+        "“Neutralise the alkali with a weak acid”",
+        "The reaction produces heat and worsens the burn."
+       ],
+       [
+        "“Steroids prevent strictures”",
+        "No overall benefit, and harmful in grade III."
+       ]
+      ],
+      "decode": [
+       [
+        "Drooling, hoarseness after drinking drain cleaner",
+        "Secure the airway first."
+       ],
+       [
+        "Next step after stabilisation",
+        "Endoscopy within 12–24 hours."
+       ],
+       [
+        "Grade III on endoscopy — steroids?",
+        "No."
+       ]
+      ],
+      "punch": "A caustic burn of the larynx swells while the patient still looks well, so the airway is secured first and the endoscopy grades everything else.",
+      "table": {
+       "title": "Zargar grading",
+       "head": [
+        "Grade",
+        "Finding"
+       ],
+       "rows": [
+        [
+         "I",
+         "Oedema and redness"
+        ],
+        [
+         "IIa",
+         "Superficial ulcers, erosions"
+        ],
+        [
+         "IIb",
+         "Deep or circumferential ulcers"
+        ],
+        [
+         "IIIa",
+         "Scattered necrosis"
+        ],
+        [
+         "IIIb",
+         "Extensive necrosis"
+        ]
+       ]
+      }
      }
     },
     {
@@ -734,8 +2017,102 @@
       "**e** SJS/TEN: stop the drug, burn-unit care (ciclosporin or IVIG may help). DRESS: stop the drug, **steroids with a slow taper**."
      ],
      "x": {
-      "gist": "Timing and blood separate them: early skin-and-mucosa necrosis is SJS/TEN; late fever, eosinophils and organs is DRESS.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Drug reactions → SJS/TEN vs DRESS",
+      "intro": "Two severe drug reactions can bring a patient to the ICU with a rash and fever. SJS/TEN is widespread death of the epidermis and mucosa, behaving like a burn. DRESS is a delayed systemic hypersensitivity reaction in which the internal organs, not the skin, carry the risk.",
+      "why": [
+       [
+        "a",
+        "**One spectrum by detachment: SJS <10% · overlap 10–30% · TEN >30% BSA.** Both are caused by cytotoxic T cells killing keratinocytes. The name depends only on the area of skin that detaches, and mortality rises with it."
+       ],
+       [
+        "b",
+        "**SJS/TEN 4–28 days; DRESS 2–8 weeks.** The latency is a key clue. DRESS appears later than almost any other drug rash, so a recently started drug may not be the cause — the causative drug is often one started a month or more before."
+       ],
+       [
+        "c",
+        "**Eosinophilia with fever, facial oedema, nodes and organ involvement (liver most).** DRESS is a systemic hypersensitivity, so blood and organs are affected. Hepatitis is the commonest organ injury; kidney, lung and heart can be involved."
+       ],
+       [
+        "d",
+        "**SJS/TEN: involved. DRESS: usually spared.** Mucosal erosions of the mouth, eyes and genitals are part of SJS/TEN, usually from the start. In DRESS they are absent or mild."
+       ],
+       [
+        "e",
+        "**SJS/TEN: stop the drug, burn-unit care (ciclosporin or IVIG may help). DRESS: stop the drug, steroids with a slow taper.** SJS/TEN is managed like a burn: fluids, wound care, eye care, infection control. In DRESS the immune reaction drives organ damage, so systemic steroids are used, tapered slowly because it relapses."
+       ]
+      ],
+      "mimic": [
+       [
+        "TEN vs staphylococcal scalded skin syndrome",
+        "SSSS splits more superficially, spares mucosa and affects mainly children."
+       ]
+      ],
+      "traps": [
+       [
+        "“The rash began 5 weeks after the drug, so it is not drug-induced”",
+        "DRESS typically appears at 2–8 weeks."
+       ],
+       [
+        "“Stop steroids once the rash fades”",
+        "DRESS relapses; taper slowly over weeks."
+       ]
+      ],
+      "decode": [
+       [
+        "Started carbamazepine 5 weeks ago, fever, facial oedema, eosinophilia, raised ALT",
+        "DRESS → stop drug, steroids."
+       ],
+       [
+        "10 days after a new drug, blisters, oral erosions, 40% detachment",
+        "TEN → burn unit."
+       ],
+       [
+        "Detachment 20%",
+        "SJS/TEN overlap."
+       ]
+      ],
+      "punch": "Timing and blood separate them: early skin and mucosal necrosis is SJS/TEN and is treated as a burn; late fever, eosinophils and organ injury is DRESS and is treated with a slow steroid taper.",
+      "table": {
+       "title": "Telling them apart",
+       "head": [
+        "Feature",
+        "SJS/TEN",
+        "DRESS"
+       ],
+       "rows": [
+        [
+         "Onset after drug",
+         "4–28 days",
+         "2–8 weeks"
+        ],
+        [
+         "Skin",
+         "Blisters, detachment",
+         "Morbilliform, facial oedema"
+        ],
+        [
+         "Mucosa",
+         "Involved",
+         "Usually spared"
+        ],
+        [
+         "Blood",
+         "—",
+         "Eosinophilia"
+        ],
+        [
+         "Organs",
+         "Skin failure",
+         "Liver, kidney, lung"
+        ],
+        [
+         "Treatment",
+         "Burn care",
+         "Steroids, slow taper"
+        ]
+       ]
+      }
      }
     },
     {
@@ -754,10 +2131,66 @@
       "**e** **Multi-dose charcoal**; dialysis does not help."
      ],
      "x": {
-      "gist": "Quinine is a sodium-channel blocker with two extras: it blinds and it releases insulin.",
-      "pat": [
-       "nablock"
-      ]
+      "v": 2,
+      "sub": "Toxicology → Sodium-channel blockers → Quinine",
+      "intro": "Quinine is still used for malaria and, in some places, for cramps. In overdose it behaves like other sodium-channel blockers on the heart, but it also damages the retina and stimulates insulin release. These two features make it recognisable.",
+      "why": [
+       [
+        "a",
+        "**Cinchonism: tinnitus, deafness, nausea, headache.** These appear even at high therapeutic levels and are the first sign of toxicity. They come from toxicity to the inner ear and the central nervous system."
+       ],
+       [
+        "b",
+        "**Blindness at 6–12 h, fixed dilated pupils.** Quinine is directly toxic to the retina. Vision may recover partly over weeks, but permanent loss can occur."
+       ],
+       [
+        "c",
+        "**Na⁺-channel block: wide QRS, VT → bicarbonate.** Like tricyclics, quinine slows conduction through sodium channels, widening the QRS and causing ventricular arrhythmias. Sodium bicarbonate raises extracellular sodium and pH, which reduces drug binding to the channel. It also blocks potassium channels, so the QT lengthens."
+       ],
+       [
+        "d",
+        "**Hypoglycaemia (quinine releases insulin).** Quinine stimulates insulin secretion from pancreatic β cells. Low glucose can add to coma and seizures, so it is checked repeatedly."
+       ],
+       [
+        "e",
+        "**Multi-dose charcoal; dialysis does not help.** Repeated charcoal binds quinine in the gut and draws it from the circulation, shortening its half-life. Quinine is widely distributed in tissues and protein-bound, so little is in the blood for dialysis to remove."
+       ]
+      ],
+      "mimic": [
+       [
+        "Quinine vs tricyclic overdose",
+        "Both widen the QRS and respond to bicarbonate; quinine adds blindness, tinnitus and hypoglycaemia."
+       ],
+       [
+        "Quinine vs salicylate",
+        "Both cause tinnitus; salicylate gives respiratory alkalosis with metabolic acidosis, not wide QRS and blindness."
+       ]
+      ],
+      "traps": [
+       [
+        "“Dialyse to remove quinine”",
+        "Its large distribution volume makes dialysis ineffective; use multi-dose charcoal."
+       ],
+       [
+        "“Coma in quinine overdose is only cardiac”",
+        "Hypoglycaemia from insulin release can cause or worsen it."
+       ]
+      ],
+      "decode": [
+       [
+        "Overdose with tinnitus, then sudden blindness",
+        "Quinine."
+       ],
+       [
+        "Wide QRS in quinine overdose",
+        "Sodium bicarbonate."
+       ],
+       [
+        "Recurrent low glucose in a malaria patient on quinine",
+        "Quinine-induced insulin release."
+       ]
+      ],
+      "punch": "Quinine is a sodium-channel blocker with two extras: it blinds and it releases insulin, so give bicarbonate for the QRS, glucose for the sugar, and charcoal, not dialysis."
      }
     },
     {
@@ -775,10 +2208,62 @@
       "**d** **Bicarbonate**; lipid if refractory."
      ],
      "x": {
-      "gist": "Too much sodium-channel block stops the brakes before the engine — inhibitory neurons go quiet first, so the brain seizes.",
-      "pat": [
-       "nablock"
-      ]
+      "v": 2,
+      "sub": "Toxicology → Sodium-channel blockers → Antiseizure drug overdose",
+      "intro": "Lamotrigine and carbamazepine control seizures by blocking neuronal sodium channels. In overdose the same block appears in the heart, and, paradoxically, the brain can start seizing. Treating these seizures means choosing drugs that do not add more sodium-channel block.",
+      "why": [
+       [
+        "a",
+        "**At toxic levels the Na⁺ block silences inhibitory interneurons → paradoxical seizures.** Inhibitory interneurons fire rapidly and depend heavily on sodium channels, so they may be suppressed first. With less inhibition, excitatory neurons are released and seizures follow."
+       ],
+       [
+        "b",
+        "**Wide QRS — the same block in the heart.** Cardiac sodium channels conduct the impulse through the ventricles. Blocking them slows conduction and widens the QRS, with risk of ventricular arrhythmia and hypotension."
+       ],
+       [
+        "c",
+        "**Benzodiazepines, then phenobarbital or propofol.** These work on GABA-A receptors and do not depend on sodium channels. Phenytoin is avoided because it is itself a sodium-channel blocker and adds to cardiac toxicity."
+       ],
+       [
+        "d",
+        "**Bicarbonate; lipid if refractory.** Raising extracellular sodium and pH reduces drug binding to the channel and narrows the QRS. Intravenous lipid emulsion is a rescue therapy for lipophilic drugs when the patient does not respond."
+       ]
+      ],
+      "mimic": [
+       [
+        "Antiseizure drug vs tricyclic overdose",
+        "Both cause wide QRS and seizures and both respond to bicarbonate; carbamazepine is structurally similar to tricyclics and also anticholinergic."
+       ]
+      ],
+      "traps": [
+       [
+        "“Seizures in overdose mean the antiseizure level is low”",
+        "In toxicity the drug itself can cause seizures."
+       ],
+       [
+        "“Phenytoin for the seizures”",
+        "It is another sodium-channel blocker and worsens cardiac toxicity."
+       ],
+       [
+        "“A wide QRS needs lidocaine or a class Ic drug”",
+        "Class I antiarrhythmics add sodium-channel block; give bicarbonate."
+       ]
+      ],
+      "decode": [
+       [
+        "Lamotrigine overdose, seizure, QRS 130 ms",
+        "Benzodiazepine and sodium bicarbonate."
+       ],
+       [
+        "Carbamazepine overdose, seizures — which anticonvulsant to avoid?",
+        "Phenytoin."
+       ],
+       [
+        "Refractory hypotension and wide QRS despite bicarbonate",
+        "Lipid emulsion."
+       ]
+      ],
+      "punch": "Too much sodium-channel block silences the brain’s brakes and slows the heart, so treat with GABA drugs and bicarbonate, never another sodium-channel blocker."
      }
     },
     {
@@ -794,9 +2279,58 @@
       "Phenytoin does not work."
      ],
      "x": {
-      "gist": "Isoniazid depletes pyridoxal phosphate, which the brain needs to make GABA — so GABA drugs have nothing to work on until B6 is replaced.",
-      "rule": "No B6, no GABA.",
-      "pat": []
+      "v": 2,
+      "sub": "Toxicology → Seizures → Isoniazid overdose",
+      "intro": "A patient on tuberculosis treatment is seizing, and the seizures do not stop with a benzodiazepine. Isoniazid in overdose depletes the vitamin the brain needs to make its main inhibitory transmitter. Until that vitamin is replaced, the usual anticonvulsants have little to act on.",
+      "why": [
+       [
+        "a",
+        "**Isoniazid — give pyridoxine with the benzodiazepine: gram for gram, or 5 g IV if the amount is unknown.** Isoniazid depletes pyridoxal phosphate, the active form of vitamin B6, which is the cofactor for glutamic acid decarboxylase, the enzyme that makes GABA. With low GABA the brain seizes, and benzodiazepines, which enhance GABA, have too little GABA to work with. Pyridoxine restores GABA synthesis, and the two drugs together stop the seizures. The acidosis comes from lactate produced by prolonged seizures."
+       ],
+       [
+        "b",
+        "**Phenytoin does not work.** Phenytoin acts on sodium channels and does nothing to correct the GABA deficit. The seizures are corrected only by replacing pyridoxine."
+       ]
+      ],
+      "mimic": [
+       [
+        "Isoniazid vs other causes of refractory seizures in overdose",
+        "Tricyclics, bupropion and tramadol also cause seizures; the clue to isoniazid is TB treatment and failure of benzodiazepines."
+       ],
+       [
+        "Isoniazid vs toxic alcohol",
+        "Both give coma and high anion gap acidosis; isoniazid has seizures from the start and a TB history."
+       ]
+      ],
+      "traps": [
+       [
+        "“More benzodiazepine will eventually work”",
+        "Without pyridoxine there is too little GABA to enhance."
+       ],
+       [
+        "“Load phenytoin for refractory seizures”",
+        "It does not act on GABA synthesis and fails."
+       ],
+       [
+        "“Pyridoxine replaces the benzodiazepine”",
+        "They are given together; they work as a pair."
+       ]
+      ],
+      "decode": [
+       [
+        "TB patient, refractory seizures, high anion gap acidosis",
+        "Isoniazid → pyridoxine."
+       ],
+       [
+        "Unknown amount of isoniazid ingested — pyridoxine dose?",
+        "5 g IV."
+       ],
+       [
+        "Known amount taken",
+        "Gram for gram."
+       ]
+      ],
+      "punch": "Isoniazid takes away the vitamin B6 that GABA synthesis depends on, so GABA drugs fail until pyridoxine is replaced."
      }
     },
     {
@@ -814,215 +2348,83 @@
       "**d** **Vomiting within 1 hour**."
      ],
      "x": {
-      "gist": "The faster a tissue divides, the lower the dose that kills it: marrow first, then gut lining, then nerves and vessels.",
-      "pat": []
-     }
-    }
-   ]
-  },
-  "RESP04": {
-   "map": {
-    "title": "Respiratory scenarios II — Immunocompromised, air leak, lung donor",
-    "ideas": [
-     {
-      "t": "Immunocompromised failure: the defect predicts the bug",
-      "cards": [
-       "RSC-17",
-       "RSC-18",
-       "RSC-19"
-      ]
-     },
-     {
-      "t": "Diagnose by CT pattern and non-invasive tests",
-      "cards": [
-       "RSC-20"
-      ]
-     },
-     {
-      "t": "NIV/HFNC: time-limited trial, no mortality benefit",
-      "cards": [
-       "RSC-21"
-      ]
-     },
-     {
-      "t": "ARDS here is ventilated like any ARDS",
-      "cards": [
-       "RSC-22"
-      ]
-     },
-     {
-      "t": "Air leak follows transpulmonary pressure",
-      "cards": [
-       "RSC-23",
-       "RSC-24",
-       "RSC-25",
-       "RSC-26"
-      ]
-     },
-     {
-      "t": "Lung donor: protective ventilation raises procurement",
-      "cards": [
-       "RSC-27",
-       "RSC-28"
-      ]
-     }
-    ],
-    "skipped": {
-     "RSC-17": "Causes: infection ~60% (bacteria 33% first); 15% stay undetermined — worse outcome",
-     "RSC-18": "Defect → bug: neutrophil → bacteria, Candida, Aspergillus · T cell → Pneumocystis, CMV, Nocardia · B cell → encapsulated bacteria",
-     "RSC-19": "Stem-cell transplant: pre-engraftment DAH (median day 11) · to day 100 CMV, IPS · late bronchiolitis obliterans",
-     "RSC-22": "Immunocompromised ARDS: same ventilation; mortality with vasopressors, RRT, undetermined cause — not neutropenia",
-     "RSC-24": "Air leak: lowest mean airway pressure, water seal only",
-     "RSC-26": "Bronchoscopic closure: small → glue · proximal → stents, spigots · distal → one-way valves",
-     "RSC-27": "Only 15–25% of donors yield lungs; sympathetic storm injures them",
-     "RSC-28": "Donor ventilation: VT 6–8, PEEP 5–10; protective settings raise procurement (OR 1.43); kidneys want fluid, lungs want restriction",
-     "RSC-29": "True/false revision"
-    },
-    "recall": "Find the defect → read the CT → trial support briefly → protect the lung; with a leak, give the broken lung less pressure."
-   },
-   "close": {
-    "wrap": [
-     "Immunocompromised failure: the defect predicts the bug, the CT pattern points to it, and support is a short trial, not a destination.",
-     "Air leak: every manoeuvre lowers the pressure across the fistula or the time it is held."
-    ],
-    "q": {
-     "q": "Why does chest-drain suction keep a bronchopleural fistula open?",
-     "a": "It raises the transpulmonary gradient across the fistula, increasing flow through it — water seal only."
-    }
-   },
-   "cards": {
-    "RSC-20": {
-     "before": "Skipped RSC-17–19: infection causes about 60% (bacteria first, then viruses, Pneumocystis, Aspergillus). The immune defect predicts the bug — neutrophils → bacteria and moulds; T cells → Pneumocystis, CMV, Nocardia; B cells → encapsulated bacteria.",
-     "gist": "The CT pattern points to the bug class, the immune defect confirms it — and non-invasive tests come before a risky bronchoscopy.",
-     "chain": [
-      "Pneumocystis and viruses inflame the interstitium diffusely → ground glass",
-      "Angio-invasive moulds infarct lung → nodules with a halo, later cavities",
-      "Bacteria fill the alveoli → consolidation",
-      "Confirm with sputum, PCR, galactomannan, β-D-glucan",
-      "Bronchoscopy only if still uncertain"
-     ],
-     "tempt": "“Early bronchoscopy for everyone” — on high FiO₂ it worsens hypoxaemia and can force intubation; non-invasive tests come first.",
-     "nbr": "Galactomannan = Aspergillus. β-D-glucan = most fungi including Pneumocystis — but not Mucorales.",
-     "rule": "Ground glass = interstitium; nodules = invasive moulds; consolidation = bacteria.",
-     "sits": "The halo sign (haemorrhage around a nodule) appears early in neutropenic aspergillosis; the air-crescent sign appears as neutrophils recover.",
-     "deeper": "Non-invasive work-up: induced sputum, nasopharyngeal viral PCR, urinary Legionella antigen, serum galactomannan and β-D-glucan, plus echo and BNP to exclude cardiogenic oedema. Nodules with cavitation widen the list to Mucor, Nocardia, mycobacteria and Staphylococcus aureus.",
-     "pat": [
-      "immdef"
-     ]
-    },
-    "RSC-21": {
-     "gist": "Positive pressure helps only problems that pressure can reverse; in immunocompromised hypoxaemia it buys time without saving lives — so trial it, then intubate early.",
-     "pic": {
-      "t": "steps",
-      "items": [
+      "v": 2,
+      "sub": "Toxicology → Physical agents → Acute radiation syndrome",
+      "intro": "After whole-body radiation exposure, cells that divide rapidly die first, because radiation damages DNA and the damage shows when a cell tries to divide. The dose therefore decides which tissue fails: marrow at the lowest dose, then gut lining, and at very high doses the nervous system and blood vessels. Estimating the dose early guides who needs intensive care.",
+      "why": [
        [
-        "2000–01",
-        "Antonelli, Hilbert: NIV beat oxygen — small trials, high control mortality"
+        "a",
+        "**Haematopoietic: marrow nadir at 2–4 weeks; the 48-h lymphocyte count estimates the dose.** Marrow stem cells are very sensitive, but mature blood cells already in circulation survive their normal lifespan, so counts fall over weeks. Lymphocytes are the exception: they die directly from radiation, and the fall in the absolute lymphocyte count over the first 48 hours tracks the dose."
        ],
        [
-        "2015",
-        "Lemiale: NIV vs oxygen — no mortality difference"
+        "b",
+        "**Gastrointestinal: vomiting, diarrhoea, sepsis within days.** The crypt cells that replace the gut lining are destroyed, so the lining sloughs within days. Fluid loss, bleeding and bacterial translocation follow, made worse by the falling neutrophil count."
        ],
        [
-        "2018",
-        "HIGH: HFNC vs oxygen — no mortality difference"
+        "c",
+        "**Neurovascular (signs from ~20 Gy, full syndrome >~50 Gy): collapse within hours; uniformly fatal.** At these doses damage to blood vessels and neurons causes oedema, confusion, hypotension and collapse within hours. Death follows within days, and care is palliative."
        ],
        [
-        "2018",
-        "LUNG SAFE: NIV used more often first-line in the immunocompromised (20.9% vs 15.9%)"
+        "d",
+        "**Vomiting within 1 hour.** The prodrome of nausea and vomiting comes earlier with higher doses. Vomiting within an hour suggests a dose of roughly 4 Gy or more, which means significant marrow failure is likely."
        ]
-      ]
-     },
-     "tempt": "“The HIGH trial showed HFNC lowers mortality” — it showed no difference.",
-     "rule": "Pressure helps only problems pressure can reverse.",
-     "sits": "Guidelines still conditionally favour early NIV here — not because trials proved benefit, but because intubation itself carries high mortality in these patients; the trial must be short and watched.",
-     "deeper": "Pneumonia-type alveolar filling is not reversed by pressure the way cardiogenic oedema or hypercapnic COPD is. On NIV, large tidal volumes and big swings in transpulmonary pressure can add self-inflicted lung injury. Your notes say NIV failures do worse; in LUNG SAFE itself, mortality after NIV failure matched primary intubation — so the case for a short trial is that NIV buys nothing, not that failure is lethal.",
-     "parts": [
-      {
-       "q": "Where does NIV work, and where does it fail?",
-       "a": "Works: **COPD hypercapnia, cardiogenic pulmonary oedema, high-risk post-extubation**. Fails: **ILD/IPF exacerbation** (>70% failure) and severe hypoxaemia, where it delays intubation."
-      },
-      {
-       "q": "Predictors of NIV failure in immunocompromised respiratory failure (your DocT recall)?",
-       "a": "**Poor performance status (ECOG ≥3)**, plus ARDS, shock/vasopressors, high severity score, need for RRT, an undetermined cause."
+      ],
+      "mimic": [
+       [
+        "Radiation sickness vs gastroenteritis",
+        "Early vomiting after a known exposure, followed by falling lymphocytes, marks radiation injury."
+       ]
+      ],
+      "traps": [
+       [
+        "“The patient feels well after the prodrome, so the dose was low”",
+        "A latent phase follows the prodrome; the marrow nadir comes weeks later."
+       ],
+       [
+        "“Platelets and neutrophils fall first”",
+        "Lymphocytes fall first, within 48 hours; they estimate the dose."
+       ]
+      ],
+      "decode": [
+       [
+        "Radiation accident, vomiting at 30 minutes",
+        "High dose — expect marrow failure, possibly GI syndrome."
+       ],
+       [
+        "Best early lab estimate of dose",
+        "Absolute lymphocyte count at 24–48 hours."
+       ],
+       [
+        "Collapse and confusion within hours of exposure",
+        "Neurovascular syndrome, fatal."
+       ]
+      ],
+      "punch": "The faster a tissue divides, the lower the dose that kills it: marrow first, then gut lining, then nerves and vessels, and how soon the patient vomits shows how high the dose was.",
+      "table": {
+       "title": "Dose to syndrome",
+       "head": [
+        "Dose",
+        "Syndrome",
+        "Timing"
+       ],
+       "rows": [
+        [
+         ">1 Gy",
+         "Haematopoietic",
+         "Nadir 2–4 weeks"
+        ],
+        [
+         ">6 Gy",
+         "Gastrointestinal",
+         "Days"
+        ],
+        [
+         "≥20 Gy",
+         "Neurovascular",
+         "Hours"
+        ]
+       ]
       }
-     ],
-     "pat": []
-    },
-    "RSC-23": {
-     "before": "Skipped RSC-22: immunocompromised ARDS is ventilated like any ARDS; mortality tracks vasopressors, RRT and an undetermined cause — not neutropenia.",
-     "gist": "A fistula steals the breath meant for the lung: expired volume falls below inspired and PEEP leaks away.",
-     "chain": [
-      "Bronchus opens into the pleura",
-      "Inspired gas escapes through the chest drain",
-      "Expired VT < inspired VT; PEEP is lost",
-      "Hypoxaemia, hypercapnia, surgical emphysema",
-      "Leak beyond 24 h = bronchopleural fistula"
-     ],
-     "tempt": "“Bubbling means the drain is working” — persistent bubbling in a ventilated patient is the leak itself.",
-     "rule": "Inspired minus expired is the leak.",
-     "nums": "Persistent >24 h · mortality 27–50%",
-     "sits": "Everything that follows (RSC-24, 25) aims at one number: the pressure across the fistula and how long it is held.",
-     "deeper": "Causes cluster around lung that is cut, stiff or fragile: resection, trauma, ARDS on high pressures, spontaneous pneumothorax, ablation and infection. The size of the leak can be followed as the difference between inspired and expired tidal volume on the ventilator.",
-     "parts": [
-      {
-       "q": "Pneumomediastinum or pneumopericardium, haemodynamically stable: what to do?",
-       "a": "**Observe** with serial chest X-rays and lung-protective settings — no needle decompression or pericardiocentesis."
-      }
-     ],
-     "pat": [
-      "leak"
-     ]
-    },
-    "RSC-25": {
-     "bridge": {
-      "code": "RSC-24",
-      "q": "Air leak: what drives flow through the fistula, and the ventilator rule?",
-      "a": "**Transpulmonary pressure and inspiratory time** → keep mean airway pressure lowest: low VT, lowest PEEP, short inspiratory time, low rate, **water seal, no suction**."
-     },
-     "gist": "When lowering pressure is not enough, separate the lungs or shrink each breath — the leak follows the pressure, so give the broken lung less.",
-     "chain": [
-      "Leak flow follows transpulmonary pressure × time",
-      "Isolate the lungs (double-lumen tube or blocker)",
-      "Each lung gets its own settings — independent lung ventilation",
-      "High-frequency: tiny breaths, high impedance → less fistula flow",
-      "VV-ECMO: ultra-protective rest so the fistula can close"
-     ],
-     "tempt": "“High-frequency ventilation is proven for fistulas” — the evidence is weak; selected patients only.",
-     "nbr": "Synchronous ILV: one rate, different VT, flow, PEEP, FiO₂. Asynchronous: everything differs, including the mode.",
-     "rule": "Give the broken lung less.",
-     "nums": "Jet ventilation: VT 2–5 mL/kg at 100–200/min · oscillation 3–15 Hz",
-     "sits": "Bronchoscopic repair (RSC-26) closes what ventilation cannot: glue for small defects, stents or spigots proximally, one-way valves distally.",
-     "deeper": "Lung isolation can be achieved with a double-lumen tube, a single-lumen tube with a bronchial blocker, or an endobronchial blocker (Arndt). The left-sided double-lumen tube is the usual choice because the left main bronchus is longer and the right upper-lobe orifice is easily occluded.",
-     "parts": [
-      {
-       "q": "Suspected double-lumen tube malposition: first step, and which side is preferred?",
-       "a": "**Bedside fibreoptic bronchoscopy** before anything else; a **left-sided** tube is preferred (longer left main bronchus)."
-      }
-     ],
-     "pat": [
-      "leak"
-     ]
-    }
-   },
-   "topups": [
-    {
-     "id": "RS4-NOC",
-     "topic": "Spot: lung and brain",
-     "type": "spot",
-     "tier": 2,
-     "n": 1,
-     "banks": "DocT GT",
-     "q": "**Spot it:** long-term steroids, a lung nodule with cavitation, and a brain abscess.",
-     "a": [
-      "**Nocardia** — image the brain in every pulmonary nocardiosis.",
-      "**High-dose TMP-SMX** plus imipenem or amikacin for CNS or severe disease, for **≥12 months** with CNS disease or immunosuppression (6–12 months otherwise)."
-     ],
-     "x": {
-      "gist": "Nocardia is the classic lung-plus-brain organism of the T-cell-suppressed patient.",
-      "pat": [
-       "immdef"
-      ]
      }
     }
    ]
@@ -1227,5 +2629,5 @@
    ]
   }
  },
- "version": "234bbab0c8"
+ "version": "b7f2c5d0c4"
 }
