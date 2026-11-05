@@ -956,7 +956,7 @@ function renderPlan() {
     : `<span class="ahead">${r.cards} cards, room for ${r.room}. It fits, ${r.spare} spare.</span>`;
   app.innerHTML = `<div class="screen plan">
     <header class="top"><a class="iconbtn" href="#/loft" aria-label="Back to the Loft">${ICON.back}</a>
-      <span class="tt"><span class="mono kick">${esc(st.name.toUpperCase())} · ${dShort(days[0]).toUpperCase()} – ${dShort(days[days.length - 1]).toUpperCase()} · ${st.days} DAYS</span><span class="h1s">The Plan</span></span>${goingOutButton()}</header>
+      <span class="tt"><span class="mono kick">${esc(st.name.toUpperCase())} · ${dShort(days[0]).toUpperCase()} – ${dShort(days[days.length - 1]).toUpperCase()} · ${st.days} DAYS</span><span class="h1s">The Plan</span></span><button class="btn ghost pundo-top" data-pundo ${canUndoPlan() ? '' : 'disabled'} aria-label="Undo last change to the plan" title="Undo last change">↶ Undo</button>${goingOutButton()}</header>
     <div class="scroll pad planbody">
       ${p.stretches.length > 1 ? `<div class="chips small">${p.stretches.map(s => `<button class="chip${s.id === st.id ? ' on' : ''}" data-stretch="${s.id}">${esc(s.name)}</button>`).join('')}<button class="chip dash" data-newstretch>+ New stretch</button></div>` : ''}
       <ol class="steps">
@@ -972,7 +972,7 @@ function renderPlan() {
       </table></div>
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button></div>
-      ${canUndoPlan() ? '<button class="btn ghost pundo" data-pundo>↶ Undo last change</button>' : ''}
+
       ${r.active ? `<div class="two pbtns">${r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}<button class="btn ghost" data-chtoday>Change today…</button></div>` : ''}
       <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
       <button class="linkbtn muted small" data-delstretch>Delete ${esc(st.name)}</button>
@@ -1008,7 +1008,7 @@ function renderPlanNew() {
       <p>A stretch is a run of days with the subjects you want to finish in it. Trace counts the cards, spreads them over the days at your pace, and re-plans every morning.</p>
       <div class="pnew"><label>Starts <input type="date" value="${today()}" data-nstart></label><label>Days <input type="number" min="1" max="60" value="10" data-ndays></label><label>Pace <input type="number" min="20" max="150" value="65" data-npace> a day</label></div>
       <button class="btn primary" data-ncreate>Create stretch</button>
-      ${canUndoPlan() ? '<button class="btn ghost pundo" data-pundo>↶ Undo last change</button>' : ''}
+      <button class="btn ghost pundo" data-pundo ${canUndoPlan() ? '' : 'disabled'}>↶ Undo last change</button>
     </div></div>${nav('')}</div>`;
   bindGo();
   const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); renderPlan(); } };
@@ -1688,6 +1688,20 @@ const INTENTS = [
   ['exam', 'Exam angle', 'How is this asked in NEET-SS? The traps, the cut-offs and the wording examiners use.'],
   ['connect', 'Connect', 'connect: where else does this come up in my other decks and systems? Cite the card IDs.']
 ].map(([id, label, line]) => ({ id, label, line }));
+// T-086: more ready-made intents to add from ⚙ › Claude chats › Quick intents (tap a suggestion to add it)
+const INTENT_IDEAS = [
+  ['patho', 'Pathophysiology', 'Explain the pathophysiology behind this, from the trigger to the bedside finding.'],
+  ['ddx', 'Differential', 'What else presents like this, and what is the one feature that separates each?'],
+  ['steps', 'Steps in order', 'What are the management steps in order, with the decision point at each step?'],
+  ['doses', 'Doses & why', 'Give the doses, routes and timings, and why each dose is what it is.'],
+  ['guide', 'Guideline now', 'What does the current guideline say (name and year), and has it changed recently?'],
+  ['case', 'Clinical case', 'Give me one clinical vignette where this decides the answer, then explain the answer.'],
+  ['asked', 'What was asked', 'what was asked: list the real QBank, GT and NEET questions linked to this card.'],
+  ['quiz', 'Quiz me 3', 'quiz: ask me 3 new MCQs on this, one at a time, and wait for my answer each time.'],
+  ['simple', 'Simpler', 'simpler: explain this again as to a first-year resident.'],
+  ['table', 'Table', 'table: put this and its mimics in a comparison table.'],
+  ['check', 'Check card', 'check: is anything on this card wrong or outdated against current guidelines?']
+].map(([id, label, line]) => ({ id, label, line }));
 const intents = () => { const a = P.get('aiIntents', null); return Array.isArray(a) && a.length ? a : INTENTS; };
 const intentsSorted = () => { const use = P.get('aiIntentUse', {}); return intents().slice().sort((a, b) => (use[b.id] || 0) - (use[a.id] || 0)); };
 const chats = () => P.get('aiChats', []), activeChat = () => { const a = chats(), id = P.get('aiActive', ''); return a.find(x => x.id === id) || a[0] || null; };
@@ -1760,7 +1774,9 @@ function chatSettingsHtml() {
     <details class="ai-tpl ai-ints"><summary class="mono">QUICK INTENTS · ${intents().length}</summary>
       <p class="muted small">The button name, and the line it puts into the message. Most-used come first in the Ask menu.</p>
       ${intents().map((x, i) => `<div class="ai-int" data-i="${i}"><input data-il value="${esc(x.label)}" aria-label="Button name"><textarea data-iline rows="2" aria-label="Line it adds">${esc(x.line)}</textarea><button data-idel aria-label="Remove ${esc(x.label)}">✕</button></div>`).join('')}
-      <div class="ai-add"><button data-iadd>+ Add intent</button><button data-ireset>Reset to defaults</button></div></details>
+      <p class="mono ai-sug-h">SUGGESTIONS · TAP TO ADD</p>
+      <div class="ai-sug">${INTENT_IDEAS.filter(x => !intents().some(y => y.id === x.id || y.label === x.label)).map(x => `<button data-isug="${x.id}" title="${esc(x.line)}">+ ${esc(x.label)}</button>`).join('') || '<span class="muted small">All added.</span>'}</div>
+      <div class="ai-add"><button data-iadd>+ Write your own</button><button data-ireset>Reset to defaults</button></div></details>
     <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {deckid} {code} {title} {question} {answer} {selected} {from} are filled in from the card; {ask} is the quick intent or your own words.</p><button data-aitplreset>Reset</button></details>
   </details>`;
 }
@@ -1781,6 +1797,7 @@ function bindChatSettings(h) {
     row.querySelector('[data-idel]').onclick = () => { const a = intents().filter((_, j) => j !== i); saveInts(a.length ? a : null); drawXpToggles(); keepOpen(true); };
   });
   const ia = h.querySelector('[data-iadd]'); if (ia) ia.onclick = () => { const a = intents().map(x => ({ ...x })); a.push({ id: 'i' + Date.now().toString(36), label: 'New', line: 'Write the line it adds here.' }); saveInts(a); drawXpToggles(); keepOpen(true); };
+  h.querySelectorAll('[data-isug]').forEach(b => b.onclick = () => { const x = INTENT_IDEAS.find(i => i.id === b.dataset.isug); if (!x) return; saveInts(intents().map(y => ({ ...y })).concat({ ...x })); drawXpToggles(); keepOpen(true); });
   const ir = h.querySelector('[data-ireset]'); if (ir) ir.onclick = () => { P.set('aiIntents', null); drawXpToggles(); keepOpen(true); };
   h.querySelectorAll('input').forEach(i => { i.onkeydown = e => e.stopPropagation(); });
   function keepOpen(ints) { const d = document.querySelector('#f-xp .ai-set') || document.querySelector('.ai-set'); if (d) { d.open = true; if (ints) { const e = d.querySelector('.ai-ints'); if (e) e.open = true; } } }

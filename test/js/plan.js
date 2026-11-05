@@ -13,7 +13,10 @@ const rid = () => Math.random().toString(36).slice(2, 9);
 
 /* ---------- storage (this device; synced to Drive by sync.js on the live app) ---------- */
 let P = null, lastJson = null;
-const hist = [];                         // T-081: undo — the plan as it was before each change (this session, last 40)
+// T-081/T-086: undo — the plan as it was before each change (last 40), kept on this device so it survives closing the app
+const HKEY = KEY + '.undo';
+const hist = (() => { try { const a = JSON.parse(localStorage.getItem(HKEY) || '[]'); return Array.isArray(a) ? a : []; } catch (e) { return []; } })();
+const saveHist = () => { try { localStorage.setItem(HKEY, JSON.stringify(hist)); } catch (e) { hist.splice(0, Math.max(0, hist.length - 10)); try { localStorage.setItem(HKEY, JSON.stringify(hist)); } catch (er) { /* full */ } } };
 export function loadPlan() {
   if (P) return P;
   try { P = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { P = null; }
@@ -24,14 +27,14 @@ export function loadPlan() {
 export function savePlan(touch = true) {
   if (touch) P.updated = Date.now();
   const j = JSON.stringify(P);
-  if (touch && lastJson && lastJson !== j) { hist.push(lastJson); if (hist.length > 40) hist.shift(); }
+  if (touch && lastJson && lastJson !== j) { hist.push(lastJson); if (hist.length > 40) hist.shift(); saveHist(); }
   lastJson = j;
   try { localStorage.setItem(KEY, j); } catch (e) { /* private mode */ }
 }
 export const canUndoPlan = () => hist.length > 0;
 export function undoPlan() {
   if (!hist.length) return false;
-  P = JSON.parse(hist.pop()); P.updated = Date.now(); lastJson = JSON.stringify(P);
+  P = JSON.parse(hist.pop()); saveHist(); P.updated = Date.now(); lastJson = JSON.stringify(P);
   try { localStorage.setItem(KEY, lastJson); } catch (e) { /* */ }
   return true;
 }

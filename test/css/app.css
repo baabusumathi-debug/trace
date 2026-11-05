@@ -1526,3 +1526,12 @@ details.qfold>.bx{margin-top:8px}
 .xv-fix h4{color:#9c3b25}
 .xv-fix li{list-style:none;margin:0 0 6px}.xv-fix ul{padding:0;margin:0}
 .xv-fix .xv-was{display:block;color:#6b5f55;text-decoration:line-through;text-decoration-thickness:1px;font-size:.92em}
+.pundo-top{margin-left:auto;margin-right:8px;padding:6px 12px}.pundo-top:disabled,.pundo:disabled{opacity:.4}
+.ai-sug-h{font-size:9.5px;letter-spacing:.12em;color:#8d8778;margin:8px 0 4px}
+.ai-sug{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.ai-sug button{border:1px dashed #8f7440;background:transparent;color:#e8dfc8;border-radius:999px;padding:4px 10px;font-size:12px;cursor:pointer}
+/* T-086: a room under every table row */
+.tbl > .tr.rm-line{position:relative;padding-right:36px}
+.tbl > .tr.rm-line > .rm-chev{top:50%;margin-top:-14px}
+.rm-less{right:44px}
+.rm-less[hidden]{display:none!important}

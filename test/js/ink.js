@@ -142,8 +142,12 @@ function drawShape(g, o, X, Y, k) {
   g.stroke(); g.restore();
 }
 function drawText(g, o, X, Y, k) {
-  g.save(); g.fillStyle = o.c; g.textBaseline = 'top';
+  g.save(); g.textBaseline = 'top';
   g.font = `${o.b ? '700 ' : ''}${Math.round(o.s * k)}px system-ui, sans-serif`;
+  // T-086: a note moved from Explain sits on a pale sticky so it reads over the card text
+  if (o.bg && !o.rot) { const ls = String(o.t || '').split('\n'), w = Math.max(...ls.map(l => g.measureText(l).width)), lh = o.s * k * 1.3, p = o.s * k * 0.35;
+    g.fillStyle = o.bg; g.fillRect(X(o.pts[0]) - p, Y(o.pts[0]) - p, w + 2 * p, ls.length * lh + p * 1.4); g.strokeStyle = 'rgba(0,0,0,.18)'; g.lineWidth = 1; g.strokeRect(X(o.pts[0]) - p, Y(o.pts[0]) - p, w + 2 * p, ls.length * lh + p * 1.4); }
+  g.fillStyle = o.c;
   if (o.rot) { g.translate(X(o.pts[0]), Y(o.pts[0])); g.rotate(o.rot); String(o.t || '').split('\n').forEach((l, i) => g.fillText(l, 0, i * o.s * k * 1.3)); }
   else String(o.t || '').split('\n').forEach((l, i) => g.fillText(l, X(o.pts[0]), Y(o.pts[0]) + i * o.s * k * 1.3));
   g.restore();
@@ -174,7 +178,7 @@ export function paint(g, objs, X, Y, k, w, h) {
   }
 }
 function objPts(o) {
-  if (o.type === 'text') { const L = String(o.t || '').length * o.s * 0.55; return [o.pts[0], [o.pts[0][0] + L, o.pts[0][1]], [o.pts[0][0] + L, o.pts[0][1] + o.s * 1.3], [o.pts[0][0], o.pts[0][1] + o.s * 1.3]]; }
+  if (o.type === 'text') { const ls = String(o.t || '').split('\n'), L = Math.max(1, ...ls.map(l => l.length)) * o.s * 0.55, H = ls.length * o.s * 1.3; return [o.pts[0], [o.pts[0][0] + L, o.pts[0][1]], [o.pts[0][0] + L, o.pts[0][1] + H], [o.pts[0][0], o.pts[0][1] + H]]; }
   if (o.type === 'hl' && o.snap) { const rs = o.rects && o.rects.length ? o.rects : [[o.pts[0][0], o.pts[0][1], o.pts[1][0], o.h]]; const out = []; for (const r of rs) for (let i = 0; i <= 12; i++) { const x = r[0] + (r[2] - r[0]) * i / 12; out.push([x, r[1] - r[3] / 2], [x, r[1]], [x, r[1] + r[3] / 2]); } return out; }
   if (o.type === 'shape' && (o.kind === 'rect' || o.kind === 'ellipse' || o.kind === 'tri' || o.kind === 'rrect')) { const [a, b] = o.pts; return [a, [b[0], a[1]], b, [a[0], b[1]], [(a[0] + b[0]) / 2, a[1]], [(a[0] + b[0]) / 2, b[1]], [a[0], (a[1] + b[1]) / 2], [b[0], (a[1] + b[1]) / 2]]; }
   return o.pts;
@@ -380,7 +384,7 @@ export class Toolbar {
         <div class="ik-row"><label>S Pen button</label><span class="ik-note">hold the side button while writing to erase · last pen signal: <b class="mono">${penSignal()}</b></span></div>
         <div class="ik-row"><label>Pen test</label><div class="ik-pentest" data-pentest>Press and hold the S Pen side button, then touch and draw here</div></div><button class="ik-more" data-logclear style="margin:4px 0">Clear log</button><pre class="ik-penlog" data-penlog>${penLines() || '—'}</pre>
         <div class="ik-row"><label></label><button class="ik-more" data-clear>Clear this side</button></div>`;
-    if (t === 'tsel') return `<div class="ik-row"><label>Select text</label><span class="ik-note">drag from the first word to the last word — whole words are taken; tap once on a part to take all of it. Then Highlight, Copy or Still unclear.</span></div>`;
+    if (t === 'tsel') return `<div class="ik-row"><label>Select text</label><span class="ik-note">drag from the first word to the last word — whole words are taken; tap once on a part to take all of it. Then Highlight, Copy, Ask, Still unclear, or (on Explain) Move to card.</span></div>`;
     if (t === 'lasso') return `<div class="ik-row"><label>Select</label><span class="ik-note">draw a loop round ink or highlights, or tap one mark; drag inside the box to move; Delete in the blue bar</span></div>`;
     if (t === 'shape') return `<div class="ik-row"><label>Draw</label><div class="ik-pt">${[['free', 'Freehand'], ['line', 'Line'], ['arrow', 'Arrow'], ['rect', 'Rectangle'], ['ellipse', 'Ellipse'], ['tri', 'Triangle']].map(([k, l]) => `<button class="${S.shape.kind === k ? 'on' : ''}" data-sk="${k}">${l}</button>`).join('')}</div></div>
         <div class="ik-row"><label>Auto shape</label><div class="ik-pt"><button class="${S.shape.auto ? 'on' : ''}" data-auto="1">On · draw, keep the pen still ½ s</button><button class="${!S.shape.auto ? 'on' : ''}" data-auto="0">Off</button></div></div>
