@@ -1608,7 +1608,8 @@ const ASK_TPL = `{deck} · {code} · {title}
 Question: {question}
 Card answer: {answer}
 I selected ({from}): "{selected}"
-Explain this part properly: the mechanism, step by step.`;
+Explain this part properly: the mechanism, step by step.
+Look it up first: card {code} in deck {deckid} — Google Drive › Trace › Study desk › 00 INDEX tells you where; link related cards from other decks and cite their IDs.`;
 const chats = () => P.get('aiChats', []), activeChat = () => { const a = chats(), id = P.get('aiActive', ''); return a.find(x => x.id === id) || a[0] || null; };
 function askText({ c, texts, from, kind }) {
   const one = s => plain(String(s || '')).replace(/\s+/g, ' ').trim();
@@ -1618,7 +1619,7 @@ function askText({ c, texts, from, kind }) {
   if (!sel) t = t.replace(/I selected[^\n]*\n?/, '').replace(/Explain this part properly[^\n]*/, 'Explain this card properly: the mechanism behind each part, step by step.');
   if (kind === 'trap') t = t.replace(/I selected[^\n]*/, 'Exam trap on this card: "{selected}"').replace(/Explain this part properly[^\n]*/, 'Why is this wrong, and what is right? Show the reasoning.');
   const m = deckMeta(c.deck) || {};
-  return t.replace(/\{deck\}/g, c.deck + (m.title ? ' (' + m.title + ')' : '')).replace(/\{code\}/g, c.code).replace(/\{title\}/g, one(head).replace(/:$/, ''))
+  return t.replace(/\{deckid\}/g, c.deck).replace(/\{deck\}/g, c.deck + (m.title ? ' (' + m.title + ')' : '')).replace(/\{code\}/g, c.code).replace(/\{title\}/g, one(head).replace(/:$/, ''))
     .replace(/\{question\}/g, one(rest || head).slice(0, 400)).replace(/\{answer\}/g, one(c.a).slice(0, 700)).replace(/\{selected\}/g, sel).replace(/\{from\}/g, from || 'card');
 }
 async function copyText(t) { try { await navigator.clipboard.writeText(t); return true; } catch (e) { try { const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok; } catch (er) { return false; } } }
@@ -1657,7 +1658,7 @@ function chatSettingsHtml() {
   return `<details class="ai-set"><summary class="mono">CLAUDE CHATS · ${list.length}</summary>
     <div class="ai-list">${list.map(x => `<div class="ai-row${act && act.id === x.id ? ' on' : ''}"><b>${esc(x.name)}</b><span class="mono">${esc(x.url.replace(/^https?:\/\//, '').slice(0, 34))}…</span><button data-aidel="${esc(x.id)}" aria-label="Remove ${esc(x.name)}">✕</button></div>`).join('') || '<p class="muted small">None yet.</p>'}</div>
     <div class="ai-add"><input data-ain placeholder="Name (e.g. TOX doubts)"><input data-aiu placeholder="Chat link: https://claude.ai/chat/…"><button data-aiadd>Add</button></div>
-    <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {code} {title} {question} {answer} {selected} {from} are filled in from the card.</p><button data-aitplreset>Reset</button></details>
+    <details class="ai-tpl"><summary class="mono">MESSAGE TEMPLATE</summary><textarea data-aitpl rows="6">${esc(P.get('aiTpl', '') || ASK_TPL)}</textarea><p class="muted small">{deck} {deckid} {code} {title} {question} {answer} {selected} {from} are filled in from the card.</p><button data-aitplreset>Reset</button></details>
   </details>`;
 }
 function bindChatSettings(h) {
