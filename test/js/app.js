@@ -1859,7 +1859,8 @@ function drawCard() {
   if (isQ) {
     const xq = xOf(c);
     const arc = arcFor(c, xq);
-    body = `${arc ? arcHtml(c, xq, arc.gap, arc.first) : bridgeHtml(c, xq, skippedBefore(c))}<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw"><span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
+    // T-090: the primer and story boxes sit inside the question face so the pen, highlighter, Select text and Ask work on them
+    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${arc ? arcHtml(c, xq, arc.gap, arc.first) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
     const xa = xOf(c), v2 = !!(xa && xa.v === 2), xOpen = xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
@@ -1893,7 +1894,7 @@ function drawCard() {
   const xpn = el.querySelector('.xp-pane'); if (xpn) xpn.scrollTop = 0;
   big.innerHTML = flow.peek ? `BACK TO CURRENT${ICON.next}` : isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
   const lb = $('#f-left'); if (lb) { lb.innerHTML = leftLabel(); lb.classList.toggle('dimmed', !flow.browse && !flow.peek && isQ && !flow.hist.length); }
-  el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = () => { if (!isWriting()) reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
+  el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = e => { if (isWriting()) return; if (e.target.closest && e.target.closest('.xp-before, .xp-bridge')) return; reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };

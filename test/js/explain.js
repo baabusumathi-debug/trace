@@ -41,8 +41,8 @@ export function arcHtml(c, x, steps, first) {
   const d = X.decks[c.deck]; if (!d || !d.spine || !x || !x.step) return '';
   const gap = (steps || []).map(k => d.spine[k - 1]).filter(Boolean);
   let h = '';
-  if (first && d.primer) h += `<div class="xp-before xp-primer"><span class="mono">STARTING ${esc(c.deck)} · WHAT YOU NEED FIRST</span><p>${md(d.primer)}</p></div>`;
-  if (gap.length) h += `<div class="xp-before"><span class="mono">BEFORE THIS · THE STORY SO FAR</span><ul>${gap.map(([t, w]) => `<li><b>${md(t)}.</b> ${md(w)}</li>`).join('')}</ul></div>`;
+  if (first && d.primer) h += `<div class="xp-before xp-primer"><span class="mono">STARTING ${esc(c.deck)} · WHAT YOU NEED FIRST</span><p data-ak="arc:primer">${md(d.primer)}</p></div>`;
+  if (gap.length) h += `<div class="xp-before"><span class="mono">BEFORE THIS · THE STORY SO FAR</span><ul>${(steps || []).filter(k => d.spine[k - 1]).map(k => { const [t, w] = d.spine[k - 1]; return `<li data-ak="arc:s${k}"><b>${md(t)}.</b> ${md(w)}</li>`; }).join('')}</ul></div>`;
   return h;
 }
 export const closeOf = deck => (X.decks[deck] && X.decks[deck].close) || null;
@@ -150,8 +150,8 @@ export function partsAHtml(c, x) {
 export function bridgeHtml(c, x, skipped) {
   if (!x) return '';
   let h = '';
-  if (x.before && skipped) h += `<div class="xp-before"><span class="mono">BEFORE THIS · FROM CARDS YOU SKIPPED</span><p>${md(x.before)}</p></div>`;
-  if (x.bridge && skipped) h += `<div class="xp-bridge"><span class="mono">BRIDGE · ${esc(x.bridge.code)}</span><p>${md(x.bridge.q)}</p><button class="xp-bshow" data-xp-bridge>Show answer</button><p class="xp-ba" hidden>${md(x.bridge.a)}</p></div>`;
+  if (x.before && skipped) h += `<div class="xp-before"><span class="mono">BEFORE THIS · FROM CARDS YOU SKIPPED</span><p data-ak="arc:before">${md(x.before)}</p></div>`;
+  if (x.bridge && skipped) h += `<div class="xp-bridge"><span class="mono">BRIDGE · ${esc(x.bridge.code)}</span><p data-ak="arc:bridge">${md(x.bridge.q)}</p><button class="xp-bshow" data-xp-bridge>Show answer</button><p class="xp-ba" hidden>${md(x.bridge.a)}</p></div>`;
   return h;
 }
 export function mapHtml(deck, title, walking) {

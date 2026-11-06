@@ -36,7 +36,8 @@ export const isWriting = () => writing;
 function anchorsOf(box) {
   const els = [...box.querySelectorAll('.c-head, .c-tags, .qh, .qr > *, .qr li, .c-title, .qrecap, .ans > *, .ans li, .box, .bx > p, .bx li, .hook, .rm, .xv-sub, .xv > h4, .xv > p, .xv li, .xv-part, .xv-tt, .xp-grid tr, .xv-more, .xp-trapoff')];
   els.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = (e.classList.contains('rm') ? 'rm:' + e.dataset.room : 'b' + i); });
-  return els;
+  // T-090: the primer and story boxes carry their own fixed keys (arc:…), so they never shift the numbering of the card's own lines
+  return els.concat([...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')]);
 }
 function lineEls(box) {
   const out = [];
@@ -114,6 +115,7 @@ function makeOverlay(box, rec, face) {
   };
   // saved form: points relative to the block's top-left, with the block's size at the time
   const toRel = o => {
+    if (o._rel) return o._rel;                            // a mark on a story box that is not shown in this flow: kept as saved
     const a = (o.a && geo[o.a]) ? o.a : anchorFor(o.pts[0][0], o.pts[0][1]), g = geo[a];
     const c = { ...o, a, g: [g[2], g[3]], pts: o.pts.map(q => q.length > 2 ? [q[0] - g[0], q[1] - g[1], q[2]] : [q[0] - g[0], q[1] - g[1]]) };
     if (o.rects) c.rects = o.rects.map(r => [r[0] - g[0], r[1] - g[1], r[2] - g[0], r[3]]);
@@ -122,6 +124,7 @@ function makeOverlay(box, rec, face) {
   // back to this screen: stretch with the block (width) and with its height for marks inside it
   const fx = (o, g) => { const fw = o.g && o.g[0] ? g[2] / o.g[0] : 1, oh = o.g ? o.g[1] : 0; return [v => g[0] + v * fw, v => g[1] + (oh && v <= oh ? v * g[3] / oh : (oh ? v - oh + g[3] : v))]; };
   const toAbs = o => {
+    if (o.a && o.a.startsWith('arc:') && !geo[o.a]) return { ...o, hidden: true, _rel: o };   // T-090: its story box is not on screen now
     const g = geo[o.a] || geo.top, [X, Y] = fx(o, g);
     const c = { ...o, pts: o.pts.map(q => q.length > 2 ? [X(q[0]), Y(q[1]), q[2]] : [X(q[0]), Y(q[1])]) };
     if (o.rects) c.rects = o.rects.map(r => [X(r[0]), Y(r[1]), X(r[2]), r[3]]);
@@ -307,6 +310,9 @@ export async function mountInk(cardEl, card, face, opts) {
   }
   drawRooms();
   ovs(st).forEach(o => o.relayout());
+  // T-090: a face drawn during the flip/turn animation is measured while transformed, so marks landed off the text (question-face
+  // highlights seemed lost after Reveal → Question). Measure again once the animation has finished.
+  [260, 520].forEach(t => setTimeout(() => { if (cur === st && !writing) ovs(st).forEach(o => o.relayout()); }, t));
   quietWatch(box); if (st.xbox) quietWatch(st.xbox);
   applyMode();
   box.addEventListener('toggle', () => { if (cur === st) { st.rooms.forEach(r => { r.fit(); r.render(); }); st.overlay.relayout(); } }, true);
