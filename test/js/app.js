@@ -2,8 +2,8 @@ import { CONFIG, CHANNEL, PROFILE, IS_HT, setProfile } from './config.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call, batch } from './api.js';
-import { S, loadAll, emit, cardsOf, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf, repairsDueLater, unmappedMisses, missOf } from './store.js';
-import { status, sync, loadQbank, loadQmap, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
+import { S, loadAll, emit, cardsOf, withFix, deckMeta, neetTag, qbOf, hitsOf, inPool, isNeet, POOLS, COMPONENTS, poolParts, togglePool, poolName, isTopupDeck, hasTopups, seen, walked, avgPace, tier, shade, systems, isReady, recount, lastSeen, deckLastTs, seenOn, daily, allDays, today, dkey, againList, chunkOf, repairsDueLater, unmappedMisses, missOf } from './store.js';
+import { status, sync, loadQbank, loadQmap, loadCardfix, startAutoSync, recordView, undoView, buildLogRows, saveEdit, resetEdit, uid, countPending, downloadDecks, deckState, addTarget, removeTarget, targetItems, compressNos } from './sync.js';
 import { render, splitQ, plain, inline } from './md.js';
 import { seal, emblem } from './emblems.js';
 import { FM, pilotAllowed, resumePending, sendRequest, stopPolling } from './flowmsg.js';
@@ -69,7 +69,7 @@ async function boot() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
   await initExplain();
-  loadQbank(); loadQmap(); loadExplain();
+  loadQbank(); loadQmap(); loadCardfix(); loadExplain();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -1860,6 +1860,7 @@ function drawCard() {
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
       <div class="ans">${render(c.a)}</div>
+      ${c.fixed ? `<p class="qsrc-card mono">Corrected ${esc(c.fixed.date)} · ${esc(c.fixed.src)}</p>` : ''}
       ${gistHtml(xOf(c))}${n > 0 ? partsAHtml(c, xOf(c)) : ''}
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
@@ -2138,7 +2139,7 @@ function flowKeys(e) {
 
 /* ============================ editor ============================ */
 function openEditor(c) {
-  const orig = (S.decks.get(c.deck) || { cards: [] }).cards.find(x => x.code === c.code) || c;
+  const orig = withFix((S.decks.get(c.deck) || { cards: [] }).cards.find(x => x.code === c.code) || c);
   const wrap = document.createElement('div');
   wrap.className = 'modal';
   const field = (k, label, rows) => `<label><span class="mono">${label}</span><textarea name="${k}" rows="${rows}">${esc(c[k] || '')}</textarea></label>`;

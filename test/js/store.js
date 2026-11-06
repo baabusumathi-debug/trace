@@ -7,6 +7,7 @@ export const S = {
   neet: new Map(),        // 'DECK|CODE' or '*|CODE' -> 'NEET 24·25'
   qb: { version: '', cards: {}, topups: {} },   // QBank/GT layer (data/qbank.json): chips, lines, Crossfire, fixes, Top-up cards
   qmap: { version: '', q: {} },   // DocT question ID -> cards (data/qmap.json)
+  cardfix: { version: '', cards: {} },   // checked text corrections (data/cardfix.json): replace card fields as shown
   doct: [],               // this profile's DocT attempts sent by the recorder, merged per sitting
   decks: new Map(),       // deck -> { deck, version, cards[], verified, downloadedAt }
   edits: new Map(),       // 'DECK|CODE' -> { key, deck, code, fields, ts, dev, synced }
@@ -30,6 +31,7 @@ export async function loadAll() {
   setNeet((await db.kv.get('neet')) || null);
   setQb((await db.kv.get('qbank')) || null);
   S.qmap = (await db.kv.get('qmap')) || { version: '', q: {} };
+  S.cardfix = (await db.kv.get('cardfix')) || { version: '', cards: {} };
   setDoct((await db.kv.get('doctAtt')) || {});
   for (const d of await db.all('decks')) if (!CONFIG.onlyDecks || CONFIG.onlyDecks.includes(d.deck)) S.decks.set(d.deck, d);
   for (const e of await db.all('edits')) S.edits.set(e.key, e);
@@ -152,7 +154,13 @@ export function chunkOf(c) {
   }
   return { key: 's:' + (c.section || ''), name: c.section || 'Cards' };
 }
+// T-095: checked corrections replace the card's own text (the Drive file is unchanged); in-app edits still sit on top
+export function withFix(c) {
+  const f = c && S.cardfix && S.cardfix.cards && S.cardfix.cards[c.deck + '|' + c.code];
+  return f ? { ...c, ...f.fields, fixed: { src: f.src || '', date: f.date || '' } } : c;
+}
 export function withEdits(c) {
+  c = withFix(c);
   const e = S.edits.get(c.deck + '|' + c.code);
   return e && e.fields && Object.keys(e.fields).length ? { ...c, ...e.fields, edited: true } : c;
 }

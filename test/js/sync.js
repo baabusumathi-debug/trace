@@ -159,6 +159,15 @@ export async function loadQbank() {
   } catch (e) { /* offline: keep the stored copy */ }
 }
 
+// Checked card-text corrections, shipped with the app like the layer (T-095)
+export async function loadCardfix() {
+  try {
+    const r = await fetch('./data/cardfix.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    const q = await r.json();
+    if (q && q.version && q.version !== (S.cardfix && S.cardfix.version)) { S.cardfix = q; await db.kv.set('cardfix', q); recount(); emit(); }
+  } catch (e) { /* offline: keep the stored copy */ }
+}
 // DocT question -> card map, shipped with the app like the layer
 export async function loadQmap() {
   try {
@@ -184,7 +193,7 @@ async function syncDoct() {
 }
 
 export async function sync({ downloadAll = true } = {}) {
-  loadQbank(); loadQmap();
+  loadQbank(); loadQmap(); loadCardfix();
   if (status.busy || !hasBackend()) return;
   if (!navigator.onLine && !isDemo()) { status.state = 'offline'; emit(); return; }
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();
