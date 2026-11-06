@@ -37,12 +37,12 @@ export function stepHtml(c, x) {
   const sp = spineOf(c.deck); if (!sp || !x || !x.step || !sp[x.step - 1]) return '';
   return `<p class="xv-step mono"><span>STEP ${x.step} OF ${sp.length}</span> ${md(sp[x.step - 1][0])}</p>`;
 }
-export function arcHtml(c, x, steps, first) {
+export function arcHtml(c, x, open) {
   const d = X.decks[c.deck]; if (!d || !d.spine || !x || !x.step) return '';
-  const gap = (steps || []).map(k => d.spine[k - 1]).filter(Boolean);
+  const o = open ? ' open' : '', n = x.step - 1;
   let h = '';
-  if (first && d.primer) h += `<div class="xp-before xp-primer"><span class="mono">STARTING ${esc(c.deck)} · WHAT YOU NEED FIRST</span><p data-ak="arc:primer">${md(d.primer)}</p></div>`;
-  if (gap.length) h += `<div class="xp-before"><span class="mono">BEFORE THIS · THE STORY SO FAR</span><ul>${(steps || []).filter(k => d.spine[k - 1]).map(k => { const [t, w] = d.spine[k - 1]; return `<li data-ak="arc:s${k}"><b>${md(t)}.</b> ${md(w)}</li>`; }).join('')}</ul></div>`;
+  if (d.primer) h += `<details class="xp-before xp-primer"${o}><summary class="mono">WHAT YOU NEED FIRST · ${esc(c.deck)}</summary><p data-ak="arc:primer">${md(d.primer)}</p></details>`;
+  if (n > 0) h += `<details class="xp-before"${o}><summary class="mono">THE STORY SO FAR · STEP${n > 1 ? 'S 1–' + n : ' 1'} OF ${d.spine.length}</summary><ul>${d.spine.slice(0, n).map(([t, w], i) => `<li data-ak="arc:s${i + 1}"><b>${md(t)}.</b> ${md(w)}</li>`).join('')}</ul></details>`;
   return h;
 }
 export const closeOf = deck => (X.decks[deck] && X.decks[deck].close) || null;

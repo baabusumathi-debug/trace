@@ -1540,3 +1540,11 @@ details.qfold>.bx{margin-top:8px}
 .xv-step span{background:#efe4c8;border:1px solid #cdb98a;border-radius:6px;padding:1px 7px;color:#4d3a17}
 .xp-before ul{margin:4px 0 0;padding-left:18px}.xp-before li{margin:2px 0}
 .xp-primer{border-style:solid;background:#eef3f7;border-color:#9fb3c4}.xp-primer>.mono{color:#2f4a5e}
+.c-q .xp-before,.c-q .xp-bridge{margin:0 0 14px}
+/* T-091: primer and story always on the card, folded at Revise depth */
+details.xp-before>summary{cursor:pointer;list-style:none;font-size:9.5px;letter-spacing:.13em;color:#6e5426;display:flex;align-items:center;gap:6px}
+details.xp-before>summary::-webkit-details-marker{display:none}
+details.xp-before>summary::before{content:'▸';font-size:11px;transition:transform .15s}
+details.xp-before[open]>summary::before{transform:rotate(90deg)}
+details.xp-primer>summary{color:#2f4a5e}
+details.xp-before:not([open]){padding:6px 12px}

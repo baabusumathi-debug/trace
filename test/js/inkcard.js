@@ -37,7 +37,8 @@ function anchorsOf(box) {
   const els = [...box.querySelectorAll('.c-head, .c-tags, .qh, .qr > *, .qr li, .c-title, .qrecap, .ans > *, .ans li, .box, .bx > p, .bx li, .hook, .rm, .xv-sub, .xv > h4, .xv > p, .xv li, .xv-part, .xv-tt, .xp-grid tr, .xv-more, .xp-trapoff')];
   els.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = (e.classList.contains('rm') ? 'rm:' + e.dataset.room : 'b' + i); });
   // T-090: the primer and story boxes carry their own fixed keys (arc:…), so they never shift the numbering of the card's own lines
-  return els.concat([...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')]);
+  // (T-091: only while their box is open — a folded box's marks are kept as saved and hidden)
+  return els.concat([...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')].filter(e => !e.closest('details:not([open])') && e.getClientRects().length));
 }
 function lineEls(box) {
   const out = [];
@@ -109,6 +110,8 @@ function makeOverlay(box, rec, face) {
   const map = () => ({ X: p => p[0], Y: p => p[1], k: 1 });
   const s = new Surface(cv, [], { map, changed: () => {}, limits: () => writing });
   const anchorFor = (x, y) => {
+    // T-091: a mark made inside a primer/story block belongs to that block (so it folds away with it)
+    for (const [k, g] of Object.entries(geo)) if (k.startsWith('arc:') && x >= g[0] - 4 && x <= g[0] + g[2] + 4 && y >= g[1] - 4 && y <= g[1] + g[3] + 4) return k;
     let best = 'top', by = -Infinity;
     for (const [k, g] of Object.entries(geo)) if (k !== 'top' && !k.startsWith('rm:') && g[1] <= y + 1 && g[1] > by) { best = k; by = g[1]; }
     return best;
@@ -124,7 +127,8 @@ function makeOverlay(box, rec, face) {
   // back to this screen: stretch with the block (width) and with its height for marks inside it
   const fx = (o, g) => { const fw = o.g && o.g[0] ? g[2] / o.g[0] : 1, oh = o.g ? o.g[1] : 0; return [v => g[0] + v * fw, v => g[1] + (oh && v <= oh ? v * g[3] / oh : (oh ? v - oh + g[3] : v))]; };
   const toAbs = o => {
-    if (o.a && o.a.startsWith('arc:') && !geo[o.a]) return { ...o, hidden: true, _rel: o };   // T-090: its story box is not on screen now
+    const ak = o.tr && o.tr.ak && o.tr.ak.startsWith('arc:') ? o.tr.ak : o.a;
+    if (ak && ak.startsWith('arc:') && !geo[ak]) return { ...o, hidden: true, _rel: o };   // T-090: its story box is not on screen now
     const g = geo[o.a] || geo.top, [X, Y] = fx(o, g);
     const c = { ...o, pts: o.pts.map(q => q.length > 2 ? [X(q[0]), Y(q[1]), q[2]] : [X(q[0]), Y(q[1])]) };
     if (o.rects) c.rects = o.rects.map(r => [X(r[0]), Y(r[1]), X(r[2]), r[3]]);
@@ -310,6 +314,7 @@ export async function mountInk(cardEl, card, face, opts) {
   }
   drawRooms();
   ovs(st).forEach(o => o.relayout());
+  box.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => { if (cur === st) { st.overlay.relayout(); drawChevrons(); } }));   // T-091: primer/story folded or opened
   // T-090: a face drawn during the flip/turn animation is measured while transformed, so marks landed off the text (question-face
   // highlights seemed lost after Reveal → Question). Measure again once the animation has finished.
   [260, 520].forEach(t => setTimeout(() => { if (cur === st && !writing) ovs(st).forEach(o => o.relayout()); }, t));

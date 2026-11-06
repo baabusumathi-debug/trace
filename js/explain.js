@@ -37,12 +37,12 @@ export function stepHtml(c, x) {
   const sp = spineOf(c.deck); if (!sp || !x || !x.step || !sp[x.step - 1]) return '';
   return `<p class="xv-step mono"><span>STEP ${x.step} OF ${sp.length}</span> ${md(sp[x.step - 1][0])}</p>`;
 }
-export function arcHtml(c, x, steps, first) {
+export function arcHtml(c, x, open) {
   const d = X.decks[c.deck]; if (!d || !d.spine || !x || !x.step) return '';
-  const gap = (steps || []).map(k => d.spine[k - 1]).filter(Boolean);
+  const o = open ? ' open' : '', n = x.step - 1;
   let h = '';
-  if (first && d.primer) h += `<div class="xp-before xp-primer"><span class="mono">STARTING ${esc(c.deck)} · WHAT YOU NEED FIRST</span><p>${md(d.primer)}</p></div>`;
-  if (gap.length) h += `<div class="xp-before"><span class="mono">BEFORE THIS · THE STORY SO FAR</span><ul>${gap.map(([t, w]) => `<li><b>${md(t)}.</b> ${md(w)}</li>`).join('')}</ul></div>`;
+  if (d.primer) h += `<details class="xp-before xp-primer"${o}><summary class="mono">WHAT YOU NEED FIRST · ${esc(c.deck)}</summary><p data-ak="arc:primer">${md(d.primer)}</p></details>`;
+  if (n > 0) h += `<details class="xp-before"${o}><summary class="mono">THE STORY SO FAR · STEP${n > 1 ? 'S 1–' + n : ' 1'} OF ${d.spine.length}</summary><ul>${d.spine.slice(0, n).map(([t, w], i) => `<li data-ak="arc:s${i + 1}"><b>${md(t)}.</b> ${md(w)}</li>`).join('')}</ul></details>`;
   return h;
 }
 export const closeOf = deck => (X.decks[deck] && X.decks[deck].close) || null;
@@ -150,8 +150,8 @@ export function partsAHtml(c, x) {
 export function bridgeHtml(c, x, skipped) {
   if (!x) return '';
   let h = '';
-  if (x.before && skipped) h += `<div class="xp-before"><span class="mono">BEFORE THIS · FROM CARDS YOU SKIPPED</span><p>${md(x.before)}</p></div>`;
-  if (x.bridge && skipped) h += `<div class="xp-bridge"><span class="mono">BRIDGE · ${esc(x.bridge.code)}</span><p>${md(x.bridge.q)}</p><button class="xp-bshow" data-xp-bridge>Show answer</button><p class="xp-ba" hidden>${md(x.bridge.a)}</p></div>`;
+  if (x.before && skipped) h += `<div class="xp-before"><span class="mono">BEFORE THIS · FROM CARDS YOU SKIPPED</span><p data-ak="arc:before">${md(x.before)}</p></div>`;
+  if (x.bridge && skipped) h += `<div class="xp-bridge"><span class="mono">BRIDGE · ${esc(x.bridge.code)}</span><p data-ak="arc:bridge">${md(x.bridge.q)}</p><button class="xp-bshow" data-xp-bridge>Show answer</button><p class="xp-ba" hidden>${md(x.bridge.a)}</p></div>`;
   return h;
 }
 export function mapHtml(deck, title, walking) {
