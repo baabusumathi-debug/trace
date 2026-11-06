@@ -1535,3 +1535,8 @@ details.qfold>.bx{margin-top:8px}
 .tbl > .tr.rm-line > .rm-chev{top:50%;margin-top:-14px}
 .rm-less{right:44px}
 .rm-less[hidden]{display:none!important}
+/* T-088: the deck's story */
+.xv-step{font-size:10px;letter-spacing:.12em;color:#6e5426;margin:0 0 6px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.xv-step span{background:#efe4c8;border:1px solid #cdb98a;border-radius:6px;padding:1px 7px;color:#4d3a17}
+.xp-before ul{margin:4px 0 0;padding-left:18px}.xp-before li{margin:2px 0}
+.xp-primer{border-style:solid;background:#eef3f7;border-color:#9fb3c4}.xp-primer>.mono{color:#2f4a5e}

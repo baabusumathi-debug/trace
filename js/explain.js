@@ -30,6 +30,21 @@ export async function loadExplain() {
 }
 export const xOf = c => (c && X.decks[c.deck] && X.decks[c.deck].cards[c.code]) || null;
 export const mapOf = deck => (X.decks[deck] && X.decks[deck].map) || null;
+export const spineOf = deck => (X.decks[deck] && X.decks[deck].spine) || null;
+// T-088: the deck's story. "Step n of N" on the explanation; on the question face, the primer the first time a deck appears
+// in a flow, and the takeaways of the steps you skipped when cards were left out (any-hit flows)
+export function stepHtml(c, x) {
+  const sp = spineOf(c.deck); if (!sp || !x || !x.step || !sp[x.step - 1]) return '';
+  return `<p class="xv-step mono"><span>STEP ${x.step} OF ${sp.length}</span> ${md(sp[x.step - 1][0])}</p>`;
+}
+export function arcHtml(c, x, steps, first) {
+  const d = X.decks[c.deck]; if (!d || !d.spine || !x || !x.step) return '';
+  const gap = (steps || []).map(k => d.spine[k - 1]).filter(Boolean);
+  let h = '';
+  if (first && d.primer) h += `<div class="xp-before xp-primer"><span class="mono">STARTING ${esc(c.deck)} · WHAT YOU NEED FIRST</span><p>${md(d.primer)}</p></div>`;
+  if (gap.length) h += `<div class="xp-before"><span class="mono">BEFORE THIS · THE STORY SO FAR</span><ul>${gap.map(([t, w]) => `<li><b>${md(t)}.</b> ${md(w)}</li>`).join('')}</ul></div>`;
+  return h;
+}
 export const closeOf = deck => (X.decks[deck] && X.decks[deck].close) || null;
 export const hasExplain = c => !!xOf(c);
 
@@ -96,7 +111,7 @@ function learnHtml(c, x, opts) {
   const fixSec = fix ? sec('xv-fix', 'CORRECTION TO YOUR CARD', `<ul>${fix}</ul>`) : '';
   const traps = trp ? (opts.traps ? sec('xv-trap', 'THE TRAPS', `<ul>${trp}</ul>`) : `<p class="xp-trapoff mono">${x.traps.length} exam trap${x.traps.length > 1 ? 's' : ''} hidden · turn traps on in the Flow panel</p>`) : '';
   const body = learn
-    ? `${x.sub ? `<p class="xv-sub mono">${md(x.sub)}</p>` : ''}
+    ? `${stepHtml(c, x)}${x.sub ? `<p class="xv-sub mono">${md(x.sub)}</p>` : ''}
        ${sec('xv-ctx', 'WHAT’S GOING ON', x.intro ? `<p>${md(x.intro)}</p>` : '')}
        ${fixSec}
        ${sec('xv-why', 'PART BY PART', why)}
@@ -105,7 +120,7 @@ function learnHtml(c, x, opts) {
        ${traps}
        ${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
        ${sec('xv-punch', 'PUNCHLINE', x.punch ? `<p>${md(x.punch)}</p>` : '')}`
-    : `${fixSec}${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
+    : `${stepHtml(c, x)}${fixSec}${sec('xv-dec', 'HOW IT IS ASKED', dec ? `<ul>${dec}</ul>` : '')}
        ${traps}
        ${sec('xv-punch', 'PUNCHLINE', x.punch ? `<p>${md(x.punch)}</p>` : '')}
        <button class="xv-more" data-xp-depth="learn">Read the full explanation</button>`;
