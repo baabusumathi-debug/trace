@@ -154,7 +154,7 @@ export function chunkOf(c) {
   }
   return { key: 's:' + (c.section || ''), name: c.section || 'Cards' };
 }
-// T-095: checked corrections replace the card's own text (the Drive file is unchanged); in-app edits still sit on top
+// T-093: checked corrections replace the card's own text (the Drive file is unchanged); in-app edits still sit on top
 export function withFix(c) {
   const f = c && S.cardfix && S.cardfix.cards && S.cardfix.cards[c.deck + '|' + c.code];
   return f ? { ...c, ...f.fields, fixed: { src: f.src || '', date: f.date || '' } } : c;

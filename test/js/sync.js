@@ -159,7 +159,7 @@ export async function loadQbank() {
   } catch (e) { /* offline: keep the stored copy */ }
 }
 
-// Checked card-text corrections, shipped with the app like the layer (T-095)
+// Checked card-text corrections, shipped with the app like the layer (T-093)
 export async function loadCardfix() {
   try {
     const r = await fetch('./data/cardfix.json', { cache: 'no-cache' });
