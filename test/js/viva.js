@@ -3,6 +3,7 @@
 // a question card, its steps with a bridge under each answer, then the spine card (60 s timer, Fluent / Patchy / Blank).
 // Card text is never changed here; the viva explanation is its own layer, beside the NEET one.
 import { db } from './db.js';
+import { IS_HT } from './config.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
 export const VIVA_PKGS = ['P4'];
@@ -10,8 +11,10 @@ const IMG = pkg => `./data/viva/img/${pkg}/`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g, '$1<i>$2</i>');
 
-export async function initViva() { S.viva = (await db.kv.get('viva')) || {}; }
+// Viva is Naven's only (INI interview): HT's profile never loads a package, so no tile, chip, cards or explain appear
+export async function initViva() { S.viva = IS_HT ? {} : (await db.kv.get('viva')) || {}; }
 export async function loadViva() {
+  if (IS_HT) return;
   let changed = false;
   for (const pkg of VIVA_PKGS) {
     try {
