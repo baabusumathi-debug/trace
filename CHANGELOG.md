@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-101 — 2026-11-07 — Claude — test — 1.3.71
+- **Voice player bar** (Naven, 7 Nov): while a Listen plays, a bar opens under the strip: −10, −5, pause/play, +5, +10, a seek slider that can be dragged anywhere, and the time ("0:42 / 3:10"). The timeline covers the whole Listen (all its points, not one clip), so seeking and skipping cross from one point to the next. Speed − / + stays and is remembered.
+
 ## T-100 — 2026-11-07 — Claude — test — 1.3.70
 - **Fix:** the voice read the style note's pronunciation hints aloud at the end of each clip ("say PEEP as peep, ARDS as A R D S"). The style note now carries no text to be spoken; PEEP → "peep" and ARDS → "A R D S" moved into the pronunciation list. Prompt version `p2`, so every clip is made again.
 - **Voice on the Explain side** (Naven, 7 Nov): a Listen strip at the top of the Explain pane reads the explanation shown, NEET (intro, part by part, punchline) or Viva (intro, part by part, picture caption); the NEET | Viva switch changes what it reads. The deck page's Make voice now includes these points (RESP01A: 182 points).

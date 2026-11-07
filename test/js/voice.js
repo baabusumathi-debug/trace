@@ -108,12 +108,12 @@ export async function makeDeck(deck, cards, onStep) {
   } finally { making = ''; }
 }
 
-/* ---------- playback ---------- */
+/* ---------- playback: one timeline over all the clips of a Listen (seek, skip, pause) ---------- */
 const audio = typeof Audio !== 'undefined' ? new Audio() : null;
-let queue = [], qi = 0, onState = null, playing = '';
+let queue = [], qi = -1, onState = null, playing = '', deckNow = '', urls = [], durs = [], paused = false, gen = 0;
 export const speed = () => { try { return Math.min(2, Math.max(0.8, +localStorage.getItem('trace.vspeed') || 1.2)); } catch (e) { return 1.2; } };
 export function setSpeed(v) { try { localStorage.setItem('trace.vspeed', String(v)); } catch (e) { /* */ } if (audio) audio.playbackRate = v; }
-async function clipUrl(deck, p) {
+async function blobOf(deck, p) {
   const e = idx[deck] && idx[deck][p.k]; if (!e) return null;
   let blob = await db.kv.get('vclip:' + e.id);
   if (!blob) {
@@ -123,25 +123,61 @@ async function clipUrl(deck, p) {
     blob = new Blob([u], { type: 'audio/mpeg' });
     db.kv.set('vclip:' + e.id, blob).catch(() => {});
   }
-  return URL.createObjectURL(blob);
+  return blob;
 }
-export function stop() { queue = []; qi = 0; playing = ''; if (audio) { audio.pause(); audio.removeAttribute('src'); } onState && onState(''); }
+async function urlAt(i, g) {
+  if (urls[i] === undefined) {
+    let b = null; try { b = await blobOf(deckNow, queue[i]); } catch (e) { b = null; }
+    if (g !== gen) return null;
+    urls[i] = b ? URL.createObjectURL(b) : null;
+    if (urls[i]) { const m = new Audio(); m.preload = 'metadata'; m.onloadedmetadata = () => { if (isFinite(m.duration)) durs[i] = m.duration; }; m.src = urls[i]; }
+  }
+  return urls[i];
+}
+// clip length: the real one once known, else the bridge's estimate
+const est = i => durs[i] != null ? durs[i] : (((idx[deckNow] || {})[queue[i].k] || {}).sec || 5);
+export const total = () => queue.reduce((s, _, i) => s + est(i), 0);
+export function pos() { if (qi < 0) return 0; let s = 0; for (let i = 0; i < qi; i++) s += est(i); return s + ((audio && audio.currentTime) || 0); }
+export const isPaused = () => paused;
+const tell = () => onState && onState(playing);
+function reset() { gen++; urls.forEach(u => u && URL.revokeObjectURL(u)); queue = []; urls = []; durs = []; qi = -1; playing = ''; paused = false; if (audio) { audio.onended = null; audio.pause(); audio.removeAttribute('src'); } }
+export function stop() { const cb = onState; reset(); onState = null; cb && cb(''); }
 export const nowPlaying = () => playing;
-// play these points of one card in order; cb(key) is told which point is playing ('' when done)
+async function startAt(i, off, g) {
+  if (g !== gen) return;
+  if (i >= queue.length) { const cb = onState; reset(); onState = null; cb && cb(''); return; }
+  qi = i;
+  const url = await urlAt(i, g); if (g !== gen) return;
+  if (!url) return startAt(i + 1, 0, g);
+  playing = queue[i].k;
+  audio.onended = () => setTimeout(() => startAt(i + 1, 0, g), 250);
+  audio.onloadedmetadata = () => { if (isFinite(audio.duration)) { durs[i] = audio.duration; if (off) audio.currentTime = Math.min(off, Math.max(0, audio.duration - 0.05)); } };
+  audio.src = url; audio.playbackRate = speed(); audio.preservesPitch = true;
+  tell();
+  if (!paused) await audio.play().catch(() => {});
+}
+// play these points in order; cb(key) is told which point is playing ('' when done or stopped)
 export async function play(deck, parts, cb) {
-  stop(); onState = cb; queue = parts.filter(p => hasClip(deck, p)); qi = 0;
+  stop();
+  queue = parts.filter(p => hasClip(deck, p)); deckNow = deck;
   if (!queue.length) return false;
-  const nextOne = async () => {
-    if (qi >= queue.length) { playing = ''; cb && cb(''); return; }
-    const p = queue[qi++];
-    try {
-      const url = await clipUrl(deck, p); if (!url || !queue.length) return;
-      playing = p.k; cb && cb(p.k);
-      audio.src = url; audio.playbackRate = speed(); audio.preservesPitch = true;
-      audio.onended = () => { URL.revokeObjectURL(url); setTimeout(nextOne, 250); };
-      await audio.play();
-    } catch (e) { playing = ''; cb && cb(''); }
-  };
-  await nextOne();
+  onState = cb; const g = gen;
+  await startAt(0, 0, g);
+  preload(g);
   return true;
 }
+// fetch the rest so the timeline knows its full length
+function preload(g) { (async () => { for (let i = 0; i < queue.length && g === gen; i++) await urlAt(i, g); })(); }
+// jump to second t of the whole Listen
+export function seek(t) {
+  if (!queue.length) return;
+  t = Math.max(0, Math.min(t, total() - 0.1));
+  let i = 0, s = 0;
+  while (i < queue.length - 1 && s + est(i) <= t) { s += est(i); i++; }
+  const off = t - s;
+  if (i === qi && audio.src && audio.readyState >= 1) { audio.currentTime = off; if (!paused) audio.play().catch(() => {}); tell(); }
+  else { gen++; const g = gen; startAt(i, off, g); preload(g); }
+}
+export const skip = d => seek(pos() + d);
+export function pause() { if (!queue.length) return; paused = true; audio.pause(); tell(); }
+export function resume() { if (!queue.length) return; paused = false; audio.play().catch(() => {}); tell(); }

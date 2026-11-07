@@ -14,7 +14,7 @@ import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml,
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
-import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed } from './voice.js';
+import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -2046,22 +2046,39 @@ function mountVoice(el, c, isQ) {
   if (!host) return;
   voiceStrip(c, show, host, isQ ? 'append' : 'after', isQ ? 'question' : 'answer', isQ);
 }
+const mmss = t => { t = Math.max(0, Math.round(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
 function voiceStrip(c, show, host, where, what, noChips) {
   const strip = document.createElement('div'); strip.className = 'vstrip';
-  strip.innerHTML = `<button class="vlisten mono" data-vall aria-label="Listen to this ${what}">▶ Listen</button>${noChips ? '' : show.map(p => `<button class="vp mono" data-vk="${esc(p.k)}" aria-label="Play point ${esc(p.label)}">${esc(p.label)}</button>`).join('')}<span class="vspd mono"><button data-vs="-1" aria-label="Slower">−</button><b>${vSpeed().toFixed(1)}×</b><button data-vs="1" aria-label="Faster">+</button></span><span class="vmsg mono muted"></span>`;
+  strip.innerHTML = `<button class="vlisten mono" data-vall aria-label="Listen to this ${what}">▶ Listen</button>${noChips ? '' : show.map(p => `<button class="vp mono" data-vk="${esc(p.k)}" aria-label="Play point ${esc(p.label)}">${esc(p.label)}</button>`).join('')}<span class="vspd mono"><button data-vs="-1" aria-label="Slower">−</button><b>${vSpeed().toFixed(1)}×</b><button data-vs="1" aria-label="Faster">+</button></span>
+    <div class="vbar" hidden><button class="mono" data-vj="-10" aria-label="Back 10 seconds">−10</button><button class="mono" data-vj="-5" aria-label="Back 5 seconds">−5</button><button class="vpp" data-vpp aria-label="Pause">❚❚</button><button class="mono" data-vj="5" aria-label="Forward 5 seconds">+5</button><button class="mono" data-vj="10" aria-label="Forward 10 seconds">+10</button><input type="range" class="vseek" min="0" max="1000" value="0" step="1" aria-label="Position"><span class="vtime mono">0:00 / 0:00</span></div><span class="vmsg mono muted"></span>`;
   if (where === 'append') host.appendChild(strip); else if (where === 'prepend') host.prepend(strip); else host.insertAdjacentElement('afterend', strip);
-  ['pointerdown', 'click'].forEach(t => strip.addEventListener(t, e => e.stopPropagation()));
+  ['pointerdown', 'click', 'touchstart', 'input', 'change'].forEach(t => strip.addEventListener(t, e => e.stopPropagation()));
   const mark = k => strip.querySelectorAll('[data-vk]').forEach(b => b.classList.toggle('on', b.dataset.vk === k));
-  const lis = strip.querySelector('[data-vall]');
-  const cb = k => { mark(k); lis.classList.toggle('on', !!k); lis.textContent = k ? '■ Stop' : '▶ Listen'; };
+  const lis = strip.querySelector('[data-vall]'), bar = strip.querySelector('.vbar'), rng = bar.querySelector('.vseek'), tm = bar.querySelector('.vtime'), pp = bar.querySelector('[data-vpp]');
+  let tick = null, drag = false;
+  const draw = () => {
+    if (!strip.isConnected) { clearInterval(tick); return; }
+    const T = vTotal(), t = vPos();
+    if (!drag) rng.value = T ? Math.round(t / T * 1000) : 0;
+    tm.textContent = mmss(drag ? rng.value / 1000 * T : t) + ' / ' + mmss(T);
+    pp.textContent = vPaused() ? '▶' : '❚❚'; pp.setAttribute('aria-label', vPaused() ? 'Play' : 'Pause');
+  };
+  const cb = k => {
+    mark(k); lis.classList.toggle('on', !!k); lis.textContent = k ? '■ Stop' : '▶ Listen';
+    bar.hidden = !k; clearInterval(tick); if (k) { draw(); tick = setInterval(draw, 250); }
+  };
   const go = async list => {
-    if (vNow()) { vStop(); cb(''); return; }
+    if (vNow()) { vStop(); return; }
     const ok = await vPlay(c.deck, list, cb);
     if (!ok) strip.querySelector('.vmsg').textContent = 'no voice yet · make it on the deck page';
   };
   lis.onclick = () => go(show);
   strip.querySelectorAll('[data-vk]').forEach(b => b.onclick = () => { const i = show.findIndex(p => p.k === b.dataset.vk); vStop(); go(show.slice(i)); });
   strip.querySelectorAll('[data-vs]').forEach(b => b.onclick = () => { const v = Math.round(Math.min(2, Math.max(0.8, vSpeed() + 0.1 * +b.dataset.vs)) * 10) / 10; vSetSpeed(v); strip.querySelector('.vspd b').textContent = v.toFixed(1) + '×'; });
+  bar.querySelectorAll('[data-vj]').forEach(b => b.onclick = () => { vSkip(+b.dataset.vj); draw(); });
+  pp.onclick = () => { if (vPaused()) vResume(); else vPause(); draw(); };
+  rng.addEventListener('input', () => { drag = true; draw(); });
+  rng.addEventListener('change', () => { vSeek(rng.value / 1000 * vTotal()); drag = false; draw(); });
   deckIndex(c.deck).then(() => {
     if (!strip.isConnected) return;
     const have = show.filter(p => hasClip(c.deck, p)).length;

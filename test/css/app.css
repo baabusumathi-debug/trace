@@ -1605,5 +1605,11 @@ details.xp-before:not([open]){padding:6px 12px}
 .vstrip .vspd button{min-width:26px;padding:3px 6px}
 .vstrip .vmsg{font-size:10.5px;flex-basis:100%}
 .vstrip.empty .vp{opacity:.4}
+.vstrip .vbar{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:4px}
+.vstrip .vbar[hidden]{display:none}
+.vstrip .vbar button{min-width:34px;padding:4px 6px}
+.vstrip .vbar .vpp{background:#1f3566;color:#fff;border-color:#1f3566;min-width:38px}
+.vstrip .vseek{flex:1 1 150px;accent-color:#1f3566;height:22px;margin:0 4px}
+.vstrip .vtime{font-size:10.5px;color:#5d5444;white-space:nowrap}
 .vdeck{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#181b20}
 .vdeck .vd-s{flex:1}
