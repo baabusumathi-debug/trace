@@ -122,7 +122,7 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
     await deckIndex(deck, true);
     let want = redo ? allLessonParts(pkg).filter(p => redo.includes(p.k)) : allLessonParts(pkg).filter(p => !hasClip(deck, p));
     if (onlyQ) want = want.filter(p => p.k.startsWith('L-' + onlyQ + '-'));
-    let done = 0, failed = 0, lastErr = '', stopAll = false;
+    let done = 0, failed = 0, lastErr = '', stopAll = false, calls = 0;
     onStep && onStep({ done, total: want.length, failed });
     const groups = [];
     for (let i = 0; i < want.length;) { const pr = want[i].prompt, part = []; while (i < want.length && part.length < 4 && want[i].prompt === pr) part.push(want[i++]); groups.push({ pr, part }); }
@@ -137,6 +137,7 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
         if (r.failed.length) lastErr = r.failed[0].error;
         onStep && onStep({ done, total: want.length, failed, used: r.used, limit: r.limit });
         if (r.failed.some(f => /limit|40[13]/.test(f.error))) stopAll = true;
+        if (++calls % 6 === 0) call({ op: 'voiceReindex', deck }).catch(() => {});   // parallel saves can drop index entries; put them back as we go
       }
     };
     await Promise.all([worker(), worker()]);         // two: Gemini-TTS allows about 10 requests a minute
