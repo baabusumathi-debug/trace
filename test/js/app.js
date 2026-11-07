@@ -804,7 +804,9 @@ async function lessonBox(pkg, P2) {
     if (r.error) toast('Lesson voice: ' + r.error);
     if (box.isConnected) draw(true);
   };
-  b1.onclick = () => run(firstQ.q); b.onclick = () => run();
+  // a second tap starts it (Naven, 8 Nov: a stray tap started 2 hours of voice)
+  const arm = (btn, go) => { let t = 0; btn.onclick = () => { if (btn.dataset.armed) { clearTimeout(t); delete btn.dataset.armed; go(); return; } btn.dataset.armed = '1'; const was = btn.textContent; btn.textContent = 'Tap again to start · ' + was.replace(/^Make voice · /, ''); btn.classList.add('on'); t = setTimeout(() => { delete btn.dataset.armed; btn.textContent = was; btn.classList.remove('on'); }, 4000); }; };
+  arm(b1, () => run(firstQ.q)); arm(b, () => run());
   draw(false);
 }
 function renderFlowTab() {

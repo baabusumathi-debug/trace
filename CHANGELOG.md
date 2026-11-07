@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-109 — 2026-11-08 — Claude — test — 1.3.79
+- Viva page **Make voice** buttons need a second tap within 4 s ("Tap again to start · …"). A stray tap had started all of G1 and G2 (116 min); it was stopped after 4 clips.
+
 ## T-108 — 2026-11-07 — Claude — test — 1.3.78
 - Package **P4.20261107.10** (writer chat): G2 lessons for 6 more questions (P4-006, 008, 016, 009, 197, 214); new figure `P4_G2_pv_loop.svg`. 78 lessons in all; checker clean. No voice made for G2 yet.
 

@@ -11,7 +11,7 @@ export const CONFIG = {
   readOnly: CHANNEL === 'test',
   // Test build carries only the deck being piloted, so sync and deck download stay fast (T-070: TOX01 Explain v2)
   onlyDecks: CHANNEL === 'test' ? ['TOX01', 'TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06', 'RESP01A', 'BS01A', 'BS01B', 'CCM01', 'CCM03', 'CCM06', 'CCM10', 'CCM11', 'CVS03', 'CVS05B', 'CVS07A', 'CVS07B', 'D05B', 'D05C', 'ECMO01', 'EPI01A', 'EPI01C', 'HEMO05A', 'HEMO05B', 'HY1', 'HY2', 'HY6', 'HY7', 'MISC05B', 'MV04B', 'NEURO01', 'NEURO02', 'NEURO03', 'RESP03', 'SC-A', 'SC-B', 'SEP01A', 'SEP02', 'SPECIAL04A', 'SPECIAL05B', 'ECMO02A', 'MV01', 'MV02', 'MV03', 'MV04A', 'MV05', 'NEURO06A', 'NEURO06B', 'RESP01B', 'RESP01C', 'RESP02A', 'RESP02B', 'RESP04', 'RESP07A', 'RESP07B'] : null,   // + the decks with T-093 text corrections and the viva P4 decks (T-095)
-  appVersion: '1.3.78',
+  appVersion: '1.3.79',
   traceFolderId: '1e_lx6kl_MhG4aOracgTr_HG3NUp7OsYs',
   doctFolderId: '1wqRbRG-nqldfafFL-AughcBEBfo6atQo',   // Trace › doct: finished DocT attempts sent by the recorder (v2.0+)
   libraryId: '1b3tMq38gqAE_m7eb5PeeJ53LjKqdggHI',   // fallback; the app looks library.json up by name
