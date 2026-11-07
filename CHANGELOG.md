@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-110 — 2026-11-08 — Claude — test — 1.3.80
+- **NEET Explain for RESP01B (16 cards) and RESP01C (17 cards)** (Naven, 8 Nov: HT starts respiratory today). Same v3 method as RESP01A: built from the real questions linked to each card (`tools/explain/qpack/`), deck story (spine, primer, step), independent fact-check with sources (`tools/explain/resp01b_review.md`: 10 changes; `resp01c_review.md`: 11 changes). Card text unchanged; FLAGS list where cards or question keys disagree with current evidence (e.g. RESP01C ARDS-42: dexamethasone and the 2024 steroid guidance).
+
 ## T-109 — 2026-11-08 — Claude — test — 1.3.79
 - Viva page **Make voice** buttons need a second tap within 4 s ("Tap again to start · …"). A stray tap had started all of G1 and G2 (116 min); it was stopped after 4 clips.
 
