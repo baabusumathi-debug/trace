@@ -90,6 +90,7 @@ Each question gets its own micro-lesson. Lessons carry the question's thread: br
   - In Autoplay, a lesson starts when its card opens, and Trace moves on 1.5 seconds after it ends.
   - In Tap to play, Trace waits for ▶.
 - The speed setting (0.8× to 2×) is shared with card voice and remembered on the device.
+- **Player bar** (test 1.3.71): while audio plays, a bar shows −10, −5, pause/play, +5, +10, a draggable seek slider and the time. Its timeline covers the whole lesson, so seeking crosses paragraphs and takeaway clips.
 
 ## 8. Regenerating without losing history
 
