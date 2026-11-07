@@ -38,7 +38,7 @@ How narrated lessons sit in a viva package file (`claude/viva/P4.json` and later
 |---|---|---|---|
 | `v` | integer | yes | Lesson version. Start at 1 and add 1 on every edit. |
 | `text` | string | yes | The script. Paragraphs are separated by a blank line (`\n\n`). |
-| `pic` | string | no | File name in `data/viva/img/<pkg>/` (svg, png or webp). |
+| `pic` | string | no | File name in `data/viva/img/<pkg>/` (svg, png or webp), or `"card"` for this card's own figure, or `"card:DECK\|CODE"` for another card's figure. |
 | `cap` | string | no | Picture caption, on screen only. |
 | `same` | string | no | Instead of `text`: reuse the lesson of this card from another question (the question ID, e.g. `"P4-003"`). |
 

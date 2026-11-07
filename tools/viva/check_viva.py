@@ -47,6 +47,42 @@ for k,e in P['explain'].items():
         if not e.get('cap'): err.append(f'explain {k} no cap')
     for lab,t in e['why']:
         if re.search(r'card error|Card error|correction',t): warn.append(f'explain {k}: {t[:100]}')
+# narrated lessons (spec: claude/viva/Trace_Lesson_Spec_7Nov.md)
+def spoken(t): return re.sub(r'\{\{.*?\}\}','',t,flags=re.S).replace('[[','').replace(']]','')
+def chk_lesson(where,L,qid):
+    if 'same' in L:
+        if L['same'] not in qs_all: err.append(f'{where} same -> {L["same"]} not a question')
+        return
+    if not isinstance(L.get('v'),int): err.append(f'{where} v missing')
+    t=L.get('text') or ''; sp=spoken(t).strip()
+    if not 150<=len(sp)<=4000: err.append(f'{where} spoken {len(sp)} chars')
+    elif len(sp)>3000: warn.append(f'{where} long: {len(sp)} chars')
+    if t.count('[[')!=t.count(']]') or re.search(r'\[\[[^\]]*\[\[',t): err.append(f'{where} unbalanced [[ ]]')
+    keys=re.findall(r'\[\[(.+?)\]\]',t,flags=re.S)
+    for k in keys:
+        if len(k)>300: err.append(f'{where} takeaway {len(k)} chars: {k[:50]}')
+    if sp and sum(len(k) for k in keys)>len(sp)/4: warn.append(f'{where} takeaways {sum(len(k) for k in keys)*100//len(sp)}% of text')
+    for para in t.split('\n\n'):
+        p=para.strip()
+        if p.startswith('{{'):
+            if not p.endswith('}}'): err.append(f'{where} {{{{ }}}} not a paragraph of its own')
+            elif p!='{{pic}}' and len(p)>404: err.append(f'{where} screen box {len(p)}')
+            continue
+        if '{{' in p: err.append(f'{where} {{{{ }}}} inside a paragraph')
+        if len(spoken(p))>1200: err.append(f'{where} paragraph {len(spoken(p))} chars')
+        if re.search(r'[→←↑↓≥≤±×÷=<>|#*]',spoken(p)): warn.append(f'{where} symbol in spoken text: {re.findall(r"[→←↑↓≥≤±×÷=<>|#*]",spoken(p))}')
+        if re.search(r'\b(?:[A-Z]{2,6}\d*-\d{2}|V\d-\d{3})\b',spoken(p)): warn.append(f'{where} card code read aloud')
+    if L.get('pic') and not os.path.exists(imgdir+L['pic']): err.append(f'{where} pic {L["pic"]}')
+    if '{{pic}}' in t and not L.get('pic'): err.append(f'{where} {{{{pic}}}} without pic')
+    if re.search(r'on (?:your|the) screen',sp,re.I) and not L.get('pic') and '{{' not in t: warn.append(f'{where} says "on your screen" but shows nothing')
+qs_all={q['q'] for q in P['questions']}
+nles=0
+for q in P['questions']:
+    for slot in ('open','close'):
+        if q.get(slot): nles+=1; chk_lesson(f'{q["q"]} {slot}',q[slot],q['q'])
+    for j,s in enumerate(q['steps']):
+        if s.get('lesson'): nles+=1; chk_lesson(f'{q["q"]} s{j} {s["card"]}',s['lesson'],q['q'])
+print('LESSONS',nles)
 for f in P['fixes']:
     c=cards.get(f['card'])
     if not c: err.append('fix card '+f['card']); continue
