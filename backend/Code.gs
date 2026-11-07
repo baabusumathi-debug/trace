@@ -16,7 +16,7 @@ var TABS = {            // what the app may do with each tab
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 5;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders (5.1: HT events carry no owner reminder)
+var VERSION = 6;          // 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders (5.1: HT events carry no owner reminder) · 6: card voice (Voice.gs)
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
@@ -52,6 +52,9 @@ function run_(o) {
     case 'readBinary': return readBinary_(o.id);
     case 'notifyJournal': return notifyJournal_(o.requestId);
     case 'calendar': return calendar_(o);
+    case 'voice': return voice_(o);              // v6: card voice (Voice.gs)
+    case 'voiceIndex': return voiceIndex_(o);
+    case 'voiceUsage': return voiceUsageOp_();
     default: throw new Error('unknown op ' + o.op);
   }
 }

@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: T-098 (bridge v6 card voice — waiting for Naven's authorisation and the v6 deployment)
 
 ## State (as of entry T-097)
 
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-098 — 2026-11-07 — Claude — bridge — v6 (in progress)
+- **Card voice, bridge side** (Naven, 7 Nov: Gemini voice only, so every device plays the same audio). New `backend/Voice.gs` beside `Code.gs`; `Code.gs` gains ops `voice`, `voiceIndex`, `voiceUsage` and `VERSION = 6`; `backend/appsscript.json` now lists its scopes explicitly and adds `cloud-platform`.
+- Speech comes from Google Cloud Text-to-Speech, Gemini model `gemini-2.5-flash-tts`, `en-IN`, MP3, under the owner's own sign-in (no API key). One file per point of a card in `Trace › voice › <DECK>` with an `index.json` (part key → file, text hash, seconds, voice); a changed text is remade, an unchanged one skipped.
+- Hard monthly limit in the bridge (`VOICE_LIMIT_SEC`, default 10 h of audio), because Google cannot cap Text-to-Speech spending.
+- Google side, set up in Naven's browser on his instruction: Cloud project `trace-voice` linked to his billing account with the Google Developer Program credit (₹3,809 a month); Cloud Text-to-Speech enabled; budget "trace-voice alerts" (₹3,500, emails at 50 / 90 / 100 %, counted before credits); OAuth consent in testing with Naven as the only test user; the Apps Script project moved to this Cloud project.
+- Applied to the live Apps Script editor (the private key line untouched). Still to do: Naven's authorisation (`authoriseVoice`), deploy as a new version of the existing web app, check sync, then the app side (Listen and ▶ per point, speed, offline audio) in test.
 
 ## T-097 — 2026-11-07 — Claude — live — 1.4.17
 - Promoted test 1.3.68 to live on Naven's instruction (7 Nov: "Promote"). Same copy rules as T-082 (every file in `test/` except `index.html` and `manifest.webmanifest`); `CONFIG.onlyDecks` stays `null` on live.
