@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-104 — 2026-11-07 — Claude — test — 1.3.74 · bridge (Apps Script version 9)
+- **Fix: lesson clips that run on.** In the P4-198 pilot, 22 of 72 Gemini clips did not stop at the end of their text: some repeated it, some went on with invented speech (one ran 10 minutes). Whisper's transcript shows it. The bridge now compares Whisper's word count with the script's and makes a clip again (at most 3 tries, best kept) when it runs on by more than 20%; `redo` remakes clips already made. The app also stops every lesson clip just after the script's last word (cut point from the word timings), so a run-on is never heard, and the timeline counts only up to that point.
+
 ## T-103 — 2026-11-07 — Claude — test — 1.3.73
 - Package **P4.20261107.9** (writer chat, reviewed): pictures and on-screen boxes for the G1 lessons; new figures `P4_G1_autopeep_flow.svg`, `P4_G2_hold_shape.svg`.
 - Lessons with `"pic": "card"` / `"card:DECK|CODE"` now show the card's own figure, cut from its PDF deck page into `data/viva/img/P4/card_<DECK>_<CODE>.png` (MV02 MODE-03 scalars A/B, MV03 ASYN-03 panels 1–3). The checker checks those files exist.

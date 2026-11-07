@@ -81,10 +81,17 @@ function alignWords_(bytes, text) {
   var r = JSON.parse(res.getContentText());
   return { words: (r.words || []).map(function (w) { return [w.word, Math.round(w.start * 1000), Math.round(w.end * 1000)]; }), dur: Math.round((r.duration || 0) * 1000) };
 }
-function saveAlign_(dir, k, bytes, text) {
-  var t = alignWords_(bytes, text), name = k + '.t.json', old = dir.getFilesByName(name);
+function saveAlign_(dir, k, bytes, text, al) {
+  var t = al || alignWords_(bytes, text), name = k + '.t.json', old = dir.getFilesByName(name);
   while (old.hasNext()) old.next().setTrashed(true);
   return dir.createFile(name, JSON.stringify(t), 'application/json').getId();
+}
+// Gemini sometimes runs on after the text (repeats it, or keeps talking). Whisper's word count against the script's shows it:
+// 0 = clean; 0.5 = half as many extra words again. Clips above RUNON_MAX are made again (at most 3 tries; the best one is kept).
+var RUNON_MAX = 0.2;
+function runOn_(text, al) {
+  var n = String(text).split(/\s+/).filter(String).length, w = (al.words || []).length;
+  return Math.max(0, (w - n) / Math.max(n, 1));
 }
 
 /**
@@ -103,17 +110,26 @@ function voice_(o) {
     for (var i = 0; i < items.length; i++) {
       var it = items[i], k = String(it.k || ''), t = String(it.t || ''), h = String(it.h || '');
       if (!/^[\w.\-]{1,60}$/.test(k) || !t.trim()) { failed.push({ k: k, error: 'bad item' }); continue; }
-      if (idx[k] && idx[k].h === h && idx[k].voice === voice) { skipped.push(k); continue; }
+      if (!o.redo && idx[k] && idx[k].h === h && idx[k].voice === voice) { skipped.push(k); continue; }   // redo: make it again (a run-on clip)
       var sec = voiceSec_(t);
-      if (u.used + sec > u.limit) { failed.push({ k: k, error: 'monthly voice limit reached' }); break; }
+      if (u.used + sec * (o.align ? 3 : 1) > u.limit) { failed.push({ k: k, error: 'monthly voice limit reached' }); break; }
       try {
-        var bytes = synth_(t, voice, o.prompt);
+        var bytes = null, al = null, aerr = '', tries = 0, ro = 0;
+        for (var a = 0; a < (o.align ? 3 : 1); a++) {
+          var b = synth_(t, voice, o.prompt); tries++; u.used += sec;
+          if (!o.align) { bytes = b; break; }
+          var x = null; try { x = alignWords_(b, t); } catch (e) { aerr = String(e && e.message || e).slice(0, 120); bytes = b; break; }
+          var r = runOn_(t, x);
+          if (!bytes || r < ro) { bytes = b; al = x; ro = r; }
+          if (r <= RUNON_MAX) break;
+        }
         var name = k + '.mp3', old = dir.getFilesByName(name);
         while (old.hasNext()) old.next().setTrashed(true);
         var f = dir.createFile(Utilities.newBlob(bytes, 'audio/mpeg', name));
-        idx[k] = { id: f.getId(), h: h, sec: sec, voice: voice };
-        if (o.align) { try { idx[k].tid = saveAlign_(dir, k, bytes, t); } catch (e) { idx[k].aerr = String(e && e.message || e).slice(0, 120); } }
-        u.used += sec; made.push(k);
+        idx[k] = { id: f.getId(), h: h, sec: sec, voice: voice, tries: tries };
+        if (al) { idx[k].tid = saveAlign_(dir, k, bytes, t, al); idx[k].ro = Math.round(ro * 100) / 100; }
+        if (aerr) idx[k].aerr = aerr;
+        made.push(k);
       } catch (e) { failed.push({ k: k, error: String(e && e.message || e) }); if (/ 40[13]:/.test(String(e))) break; }
     }
     u.p.setProperty('VOICE_USED_SEC', String(u.used));

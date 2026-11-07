@@ -70,9 +70,15 @@ export function alignRun(words, W, dur) {
   const L = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
   for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = eq(i, j) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
   const st = new Array(n).fill(null);
-  for (let i = 0, j = 0; i < n && j < m;) { if (eq(i, j)) { st[i] = W[j][1] / 1000; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
-  const end = dur || (m ? W[m - 1][2] / 1000 : 0);
-  return fill(words, st, 0, end);
+  let lastI = -1, lastEnd = 0;
+  for (let i = 0, j = 0; i < n && j < m;) { if (eq(i, j)) { st[i] = W[j][1] / 1000; lastI = i; lastEnd = W[j][2] / 1000; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
+  // the clip stops just after the script's last word (Gemini sometimes runs on after it); words left unmatched at the end get time by length
+  const tail = words.slice(lastI + 1).reduce((s2, w) => s2 + w.length * 0.08 + 0.1, 0);
+  const cut = lastI >= 0 ? lastEnd + tail + 0.45 : 0;
+  const end = cut || dur || (m ? W[m - 1][2] / 1000 : 0);
+  const out = fill(words, st, 0, end);
+  out.cut = cut && (!dur || cut < dur - 0.2) ? cut : 0;
+  return out;
 }
 // approximate: spread the words over the clip by length, with a little extra after commas and full stops
 export function approxRun(words, dur) { return fill(words, new Array(words.length).fill(null), 0, dur || words.length * 0.35); }
@@ -103,21 +109,21 @@ export function allLessonParts(pkg) {
   return out;
 }
 export const estMin = parts => Math.round(parts.reduce((s, p) => s + p.t.length, 0) / 14 / 60);   // about 14 spoken characters a second
-export async function makeLessons(pkg, onStep, onlyQ) {
+export async function makeLessons(pkg, onStep, onlyQ, redo) {
   if (making) return { error: 'already making ' + making };
   making = pkg;
   const deck = lessonDeck(pkg);
   try {
     await deckIndex(deck, true);
-    let want = allLessonParts(pkg).filter(p => !hasClip(deck, p));
+    let want = redo ? allLessonParts(pkg).filter(p => redo.includes(p.k)) : allLessonParts(pkg).filter(p => !hasClip(deck, p));
     if (onlyQ) want = want.filter(p => p.k.startsWith('L-' + onlyQ + '-'));
     let done = 0, failed = 0, lastErr = '';
     onStep && onStep({ done, total: want.length, failed });
     for (let i = 0; i < want.length;) {
       const pr = want[i].prompt, part = [];
-      while (i < want.length && part.length < 5 && want[i].prompt === pr) part.push(want[i++]);
+      while (i < want.length && part.length < 4 && want[i].prompt === pr) part.push(want[i++]);   // 4 a call: a run-on clip may be made up to 3 times
       let r;
-      try { const [x] = await batch([{ op: 'voice', deck, voice: VOICE, prompt: pr, align: true, items: part.map(p => ({ k: p.k, t: p.t, h: p.h })) }], 330000); if (!x.ok) throw new Error(x.error); r = x.data; }
+      try { const [x] = await batch([{ op: 'voice', deck, voice: VOICE, prompt: pr, align: true, redo: !!redo, items: part.map(p => ({ k: p.k, t: p.t, h: p.h })) }], 330000); if (!x.ok) throw new Error(x.error); r = x.data; }
       catch (e) { lastErr = e.message; failed += part.length; break; }
       done += r.made.length + r.skipped.length; failed += r.failed.length;
       if (r.failed.length) lastErr = r.failed[0].error;
@@ -161,7 +167,7 @@ export function mountLesson(root, x, opts = {}) {
     if (starts.has(ri)) return starts.get(ri);
     const W = await whisperWords(deck, parts[ri]);
     const s = W && W.words && W.words.length ? alignRun(runs[ri].words, W.words, (W.dur || 0) / 1000) : null;
-    if (s) starts.set(ri, s);
+    if (s) { starts.set(ri, s); if (s.cut) parts[ri].cut = s.cut; }
     return s;
   };
   const playing = () => mine && !!nowPlaying() && parts.includes(nowPart());
@@ -186,6 +192,7 @@ export function mountLesson(root, x, opts = {}) {
     await deckIndex(deck);
     if (!parts.some(p => hasClip(deck, p))) { msg.textContent = 'no voice yet · make it on the Viva page'; return false; }
     ended = false; mine = true; follow = true; fol.hidden = true;
+    await timingsFor(ri != null ? ri : 0);           // the first clip's cut point before it plays
     const ok = await play(deck, parts, cb, ri != null ? parts[ri] : null, off);
     if (!ok) { mine = false; msg.textContent = 'no voice yet'; }
     parts.forEach((_, i) => timingsFor(i));

@@ -110,7 +110,7 @@ export async function makeDeck(deck, cards, onStep) {
 
 /* ---------- playback: one timeline over all the clips of a Listen (seek, skip, pause) ---------- */
 const audio = typeof Audio !== 'undefined' ? new Audio() : null;
-let queue = [], qi = -1, onState = null, playing = '', deckNow = '', urls = [], durs = [], paused = false, gen = 0;
+let queue = [], qi = -1, onState = null, playing = '', deckNow = '', urls = [], durs = [], paused = false, gen = 0, cutT = 0;
 export const speed = () => { try { return Math.min(2, Math.max(0.8, +localStorage.getItem('trace.vspeed') || 1.2)); } catch (e) { return 1.2; } };
 export function setSpeed(v) { try { localStorage.setItem('trace.vspeed', String(v)); } catch (e) { /* */ } if (audio) audio.playbackRate = v; }
 async function blobOf(deck, p) {
@@ -135,12 +135,12 @@ async function urlAt(i, g) {
   return urls[i];
 }
 // clip length: the real one once known, else the bridge's estimate
-const est = i => durs[i] != null ? durs[i] : (((idx[deckNow] || {})[queue[i].k] || {}).sec || 5);
+const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut : durs[i] != null ? durs[i] : (((idx[deckNow] || {})[queue[i].k] || {}).sec || 5);
 export const total = () => queue.reduce((s, _, i) => s + est(i), 0);
 export function pos() { if (qi < 0) return 0; let s = 0; for (let i = 0; i < qi; i++) s += est(i); return s + ((audio && audio.currentTime) || 0); }
 export const isPaused = () => paused;
 const tell = () => onState && onState(playing);
-function reset() { gen++; urls.forEach(u => u && URL.revokeObjectURL(u)); queue = []; urls = []; durs = []; qi = -1; playing = ''; paused = false; if (audio) { audio.onended = null; audio.pause(); audio.removeAttribute('src'); } }
+function reset() { gen++; clearInterval(cutT); urls.forEach(u => u && URL.revokeObjectURL(u)); queue = []; urls = []; durs = []; qi = -1; playing = ''; paused = false; if (audio) { audio.onended = null; audio.pause(); audio.removeAttribute('src'); } }
 export function stop() { const cb = onState; reset(); onState = null; cb && cb(''); }
 export const nowPlaying = () => playing;
 async function startAt(i, off, g) {
@@ -153,6 +153,10 @@ async function startAt(i, off, g) {
   audio.onended = () => setTimeout(() => startAt(i + 1, 0, g), 250);
   audio.onloadedmetadata = () => { if (isFinite(audio.duration)) { durs[i] = audio.duration; if (off) audio.currentTime = Math.min(off, Math.max(0, audio.duration - 0.05)); } };
   audio.src = url; audio.playbackRate = speed(); audio.preservesPitch = true;
+  // a clip with a cut point (lessons: just after the script's last word) ends there, whatever follows in the file
+  clearInterval(cutT);
+  const p = queue[i];
+  if (p.cut) cutT = setInterval(() => { if (g !== gen || qi !== i) return clearInterval(cutT); if (audio.currentTime >= p.cut) { clearInterval(cutT); audio.pause(); const f = audio.onended; audio.onended = null; f && f(); } }, 50);
   tell();
   if (!paused) await audio.play().catch(() => {});
 }
