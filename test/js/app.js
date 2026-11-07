@@ -14,6 +14,7 @@ import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml,
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
+import { voiceOn, partsOf, deckIndex, hasClip, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -547,6 +548,7 @@ function renderDeck(code) {
       <div class="chips">${STATES_DECK.map(([k, l]) => { const n = pick2(code, df.pool, k).length; return n || k === 'any' || k === df.st ? `<button class="chip${df.st === k ? ' on' : ''}" data-ds="${k}">${l} · ${n}</button>` : ''; }).join('')}<span class="mono muted small lit">${cur.list.length} of ${cards.length} lit</span></div>
       <div class="ctl-row mt"><span class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}</span>
         <span class="sizes mono" aria-label="Card tile size">${['s', 'm', 'l'].map(z => `<button class="${size === z ? 'on' : ''}" data-size="${z}">${z.toUpperCase()}</button>`).join('')}</span></div>
+      ${voiceOn() && cards.length ? '<div class="vdeck" id="vdeck"><span class="mono kick">VOICE</span><span class="vd-s muted small">checking…</span><button class="pillbtn" data-vmake hidden>Make voice</button></div>' : ''}
       ${cards.length ? tiles : '<p class="muted">No cards on this device yet.</p>'}
       <p class="muted small mt">Tap a card to look through it. Looking is never timed or logged; only Flow counts.</p>
     </div>
@@ -562,10 +564,29 @@ function renderDeck(code) {
   const dl = app.querySelector('[data-act=dl]');
   if (dl) dl.onclick = async () => { dl.disabled = true; try { await downloadDecks([code]); toast('Downloaded and checked.'); } catch (e) { toast(e.message); } emit(); };
   app.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(code, b.dataset.scope, df));
+  if (voiceOn() && cards.length) vDeckBox(code, cards);
   app.querySelectorAll('.tile').forEach(el => el.onclick = () => {
     const list = cur.list.find(c => c.code === el.dataset.code) ? cur.list : cards;
     startFlow(list, { browse: true, start: list.findIndex(c => c.code === el.dataset.code), label: 'Look', returnTo: location.hash });
   });
+}
+// T-099: how much of this deck has its voice, and a button to make the rest (the bridge makes it, a few points a call)
+async function vDeckBox(code, cards) {
+  const box = document.getElementById('vdeck'); if (!box) return;
+  const s = box.querySelector('.vd-s'), b = box.querySelector('[data-vmake]');
+  await deckIndex(code);
+  const parts = cards.flatMap(c => partsOf(c)), have = parts.filter(p => hasClip(code, p)).length;
+  if (!box.isConnected) return;
+  s.textContent = have === parts.length ? `All ${parts.length} points have their voice.` : `${have} of ${parts.length} points have their voice.`;
+  b.hidden = have === parts.length;
+  b.onclick = async () => {
+    b.disabled = true; b.textContent = 'Making…';
+    const r = await makeDeck(code, cards, st => { if (s.isConnected) s.textContent = `Making ${st.done} of ${st.total}…${st.used != null ? ` · this month ${Math.round(st.used / 60)} of ${Math.round(st.limit / 60)} min` : ''}`; });
+    if (!box.isConnected) return;
+    b.disabled = false; b.textContent = 'Make voice';
+    if (r.error) toast('Voice stopped: ' + r.error);
+    vDeckBox(code, cards);
+  };
 }
 function tile(c, active) {
   const n = seen(c.deck, c.no), tag = neetTag(c);
@@ -1466,7 +1487,7 @@ async function endFlow() {
   if (!flow) return;
   clearInterval(flow.tick);
   document.removeEventListener('keydown', flowKeys);
-  unmountInk();
+  unmountInk(); vStop();
   closePanel(); releaseUrls();
   if (flow.pilot) stopPolling();
   const sid = flow.session, back = flow.returnTo, browse = flow.browse;
@@ -1908,6 +1929,7 @@ function bindXp(el, c) {
 }
 function drawCard() {
   const el = $('#card'), big = $('#f-big');
+  vStop();
   if (!flow.inter && !flow.done && !flow.peek && flow.face === 'q') {
     const cd = current(); flow.mapSeen = flow.mapSeen || {};
     if (flow.viva) { if (cd && cd.vq && cd.vq.i === 0 && !flow.vqSeen[flow.idx]) { flow.vqSeen[flow.idx] = 1; flow.inter = { kind: 'vq', pkg: cd.vq.pkg, q: cd.vq.q, at: flow.idx }; } }
@@ -1966,6 +1988,7 @@ function drawCard() {
   const split = !isQ && el && body.startsWith('<div class="a-split');
   el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
   placeXpBar(el);
+  if (voiceOn()) mountVoice(el, c, isQ);
   el.classList.toggle('peeking', !!flow.peek);
   el.classList.toggle('ng', isNeet(c));
   closePanel();
@@ -1995,6 +2018,35 @@ function drawCard() {
     hk.onchange = save; hk.onblur = save;
     hk.onkeydown = e => { e.stopPropagation(); if (e.key === 'Enter') hk.blur(); };
   }
+}
+/* ---------- T-099 card voice: Listen (the whole side) and ▶ for each point; speed − / + ---------- */
+function mountVoice(el, c, isQ) {
+  const all = partsOf(c), show = isQ ? all.filter(p => p.label === 'Q') : all;
+  if (!show.length) return;
+  const host = isQ ? el.querySelector('.c-q .zw') : el.querySelector('.c-a .ans');
+  if (!host) return;
+  const strip = document.createElement('div'); strip.className = 'vstrip';
+  strip.innerHTML = `<button class="vlisten mono" data-vall aria-label="Listen to this ${isQ ? 'question' : 'answer'}">▶ Listen</button>${isQ ? '' : show.map(p => `<button class="vp mono" data-vk="${esc(p.k)}" aria-label="Play point ${esc(p.label)}">${esc(p.label)}</button>`).join('')}<span class="vspd mono"><button data-vs="-1" aria-label="Slower">−</button><b>${vSpeed().toFixed(1)}×</b><button data-vs="1" aria-label="Faster">+</button></span><span class="vmsg mono muted"></span>`;
+  if (isQ) host.appendChild(strip); else host.insertAdjacentElement('afterend', strip);
+  ['pointerdown', 'click'].forEach(t => strip.addEventListener(t, e => e.stopPropagation()));
+  const mark = k => strip.querySelectorAll('[data-vk]').forEach(b => b.classList.toggle('on', b.dataset.vk === k));
+  const lis = strip.querySelector('[data-vall]');
+  const cb = k => { mark(k); lis.classList.toggle('on', !!k); lis.textContent = k ? '■ Stop' : '▶ Listen'; };
+  const go = async list => {
+    if (vNow()) { vStop(); cb(''); return; }
+    const ok = await vPlay(c.deck, list, cb);
+    if (!ok) strip.querySelector('.vmsg').textContent = 'no voice yet · make it on the deck page';
+  };
+  lis.onclick = () => go(show);
+  strip.querySelectorAll('[data-vk]').forEach(b => b.onclick = () => { const i = show.findIndex(p => p.k === b.dataset.vk); vStop(); go(show.slice(i)); });
+  strip.querySelectorAll('[data-vs]').forEach(b => b.onclick = () => { const v = Math.round(Math.min(2, Math.max(0.8, vSpeed() + 0.1 * +b.dataset.vs)) * 10) / 10; vSetSpeed(v); strip.querySelector('.vspd b').textContent = v.toFixed(1) + '×'; });
+  deckIndex(c.deck).then(() => {
+    if (!strip.isConnected) return;
+    const have = show.filter(p => hasClip(c.deck, p)).length;
+    strip.querySelectorAll('[data-vk]').forEach(b => b.classList.toggle('none', !hasClip(c.deck, show.find(p => p.k === b.dataset.vk))));
+    strip.classList.toggle('empty', !have);
+    if (!have) strip.querySelector('.vmsg').textContent = 'no voice yet';
+  });
 }
 /* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
 function qbChips(c) {

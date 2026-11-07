@@ -2,16 +2,16 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: T-098 (card voice — bridge v6 live; app side next)
+In progress: T-099 (card voice in test: making the first deck's audio)
 
-## State (as of entry T-097)
+## State (as of entry T-099)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.16** · promoted from test 1.3.66 on 7 Nov (T-094: checked card-text corrections, `data/cardfix.json`); earlier 1.4.15 from test 1.3.65 on 6 Nov (T-092: primer/story always on the card, pen tools on them, question-side marks fix); earlier 1.4.14 from test 1.3.63 (T-089: Explain v3, RESP01A, audited Toxicology); earlier 1.4.13 from test 1.3.61 (T-087: room fixes, Move to card, Plan undo kept, intent suggestions); earlier 1.4.12 from test 1.3.59 (T-085: Explain v2 and card corrections for all 7 Toxicology decks); earlier 1.4.11 from test 1.3.57 (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.68** · T-096 viva on Naven's profile only · T-095 viva layer (P4) and 12 more card-text corrections (60 cards in `data/cardfix.json`). Carries the 7 Toxicology decks, RESP01A, the corrected decks and the P4 decks (`CONFIG.onlyDecks`, 57 decks). Live is 1.4.17 (= test 1.3.68). |
+| Test build (`test/`) | **1.3.69** · T-099 card voice (Listen, ▶ per point, speed) · T-096 viva on Naven's profile only · T-095 viva layer (P4) and 12 more card-text corrections (60 cards in `data/cardfix.json`). Carries the 7 Toxicology decks, RESP01A, the corrected decks and the P4 decks (`CONFIG.onlyDecks`, 57 decks). Live is 1.4.17 (= test 1.3.68). |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-099 — 2026-11-07 — Claude — test — 1.3.69
+- **Card voice in the app** (Naven's profile only). New `js/voice.js`: splits a card into points (question; each lettered part, list line or table row, with lines that wrap joined back; WHY; WATCH), turns each into speakable text with a pronunciation list (units, ≥/≤/±/→, minus vs ranges, PEEP, P/F, PBW, FiO2, ECMO…), and keys each clip by a hash of its text, voice and prompt version, so a corrected line is remade and nothing else.
+- Voice **Iapetus** (Naven's choice, 7 Nov, from six male samples), Gemini `gemini-2.5-flash-tts`, `en-IN`, brisk "consultant revising with a resident" style.
+- On the card: **▶ Listen** plays the side in order; one button per point on the answer side plays from that point; **− / +** speed 0.8–2.0× (kept per device, pitch preserved). Clips are kept on the device after the first play (offline).
+- On the deck page: a VOICE box shows how many points have their voice, with **Make voice** (the bridge makes 6 points a call; stops at the monthly limit).
+- Checked in demo: MV01 (116 points), TOX01 TOX-13 table, RESP01B ARDS-26 (letters at the line end); no page errors. Audio itself needs the bridge, so it is checked on Naven's device.
 
 ## T-098 — 2026-11-07 — Claude — bridge — v6 (in progress)
 - **Card voice, bridge side** (Naven, 7 Nov: Gemini voice only, so every device plays the same audio). New `backend/Voice.gs` beside `Code.gs`; `Code.gs` gains ops `voice`, `voiceIndex`, `voiceUsage` and `VERSION = 6`; `backend/appsscript.json` now lists its scopes explicitly and adds `cloud-platform`.

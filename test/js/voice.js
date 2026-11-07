@@ -1,0 +1,139 @@
+// Card voice (T-099): Gemini audio made by the bridge (backend/Voice.gs), one MP3 per point of a card, the same on every
+// device. The app splits a card into points, turns each into speakable text (pronunciation list below), asks the bridge
+// to make what is missing, and plays the clips at the chosen speed. Clips are kept on the device after the first play.
+import { db } from './db.js';
+import { IS_HT } from './config.js';
+import { call, batch } from './api.js';
+import { splitQ, plain } from './md.js';
+
+export const VOICE = 'Iapetus';
+export const PROMPT = 'Read this as a sharp, confident Indian-English critical care consultant revising high-yield points with a resident. Brisk revision pace, clear and crisp, short pauses only at full stops. Say PEEP as the word peep and ARDS as A R D S.';
+const PV = 'p1';                     // bump when PROMPT or the pronunciation list changes, so clips are made again
+export const voiceOn = () => !IS_HT;
+
+/* ---------- pronunciation: symbols and abbreviations the voice would misread ---------- */
+// [pattern, spoken]. Applied in order; word boundaries where it matters. Edit freely: a change remakes only the clips it touches.
+const SAY = [
+  [/cmH2O|cmH₂O|cm H2O|cm H₂O/g, 'centimetres of water'],
+  [/mmHg/g, 'millimetres of mercury'],
+  [/mL\/kg\/min/g, 'millilitres per kilogram per minute'], [/mL\/kg/g, 'millilitres per kilogram'], [/mL\/cmH2O/g, 'millilitres per centimetre of water'],
+  [/µg\/kg\/h/g, 'micrograms per kilogram per hour'], [/µg\/kg\/min/g, 'micrograms per kilogram per minute'], [/mg\/kg\/h/g, 'milligrams per kilogram per hour'],
+  [/mg\/kg/g, 'milligrams per kilogram'], [/\bmin\b/g, 'minutes'], [/\bPplat\b/g, 'P plat'], [/\bPIP\b/g, 'P I P'], [/\bPpeak\b/g, 'P peak'],
+  [/mg\/dL/g, 'milligrams per decilitre'], [/mmol\/L/g, 'millimoles per litre'], [/J\/min/g, 'joules per minute'], [/L\/min/g, 'litres per minute'], [/L\/s\b/g, 'litres per second'],
+  [/\bPBW\b/g, 'predicted body weight'], [/\bP\/F\b/g, 'P to F ratio'], [/\bS\/F\b/g, 'S to F ratio'], [/\bI:E\b/g, 'I to E ratio'],
+  [/FiO₂|FiO2/g, 'F I O 2'], [/SpO₂|SpO2/g, 'S P O 2'], [/PaO₂|PaO2/g, 'P A O 2'], [/PaCO₂|PaCO2/g, 'P A C O 2'], [/EtCO₂|EtCO2/g, 'end-tidal C O 2'], [/CO₂|CO2/g, 'C O 2'], [/O₂/g, 'oxygen'],
+  [/\bΔP\b|ΔP/g, 'driving pressure'], [/\bVt\b|\bVT\b/g, 'tidal volume'], [/\bRR\b/g, 'respiratory rate'], [/\bHFNO\b|\bHFNC\b/g, 'high-flow nasal oxygen'],
+  [/\bNIV\b/g, 'N I V'], [/\bSBT\b/g, 'S B T'], [/\bRSBI\b/g, 'R S B I'], [/\bVILI\b/g, 'villi'], [/\bP-SILI\b/g, 'P sili'], [/\bECMO\b/g, 'eck-mo'], [/\bVV-ECMO\b/g, 'V V eck-mo'],
+  [/\bAPRV\b/g, 'A P R V'], [/\bNAVA\b/g, 'nava'], [/\bPAV\b/g, 'P A V'], [/\bICU\b/g, 'I C U'], [/\bARMA\b/g, 'arma'], [/\bPROSEVA\b/g, 'proseva'], [/\bEOLIA\b/g, 'eolia'],
+  [/→|⟶|->/g, ', so '], [/≥/g, ' at least '], [/≤/g, ' at most '], [/>/g, ' more than '], [/</g, ' less than '], [/±/g, ' plus or minus '], [/\s\+\s|\s\+$/gm, ' plus '], [/\s=\s/g, ' equals '], [/×/g, ' times '], [/÷/g, ' divided by '],
+  [/↑/g, ' rises '], [/↓/g, ' falls '], [/~/g, ' about '], [/≈/g, ' about '], [/°C/g, ' degrees Celsius'], [/%/g, ' percent'],
+  [/(\d)\s*[–-]\s*(\d)/g, '$1 to $2'], [/([A-Za-z])[–−]([A-Za-z])/g, '$1 $2'], [/\s*—\s*/g, ', '], [/\s*[–−]\s*/g, ' minus '], [/\be\.g\./g, 'for example'], [/\bi\.e\./g, 'that is'], [/\bvs\.?\b/g, 'versus']
+];
+export function speakable(t) {
+  let s = String(t || '')
+    .replace(/\s*\*\*[a-h]\*\*\s*$/gm, '')                                // trailing part letters ("… **a**")
+    .replace(/\*\*|__|`/g, '').replace(/(^|\s)\*([^*\n]+)\*/g, '$1$2')     // markdown
+    .replace(/^\s*[-•]\s+/gm, '').replace(/^\s*\(?([a-h])\)?\s+/gm, '')     // list marks and part letters
+    .replace(/\(standard teaching, not in your notes\)/g, '');
+  for (const [re, w] of SAY) s = s.replace(re, w);
+  return s.replace(/[ \t]+/g, ' ').replace(/\s+([,.;:])/g, '$1').replace(/([^.:;?!])\n+(?=[a-z(])/g, '$1 ').replace(/\n+/g, '. ').replace(/([:?!.;])\s*\./g, '$1').replace(/\s{2,}/g, ' ').trim();
+}
+
+/* ---------- a card → its points ---------- */
+const endLetter = l => (String(l).match(/\*\*([a-h])\*\*\s*$/) || [])[1] || '';
+const isTable = l => / \| /.test(l) && !/\|\s*\*\*[a-h]\*\*\s*$/.test(l), startsPart = l => /^\s*([-•]\s|\(?[a-h]\)?\s|\d+[.)]\s|\*\*[^*]+\*\*\s*$)/.test(l) || isTable(l);
+const row = l => { const c = l.split('|').map(x => x.trim()).filter(Boolean); return c.length > 1 ? c[0] + ': ' + c.slice(1).join(', ') : c.join(''); };
+// [{ k, label, t }]: k = part key used for the file name, label = what the ▶ chip shows, t = text to speak
+export function partsOf(c) {
+  if (!c) return [];
+  const out = [], code = String(c.code).replace(/[^\w.\-]/g, '_');
+  const { head, rest } = splitQ(c.q || '');
+  const qrest = String(rest || '').split('\n').map(l => { const m = l.match(/^(.*?)\s*\|\s*\*\*([a-h])\*\*\s*$/); return m ? m[1] : l; }).join('\n');
+  out.push({ k: code + '.q', label: 'Q', t: [plain(head), qrest].filter(Boolean).join('\n') });
+  const lines = String(c.a || '').split('\n'), groups = [];
+  let inTable = false;
+  for (const l of lines) {
+    if (!l.trim()) { inTable = false; continue; }
+    if (isTable(l)) { if (!inTable) { inTable = true; continue; } groups.push({ t: row(l), letter: '' }); continue; }   // first row of a table is its header
+    inTable = false;
+    const last = groups[groups.length - 1];
+    if (!groups.length || startsPart(l) || (last && last.closed)) groups.push({ t: l, letter: (l.match(/^\s*\(?([a-h])\)?\s/) || [])[1] || endLetter(l), closed: !!endLetter(l) });
+    else { last.t += '\n' + l; if (endLetter(l)) { last.letter = last.letter || endLetter(l); last.closed = true; } }
+  }
+  groups.forEach((g, i) => out.push({ k: code + '.a' + (i + 1), label: g.letter || String(i + 1), t: g.t }));
+  if (c.why) out.push({ k: code + '.why', label: 'Why', t: c.why.replace(/^\s*\*\*WHY\*\*\s*/i, '') });
+  if (c.watch) out.push({ k: code + '.watch', label: 'Watch', t: c.watch.replace(/^\s*\*\*WATCH\*\*\s*/i, '') });
+  return out.map(p => ({ ...p, t: speakable(p.t) })).filter(p => p.t.length > 1);
+}
+const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0; return h.toString(36); };
+export const hOf = p => hash(PV + '|' + VOICE + '|' + p.t);
+
+/* ---------- index of made clips, per deck ---------- */
+const idx = {}, idxAsked = {};
+export async function deckIndex(deck, fresh) {
+  if (!idx[deck]) idx[deck] = (await db.kv.get('vidx:' + deck)) || {};
+  if (fresh || !idxAsked[deck]) {
+    idxAsked[deck] = 1;
+    try { const r = await call({ op: 'voiceIndex', deck }); if (r && typeof r === 'object') { idx[deck] = r; await db.kv.set('vidx:' + deck, r); } } catch (e) { /* offline: keep the stored index */ }
+  }
+  return idx[deck];
+}
+export const hasClip = (deck, p) => { const e = idx[deck] && idx[deck][p.k]; return !!(e && e.h === hOf(p) && e.voice === VOICE); };
+
+/* ---------- making a deck's audio (bridge, in small batches) ---------- */
+export async function makeDeck(deck, cards, onStep) {
+  await deckIndex(deck, true);
+  const want = cards.flatMap(c => partsOf(c)).filter(p => !hasClip(deck, p));
+  let done = 0, failed = 0, lastErr = '';
+  onStep && onStep({ done, total: want.length, failed });
+  for (let i = 0; i < want.length; i += 6) {
+    const part = want.slice(i, i + 6);
+    let r;
+    try { const [x] = await batch([{ op: 'voice', deck, voice: VOICE, prompt: PROMPT, items: part.map(p => ({ k: p.k, t: p.t, h: hOf(p) })) }], 330000); if (!x.ok) throw new Error(x.error); r = x.data; }
+    catch (e) { lastErr = e.message; failed += part.length; break; }
+    done += r.made.length + r.skipped.length; failed += r.failed.length;
+    if (r.failed.length) lastErr = r.failed[0].error;
+    onStep && onStep({ done, total: want.length, failed, used: r.used, limit: r.limit });
+    if (r.failed.some(f => /limit|40[13]/.test(f.error))) break;
+  }
+  await deckIndex(deck, true);
+  return { done, total: want.length, failed, error: lastErr };
+}
+
+/* ---------- playback ---------- */
+const audio = typeof Audio !== 'undefined' ? new Audio() : null;
+let queue = [], qi = 0, onState = null, playing = '';
+export const speed = () => { try { return Math.min(2, Math.max(0.8, +localStorage.getItem('trace.vspeed') || 1.2)); } catch (e) { return 1.2; } };
+export function setSpeed(v) { try { localStorage.setItem('trace.vspeed', String(v)); } catch (e) { /* */ } if (audio) audio.playbackRate = v; }
+async function clipUrl(deck, p) {
+  const e = idx[deck] && idx[deck][p.k]; if (!e) return null;
+  let blob = await db.kv.get('vclip:' + e.id);
+  if (!blob) {
+    const r = await call({ op: 'readBinary', id: e.id });
+    const bin = atob(r.b64), u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    blob = new Blob([u], { type: 'audio/mpeg' });
+    db.kv.set('vclip:' + e.id, blob).catch(() => {});
+  }
+  return URL.createObjectURL(blob);
+}
+export function stop() { queue = []; qi = 0; playing = ''; if (audio) { audio.pause(); audio.removeAttribute('src'); } onState && onState(''); }
+export const nowPlaying = () => playing;
+// play these points of one card in order; cb(key) is told which point is playing ('' when done)
+export async function play(deck, parts, cb) {
+  stop(); onState = cb; queue = parts.filter(p => hasClip(deck, p)); qi = 0;
+  if (!queue.length) return false;
+  const nextOne = async () => {
+    if (qi >= queue.length) { playing = ''; cb && cb(''); return; }
+    const p = queue[qi++];
+    try {
+      const url = await clipUrl(deck, p); if (!url || !queue.length) return;
+      playing = p.k; cb && cb(p.k);
+      audio.src = url; audio.playbackRate = speed(); audio.preservesPitch = true;
+      audio.onended = () => { URL.revokeObjectURL(url); setTimeout(nextOne, 250); };
+      await audio.play();
+    } catch (e) { playing = ''; cb && cb(''); }
+  };
+  await nextOne();
+  return true;
+}
