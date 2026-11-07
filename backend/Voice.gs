@@ -66,6 +66,27 @@ function synth_(text, voice, prompt) {
   return Utilities.base64Decode(JSON.parse(body).audioContent);
 }
 
+// Word timings (lessons read-along): OpenAI Whisper with word timestamps, run once per clip, saved as <k>.t.json beside it.
+// The app matches Whisper's words to the script's words itself, so this file holds Whisper's raw words: { words: [[w, start, end]] }.
+function alignWords_(bytes, text) {
+  var key = PropertiesService.getScriptProperties().getProperty('OPENAI_KEY');
+  if (!key) throw new Error('align 401: OPENAI_KEY is not set');
+  var res = UrlFetchApp.fetch('https://api.openai.com/v1/audio/transcriptions', {
+    method: 'post', muteHttpExceptions: true, headers: { Authorization: 'Bearer ' + key },
+    payload: { file: Utilities.newBlob(bytes, 'audio/mpeg', 'clip.mp3'), model: 'whisper-1', response_format: 'verbose_json',
+      'timestamp_granularities[]': 'word', language: 'en', prompt: String(text || '').slice(0, 800) }
+  });
+  var code = res.getResponseCode();
+  if (code !== 200) { var msg = res.getContentText(); try { msg = JSON.parse(msg).error.message; } catch (e) { /* raw */ } throw new Error('align ' + code + ': ' + String(msg).slice(0, 200)); }
+  var r = JSON.parse(res.getContentText());
+  return { words: (r.words || []).map(function (w) { return [w.word, Math.round(w.start * 1000), Math.round(w.end * 1000)]; }), dur: Math.round((r.duration || 0) * 1000) };
+}
+function saveAlign_(dir, k, bytes, text) {
+  var t = alignWords_(bytes, text), name = k + '.t.json', old = dir.getFilesByName(name);
+  while (old.hasNext()) old.next().setTrashed(true);
+  return dir.createFile(name, JSON.stringify(t), 'application/json').getId();
+}
+
 /**
  * op 'voice': { deck, voice, prompt?, items:[{ k, t, h }] }   k = part key (e.g. "VENT-10.a2"), t = text to speak,
  * h = hash of t chosen by the app (a changed text gets a new h, so it is made again). At most 12 items a call.
@@ -91,12 +112,30 @@ function voice_(o) {
         while (old.hasNext()) old.next().setTrashed(true);
         var f = dir.createFile(Utilities.newBlob(bytes, 'audio/mpeg', name));
         idx[k] = { id: f.getId(), h: h, sec: sec, voice: voice };
+        if (o.align) { try { idx[k].tid = saveAlign_(dir, k, bytes, t); } catch (e) { idx[k].aerr = String(e && e.message || e).slice(0, 120); } }
         u.used += sec; made.push(k);
       } catch (e) { failed.push({ k: k, error: String(e && e.message || e) }); if (/ 40[13]:/.test(String(e))) break; }
     }
     u.p.setProperty('VOICE_USED_SEC', String(u.used));
     idxF.setContent(JSON.stringify(idx));
     return { made: made, skipped: skipped, failed: failed, used: u.used, limit: u.limit, month: u.month };
+  } finally { lock.releaseLock(); }
+}
+/** op 'voiceAlign': { deck, keys:[k] } → word timings for clips already made (at most 12 a call); { done:[k], failed:[{k,error}] }. */
+function voiceAlign_(o) {
+  var keys = (o.keys || []).slice(0, 12), texts = o.texts || {};
+  var lock = LockService.getScriptLock(); lock.waitLock(30000);
+  try {
+    var dir = voiceDir_(o.deck), idxF = voiceIndexFile_(dir), idx = {}, done = [], failed = [];
+    try { idx = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { idx = {}; }
+    for (var i = 0; i < keys.length; i++) {
+      var k = String(keys[i]), e = idx[k];
+      if (!e) { failed.push({ k: k, error: 'no clip' }); continue; }
+      try { e.tid = saveAlign_(dir, k, DriveApp.getFileById(e.id).getBlob().getBytes(), texts[k]); delete e.aerr; done.push(k); }
+      catch (x) { failed.push({ k: k, error: String(x && x.message || x) }); if (/ 40[13]:| 429:/.test(String(x))) break; }
+    }
+    idxF.setContent(JSON.stringify(idx));
+    return { done: done, failed: failed };
   } finally { lock.releaseLock(); }
 }
 /** op 'voiceIndex': { deck } → the deck's index (part key → file id, hash, seconds, voice). */
