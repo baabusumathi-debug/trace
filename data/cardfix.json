@@ -1,6 +1,6 @@
 {
  "note": "Card text corrections (7 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "b1b1de51ab",
+ "version": "8c934a9b23",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -281,11 +281,32 @@
    "src": "Lannes M et al. Neurocrit Care 2012;16:354-362 (dosing confirmed via secondary sources citing it; abstract has no dosing)",
    "date": "7 Nov 2026"
   },
+  "HY7|VNX-03": {
+   "fields": {
+    "a": "**Mild 201–300 · moderate 101–200 · severe ≤ 100**\na Within 1 week, bilateral opacities, not fully cardiac: **mild 201–300, moderate 101–200, severe ≤ 100**.\nb **Mild only (Berlin)** — non-invasive CPAP counts only for the mild band. The 2023 global definition adds non-intubated ARDS (HFNO ≥30 L/min or NIV/CPAP ≥5), which is not graded.\nc **Severe** (P/F 85 is ≤100).\nd **Moderate–severe (P/F below 200)** — more recruitable lung. No benefit in mild ARDS."
+   },
+   "src": "ARDS Definition Task Force, JAMA 2012; Matthay MA et al., AJRCCM 2024 (global definition); internal: the bracket belongs to a different example",
+   "date": "7 Nov 2026"
+  },
   "HY7|VNX-06": {
    "fields": {
     "a": "**RSBI below 105 → SBT 30–120 min → extubate**\na **RSBI** = RR ÷ VT (L), measured over 1 min of **unassisted** breathing (T-piece, no PS/PEEP: support lowers it and inflates success); below ~100–105 predicts success (high sensitivity).\nb **SBT 30–120 min** (PS 5–8 or T-piece) once a day; failed → full support for 24 h.\nc **IMV** — longest weaning, most fatigue.\nd Reduce PS by **3–6 cmH2O** steps, watching RR.\ne **Prophylactic NIV** after extubation (fewer reintubations, ↓ mortality)."
    },
    "src": "Yang KL, Tobin MJ, NEJM 1991;324:1445",
+   "date": "7 Nov 2026"
+  },
+  "MV04B|WEAN-15": {
+   "fields": {
+    "a": "a **Respiratory rate ÷ tidal volume in litres**; breaths/min/L.\nb **<105** predicts success.\nc Unassisted, with a hand-held spirometer, over 1 minute.\nd Sensitivity **97%**, specificity 64%; negative predictive value\n95%.\ne Lower on CPAP or pressure support (and with ineffective\ntriggering). Higher with sepsis, fever, a narrow tube. Less accurate in COPD."
+   },
+   "src": "Yang KL, Tobin MJ, NEJM 1991; later validation studies",
+   "date": "7 Nov 2026"
+  },
+  "MV04B|WEAN-17": {
+   "fields": {
+    "a": "**MEASURE** | **VALUE** | **PREDICTS**\n**Diaphragm excursion** | <10 mm | Dysfunction, failure\n**Thickening fraction** | ≥30–36% | Success\n**Lung ultrasound score** | <13 | Extubation success\n**Lung ultrasound score** | >17 | Failure (13–17 uncertain)\n**LV ejection fraction** | <40% | Failure\n**Filling pressure** | E/A >2 (low EF) or E/e' >12 | Failure\n**No rise in output with leg raising** |  | Failure"
+   },
+   "src": "Kim WY et al., Crit Care Med 2011;39:2627",
    "date": "7 Nov 2026"
   },
   "MV04B|WEAN-18": {
@@ -353,6 +374,70 @@
     "a": "a **NEWS, NEWS2, MEWS or SIRS over qSOFA** as a single screening tool.\nb **Strong**, moderate certainty.\nc **No single tool is preferred**; NEWS2 is more sensitive than qSOFA, but the guideline names all four.\nd SCREEN trial (Saudi Arabia, 60,055 ward patients): electronic alert lowered 90-day in-hospital mortality, adjusted relative risk **0.85**."
    },
    "src": "Prescott HC et al. Surviving Sepsis Campaign international guidelines 2026. Crit Care Med 2026 (doi:10.1097/CCM.0000000000007075)",
+   "date": "7 Nov 2026"
+  },
+  "RESP01B|ARDS-27": {
+   "fields": {
+    "a": "Energy delivered to the respiratory system per minute (J/min). **a**\n**0.098 × RR × VT × (Ppeak – ½ driving pressure)**, VT in litres. Bedside surrogate: **(4 × driving pressure) + RR**. **b**\nTidal volume, driving pressure, flow, PEEP and **respiratory rate**. **c**\nAbove about **17 J/min** (12 J/min: injury threshold in pig experiments) *(standard teaching, not in your notes)*. **d**"
+   },
+   "src": "Cressoni M et al. Anesthesiology 2016;124:1100 (piglets)",
+   "date": "7 Nov 2026"
+  },
+  "RESP01C|ARDS-40": {
+   "fields": {
+    "a": "a Early low-dose methylprednisolone: ICU mortality **21% vs**\n**43%**.\nb 180 patients, persistent ARDS (day 7–28),\nmethylprednisolone: no difference in 60- or 180-day\nmortality; more neuromyopathy.\nc Dexamethasone 20 mg for 5 days then 10 mg for 5 days:\n60-day mortality **21% vs 36%** (15.3 percentage points lower), more ventilator-free days.\nd Dexamethasone 6 mg in COVID-19 needing oxygen: lower\nmortality.\ne **Do not start 14 or more days after onset**: LaSRS 60-day\nmortality 35% vs 8%; 180-day 44% vs 12%."
+   },
+   "src": "Villar J et al., Lancet Respir Med 2020;8:267 (DEXA-ARDS)",
+   "date": "7 Nov 2026"
+  },
+  "RESP07B|PLEU-21": {
+   "fields": {
+    "a": "a Uncomplicated (free-flowing, sterile; antibiotics alone);\ncomplicated (bacterial invasion, septations); empyema (frank\npus).\nb **Pus; positive Gram stain; pH <7.20; glucose <60 mg/dL;**\n**LDH >1000**; or a complex septated pattern on ultrasound.\nc Small-bore (12–14 Fr) for most, septated effusions included, with intrapleural tPA/DNase; large-bore if thick pus blocks small tubes.\nd Sepsis resolved and drainage **<200 mL/day**."
+   },
+   "src": "Rahman NM et al., NEJM 2011 (MIST2); BTS pleural guideline 2023",
+   "date": "7 Nov 2026"
+  },
+  "RESP07B|PLEU-26": {
+   "fields": {
+    "a": "a Sudden fall in pleural pressure → hydrostatic shift, plus\nischaemia–reperfusion capillary leak.\nb Collapse for **more than 3 days**; large volume; **rapid** drainage.\nc No faster than **500 mL/h**; maximum **1.5 L**.\nd CPAP **5–10 cmH2O**; oxygen; NIV if needed.\ne Lung fully expanded and output **<100–200 mL/day** (thresholds vary; PLEU-21 uses <200)."
+   },
+   "src": "Internal consistency with PLEU-21; no single guideline threshold",
+   "date": "7 Nov 2026"
+  },
+  "NEURO06B|PADIS-17": {
+   "fields": {
+    "a": "**DRUG** | **KEY PK** | **PROBLEM**\n**Midazolam** | Active metabolite (renal) | **Accumulates**; **delirium**\n**Lorazepam** | Glucuronidation, no active metabolite | **Propylene glycol** toxicity\n**Propofol** | Fast on and off; 1.1 kcal/mL | Hypotension; **PRIS** (over 4–5 mg/kg/h for days); triglycerides, pancreatitis\n**Dexmedetomidine** | α2 agonist; 0.2–1.4 µg/kg/h (EU label; US 0.2–0.7); hepatic | **Bradycardia**, hypotension (transient hypertension with a load); **no respiratory depression**\n**Remifentanil** | **Non-specific blood and tissue esterases**: no accumulation, organ-independent | Rigidity, hyperalgesia\n**Fentanyl** | Lipophilic; accumulates with infusion | Rigidity\n**Morphine** | Active metabolite M6G (renal) | **Histamine**: hypotension; accumulates in AKI\n**Hydromorphone** | 5–10 × morphine |\n**Diazepam** | Long half-life, active metabolites | Prolonged effect"
+   },
+   "src": "Remifentanil product information; Dexmedetomidine SmPC (EU); FDA label",
+   "date": "7 Nov 2026"
+  },
+  "NEURO06B|PADIS-18": {
+   "fields": {
+    "a": "**Analgesia-first** (analgosedation); then minimal sedation.\n**Light sedation**: RASS **−2 to +1** (Riker SAS 3–4); **daily**\n**interruption** or nurse-protocolised targets.\n**Propofol or dexmedetomidine over benzodiazepines**\n(especially after cardiac surgery).\nObjective brain monitoring (**BIS**) when scales cannot be used\n(paralysed patients).\n**Physical restraints**: not recommended (cause delirium, injury);\nonly if absolutely necessary."
+   },
+   "src": "Devlin JW et al., Crit Care Med 2018;46:e825 (PADIS); SCCM 2025 focused update",
+   "date": "7 Nov 2026"
+  },
+  "MV04A|WEAN-05": {
+   "fields": {
+    "q": "**Classification of weaning (Boles, ICC 2007):**\na Definition of each\nb Share of patients",
+    "a": "**GROUP** | **DEFINITION** | **SHARE**\n**Simple** | Extubated after the **first** trial (ICC 2007 estimate: 69%; later cohorts 55–60%) | Up to 60%\n**Difficult** | Fails the first; needs **up to 3 trials or up to 7 days** | 30–40%\n**Prolonged** | Fails **3 or more** trials, or needs **more than 7 days** | Up to 15%"
+   },
+   "src": "Boles JM et al., Eur Respir J 2007;29:1033; Boles 2007; Peñuelas O et al., AJRCCM 2011;184:430",
+   "date": "7 Nov 2026"
+  },
+  "MV02|MODE-13": {
+   "fields": {
+    "a": "a Flatter: shifts **right and down** (more pressure for the same\nvolume). ARDS, heart failure.\nb Steeper: shifts **left and up**. Emphysema, after surfactant.\nc The loop **widens** (extra pressure lost to flow, not true tissue hysteresis) without changing slope\n*(standard teaching, not in your notes).*"
+   },
+   "src": "Standard respiratory mechanics",
+   "date": "7 Nov 2026"
+  },
+  "RESP04|RSC-25": {
+   "fields": {
+    "a": "a Double-lumen tube; single-lumen tube with a bronchial blocker; endobronchial blocker (Arndt).\nb **Synchronous**: same rate to both lungs, with different tidal volume, flow, PEEP and FiO2. **Asynchronous**: everything differs, including mode.\nc Tidal volume **2–5 mL/kg at 100–200/min**; the tiny breaths, low peak pressure and short inspiration lower fistula flow. Weak evidence, selected patients. (These are jet-ventilation figures; oscillation runs at 3–15 Hz.)"
+   },
+   "src": "Standard teaching on HFV in bronchopleural fistula",
    "date": "7 Nov 2026"
   }
  }
