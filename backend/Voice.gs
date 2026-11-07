@@ -102,39 +102,43 @@ function runOn_(text, al) {
 function voice_(o) {
   var items = (o.items || []).slice(0, 12), voice = String(o.voice || 'Kore');
   if (!/^(oa-)?[A-Za-z]{2,20}$/.test(voice)) throw new Error('bad voice');
-  var lock = LockService.getScriptLock(); lock.waitLock(30000);
+  // the slow part (speech + timings) runs without the lock, so several calls can work at once; the lock is held only to
+  // merge this call's results into the index and the monthly count
+  var dir = voiceDir_(o.deck), idxF = voiceIndexFile_(dir), idx = {};
+  try { idx = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { idx = {}; }
+  var u = voiceUsage_(), made = [], skipped = [], failed = [], add = {}, spent = 0;
+  for (var i = 0; i < items.length; i++) {
+    var it = items[i], k = String(it.k || ''), t = String(it.t || ''), h = String(it.h || '');
+    if (!/^[\w.\-]{1,60}$/.test(k) || !t.trim()) { failed.push({ k: k, error: 'bad item' }); continue; }
+    if (!o.redo && idx[k] && idx[k].h === h && idx[k].voice === voice) { skipped.push(k); continue; }   // redo: make it again (a run-on clip)
+    var sec = voiceSec_(t);
+    if (u.used + spent + sec * (o.align ? 3 : 1) > u.limit) { failed.push({ k: k, error: 'monthly voice limit reached' }); break; }
+    try {
+      var bytes = null, al = null, aerr = '', tries = 0, ro = 0;
+      for (var a = 0; a < (o.align ? 3 : 1); a++) {
+        var b = synth_(t, voice, o.prompt); tries++; spent += sec;
+        if (!o.align) { bytes = b; break; }
+        var x = null; try { x = alignWords_(b, t); } catch (e) { aerr = String(e && e.message || e).slice(0, 120); bytes = b; break; }
+        var r = runOn_(t, x);
+        if (!bytes || r < ro) { bytes = b; al = x; ro = r; }
+        if (r <= RUNON_MAX) break;
+      }
+      var name = k + '.mp3', old = dir.getFilesByName(name);
+      while (old.hasNext()) old.next().setTrashed(true);
+      var f = dir.createFile(Utilities.newBlob(bytes, 'audio/mpeg', name));
+      var e2 = { id: f.getId(), h: h, sec: sec, voice: voice, tries: tries };
+      if (al) { e2.tid = saveAlign_(dir, k, bytes, t, al); e2.ro = Math.round(ro * 100) / 100; }
+      if (aerr) e2.aerr = aerr;
+      add[k] = e2; made.push(k);
+    } catch (e) { failed.push({ k: k, error: String(e && e.message || e) }); if (/ 40[13]:/.test(String(e))) break; }
+  }
+  var lock = LockService.getScriptLock(); lock.waitLock(60000);
   try {
-    var dir = voiceDir_(o.deck), idxF = voiceIndexFile_(dir), idx = {};
-    try { idx = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { idx = {}; }
-    var u = voiceUsage_(), made = [], skipped = [], failed = [];
-    for (var i = 0; i < items.length; i++) {
-      var it = items[i], k = String(it.k || ''), t = String(it.t || ''), h = String(it.h || '');
-      if (!/^[\w.\-]{1,60}$/.test(k) || !t.trim()) { failed.push({ k: k, error: 'bad item' }); continue; }
-      if (!o.redo && idx[k] && idx[k].h === h && idx[k].voice === voice) { skipped.push(k); continue; }   // redo: make it again (a run-on clip)
-      var sec = voiceSec_(t);
-      if (u.used + sec * (o.align ? 3 : 1) > u.limit) { failed.push({ k: k, error: 'monthly voice limit reached' }); break; }
-      try {
-        var bytes = null, al = null, aerr = '', tries = 0, ro = 0;
-        for (var a = 0; a < (o.align ? 3 : 1); a++) {
-          var b = synth_(t, voice, o.prompt); tries++; u.used += sec;
-          if (!o.align) { bytes = b; break; }
-          var x = null; try { x = alignWords_(b, t); } catch (e) { aerr = String(e && e.message || e).slice(0, 120); bytes = b; break; }
-          var r = runOn_(t, x);
-          if (!bytes || r < ro) { bytes = b; al = x; ro = r; }
-          if (r <= RUNON_MAX) break;
-        }
-        var name = k + '.mp3', old = dir.getFilesByName(name);
-        while (old.hasNext()) old.next().setTrashed(true);
-        var f = dir.createFile(Utilities.newBlob(bytes, 'audio/mpeg', name));
-        idx[k] = { id: f.getId(), h: h, sec: sec, voice: voice, tries: tries };
-        if (al) { idx[k].tid = saveAlign_(dir, k, bytes, t, al); idx[k].ro = Math.round(ro * 100) / 100; }
-        if (aerr) idx[k].aerr = aerr;
-        made.push(k);
-      } catch (e) { failed.push({ k: k, error: String(e && e.message || e) }); if (/ 40[13]:/.test(String(e))) break; }
-    }
-    u.p.setProperty('VOICE_USED_SEC', String(u.used));
-    idxF.setContent(JSON.stringify(idx));
-    return { made: made, skipped: skipped, failed: failed, used: u.used, limit: u.limit, month: u.month };
+    var cur = {}; try { cur = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { cur = {}; }
+    for (var kk in add) cur[kk] = add[kk];
+    idxF.setContent(JSON.stringify(cur));
+    var u2 = voiceUsage_(); u2.p.setProperty('VOICE_USED_SEC', String(u2.used + spent));
+    return { made: made, skipped: skipped, failed: failed, used: u2.used + spent, limit: u2.limit, month: u2.month };
   } finally { lock.releaseLock(); }
 }
 /** op 'voiceAlign': { deck, keys:[k] } → word timings for clips already made (at most 12 a call); { done:[k], failed:[{k,error}] }. */

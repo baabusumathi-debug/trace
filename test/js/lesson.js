@@ -7,9 +7,10 @@ import { call, batch } from './api.js';
 import { pkgOf, qOf } from './viva.js';
 import { VOICE, hash, speakable, deckIndex, hasClip, play, stop, nowPart, clipTime, clipDur, seekPart, pause, resume, isPaused, skip, pos, total, seek, speed, setSpeed, nowPlaying } from './voice.js';
 
-const LV = 'L1';                      // bump when the lesson style notes change, so lesson clips are made again
-export const LPROMPT = 'Speak as a calm, composed senior consultant teaching one aspirant. Neutral American English accent. Unhurried, measured pace. Enunciate every word and medical term clearly; say numbers and units in full. Pause briefly after each sentence.';
-export const KPROMPT = LPROMPT + ' This line is a key takeaway. Say it a little slower, with a clear, natural stress on the important words, and a short pause after it. Do not exaggerate or sound dramatic.';
+const LV = 'L2';                      // bump when the lesson style notes change, so lesson clips are made again (L2: natural pace, 7 Nov)
+// L1 ("unhurried, measured, enunciate every word") came out word by word at about half normal speed; Naven, 7 Nov
+export const LPROMPT = 'Speak as a warm, confident senior consultant teaching one student. Neutral American English accent. Natural conversational pace, like a good lecture podcast: the words flow together in smooth, connected phrases, never word by word. Clear but not over-articulated. Normal short pauses at full stops only.';
+export const KPROMPT = LPROMPT + ' This line is a key point: say it a touch slower, with gentle emphasis on the key words, still in smooth, connected phrases.';
 export const lessonDeck = pkg => 'VIVA-' + pkg;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
@@ -117,19 +118,24 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
     await deckIndex(deck, true);
     let want = redo ? allLessonParts(pkg).filter(p => redo.includes(p.k)) : allLessonParts(pkg).filter(p => !hasClip(deck, p));
     if (onlyQ) want = want.filter(p => p.k.startsWith('L-' + onlyQ + '-'));
-    let done = 0, failed = 0, lastErr = '';
+    let done = 0, failed = 0, lastErr = '', stopAll = false;
     onStep && onStep({ done, total: want.length, failed });
-    for (let i = 0; i < want.length;) {
-      const pr = want[i].prompt, part = [];
-      while (i < want.length && part.length < 4 && want[i].prompt === pr) part.push(want[i++]);   // 4 a call: a run-on clip may be made up to 3 times
-      let r;
-      try { const [x] = await batch([{ op: 'voice', deck, voice: VOICE, prompt: pr, align: true, redo: !!redo, items: part.map(p => ({ k: p.k, t: p.t, h: p.h })) }], 330000); if (!x.ok) throw new Error(x.error); r = x.data; }
-      catch (e) { lastErr = e.message; failed += part.length; break; }
-      done += r.made.length + r.skipped.length; failed += r.failed.length;
-      if (r.failed.length) lastErr = r.failed[0].error;
-      onStep && onStep({ done, total: want.length, failed, used: r.used, limit: r.limit });
-      if (r.failed.some(f => /limit|40[13]/.test(f.error))) break;
-    }
+    const groups = [];
+    for (let i = 0; i < want.length;) { const pr = want[i].prompt, part = []; while (i < want.length && part.length < 4 && want[i].prompt === pr) part.push(want[i++]); groups.push({ pr, part }); }
+    // three calls at a time (the bridge holds its lock only to save the index)
+    const worker = async () => {
+      while (groups.length && !stopAll) {
+        const { pr, part } = groups.shift();
+        let r;
+        try { const [x] = await batch([{ op: 'voice', deck, voice: VOICE, prompt: pr, align: true, redo: !!redo, items: part.map(p => ({ k: p.k, t: p.t, h: p.h })) }], 330000); if (!x.ok) throw new Error(x.error); r = x.data; }
+        catch (e) { lastErr = e.message; failed += part.length; if (!/timeout|lock/i.test(e.message)) stopAll = true; continue; }
+        done += r.made.length + r.skipped.length; failed += r.failed.length;
+        if (r.failed.length) lastErr = r.failed[0].error;
+        onStep && onStep({ done, total: want.length, failed, used: r.used, limit: r.limit });
+        if (r.failed.some(f => /limit|40[13]/.test(f.error))) stopAll = true;
+      }
+    };
+    await Promise.all([worker(), worker(), worker()]);
     await deckIndex(deck, true);
     return { done, total: want.length, failed, error: lastErr };
   } finally { making = ''; }

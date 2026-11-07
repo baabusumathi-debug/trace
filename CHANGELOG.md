@@ -22,6 +22,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-105 — 2026-11-07 — Claude — test — 1.3.75 · bridge (Apps Script version 10)
+- **Lesson voice pace** (Naven, 7 Nov: "a gap between every word, even at 1.7×"): the style note asked for "unhurried, measured… enunciate every word", and Gemini read word by word at about half normal speed. New note: natural conversational pace, words in smooth connected phrases, clear but not over-articulated; takeaways "a touch slower" with gentle emphasis. Lesson version `L2`, so every lesson clip is made again.
+- **Faster making:** the bridge now holds its lock only to save the index (speech and timings run outside it), and the app sends three calls at a time.
+
 ## T-104 — 2026-11-07 — Claude — test — 1.3.74 · bridge (Apps Script version 9)
 - **Fix: lesson clips that run on.** In the P4-198 pilot, 22 of 72 Gemini clips did not stop at the end of their text: some repeated it, some went on with invented speech (one ran 10 minutes). Whisper's transcript shows it. The bridge now compares Whisper's word count with the script's and makes a clip again (at most 3 tries, best kept) when it runs on by more than 20%; `redo` remakes clips already made. The app also stops every lesson clip just after the script's last word (cut point from the word timings), so a run-on is never heard, and the timeline counts only up to that point.
 
