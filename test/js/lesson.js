@@ -136,6 +136,7 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
       }
     };
     await Promise.all([worker(), worker(), worker()]);
+    try { await call({ op: 'voiceReindex', deck }); } catch (e) { /* the next run puts them back */ }
     await deckIndex(deck, true);
     return { done, total: want.length, failed, error: lastErr };
   } finally { making = ''; }

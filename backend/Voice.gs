@@ -129,6 +129,7 @@ function voice_(o) {
       var e2 = { id: f.getId(), h: h, sec: sec, voice: voice, tries: tries };
       if (al) { e2.tid = saveAlign_(dir, k, bytes, t, al); e2.ro = Math.round(ro * 100) / 100; }
       if (aerr) e2.aerr = aerr;
+      try { f.setDescription(JSON.stringify(e2)); } catch (e) { /* the index still has it */ }
       add[k] = e2; made.push(k);
     } catch (e) { failed.push({ k: k, error: String(e && e.message || e) }); if (/ 40[13]:/.test(String(e))) break; }
   }
@@ -156,6 +157,26 @@ function voiceAlign_(o) {
     }
     idxF.setContent(JSON.stringify(idx));
     return { done: done, failed: failed };
+  } finally { lock.releaseLock(); }
+}
+/** op 'voiceReindex': { deck } → puts back index entries another call's save overwrote (Drive can hand a parallel call a
+ *  stale index). Each clip carries its own entry in its file description; the newest file per key wins. Returns { added }. */
+function voiceReindex_(o) {
+  var dir = voiceDir_(o.deck), idxF = voiceIndexFile_(dir), best = {}, it = dir.getFiles();
+  while (it.hasNext()) {
+    var f = it.next(), n = f.getName(); if (!/\.mp3$/.test(n) || f.isTrashed()) continue;
+    var d = f.getDescription(); if (!d) continue;
+    var e; try { e = JSON.parse(d); } catch (x) { continue; }
+    var k = n.slice(0, -4), tm = f.getLastUpdated().getTime();
+    if (!best[k] || best[k].tm < tm) best[k] = { e: e, tm: tm };
+  }
+  var lock = LockService.getScriptLock(); lock.waitLock(60000);
+  try {
+    var idx = {}; try { idx = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (x) { idx = {}; }
+    var added = 0;
+    for (var k2 in best) if (!idx[k2] || idx[k2].id !== best[k2].e.id) { idx[k2] = best[k2].e; added++; }
+    if (added) idxF.setContent(JSON.stringify(idx));
+    return { added: added };
   } finally { lock.releaseLock(); }
 }
 /** op 'voiceIndex': { deck } → the deck's index (part key → file id, hash, seconds, voice). */

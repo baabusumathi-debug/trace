@@ -56,6 +56,7 @@ function run_(o) {
     case 'voiceIndex': return voiceIndex_(o);
     case 'voiceUsage': return voiceUsageOp_();
     case 'voiceAlign': return voiceAlign_(o);    // v7: word timings for lesson read-along
+    case 'voiceReindex': return voiceReindex_(o);
     default: throw new Error('unknown op ' + o.op);
   }
 }
