@@ -145,6 +145,7 @@ function voice_(o) {
     var cur = {}; try { cur = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { cur = {}; }
     for (var kk in add) cur[kk] = add[kk];
     idxF.setContent(JSON.stringify(cur));
+    if (made.length) PropertiesService.getScriptProperties().setProperty('VIDIRTY_' + o.deck, '1');   // the next index read checks the clips' own files
     var u2 = voiceUsage_(); u2.p.setProperty('VOICE_USED_SEC', String(u2.used + spent));
     return { made: made, skipped: skipped, failed: failed, used: u2.used + spent, limit: u2.limit, month: u2.month };
   } finally { lock.releaseLock(); }
@@ -188,6 +189,9 @@ function voiceReindex_(o) {
 }
 /** op 'voiceIndex': { deck } → the deck's index (part key → file id, hash, seconds, voice). */
 function voiceIndex_(o) {
+  // a save from a parallel or late call can leave index.json behind the clips; rebuild from the clips' own files then
+  var pp = PropertiesService.getScriptProperties(), dk = 'VIDIRTY_' + o.deck;
+  if (pp.getProperty(dk)) { pp.deleteProperty(dk); try { voiceReindex_(o); } catch (e) { pp.setProperty(dk, '1'); } }
   var dir = voiceDir_(o.deck), it = dir.getFilesByName('index.json');
   while (it.hasNext()) { var f = it.next(); if (!f.isTrashed()) { try { return JSON.parse(f.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { return {}; } } }
   return {};
