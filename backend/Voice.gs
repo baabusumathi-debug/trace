@@ -17,8 +17,8 @@ var VOICE_LANG = 'en-IN';
 var VOICE_LIMIT_SEC_DEFAULT = 36000;            // 10 h of audio a month (well under the ₹3,500 alert)
 var VOICE_PROMPT_DEFAULT = 'Read this as a calm, clear Indian-English critical care lecturer revising with a student. Moderate pace, natural pauses between items, every number and unit spoken fully and exactly.';
 
-// estimated seconds of speech for a text (about 14 characters a second); used for the monthly limit
-function voiceSec_(t) { return Math.max(1, Math.round(String(t).length / 14)); }
+// estimated seconds of speech for a text (about 8 characters a second, measured on the first clip); used for the monthly limit
+function voiceSec_(t) { return Math.max(1, Math.round(String(t).length / 8)); }
 function voiceUsage_() {
   var p = PropertiesService.getScriptProperties(), m = Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyy-MM');
   if (p.getProperty('VOICE_MONTH') !== m) { p.setProperty('VOICE_MONTH', m); p.setProperty('VOICE_USED_SEC', '0'); }
@@ -99,4 +99,12 @@ function authoriseVoice() {
   var r = voice_({ deck: '_samples', voice: 'Kore', items: [{ k: 'hello', t: 'Trace voice is ready. Positive end-expiratory pressure, PEEP, of eight centimetres of water.', h: 'v1' }] });
   Logger.log(JSON.stringify(r));
   return JSON.stringify(r);
+}
+
+/** Run from the editor (Run › makeSamples): the same card in five male voices, in Trace › voice › _samples. */
+function makeSamples() {
+  var t = 'What it is: driving pressure is plateau minus PEEP. It equals tidal volume divided by compliance: the stretch each breath puts on the open lung. Why it matters: in ARDS the open lung is small, so compliance tells you its size. Driving pressure scales the breath to that baby lung, not to body weight. What I do: keep it at or below fifteen centimetres of water, with a smaller tidal volume, or PEEP that recruits.';
+  var prompt = 'Read this as a sharp, confident Indian-English critical care consultant revising high-yield points with a resident. Brisk revision pace, clear and crisp, short pauses only at full stops. Say PEEP as the word peep and ARDS as A R D S.';
+  var out = ['Charon', 'Iapetus', 'Sadaltager', 'Schedar', 'Orus'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: prompt, items: [{ k: 'dp-' + name.toLowerCase(), t: t, h: 'v1' }] })); });
+  Logger.log(out.join('\n'));
 }
