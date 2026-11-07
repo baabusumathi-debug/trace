@@ -36,7 +36,22 @@ function voiceIndexFile_(dir) {
   while (it.hasNext()) { var f = it.next(); if (!f.isTrashed()) return f; }
   return dir.createFile('index.json', '{}', 'application/json');
 }
+// OpenAI voices are named "oa-<voice>" (e.g. oa-cedar). Key: Script Property OPENAI_KEY (set by Naven; never in the repo).
+var OA_MODEL = 'gpt-4o-mini-tts';
+function synthOpenAI_(text, voice, prompt) {
+  var key = PropertiesService.getScriptProperties().getProperty('OPENAI_KEY');
+  if (!key) throw new Error('speech 401: OPENAI_KEY is not set in Script Properties');
+  var res = UrlFetchApp.fetch('https://api.openai.com/v1/audio/speech', {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    headers: { Authorization: 'Bearer ' + key },
+    payload: JSON.stringify({ model: OA_MODEL, voice: voice, input: String(text).slice(0, 3800), instructions: String(prompt || VOICE_PROMPT_DEFAULT).slice(0, 1500), response_format: 'mp3' })
+  });
+  var code = res.getResponseCode();
+  if (code !== 200) { var msg = res.getContentText(); try { msg = JSON.parse(msg).error.message; } catch (e) { /* raw */ } throw new Error('speech ' + code + ': ' + String(msg).slice(0, 300)); }
+  return res.getBlob().getBytes();
+}
 function synth_(text, voice, prompt) {
+  if (/^oa-/.test(voice)) return synthOpenAI_(text, voice.slice(3), prompt);
   var res = UrlFetchApp.fetch('https://texttospeech.googleapis.com/v1/text:synthesize', {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
     headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken(), 'x-goog-user-project': VOICE_PROJECT },
@@ -58,7 +73,7 @@ function synth_(text, voice, prompt) {
  */
 function voice_(o) {
   var items = (o.items || []).slice(0, 12), voice = String(o.voice || 'Kore');
-  if (!/^[A-Za-z]{2,20}$/.test(voice)) throw new Error('bad voice');
+  if (!/^(oa-)?[A-Za-z]{2,20}$/.test(voice)) throw new Error('bad voice');
   var lock = LockService.getScriptLock(); lock.waitLock(30000);
   try {
     var dir = voiceDir_(o.deck), idxF = voiceIndexFile_(dir), idx = {};
@@ -104,6 +119,6 @@ function authoriseVoice() {
 /** Run from the editor (Run › makeSamples): the same card in five male voices, in Trace › voice › _samples. */
 function makeSamples() {
   var t = 'What it is: driving pressure is plateau minus PEEP. It equals tidal volume divided by compliance: the stretch each breath puts on the open lung. Why it matters: in ARDS the open lung is small, so compliance tells you its size. Driving pressure scales the breath to that baby lung, not to body weight. What I do: keep it at or below fifteen centimetres of water, with a smaller tidal volume, or PEEP that recruits.';
-  var out = ['Iapetus'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: VOICE_PROMPT_DEFAULT, items: [{ k: 'dp-' + name.toLowerCase() + '-us', t: t.replace(/PEEP/g, 'peep').replace(/ARDS/g, 'A R D S'), h: 'us1' }] })); });
+  var out = ['Iapetus', 'oa-cedar', 'oa-onyx'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: VOICE_PROMPT_DEFAULT, items: [{ k: 'dp-' + name.toLowerCase() + '-us', t: t.replace(/PEEP/g, 'peep').replace(/ARDS/g, 'A R D S'), h: 'us1' }] })); });
   Logger.log(out.join('\n'));
 }
