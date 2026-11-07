@@ -135,9 +135,9 @@ async function urlAt(i, g) {
   return urls[i];
 }
 // clip length: the real one once known, else the bridge's estimate
-const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut : durs[i] != null ? durs[i] : (((idx[deckNow] || {})[queue[i].k] || {}).sec || 5);
+const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut - (queue[i].from || 0) : durs[i] != null ? durs[i] - ((queue[i] && queue[i].from) || 0) : (((idx[deckNow] || {})[queue[i].k] || {}).sec || 5);
 export const total = () => queue.reduce((s, _, i) => s + est(i), 0);
-export function pos() { if (qi < 0) return 0; let s = 0; for (let i = 0; i < qi; i++) s += est(i); return s + ((audio && audio.currentTime) || 0); }
+export function pos() { if (qi < 0) return 0; let s = 0; for (let i = 0; i < qi; i++) s += est(i); return s + Math.max(0, ((audio && audio.currentTime) || 0) - ((queue[qi] && queue[qi].from) || 0)); }
 export const isPaused = () => paused;
 const tell = () => onState && onState(playing);
 function reset() { gen++; clearInterval(cutT); urls.forEach(u => u && URL.revokeObjectURL(u)); queue = []; urls = []; durs = []; qi = -1; playing = ''; paused = false; if (audio) { audio.onended = null; audio.pause(); audio.removeAttribute('src'); } }
@@ -151,7 +151,8 @@ async function startAt(i, off, g) {
   if (!url) return startAt(i + 1, 0, g);
   playing = queue[i].k;
   audio.onended = () => setTimeout(() => startAt(i + 1, 0, g), 250);
-  audio.onloadedmetadata = () => { if (isFinite(audio.duration)) { durs[i] = audio.duration; if (off) audio.currentTime = Math.min(off, Math.max(0, audio.duration - 0.05)); } };
+  const at = Math.max(off || 0, queue[i].from || 0);   // a lesson clip may start past speech that is not in the script
+  audio.onloadedmetadata = () => { if (isFinite(audio.duration)) { durs[i] = audio.duration; if (at) audio.currentTime = Math.min(at, Math.max(0, audio.duration - 0.05)); } };
   audio.src = url; audio.playbackRate = speed(); audio.preservesPitch = true;
   // a clip with a cut point (lessons: just after the script's last word) ends there, whatever follows in the file
   clearInterval(cutT);
@@ -178,7 +179,7 @@ export function seek(t) {
   t = Math.max(0, Math.min(t, total() - 0.1));
   let i = 0, s = 0;
   while (i < queue.length - 1 && s + est(i) <= t) { s += est(i); i++; }
-  const off = t - s;
+  const off = t - s + ((queue[i] && queue[i].from) || 0);
   if (i === qi && audio.src && audio.readyState >= 1) { audio.currentTime = off; if (!paused) audio.play().catch(() => {}); tell(); }
   else { gen++; const g = gen; startAt(i, off, g); preload(g); }
 }

@@ -71,14 +71,18 @@ export function alignRun(words, W, dur) {
   const L = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
   for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = eq(i, j) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
   const st = new Array(n).fill(null);
-  let lastI = -1, lastEnd = 0;
-  for (let i = 0, j = 0; i < n && j < m;) { if (eq(i, j)) { st[i] = W[j][1] / 1000; lastI = i; lastEnd = W[j][2] / 1000; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
+  let lastI = -1, lastEnd = 0, firstI = -1;
+  for (let i = 0, j = 0; i < n && j < m;) { if (eq(i, j)) { st[i] = W[j][1] / 1000; if (firstI < 0) firstI = i; lastI = i; lastEnd = W[j][2] / 1000; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
   // the clip stops just after the script's last word (Gemini sometimes runs on after it); words left unmatched at the end get time by length
   const tail = words.slice(lastI + 1).reduce((s2, w) => s2 + w.length * 0.08 + 0.1, 0);
   const cut = lastI >= 0 ? lastEnd + tail + 0.45 : 0;
   const end = cut || dur || (m ? W[m - 1][2] / 1000 : 0);
   const out = fill(words, st, 0, end);
   out.cut = cut && (!dur || cut < dur - 0.2) ? cut : 0;
+  // and starts just before the script's first word (Gemini sometimes reads its style note first)
+  const lead = firstI >= 0 ? st[firstI] - words.slice(0, firstI).reduce((s2, w) => s2 + w.length * 0.08 + 0.1, 0) - 0.2 : 0;
+  out.from = lead > 1 ? lead : 0;
+  if (out.from) for (let i = 0; i < firstI; i++) if (st[i] < out.from) st[i] = out.from;
   return out;
 }
 // approximate: spread the words over the clip by length, with a little extra after commas and full stops
@@ -174,7 +178,7 @@ export function mountLesson(root, x, opts = {}) {
     if (starts.has(ri)) return starts.get(ri);
     const W = await whisperWords(deck, parts[ri]);
     const s = W && W.words && W.words.length ? alignRun(runs[ri].words, W.words, (W.dur || 0) / 1000) : null;
-    if (s) { starts.set(ri, s); if (s.cut) parts[ri].cut = s.cut; }
+    if (s) { starts.set(ri, s); if (s.cut) parts[ri].cut = s.cut; if (s.from) parts[ri].from = s.from; }
     return s;
   };
   const playing = () => mine && !!nowPlaying() && parts.includes(nowPart());
