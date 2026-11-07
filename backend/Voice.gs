@@ -97,5 +97,6 @@ function voiceUsageOp_() { var u = voiceUsage_(); return { used: u.used, limit: 
  *  and makes one short test clip in Trace › voice › _samples. */
 function authoriseVoice() {
   var r = voice_({ deck: '_samples', voice: 'Kore', items: [{ k: 'hello', t: 'Trace voice is ready. Positive end-expiratory pressure, PEEP, of eight centimetres of water.', h: 'v1' }] });
+  Logger.log(JSON.stringify(r));
   return JSON.stringify(r);
 }
