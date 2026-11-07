@@ -116,9 +116,10 @@ function authoriseVoice() {
   return JSON.stringify(r);
 }
 
-/** Run from the editor (Run › makeSamples): the same card in five male voices, in Trace › voice › _samples. */
+/** Run from the editor (Run › makeSamples): the same card in the voices being compared, in Trace › voice › _samples. */
+var VOICE_PROMPT_CALM = 'Speak as a calm, composed critical care consultant teaching one resident at the bedside. Neutral American English accent. Unhurried, measured pace, a little slower than normal conversation. Enunciate every word and every medical term clearly, and say numbers and units in full. Pause briefly after each sentence and after each colon. Warm and authoritative, never rushed.';
 function makeSamples() {
   var t = 'What it is: driving pressure is plateau minus PEEP. It equals tidal volume divided by compliance: the stretch each breath puts on the open lung. Why it matters: in ARDS the open lung is small, so compliance tells you its size. Driving pressure scales the breath to that baby lung, not to body weight. What I do: keep it at or below fifteen centimetres of water, with a smaller tidal volume, or PEEP that recruits.';
-  var out = ['Iapetus', 'oa-cedar', 'oa-onyx'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: VOICE_PROMPT_DEFAULT, items: [{ k: 'dp-' + name.toLowerCase() + '-us', t: t.replace(/PEEP/g, 'peep').replace(/ARDS/g, 'A R D S'), h: 'us1' }] })); });
+  var out = ['oa-cedar', 'oa-onyx'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: VOICE_PROMPT_CALM, items: [{ k: 'dp-' + name.toLowerCase() + '-calm', t: t.replace(/PEEP/g, 'peep').replace(/ARDS/g, 'A R D S'), h: 'calm1' }] })); });
   Logger.log(out.join('\n'));
 }
