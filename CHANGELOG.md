@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-108 — 2026-11-07 — Claude — test — 1.3.78
+- Package **P4.20261107.10** (writer chat): G2 lessons for 6 more questions (P4-006, 008, 016, 009, 197, 214); new figure `P4_G2_pv_loop.svg`. 78 lessons in all; checker clean. No voice made for G2 yet.
+
 ## T-107 — 2026-11-07 — Claude — test — 1.3.77
 - **P4-198 lessons remade at the new pace** (72 clips, 12.2 spoken characters a second, about 18 min). 2 clips still carried extra speech after three tries (Gemini read its style note aloud, once before the text): the app now also starts a lesson clip just before the script's first word, as well as stopping just after its last, so neither is heard.
 

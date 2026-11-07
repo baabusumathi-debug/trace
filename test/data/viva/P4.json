@@ -1,7 +1,7 @@
 {
  "package": "P4",
  "title": "Ventilation sandwich",
- "version": "P4.20261107.9",
+ "version": "P4.20261107.10",
  "cards": {
   "V4-001": {
    "deck": "RESP07A",
@@ -454,7 +454,7 @@
    "a": [
     "Rule: 6–8 mL/kg PBW; avoid >10 mL/kg; keep driving pressure low.",
     "Serpa Neto 2012 meta-analysis (mostly RCTs): lower Vt in non-ARDS patients linked to less lung injury and lower mortality.",
-    "PReVENT (2018, n = 961): 6 vs 10 mL/kg PBW in ventilated patients without ARDS → ventilator-free days the same; no harm, no benefit.",
+    "PReVENT (2018, n = 961): low (4–6, starting at 6) vs intermediate (8–10, starting at 10) mL/kg PBW in ventilated patients without ARDS → ventilator-free days the same; no harm, no benefit.",
     "So: no need to force 6 mL/kg if it causes distress or high sedation needs, but avoid large breaths.",
     "In the OR: lower Vt with PEEP reduces postoperative pulmonary complications (IMPROVE 2013)."
    ],
@@ -463,7 +463,7 @@
     "P4-214"
    ],
    "src": "Serpa Neto A, JAMA 2012 (meta-analysis); Simonis FD, JAMA 2018 (PReVENT); Futier E, NEJM 2013 (IMPROVE)",
-   "v": 1
+   "v": 2
   },
   "V4-023": {
    "deck": "MV05",
@@ -1143,27 +1143,53 @@
    "steps": [
     {
      "card": "MV01|VENT-01",
-     "bridge": "Pleural pressure is negative and is estimated with an oesophageal balloon. Next: the gradients that pressure lets us split →"
+     "bridge": "Pleural pressure is negative and is estimated with an oesophageal balloon. Next: the gradients that pressure lets us split →",
+     "lesson": {
+      "v": 1,
+      "text": "Start with a healthy person, breathing quietly, no ventilator.\n\nThe lung always wants to recoil inwards, like a stretched elastic band. The chest wall wants to spring outwards. The two are held together by a thin film of fluid, and because they pull in opposite directions, they create a slight suction in the space between them. That's the pleural pressure. At the end of a quiet breath out, it sits at about minus five centimetres of water.\n\nNow breathe in. The diaphragm contracts and pulls the chest wall out further. The lung is stretched more, so it recoils harder, and the suction deepens, to about minus ten.\n\n[[Pleural pressure is about minus five at the end of expiration, and about minus ten at the end of inspiration.]]\n\nAnd the alveoli? Air only moves down a gradient. So to draw air in, alveolar pressure dips just below atmosphere, to about minus one. To push air out, it rises just above, to about plus one. Only a tiny gap is needed, because healthy airways offer very little resistance. And at the end of each phase, when flow stops, alveolar pressure is back at zero.\n\nNotice one more thing. Breathing in is active. The muscles do the work. Breathing out is passive. The lung's own recoil does it.\n\nNow the practical problem. We'd love to know the pleural pressure at the bedside, but we can't measure it directly. So we use a stand-in. The oesophagus is thin-walled and lies between the lungs, so the pressure around it tracks the pleural pressure.\n\n[[A balloon in the oesophagus gives you the pleural pressure, as a surrogate.]]\n\nOne honest caution. The balloon reads the pleura near itself, around the middle of the lung. Pleural pressure isn't the same everywhere. It's higher in the dependent lung, the part lying lowest. So the balloon gives you an estimate, not a map.\n\nNow that you have the pressure outside the lung, you can start splitting the pressures."
+     }
     },
     {
      "card": "MV01|VENT-02",
-     "bridge": "Transpulmonary pressure keeps alveoli open; transthoracic adds the chest wall. Next: which ventilator differences match which gradient →"
+     "bridge": "Transpulmonary pressure keeps alveoli open; transthoracic adds the chest wall. Next: which ventilator differences match which gradient →",
+     "lesson": {
+      "v": 1,
+      "text": "There are four pressure gradients across the respiratory system. Each one is a difference between two places, and each one does a different job. Don't learn them as a list. Walk them from the outside in.\n\nThe first is the transairway pressure. Airway opening minus alveolus. It's the pressure spent pushing gas through the tubes. You already know it. In a volume-controlled breath, it's the gap between the peak and the plateau.\n\nThe second is the transpulmonary pressure. Alveolus minus pleura. The pressure inside the alveolus minus the pressure on its outside. This is the one that keeps the alveoli distended. [[Transpulmonary pressure is the lung's own stretch. It's the gradient that stretches, and injures, the lung itself.]]\n\nThe third is the transthoracic pressure. Alveolus minus the body surface, which is atmosphere. It expands the lung and the chest wall together. During a hold, that's simply your plateau.\n\nAnd the fourth is the transrespiratory pressure. Airway opening minus the body surface. The whole thing, the sum of the transairway and the transthoracic pressures. On the screen, it's the airway pressure itself. At the top of the breath, that's your peak.\n\n{{Gradient | Formula | Job | On the screen\nTrans-airway | Paw − Palv | push through airways | peak − plateau\nTrans-pulmonary | Palv − Ppl | keeps alveoli open | needs the balloon\nTrans-thoracic | Palv − Pbs | lung + chest wall | plateau\nTrans-respiratory | Paw − Pbs | the sum | peak}}\n\nNow see what this table tells you. Three of the four gradients you can read straight off the ventilator. The one that matters most, the transpulmonary pressure, is the one you can't. To get it, you need the pleural pressure, and that means the balloon.\n\nAnd here's a point that a sharp panel enjoys. [[Every mode of ventilation, and every spontaneous breath, raises the transpulmonary pressure.]] A spontaneous breath does it by pulling the pleural pressure down. A ventilator breath does it by pushing the alveolar pressure up, further than the pleural pressure rises. The lung doesn't know the difference. It only feels inside minus outside. Hold on to that. It comes back when we reach P-SILI."
+     }
     },
     {
      "card": "RESP01B|ARDS-25",
-     "bridge": "Alveolar minus pleural is the stress on the lung itself. Next: the targets for that pressure →"
+     "bridge": "Alveolar minus pleural is the stress on the lung itself. Next: the targets for that pressure →",
+     "lesson": {
+      "v": 1,
+      "text": "You met this card with driving pressure. The ventilator sees only airway pressure, and inside the chest that pressure is shared between the lung and the chest wall, like a balloon blown up inside a tight jar. Only the lung's share, alveolar minus pleural, injures the lung. Last time, that was an idea. Today, with a balloon in the oesophagus, it becomes a number you can measure, and set targets for.\n\nOne naming trap on this card. It calls alveolar minus atmosphere the transrespiratory pressure. The last card called that the transthoracic pressure, and textbooks differ. So in the viva, name the two places, not just the label."
+     }
     },
     {
      "card": "RESP01B|ARDS-28",
-     "bridge": "End-expiratory positive keeps lung open; end-inspiratory under 25 limits stretch. Next: who benefits and what the trials show →"
+     "bridge": "End-expiratory positive keeps lung open; end-inspiratory under 25 limits stretch. Next: who benefits and what the trials show →",
+     "lesson": {
+      "v": 1,
+      "text": "So the definition, cleanly.\n\n[[Transpulmonary pressure is alveolar pressure minus pleural pressure. The pressure inside the lung, minus the pressure outside it.]]\n\nHow do you get each half? The alveolar pressure is the airway pressure at zero flow, during a hold, just as in the earlier lessons. The pleural pressure comes from the balloon, placed in the lower third of the oesophagus.\n\nLook at the left panel on your screen.\n\n{{pic}}\n\nA very obese patient, passive, with a plateau of thirty. But the balloon reads fifteen. The chest wall has taken fifteen of the thirty. So the lung feels only fifteen. That plateau, which frightens you on the screen, is safer than it looks. Your Patient A, at thirty-two, is in just this position.\n\nNow there are two moments in the breath where this number matters, and each has its own target.\n\nFirst, the end of expiration. Here's the hidden danger in Patient A. The same heavy chest wall that raises the pleural pressure is squeezing the lung from outside. If the PEEP is lower than that squeeze, the transpulmonary pressure at end-expiration is negative. The pressure outside is greater than the pressure inside, so the alveoli close. And they re-open with the next breath. That's atelectrauma, with every breath.\n\n[[So the end-expiratory target is zero or just above. Set the PEEP at or just above the oesophageal pressure, so the lung stays open.]]\n\nThat's how the balloon titrates PEEP. And in Patient A, it often means more PEEP than any table would give you.\n\nSecond, the end of inspiration. This is the peak stretch on the lung. A healthy lung is near full inflation at a transpulmonary pressure of about twenty-five. Beyond that, the open units are over-stretched.\n\n[[So the end-inspiratory limit is below twenty to twenty-five centimetres of water.]]\n\n{{**End-expiratory PL** = PEEP − Pes at an expiratory hold → keep ≥ 0 (about 0 to +2)\n**End-inspiratory PL** ≈ plateau × lung elastance ÷ total elastance → keep < 20–25 cmH₂O}}\n\nAnd in whom does this change your hand? The patient with a stiff or heavy chest wall. Obesity. Raised abdominal pressure. Chest-wall oedema. In all of them, the plateau overestimates the stress on the lung. And your slim Patient B? Her chest wall takes only a modest share, so her plateau is a fair guide, and her thirty-two really is dangerous.\n\nSo here's the sentence the panel is waiting to catch. A plateau above thirty is always dangerous. Don't say it. Say this instead. A plateau above thirty is a warning. In a stiff chest wall, the transpulmonary pressure tells me whether the lung is really over-stretched.\n\nSo does steering PEEP by the balloon actually change outcomes?",
+      "pic": "P4_G2_pressure_map.svg",
+      "cap": "Panel A: stiff chest wall, airway 30 and pleura 15, so the lung feels only 15. Safer than it looks."
+     }
     },
     {
      "card": "V4-018",
-     "bridge": "A tool for stiff chest walls, not routine. Next: how it changes settings in abdominal compartment syndrome →"
+     "bridge": "A tool for stiff chest walls, not routine. Next: how it changes settings in abdominal compartment syndrome →",
+     "lesson": {
+      "v": 1,
+      "text": "Here is the evidence, and it's the part where residents lose marks by being too enthusiastic.\n\nEPVent-2 was published in 2019. Two hundred patients with ARDS. In one arm, PEEP was set by the oesophageal balloon. In the other, PEEP came from a high PEEP and FiO2 table. The primary outcome combined death at twenty-eight days with ventilator-free days. And there was no difference.\n\nNotice what the control arm was. Not low PEEP. A generous, high PEEP table. So the trial asked a hard question. Does the balloon beat a good table? And it didn't.\n\n[[EPVent-2 was neutral. Balloon-guided PEEP was no better than a high PEEP table.]]\n\nBut a later look at the same patients, by Sarge and colleagues in 2021, found something worth knowing. Whichever arm a patient was in, survival was best when the end-expiratory transpulmonary pressure stayed close to zero, within about two either side. That's a post-hoc analysis. It generates a hypothesis. It doesn't prove one.\n\nSo where does that leave you?\n\n[[The balloon is a tool for selected patients, not for routine use.]]\n\nThe obese patient. The tense abdomen. The oedematous chest wall. Or the patient with a high plateau and poor oxygenation, where you need to know whether more PEEP is safe. In them, a high plateau may be safe, and more PEEP may be needed.\n\nAnd the panel's follow-up is almost predictable. Did the trial prove it? Your answer: no, EPVent-2 was neutral, so I use it to individualise, in the patients where the chest wall is the problem.\n\nNow take all of this into the patient where the chest wall is at its worst."
+     }
     },
     {
      "card": "RESP03|RSC-11",
-     "bridge": null
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Abdominal compartment syndrome. The abdomen is tense, the diaphragm is pushed up into the chest, and part of that abdominal pressure passes straight into the pleura. Think of blowing up a balloon inside a box while someone sits on the lid.\n\nTwo things follow, and they pull in opposite directions. First, the ventilator must spend extra pressure stretching the chest wall before it stretches the lung. So the plateau on the screen overstates the lung's stress, and a higher plateau can be allowed. Second, the same squeeze collapses the dependent, basal lung. So the lung needs more PEEP to stay open.\n\nNow the settings, in order.\n\nThe tidal volume doesn't change. Six to eight millilitres per kilo, with a driving pressure below fifteen. Why not loosen it? Because the baby lung is no bigger just because the abdomen is tight. And remember, that driving pressure now includes the stiff chest wall, so fifteen is a cautious cap, not a pure measure of lung stress.\n\nThe plateau target is adjusted.\n\n[[Take the usual plateau target, and add the abdominal pressure minus thirteen, divided by two.]]\n\nThe logic is that roughly half of the abdominal pressure above about thirteen reaches the pleura. That half is spent on the chest wall, not on the lung.\n\n{{**Adjusted plateau target** = usual target + (IAP − 13) ÷ 2   (IAP in cmH₂O)\nSame in mmHg: target − 7 + 0.7 × IAP\nExample: IAP 27 cmH₂O (20 mmHg) → 30 + (14 ÷ 2) = **37 cmH₂O**; in mmHg, 30 − 7 + 0.7 × 20 = 37}}\n\nSo take an abdominal pressure of twenty-seven centimetres of water. That's about twenty millimetres of mercury, the usual threshold for compartment syndrome. Twenty-seven minus thirteen is fourteen, half of that is seven, and a usual target of thirty becomes thirty-seven.\n\nThe PEEP is set where the respiratory system compliance is best, the point that opens the most lung without over-stretching it. And higher pressures are needed to recruit those squeezed bases.\n\nAnd if you have a balloon, it removes the guesswork.\n\n[[Keep the end-expiratory transpulmonary pressure positive, so the PEEP beats the squeeze. Keep the end-inspiratory one below twenty-five, so the lung itself isn't over-stretched.]]\n\nOne honest caution. None of this treats the cause. The ventilator only buys time. The real answer to a tense abdomen lies in the abdomen."
+     }
     }
    ],
    "spine": [
@@ -1173,7 +1199,15 @@
     "Upper limit: keep end-inspiratory transpulmonary pressure below **20–25 cmH2O**, to limit over-stretch.",
     "Evidence: **EPVent-2 (2019, n = 200)**: balloon-guided PEEP vs a high PEEP table, no difference. A post-hoc analysis found better outcomes when end-expiratory pressure was near 0.",
     "Caution: a tool for selected patients, such as obesity, raised abdominal pressure or chest-wall oedema, not for routine use."
-   ]
+   ],
+   "open": {
+    "v": 1,
+    "text": "Let me start with two patients, both with a plateau of thirty-two.\n\nPatient A is very obese, with a tense, distended abdomen. Patient B is slim, with severe ARDS. The screen shows the same number for both. And the rule you learned says the same thing for both: too high, cut the breath.\n\nBut is Patient A's lung really feeling thirty-two? Remember what we said with driving pressure. The chest wall always takes its cut. In Patient A, that cut may be enormous.\n\n[[The ventilator sees airway pressure. The lung feels only what is left after the chest wall takes its share.]]\n\nSo how would you ever know the size of that share? You'd need the pressure on the outside of the lung, the pleural pressure. And you can't put a needle into the pleura of every ventilated patient. But there's a thin-walled tube running right between the two lungs. The oesophagus. Put a small balloon in it, and you have a bedside window onto the pleura.\n\nWhat is the professor really checking here? First, can you define transpulmonary pressure cleanly, the pressure inside the lung minus the pressure outside it. Second, do you know the two targets, one at the end of expiration and one at the end of inspiration, and why each exists. Third, do you know who it's for. And fourth, do you know that the big trial was neutral. The resident who sells the balloon as routine care has walked into the trap.\n\nSo here's the plan. First, the pressures of a normal, quiet breath. Then the four gradients across the respiratory system. Then the one that matters most, with its targets. Then the evidence. And finally, the patient where all of this changes your settings: abdominal compartment syndrome."
+   },
+   "close": {
+    "v": 1,
+    "text": "So let's bring it together.\n\n[[Transpulmonary pressure is alveolar pressure minus pleural pressure. It's the pressure that actually stretches the lung, and the pleural side is estimated with a balloon in the oesophagus.]]\n\nWhy does it matter? Because the plateau includes the chest wall. When the chest wall is stiff or heavy, the plateau overestimates the stress on the lung. A high plateau may be safe, and more PEEP may be needed.\n\nWhat do you do? Place the balloon in the lower third of the oesophagus. Set the PEEP so the end-expiratory transpulmonary pressure is zero or above, to stop the lung collapsing. And keep the end-inspiratory transpulmonary pressure below twenty to twenty-five, to limit over-stretch.\n\nThe evidence. EPVent-2, in 2019, two hundred patients. Balloon-guided PEEP against a high PEEP table, and no difference. A post-hoc analysis found better outcomes when the end-expiratory pressure sat near zero.\n\n[[So it's a tool for selected patients: obesity, raised abdominal pressure, chest-wall oedema. Not for routine use.]]\n\nThat's your answer to the panel. What it is, why it matters, what you do, the upper limit, the evidence, and the caution.\n\nBut here's something to carry forward. Today we learned to see the stretch the lung really feels. Too much of it, from either side, injures the lung. So what exactly does that injury look like? How many ways can a ventilator hurt the lung it's meant to support?\n\nThat's the next question. The mechanisms of ventilator-induced lung injury."
+   }
   },
   {
    "q": "P4-008",
@@ -1185,15 +1219,29 @@
    "steps": [
     {
      "card": "RESP01A|ARDS-10",
-     "bridge": "The ARDS lung is small, not stiff, so a normal breath over-stretches it. Next: the named ways that stretch injures →"
+     "bridge": "The ARDS lung is small, not stiff, so a normal breath over-stretches it. Next: the named ways that stretch injures →",
+     "lesson": {
+      "v": 1,
+      "text": "You met the baby lung with driving pressure. Gattinoni's CT scans, the lung that is small, not stiff. Today we need it for a different reason. It's the ground on which every kind of ventilator injury is built.\n\nSo let's look at it again, from the side of injury.\n\nIn early ARDS, the lungs are wet and heavy. The dependent parts, the back in a supine patient, collapse under that weight: the weight of the wet lung above, the heart, and the abdomen pushing up. Only a small band at the front stays aerated.\n\n{{pic}}\n\nLook at the left panel. The aerated baby lung at the front. The collapsed lung at the back.\n\nThat aerated part behaves almost normally. Each open unit has close to normal compliance.\n\n[[So the compliance you measure reflects the volume of aerated lung, not how stiff the lung is.]]\n\nNow the consequence for injury. A breath sized for a normal adult lung is poured into a lung the size of a child's. Every open unit is stretched far beyond what it's built for.\n\n[[A normal tidal volume over-distends the baby lung. That's why we limit the tidal volume and the driving pressure.]]\n\nAnd notice something about this baby lung. It's a functional region, not an anatomical one. Turn the patient prone, and look at the right panel. The back re-opens. The front collapses a little. The aerated part moves with gravity. That's often called the sponge lung. Like a wet sponge, the lowest layers are compressed by the weight above them, whichever way up you hold it. And that's one reason proning works.\n\nOne honest caution. Small, not stiff, holds mainly in early ARDS. In the later, fibroproliferative phase, the lung tissue itself does become stiff.\n\nSo now we have a small lung receiving a normal-sized breath. What, exactly, does that breath do to it?",
+      "pic": "P4_G5_baby_lung.svg",
+      "cap": "Supine: small aerated band in front, collapse at the back. Prone: the back re-opens. The baby lung moves with gravity."
+     }
     },
     {
      "card": "RESP01B|ARDS-18",
-     "bridge": "Five types: stretch, leak, shear, inflammation and energy. Next: check the common traps that examiners test →"
+     "bridge": "Five types: stretch, leak, shear, inflammation and energy. Next: check the common traps that examiners test →",
+     "lesson": {
+      "v": 1,
+      "text": "You've met these names with mechanical power. Volutrauma is over-stretch, high strain. Barotrauma is the air leak from a high transpulmonary pressure, the pneumothorax on the X-ray. Atelectrauma is the shear of units snapping open and shut, and PEEP prevents it. Biotrauma is the inflammation that travels and fails distant organs. Ergotrauma is the total energy. And two words tie them together. Strain is the tidal volume divided by the lung volume at the end of expiration, the size of the breath against the size of the lung it enters. Stress is the transpulmonary pressure, the force behind that stretch. And the baby lung explains why they strike: in a small lung, an ordinary breath is a big strain."
+     }
     },
     {
      "card": "RESP01B|ARDS-29",
-     "bridge": null
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Now the traps. The panel likes to throw a quick statement at you and watch whether you catch it. Here are seven. Say true or false in your head before I answer.\n\nARMA used actual body weight. False. It used predicted body weight, from height and sex. [[Tidal volume is sized to predicted body weight, because lung size follows height, not weight.]]\n\nDriving pressure is the peak pressure minus PEEP. False. It's the plateau minus PEEP. The peak includes the push through the tubes. That's the trap set most often, and you know exactly why it's wrong.\n\nHigher PEEP reduced mortality in ALVEOLI. False. There was no mortality difference.\n\nAtelectrauma is prevented by PEEP. True. PEEP stops the cyclic collapse.\n\nThe ARDSNet SpO2 target is eighty-eight to ninety-five percent. True, with a PaO2 of fifty-five to eighty.\n\nAnd two from non-invasive support, because they sit on the same card. A ROX index of five at twelve hours predicts high-flow failure. False. A ROX of four point eight eight or more predicts success. And a HACOR score above five at one hour predicts NIV failure. True. The failure rate is above eighty percent.\n\n{{ARMA used actual body weight → **F** (predicted)\nΔP = peak − PEEP → **F** (plateau − PEEP)\nHigher PEEP ↓ mortality in ALVEOLI → **F**\nPEEP prevents atelectrauma → **T**\nARDSNet SpO₂ 88–95% → **T** (PaO₂ 55–80)\nROX 5 at 12 h = HFNC failure → **F** (≥4.88 = success)\nHACOR >5 at 1 h = NIV failure → **T** (>80%)}}\n\nNotice the pattern in the false ones. Each swaps a correct word for a nearly correct one. Actual for predicted. Peak for plateau. That's how the panel tests whether you understand, rather than remember."
+     }
     }
    ],
    "spine": [
@@ -1203,7 +1251,15 @@
     "Definitions: strain is tidal volume divided by end-expiratory lung volume. Stress is transpulmonary pressure.",
     "What I do: small tidal volume on predicted body weight (as in ARMA), driving pressure as plateau minus PEEP kept low, and enough PEEP to stop cyclic collapse.",
     "Caution: driving pressure is plateau minus PEEP, not peak minus PEEP. Higher PEEP did not reduce mortality in ALVEOLI."
-   ]
+   ],
+   "open": {
+    "v": 1,
+    "text": "Here is an uncomfortable truth about our specialty.\n\nThe machine that keeps your ARDS patient alive is also one of the things injuring his lung. Not the disease. The machine. For a long time, big breaths were standard, and they often made the blood gases look better.\n\nThen the experiments came, and then the ARMA trial, and small breaths saved lives, even though the big-breath arm had the better oxygenation in the first days. The lesson was hard. [[The ventilator can injure the lung. That's ventilator-induced lung injury, and every protective setting you use exists to prevent it.]]\n\nWhat is the professor really checking with this question? First, can you name the mechanisms and say, for each one, what actually injures and what prevents it. Second, can you define strain and stress, because those two words are where the mechanisms meet. Third, do you know why the ARDS lung is so vulnerable in the first place. And fourth, can you avoid the quick traps that examiners throw at you, the true or false statements that catch a tired resident.\n\nYou've already met the five names, with mechanical power. So this time we'll spend our effort on the ground they all stand on, the baby lung. Then a short reminder of the names. Then the traps."
+   },
+   "close": {
+    "v": 1,
+    "text": "So let's bring it together.\n\n[[Ventilator-induced lung injury is damage the ventilator itself causes. In ARDS the aerated lung is a small baby lung, so a normal breath over-stretches it.]]\n\nThen the mechanisms. Volutrauma is over-distension, high strain. Barotrauma is the air leak from a high transpulmonary pressure. Atelectrauma is the shear of units opening and closing with every breath.\n\nAnd beyond them, biotrauma, the mediators from the injured lung that cause distant organ failure. And ergotrauma, injury from the total energy delivered, the mechanical power.\n\nThe two definitions. Strain is the tidal volume divided by the lung volume at the end of expiration. Stress is the transpulmonary pressure.\n\n[[What do I do? A small tidal volume on predicted body weight, as in ARMA. A low driving pressure, plateau minus PEEP. And enough PEEP to stop cyclic collapse.]]\n\nAnd the cautions. Driving pressure is plateau minus PEEP, not peak minus PEEP. And higher PEEP did not reduce mortality in ALVEOLI.\n\nThat's your answer. What it is, the mechanisms, the definitions, what you do, and the traps.\n\nBut here's something to carry forward. Volutrauma is invisible in the patient. He doesn't look over-stretched. But it isn't always invisible on the screen. Sometimes the ventilator draws it for you, as a shape.\n\nSo what happens when the examiner turns the screen towards you, points at a loop, and asks, what does this show? That's next."
+   }
   },
   {
    "q": "P4-016",
@@ -1215,15 +1271,33 @@
    "steps": [
     {
      "card": "MV02|MODE-12",
-     "bridge": "A flattened beak at the top of the loop means over-distension. Next: how the whole loop shifts with compliance and resistance →"
+     "bridge": "A flattened beak at the top of the loop means over-distension. Next: how the whole loop shifts with compliance and resistance →",
+     "lesson": {
+      "v": 1,
+      "text": "A pressure-volume loop puts pressure along the bottom and volume up the side. The slope of the line is compliance, volume for each unit of pressure.\n\nNow think of blowing up a new party balloon. Hard to start. Easy in the middle. Hard again near the end. The lung does the same, and that gives the loop its landmarks.\n\n{{pic}}\n\nLook at the left panel.\n\nAt low volumes, the lung is partly collapsed. Pressure rises with little volume, until units start to open. Then the line turns steeply upward. That turn is the lower inflection point. [[If the PEEP sits below the lower inflection point, units collapse at the end of every breath. PEEP set above it helps prevent that.]] Keep that as a guide, not an exact PEEP, because recruitment carries on above the point too.\n\nIn the middle, volume rises easily for each bit of pressure.\n\nThen near full inflation, the open units reach their limit. Each extra unit of pressure buys very little volume. That bend is the upper inflection point. Above it, you are adding stress for almost no gain.\n\nAnd if the top of a single breath flattens like that, you see a flattened bird's beak at the top of the loop. [[The beak is over-distension. The end of the breath gains almost no volume for a rising pressure. That breath is too big.]]\n\nLast, hysteresis. The way down doesn't follow the way up. At any pressure, the lung holds more volume while emptying than while filling, so the two limbs separate. Why? Opening a collapsed alveolus means overcoming surface tension. Once it's open, surfactant keeps it open at a lower pressure.\n\nSo when you see the beak, the answer to the spotter writes itself. Over-distension. Reduce the breath.\n\nNow, what happens to the whole loop when the lung itself changes?",
+      "pic": "P4_G2_pv_loop.svg",
+      "cap": "A: lower and upper inflection points, the beak of over-distension, and hysteresis."
+     }
     },
     {
      "card": "MV02|MODE-13",
-     "bridge": "A stiff lung shifts the loop right and down; resistance widens it. Next: how the pressure–time curve shows over-distension →"
+     "bridge": "A stiff lung shifts the loop right and down; resistance widens it. Next: how the pressure–time curve shows over-distension →",
+     "lesson": {
+      "v": 1,
+      "text": "Look at the middle panel now.\n\n{{pic}}\n\nThe slope is compliance. So a stiff lung, which needs more pressure for the same volume, lies flatter. The loop shifts to the right and down. Think of ARDS, or pulmonary oedema. Fewer units take the breath, so the same volume needs more pressure, even though each open unit is close to normal.\n\nA floppy lung lies steeper. The loop shifts to the left and up. Think of emphysema, where the elastic tissue is destroyed, so the lung inflates easily but recoils poorly. Or a surfactant-deficient lung after surfactant is given, where the same pressure now opens more volume.\n\n[[Stiffer lung, loop right and down. Floppier lung, loop left and up.]]\n\nNow the right panel. Resistance. This is the one residents get wrong. Resistance doesn't change the stretch. It only changes the pressure needed to drive flow. Breathing in, extra pressure pushes the inspiratory limb to the right. Breathing out, the expiratory limb moves to the left. [[So more resistance makes the loop wider. But the slope between its no-flow ends stays the same, because the lung's compliance hasn't changed.]]\n\nAnd be careful with the word for that. The extra width is pressure lost to flow, not true tissue hysteresis.\n\nOne small but useful caution. All of this assumes the standard display, pressure along the bottom and volume up the side. Some notes draw it the other way round, and then the directions flip. If the examiner's screen looks backwards, check the axes first.\n\nBut loops have a limit. Not every ventilator shows them, and the beak can be subtle. There's a simpler screen that tells you the same thing.",
+      "pic": "P4_G2_pv_loop.svg",
+      "cap": "B: stiff lung right and down, floppy lung left and up. C: resistance widens the loop; compliance unchanged."
+     }
     },
     {
      "card": "V4-019",
-     "bridge": null
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Go back to the pressure-time curve in volume control, with a constant, square-wave flow.\n\nConstant flow means volume rises at a steady rate. And the stretching pressure is volume divided by compliance. So if the compliance stays the same all through the breath, the pressure rises in a perfectly straight line.\n\nNow ask what happens if it doesn't stay the same.\n\n{{pic}}\n\nIf the lung gets stiffer as it fills, because the open units are reaching their limit, each extra millilitre costs more pressure. The line bends upward. Think of pumping up a tyre at a steady rate. The gauge climbs faster once the tyre is tight.\n\nIf the lung gets easier to fill as it fills, because units are opening during the breath, the line bends downward.\n\n[[A straight rise means steady compliance. Bending upward means over-distension. Bending downward means the lung is still opening, tidal recruitment.]]\n\nThe stress index puts a number on that bend.\n\n{{**Stress index** = exponent b in P = a·tᵇ + c (constant-flow inflation)\n0.9–1.1 → straight, leave it\n> 1.1 → bends up: over-distension → ↓ Vt or PEEP\n< 0.9 → bends down: tidal recruitment → ↑ PEEP}}\n\nA value of zero point nine to one point one is linear. Above one point one, it bends up: lower the tidal volume or the PEEP. Below zero point nine, it bends down: raise the PEEP.\n\n[[It's the shape of the curve, not its height, that matters.]]\n\nThat's what makes it different from the plateau. A plateau comfortably below thirty can still hide a breath that over-stretches at its top. And the stress index sees it.\n\nNow the conditions, because the panel will ask. You need constant flow, and a passive patient. Changing flow bends the curve. So does the patient's own muscle pressure. Remember the hold shape from driving pressure. A patient still breathing makes the plateau lie. Here, he makes the shape lie.\n\nAnd one more limit. A stiff chest wall can bend the curve too. So an upward bend in a patient with a tense abdomen may be the chest wall, not the lung.",
+      "pic": "P4_G2_stress_index.svg",
+      "cap": "Constant-flow pressure rise: bending down means recruitment, straight is steady, bending up means over-distension."
+     }
     }
    ],
    "spine": [
@@ -1233,7 +1307,15 @@
     "Why: a curve bending upward (above **1.1**) means compliance falls as the lung fills, so over-distension. Bending downward (below **0.9**) means tidal recruitment.",
     "What I do: for upward bend, lower tidal volume or PEEP. For downward bend, raise PEEP. It is the shape, not the height, that matters.",
     "Caution: chest-wall disease changes the shape too, and patient effort or changing flow makes it invalid."
-   ]
+   ],
+   "open": {
+    "v": 1,
+    "text": "This one is a spotter. The examiner turns the screen towards you. On it is a loop, or a pressure curve. And he asks one question. What does this show?\n\nHere's how a spotter works. You get one clean sentence before you're allowed to explain. So the first thing you say must be the finding. Over-distension. Then you earn the rest.\n\n[[In a spotter, name the finding first. Then the landmark that shows it. Then what it means. Then what you change.]]\n\nThis question is testing whether you can read the shape of a breath. Not its height. Its shape. Because the plateau and the driving pressure give you single numbers. The shape tells you how the stretch develops through the breath, moment by moment. And that's where over-distension shows itself.\n\nWhat the professor is really checking: can you name the landmarks of a pressure-volume loop, can you say how the loop moves with a stiff or floppy lung, and can you read the stress index on a pressure-time curve, with its conditions and its limits.\n\nSo here's the plan. First the landmarks of the loop, including the beak. Then how the whole loop shifts. Then the pressure-time curve and the stress index."
+   },
+   "close": {
+    "v": 1,
+    "text": "So let's bring it together.\n\n[[On a pressure-volume loop, a flattened bird's beak at the top means over-distension. Beyond the upper inflection point, more pressure gives little extra volume.]]\n\nThe context. A stiffer lung shifts the loop right and down. More resistance widens it. And PEEP set above the lower inflection point prevents collapse.\n\nThe stress index. In constant-flow volume control, in a passive patient, the inspiratory pressure rise should be straight. A stress index of zero point nine to one point one is linear.\n\nWhy? A curve bending upward, above one point one, means compliance is falling as the lung fills. Over-distension. Bending downward, below zero point nine, means tidal recruitment.\n\n[[For an upward bend, lower the tidal volume or the PEEP. For a downward bend, raise the PEEP. It's the shape, not the height.]]\n\nAnd the caution. Chest-wall disease changes the shape too. Patient effort or changing flow makes it invalid.\n\nThat's your answer to the spotter. The finding, the landmarks, the stress index, why, what you change, and the caution.\n\nBut here's something to carry forward. Every reading today needed a passive patient. So what happens when he isn't passive? When he breathes hard, on his own, and his effort hides the real stretch from every number on the screen? Remember the right-hand panel of the pressure map, the one we haven't used yet.\n\nThat's patient self-inflicted lung injury. And it's next."
+   }
   },
   {
    "q": "P4-009",
@@ -1245,23 +1327,45 @@
    "steps": [
     {
      "card": "RESP01B|ARDS-17",
-     "bridge": "Vigorous own effort can injure the lung on NIV, HFNC or assisted modes. Next: the exact mechanism and how to measure drive →"
+     "bridge": "Vigorous own effort can injure the lung on NIV, HFNC or assisted modes. Next: the exact mechanism and how to measure drive →",
+     "lesson": {
+      "v": 1,
+      "text": "Remember the rule from the last lessons. The lung only feels inside minus outside. Alveolar pressure minus pleural pressure.\n\nNow look at the right panel on your screen.\n\n{{pic}}\n\nA patient breathing hard. The airway pressure is twenty, which looks gentle. But his diaphragm pulls the pleural pressure down to minus ten. So the lung feels twenty minus minus ten. That's thirty. Hidden from the screen.\n\n[[Airway pressure can look safe while the transpulmonary pressure is dangerously high.]]\n\nThink of a balloon in a jar. Suck the air out of the jar, and the balloon swells, though nobody is blowing any harder. You've seen this before, in Dreyfuss's rats. The big breath sucked in by an iron lung injured the lung just as badly as the big breath pushed in by a ventilator. The lung doesn't care which side the stretch comes from.\n\nThat's the first mechanism. Large negative pleural swings give a high transpulmonary pressure and a large tidal volume.\n\nThe second is oedema. That same negative swing lowers the pressure around the lung capillaries. The gap between the pressure inside the vessel and outside it widens, and more fluid is pulled into an already leaky lung.\n\nThe third is pendelluft, gas swinging within the lung. In an injured, uneven lung, the diaphragm pulls hardest on the dependent part. Early in the breath, that part fills by stealing gas from the non-dependent lung, not from the ventilator. So the dependent lung is over-stretched locally, while the tidal volume on the screen looks normal.\n\nAnd the fourth is dyssynchrony. Double-triggering and breath stacking deliver two breaths with no exhalation between them, so the volume far exceeds the setting.\n\n[[Big pleural swings, more oedema, pendelluft, and dyssynchrony. Four ways a patient's own effort injures his lung.]]\n\nHow do you reduce the risk? Don't delay intubation in a patient with high drive. On high flow or NIV, you can't reliably measure or limit his swings. Then sedation, higher PEEP, which makes the dependent lung more open and the stretch more even, or neuromuscular blockade.\n\nOne honest caution. P-SILI rests mainly on animal and physiological studies. How much it harms patients is still argued, and some experts, Martin Tobin among them, doubt it. Present it as a strong concern, not a proven fact.\n\nSo how do you know his drive is high?",
+      "pic": "P4_G2_pressure_map.svg",
+      "cap": "Panel B: strong effort pulls the pleura to −10. Airway 20, but the lung feels 30, hidden from the screen."
+     }
     },
     {
      "card": "V4-020",
-     "bridge": "Pleural swings raise lung stretch and oedema; P0.1 and occlusion pressure show drive. Next: the other bedside drive and effort indices →"
+     "bridge": "Pleural swings raise lung stretch and oedema; P0.1 and occlusion pressure show drive. Next: the other bedside drive and effort indices →",
+     "lesson": {
+      "v": 1,
+      "text": "You have the mechanism. Now you need to measure it. And there are two different things to measure. Drive is how hard the brain is telling the muscles to breathe. Effort is how hard the muscles actually pull.\n\nFor drive, the bedside number is P zero point one, the drop in airway pressure in the first tenth of a second of a breath against a closed valve. [[A P zero point one above three and a half to four centimetres of water means high drive.]] The next card explains why it works.\n\nFor effort, there's the occlusion pressure. Block a whole breath at end-expiration and read the largest drop in airway pressure. The muscle pressure is about three quarters of that drop. And if a balloon is in place, large oesophageal swings, more than fifteen, mean large effort.\n\nAnd on NIV, you have a simple number. In Carteaux's study in 2016, in hypoxaemic patients, an expired tidal volume above nine and a half millilitres per kilo of predicted body weight predicted NIV failure. That patient is taking breaths far too big for his small lung, and the mask can't stop him.\n\n{{**Drive:** P0.1 > 3.5–4 cmH₂O = high\n**Effort:** Pmus ≈ 0.75 × ΔPocc · ΔPes > 15 cmH₂O = large\n**On NIV:** expired Vt > 9.5 mL/kg PBW → failure (Carteaux 2016)}}\n\nAnd what do you do? First, treat what drives the breathing. Fever, acidosis, pain, anxiety, hypoxaemia. Then sedation and opioids to lower the drive. Adjust the support. Intubate early if NIV is failing. And partial or full paralysis only in severe cases.\n\n[[The aim is to control the drive, not to abolish breathing.]]\n\nBecause gentle spontaneous breathing helps. It means less sedation, and a better aerated dependent lung. It's vigorous effort that harms."
+     }
     },
     {
      "card": "MV04B|WEAN-16",
-     "bridge": "P0.1 reflects central drive in the first 100 ms. Next: when non-invasive support should stop →"
+     "bridge": "P0.1 reflects central drive in the first 100 ms. Next: when non-invasive support should stop →",
+     "lesson": {
+      "v": 1,
+      "text": "You know P zero point one from weaning. Now see why it's such a clean window onto the brain.\n\nIt's the drop in airway pressure in the first hundred milliseconds of a breath against a closed valve. Two things make it pure. With the valve closed, there's no flow, so the airway resistance and the compliance don't affect it. And a hundred milliseconds is too short for the patient to react to the blocked breath. So what you see is mainly the brain's command.\n\n[[P zero point one reflects central drive. Normal is about half to one and a half centimetres of water.]]\n\nThink of how hard someone first yanks a stuck door. That first pull tells you how badly they want it open, before they've even noticed it's stuck.\n\nIn weaning, a value below four to five predicts success. A high drive means the brain senses a heavy load that the muscles may not sustain. One honest caution: weak muscles or hyperinflation can make it read low.\n\nThe same card carries other weaning indices. Learn them as fast facts.\n\n{{**CROP** = Cdyn × PImax × (PaO₂/PAO₂) ÷ RR → > 13 predicts success\n**Integrative index** = (Cst × SaO₂) ÷ (f/VT) → ≥ 25 predicts success\n**Tension-time index** = (Pdi/Pdi max) × (Ti/Ttot) → > 0.15 = fatigue\n**Neuroventilatory efficiency** = VT ÷ EAdi: higher is better}}\n\nCROP stands for compliance, rate, oxygenation and pressure. Above thirteen predicts success. The integrative weaning index, twenty-five or more. The tension-time index is the fatigue threshold of the diaphragm, above zero point one five. And neuroventilatory efficiency asks how much volume you get for the same electrical command to the diaphragm. More is better.\n\nFor this question, though, keep only one. P zero point one is the bedside measure of drive."
+     }
     },
     {
      "card": "HY7|VNX-07",
-     "bridge": "High effort with rising rate on HFNO or NIV means intubate. Next: how far support can go once drive is controlled →"
+     "bridge": "High effort with rising rate on HFNO or NIV means intubate. Next: how far support can go once drive is controlled →",
+     "lesson": {
+      "v": 1,
+      "text": "This card is about non-invasive support decisions. And the last line is the one for this question.\n\n[[On high flow or NIV, high effort with a rising respiratory rate means intubate, to stop P-SILI.]]\n\nWhy not wait? Because every hour he spends pulling hard, he is stretching his own lung, and the mask can neither measure nor limit it. Waiting doesn't rest the lung. It may well injure it.\n\nThe rest of the card, quickly. In the overlap of COPD with obstructive sleep apnoea, start with CPAP, and use bilevel only if CPAP fails. Long-term home NIV in COPD is for a PaCO2 of fifty to fifty-four with nocturnal desaturation, or fifty to fifty-four with two or more hypercapnic admissions, or a PaCO2 of fifty-five or more.\n\nAnd the ROX index. The SpO2 over FiO2 ratio, divided by the respiratory rate. Four point eight eight or more, at two, six or twelve hours, predicts high-flow success.\n\n{{**ROX** = (SpO₂/FiO₂) ÷ RR → ≥ 4.88 at 2, 6, 12 h = success\n**Home NIV in COPD:** PaCO₂ 50–54 + nocturnal desaturation (SpO₂ ≤ 88% for ≥ 5 min), or 50–54 + ≥ 2 hypercapnic admissions, or ≥ 55\n**Overlap syndrome:** CPAP first}}\n\nNotice what ROX is really doing. A good saturation on little oxygen is reassuring. But divide it by the rate, and a patient who holds his saturation only by breathing fast scores low. That fast rate is exactly the effort we've been talking about."
+     }
     },
     {
      "card": "ECMO02A|ECMO-24",
-     "bridge": null
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Now go to the far end. Once the drive is controlled, how far can you rest the lung?\n\nOn VV ECMO, the membrane does most of the gas exchange. So the ventilator no longer has to. Its job becomes keeping the lung open while doing as little harm as possible. Think of a cast on a broken leg. The cast carries the weight, so the bone can heal.\n\n[[On VV ECMO, the ventilator's job is to rest the lung. Tiny breaths, low pressures, a slow rate.]]\n\n{{Setting | Target\nTidal volume | 3–4 mL/kg\nPlateau | < 25 cmH₂O\nDriving pressure | < 15\nPEEP | 5–15 (often 10+)\nRate | 4–5/min (notes; ELSO 4–10)\nFiO₂ | 30–50%, as low as possible}}\n\nA tidal volume of three to four millilitres per kilo. A plateau below twenty-five. A driving pressure below fifteen. A rate of four to five in your notes, and four to ten in ELSO's guidance. And an FiO2 of thirty to fifty percent, as low as you can, because the membrane supplies the oxygen.\n\nWhy keep the PEEP moderate to high, often ten or more? Because with such tiny breaths and so slow a rate, there's little else to stop the lung collapsing.\n\nAnd here is the link to this question. Early on, these patients are sedated, sometimes paralysed, in a controlled mode. But as they wake, they can generate harmful effort. That's P-SILI, even on ECMO. So you either sedate, or you turn up the sweep gas. More sweep removes more carbon dioxide, and that usually blunts the drive to breathe.\n\nOne contrast to remember. On VA ECMO, the ventilation is less restrictive, and a higher PEEP helps pulmonary oedema."
+     }
     }
    ],
    "spine": [
@@ -1271,7 +1375,15 @@
     "Evidence: on NIV, an expired tidal volume above **9.5 mL/kg PBW** predicted failure (**Carteaux 2016**).",
     "What I do: treat what drives breathing (fever, acidosis, pain, anxiety, hypoxaemia), adjust support and sedation, intubate early if failing NIV, and paralyse only in severe cases.",
     "Caution: gentle spontaneous breathing is not harmful. The aim is to control drive, not to abolish breathing."
-   ]
+   ],
+   "open": {
+    "v": 1,
+    "text": "Let me start with a patient.\n\nHe has pneumonia and is on high-flow oxygen. His saturation is holding. There's no ventilator, so there's no plateau, no driving pressure, no number that worries you. Yet he's breathing at thirty-five, his neck muscles working with every breath. And over the next day his lungs get steadily worse.\n\nWho is injuring his lung? There's no machine to blame. He is.\n\n[[Patient self-inflicted lung injury is lung damage caused by the patient's own vigorous breathing effort.]]\n\nThis is the other side of the pressure map. So far, the danger was the chest wall hiding a safe lung behind a high plateau. Here it's the reverse. A strong effort hides a dangerously stretched lung behind a low airway pressure.\n\nWhat is the professor really checking? First, the mechanism, in pressures. Second, how you would detect high drive and effort at the bedside, with numbers. Third, when you stop non-invasive support and intubate. And fourth, the nuance, because the trap here is to say that spontaneous breathing is harmful. It isn't. Vigorous breathing can be.\n\nSo here's the plan. First the mechanism. Then how to measure drive and effort. Then the drive index itself. Then when to intubate. And finally, how far you can take the lung's rest on ECMO."
+   },
+   "close": {
+    "v": 1,
+    "text": "So let's bring it together.\n\n[[Patient self-inflicted lung injury is lung damage from the patient's own vigorous effort, on NIV, high flow, or assisted modes.]]\n\nWhy does it happen? Strong effort makes the pleural pressure very negative, so the transpulmonary pressure and the lung stretch are high, and fluid is pulled into the lung. Pendelluft over-stretches the dependent lung locally.\n\nHow do you detect it? A P zero point one above three and a half to four means high drive. The muscle pressure is about three quarters of the occlusion pressure. Large oesophageal swings mean large effort.\n\nThe evidence. On NIV, an expired tidal volume above nine and a half millilitres per kilo of predicted body weight predicted failure, in Carteaux's study in 2016.\n\n[[What do I do? Treat what drives the breathing, adjust support and sedation, intubate early if NIV is failing, and paralyse only in severe cases.]]\n\nAnd the caution. Gentle spontaneous breathing is not harmful. The aim is to control drive, not to abolish breathing.\n\nThat's your answer. What it is, why it happens, how you detect it, the evidence, what you do, and the caution.\n\nBut here's something to carry forward. Today we kept the lung from being stretched. What about the opposite idea? Taking the collapsed lung and forcing it open, deliberately, with a burst of high pressure. It sounds logical. And when it was finally tested properly, the result surprised everyone.\n\nThat's recruitment manoeuvres. Next."
+   }
   },
   {
    "q": "P4-197",
@@ -1283,19 +1395,35 @@
    "steps": [
     {
      "card": "RESP01C|ARDS-33",
-     "bridge": "Sustained inflation is the classic method, at a cost of hypotension and barotrauma. Next: what ART showed and what guidelines now say →"
+     "bridge": "Sustained inflation is the classic method, at a cost of hypotension and barotrauma. Next: what ART showed and what guidelines now say →",
+     "lesson": {
+      "v": 1,
+      "text": "There are two ways to do it.\n\nThe classic one is a sustained inflation. CPAP of forty centimetres of water, held for thirty to forty seconds. The other is a stepwise, staircase rise in PEEP, climbing to high pressures and then coming back down to a chosen level.\n\nNow the harms. [[Hypotension, barotrauma, and desaturation.]]\n\nWhy hypotension? Picture the pressure map again. The high pressure in the chest squeezes the great veins, so venous return falls. And the over-inflated alveoli squeeze the small vessels in their walls, so the right ventricle must pump against a higher resistance. Cardiac output drops.\n\nWhy barotrauma? Because the same pressure reaches every open unit. And here's the core problem.\n\n[[The pressure that opens the collapsed lung also over-stretches the lung that's already open.]]\n\nIf the lung is recruitable, the high pressure opens a lot of new units, and it may be worth it. If it isn't recruitable, you get all the over-stretch and all the squeeze on the heart, for nothing.\n\nHow would you know? You already have the bedside test, from driving pressure. Raise the PEEP and watch. If the compliance rises and the driving pressure falls, the lung is opening. If the driving pressure rises, you're only over-stretching what was already open.\n\nAnd the card's last line. The ART trial tested stepwise recruitment plus PEEP titrated to the best compliance, against low PEEP. Recruitment gave higher mortality, and more barotrauma.\n\n[[Routine prolonged recruitment is not recommended.]]\n\nSo let's look at that trial more closely."
+     }
     },
     {
      "card": "V4-021",
-     "bridge": "ART showed harm, and ESICM and ATS advise against prolonged high-pressure manoeuvres. Next: does recruitment help in the operating room →"
+     "bridge": "ART showed harm, and ESICM and ATS advise against prolonged high-pressure manoeuvres. Next: does recruitment help in the operating room →",
+     "lesson": {
+      "v": 1,
+      "text": "ART was published in 2017. One thousand and ten patients with ARDS. One arm got stepwise recruitment up to very high pressures, then PEEP titrated to the best compliance. The other got low PEEP.\n\nThe result. Twenty-eight-day mortality was fifty-five point three percent with recruitment, against forty-nine point three without. More barotrauma, and more hypotension.\n\n[[ART: stepwise recruitment plus PEEP titration raised twenty-eight-day mortality, fifty-five point three against forty-nine point three percent.]]\n\nWhy? You already know. The lung that didn't recruit got over-stretched, and the high pressure cut venous return and loaded the right ventricle. And one thing the panel likes you to add. Patients weren't selected for how recruitable their lungs were. Everyone got the manoeuvre.\n\nThen the guidelines followed.\n\n{{**ART 2017** (n = 1,010): 28-day mortality **55.3% vs 49.3%**, more barotrauma\n**ESICM 2023:** strongly against prolonged high-pressure RMs (≥ 35 cmH₂O for ≥ 1 min); weakly against routine brief RMs\n**ATS 2024:** strongly against prolonged RMs}}\n\nThe European society, ESICM, in 2023, recommends strongly against prolonged high-pressure manoeuvres, and weakly against routine brief ones. The American Thoracic Society, in 2024, recommends strongly against prolonged manoeuvres.\n\nSo is there any role left? Only as expert practice, not a guideline endorsement. A brief, moderate-pressure manoeuvre may be considered in a patient shown to be recruitable, or after an accidental disconnection, when you know the lung has just collapsed.\n\n[[Recruitment is a rescue for selected patients, not a routine.]]\n\nNow, you might think this is only an ICU story. But you've been doing recruitment in the theatre for years."
+     }
     },
     {
      "card": "RESP03|RSC-07",
-     "bridge": "With PEEP, recruitment in PROVHILO added hypotension but no benefit. Next: the sepsis targets, read with the newer guidance →"
+     "bridge": "With PEEP, recruitment in PROVHILO added hypotension but no benefit. Next: the sepsis targets, read with the newer guidance →",
+     "lesson": {
+      "v": 1,
+      "text": "Two trials in the operating theatre, and they're best understood side by side, because they changed different things.\n\nIMPROVE, by Futier's group. Four hundred patients. One arm got a whole protective bundle: a tidal volume of six to eight, PEEP of six to eight, and recruitment. The other got the old practice: ten to twelve millilitres per kilo, no PEEP, no recruitment. Complications fell from twenty-seven and a half percent to ten and a half. Less atelectasis, less pneumonia, and a hospital stay two days shorter.\n\nPROVHILO kept the low tidal volume in both arms. It changed only one thing. PEEP of twelve with recruitment, against PEEP of two or less without. And there was no difference in lung complications. Just more hypotension, and more vasoactive drugs, with the high PEEP.\n\n{{ | IMPROVE (Futier) | PROVHILO\nCompared | VT 6–8 + PEEP 6–8 + RM vs VT 10–12, no PEEP, no RM (n = 400) | PEEP 12 + RM vs PEEP ≤ 2, same low VT\nResult | complications **10.5% vs 27.5%** | **no difference**; more hypotension}}\n\nNow read them together. IMPROVE's control arm had two harms at once, big breaths and no PEEP. So it shows the bundle beats old practice, but it can't tell you which part of the bundle mattered. PROVHILO answers that. Once the breaths are small, high PEEP and recruitment add nothing, and they cost blood pressure.\n\n[[Low tidal volume protects. Routinely high PEEP with recruitment in the theatre does not.]]\n\nSo the gain in IMPROVE most likely came from the smaller breaths. It's the same story as ART, told in healthier lungs. The high pressure squeezed the heart, and brought no benefit to show for it.\n\nNow the last card, and it's one where you must be careful which guideline you quote."
+     }
     },
     {
      "card": "RESP03|RSC-03",
-     "bridge": null
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Sepsis-induced ARDS is ventilated like any ARDS. Each target limits the stretch on the small open lung.\n\nA tidal volume of six millilitres per kilo of predicted body weight. A plateau below thirty. Prone ventilation as needed. Intermittent boluses of neuromuscular blocker rather than a routine infusion, because the ROSE trial showed no benefit from routine continuous cisatracurium. And VV ECMO in refractory cases.\n\nNow the recruitment line, and this is where the trap is.\n\nThe Surviving Sepsis guideline of 2021 still weakly suggests the traditional, sustained-inflation manoeuvre. And it strongly advises against the incremental PEEP kind, the staircase kind that ART tested.\n\nBut the newer ARDS guidelines are stricter. ESICM in 2023 is strongly against prolonged and weakly against brief high-pressure manoeuvres. ATS in 2024 is strongly against prolonged ones.\n\n[[Where the sepsis advice and the newer ARDS guidelines differ, quote the newer ARDS guidelines.]]\n\n{{**SSC 2021:** weakly for traditional RMs; strongly against incremental-PEEP RMs\n**ESICM 2023:** strongly against prolonged, weakly against brief high-pressure RMs\n**ATS 2024:** strongly against prolonged RMs}}\n\nAnd the card's last idea is worth a sentence to the panel, because it shows you see the whole patient. Organ cross-talk. Shock leads to fluids. Fluids lead to overload and kidney injury. That worsens the lung. The lung needs ventilation, ventilation brings injury, the injury releases mediators, and the circle closes in multi-organ failure. That's biotrauma again, with the rest of the body joined in."
+     }
     }
    ],
    "spine": [
@@ -1305,7 +1433,15 @@
     "Guidelines: **ESICM 2023** strongly against prolonged high-pressure manoeuvres and weakly against routine brief ones. **ATS 2024** strongly against prolonged manoeuvres.",
     "In surgery: PROVHILO (PEEP 12 plus recruitment) showed no fewer complications, only more hypotension.",
     "Caution: the older sepsis advice that allows sustained inflation is outdated. I use recruitment only as a rescue in selected patients, not routinely."
-   ]
+   ],
+   "open": {
+    "v": 1,
+    "text": "Here's an idea that sounds too logical to fail.\n\nThe ARDS lung is mostly collapsed. The baby lung is small. So why not open the rest? Give a brief burst of high pressure, pop the collapsed units open, then hold them open with PEEP. A bigger lung, a gentler stretch on every breath. For years, many of us did exactly that.\n\nThen it was tested in a large trial. And the patients who got the aggressive recruitment did worse.\n\n[[A recruitment manoeuvre is a brief high pressure to open collapsed alveoli, followed by PEEP to keep them open. Routine use caused harm.]]\n\nThis is a trial question, so the professor wants numbers. But what he's really checking is whether you understand why something so logical went wrong. If you can explain the harm on the pressure map, the trial result stops being a fact to memorise. It becomes what you'd expect.\n\nAnd there's a second test hidden here. The older sepsis guidance still allows the classic manoeuvre, while the newer ARDS guidance turns against it. Do you know which is current?\n\nSo here's the plan. First the methods and their harms. Then the ART trial and the guidelines. Then the operating theatre. And last, how to read the sepsis targets."
+   },
+   "close": {
+    "v": 1,
+    "text": "So let's bring it together.\n\n[[A recruitment manoeuvre is a brief high pressure to open collapsed alveoli, then PEEP to hold them open. Either a sustained inflation, such as forty for forty seconds, or a stepwise rise in PEEP.]]\n\nWhy can it harm? The lung that doesn't recruit gets over-stretched, and the high pressure cuts venous return and loads the right ventricle. Hypotension, barotrauma and desaturation follow.\n\nThe evidence. ART, in 2017, one thousand and ten patients. Stepwise recruitment plus PEEP titration raised twenty-eight-day mortality, fifty-five point three against forty-nine point three percent, with more barotrauma.\n\nThe guidelines. ESICM in 2023, strongly against prolonged high-pressure manoeuvres, and weakly against routine brief ones. ATS in 2024, strongly against prolonged ones.\n\nIn surgery, PROVHILO, PEEP of twelve plus recruitment, showed no fewer complications. Only more hypotension.\n\n[[The sepsis advice that allows sustained inflation predates the newer ARDS guidelines. I use recruitment only as a rescue in selected patients, not routinely.]]\n\nThat's your answer. What it is, why it harms, the trial, the guidelines, the theatre, and the caution.\n\nBut here's something to carry forward. Every patient today had ARDS, or was having surgery. Yet most of the patients you ventilate in the ICU don't have ARDS at all. Do they need protective ventilation too? Or is six millilitres per kilo only for the injured lung?\n\nThat's the next question."
+   }
   },
   {
    "q": "P4-214",
@@ -1317,29 +1453,53 @@
    "steps": [
     {
      "card": "V4-022",
-     "bridge": "The rule is 6–8 mL/kg PBW and never above 10. Next: what PReVENT tested in ICU patients without ARDS →"
+     "bridge": "The rule is 6–8 mL/kg PBW and never above 10. Next: what PReVENT tested in ICU patients without ARDS →",
+     "lesson": {
+      "v": 1,
+      "text": "The rule first. Six to eight millilitres per kilo of predicted body weight. Avoid more than ten. Keep the driving pressure low.\n\nWhy would a lung without ARDS need protecting? Because the lung of a ventilated patient is often smaller than it looks. He's lying flat, sedated, often with some lung already collapsed at the bases. Some patients have injured or at-risk lungs from sepsis, aspiration, or a big transfusion. So a large breath goes into less lung than you think, and it can tip a vulnerable lung into injury.\n\n[[Ventilated patients without ARDS often have collapsed or at-risk lung, so large breaths can push them into injury.]]\n\nThe first evidence came from a meta-analysis by Serpa Neto in 2012. Twenty studies, about two thousand eight hundred patients, mostly small randomised trials, many of them in surgical patients. Lower tidal volumes were linked with less lung injury, about a third of the risk, and lower mortality, about two thirds of the risk.\n\n{{**Serpa Neto 2012** (20 studies, n = 2,822, mostly small RCTs): lower Vt → lung injury RR 0.33, mortality RR 0.64\n**Rule:** 6–8 mL/kg PBW · avoid > 10 · keep ΔP low}}\n\nThat's a strong signal. But a meta-analysis of small trials is not a large trial. And the comparison was often against very big breaths, the kind few of us use now.\n\nSo someone ran the large trial."
+     }
     },
     {
      "card": "RESP03|RSC-02",
-     "bridge": "PReVENT found no difference in ventilator-free days. Next: what the operative trials show →"
+     "bridge": "PReVENT found no difference in ventilator-free days. Next: what the operative trials show →",
+     "lesson": {
+      "v": 1,
+      "text": "That trial was PReVENT, published in 2018. Nine hundred and sixty-one ventilated ICU patients without ARDS.\n\nIt compared a low tidal volume, four to six millilitres per kilo of predicted body weight, with an intermediate one, eight to ten. In practice, the low arm started at six and stepped down towards four, and the other started at ten. That's why you'll hear it quoted as six against ten. And the result: no difference in ventilator-free days. Twenty-one days in both arms at day twenty-eight.\n\n[[PReVENT: in patients without ARDS, a low tidal volume gave the same ventilator-free days as an intermediate one. No harm, and no benefit.]]\n\nNow, why might that be? Look at what was actually achieved. About six to seven in the low arm, against about nine in the other. So the trial compared a small breath with a moderate one. Not with the big breaths of ten to twelve that old control arms used, as in IMPROVE.\n\n{{**PReVENT 2018** (n = 961, no ARDS): low 4–6 vs intermediate 8–10 mL/kg PBW\nAchieved ≈ 6–7 vs ≈ 9 · ventilator-free days at day 28: **21 vs 21**}}\n\nSo the honest reading is this. [[Low tidal volume is proven in ARDS, by ARMA. In lungs without ARDS, it isn't proven to help.]]\n\nWhat does that mean for you at the bedside? You don't need to force six millilitres per kilo if it causes distress, or needs heavy sedation. But you still avoid large breaths. Above ten is where the old harm lived."
+     }
     },
     {
      "card": "RESP03|RSC-07",
-     "bridge": "IMPROVE cut complications with low volume plus PEEP; PROVHILO found high PEEP added nothing. Next: what links them all →"
+     "bridge": "IMPROVE cut complications with low volume plus PEEP; PROVHILO found high PEEP added nothing. Next: what links them all →",
+     "lesson": {
+      "v": 1,
+      "text": "You met these two trials with recruitment. IMPROVE compared a whole protective bundle, low volume, PEEP and recruitment, against big breaths with no PEEP, and cut complications from twenty-seven and a half to ten and a half percent. PROVHILO kept the low volume in both arms and added only high PEEP with recruitment: no benefit, just more hypotension. For this question, read them as one sentence. In the theatre, the small breath protects. Routinely high PEEP adds nothing."
+     }
     },
     {
      "card": "RESP03|RSC-08",
-     "bridge": null
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "And this card ties them together. You met it with driving pressure. Across seventeen operative trials, about two thousand two hundred patients, a higher driving pressure was linked to more lung complications, about sixteen percent higher odds for each centimetre of water. And PEEP helped only when it lowered the driving pressure. That explains IMPROVE and PROVHILO at once. What protects the lung is a low stretch, not any particular PEEP.\n\nThe card's last line, as a fast fact. A high oxygen fraction during surgery made no difference to short-term mortality, and it may increase atelectasis."
+     }
     }
    ],
    "spine": [
     "What I do: **6–8 mL/kg predicted body weight**, avoid more than **10**, and keep driving pressure low.",
     "Why: ventilated patients without ARDS often have collapsed or at-risk lung, so large breaths can tip them into injury.",
-    "Evidence: a **Serpa Neto 2012** meta-analysis linked lower tidal volume with less lung injury and lower mortality. **PReVENT (2018, n = 961)**, 6 vs 10 mL/kg: ventilator-free days the same.",
+    "Evidence: a **Serpa Neto 2012** meta-analysis linked lower tidal volume with less lung injury. **PReVENT (2018, n = 961)**, 4–6 vs 8–10 mL/kg: ventilator-free days the same.",
     "In surgery: **IMPROVE** (low volume, PEEP and recruitment) cut complications, **10.5% vs 27.5%**. PROVHILO found high PEEP added no benefit, only hypotension.",
     "Driving pressure: a meta-analysis of **17 trials** found it the variable linked to complications. PEEP helps only if it lowers driving pressure.",
     "Caution: no need to force 6 mL/kg if it causes distress or heavy sedation needs. Just avoid large breaths."
-   ]
+   ],
+   "open": {
+    "v": 1,
+    "text": "Let me start with a patient you'll see this week.\n\nA man ventilated after a cardiac arrest, or for a head injury, or for an overdose. His chest X-ray is clear. His oxygenation is fine. He doesn't have ARDS. So does he need six millilitres per kilo? Or can you give him a comfortable, bigger breath?\n\nThis is a trial question, and it's a lovely one, because the evidence is genuinely mixed. The professor isn't asking you to recite a rule. He's asking whether you can hold two kinds of evidence together. Older data that say small breaths help. A large trial that found no difference. And operative trials that point at one number.\n\n[[The answer is six to eight millilitres per kilo of predicted body weight, avoiding more than ten, with a low driving pressure.]]\n\nAnd what the professor is really checking is whether you can say that without overselling it. A resident who says six millilitres per kilo for everyone, always, will be asked about PReVENT. A resident who says it doesn't matter will be asked about IMPROVE.\n\nSo here's the plan. First the rule and why it exists. Then the ICU trial. Then the operating theatre. And finally, the number that ties it all together."
+   },
+   "close": {
+    "v": 1,
+    "text": "So let's bring it together.\n\n[[What I do: six to eight millilitres per kilo of predicted body weight, avoiding more than ten, and a low driving pressure.]]\n\nWhy? Ventilated patients without ARDS often have collapsed or at-risk lung, so large breaths can tip them into injury.\n\nThe evidence. A meta-analysis by Serpa Neto in 2012 linked lower tidal volumes with less lung injury and lower mortality. Then PReVENT, in 2018, nine hundred and sixty-one patients, a low against an intermediate tidal volume, found the same ventilator-free days.\n\nIn surgery, IMPROVE, with low volume, PEEP and recruitment, cut complications from twenty-seven and a half to ten and a half percent. PROVHILO found that high PEEP added no benefit, only hypotension.\n\nAnd the number that joins them. A meta-analysis of seventeen operative trials found driving pressure was the variable linked to complications. PEEP helps only if it lowers the driving pressure.\n\n[[The caution: there's no need to force six millilitres per kilo if it causes distress or heavy sedation. Just avoid large breaths.]]\n\nThat's your answer. What you do, why, the ICU evidence, the theatre, driving pressure, and the caution.\n\nBut here's something to carry forward. In every lung so far, the danger was too much stretch. A breath too big for the lung it went into. Now picture the opposite problem. A lung that's too big already, with airways so narrow that each breath goes in, but doesn't fully come out before the next one arrives. The gas stacks up, breath after breath, and a hidden pressure builds inside the chest.\n\nThat's COPD, and auto-PEEP. And that's where we go next."
+   }
   },
   {
    "q": "P4-020",
