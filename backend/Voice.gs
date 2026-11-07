@@ -105,6 +105,6 @@ function authoriseVoice() {
 function makeSamples() {
   var t = 'What it is: driving pressure is plateau minus PEEP. It equals tidal volume divided by compliance: the stretch each breath puts on the open lung. Why it matters: in ARDS the open lung is small, so compliance tells you its size. Driving pressure scales the breath to that baby lung, not to body weight. What I do: keep it at or below fifteen centimetres of water, with a smaller tidal volume, or PEEP that recruits.';
   var prompt = 'Read this as a sharp, confident Indian-English critical care consultant revising high-yield points with a resident. Brisk revision pace, clear and crisp, short pauses only at full stops. Say PEEP as the word peep and ARDS as A R D S.';
-  var out = ['Charon', 'Iapetus', 'Sadaltager', 'Schedar', 'Orus'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: prompt, items: [{ k: 'dp-' + name.toLowerCase(), t: t, h: 'v1' }] })); });
+  var out = ['Charon', 'Iapetus', 'Sadaltager', 'Schedar', 'Orus', 'Rasalgethi'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: prompt, items: [{ k: 'dp-' + name.toLowerCase(), t: t, h: 'v1' }] })); });
   Logger.log(out.join('\n'));
 }
