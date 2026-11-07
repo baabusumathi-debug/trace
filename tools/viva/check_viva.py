@@ -72,7 +72,12 @@ def chk_lesson(where,L,qid):
         if len(spoken(p))>1200: err.append(f'{where} paragraph {len(spoken(p))} chars')
         if re.search(r'[→←↑↓≥≤±×÷=<>|#*]',spoken(p)): warn.append(f'{where} symbol in spoken text: {re.findall(r"[→←↑↓≥≤±×÷=<>|#*]",spoken(p))}')
         if re.search(r'\b(?:[A-Z]{2,6}\d*-\d{2}|V\d-\d{3})\b',spoken(p)): warn.append(f'{where} card code read aloud')
-    if L.get('pic') and not os.path.exists(imgdir+L['pic']): err.append(f'{where} pic {L["pic"]}')
+    pic=L.get('pic')
+    if pic:
+        if pic=='card' or pic.startswith('card:'):
+            key=(where.split(' ')[-1] if pic=='card' else pic[5:]).replace('|','_')
+            if not os.path.exists(imgdir+'card_'+key+'.png'): err.append(f'{where} card figure missing: card_{key}.png')
+        elif not os.path.exists(imgdir+pic): err.append(f'{where} pic {pic}')
     if '{{pic}}' in t and not L.get('pic'): err.append(f'{where} {{{{pic}}}} without pic')
     if re.search(r'on (?:your|the) screen',sp,re.I) and not L.get('pic') and '{{' not in t: warn.append(f'{where} says "on your screen" but shows nothing')
 qs_all={q['q'] for q in P['questions']}

@@ -22,6 +22,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-103 — 2026-11-07 — Claude — test — 1.3.73
+- Package **P4.20261107.9** (writer chat, reviewed): pictures and on-screen boxes for the G1 lessons; new figures `P4_G1_autopeep_flow.svg`, `P4_G2_hold_shape.svg`.
+- Lessons with `"pic": "card"` / `"card:DECK|CODE"` now show the card's own figure, cut from its PDF deck page into `data/viva/img/P4/card_<DECK>_<CODE>.png` (MV02 MODE-03 scalars A/B, MV03 ASYN-03 panels 1–3). The checker checks those files exist.
+
 ## T-102 — 2026-11-07 — Claude — test — 1.3.72 · bridge v7 (Apps Script version 8)
 - **Narrated lessons, read-along** (Naven, 7 Nov; spec `docs/Trace_Lesson_Spec_7Nov.md`): a viva question's opening lesson plays on the question page, each card's micro-lesson in a new **Lesson** tab (first, beside NEET | Viva), the closing lesson on its own page before the spine card. The full text shows while it plays; the word being spoken is lit (nothing read is dimmed); the text scrolls to keep it in view, stops when Naven scrolls by hand ("↓ Follow the voice" brings it back); tap a word or a paragraph to jump there. Player bar: pause, ±5/±10 s, seek slider, time, speed. Takeaways (`[[ ]]`) are bold and are their own clips with a slower, stressed style note. `{{ }}` boxes are shown, never spoken; `pic` shows a picture, or a button for the card's own figure.
 - **Word timings:** the bridge runs each new lesson clip once through OpenAI Whisper (word timestamps) and saves `<k>.t.json` beside it; the app matches Whisper's words to the script and places any unmatched word between its neighbours. Clips without timings get approximate ones (words spread by length). Timings are in clip seconds, so they hold at any speed.

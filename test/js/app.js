@@ -731,7 +731,11 @@ const vAuto = () => { try { return sessionStorage.getItem('trace.vauto') === '1'
 const setVAuto = on => { try { sessionStorage.setItem('trace.vauto', on ? '1' : '0'); } catch (e) { /* */ } if (flow) flow.vauto = on; };
 function lessonPic(x, c) {
   const L = x.L; if (!L.pic) return '';
-  if (L.pic === 'card' || /^card:/.test(L.pic)) return `<button class="ls-fig mono" data-lcardfig>◈ ${L.pic === 'card' ? "The card's figure" : 'Figure on ' + esc(L.pic.slice(5).replace('|', ' · '))}${L.cap ? ' · ' + esc(L.cap) : ''}</button>`;
+  // a card's own figure: cut from its PDF page into data/viva/img/<pkg>/card_<DECK>_<CODE>.png (button if it is not there)
+  if (L.pic === 'card' || /^card:/.test(L.pic)) {
+    const key = (L.pic === 'card' ? (c ? c.deck + '|' + c.code : '') : L.pic.slice(5)).replace('|', '_');
+    return `<figure class="vx-fig ls-fig-img"><img src="./data/viva/img/${esc(x.pkg)}/card_${esc(key)}.png" alt="${esc(L.cap || 'Card figure')}" loading="lazy" onerror="this.closest('figure').outerHTML='<button class=&quot;ls-fig mono&quot; data-lcardfig>◈ The card&#39;s figure</button>'"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
+  }
   return `<figure class="vx-fig ls-fig-img"><img src="./data/viva/img/${esc(x.pkg)}/${esc(L.pic)}" alt="${esc(L.cap || 'Diagram')}" loading="lazy"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
 }
 function autoChip() { return `<button class="chip ls-auto${flow && flow.vauto ? ' on' : ''}" data-vauto>${flow && flow.vauto ? 'Autoplay on' : 'Tap to play'}</button>`; }
