@@ -22,6 +22,14 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-102 — 2026-11-07 — Claude — test — 1.3.72 · bridge v7 (Apps Script version 8)
+- **Narrated lessons, read-along** (Naven, 7 Nov; spec `docs/Trace_Lesson_Spec_7Nov.md`): a viva question's opening lesson plays on the question page, each card's micro-lesson in a new **Lesson** tab (first, beside NEET | Viva), the closing lesson on its own page before the spine card. The full text shows while it plays; the word being spoken is lit (nothing read is dimmed); the text scrolls to keep it in view, stops when Naven scrolls by hand ("↓ Follow the voice" brings it back); tap a word or a paragraph to jump there. Player bar: pause, ±5/±10 s, seek slider, time, speed. Takeaways (`[[ ]]`) are bold and are their own clips with a slower, stressed style note. `{{ }}` boxes are shown, never spoken; `pic` shows a picture, or a button for the card's own figure.
+- **Word timings:** the bridge runs each new lesson clip once through OpenAI Whisper (word timestamps) and saves `<k>.t.json` beside it; the app matches Whisper's words to the script and places any unmatched word between its neighbours. Clips without timings get approximate ones (words spread by length). Timings are in clip seconds, so they hold at any speed.
+- **Autoplay / Tap to play** (Viva page and every lesson bar, per session): open → each card's lesson (the card turns itself over) → close → spine run on their own; the spine waits for Naven. Lock-screen play / pause / ±10 s.
+- **Viva page:** a LESSONS line (questions, minutes, pieces made) and Make voice buttons, first question only or all. Nothing is made until Naven presses one.
+- **Card voice:** American accent, clear and well paced (prompt version `p3`, so card clips are made again when Make voice is pressed).
+- Package **P4.20261107.7** (G1 lessons for 6 questions, 49th question P4-002). Bridge v7: `voiceAlign`, `align` on `voice`; deployed as Apps Script version 8 ("trace bridge v7").
+
 ## T-101 — 2026-11-07 — Claude — test — 1.3.71
 - **Voice player bar** (Naven, 7 Nov): while a Listen plays, a bar opens under the strip: −10, −5, pause/play, +5, +10, a seek slider that can be dragged anywhere, and the time ("0:42 / 3:10"). The timeline covers the whole Listen (all its points, not one clip), so seeking and skipping cross from one point to the next. Speed − / + stays and is remembered.
 

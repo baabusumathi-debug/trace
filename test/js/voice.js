@@ -7,9 +7,9 @@ import { call, batch } from './api.js';
 import { splitQ, plain } from './md.js';
 
 export const VOICE = 'Iapetus';
-export const PROMPT = 'Read this as a sharp, confident Indian-English critical care consultant revising high-yield points with a resident. Brisk revision pace, clear and crisp, short pauses only at full stops.';
+export const PROMPT = 'Read this as a sharp, confident critical care consultant revising high-yield points with a resident. Neutral American English accent. Clear and well paced, every term enunciated, short pauses at full stops.';
 // The style note above must never carry text to be spoken: Gemini sometimes reads it out. Pronunciation lives in SAY.
-const PV = 'p2';                     // bump when PROMPT or the pronunciation list changes, so clips are made again
+const PV = 'p3';                     // bump when PROMPT or the pronunciation list changes, so clips are made again (p3: American accent, 7 Nov)
 export const voiceOn = () => !IS_HT;
 
 /* ---------- pronunciation: symbols and abbreviations the voice would misread ---------- */
@@ -66,8 +66,8 @@ export function partsOf(c, extra) {
   if (c.watch) out.push({ k: code + '.watch', label: 'Watch', t: c.watch.replace(/^\s*\*\*WATCH\*\*\s*/i, '') });
   return out.concat(extra || []).map(p => ({ ...p, t: speakable(p.t) })).filter(p => p.t.length > 1);
 }
-const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0; return h.toString(36); };
-export const hOf = p => hash(PV + '|' + VOICE + '|' + p.t);
+export const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0; return h.toString(36); };
+export const hOf = p => p.h || hash(PV + '|' + VOICE + '|' + p.t);   // lesson parts carry their own h
 
 /* ---------- index of made clips, per deck ---------- */
 const idx = {}, idxAsked = {};
@@ -157,12 +157,12 @@ async function startAt(i, off, g) {
   if (!paused) await audio.play().catch(() => {});
 }
 // play these points in order; cb(key) is told which point is playing ('' when done or stopped)
-export async function play(deck, parts, cb) {
+export async function play(deck, parts, cb, from, off) {
   stop();
   queue = parts.filter(p => hasClip(deck, p)); deckNow = deck;
   if (!queue.length) return false;
   onState = cb; const g = gen;
-  await startAt(0, 0, g);
+  await startAt(Math.max(0, from ? queue.indexOf(from) : 0), off || 0, g);
   preload(g);
   return true;
 }
@@ -179,5 +179,25 @@ export function seek(t) {
   else { gen++; const g = gen; startAt(i, off, g); preload(g); }
 }
 export const skip = d => seek(pos() + d);
+// the part playing now and the second inside its clip (read-along); jump to a part (object from the list given to play)
+export const nowPart = () => (qi >= 0 && queue[qi]) || null;
+export const clipTime = () => (audio && audio.currentTime) || 0;
+export const clipDur = () => (audio && isFinite(audio.duration) ? audio.duration : 0);
+export function seekPart(p, off) {
+  const i = queue.indexOf(p); if (i < 0) return false;
+  if (i === qi && audio.src && audio.readyState >= 1) { audio.currentTime = off || 0; if (!paused) audio.play().catch(() => {}); tell(); return true; }
+  gen++; const g = gen; startAt(i, off || 0, g); preload(g); return true;
+}
+export const playingList = () => queue;
+// phone lock screen: play / pause and ±10 s (lessons are listened to with the eyes closed)
+if (typeof navigator !== 'undefined' && navigator.mediaSession) {
+  try {
+    navigator.mediaSession.setActionHandler('play', () => resume());
+    navigator.mediaSession.setActionHandler('pause', () => pause());
+    navigator.mediaSession.setActionHandler('seekbackward', () => skip(-10));
+    navigator.mediaSession.setActionHandler('seekforward', () => skip(10));
+    navigator.mediaSession.setActionHandler('stop', () => stop());
+  } catch (e) { /* not supported */ }
+}
 export function pause() { if (!queue.length) return; paused = true; audio.pause(); tell(); }
 export function resume() { if (!queue.length) return; paused = false; audio.play().catch(() => {}); tell(); }

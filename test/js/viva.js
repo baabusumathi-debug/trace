@@ -50,7 +50,7 @@ export function vivaQueue(pkg, onlyQ) {
     ok.forEach((x, i) => {
       const k = x.s.card, rep = first.has(k) ? first.get(k) : null;
       if (!rep) first.set(k, q.q);
-      list.push({ ...x.c, vq: { pkg, q: q.q, i, n: ok.length, bridge: i === ok.length - 1 ? null : x.s.bridge, rep, key: k } });
+      list.push({ ...x.c, vq: { pkg, q: q.q, i, j: q.steps.indexOf(x.s), n: ok.length, bridge: i === ok.length - 1 ? null : x.s.bridge, rep, key: k } });
     });
   }
   return { list, missing: [...new Set(missing)] };
