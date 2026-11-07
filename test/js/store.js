@@ -8,6 +8,7 @@ export const S = {
   qb: { version: '', cards: {}, topups: {} },   // QBank/GT layer (data/qbank.json): chips, lines, Crossfire, fixes, Top-up cards
   qmap: { version: '', q: {} },   // DocT question ID -> cards (data/qmap.json)
   cardfix: { version: '', cards: {} },   // checked text corrections (data/cardfix.json): replace card fields as shown
+  viva: {},               // viva packages (data/viva/P4.json …): pkg -> file (viva.js)
   doct: [],               // this profile's DocT attempts sent by the recorder, merged per sitting
   decks: new Map(),       // deck -> { deck, version, cards[], verified, downloadedAt }
   edits: new Map(),       // 'DECK|CODE' -> { key, deck, code, fields, ts, dev, synced }
@@ -69,7 +70,21 @@ export function deckMeta(code) { return S.library ? S.library.decks.find(d => d.
 export function cardsOf(deck) {
   const d = S.decks.get(deck);
   if (!d) return [];
-  return d.cards.map(c => withEdits(c)).concat(topupsOf(deck, d.cards).map(c => withEdits(c)));
+  return d.cards.map(c => withEdits(c)).concat(topupsOf(deck, d.cards).map(c => withEdits(c)), vivaCardsOf(deck).map(c => withEdits(c)));
+}
+// T-095: viva cards sit after the Top-ups, with a permanent code (V4-001) and number (4001 = package 4, card 1), so their
+// history never moves when cards are added
+function vivaCardsOf(deck) {
+  const out = [];
+  for (const [pkg, P] of Object.entries(S.viva || {})) {
+    const d = +String(pkg).replace(/\D/g, '') || 9;
+    for (const [code, v] of Object.entries(P.cards || {})) {
+      if (v.deck !== deck || v.retired) continue;
+      out.push({ deck, code, no: d * 1000 + (+code.split('-')[1] || 0), section: 'Viva', vcard: pkg, tier: v.tier, vtype: v.type, topic: v.topic,
+        q: v.q, a: (v.a || []).map(l => /^\s*([-•]|\w[^|]* \| )/.test(l) ? l : '- ' + l).join('\n'), why: '', watch: '', hook: '', src: v.src || '', vpic: v.pic || '', vv: v.v });
+    }
+  }
+  return out.sort((a, b) => a.no - b.no);
 }
 /* ---------- QBank/GT layer: never changes card text; Top-ups are extra cards at the end of their deck ---------- */
 export function setQb(q) { S.qb = q && q.cards ? q : { version: '', cards: {}, topups: {}, decks: [] }; applyTopupDecks(); }
@@ -147,6 +162,7 @@ function topupsOf(deck, cards) {
 export function chunkOf(c) {
   if (!c) return { key: '', name: '' };
   if (c.topup) return { key: 'TU', name: 'Top-up' };
+  if (c.vcard) return { key: 'V', name: 'Viva' };
   const list = S.chunks[c.deck];
   if (list && list.length && !c.tdeck) {
     const n = +c.no + off(c.deck), ch = list.find(x => n >= x.from && n <= x.to);

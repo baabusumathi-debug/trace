@@ -4,14 +4,14 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-094)
+## State (as of entry T-095)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
 | Live app (repo root) | **1.4.16** · promoted from test 1.3.66 on 7 Nov (T-094: checked card-text corrections, `data/cardfix.json`); earlier 1.4.15 from test 1.3.65 on 6 Nov (T-092: primer/story always on the card, pen tools on them, question-side marks fix); earlier 1.4.14 from test 1.3.63 (T-089: Explain v3, RESP01A, audited Toxicology); earlier 1.4.13 from test 1.3.61 (T-087: room fixes, Move to card, Plan undo kept, intent suggestions); earlier 1.4.12 from test 1.3.59 (T-085: Explain v2 and card corrections for all 7 Toxicology decks); earlier 1.4.11 from test 1.3.57 (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.66** · T-093 card-text corrections (`data/cardfix.json`). Carries the 7 Toxicology decks, RESP01A and the 34 corrected decks (`CONFIG.onlyDecks`), all with Explain v2. Live is 1.4.15 (= test 1.3.65, with every deck). (`git log -- test/`). Adds the QBank/GT layer (`test/data/qbank.json`). Panel image fix (1.3.7) accepted on Naven's Mac (T-018); the phone and Tab haven't been checked on real devices yet. |
+| Test build (`test/`) | **1.3.67** · T-095 viva layer (P4) and 12 more card-text corrections (60 cards in `data/cardfix.json`). Carries the 7 Toxicology decks, RESP01A, the corrected decks and the P4 decks (`CONFIG.onlyDecks`, 57 decks). Live is 1.4.16 (= test 1.3.66). |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,19 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-095 — 2026-11-07 — Claude — test — 1.3.67
+- **Viva layer, package P4** (Naven, 7 Nov: a Viva option in the Mosaic that groups the P4 cards in study order, viva mode elsewhere, its own viva explanation). Package file `test/data/viva/P4.json` (version `P4.20261107.4`, written by the content chat to the spec in the CCM project, `claude/Trace_Viva_File_Spec_7Nov.md`) and 6 SVG diagrams in `test/data/viva/img/P4/`. New module `js/viva.js`.
+- **34 viva cards** sit at the end of their decks after the Top-ups, with permanent codes `V4-001…` and numbers `4001…` (package × 1000 + card), so seen counts, hooks and ink never shift. VIVA chip, own chunk "Viva", blue corner on the tile. Not in `qbank.json` (that would move the TU positions).
+- **Mosaic:** a VIVA chip row (one chip per package). On, it lights the package's 168 cards in place of the pools and walk chips; Flow lit walks them in question order (224 steps).
+- **Viva walk:** each of the 48 questions opens with a question card (tier, generator, kind, id), then its cards with the package's bridge under each answer and any viva one-liners, then a **spine card**: 60 s timer, the 4–6 spine lines folded until asked or the time is up, Fluent / Patchy / Blank. A card already walked under an earlier question shows a "seen above" strip and is not counted or logged again. Deck maps and deck closes are skipped in a viva walk. Marks are kept per profile on the device (`kv vivaMarks`), not synced yet.
+- **Viva page** `#/viva/P4`: the 48 questions by generator with tier and last mark; Walk all, walk one question, walk patchy + blank, Show in the Mosaic; warns if any step's deck is not on the device. Entry points: a small tile on the Palace, a box on the Flow tab, the Mosaic chip.
+- **Explain:** the viva explanation (94 entries) shows in the Explain pane. A card with both NEET and viva explanations gets a **NEET | Viva** switch: Viva in a viva walk, NEET elsewhere.
+- **Corrections:** the package's 15 exact edits (12 cards: ARDS-27, VNX-03 ×2, ARDS-40, WEAN-17, PLEU-21, PLEU-26, PADIS-18, PADIS-17 ×2, WEAN-05 ×2, MODE-13, RSC-25, WEAN-15) were checked and added to `test/data/cardfix.json` (now 60 cards, 43 decks).
+- Loaded copy differs from the writer's file in one line: V4-021's last line ("RSC-03's endorsement … corrected by its correction box") was dropped, because RSC-03 is now corrected in its own text.
+- `tools/viva/check_viva.py` checks a package before loading (spec §9): codes, decks, step cards, spine 4–6, last bridge null, caps, pictures, each `fixes.old` once. P4 v4: 0 errors.
+- `sw.js` never caches `data/viva/*.json`; diagrams are cached as they load.
+- Checked in demo mode (57 decks): Viva page, walk through P4-198 to its spine and marks, the NEET | Viva switch on RESP01A ARDS-03, the Mosaic (168 of 1,225 lit), the Palace tile, the 12 corrected cards rendered, phone width; no page errors.
 
 ## T-094 — 2026-11-07 — Claude — live — 1.4.16
 - Promoted test 1.3.66 to live on Naven's instruction (7 Nov: "Make it live"). Same copy rules as T-082 (every file in `test/` except `index.html` and `manifest.webmanifest`); `CONFIG.onlyDecks` stays `null` on live, so live keeps every deck.

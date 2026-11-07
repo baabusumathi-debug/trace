@@ -1548,3 +1548,48 @@ details.xp-before>summary::before{content:'▸';font-size:11px;transition:transf
 details.xp-before[open]>summary::before{transform:rotate(90deg)}
 details.xp-primer>summary{color:#2f4a5e}
 details.xp-before:not([open]){padding:6px 12px}
+
+/* ---------- T-095 viva layer: chip, tiles, question and spine cards, bridges, the Viva page ---------- */
+.qc-viva{background:#dfe6f4;color:#1f3566;border-color:#5b74a8;font-weight:600}
+.mo.vv,.ft.vv{background-image:linear-gradient(225deg,#5b74a8 0 34%,transparent 34%)}
+.mo-viva{align-items:center}
+.mo-viva .chip.on{background:#1f3566;color:#fff;border-color:#5b74a8}
+.vq-head,.vq-spine{justify-content:flex-start;padding-top:26px}
+.vq-t{font-family:var(--serif);font-size:30px;line-height:1.15;margin:0}
+.vq-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0;font-size:11px}
+.vq-tags span{border:1px solid #cfc6b0;border-radius:3px;padding:2px 7px;color:#5d5444}
+.vt-S{background:#1f3566;color:#fff!important;border-color:#1f3566!important}
+.vt-A{background:#dfe6f4;color:#1f3566!important;border-color:#5b74a8!important}
+.vt-B{color:#5d5444}
+.vq-timer{display:flex;align-items:center;gap:12px}
+.vq-clock{font-size:28px;color:#2b2b2f}.vq-clock.over{color:#b4412b}
+.vq-lines summary{cursor:pointer;font-size:11px;letter-spacing:.08em;color:#5d5444;padding:6px 0}
+.vq-lines ol{margin:6px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;line-height:1.5}
+.vq-say{font-size:14.5px;line-height:1.55;margin-top:10px!important;color:#3d372d}
+.vq-marks{display:flex;gap:8px}
+.vq-marks .chip{color:#2b2b2f;border-color:#cfc6b0;background:#fff}
+.vq-marks .chip.on[data-vmark=fluent]{background:#1d5a52;color:#fff;border-color:#1d5a52}
+.vq-marks .chip.on[data-vmark=patchy]{background:#b98a2e;color:#fff;border-color:#b98a2e}
+.vq-marks .chip.on[data-vmark=blank]{background:#b4412b;color:#fff;border-color:#b4412b}
+.vq-rep{font-size:10.5px;letter-spacing:.06em;color:#1f3566;background:#dfe6f4;border-left:3px solid #5b74a8;padding:6px 10px;margin:0 0 10px}
+.vq-pic,.vx-fig img{display:block;max-width:100%;height:auto;margin:10px 0;background:#fff;border-radius:4px}
+.vx-fig{margin:10px 0}.vx-fig figcaption{font-size:12.5px;color:#5d5444;line-height:1.45}
+.vx-see{font-style:italic;color:#3d372d}
+.vx-v{font-size:10px;color:#8a7a55;margin-top:10px}
+.vlines{background:#e6ebf5;border-left:3px solid #5b74a8}.vlines>.mono{color:#1f3566}
+.vbridge{margin:12px 0 0;padding:8px 12px;border-left:3px solid #5b74a8;color:#1f3566;font-size:14.5px;line-height:1.5;font-style:italic}
+.viva-tiles{position:absolute;right:14px;bottom:calc(76px + var(--safe-b));display:flex;flex-direction:column;gap:6px;z-index:5}
+.palace-screen{position:relative}
+.viva-tile{display:flex;flex-direction:column;gap:2px;padding:8px 12px;border:1px solid #5b74a8;border-radius:8px;background:rgba(20,23,28,.86);color:var(--ink);text-decoration:none;font-size:10.5px;letter-spacing:.06em}
+.viva-tile b{color:#a9bce3;font-weight:500}
+.vivap .vp-gen{margin-top:16px}
+.vivap .vp-gen h3{font-size:11px;letter-spacing:.16em;color:var(--gold);margin:0 0 6px}
+.vp-q{display:grid;grid-template-columns:28px 1fr auto auto;gap:10px;align-items:center;width:100%;text-align:left;background:#181b20;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.vp-h{color:var(--muted);font-size:13px}
+.vp-t{font-size:14.5px;line-height:1.35}.vp-t small{display:block;color:var(--faint);font-size:10.5px;margin-top:3px}
+.vp-q .vt{font-size:10.5px;border:1px solid var(--line);border-radius:3px;padding:2px 6px}
+.vm{font-size:10.5px;min-width:52px;text-align:center;border-radius:3px;padding:2px 6px;color:var(--faint)}
+.vm-fluent{color:#7fc2b6}.vm-patchy{color:#e0b860}.vm-blank{color:#e58a74}
+.vm.vm-fluent{background:#1d5a52;color:#fff}.vm.vm-patchy{background:#8a6516;color:#fff}.vm.vm-blank{background:#8f3220;color:#fff}
+.vp-tally{margin:0;color:var(--muted)}
+.vivap .warn{color:#e0b860;margin:0}

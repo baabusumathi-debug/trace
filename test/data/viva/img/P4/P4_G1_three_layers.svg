@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="661.06pt" height="380.94pt" viewBox="0 0 661.06 380.94" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ 
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M -0 380.94 
+L 661.06 380.94 
+L 661.06 -0 
+L -0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 81.72 315.05 
+L 583.92 315.05 
+L 583.92 26.76 
+L 81.72 26.76 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m062026ec6b" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="315.05" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="319.89" transform="rotate(-0 74.72 319.89)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="279.01" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="283.85" transform="rotate(-0 74.72 283.85)">5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="242.97" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="247.82" transform="rotate(-0 74.72 247.82)">10</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="206.94" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="211.78" transform="rotate(-0 74.72 211.78)">15</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="170.90" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="175.75" transform="rotate(-0 74.72 175.75)">20</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="134.87" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="139.71" transform="rotate(-0 74.72 139.71)">25</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="98.83" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="103.67" transform="rotate(-0 74.72 103.67)">30</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="62.79" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="67.64" transform="rotate(-0 74.72 67.64)">35</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m062026ec6b" x="81.72" y="26.76" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 10px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: end" x="74.72" y="31.60" transform="rotate(-0 74.72 31.60)">40</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: middle" x="55.29" y="170.90" transform="rotate(-90 55.29 170.90)">Airway pressure (cmH₂O)</text>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <path d="M 81.72 242.97 
+L 81.72 170.90 
+L 300.06 62.79 
+L 300.06 62.79 
+" clip-path="url(#p8aa8bf5f43)" style="fill: none; stroke: #152126; stroke-width: 2.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 300.06 62.79 
+L 310.98 134.87 
+" clip-path="url(#p8aa8bf5f43)" style="fill: none; stroke: #152126; stroke-width: 2.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 310.98 134.87 
+L 398.32 134.87 
+" clip-path="url(#p8aa8bf5f43)" style="fill: none; stroke: #152126; stroke-width: 2.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 398.32 134.87 
+L 431.07 228.56 
+L 562.08 242.97 
+" clip-path="url(#p8aa8bf5f43)" style="fill: none; stroke: #152126; stroke-width: 2.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 81.72 242.97 
+L 583.92 242.97 
+" clip-path="url(#p8aa8bf5f43)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5b6b71"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 81.72 315.05 
+L 81.72 26.76 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 81.72 315.05 
+L 583.92 315.05 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 284.78 131.30 
+Q 284.78 100.63 284.78 69.96 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 286.78 127.30 
+L 284.78 131.30 
+L 282.78 127.30 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 282.78 73.96 
+L 284.78 69.96 
+L 286.78 73.96 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif" transform="translate(107.92 71.07)">flow × resistance</text>
+    <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif" transform="translate(107.92 83.78)">(peak − plateau = 10)</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 365.57 239.41 
+Q 365.57 188.92 365.57 138.43 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 367.57 235.41 
+L 365.57 239.41 
+L 363.57 235.41 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 363.57 142.43 
+L 365.57 138.43 
+L 367.57 142.43 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif" transform="translate(448.54 179.18)">stretch = Vt ÷ compliance</text>
+    <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif" transform="translate(448.54 191.88)">= driving pressure (15)</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 147.22 311.48 
+Q 147.22 279.01 147.22 246.54 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 149.22 307.48 
+L 147.22 311.48 
+L 145.22 307.48 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 145.22 250.54 
+L 147.22 246.54 
+L 149.22 250.54 
+" style="fill: none; stroke: #000000; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif" transform="translate(153.77 276.48)">PEEP (10)</text>
+    <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif" transform="translate(153.77 289.18)">already there</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 11px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: middle" x="300.06" y="54.14" transform="rotate(-0 300.06 54.14)">PEAK 35</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 11px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: start" x="354.65" y="120.45" transform="rotate(-0 354.65 120.45)">PLATEAU 25 (hold: flow = 0)</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 14px; font-family:Inter, Arial, Helvetica, sans-serif; text-anchor: start" x="81.72" y="20.76" transform="rotate(-0 81.72 20.76)">Fig G1 · One breath, three layers</text>
+   </g>
+  </g>
+  <g id="text_17">
+   <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(7.2 358.50)">Peak = resistance + stretch + PEEP. Stop the flow (inspiratory hold) and the resistance layer vanishes: what remains is the plateau.</text>
+   <text style="font-size: 10.5px; font-family:Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(7.2 371.21)">Plateau − PEEP is the stretch of the lung and chest = driving pressure.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8aa8bf5f43">
+   <rect x="81.72" y="26.76" width="502.2" height="288.28"/>
+  </clipPath>
+ </defs>
+</svg>

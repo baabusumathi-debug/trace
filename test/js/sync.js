@@ -4,6 +4,7 @@ import { batch, hasBackend, isDemo } from './api.js';
 import { CONFIG, IS_HT } from './config.js';
 import { S, emit, recount, setNeet, setQb, setDoct, applyTopupDecks, realCount, deckMeta, today, off } from './store.js';
 import { planJson, replacePlan } from './plan.js';
+import { loadViva } from './viva.js';
 
 export const status = { targetNote: '', state: 'idle', last: null, error: '', pending: 0, busy: false, downloading: 0 };
 const EV_HEADER = ['id', 'ts', 'date', 'time', 'device', 'session', 'deck', 'code', 'no', 'ms', 'again', 'kind', 'ref'];
@@ -193,7 +194,7 @@ async function syncDoct() {
 }
 
 export async function sync({ downloadAll = true } = {}) {
-  loadQbank(); loadQmap(); loadCardfix();
+  loadQbank(); loadQmap(); loadCardfix(); loadViva();
   if (status.busy || !hasBackend()) return;
   if (!navigator.onLine && !isDemo()) { status.state = 'offline'; emit(); return; }
   status.busy = true; status.state = 'syncing'; status.error = ''; emit();

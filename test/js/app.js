@@ -13,6 +13,7 @@ import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, arcHtml, spineOf, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
+import { initViva, loadViva, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -68,8 +69,8 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
-  await initExplain();
-  loadQbank(); loadQmap(); loadCardfix(); loadExplain();
+  await initExplain(); await initViva();
+  loadQbank(); loadQmap(); loadCardfix(); loadExplain(); loadViva();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -129,7 +130,9 @@ function routeInner() {
   if (page === 'shelf') return renderCabinet();
   if (page === 'meditation') return renderMeditation(app, { nav: nav(''), back: '#/loft', P });
   if (page === 'pilot') return startPilot();
+  if (page === 'viva') return renderViva(arg ? decodeURIComponent(arg) : '');
   renderPalace(app, { nav: nav('palace'), top: topBar(true) });
+  vivaTile();
   bindGo(); bindGoingOut();
 }
 const go = h => { location.hash = h; };
@@ -341,7 +344,10 @@ function renderSystem(num) {
   const s = all ? (S.library ? { name: 'all', label: 'Eagle view · every card', decks: S.library.decks } : null) : systems().find(x => sysNum(x.name) === num);
   if (!s) return renderCabinet();
   const tab = all ? 'mosaic' : P.get('sysTab', 'decks'), sort = P.get('sort', 'neet'), mp = P.get('moPool', 'all'), mw = P.get('moWalk', ''), mst = 'any';
-  const pickW = deck => cardsOf(deck).filter(c => inPool(c, mp) && walkOk(c, mw));
+  // T-095: a Viva package lights its cards instead of the pools, and Flow lit walks them in question order
+  const vv = vivaPkg(P.get('moViva', '')) ? P.get('moViva', '') : '', vset = vv ? vivaKeys(vv) : null;
+  const litOk = c => vset ? vset.has(c.deck + '|' + c.code) : inPool(c, mp) && walkOk(c, mw);
+  const pickW = deck => cardsOf(deck).filter(litOk);
   const hitN = d => pickW(d.deck).length, cn = P.get('cnames', false), pk = P.get('pickOn', false);
   const decks = sort === 'hits' ? s.decks.slice().sort((a, b) => hitN(b) - hitN(a) || a.deck.localeCompare(b.deck, undefined, { numeric: true })) : sortDecks(s.decks, sort);
   const stars = decks.reduce((t, d) => t + (d.star || 0), 0), cards = decks.reduce((t, d) => t + d.cards, 0), w = decks.reduce((t, d) => t + walked(d.deck), 0);
@@ -350,13 +356,15 @@ function renderSystem(num) {
     // lit cards in the order the mosaic shows them (Eagle view: system by system)
     const shown = all ? systems().flatMap(g => decks.filter(d => d.system === g.name)) : decks;
     litList = shown.flatMap(d => pickW(d.deck));
+    if (vv) { const inShown = new Set(shown.map(d => d.deck)); litList = vivaQueue(vv).list.filter(c => inShown.has(c.deck)); }
     body = `<div class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}<span class="lg-n">gold ring = NEET</span><span class="lg-n"><i class="lg-tu"></i>coral corner = Top-up</span></div>
-      ${poolChips(mp, 'data-mp')}
-      <div class="chips mo-pools">${WALKS.map(([k, l]) => `<button class="chip${walkParts(mw).includes(k) ? ' on' : ''}" data-mw="${k}" aria-pressed="${walkParts(mw).includes(k)}">${walkParts(mw).includes(k) ? '✓ ' : ''}${l}</button>`).join('')}<span class="pool-sep" aria-hidden="true">|</span><button class="chip dash${cn ? ' on' : ''}" data-cnames aria-pressed="${cn}">${cn ? '✓ ' : ''}Chunk names</button><button class="chip pickchip${pk ? ' on' : ''}" data-pick aria-pressed="${pk}">${pk ? '✓ Pick on' : 'Pick'}</button><span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
+      ${vv ? '' : poolChips(mp, 'data-mp')}
+      ${vivaPkgs().length ? `<div class="chips mo-pools mo-viva"><span class="mono muted small">VIVA</span>${vivaPkgs().map(p => `<button class="chip vchip-p${vv === p.package ? ' on' : ''}" data-mviva="${esc(p.package)}" aria-pressed="${vv === p.package}">${vv === p.package ? '✓ ' : ''}${esc(p.package)} · ${esc(p.title)}</button>`).join('')}${vv ? `<a class="chip dash" href="#/viva/${esc(vv)}">${vivaPkg(vv).questions.length} questions ›</a>` : ''}</div>` : ''}
+      <div class="chips mo-pools">${vv ? '' : WALKS.map(([k, l]) => `<button class="chip${walkParts(mw).includes(k) ? ' on' : ''}" data-mw="${k}" aria-pressed="${walkParts(mw).includes(k)}">${walkParts(mw).includes(k) ? '✓ ' : ''}${l}</button>`).join('')}${vv ? '' : '<span class="pool-sep" aria-hidden="true">|</span>'}<button class="chip dash${cn ? ' on' : ''}" data-cnames aria-pressed="${cn}">${cn ? '✓ ' : ''}Chunk names</button><button class="chip pickchip${pk ? ' on' : ''}" data-pick aria-pressed="${pk}">${pk ? '✓ Pick on' : 'Pick'}</button><span class="mono mo-sum">${decks.reduce((t, d) => t + hitN(d), 0)} of ${decks.reduce((t, d) => t + cardsOf(d.deck).length, 0)} cards lit</span></div>
       <div class="mosaic">${(all ? systems().map(g => ({ g, ds: decks.filter(d => d.system === g.name) })) : [{ g: null, ds: decks }]).map(({ g, ds }) => (g ? `<div class="mo-sys mono">${esc(g.label)} · ${ds.reduce((t, d) => t + hitN(d), 0)}</div>` : '') + ds.map(d => {
-        const cs = cardsOf(d.deck), lit = c => inPool(c, mp) && walkOk(c, mw);
+        const cs = cardsOf(d.deck), lit = litOk;
         return `<div class="mo-row${d.topupDeck ? ' tu' : ''}"><a class="mo-l mono" href="#/deck/${encodeURIComponent(d.deck)}"><b>${esc(d.deck)}</b><span>${d.topupDeck ? 'TOP-UP' : d.star ? '✦ ' + d.star : ''}${mp !== 'all' || mw ? ' · ' + hitN(d) : ''}</span></a>
-          <span class="mo-cells${cn ? ' named' : ''}">${cs.length ? chunked(cs, c => `<button class="mo s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" data-tip="${esc(tipOf(c))}" aria-label="${esc(tipOf(c))}, seen ${seen(c.deck, c.no)}"></button>`, cn) : '<span class="muted small">not downloaded</span>'}</span></div>`;
+          <span class="mo-cells${cn ? ' named' : ''}">${cs.length ? chunked(cs, c => `<button class="mo s${shade(seen(c.deck, c.no))}${isNeet(c) ? ' ng' : ''}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${c.vcard ? ' vv' : ''}${lit(c) ? '' : ' off'}" data-deck="${esc(c.deck)}" data-code="${esc(c.code)}" data-tip="${esc(tipOf(c))}" aria-label="${esc(tipOf(c))}, seen ${seen(c.deck, c.no)}"></button>`, cn) : '<span class="muted small">not downloaded</span>'}</span></div>`;
       }).join('')).join('')}</div>`;
   } else {
     body = `<div class="spread">${decks.map((d, i) => `<div class="fan" style="--rot:${[-1.5, 1.2, 0.8, -1, 1.4, -0.8, -1.2, 1][i % 8]}deg">${deckBack(d)}</div>`).join('')}</div>`;
@@ -375,9 +383,10 @@ function renderSystem(num) {
   bindGo(); hideTip();
   if (tab === 'mosaic') {
     bindTips(app);
-    const lab = (all ? 'All decks' : s.label) + ' · ' + [poolName(mp), walkName(mw)].filter(Boolean).join(' · ');
+    const lab = vv ? 'Viva ' + vv + ' · ' + vivaPkg(vv).title : (all ? 'All decks' : s.label) + ' · ' + [poolName(mp), walkName(mw)].filter(Boolean).join(' · ');
     const lf = app.querySelector('[data-litflow]'), la = app.querySelector('[data-litadd]');
-    if (lf) lf.onclick = () => { hideTip(); startFlow(litList, { label: lab, returnTo: location.hash }); };
+    if (lf) lf.onclick = () => { hideTip(); startFlow(litList, { label: lab, returnTo: location.hash, viva: vv }); };
+    app.querySelectorAll('[data-mviva]').forEach(b => b.onclick = () => { P.set('moViva', vv === b.dataset.mviva ? '' : b.dataset.mviva); keep(() => renderSystem(num)); });
     if (la) la.onclick = () => addLit(litList, lab);
     const cb = app.querySelector('[data-cnames]'); if (cb) cb.onclick = () => { P.set('cnames', !cn); keep(() => renderSystem(num)); };
     const pb = app.querySelector('[data-pick]'); if (pb) pb.onclick = () => { P.set('pickOn', !pk); if (pk) { pickSel.clear(); pickAnchor = null; P.set('pickForPlan', false); } keep(() => renderSystem(num)); };
@@ -428,7 +437,7 @@ function chunked(cards, tileFn, names) {
   });
   return out;
 }
-const tipOf = c => `${c.deck} · ${chunkOf(c).name} · card ${c.no}${neetTag(c) ? ' · ' + neetTag(c) : ''}${c.topup ? ' · Top-up' : ''}`;
+const tipOf = c => `${c.deck} · ${chunkOf(c).name} · ${c.vcard ? c.code + ' · Viva' : 'card ' + c.no}${neetTag(c) ? ' · ' + neetTag(c) : ''}${c.topup ? ' · Top-up' : ''}`;
 // Hover label for tiles: mouse on the Mac, S Pen hovering on the Tab and the phone (touch never shows it).
 function bindTips(root) {
   let tip = document.getElementById('hovtip');
@@ -687,6 +696,54 @@ function bindTarget(rerender) {
   if (st) st.onclick = e => { e.preventDefault(); const q = targetQueue(); if (q.length) startFlow(q, { label: 'Target', returnTo: location.hash }); };
   app.querySelectorAll('[data-rm]').forEach(b => b.onclick = async () => { await removeTarget(b.dataset.rm); rerender(); if (hasBackend()) sync({ downloadAll: false }); });
 }
+/* ============================ viva (T-095) ============================ */
+const MARKN = { fluent: 'Fluent', patchy: 'Patchy', blank: 'Blank' };
+function vivaTile() {
+  const ps = vivaPkgs(); if (!ps.length) return;
+  const sc = app.querySelector('.palace-screen'); if (!sc) return;
+  sc.insertAdjacentHTML('beforeend', `<div class="viva-tiles">${ps.map(p => `<a class="viva-tile mono" href="#/viva/${esc(p.package)}"><b>VIVA ${esc(p.package)}</b><span>${esc(p.title)} · ${p.questions.length} Qs</span></a>`).join('')}</div>`);
+}
+function walkViva(pkg, onlyQ) {
+  const { list } = vivaQueue(pkg, onlyQ), P2 = vivaPkg(pkg);
+  if (!list.length) { toast('These cards are not on this device yet.'); return; }
+  startFlow(list, { viva: pkg, label: 'Viva ' + pkg + (onlyQ ? ' · ' + onlyQ : ' · ' + P2.title), returnTo: '#/viva/' + pkg });
+}
+async function renderViva(pkg) {
+  const ps = vivaPkgs();
+  if (!pkg && ps.length) pkg = ps[0].package;
+  const P2 = vivaPkg(pkg);
+  if (!P2) { app.innerHTML = `<div class="screen"><header class="top"><a class="iconbtn" href="#/flow" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA</span><span class="h1s">No viva package yet</span></span></header><div class="scroll pad"><p class="muted">The package file has not loaded. Open the app online once.</p></div>${nav('flow')}</div>`; return; }
+  const m = await vivaMarks(), { missing } = vivaQueue(pkg);
+  const missDecks = [...new Set(missing.map(k => /^V/.test(k) ? (P2.cards[k] || {}).deck : k.split('|')[0]))];
+  const tally = { fluent: 0, patchy: 0, blank: 0, none: 0 };
+  P2.questions.forEach(q => { const k = vivaLast(m, pkg, q.q); tally[k || 'none']++; });
+  const gens = []; P2.questions.forEach(q => { let g = gens.find(x => x.g === q.gen); if (!g) gens.push(g = { g: q.gen, qs: [] }); g.qs.push(q); });
+  const vcards = Object.values(P2.cards).filter(v => !v.retired).length;
+  app.innerHTML = `<div class="screen vivap">
+    <header class="top"><a class="iconbtn" href="#/flow" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA ${esc(pkg)} · ${P2.questions.length} QUESTIONS · ${vcards} VIVA CARDS</span><span class="h1s">${esc(P2.title)}</span></span></header>
+    <div class="scroll pad">
+      <section class="dk-box">
+        <div class="dk-h"><span><span class="mono kick">WALK</span><span class="dk-t">All ${P2.questions.length} questions, in study order</span></span><button class="pillbtn" data-vwalk>${ICON.walkS}Walk</button></div>
+        <p class="muted small">Each question opens with its card, then the cards behind it with a bridge under each answer, then the spine to say in 60 seconds. A card that came under an earlier question shows as “seen above” and is not counted twice.</p>
+        <p class="mono small vp-tally"><span class="vm-fluent">${tally.fluent} fluent</span> · <span class="vm-patchy">${tally.patchy} patchy</span> · <span class="vm-blank">${tally.blank} blank</span> · ${tally.none} not marked</p>
+        <div class="chips"><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
+        ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
+      </section>
+      ${gens.map(g => `<section class="vp-gen"><h3 class="mono">${esc(g.g)}</h3>${g.qs.map(q => { const mk = vivaLast(m, pkg, q.q); return `<button class="vp-q" data-vq="${esc(q.q)}"><span class="vp-h mono">${esc(q.handle || '')}</span><span class="vp-t">${esc(q.text)}<small class="mono">${esc(q.q)} · ${q.steps.length} card${q.steps.length === 1 ? '' : 's'}</small></span><span class="vt vt-${esc(q.tier)} mono">${esc(q.tier)}</span><span class="vm vm-${mk || 'none'} mono">${mk ? MARKN[mk] : '–'}</span></button>`; }).join('')}</section>`).join('')}
+      <p class="muted small">Package ${esc(P2.version)}.</p>
+    </div>
+    ${nav('flow')}
+  </div>`;
+  app.querySelector('[data-vwalk]').onclick = () => walkViva(pkg);
+  app.querySelector('[data-vmosaic]').onclick = () => { P.set('moViva', pkg); go('#/sys/all'); };
+  const wk = app.querySelector('[data-vweak]');
+  if (wk) wk.onclick = () => {
+    const weak = new Set(P2.questions.filter(q => ['patchy', 'blank'].includes(vivaLast(m, pkg, q.q))).map(q => q.q));
+    const list = P2.questions.filter(q => weak.has(q.q)).flatMap(q => vivaQueue(pkg, q.q).list);
+    if (list.length) startFlow(list, { viva: pkg, label: 'Viva ' + pkg + ' · patchy + blank', returnTo: '#/viva/' + pkg });
+  };
+  app.querySelectorAll('[data-vq]').forEach(b => b.onclick = () => walkViva(pkg, b.dataset.vq));
+}
 function renderFlowTab() {
   const draw = () => {
     const lf = lastFlowCards(), ag = againCards(), avg = avgPace() || 75000, mins = n => Math.max(1, Math.round(n * avg / 60000));
@@ -701,6 +758,9 @@ function renderFlowTab() {
             ${lf ? `<button class="pillbtn" data-cont>${ICON.walkS}Continue</button>` : ''}</div>
           <p class="muted small">${lf ? `${lf.done} of ${lf.total} done · ${lf.cards.length} left · ≈ ${mins(lf.cards.length)} min · stopped ${whenLabel(lf.ts)}` : 'A flow you leave before the end waits here for 3 days.'}</p>
         </section>
+        ${vivaPkgs().map(p => `<section class="dk-box">
+          <div class="dk-h"><span><span class="mono kick">VIVA ${esc(p.package)}</span><span class="dk-t">${esc(p.title)} · ${p.questions.length} questions</span></span><a class="pillbtn" href="#/viva/${esc(p.package)}">${ICON.walkS}Open</a></div>
+        </section>`).join('')}
         <section class="dk-box">
           <div class="dk-h"><span><span class="mono kick">AGAIN PILE</span><span class="dk-t">${ag.length ? ag.length + ' card' + (ag.length === 1 ? '' : 's') + ' to repair' : 'Nothing to repair'}</span></span>
             ${ag.length ? `<button class="pillbtn" data-again>${ICON.walkS}Repair</button>` : ''}</div>
@@ -1365,7 +1425,7 @@ function startFlow(list, opts = {}) {
   if (!list || !list.length) return;
   const at = Math.max(0, opts.start || 0);
   const queue = list.slice(at).concat(list.slice(0, at));
-  flow = { deck: queue[0].deck, label: opts.label || '', browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
+  flow = { deck: queue[0].deck, label: opts.label || '', viva: opts.viva || '', vqSeen: {}, browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
     queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), wall0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
   _lastDeck = queue[0].deck;
   renderFlow();
@@ -1571,9 +1631,35 @@ function drawInter(el, big) {
   unmountInk();
   const walking = new Set(flow.queue.filter(x => x.deck === deck).map(x => x.code));
   el.classList.remove('ng');
+  if (it.kind === 'vq' || it.kind === 'spine') return drawVivaInter(el, big, it);
   el.innerHTML = it.kind === 'map' ? mapHtml(deck, m.title, walking) : closeHtml(deck);
   big.innerHTML = it.kind === 'map' ? `START${ICON.next}` : `CONTINUE${ICON.next}`;
   bindBridges(el);
+}
+// T-095: the viva question card (before its steps) and the spine card (after them)
+function drawVivaInter(el, big, it) {
+  if (it.kind === 'vq') {
+    const steps = flow.queue.filter((x, j) => j >= it.at && x.vq && x.vq.q === it.q && x.vq.pkg === it.pkg);
+    el.innerHTML = qHeadHtml(it.pkg, it.q, { n: steps.length, reps: steps.filter(x => x.vq.rep).length });
+    big.innerHTML = `START${ICON.next}`;
+    return;
+  }
+  vivaMarks().then(m => {
+    if (!flow || flow.inter !== it) return;
+    el.innerHTML = spineHtml(it.pkg, it.q, vivaLast(m, it.pkg, it.q));
+    const more = flow.queue.slice(flow.idx).some(x => x.vq);
+    big.innerHTML = more ? `NEXT QUESTION${ICON.next}` : `FINISH${ICON.next}`;
+    const clk = el.querySelector('[data-vclock]'), tb = el.querySelector('[data-vtimer]');
+    tb.onclick = e => {
+      e.stopPropagation(); clearInterval(flow.vtimer); const t0 = Date.now(); tb.textContent = 'Restart';
+      flow.vtimer = setInterval(() => { const left = Math.max(0, 60 - Math.floor((Date.now() - t0) / 1000)); if (!clk.isConnected) return clearInterval(flow && flow.vtimer); clk.textContent = '0:' + String(left).padStart(2, '0'); clk.classList.toggle('over', left === 0); if (!left) { clearInterval(flow.vtimer); const d = el.querySelector('[data-vspine]'); if (d) d.open = true; } }, 250);
+    };
+    el.querySelectorAll('[data-vmark]').forEach(b => b.onclick = async e => {
+      e.stopPropagation(); await vivaSetMark(it.pkg, it.q, b.dataset.vmark);
+      el.querySelectorAll('[data-vmark]').forEach(x => x.classList.toggle('on', x === b));
+      const d = el.querySelector('[data-vspine]'); if (d) d.open = true;
+    });
+  });
 }
 function bindBridges(el) { el.querySelectorAll('[data-xp-bridge]').forEach(b => b.onclick = e => { e.stopPropagation(); const a = b.nextElementSibling; if (a) a.hidden = false; b.remove(); }); }
 // was the card just before this one (same deck) left out of this flow? then the bridge lines carry what it taught
@@ -1809,11 +1895,12 @@ function placeXpBar(el) {
   if (!bar.querySelector('[data-act=askx]')) bar.insertAdjacentHTML('beforeend', '<button class="askbtn mono" data-act="askx" aria-label="Ask Claude about this explanation">Ask ▸</button>');
 }
 function bindXp(el, c) {
+  el.querySelectorAll('[data-xtab]').forEach(b => b.onclick = e => { e.stopPropagation(); flow.xpTab = flow.xpTab || {}; flow.xpTab[c.deck + '|' + c.code] = b.dataset.xtab; drawCard(); });
   const ax = el.querySelector('[data-act=askx]'); if (ax) ax.onclick = e => { e.stopPropagation(); askMenu(ax.getBoundingClientRect(), { c, texts: [], from: 'Explain' }); };
   const ab = el.querySelector('[data-act=ask]'); if (ab) ab.onclick = e => { e.stopPropagation(); askMenu(ab.getBoundingClientRect(), { c, texts: [], from: 'card' }); };
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = el.querySelector('.xp-pane .xp') || xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
-  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
+  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; if (vivaX(cc)) { drawCard(); return; } const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
   el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
   const nt = el.querySelector('[data-xp-note]');
   if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
@@ -1823,7 +1910,8 @@ function drawCard() {
   const el = $('#card'), big = $('#f-big');
   if (!flow.inter && !flow.done && !flow.peek && flow.face === 'q') {
     const cd = current(); flow.mapSeen = flow.mapSeen || {};
-    if (cd && mapOf(cd.deck) && !flow.mapSeen[cd.deck]) { flow.mapSeen[cd.deck] = 1; flow.inter = { kind: 'map', deck: cd.deck }; }
+    if (flow.viva) { if (cd && cd.vq && cd.vq.i === 0 && !flow.vqSeen[flow.idx]) { flow.vqSeen[flow.idx] = 1; flow.inter = { kind: 'vq', pkg: cd.vq.pkg, q: cd.vq.q, at: flow.idx }; } }
+    else if (cd && mapOf(cd.deck) && !flow.mapSeen[cd.deck]) { flow.mapSeen[cd.deck] = 1; flow.inter = { kind: 'map', deck: cd.deck }; }
   }
   if (flow.inter) { drawInter(el, big); return; }
   if (flow.done && !flow.peek) {
@@ -1851,23 +1939,29 @@ function drawCard() {
     // folded when the card is at Revise depth (same rule as the Explain pane), tap to open
     const arc = spineOf(c.deck) && xq && xq.step ? { open: ((flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xq, n, xpDepth())) !== 'revise' } : null;
     // T-090: the primer and story boxes sit inside the question face so the pen, highlighter, Select text and Ask work on them
-    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${arc ? arcHtml(c, xq, arc.open) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
+    const vrep = c.vq && c.vq.rep ? `<p class="vq-rep mono">SEEN ABOVE · under ${esc(c.vq.rep)} · not counted again · Reveal to look, Next to move on</p>` : '';
+    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${vrep}${flow.viva ? '' : arc ? arcHtml(c, xq, arc.open) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${c.vpic ? `<img class="vq-pic" src="./data/viva/img/${esc(c.vcard)}/${esc(c.vpic)}" alt="Spotter image">` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
-    const xa = xOf(c), v2 = !!(xa && xa.v === 2), xOpen = xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
+    const xa = xOf(c), vx = vivaX(c), v2 = !!(xa && xa.v === 2) || !!vx, xOpen = (flow.viva && vx) || xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
+    // T-095: NEET | Viva switch when a card has both; opens on Viva in a viva walk, on NEET elsewhere
+    const ck = c.deck + '|' + c.code; flow.xpTab = flow.xpTab || {};
+    const both = !!(vx && xa), xtab = !vx ? 'neet' : !xa ? 'viva' : flow.xpTab[ck] || (flow.viva ? 'viva' : 'neet');
+    const xpPane = o => xtab === 'viva' ? vivaPanelHtml(vx, both ? xpSwitch('viva') : '') : (both ? panelHtml(c, xa, o).replace('<div class="xp-bar">', '<div class="xp-bar">' + xpSwitch('neet')) : panelHtml(c, xa, o));
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
     body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
       <div class="ans">${render(c.a)}</div>
+      ${vivaAns(c)}
       ${c.fixed ? `<p class="qsrc-card mono">Corrected ${esc(c.fixed.date)} · ${esc(c.fixed.src)}</p>` : ''}
       ${gistHtml(xOf(c))}${n > 0 ? partsAHtml(c, xOf(c)) : ''}
       ${c.img ? `<div class="box note"><span class="mono">DIAGRAM</span><p>This card has a figure on page ${c.a_page || c.q_page || '?'} of the PDF deck.</p></div>` : ''}
       ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
       ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
-      ${hasExplain(c) && !v2 ? panelHtml(c, xa, { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : v2 ? '' : qbBoxes(c)}
+      ${hasExplain(c) && !v2 ? panelHtml(c, xa, { open: xpOpenMode() === 'new' && n === 0, traps: xpTraps(), note: '' }) : v2 ? (c.vcard ? qbBoxes(c) : '') : qbBoxes(c)}
       <label class="hook"><span class="mono">YOUR OT HOOK</span><input type="text" id="hook" value="${esc(c.hook || '')}" placeholder="A detail that makes it stick…" enterkeyhint="done"></label>
-    </div></div>${v2 ? `</section><div class="a-div" role="separator" aria-label="Drag to resize the card and Explain" tabindex="0"><i></i></div><section class="pane-xp"><div class="xp-head"></div><aside class="xp-pane">${panelHtml(c, xa, { open: xOpen, traps: xpTraps(), depth })}</aside></section></div>` : ''}`;
+    </div></div>${v2 ? `</section><div class="a-div" role="separator" aria-label="Drag to resize the card and Explain" tabindex="0"><i></i></div><section class="pane-xp"><div class="xp-head"></div><aside class="xp-pane">${xpPane({ open: xOpen, traps: xpTraps(), depth })}</aside></section></div>` : ''}`;
   }
   const split = !isQ && el && body.startsWith('<div class="a-split');
   el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
@@ -1904,6 +1998,7 @@ function drawCard() {
 }
 /* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
 function qbChips(c) {
+  if (c.vcard) return `<span class="qc qc-viva mono">VIVA</span><span class="qc qc-tier mono">Tier ${esc(c.tier)}</span>`;
   if (c.topup) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up</span><span class="qc qc-tier mono">Tier ${c.tier}${c.nq ? ' · ' + c.nq + ' Qs' : ''}</span>${[['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
   if (c.tdeck) { const h = hitsOf(c).h; return `<span class="qc qc-top mono">Top-up deck</span>${[['marrow', 'Marrow'], ['doct', 'DocT'], ['gt', 'DocT GT']].filter(([k]) => h.has(k)).map(([k, t]) => `<span class="qc qc-${k} mono">${t}</span>`).join('')}`; }
   const q = qbOf(c);
@@ -1911,8 +2006,15 @@ function qbChips(c) {
   return q.chips.filter(x => x.k !== 'recall').map(x => `<span class="qc qc-${x.k} mono" title="${x.n} question${x.n > 1 ? 's' : ''}">${esc(x.t)}${x.n > 1 ? ' ×' + x.n : ''}</span>`).join('');
 }
 const bankLine = l => { const m = l.match(/^([A-Za-z0-9 +·]{2,40}?):\s+(.*)$/s); return m ? `<p><b class="bk">${esc(m[1])}</b> ${inline(m[2])}</p>` : `<p>${inline(l)}</p>`; };
+// T-095: in a viva walk, the package's one-liners for this card and the bridge to the next card
+function vivaAns(c) {
+  if (!flow || !flow.viva) return '';
+  const ls = vivaLines(c), br = c.vq && c.vq.bridge;
+  return (ls.length ? `<div class="box vlines"><span class="mono">VIVA</span><div class="bx">${ls.map(l => `<p>${inline(l)}</p>`).join('')}</div></div>` : '')
+    + (br ? `<p class="vbridge">${inline(br)}</p>` : '');
+}
 function qbBoxes(c) {
-  if (c.tdeck || c.topup) { const src = c.src || ''; return src ? `<p class="qsrc-card mono">From: ${esc(src)}</p>` : ''; }
+  if (c.tdeck || c.topup || c.vcard) { const src = c.src || ''; return src ? `<p class="qsrc-card mono">From: ${esc(src)}</p>` : ''; }
   const q = qbOf(c);
   if (!q) return '';
   let h = '';
@@ -2043,15 +2145,19 @@ async function next(again) {
   }
   const c = current(), ms = Date.now() - flow.cardT0;
   const hk = $('#hook'); if (hk && hk.value.trim() !== (c.hook || '')) await saveHook(c, hk.value.trim());
-  const ev = await recordView({ id: uid('e'), ts: Date.now(), deck: c.deck, code: c.code, no: c.no, ms, again: !!again, session: flow.session });
+  // T-095: a card already walked under an earlier question of this viva is not counted a second time
+  const rep = !!(c.vq && (c.vq.rep || flow.queue.slice(0, flow.idx).some(x => x.deck === c.deck && x.code === c.code)));
+  const ev = rep ? null : await recordView({ id: uid('e'), ts: Date.now(), deck: c.deck, code: c.code, no: c.no, ms, again: !!again, session: flow.session });
   flow.hist.push({ idx: flow.idx, ev, appended: !!again, cardT0: flow.cardT0 });
-  flow.times.push(ms);
-  if (again) flow.queue.push(c);
+  if (!rep) flow.times.push(ms);
+  if (again) flow.queue.push({ ...c, vq: c.vq ? { ...c.vq, bridge: null, again: true } : undefined });
+  if (c.vq && !c.vq.again && c.vq.i === c.vq.n - 1) flow.pendingSpine = { pkg: c.vq.pkg, q: c.vq.q };
   // the last card of a deck in this flow: its deck close comes next (once)
   flow.closeSeen = flow.closeSeen || {};
-  if (closeOf(c.deck) && !flow.closeSeen[c.deck] && !flow.queue.slice(flow.idx + 1).some(x => x.deck === c.deck)) { flow.closeSeen[c.deck] = 1; flow.pendingClose = c.deck; }
+  if (!flow.viva && closeOf(c.deck) && !flow.closeSeen[c.deck] && !flow.queue.slice(flow.idx + 1).some(x => x.deck === c.deck)) { flow.closeSeen[c.deck] = 1; flow.pendingClose = c.deck; }
   animate('deal', () => {
     if (flow.pendingClose) { flow.inter = { kind: 'close', deck: flow.pendingClose }; flow.pendingClose = null; }
+    if (flow.pendingSpine) { flow.inter = { kind: 'spine', ...flow.pendingSpine }; flow.pendingSpine = null; }
     flow.idx++;
     flow.face = 'q';
     flow.cardT0 = Date.now();
@@ -2066,9 +2172,9 @@ async function undo() {
   if (!flow || flow.busy || !flow.hist.length) return;
   const h = flow.hist.pop();
   flow.inter = null;
-  await undoView(h.ev);
+  if (h.ev) await undoView(h.ev);
   if (h.appended) flow.queue.pop();
-  flow.times.pop();
+  if (h.ev) flow.times.pop();
   flow.idx = h.idx; flow.face = 'q'; flow.done = false; flow.cardT0 = Date.now();
   drawCard(); updateFlowChrome();
 }
