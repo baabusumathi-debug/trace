@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="446.996pt" height="439.633pt" viewBox="0 0 446.996 439.633" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 439.633 
+L 446.996 439.633 
+L 446.996 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.995 79.458 
+L 193.516 79.458 
+Q 199.375 79.458 199.375 73.496 
+L 199.375 28.182 
+Q 199.375 22.219 193.516 22.219 
+L 23.995 22.219 
+Q 18.136 22.219 18.136 28.182 
+L 18.136 73.496 
+Q 18.136 79.458 23.995 79.458 
+z
+" clip-path="url(#p8fd4ea37a5)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 23.995 158.957 
+L 193.516 158.957 
+Q 199.375 158.957 199.375 152.995 
+L 199.375 107.680 
+Q 199.375 101.718 193.516 101.718 
+L 23.995 101.718 
+Q 18.136 101.718 18.136 107.680 
+L 18.136 152.995 
+Q 18.136 158.957 23.995 158.957 
+z
+" clip-path="url(#p8fd4ea37a5)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 23.995 238.456 
+L 193.516 238.456 
+Q 199.375 238.456 199.375 232.494 
+L 199.375 187.179 
+Q 199.375 181.217 193.516 181.217 
+L 23.995 181.217 
+Q 18.136 181.217 18.136 187.179 
+L 18.136 232.494 
+Q 18.136 238.456 23.995 238.456 
+z
+" clip-path="url(#p8fd4ea37a5)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 23.995 317.955 
+L 193.516 317.955 
+Q 199.375 317.955 199.375 311.993 
+L 199.375 266.678 
+Q 199.375 260.716 193.516 260.716 
+L 23.995 260.716 
+Q 18.136 260.716 18.136 266.678 
+L 18.136 311.993 
+Q 18.136 317.955 23.995 317.955 
+z
+" clip-path="url(#p8fd4ea37a5)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 23.995 397.454 
+L 193.516 397.454 
+Q 199.375 397.454 199.375 391.491 
+L 199.375 346.177 
+Q 199.375 340.215 193.516 340.215 
+L 23.995 340.215 
+Q 18.136 340.215 18.136 346.177 
+L 18.136 391.491 
+Q 18.136 397.454 23.995 397.454 
+z
+" clip-path="url(#p8fd4ea37a5)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 13px; font-family: 'Inter'; text-anchor: middle; fill: #152126" x="108.756" y="55.568" transform="rotate(-0 108.756 55.568)">Brain: the drive to breathe</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: 'Inter'; text-anchor: middle; fill: #152126" x="108.756" y="135.067" transform="rotate(-0 108.756 135.067)">Phrenic nerve</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(58.000 206.701)">Diaphragm fires:</text>
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(36.097 222.430)">electrical activity (EAdi)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(53.950 286.200)">Muscle contracts:</text>
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(45.371 301.929)">airway pressure falls</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(72.913 365.698)">Gas moves:</text>
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(58.224 381.428)">flow and volume</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 108.756 81.461 
+Q 108.756 90.588 108.756 97.703 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 110.756 93.703 
+L 108.756 97.703 
+L 106.756 93.703 
+z
+" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 108.756 160.960 
+Q 108.756 170.087 108.756 177.201 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 110.756 173.201 
+L 108.756 177.201 
+L 106.756 173.201 
+z
+" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 108.756 240.459 
+Q 108.756 249.586 108.756 256.700 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 110.756 252.700 
+L 108.756 256.700 
+L 106.756 252.700 
+z
+" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 108.756 319.958 
+Q 108.756 329.085 108.756 336.199 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 110.756 332.199 
+L 108.756 336.199 
+L 106.756 332.199 
+z
+" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 221.932 209.836 
+Q 213.214 209.836 206.509 209.836 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 211.709 212.436 
+L 206.509 209.836 
+L 211.709 207.236 
+z
+" style="fill: #b5452f; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Inter'; fill: #b5452f" transform="translate(225.936 206.701)">NAVA reads the command</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Inter'; fill: #b5452f" transform="translate(225.936 222.430)">(leaks, auto-PEEP: no effect)</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 221.937 289.335 
+Q 213.217 289.335 206.510 289.335 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 211.710 291.935 
+L 206.510 289.335 
+L 211.710 286.735 
+z
+" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #5b6b71" transform="translate(225.936 286.200)">Pressure support: senses pressure</text>
+    <text style="font-size: 13px; font-family: 'Inter'; fill: #5b6b71" transform="translate(225.936 301.929)">or flow, then a fixed pressure</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 221.932 368.834 
+Q 213.214 368.834 206.509 368.834 
+" style="fill: none; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 211.709 371.434 
+L 206.509 368.834 
+L 211.709 366.234 
+z
+" style="fill: #152126; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(225.936 365.698)">PAV reads the result</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Inter'; fill: #152126" transform="translate(225.936 381.428)">(needs R and C right)</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 13px; font-family: 'Inter'; text-anchor: start; fill: #5b6b71" x="18.918" y="19.793" transform="rotate(-0 18.918 19.793)">Earlier in the chain = sooner and truer signal</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8fd4ea37a5">
+   <rect x="7.2" y="11.089" width="390.6" height="421.344"/>
+  </clipPath>
+ </defs>
+</svg>

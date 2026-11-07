@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-112 — 2026-11-08 — Claude — test — 1.3.82
+- Package **P4.20261108.6** (writer chat): lessons for all 49 P4 questions (G3–G9 and EV added; 330 lessons). Figures added: `P4_G3_aprv_release`, `P4_G5_eit_crossing`, `P4_G6_lus_grades`, `P4_G6_diaphragm_mmode`, `P4_G7_signal_chain`, `P4_G9_wind_clock`; card figure `card_RESP02B_COPD-17.png`. Checker clean. Voice for the 37 new questions made overnight 8 Nov (2,065 clips).
+
 ## T-111 — 2026-11-08 — Claude — test — 1.3.81
 - **Fix: lesson index entries lost during long runs.** Two calls saving the index at once could drop each other's entries (Drive hands a stale copy); `voiceReindex` restores them from the clips' own files but ran only at the end, and an app update cut the G1+G2 run short (269 made clips looked missing). It now also runs every 6 calls.
 
