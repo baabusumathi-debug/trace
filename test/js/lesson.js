@@ -122,7 +122,7 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
     onStep && onStep({ done, total: want.length, failed });
     const groups = [];
     for (let i = 0; i < want.length;) { const pr = want[i].prompt, part = []; while (i < want.length && part.length < 4 && want[i].prompt === pr) part.push(want[i++]); groups.push({ pr, part }); }
-    // three calls at a time (the bridge holds its lock only to save the index)
+    // two calls at a time (the bridge holds its lock only to save the index; it waits and retries on Gemini's rate limit)
     const worker = async () => {
       while (groups.length && !stopAll) {
         const { pr, part } = groups.shift();
@@ -135,7 +135,7 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
         if (r.failed.some(f => /limit|40[13]/.test(f.error))) stopAll = true;
       }
     };
-    await Promise.all([worker(), worker(), worker()]);
+    await Promise.all([worker(), worker()]);         // two: Gemini-TTS allows about 10 requests a minute
     try { await call({ op: 'voiceReindex', deck }); } catch (e) { /* the next run puts them back */ }
     await deckIndex(deck, true);
     return { done, total: want.length, failed, error: lastErr };

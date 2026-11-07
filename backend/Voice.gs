@@ -52,6 +52,13 @@ function synthOpenAI_(text, voice, prompt) {
 }
 function synth_(text, voice, prompt) {
   if (/^oa-/.test(voice)) return synthOpenAI_(text, voice.slice(3), prompt);
+  // Gemini-TTS allows about 10 requests a minute per project: on a 429, wait and try again (up to 4 times)
+  for (var a = 0; ; a++) {
+    try { return synthGemini_(text, voice, prompt); }
+    catch (e) { if (a < 4 && / 429:/.test(String(e))) { Utilities.sleep(15000 * (a + 1)); continue; } throw e; }
+  }
+}
+function synthGemini_(text, voice, prompt) {
   var res = UrlFetchApp.fetch('https://texttospeech.googleapis.com/v1/text:synthesize', {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
     headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken(), 'x-goog-user-project': VOICE_PROJECT },

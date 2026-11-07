@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-106 — 2026-11-07 — Claude — test — 1.3.76 · bridge (Apps Script version 12)
+- **Fix: Gemini rate limit.** Making lessons three calls at a time hit Gemini-TTS's limit of about 10 requests a minute per project (429). The bridge now waits and retries (15, 30, 45, 60 s); the app sends two calls at a time. Clip entries are also kept on each MP3's file description, and `voiceReindex` restores any entry a parallel save overwrote.
+
 ## T-105 — 2026-11-07 — Claude — test — 1.3.75 · bridge (Apps Script version 10)
 - **Lesson voice pace** (Naven, 7 Nov: "a gap between every word, even at 1.7×"): the style note asked for "unhurried, measured… enunciate every word", and Gemini read word by word at about half normal speed. New note: natural conversational pace, words in smooth connected phrases, clear but not over-articulated; takeaways "a touch slower" with gentle emphasis. Lesson version `L2`, so every lesson clip is made again.
 - **Faster making:** the bridge now holds its lock only to save the index (speech and timings run outside it), and the app sends three calls at a time.
