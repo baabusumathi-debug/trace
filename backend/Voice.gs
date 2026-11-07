@@ -162,3 +162,10 @@ function makeSamples() {
   var out = ['oa-cedar', 'oa-onyx'].map(function (name) { return name + ': ' + JSON.stringify(voice_({ deck: '_samples', voice: name, prompt: VOICE_PROMPT_CALM, items: [{ k: 'dp-' + name.toLowerCase() + '-calm', t: t.replace(/PEEP/g, 'peep').replace(/ARDS/g, 'A R D S'), h: 'calm1' }] })); });
   Logger.log(out.join('\n'));
 }
+
+/** Run from the editor (Run › testAlign): word timings for the Iapetus sample, logged. */
+function testAlign() {
+  var r = voiceAlign_({ deck: '_samples', keys: ['dp-iapetus-us'] });
+  var e = voiceIndex_({ deck: '_samples' })['dp-iapetus-us'];
+  Logger.log(JSON.stringify(r) + '\n' + (e && e.tid ? DriveApp.getFileById(e.tid).getBlob().getDataAsString().slice(0, 600) : 'no timings'));
+}
