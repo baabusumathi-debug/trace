@@ -7,8 +7,9 @@ import { call, batch } from './api.js';
 import { splitQ, plain } from './md.js';
 
 export const VOICE = 'Iapetus';
-export const PROMPT = 'Read this as a sharp, confident Indian-English critical care consultant revising high-yield points with a resident. Brisk revision pace, clear and crisp, short pauses only at full stops. Say PEEP as the word peep and ARDS as A R D S.';
-const PV = 'p1';                     // bump when PROMPT or the pronunciation list changes, so clips are made again
+export const PROMPT = 'Read this as a sharp, confident Indian-English critical care consultant revising high-yield points with a resident. Brisk revision pace, clear and crisp, short pauses only at full stops.';
+// The style note above must never carry text to be spoken: Gemini sometimes reads it out. Pronunciation lives in SAY.
+const PV = 'p2';                     // bump when PROMPT or the pronunciation list changes, so clips are made again
 export const voiceOn = () => !IS_HT;
 
 /* ---------- pronunciation: symbols and abbreviations the voice would misread ---------- */
@@ -20,7 +21,7 @@ const SAY = [
   [/µg\/kg\/h/g, 'micrograms per kilogram per hour'], [/µg\/kg\/min/g, 'micrograms per kilogram per minute'], [/mg\/kg\/h/g, 'milligrams per kilogram per hour'],
   [/mg\/kg/g, 'milligrams per kilogram'], [/\bmin\b/g, 'minutes'], [/\bPplat\b/g, 'P plat'], [/\bPIP\b/g, 'P I P'], [/\bPpeak\b/g, 'P peak'],
   [/mg\/dL/g, 'milligrams per decilitre'], [/mmol\/L/g, 'millimoles per litre'], [/J\/min/g, 'joules per minute'], [/L\/min/g, 'litres per minute'], [/L\/s\b/g, 'litres per second'],
-  [/\bPBW\b/g, 'predicted body weight'], [/\bP\/F\b/g, 'P to F ratio'], [/\bS\/F\b/g, 'S to F ratio'], [/\bI:E\b/g, 'I to E ratio'],
+  [/\bPEEP\b/g, 'peep'], [/\bARDS\b/g, 'A R D S'], [/\bPBW\b/g, 'predicted body weight'], [/\bP\/F\b/g, 'P to F ratio'], [/\bS\/F\b/g, 'S to F ratio'], [/\bI:E\b/g, 'I to E ratio'],
   [/FiO₂|FiO2/g, 'F I O 2'], [/SpO₂|SpO2/g, 'S P O 2'], [/PaO₂|PaO2/g, 'P A O 2'], [/PaCO₂|PaCO2/g, 'P A C O 2'], [/EtCO₂|EtCO2/g, 'end-tidal C O 2'], [/CO₂|CO2/g, 'C O 2'], [/O₂/g, 'oxygen'],
   [/\bΔP\b|ΔP/g, 'driving pressure'], [/\bVt\b|\bVT\b/g, 'tidal volume'], [/\bRR\b/g, 'respiratory rate'], [/\bHFNO\b|\bHFNC\b/g, 'high-flow nasal oxygen'],
   [/\bNIV\b/g, 'N I V'], [/\bSBT\b/g, 'S B T'], [/\bRSBI\b/g, 'R S B I'], [/\bVILI\b/g, 'villi'], [/\bP-SILI\b/g, 'P sili'], [/\bECMO\b/g, 'eck-mo'], [/\bVV-ECMO\b/g, 'V V eck-mo'],
@@ -44,7 +45,7 @@ const endLetter = l => (String(l).match(/\*\*([a-h])\*\*\s*$/) || [])[1] || '';
 const isTable = l => / \| /.test(l) && !/\|\s*\*\*[a-h]\*\*\s*$/.test(l), startsPart = l => /^\s*([-•]\s|\(?[a-h]\)?\s|\d+[.)]\s|\*\*[^*]+\*\*\s*$)/.test(l) || isTable(l);
 const row = l => { const c = l.split('|').map(x => x.trim()).filter(Boolean); return c.length > 1 ? c[0] + ': ' + c.slice(1).join(', ') : c.join(''); };
 // [{ k, label, t }]: k = part key used for the file name, label = what the ▶ chip shows, t = text to speak
-export function partsOf(c) {
+export function partsOf(c, extra) {
   if (!c) return [];
   const out = [], code = String(c.code).replace(/[^\w.\-]/g, '_');
   const { head, rest } = splitQ(c.q || '');
@@ -63,7 +64,7 @@ export function partsOf(c) {
   groups.forEach((g, i) => out.push({ k: code + '.a' + (i + 1), label: g.letter || String(i + 1), t: g.t }));
   if (c.why) out.push({ k: code + '.why', label: 'Why', t: c.why.replace(/^\s*\*\*WHY\*\*\s*/i, '') });
   if (c.watch) out.push({ k: code + '.watch', label: 'Watch', t: c.watch.replace(/^\s*\*\*WATCH\*\*\s*/i, '') });
-  return out.map(p => ({ ...p, t: speakable(p.t) })).filter(p => p.t.length > 1);
+  return out.concat(extra || []).map(p => ({ ...p, t: speakable(p.t) })).filter(p => p.t.length > 1);
 }
 const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0; return h.toString(36); };
 export const hOf = p => hash(PV + '|' + VOICE + '|' + p.t);
@@ -81,9 +82,15 @@ export async function deckIndex(deck, fresh) {
 export const hasClip = (deck, p) => { const e = idx[deck] && idx[deck][p.k]; return !!(e && e.h === hOf(p) && e.voice === VOICE); };
 
 /* ---------- making a deck's audio (bridge, in small batches) ---------- */
+let making = '';
+export const makingDeck = () => making;
+// cards = [{ c, extra }] (extra = the card's explanation points)
 export async function makeDeck(deck, cards, onStep) {
+  if (making) return { done: 0, total: 0, failed: 0, error: 'already making ' + making };
+  making = deck;
+  try {
   await deckIndex(deck, true);
-  const want = cards.flatMap(c => partsOf(c)).filter(p => !hasClip(deck, p));
+  const want = cards.flatMap(x => partsOf(x.c, x.extra)).filter(p => !hasClip(deck, p));
   let done = 0, failed = 0, lastErr = '';
   onStep && onStep({ done, total: want.length, failed });
   for (let i = 0; i < want.length; i += 6) {
@@ -98,6 +105,7 @@ export async function makeDeck(deck, cards, onStep) {
   }
   await deckIndex(deck, true);
   return { done, total: want.length, failed, error: lastErr };
+  } finally { making = ''; }
 }
 
 /* ---------- playback ---------- */

@@ -14,7 +14,7 @@ import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml,
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
-import { voiceOn, partsOf, deckIndex, hasClip, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed } from './voice.js';
+import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -575,13 +575,14 @@ async function vDeckBox(code, cards) {
   const box = document.getElementById('vdeck'); if (!box) return;
   const s = box.querySelector('.vd-s'), b = box.querySelector('[data-vmake]');
   await deckIndex(code);
-  const parts = cards.flatMap(c => partsOf(c)), have = parts.filter(p => hasClip(code, p)).length;
+  const parts = cards.flatMap(c => partsOf(c, xParts(c))), have = parts.filter(p => hasClip(code, p)).length;
   if (!box.isConnected) return;
   s.textContent = have === parts.length ? `All ${parts.length} points have their voice.` : `${have} of ${parts.length} points have their voice.`;
   b.hidden = have === parts.length;
+  if (makingDeck()) { b.disabled = true; b.textContent = 'Making ' + makingDeck() + '…'; }
   b.onclick = async () => {
     b.disabled = true; b.textContent = 'Making…';
-    const r = await makeDeck(code, cards, st => { if (s.isConnected) s.textContent = `Making ${st.done} of ${st.total}…${st.used != null ? ` · this month ${Math.round(st.used / 60)} of ${Math.round(st.limit / 60)} min` : ''}`; });
+    const r = await makeDeck(code, cards.map(c => ({ c, extra: xParts(c) })), st => { if (s.isConnected) s.textContent = `Making ${st.done} of ${st.total}…${st.used != null ? ` · this month ${Math.round(st.used / 60)} of ${Math.round(st.limit / 60)} min` : ''}`; });
     if (!box.isConnected) return;
     b.disabled = false; b.textContent = 'Make voice';
     if (r.error) toast('Voice stopped: ' + r.error);
@@ -2020,14 +2021,35 @@ function drawCard() {
   }
 }
 /* ---------- T-099 card voice: Listen (the whole side) and ▶ for each point; speed − / + ---------- */
+// the explanation points of a card: NEET (intro, part by part, punchline) and Viva (intro, part by part, picture caption)
+function xParts(c, only) {
+  const code = String(c.code).replace(/[^\w.\-]/g, '_'), out = [];
+  const x = xOf(c), vx = vivaX(c);
+  if ((!only || only === 'neet') && x && x.v === 2) {
+    if (x.intro) out.push({ k: code + '.n0', label: 'Intro', t: x.intro, side: 'neet' });
+    (x.why || []).forEach(([l, t], i) => out.push({ k: code + '.n' + (i + 1), label: l || String(i + 1), t, side: 'neet' }));
+    if (x.punch) out.push({ k: code + '.np', label: 'Punch', t: x.punch, side: 'neet' });
+  }
+  if ((!only || only === 'viva') && vx) {
+    const v = vx.x;
+    if (v.intro) out.push({ k: code + '.v0', label: 'Intro', t: v.intro, side: 'viva' });
+    (v.why || []).forEach(([l, t], i) => out.push({ k: code + '.v' + (i + 1), label: l || String(i + 1), t, side: 'viva' }));
+    if (v.cap) out.push({ k: code + '.vc', label: 'Pic', t: v.cap, side: 'viva' });
+  }
+  return out;
+}
 function mountVoice(el, c, isQ) {
+  if (!isQ) { const xp = el.querySelector('.xp-pane .xp-body'); if (xp) { const tab = xp.closest('.xp.vx') ? 'viva' : 'neet'; const xs = partsOf({ code: c.code, q: '' }, xParts(c, tab)).filter(p => p.k.split('.').pop() !== 'q'); if (xs.length) voiceStrip(c, xs, xp, 'prepend', 'explanation'); } }
   const all = partsOf(c), show = isQ ? all.filter(p => p.label === 'Q') : all;
   if (!show.length) return;
   const host = isQ ? el.querySelector('.c-q .zw') : el.querySelector('.c-a .ans');
   if (!host) return;
+  voiceStrip(c, show, host, isQ ? 'append' : 'after', isQ ? 'question' : 'answer', isQ);
+}
+function voiceStrip(c, show, host, where, what, noChips) {
   const strip = document.createElement('div'); strip.className = 'vstrip';
-  strip.innerHTML = `<button class="vlisten mono" data-vall aria-label="Listen to this ${isQ ? 'question' : 'answer'}">▶ Listen</button>${isQ ? '' : show.map(p => `<button class="vp mono" data-vk="${esc(p.k)}" aria-label="Play point ${esc(p.label)}">${esc(p.label)}</button>`).join('')}<span class="vspd mono"><button data-vs="-1" aria-label="Slower">−</button><b>${vSpeed().toFixed(1)}×</b><button data-vs="1" aria-label="Faster">+</button></span><span class="vmsg mono muted"></span>`;
-  if (isQ) host.appendChild(strip); else host.insertAdjacentElement('afterend', strip);
+  strip.innerHTML = `<button class="vlisten mono" data-vall aria-label="Listen to this ${what}">▶ Listen</button>${noChips ? '' : show.map(p => `<button class="vp mono" data-vk="${esc(p.k)}" aria-label="Play point ${esc(p.label)}">${esc(p.label)}</button>`).join('')}<span class="vspd mono"><button data-vs="-1" aria-label="Slower">−</button><b>${vSpeed().toFixed(1)}×</b><button data-vs="1" aria-label="Faster">+</button></span><span class="vmsg mono muted"></span>`;
+  if (where === 'append') host.appendChild(strip); else if (where === 'prepend') host.prepend(strip); else host.insertAdjacentElement('afterend', strip);
   ['pointerdown', 'click'].forEach(t => strip.addEventListener(t, e => e.stopPropagation()));
   const mark = k => strip.querySelectorAll('[data-vk]').forEach(b => b.classList.toggle('on', b.dataset.vk === k));
   const lis = strip.querySelector('[data-vall]');
