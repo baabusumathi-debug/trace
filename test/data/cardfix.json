@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "8c934a9b23",
+ "note": "Card text corrections (7–8 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
+ "version": "35414172c0",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -439,6 +439,13 @@
    },
    "src": "Standard teaching on HFV in bronchopleural fistula",
    "date": "7 Nov 2026"
+  },
+  "RESP01C|ARDS-42": {
+   "fields": {
+    "watch": "What DOES reduce mortality: low tidal volume and prone positioning.\nThe one drug exception is **early corticosteroids**: dexamethasone\nlowered mortality in DEXA-ARDS (2020) and in COVID-19 (RECOVERY),\nand early steroids are now conditionally recommended (ATS 2024,\nSCCM 2024). No other drug has consistently reduced mortality.\nOlder grade tables (Harrison) still rate steroids D."
+   },
+   "src": "Villar J et al., Lancet Respir Med 2020 (DEXA-ARDS); Qadir N et al., ATS guideline, AJRCCM 2024; Chaudhuri D et al., SCCM guideline, Crit Care Med 2024",
+   "date": "8 Nov 2026"
   }
  }
 }

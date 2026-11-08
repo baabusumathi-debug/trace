@@ -2,16 +2,16 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: T-099 (card voice in test: making the first deck's audio)
+In progress: none
 
-## State (as of entry T-099)
+## State (as of entry T-114)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
 | Item | Value |
 |---|---|
-| Live app (repo root) | **1.4.16** · promoted from test 1.3.66 on 7 Nov (T-094: checked card-text corrections, `data/cardfix.json`); earlier 1.4.15 from test 1.3.65 on 6 Nov (T-092: primer/story always on the card, pen tools on them, question-side marks fix); earlier 1.4.14 from test 1.3.63 (T-089: Explain v3, RESP01A, audited Toxicology); earlier 1.4.13 from test 1.3.61 (T-087: room fixes, Move to card, Plan undo kept, intent suggestions); earlier 1.4.12 from test 1.3.59 (T-085: Explain v2 and card corrections for all 7 Toxicology decks); earlier 1.4.11 from test 1.3.57 (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
-| Test build (`test/`) | **1.3.70** · T-100 voice on the explanations · T-099 card voice (Listen, ▶ per point, speed) · T-096 viva on Naven's profile only · T-095 viva layer (P4) and 12 more card-text corrections (60 cards in `data/cardfix.json`). Carries the 7 Toxicology decks, RESP01A, the corrected decks and the P4 decks (`CONFIG.onlyDecks`, 57 decks). Live is 1.4.17 (= test 1.3.68). |
+| Live app (repo root) | **1.4.18** · promoted from test 1.3.83 on 8 Nov (T-114: RESP01B/C Explain, ARDS-42 correction, viva P4 narrated lessons, card voice); earlier 1.4.17 from test 1.3.68 on 7 Nov; earlier 1.4.16 from test 1.3.66 on 7 Nov (T-094: checked card-text corrections, `data/cardfix.json`); earlier 1.4.15 from test 1.3.65 on 6 Nov (T-092: primer/story always on the card, pen tools on them, question-side marks fix); earlier 1.4.14 from test 1.3.63 (T-089: Explain v3, RESP01A, audited Toxicology); earlier 1.4.13 from test 1.3.61 (T-087: room fixes, Move to card, Plan undo kept, intent suggestions); earlier 1.4.12 from test 1.3.59 (T-085: Explain v2 and card corrections for all 7 Toxicology decks); earlier 1.4.11 from test 1.3.57 (T-082: Explain v2 for TOX01, flow v3 layout, ink on Explain, Ask Claude, flexible Plan with undo); earlier 1.4.10 from test 1.3.44 on 4 Nov (T-068: ink on cards, folded Top-up boxes; earlier T-056; earlier T-054, earlier T-051, T-047, T-040, first T-026): The Plan, Pick mode, Flow thread, re-laid Loft; palace home, meditation, visual decks, QBank/GT layer, Top-ups, Flow desk, save/discard on leaving a flow, new Loft, Going out / breaks. Same code as `test/` except the version and the title. |
+| Test build (`test/`) | **1.3.83** · T-113 ARDS-42 correction, P4 voice checked · T-101–T-112 narrated viva lessons (P4, 49 questions) and RESP01B/C Explain · T-100 voice on the explanations · T-099 card voice (Listen, ▶ per point, speed) · T-096 viva on Naven's profile only · T-095 viva layer (P4) and 12 more card-text corrections (60 cards in `data/cardfix.json`). Carries the 7 Toxicology decks, RESP01A, the corrected decks and the P4 decks (`CONFIG.onlyDecks`, 57 decks). Live is 1.4.18 (= test 1.3.83). |
 | Bridge (Apps Script) | **v5** deployed by Naven on 3 Nov (calendar reminders, T-041/T-042) · before that **v4** deployed by Naven on 1 Nov; adds `notifyJournal`, off by default via `JOURNAL_ENABLED`. A lost `readBinary` routing line was restored the same day and redeployed (Naven calls it "v4.1"). Repo source: `backend/Code.gs` (no secrets). |
 | Guidance | `AGENTS.md` guidance version **6** · `docs/visual-deck-contract.md` contract version **3.1** (schema unchanged from 3) |
 | Visual decks | **GI02B v2** is published by ChatGPT (53 scenes) and was accepted in Naven's Chrome on test 1.3.6 on 1 Nov. Bridge `readBinary` routing was restored by Naven, who deployed it as "v4.1". **Offline acceptance is still outstanding.** GI01A is being prepared by ChatGPT. |
@@ -21,6 +21,15 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-114 — 2026-11-08 — Claude — live — 1.4.18
+- Promoted test 1.3.83 to live on Naven's instruction (8 Nov: "Yes fr both"). Same copy rules as T-082 (every file in `test/` except `index.html` and `manifest.webmanifest`); `CONFIG.onlyDecks` stays `null` on live.
+- Live gains T-095 to T-113: NEET Explain for RESP01B and RESP01C (HT starts respiratory), the RESP01C ARDS-42 correction, the viva layer with P4 narrated lessons (read-along, player bar, Autoplay / Tap to play), card voice (Listen, speed) and the Make voice double tap. Voice and viva stay on Naven's profile only.
+- Checked before release (demo, live path): modules load, version 1.4.18, `onlyDecks` null, no page errors.
+
+## T-113 — 2026-11-08 — Claude — test — 1.3.83
+- **Correction: RESP01C ARDS-42** (Naven, 8 Nov: yes to the correction). `data/cardfix.json` replaces the card's Watch line: early corticosteroids are the one drug exception (DEXA-ARDS, RECOVERY; conditionally recommended by ATS 2024 and SCCM 2024); older grade tables still rate steroids D. Sources on the card. 61 cards in the layer.
+- **P4 lesson voice checked.** All 2,727 clips scanned against their scripts with the Whisper word timings. 72 had an audible fault (style instruction read aloud inside the played part, a repeated sentence, or the script not followed) and were remade; 2 key-point clips (P4-009 s2, P4-012 s5) kept reading the instruction and were remade with a shorter key-point instruction. Clips whose extra speech sits before or after the line are trimmed by the app and were left.
 
 ## T-112 — 2026-11-08 — Claude — test — 1.3.82
 - Package **P4.20261108.6** (writer chat): lessons for all 49 P4 questions (G3–G9 and EV added; 330 lessons). Figures added: `P4_G3_aprv_release`, `P4_G5_eit_crossing`, `P4_G6_lus_grades`, `P4_G6_diaphragm_mmode`, `P4_G7_signal_chain`, `P4_G9_wind_clock`; card figure `card_RESP02B_COPD-17.png`. Checker clean. Voice for the 37 new questions made overnight 8 Nov (2,065 clips).

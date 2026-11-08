@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="703.291pt" height="295.2pt" viewBox="0 0 703.291 295.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 295.2 
+L 703.291 295.2 
+L 703.291 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.719 269.480 
+L 350.751 269.480 
+L 350.751 26.762 
+L 25.719 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 25.719 269.480 
+L 350.751 269.480 
+L 350.751 32.156 
+L 25.719 32.156 
+z
+" clip-path="url(#p378a5d299b)" style="fill: #e8eef0; stroke: #e8eef0; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="188.235" y="285.105" transform="rotate(-0 188.235 285.105)">time  (M-mode, quiet breathing)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_2">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="18.825" y="148.121" transform="rotate(-90 18.825 148.121)">dome movement</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 25.719 204.755 
+L 34.944 177.571 
+L 40.370 162.291 
+L 44.711 150.736 
+L 48.509 141.257 
+L 51.765 133.683 
+L 55.021 126.683 
+L 57.734 121.330 
+L 60.447 116.445 
+L 63.160 112.055 
+L 65.331 108.917 
+L 67.501 106.123 
+L 69.672 103.683 
+L 71.842 101.606 
+L 74.013 99.899 
+L 75.640 98.867 
+L 77.268 98.048 
+L 78.896 97.444 
+L 80.524 97.058 
+L 82.152 96.889 
+L 83.780 96.968 
+L 85.408 97.376 
+L 87.036 98.115 
+L 88.663 99.180 
+L 90.291 100.564 
+L 91.919 102.259 
+L 93.547 104.255 
+L 95.175 106.538 
+L 97.345 110.006 
+L 99.516 113.923 
+L 102.229 119.384 
+L 104.942 125.384 
+L 108.198 133.151 
+L 112.539 144.152 
+L 122.306 169.217 
+L 125.562 176.935 
+L 128.275 182.881 
+L 130.988 188.276 
+L 133.159 192.134 
+L 135.329 195.537 
+L 137.500 198.449 
+L 139.128 200.290 
+L 140.755 201.826 
+L 142.383 203.046 
+L 144.011 203.943 
+L 145.639 204.512 
+L 147.267 204.748 
+L 155.949 204.755 
+L 187.964 204.755 
+L 188.506 203.947 
+L 197.731 176.790 
+L 202.615 163.035 
+L 206.956 151.437 
+L 210.754 141.912 
+L 214.010 134.293 
+L 217.265 127.243 
+L 219.979 121.845 
+L 222.692 116.912 
+L 225.405 112.471 
+L 227.575 109.290 
+L 229.746 106.453 
+L 231.916 103.968 
+L 234.087 101.845 
+L 236.257 100.092 
+L 237.885 99.024 
+L 239.513 98.169 
+L 241.141 97.530 
+L 242.769 97.107 
+L 244.397 96.902 
+L 246.024 96.933 
+L 247.652 97.285 
+L 249.280 97.969 
+L 250.908 98.980 
+L 252.536 100.312 
+L 254.164 101.956 
+L 255.792 103.902 
+L 257.420 106.138 
+L 259.590 109.547 
+L 261.761 113.410 
+L 263.931 117.684 
+L 266.644 123.533 
+L 269.900 131.161 
+L 273.698 140.660 
+L 286.721 173.787 
+L 289.977 181.150 
+L 292.690 186.721 
+L 294.861 190.738 
+L 297.031 194.316 
+L 299.202 197.417 
+L 300.830 199.407 
+L 302.457 201.097 
+L 304.085 202.476 
+L 305.713 203.535 
+L 307.341 204.269 
+L 308.969 204.671 
+L 310.597 204.755 
+L 350.751 204.755 
+L 350.751 204.755 
+" clip-path="url(#p378a5d299b)" style="fill: none; stroke: #152126; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 36.553 204.755 
+L 155.732 204.755 
+" clip-path="url(#p378a5d299b)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5b6b71"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 58.222 96.881 
+L 112.394 96.881 
+" clip-path="url(#p378a5d299b)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5b6b71"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 25.719 269.480 
+L 25.719 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 25.719 269.480 
+L 350.751 269.480 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 82.600 200.744 
+Q 82.600 150.819 82.600 100.893 
+" style="fill: none; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 84.600 196.744 
+L 82.600 200.744 
+L 80.600 196.744 
+" style="fill: none; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 80.600 104.893 
+L 82.600 100.893 
+L 84.600 104.893 
+" style="fill: none; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #152126" x="120.520" y="155.183" transform="rotate(-0 120.520 155.183)">excursion</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #5b6b71" x="33.845" y="51.573" transform="rotate(-0 33.845 51.573)">inspiration moves the dome toward the probe</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="188.235" y="20.762" transform="rotate(-0 188.235 20.762)">Strong diaphragm</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 371.059 269.480 
+L 696.091 269.480 
+L 696.091 26.762 
+L 371.059 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 371.059 269.480 
+L 696.091 269.480 
+L 696.091 32.156 
+L 371.059 32.156 
+z
+" clip-path="url(#pe3dad3c5c1)" style="fill: #e8eef0; stroke: #e8eef0; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="text_6">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="533.575" y="285.105" transform="rotate(-0 533.575 285.105)">time  (M-mode, quiet breathing)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_4">
+    <path d="M 371.059 204.755 
+L 381.912 195.201 
+L 387.881 190.257 
+L 392.764 186.498 
+L 397.105 183.434 
+L 400.904 181.002 
+L 404.702 178.831 
+L 407.958 177.196 
+L 411.213 175.784 
+L 414.469 174.606 
+L 417.725 173.672 
+L 420.981 172.989 
+L 424.236 172.562 
+L 427.492 172.395 
+L 430.205 172.490 
+L 432.918 172.859 
+L 435.632 173.498 
+L 438.345 174.396 
+L 441.058 175.537 
+L 443.771 176.902 
+L 447.027 178.802 
+L 450.825 181.321 
+L 455.166 184.492 
+L 463.305 190.805 
+L 468.732 194.884 
+L 472.530 197.498 
+L 475.786 199.502 
+L 479.041 201.237 
+L 481.755 202.446 
+L 484.468 203.416 
+L 487.181 204.131 
+L 489.894 204.579 
+L 492.607 204.753 
+L 520.824 204.755 
+L 533.304 204.755 
+L 533.847 204.513 
+L 544.156 195.433 
+L 550.125 190.474 
+L 555.009 186.699 
+L 559.350 183.617 
+L 563.148 181.167 
+L 566.947 178.977 
+L 570.745 177.070 
+L 574.001 175.677 
+L 577.256 174.519 
+L 580.512 173.605 
+L 583.768 172.943 
+L 587.024 172.538 
+L 590.279 172.393 
+L 592.993 172.514 
+L 595.706 172.911 
+L 598.419 173.576 
+L 601.132 174.499 
+L 603.845 175.664 
+L 606.558 177.050 
+L 609.814 178.972 
+L 613.612 181.511 
+L 617.953 184.698 
+L 634.232 196.960 
+L 637.488 199.025 
+L 640.744 200.831 
+L 643.457 202.107 
+L 646.170 203.151 
+L 648.883 203.944 
+L 651.596 204.474 
+L 654.309 204.730 
+L 658.108 204.755 
+L 696.091 204.755 
+L 696.091 204.755 
+" clip-path="url(#pe3dad3c5c1)" style="fill: none; stroke: #b5452f; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 381.894 204.755 
+L 501.072 204.755 
+" clip-path="url(#pe3dad3c5c1)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5b6b71"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 403.562 172.393 
+L 457.734 172.393 
+" clip-path="url(#pe3dad3c5c1)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5b6b71"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 371.059 269.480 
+L 371.059 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 371.059 269.480 
+L 696.091 269.480 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 427.940 200.740 
+Q 427.940 188.571 427.940 176.403 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 429.940 196.740 
+L 427.940 200.740 
+L 425.940 196.740 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 425.940 180.403 
+L 427.940 176.403 
+L 429.940 180.403 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #b5452f" x="465.860" y="163.813" transform="rotate(-0 465.860 163.813)">excursion</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #5b6b71" x="379.185" y="51.573" transform="rotate(-0 379.185 51.573)">inspiration moves the dome toward the probe</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="533.575" y="20.762" transform="rotate(-0 533.575 20.762)">Weak: excursion &lt;10 mm</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p378a5d299b">
+   <rect x="25.719" y="26.762" width="325.031" height="242.717"/>
+  </clipPath>
+  <clipPath id="pe3dad3c5c1">
+   <rect x="371.059" y="26.762" width="325.031" height="242.717"/>
+  </clipPath>
+ </defs>
+</svg>

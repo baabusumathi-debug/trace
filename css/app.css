@@ -1593,3 +1593,58 @@ details.xp-before:not([open]){padding:6px 12px}
 .vm.vm-fluent{background:#1d5a52;color:#fff}.vm.vm-patchy{background:#8a6516;color:#fff}.vm.vm-blank{background:#8f3220;color:#fff}
 .vp-tally{margin:0;color:var(--muted)}
 .vivap .warn{color:#e0b860;margin:0}
+
+/* ---------- T-099 card voice ---------- */
+.vstrip{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0 4px;padding-top:8px;border-top:1px dashed #d9d0bc}
+.vstrip button{border:1px solid #cfc6b0;background:#fff;color:#2b2b2f;border-radius:14px;font-size:11.5px;padding:4px 10px;min-width:30px;cursor:pointer}
+.vstrip .vlisten{background:#2b2b2f;color:#fff;border-color:#2b2b2f;font-weight:600}
+.vstrip .vlisten.on{background:#1f3566;border-color:#1f3566}
+.vstrip .vp.on{background:#1f3566;color:#fff;border-color:#1f3566}
+.vstrip .vp.none{opacity:.4}
+.vstrip .vspd{display:inline-flex;align-items:center;gap:4px;margin-left:auto;font-size:11.5px;color:#5d5444}
+.vstrip .vspd button{min-width:26px;padding:3px 6px}
+.vstrip .vmsg{font-size:10.5px;flex-basis:100%}
+.vstrip.empty .vp{opacity:.4}
+.vstrip .vbar{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:4px}
+.vstrip .vbar[hidden]{display:none}
+.vstrip .vbar button{min-width:34px;padding:4px 6px}
+.vstrip .vbar .vpp{background:#1f3566;color:#fff;border-color:#1f3566;min-width:38px}
+.vstrip .vseek{flex:1 1 150px;accent-color:#1f3566;height:22px;margin:0 4px}
+.vstrip .vtime{font-size:10.5px;color:#5d5444;white-space:nowrap}
+.vdeck{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#181b20}
+.vdeck .vd-s{flex:1}
+
+/* T-102 narrated lessons: read-along */
+.lesson{position:relative;color:#24221e}
+.ls-bar{position:sticky;top:0;z-index:3;display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:8px 2px 6px;background:#fbf8f1;border-bottom:1px solid #e2d9c4;margin-bottom:10px}
+.ls-bar button{border:1px solid #cfc6b0;background:#fff;color:#2b2b2f;border-radius:14px;font-size:11.5px;padding:4px 8px;min-width:34px;cursor:pointer}
+.ls-bar .ls-pp{background:#1f3566;color:#fff;border-color:#1f3566;min-width:44px;font-size:13px}
+.ls-spd{display:inline-flex;align-items:center;gap:4px;margin-left:auto;font-size:11.5px;color:#5d5444}
+.ls-spd button{min-width:26px;padding:3px 6px}
+.ls-seek{flex:1 1 100%;accent-color:#1f3566;height:22px;margin:2px 0 0}
+.ls-time{flex-basis:100%;display:flex;justify-content:space-between;font-size:10.5px;color:#5d5444}
+.ls-msg{flex-basis:100%;font-size:10.5px;color:#8a7f69}.ls-msg:empty{display:none}
+.lesson.novoice .ls-bar button:not([data-ls]){opacity:.45}
+.ls-text{font-family:var(--serif,Georgia,serif);font-size:16.5px;line-height:1.62}
+.lesson .ls-p{margin:0 0 13px;cursor:pointer;text-align:left}
+.ls-p.allkey{border-left:3px solid #c9a54a;padding-left:9px}
+.ls-p b.kp{font-weight:700}
+.ls-p:not(.allkey) b.kp{text-decoration:underline;text-decoration-color:#c9a54a;text-decoration-thickness:2px;text-underline-offset:3px}
+.lw{border-radius:3px;transition:background .08s}
+.lw.on{background:#ffd86b;box-shadow:0 0 0 2px #ffd86b}
+.ls-box{border:1px solid #cfc6b0;background:#fff;border-radius:8px;padding:8px 11px;margin:0 0 13px;font:600 13.5px/1.5 ui-monospace,Menlo,monospace;color:#2b2b2f}
+.ls-box small{display:block;font-size:9.5px;letter-spacing:.14em;color:#8a7f69;margin-bottom:3px}
+.ls-row{display:flex;gap:10px;border-top:1px dashed #e2d9c4;padding:3px 0}.ls-row:first-of-type{border-top:0}.ls-row span{flex:1}
+.ls-fig{display:block;margin:0 0 13px;border:1px dashed #c9a54a;background:#fffaf0;color:#5d4a1f;border-radius:8px;padding:8px 11px;font-size:12px;text-align:left;width:100%}
+.ls-follow{position:sticky;bottom:14px;display:block;margin:6px auto 0;background:#1f3566;color:#fff;border:0;border-radius:18px;padding:8px 14px;font-size:12px;box-shadow:0 4px 14px #0004;z-index:4}
+.ls-follow[hidden]{display:none}
+.ls-wrap{margin-top:12px;text-align:left}
+.ls-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+.ls-bar .chip.ls-auto{border:1px solid #cfc6b0;background:#fff;color:#2b2b2f;border-radius:14px;font-size:11px;padding:4px 9px}
+.chip[data-vautop]{font-size:11px}
+.chip.ls-auto.on,.chip[data-vautop].on{background:#1f3566;color:#fff;border-color:#1f3566}
+.ls-pane .xp-bar{flex-wrap:wrap;gap:6px}
+.vp-ls{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)}
+.xp-bar .xp-tog[hidden]{display:none!important}
+.ls-pane .vx-sw button,.xp-head .vx-sw button{padding:3px 8px}
+.lesson .lw{outline:none}

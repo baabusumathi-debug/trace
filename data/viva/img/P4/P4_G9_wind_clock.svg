@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="640.8pt" height="396pt" viewBox="0 0 640.8 396" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 396 
+L 640.8 396 
+L 640.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 196.848 117.073 
+L 284.112 117.073 
+Q 290.592 117.073 290.592 110.123 
+L 290.592 52.668 
+Q 290.592 45.717 284.112 45.717 
+L 196.848 45.717 
+Q 190.368 45.717 190.368 52.668 
+L 190.368 110.123 
+Q 190.368 117.073 196.848 117.073 
+z
+" clip-path="url(#p66d28f0a55)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 300.528 117.073 
+L 482.832 117.073 
+Q 489.312 117.073 489.312 110.123 
+L 489.312 52.668 
+Q 489.312 45.717 482.832 45.717 
+L 300.528 45.717 
+Q 294.048 45.717 294.048 52.668 
+L 294.048 110.123 
+Q 294.048 117.073 300.528 117.073 
+z
+" clip-path="url(#p66d28f0a55)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 499.248 117.073 
+L 612.432 117.073 
+Q 618.912 117.073 618.912 110.123 
+L 618.912 52.668 
+Q 618.912 45.717 612.432 45.717 
+L 499.248 45.717 
+Q 492.768 45.717 492.768 52.668 
+L 492.768 110.123 
+Q 492.768 117.073 499.248 117.073 
+z
+" clip-path="url(#p66d28f0a55)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 17.136 117.073 
+L 161.424 117.073 
+Q 167.904 117.073 167.904 110.123 
+L 167.904 52.668 
+Q 167.904 45.717 161.424 45.717 
+L 17.136 45.717 
+Q 10.656 45.717 10.656 52.668 
+L 10.656 110.123 
+Q 10.656 117.073 17.136 117.073 
+z
+" clip-path="url(#p66d28f0a55)" style="fill: #ffffff; stroke: #b5452f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 188.64 139.314 
+L 188.64 125.414 
+" clip-path="url(#p66d28f0a55)" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 491.04 139.314 
+L 491.04 125.414 
+" clip-path="url(#p66d28f0a55)" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(221.296 78.501)">Simple</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(198.124 93.020)">passes 1st SBT</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(369.756 78.501)">Difficult</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(324.375 93.020)">up to 3 SBTs or ≤7 days</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(526.802 78.501)">Prolonged</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(500.665 93.020)">&gt;3 SBTs or &gt;7 days</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 190.643 132.364 
+Q 410.041 132.364 627.873 132.364 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 623.873 130.364 
+L 627.873 132.364 
+L 623.873 134.364 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'Inter'; text-anchor: start; fill: #5b6b71" x="188.64" y="164.840" transform="rotate(-0 188.64 164.840)">first SBT</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'Inter'; text-anchor: middle; fill: #5b6b71" x="491.04" y="164.840" transform="rotate(-0 491.04 164.840)">day 7</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #b5452f" transform="translate(36.999 78.501)">Never had an SBT:</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #b5452f" transform="translate(51.603 93.020)">not classified</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Inter'; text-anchor: start; fill: #152126" x="7.2" y="19.793" transform="rotate(-0 7.2 19.793)">ICC 2007 (Boles): clock starts at the first SBT</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 196.848 313.273 
+L 284.112 313.273 
+Q 290.592 313.273 290.592 306.323 
+L 290.592 248.868 
+Q 290.592 241.917 284.112 241.917 
+L 196.848 241.917 
+Q 190.368 241.917 190.368 248.868 
+L 190.368 306.323 
+Q 190.368 313.273 196.848 313.273 
+z
+" clip-path="url(#p6f14c16568)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 300.528 313.273 
+L 482.832 313.273 
+Q 489.312 313.273 489.312 306.323 
+L 489.312 248.868 
+Q 489.312 241.917 482.832 241.917 
+L 300.528 241.917 
+Q 294.048 241.917 294.048 248.868 
+L 294.048 306.323 
+Q 294.048 313.273 300.528 313.273 
+z
+" clip-path="url(#p6f14c16568)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 499.248 313.273 
+L 612.432 313.273 
+Q 618.912 313.273 618.912 306.323 
+L 618.912 248.868 
+Q 618.912 241.917 612.432 241.917 
+L 499.248 241.917 
+Q 492.768 241.917 492.768 248.868 
+L 492.768 306.323 
+Q 492.768 313.273 499.248 313.273 
+z
+" clip-path="url(#p6f14c16568)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 17.136 313.273 
+L 161.424 313.273 
+Q 167.904 313.273 167.904 306.323 
+L 167.904 248.868 
+Q 167.904 241.917 161.424 241.917 
+L 17.136 241.917 
+Q 10.656 241.917 10.656 248.868 
+L 10.656 306.323 
+Q 10.656 313.273 17.136 313.273 
+z
+" clip-path="url(#p6f14c16568)" style="fill: #e8eef0; stroke: #e8eef0; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 188.64 335.514 
+L 188.64 321.614 
+" clip-path="url(#p6f14c16568)" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 292.32 335.514 
+L 292.32 321.614 
+" clip-path="url(#p6f14c16568)" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 491.04 335.514 
+L 491.04 321.614 
+" clip-path="url(#p6f14c16568)" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(225.169 274.701)">Short</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(222.055 289.220)">&lt;1 day</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(369.756 274.701)">Difficult</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(367.662 289.220)">1–7 days</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(526.802 274.701)">Prolonged</text>
+    <text style="font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(533.293 289.220)">&gt;7 days</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 190.643 328.564 
+Q 410.041 328.564 627.873 328.564 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 623.873 326.564 
+L 627.873 328.564 
+L 623.873 330.564 
+" style="fill: none; stroke: #5b6b71; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 12px; font-family: 'Inter'; text-anchor: start; fill: #5b6b71" x="188.64" y="361.040" transform="rotate(-0 188.64 361.040)">first attempt</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 12px; font-family: 'Inter'; text-anchor: middle; fill: #5b6b71" x="292.32" y="361.040" transform="rotate(-0 292.32 361.040)">day 1</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 12px; font-family: 'Inter'; text-anchor: middle; fill: #5b6b71" x="491.04" y="361.040" transform="rotate(-0 491.04 361.040)">day 7</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(63.811 274.701)">Group 0:</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Inter'; fill: #152126" transform="translate(29.173 289.220)">no attempt, included</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'Inter'; text-anchor: end; fill: #b5452f" x="631.44" y="381.849" transform="rotate(-0 631.44 381.849)">mortality rises: short → difficult → prolonged</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Inter'; text-anchor: start; fill: #152126" x="7.2" y="215.993" transform="rotate(-0 7.2 215.993)">WIND (Béduneau 2017): clock starts at the first separation attempt</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p66d28f0a55">
+   <rect x="7.2" y="25.793" width="626.4" height="166.806"/>
+  </clipPath>
+  <clipPath id="p6f14c16568">
+   <rect x="7.2" y="221.993" width="626.4" height="166.806"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -14,6 +14,8 @@ import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml,
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
+import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
+import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -547,6 +549,7 @@ function renderDeck(code) {
       <div class="chips">${STATES_DECK.map(([k, l]) => { const n = pick2(code, df.pool, k).length; return n || k === 'any' || k === df.st ? `<button class="chip${df.st === k ? ' on' : ''}" data-ds="${k}">${l} · ${n}</button>` : ''; }).join('')}<span class="mono muted small lit">${cur.list.length} of ${cards.length} lit</span></div>
       <div class="ctl-row mt"><span class="legend mono"><span>SEEN</span>${[0, 1, 2, 3].map(n => `<span class="lg s${n}">${n === 3 ? '3+' : n}</span>`).join('')}</span>
         <span class="sizes mono" aria-label="Card tile size">${['s', 'm', 'l'].map(z => `<button class="${size === z ? 'on' : ''}" data-size="${z}">${z.toUpperCase()}</button>`).join('')}</span></div>
+      ${voiceOn() && cards.length ? '<div class="vdeck" id="vdeck"><span class="mono kick">VOICE</span><span class="vd-s muted small">checking…</span><button class="pillbtn" data-vmake hidden>Make voice</button></div>' : ''}
       ${cards.length ? tiles : '<p class="muted">No cards on this device yet.</p>'}
       <p class="muted small mt">Tap a card to look through it. Looking is never timed or logged; only Flow counts.</p>
     </div>
@@ -562,10 +565,30 @@ function renderDeck(code) {
   const dl = app.querySelector('[data-act=dl]');
   if (dl) dl.onclick = async () => { dl.disabled = true; try { await downloadDecks([code]); toast('Downloaded and checked.'); } catch (e) { toast(e.message); } emit(); };
   app.querySelectorAll('[data-scope]').forEach(b => b.onclick = () => openScope(code, b.dataset.scope, df));
+  if (voiceOn() && cards.length) vDeckBox(code, cards);
   app.querySelectorAll('.tile').forEach(el => el.onclick = () => {
     const list = cur.list.find(c => c.code === el.dataset.code) ? cur.list : cards;
     startFlow(list, { browse: true, start: list.findIndex(c => c.code === el.dataset.code), label: 'Look', returnTo: location.hash });
   });
+}
+// T-099: how much of this deck has its voice, and a button to make the rest (the bridge makes it, a few points a call)
+async function vDeckBox(code, cards) {
+  const box = document.getElementById('vdeck'); if (!box) return;
+  const s = box.querySelector('.vd-s'), b = box.querySelector('[data-vmake]');
+  await deckIndex(code);
+  const parts = cards.flatMap(c => partsOf(c, xParts(c))), have = parts.filter(p => hasClip(code, p)).length;
+  if (!box.isConnected) return;
+  s.textContent = have === parts.length ? `All ${parts.length} points have their voice.` : `${have} of ${parts.length} points have their voice.`;
+  b.hidden = have === parts.length;
+  if (makingDeck()) { b.disabled = true; b.textContent = 'Making ' + makingDeck() + '…'; }
+  b.onclick = async () => {
+    b.disabled = true; b.textContent = 'Making…';
+    const r = await makeDeck(code, cards.map(c => ({ c, extra: xParts(c) })), st => { if (s.isConnected) s.textContent = `Making ${st.done} of ${st.total}…${st.used != null ? ` · this month ${Math.round(st.used / 60)} of ${Math.round(st.limit / 60)} min` : ''}`; });
+    if (!box.isConnected) return;
+    b.disabled = false; b.textContent = 'Make voice';
+    if (r.error) toast('Voice stopped: ' + r.error);
+    vDeckBox(code, cards);
+  };
 }
 function tile(c, active) {
   const n = seen(c.deck, c.no), tag = neetTag(c);
@@ -703,6 +726,20 @@ function vivaTile() {
   const sc = app.querySelector('.palace-screen'); if (!sc) return;
   sc.insertAdjacentHTML('beforeend', `<div class="viva-tiles">${ps.map(p => `<a class="viva-tile mono" href="#/viva/${esc(p.package)}"><b>VIVA ${esc(p.package)}</b><span>${esc(p.title)} · ${p.questions.length} Qs</span></a>`).join('')}</div>`);
 }
+// T-102: lessons autoplay (per session) — open → each card's lesson → close → spine run on their own
+const vAuto = () => { try { return sessionStorage.getItem('trace.vauto') === '1'; } catch (e) { return false; } };
+const setVAuto = on => { try { sessionStorage.setItem('trace.vauto', on ? '1' : '0'); } catch (e) { /* */ } if (flow) flow.vauto = on; };
+function lessonPic(x, c) {
+  const L = x.L; if (!L.pic) return '';
+  // a card's own figure: cut from its PDF page into data/viva/img/<pkg>/card_<DECK>_<CODE>.png (button if it is not there)
+  if (L.pic === 'card' || /^card:/.test(L.pic)) {
+    const key = (L.pic === 'card' ? (c ? c.deck + '|' + c.code : '') : L.pic.slice(5)).replace('|', '_');
+    return `<figure class="vx-fig ls-fig-img"><img src="./data/viva/img/${esc(x.pkg)}/card_${esc(key)}.png" alt="${esc(L.cap || 'Card figure')}" loading="lazy" onerror="this.closest('figure').outerHTML='<button class=&quot;ls-fig mono&quot; data-lcardfig>◈ The card&#39;s figure</button>'"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
+  }
+  return `<figure class="vx-fig ls-fig-img"><img src="./data/viva/img/${esc(x.pkg)}/${esc(L.pic)}" alt="${esc(L.cap || 'Diagram')}" loading="lazy"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
+}
+function autoChip() { return `<button class="chip ls-auto${flow && flow.vauto ? ' on' : ''}" data-vauto>${flow && flow.vauto ? 'Autoplay on' : 'Tap to play'}</button>`; }
+function bindAutoChip(el, then) { el.querySelectorAll('[data-vauto]').forEach(b => b.onclick = e => { e.stopPropagation(); setVAuto(!flow.vauto); el.querySelectorAll('[data-vauto]').forEach(x => { x.classList.toggle('on', flow.vauto); x.textContent = flow.vauto ? 'Autoplay on' : 'Tap to play'; }); then && then(); }); }
 function walkViva(pkg, onlyQ) {
   const { list } = vivaQueue(pkg, onlyQ), P2 = vivaPkg(pkg);
   if (!list.length) { toast('These cards are not on this device yet.'); return; }
@@ -727,6 +764,7 @@ async function renderViva(pkg) {
         <p class="muted small">Each question opens with its card, then the cards behind it with a bridge under each answer, then the spine to say in 60 seconds. A card that came under an earlier question shows as “seen above” and is not counted twice.</p>
         <p class="mono small vp-tally"><span class="vm-fluent">${tally.fluent} fluent</span> · <span class="vm-patchy">${tally.patchy} patchy</span> · <span class="vm-blank">${tally.blank} blank</span> · ${tally.none} not marked</p>
         <div class="chips"><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
+        ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
         ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
       </section>
       ${gens.map(g => `<section class="vp-gen"><h3 class="mono">${esc(g.g)}</h3>${g.qs.map(q => { const mk = vivaLast(m, pkg, q.q); return `<button class="vp-q" data-vq="${esc(q.q)}"><span class="vp-h mono">${esc(q.handle || '')}</span><span class="vp-t">${esc(q.text)}<small class="mono">${esc(q.q)} · ${q.steps.length} card${q.steps.length === 1 ? '' : 's'}</small></span><span class="vt vt-${esc(q.tier)} mono">${esc(q.tier)}</span><span class="vm vm-${mk || 'none'} mono">${mk ? MARKN[mk] : '–'}</span></button>`; }).join('')}</section>`).join('')}
@@ -735,6 +773,7 @@ async function renderViva(pkg) {
     ${nav('flow')}
   </div>`;
   app.querySelector('[data-vwalk]').onclick = () => walkViva(pkg);
+  if (hasLessons(pkg)) lessonBox(pkg, P2);
   app.querySelector('[data-vmosaic]').onclick = () => { P.set('moViva', pkg); go('#/sys/all'); };
   const wk = app.querySelector('[data-vweak]');
   if (wk) wk.onclick = () => {
@@ -743,6 +782,32 @@ async function renderViva(pkg) {
     if (list.length) startFlow(list, { viva: pkg, label: 'Viva ' + pkg + ' · patchy + blank', returnTo: '#/viva/' + pkg });
   };
   app.querySelectorAll('[data-vq]').forEach(b => b.onclick = () => walkViva(pkg, b.dataset.vq));
+}
+function autoChipPage() { const on = vAuto(); return `<button class="chip${on ? ' on' : ''}" data-vautop>${on ? 'Autoplay on' : 'Tap to play'}</button>`; }
+// the Viva page's lessons line: how much is made, and Make voice (one question first, then all) — only when Naven presses it
+async function lessonBox(pkg, P2) {
+  const box = app.querySelector('#vpls'); if (!box) return;
+  const ap = box.querySelector('[data-vautop]'); ap.onclick = () => { setVAuto(!vAuto()); ap.classList.toggle('on', vAuto()); ap.textContent = vAuto() ? 'Autoplay on' : 'Tap to play'; };
+  const deck = lessonDeck(pkg), s = box.querySelector('.vpls-s'), b1 = box.querySelector('[data-lmake1]'), b = box.querySelector('[data-lmake]');
+  const firstQ = P2.questions.find(q => q.open || q.close || q.steps.some(x => x.lesson));
+  const draw = async fresh => {
+    const all = allLessonParts(pkg); await deckIndex(deck, fresh);
+    const miss = all.filter(p => !hasClip(deck, p)), m1 = miss.filter(p => p.k.startsWith('L-' + firstQ.q + '-'));
+    const nq = P2.questions.filter(q => q.open || q.close || q.steps.some(x => x.lesson)).length;
+    s.textContent = `${nq} question${nq === 1 ? '' : 's'} · about ${lessonMin(all)} min · ${all.length - miss.length} of ${all.length} pieces made`;
+    b1.hidden = !m1.length || makingLessons(); b1.textContent = `Make voice · ${firstQ.q} only (${lessonMin(m1)} min)`;
+    b.hidden = !miss.length || makingLessons(); b.textContent = `Make voice · all (${lessonMin(miss)} min)`;
+  };
+  const run = async onlyQ => {
+    b.hidden = b1.hidden = true;
+    const r = await makeLessons(pkg, st => { if (box.isConnected) s.textContent = `making… ${st.done} of ${st.total}${st.failed ? ` · ${st.failed} failed` : ''}`; }, onlyQ);
+    if (r.error) toast('Lesson voice: ' + r.error);
+    if (box.isConnected) draw(true);
+  };
+  // a second tap starts it (Naven, 8 Nov: a stray tap started 2 hours of voice)
+  const arm = (btn, go) => { let t = 0; btn.onclick = () => { if (btn.dataset.armed) { clearTimeout(t); delete btn.dataset.armed; go(); return; } btn.dataset.armed = '1'; const was = btn.textContent; btn.textContent = 'Tap again to start · ' + was.replace(/^Make voice · /, ''); btn.classList.add('on'); t = setTimeout(() => { delete btn.dataset.armed; btn.textContent = was; btn.classList.remove('on'); }, 4000); }; };
+  arm(b1, () => run(firstQ.q)); arm(b, () => run());
+  draw(false);
 }
 function renderFlowTab() {
   const draw = () => {
@@ -1425,7 +1490,7 @@ function startFlow(list, opts = {}) {
   if (!list || !list.length) return;
   const at = Math.max(0, opts.start || 0);
   const queue = list.slice(at).concat(list.slice(0, at));
-  flow = { deck: queue[0].deck, label: opts.label || '', viva: opts.viva || '', vqSeen: {}, browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
+  flow = { deck: queue[0].deck, label: opts.label || '', viva: opts.viva || '', vauto: !!opts.viva && vAuto(), vqSeen: {}, browse: !!opts.browse, pilot: !!opts.pilot, pilotSent: false, returnTo: opts.returnTo || '#/deck/' + encodeURIComponent(queue[0].deck),
     queue, idx: 0, face: 'q', session: uid('s'), t0: Date.now(), wall0: Date.now(), cardT0: Date.now(), times: [], hist: [], busy: false, done: false };
   _lastDeck = queue[0].deck;
   renderFlow();
@@ -1466,7 +1531,7 @@ async function endFlow() {
   if (!flow) return;
   clearInterval(flow.tick);
   document.removeEventListener('keydown', flowKeys);
-  unmountInk();
+  unmountInk(); vStop();
   closePanel(); releaseUrls();
   if (flow.pilot) stopPolling();
   const sid = flow.session, back = flow.returnTo, browse = flow.browse;
@@ -1623,6 +1688,8 @@ function drawXpToggles() {
 }
 function clearInter() {
   if (!flow || !flow.inter) return;
+  vStop();
+  if (flow.inter.kind === 'vclose') { const it = flow.inter; flow.inter = { kind: 'spine', pkg: it.pkg, q: it.q }; animate('deal', () => { drawCard(); updateFlowChrome(); }); return; }
   flow.inter = null;
   animate('deal', () => { drawCard(); updateFlowChrome(); });
 }
@@ -1631,7 +1698,7 @@ function drawInter(el, big) {
   unmountInk();
   const walking = new Set(flow.queue.filter(x => x.deck === deck).map(x => x.code));
   el.classList.remove('ng');
-  if (it.kind === 'vq' || it.kind === 'spine') return drawVivaInter(el, big, it);
+  if (it.kind === 'vq' || it.kind === 'spine' || it.kind === 'vclose') return drawVivaInter(el, big, it);
   el.innerHTML = it.kind === 'map' ? mapHtml(deck, m.title, walking) : closeHtml(deck);
   big.innerHTML = it.kind === 'map' ? `START${ICON.next}` : `CONTINUE${ICON.next}`;
   bindBridges(el);
@@ -1640,8 +1707,18 @@ function drawInter(el, big) {
 function drawVivaInter(el, big, it) {
   if (it.kind === 'vq') {
     const steps = flow.queue.filter((x, j) => j >= it.at && x.vq && x.vq.q === it.q && x.vq.pkg === it.pkg);
-    el.innerHTML = qHeadHtml(it.pkg, it.q, { n: steps.length, reps: steps.filter(x => x.vq.rep).length });
+    const lx = lessonOf(it.pkg, it.q, 'o');
+    el.innerHTML = qHeadHtml(it.pkg, it.q, { n: steps.length, reps: steps.filter(x => x.vq.rep).length }) + (lx ? `<div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">OPENING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>` : '');
     big.innerHTML = `START${ICON.next}`;
+    if (lx) { bindAutoChip(el); mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } }); }
+    return;
+  }
+  if (it.kind === 'vclose') {
+    const lx = lessonOf(it.pkg, it.q, 'c'), q = vivaQ(it.pkg, it.q);
+    el.innerHTML = `<div class="c-done vq-head"><span class="mono kick dark">VIVA ${esc(it.pkg)} · CLOSING LESSON · ${esc(it.q)}</span><h2 class="vq-t">${esc(q ? q.text : '')}</h2><p class="muted-d">The recap, then the spine card: say it yourself in 60 seconds.</p></div><div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">CLOSING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>`;
+    big.innerHTML = `SPINE${ICON.next}`;
+    bindAutoChip(el);
+    mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } });
     return;
   }
   vivaMarks().then(m => {
@@ -1908,6 +1985,7 @@ function bindXp(el, c) {
 }
 function drawCard() {
   const el = $('#card'), big = $('#f-big');
+  vStop();
   if (!flow.inter && !flow.done && !flow.peek && flow.face === 'q') {
     const cd = current(); flow.mapSeen = flow.mapSeen || {};
     if (flow.viva) { if (cd && cd.vq && cd.vq.i === 0 && !flow.vqSeen[flow.idx]) { flow.vqSeen[flow.idx] = 1; flow.inter = { kind: 'vq', pkg: cd.vq.pkg, q: cd.vq.q, at: flow.idx }; } }
@@ -1942,11 +2020,15 @@ function drawCard() {
     const vrep = c.vq && c.vq.rep ? `<p class="vq-rep mono">SEEN ABOVE · under ${esc(c.vq.rep)} · not counted again · Reveal to look, Next to move on</p>` : '';
     body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${vrep}${flow.viva ? '' : arc ? arcHtml(c, xq, arc.open) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${c.vpic ? `<img class="vq-pic" src="./data/viva/img/${esc(c.vcard)}/${esc(c.vpic)}" alt="Spotter image">` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
-    const xa = xOf(c), vx = vivaX(c), v2 = !!(xa && xa.v === 2) || !!vx, xOpen = (flow.viva && vx) || xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
+    const lx = c.vq && c.vq.j != null ? lessonOf(c.vq.pkg, c.vq.q, 's' + c.vq.j) : null;
+    const xa = xOf(c), vx = vivaX(c), v2 = !!(xa && xa.v === 2) || !!vx || !!lx, xOpen = (flow.viva && (vx || lx)) || xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
     // T-095: NEET | Viva switch when a card has both; opens on Viva in a viva walk, on NEET elsewhere
     const ck = c.deck + '|' + c.code; flow.xpTab = flow.xpTab || {};
-    const both = !!(vx && xa), xtab = !vx ? 'neet' : !xa ? 'viva' : flow.xpTab[ck] || (flow.viva ? 'viva' : 'neet');
-    const xpPane = o => xtab === 'viva' ? vivaPanelHtml(vx, both ? xpSwitch('viva') : '') : (both ? panelHtml(c, xa, o).replace('<div class="xp-bar">', '<div class="xp-bar">' + xpSwitch('neet')) : panelHtml(c, xa, o));
+    const avail = [lx && 'lesson', xa && 'neet', vx && 'viva'].filter(Boolean);
+    let xtab = flow.xpTab[ck]; if (!avail.includes(xtab)) xtab = lx ? 'lesson' : !vx ? 'neet' : !xa ? 'viva' : (flow.viva ? 'viva' : 'neet');
+    const sw = avail.length > 1 ? tabSwitch(xtab, avail) : '';
+    const xpPane = o => xtab === 'lesson' ? `<div class="xp v2 vx open ls-pane" data-depth="learn"><div class="xp-bar"><span class="xp-tog"${sw ? ' hidden' : ''}><span>Lesson</span></span>${sw}</div><div class="xp-body">${lessonHtml(lx, lessonPic(lx, c), autoChip())}</div></div>`
+      : xtab === 'viva' ? vivaPanelHtml(vx, sw) : (sw ? panelHtml(c, xa, o).replace('<div class="xp-bar">', '<div class="xp-bar">' + sw) : panelHtml(c, xa, o));
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
     body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
@@ -1966,6 +2048,17 @@ function drawCard() {
   const split = !isQ && el && body.startsWith('<div class="a-split');
   el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
   placeXpBar(el);
+  if (voiceOn()) mountVoice(el, c, isQ);
+  if (!flow.peek && flow.viva && c.vq && c.vq.j != null) {
+    const lx = lessonOf(c.vq.pkg, c.vq.q, 's' + c.vq.j);
+    if (lx && isQ && flow.vauto) { const at = flow.idx; setTimeout(() => { if (flow && flow.idx === at && flow.face === 'q' && !flow.inter) reveal(); }, 1200); }
+    if (lx && !isQ && el.querySelector('[data-lesson]')) {
+      bindAutoChip(el);
+      const at = flow.idx;
+      el.querySelectorAll('[data-lcardfig]').forEach(b => b.onclick = e => { e.stopPropagation(); const v = el.querySelector('.vchip'); if (v && !v.disabled) v.click(); else toast(c.img ? 'The figure is on page ' + (c.a_page || c.q_page || '?') + ' of the PDF deck.' : 'No figure for this card on this device.'); });
+      mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.idx === at && !flow.inter) setTimeout(() => { if (flow && flow.idx === at && !flow.inter) next(false); }, 1500); } });
+    }
+  }
   el.classList.toggle('peeking', !!flow.peek);
   el.classList.toggle('ng', isNeet(c));
   closePanel();
@@ -1995,6 +2088,75 @@ function drawCard() {
     hk.onchange = save; hk.onblur = save;
     hk.onkeydown = e => { e.stopPropagation(); if (e.key === 'Enter') hk.blur(); };
   }
+}
+/* ---------- T-099 card voice: Listen (the whole side) and ▶ for each point; speed − / + ---------- */
+// the explanation points of a card: NEET (intro, part by part, punchline) and Viva (intro, part by part, picture caption)
+function xParts(c, only) {
+  const code = String(c.code).replace(/[^\w.\-]/g, '_'), out = [];
+  const x = xOf(c), vx = vivaX(c);
+  if ((!only || only === 'neet') && x && x.v === 2) {
+    if (x.intro) out.push({ k: code + '.n0', label: 'Intro', t: x.intro, side: 'neet' });
+    (x.why || []).forEach(([l, t], i) => out.push({ k: code + '.n' + (i + 1), label: l || String(i + 1), t, side: 'neet' }));
+    if (x.punch) out.push({ k: code + '.np', label: 'Punch', t: x.punch, side: 'neet' });
+  }
+  if ((!only || only === 'viva') && vx) {
+    const v = vx.x;
+    if (v.intro) out.push({ k: code + '.v0', label: 'Intro', t: v.intro, side: 'viva' });
+    (v.why || []).forEach(([l, t], i) => out.push({ k: code + '.v' + (i + 1), label: l || String(i + 1), t, side: 'viva' }));
+    if (v.cap) out.push({ k: code + '.vc', label: 'Pic', t: v.cap, side: 'viva' });
+  }
+  return out;
+}
+function mountVoice(el, c, isQ) {
+  if (!isQ) { const xp = el.querySelector('.xp-pane .xp-body'); if (xp && !xp.querySelector('[data-lesson]')) { const tab = xp.closest('.xp.vx') ? 'viva' : 'neet'; const xs = partsOf({ code: c.code, q: '' }, xParts(c, tab)).filter(p => p.k.split('.').pop() !== 'q'); if (xs.length) voiceStrip(c, xs, xp, 'prepend', 'explanation'); } }
+  const all = partsOf(c), show = isQ ? all.filter(p => p.label === 'Q') : all;
+  if (!show.length) return;
+  const host = isQ ? el.querySelector('.c-q .zw') : el.querySelector('.c-a .ans');
+  if (!host) return;
+  voiceStrip(c, show, host, isQ ? 'append' : 'after', isQ ? 'question' : 'answer', isQ);
+}
+const TABN = { lesson: 'Lesson', neet: 'NEET', viva: 'Viva' };
+const tabSwitch = (tab, avail) => `<span class="xv-seg vx-sw" role="group" aria-label="Which explanation">${avail.map(k => `<button class="${tab === k ? 'on' : ''}" data-xtab="${k}" aria-pressed="${tab === k}">${TABN[k]}</button>`).join('')}</span>`;
+const mmss = t => { t = Math.max(0, Math.round(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+function voiceStrip(c, show, host, where, what, noChips) {
+  const strip = document.createElement('div'); strip.className = 'vstrip';
+  strip.innerHTML = `<button class="vlisten mono" data-vall aria-label="Listen to this ${what}">▶ Listen</button>${noChips ? '' : show.map(p => `<button class="vp mono" data-vk="${esc(p.k)}" aria-label="Play point ${esc(p.label)}">${esc(p.label)}</button>`).join('')}<span class="vspd mono"><button data-vs="-1" aria-label="Slower">−</button><b>${vSpeed().toFixed(1)}×</b><button data-vs="1" aria-label="Faster">+</button></span>
+    <div class="vbar" hidden><button class="mono" data-vj="-10" aria-label="Back 10 seconds">−10</button><button class="mono" data-vj="-5" aria-label="Back 5 seconds">−5</button><button class="vpp" data-vpp aria-label="Pause">❚❚</button><button class="mono" data-vj="5" aria-label="Forward 5 seconds">+5</button><button class="mono" data-vj="10" aria-label="Forward 10 seconds">+10</button><input type="range" class="vseek" min="0" max="1000" value="0" step="1" aria-label="Position"><span class="vtime mono">0:00 / 0:00</span></div><span class="vmsg mono muted"></span>`;
+  if (where === 'append') host.appendChild(strip); else if (where === 'prepend') host.prepend(strip); else host.insertAdjacentElement('afterend', strip);
+  ['pointerdown', 'click', 'touchstart', 'input', 'change'].forEach(t => strip.addEventListener(t, e => e.stopPropagation()));
+  const mark = k => strip.querySelectorAll('[data-vk]').forEach(b => b.classList.toggle('on', b.dataset.vk === k));
+  const lis = strip.querySelector('[data-vall]'), bar = strip.querySelector('.vbar'), rng = bar.querySelector('.vseek'), tm = bar.querySelector('.vtime'), pp = bar.querySelector('[data-vpp]');
+  let tick = null, drag = false;
+  const draw = () => {
+    if (!strip.isConnected) { clearInterval(tick); return; }
+    const T = vTotal(), t = vPos();
+    if (!drag) rng.value = T ? Math.round(t / T * 1000) : 0;
+    tm.textContent = mmss(drag ? rng.value / 1000 * T : t) + ' / ' + mmss(T);
+    pp.textContent = vPaused() ? '▶' : '❚❚'; pp.setAttribute('aria-label', vPaused() ? 'Play' : 'Pause');
+  };
+  const cb = k => {
+    mark(k); lis.classList.toggle('on', !!k); lis.textContent = k ? '■ Stop' : '▶ Listen';
+    bar.hidden = !k; clearInterval(tick); if (k) { draw(); tick = setInterval(draw, 250); }
+  };
+  const go = async list => {
+    if (vNow()) { vStop(); return; }
+    const ok = await vPlay(c.deck, list, cb);
+    if (!ok) strip.querySelector('.vmsg').textContent = 'no voice yet · make it on the deck page';
+  };
+  lis.onclick = () => go(show);
+  strip.querySelectorAll('[data-vk]').forEach(b => b.onclick = () => { const i = show.findIndex(p => p.k === b.dataset.vk); vStop(); go(show.slice(i)); });
+  strip.querySelectorAll('[data-vs]').forEach(b => b.onclick = () => { const v = Math.round(Math.min(2, Math.max(0.8, vSpeed() + 0.1 * +b.dataset.vs)) * 10) / 10; vSetSpeed(v); strip.querySelector('.vspd b').textContent = v.toFixed(1) + '×'; });
+  bar.querySelectorAll('[data-vj]').forEach(b => b.onclick = () => { vSkip(+b.dataset.vj); draw(); });
+  pp.onclick = () => { if (vPaused()) vResume(); else vPause(); draw(); };
+  rng.addEventListener('input', () => { drag = true; draw(); });
+  rng.addEventListener('change', () => { vSeek(rng.value / 1000 * vTotal()); drag = false; draw(); });
+  deckIndex(c.deck).then(() => {
+    if (!strip.isConnected) return;
+    const have = show.filter(p => hasClip(c.deck, p)).length;
+    strip.querySelectorAll('[data-vk]').forEach(b => b.classList.toggle('none', !hasClip(c.deck, show.find(p => p.k === b.dataset.vk))));
+    strip.classList.toggle('empty', !have);
+    if (!have) strip.querySelector('.vmsg').textContent = 'no voice yet';
+  });
 }
 /* ---------- QBank/GT layer (data/qbank.json): shown beside the card, never written into it ---------- */
 function qbChips(c) {
@@ -2157,7 +2319,7 @@ async function next(again) {
   if (!flow.viva && closeOf(c.deck) && !flow.closeSeen[c.deck] && !flow.queue.slice(flow.idx + 1).some(x => x.deck === c.deck)) { flow.closeSeen[c.deck] = 1; flow.pendingClose = c.deck; }
   animate('deal', () => {
     if (flow.pendingClose) { flow.inter = { kind: 'close', deck: flow.pendingClose }; flow.pendingClose = null; }
-    if (flow.pendingSpine) { flow.inter = { kind: 'spine', ...flow.pendingSpine }; flow.pendingSpine = null; }
+    if (flow.pendingSpine) { flow.inter = { kind: lessonOf(flow.pendingSpine.pkg, flow.pendingSpine.q, 'c') ? 'vclose' : 'spine', ...flow.pendingSpine }; flow.pendingSpine = null; }
     flow.idx++;
     flow.face = 'q';
     flow.cardT0 = Date.now();
