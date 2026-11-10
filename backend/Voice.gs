@@ -19,10 +19,14 @@ var VOICE_PROMPT_DEFAULT = 'Read this as a sharp, confident critical care consul
 
 // estimated seconds of speech for a text (about 8 characters a second, measured on the first clip); used for the monthly limit
 function voiceSec_(t) { return Math.max(1, Math.round(String(t).length / 8)); }
-function voiceUsage_() {
+// OpenAI voices ("oa-…") have their own monthly count and limit (OA_USED_SEC / OA_LIMIT_SEC): they are paid from a
+// separate prepaid OpenAI credit, so they must not use up (or be stopped by) the Google voice limit.
+var OA_LIMIT_SEC_DEFAULT = 60000;
+function voiceUsage_(oa) {
   var p = PropertiesService.getScriptProperties(), m = Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyy-MM');
-  if (p.getProperty('VOICE_MONTH') !== m) { p.setProperty('VOICE_MONTH', m); p.setProperty('VOICE_USED_SEC', '0'); }
-  return { p: p, month: m, used: Number(p.getProperty('VOICE_USED_SEC') || 0), limit: Number(p.getProperty('VOICE_LIMIT_SEC') || VOICE_LIMIT_SEC_DEFAULT) };
+  if (p.getProperty('VOICE_MONTH') !== m) { p.setProperty('VOICE_MONTH', m); p.setProperty('VOICE_USED_SEC', '0'); p.setProperty('OA_USED_SEC', '0'); }
+  if (oa) return { p: p, month: m, key: 'OA_USED_SEC', used: Number(p.getProperty('OA_USED_SEC') || 0), limit: Number(p.getProperty('OA_LIMIT_SEC') || OA_LIMIT_SEC_DEFAULT) };
+  return { p: p, month: m, key: 'VOICE_USED_SEC', used: Number(p.getProperty('VOICE_USED_SEC') || 0), limit: Number(p.getProperty('VOICE_LIMIT_SEC') || VOICE_LIMIT_SEC_DEFAULT) };
 }
 function voiceDir_(deck) {
   var root = DriveApp.getFolderById(TRACE_FOLDER_ID);
@@ -113,7 +117,7 @@ function voice_(o) {
   // merge this call's results into the index and the monthly count
   var dir = voiceDir_(o.deck), idxF = voiceIndexFile_(dir), idx = {};
   try { idx = JSON.parse(idxF.getBlob().getDataAsString('UTF-8') || '{}'); } catch (e) { idx = {}; }
-  var u = voiceUsage_(), made = [], skipped = [], failed = [], add = {}, spent = 0;
+  var oa = /^oa-/.test(voice), u = voiceUsage_(oa), made = [], skipped = [], failed = [], add = {}, spent = 0;
   for (var i = 0; i < items.length; i++) {
     var it = items[i], k = String(it.k || ''), t = String(it.t || ''), h = String(it.h || '');
     if (!/^[\w.\-]{1,60}$/.test(k) || !t.trim()) { failed.push({ k: k, error: 'bad item' }); continue; }
@@ -146,7 +150,7 @@ function voice_(o) {
     for (var kk in add) cur[kk] = add[kk];
     idxF.setContent(JSON.stringify(cur));
     if (made.length) PropertiesService.getScriptProperties().setProperty('VIDIRTY_' + o.deck, '1');   // the next index read checks the clips' own files
-    var u2 = voiceUsage_(); u2.p.setProperty('VOICE_USED_SEC', String(u2.used + spent));
+    var u2 = voiceUsage_(oa); u2.p.setProperty(u2.key, String(u2.used + spent));
     return { made: made, skipped: skipped, failed: failed, used: u2.used + spent, limit: u2.limit, month: u2.month };
   } finally { lock.releaseLock(); }
 }
@@ -197,7 +201,7 @@ function voiceIndex_(o) {
   return {};
 }
 /** op 'voiceUsage': this month's audio seconds made and the limit. */
-function voiceUsageOp_() { var u = voiceUsage_(); return { used: u.used, limit: u.limit, month: u.month }; }
+function voiceUsageOp_() { var u = voiceUsage_(), o = voiceUsage_(true); return { used: u.used, limit: u.limit, month: u.month, oaUsed: o.used, oaLimit: o.limit }; }
 
 /** Run once from the editor (Run › authoriseVoice) after switching the Cloud project: it grants the new permission
  *  and makes one short test clip in Trace › voice › _samples. */

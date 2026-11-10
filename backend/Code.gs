@@ -16,7 +16,7 @@ var TABS = {            // what the app may do with each tab
   Decks: 'r',
   Signals: 'r'
 };
-var VERSION = 7;          // 7: lessons (voice align, word timings) · 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders (5.1: HT events carry no owner reminder) · 6: card voice (Voice.gs)
+var VERSION = 8;          // 8: OpenAI voices counted apart from the Google voice limit (OA_LIMIT_SEC) · 7: lessons (voice align, word timings) · 3: visual decks (visualIndex, readBinary) · 4: notifyJournal (test only, off by default) · 5: calendar reminders (5.1: HT events carry no owner reminder) · 6: card voice (Voice.gs)
 
 function doGet() {
   return out_({ ok: true, app: 'trace-backend', version: VERSION });
