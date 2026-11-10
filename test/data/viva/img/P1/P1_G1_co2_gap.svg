@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="511.198pt" height="324pt" viewBox="0 0 511.198 324" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 324 
+L 511.198 324 
+L 511.198 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 45.351 298.280 
+L 503.998 298.280 
+L 503.998 26.762 
+L 45.351 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 45.351 264.340 
+L 503.998 264.340 
+L 503.998 196.461 
+L 45.351 196.461 
+z
+" clip-path="url(#pb80dd5e112)" style="fill: #e8eef0; stroke: #e8eef0; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="274.674" y="313.905" transform="rotate(-0 274.674 313.905)">cardiac output</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="md3654b9cce" d="M 0 0 
+L -3.5 0 
+" style="stroke: #5b6b71; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#md3654b9cce" x="45.351" y="298.280" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="38.351" y="304.092" transform="rotate(-0 38.351 304.092)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#md3654b9cce" x="45.351" y="264.340" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="38.351" y="270.153" transform="rotate(-0 38.351 270.153)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#md3654b9cce" x="45.351" y="196.461" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="38.351" y="202.273" transform="rotate(-0 38.351 202.273)">6</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#md3654b9cce" x="45.351" y="128.581" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="38.351" y="134.394" transform="rotate(-0 38.351 134.394)">10</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#md3654b9cce" x="45.351" y="60.702" style="fill: #5b6b71; stroke: #5b6b71; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="38.351" y="66.514" transform="rotate(-0 38.351 66.514)">14</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="18.825" y="162.521" transform="rotate(-90 18.825 162.521)">Pcv–aCO₂ gap (mmHg)</text>
+    </g>
+   </g>
+   <g id="line2d_6">
+    <path d="M 45.351 196.461 
+L 503.998 196.461 
+" clip-path="url(#pb80dd5e112)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #b5452f; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 51.307 43.732 
+L 55.737 55.038 
+L 60.167 65.383 
+L 64.597 74.884 
+L 69.027 83.640 
+L 73.457 91.735 
+L 77.887 99.242 
+L 82.317 106.223 
+L 86.747 112.730 
+L 91.177 118.811 
+L 95.607 124.506 
+L 100.037 129.851 
+L 104.466 134.877 
+L 108.896 139.611 
+L 113.326 144.079 
+L 117.756 148.302 
+L 122.186 152.300 
+L 126.616 156.090 
+L 133.261 161.421 
+L 139.906 166.366 
+L 146.551 170.966 
+L 153.196 175.256 
+L 159.840 179.267 
+L 166.485 183.024 
+L 173.130 186.551 
+L 179.775 189.869 
+L 188.635 193.998 
+L 197.495 197.824 
+L 206.355 201.379 
+L 215.215 204.691 
+L 224.074 207.784 
+L 232.934 210.679 
+L 244.009 214.048 
+L 255.084 217.167 
+L 266.159 220.063 
+L 279.448 223.277 
+L 292.738 226.237 
+L 306.028 228.973 
+L 321.533 231.912 
+L 337.037 234.613 
+L 352.542 237.102 
+L 370.262 239.719 
+L 387.982 242.121 
+L 407.916 244.599 
+L 430.066 247.107 
+L 452.215 249.391 
+L 476.580 251.679 
+L 492.085 253.027 
+L 492.085 253.027 
+" clip-path="url(#pb80dd5e112)" style="fill: none; stroke: #152126; stroke-width: 2.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 70.844 -1 
+L 73.457 5.675 
+L 77.887 16.310 
+L 82.317 26.199 
+L 86.747 35.418 
+L 91.177 44.032 
+L 95.607 52.100 
+L 100.037 59.672 
+L 104.466 66.792 
+L 108.896 73.499 
+L 113.326 79.828 
+L 117.756 85.811 
+L 122.186 91.475 
+L 126.616 96.845 
+L 131.046 101.942 
+L 135.476 106.789 
+L 139.906 111.401 
+L 146.551 117.918 
+L 153.196 123.996 
+L 159.840 129.678 
+L 166.485 135.000 
+L 173.130 139.997 
+L 179.775 144.698 
+L 186.420 149.127 
+L 193.065 153.308 
+L 199.710 157.260 
+L 206.355 161.003 
+L 215.215 165.695 
+L 224.074 170.077 
+L 232.934 174.179 
+L 241.794 178.026 
+L 250.654 181.642 
+L 259.514 185.047 
+L 270.589 189.033 
+L 281.663 192.749 
+L 292.738 196.219 
+L 303.813 199.469 
+L 317.103 203.106 
+L 330.393 206.484 
+L 343.682 209.631 
+L 356.972 212.569 
+L 372.477 215.760 
+L 387.982 218.722 
+L 405.701 221.857 
+L 423.421 224.754 
+L 441.141 227.440 
+L 461.075 230.236 
+L 481.010 232.819 
+L 492.085 234.172 
+L 492.085 234.172 
+" clip-path="url(#pb80dd5e112)" style="fill: none; stroke-dasharray: 7.2,5.4; stroke-dashoffset: 0; stroke: #5b6b71; stroke-width: 1.8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 45.351 298.280 
+L 45.351 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 45.351 298.280 
+L 503.998 298.280 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #5b6b71" x="60.242" y="260.221" transform="rotate(-0 60.242 260.221)">normal 2–6 mmHg</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #b5452f" x="50.116" y="191.021" transform="rotate(-0 50.116 191.021)">above 6: low flow</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #152126" x="349.130" y="276.219" transform="rotate(-0 349.130 276.219)">usual CO₂ production</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(289.565 168.850)">more CO₂ made</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(289.565 183.370)">(fever, shivering)</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 154.980 90.477 
+Q 127.795 108.967 101.535 126.829 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+    <path d="M 106.854 126.114 
+L 101.535 126.829 
+L 104.154 122.145 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(146.611 55.421)">low output:</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(146.611 69.940)">CO₂ piles up</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(146.611 84.460)">in venous blood</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="274.674" y="20.762" transform="rotate(-0 274.674 20.762)">The CO₂ gap: gap ≈ CO₂ production ÷ cardiac output</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb80dd5e112">
+   <rect x="45.351" y="26.762" width="458.646" height="271.517"/>
+  </clipPath>
+ </defs>
+</svg>

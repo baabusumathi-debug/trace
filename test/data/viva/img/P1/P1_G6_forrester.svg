@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="584.404pt" height="402.48pt" viewBox="0 0 584.404 402.48" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 402.48 
+L 584.404 402.48 
+L 584.404 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 136.678 185.716 
+L 330.961 185.716 
+Q 339.998 185.716 339.998 179.507 
+L 339.998 46.008 
+Q 339.998 39.798 330.961 39.798 
+L 136.678 39.798 
+Q 127.642 39.798 127.642 46.008 
+L 127.642 179.507 
+Q 127.642 185.716 136.678 185.716 
+z
+" clip-path="url(#pa14c1f3979)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 362.589 185.716 
+L 556.872 185.716 
+Q 565.909 185.716 565.909 179.507 
+L 565.909 46.008 
+Q 565.909 39.798 556.872 39.798 
+L 362.589 39.798 
+Q 353.553 39.798 353.553 46.008 
+L 353.553 179.507 
+Q 353.553 185.716 362.589 185.716 
+z
+" clip-path="url(#pa14c1f3979)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 136.678 340.948 
+L 330.961 340.948 
+Q 339.998 340.948 339.998 334.739 
+L 339.998 201.24 
+Q 339.998 195.030 330.961 195.030 
+L 136.678 195.030 
+Q 127.642 195.030 127.642 201.24 
+L 127.642 334.739 
+Q 127.642 340.948 136.678 340.948 
+z
+" clip-path="url(#pa14c1f3979)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 362.589 340.948 
+L 556.872 340.948 
+Q 565.909 340.948 565.909 334.739 
+L 565.909 201.24 
+Q 565.909 195.030 556.872 195.030 
+L 362.589 195.030 
+Q 353.553 195.030 353.553 201.24 
+L 353.553 334.739 
+Q 353.553 340.948 362.589 340.948 
+z
+" clip-path="url(#pa14c1f3979)" style="fill: #f6e3de; stroke: #b5452f; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 16px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="233.820" y="63.083" transform="rotate(-0 233.820 63.083)">Warm and dry</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="233.820" y="84.816" transform="rotate(-0 233.820 84.816)">not cardiogenic shock</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="233.820" y="112.757" transform="rotate(-0 233.820 112.757)">CI ↑ · SVR ↓ · PCWP ↓</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(171.246 153.086)">vasodilatory shock:</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(186.243 168.816)">treat the cause</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 16px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="459.731" y="63.083" transform="rotate(-0 459.731 63.083)">Warm and wet</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="459.731" y="84.816" transform="rotate(-0 459.731 84.816)">vasodilatory CS or mixed</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="459.731" y="112.757" transform="rotate(-0 459.731 112.757)">CI ↓ · SVR ↓ or ↔ · PCWP ↑</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(413.475 153.086)">noradrenaline,</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(374.110 168.816)">guided by haemodynamics</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 16px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="233.820" y="218.315" transform="rotate(-0 233.820 218.315)">Cold and dry</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="233.820" y="240.048" transform="rotate(-0 233.820 240.048)">euvolaemic CS</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="233.820" y="267.989" transform="rotate(-0 233.820 267.989)">CI ↓ · SVR ↑ · PCWP ↔</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(172.096 308.318)">cautious small fluid</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(162.745 324.048)">boluses, then inotrope</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 16px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="459.731" y="218.315" transform="rotate(-0 459.731 218.315)">Cold and wet</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="459.731" y="240.048" transform="rotate(-0 459.731 240.048)">classic CS</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="459.731" y="267.989" transform="rotate(-0 459.731 267.989)">CI ↓ · SVR ↑ · PCWP ↑</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(379.308 308.318)">noradrenaline + inotrope;</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(372.390 324.048)">diuretic only once perfused</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="233.820" y="25.827" transform="rotate(-0 233.820 25.827)">DRY  (no congestion)</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="459.731" y="25.827" transform="rotate(-0 459.731 25.827)">WET  (congested)</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(64.397 109.622)">WARM</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(39.064 125.351)">(perfused)</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(70.938 264.854)">COLD</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(7.2 280.583)">(hypoperfused)</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(146.551 372.753)">Forrester cut-offs: CI 2.2 L/min/m² · PCWP 18 mmHg.</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(110.470 387.273)">In shock, warm means vasodilated: CI is still low in warm and wet.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa14c1f3979">
+   <rect x="19.204" y="7.2" width="558" height="388.08"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="621.624pt" height="341.561pt" viewBox="0 0 621.624 341.561" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 341.561 
+L 621.624 341.561 
+L 621.624 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 54.998 281.786 
+L 612.998 281.786 
+L 612.998 26.762 
+L 54.998 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 61.748 281.786 
+L 241.748 281.786 
+L 241.748 113.374 
+L 61.748 113.374 
+z
+" clip-path="url(#p276a92f84a)" style="fill: #b5452f; opacity: 0.85"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 241.748 281.786 
+L 601.748 281.786 
+L 601.748 197.580 
+L 241.748 197.580 
+z
+" clip-path="url(#p276a92f84a)" style="fill: #5b6b71; opacity: 0.55"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m1504cfccaf" d="M 0 0 
+L 0 3.5 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m1504cfccaf" x="61.748" y="281.786" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="61.748" y="300.411" transform="rotate(-0 61.748 300.411)">0 h</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m1504cfccaf" x="241.748" y="281.786" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="241.748" y="300.411" transform="rotate(-0 241.748 300.411)">8 h</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m1504cfccaf" x="421.748" y="281.786" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="421.748" y="300.411" transform="rotate(-0 421.748 300.411)">16 h</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m1504cfccaf" x="601.748" y="281.786" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="601.748" y="300.411" transform="rotate(-0 601.748 300.411)">24 h</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m5d545ce8f8" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m5d545ce8f8" x="54.998" y="281.786" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="47.998" y="287.599" transform="rotate(-0 47.998 287.599)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m5d545ce8f8" x="54.998" y="197.580" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="47.998" y="203.392" transform="rotate(-0 47.998 203.392)">175</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m5d545ce8f8" x="54.998" y="113.374" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="47.998" y="119.186" transform="rotate(-0 47.998 119.186)">350</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="18.825" y="154.274" transform="rotate(-90 18.825 154.274)">starting rate, mL/h</text>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 61.748 281.786 
+L 61.748 26.762 
+" clip-path="url(#p276a92f84a)" style="fill: none; stroke: #152126; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 129.248 281.786 
+L 129.248 67.566 
+" clip-path="url(#p276a92f84a)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #152126; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 54.998 281.786 
+L 54.998 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 54.998 281.786 
+L 612.998 281.786 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #ffffff" transform="translate(127.322 186.579)">first 8 h</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #ffffff" transform="translate(121.521 202.309)">2,800 mL</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #ffffff" transform="translate(115.346 218.038)">= 350 mL/h</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="421.748" y="244.653" transform="rotate(-0 421.748 244.653)">next 16 h: 2,800 mL = 175 mL/h</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(68.498 45.605)">time of burn</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(68.498 60.124)">(clock starts)</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(133.748 79.287)">arrives at 3 h:</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(133.748 93.807)">5 h left for the first half</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #152126" x="54.998" y="20.762" transform="rotate(-0 54.998 20.762)">70 kg, 40% TBSA: 2 mL × 70 × 40 = 5,600 mL in 24 h (Ringer's lactate)</text>
+   </g>
+  </g>
+  <g id="text_14">
+   <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #b5452f" x="54.998" y="331.466" transform="rotate(-0 54.998 331.466)">Only the start. Then titrate every hour to urine 0.5 mL/kg/h (about 35 mL/h for 70 kg).</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p276a92f84a">
+   <rect x="54.998" y="26.762" width="558" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>

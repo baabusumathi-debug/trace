@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="640.8pt" height="338.4pt" viewBox="0 0 640.8 338.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 338.4 
+L 640.8 338.4 
+L 640.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.719 312.680 
+L 633.6 312.680 
+L 633.6 26.762 
+L 25.719 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="329.659" y="328.305" transform="rotate(-0 329.659 328.305)">time</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_2">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="18.825" y="169.721" transform="rotate(-90 18.825 169.721)">CO2</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 25.719 106.184 
+L 269.481 106.084 
+L 283.192 103.977 
+L 296.904 102.095 
+L 312.139 100.238 
+L 327.374 98.600 
+L 344.133 97.020 
+L 362.415 95.527 
+L 382.220 94.144 
+L 403.549 92.886 
+L 426.402 91.763 
+L 452.302 90.720 
+L 481.249 89.789 
+L 513.242 88.989 
+L 549.806 88.298 
+L 592.465 87.715 
+L 633.6 87.317 
+L 633.6 87.317 
+" clip-path="url(#pd0965830a5)" style="fill: none; stroke-dasharray: 9.25,4; stroke-dashoffset: 0; stroke: #5b6b71; stroke-width: 2.5"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 25.719 137.952 
+L 267.957 137.952 
+L 269.481 142.947 
+L 271.004 154.592 
+L 272.528 165.127 
+L 274.051 174.656 
+L 275.575 183.276 
+L 277.098 191.075 
+L 278.622 198.129 
+L 280.145 204.510 
+L 281.669 210.283 
+L 283.192 215.505 
+L 284.716 220.229 
+L 286.239 224.502 
+L 287.763 228.368 
+L 289.286 231.865 
+L 290.810 235.028 
+L 292.333 237.890 
+L 293.857 240.478 
+L 295.380 242.820 
+L 296.904 244.938 
+L 298.427 246.854 
+L 301.474 250.156 
+L 304.521 252.858 
+L 307.568 255.069 
+L 310.615 256.878 
+L 313.662 258.358 
+L 316.709 259.570 
+L 319.756 260.561 
+L 322.803 261.373 
+L 327.374 262.322 
+L 331.945 263.024 
+L 338.039 263.686 
+L 345.656 264.215 
+L 354.797 264.582 
+L 366.985 264.827 
+L 386.791 264.973 
+L 434.020 265.025 
+L 633.6 265.027 
+L 633.6 265.027 
+" clip-path="url(#pd0965830a5)" style="fill: none; stroke: #152126; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 268.871 312.680 
+L 268.871 26.762 
+" clip-path="url(#pd0965830a5)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #b5452f; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 25.719 312.680 
+L 25.719 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 25.719 312.680 
+L 633.6 312.680 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #5b6b71" x="37.877" y="96.653" transform="rotate(-0 37.877 96.653)">PaCO2 (blood gas)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #152126" x="37.877" y="159.396" transform="rotate(-0 37.877 159.396)">end-tidal CO2</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #b5452f" x="274.950" y="50.588" transform="rotate(-0 274.950 50.588)">air enters</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 171.610 134.278 
+Q 171.610 122.071 171.610 109.863 
+" style="fill: none; stroke: #152126; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 173.610 130.278 
+L 171.610 134.278 
+L 169.610 130.278 
+" style="fill: none; stroke: #152126; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 169.610 113.863 
+L 171.610 109.863 
+L 173.610 113.863 
+" style="fill: none; stroke: #152126; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 164.636 73.348 
+Q 167.982 96.719 171.169 118.984 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+    <path d="M 172.864 113.892 
+L 171.169 118.984 
+L 168.113 114.572 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #152126" x="98.665" y="66.473" transform="rotate(-0 98.665 66.473)">normal gap 3–5 mmHg</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 487.708 258.965 
+Q 487.708 175.280 487.708 91.594 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 489.708 254.965 
+L 487.708 258.965 
+L 485.708 254.965 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 485.708 95.594 
+L 487.708 91.594 
+L 489.708 95.594 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(496.826 174.769)">gap widens:</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(496.826 189.288)">dead space</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="329.659" y="20.762" transform="rotate(-0 329.659 20.762)">Embolus: ventilation goes on, blood flow stops</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd0965830a5">
+   <rect x="25.719" y="26.762" width="607.880" height="285.917"/>
+  </clipPath>
+ </defs>
+</svg>

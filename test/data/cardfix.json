@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–8 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "35414172c0",
+ "note": "Card text corrections (7–10 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1 fixes, claude/viva/P1.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
+ "version": "da1076bb1d",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -143,11 +143,11 @@
   },
   "SPECIAL05B|POLY-22": {
    "fields": {
-    "a": "- a Cofactor for clotting, cardiac contractility and vascular tone; monitor every 10 units transfused; keep **ionised Ca in the normal range (about 1.1–1.3 mmol/L)**; >0.9 mmol/L is an outdated threshold.\n- b **rFVIIa**: off-label; no outcome benefit; thrombosis; status unclear (notes); last resort only *(standard teaching, not in your notes)*.\n- c NASCIS II: high-dose methylprednisolone within 8 h improved motor recovery; NASCIS III: 48 h better than 24 h if started 3–8 h. **Now not recommended** (CNS, CAEP): harms, no long-term benefit.\n- d Vitamins A, C, E: less inflammation; vitamin C may protect the kidneys.",
+    "a": "- a Cofactor for clotting, cardiac contractility and vascular tone; monitor every 10 units transfused; keep **ionised Ca in the normal range (about 1.1–1.3 mmol/L)**; >0.9 mmol/L is an outdated threshold.\n- b **rFVIIa**: off-label; no outcome benefit; thrombosis; status unclear (notes); last resort only *(standard teaching, not in your notes)*.\n- c NASCIS II: high-dose methylprednisolone within 8 h improved motor recovery in a subgroup only; NASCIS III: 48 h better than 24 h if started 3–8 h. **Now not recommended** (CNS, CAEP): harms, no long-term benefit.\n- d Vitamins A, C, E: less inflammation; vitamin C may protect the kidneys.",
     "watch": "European trauma bleeding guideline (2023): keep ionised calcium in the normal range during massive transfusion."
    },
-   "src": "Rossaint R et al. European trauma bleeding guideline 6th ed. Crit Care 2023;27:80, Rec 31",
-   "date": "7 Nov 2026"
+   "src": "Rossaint R et al. European trauma bleeding guideline 6th ed. Crit Care 2023;27:80, Rec 31 · Bracken MB et al., NASCIS II, N Engl J Med 1990;322:1405",
+   "date": "10 Nov 2026"
   },
   "MISC05B|BURN-12": {
    "fields": {
@@ -446,6 +446,112 @@
    },
    "src": "Villar J et al., Lancet Respir Med 2020 (DEXA-ARDS); Qadir N et al., ATS guideline, AJRCCM 2024; Chaudhuri D et al., SCCM guideline, Crit Care Med 2024",
    "date": "8 Nov 2026"
+  },
+  "SOD01A|SOD-06": {
+   "fields": {
+    "a": "**CHAMBER** | **FINDINGS**\n**LV systolic** | EF **<45%**; S' <7.5 cm/s; global longitudinal strain worse than –20%; low output\n**LV diastolic** | Septal e' <7, lateral e' <10 cm/s; E/e' lateral >13, septal >15\n**RV** | RV/LV >0.6; **TAPSE <17 mm**; S' <10 cm/s; fractional area change <35%"
+   },
+   "src": "Lang RM et al., ASE/EACVI chamber quantification, J Am Soc Echocardiogr 2015;28:1",
+   "date": "10 Nov 2026"
+  },
+  "SEP01B|SEP-23": {
+   "fields": {
+    "a": "- a Resuscitation to normalise **capillary refill time** (≤3 s) vs to lower **lactate** (by 20% every 2 hours).\n- b 28-day mortality 34.9% vs 43.4%, **P = 0.06**: not significant, but less organ dysfunction.\n- c Capillary refill time entered the guideline as an adjunct.\n- **ANDROMEDA-SHOCK-2** (JAMA 2025; 1467 pts): CRT-targeted phenotype-based resuscitation beat usual care on a hierarchical outcome (**win ratio 1.16**) through less organ support; 28-day mortality 26.5% vs 26.6%."
+   },
+   "src": "ANDROMEDA-SHOCK-2 Investigators, JAMA 2025;334(22):1988-1999; SSC 2026 (Prescott et al., Intensive Care Med / Crit Care Med 2026)",
+   "date": "10 Nov 2026"
+  },
+  "SEP02|SEP-62": {
+   "fields": {
+    "a": "- **Code sepsis / sepsis huddle**\n- **Pre-hospital** antibiotics (transfer >60 min)\n- Against **beta-blockers**; against all blood purification\n- **MAP 60–65** for age 65 and over\n- **Source control within 6 hours**\n- MDR and Candida-biomarker statements; against empiric **anaerobic** or **antifungal** cover unless risk factors\n- **Noradrenaline or adrenaline** first line with cardiac dysfunction\n- **ICU admission within 6 hours**\n- Against **vitamin D**\n- **Selective digestive decontamination**: suggested in ventilated patients in low-resistance units\n- **Awake prone positioning**\n- **Active fluid removal**\n- Against routine **antipyretics, probiotics, Xuebijing**\n- Methylene blue, midodrine: insufficient evidence"
+   },
+   "src": "SSC 2026 (Prescott et al., Intensive Care Med / Crit Care Med 2026) (129 statements, 46 new)",
+   "date": "10 Nov 2026"
+  },
+  "MISC05A|BURN-07": {
+   "fields": {
+    "a": "**Early intubation** if stridor or impending obstruction. Extubate after **48–72 h**: **cuff leak test**; consider IV steroids before extubation if at high risk of stridor (e.g. failed leak test; evidence extrapolated from general ICU).\n**Nebulised heparin** (about 5,000–10,000 IU 4–6-hourly; scan unclear) **+ N-acetylcysteine** (less inflammation); **no systemic corticosteroids** (no benefit, infection risk); no prophylactic antibiotics.\n**Fibreoptic bronchoscopy**: tracheobronchial toilet; reduces VAP."
+   },
+   "src": "ABA ABLS Provider Manual 2018; ISBI Practice Guidelines for Burn Care, Burns 2016 · General ICU post-extubation stridor trials (e.g. François, Lancet 2007); burn-specific evidence thin",
+   "date": "10 Nov 2026"
+  },
+  "HEMO03B|CO-14": {
+   "fields": {
+    "a": "**Variable** | **Drawback**\n**CO (thermo)** | Not continuous (but as reliable as pulmonary\nthermodilution)\n**CO (contour)** | Needs regular recalibration\n**GEDV** | Cannot separate right from left ventricle\n**SVV** | Invalid in spontaneous breathing, arrhythmias, ARDS\n**CFI / GEF** | UNDERESTIMATE LV function when the right ventricle is\ndilated\n**EVLW, PVPI** | Unreliable in pulmonary embolism, lung resection, large\npleural effusions"
+   },
+   "src": "GEF = 4×SV/GEDV; RV dilatation raises GEDV, so GEF/CFI underestimate LV function (Combes A et al., Intensive Care Med 2004;30:1377)",
+   "date": "10 Nov 2026"
+  },
+  "CVS06B|RVF-32": {
+   "fields": {
+    "a": "**Method** | **Abnormal**\n**RVEF on 2D** | **<44%**\n**Fractional area change (FAC)** | **<35%**\n**TAPSE** | **<1.7 cm**\n**RIMP** | **Pulsed >0.44**; **Tissue >0.55**\n**Isovolumic acceleration (IVA)** | **NOT DEFINED**\n**S' (pulsed)** | **<10 cm/sec**\n**RVEF on 3D** | **<44%**"
+   },
+   "src": "Rudski LG et al., J Am Soc Echocardiogr 2010; Lang RM et al., ASE/EACVI 2015",
+   "date": "10 Nov 2026"
+  },
+  "NEURO01|NEURO-26": {
+   "fields": {
+    "a": "Trial | Findings\nCRASH-2 | **Polytrauma**. TXA vs placebo. Dose **1 g loading then 1 g over 8 hours**. TXA group: less haemorrhage growth, fewer focal brain lesions\nCRASH-3 | **TBI patients**, **12,000** patients. TXA vs placebo. **Mild–moderate TBI (GCS 9–15): lower head-injury death (subgroup). Severe TBI (GCS 3–8): NO benefit**\nOral anticoagulants: more pronounced expansion of extra-axial lesions, significant haemorrhagic progression, higher risk of delayed traumatic ICH\nManagement: assess coagulation profile; **FFP / PCC / vitamin K**; dose by weight and INR; **repeat CT before discharge**\nReversal for dabigatran: **idarucizumab**",
+    "watch": "CRASH-3's benefit was confined to MILD–MODERATE TBI (GCS 9–15) - the intuition that sicker patients benefit more is wrong here."
+   },
+   "src": "CRASH-3 collaborators, Lancet 2019;394:1713",
+   "date": "10 Nov 2026"
+  },
+  "MISC05B|BURN-14": {
+   "fields": {
+    "a": "a Hypercatabolic: insulin resistance, lipolysis, proteolysis; poor healing, immune suppression.\nb **Early** enteral feeding (within about 12 h): prevents stress ulcers, reduces infection, boosts immunoglobulins.\nc Estimate REE × factor by TBSA: **1.2** (under 10%), **1.3** (10–20%), **1.5** (20–40%), **1.7** (40–60%), **2.0** (over 60%).\nd Adults **1.5–2 g/kg/day**; children 2–4 g/kg/day (notes; ESPEN 2.5–4).\ne **Low fat** (under about 25% of calories: fatty infiltration of organs); **no glutamine** (RE-ENERGIZE, Heyland NEJM 2022: no benefit on discharge or mortality);  Zn, Cu, Se, Ca, vitamins B1, C, D, E."
+   },
+   "src": "Heyland DK et al., RE-ENERGIZE, N Engl J Med 2022;387:1001",
+   "date": "10 Nov 2026"
+  },
+  "HY5|HEO-03": {
+   "fields": {
+    "a": "**Damage-control resuscitation: permissive hypotension + early balanced blood**\na **Permissive hypotension** (SBP 80–90 / MAP 50–60) until bleeding is controlled; minimal crystalloid.\nb **1 : 1 : 1** (plasma : platelets : red cells); give calcium.\nc **1 g over 10 min, then 1 g over 8 h, within 3 h** of injury (CRASH-2: ↓ mortality).\nd **Traumatic brain injury** — keep MAP ≥ 80 for cerebral perfusion."
+   },
+   "src": "Rossaint R et al., European guideline on management of major bleeding after trauma, 6th ed, Crit Care 2023",
+   "date": "10 Nov 2026"
+  },
+  "CVS09|AD-17": {
+   "fields": {
+    "a": "**Test** | **Role / limitation**\n**TTE** | Shows **severe AR** if root or valve involved; **may\nmiss** the dissection\n**TEE** | **Superior to TTE** - sees nearly all the aorta (blind spot: distal ascending aorta and proximal arch, behind the trachea); useful if\nCT contraindicated or patient cannot be transported\n**CT aortogram** | The **DEFINITIVE** test - whole aorta; preferred over\nroutine contrast CT chest or CT pulmonary\nangiography\n**MR angiography** | Detailed, but **slow** - unsuitable for unstable patients\n2024 ESC: first-line imaging is ECG-gated contrast CT from\nneck to pelvis (I, C); TEE to guide perioperative management (I,\nC)."
+   },
+   "src": "ESC 2024 peripheral arterial and aortic disease guideline; standard TEE anatomy",
+   "date": "10 Nov 2026"
+  },
+  "OBS02B|OBS-37": {
+   "fields": {
+    "a": "a Aggressive multi-organ support; correct coagulopathy;\n**massive transfusion protocol**.\nb **Emergency delivery**; caesarean with ligation of uterine or\ninternal iliac arteries, even hysterectomy.\nc **VA-ECMO** as rescue for refractory collapse (case series only).\nd **Chorioamnionitis** (altered vaginal pH, amniocentesis);\n**pyelonephritis** (ureteric tone lost to progesterone;\nGram-negative colonisation); **endometritis** (instrumentation);\npneumonia."
+   },
+   "src": "Amniotic fluid embolism case series and SMFM 2016 guidance",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL05B|POLY-11": {
+   "fields": {
+    "a": "- a **Hypothermia** (under 34 °C), **acidosis** (pH under 7.2), **coagulopathy**: each worsens the others; all three = very high mortality.\n- b pH under 7.1 (**OR 12.3**), temperature under 34 °C (OR 8.7), ISS over 25 (OR 7.7), SBP under 70: predictors of life-threatening coagulopathy (Cosgriff 1997); all four ≈ 98% incidence.\n- c Lost thermoregulation, no shivering, low metabolism, cold fluids, exposure; core under **32 °C** in trauma ≈ **100% mortality**.\n- d Poor perfusion, **saline** resuscitation; factor VIIa, Xa/Va complex and platelets fail; myocardial depression."
+   },
+   "src": "Cosgriff N et al., J Trauma 1997;42:857",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL05B|POLY-19": {
+   "fields": {
+    "watch": "Viscoelastic tests (TEG, ROTEM): faster, detect hyperfibrinolysis, run at body temperature, reduce transfusion; a Cochrane review found lower mortality but at very low certainty, mostly in cardiac surgery; survival benefit not shown in trauma. European targets: fibrinogen 1.5–2 g/L *(standard teaching, not in your notes)*; platelets over 50 (over 100 in TBI)."
+   },
+   "src": "Wikkelsø A et al., Cochrane CD007871 (2016)",
+   "date": "10 Nov 2026"
+  },
+  "CVS01|CVS-27": {
+   "fields": {
+    "a": "- Haemodynamically **unstable**: **tamponade**\n- **Stable** patients: large effusion **>20 mm**; chronic effusion **>3 months**; symptomatic moderate-to-large effusion not responding to medical therapy; **small** effusion if TB, bacterial or neoplastic\n- Puncture sites: **subcostal, parasternal, apical**\n**ABSOLUTE C/I** | **RELATIVE C/I**\nAortic dissection | Platelets <50 K\nPost-MI free wall rupture | Coagulopathy\n— | Anticoagulant therapy; severe PAH (caution: RV may fail after drainage)"
+   },
+   "src": "ESC 2015 pericardial disease guideline: only aortic dissection and free-wall rupture are absolute contraindications",
+   "date": "10 Nov 2026"
+  },
+  "CVS06B|RVF-29": {
+   "fields": {
+    "watch": "Increased wall thickness is the only sign that dates the process - it means CHRONIC overload, since an acutely loaded RV dilates rather than hypertrophies. TAPSE <17 mm is the ASE/EACVI cut-off: normal is ≥17 mm, with no upper limit."
+   },
+   "src": "Lang RM et al., ASE/EACVI chamber quantification, J Am Soc Echocardiogr 2015;28:1",
+   "date": "10 Nov 2026"
   }
  }
 }

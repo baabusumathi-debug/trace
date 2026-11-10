@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="550.08pt" height="380.304pt" viewBox="0 0 550.08 380.304" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 380.304 
+L 550.08 380.304 
+L 550.08 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 76.073 82.588 
+L 474.006 82.588 
+Q 478.379 82.588 478.379 77.541 
+L 478.379 25.179 
+Q 478.379 20.132 474.006 20.132 
+L 76.073 20.132 
+Q 71.700 20.132 71.700 25.179 
+L 71.700 77.541 
+Q 71.700 82.588 76.073 82.588 
+z
+" clip-path="url(#p353c52128e)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 24.144 232.420 
+L 258.095 232.420 
+Q 262.467 232.420 262.467 227.373 
+L 262.467 134.004 
+Q 262.467 128.957 258.095 128.957 
+L 24.144 128.957 
+Q 19.772 128.957 19.772 134.004 
+L 19.772 227.373 
+Q 19.772 232.420 24.144 232.420 
+z
+" clip-path="url(#p353c52128e)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 291.984 232.420 
+L 525.935 232.420 
+Q 530.307 232.420 530.307 227.373 
+L 530.307 134.004 
+Q 530.307 128.957 525.935 128.957 
+L 291.984 128.957 
+Q 287.612 128.957 287.612 134.004 
+L 287.612 227.373 
+Q 287.612 232.420 291.984 232.420 
+z
+" clip-path="url(#p353c52128e)" style="fill: #e8eef0; stroke: #b5452f; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 24.144 323.896 
+L 258.095 323.896 
+Q 262.467 323.896 262.467 318.849 
+L 262.467 269.641 
+Q 262.467 264.594 258.095 264.594 
+L 24.144 264.594 
+Q 19.772 264.594 19.772 269.641 
+L 19.772 318.849 
+Q 19.772 323.896 24.144 323.896 
+z
+" clip-path="url(#p353c52128e)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 291.984 323.896 
+L 525.935 323.896 
+Q 530.307 323.896 530.307 318.849 
+L 530.307 269.641 
+Q 530.307 264.594 525.935 264.594 
+L 291.984 264.594 
+Q 287.612 264.594 287.612 269.641 
+L 287.612 318.849 
+Q 287.612 323.896 291.984 323.896 
+z
+" clip-path="url(#p353c52128e)" style="fill: #e8eef0; stroke: #b5452f; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(205.695 48.345)">Pelvic fracture in shock</text>
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(121.586 63.470)">binder at the greater trochanters + blood 1:1:1 + TXA</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 207.835 84.087 
+Q 179.382 104.984 152.732 124.558 
+" style="fill: none; stroke: #152126; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 157.139 123.802 
+L 152.732 124.558 
+L 154.772 120.578 
+z
+" style="fill: #152126; stroke: #152126; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 342.244 84.087 
+Q 370.697 104.984 397.347 124.558 
+" style="fill: none; stroke: #152126; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 395.307 120.578 
+L 397.347 124.558 
+L 392.940 123.802 
+z
+" style="fill: #152126; stroke: #152126; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(81.651 170.111)">Transient responder</text>
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(51.388 185.236)">CT contrast blush = ARTERIAL</text>
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(40.036 200.360)">(about 10–20% of pelvic bleeding)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(363.653 162.549)">Non-responder</text>
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(315.279 177.673)">unstable despite binder + blood</text>
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(304.669 192.798)">packing controls VENOUS bleeding</text>
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(306.487 207.922)">(about 80–90% of pelvic bleeding)</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 141.12 235.049 
+Q 141.12 248.821 141.12 260.356 
+" style="fill: none; stroke: #152126; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 143.12 256.356 
+L 141.12 260.356 
+L 139.12 256.356 
+z
+" style="fill: #152126; stroke: #152126; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 408.96 235.049 
+Q 408.96 248.821 408.96 260.356 
+" style="fill: none; stroke: #b5452f; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 410.96 256.356 
+L 408.96 260.356 
+L 406.96 256.356 
+z
+" style="fill: #b5452f; stroke: #b5452f; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 13.5px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="141.12" y="299.156" transform="rotate(-0 141.12 299.156)">Angio-embolisation</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(336.470 290.989)">Preperitoneal packing</text>
+    <text style="font-weight: 700; font-size: 13.5px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(349.069 307.323)">+ external fixation</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12.5px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="275.04" y="354.177" transform="rotate(-0 275.04 354.177)">REBOA zone III: a bridge to haemostasis, not a treatment</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p353c52128e">
+   <rect x="7.2" y="7.2" width="535.68" height="365.904"/>
+  </clipPath>
+ </defs>
+</svg>
