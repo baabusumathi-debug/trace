@@ -1,0 +1,256 @@
+{
+ "RESP01A": [
+  {
+   "id": "T_d0febbed",
+   "topic": "Goals in acute hypoxaemic respiratory failure",
+   "type": "cloze",
+   "q": "Therapeutic goals in acute hypoxaemic respiratory failure?",
+   "a": [
+    "Least PEEP that gives SpO2 ≥90% on FiO2 <0.6.",
+    "Least VT/plateau pressure compatible with pH >7.2 (accept hypercapnia).",
+    "Least circulating volume/PAWP that keeps adequate O2 delivery and urine output."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow QB20-Q09"
+  }
+ ],
+ "RESP01B": [
+  {
+   "id": "T_d7c5bd2c",
+   "topic": "NIV: CPAP vs BiPAP and contraindications",
+   "type": "qa",
+   "q": "NIV: CPAP vs BiPAP — what each pressure does, and who must not get NIV?",
+   "a": [
+    "CPAP = one continuous pressure: recruits alveoli, raises FRC and oxygenation (cardiogenic pulmonary oedema, OSA).",
+    "BiPAP = IPAP + EPAP; pressure support (IPAP − EPAP) unloads breathing and clears CO2, EPAP recruits and oxygenates (and offsets auto-PEEP).",
+    "Contraindications: GCS <8 or cannot protect the airway, apnoea/arrest, vomiting or upper GI bleed, shock, agitation/non-cooperation, facial trauma, undrained pneumothorax.",
+    "Cardiogenic shock with confusion and hypoxaemic oedema → intubate, not NIV; overdose with GCS <8 and RR 6 → intubate."
+   ],
+   "tier": 1,
+   "n": 6,
+   "banks": "DocT Marrow GT",
+   "recall": false,
+   "src": "DocT ARDS Q04; DocT ARDS Q28; Marrow QB05-Q14; Marrow QB11-Q09; DocT GT CGT4 Q88; DocT GT CGT6 Q44"
+  }
+ ],
+ "RESP02A": [
+  {
+   "id": "T_ade9b5a5",
+   "topic": "CXR of emphysema",
+   "type": "image",
+   "q": "Chest X-ray signs of emphysema / hyperinflation?",
+   "a": [
+    "Flat hemidiaphragms (>6 anterior or >10 posterior ribs above them).",
+    "Wide retrosternal air space on the lateral film; long, narrow vertical heart.",
+    "Pruned peripheral vessels; bullae.",
+    "Why: lost elastic recoil raises FRC and RV, so the chest sits at high volume; acute asthma can hyperinflate too."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT COPD & Respiratory Failure Q5"
+  },
+  {
+   "id": "T_a8369bdb",
+   "topic": "Tracheomalacia/EDAC mimicking asthma",
+   "type": "qa",
+   "q": "'Asthma' that repeatedly needs intubation and settles once intubated — what is it, and how is it shown?",
+   "a": [
+    "Suspect tracheomalacia or excessive dynamic airway collapse (EDAC): the tube stents the collapsing airway, so the 'bronchospasm' vanishes on intubation.",
+    "Diagnose by dynamic bronchoscopy after extubation (forced expiration/cough) or dynamic expiratory CT — an inspiratory CT can be normal.",
+    "Vocal-cord dysfunction is the other mimic (speech therapy); treat EDAC with CPAP, stenting or tracheobronchoplasty."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow QB08-Q04"
+  },
+  {
+   "id": "T_a68aceb6",
+   "topic": "Restrictive PFT pattern (IPF)",
+   "type": "cloze",
+   "q": "Pulmonary function pattern in idiopathic pulmonary fibrosis?",
+   "a": [
+    "Restrictive: TLC, FRC, RV, FEV1 and FVC all reduced; FEV1/FVC normal or raised (increased elastic recoil).",
+    "DLCO reduced early (thickened membrane); desaturation on exercise.",
+    "Volumes fall further as the lung stiffens."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT7 Q140"
+  }
+ ],
+ "RESP02B": [
+  {
+   "id": "T_a6c60300",
+   "topic": "MDI on the ventilator",
+   "type": "qa",
+   "q": "MDI on a ventilated patient — how do you maximise delivery?",
+   "a": [
+    "Spacer in the inspiratory limb ~15 cm from the Y-piece; actuate at the START of inspiration.",
+    "Low inspiratory flow, VT >500 mL, longer Ti with a pause; remove the HME (or place the device between HME and patient).",
+    "Wider ETT helps; deposition falls with high flow, small tubes and humidified gas; typical dose 4–8 puffs.",
+    "Nebuliser with the HME left in place: the filter traps the aerosol and almost no drug arrives — remove the HME during nebulisation; volume control with a square, low inspiratory flow carries aerosol more consistently than pressure control.",
+    "Vibrating-mesh nebuliser is electrically powered: no added driving gas, so VT, trigger and FiO2 are undisturbed and it refills without breaking the circuit; a jet nebuliser adds 6–8 L/min of gas."
+   ],
+   "tier": 1,
+   "n": 5,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT3 Q88; DocT GT CGT5 Q8; DocT GT CGT6 Q8; DocT GT CGT6 Q9; DocT GT GT4 Q116"
+  }
+ ],
+ "RESP03": [
+  {
+   "id": "T_938aa87a",
+   "topic": "Respiratory failure types I–IV",
+   "type": "pairs",
+   "q": "Respiratory failure types I–IV — mechanism and typical setting?",
+   "a": [
+    "Type I (hypoxaemic): V/Q mismatch/shunt; PaO2 <60 with normal or low PaCO2 (pneumonia, ARDS, oedema).",
+    "Type II (hypercapnic): alveolar hypoventilation; PaCO2 >45–50 with acidosis (COPD, opioids, neuromuscular).",
+    "Type III (perioperative): atelectasis from low FRC, pain and splinting after upper abdominal surgery; mainly hypoxaemia, CO2 may rise.",
+    "Type IV (shock): normal lungs and pump, but respiratory-muscle hypoperfusion and high ventilatory demand (sepsis, cardiogenic shock) → fatigue; ventilate to unload the muscles until shock is reversed."
+   ],
+   "tier": 1,
+   "n": 5,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT2 Q9; DocT GT CGT2 Q74; DocT GT GT5 Q53; DocT GT GT5 Q56; DocT GT GT6 Q104"
+  },
+  {
+   "id": "T_23f59da7",
+   "topic": "Anterior mediastinal mass and induction",
+   "type": "case",
+   "q": "Lymphoma with a large anterior mediastinal mass needs intubation — best predictor of collapse at induction, and the plan?",
+   "a": [
+    "Symptoms when supine (orthopnoea, cough, stridor) predict compression; normal PFTs or auscultation do not reassure.",
+    "Induction, paralysis and positive pressure remove the muscle tone and negative intrathoracic pressure that hold the airway open, so the mass compresses trachea, bronchi or pulmonary artery.",
+    "Plan: CT first, keep spontaneous breathing (awake fibreoptic intubation, sitting up), rigid bronchoscope ready, ECMO standby if high risk; steroids or radiotherapy can shrink the mass first."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT1o Q59"
+  },
+  {
+   "id": "T_3e6c3480",
+   "topic": "Lobar collapse on the ventilator",
+   "type": "image",
+   "q": "Ventilated patient, sudden hypoxaemia not fixed by FiO2/PEEP/tube check; CXR: retrocardiac triangle with loss of the left hemidiaphragm — diagnosis and next step?",
+   "a": [
+    "Left lower lobe collapse ('sail sign'), usually from a mucus plug.",
+    "Next: therapeutic bronchoscopy to clear the plug (plus suction, humidification, physiotherapy).",
+    "Not needle decompression (tension pneumothorax is hyperlucent with shift away); not advancing the tube (right mainstem intubation collapses the whole left lung)."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT2o Q20"
+  }
+ ],
+ "TOX03B": [
+  {
+   "id": "T_1dbd9a24",
+   "topic": "Strychnine poisoning",
+   "type": "qa",
+   "q": "What is the airway trap in strychnine poisoning?",
+   "a": [
+    "Strychnine is a glycine-receptor antagonist: awake patient with painful generalised muscle spasms, opisthotonus, trismus and risus sardonicus, triggered by noise or touch.",
+    "The sensorium stays clear - it is spinal disinhibition, not a seizure - and the muscles relax COMPLETELY between spasms, within minutes to an hour of ingestion. Tetanus differs: persistent baseline rigidity and trismus between spasms, onset days after a wound, autonomic storm later.",
+    "Benzodiazepines first for the spasms, in a dark quiet room; add paralysis and ventilation if spasms threaten ventilation or hyperthermia.",
+    "Avoid DEPOLARISING blockers (suxamethonium) for rapid sequence induction: rhabdomyolysis gives hyperkalaemia and hyperthermia risk - use a non-depolarising agent.",
+    "Supportive care with active cooling; death is from respiratory failure and hyperthermia."
+   ],
+   "tier": 2,
+   "n": 3,
+   "banks": "DocT GT Marrow",
+   "recall": false,
+   "src": "Marrow:QB57-Q45; GT:148 (CGT5); GT:106 (CGT6)"
+  }
+ ],
+ "TOX04": [
+  {
+   "id": "T_dbdbadf0",
+   "topic": "Alcohol withdrawal in the ICU: timeline and stepwise treatment",
+   "type": "algorithm",
+   "q": "Chronic alcohol use, seizures at 24 h, then delirium - what is the sequence and the drug ladder?",
+   "a": [
+    "Timeline: tremor 6-24 h, withdrawal seizures 6-48 h (peak about 24 h; brief generalised clusters - status epilepticus is uncommon and should prompt a search for epilepsy or head injury), delirium tremens 48-96 h; score with CIWA-Ar.",
+    "Thiamine 200-500 mg IV 8-hourly, given before or with glucose.",
+    "Symptom-triggered benzodiazepine is first line (diazepam or lorazepam; lorazepam or oxazepam in liver failure).",
+    "Benzodiazepine-refractory: phenobarbital 10 mg/kg IV (Rosenson 2013: ICU admission 25% to 8%) or propofol with intubation.",
+    "Phenytoin, carbamazepine and levetiracetam do not work (GABA loss and NMDA rebound, not an epileptic focus); dexmedetomidine and clonidine only blunt autonomic signs; haloperidol never alone."
+   ],
+   "tier": 1,
+   "n": 5,
+   "banks": "DocT GT Marrow",
+   "recall": false,
+   "src": "DocT:12 (Seizure Disorders); DocT:10; DocT:13 (Substance-Related P1); Marrow:QB57-Q35; GT:46 (GT6)"
+  },
+  {
+   "id": "T_db6f11ba",
+   "topic": "Alcoholic cardiomyopathy vs wet beriberi",
+   "type": "pairs",
+   "q": "Chronic drinker with Wernicke features stays in pressor-dependent shock after thiamine - what is it?",
+   "a": [
+    "Alcoholic dilated cardiomyopathy: LOW-output cardiogenic shock; echo shows a dilated, poorly contracting LV, and thiamine does not reverse it.",
+    "Wet beriberi (Shoshin): HIGH-output failure with warm peripheries and lactic acidosis that reverses within hours of IV thiamine.",
+    "So shock that persists after thiamine points away from beriberi and towards the cardiomyopathy.",
+    "Wernicke encephalopathy itself does not cause neurogenic shock."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "GT:62 (CGT4)"
+  }
+ ],
+ "TOX05": [
+  {
+   "id": "T_1467a2fc",
+   "topic": "Spiders and scorpions: toxin, picture, treatment",
+   "type": "pairs",
+   "q": "Black widow vs brown recluse vs funnel-web vs scorpion - which toxin, which picture?",
+   "a": [
+    "Black widow (Latrodectus): alpha-latrotoxin floods presynaptic transmitter release - local sweating, cramps, rigid abdomen, hypertension.",
+    "Brown recluse (Loxosceles): sphingomyelinase D - painless bite, necrosis over days, with haemolysis, DIC or AKI delayed 24-72 h (up to a week).",
+    "Funnel-web: delta-atracotoxin slows sodium-channel inactivation - autonomic storm; pressure bandage plus antivenom.",
+    "Bark scorpion (Centruroides, US): sodium-channel neurotoxin - jerking limbs and roving eye movements in children.",
+    "Indian red scorpion: catecholamine storm with myocarditis and pulmonary oedema - prazosin 30 microgram/kg, repeated 3-hourly."
+   ],
+   "tier": 1,
+   "n": 5,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:13; DocT:14; DocT:15; DocT:16; DocT:18 (Animal-Related P2)"
+  },
+  {
+   "id": "T_dfc56d26",
+   "topic": "Snakebite VICC vs snakebite TMA",
+   "type": "pairs",
+   "q": "After a viper bite, how do you separate venom-induced consumption coagulopathy from snakebite thrombotic microangiopathy?",
+   "a": [
+    "VICC: procoagulant venom consumes fibrinogen, giving incoagulable blood (positive 20WBCT, high INR); antivenom reverses it in about 6-24 h.",
+    "TMA: about 5-15% of VICC, mainly Russell's viper - schistocytes, low platelets, high LDH and AKI that PERSIST after clotting has recovered.",
+    "ADAMTS13 is normal in snakebite TMA, and plasma exchange gives no benefit (Isbister/Noutsos 2020).",
+    "Antivenom neither prevents nor shortens the TMA - it is given for the venom effect, not the microangiopathy.",
+    "Treatment is supportive, with dialysis for the AKI."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:13 (Animal-Related P1); DocT:11 (Animal-Related P2)"
+  }
+ ]
+}

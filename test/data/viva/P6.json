@@ -1,0 +1,1705 @@
+{
+ "package": "P6",
+ "title": "Renal and metabolic: AKI, RRT, acid-base, electrolytes",
+ "version": "P6.20261110.1",
+ "cards": {
+  "V6-001": {
+   "deck": "RENAL01",
+   "topic": "RIFLE, AKIN and KDIGO: thresholds and how KDIGO merged them",
+   "type": "qa",
+   "q": "Give the RIFLE and AKIN criteria, and explain how KDIGO 2012 combined them.",
+   "a": [
+    "**RIFLE** (ADQI; Bellomo, Crit Care 2004): three severity classes and two outcome classes, by creatinine/GFR or urine output; the worse criterion classifies.",
+    "CLASS | CREATININE / GFR | URINE OUTPUT",
+    "**Risk** | SCr ×1.5 or GFR ↓ >25% | <0.5 mL/kg/h for 6 h",
+    "**Injury** | SCr ×2 or GFR ↓ >50% | <0.5 mL/kg/h for 12 h",
+    "**Failure** | SCr ×3, GFR ↓ >75%, or SCr ≥4 mg/dL with an acute rise ≥0.5 | <0.3 mL/kg/h for 24 h, or anuria 12 h",
+    "**Loss** = complete loss of kidney function >4 weeks. **ESKD** = >3 months.",
+    "**AKIN** (Mehta, Crit Care 2007): coined 'AKI'. Added a rise of **≥0.3 mg/dL**, within a **48-h** window. Dropped GFR and the L/E outcome classes. Stages 1–3; anyone started on RRT = **stage 3**.",
+    "**KDIGO 2012** merged them: AKI = SCr ↑ **≥0.3 in 48 h** (AKIN) or **≥1.5× in 7 days** (RIFLE), or UO <0.5 for 6 h. Staged 1–3 like AKIN. All rest on creatinine and urine output: function, not injury. The **2026 KDIGO draft** (public review Mar–May 2026) adds structural biomarkers; not yet final."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-094"
+   ],
+   "src": "Bellomo R et al., Crit Care 2004;8:R204 (RIFLE, ADQI); Mehta RL et al., Crit Care 2007;11:R31 (AKIN); KDIGO Clinical Practice Guideline for AKI, Kidney Int Suppl 2012;2:1",
+   "v": 1
+  },
+  "V6-002": {
+   "deck": "RENAL02",
+   "topic": "Urine indices: prerenal vs ATN, and FEUrea on diuretics",
+   "type": "qa",
+   "q": "Which urine indices separate prerenal AKI from ATN, and what do you use if the patient is on diuretics?",
+   "a": [
+    "INDEX | PRERENAL | ATN",
+    "**Urine Na** (mmol/L) | <20 | >40",
+    "**Urine osmolality** (mOsm/kg) | >500 | <450, usually <350",
+    "**FENa** | <1% | >2%",
+    "**FEUrea** | <35% | >50%",
+    "**BUN : creatinine** | >20 : 1 | 10–15 : 1",
+    "**Sediment** | Bland or hyaline casts | Muddy brown granular, epithelial casts",
+    "**On diuretics** FENa is falsely high. Carvounis (Kidney Int 2002, 102 episodes): only **48%** of diuretic-treated prerenal patients had FENa <1%, but **89%** had FEUrea ≤35%; ATN mean FEUrea 58.6%. None of these hold well in CKD."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-095"
+   ],
+   "src": "Carvounis CP et al., Kidney Int 2002;62:2223; Gotfried J et al., Cleve Clin J Med 2012;79:121; MSD Manual Professional, ATN vs prerenal azotaemia table",
+   "v": 1
+  },
+  "V6-003": {
+   "deck": "RENAL01",
+   "topic": "Septic AKI: renal flow, reprogramming and venous congestion",
+   "type": "qa",
+   "q": "Is septic AKI just renal hypoperfusion? Can renal blood flow be normal, and what else drives it?",
+   "a": [
+    "**Not just hypoperfusion.** In hyperdynamic septic sheep (Langenberg, Kidney Int 2006), RBF rose from about **262 to 757 mL/min** while creatinine clearance fell from about **95 to 20 mL/min**.",
+    "In humans (Prowle, Crit Care Med 2012, phase-contrast MRI, 10 patients): RBF about half of controls (**482 vs 1260 mL/min**), only ~7% of cardiac output, and **uncoupled from creatinine clearance**. So flow varies; GFR does not follow it.",
+    "**Intrarenal haemodynamics:** efferent dilation lowers glomerular pressure; flow shifts from medulla to cortex with medullary hypoxia. Early histology is often near normal, so septic AKI starts largely functional (Bellomo, ICM 2017).",
+    "**Unified theory** (Gomez, Shock 2014): inflammation (filtered PAMPs/DAMPs on the tubule), microcirculatory dysfunction, and the tubular cell's adaptive, mitochondria-driven response.",
+    "**Metabolic reprogramming:** tubular cells switch from fatty-acid oxidation to **aerobic glycolysis** and enter **G1 cell-cycle arrest** (hence TIMP-2×IGFBP7). Early it is protective; if prolonged it drives fibrosis and CKD.",
+    "**Venous congestion** (Legrand, Crit Care 2013, 137 septic patients): each **1 mmHg** higher CVP → OR **1.22** for new or persistent AKI, independent of fluid balance and PEEP. Renal perfusion pressure = MAP − CVP."
+   ],
+   "tier": "A",
+   "qref": [
+    "P6-096"
+   ],
+   "src": "Bellomo R et al., Intensive Care Med 2017;43:816; Langenberg C et al., Kidney Int 2006;69:1996; Prowle JR et al., Crit Care Med 2012;40:1768; Gomez H et al., Shock 2014;41:3; Legrand M et al., Crit Care 2013;17:R278",
+   "v": 1
+  },
+  "V6-004": {
+   "deck": "RENAL02",
+   "topic": "Furosemide stress test: protocol and evidence",
+   "type": "qa",
+   "q": "How is the furosemide stress test done, and how good is it at predicting AKI progression?",
+   "a": [
+    "**Chawla, Crit Care 2013:** 77 ICU patients with early AKI (AKIN stage 1 or 2). Excluded: eGFR <30, volume depletion, obstruction, active bleeding.",
+    "**Dose:** furosemide **1.0 mg/kg IV**, or **1.5 mg/kg** if a loop diuretic was given in the previous 7 days.",
+    "**Safety:** urine output replaced **ml for ml** each hour with Ringer's lactate or saline for 6 h, so the test does not cause hypovolaemia.",
+    "**Result:** urine **<200 mL in the first 2 h** predicted progression to AKIN stage 3: AUC **0.87**, sensitivity **87.1%**, specificity **84.1%**. 32% progressed.",
+    "**Koyner, JASN 2015** (same 77 patients): the 2-h output beat each urinary biomarker for progression to stage 3 and was the only significant predictor of RRT (AUC **0.86**). Adding biomarkers did not improve it.",
+    "**Why it works:** furosemide is protein-bound and reaches its NKCC2 target only by proximal tubular secretion; a diuresis proves secretion and loop function are intact. Prognostic, not a treatment."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-230"
+   ],
+   "src": "Chawla LS et al., Crit Care 2013;17:R207; Koyner JL et al., J Am Soc Nephrol 2015;26:2023",
+   "v": 1
+  },
+  "V6-005": {
+   "deck": "RENAL02",
+   "topic": "TIMP-2×IGFBP7 and NGAL: the evidence and cut-offs",
+   "type": "qa",
+   "q": "What is the evidence for TIMP-2×IGFBP7 and NGAL, and what do the cut-offs mean?",
+   "a": [
+    "**TIMP-2×IGFBP7** (NephroCheck): urinary inducers of **G1 cell-cycle arrest**. Sapphire (Kashani, Crit Care 2013; 728 critically ill without AKI): AUC **0.80** for KDIGO stage 2–3 within 12 h; no older marker exceeded 0.72.",
+    "CUT-OFF | SENSITIVITY | SPECIFICITY | RISK vs ≤0.3",
+    "**>0.3** | 89% | 50% | about 4.7× (0.3–2.0 band)",
+    "**>2.0** | 42% | 95% | about 12×",
+    "Units (ng/mL)²/1000 (Hoste, NDT 2014). Bihorac (AJRCCM 2014, 420 patients): ≥0.3 had **92%** sensitivity and 7× the risk.",
+    "**NGAL** (TAL, collecting duct, neutrophils): meta-analysis of 19 studies, 2538 patients (Haase, AJKD 2009): AUC **0.815**; cardiac surgery 0.78, critically ill **0.73**; cut-off **>150 ng/mL** on standard platforms. Sepsis raises it.",
+    "**PrevAKI** (Meersch, ICM 2017): after cardiac surgery, TIMP-2×IGFBP7 >0.3 → KDIGO bundle vs standard care: AKI **55.1% vs 71.7%** (ARR 16.6%)."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-231"
+   ],
+   "src": "Kashani K et al., Crit Care 2013;17:R25; Hoste EA et al., Nephrol Dial Transplant 2014;29:2054; Bihorac A et al., Am J Respir Crit Care Med 2014;189:932; Haase M et al., Am J Kidney Dis 2009;54:1012; Meersch M et al., Intensive Care Med 2017;43:1551",
+   "v": 1
+  },
+  "V6-006": {
+   "deck": "HY1",
+   "topic": "Rhabdomyolysis: is there evidence for bicarbonate and mannitol?",
+   "type": "qa",
+   "q": "In rhabdomyolysis, is there evidence for bicarbonate or mannitol over fluid alone?",
+   "a": [
+    "**Brown, J Trauma 2004** (trauma ICU, 2083 admissions, 1997–2002): CK **>5,000 U/L** was the lowest level linked to renal failure (**19%** vs 8% below it).",
+    "In the 382 with CK >5,000, bicarbonate + mannitol (154) vs saline (228): renal failure **22% vs 18%**, dialysis **7% vs 6%**, mortality **15% vs 18%**, all non-significant. Retrospective; the treated group had higher CK.",
+    "**Scharman, Ann Pharmacother 2013** (systematic review, 27 studies): no controlled trial compared fluid + bicarbonate with fluid alone, and no evidence that bicarbonate, with or without mannitol, beats fluid.",
+    "**Fluid** (Scharman): start as early as possible, ideally within **6 h** of muscle injury; titrate urine output to **≥300 mL/h** for at least the first 24 h. No fluid type is proven better; delay raised renal failure risk in 8 studies.",
+    "**Bicarbonate** only to correct systemic acidosis. **Mannitol** only if urine ≥300 mL/h cannot be held despite adequate fluid.",
+    "**Bottom line:** fluid is the treatment; bicarbonate and mannitol rest on observational and experimental data only, so they are not routine."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-237"
+   ],
+   "src": "Brown CV et al., J Trauma 2004;56:1191; Scharman EJ, Troutman WG, Ann Pharmacother 2013;47:90; Bosch X et al., N Engl J Med 2009;361:62",
+   "v": 1
+  },
+  "V6-007": {
+   "deck": "RENAL04",
+   "topic": "RRT timing trials: AKIKI, IDEAL-ICU, STARRT-AKI, AKIKI-2 numbers",
+   "type": "qa",
+   "q": "What exactly did AKIKI, IDEAL-ICU, STARRT-AKI and AKIKI-2 show about when to start RRT?",
+   "a": [
+    "**AKIKI** (NEJM 2016, n = 620, 31 French ICUs, KDIGO stage 3 on ventilation and/or catecholamines): 60-day mortality **48.5% vs 49.7%**. **49%** of the delayed arm never needed RRT. Catheter bloodstream infection about **10% vs 5%** with early start.",
+    "AKIKI delayed-arm triggers: severe hyperkalaemia, metabolic acidosis, pulmonary oedema, **BUN >112 mg/dL** (urea about 40 mmol/L) or oliguria **>72 h**.",
+    "**IDEAL-ICU** (NEJM 2018, n = 488, septic shock, RIFLE failure): RRT within **12 h** vs after **48 h**. 90-day mortality **58% vs 54%**; stopped for futility. **38%** of the delayed arm never got RRT.",
+    "**STARRT-AKI** (NEJM 2020, n = 2927, KDIGO 2-3): accelerated (within 12 h) vs standard. 90-day mortality **43.9% vs 43.7%**. **38%** of the standard arm never received RRT.",
+    "STARRT-AKI harm signal: RRT dependence at 90 days in survivors **10.4% vs 6.0%** (RR 1.74); adverse events **23.0% vs 16.5%**, mainly hypotension and hypophosphataemia.",
+    "**AKIKI-2** (Lancet 2021, n = 278): patients already past BUN 112 mg/dL or oliguria >72 h, randomised to start then vs wait longer (to BUN 140 mg/dL or an urgent indication).",
+    "AKIKI-2 result: RRT-free days **12 vs 10** (no gain). 60-day mortality **44% vs 55%** (p = 0.07); adjusted HR for death with more delay **1.65** (1.09-2.50).",
+    "**Synthesis:** start for a refractory complication; otherwise defer and reassess, but once BUN passes about 112 mg/dL or oliguria passes 72 h, further waiting buys nothing."
+   ],
+   "tier": "A",
+   "qref": [
+    "P6-099"
+   ],
+   "src": "Gaudry S et al., NEJM 2016;375:122 (AKIKI); Barbar SD et al., NEJM 2018;379:1431 (IDEAL-ICU); STARRT-AKI Investigators, NEJM 2020;383:240; Gaudry S et al., Lancet 2021;397:1293 (AKIKI-2)",
+   "v": 1
+  },
+  "V6-008": {
+   "deck": "RENAL04",
+   "topic": "CRRT dose trials (ATN, RENAL) and KDIGO on dose and citrate",
+   "type": "qa",
+   "q": "What did the ATN and RENAL trials compare and find, and what does KDIGO recommend for CRRT dose and anticoagulation?",
+   "a": [
+    "**ATN** (VA/NIH, NEJM 2008, n = 1124): intensive (IHD or SLED **6 per week**, CVVHDF **35 mL/kg/h**) vs less intensive (**3 per week**, **20 mL/kg/h**).",
+    "ATN result: 60-day mortality **53.6% vs 51.5%** (OR 1.09, p = 0.47). Complete renal recovery by day 28 **15.4% vs 18.4%**: no gain from intensity.",
+    "**RENAL** (ANZ, NEJM 2009, n = 1508): postdilution CVVHDF **40 vs 25 mL/kg/h** prescribed, **33.4 vs 22** delivered. 90-day mortality **44.7% in both** arms. Hypophosphataemia **65% vs 54%**.",
+    "**KDIGO 5.8.4 (1A):** deliver an effluent volume of **20-25 mL/kg/h** for CRRT; this usually needs a higher prescription (many units prescribe 25-30). KDIGO 5.8.3 (1A): Kt/V **3.9 per week** for intermittent or extended RRT.",
+    "**KDIGO 5.3.2.2 (2B):** for CRRT anticoagulation, regional **citrate rather than heparin** in patients without a contraindication to citrate (classically severe liver failure or shock with poor muscle perfusion).",
+    "Viva line: **enough dose, actually delivered**. Measure the delivered effluent daily and fix downtime rather than raising the prescription."
+   ],
+   "tier": "A",
+   "qref": [
+    "P6-098"
+   ],
+   "src": "Palevsky PM et al. (VA/NIH ATN), NEJM 2008;359:7; RENAL Replacement Therapy Study Investigators (Bellomo R), NEJM 2009;361:1627; KDIGO Clinical Practice Guideline for AKI, Kidney Int Suppl 2012;2:1 (5.3.2.2, 5.8.3, 5.8.4)",
+   "v": 1
+  },
+  "V6-009": {
+   "deck": "RENAL04",
+   "topic": "Citrate accumulation in liver failure: why, signs, what to do",
+   "type": "qa",
+   "q": "Why does citrate accumulate in liver failure, how do you recognise it, and what do you do?",
+   "a": [
+    "**Why:** citrate returned to the patient is metabolised in the Krebs cycle, mainly in the **liver** (also muscle and kidney). Each citrate yields **3 bicarbonate** and releases its calcium. Liver failure or shock slows this.",
+    "**Accumulation pattern:** total calcium rises (calcium-citrate complexes) while systemic **iCa falls** despite more calcium; **total/iCa ratio ≥2.5**; metabolic acidosis with a **rising anion gap** (citrate is an unmeasured anion).",
+    "Contrast **citrate overload with normal metabolism**: too much citrate is delivered and converted, so bicarbonate overshoots into **metabolic alkalosis**, with a normal total/iCa ratio.",
+    "**Who is at risk:** Schultheiss (Crit Care 2012, n = 28, cirrhosis or ALF): baseline **lactate ≥3.4 mmol/L** or **prothrombin time ≤26%** predicted a ratio ≥2.5 (sensitivity 86%). Standard liver tests predicted poorly.",
+    "**Still usable:** L-CAT (Crit Care 2015, n = 133 on citrate CVVHD, bilirubin ≤2, 2-7, >7 mg/dL): signs of accumulation in only **2.3%** (3 patients), safety endpoints similar across strata. Liver failure calls for closer monitoring, not an absolute ban.",
+    "**Monitor** more often than usual: total/iCa ratio, systemic iCa, pH, bicarbonate, anion gap, lactate and the hourly calcium requirement.",
+    "**What to do:** lower the citrate load (reduce blood flow, since citrate is dosed to it), raise dialysate or effluent flow to remove more citrate-calcium complex, correct iCa; if the ratio keeps rising, stop citrate and use heparin or no anticoagulation."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-243",
+    "P6-098"
+   ],
+   "src": "Schultheiss C et al., Crit Care 2012, doi 10.1186/cc11485 (CVVHD with citrate in liver failure); Slowinski T et al., L-CAT study, Crit Care 2015;19:349 (doi 10.1186/s13054-015-1066-7); KDIGO AKI 2012 (5.3.2.2 rationale)",
+   "v": 1
+  },
+  "V6-010": {
+   "deck": "RENAL04",
+   "topic": "Citrate catheter lock: concentrations, risks, versus heparin",
+   "type": "qa",
+   "q": "What is a citrate catheter lock, which concentration is used, and how does it compare with a heparin lock?",
+   "a": [
+    "**What:** between sessions each lumen of the dialysis catheter is filled with anticoagulant, exactly the **lumen fill volume** printed on the hub, and aspirated before the next use. It keeps the lumen patent.",
+    "**4% trisodium citrate:** anticoagulant only (chelates calcium); a small spill into the blood is harmless. ICU RCT (Quenot, VERROU-REA, 2019, n = 396, non-tunnelled catheters): 4% citrate vs heparin 5000 U/mL, no difference in catheter event-free survival, thrombosis or infection.",
+    "**30% citrate** (Weijmer, JASN 2005, n = 291 haemodialysis patients) vs heparin **5000 U/mL**: fewer catheter-related bacteraemias and fewer major bleeds; trial stopped early. Concentrated citrate is also antimicrobial.",
+    "**46.7% citrate:** strongest anti-colonisation effect, but a full-strength bolus causes abrupt **hypocalcaemia**. FDA warning in **2000** after a fatal cardiac arrest; the product was recalled for catheter locking in the US.",
+    "**Heparin lock:** concentrated heparin leaks from the tip into the blood and can cause systemic bleeding; contraindicated in HIT. That is the case for citrate in bleeding-risk ICU patients.",
+    "**ICU practice:** citrate (often 4%) or heparin by local policy; no routine antibiotic locks in temporary catheters; always aspirate the lock before connecting."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-243"
+   ],
+   "src": "Weijmer MC et al., J Am Soc Nephrol 2005;16:2769 (30% citrate vs heparin lock); Quenot JP et al. (VERROU-REA), Ann Intensive Care 2019;9:75 (4% citrate vs heparin, ICU); FDA warning on TriCitrasol 46.7% citrate, April 2000; What should be the best dialysis catheter lock in critically ill patients? Crit Care 2019 (doi 10.1186/s13054-019-2640-1)",
+   "v": 1
+  },
+  "V6-011": {
+   "deck": "ABG03",
+   "topic": "Urine anion gap: why it works, when it fails, urine osmolal gap",
+   "type": "qa",
+   "q": "Why does the urine anion gap separate gut from kidney in a normal-gap acidosis, when is it unreliable, and what do you use instead?",
+   "a": [
+    "**Why it works:** urine NH4+ is not measured but leaves with chloride. UAG = (U-Na + U-K) − U-Cl, so the more NH4Cl excreted, the more **negative** the gap. It is a proxy for urine ammonium (Batlle 1988).",
+    "Reading: **negative** = diarrhoea or GI fistula (the kidney raises NH4+ excretion appropriately). **Positive** = the kidney cannot excrete NH4+: distal (type 1) RTA with low or normal K; **type 4 RTA** with high K.",
+    "**Falsely positive** when NH4+ leaves with an unmeasured anion instead of chloride: **ketones** (DKA) or **hippurate** (toluene). NH4+ excretion is high, yet the gap looks like RTA.",
+    "**Volume depletion**: urine Na below about **20** mmol/L means poor distal sodium delivery, so NH4+ and H+ secretion fall and the gap can be positive without RTA.",
+    "**Bicarbonaturia**: the formula ignores urine HCO3, which is valid only when urine pH is below **6.5**.",
+    "**Use instead: urine osmolal gap** = measured U-osm − [2 × (Na + K) + BUN/2.8 + glucose/18] (mg/dL; in mmol/L simply add urea + glucose). Half of it ≈ urine NH4+. High = NH4+ being excreted; under about **40** mOsm/kg suggests RTA.",
+    "**Proximal (type 2) RTA**: the distal nephron still makes NH4+, so in steady state the UAG is usually **zero or negative** and urine pH below 5.5. Confirm with fractional HCO3 excretion **>15–20%** during bicarbonate loading.",
+    "Steady-state caveat: UAG largely reflects Na, K and Cl intake; direct urine NH4+ measurement is better where available."
+   ],
+   "tier": "A",
+   "qref": [
+    "P6-100"
+   ],
+   "src": "Batlle DC et al., N Engl J Med 1988;318:594–9; Kraut JA, Madias NE, Nat Rev Nephrol 2010;6:274; Kim GH et al., Am J Kidney Dis 1996;27:42; Halperin ML et al., Clin Invest Med 1988;11:198; Uribarri J, Oh MS, J Am Soc Nephrol 2021",
+   "v": 1
+  },
+  "V6-012": {
+   "deck": "ABG02",
+   "topic": "Stewart approach: SID, Atot, PaCO2 and why saline acidifies",
+   "type": "qa",
+   "q": "What is the Stewart (physicochemical) approach to acid–base, and why does 0.9% saline cause an acidosis?",
+   "a": [
+    "**Three independent variables** set [H+]: **SID** (strong ion difference), **Atot** (total non-volatile weak acids: albumin, phosphate) and **PaCO2**. HCO3 and H+ are dependent: they change only when these do.",
+    "**SID** = strong cations − strong anions: (Na + K + Ca + Mg) − (Cl + lactate). Normal plasma **40–42** mEq/L. SID falls = metabolic acidosis; SID rises = metabolic alkalosis.",
+    "**Atot**: low albumin lowers Atot = a metabolic **alkalosis**, which can hide an acidosis; high phosphate raises Atot = acidosis.",
+    "**Strong ion gap** = apparent SID − effective SID (HCO3 + albumin and phosphate charge). Normally about **0**; a raised SIG means unmeasured anions (lactate is measured; ketones, toxins are not), the Stewart twin of the corrected anion gap.",
+    "**Why saline acidifies:** 0.9% saline has Na 154 and Cl 154, so its SID is **0**. Large volumes pull plasma SID down, so H+ rises: hyperchloraemic acidosis. Diluting Atot offsets this only partly.",
+    "Effective SID of fluids: **0.9% saline 0** (acidifies); an ideal balanced fluid about **24** (equal to plasma HCO3, pH unchanged); **Hartmann's** about **28–29**; **Plasma-Lyte 148** about **50**, once their anions are metabolised."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-234"
+   ],
+   "src": "Stewart PA, Can J Physiol Pharmacol 1983;61:1444; Morgan TJ, Crit Care 2005;9:204 (effects of fluid administration); Kellum JA, Crit Care 2000;4:6; Malbrain MLNG et al., Ann Intensive Care 2020;10:64 (International Fluid Academy, in vivo SID table)",
+   "v": 1
+  },
+  "V6-013": {
+   "deck": "HY1",
+   "topic": "BICAR-ICU 2018: design, results and the AKI subgroup",
+   "type": "qa",
+   "q": "What did BICAR-ICU show about sodium bicarbonate in severe metabolic acidaemia, and which subgroup benefited?",
+   "a": [
+    "**BICAR-ICU** (Jaber, Lancet 2018): **389** ICU patients within 48 h, pH **≤7.20**, PaCO2 ≤45, HCO3 ≤20, SOFA ≥4 or lactate ≥2. Open-label, multicentre (France).",
+    "Intervention: **4.2%** sodium bicarbonate, 125–250 mL over 30 min, maximum 1 L per 24 h, to keep pH **≥7.30**. Control: none.",
+    "Primary (day-28 death or ≥1 organ failure at day 7): **66% vs 71%**, p = 0.24: neutral. Day-28 mortality 45% vs 54%, p = 0.07.",
+    "Prespecified **AKIN 2–3 subgroup** (n = 182): day-28 mortality **46% vs 63%** (p = 0.017); composite 70% vs 82%.",
+    "Overall need for RRT: **35% vs 52%** (p < 0.001). Harms: more hypernatraemia (49% vs 29%), ionised hypocalcaemia (24% vs 15%) and alkalosis (16% vs 9%).",
+    "Why only a signal: a subgroup of a neutral, open-label trial. It became the SSC 2021 suggestion (kept in SSC 2026, very low certainty) and was tested in BICARICU-2 (JAMA 2025): no mortality benefit."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-236"
+   ],
+   "src": "Jaber S et al., Lancet 2018;392(10141):31–40 (BICAR-ICU); Jaber S et al., JAMA 2025;334(22):2000–2010 (BICARICU-2); Evans L et al., SSC 2021; SSC 2026 (Prescott HC et al., Intensive Care Med 2026, doi:10.1007/s00134-026-08361-1; Crit Care Med 2026)",
+   "v": 1
+  },
+  "V6-014": {
+   "deck": "ELEC02",
+   "topic": "Hyperkalaemia: UK Kidney Association doses and traps",
+   "type": "qa",
+   "q": "Hyperkalaemia: what are the UK Kidney Association severity bands and emergency doses, and what protects the heart?",
+   "a": [
+    "Severity (UKKA 2023): mild **5.5–5.9**, moderate **6.0–6.4**, severe **≥6.5 mmol/L**. Severe hyperkalaemia, or any ECG change, is an emergency.",
+    "Protect the heart: **30 mL of 10% calcium gluconate IV over 10 min** (or 10 mL of 10% calcium chloride, preferred in arrest). Repeat the ECG and give a further dose if changes persist. It lowers no potassium.",
+    "Why calcium works: high potassium makes the resting potential less negative and inactivates sodium channels. Calcium raises the threshold potential, restoring the gap within minutes, for **30–60 min**.",
+    "Shift: **10 units soluble insulin in 25 g glucose** IV over 15 min (50 mL of 50%, 125 mL of 20% or 250 mL of 10%). If pre-treatment glucose is **<7.0 mmol/L**, follow with 10% glucose **50 mL/h for 5 h**.",
+    "Insulin-glucose causes late hypoglycaemia: check glucose for **6 h** afterwards. Salbutamol **10–20 mg** nebulised is an adjunct, never the only shift.",
+    "Remove: **sodium zirconium cyclosilicate 10 g** orally, then 10 g three times daily for up to **72 h**; dialysis if potassium stays high, with oliguria or overload."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-102"
+   ],
+   "src": "UK Kidney Association, Clinical Practice Guideline: Management of Hyperkalaemia in Adults (2020; updated October 2023 and July 2026), ukkidney.org; KDIGO Controversies Conference on potassium, Kidney Int 2020",
+   "v": 1
+  },
+  "V6-015": {
+   "deck": "ELEC03A",
+   "topic": "Hypercalcaemia of malignancy: Endocrine Society 2022 and dialysis",
+   "type": "qa",
+   "q": "Severe hypercalcaemia of malignancy: what does the Endocrine Society guideline recommend, and where do calcitonin, bisphosphonates, denosumab and dialysis fit?",
+   "a": [
+    "Start with isotonic saline: polyuria from nephrogenic DI has dried the patient out. A loop diuretic only for fluid overload, after volume is restored.",
+    "Calcitonin (**4 IU/kg SC or IM 12-hourly**) acts within hours but lowers calcium only modestly. For severe hypercalcaemia (**>14 mg/dL**) the guideline suggests **calcitonin plus an IV bisphosphonate or denosumab**, calcitonin limited to **48–72 h** (tachyphylaxis).",
+    "Antiresorptive choice: the guideline suggests **denosumab over an IV bisphosphonate** (conditional, very low certainty). Zoledronic acid **4 mg IV** takes days to act and is nephrotoxic.",
+    "Refractory or recurrent despite a bisphosphonate: **denosumab 120 mg SC** (label: every 4 weeks, with extra doses on days 8 and 15 of month 1). Watch for hypocalcaemia afterwards, worst in renal failure.",
+    "Calcitriol-mediated (lymphoma, granulomatous disease): glucocorticoids; add an antiresorptive if severe hypercalcaemia persists. Parathyroid carcinoma: calcimimetic, bisphosphonate or denosumab.",
+    "Dialysis with a low- or zero-calcium bath: severe hypercalcaemia with renal or heart failure that rules out saline, or with coma. It works in hours; follow it with an antiresorptive."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-242"
+   ],
+   "src": "El-Hajj Fuleihan G et al., Treatment of hypercalcemia of malignancy in adults: an Endocrine Society clinical practice guideline, J Clin Endocrinol Metab 2023;108:507-528 (released 2022); calcitonin salmon and Xgeva (denosumab) US prescribing information (doses); dialysis line: standard teaching",
+   "v": 1
+  },
+  "V6-016": {
+   "deck": "ENDO02B",
+   "topic": "DKA: 2024 consensus management numbers",
+   "type": "algorithm",
+   "q": "Manage DKA by the 2024 international consensus: diagnosis, fluids, potassium, insulin, dextrose, bicarbonate and resolution.",
+   "a": [
+    "Diagnose (D-K-A): glucose **≥200 mg/dL** or known diabetes; β-hydroxybutyrate **≥3.0 mmol/L** (or urine ketones ≥2+); pH **<7.3** and/or HCO3 **<18**. Severe = pH <7.0 or HCO3 <10: ICU.",
+    "Fluids first: isotonic saline or balanced crystalloid **500–1000 mL/h for the first 2–4 h**; correct the rest of the deficit over **24–48 h**. Smaller (250 mL) boluses in heart failure, the elderly or on dialysis.",
+    "Potassium: if K **<3.5**, give potassium (about **10 mmol/h**) and **delay insulin until K >3.5**. Start adding potassium once K is below **5.0**, to keep 4–5. Check K 2 h after insulin starts.",
+    "Insulin: fixed-rate IV **0.1 U/kg/h**; a bolus only if IV access is delayed. **Mild or uncomplicated moderate DKA**: SC rapid-acting analogue every 1–2 h is acceptable with close nursing.",
+    "Dextrose: add **5–10% dextrose** when glucose falls **<250 mg/dL**, cut insulin to **0.05 U/kg/h**, keep glucose about 200 and keep insulin running until ketones clear.",
+    "Bicarbonate is not routine: only if pH **<7.0** (100 mmol in 400 mL, 2-hourly until pH >7.0). Phosphate is not routine: **20–30 mmol potassium phosphate** in fluids if severely low with weakness or cardiorespiratory compromise (2024 text prints <1.0 mmol/L).",
+    "Resolved when β-hydroxybutyrate **<0.6 mmol/L** and venous pH **≥7.3** or HCO3 **≥18**. Do not use the anion gap or urine ketones. Give SC basal insulin before stopping the infusion."
+   ],
+   "tier": "A",
+   "qref": [
+    "P6-103"
+   ],
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "v": 1
+  },
+  "V6-017": {
+   "deck": "ENDO02B",
+   "topic": "HHS vs DKA: 2024 criteria, fluids, insulin and pace",
+   "type": "qa",
+   "q": "How do the 2024 criteria define HHS, and how do fluids, insulin and the pace of correction differ from DKA?",
+   "a": [
+    "HHS (2024): glucose **≥600 mg/dL**; effective osmolality **>300** (or total >320 mOsm/kg); β-hydroxybutyrate **<3.0 mmol/L**; pH **≥7.3** and HCO3 **≥15**. Treat a mixed DKA/HHS picture as DKA.",
+    "Fluid is the main treatment: the water deficit is larger than in DKA. Give isotonic fluid; the early rise in sodium as glucose falls is **not** a reason for hypotonic fluid. Use 0.45% saline only if osmolality is not falling.",
+    "Insulin: fixed-rate **0.05 U/kg/h** (half the DKA dose) when ketones are absent or mild; **0.1 U/kg/h** if β-hydroxybutyrate ≥3.0 or acidotic. UK JBDS gives fluid alone first, until glucose stops falling.",
+    "Pace: glucose fall no faster than **90–120 mg/dL/h**; sodium fall **≤10 mmol/L in 24 h**; osmolality fall **3–8 mOsm/kg/h**. Faster falls risk cerebral oedema.",
+    "Add 5–10% dextrose when glucose is **<250 mg/dL**. Resolved when osmolality **<300**, glucose **<250**, urine output **>0.5 mL/kg/h** and cognition improved.",
+    "HHS is prothrombotic: give **prophylactic LMWH** unless contraindicated. Mortality is **5- to 10-fold** that of DKA, driven by age, comorbidity and the precipitant."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-232"
+   ],
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "v": 1
+  },
+  "V6-018": {
+   "deck": "ENDO02B",
+   "topic": "Euglycaemic DKA: definition, causes and treatment",
+   "type": "qa",
+   "q": "What is euglycaemic DKA, what causes it, and how do you treat it differently?",
+   "a": [
+    "Definition (2024): ketoacidosis (β-hydroxybutyrate **≥3.0 mmol/L**, pH <7.3 and/or HCO3 <18) with glucose **<200 mg/dL**. About **10%** of DKA. Known diabetes satisfies the D criterion at any glucose.",
+    "Causes: **SGLT2 inhibitors**, pregnancy, reduced food intake, insulin taken before arrival, and impaired gluconeogenesis from alcohol or liver failure.",
+    "Why SGLT2 inhibitors do it: glycosuria keeps glucose low, so insulin secretion falls and glucagon rises; ketogenesis runs on while the glucose looks reassuring.",
+    "The trap: a normal glucose delays the diagnosis. Check blood β-hydroxybutyrate and a gas in any unwell, fasting or post-operative patient on an SGLT2 inhibitor.",
+    "Treat differently: give **5–10% dextrose from the start**, with the 0.9% saline, so insulin can run at full rate to clear ketones without hypoglycaemia. Fluid and potassium rules are unchanged.",
+    "Stop the SGLT2 inhibitor on admission. Restarting it after DKA is **not routinely recommended**, and it is not recommended in type 1 diabetes."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-233"
+   ],
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "v": 1
+  },
+  "V6-019": {
+   "deck": "ENDO02A",
+   "topic": "NICE-SUGAR, TGC-fast and SCCM 2024: the ICU glucose target",
+   "type": "trial",
+   "q": "What did NICE-SUGAR and TGC-fast show, and what does SCCM 2024 recommend for ICU glucose?",
+   "a": [
+    "NICE-SUGAR (NEJM 2009): **6,104** ICU patients; intensive **81–108 mg/dL** vs conventional **≤180 mg/dL**. Mean glucose achieved **115 vs 144**.",
+    "90-day mortality **27.5% vs 24.9%** (OR **1.14**, 95% CI 1.02–1.28, p = 0.02): intensive control caused more deaths. Severe hypoglycaemia **6.8% vs 0.5%**.",
+    "Why tight control was abandoned: the Leuven benefit came from single-centre trials with early parenteral nutrition. Multicentre trials (VISEP, GLUCONTROL, NICE-SUGAR) found no benefit and more hypoglycaemia.",
+    "TGC-fast (NEJM 2023): **9,230** patients without early parenteral nutrition; tight **80–110** vs liberal (insulin only above **215**). No difference in ICU stay; 90-day mortality **10.5% vs 10.1%**.",
+    "SCCM 2024: start a protocol for persistent glucose **≥180 mg/dL** (good practice); suggest **against** an 80–139 target versus 140–200 (conditional); continuous IV insulin; checks **≤1-hourly** when unstable.",
+    "Bedside: target **140–180 mg/dL** (ADA) and avoid <110. Hypoglycaemia **<70** (level 1), **<54** (level 2). HbA1c-tailored targets are unproven."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-238"
+   ],
+   "src": "NICE-SUGAR Study Investigators, N Engl J Med 2009;360:1283-1297; Gunst J et al., N Engl J Med 2023;389:1180-1190 (TGC-fast); Honarmand K et al., SCCM Guidelines on Glycemic Control for Critically Ill Children and Adults, Crit Care Med 2024; ADA Standards of Care 2024 (hypoglycaemia levels)",
+   "v": 1
+  },
+  "V6-020": {
+   "deck": "SPECIAL03",
+   "topic": "Refeeding syndrome in the ICU: ASPEN 2020 and the Doig trial",
+   "type": "qa",
+   "q": "How is refeeding syndrome defined and prevented (ASPEN 2020), and what did the ICU refeeding trial show?",
+   "a": [
+    "Definition (ASPEN 2020): a fall in phosphate, potassium and/or magnesium within **5 days** of restarting calories. Mild **10–20%**, moderate **20–30%**, severe **>30%** or organ dysfunction (including from thiamine deficiency).",
+    "Mechanism: feeding releases insulin, which drives phosphate, potassium and magnesium into cells and uses up thiamine. Arrhythmia, heart failure, respiratory muscle weakness and failed weaning follow.",
+    "Start low (ASPEN): **100–150 g dextrose or 10–20 kcal/kg** in the first 24 h, then advance by about **one-third of goal every 1–2 days** if electrolytes hold.",
+    "Thiamine **100 mg** before feeding or IV dextrose, then daily for **5–7 days**. In high-risk patients check phosphate, potassium and magnesium about **12-hourly for 3 days** and replace early.",
+    "ICU trial (Doig, Lancet Respir Med 2015, **339** patients): refeeding hypophosphataemia (**<0.65 mmol/L** within 72 h of starting feed) randomised to **20 kcal/h for 2 days** then step-up, vs continued standard feeding.",
+    "Result: the primary outcome (days alive after ICU discharge) did not differ, but more patients were alive at day 60 with calorie restriction (secondary outcome). When phosphate falls on feeding, cut calories and replace."
+   ],
+   "tier": "B",
+   "qref": [
+    "P6-239"
+   ],
+   "src": "da Silva JSV et al., ASPEN Consensus Recommendations for Refeeding Syndrome, Nutr Clin Pract 2020;35:178-195; Doig GS et al., Restricted versus continued standard caloric intake during the management of refeeding syndrome in critically ill adults, Lancet Respir Med 2015;3:943-952",
+   "v": 1
+  }
+ },
+ "lines": {},
+ "questions": [
+  {
+   "q": "P6-094",
+   "text": "AKIN, RIFLE and KDIGO — the criteria.",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "RENAL01|AKI-01",
+     "bridge": "KDIGO diagnoses AKI by change in 48 h or 7 days, and stages by the worst criterion. Next: where RIFLE and AKIN fit into it →"
+    },
+    {
+     "card": "V6-001",
+     "bridge": "KDIGO took the 0.3 in 48 h from AKIN and the 1.5x in 7 days from RIFLE. Next: the staging trap that loses marks →"
+    },
+    {
+     "card": "HY1|ABE-25",
+     "bridge": "Urine output can stage higher than creatinine, and the worse wins. Next: why creatinine misses, delays or misclassifies AKI →"
+    },
+    {
+     "card": "RENAL01|AKI-02",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: three consensus definitions built on two signals, serum creatinine and urine output. All stage by the worse of the two.",
+    "RIFLE (ADQI 2004): Risk **×1.5**, Injury **×2**, Failure **×3** or Cr **≥4**, with GFR falls of 25/50/75%; plus Loss (**>4 wk**) and ESKD (**>3 mo**).",
+    "AKIN (2007): coined AKI, added a rise of **≥0.3 mg/dL within 48 h**, dropped GFR and the outcome classes, stages 1–3, any RRT = stage 3.",
+    "KDIGO (2012): merged both. **≥0.3 in 48 h** or **≥1.5× in 7 days**, or UO **<0.5 mL/kg/h for 6 h**. Stage 3: ×3, Cr ≥4.0, RRT, UO <0.3 for 24 h or anuria 12 h.",
+    "Limits of creatinine: a late function marker. It lags injury, needs a baseline, is diluted by fluid and is low with low muscle mass.",
+    "What I do: stage by both criteria, trend creatinine, add cystatin C or a biomarker if unclear. The **2026 KDIGO draft** adds structural biomarkers to the definition."
+   ]
+  },
+  {
+   "q": "P6-095",
+   "text": "How do you differentiate types of AKI?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "RENAL01|AKI-06",
+     "bridge": "Localise first: perfusion, parenchyma or plumbing. Next: the history and examination clues that point to each →"
+    },
+    {
+     "card": "RENAL02|AKI-16",
+     "bridge": "The bedside gives a working mechanism. Next: the urine numbers that separate prerenal from ATN →"
+    },
+    {
+     "card": "V6-002",
+     "bridge": "A concentrating, sodium-avid kidney is prerenal; a fixed, salt-wasting one is ATN. Next: how FENa and FEUrea mislead →"
+    },
+    {
+     "card": "RENAL02|AKI-19",
+     "bridge": "On diuretics, FEUrea <35% replaces FENa, and both only shift probability. Next: the casts that name the compartment →"
+    },
+    {
+     "card": "RENAL02|AKI-20",
+     "bridge": "Muddy brown casts mean ATN; RBC casts mean GN. Next: excluding the plumbing with ultrasound →"
+    },
+    {
+     "card": "RENAL02|AKI-21",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: AKI is localised as prerenal (perfusion), intrinsic (parenchyma) or postrenal (plumbing), using history, urine and ultrasound.",
+    "Prerenal: the tubule still works. Urine Na **<20**, osmolality **>500**, FENa **<1%**, urea:creatinine high, bland or hyaline sediment.",
+    "ATN: the tubule has lost its grip. Urine Na **>40**, osmolality **<350**, FENa **>2%**, muddy brown granular casts.",
+    "On diuretics: FENa is falsely high, so I use **FEUrea**. **≤35%** suggests prerenal; Carvounis found it in 89% of diuretic-treated prerenal cases.",
+    "Postrenal: bladder scan and renal ultrasound for hydronephrosis. Active sediment or unexplained intrinsic AKI goes to nephrology and biopsy.",
+    "Caution: indices shift probability only. Sepsis, CKD, contrast and pigment break them, so I read them with volume state and sediment."
+   ]
+  },
+  {
+   "q": "P6-096",
+   "text": "What is the pathophysiology of AKI in sepsis?",
+   "tier": "A",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "RENAL01|AKI-07",
+     "bridge": "The medulla lives near an oxygen cliff, which is the classic ischaemic story. Next: why GFR can fall even when flow is high →"
+    },
+    {
+     "card": "RENAL01|AKI-09",
+     "bridge": "GFR depends on intraglomerular pressure, not on total renal blood flow. Next: the inflammatory and tubular cascade →"
+    },
+    {
+     "card": "RENAL01|AKI-08",
+     "bridge": "Septic AKI is endothelial, microcirculatory and tubular. Next: the flow evidence, metabolic reprogramming and venous congestion →"
+    },
+    {
+     "card": "V6-003",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: septic AKI is not simply hypoperfusion. Inflammation, microcirculatory dysfunction and the tubular cell's adaptive response combine.",
+    "Can RBF be normal? Yes. In hyperdynamic septic sheep RBF rose about **threefold** while creatinine clearance fell by about **80%**.",
+    "Mechanism: efferent dilation lowers glomerular pressure, flow shifts from medulla to cortex, filtered PAMPs and DAMPs hit the tubule.",
+    "Tubular cells reprogramme to **aerobic glycolysis** and enter G1 arrest: early protection, but prolonged it drives fibrosis. Early histology is often near normal.",
+    "Venous congestion matters: each **1 mmHg** rise in CVP raised the odds of AKI by **22%** (Legrand 2013). Perfusion pressure is MAP minus CVP.",
+    "What I do: MAP about 65, avoid fluid overload and nephrotoxins. Human MRI data show flow is often low but uncoupled from GFR."
+   ]
+  },
+  {
+   "q": "P6-230",
+   "text": "What is the furosemide stress test?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "RENAL02|AKI-32",
+     "bridge": "FST: 1.0 or 1.5 mg/kg IV; under 200 mL in 2 h means likely progression. Next: the study behind it and how well it performs →"
+    },
+    {
+     "card": "V6-004",
+     "bridge": "A 2-h output under 200 mL predicts stage 3 with AUC 0.87, better than biomarkers. Next: what to do with a non-responder →"
+    },
+    {
+     "card": "RENAL04|RRT2-05",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: a bedside test of tubular reserve. Furosemide must be secreted by the proximal tubule to act, so a brisk diuresis means working tubules.",
+    "Dose: **1.0 mg/kg IV** if loop-naive, **1.5 mg/kg** if a loop diuretic was given in the past 7 days. Replace urine ml for ml to avoid hypovolaemia.",
+    "Cut-off: urine **<200 mL in 2 h** predicts progression to stage 3. Chawla 2013, 77 patients: AUC **0.87**, sensitivity **87%**, specificity **84%**.",
+    "Koyner 2015, same cohort: it beat every urinary biomarker for stage 3 and was the only significant predictor of RRT (AUC **0.86**).",
+    "Caution: prognostic, not therapeutic. Only in early AKI (stage 1–2), after excluding hypovolaemia and obstruction; a non-responder gets a plan, not automatic RRT."
+   ]
+  },
+  {
+   "q": "P6-231",
+   "text": "What are the novel biomarkers in AKI?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "RENAL02|AKI-22",
+     "bridge": "Biomarkers answer three questions: function, damage or stress. Next: what each marker adds and what confounds it →"
+    },
+    {
+     "card": "RENAL02|AKI-23",
+     "bridge": "NGAL marks tubular damage; TIMP-2×IGFBP7 marks cell-cycle stress. Next: the numbers behind the two leading markers →"
+    },
+    {
+     "card": "V6-005",
+     "bridge": "0.3 is the sensitive rule-out cut-off, 2.0 the specific high-risk one. Next: what a positive test should trigger →"
+    },
+    {
+     "card": "RENAL02|AKI-35",
+     "bridge": "A positive stress marker triggers a KDIGO care bundle, which cut AKI after cardiac surgery. Next: why no value alone starts RRT →"
+    },
+    {
+     "card": "RENAL04|RRT2-05",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: creatinine marks function late. New markers detect damage (NGAL, KIM-1) or stress (TIMP-2×IGFBP7) before creatinine rises.",
+    "TIMP-2×IGFBP7: G1 cell-cycle arrest markers. Sapphire (728 patients): AUC **0.80** for KDIGO stage 2–3 within 12 h, better than older markers.",
+    "Cut-offs: **0.3** is sensitive (about 89%) to rule out; **2.0** is specific (about 95%) and carries about **12×** the risk.",
+    "NGAL: from TAL, collecting duct and neutrophils. Meta-analysis AUC **0.815**, but only 0.73 in the critically ill; cut-off about **150 ng/mL**. Sepsis confounds it.",
+    "Evidence of use: PrevAKI, cardiac surgery, marker >0.3 → KDIGO bundle: AKI **55.1% vs 71.7%**.",
+    "Caution: risk tools, not diagnoses. They enrich risk and timing; they do not by themselves trigger RRT."
+   ]
+  },
+  {
+   "q": "P6-237",
+   "text": "How do you manage rhabdomyolysis?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "RENAL02|AKI-17",
+     "bridge": "Heme-positive urine with few red cells sends you down the muscle pathway: CK and myoglobin. Next: the management itself →"
+    },
+    {
+     "card": "HY1|ABE-27",
+     "bridge": "Early aggressive isotonic fluid to 200–300 mL/h of urine; bicarbonate and mannitol not routine. Next: the evidence behind that →"
+    },
+    {
+     "card": "V6-006",
+     "bridge": "Bicarbonate and mannitol did no better than saline in Brown or in Scharman's review; fluid is the treatment. Next: the potassium threat →"
+    },
+    {
+     "card": "ELEC02|KAL-12",
+     "bridge": "Stabilise, shift, remove, and dialyse refractory potassium, especially with overload. Next: the calcium trap →"
+    },
+    {
+     "card": "HY1|ABE-21",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Present: crush or collapse, dark urine, dipstick blood-positive with few red cells, CK very high. Look for hyperkalaemia, compartment syndrome and AKI.",
+    "Mechanism: myoglobin injures the kidney three ways: casts block tubules (worse in acid urine), haem iron is toxic, and renal vessels constrict.",
+    "What I do: early aggressive isotonic crystalloid, targeting urine about **200–300 mL/h** until myoglobinuria clears; watch for overload.",
+    "Electrolytes: treat hyperkalaemia by the ladder; dialyse if refractory. Do not give calcium for asymptomatic hypocalcaemia; it rebounds in recovery.",
+    "Evidence: Brown 2004, CK >5,000: renal failure **22% vs 18%** with or without bicarbonate-mannitol (NS). Scharman 2013: no trial shows benefit over fluid. Not routine."
+   ]
+  },
+  {
+   "q": "P6-099",
+   "text": "When do you start RRT?",
+   "tier": "A",
+   "gen": "G2",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "RENAL02|AKI-24",
+     "bridge": "The complication, not the AKI stage, sets the urgency. Next: the full list of indications that mean start now →"
+    },
+    {
+     "card": "RENAL03|RRT-02",
+     "bridge": "Refractory K, acid, fluid, uraemia and toxins are the triggers. Next: the same list as AEIOU, and why stage 3 alone is not one →"
+    },
+    {
+     "card": "HY1|ABE-26",
+     "bridge": "Start for a complication, not a number. Next: the four trials that tested starting early versus waiting →"
+    },
+    {
+     "card": "RENAL04|RRT2-04",
+     "bridge": "Early start gives no survival gain, and waiting too long harms. Next: the exact numbers, and IDEAL-ICU in septic shock →"
+    },
+    {
+     "card": "V6-007",
+     "bridge": "About half of deferred patients never need RRT, but delay past BUN 112 or 72 h oliguria is unsafe. Next: the bedside decision →"
+    },
+    {
+     "card": "RENAL04|RRT2-05",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: start RRT now for a complication refractory to medical therapy, not for a creatinine number or KDIGO stage 3 alone.",
+    "Absolute indications: refractory **K >6.5** or ECG change, **pH ≤7.15**, diuretic-resistant pulmonary oedema, uraemic pericarditis, encephalopathy or bleeding, dialysable toxin.",
+    "Evidence: AKIKI and IDEAL-ICU neutral. STARRT-AKI 90-day mortality **43.9 vs 43.7%**, with more RRT dependence (**10.4 vs 6.0%**) and adverse events after early start.",
+    "Waiting has a limit: in AKIKI-2, delay beyond BUN **112 mg/dL** or oliguria **>72 h** gained no RRT-free days and raised the adjusted death hazard (**1.65**).",
+    "What I do: optimise volume, perfusion and nephrotoxins, plan access, reassess at least daily; **38–49%** of deferred patients in the trials never needed RRT.",
+    "Caution: deferred means watched closely, not postponed indefinitely; once AKIKI-2 thresholds are crossed I start."
+   ]
+  },
+  {
+   "q": "P6-097",
+   "text": "IHD vs SLED vs CRRT — when do you use each?",
+   "tier": "A",
+   "gen": "G2",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "RENAL03|RRT-10",
+     "bridge": "Three families: intermittent, hybrid and continuous, chosen on stability, urgency and resources. Next: why IHD clears fast but can destabilise →"
+    },
+    {
+     "card": "RENAL03|RRT-13",
+     "bridge": "IHD gives the fastest clearance at the price of fluid and osmotic shifts. Next: how SLED spreads the same work over more hours →"
+    },
+    {
+     "card": "RENAL04|RRT2-01",
+     "bridge": "SLED runs 6-12 h on a standard HD machine with no 24-h circuit. Next: the three side by side, and the outcome evidence →"
+    },
+    {
+     "card": "RENAL04|RRT2-02",
+     "bridge": "No mode wins on mortality or recovery; they are complementary. Next: the classic choice, hyperkalaemia stable versus on pressors →"
+    },
+    {
+     "card": "ELEC02|KAL-13",
+     "bridge": "IHD for life-threatening K in a stable patient, CRRT on pressors or raised ICP. Next: why a rapid urea fall swells the brain →"
+    },
+    {
+     "card": "HY1|ABE-28",
+     "bridge": "Urea leaves blood faster than brain, so water moves in. Next: the patient where this matters most, acute liver failure →"
+    },
+    {
+     "card": "GI01B|ALF-28",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What they are: IHD over 3-4 h, SLED over 6-12 h on a standard HD machine, CRRT continuously over 24 h. Same membrane physics, different speed.",
+    "IHD: the stable patient who needs fast clearance, life-threatening K or a dialysable toxin; mobile, low anticoagulation burden, but large fluid and osmotic shifts.",
+    "CRRT: on vasopressors, raised ICP or acute liver failure, or when large fluid removal must be slow and precise (KDIGO **2B** for unstable and for brain oedema).",
+    "SLED: the hybrid, near-CRRT tolerance on IHD hardware with no 24-h circuit or bagged fluid, so about half the weekly cost of CRRT, and the patient is free for scans between sessions.",
+    "Evidence: no mortality or renal-recovery difference between modes (Cochrane 2007, **15 RCTs**, RR 1.01); use them as complementary tools.",
+    "Raised ICP: CRRT, because a fast urea fall in IHD leaves the brain hyperosmolar and water moves in; also avoid hypotension and keep sodium high."
+   ]
+  },
+  {
+   "q": "P6-229",
+   "text": "Differentiate CVVH, CVVHD and CVVHDF.",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "RENAL03|RRT-08",
+     "bridge": "Diffusion follows a gradient and favours small solutes; convection drags solute with water. Next: how HD, HF and HDF use them →"
+    },
+    {
+     "card": "RENAL03|RRT-09",
+     "bridge": "HD is diffusion, HF is convection, HDF is both; convection reaches larger solutes. Next: the four CRRT circuits from their fluid lines →"
+    },
+    {
+     "card": "RENAL03|RRT-11",
+     "bridge": "CVVHD adds dialysate, CVVH adds replacement, CVVHDF both; effluent sums them. Next: where to give replacement fluid in CVVH →"
+    },
+    {
+     "card": "RENAL03|RRT-12",
+     "bridge": "Postdilution clears more but concentrates blood; keep FF below 20-25%. Next: does convection actually improve outcomes →"
+    },
+    {
+     "card": "RENAL04|RRT2-07",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What they are: CVVHD is diffusion with countercurrent dialysate; CVVH is convection with replacement fluid and no dialysate; CVVHDF combines both.",
+    "Mechanism: diffusion runs down a concentration gradient and favours small solutes (urea, K); convection drags solute with plasma water up to the membrane cut-off.",
+    "Middle molecules (**0.5-60 kDa**: β2-microglobulin 11.8, myoglobin 17, IL-6 about 25) diffuse slowly, so convection clears them better; for urea and K the two are similar at equal effluent dose.",
+    "Dose: effluent = Qd + UF (CVVHD), replacement + UF (CVVH), Qd + replacement + UF (CVVHDF); deliver **20-25 mL/kg/h**.",
+    "Catch: postdilution CVVH raises filtration fraction; keep FF **below 20-25%** or the filter clots; predilution protects the filter but lowers clearance.",
+    "Evidence: convection has no proven survival advantage over diffusion; I choose by filter life, access and local practice."
+   ]
+  },
+  {
+   "q": "P6-098",
+   "text": "CRRT dose and citrate anticoagulation.",
+   "tier": "A",
+   "gen": "G2",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "RENAL04|RRT2-06",
+     "bridge": "CRRT dose is delivered effluent, 20-25 mL/kg/h, so prescribe higher to cover downtime. Next: does more dose help →"
+    },
+    {
+     "card": "RENAL04|RRT2-07",
+     "bridge": "More intensity does not improve survival and costs phosphate. Next: the exact arms and numbers of ATN and RENAL, and KDIGO →"
+    },
+    {
+     "card": "V6-008",
+     "bridge": "ATN and RENAL were neutral; KDIGO 1A for 20-25 and 2B for citrate. Next: choosing anticoagulation by bleeding risk and modality →"
+    },
+    {
+     "card": "RENAL04|RRT2-08",
+     "bridge": "Regional citrate is preferred for CRRT when safe. Next: how citrate works and the four signals you monitor →"
+    },
+    {
+     "card": "RENAL04|RRT2-09",
+     "bridge": "Circuit iCa 0.25-0.35, systemic iCa normal, total/iCa above 2.5 means accumulation. Next: the ionised calcium trap at the bedside →"
+    },
+    {
+     "card": "HY1|ABE-21",
+     "bridge": "Citrate drops ionised calcium while the total stays normal, so follow iCa. Next: why accumulation happens and what to do →"
+    },
+    {
+     "card": "V6-009",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Dose: deliver effluent **20-25 mL/kg/h** (KDIGO 1A); prescribe about 25-30 to cover filter downtime, and check the delivered dose daily.",
+    "Evidence: ATN **35 vs 20** and RENAL **40 vs 25 mL/kg/h** gave no survival gain (RENAL 90-day mortality **44.7%** in both), only more hypophosphataemia.",
+    "Citrate: chelates calcium before the filter (circuit iCa **0.25-0.35**); calcium on return keeps systemic iCa about **1.0-1.2 mmol/L**; the liver turns citrate into bicarbonate.",
+    "Why first-line: KDIGO **2B** for citrate over heparin in CRRT; longer filter life and less bleeding than systemic heparin.",
+    "Detect accumulation: **total/iCa ratio ≥2.5**, falling systemic iCa despite more calcium, and a high anion gap metabolic acidosis.",
+    "What I do: lower blood flow (less citrate), raise dialysate, correct calcium, stop citrate if it keeps rising; extra care in liver failure and shock."
+   ]
+  },
+  {
+   "q": "P6-243",
+   "text": "What is the citrate lock or what to do if citrate accumulates?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ELEC03A|CAL-02",
+     "bridge": "Only ionised calcium is active; citrate-bound calcium still counts in the total. Next: how regional citrate uses that →"
+    },
+    {
+     "card": "RENAL04|RRT2-09",
+     "bridge": "Total/iCa above 2.5 with falling iCa is accumulation. Next: is citrate allowed at all when the liver is failing →"
+    },
+    {
+     "card": "GI06|ACLF-15",
+     "bridge": "In liver failure CRRT with citrate is used, with monitoring. Next: why the liver matters and how accumulation shows →"
+    },
+    {
+     "card": "V6-009",
+     "bridge": "Citrate needs the liver to become bicarbonate; lactate and PT flag the risk. Next: buffer choice in liver failure →"
+    },
+    {
+     "card": "RENAL04|RRT2-12",
+     "bridge": "Use bicarbonate, not lactate, buffer in liver failure. Next: the catheter that carries all this, and how it is kept open →"
+    },
+    {
+     "card": "RENAL04|RRT2-10",
+     "bridge": "Right IJ first, bundle insertion, no routine antibiotic locks. Next: the citrate lock itself, concentrations and risks →"
+    },
+    {
+     "card": "V6-010",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Citrate lock: between sessions each lumen is filled with its exact fill volume of citrate to keep it patent, and aspirated before the next use.",
+    "Concentrations: **4%** is anticoagulant only and safe if spilled; **30%** (Weijmer 2005) gave fewer bacteraemias and major bleeds than heparin; **46.7%** risks fatal hypocalcaemia (FDA 2000).",
+    "Why liver failure: returned citrate is metabolised mainly in the liver to bicarbonate; if that slows, calcium-citrate complexes build up.",
+    "Signs: total Ca up, iCa down despite more calcium, **total/iCa ≥2.5**, high anion gap acidosis; risk is high with lactate **≥3.4 mmol/L** or PT **≤26%**.",
+    "What I do: lower blood flow, raise dialysate, correct iCa; if the ratio still rises, stop citrate and change to heparin or no anticoagulation.",
+    "Caution: liver failure is not a ban (L-CAT 2015, accumulation in only **2.3%** of 133); it demands closer monitoring."
+   ]
+  },
+  {
+   "q": "P6-101",
+   "text": "Spotter: interpret this ABG.",
+   "tier": "S",
+   "gen": "G3",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "HY1|ABE-01",
+     "bridge": "Six steps, and the anion gap is never skipped. Next: how to name the primary disorder from the pH →"
+    },
+    {
+     "card": "ABG02|ABG-17",
+     "bridge": "The primary change moves with the pH; opposite moves mean mixed. Next: what a normal pH can hide →"
+    },
+    {
+     "card": "ABG02|ABG-18",
+     "bridge": "A normal pH may be two opposing disorders, so the gap goes on every gas. Next: the anion gap, and why albumin must be corrected →"
+    },
+    {
+     "card": "HY1|ABE-02",
+     "bridge": "Low albumin hides a high gap; add 2.5 per g/dL. Next: if the gap is high, is a second metabolic disorder hiding →"
+    },
+    {
+     "card": "HY1|ABE-05",
+     "bridge": "The delta ratio asks if HCO3 fell as much as the gap rose. Next: is it compensated? Winter's for metabolic acidosis →"
+    },
+    {
+     "card": "HY1|ABE-03",
+     "bridge": "Winter's says what PaCO2 the lungs should give. Next: the respiratory rules, acute versus chronic →"
+    },
+    {
+     "card": "HY1|ABE-04",
+     "bridge": "HCO3 moves 1 or 4 per 10 in acidosis, 2 or 5 in alkalosis. Next: the whole read on one gas →"
+    },
+    {
+     "card": "ABG03|ABG-37",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot: I read in six steps. Oxygenation, pH, primary disorder, the anion gap on every gas corrected for albumin, the delta ratio if the gap is high, then compensation.",
+    "Primary: the value that moved in the same direction as the pH. PaCO2 and HCO3 moving in opposite directions means a mixed disorder.",
+    "Gaps: AG = Na − (Cl + HCO3), add **2.5 per g/dL** of albumin below 4. Delta ratio **1–2** pure; under 1 adds normal-gap acidosis; over 2 adds alkalosis.",
+    "Compensated? Metabolic acidosis: PaCO2 = **1.5 × HCO3 + 8 ± 2**. Metabolic alkalosis: PaCO2 rises about **0.7** per mmol/L of HCO3.",
+    "Respiratory: HCO3 rises **1 per 10** mmHg acute, **4 per 10** chronic; falls **2** acute, **5** chronic. In range = compensated; outside = a second disorder.",
+    "Caution: compensated does not mean a normal pH. Compensation never overshoots, and only chronic respiratory alkalosis brings the pH near normal."
+   ]
+  },
+  {
+   "q": "P6-235",
+   "text": "How do you correct anion gap for albumin and what is the delta ratio?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ABG02|ABG-22",
+     "bridge": "Albumin is about 15 of the 23 mEq of unmeasured anions. Next: the albumin correction worked on numbers →"
+    },
+    {
+     "card": "HY1|ABE-02",
+     "bridge": "Corrected AG = AG + 2.5 × (4 − albumin). Next: the same correction exposing a hidden high-gap acidosis →"
+    },
+    {
+     "card": "ABG03|ABG-41",
+     "bridge": "A gap of 14 becomes 19 once albumin is counted. Next: why the bicarbonate fall can be predicted from the gap →"
+    },
+    {
+     "card": "ABG02|ABG-24",
+     "bridge": "Each acid anion consumes one bicarbonate. Next: the delta ratio that turns this into one number →"
+    },
+    {
+     "card": "HY1|ABE-05",
+     "bridge": "Below 1 adds a normal-gap acidosis; above 2 adds an alkalosis. Next: the finer bands, where 0.8 sits →"
+    },
+    {
+     "card": "ELEC04|ELX-04",
+     "bridge": "0.4–0.8 is mixed high- and normal-gap; over 2 is alkalosis or chronic CO2 retention. Next: a low ratio on a real gas →"
+    },
+    {
+     "card": "ABG03|ABG-38",
+     "bridge": "Ratio 0.6: bicarbonate fell 16 but the gap rose only 10. Next: a high ratio of 2.2 on a real gas →"
+    },
+    {
+     "card": "ABG03|ABG-50",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: albumin is the main unmeasured anion. Each 1 g/dL fall in albumin lowers the anion gap by about **2.5** (Figge 1998).",
+    "Correction: corrected AG = AG + **2.5 × (4 − albumin)**. Albumin 1.5 with a gap of 15 gives about **21**: a high-gap acidosis that looked normal.",
+    "Delta ratio = (AG − 12) ÷ (24 − HCO3). Each acid anion uses one bicarbonate, so a pure high-gap acidosis gives **1–2** (lactic about 1.6).",
+    "**0.8**: bicarbonate fell more than the gap rose, so a normal-gap acidosis is added, e.g. DKA with diarrhoea or saline. Renal failure also runs low.",
+    "**2.2**: bicarbonate is higher than the gap predicts: an added metabolic alkalosis (vomiting, NG suction), or a pre-existing compensated respiratory acidosis.",
+    "Caution: use it only when the gap is high, always with the albumin-corrected gap, and treat values near the cut-offs as a grey zone."
+   ]
+  },
+  {
+   "q": "P6-240",
+   "text": "Spotter - ABG with mixed disorder (e.g., metabolic acidosis with respiratory alkalosis).",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "HY1|ABE-03",
+     "bridge": "Winter's predicts the PaCO2; higher means respiratory acidosis, lower means alkalosis. Next: the rule for each metabolic disorder →"
+    },
+    {
+     "card": "ABG02|ABG-20",
+     "bridge": "Acidosis uses Winter's; alkalosis uses about 0.7 per mmol/L. Next: a gas where the PaCO2 is too low →"
+    },
+    {
+     "card": "ABG03|ABG-33",
+     "bridge": "Expected 23, measured 19: added respiratory alkalosis. Next: the opposite error, a PaCO2 that is too high →"
+    },
+    {
+     "card": "ABG03|ABG-32",
+     "bridge": "A PaCO2 of 35 is 12 too high for a HCO3 of 10: respiratory acidosis. Next: the same pair hiding behind a normal pH →"
+    },
+    {
+     "card": "ABG03|ABG-42",
+     "bridge": "Normal pH, high gap, PaCO2 below Winter's: the salicylate pattern. Next: the traps that catch mixed gases →"
+    },
+    {
+     "card": "ABG02|ABG-29",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot: low HCO3 with acidaemia is a metabolic acidosis. Then I ask whether the PaCO2 is what normal lungs would give.",
+    "Winter's: expected PaCO2 = **1.5 × HCO3 + 8 ± 2**. Quick check: it roughly equals the last two digits of the pH.",
+    "Lower than expected: added **respiratory alkalosis**, e.g. HCO3 10, expected 23, measured 19. I think of sepsis, salicylate and liver failure.",
+    "Higher than expected: added **respiratory acidosis**, the tiring or sedated patient, even when a PaCO2 of 35 looks normal.",
+    "Normal pH with both PaCO2 and HCO3 low is mixed until proved otherwise. I calculate the gap: salicylate gives a high gap plus respiratory alkalosis.",
+    "Caution: Winter's is for metabolic acidosis only. In metabolic alkalosis PaCO2 rises about **0.7** per mmol/L of HCO3."
+   ]
+  },
+  {
+   "q": "P6-100",
+   "text": "Urinary anion gap — GI loss vs RTA in NAGMA.",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "ABG02|ABG-23",
+     "bridge": "Normal-gap acidosis is gut loss or kidney (RTA); K splits the RTA types. Next: the urine test that separates gut from kidney →"
+    },
+    {
+     "card": "HY1|ABE-06",
+     "bridge": "NH4+ leaves with chloride, so a responding kidney gives a negative gap. Next: reading it on two patients →"
+    },
+    {
+     "card": "ABG03|ABG-53",
+     "bridge": "−20 is the gut, +20 is the kidney. Next: when the urine anion gap lies, and what to use instead →"
+    },
+    {
+     "card": "V6-011",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: urine anion gap = urine (Na + K) − Cl. It is a proxy for urine ammonium, used only in a normal-gap acidosis.",
+    "Why it works: NH4+ is excreted with chloride. A kidney responding to acidosis excretes much NH4Cl, so Cl exceeds Na + K and the gap turns **negative**.",
+    "Reading: negative = gut loss (diarrhoea). Positive = the kidney cannot excrete NH4+: distal RTA with low or normal K, type 4 RTA with high K. Proximal RTA: usually negative.",
+    "Limits: ketones or hippurate (toluene) carry NH4+ out unmeasured and make it falsely positive; urine Na below **20** or urine pH above **6.5** also mislead.",
+    "What I do then: urine osmolal gap = measured − [2(Na + K) + BUN/2.8 + glucose/18]. Half of it is NH4+; under about **40** suggests RTA."
+   ]
+  },
+  {
+   "q": "P6-234",
+   "text": "What is the Stewart approach to acid-base?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ABG02|ABG-22",
+     "bridge": "The anion gap counts measured ions and lumps the rest. Next: Stewart's view, where strong ions and weak acids set the pH →"
+    },
+    {
+     "card": "V6-012",
+     "bridge": "SID, Atot and PaCO2 set H+; saline has a SID of 0. Next: what the fluid trials did with this →"
+    },
+    {
+     "card": "RENAL02|AKI-27",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: Stewart says pH is set by three independent variables: strong ion difference (SID), total weak acids (Atot: albumin, phosphate) and PaCO2.",
+    "Mechanism: HCO3 and H+ only follow. Normal SID is about **40–42** mEq/L; a fall in SID is acidosis, a rise is alkalosis. Low albumin lowers Atot: alkalosis.",
+    "Saline: Na 154 and Cl 154, so its SID is **0**. Large volumes dilute the plasma SID, so H+ rises: hyperchloraemic acidosis.",
+    "Balanced fluids: an effective SID near **24** leaves pH unchanged. Hartmann's is about **28–29**, Plasma-Lyte about **50**, once their anions are metabolised.",
+    "What I do: balanced crystalloid for most resuscitation (SMART MAKE30 **14.3% vs 15.4%**); saline for hypochloraemic alkalosis or raised ICP.",
+    "Caution: Stewart explains the mechanism; at the bedside the albumin-corrected anion gap usually reaches the same diagnosis."
+   ]
+  },
+  {
+   "q": "P6-236",
+   "text": "Is bicarbonate useful in severe metabolic acidosis?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "V6-013",
+     "bridge": "BICAR-ICU was neutral overall; only the AKIN 2–3 subgroup lived longer. Next: the trial that tested that subgroup →"
+    },
+    {
+     "card": "RENAL02|AKI-30",
+     "bridge": "BICARICU-2: no mortality benefit, only less KRT. Next: the guideline rule and the harms at the bedside →"
+    },
+    {
+     "card": "HY1|ABE-09",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: bicarbonate raises pH but makes CO2 that must be breathed off, lowers ionised calcium, loads sodium and may worsen intracellular acidosis.",
+    "Evidence: BICAR-ICU (Lancet 2018, **389** patients, pH ≤7.20) was neutral overall. The prespecified **AKIN 2–3** subgroup: day-28 mortality **46% vs 63%**.",
+    "BICARICU-2 (JAMA 2025, 627 analysed, pH ≤7.20 + KDIGO 2–3) tested that subgroup: 90-day mortality **62.1% vs 61.7%**; only less KRT, **35% vs 50%**.",
+    "What I do: treat the cause and ventilate. I give 4.2% bicarbonate only for pH **≤7.2 with AKI stage 2–3**, as SSC 2026 still suggests, aiming at pH ≥7.30.",
+    "Caution: not for hypoperfusion lactic acidosis to raise BP or cut pressors. The honest promise is fewer dialysis starts, not survival."
+   ]
+  },
+  {
+   "q": "P6-241",
+   "text": "What is your approach to hyponatraemia in the ICU?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "ELEC01A|NA-06",
+     "bridge": "Hyponatraemia is graded by number, duration, symptoms, tonicity and volume; symptoms set urgency. Next: rule out the non-hypotonic causes →"
+    },
+    {
+     "card": "ELEC01A|NA-09",
+     "bridge": "Only hypotonic hyponatraemia (osmolality under 280) is true; glucose and lipids mislead. Next: what the urine says →"
+    },
+    {
+     "card": "ELEC01A|NA-10",
+     "bridge": "Urine osmolality 100 or less means water excess; above it, urine sodium 30 splits low volume from SIAD and salt loss. Next: the hardest pair →"
+    },
+    {
+     "card": "ELEC01A|NA-11",
+     "bridge": "SIAD and cerebral salt wasting share the urine but differ in volume and treatment. Next: what to give in the first hour for severe symptoms →"
+    },
+    {
+     "card": "ELEC01B|NA-13",
+     "bridge": "Severe symptoms get 150 mL of 3% over 20 min, up to three times, until sodium rises 5. Next: how far sodium may rise in a day →"
+    },
+    {
+     "card": "ELEC01B|NA-15",
+     "bridge": "The limits are 10 in the first 24 h, then 8 per day: ceilings, not goals. Next: treatment once the emergency is over →"
+    },
+    {
+     "card": "ELEC01B|NA-17",
+     "bridge": "Without severe symptoms, treat by volume: saline if depleted, restriction for SIAD or overload. Next: the catch, over-correction →"
+    },
+    {
+     "card": "ELEC01B|NA-16",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: sodium under 135, profound under 125; acute if under 48 h. Severe symptoms (vomiting, seizures, coma) mean brain oedema, whatever the number.",
+    "Step 1: serum osmolality. Normal or high means pseudo- or hypertonic hyponatraemia (glucose, mannitol). Under **275** (European; many texts 280) is true hypotonic hyponatraemia.",
+    "Step 2: urine osmolality. **≤100 mOsm/kg** means the kidney is diluting: polydipsia, beer potomania, low solute. Above 100, ADH is acting.",
+    "Step 3: urine sodium. **≤30** means low effective volume (losses, heart failure, cirrhosis). **>30** means SIAD, salt wasting, adrenal failure or diuretics; check TSH and cortisol.",
+    "What I do: severe symptoms get **150 mL of 3% saline over 20 min**, repeated until sodium rises **5 mmol/L**. Then treat the cause: saline if depleted, fluid restriction for SIAD.",
+    "Caution: limit the rise to **10 in 24 h, then 8**. If it overshoots, re-lower with dextrose water and desmopressin: osmotic demyelination appears days later."
+   ]
+  },
+  {
+   "q": "P6-102",
+   "text": "Hyperkalaemia — management.",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "HY1|ABE-16",
+     "bridge": "Potassium partly depolarises the membrane; any ECG change, not the number, means act now. Next: the three-step ladder →"
+    },
+    {
+     "card": "HY1|ABE-17",
+     "bridge": "Stabilise with calcium, shift with insulin and salbutamol, remove with diuretic, binder or dialysis. Next: onset and duration of each drug →"
+    },
+    {
+     "card": "ELEC02|KAL-11",
+     "bridge": "Calcium acts at once but lasts under an hour, and only removal lowers body potassium. Next: the current UK doses and their traps →"
+    },
+    {
+     "card": "V6-014",
+     "bridge": "UKKA 2023: 30 mL calcium gluconate, 10 U insulin in 25 g glucose, watch glucose, SZC as the binder. Next: when and how to dialyse →"
+    },
+    {
+     "card": "HY1|ABE-18",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: severe hyperkalaemia is **≥6.5 mmol/L** (UKKA 2023), or any level with ECG change. The ECG, not the number, sets urgency.",
+    "Mechanism: high potassium partly depolarises cells and inactivates sodium channels: peaked T, then wide QRS, then sine wave and arrest.",
+    "What protects the heart: **IV calcium**, 30 mL of 10% gluconate, repeated if the ECG does not improve. It restores the threshold gap in minutes, lasts 30–60 min and lowers no potassium.",
+    "Shift: **10 U insulin with 25 g glucose**, plus nebulised salbutamol **10–20 mg**; bicarbonate only if acidotic. Check glucose for hours afterwards.",
+    "Remove: loop diuretic if passing urine, a binder such as sodium zirconium cyclosilicate, and dialysis if refractory, oliguric or overloaded: IHD if stable, CRRT on pressors.",
+    "Caution: shifts last only 2–4 h, so potassium rebounds unless it is removed. Stop the cause: ACE inhibitors, potassium-sparing diuretics, potassium in fluids."
+   ]
+  },
+  {
+   "q": "P6-239",
+   "text": "How do you manage hypophosphataemia and hypomagnesaemia in the ICU?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ELEC03B|MGP-10",
+     "bridge": "Low phosphate starves ATP and 2,3-DPG: weak diaphragm, failed wean, left-shifted curve. Next: why it falls in the ICU →"
+    },
+    {
+     "card": "ELEC03B|MGP-11",
+     "bridge": "Phosphate falls mainly by shift into cells (refeeding, insulin in DKA, alkalosis), and with CRRT. Next: how to replace it →"
+    },
+    {
+     "card": "ELEC03B|MGP-12",
+     "bridge": "Oral if above 1.5 mg/dL; IV 0.25–0.5 mmol/kg over 8–12 h if under 1.0 or symptomatic. Next: magnesium, the silent partner →"
+    },
+    {
+     "card": "HY1|ABE-23",
+     "bridge": "Only 1% of magnesium is in blood, and low magnesium keeps potassium and calcium refractory. Next: who loses it →"
+    },
+    {
+     "card": "ELEC03B|MGP-04",
+     "bridge": "Loop diuretics, alcohol, PPIs, aminoglycosides and diarrhoea are the ICU culprits. Next: how much to give, and how fast →"
+    },
+    {
+     "card": "ELEC03B|MGP-06",
+     "bridge": "Torsades gets 2 g over minutes; deficits get slow infusions over days, halved in renal failure. Next: the refeeding link →"
+    },
+    {
+     "card": "SPECIAL03|NUT-12",
+     "bridge": "Feeding a starved patient drives phosphate, potassium and magnesium into cells; thiamine first. Next: the ASPEN definition and the ICU trial →"
+    },
+    {
+     "card": "V6-020",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Why it matters: phosphate is the currency of ATP and 2,3-DPG. Below about **1.5 mg/dL** the diaphragm weakens, weaning fails and the oxygen curve shifts left.",
+    "Phosphate: mostly shift into cells (refeeding, DKA insulin, alkalosis), plus CRRT. Oral at 1.5–2.5; **IV 0.25–0.5 mmol/kg over 8–12 h** if under 1.0 or symptomatic.",
+    "Magnesium: only **1%** is extracellular, so serum underestimates depletion. Low magnesium keeps hypokalaemia and hypocalcaemia refractory: replace it first.",
+    "What I do: torsades or seizures, **2 g MgSO4 IV over 2–5 min**; otherwise a slow infusion, as half is lost in urine. Halve the dose in renal failure.",
+    "Refeeding link: feeding a starved patient releases insulin, which drives phosphate, potassium and magnesium into cells and uses up thiamine. Arrhythmia and respiratory failure follow.",
+    "Prevent (ASPEN 2020): thiamine before feeding, start at **10–20 kcal/kg** and advance over days. If phosphate falls on feeding, cut calories (Doig 2015) and replace."
+   ]
+  },
+  {
+   "q": "P6-242",
+   "text": "How do you manage hypercalcaemia?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ELEC03A|CAL-09",
+     "bridge": "Outpatients have hyperparathyroidism; inpatients have malignancy, mostly via PTHrP. Next: why high calcium makes the patient worse →"
+    },
+    {
+     "card": "ELEC03A|CAL-10",
+     "bridge": "Calcium causes polyuria, which dehydrates and raises calcium further; short QT and coma are the dangers. Next: confirming the cause →"
+    },
+    {
+     "card": "ELEC03A|CAL-11",
+     "bridge": "Intact PTH sorts the cause: low PTH points to malignancy, vitamin D or myeloma. Next: treatment in order →"
+    },
+    {
+     "card": "HY1|ABE-22",
+     "bridge": "Saline first, calcitonin fastest, bisphosphonate most effective, dialysis when saline is unsafe. Next: the doses and onset of each →"
+    },
+    {
+     "card": "ELEC03A|CAL-13",
+     "bridge": "Bisphosphonates take days; calcitonin acts in hours but fades. Next: what the malignancy guideline adds →"
+    },
+    {
+     "card": "V6-015",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: total calcium above about **10.5 mg/dL**; severe above **14**. In inpatients, think malignancy (PTHrP, bone lesions). Short QT, polyuria, constipation, confusion.",
+    "Mechanism: high calcium causes nephrogenic DI, and the dehydration cuts calcium excretion: a vicious loop. That is why saline comes first.",
+    "What I do: isotonic saline **200–300 mL/h** to a urine output of **100–150 mL/h**; loop diuretic only if overloaded. Stop thiazides, lithium, calcium and vitamin D.",
+    "Calcitonin works within hours but is weak and fades by **48–72 h**, so it only bridges. A bisphosphonate (zoledronic acid) is most effective but takes days.",
+    "Endocrine Society 2022, malignancy: suggests **denosumab over IV bisphosphonate**, calcitonin plus an antiresorptive when severe, denosumab if refractory. Steroids for lymphoma or granulomas.",
+    "Dialysis with a low-calcium bath: severe hypercalcaemia with renal or heart failure that rules out saline, or coma. It acts in hours; follow it with an antiresorptive."
+   ]
+  },
+  {
+   "q": "P6-103",
+   "text": "DKA — management.",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "ENDO02B|DKA-03",
+     "bridge": "Absolute insulin lack frees fatty acids for ketogenesis, and osmotic diuresis dehydrates. Next: how DKA is now diagnosed →"
+    },
+    {
+     "card": "ENDO02B|DKA-05",
+     "bridge": "2024: glucose ≥200 or known diabetes, β-hydroxybutyrate ≥3.0, pH <7.3 and/or bicarbonate <18. Next: the first treatment, fluid →"
+    },
+    {
+     "card": "ENDO02B|DKA-12",
+     "bridge": "Fluid comes first and restores perfusion; dextrose is added as glucose falls below 250. Next: the potassium rule before insulin →"
+    },
+    {
+     "card": "ENDO02B|DKA-13",
+     "bridge": "Total-body potassium is low and insulin drops it fast: below 3.5, give potassium and hold insulin. Next: the insulin dose →"
+    },
+    {
+     "card": "ENDO02B|DKA-15",
+     "bridge": "Fixed-rate insulin runs on; it is reduced, not stopped, as glucose falls. Next: when bicarbonate is allowed →"
+    },
+    {
+     "card": "ENDO02B|DKA-17",
+     "bridge": "Bicarbonate only below pH 7.0; it has not improved outcomes. Next: the 2024 numbers in one place, with resolution →"
+    },
+    {
+     "card": "V6-016",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Diagnosis (2024): glucose **≥200 mg/dL** or known diabetes, β-hydroxybutyrate **≥3.0 mmol/L**, pH **<7.3** and/or HCO3 **<18**. Severe (pH <7.0) goes to ICU. Find the trigger.",
+    "Fluids first: isotonic saline or balanced crystalloid **500–1000 mL/h for 2–4 h**, then replace the rest of the deficit over 24–48 h.",
+    "Potassium: insulin drives potassium into cells. If K is **<3.5**, give potassium and **hold insulin until K >3.5**. Add K once it is below **5.0**, aiming for 4–5.",
+    "Insulin: fixed-rate IV **0.1 U/kg/h**. At glucose **<250**, add 5–10% dextrose and cut insulin to 0.05, but keep it running until ketones clear. Mild DKA: SC analogue is acceptable.",
+    "Bicarbonate only if pH **<7.0**. Resolved when β-hydroxybutyrate **<0.6** and pH **≥7.3** or HCO3 **≥18**; overlap SC basal insulin before stopping the drip.",
+    "Caution: ketones, not glucose, decide when insulin stops. The 2009 numbers (bicarbonate at pH 6.9, K 3.3, dextrose at 200) are now outdated."
+   ]
+  },
+  {
+   "q": "P6-232",
+   "text": "Differentiate DKA and HHS.",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "ENDO02B|DKA-01",
+     "bridge": "DKA is absolute insulin lack over hours; HHS is relative lack over days in older type 2 patients. Next: why one makes ketones, the other osmoles →"
+    },
+    {
+     "card": "ENDO02B|DKA-03",
+     "bridge": "In HHS enough insulin remains to block lipolysis, so ketones stay low while osmotic diuresis dehydrates. Next: the numbers that separate them →"
+    },
+    {
+     "card": "ENDO02B|DKA-06",
+     "bridge": "HHS: glucose ≥600, effective osmolality >300, pH ≥7.3, little ketosis. Next: how big the water deficit is →"
+    },
+    {
+     "card": "ENDO02B|DKA-11",
+     "bridge": "HHS loses more water, up to 150 mL/kg, so fluid is the main treatment. Next: who gets HHS, and why →"
+    },
+    {
+     "card": "ENDO02B|DKA-22",
+     "bridge": "HHS strikes older patients with poor access to water, over weeks. Next: the order of treatment →"
+    },
+    {
+     "card": "ENDO02B|DKA-23",
+     "bridge": "Volume first, then insulin, with a gradual fall in glucose and osmolality. Next: the 2024 doses and pace limits →"
+    },
+    {
+     "card": "V6-017",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Difference: DKA is absolute insulin lack with ketoacidosis, over hours. HHS is relative lack: enough insulin to block ketogenesis, so days of osmotic diuresis cause hyperosmolar dehydration.",
+    "Criteria (2024): HHS has glucose **≥600 mg/dL**, effective osmolality **>300**, β-hydroxybutyrate **<3.0**, pH **≥7.3** and HCO3 **≥15**. Treat a mixed picture as DKA.",
+    "Fluids in HHS: the deficit is bigger, so fluid is the treatment. Isotonic fluid first; sodium rising as glucose falls is expected. 0.45% saline only if osmolality stops falling.",
+    "Insulin in HHS: lower dose, **0.05 U/kg/h** (DKA 0.1), after fluids are running; UK JBDS waits until glucose stops falling on fluid alone. Use 0.1 if ketotic.",
+    "Pace: glucose fall **≤90–120 mg/dL/h**, sodium fall **≤10 mmol/L in 24 h**, osmolality fall **3–8 mOsm/kg/h**. Add dextrose at glucose <250 in both.",
+    "Caution: HHS carries **5- to 10-fold** the mortality of DKA and is prothrombotic, so give prophylactic LMWH. Treat the trigger, often infection."
+   ]
+  },
+  {
+   "q": "P6-233",
+   "text": "What is euglycaemic DKA?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ENDO02B|DKA-03",
+     "bridge": "Ketoacidosis comes from a low insulin-to-glucagon ratio, not from the glucose itself. Next: when the glucose looks normal →"
+    },
+    {
+     "card": "ENDO02B|DKA-21",
+     "bridge": "Euglycaemic DKA is ketoacidosis with glucose under 200 (2024), mainly with SGLT2 inhibitors and pregnancy. Next: how it hides and how to treat →"
+    },
+    {
+     "card": "V6-018",
+     "bridge": "Dextrose goes in from the start so insulin can clear ketones, and the SGLT2 inhibitor stops. Next: why ketones must be measured in blood →"
+    },
+    {
+     "card": "ENDO02B|DKA-10",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: DKA with glucose **<200 mg/dL** (2024): β-hydroxybutyrate **≥3.0 mmol/L**, pH <7.3 and/or HCO3 <18. About **10%** of DKA.",
+    "Causes: **SGLT2 inhibitors**, pregnancy, poor intake or fasting, insulin given before arrival, alcohol and liver failure.",
+    "Mechanism: SGLT2 inhibitors pour glucose into the urine, so glucose stays low, insulin falls and glucagon rises; ketogenesis goes on unseen.",
+    "Treat differently: the same fluids, potassium rules and fixed-rate insulin, but **5–10% dextrose from the start**, so insulin can clear ketones without hypoglycaemia.",
+    "Caution: check blood ketones and a gas in any sick or fasting patient on an SGLT2 inhibitor. Stop the drug on admission; restarting it is not routinely recommended."
+   ]
+  },
+  {
+   "q": "P6-238",
+   "text": "What glucose target do you use in the ICU?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "ENDO02A|GLY-01",
+     "bridge": "Hyperglycaemia is above 180; hypoglycaemia is below 70, significant below 54; the target is 140–180. Next: why both ends harm →"
+    },
+    {
+     "card": "ENDO02A|GLY-04",
+     "bridge": "Mortality is J-shaped, and the hypoglycaemic limb is steeper. Next: the trial that made tight control popular →"
+    },
+    {
+     "card": "ENDO02A|GLY-13",
+     "bridge": "Leuven Surgical showed benefit with 80–110; Leuven Medical did not, with 18.7% severe hypoglycaemia. Next: the multicentre test →"
+    },
+    {
+     "card": "ENDO02A|GLY-15",
+     "bridge": "NICE-SUGAR found higher mortality with intensive control, and hypoglycaemia tracked death. Next: its numbers, and what came after →"
+    },
+    {
+     "card": "V6-019",
+     "bridge": "27.5 vs 24.9% mortality, 6.8 vs 0.5% hypoglycaemia; TGC-fast and SCCM 2024 kept the moderate target. Next: why hypoglycaemia is so dangerous →"
+    },
+    {
+     "card": "ENDO02A|GLY-19",
+     "bridge": "Hypoglycaemia is silent under sedation, and even one episode predicts death. Next: should diabetics get a looser target →"
+    },
+    {
+     "card": "CCM01|GLU-26",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What I use: start insulin when glucose is persistently **>180 mg/dL** and keep **140–180**, by IV infusion with hourly checks while unstable. Avoid targets below 110.",
+    "Why not tight: Leuven Surgical (2001) showed benefit with 80–110, but it was single-centre with early parenteral nutrition. Leuven Medical and VISEP showed no benefit and more hypoglycaemia.",
+    "Evidence: **NICE-SUGAR** (6,104 patients), 81–108 vs ≤180: 90-day mortality **27.5% vs 24.9%**, severe hypoglycaemia **6.8% vs 0.5%**.",
+    "Since then: TGC-fast (2023, 9,230 patients, no early parenteral nutrition) found no benefit from tight control. SCCM 2024 suggests against an 80–139 target.",
+    "Mechanism: hypoglycaemia is hidden by sedation and its harm is dose-dependent. Hypoglycaemia is **<70**; clinically significant **<54 mg/dL**.",
+    "Caution: HbA1c-tailored targets gave no benefit (CONTROLING 2021, stopped early). Variability matters too: aim for a stable glucose, not a lower one."
+   ]
+  }
+ ],
+ "explain": {},
+ "fixes": [
+  {
+   "card": "RENAL01|AKI-06",
+   "field": "a",
+   "old": "6,647 ICU patients • 19.2% developed AKI",
+   "new": "29,269 ICU patients • 5.7% developed severe AKI",
+   "src": "Uchino S et al. (BEST Kidney), JAMA 2005;294:813",
+   "checked": "web-verified 10 Nov (PubMed abstract): 29,269 admitted, 1,738 (5.7%) ARF, septic shock 47.5% the commonest cause; the card's 6,647 / 19.2% do not match BEST Kidney"
+  },
+  {
+   "card": "HY1|ABE-25",
+   "field": "watch",
+   "old": "that is ischaemic ATN, not prerenal",
+   "new": "that is intrinsic septic AKI, not prerenal",
+   "src": "Bellomo R et al., Intensive Care Med 2017;43:816; Langenberg C et al., Kidney Int 2006;69:1996",
+   "checked": "independent reviewer 10 Nov: septic AKI is not mainly ischaemic (RBF can be high in hyperdynamic sepsis; early histology bland); the teaching point (not prerenal) is kept"
+  },
+  {
+   "card": "RENAL03|RRT-02",
+   "field": "a",
+   "old": "K above 6 mmol/L or ECG change",
+   "new": "Refractory K above 6.5 mmol/L, or above 6 with ECG change or rising despite therapy",
+   "src": "KDIGO AKI 2012 (5.1.1); Gaudry NEJM 2016 (AKIKI); STARRT-AKI NEJM 2020;383:240 (standard-arm trigger K above 6); aligns with HY1|ABE-26",
+   "checked": "web-verified 10 Nov: STARRT-AKI standard-arm hyperkalaemia trigger K >6 mmol/L; KDIGO 5.1.1 gives no number (emergent RRT for life-threatening changes); error register RRT-02 OPEN asks one trigger aligned with ABE-26"
+  },
+  {
+   "card": "RENAL04|RRT2-02",
+   "field": "a",
+   "old": "**about 4-6 h** | **about 6-16 h**",
+   "new": "**about 3-4 h** | **about 6-12 h**",
+   "src": "Clark EG, Vijayan A, How I prescribe prolonged intermittent renal replacement therapy, Crit Care 2023;27:88 (PIRRT 6-12 h vs IHD 3-4 h); aligns with RRT2-01 (SLED 6-12 h) and SC-E-10 (IHD 3 to 4 hours)",
+   "checked": "reviewer web-verified 10 Nov: Clark & Vijayan 2023 give IHD 3-4 h and PIRRT/SLED 6-12 h per session; RRT2-02 was the only card giving IHD 4-6 h"
+  },
+  {
+   "card": "HY1|ABE-09",
+   "field": "why",
+   "old": "became the SSC 2021 suggestion.",
+   "new": "became the SSC 2021 suggestion, kept in SSC 2026 (very low certainty).",
+   "src": "Surviving Sepsis Campaign International Guidelines for Adults 2026 (survivingsepsis.org adult guidelines page; Crit Care Med / Intensive Care Med 2026)",
+   "checked": "web-verified 10 Nov: SSC 2026 adult page still 'suggests' bicarbonate for pH ≤7.2 with AKIN 2–3 (very low certainty) and against it for hypoperfusion lactic acidaemia; reviewer re-checked 10 Nov via EMCrit 422 SSC 2026 summary (guideline full text not fetchable)"
+  },
+  {
+   "card": "ENDO02B|DKA-05",
+   "field": "a",
+   "old": "glucose **> 250 mg/dL**",
+   "new": "glucose **≥ 200 mg/dL**, or known diabetes at any glucose (2024 consensus)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: D criterion glucose ≥200 mg/dL or prior diabetes"
+  },
+  {
+   "card": "ENDO02B|DKA-05",
+   "field": "a",
+   "old": "ketonaemia **> 3 mmol/L** or ketonuria **> 2+**",
+   "new": "β-hydroxybutyrate **≥ 3.0 mmol/L** or ketonuria **≥ 2+**",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: K criterion BOHB ≥3.0 or urine ketones ≥2+"
+  },
+  {
+   "card": "ENDO02B|DKA-05",
+   "field": "a",
+   "old": "pH **< 7.3**.",
+   "new": "pH **< 7.3** and/or bicarbonate **< 18 mmol/L**.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: A criterion pH <7.3 and/or HCO3 <18"
+  },
+  {
+   "card": "ENDO02B|DKA-06",
+   "field": "a",
+   "old": "Glucose | **> 250** | **> 600**",
+   "new": "Glucose | **≥ 200** or known diabetes (2024) | **≥ 600**",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: DKA glucose ≥200, HHS glucose ≥600"
+  },
+  {
+   "card": "ENDO02B|DKA-06",
+   "field": "a",
+   "old": "Osmolality | variable | **> 320**",
+   "new": "Osmolality | variable | effective **> 300** (or total > 320)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: HHS effective osmolality >300 or total >320 mOsm/kg"
+  },
+  {
+   "card": "ENDO02B|DKA-01",
+   "field": "a",
+   "old": "Mortality | **About 5%** | **15-30%**",
+   "new": "Mortality | **Under 1%** with treatment (2024) | **5- to 10-fold** higher than DKA",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text: DKA mortality <1% with treatment (inpatient 0.20-1.04%); HHS five- to tenfold higher than DKA"
+  },
+  {
+   "card": "ENDO02B|DKA-12",
+   "field": "a",
+   "old": "c Glucose **200 (DKA) / 300 (HHS)** → **5% dextrose with 0.45% NaCl, 150-250 mL/h**.",
+   "new": "c Glucose **< 250 mg/dL** in both DKA and HHS (2024; was 200 / 300) → add **5-10% dextrose** to the saline; keep insulin running.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: add 5-10% dextrose once glucose <250 mg/dL for both DKA and HHS"
+  },
+  {
+   "card": "ENDO02B|DKA-13",
+   "field": "q",
+   "old": "b K < 3.3",
+   "new": "b K < 3.5",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: hold insulin if K <3.5"
+  },
+  {
+   "card": "ENDO02B|DKA-13",
+   "field": "q",
+   "old": "c K 3.3-5.2",
+   "new": "c K 3.5-5.0",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: add K once below 5.0"
+  },
+  {
+   "card": "ENDO02B|DKA-13",
+   "field": "q",
+   "old": "d K > 5.2",
+   "new": "d K > 5.0",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: no K above 5.0, check 2-hourly"
+  },
+  {
+   "card": "ENDO02B|DKA-13",
+   "field": "a",
+   "old": "**Hold insulin**; give **20-30 mEq K/h** until > 3.3.",
+   "new": "**Hold insulin**; give potassium (about **10 mmol/h**, 2024) until K > **3.5**.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: K <3.5 give 10 mmol/h and postpone insulin until K >3.5"
+  },
+  {
+   "card": "ENDO02B|DKA-15",
+   "field": "q",
+   "old": "d At glucose 200 in DKA",
+   "new": "d At glucose < 250 in DKA (2024; was 200)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: dextrose and insulin reduction to 0.05 U/kg/h once glucose <250"
+  },
+  {
+   "card": "ENDO02B|DKA-15",
+   "field": "q",
+   "old": "e At glucose 300 in HHS",
+   "new": "e At glucose < 250 in HHS (2024; was 300)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: same 250 mg/dL threshold in HHS"
+  },
+  {
+   "card": "ENDO02B|DKA-15",
+   "field": "a",
+   "old": "hold glucose **150-200** until DKA resolves",
+   "new": "hold glucose about **200** (2024) until ketoacidosis resolves",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: target glucose about 200 mg/dL until ketoacidosis resolves"
+  },
+  {
+   "card": "ENDO02B|DKA-16",
+   "field": "a",
+   "old": "a **AG < 12, HCO3 ≥ 15, venous pH > 7.30**, and able to eat.",
+   "new": "a **β-hydroxybutyrate < 0.6 mmol/L** and **venous pH ≥ 7.3 or HCO3 ≥ 18** (2024); do not use the anion gap or urine ketones.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: DKA resolution BOHB <0.6 and venous pH ≥7.3 or HCO3 ≥18; anion gap and urine ketones not to be used"
+  },
+  {
+   "card": "ENDO02B|DKA-17",
+   "field": "a",
+   "old": "a Only if **pH < 6.9**",
+   "new": "a Only if **pH < 7.0** (2024 consensus; ADA 2009 used 6.9)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: bicarbonate considered only if pH <7.0, 100 mmol in 400 mL 2-hourly"
+  },
+  {
+   "card": "ENDO02B|DKA-17",
+   "field": "a",
+   "old": "None if pH ≥ 6.9.",
+   "new": "None if pH ≥ 7.0.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: as above"
+  },
+  {
+   "card": "ENDO02B|DKA-21",
+   "field": "a",
+   "old": "Ketoacidosis with glucose **< 250 mg/dL**.",
+   "new": "Ketoacidosis with glucose **< 200 mg/dL** (2024); about 10% of DKA. Also alcohol, liver failure, poor intake.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov: 2024 consensus full text (Diabetologia PDF) and CCJM 2025 review: euglycaemic DKA = glucose <11.1 mmol/L (200 mg/dL) with ketosis and acidosis, about 10% of DKA; causes include reduced intake, alcohol, liver failure, SGLT2i"
+  },
+  {
+   "card": "CCM01|GLU-02",
+   "field": "a",
+   "old": "CBG **< 60 mg/dL**",
+   "new": "CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2); level 3 = severe event needing help",
+   "src": "ADA Standards of Care 2024/2025 (glycaemic targets); SCCM 2024 Glycemic Control Guideline (Honarmand, Crit Care Med 2024)",
+   "checked": "error register GLU-02 correct text applied; ADA levels are standard; register says ALREADY_FIXED but the app still shows < 60 (cardfix has no GLU-02 entry)"
+  },
+  {
+   "card": "ENDO02A|GLY-01",
+   "field": "a",
+   "old": "b CBG **< 60 mg/dL**.",
+   "new": "b CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2).",
+   "src": "ADA Standards of Care 2024/2025 (glycaemic targets)",
+   "checked": "same error as register GLU-02, on the ENDO02A twin card; not in the register"
+  },
+  {
+   "card": "CCM01|GLU-26",
+   "field": "a",
+   "old": "- **HbA1c > 7%** (Seasoned veteran), medical: **180-220** mg/dL",
+   "new": "- **HbA1c > 7%** (Seasoned veteran), medical: 180-220 mg/dL in the old notes only; **no guideline uses HbA1c tiers**: start insulin at **≥180** and target **140-180** for all",
+   "src": "SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024); CONTROLING RCT (Bohe et al., 2021); NICE-SUGAR NEJM 2009",
+   "checked": "web-verified 10 Nov: SCCM guideline page (protocol for persistent BG ≥180 mg/dL; suggest against 80-139; individualised HbA1c targets only a research statement); error register GLU-26"
+  },
+  {
+   "card": "CCM01|GLU-26",
+   "field": "a",
+   "old": "keep the conventional **~140–180 mg/dL**",
+   "new": "keep a conventional target (SCCM compared **140–200**; ADA uses **140–180 mg/dL**)",
+   "src": "SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024)",
+   "checked": "web-verified 10 Nov: SCCM guideline page states the comparator range as 140-200 mg/dL (7.8-11.1 mmol/L)"
+  },
+  {
+   "card": "ENDO02A|GLY-11",
+   "field": "a",
+   "old": "HbA1c **> 7%**: surgical 140-180, **medical 180-220 mg/dL**.",
+   "new": "HbA1c **> 7%**: the old notes gave medical 180-220, but **no guideline uses HbA1c tiers**; SCCM 2024: start at **≥180**, avoid 80-139; use **140-180** for all.",
+   "src": "SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024); CONTROLING RCT (Bohe et al., 2021)",
+   "checked": "web-verified 10 Nov: SCCM guideline page; same error as register GLU-26 on the ENDO02A twin card"
+  },
+  {
+   "card": "ENDO02B|DKA-15",
+   "field": "a",
+   "old": "a **0.1 U/kg IV bolus + 0.1 U/kg/h**, or **0.14 U/kg/h** without a bolus.",
+   "new": "a 2024: **fixed 0.1 U/kg/h**, bolus optional. ADA 2009 options: **0.1 U/kg bolus + 0.1 U/kg/h**, or **0.14 U/kg/h** without a bolus.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text: fixed-rate IV insulin 0.1 U/kg/h, 0.1 U/kg bolus optional if IV access delayed"
+  },
+  {
+   "card": "ENDO02B|DKA-15",
+   "field": "a",
+   "old": "d Cut to **0.02-0.05 U/kg/h**",
+   "new": "d Cut to **0.05 U/kg/h** (2024; ADA 2009 0.02-0.05)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text: at glucose <13.9 mmol/L add dextrose and reduce infusion to 0.05 U/kg/h"
+  },
+  {
+   "card": "ENDO02B|DKA-13",
+   "field": "watch",
+   "old": "the ADA flowchart uses 5.2.",
+   "new": "the ADA 2009 flowchart uses 5.2; the 2024 consensus uses **3.5 and 5.0**.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 text: K <3.5 give 10 mmol/h and delay insulin; start K once <5.0; 20-30 mmol per litre"
+  },
+  {
+   "card": "ENDO02B|DKA-23",
+   "field": "a",
+   "old": "**0.1 U/kg/h** infusion",
+   "new": "**0.05 U/kg/h** infusion (2024; **0.1** if ketotic or mixed DKA-HHS)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text and CCJM 2025 review: HHS fixed-rate 0.05 U/kg/h; 0.1 U/kg/h with significant ketonaemia or acidosis (mixed)"
+  },
+  {
+   "card": "ENDO02B|DKA-22",
+   "field": "a",
+   "old": "mortality **15-30% vs 5%**",
+   "new": "mortality **5- to 10-fold** that of DKA (2024; older texts 15-30% vs 5%)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text: HHS mortality five- to tenfold higher than DKA"
+  },
+  {
+   "card": "ENDO02B|DKA-09",
+   "field": "a",
+   "old": "c **Closing of the anion gap**: a better sign than resolution of acidosis.",
+   "new": "c 2024: **β-hydroxybutyrate < 0.6 mmol/L** with venous pH ≥ 7.3 or HCO3 ≥ 18; anion-gap closure (older teaching) is no longer used.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text: resolution by ketones <0.6 and pH ≥7.3 or HCO3 ≥18; anion gap should not be used for resolution (hyperchloraemic acidosis misleads)"
+  },
+  {
+   "card": "ENDO02B|DKA-10",
+   "field": "a",
+   "old": "d The **anion gap**; serial ketones have no rationale.",
+   "new": "d **Blood β-hydroxybutyrate** (2024: resolved below **0.6 mmol/L**); not urine ketones or the anion gap.",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "checked": "web-verified 10 Nov (reviewer): 2024 consensus text: resolution by plasma ketones <0.6 mmol/L; avoid urine ketones; anion gap not a resolution criterion"
+  },
+  {
+   "card": "ELEC02|KAL-11",
+   "field": "watch",
+   "old": "Only furosemide, resins and dialysis remove it from the body.",
+   "new": "Only furosemide, binders and dialysis remove it from the body. UK Kidney Association (2023, updated 2026): calcium gluconate **30 mL of 10%**; binder of choice **sodium zirconium cyclosilicate 10 g three times daily** (up to 72 h); resins no longer routine.",
+   "src": "UK Kidney Association, Clinical Practice Guideline: Management of Hyperkalaemia in Adults (2020; updated October 2023 and July 2026), ukkidney.org",
+   "checked": "web-verified 10 Nov (reviewer): UKKA July 2026 PDF: calcium gluconate 10% 30 mL (6.8 mmol); SZC recommended in emergency treatment of severe hyperkalaemia (1B), 10 g TDS up to 72 h; calcium resonium no longer routine for acute hyperkalaemia (2B)"
+  }
+ ]
+}

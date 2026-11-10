@@ -36,6 +36,17 @@ for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06', 'RESP01A', 'R
     # T-088: the deck's story — spine steps and a primer for arriving cold
     if n2.get('SPINE'): decks[dk]['spine'] = [list(p) for p in n2['SPINE']]
     if n2.get('PRIMER'): decks[dk]['primer'] = n2['PRIMER']
+# T-122: explanations for the bank Top-ups of the other decks (same cards and order as qbank.json, so TU numbers stay)
+QB = json.load(open('/home/claude/trace/test/data/qbank.json'))
+lineOf = lambda l: l if __import__('re').match(r'^\s*([-•]|\w[^|]* \| )', l) else '- ' + l
+for dk in list(decks):
+    f = dk.lower() + '_topups_learn.py'
+    if dk == 'TOX01' or not os.path.exists(f): continue
+    n4 = {}; exec(open(f).read(), n4)
+    lst = QB['topups'].get(dk, [])
+    assert lst and all(t['id'] in n4['T'] for t in lst), ('top-up explanations missing', dk)
+    decks[dk]['topups'] = [dict(t, a=[lineOf(l) for l in t['a']], banks=t.get('banks', ''), x=v2(n4['T'][t['id']], True)) for t in lst]
+    ntu = locals().get('ntu', 0) + len(decks[dk]['topups'])
 # T-084: approved corrections to the card text, shown on the card and in the Explain pane
 n3 = {}; exec(open('tox_corrections.py').read(), n3)
 for dk, m in n3['FIX'].items():
