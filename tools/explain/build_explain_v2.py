@@ -46,7 +46,7 @@ for dk in list(decks):
     lst = QB['topups'].get(dk, [])
     assert lst and all(t['id'] in n4['T'] for t in lst), ('top-up explanations missing', dk)
     decks[dk]['topups'] = [dict(t, a=[lineOf(l) for l in t['a']], banks=t.get('banks', ''), x=v2(n4['T'][t['id']], True)) for t in lst]
-    topups += decks[dk]['topups']
+    ntu = locals().get('ntu', 0) + len(decks[dk]['topups'])
 # T-084: approved corrections to the card text, shown on the card and in the Explain pane
 n3 = {}; exec(open('tox_corrections.py').read(), n3)
 for dk, m in n3['FIX'].items():
