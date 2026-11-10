@@ -1,0 +1,1658 @@
+{
+ "package": "P7",
+ "title": "Abdomen: liver, pancreas, nutrition",
+ "version": "P7.20261110.1",
+ "cards": {
+  "V7-001": {
+   "deck": "GI01B",
+   "topic": "NAC in non-paracetamol ALF: Lee 2009 and Squires 2013",
+   "type": "qa",
+   "q": "What did the trials of N-acetylcysteine in non-paracetamol acute liver failure show, and which patients benefit?",
+   "a": [
+    "**Lee 2009** (Gastroenterology, US ALF Study Group): double-blind RCT, **173** adults with non-paracetamol ALF, IV NAC for 72 h (81) vs placebo (92).",
+    "Primary outcome, overall 3-week survival: **70% vs 66%**, not significant. NAC does not improve overall survival.",
+    "Transplant-free survival: **40% vs 27%** (one-sided p = 0.043). Transplant rate 32% vs 45% (not significant).",
+    "By coma grade: **I–II: 52% vs 30%** (p = 0.010); **III–IV: 9% vs 22%**, no benefit. The gain is confined to early encephalopathy.",
+    "**Squires 2013** (Hepatology, paediatric ALF group): **184** children with non-paracetamol ALF. 1-year survival 73% vs 82% (not significant); 1-year transplant-free survival **lower with NAC: 35% vs 53%** (p = 0.03).",
+    "Under 2 years with grade 0–1 HE: transplant-free survival 25% vs 60%. NAC is not used routinely in paediatric non-paracetamol ALF.",
+    "Bedside: adult, non-paracetamol, grade I–II HE: start IV NAC early (ACG 2023 suggests it). Grade III–IV: it does not replace listing. Any chance of paracetamol: give NAC."
+   ],
+   "tier": "S",
+   "qref": [
+    "P7-104"
+   ],
+   "src": "Lee WM et al., Gastroenterology 2009;137:856; Squires RH et al., Hepatology 2013;57:1542; ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023)",
+   "v": 1
+  },
+  "V7-002": {
+   "deck": "TOX02",
+   "topic": "SNAP 12-hour acetylcysteine regimen and the two-bag regimen",
+   "type": "qa",
+   "q": "What is the SNAP regimen for paracetamol poisoning, and what is the evidence for it?",
+   "a": [
+    "Why change: the 21-hour regimen gives 150 mg/kg in the first hour. That early peak drives **anaphylactoid** reactions and vomiting, and three bags are complex to run.",
+    "**SNAP** (Scottish and Newcastle Antiemetic Pre-treatment): **100 mg/kg over 2 h**, then **200 mg/kg over 10 h**. Same total **300 mg/kg**, in **12 hours**.",
+    "**Bateman, Lancet 2014**: RCT, **222** patients, 2×2 design with ondansetron. Vomiting, retching or rescue antiemetic at 2 h: **39/108 vs 71/109** (adjusted OR **0.26**).",
+    "Severe anaphylactoid reactions: **5 vs 31** patients (adjusted OR **0.23**). ALT rise above 50%: 13/112 vs 9/110, no significant difference; not powered for non-inferiority.",
+    "Ondansetron pre-treatment cut vomiting (OR 0.41) but was linked to more ALT rises (16 vs 6 patients), so it is not routine.",
+    "Status: **RCEM 2023** recommends SNAP as the default in UK emergency departments for adults and children. Australia and New Zealand (2019) use a **two-bag** regimen: **200 mg/kg over 4 h**, then **100 mg/kg over 16 h**.",
+    "Stopping rules do not change: stop when paracetamol is undetectable, ALT is falling and INR is under 2; otherwise continue at the last-bag rate (APAP-10)."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-105"
+   ],
+   "src": "Bateman DN et al., Lancet 2014;383:697 (SNAP); RCEM position statement on the SNAP regimen, 2023; Chiew AL et al., Med J Aust 2020;212:175 (ANZ paracetamol guideline)",
+   "v": 1
+  },
+  "V7-003": {
+   "deck": "GI01C",
+   "topic": "Plasma exchange in ALF: Larsen 2016, volume and who",
+   "type": "qa",
+   "q": "What is the evidence for plasma exchange in acute liver failure, what volume is used, and in which patients?",
+   "a": [
+    "**Larsen, J Hepatol 2016**: open multicentre RCT, **182** ALF patients: standard medical therapy (90) vs standard therapy plus **high-volume plasma exchange** (92) for **3 days**.",
+    "Volume: **15% of ideal body weight** (about **8–12 L**) exchanged against fresh frozen plasma each day, for 3 days.",
+    "Result: hospital survival **58.7% vs 47.8%** (HR **0.56**, 95% CI 0.36–0.86, stratified for transplant). The primary end-point was transplant-free survival.",
+    "Why it works: attenuated innate immune activation and multi-organ dysfunction; SIRS and SOFA scores fell more with exchange (p < 0.001).",
+    "No gain when given only as a bridge in patients who went on to transplant (p = 0.75).",
+    "Who (EASL 2017): plasma exchange improves transplant-free survival; the benefit is greatest when it is started **early** and in patients who **will not be transplanted**.",
+    "Standard volume (1.5–2 plasma volumes): **Maiwall 2022** RCT, 40 patients, 21-day transplant-free survival **75% vs 45%** (HR 0.30); less SIRS and lower ammonia and SOFA by day 5: an option where grafts are scarce."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-250"
+   ],
+   "src": "Larsen FS et al., J Hepatol 2016;64:69; EASL Clinical Practical Guidelines on acute (fulminant) liver failure, J Hepatol 2017;66:1047; Maiwall R et al., Clin Gastroenterol Hepatol 2022;20:e831",
+   "v": 1
+  },
+  "V7-004": {
+   "deck": "OBS02A",
+   "topic": "Acute fatty liver of pregnancy: Swansea criteria and treatment",
+   "type": "qa",
+   "q": "What are the Swansea criteria for acute fatty liver of pregnancy, and how are AFLP and HELLP treated?",
+   "a": [
+    "**Swansea criteria** (Ch'ng, Gut 2002): AFLP is diagnosed with **6 or more of 14** features when no other cause explains them.",
+    "Clinical: vomiting, abdominal pain, polydipsia or polyuria, encephalopathy.",
+    "Laboratory: bilirubin **>14 µmol/L**, glucose **<4 mmol/L**, urate **>340 µmol/L**, white cells **>11 × 10⁹/L**, AST or ALT **>42 IU/L**, ammonia **>47 µmol/L**, creatinine **>150 µmol/L**, PT **>14 s** or APTT **>34 s**.",
+    "Imaging and tissue: ascites or bright liver on ultrasound; **microvesicular steatosis** on biopsy (rarely done because of bleeding risk).",
+    "Why it helps: HELLP shares the raised enzymes and low platelets; hypoglycaemia, ammonia, coagulopathy and polyuria are liver FAILURE features that point to AFLP.",
+    "AFLP treatment: ICU, **IV glucose**, correct DIC with FFP and cryoprecipitate, then **deliver once stabilised**; liver transplant is rarely needed.",
+    "HELLP treatment: magnesium, blood pressure control and **delivery**; steroids for fetal lungs if preterm. Both usually improve after delivery."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-115"
+   ],
+   "src": "Ch'ng CL et al., Gut 2002;51:876 (Swansea criteria; cut-offs as tabulated in later reviews)",
+   "v": 1
+  },
+  "V7-005": {
+   "deck": "GI06",
+   "topic": "2026 global multi-society ACLF definition",
+   "type": "qa",
+   "q": "What is the October 2026 global multi-society definition of acute-on-chronic liver failure, and how is it graded?",
+   "a": [
+    "**October 2026**: AASLD with **EASL, APASL**, ALEH (Latin America) and SOLDA (Africa) published one consensus definition of ACLF (81 statements), jointly in Hepatology, J Hepatol, Ann Hepatol and Hepatol Int.",
+    "Substrate: **advanced chronic liver disease** (fibrosis F3 or more, or cirrhosis). Core requirement: **liver failure**, bilirubin **≥5 mg/dL** and INR **≥1.5**, plus at least one extrahepatic organ dysfunction or failure.",
+    "**Type A**: arises in compensated advanced CLD or cirrhosis. **Type B**: arises in previously decompensated cirrhosis.",
+    "Organ failures: kidney = **KDIGO AKI stage 2–3** or new RRT; brain = **West Haven grade 3–4** HE or ventilation for HE; circulation = vasopressor need (not HRS-AKI alone); lung = ventilation, P/F **≤225** or S/F **≤244**.",
+    "Grades: **1** = liver failure plus one extrahepatic organ dysfunction (e.g. KDIGO stage 1 AKI); **2** = plus one organ failure; **3** = plus **two or more** organ failures.",
+    "Bedside: it builds on the APASL Kyoto consensus (2025) and the 2025 organ-failure definitions; regional definitions are not withdrawn, so I still name EASL-CLIF grade and APASL criteria."
+   ],
+   "tier": "A",
+   "qref": [
+    "P7-106"
+   ],
+   "src": "Bajaj JS, Lucey MR et al., Acute-on-Chronic Liver Failure: A Global Multi-Society Consensus on Definitions, Hepatology 2026 (doi 10.1097/HEP.0000000000001891); AASLD press release 30 Oct 2026; HCPLive summary 30 Oct 2026",
+   "v": 1
+  },
+  "V7-006": {
+   "deck": "HY6",
+   "topic": "Glasgow-Blatchford score: components and use",
+   "type": "calc",
+   "q": "Spotter: the Glasgow-Blatchford score. What goes into it, and how do you use it?",
+   "a": [
+    "Pre-endoscopy score from bedside data only; range **0–23**. It predicts the need for intervention (transfusion, endoscopic therapy, surgery) or death.",
+    "**Urea** (mmol/L): 6.5–8.0 = 2; 8.0–10.0 = 3; 10.0–25 = 4; over 25 = **6**.",
+    "**Haemoglobin** (g/dL), men: 12.0–12.9 = 1; 10.0–11.9 = 3; under 10 = **6**. Women: 10.0–11.9 = 1; under 10 = **6**.",
+    "**Systolic BP** (mmHg): 100–109 = 1; 90–99 = 2; under 90 = **3**.",
+    "Others: pulse 100 or more = 1; **melaena** = 1; **syncope** = 2; **hepatic disease** = 2; **cardiac failure** = 2.",
+    "Use: **GBS ≤1** = very low risk of rebleeding or death; ESGE 2021 allows outpatient care without early endoscopy (Blatchford's original cut-off was 0).",
+    "Why urea scores high: blood digested in the upper gut is absorbed as protein, so a raised urea points to an upper source.",
+    "Catch: it is a triage score. Almost every ICU bleeder scores high, so in the ICU it decides little; the full Rockall needs endoscopic findings."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-255"
+   ],
+   "src": "Blatchford O et al., Lancet 2000;356:1318; Gralnek IM et al., Endoscopy 2021;53:300 (ESGE NVUGIH update)",
+   "v": 1
+  },
+  "V7-007": {
+   "deck": "HY6",
+   "topic": "Upper GI bleed evidence: Villanueva 2013, HALT-IT 2020, ESGE 2021",
+   "type": "qa",
+   "q": "What is the evidence for the transfusion threshold and against tranexamic acid in upper GI bleeding, and what goes before the scope?",
+   "a": [
+    "**Villanueva** (NEJM 2013): **921** patients, single centre. Restrictive: transfuse at Hb **<7**, target 7–9. Liberal: at <9, target 9–11. Exsanguinating bleeds, ACS and stroke were excluded.",
+    "Result: 6-week survival **95% vs 91%** (HR 0.55); further bleeding **10% vs 16%**; adverse events 40% vs 48%.",
+    "Cirrhosis: benefit in Child-Pugh **A/B** (deaths 4% vs 12%), none in Child C. Liberal blood raised the HVPG (20.5 to 21.4 mmHg): more volume, more portal pressure, more rebleeding.",
+    "ESGE 2021: threshold **≤7 g/dL**, target 7–9. With cardiovascular disease: threshold **≤8**, target **≥10**.",
+    "**HALT-IT** (Lancet 2020): **12,009** patients; TXA 1 g, then 3 g over 24 h, vs placebo. Death from bleeding at 5 days **4% vs 4%** (RR 0.99); venous thrombosis **0.8% vs 0.4%** (RR 1.85). So: no TXA.",
+    "Before the scope (ESGE 2021): high-dose IV PPI may be considered but must not delay endoscopy; IV erythromycin if bleeding is severe or ongoing.",
+    "Timing: endoscopy within **24 h** after resuscitation; urgent (≤12 h) gives no better outcome in non-variceal bleeding. Suspected varices: within **12 h** (Baveno VIII 2026)."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-255"
+   ],
+   "src": "Villanueva C et al., NEJM 2013;368:11; HALT-IT Trial Collaborators, Lancet 2020;395:1927; Gralnek IM et al., Endoscopy 2021;53:300 (ESGE); Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (Baveno VIII)",
+   "v": 1
+  },
+  "V7-008": {
+   "deck": "GI07B",
+   "topic": "HRS-AKI trials: CONFIRM and ATTIRE; terlipressin cautions",
+   "type": "qa",
+   "q": "What did CONFIRM and ATTIRE show, and what are the side effects of terlipressin?",
+   "a": [
+    "**CONFIRM** (Wong, NEJM 2021): **300** patients with HRS type 1 (199 terlipressin, 101 placebo), albumin in both arms. Terlipressin 1 mg 6-hourly, 2 mg from day 4 if creatinine fell under 30%, up to 14 days.",
+    "Verified HRS reversal **32% vs 17%** (p = 0.006). 90-day mortality **51% vs 45%**: no survival benefit.",
+    "Harm: respiratory failure **14% vs 5%**; deaths from respiratory disorders by day 90 **11% vs 2%**. Likely mechanism: albumin volume load plus a raised afterload.",
+    "FDA boxed warning: do not start if **SpO2 <90%**, stop if it falls below 90%; higher risk with volume overload; avoid in **ACLF grade 3**; creatinine **>5 mg/dL** unlikely to benefit.",
+    "Other side effects: myocardial, mesenteric and digital **ischaemia**. Boluses give more blood-pressure swings and respiratory failure than an infusion.",
+    "**ATTIRE** (China, NEJM 2021): **777** patients with decompensated cirrhosis and albumin <30 g/L. Daily 20% albumin targeted to **≥30 g/L** for up to 14 days vs standard care.",
+    "Composite of infection, kidney dysfunction or death (days 3–15): **29.7% vs 30.2%**, no benefit. More pulmonary oedema or fluid overload (23 vs 8 serious events).",
+    "So: albumin for defined indications (SBP, large-volume paracentesis, HRS-AKI), not to correct a number; adjust it daily to volume status and stop it if overloaded (ADQI/ICA 2024)."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-107"
+   ],
+   "src": "Wong F et al., NEJM 2021;384:818 (CONFIRM); China L et al., NEJM 2021;384:808 (ATTIRE); TERLIVAZ prescribing information (FDA 2022); Nadim MK et al., J Hepatol 2024;81:163 (ADQI/ICA)",
+   "v": 1
+  },
+  "V7-009": {
+   "deck": "TRIALS01B",
+   "topic": "Stress ulcer prophylaxis: SUP-ICU, PEPTIC and the trade-off",
+   "type": "qa",
+   "q": "Besides REVISE, what do the trials show on stress ulcer prophylaxis, and what is the pneumonia and C. difficile trade-off?",
+   "a": [
+    "**SUP-ICU** (Krag, NEJM 2018): **3,298** acutely ill ICU adults at risk of bleeding; pantoprazole 40 mg IV daily vs placebo.",
+    "90-day mortality **31.1% vs 30.4%** (RR 1.02): no difference. Clinically important GI bleeding **2.5% vs 4.2%**. Infectious events (pneumonia, C. difficile) **16.8% vs 16.9%**.",
+    "**PEPTIC** (JAMA 2020): cluster crossover, 50 ICUs, **26,982** patients; PPI vs H2 blocker as the unit default. In-hospital mortality **18.3% vs 17.5%** (RR 1.05, 95% CI 1.00–1.10): not significant.",
+    "PEPTIC bleeding **1.3% vs 1.8%** (RR 0.73) in favour of PPI; C. difficile not different.",
+    "REVISE (NEJM 2024) adds, in ventilated patients: bleeding **1.0% vs 3.5%** (NNT 40), VAP 23.2% vs 23.8%, C. difficile 1.2% vs 0.7% (not significant).",
+    "The trade-off: acid suppression lets bacteria grow in the stomach, the feared route to pneumonia, C. difficile and SBP. Large blinded trials have not shown that harm; the bleeding benefit is real but small.",
+    "Catch: in SUP-ICU's sickest third (**SAPS II >53**) mortality trended higher with pantoprazole (RR 1.13, 95% CI 0.99–1.30; interaction p = 0.05); SCCM/ASHP 2024 call the PPI mortality effect in high-severity patients uncertain.",
+    "So (**SCCM/ASHP 2024**): low-dose PPI or H2 blocker only with **coagulopathy, shock or chronic liver disease** (ventilation alone is not a firm risk factor; REVISE came later); stop when the risk resolves and before ICU discharge."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-254"
+   ],
+   "src": "Krag M et al., NEJM 2018;379:2199 (SUP-ICU); PEPTIC Investigators (Young PJ et al.), JAMA 2020;323:616; Cook D et al., NEJM 2024;391:9 (REVISE); MacLaren R et al., Crit Care Med 2024;52:e421 (SCCM/ASHP)",
+   "v": 1
+  },
+  "V7-010": {
+   "deck": "GI02A",
+   "topic": "Modified Marshall organ failure; no single best severity score",
+   "type": "qa",
+   "q": "How is organ failure defined in acute pancreatitis, and which severity score is best?",
+   "a": [
+    "Revised Atlanta defines severity by **organ failure**, not by a score: **persistent >48 h = severe**, transient (<48 h) = moderately severe.",
+    "Organ failure = **modified Marshall score ≥2** in any of three systems:",
+    "**SYSTEM** | **SCORE 2 MEANS**\n**Respiratory** | PaO2/FiO2 **201–300** (or lower)\n**Renal** | Creatinine **170–310 µmol/L (1.9–3.6 mg/dL)** (or higher)\n**Cardiovascular** | SBP **<90 mmHg, not fluid-responsive** (off inotropes)",
+    "**No single best score.** ACG 2024: scoring systems and imaging alone predict severe disease poorly (good negative, poor positive predictive value).",
+    "What helps at the bedside: **SIRS**, **rising BUN**, **haematocrit >44%**, obesity and comorbidity on admission; reassess over the first **48 h**.",
+    "Persistent SIRS or organ failure despite fluids → monitored bed or ICU. Persistence, not the admission number, defines severe disease."
+   ],
+   "tier": "A",
+   "qref": [
+    "P7-111"
+   ],
+   "src": "Banks PA et al., Gut 2013;62:102 (revised Atlanta 2012); Tenner S et al., Am J Gastroenterol 2024;119:419 (ACG 2024 guideline)",
+   "v": 1
+  },
+  "V7-011": {
+   "deck": "GI02A",
+   "topic": "CT spotter: chronic calcific pancreatitis vs pancreatic necrosis",
+   "type": "spotter",
+   "q": "Spotter: CT abdomen of the pancreas. Is this chronic calcific pancreatitis or necrosis, and what are the local complications?",
+   "a": [
+    "**Chronic calcific pancreatitis:** coarse **calcifications** (mostly intraductal stones), focal or diffuse; CT is the most sensitive test for them.",
+    "Main duct **dilated and beaded** (chain of lakes: strictures and dilatations); dilated if over about 5 mm in the head; parenchymal **atrophy**; pseudocysts are common.",
+    "Cause: mostly **alcohol**. **Tropical calcific pancreatitis** (India): young, non-alcoholic, large dense stones in a markedly dilated duct; SPINK1 link.",
+    "**Necrosis (acute):** on contrast CT, **non-enhancing pancreatic parenchyma**, with or without peripancreatic necrosis. Early perfusion can look patchy; trust it after the first week.",
+    "**Gas** in a pancreatic or peripancreatic collection = presumed **infected necrosis**.",
+    "**COLLECTION** | **UNDER 4 WEEKS (NO WALL)** | **OVER 4 WEEKS (WALLED)**\n**Fluid only** | APFC | **Pseudocyst**\n**Fluid + necrosis** | ANC | **WON**"
+   ],
+   "tier": "A",
+   "qref": [
+    "P7-113"
+   ],
+   "src": "Banks PA et al., Gut 2013;62:102 (revised Atlanta 2012: collections, necrosis on CECT); Garg PK, Narayana D, Glob Health Epidemiol Genom 2016;1:e17 (tropical calcific pancreatitis, SPINK1); Learning Radiology and Articl.net radiology notes on chronic pancreatitis CT",
+   "v": 1
+  },
+  "V7-012": {
+   "deck": "GI02B",
+   "topic": "Infected necrosis trials: PANTER, TENSION, POINTER",
+   "type": "qa",
+   "q": "What did PANTER, TENSION and POINTER show about infected necrotising pancreatitis?",
+   "a": [
+    "**PANTER** (van Santvoort, NEJM 2010; 88 pts): step-up (drain, then VARD) vs open necrosectomy. Major complications or death **40% vs 69%** (RR 0.57); mortality 19% vs 16% (NS).",
+    "PANTER: new multiple organ failure **12% vs 40%**, incisional hernia 7% vs 24%, new diabetes 16% vs 38%. **35%** of step-up patients needed percutaneous drainage only.",
+    "**TENSION** (van Brunschot, Lancet 2018; 98 pts): endoscopic vs surgical step-up. Major complications or death **43% vs 45%** (NS); mortality 18% vs 13% (NS).",
+    "TENSION: endoscopic had fewer pancreatic fistulas (**5% vs 32%**) and shorter stay (53 vs 69 days).",
+    "**POINTER** (Boxhoorn, NEJM 2021; 104 pts): drainage within 24 h of diagnosis vs postponed until walled off. Comprehensive Complication Index **57 vs 58** (NS); mortality 13% vs 10%.",
+    "POINTER: postponed arm had fewer interventions (**2.6 vs 4.4**) and fewer necrosectomies (22% vs 51%); **39%** never needed drainage (antibiotics and support alone).",
+    "Bottom line: antibiotics first, **wait for walling-off (~4 weeks)**, then step-up, endoscopic where feasible."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-253"
+   ],
+   "src": "van Santvoort HC et al., N Engl J Med 2010;362:1491 (PANTER); van Brunschot S et al., Lancet 2018;391:51 (TENSION); Boxhoorn L et al., N Engl J Med 2021;385:1372 (POINTER)",
+   "v": 1
+  },
+  "V7-013": {
+   "deck": "SPECIAL03",
+   "topic": "Calorie targets, the trials and indirect calorimetry",
+   "type": "qa",
+   "q": "What calorie target do you set in early critical illness, what is the evidence, and how does indirect calorimetry change it?",
+   "a": [
+    "**ESPEN 2023**: hypocaloric, **≤70%** of energy expenditure in the early phase; after **day 3**, increase to **80–100%** of measured expenditure. **ASPEN 2022**: **12–25 kcal/kg/day** for the first 7–10 days.",
+    "**Indirect calorimetry**: ESPEN recommends it in ventilated patients. Without it, ventilator-derived VCO2 (or PA-catheter VO2) is preferred to predictive equations.",
+    "Why not 100% of the measured value early: calorimetry measures total expenditure, part of which is met by endogenous glucose; feeding it all on top **overfeeds**.",
+    "**PermiT** (Arabi, NEJM 2015, n=894): 40–60% vs 70–100% of calories, same protein: 90-day mortality **27.2 vs 28.9%**, not significant.",
+    "**TARGET** (NEJM 2018, n≈4000): 1.5 vs 1.0 kcal/mL enteral, similar protein in both (about 1863 vs 1262 kcal/day): 90-day mortality **26.8 vs 25.7%** (RR 1.05, 0.94–1.16).",
+    "**EAT-ICU** (Allingstrup, ICM 2017, n=199): calorimetry-guided full target plus protein ≥1.5 g/kg from day 1: no better 6-month physical function (SF-36 PCS 22.9 vs 23.0), more hyperglycaemia and insulin.",
+    "**NUTRIREA-3** (shock): 6 vs 25 kcal/kg for 7 days: low was ready for ICU discharge sooner. Lesson: calorimetry sets the target, not the speed."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-256"
+   ],
+   "src": "Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU); Compher C et al., JPEN 2022;46:12 (ASPEN/SCCM); Arabi YM et al., NEJM 2015;372:2398 (PermiT); TARGET Investigators, NEJM 2018;379:1823 (TARGET); Allingstrup MJ et al., Intensive Care Med 2017;43:1637 (EAT-ICU); Reignier J et al., Lancet Respir Med 2023;11:602 (NUTRIREA-3)",
+   "v": 1
+  },
+  "V7-014": {
+   "deck": "SPECIAL03",
+   "topic": "Protein dose: EFFORT Protein and PRECISe",
+   "type": "qa",
+   "q": "What protein dose do you give in the ICU, and which patients were harmed by high protein?",
+   "a": [
+    "**ESPEN 2023**: up to **1.3 g/kg/day** delivered **progressively**. **ASPEN 2022** made no new recommendation and kept **1.2–2.0 g/kg/day**.",
+    "**EFFORT Protein** (Heyland, Lancet 2023, n=1329, 85 ICUs): ventilated, high nutritional risk; prescribed **≥2.2 vs ≤1.2** g/kg/day, delivered **1.6 vs 0.9**.",
+    "Result: discharge alive by day 60 **46.1 vs 50.2%** (RR 0.91, 0.77–1.07); 60-day mortality **34.6 vs 32.1%** (RR 1.08), no benefit.",
+    "Harmed: baseline **AKI** (time to discharge alive HR 0.5; 60-day mortality RR 1.4, mainly those **not on RRT**) and **SOFA ≥9** (HR 0.8). Exploratory subgroups; urea rose with high protein.",
+    "**PRECISe** (Bels, Lancet 2024, n=935, double-blind): enteral **2.0 vs 1.3** g/kg/day: worse EQ-5D-5L health utility to 180 days (mean difference −0.05, −0.10 to −0.01); mortality HR 1.14 (NS).",
+    "PRECISe also: more GI intolerance with high protein (OR 1.76). Two RCTs, no benefit from more than about 1.3 g/kg early.",
+    "What I do: build to about 1.2–1.3 g/kg/day; avoid early high doses in AKI not on RRT and in high SOFA; on CRRT give more to replace losses."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-245",
+    "P7-114"
+   ],
+   "src": "Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU); Compher C et al., JPEN 2022;46:12 (ASPEN/SCCM); Heyland DK et al., Lancet 2023;401:568 (EFFORT Protein); Stoppe C et al., Crit Care 2023;27:399 (EFFORT AKI analysis); Bels JLM et al., Lancet 2024;404:659 (PRECISe)",
+   "v": 1
+  },
+  "V7-015": {
+   "deck": "SPECIAL03",
+   "topic": "Feeding in shock: NUTRIREA-3, trophic vs full",
+   "type": "qa",
+   "q": "Should you feed a ventilated patient in shock, and how much in the first week?",
+   "a": [
+    "**NUTRIREA-3** (Reignier, Lancet Respir Med 2023, n=3044, 61 French ICUs): ventilated adults on vasopressors, early feeding for the first 7 days.",
+    "Arms: low **6 kcal/kg/day** + protein **0.2–0.4 g/kg/day** vs standard **25 kcal/kg/day** + **1.0–1.3 g/kg/day**.",
+    "Result: ready for ICU discharge sooner with low (median **8 vs 9 days**, HR 1.12, 1.02–1.22); 90-day mortality **41.3 vs 42.8%** (NS).",
+    "Low also had less vomiting (HR 0.77), diarrhoea (0.83), **bowel ischaemia (0.50)** and liver dysfunction (0.92); secondary infections no different.",
+    "**NUTRIREA-2** (n=2410, shock): full-dose EN vs PN: bowel ischaemia **2% vs <1%** (HR 3.84) and more colonic pseudo-obstruction, no survival gain.",
+    "Why: in shock the splanchnic bed vasoconstricts; digestion raises gut oxygen demand, so full feeds risk non-occlusive bowel ischaemia.",
+    "What I do: no EN in uncontrolled shock; once stable on steady or falling vasopressors, low-dose EN; stop for distension, rising lactate or IAP; advance after shock resolves."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-248"
+   ],
+   "src": "Reignier J et al., Lancet Respir Med 2023;11:602 (NUTRIREA-3); Reignier J et al., Lancet 2018;391:133 (NUTRIREA-2); Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU)",
+   "v": 1
+  },
+  "V7-016": {
+   "deck": "SPECIAL03",
+   "topic": "EN vs PN trials: CALORIES, NUTRIREA-2, EPaNIC",
+   "type": "qa",
+   "q": "What is the trial evidence for enteral versus parenteral nutrition, and when does parenteral nutrition become necessary?",
+   "a": [
+    "**CALORIES** (Harvey, NEJM 2014, n=2400, 33 UK ICUs): early PN vs EN within 36 h for 5 days: 30-day mortality **33.1 vs 34.2%**; no more infections with PN; EN had more vomiting and hypoglycaemia.",
+    "CALORIES: both arms fell short of the 25 kcal/kg target, so it compared routes at similar, low intake.",
+    "**NUTRIREA-2** (Reignier, Lancet 2018, n=2410, ventilated in shock): EN vs PN: 28-day mortality **37 vs 35%**, ICU infections 14 vs 16% (NS); EN had more vomiting, diarrhoea, bowel ischaemia.",
+    "**EPaNIC** (Casaer, NEJM 2011, n=4640): late PN (day 8) vs early PN to top up EN: ICU infections **22.8 vs 26.2%**, 6.3% more likely to leave ICU alive earlier (HR 1.06), less cholestasis, RRT 3 days shorter.",
+    "EPaNIC: ICU, hospital and 90-day mortality the same (90-day 11.2% in both). Early supplemental PN adds harm without survival gain.",
+    "**PEPaNIC** (Fivez, NEJM 2016, n=1440 children, 3 PICUs): withholding PN to day 8: new infections **10.7 vs 18.5%**, PICU stay 2.7 days shorter; 90-day mortality 5.3 vs 6.8% (NS).",
+    "**When PN**: ESPEN 2023: if EN is contraindicated, PN within **3–7 days**; early progressive PN in severe malnutrition; supplemental PN case by case in week 1.",
+    "**ASPEN 2022**: EN or PN acceptable in the first week; do not start supplemental PN before **day 7**."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-244"
+   ],
+   "src": "Harvey SE et al., NEJM 2014;371:1673 (CALORIES); Reignier J et al., Lancet 2018;391:133 (NUTRIREA-2); Casaer MP et al., NEJM 2011;365:506 (EPaNIC); Fivez T et al., NEJM 2016;374:1111 (PEPaNIC); Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU); Compher C et al., JPEN 2022;46:12 (ASPEN/SCCM)",
+   "v": 1
+  },
+  "V7-017": {
+   "deck": "SPECIAL03",
+   "topic": "Gastric residual volume: NUTRIREA-1 and REGANE",
+   "type": "qa",
+   "q": "Do you measure gastric residual volume, and what is the evidence against routine GRV?",
+   "a": [
+    "GRV was used to predict aspiration, but checking it mainly interrupts feeds and reduces delivered calories.",
+    "**NUTRIREA-1** (Reignier, JAMA 2013, n=449 ventilated, early EN): no GRV monitoring vs GRV every 6 h: VAP **16.7 vs 15.8%** (difference 0.9%, 90% CI −4.8 to 6.7; margin **10%**), non-inferior.",
+    "NUTRIREA-1: more vomiting without GRV monitoring, but more patients reached their calorie target.",
+    "**REGANE** (Montejo, Intensive Care Med 2010, n=329): GRV limit **500 vs 200 mL**: more diet delivered in week 1 (**88.2 vs 84.5%**); pneumonia, ventilation time and ICU stay similar.",
+    "**ESPEN 2023**: delay EN if GRV **>500 mL/6 h**; give a prokinetic, **IV erythromycin** first line for 24–48 h; if large GRV persists, post-pyloric feeding rather than stopping EN.",
+    "ESPEN adds: continued GRV measurement during established EN may not be necessary.",
+    "What I do: no routine GRV; look for vomiting, distension and rising IAP; exclude obstruction or ischaemia before pushing feed."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-246"
+   ],
+   "src": "Reignier J et al., JAMA 2013;309:249 (NUTRIREA-1); Montejo JC et al., Intensive Care Med 2010;36:1386 (REGANE); Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU)",
+   "v": 1
+  },
+  "V7-018": {
+   "deck": "SPECIAL03",
+   "topic": "NUTRIC score: what it predicts and how it changes feeding",
+   "type": "qa",
+   "q": "What does the NUTRIC score predict, how does it change feeding, and how strong is the evidence?",
+   "a": [
+    "**NUTRIC** (Heyland, Crit Care 2011): age, APACHE II, SOFA, comorbidities, days in hospital before ICU, IL-6. **Modified NUTRIC** drops IL-6 (high risk **≥5** of 9).",
+    "Validation (Rahman, Clin Nutr 2016; RCT database, n=1199): each point raised the odds of 28-day death about **1.4-fold**.",
+    "Key claim: higher nutritional adequacy went with better survival in **high** scorers but not in low scorers (interaction p=0.029). This is **observational**, post hoc.",
+    "How it changes feeding: high score, start EN early and reach target without delay; if EN is impossible in a malnourished patient, early progressive PN rather than none (ESPEN).",
+    "Low score: less urgency; supplemental PN can wait until after the first week.",
+    "**ASPEN/SCCM 2016**: high nutrition risk = **NRS 2002 ≥5** or **NUTRIC ≥5** (without IL-6), or severe malnutrition: advance EN toward goal over **24–48 h**, watching for refeeding (expert consensus).",
+    "Caution: RCTs did not confirm that high-risk patients gain from more feeding: **EFFORT Protein** (high nutritional risk) showed no benefit from higher protein.",
+    "**ESPEN 2023**: no nutrition score is validated for ICU; consider every patient staying **>48 h** at risk of malnutrition. The score is mostly illness severity."
+   ],
+   "tier": "B",
+   "qref": [
+    "P7-247"
+   ],
+   "src": "Heyland DK et al., Crit Care 2011;15:R268 (NUTRIC); Rahman A et al., Clin Nutr 2016;35:158 (modified NUTRIC); McClave SA et al., JPEN 2016;40:159 (ASPEN/SCCM 2016); Heyland DK et al., Lancet 2023;401:568 (EFFORT Protein); Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU)",
+   "v": 1
+  },
+  "V7-019": {
+   "deck": "SPECIAL03",
+   "topic": "Liver complications of PN (IFALD): spectrum and prevention",
+   "type": "qa",
+   "q": "What are the hepatic complications of parenteral nutrition, and how do you prevent them?",
+   "a": [
+    "**IFALD** (intestinal failure-associated liver disease, formerly PNALD): liver injury linked to intestinal failure and PN, without another primary liver disease, hepatotoxin or biliary obstruction.",
+    "Spectrum: **steatosis** (early), **cholestasis** (raised ALP, GGT, conjugated bilirubin), gallbladder **sludge and stones**, then **fibrosis**. Steatosis and cholestasis can reverse; fibrosis much less.",
+    "Causes: excess **dextrose and energy** (hepatic fat); **soybean lipid** (omega-6, plant sterols, low α-tocopherol) impairs bile flow; **sepsis**; long PN; no enteral feed, so biliary stasis.",
+    "ICU evidence: in **EPaNIC**, delaying PN to day 8 lowered the incidence of **cholestasis** and **gallbladder sludge**, although plasma bilirubin was slightly higher.",
+    "Prevent: avoid overfeeding; pure soybean lipid **<1 g/kg/day**, use composite fish-oil-containing emulsions if more is needed; lipid infusion ≤**0.11 g/kg/h**.",
+    "Also: **cycle PN**, keep some oral or enteral intake, treat sepsis promptly, avoid hepatotoxic drugs.",
+    "If it develops: exclude obstruction and drugs (ultrasound), cut dextrose and soybean lipid, switch to a fish-oil-containing emulsion, advance enteral feed."
+   ],
+   "tier": "A",
+   "qref": [
+    "P7-109"
+   ],
+   "src": "Pironi L et al., Clin Nutr 2023;42:1940 (ESPEN chronic intestinal failure update); Pironi L et al., Clin Nutr 2020;39:1645 (ESPEN home PN); Mundi MS et al., Front Nutr 2025;12:1718116 (lipid emulsion consensus); Casaer MP et al., NEJM 2011;365:506 (EPaNIC); Vanwijngaerden YM et al., Hepatology 2014;60:202 (EPaNIC liver analysis)",
+   "v": 1
+  },
+  "V7-020": {
+   "deck": "MISC05B",
+   "topic": "Glutamine in burns: RE-ENERGIZE and REDOXS",
+   "type": "qa",
+   "q": "What is the role of glutamine in burns, and why is it not routinely recommended?",
+   "a": [
+    "Rationale: glutamine is **conditionally essential** in catabolism, a fuel for enterocytes and immune cells; levels fall after major burns. Small early trials suggested fewer infections.",
+    "**RE-ENERGIZE** (Heyland, NEJM 2022, n=1200, deep burns ≥20% TBSA at 18–39 y, lower thresholds if older): enteral **0.5 g/kg/day** vs placebo until 7 days after the last graft.",
+    "RE-ENERGIZE result: time to discharge alive **40 vs 38 days** (HR 0.91, 0.80–1.04); 6-month mortality **17.2 vs 16.2%**; no difference in serious adverse events.",
+    "**REDOXS** (Heyland, NEJM 2013, n=1223, ventilated, ≥2 organ failures): IV **0.35 g/kg/day** + enteral 30 g/day: 28-day mortality **32.4 vs 27.3%** (OR 1.28, p=0.05, borderline); 6-month **43.7 vs 37.2%** (HR 1.18, significant).",
+    "REDOXS: harm was greatest with baseline **renal dysfunction** (post hoc); urea rose with glutamine.",
+    "**MetaPlus** (van Zanten, JAMA 2014, n=301): high-protein feed enriched with glutamine, omega-3 and antioxidants vs high-protein: new infections **53 vs 52%**; 6-month mortality in medical patients **54 vs 35%**.",
+    "**ESPEN 2023**: still lists enteral 0.3–0.5 g/kg/day for 10–15 days in burns >20% (Grade B), but notes the largest RCT was negative and says it needs revision; no glutamine for other ICU patients; no IV glutamine if unstable or in liver or renal failure.",
+    "What I do: no routine glutamine in burns; early EN, protein 1.5–2 g/kg/day, micronutrients, avoid overfeeding."
+   ],
+   "tier": "A",
+   "qref": [
+    "P7-257"
+   ],
+   "src": "Heyland DK et al., NEJM 2022;387:1001 (RE-ENERGIZE); Heyland DK et al., NEJM 2013;368:1489 (REDOXS); Heyland DK et al., JPEN 2015 (REDOXS post hoc); van Zanten ARH et al., JAMA 2014;312:514 (MetaPlus); Singer P et al., Clin Nutr 2023;42:1671 (ESPEN ICU)",
+   "v": 1
+  }
+ },
+ "lines": {},
+ "questions": [
+  {
+   "q": "P7-128",
+   "text": "Acute liver failure — ICU management.",
+   "tier": "A",
+   "gen": "G1",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "GI01A|ALF-01",
+     "bridge": "ALF is INR 1.5 or more with encephalopathy, no prior liver disease, under 26 weeks. Next: the cause decides the first drug →"
+    },
+    {
+     "card": "GI01A|ALF-10",
+     "bridge": "Each cause has its own treatment: NAC, aciclovir, antivirals, delivery. Next: the brain-protecting ICU bundle →"
+    },
+    {
+     "card": "HY6|GIN-12",
+     "bridge": "NAC, sodium 145–155, early CRRT for ammonia, and no FFP for a number. Next: circulation, kidney, bleeding and glucose →"
+    },
+    {
+     "card": "GI01B|ALF-28",
+     "bridge": "Target CPP, continuous RRT, correct clotting only for bleeding, watch glucose. Next: the second killer, infection →"
+    },
+    {
+     "card": "GI01B|ALF-26",
+     "bridge": "Infection is common and silent, so culture daily; prophylaxis does not save lives. Next: who needs a new liver →"
+    },
+    {
+     "card": "GI01C|ALF-33",
+     "bridge": "King's criteria pick those who will die without a graft. Next: graft type, and when it is too late →"
+    },
+    {
+     "card": "GI01C|ALF-32",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: **INR ≥1.5** plus encephalopathy within **26 weeks**, no prior liver disease. I manage it in ICU and call the transplant centre on day one.",
+    "Cause first: NAC for paracetamol (and early-grade non-paracetamol), aciclovir for HSV, **entecavir or tenofovir** for hepatitis B, delivery for AFLP or HELLP.",
+    "Brain: intubate grade III–IV, head up 30°, sodium **145–155** with hypertonic saline, early CRRT if ammonia is above **150 µmol/L**; avoid fever and hypercapnia.",
+    "Systems: **noradrenaline**, then vasopressin, to CPP above **60**; continuous RRT; daily cultures; dextrose for low glucose; FFP only for bleeding or a procedure (INR is prognostic).",
+    "Listing: King's (paracetamol pH **<7.30**, or INR >6.5 + creatinine >3.4 + grade III–IV; non-paracetamol INR >6.5 or 3 of 5), Clichy, or ALFED 4 or more.",
+    "Caution: King's is specific but misses up to a third who die, so I reassess daily. Too late: fixed pupils, ICP above 50 with CPP below 40, uncontrolled sepsis."
+   ]
+  },
+  {
+   "q": "P7-249",
+   "text": "What are the King's College criteria?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI01C|ALF-33",
+     "bridge": "Paracetamol side rests on acidosis or the triad; non-paracetamol side on INR or 3 of 5. Next: the faster lactate add-on →"
+    },
+    {
+     "card": "HY6|GIN-11",
+     "bridge": "Modified King's adds lactate, which flags death hours earlier. Next: how well the paracetamol criteria perform →"
+    },
+    {
+     "card": "TOX02|APAP-11",
+     "bridge": "Specific about 90% but sensitive only about 60%: not meeting them does not reassure. Next: the alternatives, Clichy and the rest →"
+    },
+    {
+     "card": "GI01C|ALF-34",
+     "bridge": "Clichy uses factor V with deep HE; phosphate and lactate refine paracetamol cases. Next: the Indian dynamic score →"
+    },
+    {
+     "card": "GI01C|ALF-35",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: **O'Grady 1989** (588 patients, King's College Hospital): criteria that predict death without transplant in ALF. Meeting them means list.",
+    "Paracetamol: arterial **pH <7.30** after fluids, or all three of **INR >6.5**, creatinine **>3.4 mg/dL** and grade III–IV encephalopathy.",
+    "Non-paracetamol: **INR >6.5**, or any 3 of: age <10 or >40, non-A non-B or drug cause, jaundice to HE >7 days, INR >3.5, bilirubin >17.5 mg/dL.",
+    "Modified: lactate **>3.5** early or **>3.0** after fluids (Bernal 2002) raised sensitivity from 76% to 91% and flagged deaths sooner (median 4 vs 10 h).",
+    "Caution: specific (about 90%) but poorly sensitive (about 60%). In India I add Clichy (factor V) and ALFED, which is dynamic over 3 days."
+   ]
+  },
+  {
+   "q": "P7-104",
+   "text": "What is the role of N-acetylcysteine in non-paracetamol acute liver failure?",
+   "tier": "S",
+   "gen": "G1",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "GI01B|ALF-29",
+     "bridge": "Beyond paracetamol NAC acts as an antioxidant and vasodilator; the trial used a 72-hour IV regimen. Next: what the trials showed →"
+    },
+    {
+     "card": "V7-001",
+     "bridge": "No overall survival gain; transplant-free survival rises only in coma I–II adults, never in children. Next: grading that coma →"
+    },
+    {
+     "card": "GI01B|ALF-17",
+     "bridge": "Grade I–II is confused or drowsy; III–IV no longer responds to voice. Next: NAC in the ICU bundle →"
+    },
+    {
+     "card": "HY6|GIN-12",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Mechanism: beyond paracetamol, NAC is an **antioxidant** that replenishes glutathione, vasodilates and improves microcirculation and oxygen delivery.",
+    "Evidence: **Lee 2009**, 173 adults: overall 3-week survival **70% vs 66%**, not significant; transplant-free survival **40% vs 27%**.",
+    "Who benefits: coma grade **I–II**, transplant-free survival **52% vs 30%**; grade III–IV **9% vs 22%**, no benefit.",
+    "Children: **Squires 2013**, 184 children: no survival gain and lower 1-year transplant-free survival (**35% vs 53%**), worst under 2 years.",
+    "What I do: IV NAC early in adult non-paracetamol ALF with grade I–II HE, as ACG 2023 suggests. It never delays listing, and I do not use it routinely in children."
+   ]
+  },
+  {
+   "q": "P7-105",
+   "text": "NAC protocol for paracetamol poisoning.",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "TOX02|APAP-06",
+     "bridge": "The nomogram from 4 hours decides who needs NAC; staggered doses bypass it. Next: how NAC protects, and when →"
+    },
+    {
+     "card": "TOX02|APAP-08",
+     "bridge": "NAC refills glutathione; protection is near complete within 8 hours. Next: the classic 21-hour regimen →"
+    },
+    {
+     "card": "TOX02|APAP-09",
+     "bridge": "Three bags, 150 + 50 + 100 = 300 mg/kg in 21 h; the fast first bag causes reactions. Next: the 12-hour SNAP fix →"
+    },
+    {
+     "card": "V7-002",
+     "bridge": "Same 300 mg/kg in 12 h with far fewer reactions and less vomiting. Next: when to stop or continue →"
+    },
+    {
+     "card": "TOX02|APAP-10",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Why NAC: it replenishes glutathione to detoxify **NAPQI**. Within **8 hours** protection is near complete, and it still helps later.",
+    "21-hour IV: **150 mg/kg over 1 h**, **50 mg/kg over 4 h**, **100 mg/kg over 16 h** (300 mg/kg). Oral: 140 mg/kg, then 70 mg/kg 4-hourly for 17 doses.",
+    "SNAP: **100 mg/kg over 2 h**, then **200 mg/kg over 10 h**: the same 300 mg/kg in **12 hours**.",
+    "Evidence: **Bateman, Lancet 2014**, 222 patients: vomiting OR **0.26**, severe anaphylactoid reactions **5 vs 31**, no difference in ALT rise.",
+    "What I do: SNAP is the RCEM default in the UK; Australia uses two bags (200 mg/kg over 4 h, 100 over 16 h). Stop when undetectable, ALT falling, INR <2.",
+    "Caution: anaphylactoid reactions are rate-related, not IgE: pause, antihistamine, restart. SNAP was not powered for non-inferiority on liver injury."
+   ]
+  },
+  {
+   "q": "P7-108",
+   "text": "Hepatic encephalopathy management.",
+   "tier": "A",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI07B|CLD-24",
+     "bridge": "Ammonia becomes glutamine in astrocytes: slow in cirrhosis, abrupt oedema in ALF. Next: what tips a cirrhotic into HE →"
+    },
+    {
+     "card": "GI07B|CLD-25",
+     "bridge": "Bleeds, infection, low potassium, sedatives and constipation raise brain ammonia. Next: the six-step treatment →"
+    },
+    {
+     "card": "GI07B|CLD-28",
+     "bridge": "Airway, precipitant, lactulose to 2–3 stools, rifaximin, normal protein. Next: why ALF is a different disease →"
+    },
+    {
+     "card": "GI01B|ALF-16",
+     "bridge": "In ALF the swelling is cytotoxic plus vasogenic, so cerebral oedema kills. Next: ammonia as the number to act on →"
+    },
+    {
+     "card": "GI01B|ALF-24",
+     "bridge": "High arterial ammonia predicts oedema and death; lactulose and LOLA fail, CRRT works. Next: the general ICP measures →"
+    },
+    {
+     "card": "GI01B|ALF-21",
+     "bridge": "Head up, neck neutral, avoid hypercapnia, hyponatraemia and fever. Next: the osmotic tools and the sodium target →"
+    },
+    {
+     "card": "GI01B|ALF-22",
+     "bridge": "Hypertonic saline to sodium 145–155, mannitol for surges. Next: the whole ALF bundle on one card →"
+    },
+    {
+     "card": "HY6|GIN-12",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Cirrhosis: find and treat the precipitant, protect the airway in grade 3–4, **lactulose** to 2–3 soft stools, add **rifaximin 550 mg** twice daily, no protein restriction.",
+    "Mechanism: ammonia becomes glutamine in astrocytes. Slow in cirrhosis, so little oedema; abrupt in ALF, so **cerebral oedema** and intracranial hypertension.",
+    "ALF difference: arterial ammonia above **150 µmol/L** marks high risk. Lactulose and rifaximin are not recommended, and LOLA does not lower ammonia.",
+    "What I do: intubate grade III–IV, head up 30°, hypertonic saline to **Na 145–155**, early **CRRT** for ammonia (ACG 2023: grade 2 HE or more), mannitol for surges.",
+    "Evidence: CRRT cut ammonia 38% over 3 days and was linked to lower 21-day transplant-free mortality (OR **0.47**; Cardoso 2018).",
+    "Caution: in ALF, deepening HE is a transplant trigger, so I list early; I also avoid hypoglycaemia, fever and sedative excess."
+   ]
+  },
+  {
+   "q": "P7-250",
+   "text": "What is the role of plasma exchange in acute liver failure?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "GI01C|ALF-40",
+     "bridge": "No bioartificial or albumin-dialysis device has shown a survival benefit. Next: the one therapy that did →"
+    },
+    {
+     "card": "V7-003",
+     "bridge": "High-volume exchange, 15% of ideal body weight for 3 days, raised hospital survival. Next: standard volume and mechanism →"
+    },
+    {
+     "card": "GI01C|ALF-41",
+     "bridge": "Standard-volume exchange also helped (75% vs 45%), a cheaper option. Next: Indian results by cause →"
+    },
+    {
+     "card": "GI06|ACLF-19",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: exchanging the patient's plasma for FFP removes circulating toxins and inflammatory mediators and replaces clotting factors.",
+    "Evidence: **Larsen 2016**, 182 patients: hospital survival **58.7% vs 47.8%** (HR **0.56**), with falls in SIRS and SOFA scores.",
+    "Volume: high volume is **15% of ideal body weight** (8–12 L) a day for **3 days**; standard is 1.5–2 plasma volumes (Maiwall 2022: TFS **75% vs 45%**).",
+    "Who: EASL 2017: greatest benefit when started **early** and in those who will **not be transplanted**; no gain as a bridge in those who got a graft.",
+    "What I do: start it early in high-risk ALF, especially when no graft is available or the patient is not a candidate, alongside CRRT.",
+    "Caution: large FFP volumes, and it corrects the INR, so the INR no longer tracks prognosis. In ACLF it is used only in trials (EASL 2023)."
+   ]
+  },
+  {
+   "q": "P7-106",
+   "text": "ACLF — how do you differentiate it from ALF and decompensated cirrhosis?",
+   "tier": "A",
+   "gen": "G1",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "GI01A|ALF-01",
+     "bridge": "ALF needs a previously healthy liver, INR 1.5 or more and HE within 26 weeks. Next: what changes when the liver was already sick →"
+    },
+    {
+     "card": "GI06|ACLF-01",
+     "bridge": "ACLF is chronic disease plus a trigger plus organ failure, with high early mortality. Next: three definitions disagree on who counts →"
+    },
+    {
+     "card": "GI06|ACLF-02",
+     "bridge": "APASL takes hepatic triggers in CLD without prior decompensation; EASL-CLIF any trigger in cirrhosis. Next: the APASL sequence →"
+    },
+    {
+     "card": "GI06|ACLF-03",
+     "bridge": "APASL: bilirubin 5 or more and INR 1.5 or more, then ascites or HE within 4 weeks. Next: how EASL-CLIF grades it →"
+    },
+    {
+     "card": "GI06|ACLF-07",
+     "bridge": "Grade 1 is kidney failure alone; grades 2 and 3 are two and three or more failures. Next: what each grade means for survival →"
+    },
+    {
+     "card": "GI06|ACLF-08",
+     "bridge": "Mortality climbs steeply with grade, about 22%, 32% and 77% at 28 days. Next: the 2026 global multi-society definition →"
+    },
+    {
+     "card": "V7-005",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "ALF: no prior liver disease, **INR ≥1.5** with encephalopathy within **26 weeks**. Decompensated cirrhosis: ascites, HE, bleed or jaundice, without organ failure.",
+    "ACLF: acute deterioration of chronic liver disease with **organ failure** and high short-term mortality; systemic inflammation is the hallmark.",
+    "EASL-CLIF (CANONIC): cirrhosis, any trigger. Grade 1: kidney failure alone, or one other failure with kidney or brain dysfunction; grade 2: two failures; grade 3: three or more.",
+    "APASL 2019: jaundice (bilirubin **≥5 mg/dL**) and coagulopathy (INR **≥1.5**), then ascites and/or HE within **4 weeks**, in CLD without prior decompensation.",
+    "Which I use: EASL-CLIF in the ICU (futility: CLIF-C ACLF above **70** at day 3–7); APASL for Indian HBV and alcohol flares; the **Oct 2026** global definition as common language.",
+    "Why it matters: 28-day mortality about **22%, 32% and 77%** for grades 1–3 (CANONIC); grade 1 may reverse, grades 2–3 need transplant evaluation."
+   ]
+  },
+  {
+   "q": "P7-115",
+   "text": "HELLP and acute fatty liver of pregnancy — how do you differentiate?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "OBS02A|OBS-27",
+     "bridge": "HELLP is haemolysis, AST above 70 and platelets under 100,000 on a pre-eclampsia background. Next: the liver that truly fails →"
+    },
+    {
+     "card": "OBS02A|OBS-28",
+     "bridge": "AFLP is microvesicular fat with high INR and ammonia and low glucose. Next: the two side by side →"
+    },
+    {
+     "card": "OBS02A|OBS-29",
+     "bridge": "Low glucose, high ammonia and coagulopathy beyond the platelet count point to AFLP. Next: the Swansea criteria and treatment →"
+    },
+    {
+     "card": "V7-004",
+     "bridge": "Six of 14 Swansea features make AFLP; both are treated by delivery after stabilising. Next: when to deliver in HELLP →"
+    },
+    {
+     "card": "OBS02A|OBS-20",
+     "bridge": "HELLP gets steroids and delivery after 48 h, or at once if the mother is unstable. Next: the exam summary →"
+    },
+    {
+     "card": "HY5|HEO-13",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "HELLP: haemolysis (LDH twice normal, schistocytes), AST above 70 and platelets **under 100,000**, usually with hypertension: a severe form of pre-eclampsia.",
+    "AFLP: third-trimester **microvesicular** fat with true liver failure: **hypoglycaemia**, high ammonia, coagulopathy, encephalopathy, often polyuria.",
+    "Telling them apart: platelets fall early in HELLP; glucose, INR and ammonia go wrong in AFLP. **Swansea criteria**: 6 or more of 14 features, no other cause.",
+    "Treatment: stabilise and **deliver**. HELLP: magnesium, BP control, steroids for fetal lungs if preterm. AFLP: IV glucose, FFP and cryoprecipitate for DIC.",
+    "Caution: the two overlap, so I treat the worst features. Liver failure that persists after delivery needs a liver unit; transplant is rarely needed."
+   ]
+  },
+  {
+   "q": "P7-255",
+   "text": "How do you manage upper GI bleed in the ICU?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "GI07A|CLD-09",
+     "bridge": "Even in cirrhosis only half of upper bleeds are varices; ulcers are the rest. Next: how to grade the risk before the scope →"
+    },
+    {
+     "card": "V7-006",
+     "bridge": "The Glasgow-Blatchford score triages from bedside data; ≤1 is very low risk. Next: the trial evidence on blood, TXA and timing →"
+    },
+    {
+     "card": "V7-007",
+     "bridge": "Transfuse at Hb 7, give no TXA, scope within 24 h. Next: the same rules applied to a cirrhotic case on warfarin →"
+    },
+    {
+     "card": "HY6|GIN-08",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: haematemesis or melaena from above the ligament of Treitz. In cirrhosis half are varices, but a quarter are still gastric ulcers.",
+    "Triage: Glasgow-Blatchford from urea, Hb, systolic BP, pulse, melaena, syncope, liver and heart failure. **GBS ≤1** is very low risk; ICU patients score high.",
+    "What I do: airway, two large cannulas, transfuse at Hb **<7**, target 7–9 (≤8 with heart disease). IV PPI; if varices are likely, terlipressin and ceftriaxone too.",
+    "Evidence: Villanueva 2013, **921** patients: restrictive transfusion gave 6-week survival **95% vs 91%** and less rebleeding; liberal blood raised portal pressure.",
+    "Endoscopy within **24 h** after resuscitation, **12 h** if variceal. Erythromycin before the scope if bleeding is active. No routine FFP for the INR in cirrhosis.",
+    "Caution: no tranexamic acid. HALT-IT, **12,009** patients: bleeding deaths 4% vs 4%, venous thrombosis almost doubled (**0.8% vs 0.4%**)."
+   ]
+  },
+  {
+   "q": "P7-251",
+   "text": "How do you manage acute variceal bleeding?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "GI07A|CLD-03",
+     "bridge": "Varices bleed once the HVPG reaches 12; 20 or more predicts failure. Next: why portal pressure rises in the first place →"
+    },
+    {
+     "card": "GI07A|CLD-04",
+     "bridge": "Portal pressure is resistance times splanchnic flow. Next: which drugs act on which half →"
+    },
+    {
+     "card": "GI07A|CLD-12",
+     "bridge": "Vasoconstrictors cut inflow now; beta-blockers are for later; TXA has no place. Next: the full acute management →"
+    },
+    {
+     "card": "GI07A|CLD-10",
+     "bridge": "Drug before the scope, antibiotic, banding, then tamponade or TIPS. Next: the doses and time limits of the bundle →"
+    },
+    {
+     "card": "HY6|GIN-09",
+     "bridge": "Terlipressin 2–5 days, ceftriaxone up to 7, Hb 7, band within 12 h. Next: who gets a TIPS early, and what a TIPS costs →"
+    },
+    {
+     "card": "GI07B|CLD-35",
+     "bridge": "Pre-emptive TIPS within 72 h for Child C 10–13 or B >7 with active bleeding. Next: the bridge when bleeding cannot be stopped →"
+    },
+    {
+     "card": "GI07A|CLD-11",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: bleeding from portosystemic collaterals once the HVPG is **≥12 mmHg**. An HVPG of 20 or more predicts treatment failure and death.",
+    "Mechanism: portal pressure = resistance × flow. Vasoactive drugs cut splanchnic inflow now; non-selective beta-blockers belong to the chronic phase.",
+    "What I do: terlipressin or octreotide before endoscopy for 2–5 days, ceftriaxone **1 g/day**, transfuse at Hb 7 to a target of **7–8**, no FFP, no TXA (Baveno VIII 2026).",
+    "Band within **12 h**. Pre-emptive TIPS within **72 h** (ideally <24 h): Child C 10–13, B >7 bleeding at scope, or HVPG ≥20. García-Pagán 2010: 1-year survival **86% vs 61%**.",
+    "If uncontrolled: rescue TIPS, bridged by a covered oesophageal stent (now preferred) or balloon tamponade after intubation, gastric balloon first, for no more than 24 h.",
+    "Caution: antibiotics are a survival treatment, not an option; over-transfusion raises portal pressure and rebleeding."
+   ]
+  },
+  {
+   "q": "P7-252",
+   "text": "How do you diagnose and treat spontaneous bacterial peritonitis?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI07B|CLD-17",
+     "bridge": "SBP is translocated gut bacteria in poorly opsonic ascites, deadly untreated. Next: how it presents and whom to tap →"
+    },
+    {
+     "card": "GI07B|CLD-19",
+     "bridge": "Peritoneal signs are rare, so tap every admitted cirrhotic with ascites; INR is no bar. Next: how the fluid count decides →"
+    },
+    {
+     "card": "GI07B|CLD-18",
+     "bridge": "Neutrophils of 250 or more mean treat, whatever the culture. Next: the organisms, and how to spot secondary peritonitis →"
+    },
+    {
+     "card": "GI07B|CLD-20",
+     "bridge": "SBP is monomicrobial Gram-negative; polymicrobial with Runyon criteria means CT. Next: which antibiotic and for how long →"
+    },
+    {
+     "card": "GI07B|CLD-21",
+     "bridge": "Third-generation cephalosporin 5 days, carbapenem if nosocomial, re-tap at 48 h if no better. Next: the albumin dose and why →"
+    },
+    {
+     "card": "GI07B|CLD-22",
+     "bridge": "Albumin 1.5 g/kg then 1 g/kg on day 3 cut renal failure and death (Sort 1999). Next: the same decisions in a bedside case →"
+    },
+    {
+     "card": "HY6|GIN-13",
+     "bridge": "Treat on the count now, and give albumin to the high-risk. Next: preventing the next episode →"
+    },
+    {
+     "card": "GI07B|CLD-23",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: infection of ascitic fluid without a surgical source, from gut bacterial translocation; mostly Gram-negative and monomicrobial.",
+    "Diagnosis: tap every admitted cirrhotic with ascites; the INR is no bar. Ascitic neutrophils **≥250/mm³** means treat now, whatever the culture.",
+    "Treatment: cefotaxime or ceftriaxone for 5 days, a carbapenem if nosocomial. Re-tap at 48 h if not improving; polymicrobial growth means secondary peritonitis.",
+    "Albumin: **1.5 g/kg** within 6 h of diagnosis, then **1 g/kg on day 3**. Why: it stops the inflammation-driven fall in effective volume that triggers hepatorenal syndrome.",
+    "Evidence: Sort 1999, **126** patients: renal impairment **10% vs 33%**, in-hospital deaths **10% vs 29%**. Benefit was greatest with bilirubin ≥4 or creatinine ≥1 mg/dL.",
+    "After: norfloxacin secondary prophylaxis, since recurrence is 60–70% a year without it, and referral for transplant."
+   ]
+  },
+  {
+   "q": "P7-107",
+   "text": "Hepatorenal syndrome — diagnosis and treatment.",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI07B|CLD-30",
+     "bridge": "HRS is only a fifth of kidney injury in cirrhosis and is functional. Next: why the kidney clamps down →"
+    },
+    {
+     "card": "GI07B|CLD-31",
+     "bridge": "Splanchnic vasodilatation and inflammation both end in renal vasoconstriction. Next: the formal ICA criteria →"
+    },
+    {
+     "card": "GI07B|CLD-32",
+     "bridge": "HRS-AKI needs ascites, AKI, no volume response, no shock or structural injury; 2024 shortened it to 24 h. Next: the new names →"
+    },
+    {
+     "card": "GI06|ACLF-14",
+     "bridge": "HRS-AKI replaced type 1; AKD and CKD replaced type 2. Next: how to give terlipressin and when to stop →"
+    },
+    {
+     "card": "GI07B|CLD-33",
+     "bridge": "Terlipressin with albumin, infusion safer than bolus, up to 14 days; stop for ischaemia or hypoxia. Next: the ICU view →"
+    },
+    {
+     "card": "GI06|ACLF-15",
+     "bridge": "Noradrenaline is the ICU alternative; response is creatinine within 0.3 of baseline. Next: the trials behind it →"
+    },
+    {
+     "card": "V7-008",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: functional kidney failure in cirrhosis with ascites: splanchnic vasodilatation, low effective volume, renal vasoconstriction. About 20% of AKI in cirrhosis.",
+    "Diagnosis (ICA, revised 2024): AKI by creatinine or urine output, no response to volume within **24 h**, no shock, no nephrotoxins. Tubular injury or CKD no longer excludes it.",
+    "Treatment: stop diuretics and nephrotoxins; terlipressin, by infusion or 1 mg 6-hourly, with albumin 20–40 g/day. Noradrenaline is the ICU alternative. Transplant cures.",
+    "Evidence: CONFIRM, **300** patients: HRS reversal **32% vs 17%**, but no survival benefit (90-day deaths 51% vs 45%).",
+    "Side effects: respiratory failure **14% vs 5%**, respiratory deaths **11% vs 2%**; cardiac, gut and digital ischaemia. Do not start if SpO2 **<90%** or volume overloaded.",
+    "Albumin is not a number to chase: ATTIRE, targeting **≥30 g/L** in decompensated cirrhosis, gave no benefit and more pulmonary oedema."
+   ]
+  },
+  {
+   "q": "P7-254",
+   "text": "Who needs stress ulcer prophylaxis?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "HY6|GIN-03",
+     "bridge": "Prophylaxis only while risk factors persist, by any route, never past ICU discharge. Next: the largest blinded trial →"
+    },
+    {
+     "card": "TRIALS01B|TRL-22",
+     "bridge": "REVISE: pantoprazole cut bleeding 1.0% vs 3.5%, no change in death or VAP. Next: the earlier trials and the infection trade-off →"
+    },
+    {
+     "card": "V7-009",
+     "bridge": "SUP-ICU and PEPTIC showed less bleeding, no mortality effect, no clear infection harm. Next: where the sepsis guideline lands →"
+    },
+    {
+     "card": "SEP01E|SEP-54",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: prophylaxis against stress-related mucosal bleeding. Clinically important bleeding is now uncommon: **3.5%** in ventilated patients on placebo in REVISE.",
+    "Who (SCCM/ASHP 2024): **coagulopathy, shock or chronic liver disease**, and neurocritical patients; ventilation alone is not a firm risk factor. Stop when the risk resolves, before discharge.",
+    "Evidence: REVISE 2024, **4,821** ventilated patients: pantoprazole cut bleeding **1.0% vs 3.5%** (NNT 40), with no change in 90-day mortality.",
+    "SUP-ICU 2018: less bleeding (2.5% vs 4.2%), same mortality. PEPTIC 2020, PPI vs H2 blocker: mortality 18.3% vs 17.5%, not significant.",
+    "Trade-off: a higher gastric pH was feared to cause VAP and C. difficile. In REVISE VAP was **23.2% vs 23.8%** and C. difficile **1.2% vs 0.7%**, both not significant.",
+    "What I do: low-dose PPI or H2 blocker (pantoprazole **40 mg**) only with risk factors, enteral or IV, reviewed daily. Catch: SUP-ICU's sickest (SAPS II >53) trended to more deaths."
+   ]
+  },
+  {
+   "q": "P7-112",
+   "text": "Investigations in acute pancreatitis. What are the limits of serum lipase?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI02A|PANC-03",
+     "bridge": "Diagnosis is 2 of 3: pain, enzymes over 3× normal, imaging. Next: which enzyme to send and where it misleads →"
+    },
+    {
+     "card": "GI02A|PANC-04",
+     "bridge": "Lipase is more specific and stays up longer, but it is raised in renal failure and gut disease. Next: what tells severity instead →"
+    },
+    {
+     "card": "GI02A|PANC-11",
+     "bridge": "Severity comes from BUN, haematocrit, CRP at 48 h and organ failure, not enzyme level. Next: which imaging, and when →"
+    },
+    {
+     "card": "GI02A|PANC-12",
+     "bridge": "Ultrasound on day 1 for gallstones; CT is best after 72 h. Next: the bedside rule on when a CT is indicated →"
+    },
+    {
+     "card": "HY6|GIN-05",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: diagnosis needs **2 of 3**: typical pain, lipase or amylase **>3× ULN**, characteristic imaging. Pain plus enzymes is enough; no CT needed.",
+    "Lipase: preferred, more specific and stays up longer (late presenter). Limits: also raised in **renal failure**, bowel obstruction or ischaemia, perforation, cholecystitis, DKA.",
+    "Lipase level does not grade severity, and daily trending is useless. Amylase can be normal in alcoholic, hypertriglyceridaemic or late pancreatitis.",
+    "Other tests: ultrasound on admission for gallstones; triglycerides and calcium if no stones; BUN, haematocrit, CRP (**>150 mg/L at 48 h**) and ABG for severity.",
+    "When CT: not routinely. Contrast CT if the diagnosis is unclear or no improvement by **48–72 h** (ACG 2024); necrosis is reliably shown only at **5–7 days** (Atlanta).",
+    "Caution: an early CT under-calls necrosis and the contrast may worsen AKI. MRI if contrast is contraindicated or to see the duct; EUS or MRCP for CBD stones."
+   ]
+  },
+  {
+   "q": "P7-111",
+   "text": "Which is the best severity score for acute pancreatitis?",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI02A|PANC-05",
+     "bridge": "Severe means organ failure lasting over 48 hours, not a score. Next: how organ failure is scored →"
+    },
+    {
+     "card": "V7-010",
+     "bridge": "Modified Marshall ≥2 in lung, heart or kidney = organ failure; no score predicts it well. Next: the bedside 24-hour score →"
+    },
+    {
+     "card": "GI02A|PANC-09",
+     "bridge": "BISAP: five items in the first 24 h, simple but modest. Next: the classic score that needs 48 hours →"
+    },
+    {
+     "card": "GI02A|PANC-08",
+     "bridge": "Ranson needs 48 h, so it cannot triage at admission. Next: APACHE II and the single lab markers →"
+    },
+    {
+     "card": "GI02A|PANC-11",
+     "bridge": "APACHE II above 8 and CRP above 150 at 48 h flag severe disease. Next: the CT score for local disease →"
+    },
+    {
+     "card": "GI02A|PANC-10",
+     "bridge": "CT index grades necrosis and collections, best after 72 h. Next: the four-grade system that adds infected necrosis →"
+    },
+    {
+     "card": "GI02A|PANC-06",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Answer: **no single score is best**. ACG 2024: scores and imaging alone predict severe disease poorly; serial clinical reassessment over the first 48 h is what counts.",
+    "What defines severe (revised Atlanta 2012): **persistent organ failure >48 h**. Transient (<48 h) or local complications = moderately severe; none = mild.",
+    "Organ failure = modified Marshall **≥2** in respiratory (PaO2/FiO2 **≤300**), renal (creatinine **≥1.9 mg/dL**) or cardiovascular (SBP **<90** not fluid-responsive).",
+    "Scores: **BISAP** (5 items, 24 h, ≥3 high risk), **APACHE II >8** (any time), **Ranson** (11 items, needs 48 h), **CRP >150 mg/L at 48 h**, CT severity index after 72 h.",
+    "What I use: SIRS, BUN and haematocrit on admission and their trend; persistent SIRS or rising BUN means monitored bed. Organ failure despite fluids means ICU.",
+    "Caution: all scores have good negative but poor positive predictive value. The determinant-based system adds a **critical** grade (persistent OF + infected necrosis)."
+   ]
+  },
+  {
+   "q": "P7-110",
+   "text": "How do you manage acute pancreatitis? What did WATERFALL show?",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "HY6|GIN-06",
+     "bridge": "The frame: moderate fluids, early feeding, no prophylaxis, step-up for necrosis. Next: which fluid, and why not aggressive →"
+    },
+    {
+     "card": "GI02B|PANC-14",
+     "bridge": "Ringer's lactate, moderate and goal-directed; aggressive fluids risk ARDS and ACS. Next: the trial that settled the rate →"
+    },
+    {
+     "card": "GI02B|PANC-15",
+     "bridge": "WATERFALL: aggressive fluids tripled overload with no benefit; stopped early. Next: analgesia and feeding →"
+    },
+    {
+     "card": "GI02B|PANC-17",
+     "bridge": "Multimodal analgesia; feed by mouth early, NG if not, avoid PN. Next: the antibiotic question →"
+    },
+    {
+     "card": "GI02B|PANC-18",
+     "bridge": "No prophylactic antibiotics, even in severe disease; treat proven infection. Next: when ERCP is indicated →"
+    },
+    {
+     "card": "GI02A|PANC-13",
+     "bridge": "ERCP only for cholangitis or persisting obstruction. Next: test the traps across management →"
+    },
+    {
+     "card": "GI02B|PANC-25",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Frame: severity and monitoring, moderate fluids, analgesia, early feeding, no prophylactic antibiotics, ERCP for cholangitis, step-up for infected necrosis.",
+    "Fluids: **Ringer's lactate**, moderate. ACG 2024: no more than **1.5 mL/kg/h**, a 10 mL/kg bolus only if hypovolaemic; reassess within 6 h and for 24–48 h (BUN, haematocrit).",
+    "WATERFALL (de-Madaria, NEJM 2022, **249** pts): 20 mL/kg + 3 mL/kg/h vs 10 mL/kg if hypovolaemic + 1.5 mL/kg/h. Overload **20.5% vs 6.3%**; stopped for harm.",
+    "Primary outcome, moderately severe or severe pancreatitis: **22.1% vs 17.3%** (NS); deaths 3.3% vs 0.8% (NS). So aggressive fluid gave more overload and no benefit.",
+    "Feeding: oral low-fat diet within **24–48 h** as tolerated; NG tube if not eating by day 3; PN only if enteral fails. Multimodal analgesia; epidural is opioid-sparing.",
+    "Antibiotics: **no prophylaxis**, even in severe or necrotising disease. Treat cholangitis or proven infected necrosis (carbapenem). ERCP within 24 h only for cholangitis."
+   ]
+  },
+  {
+   "q": "P7-113",
+   "text": "Spotter: CT abdomen — chronic calcific pancreatitis / necrosis.",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "V7-011",
+     "bridge": "Calcified ducts and atrophy mean chronic disease; a non-enhancing gland means necrosis. Next: name the collection by type and age →"
+    },
+    {
+     "card": "GI02A|PANC-07",
+     "bridge": "Under 4 weeks: APFC or ANC; over 4 weeks: pseudocyst or WON. Next: how to score what the CT shows →"
+    },
+    {
+     "card": "GI02A|PANC-10",
+     "bridge": "Necrosis carries more points than inflammation; 7–10 means about 17% mortality. Next: when to scan and rescan →"
+    },
+    {
+     "card": "GI02A|PANC-12",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot (chronic calcific): coarse **calcifications** within the gland and duct, a **dilated, beaded main duct** (chain of lakes), parenchymal atrophy, sometimes pseudocysts.",
+    "Cause: mostly alcohol. In India think **tropical calcific pancreatitis**: young, non-alcoholic, large dense duct stones; diabetes and cancer risk.",
+    "Spot (necrosis): on contrast CT, **non-enhancing pancreatic parenchyma**, with or without peripancreatic necrosis. Reliable only after the first week; gas means presumed infection.",
+    "Local complications (revised Atlanta): under **4 weeks**, APFC (fluid, no wall) or ANC (fluid and necrosis); over 4 weeks, **pseudocyst** (walled fluid) or **WON** (walled necrosis).",
+    "Others: infected necrosis, haemorrhage or pseudoaneurysm, splenic or portal vein thrombosis, gastric outlet obstruction, disconnected duct, colonic necrosis.",
+    "What I do: grade with the CT severity index; repeat CT on deterioration or before intervention. Intervene on collections only if infected or symptomatic, ideally after 4 weeks."
+   ]
+  },
+  {
+   "q": "P7-253",
+   "text": "How do you manage infected pancreatic necrosis?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "GI02B|PANC-19",
+     "bridge": "Early deaths are organ failure; late deaths, after 2 weeks, are infected necrosis. Next: how to diagnose and treat the infection →"
+    },
+    {
+     "card": "GI02B|PANC-18",
+     "bridge": "Suspect from deterioration; gas on CT presumes infection; carbapenem; no routine FNA. Next: the ladder of intervention →"
+    },
+    {
+     "card": "GI02B|PANC-22",
+     "bridge": "Delay to 3–4 weeks, then drain, then minimally invasive necrosectomy, open last. Next: the three trials behind it →"
+    },
+    {
+     "card": "V7-012",
+     "bridge": "PANTER proved step-up, TENSION endoscopic equals surgical, POINTER that waiting is safe. Next: when to intervene without infection →"
+    },
+    {
+     "card": "GI02B|PANC-23",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: infection of pancreatic or peripancreatic necrosis, usually after week 2; the main cause of late death. Suspect it in clinical deterioration with a collection.",
+    "Diagnose: **gas in the collection** on CECT, or clinical suspicion alone; routine FNA no longer advised. Start a carbapenem (necrosis-penetrating antibiotic).",
+    "Timing: antibiotics and support, **delay intervention to about 4 weeks** so it walls off (WON). Some never need drainage. Earlier only if deteriorating despite antibiotics.",
+    "Step-up: percutaneous or **endoscopic transgastric drainage**, then minimally invasive necrosectomy (VARD or endoscopic), open necrosectomy last.",
+    "Evidence: **PANTER** 2010 major complications or death **40% vs 69%**; 35% drainage only. **TENSION** 2018 endoscopic = surgical (43% vs 45%), fewer fistulas (5% vs 32%).",
+    "**POINTER** 2021: immediate vs postponed drainage, CCI **57 vs 58**, no benefit to early; postponed needed fewer interventions and **39%** never needed drainage."
+   ]
+  },
+  {
+   "q": "P7-116",
+   "text": "Abdominal compartment syndrome.",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "GI05|IAH-01",
+     "bridge": "Normal IAP is 5–7 mmHg; measure via the bladder every 4 h when at risk. Next: the exact technique →"
+    },
+    {
+     "card": "GI05|IAH-02",
+     "bridge": "Supine, zeroed at mid-axillary line, ≤25 mL saline, read at end-expiration. Next: the thresholds that define IAH and ACS →"
+    },
+    {
+     "card": "GI05|IAH-03",
+     "bridge": "IAH is 12 or more, graded I–IV; ACS is over 20 with new organ dysfunction. Next: the perfusion pressure that follows →"
+    },
+    {
+     "card": "GI05|IAH-04",
+     "bridge": "APP = MAP − IAP, aim 60 or more; the kidney sees IAP twice. Next: what the pressure does to each organ →"
+    },
+    {
+     "card": "GI05|IAH-08",
+     "bridge": "Venous return, lung compliance and urine fall; ICP rises; the gut feeds a vicious circle. Next: the medical levers →"
+    },
+    {
+     "card": "GI05|IAH-10",
+     "bridge": "Five levers: wall compliance, gut contents, collections, fluid balance, organ support. Next: when to open the abdomen →"
+    },
+    {
+     "card": "GI05|IAH-11",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: IAH = sustained or repeated IAP **≥12 mmHg** (grades I 12–15, II 16–20, III 21–25, IV >25). ACS = sustained IAP **>20 mmHg** with **new organ dysfunction**.",
+    "Measure (WSACS 2013): via the bladder, mmHg, **supine**, zeroed at the **mid-axillary line**, **≤25 mL** saline, read at **end-expiration** without abdominal muscle contraction.",
+    "Why it matters: venous return, lung compliance and renal perfusion fall; oliguria from about 15 mmHg. APP = **MAP − IAP**, aim **≥60**; renal gradient = MAP − 2 × IAP.",
+    "What I do: from IAP ≥12, sedation and analgesia ± NMB, NG and rectal decompression, drain ascites, avoid positive balance; measure at least every 4 h.",
+    "Overt ACS: **decompressive laparotomy** with temporary abdominal closure (WSACS 1D); primary ACS early, secondary after medical measures fail.",
+    "Caution: CVP and plateau read falsely high (half of IAP transmitted). ACS is not grade IV; WSACS made **no recommendation** on APP as a target."
+   ]
+  },
+  {
+   "q": "P7-114",
+   "text": "Nutrition in the ICU — when and how much?",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-01",
+     "bridge": "Stress makes its own glucose and breaks down muscle, so early full feeding overfeeds. Next: when to start the gut →"
+    },
+    {
+     "card": "SPECIAL03|NUT-05",
+     "bridge": "Enteral within 24–48 h, low dose, only once shock is controlled. Next: the current calorie and protein numbers →"
+    },
+    {
+     "card": "HY6|GIN-01",
+     "bridge": "Hypocaloric week 1, protein about 1.3 g/kg built up slowly, not high. Next: when the gut fails and PN must step in →"
+    },
+    {
+     "card": "SPECIAL03|NUT-15",
+     "bridge": "PN fills the gap: ESPEN by day 3–7, ASPEN not before day 7. Next: the danger of feeding a starved patient →"
+    },
+    {
+     "card": "SPECIAL03|NUT-12",
+     "bridge": "Insulin drives phosphate, potassium and magnesium into cells. Next: who is at risk and how to start them →"
+    },
+    {
+     "card": "HY6|GIN-02",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "When: enteral within **24–48 h**, started low, once shock is controlled. PN only if the gut cannot be used or falls short: ESPEN by **day 3–7**, ASPEN after **day 7**.",
+    "Energy: hypocaloric first, **≤70%** of measured expenditure (ESPEN) or **12–25 kcal/kg/day** for 7–10 days (ASPEN 2022), then 80–100% after day 3. Early stress makes its own glucose.",
+    "Protein: build to about **1.3 g/kg/day** progressively (ESPEN); ASPEN 1.2–2.0. Not high early: EFFORT Protein no benefit and harm in AKI; PRECISe 2.0 vs 1.3 gave worse quality of life.",
+    "Refeeding: after starvation, insulin drives **phosphate**, potassium and magnesium into cells: arrhythmia, respiratory muscle weakness, heart failure, Wernicke's.",
+    "What I do: high risk (BMI <16, >15% weight loss, >10 days little intake, low K/PO4/Mg): **thiamine first**, **10 kcal/kg/day**, electrolytes daily, build over 4–7 days.",
+    "Caution: if phosphate falls below **0.65 mmol/L** or drops >0.16, ESPEN restricts energy for **48 h**, replaces it, then increases slowly."
+   ]
+  },
+  {
+   "q": "P7-256",
+   "text": "What are the calorie targets in early critical illness?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-01",
+     "bridge": "Early on the body makes much of its own glucose, which feeding cannot switch off. Next: how we measure what he burns →"
+    },
+    {
+     "card": "SPECIAL03|NUT-09",
+     "bridge": "Indirect calorimetry is the gold standard; equations are rough guesses. Next: what the trials say about how much to give →"
+    },
+    {
+     "card": "V7-013",
+     "bridge": "More calories early helped nobody; IC sets the target, not the speed. Next: the hidden calories that cause overfeeding →"
+    },
+    {
+     "card": "SPECIAL03|NUT-16",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Why low early: in the first days stress hormones drive endogenous glucose production that feeding does not suppress, so full feeding on top **overfeeds**.",
+    "Targets: ESPEN 2023 **≤70%** of energy expenditure in the early phase, then **80–100%** of measured expenditure after day 3. ASPEN 2022: **12–25 kcal/kg/day** for the first 7–10 days.",
+    "Evidence: PermiT (40–60% vs 70–100%), TARGET (1.5 vs 1.0 kcal/mL, n≈4000) and EAT-ICU showed no gain from more calories; NUTRIREA-3 in shock favoured **less**.",
+    "Indirect calorimetry: measures VO2 and VCO2 (Weir); ESPEN says use it in ventilated patients. Without it, ventilator VCO2 beats equations, which mis-estimate both ways.",
+    "Caution: count propofol (**1.1 kcal/mL**), dextrose and citrate. Overfeeding brings hyperglycaemia, more CO2, harder weaning and fatty liver."
+   ]
+  },
+  {
+   "q": "P7-245",
+   "text": "What protein dose do you give in the ICU?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-01",
+     "bridge": "Critical illness breaks down muscle fast, which is why protein was pushed. Next: how the dose is built across the stay →"
+    },
+    {
+     "card": "SPECIAL03|NUT-10",
+     "bridge": "Protein starts low and ramps to about 1.2–1.3 g/kg by week's end. Next: what happened when trials pushed it higher →"
+    },
+    {
+     "card": "V7-014",
+     "bridge": "High protein gave no benefit and harmed those with AKI or high SOFA. Next: how protein changes with AKI and dialysis →"
+    },
+    {
+     "card": "RENAL02|AKI-33",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What I give: build to about **1.3 g/kg/day** over the first days (ESPEN 2023). ASPEN keeps **1.2–2.0 g/kg/day**. Use pre-illness or adjusted weight in obesity and oedema.",
+    "EFFORT Protein (Lancet 2023, n=1329): **≥2.2 vs ≤1.2** g/kg prescribed (1.6 vs 0.9 delivered). No faster discharge alive; 60-day mortality **34.6 vs 32.1%**, not significant.",
+    "Who was harmed: baseline **AKI** (slower discharge, HR 0.5; 60-day mortality RR 1.4, mainly those not on RRT) and **SOFA ≥9**. Exploratory subgroups; urea rose.",
+    "PRECISe (Lancet 2024, n=935, blinded): **2.0 vs 1.3** g/kg enteral gave **worse** health-related quality of life to 180 days and more GI intolerance; mortality no different.",
+    "Caution: in AKI do not restrict protein to delay dialysis; on CRRT give **1.5–1.7 g/kg** to cover losses. Avoid early high doses in AKI not on RRT and in multi-organ failure."
+   ]
+  },
+  {
+   "q": "P7-248",
+   "text": "Should you feed a patient in shock?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-07",
+     "bridge": "Uncontrolled shock and bowel ischaemia are absolute bars to enteral feeding. Next: what to do once shock is controlled →"
+    },
+    {
+     "card": "SPECIAL03|NUT-05",
+     "bridge": "Controlled shock on stable pressors: low-dose EN; full dose caused bowel ischaemia. Next: trophic versus full in ARDS →"
+    },
+    {
+     "card": "RESP01C|ARDS-41",
+     "bridge": "EDEN: trophic for 6 days was as good as full, with less GI intolerance. Next: the shock trial that tested low versus standard →"
+    },
+    {
+     "card": "V7-015",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Yes, but low. In **uncontrolled** shock or rising lactate I hold enteral feed. Once MAP is stable on stable or falling vasopressors, I start low-dose EN within **48 h**.",
+    "Mechanism: in shock the splanchnic bed vasoconstricts; digestion raises gut oxygen demand, so full feeds can tip into non-occlusive bowel ischaemia.",
+    "Evidence: NUTRIREA-2 (n=2410): full-dose EN in shock gave more vomiting and bowel ischaemia (**2% vs <1%**) than PN, with no survival gain.",
+    "NUTRIREA-3 (n=3044): **6 vs 25 kcal/kg** and 0.2–0.4 vs 1.0–1.3 g/kg protein for 7 days: low was ready for discharge sooner (**8 vs 9 days**), same 90-day mortality, fewer GI complications.",
+    "Caution: stop and look if distension, high NG output, rising IAP or lactate. Advance toward target only after shock resolves, usually after day 3."
+   ]
+  },
+  {
+   "q": "P7-244",
+   "text": "Enteral versus parenteral nutrition - what is the evidence?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-02",
+     "bridge": "Luminal feed keeps the villi, the barrier and gut immunity alive. Next: how the two routes compare head to head →"
+    },
+    {
+     "card": "SPECIAL03|NUT-14",
+     "bridge": "EN is cheaper and physiological; PN needs a line but avoids gut ischaemia. Next: what the big trials actually showed →"
+    },
+    {
+     "card": "V7-016",
+     "bridge": "At matched dose the route barely matters; early PN on top of EN harms. Next: the rules for when PN is needed →"
+    },
+    {
+     "card": "SPECIAL03|NUT-15",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Why EN first: it keeps the mucosa and gut immunity, is cheaper and needs no central line. But at matched calories the route matters far less than once thought.",
+    "CALORIES (n=2400): early PN vs EN for 5 days: 30-day mortality **33.1 vs 34.2%**, no more infections with PN; EN had more vomiting and hypoglycaemia.",
+    "NUTRIREA-2 (n=2410, shock): EN no better than PN for 28-day mortality (**37 vs 35%**) or infections, but more vomiting, diarrhoea and bowel ischaemia.",
+    "EPaNIC (n=4640): late PN (day 8) vs early PN: fewer ICU infections (**22.8 vs 26.2%**), faster ICU discharge, less cholestasis, shorter RRT; mortality the same.",
+    "When PN: EN contraindicated, PN within **3–7 days** (ESPEN; earlier and progressive if severely malnourished); EN falling short, supplemental PN after **day 7** (ASPEN), case by case."
+   ]
+  },
+  {
+   "q": "P7-246",
+   "text": "Do you measure gastric residual volume?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-13",
+     "bridge": "Large GRV is one sign of gastric intolerance among several; routine checks are out. Next: the trials that removed them →"
+    },
+    {
+     "card": "V7-017",
+     "bridge": "Not measuring GRV did not raise VAP and got more feed in. Next: how I treat true gastric intolerance →"
+    },
+    {
+     "card": "GI03|GUT-07",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Not routinely. GRV was meant to warn of aspiration, but in trials checking it mainly stopped feeds and cut calories, without preventing pneumonia.",
+    "NUTRIREA-1 (JAMA 2013, n=449): no GRV monitoring was non-inferior for VAP (**16.7 vs 15.8%**); more vomiting, but more patients reached their calorie target.",
+    "REGANE (2010, n=329): a **500 mL** vs 200 mL limit delivered more feed in week 1 (**88 vs 84%**) with no more pneumonia, ventilation days or ICU stay.",
+    "What I do: no routine checks; I assess vomiting, distension and IAP. ESPEN: delay EN if GRV **>500 mL/6 h**; give IV **erythromycin** first, then post-pyloric if it persists.",
+    "Caution: rule out obstruction, ileus or ischaemia before pushing feeds or going post-pyloric."
+   ]
+  },
+  {
+   "q": "P7-247",
+   "text": "What is the NUTRIC score?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-03",
+     "bridge": "Weight, BMI and skinfolds fail in oedematous ICU patients; muscle imaging and NUTRIC help. Next: the score itself →"
+    },
+    {
+     "card": "SPECIAL03|NUT-04",
+     "bridge": "Six items, mostly severity; high is 6–10, or 5–9 without IL-6. Next: what a high score should change, and the evidence →"
+    },
+    {
+     "card": "V7-018",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: an ICU nutrition risk score (Heyland 2011): **age, APACHE II, SOFA, comorbidities, days in hospital before ICU, IL-6**. High risk **≥6**, or **≥5** on the modified score without IL-6.",
+    "Why: in observational data, more nutritional adequacy went with survival only in high scorers; each point raised the odds of 28-day death about **1.4-fold**.",
+    "How it changes feeding: high score, start EN early and reach target without delay; if EN is impossible and he is malnourished, early progressive PN rather than none.",
+    "Caution: RCTs did not confirm benefit; EFFORT Protein in high-risk patients showed no gain from more protein. ESPEN 2023: no ICU-validated score; treat all **>48 h** as at risk.",
+    "So I use it to prioritise attention, not to overfeed; hypocaloric start still applies."
+   ]
+  },
+  {
+   "q": "P7-109",
+   "text": "Hepatic complications of TPN.",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "SPECIAL03|NUT-14",
+     "bridge": "PN bypasses the gut; its liver risk is steatosis, plus line sepsis. Next: the full spectrum of PN liver injury and its causes →"
+    },
+    {
+     "card": "V7-019",
+     "bridge": "Steatosis, cholestasis, sludge, then fibrosis; overfeeding, soybean lipid and sepsis drive it. Next: the hidden calories →"
+    },
+    {
+     "card": "SPECIAL03|NUT-16",
+     "bridge": "Propofol, dextrose and citrate add calories that overfeed. Next: telling PN cholestasis from sepsis or hypoxic liver →"
+    },
+    {
+     "card": "SOD01B|SOD-20",
+     "bridge": "Cholestasis has many ICU causes; exclude obstruction on ultrasound first. Next: the gallbladder catch in the septic PN patient →"
+    },
+    {
+     "card": "HY6|GIN-07",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: IFALD, formerly PNALD: liver injury from PN without another liver cause. **Steatosis**, **cholestasis**, gallbladder **sludge and stones**, late fibrosis.",
+    "Why: excess dextrose and energy make fat in the liver; soybean lipid (omega-6, phytosterols) impairs bile flow; sepsis adds; no enteral feed means biliary stasis.",
+    "Evidence: in EPaNIC, delaying PN to day 8 reduced cholestasis. Steatosis and cholestasis reverse; fibrosis is less reversible.",
+    "Prevent: avoid overfeeding, soybean lipid **<1 g/kg/day** or mixed fish-oil emulsions, cycle PN, keep some enteral feed, treat sepsis, avoid hepatotoxins.",
+    "Caution: exclude biliary obstruction and drugs with ultrasound and review; a septic PN patient with a tense gallbladder may have acalculous cholecystitis."
+   ]
+  },
+  {
+   "q": "P7-257",
+   "text": "What is the role of glutamine in burns?",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "MISC05B|BURN-14",
+     "bridge": "Burns are hypercatabolic: early EN, high protein, and no routine glutamine. Next: why it was given, and what the trial found →"
+    },
+    {
+     "card": "V7-020",
+     "bridge": "RE-ENERGIZE showed no benefit; REDOXS showed harm in multi-organ failure. Next: the wider list of nutrients not to give →"
+    },
+    {
+     "card": "SPECIAL03|NUT-11",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Why it was given: glutamine is conditionally essential in catabolism, a fuel for enterocytes and immune cells, and levels fall after burns. Small trials suggested fewer infections.",
+    "RE-ENERGIZE (NEJM 2022, n=1200): enteral **0.5 g/kg/day** in severe burns: time to discharge alive **40 vs 38 days**, 6-month mortality **17.2 vs 16.2%**: no benefit.",
+    "REDOXS (NEJM 2013, n=1223, multi-organ failure): IV plus enteral glutamine: 28-day mortality **32.4 vs 27.3%** (borderline), 6-month **43.7 vs 37.2%** (significant); worst with renal dysfunction.",
+    "Guidelines: ESPEN 2023 still lists 0.3–0.5 g/kg/day in burns >20% (Grade B), but says the largest RCT was negative and it needs revision; no glutamine in other ICU patients.",
+    "What I do: no routine glutamine. Focus on early EN, protein **1.5–2 g/kg/day**, and avoiding overfeeding."
+   ]
+  }
+ ],
+ "explain": {},
+ "fixes": [
+  {
+   "card": "GI01A|ALF-10",
+   "field": "a",
+   "old": "**Hepatitis A–E** | Supportive",
+   "new": "**Hepatitis A, E** | Supportive\n**Hepatitis B** | **Nucleos(t)ide analogue** (entecavir or tenofovir); list early",
+   "src": "ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023); EASL Clinical Practical Guidelines on ALF, J Hepatol 2017",
+   "checked": "web-verified 10 Nov: ACG 2023 recommends antivirals for HBV-related ALF (Healio guideline summary); register lists ALF-10 as ALREADY_FIXED but the displayed card still reads 'Supportive' for hepatitis B; old substring unique in field a"
+  },
+  {
+   "card": "TOX02|APAP-11",
+   "field": "a",
+   "old": "c Lactate **>3.5** after 1 hour of fluid resuscitation, or **>3.0** after\nadequate fluids.",
+   "new": "c Lactate **>3.5** early (about 4 h after admission), or **>3.0** after\nfull fluid resuscitation (about 12 h).",
+   "src": "Bernal W et al., Lancet 2002;359:558",
+   "checked": "web-verified 10 Nov: Bernal 2002 abstract: early lactate measured at median 4 h (cut-off 3.5 mmol/L) and post-resuscitation at median 12 h (cut-off 3.0); no 1-hour time point"
+  },
+  {
+   "card": "HY6|GIN-12",
+   "field": "a",
+   "old": "Paediatric non-paracetamol ALF: no benefit (worse under 2 years; Squires 2013).",
+   "new": "Paediatric non-paracetamol ALF: no survival benefit and lower 1-year transplant-free survival (35% vs 53%), worst under 2 years (Squires 2013).",
+   "src": "Squires RH et al., Hepatology 2013;57:1542",
+   "checked": "web-verified 10 Nov: Squires 2013 abstract: 184 children, 1-year survival 73% vs 82% (NS), 1-year TFS 35% vs 53% (p = 0.03), under 2 y with grade 0–1 HE 25% vs 60%"
+  },
+  {
+   "card": "GI01B|ALF-28",
+   "field": "q",
+   "old": "c Vasopressor to avoid",
+   "new": "c Second vasopressor",
+   "src": "ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023); SCCM Guidelines for ALF and ACLF in the ICU, Part I (Nanchal R et al., Crit Care Med 2020;48:e173)",
+   "checked": "web-verified 10 Nov (reviewer): SCCM 2020 Part I table: norepinephrine first line (strong); suggest adding low-dose vasopressin to norepinephrine in ALF or ACLF (conditional); ACG 2023 (Healio summary): add vasopressin if no response to norepinephrine"
+  },
+  {
+   "card": "GI01B|ALF-28",
+   "field": "a",
+   "old": "c **Vasopressin**: better avoided.",
+   "new": "c **Low-dose vasopressin** added to noradrenaline if hypotension\npersists (ACG 2023, SCCM 2020).",
+   "src": "ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023); Nanchal R et al., Crit Care Med 2020;48:e173",
+   "checked": "web-verified 10 Nov (reviewer): as above; 'better avoided' contradicts both current guidelines"
+  },
+  {
+   "card": "GI01C|ALF-33",
+   "field": "a",
+   "old": "**17.4 mg/dL**",
+   "new": "**17.5 mg/dL**",
+   "src": "O'Grady JG et al., Gastroenterology 1989;97:439",
+   "checked": "web-verified 10 Nov (reviewer): abstract gives bilirubin >300 µmol/L; 300/17.1 = 17.5 mg/dL (GIN-11 already says 17.5)"
+  },
+  {
+   "card": "GI01C|ALF-41",
+   "field": "watch",
+   "old": "SCCM 2023:\nsuggest it where available.",
+   "new": "SCCM 2023:\nsuggest it, where available, in ALF with hyperammonaemia.",
+   "src": "SCCM Guidelines for ALF and ACLF in the ICU, Part II (Crit Care Med 2023;51:657)",
+   "checked": "web-verified 10 Nov (reviewer): SCCM page: 'We suggest, when available, using plasma exchange in critically ill ALF patients who develop hyperammonemia' (conditional, low quality). ACG 2023 position not verified"
+  },
+  {
+   "card": "GI06|ACLF-02",
+   "field": "watch",
+   "old": "Its 2025 update adds: with or without kidney dysfunction.",
+   "new": "Its 2025 Kyoto consensus proposes adding: with or without kidney\ndysfunction (creatinine above 1.5 mg/dL). A global multi-society definition\nfollowed in October 2026 (V-card).",
+   "src": "Choudhury A et al., Hepatol Int 2025;19:1 (Kyoto consensus); Global multi-society ACLF consensus, Hepatology 2026",
+   "checked": "web-verified 10 Nov (reviewer): Springer full text of Kyoto consensus: proposed redefinition '...within 28 days associated with or without kidney dysfunction (serum creatinine > 1.5 mg/dl)'; AASLD press release 30 Oct 2026"
+  },
+  {
+   "card": "GI07A|CLD-12",
+   "field": "a",
+   "old": "**Antifibrinolytics** | Slow plasminogen to plasmin | Tranexamic acid",
+   "new": "**Antifibrinolytics** | Slow plasminogen to plasmin | Tranexamic acid: **not recommended** (HALT-IT: no fewer bleeding deaths, more venous thrombosis)",
+   "src": "HALT-IT Trial Collaborators, Lancet 2020;395:1927; Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.25)",
+   "checked": "web-verified 10 Nov: HALT-IT abstract (12,009 pts; bleeding death 4% vs 4%, RR 0.99; VTE 0.8% vs 0.4%, RR 1.85); reviewer 10 Nov: Baveno VIII pre-proof statement 5.25 'recombinant factor VIIa and tranexamic acid is not recommended for AVB'"
+  },
+  {
+   "card": "CCM03|VAP-41",
+   "field": "a",
+   "old": "Stress ulcer prophylaxis | May **INCREASE** VAP rates",
+   "new": "Stress ulcer prophylaxis | **No clear increase** in large blinded RCTs (REVISE 2024: VAP 23.2% vs 23.8%); the fear came from older, smaller and observational data",
+   "src": "Cook D et al., NEJM 2024;391:9 (REVISE); Krag M et al., NEJM 2018;379:2199 (SUP-ICU); MacLaren R et al., Crit Care Med 2024;52:e421 (SCCM/ASHP)",
+   "checked": "web-verified 10 Nov: REVISE VAP 23.2% vs 23.8% NS (thebottomline summary of NEJM 2024); SUP-ICU pneumonia or C. difficile 16.8% vs 16.9% (wikijournalclub); reviewer softened 'No increase' to 'No clear increase' because SCCM/ASHP 2024 remark says SUP given with enteral nutrition may increase pneumonia risk"
+  },
+  {
+   "card": "HY6|GIN-09",
+   "field": "a",
+   "old": "**Terlipressin** 2 mg 4-hourly",
+   "new": "**Terlipressin** 2 mg 4-hourly for 24–48 h, then 1 mg 4-hourly",
+   "src": "Garcia-Tsao G et al., Hepatology 2017;65:310 (AASLD); Pfisterer N et al., World J Hepatol 2021;13:731 (Table 2, adapted from Baveno VI and AASLD)",
+   "checked": "reviewer web-verified 10 Nov: WJH 2021 Table 2 'bolus of 2 mg every 4 h for the first 24-48 h, followed by 1 mg every 4 h; or infusion 2 mg/d, maximum 12 mg/d'. AASLD 2017 primary text not fetched"
+  },
+  {
+   "card": "HY6|GIN-09",
+   "field": "a",
+   "old": "for Child C 10–13 or Child B with active bleeding",
+   "new": "(ideally < 24 h) for Child C 10–13, Child B > 7 with active bleeding, or HVPG ≥ 20 mmHg",
+   "src": "Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.31); García-Pagán JC et al., NEJM 2010;362:2370",
+   "checked": "reviewer web-verified 10 Nov: Baveno VIII pre-proof (flore.unifi.it) 5.31 'p-TIPS with PTFE-covered stents within 72 h (ideally <24 h) ... Child-Pugh C 10-13 or Child-Pugh B >7 with active bleeding at initial endoscopy, or HVPG ≥20 mmHg at the time of AVB'"
+  },
+  {
+   "card": "HY6|GIN-09",
+   "field": "a",
+   "old": "Uncontrolled → balloon tamponade (≤ 24 h) as bridge to rescue TIPS.",
+   "new": "Uncontrolled → covered oesophageal stent (preferred) or balloon tamponade (≤ 24 h) as bridge to rescue TIPS.",
+   "src": "Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.35)",
+   "checked": "reviewer web-verified 10 Nov: Baveno VIII 5.35 'a dedicated covered self-expanding metal stent (cSEMS) is preferred over balloon tamponade' as bridge in refractory oesophageal variceal bleeding"
+  },
+  {
+   "card": "HY6|GIN-08",
+   "field": "a",
+   "old": "**No routine FFP/PCC** in cirrhosis; don't delay endoscopy for INR.",
+   "new": "Stop warfarin; **no routine FFP** (the cirrhotic INR does not predict bleeding); **PCC + low-dose vitamin K** only if unstable; don't delay endoscopy for INR.",
+   "src": "Gralnek IM et al., Endoscopy 2021;53:300 (ESGE); Baveno VIII Faculty, J Hepatol 2026 (statement 5.23)",
+   "checked": "reviewer web-verified 10 Nov: ESGE 2021 (thieme-connect full text) – withhold VKA; with haemodynamic instability give low-dose vitamin K plus IV PCC (FFP if PCC unavailable); INR should not guide endoscopy timing. Baveno VIII 5.23: FFP not routinely recommended, does not correct coagulopathy"
+  },
+  {
+   "card": "HY6|GIN-03",
+   "field": "a",
+   "old": "Ventilated above 48 h, coagulopathy, shock, TBI/burns, prior GI bleed.",
+   "new": "**Coagulopathy, shock, chronic liver disease** (SCCM/ASHP 2024; ventilation alone is not a firm risk factor). Older lists: ventilated above 48 h, TBI/burns, prior GI bleed.",
+   "src": "MacLaren R et al., Crit Care Med 2024;52:e421 (SCCM/ASHP); Cook DJ et al., NEJM 1994;330:377",
+   "checked": "reviewer web-verified 10 Nov: SCCM/ASHP abstract (McMaster experts page) and SCCM guideline page – risk factors coagulopathy, shock, chronic liver disease; 'no firm evidence for mechanical ventilation alone being a risk factor'; SUP also suggested in neurocritical care; low-dose PPI or H2RA, enteral or IV; stop before ICU transfer. Cook 1994 not re-fetched (kept as the older list)"
+  },
+  {
+   "card": "CCM03|VAP-36",
+   "field": "a",
+   "old": "Doesn't raise pH, but increases risk of GI bleeding by 4%",
+   "new": "Doesn't raise pH, but bleeds more: **3.8% vs 1.7%** with ranitidine (RR 0.44); VAP 16.2% vs 19.1% (not significant)",
+   "src": "Cook D et al., NEJM 1998;338:791",
+   "checked": "reviewer web-verified 10 Nov: McMaster experts abstract – 1,200 ventilated pts; clinically important bleeding ranitidine 10/596 (1.7%) vs sucralfate 23/604 (3.8%), RR 0.44 (0.21–0.92); VAP 19.1% vs 16.2%, RR 1.18 (0.92–1.51), NS; ICU mortality 23.5% vs 22.9%"
+  },
+  {
+   "card": "GI02A|PANC-04",
+   "field": "a",
+   "old": "| Many",
+   "new": "| Fewer, not none: **renal failure** (both enzymes), bowel obstruction or ischaemia, perforated ulcer, cholecystitis, DKA",
+   "src": "Tenner S et al., Am J Gastroenterol 2024;119:419 (ACG 2024); CAP lipase guidance for clinicians (renal insufficiency, level not prognostic, no daily trending)",
+   "checked": "web-verified 10 Nov: CAP clinician document (renal insufficiency raises both enzymes; magnitude does not predict severity); WikEM lipase (non-pancreatic causes incl. SBO, mesenteric ischaemia, perforation, cholecystitis, DKA)"
+  },
+  {
+   "card": "GI02B|PANC-15",
+   "field": "a",
+   "old": "- Aggressive fluids: **three times the fluid overload, no better outcomes**.",
+   "new": "- Aggressive fluids: **three times the fluid overload, no better outcomes**.\n- Primary outcome (moderately severe or severe pancreatitis): **22.1% vs 17.3%** (NS). Stopped at interim (**249** of 744 planned) for harm.",
+   "src": "de-Madaria E et al., N Engl J Med 2022;387:989 (WATERFALL)",
+   "checked": "web-verified 10 Nov: WATERFALL abstract (Univ. Navarra repository): primary 22.1% vs 17.3%, adjusted RR 1.30 (0.78-2.18), P=0.32; overload 20.5% vs 6.3%, RR 2.85; 249 at interim of planned 744; halted for safety"
+  },
+  {
+   "card": "SPECIAL03|NUT-04",
+   "field": "a",
+   "old": "**benefit most from aggressive feeding**",
+   "new": "more feeding linked to survival only in **observational** data; the RCT in high-risk patients (EFFORT Protein) showed no benefit from more protein",
+   "src": "Heyland DK et al., Crit Care 2011;15:R268; Rahman A et al., Clin Nutr 2016;35:158; Heyland DK et al., Lancet 2023;401:568 (EFFORT Protein)",
+   "checked": "web-verified 10 Nov: modified NUTRIC validation was post hoc on an RCT database (n=1199, interaction p=0.029); EFFORT Protein (high nutritional risk, n=1329) no benefit, harm in AKI"
+  },
+  {
+   "card": "SPECIAL03|NUT-14",
+   "field": "a",
+   "old": "(lipid over 50%)",
+   "new": "(dextrose and energy\noverfeeding)",
+   "src": "Mundi MS et al., Front Nutr 2025;12:1718116; Pironi L et al., Clin Nutr 2023;42:1940 (ESPEN chronic intestinal failure)",
+   "checked": "web-verified 10 Nov (reviewer): Mundi 2025 consensus: high-dextrose PN causes hepatic steatosis; overfeeding is an IFALD risk factor; soybean lipid limit is 1 g/kg/day (cholestasis/IFALD), not a 50% lipid share"
+  },
+  {
+   "card": "SPECIAL03|NUT-15",
+   "field": "watch",
+   "old": "early PN (day 1–2)",
+   "new": "early PN (from day 3, after IV dextrose on days 1–2)",
+   "src": "Casaer MP et al., NEJM 2011;365:506 (EPaNIC)",
+   "checked": "web-verified 10 Nov (reviewer): EPaNIC early arm got 20% dextrose on days 1–2 and PN from day 3 (Critical Care Reviews summary); NEJM abstract describes it as PN initiated within 48 h. 'Day 1–2' misstates it"
+  }
+ ]
+}
