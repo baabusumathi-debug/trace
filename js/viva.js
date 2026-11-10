@@ -6,7 +6,7 @@ import { db } from './db.js';
 import { IS_HT } from './config.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
-export const VIVA_PKGS = ['P4', 'P1', 'P3', 'P6', 'P7'];
+export const VIVA_PKGS = ['P1', 'P3', 'P4', 'P6', 'P7'];   // in package order (T-125)
 const IMG = pkg => `./data/viva/img/${pkg}/`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g, '$1<i>$2</i>');

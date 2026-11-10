@@ -1586,6 +1586,8 @@ details.xp-before:not([open]){padding:6px 12px}
 .vivap .vp-gen h3{font-size:11px;letter-spacing:.16em;color:var(--gold);margin:0 0 6px}
 .vp-q{display:grid;grid-template-columns:28px 1fr auto auto;gap:10px;align-items:center;width:100%;text-align:left;background:#181b20;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px}
 .vp-h{color:var(--muted);font-size:13px}
+.vp-n{color:var(--gold);font-size:13px;text-align:center}
+.vp-pkg{text-decoration:none;color:var(--ink)}.vp-pkg .vp-n{font-size:14px}
 .vp-t{font-size:14.5px;line-height:1.35}.vp-t small{display:block;color:var(--faint);font-size:10.5px;margin-top:3px}
 .vp-q .vt{font-size:10.5px;border:1px solid var(--line);border-radius:3px;padding:2px 6px}
 .vm{font-size:10.5px;min-width:52px;text-align:center;border-radius:3px;padding:2px 6px;color:var(--faint)}

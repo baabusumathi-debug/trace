@@ -724,7 +724,9 @@ const MARKN = { fluent: 'Fluent', patchy: 'Patchy', blank: 'Blank' };
 function vivaTile() {
   const ps = vivaPkgs(); if (!ps.length) return;
   const sc = app.querySelector('.palace-screen'); if (!sc) return;
-  sc.insertAdjacentHTML('beforeend', `<div class="viva-tiles">${ps.map(p => `<a class="viva-tile mono" href="#/viva/${esc(p.package)}"><b>VIVA ${esc(p.package)}</b><span>${esc(p.title)} · ${p.questions.length} Qs</span></a>`).join('')}</div>`);
+  // T-125: one Viva button; the packages are listed in order inside it
+  const nq = ps.reduce((n, p) => n + p.questions.length, 0);
+  sc.insertAdjacentHTML('beforeend', `<div class="viva-tiles"><a class="viva-tile mono" href="#/viva"><b>VIVA</b><span>${ps.length} package${ps.length === 1 ? '' : 's'} · ${nq} Qs</span></a></div>`);
 }
 // T-102: lessons autoplay (per session) — open → each card's lesson → close → spine run on their own
 const vAuto = () => { try { return sessionStorage.getItem('trace.vauto') === '1'; } catch (e) { return false; } };
@@ -745,9 +747,19 @@ function walkViva(pkg, onlyQ) {
   if (!list.length) { toast('These cards are not on this device yet.'); return; }
   startFlow(list, { viva: pkg, label: 'Viva ' + pkg + (onlyQ ? ' · ' + onlyQ : ' · ' + P2.title), returnTo: '#/viva/' + pkg });
 }
+// T-125: the Viva button opens this list of packages, in order
+function renderVivaIndex(ps) {
+  app.innerHTML = `<div class="screen vivap">
+    <header class="top"><a class="iconbtn" href="#/" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA · ${ps.length} PACKAGES</span><span class="h1s">Viva</span></span></header>
+    <div class="scroll pad">
+      ${ps.map(p => `<a class="vp-q vp-pkg" href="#/viva/${esc(p.package)}"><span class="vp-n mono">${esc(p.package)}</span><span class="vp-t">${esc(p.title)}<small class="mono">${p.questions.length} questions${hasLessons(p.package) ? ' · narrated' : ''}</small></span><span></span><span class="mono muted">›</span></a>`).join('')}
+    </div>
+    ${nav('flow')}
+  </div>`;
+}
 async function renderViva(pkg) {
   const ps = vivaPkgs();
-  if (!pkg && ps.length) pkg = ps[0].package;
+  if (!pkg && ps.length) return renderVivaIndex(ps);
   const P2 = vivaPkg(pkg);
   if (!P2) { app.innerHTML = `<div class="screen"><header class="top"><a class="iconbtn" href="#/flow" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA</span><span class="h1s">No viva package yet</span></span></header><div class="scroll pad"><p class="muted">The package file has not loaded. Open the app online once.</p></div>${nav('flow')}</div>`; return; }
   const m = await vivaMarks(), { missing } = vivaQueue(pkg);
@@ -757,7 +769,7 @@ async function renderViva(pkg) {
   const gens = []; P2.questions.forEach(q => { let g = gens.find(x => x.g === q.gen); if (!g) gens.push(g = { g: q.gen, qs: [] }); g.qs.push(q); });
   const vcards = Object.values(P2.cards).filter(v => !v.retired).length;
   app.innerHTML = `<div class="screen vivap">
-    <header class="top"><a class="iconbtn" href="#/flow" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA ${esc(pkg)} · ${P2.questions.length} QUESTIONS · ${vcards} VIVA CARDS</span><span class="h1s">${esc(P2.title)}</span></span></header>
+    <header class="top"><a class="iconbtn" href="#/viva" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA ${esc(pkg)} · ${P2.questions.length} QUESTIONS · ${vcards} VIVA CARDS</span><span class="h1s">${esc(P2.title)}</span></span></header>
     <div class="scroll pad">
       <section class="dk-box">
         <div class="dk-h"><span><span class="mono kick">WALK</span><span class="dk-t">All ${P2.questions.length} questions, in study order</span></span><button class="pillbtn" data-vwalk>${ICON.walkS}Walk</button></div>
@@ -767,7 +779,7 @@ async function renderViva(pkg) {
         ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
         ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
       </section>
-      ${gens.map(g => `<section class="vp-gen"><h3 class="mono">${esc(g.g)}</h3>${g.qs.map(q => { const mk = vivaLast(m, pkg, q.q); return `<button class="vp-q" data-vq="${esc(q.q)}"><span class="vp-h mono">${esc(q.handle || '')}</span><span class="vp-t">${esc(q.text)}<small class="mono">${esc(q.q)} · ${q.steps.length} card${q.steps.length === 1 ? '' : 's'}</small></span><span class="vt vt-${esc(q.tier)} mono">${esc(q.tier)}</span><span class="vm vm-${mk || 'none'} mono">${mk ? MARKN[mk] : '–'}</span></button>`; }).join('')}</section>`).join('')}
+      ${gens.map(g => `<section class="vp-gen"><h3 class="mono">${esc(g.g)}</h3>${g.qs.map(q => { const mk = vivaLast(m, pkg, q.q); return `<button class="vp-q" data-vq="${esc(q.q)}"><span class="vp-n mono">${P2.questions.indexOf(q) + 1}</span><span class="vp-t">${esc(q.text)}<small class="mono">${esc(q.q)} · ${q.steps.length} card${q.steps.length === 1 ? '' : 's'}</small></span><span class="vt vt-${esc(q.tier)} mono">${esc(q.tier)}</span><span class="vm vm-${mk || 'none'} mono">${mk ? MARKN[mk] : '–'}</span></button>`; }).join('')}</section>`).join('')}
       <p class="muted small">Package ${esc(P2.version)}.</p>
     </div>
     ${nav('flow')}
