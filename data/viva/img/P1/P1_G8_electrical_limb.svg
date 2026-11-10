@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="551.593pt" height="363.628pt" viewBox="0 0 551.593 363.628" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 363.628 
+L 551.593 363.628 
+L 551.593 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.2 286.216 
+L 509.4 286.216 
+L 509.4 27.731 
+L 7.2 27.731 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 258.3 271.445 
+C 287.679 271.445 315.858 259.773 336.632 238.999 
+C 357.406 218.225 369.079 190.045 369.079 160.666 
+C 369.079 131.287 357.406 103.107 336.632 82.333 
+C 315.858 61.559 287.679 49.887 258.3 49.887 
+C 228.920 49.887 200.741 61.559 179.967 82.333 
+C 159.193 103.107 147.520 131.287 147.520 160.666 
+C 147.520 190.045 159.193 218.225 179.967 238.999 
+C 200.741 259.773 228.920 271.445 258.3 271.445 
+z
+" clip-path="url(#p33b029da51)" style="fill: #e8eef0; stroke: #152126; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 258.3 262.214 
+C 285.230 262.214 311.062 251.514 330.105 232.471 
+C 349.148 213.428 359.847 187.597 359.847 160.666 
+C 359.847 133.735 349.148 107.904 330.105 88.861 
+C 311.062 69.818 285.230 59.118 258.3 59.118 
+C 231.369 59.118 205.537 69.818 186.494 88.861 
+C 167.451 107.904 156.752 133.735 156.752 160.666 
+C 156.752 187.597 167.451 213.428 186.494 232.471 
+C 205.537 251.514 231.369 262.214 258.3 262.214 
+z
+" clip-path="url(#p33b029da51)" style="fill: #f6f8f9; stroke: #5b6b71; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 258.3 251.136 
+C 282.292 251.136 305.306 241.603 322.271 224.638 
+C 339.237 207.672 348.769 184.659 348.769 160.666 
+C 348.769 136.673 339.237 113.660 322.271 96.694 
+C 305.306 79.729 282.292 70.196 258.3 70.196 
+C 234.307 70.196 211.293 79.729 194.328 96.694 
+C 177.362 113.660 167.830 136.673 167.830 160.666 
+C 167.830 184.659 177.362 207.672 194.328 224.638 
+C 211.293 241.603 234.307 251.136 258.3 251.136 
+z
+" clip-path="url(#p33b029da51)" style="fill: #d9c2bc; stroke: #5b6b71; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 258.3 217.902 
+C 273.479 217.902 288.038 211.871 298.771 201.138 
+C 309.505 190.405 315.536 175.845 315.536 160.666 
+C 315.536 145.487 309.505 130.927 298.771 120.194 
+C 288.038 109.461 273.479 103.430 258.3 103.430 
+C 243.120 103.430 228.561 109.461 217.828 120.194 
+C 207.094 130.927 201.063 145.487 201.063 160.666 
+C 201.063 175.845 207.094 190.405 217.828 201.138 
+C 228.561 211.871 243.120 217.902 258.3 217.902 
+z
+" clip-path="url(#p33b029da51)" style="fill: #b5452f; opacity: 0.55"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 258.3 188.361 
+C 265.644 188.361 272.689 185.443 277.883 180.249 
+C 283.076 175.056 285.994 168.011 285.994 160.666 
+C 285.994 153.321 283.076 146.276 277.883 141.083 
+C 272.689 135.889 265.644 132.971 258.3 132.971 
+C 250.955 132.971 243.910 135.889 238.716 141.083 
+C 233.523 146.276 230.605 153.321 230.605 160.666 
+C 230.605 168.011 233.523 175.056 238.716 180.249 
+C 243.910 185.443 250.955 188.361 258.3 188.361 
+z
+" clip-path="url(#p33b029da51)" style="fill: #ffffff; stroke: #152126; stroke-width: 2.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 336.584 90.506 
+C 338.738 90.506 340.805 89.650 342.328 88.126 
+C 343.851 86.603 344.707 84.536 344.707 82.382 
+C 344.707 80.227 343.851 78.161 342.328 76.638 
+C 340.805 75.114 338.738 74.258 336.584 74.258 
+C 334.429 74.258 332.363 75.114 330.839 76.638 
+C 329.316 78.161 328.460 80.227 328.460 82.382 
+C 328.460 84.536 329.316 86.603 330.839 88.126 
+C 332.363 89.650 334.429 90.506 336.584 90.506 
+z
+" clip-path="url(#p33b029da51)" style="fill: #152126; stroke: #152126; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="258.3" y="165.395" transform="rotate(-0 258.3 165.395)">bone</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 406.776 55.689 
+Q 374.099 67.226 342.476 78.391 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+    <path d="M 348.245 79.111 
+L 342.476 78.391 
+L 346.513 74.208 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #152126" x="383.85" y="49.887" transform="rotate(-0 383.85 49.887)">small skin wound</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 379.853 183.509 
+Q 330.231 180.458 281.724 177.475 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+    <path d="M 286.755 180.389 
+L 281.724 177.475 
+L 287.074 175.199 
+" style="fill: none; stroke: #152126; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(383.85 185.556)">bone resists current most,</text>
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(383.85 201.285)">so it heats most</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 117.748 85.447 
+Q 166.819 109.690 214.888 133.438 
+" style="fill: none; stroke: #b5452f; stroke-linecap: round"/>
+    <path d="M 211.377 128.804 
+L 214.888 133.438 
+L 209.074 133.466 
+" style="fill: none; stroke: #b5452f; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(14.585 63.698)">deep muscle cooked</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(14.585 79.428)">from the inside</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 124.095 225.468 
+Q 151.527 211.972 177.956 198.969 
+" style="fill: none; stroke: #5b6b71; stroke-linecap: round"/>
+    <path d="M 172.142 198.932 
+L 177.956 198.969 
+L 174.438 203.598 
+" style="fill: none; stroke: #5b6b71; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(14.585 240.945)">outer muscle and skin</text>
+    <text style="font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(14.585 256.675)">may look nearly normal</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 15px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="258.3" y="21.731" transform="rotate(-0 258.3 21.731)">Electrical injury: the skin hides the muscle</text>
+   </g>
+  </g>
+  <g id="text_7">
+   <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="250.2" y="353.533" transform="rotate(-0 250.2 353.533)">Dead muscle releases myoglobin and swells under the fascia.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p33b029da51">
+   <rect x="7.2" y="27.731" width="502.2" height="258.485"/>
+  </clipPath>
+ </defs>
+</svg>

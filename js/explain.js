@@ -15,7 +15,7 @@ function apply(x) {
   S.xtopups = {};
   for (const [deck, d] of Object.entries(X.decks)) {
     if (!d.topups || !d.topups.length) continue;
-    S.xtopups[deck] = d.topups.map(t => ({ id: t.id, topic: t.topic, type: t.type, q: t.q, a: t.a, tier: t.tier, n: t.n, banks: t.banks, recall: /recall/i.test(t.banks || ''), src: t.banks || '', raw: true }));
+    S.xtopups[deck] = d.topups.map(t => ({ id: t.id, topic: t.topic, type: t.type, q: t.q, a: t.a, tier: t.tier, n: t.n, banks: t.banks, recall: t.recall != null ? !!t.recall : /recall/i.test(t.banks || ''), src: t.src || t.banks || '', raw: true }));
     d.topups.forEach((t, i) => { if (t.x) d.cards['TU-' + String(i + 1).padStart(2, '0')] = { ...t.x, topup: true }; });
   }
 }

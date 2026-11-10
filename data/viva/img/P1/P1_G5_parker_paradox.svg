@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="621.172pt" height="387.518pt" viewBox="0 0 621.172 387.518" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 387.518 
+L 621.172 387.518 
+L 621.172 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 140.73 255.250 
+C 157.878 255.250 174.327 244.349 186.453 224.947 
+C 198.579 205.546 205.392 179.228 205.392 151.790 
+C 205.392 124.352 198.579 98.034 186.453 78.632 
+C 174.327 59.231 157.878 48.329 140.73 48.329 
+C 123.581 48.329 107.132 59.231 95.006 78.632 
+C 82.880 98.034 76.067 124.352 76.067 151.790 
+C 76.067 179.228 82.880 205.546 95.006 224.947 
+C 107.132 244.349 123.581 255.250 140.73 255.250 
+z
+" clip-path="url(#pf1ee91bb9b)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 140.73 237.105 
+C 154.871 237.105 168.435 228.116 178.434 212.117 
+C 188.433 196.118 194.052 174.416 194.052 151.790 
+C 194.052 129.164 188.433 107.461 178.434 91.462 
+C 168.435 75.463 154.871 66.474 140.73 66.474 
+C 126.588 66.474 113.024 75.463 103.025 91.462 
+C 93.026 107.461 87.407 129.164 87.407 151.790 
+C 87.407 174.416 93.026 196.118 103.025 212.117 
+C 113.024 228.116 126.588 237.105 140.73 237.105 
+z
+" clip-path="url(#pf1ee91bb9b)" style="fill: #ffffff; stroke-dasharray: 9.25,4; stroke-dashoffset: 0; stroke: #152126; stroke-width: 2.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(127.253 148.895)">end-</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(120.57 163.415)">systole</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="140.73" y="276.252" transform="rotate(-0 140.73 276.252)">end-diastole</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="140.73" y="311.981" transform="rotate(-0 140.73 311.981)">EF 32%   EDVI 159 mL/m²</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="140.73" y="340.894" transform="rotate(-0 140.73 340.894)">low EF, but a big chamber keeps stroke volume</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="140.73" y="20.762" transform="rotate(-0 140.73 20.762)">Survivors: dilated ventricle</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 488.944 225.634 
+C 501.184 225.634 512.924 217.853 521.579 204.006 
+C 530.234 190.158 535.097 171.373 535.097 151.790 
+C 535.097 132.206 530.234 113.422 521.579 99.574 
+C 512.924 85.726 501.184 77.945 488.944 77.945 
+C 476.705 77.945 464.964 85.726 456.309 99.574 
+C 447.655 113.422 442.792 132.206 442.792 151.790 
+C 442.792 171.373 447.655 190.158 456.309 204.006 
+C 464.964 217.853 476.705 225.634 488.944 225.634 
+z
+" clip-path="url(#p8458100e70)" style="fill: #e8eef0; stroke: #152126; stroke-width: 2.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 488.944 201.326 
+C 497.155 201.326 505.031 196.107 510.837 186.817 
+C 516.642 177.528 519.905 164.927 519.905 151.790 
+C 519.905 138.652 516.642 126.052 510.837 116.762 
+C 505.031 107.473 497.155 102.253 488.944 102.253 
+C 480.734 102.253 472.858 107.473 467.052 116.762 
+C 461.246 126.052 457.984 138.652 457.984 151.790 
+C 457.984 164.927 461.246 177.528 467.052 186.817 
+C 472.858 196.107 480.734 201.326 488.944 201.326 
+z
+" clip-path="url(#p8458100e70)" style="fill: #ffffff; stroke-dasharray: 9.25,4; stroke-dashoffset: 0; stroke: #b5452f; stroke-width: 2.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(475.468 148.895)">end-</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(468.784 163.415)">systole</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="488.944" y="246.636" transform="rotate(-0 488.944 246.636)">end-diastole</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="488.944" y="311.981" transform="rotate(-0 488.944 311.981)">EF 55%   EDVI 81 mL/m²</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="488.944" y="340.894" transform="rotate(-0 488.944 340.894)">'normal' EF from very low afterload</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="488.944" y="20.762" transform="rotate(-0 488.944 20.762)">Non-survivors: undilated</text>
+   </g>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="311.486" y="377.424" transform="rotate(-0 311.486 377.424)">Shaded ring = stroke volume. Parker 1984, septic shock.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf1ee91bb9b">
+   <rect x="15.702" y="26.762" width="250.055" height="328.197"/>
+  </clipPath>
+  <clipPath id="p8458100e70">
+   <rect x="363.917" y="26.762" width="250.055" height="328.197"/>
+  </clipPath>
+ </defs>
+</svg>

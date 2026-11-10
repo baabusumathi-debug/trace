@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="784.8pt" height="338.4pt" viewBox="0 0 784.8 338.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 338.4 
+L 784.8 338.4 
+L 784.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.719 312.680 
+L 394.057 312.680 
+L 394.057 26.762 
+L 25.719 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="209.888" y="328.305" transform="rotate(-0 209.888 328.305)">LV volume</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_2">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="18.825" y="169.721" transform="rotate(-90 18.825 169.721)">LV pressure</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 200.195 304.208 
+L 201.778 304.206 
+L 203.360 304.197 
+L 204.943 304.177 
+L 206.525 304.144 
+L 208.108 304.096 
+L 209.690 304.031 
+L 211.273 303.947 
+L 212.855 303.843 
+L 214.438 303.718 
+L 216.021 303.571 
+L 217.603 303.399 
+L 219.186 303.203 
+L 220.768 302.980 
+L 222.351 302.730 
+L 223.933 302.451 
+L 225.516 302.144 
+L 227.098 301.806 
+L 228.681 301.437 
+L 230.264 301.036 
+L 231.846 300.602 
+L 233.429 300.134 
+L 235.011 299.631 
+L 236.594 299.093 
+L 238.176 298.519 
+L 239.759 297.908 
+L 241.341 297.259 
+L 242.924 296.571 
+L 244.506 295.844 
+L 246.089 295.077 
+L 247.672 294.269 
+L 249.254 293.420 
+L 250.837 292.529 
+L 252.419 291.595 
+L 254.002 290.618 
+L 255.584 289.596 
+L 257.167 288.530 
+L 258.749 287.419 
+L 260.332 286.261 
+L 261.915 285.057 
+L 263.497 283.806 
+L 265.080 282.506 
+L 266.662 281.159 
+L 268.245 279.762 
+L 269.827 278.316 
+L 271.410 276.820 
+L 272.992 275.273 
+L 274.575 273.674 
+L 276.157 272.024 
+L 277.740 270.322 
+L 277.740 164.426 
+L 276.426 162.838 
+L 275.111 161.253 
+L 273.797 159.677 
+L 272.483 158.112 
+L 271.168 156.563 
+L 269.854 155.034 
+L 268.540 153.529 
+L 267.225 152.051 
+L 265.911 150.604 
+L 264.597 149.191 
+L 263.282 147.817 
+L 261.968 146.484 
+L 260.654 145.196 
+L 259.340 143.956 
+L 258.025 142.767 
+L 256.711 141.631 
+L 255.397 140.552 
+L 254.082 139.532 
+L 252.768 138.573 
+L 251.454 137.678 
+L 250.139 136.849 
+L 248.825 136.087 
+L 247.511 135.394 
+L 246.196 134.772 
+L 244.882 134.222 
+L 243.568 133.744 
+L 242.253 133.340 
+L 240.939 133.011 
+L 239.625 132.757 
+L 238.310 132.577 
+L 236.996 132.473 
+L 235.682 132.443 
+L 234.367 132.488 
+L 233.053 132.606 
+L 231.739 132.798 
+L 230.424 133.061 
+L 229.110 133.395 
+L 227.796 133.798 
+L 226.482 134.268 
+L 225.167 134.804 
+L 223.853 135.404 
+L 222.539 136.065 
+L 221.224 136.785 
+L 219.910 137.562 
+L 218.596 138.392 
+L 217.281 139.273 
+L 215.967 140.202 
+L 214.653 141.176 
+L 213.338 142.192 
+L 212.024 143.245 
+L 210.710 144.333 
+L 209.395 145.452 
+L 208.081 146.599 
+L 206.767 147.769 
+L 205.452 148.958 
+L 204.138 150.164 
+L 202.824 151.382 
+L 201.509 152.607 
+L 200.195 153.837 
+L 200.195 304.208 
+" clip-path="url(#p157169e9e3)" style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #5b6b71; stroke-width: 2"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 277.740 304.208 
+L 278.729 304.205 
+L 279.718 304.187 
+L 280.707 304.149 
+L 281.696 304.087 
+L 282.685 303.997 
+L 283.675 303.875 
+L 284.664 303.718 
+L 285.653 303.524 
+L 286.642 303.290 
+L 287.631 303.013 
+L 288.620 302.691 
+L 289.609 302.323 
+L 290.598 301.905 
+L 291.587 301.436 
+L 292.576 300.914 
+L 293.565 300.337 
+L 294.555 299.704 
+L 295.544 299.012 
+L 296.533 298.260 
+L 297.522 297.446 
+L 298.511 296.568 
+L 299.500 295.626 
+L 300.489 294.617 
+L 301.478 293.541 
+L 302.467 292.395 
+L 303.456 291.177 
+L 304.446 289.888 
+L 305.435 288.525 
+L 306.424 287.087 
+L 307.413 285.573 
+L 308.402 283.981 
+L 309.391 282.310 
+L 310.380 280.559 
+L 311.369 278.726 
+L 312.358 276.811 
+L 313.347 274.812 
+L 314.336 272.728 
+L 315.326 270.557 
+L 316.315 268.300 
+L 317.304 265.953 
+L 318.293 263.517 
+L 319.282 260.991 
+L 320.271 258.372 
+L 321.260 255.660 
+L 322.249 252.855 
+L 323.238 249.954 
+L 324.227 246.957 
+L 325.216 243.863 
+L 326.206 240.671 
+L 326.206 100.889 
+L 325.384 99.659 
+L 324.563 98.432 
+L 323.741 97.211 
+L 322.920 95.998 
+L 322.098 94.797 
+L 321.277 93.610 
+L 320.455 92.440 
+L 319.634 91.290 
+L 318.813 90.161 
+L 317.991 89.058 
+L 317.170 87.983 
+L 316.348 86.937 
+L 315.527 85.923 
+L 314.705 84.944 
+L 313.884 84.002 
+L 313.062 83.098 
+L 312.241 82.235 
+L 311.419 81.414 
+L 310.598 80.638 
+L 309.777 79.907 
+L 308.955 79.224 
+L 308.134 78.589 
+L 307.312 78.004 
+L 306.491 77.470 
+L 305.669 76.988 
+L 304.848 76.558 
+L 304.026 76.181 
+L 303.205 75.858 
+L 302.384 75.588 
+L 301.562 75.373 
+L 300.741 75.212 
+L 299.919 75.104 
+L 299.098 75.050 
+L 298.276 75.049 
+L 297.455 75.101 
+L 296.633 75.204 
+L 295.812 75.358 
+L 294.990 75.562 
+L 294.169 75.815 
+L 293.348 76.115 
+L 292.526 76.460 
+L 291.705 76.850 
+L 290.883 77.283 
+L 290.062 77.756 
+L 289.240 78.267 
+L 288.419 78.816 
+L 287.597 79.399 
+L 286.776 80.014 
+L 285.955 80.659 
+L 285.133 81.331 
+L 284.312 82.028 
+L 283.490 82.748 
+L 282.669 83.487 
+L 281.847 84.243 
+L 281.026 85.014 
+L 280.204 85.796 
+L 279.383 86.586 
+L 278.561 87.382 
+L 277.740 88.181 
+L 277.740 304.208 
+" clip-path="url(#p157169e9e3)" style="fill: none; stroke: #b5452f; stroke-width: 2.5; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 25.719 312.680 
+L 25.719 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 25.719 312.680 
+L 394.057 312.680 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(106.105 33.727)">afterload up:</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(71.773 48.247)">loop moves right and up,</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #b5452f" transform="translate(80.626 62.766)">narrower, LV distends</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(109.153 196.501)">shocked LV</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(116.798 211.020)">(dashed)</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 244.665 138.183 
+Q 266.108 128.422 285.720 119.494 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 281.251 119.331 
+L 285.720 119.494 
+L 282.908 122.972 
+" style="fill: none; stroke: #b5452f; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="209.888" y="20.762" transform="rotate(-0 209.888 20.762)">Peripheral VA-ECMO</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_6">
+    <path d="M 409.261 312.680 
+L 777.6 312.680 
+L 777.6 26.762 
+L 409.261 26.762 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 471.297 299.973 
+L 541.088 287.265 
+L 494.561 181.369 
+L 471.297 299.973 
+z
+" clip-path="url(#pe6c77745dc)" style="fill: none; stroke: #152126; stroke-width: 2.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="text_6">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="593.430" y="328.305" transform="rotate(-0 593.430 328.305)">LV volume</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_3">
+    <path d="M 583.737 304.208 
+L 585.320 304.206 
+L 586.902 304.197 
+L 588.485 304.177 
+L 590.067 304.144 
+L 591.650 304.096 
+L 593.233 304.031 
+L 594.815 303.947 
+L 596.398 303.843 
+L 597.980 303.718 
+L 599.563 303.571 
+L 601.145 303.399 
+L 602.728 303.203 
+L 604.310 302.980 
+L 605.893 302.730 
+L 607.475 302.451 
+L 609.058 302.144 
+L 610.641 301.806 
+L 612.223 301.437 
+L 613.806 301.036 
+L 615.388 300.602 
+L 616.971 300.134 
+L 618.553 299.631 
+L 620.136 299.093 
+L 621.718 298.519 
+L 623.301 297.908 
+L 624.883 297.259 
+L 626.466 296.571 
+L 628.049 295.844 
+L 629.631 295.077 
+L 631.214 294.269 
+L 632.796 293.420 
+L 634.379 292.529 
+L 635.961 291.595 
+L 637.544 290.618 
+L 639.126 289.596 
+L 640.709 288.530 
+L 642.292 287.419 
+L 643.874 286.261 
+L 645.457 285.057 
+L 647.039 283.806 
+L 648.622 282.506 
+L 650.204 281.159 
+L 651.787 279.762 
+L 653.369 278.316 
+L 654.952 276.820 
+L 656.534 275.273 
+L 658.117 273.674 
+L 659.700 272.024 
+L 661.282 270.322 
+L 661.282 164.426 
+L 659.968 162.838 
+L 658.653 161.253 
+L 657.339 159.677 
+L 656.025 158.112 
+L 654.711 156.563 
+L 653.396 155.034 
+L 652.082 153.529 
+L 650.768 152.051 
+L 649.453 150.604 
+L 648.139 149.191 
+L 646.825 147.817 
+L 645.510 146.484 
+L 644.196 145.196 
+L 642.882 143.956 
+L 641.567 142.767 
+L 640.253 141.631 
+L 638.939 140.552 
+L 637.624 139.532 
+L 636.310 138.573 
+L 634.996 137.678 
+L 633.681 136.849 
+L 632.367 136.087 
+L 631.053 135.394 
+L 629.738 134.772 
+L 628.424 134.222 
+L 627.110 133.744 
+L 625.795 133.340 
+L 624.481 133.011 
+L 623.167 132.757 
+L 621.853 132.577 
+L 620.538 132.473 
+L 619.224 132.443 
+L 617.910 132.488 
+L 616.595 132.606 
+L 615.281 132.798 
+L 613.967 133.061 
+L 612.652 133.395 
+L 611.338 133.798 
+L 610.024 134.268 
+L 608.709 134.804 
+L 607.395 135.404 
+L 606.081 136.065 
+L 604.766 136.785 
+L 603.452 137.562 
+L 602.138 138.392 
+L 600.823 139.273 
+L 599.509 140.202 
+L 598.195 141.176 
+L 596.880 142.192 
+L 595.566 143.245 
+L 594.252 144.333 
+L 592.937 145.452 
+L 591.623 146.599 
+L 590.309 147.769 
+L 588.994 148.958 
+L 587.680 150.164 
+L 586.366 151.382 
+L 585.052 152.607 
+L 583.737 153.837 
+L 583.737 304.208 
+" clip-path="url(#pe6c77745dc)" style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #5b6b71; stroke-width: 2"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 409.261 312.680 
+L 409.261 26.762 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 409.261 312.680 
+L 777.6 312.680 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(435.164 114.208)">unloaded: smaller,</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(455.200 128.728)">shifted left,</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(423.665 143.247)">loses its square shape</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(676.864 213.444)">shocked LV</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #5b6b71" transform="translate(684.509 227.964)">(dashed)</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 597.459 203.450 
+Q 574.042 215.257 552.422 226.158 
+" style="fill: none; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 556.894 226.143 
+L 552.422 226.158 
+L 555.094 222.572 
+" style="fill: none; stroke: #152126; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="593.430" y="20.762" transform="rotate(-0 593.430 20.762)">Impella (microaxial pump)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p157169e9e3">
+   <rect x="25.719" y="26.762" width="368.338" height="285.917"/>
+  </clipPath>
+  <clipPath id="pe6c77745dc">
+   <rect x="409.261" y="26.762" width="368.338" height="285.917"/>
+  </clipPath>
+ </defs>
+</svg>

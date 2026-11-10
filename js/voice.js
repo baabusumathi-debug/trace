@@ -79,7 +79,9 @@ export async function deckIndex(deck, fresh) {
   }
   return idx[deck];
 }
-export const hasClip = (deck, p) => { const e = idx[deck] && idx[deck][p.k]; return !!(e && e.h === hOf(p) && e.voice === VOICE); };
+// a clip counts when its text matches and it is in the main voice, or in an OpenAI stand-in voice ("oa-…", used when the
+// Google voice limit is reached; remake those with redo keys later to bring them back to the main voice)
+export const hasClip = (deck, p) => { const e = idx[deck] && idx[deck][p.k]; return !!(e && e.h === hOf(p) && (e.voice === VOICE || /^oa-/.test(e.voice || ''))); };
 
 /* ---------- making a deck's audio (bridge, in small batches) ---------- */
 let making = '';

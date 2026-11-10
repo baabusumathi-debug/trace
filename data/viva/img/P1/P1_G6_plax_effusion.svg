@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="777.453pt" height="410.388pt" viewBox="0 0 777.453 410.388" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 410.388 
+L 777.453 410.388 
+L 777.453 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.974 289.330 
+C 64.139 321.818 120.933 339.181 179.030 339.181 
+C 237.128 339.181 293.921 321.818 342.086 289.330 
+L 179.030 47.590 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #f4f7f8; stroke: #5b6b71; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 142.581 154.333 
+C 167.438 154.333 191.279 152.413 208.855 148.995 
+C 226.432 145.578 236.307 140.942 236.307 136.109 
+C 236.307 131.276 226.432 126.640 208.855 123.222 
+C 191.279 119.805 167.438 117.884 142.581 117.884 
+C 117.725 117.884 93.883 119.805 76.307 123.222 
+C 58.731 126.640 48.855 131.276 48.855 136.109 
+C 48.855 140.942 58.731 145.578 76.307 148.995 
+C 93.883 152.413 117.725 154.333 142.581 154.333 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 132.167 237.645 
+C 157.024 237.645 180.865 234.079 198.441 227.732 
+C 216.018 221.385 225.893 212.776 225.893 203.800 
+C 225.893 194.824 216.018 186.214 198.441 179.867 
+C 180.865 173.520 157.024 169.954 132.167 169.954 
+C 107.311 169.954 83.469 173.520 65.893 179.867 
+C 48.317 186.214 38.441 194.824 38.441 203.800 
+C 38.441 212.776 48.317 221.385 65.893 227.732 
+C 83.469 234.079 107.311 237.645 132.167 237.645 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 259.739 190.782 
+C 266.643 190.782 273.266 188.862 278.148 185.444 
+C 283.030 182.027 285.774 177.391 285.774 172.558 
+C 285.774 167.725 283.030 163.089 278.148 159.671 
+C 273.266 156.254 266.643 154.333 259.739 154.333 
+C 252.834 154.333 246.211 156.254 241.329 159.671 
+C 236.447 163.089 233.704 167.725 233.704 172.558 
+C 233.704 177.391 236.447 182.027 241.329 185.444 
+C 246.211 188.862 252.834 190.782 259.739 190.782 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 259.739 248.059 
+C 267.334 248.059 274.619 245.590 279.989 241.196 
+C 285.359 236.802 288.377 230.842 288.377 224.628 
+C 288.377 218.414 285.359 212.453 279.989 208.059 
+C 274.619 203.665 267.334 201.196 259.739 201.196 
+C 252.144 201.196 244.859 203.665 239.488 208.059 
+C 234.118 212.453 231.100 218.414 231.100 224.628 
+C 231.100 230.842 234.118 236.802 239.488 241.196 
+C 244.859 245.590 252.144 248.059 259.739 248.059 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 48.855 237.645 
+L 95.718 243.373 
+L 168.616 242.331 
+L 225.893 248.580 
+L 244.118 253.787 
+L 225.893 255.870 
+L 184.237 260.035 
+L 95.718 254.828 
+L 48.855 252.745 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #b5452f; opacity: 0.85; stroke: #b5452f; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 223.290 292.319 
+C 227.432 292.319 231.406 290.673 234.335 287.743 
+C 237.265 284.814 238.911 280.840 238.911 276.698 
+C 238.911 272.555 237.265 268.581 234.335 265.652 
+C 231.406 262.723 227.432 261.077 223.290 261.077 
+C 219.147 261.077 215.173 262.723 212.244 265.652 
+C 209.315 268.581 207.669 272.555 207.669 276.698 
+C 207.669 280.840 209.315 284.814 212.244 287.743 
+C 215.173 290.673 219.147 292.319 223.290 292.319 
+z
+" clip-path="url(#p6f11df6293)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 43.648 258.473 
+L 184.237 263.680 
+L 231.100 258.473 
+L 277.963 258.473 
+L 303.998 248.059 
+" clip-path="url(#p6f11df6293)" style="fill: none; stroke: #152126; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="179.030" y="39.779" transform="rotate(-0 179.030 39.779)">probe</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="142.581" y="140.474" transform="rotate(-0 142.581 140.474)">RV</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="132.167" y="208.529" transform="rotate(-0 132.167 208.529)">LV</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="259.739" y="176.923" transform="rotate(-0 259.739 176.923)">Ao</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="259.739" y="228.993" transform="rotate(-0 259.739 228.993)">LA</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="223.290" y="281.063" transform="rotate(-0 223.290 281.063)">DA</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(90.020 301.230)">fluid tracks between</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(73.416 315.750)">LV wall and DA, toward LA</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #5b6b71" x="311.808" y="237.645" transform="rotate(-0 311.808 237.645)">pericardium</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="179.030" y="20.762" transform="rotate(-0 179.030 20.762)">Pericardial: IN FRONT of the DA</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 406.574 289.330 
+C 454.739 321.818 511.533 339.181 569.630 339.181 
+C 627.728 339.181 684.521 321.818 732.686 289.330 
+L 569.630 47.590 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #f4f7f8; stroke: #5b6b71; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 533.181 154.333 
+C 558.038 154.333 581.879 152.413 599.455 148.995 
+C 617.032 145.578 626.907 140.942 626.907 136.109 
+C 626.907 131.276 617.032 126.640 599.455 123.222 
+C 581.879 119.805 558.038 117.884 533.181 117.884 
+C 508.325 117.884 484.483 119.805 466.907 123.222 
+C 449.331 126.640 439.455 131.276 439.455 136.109 
+C 439.455 140.942 449.331 145.578 466.907 148.995 
+C 484.483 152.413 508.325 154.333 533.181 154.333 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 522.767 237.645 
+C 547.624 237.645 571.465 234.079 589.041 227.732 
+C 606.618 221.385 616.493 212.776 616.493 203.800 
+C 616.493 194.824 606.618 186.214 589.041 179.867 
+C 571.465 173.520 547.624 169.954 522.767 169.954 
+C 497.911 169.954 474.069 173.520 456.493 179.867 
+C 438.917 186.214 429.041 194.824 429.041 203.800 
+C 429.041 212.776 438.917 221.385 456.493 227.732 
+C 474.069 234.079 497.911 237.645 522.767 237.645 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 650.339 190.782 
+C 657.243 190.782 663.866 188.862 668.748 185.444 
+C 673.630 182.027 676.374 177.391 676.374 172.558 
+C 676.374 167.725 673.630 163.089 668.748 159.671 
+C 663.866 156.254 657.243 154.333 650.339 154.333 
+C 643.434 154.333 636.811 156.254 631.929 159.671 
+C 627.047 163.089 624.304 167.725 624.304 172.558 
+C 624.304 177.391 627.047 182.027 631.929 185.444 
+C 636.811 188.862 643.434 190.782 650.339 190.782 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 650.339 248.059 
+C 657.934 248.059 665.219 245.590 670.589 241.196 
+C 675.959 236.802 678.977 230.842 678.977 224.628 
+C 678.977 218.414 675.959 212.453 670.589 208.059 
+C 665.219 203.665 657.934 201.196 650.339 201.196 
+C 642.744 201.196 635.459 203.665 630.088 208.059 
+C 624.718 212.453 621.700 218.414 621.700 224.628 
+C 621.700 230.842 624.718 236.802 630.088 241.196 
+C 635.459 245.590 642.744 248.059 650.339 248.059 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 613.890 292.319 
+C 618.032 292.319 622.006 290.673 624.935 287.743 
+C 627.865 284.814 629.511 280.840 629.511 276.698 
+C 629.511 272.555 627.865 268.581 624.935 265.652 
+C 622.006 262.723 618.032 261.077 613.890 261.077 
+C 609.747 261.077 605.773 262.723 602.844 265.652 
+C 599.915 268.581 598.269 272.555 598.269 276.698 
+C 598.269 280.840 599.915 284.814 602.844 287.743 
+C 605.773 290.673 609.747 292.319 613.890 292.319 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #e8eef0; stroke: #152126; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 470.697 292.319 
+L 595.665 298.567 
+L 668.563 294.922 
+L 660.753 315.750 
+L 569.630 332.933 
+L 478.508 319.395 
+z
+" clip-path="url(#p5eb2d07765)" style="fill: #b5452f; opacity: 0.85; stroke: #b5452f; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 434.248 258.473 
+L 574.837 263.680 
+L 621.700 258.473 
+L 668.563 258.473 
+L 694.598 248.059 
+" clip-path="url(#p5eb2d07765)" style="fill: none; stroke: #152126; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="569.630" y="39.779" transform="rotate(-0 569.630 39.779)">probe</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="533.181" y="140.474" transform="rotate(-0 533.181 140.474)">RV</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="522.767" y="208.529" transform="rotate(-0 522.767 208.529)">LV</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="650.339" y="176.923" transform="rotate(-0 650.339 176.923)">Ao</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="650.339" y="228.993" transform="rotate(-0 650.339 228.993)">LA</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="613.890" y="281.063" transform="rotate(-0 613.890 281.063)">DA</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(472.423 348.093)">fluid below and behind the DA,</text>
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; fill: #152126" transform="translate(515.641 362.613)">not in front of it</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: start; fill: #5b6b71" x="702.408" y="237.645" transform="rotate(-0 702.408 237.645)">pericardium</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 14px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="569.630" y="20.762" transform="rotate(-0 569.630 20.762)">Pleural: BEHIND the DA</text>
+   </g>
+  </g>
+  <g id="text_19">
+   <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="392.4" y="400.293" transform="rotate(-0 392.4 400.293)">DA = descending thoracic aorta, in cross-section behind the left atrium</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6f11df6293">
+   <rect x="7.2" y="26.762" width="343.661" height="343.661"/>
+  </clipPath>
+  <clipPath id="p5eb2d07765">
+   <rect x="397.8" y="26.762" width="343.661" height="343.661"/>
+  </clipPath>
+ </defs>
+</svg>

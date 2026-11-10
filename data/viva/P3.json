@@ -1,0 +1,2252 @@
+{
+ "package": "P3",
+ "title": "Neuro: brain, cord, nerve and muscle",
+ "version": "P3.20261110.1",
+ "cards": {
+  "V3-001": {
+   "deck": "CCM08",
+   "topic": "CSF lactate on the blood-gas analyser: cut-off and why it rises",
+   "type": "qa",
+   "q": "Fever and altered sensorium: what will you do with the CSF in the ABG machine, what cut-off do you use, and why is CSF lactate high in bacterial meningitis?",
+   "a": [
+    "What I do: after the LP, run a fresh CSF sample on the ICU **blood-gas analyser**. Lactate (and glucose) in 2 minutes, long before the cell count and Gram stain. Blood-gas analysers read CSF lactate reliably (r = **0.94** against the laboratory; Stephani 2021).",
+    "Cut-off: **>3.5 mmol/L** (about 32 mg/dL) favours bacterial. Meta-analysis optimum: **35 mg/dL = 3.9 mmol/L** (Sakushima 2011). To convert: mg/dL ÷ 9 = mmol/L.",
+    "Accuracy (Sakushima 2011, 33 studies): sensitivity **0.93**, specificity **0.96**. Huy 2010 (25 studies): AUC 0.98, better than cells, glucose or protein alone.",
+    "Why it rises: CSF lactate is made inside the CNS and is independent of blood lactate. Brain made ischaemic by low flow, vasculitis and raised ICP switches to **anaerobic glycolysis**; neutrophils and bacteria in the CSF add their own lactate.",
+    "Glucose on the same run: pair it with a simultaneous blood glucose. CSF:blood ratio **<0.4** supports bacterial.",
+    "Caution: after antibiotics sensitivity falls to **0.49**, so a normal value does not exclude bacterial meningitis. Falsely high with a bloody tap or delayed processing; also raised after neurosurgery, seizures, haemorrhage or stroke."
+   ],
+   "tier": "S",
+   "qref": [
+    "P3-079",
+    "P3-077"
+   ],
+   "src": "Sakushima K et al., J Infect 2011;62:255; Huy NT et al., Crit Care 2010;14:R240; Stephani C, Choi AHK, Moerer O, Intensive Care Med Exp 2021;9",
+   "v": 1
+  },
+  "V3-002": {
+   "deck": "CCM08",
+   "topic": "CT before LP: who needs it, the evidence, and the CT findings",
+   "type": "qa",
+   "q": "Who needs a CT before lumbar puncture in suspected meningitis, can you do LP without CT, and what does CT show?",
+   "a": [
+    "Rule: most patients need **no CT**. If CT is needed, take blood cultures and give dexamethasone and antibiotics **first**, then scan, then LP (IDSA 2004).",
+    "Criteria | UK 2016 | ESCMID 2016 | IDSA 2004\nConsciousness | **GCS ≤12** | **GCS <10** | any abnormal\nFocal deficit | yes | yes | yes\nSeizures | continuous / uncontrolled | new onset | new, within 1 week",
+    "Other triggers: papilloedema (UK, IDSA); severe immunocompromise (ESCMID, IDSA); history of CNS disease such as mass, stroke or focal infection (IDSA only).",
+    "Evidence: Glimåker 2018, 815 Swedish adults. IDSA criteria would scan **65%**, ESCMID **32%**, Swedish **7%**. Prompt LP vs CT first: lower mortality (adjusted OR **0.38**), more favourable outcome (OR **2.11**).",
+    "So LP without CT is right when no criterion is present. A normal CT does not remove the risk if there are clinical signs of impending herniation.",
+    "CT findings: often normal early. Look for cerebral oedema, effacement of basal cisterns, **hydrocephalus**, **infarcts** (vasculitis, venous thrombosis), cerebritis or abscess, subdural empyema, and meningeal enhancement with contrast.",
+    "Also the source: sinusitis, mastoiditis, skull base fracture or pneumocephalus. MRI with gadolinium is better for enhancement, ventriculitis and early infarcts."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-075"
+   ],
+   "src": "Tunkel AR et al., IDSA, Clin Infect Dis 2004;39:1267; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37; McGill F et al., UK joint specialist societies, J Infect 2016;72:405; Glimåker M et al., Clin Infect Dis 2018;66:321",
+   "v": 1
+  },
+  "V3-003": {
+   "deck": "CCM08",
+   "topic": "Empirical treatment of community-acquired bacterial meningitis",
+   "type": "qa",
+   "q": "How do you treat community-acquired bacterial meningitis empirically, and when do you add ampicillin?",
+   "a": [
+    "First: blood cultures, then **dexamethasone 10 mg IV** just before or with the first antibiotic. Do not wait for CT or LP.",
+    "Base: **ceftriaxone 2 g IV 12-hourly** (or cefotaxime 2 g 4–6-hourly).",
+    "Plus **vancomycin** (15–20 mg/kg 8–12-hourly) where cephalosporin-resistant pneumococcus is possible; rifampicin is the alternative.",
+    "Add **ampicillin 2 g IV 4-hourly** for Listeria if: age **>50** (ESCMID, IDSA; UK 2016 uses **≥60**), pregnancy, immunosuppression or transplant, malignancy, diabetes, alcoholism or cirrhosis.",
+    "Why ampicillin: Listeria is intrinsically resistant to all cephalosporins, so ceftriaxone alone never covers it. Listeria peaks at the age extremes.",
+    "If encephalitis is possible (seizures, focal signs, behaviour change): add **aciclovir 10 mg/kg 8-hourly** until HSV PCR returns.",
+    "Then narrow to the organism and Gram stain. Duration: meningococcus 7 days, pneumococcus 10–14, Listeria at least 21."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-074"
+   ],
+   "src": "Tunkel AR et al., IDSA, Clin Infect Dis 2004;39:1267; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37; Farkas J, IBCC: Approach to CNS infection (EMCrit)",
+   "v": 1
+  },
+  "V3-004": {
+   "deck": "CCM08",
+   "topic": "Dexamethasone in bacterial meningitis: de Gans 2002 and the window",
+   "type": "qa",
+   "q": "Dexamethasone in bacterial meningitis: what did de Gans 2002 show, can you start it once antibiotics have gone in, and when do you stop it?",
+   "a": [
+    "de Gans 2002 (NEJM): **301** adults, dexamethasone **10 mg** 15–20 min before or with the first antibiotic, then 6-hourly for **4 days**.",
+    "Result: unfavourable outcome **15% vs 25%** (RR 0.59), death **7% vs 15%** (RR 0.48).",
+    "Pneumococcal subgroup: unfavourable outcome **26% vs 52%**, death **14% vs 34%**. The benefit is mainly pneumococcal.",
+    "Why timing matters: antibiotics lyse bacteria and release cell-wall products that drive the cytokine surge. Dexamethasone must be on board before or with that lysis.",
+    "Already given antibiotics? **ESCMID 2016**: still start up to **4 h** after the first dose, not later. **IDSA 2004**: do not start. UK 2016: may consider up to 12 h.",
+    "Continue or stop: IDSA continues only if Gram-positive diplococci or **S. pneumoniae** grow. ESCMID continues for **pneumococcal or H. influenzae** and advises considering stopping for other organisms; stop for **Listeria** (higher mortality with dexamethasone) or if not bacterial.",
+    "Not routine in HSV encephalitis."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-076"
+   ],
+   "src": "de Gans J, van de Beek D, NEJM 2002;347:1549; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37; Tunkel AR et al., IDSA, Clin Infect Dis 2004;39:1267",
+   "v": 1
+  },
+  "V3-005": {
+   "deck": "CCM08",
+   "topic": "Steroids in TB meningitis: Thwaites 2004 and ACT HIV 2023",
+   "type": "qa",
+   "q": "What is the role of steroids in tuberculous meningitis, and what did the ACT HIV trial show?",
+   "a": [
+    "Why: thick basal exudate causes hydrocephalus, vasculitic infarcts and cranial nerve palsies. Steroids damp that inflammation.",
+    "Thwaites 2004 (NEJM): **545** patients over 14 years in Vietnam, dexamethasone vs placebo, tapered over 6–8 weeks by severity grade.",
+    "Result: death at 9 months **31.8% vs 41.3%**, RR **0.69** (95% CI 0.52–0.92), p = 0.01. No fewer severely disabled survivors (18.2% vs 13.8%). Fewer serious adverse events.",
+    "HIV subgroup in Thwaites: only **98** patients, no significant effect. Too small to answer, hence ACT HIV.",
+    "ACT HIV (Donovan, NEJM 2023): **520** HIV-positive adults, Vietnam and Indonesia, 6–8-week taper. Death at 12 months **44.1% vs 49.0%**, HR **0.85** (0.66–1.10), p = 0.22. No benefit on any secondary end point.",
+    "WHO (2022, maintained 2025): dexamethasone or prednisolone tapered over **6–8 weeks** in all TB meningitis, strong recommendation. Adult dose about **0.4 mg/kg/day**, then taper. India (ICMR STW 2022): **8–12 weeks** in total.",
+    "So: give it to every HIV-negative patient. In HIV the survival benefit is unproven: weigh it case by case (raised ICP, IRIS)."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-193"
+   ],
+   "src": "Thwaites GE et al., NEJM 2004;351:1741; Donovan J et al., NEJM 2023;389:1357 (ACT HIV); WHO consolidated guidelines on tuberculosis, Module 4: treatment and care, 2025 (recommendation maintained); ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022",
+   "v": 1
+  },
+  "V3-006": {
+   "deck": "CCM08",
+   "topic": "Viral meningitis and HSV encephalitis: start aciclovir empirically",
+   "type": "qa",
+   "q": "How do you treat viral meningitis and suspected HSV encephalitis, and for how long do you give aciclovir?",
+   "a": [
+    "Viral meningitis: usually **enterovirus**, self-limiting. Supportive care: analgesia, antipyretics, fluids.",
+    "Encephalitis means the brain is involved: altered sensorium, behaviour change, seizures, focal signs. Then treat as HSV.",
+    "Start **IV aciclovir 10 mg/kg 8-hourly** in every patient with suspected encephalitis, at once, pending HSV PCR and MRI (IDSA 2008, A-III). Do not wait for results.",
+    "Why urgent: treated HSV encephalitis still had **28%** mortality at 18 months, falling to **8%** when aciclovir started within 4 days of onset.",
+    "Duration: **14–21 days** (IDSA); 14 if immunocompetent, 21 if immunocompromised (UK). Neonates: 20 mg/kg 8-hourly for 21 days.",
+    "Early PCR can be falsely negative. If it is negative but the picture or MRI fits, keep aciclovir and repeat the PCR in **3–7 days**.",
+    "Caution: crystal nephropathy. Adjust the dose to renal function and keep the patient well hydrated."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-078"
+   ],
+   "src": "Tunkel AR et al., IDSA encephalitis guideline, Clin Infect Dis 2008;47:303; Solomon T et al., UK national guideline (ABN/BIA), J Infect 2012;64:347",
+   "v": 1
+  },
+  "V3-007": {
+   "deck": "SC-B",
+   "topic": "FOUR score vs GCS in the ICU",
+   "type": "qa",
+   "q": "What is the FOUR score, how is it scored, and why is it better than GCS for intubated patients?",
+   "a": [
+    "**FOUR score** (Full Outline of UnResponsiveness; **Wijdicks, Ann Neurol 2005**): four parts, each **0–4**, total **0–16**. Validated in **120 ICU patients**; inter-rater agreement as good as GCS (weighted κ **0.82**).",
+    "**E** eye: 4 open and tracking, or blinking to command | 3 open, not tracking | 2 opens to loud voice | 1 opens to pain | 0 stays closed to pain.",
+    "**M** motor: 4 thumbs-up, fist or peace sign to command | 3 localises pain | 2 flexion | 1 extension | 0 none, or generalised myoclonus status.",
+    "**B** brainstem: 4 pupil and corneal reflexes present | 3 one pupil wide and fixed | 2 pupil or corneal absent | 1 both absent | 0 pupil, corneal and cough all absent.",
+    "**R** respiration: 4 not intubated, regular | 3 not intubated, Cheyne–Stokes | 2 not intubated, irregular | 1 breathes above the ventilator rate | 0 breathes at the ventilator rate, or apnoea.",
+    "Why it suits the ICU: **no verbal component**, so an intubated patient gets a full score (GCS can only record VT). Eye tracking and blinking detect **locked-in syndrome**; pupils and breathing pattern track **herniation**.",
+    "It separates patients who all score GCS 3, and the lowest FOUR totals carried a higher in-hospital mortality than the lowest GCS totals.",
+    "Catch: GCS is still the language of TBI guidelines, triage and trials (BTF severity bands). Best answer: record both; follow the intubated or comatose patient with FOUR."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-189"
+   ],
+   "src": "Wijdicks EFM et al., Ann Neurol 2005;58:585-593 (FOUR score validation)",
+   "v": 1
+  },
+  "V3-008": {
+   "deck": "NEURO05",
+   "topic": "Autoregulation, PRx and CPPopt",
+   "type": "qa",
+   "q": "What is cerebral autoregulation, and how do you individualise the CPP target with PRx and CPPopt?",
+   "a": [
+    "Autoregulation: cerebral arterioles constrict as pressure rises and dilate as it falls, keeping CBF steady over a plateau (classically **MAP 50–150 mmHg**, Lassen). Below it: ischaemia. Above it: hyperaemia and oedema.",
+    "In the injured brain the plateau narrows, shifts right or is lost. CBF becomes pressure-passive, so one fixed CPP can be too low for one patient and too high for another.",
+    "**PRx** (pressure reactivity index; **Czosnyka, Neurosurgery 1997**): a moving Pearson correlation between slow waves of MAP and ICP. Near zero or negative = vessels react (intact). Positive = pressure-passive (impaired).",
+    "Thresholds (**Sorrentino, Neurocrit Care 2012**; 459 TBI patients): PRx above **0.25** linked to death, above **0.05** to unfavourable outcome. In practice, a sustained PRx above about **0.2–0.3** = impaired autoregulation.",
+    "**CPPopt** (**Steiner, Crit Care Med 2002**): plot PRx against CPP; the lowest point of the U-shaped curve is the CPP where autoregulation works best. Aries (Crit Care Med 2012) automated it on a moving **4 h** window.",
+    "**COGiTATE** (Tas, J Neurotrauma 2021): 60 TBI patients, 4 centres. Targeting CPPopt was **feasible and safe** (in target **46.5%** of the time). Outcome benefit is not yet tested.",
+    "What I do: BTF CPP **60–70 mmHg**; with PRx, aim near CPPopt. Without PRx, the SIBICC Tier 2 MAP challenge: raise MAP and watch ICP. ICP falls or stays flat = autoregulation intact; ICP rises = impaired."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-181"
+   ],
+   "src": "Czosnyka M et al., Neurosurgery 1997;41:11; Steiner LA et al., Crit Care Med 2002;30:733; Aries MJH et al., Crit Care Med 2012;40:2456; Sorrentino E et al., Neurocrit Care 2012;16:258; Tas J et al., J Neurotrauma 2021;38:2790 (COGiTATE); Carney N et al., Neurosurgery 2017;80:6 (BTF 4th ed.); Hawryluk GWJ et al., Intensive Care Med 2019;45:1783 (SIBICC)",
+   "v": 1
+  },
+  "V3-009": {
+   "deck": "HY4",
+   "topic": "Acute SCI: 2024 MAP targets, early surgery, steroid positions",
+   "type": "qa",
+   "q": "What MAP do you target in acute spinal cord injury today, and where do steroids stand after NASCIS?",
+   "a": [
+    "MAP (**Kwon, Global Spine J 2024**; AO Spine/Praxis update of the 2013 AANS/CNS guideline): augment MAP to a floor of **75–80 mmHg**, do not actively push beyond **90–95**, for about **3–7 days**. Weak recommendation, very low-quality evidence.",
+    "Why: the injured cord loses autoregulation and neurogenic shock is common, so hypoperfusion adds secondary ischaemia. No recommendation on vasopressor choice or spinal cord perfusion pressure targets.",
+    "The old **MAP 85–90 for 7 days** was the 2013 Level III target. **Sajdeya, JAMA Netw Open 2025** (92 patients; MAP >85–90 vs >65–70): no neurological gain; more respiratory complications (**78% vs 39%**) and longer ventilation.",
+    "Surgery: early decompression **within 24 h** of injury is recommended for adults at any level (**Fehlings, Global Spine J 2024**; strong, moderate-quality evidence).",
+    "NASCIS II (Bracken, NEJM 1990): methylprednisolone **30 mg/kg** bolus, then **5.4 mg/kg/h for 23 h**. Primary outcome negative; benefit only in a post hoc subgroup treated within 8 h. NASCIS III (JAMA 1997): 48 h for 3–8 h starts (subgroup); more severe pneumonia (**5.8% vs 2.6%**).",
+    "Positions: AANS/CNS 2013: methylprednisolone **not recommended** (Level I). AO Spine 2017 (Fehlings): suggest offering a **24-h infusion if started within 8 h**; not after 8 h; not a 48-h course (all weak).",
+    "Other targets: avoid hypotension and hypoxia; VTE prophylaxis **within 72 h**; no hypotonic fluids; watch breathing and bradycardia in cervical injury."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-191"
+   ],
+   "src": "Kwon BK et al., Global Spine J 2024;14(3 Suppl):187S-211S (haemodynamic management); Fehlings MG et al., Global Spine J 2024;14(3 Suppl):174S-186S (timing of decompression); Sajdeya R et al., JAMA Netw Open 2025;8(9):e2525364; Bracken MB et al., NEJM 1990;322:1405 (NASCIS II); Bracken MB et al., JAMA 1997;277:1597 (NASCIS III); Hurlbert RJ et al., Neurosurgery 2013;72 Suppl 2:93 (AANS/CNS); Fehlings MG et al., Global Spine J 2017;7(3 Suppl):203S-211S (methylprednisolone)",
+   "v": 1
+  },
+  "V3-010": {
+   "deck": "SPECIAL01",
+   "topic": "Brain stem death in India: Form 10 and the 2026 national guideline",
+   "type": "qa",
+   "q": "How do you certify brain stem death in India under the THOA rules and the 2026 national guideline?",
+   "a": [
+    "Law: **THOA 1994** (amended 2011; Rules **2014**) recognises brain stem death. Certified on **Form 10** by a board of four: hospital medical administrator, an authorised specialist, a neurologist or neurosurgeon, and the treating doctor.",
+    "No neurologist or neurosurgeon: a surgeon or physician plus an anaesthetist or intensivist, nominated by the administrator. Two examinations at least **6 h apart** in adults; longer in children, at the board's discretion.",
+    "**National Guidelines on Brain Stem Death Certification, Edition I, 2026** (MoHFW/NOTTO), prerequisites: core temp **≥36 °C**; SBP **≥100** or MAP **≥60**; SpO₂ ≥94%; pH 7.20–7.50; Na **125–159**; sedatives cleared (**5 half-lives**).",
+    "Apnoea test: 100% O₂ for **10 min**; disconnect; O₂ catheter near the carina at **4–6 L/min**; watch chest and abdomen for **8–10 min**; ABG at about 8 min. PaCO₂ rises about 3 mmHg/min.",
+    "Positive: no breathing with PaCO₂ **≥60 mmHg and ≥20 above baseline**. Abort and reconnect if SBP **<90**, SpO₂ **<85% for >30 s** or instability; then an ancillary test (angiography, CT angiography, nuclear scan, TCD).",
+    "After targeted temperature management: wait for normothermia and at least **24 h** after rewarming. Record the time of death at the second positive determination; all members sign.",
+    "Live issue: on 28 Apr 2026 the Supreme Court (Dr S Ganapathy's petition) asked the **AIIMS** neurology head to form a 3–5 member committee on apnoea test safety and his proposed alternatives (angiography, EEG). Judgment reported reserved, Nov 2026.",
+    "Donation is separate: the 2026 guideline says certification is an independent medical and legal duty, never influenced by donation. If donation is declined, ventilation may be withdrawn per hospital and State procedure."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-183"
+   ],
+   "src": "Transplantation of Human Organs and Tissues Rules 2014, Form 10; National Guidelines on Brain Stem Death Certification, Edition I, MoHFW/NOTTO 2026; Greer DM et al., Neurology 2023;101:1112 (AAN/AAP/CNS/SCCM brain death guideline); Supreme Court of India, Dr S Ganapathy v State of Kerala, order 28 Apr 2026 (LiveLaw); judgment reserved Nov 2026 (press reports)",
+   "v": 1
+  },
+  "V3-011": {
+   "deck": "NEURO02",
+   "topic": "Mannitol vs hypertonic saline: mechanism and evidence",
+   "type": "qa",
+   "q": "Mannitol or hypertonic saline for raised ICP: how does each work, and what does the evidence say?",
+   "a": [
+    "**Both** raise plasma osmolality and draw water out of brain where the blood–brain barrier is intact. Both buy time; neither treats the cause.",
+    "**Mannitol** acts in two phases: first rheological (plasma expands, blood viscosity falls, autoregulating arterioles constrict, so cerebral blood volume falls within minutes), then osmotic.",
+    "Mannitol then causes an **osmotic diuresis**: hypovolaemia and hypotension follow unless urine is replaced. A poor fit for the bleeding, hypotensive trauma patient.",
+    "**Hypertonic saline** stays in the vessels and expands volume, so it suits low MAP. Costs: hypernatraemia, hyperchloraemic acidosis, volume overload, and a central line for 23.4%.",
+    "Evidence: both lower ICP; **no trial shows better functional outcome** with either. BTF 4th ed.: insufficient evidence to choose an agent. SIBICC 2019: no preference, same limits.",
+    "**NCS 2020**: suggests HTS over mannitol for initial ICP control in TBI (conditional, low quality); mannitol is an effective alternative; neither should be expected to improve outcome.",
+    "**COBI** (Roquilly, JAMA 2021; 370 pts): continuous 20% saline vs standard care in moderate–severe TBI. 6-month GOS-E adjusted OR **1.02** (0.71–1.47): no benefit. Use boluses, not infusions.",
+    "What I say: hypotensive or hypovolaemic → HTS; Na already near **155** or hyperchloraemic → mannitol. Bolus for an ICP rise; usual limits **Na 155, osmolality 320**, the same for both agents."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-178",
+    "P3-082"
+   ],
+   "src": "Cook AM et al., NCS cerebral oedema guideline, Neurocrit Care 2020;32:647; Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Carney N et al., BTF 4th ed., Neurosurgery 2017;80:6; Roquilly A et al., JAMA 2021;325:2056 (COBI); Muizelaar JP et al., J Neurosurg 1983;59:822",
+   "v": 1
+  },
+  "V3-012": {
+   "deck": "NEURO02",
+   "topic": "Mannitol monitoring: osmolar gap, AKI and rebound",
+   "type": "calc",
+   "q": "How do you dose and monitor mannitol, and why use the osmolar gap rather than serum osmolality?",
+   "a": [
+    "**Dose**: 0.25–1 g/kg IV bolus (20%) when ICP rises. Intermittent as needed, never a scheduled 4–6-hourly dose or a continuous infusion (SIBICC \"do not\" list).",
+    "Why not serum osmolality alone: it rises with sodium, glucose and urea too, so it cannot tell you how much **mannitol** is still circulating.",
+    "**Osmolar gap** = measured osmolality − calculated (2 × Na + glucose/18 + BUN/2.8, in mg/dL). Mannitol is an unmeasured osmole, so the gap tracks its blood level.",
+    "Practice: check the gap before each repeat dose. A trough gap under about **20 mOsm/kg** means mannitol has cleared and redosing is reasonable; a gap that stays high means it is accumulating.",
+    "**NCS 2020**: monitor mannitol by the **osmolar gap** rather than by an osmolality threshold; no cut-off has been validated in trials.",
+    "**AKI** is concentration-related: monitor creatinine and urine output, replace urine losses, avoid repeated doses in renal failure. NCS: an osmolality above 320 did not predict AKI.",
+    "**Rebound**: repeated doses let mannitol leak into injured brain where the barrier is broken; the gradient reverses and ICP rises again. One more reason for bolus-only dosing."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-178"
+   ],
+   "src": "Cook AM et al., NCS cerebral oedema guideline, Neurocrit Care 2020;32:647; Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783",
+   "v": 1
+  },
+  "V3-013": {
+   "deck": "NEURO02",
+   "topic": "Why DECRA was worse: design, imbalance and critique",
+   "type": "qa",
+   "q": "Why did early decompressive craniectomy in DECRA give worse outcomes?",
+   "a": [
+    "**DECRA** (Cooper, NEJM 2011): 155 adults aged 15–59 with severe **diffuse** TBI, within 72 h; ICP **>20 mmHg for >15 min within 1 h** despite first-tier therapy.",
+    "Operation: **bifrontotemporoparietal** craniectomy; the sagittal sinus and **falx were not divided**. Randomised at a median of about 35 h after injury.",
+    "Result: ICP fell (mean 14.4 vs 19.1 mmHg), mortality the same (**19% vs 18%**), but unfavourable GOS-E **70% vs 51%** (OR 2.21).",
+    "Reason 1, **too early and too low a trigger**: 15 min above 20 mmHg is not truly refractory ICP; many controls would have settled with medical therapy.",
+    "Reason 2, **baseline imbalance**: both pupils unreactive in **27% vs 12%**. Adjusted post hoc for this, unfavourable outcome was no longer significant (OR **1.90**, 95% CI 0.95–3.79, p = 0.07).",
+    "Reason 3, **technique and harm**: bifrontal without falx division, with more surgical complications such as hydrocephalus. **15 of 82** controls (18%) also had lifesaving DC after 72 h.",
+    "Contrast **RESCUEicp**: DC as a last tier for ICP **>25 for 1–12 h** cut deaths but raised vegetative and dependent survival; at 12 months favourable outcome **45.4% vs 32.4%**."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-179",
+    "P3-082"
+   ],
+   "src": "Cooper DJ et al., NEJM 2011;364:1493 (DECRA); Hutchinson PJ et al., NEJM 2016;375:1119 (RESCUEicp)",
+   "v": 1
+  },
+  "V3-014": {
+   "deck": "NEURO02",
+   "topic": "Hypothermia in TBI: why Eurotherm stopped, what POLAR showed",
+   "type": "qa",
+   "q": "What is the role of therapeutic hypothermia in TBI, and why was Eurotherm3235 stopped?",
+   "a": [
+    "Rationale: cooling lowers cerebral metabolism, blood volume and ICP. The trials asked whether that improves outcome.",
+    "**Eurotherm3235** (Andrews, NEJM 2015): ICP **>20 mmHg for ≥5 min** despite stage-1 therapy, up to 10 days after injury; **32–35 °C** for ≥48 h plus standard care vs standard care.",
+    "Stopped early at **387** of 600 planned, on the independent monitoring committee's advice, because outcomes, including deaths, were **worse with cooling**. Not futility, not benefit.",
+    "Result: fewer stage-3 therapies were needed (44% vs 54%), yet unfavourable GOS-E **74.3% vs 63.5%**; adjusted OR **1.53** for a worse outcome; deaths by 6 months **34.9% vs 26.6%**.",
+    "Lesson: controlling the ICP number did not give a better brain; the systemic harms of cooling outweighed it.",
+    "**POLAR** (Cooper, JAMA 2018): 511 severe TBI, early prophylactic cooling to **33 °C**, started within 3 h of injury, for ≥72 h (up to 7 days) vs normothermia.",
+    "POLAR result: favourable GOS-E **48.8% vs 49.1%**, no benefit; more pneumonia (70.5% vs 57.1%, per protocol) and bradycardia (18.8% vs 4.2%).",
+    "Now: no prophylactic hypothermia (BTF IIB); SIBICC keeps **mild hypothermia 35–36 °C** as a Tier 3 option only. Always prevent fever."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-190"
+   ],
+   "src": "Andrews PJD et al., NEJM 2015;373:2403 (Eurotherm3235); Cooper DJ et al., JAMA 2018;320:2211 (POLAR); Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Carney N et al., BTF 4th ed., Neurosurgery 2017;80:6",
+   "v": 1
+  },
+  "V3-015": {
+   "deck": "TRIALS01B",
+   "topic": "Transfusion in acute brain injury: TRAIN, HEMOTION, SAHaRA",
+   "type": "qa",
+   "q": "What is the transfusion threshold in acute brain injury, and did liberal transfusion improve neurological outcome?",
+   "a": [
+    "The general ICU trigger of **7 g/dL** comes from non-neurological trials. Injured brain with lost autoregulation may need more oxygen delivery, so three trials tested a higher trigger.",
+    "**TRAIN** (Taccone, JAMA 2024): 820 adults with TBI, SAH or ICH, GCS ≤13; transfuse at **<9 vs <7 g/dL**. Unfavourable GOS-E at 180 days **62.6% vs 72.6%** (RR 0.86): liberal better.",
+    "TRAIN also: less cerebral ischaemia (8.8% vs 13.5%); 28-day mortality similar (20.7% vs 22.5%).",
+    "**HEMOTION** (Turgeon, NEJM 2024): 742 moderate–severe TBI (GCS 3–12); **≤10 vs ≤7**. Unfavourable GOS-E at 6 months **68.4% vs 73.5%**; difference 5.4 points (95% CI −2.9 to 13.7): not significant.",
+    "**SAHaRA** (English, NEJM 2025): 742 aneurysmal SAH; **≤10 vs ≤8**. mRS ≥4 at 12 months **33.5% vs 37.7%** (RR 0.88, 0.72–1.09): not significant; less radiographic vasospasm with liberal.",
+    "Reading: all three lean towards liberal; only TRAIN reached significance. TRAIN and HEMOTION showed no major safety signal, but the liberal arms used far more blood.",
+    "What I do: in acute brain injury I do not wait for 7; I transfuse at about **9 g/dL**, with a lower bar if PbtO2 is low or vasospasm is active."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-180"
+   ],
+   "src": "Taccone FS et al., JAMA 2024;332:1623 (TRAIN); Turgeon AF et al., NEJM 2024;391:722 (HEMOTION); English SW et al., NEJM 2025;392:1079 (SAHaRA)",
+   "v": 1
+  },
+  "V3-016": {
+   "deck": "NEURO01",
+   "topic": "CT spotter: extradural vs subdural haematoma",
+   "type": "spotter",
+   "q": "Spotter: CT head with an extra-axial collection. Extradural or subdural, and how do you tell?",
+   "a": [
+    "**Extradural (EDH)**: between skull and dura. **Biconvex (lens-shaped)**, sharply defined, hyperdense; does **not cross sutures**, where the dura is fixed, but can cross the midline.",
+    "EDH cause: usually a temporal fracture tearing the **middle meningeal artery**, in younger patients. A **lucid interval** is classic but seen only in a minority.",
+    "**Subdural (SDH)**: between dura and arachnoid. **Crescent-shaped**, follows the hemisphere, **crosses sutures** but not the falx or tentorium.",
+    "SDH cause: torn **bridging veins** from acceleration–deceleration; elderly, atrophy, alcohol, anticoagulants. Underlying brain injury is common, so prognosis is worse than EDH.",
+    "SDH density with time: acute hyperdense; subacute (days to about 3 weeks) isodense and easy to miss; chronic hypodense. Mixed density or a swirl in an acute clot suggests active bleeding.",
+    "Report: side, thickness, **midline shift**, basal cisterns, contusions, and volume by **ABC/2**."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-184"
+   ],
+   "src": "Bullock MR et al., Surgical management of acute epidural hematomas, Neurosurgery 2006;58(3 Suppl):S7–S15; Bullock MR et al., Surgical management of acute subdural hematomas, Neurosurgery 2006;58(3 Suppl):S16–S24; standard neuroradiology teaching",
+   "v": 1
+  },
+  "V3-017": {
+   "deck": "NEURO02",
+   "topic": "Surgery for EDH and acute SDH: BTF criteria",
+   "type": "algorithm",
+   "q": "Which extradural and subdural haematomas need urgent surgery?",
+   "a": [
+    "**EDH >30 cm³: evacuate**, whatever the GCS.",
+    "EDH can be observed with serial CT in a neurosurgical centre if **<30 cm³, <15 mm thick, <5 mm midline shift, GCS >8** and no focal deficit.",
+    "EDH in coma (**GCS <9**) with **anisocoria**: evacuate as soon as possible.",
+    "**Acute SDH >10 mm thick or midline shift >5 mm: evacuate**, whatever the GCS.",
+    "Smaller SDH in coma (GCS <9): operate if GCS falls by **≥2** from injury to admission, pupils are asymmetric or fixed and dilated, or ICP stays **>20 mmHg**.",
+    "Timing: as soon as possible once indicated. Craniotomy for EDH; craniotomy with or without bone-flap removal and duraplasty for SDH.",
+    "These criteria come from the BTF surgical guidelines (Bullock, Neurosurgery 2006); the BTF 4th ed. (2016) covers medical care and did not re-review them."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-184"
+   ],
+   "src": "Bullock MR et al., Surgical management of acute epidural hematomas, Neurosurgery 2006;58(3 Suppl):S7–S15; Bullock MR et al., Surgical management of acute subdural hematomas, Neurosurgery 2006;58(3 Suppl):S16–S24",
+   "v": 1
+  },
+  "V3-018": {
+   "deck": "SC-E",
+   "topic": "Status epilepticus: ILAE time points and ESETT",
+   "type": "qa",
+   "q": "When does a seizure become status epilepticus, and what did ESETT show about second-line drugs?",
+   "a": [
+    "**ILAE 2015**: convulsive SE once a seizure lasts beyond **t1 = 5 min** (start treatment); lasting neuronal harm is likely beyond **t2 = 30 min**.",
+    "Why speed matters: as seizures continue, GABA-A receptors are internalised, so benzodiazepines lose effect; NMDA receptors increase, so excitation builds.",
+    "**ESETT** (Kapur, NEJM 2019): 400 enrolments, age ≥2, convulsive SE still seizing 5–30 min after an adequate benzodiazepine.",
+    "Arms over 10 min: levetiracetam **60 mg/kg** (max 4.5 g), fosphenytoin **20 mg PE/kg** (max 1.5 g), valproate **40 mg/kg** (max 3 g).",
+    "Primary outcome (seizures stopped and responsiveness improving at 60 min, no extra drug): **47%, 45%, 46%**. Stopped early for futility: no drug is better.",
+    "Safety similar: hypotension (0.7%, 3.2%, 1.6%) and intubation (20%, 26%, 17%) not significantly different. Choose by patient: avoid valproate in liver disease and pregnancy.",
+    "About half fail second line, so prepare intubation and an infusion while the second drug runs."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-085"
+   ],
+   "src": "Trinka E et al., ILAE definition of SE, Epilepsia 2015;56:1515; Kapur J et al., NEJM 2019;381:2103 (ESETT); Glauser T et al., AES guideline, Epilepsy Curr 2016;16:48",
+   "v": 1
+  },
+  "V3-019": {
+   "deck": "SC-E",
+   "topic": "Refractory SE: anaesthetic infusions and EEG goals",
+   "type": "algorithm",
+   "q": "Status epilepticus continues after a benzodiazepine and a second-line drug. What now?",
+   "a": [
+    "**Refractory SE**: seizures continue despite an adequate benzodiazepine and one adequate second-line drug. **Super-refractory**: continues or recurs **≥24 h** after anaesthetic therapy starts.",
+    "Intubate and ventilate; start **continuous EEG** (within 1 h if seizures may be ongoing, NCS 2012); hunt the cause: glucose, Na, Ca, Mg, toxins, CNS infection, autoimmune.",
+    "**Midazolam**: 0.2 mg/kg load, then 0.05–2 mg/kg/h. **Propofol**: 1–2 mg/kg, then 20–200 µg/kg/min; beware propofol infusion syndrome at high doses for long periods.",
+    "**Pentobarbital**: 5–15 mg/kg load, then 0.5–5 mg/kg/h; thiopentone is the usual Indian barbiturate. Expect hypotension needing pressors, ileus and a long washout.",
+    "Titrate to **cessation of electrographic seizures or burst suppression**; keep **24–48 h** of EEG control, then wean slowly.",
+    "Keep the second-line drug going at maintenance dose. Ketamine (NMDA antagonist) is a common add-on once benzodiazepines fail.",
+    "Super-refractory options: ketamine, inhaled anaesthetics, immunotherapy (steroids, IVIG, plasma exchange), ketogenic diet, hypothermia, epilepsy surgery (SC-E-17)."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-085"
+   ],
+   "src": "Brophy GM et al., NCS guideline for SE, Neurocrit Care 2012;17:3; Glauser T et al., AES guideline, Epilepsy Curr 2016;16:48",
+   "v": 1
+  },
+  "V3-020": {
+   "deck": "OBS02A",
+   "topic": "MgSO4 in eclampsia: Pritchard vs Zuspan, stop rules, antidote",
+   "type": "algorithm",
+   "q": "Give the Pritchard and Zuspan magnesium regimens, the checks before each dose, and the antidote.",
+   "a": [
+    "**Pritchard (IM)**: 4 g IV of 20% slowly (about 5 min) **plus** 10 g IM of 50% (5 g deep in each buttock); then **5 g IM every 4 h** in alternate buttocks. Needs no pump; widely used in India.",
+    "**Zuspan (IV)**: 4 g IV over 5–15 min, then **1 g/h** infusion (the WHO IV regimen). The higher-dose US regimen gives 4–6 g, then 1–2 g/h.",
+    "Recurrent seizure on magnesium: a further **2 g IV** over 5 min. Continue for **24 h after delivery or the last seizure**, whichever is later.",
+    "**Before each dose and hourly**: patellar reflex present, **RR ≥16/min** (WHO; ≥12 in US protocols), urine **≥25–30 mL/h** (≥100 mL in 4 h).",
+    "A check fails: withhold the next IM dose or reduce the infusion and check a level. Oliguria is the usual cause: magnesium leaves only through the kidney.",
+    "Respiratory depression or arrest: stop magnesium, support ventilation, give **calcium gluconate 1 g (10 mL of 10%) slow IV over about 10 min**.",
+    "Therapeutic level **4–7 mEq/L** (2–3.5 mmol/L). Measure in renal impairment, absent reflexes or recurrent seizures."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-084",
+    "P3-194"
+   ],
+   "src": "WHO, Managing complications in pregnancy and childbirth (MCPC), 2nd ed. 2017; WHO PQ magnesium sulfate product information (RH062); Pritchard JA, Surg Gynecol Obstet 1955;100:131; Zuspan FP, Clin Obstet Gynecol 1966;9:954; ACOG Practice Bulletin 222, Obstet Gynecol 2020",
+   "v": 1
+  },
+  "V3-021": {
+   "deck": "NEURO01",
+   "topic": "Hyponatraemia in brain injury: why not fluid-restrict",
+   "type": "qa",
+   "q": "A head-injured patient's sodium is falling. Why is hyponatraemia dangerous in brain injury, and why is fluid restriction risky?",
+   "a": [
+    "Low sodium makes plasma hypotonic, so water moves into brain cells: oedema and ICP rise. A swollen brain has little compliance left, so even a **mild** fall matters.",
+    "Fluid restriction shrinks the circulating volume: MAP falls, so **CPP = MAP − ICP** falls. If the cause is cerebral salt wasting, restriction deepens the hypovolaemia.",
+    "Wijdicks 1985 (ruptured aneurysm): most hyponatraemic patients were **volume depleted**, not SIADH, and fluid restriction was linked to **cerebral infarction**.",
+    "So in brain injury: no hypotonic fluids (no 5% dextrose or 0.45% saline); 0.9% saline for maintenance; aim for euvolaemia.",
+    "Moderately severe or severe symptoms, or raised ICP: **3% saline 150 mL over 20 min**, repeated until sodium rises by **5 mmol/L** (European 2014).",
+    "Then treat by volume: hypovolaemic CSW → isotonic saline, salt, ± fludrocortisone. Euvolaemic SIADH → salt or urea; restrict only if CPP is safe. No vaptan with CNS symptoms.",
+    "Limit the rise to **10 mmol/L in the first 24 h** and 8 per day after. Acute hyponatraemia (under 48 h) carries less demyelination risk than chronic."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-080"
+   ],
+   "src": "Spasovski G et al., Eur J Endocrinol 2014;170:G1 (European hyponatraemia guideline); Verbalis JG et al., Am J Med 2013;126:S1; Wijdicks EFM et al., Ann Neurol 1985;17:137; Maesaka JK et al., Front Med 2018;5:319",
+   "v": 1
+  },
+  "V3-022": {
+   "deck": "ELEC01A",
+   "topic": "SIADH vs cerebral salt wasting vs diabetes insipidus",
+   "type": "pairs",
+   "q": "Differentiate SIADH, cerebral salt wasting and central diabetes insipidus.",
+   "a": [
+    "Feature | **SIADH** | **CSW** | **CENTRAL DI**",
+    "Serum sodium | **Low** | **Low** | **High** (over 145)",
+    "Volume | Normal or slightly expanded | **Reduced**: negative balance | Reduced if water not replaced",
+    "Urine output | Normal or low | **High** | **Very high**: over 250 mL/h for 2 h; over 3–3.5 L/day",
+    "Urine | Concentrated; sodium over 30 | Concentrated; sodium over 30, often very high | **Dilute**: osmolality under 300, SG under 1.005",
+    "Urate excretion after sodium corrected | Normalises | **Stays high** (FEurate over 11%) | Not useful",
+    "Treatment | Fluid restriction (not in SAH or TBI); urea or salt | **Isotonic saline**, salt, fludrocortisone | **Desmopressin 1–2 µg IV/SC** + free water",
+    "Rule: SIADH and CSW share the same low sodium and salty urine, so **volume status** decides restriction vs saline. DI is the opposite problem: water lost, sodium high."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-176",
+    "P3-080"
+   ],
+   "src": "Maesaka JK et al., Front Med 2018;5:319; Lamas C et al., Endocrinol Nutr 2014;61:e15; Maggiore U et al., Crit Care 2009;13:R110 (citing Agha criteria); Spasovski G et al., Eur J Endocrinol 2014;170:G1",
+   "v": 1
+  },
+  "V3-023": {
+   "deck": "ELEC01B",
+   "topic": "SALSA trial: 3% saline boluses vs slow infusion",
+   "type": "qa",
+   "q": "What did the SALSA trial compare and show, and how does it fit the correction-rate debate?",
+   "a": [
+    "**SALSA** (Baek, JAMA Intern Med 2021): open-label RCT, 3 Korean hospitals, **178** adults with moderately severe or severe symptomatic hyponatraemia (sodium ≤125; mean 118).",
+    "Arms: 3% saline as **rapid intermittent boluses** vs **slow continuous infusion**, over 24–48 h.",
+    "Overcorrection: **17.2% vs 24.2%** (p = 0.26): no difference.",
+    "Boluses needed **less relowering** (41.4% vs 57.1%, p = 0.04) and reached the 1-hour target more often (32.2% vs 17.6%, intention to treat). Symptom relief did not differ.",
+    "Meaning: boluses are at least as safe as a drip and act faster, which supports the guideline bolus approach.",
+    "Debate: in large cohorts ODS was rare (**0.05%**, MacMillan 2023), and slower correction was linked to higher mortality (Seethapathy 2023). Keep the limits for high-risk patients."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-177"
+   ],
+   "src": "Baek SH et al., JAMA Intern Med 2021;181:81 (SALSA); MacMillan TE et al., NEJM Evid 2023;2(4); Seethapathy H et al., NEJM Evid 2023;2(10); Ayus JC et al., JAMA Intern Med 2025;185:38",
+   "v": 1
+  },
+  "V3-024": {
+   "deck": "ELEC01B",
+   "topic": "Desmopressin clamp: proactive, reactive and rescue",
+   "type": "qa",
+   "q": "How is desmopressin used to prevent or reverse overcorrection of hyponatraemia?",
+   "a": [
+    "Why: the danger is a sudden **water diuresis** once the cause resolves (volume restored, drug stopped, cortisol replaced). Desmopressin shuts that off, so the saline sets the rise.",
+    "**Proactive (clamp)**: desmopressin **1–2 µg IV or SC every 6–8 h** from the start, with 3% saline dosed to the target rise. Sood 2013: 25 patients, rise **5.8** mmol/L on day 1, none over 12 in 24 h.",
+    "**Reactive**: give desmopressin when sodium is rising too fast or dilute urine starts to pour, to stop further rise.",
+    "**Rescue**: once the limit is crossed, desmopressin plus electrolyte-free water to re-lower (NA-16).",
+    "Evidence is small: AlShanableh 2025 (cohort, 184 patients) overcorrection **6.8% vs 27.1%** proactive vs reactive; Pakchotanon 2024 RCT (49 patients) 16.7% vs 28%, not significant (p = 0.54).",
+    "Caution: on a clamp any free water drops sodium further, so control intake strictly and check sodium often. Guidelines do not mandate a routine clamp."
+   ],
+   "tier": "A",
+   "qref": [
+    "P3-177"
+   ],
+   "src": "Sood L et al., Am J Kidney Dis 2013;61:571; Sterns RH, Hix JK, Silver SM, Chest 2013;144:672; AlShanableh Z et al., Kidney360 2025;6:1462; Pakchotanon K et al., Sci Rep 2024;14:7487; Spasovski G et al., Eur J Endocrinol 2014;170:G1",
+   "v": 1
+  },
+  "V3-025": {
+   "deck": "NEURO02",
+   "topic": "Hypernatraemia and central DI after brain injury",
+   "type": "qa",
+   "q": "How do you manage hypernatraemia in brain injury, and how do you diagnose and treat central diabetes insipidus?",
+   "a": [
+    "Two kinds: **deliberate** (osmotherapy, sodium kept about 145–155) and **unwanted** (central DI or a free-water deficit). Hypernatraemia after severe TBI is linked to higher mortality.",
+    "Suspect central DI: urine over **250 mL/h for 2 h** without mannitol or diuretic, dilute urine (osmolality under 300, SG under 1.005), sodium over **145** and rising.",
+    "Criteria used after TBI (Agha): sodium over 145, polyuria over **3.5 L/day**, urine osmolality under 300. Early DI often marks severe injury, herniation or coming brain death.",
+    "Treat: replace losses with free water (enteral water or IV dextrose) and give **desmopressin 1–2 µg IV or SC**; it lasts 6–12 h, so repeat when polyuria returns.",
+    "Triphasic response (stalk or hypothalamic injury): **1** DI for about 5–7 days → **2** SIADH-like antidiuresis for 2–14 days as stored ADH leaks out → **3** permanent DI.",
+    "Phase 2 trap: continued desmopressin or free water now causes **hyponatraemia**. Stop desmopressin, restrict water, check sodium every 6–8 h.",
+    "Lower chronic hypernatraemia by about **0.5 mmol/L/h**, no more than **10–12 per day** (Adrogué 2000). With raised ICP avoid a fast fall (rebound oedema); NCS 2020 sets no rate but warns about sudden sodium shifts."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-192",
+    "P3-176"
+   ],
+   "src": "Maggiore U et al., Crit Care 2009;13:R110; Lamas C et al., Endocrinol Nutr 2014;61:e15 (SEEN guideline, DI after pituitary surgery); Karali V et al., Crit Care 2008;12(Suppl 2):P130; Adrogué HJ, Madias NE, NEJM 2000;342:1493; Cook AM et al., Neurocrit Care 2020;32:647 (NCS cerebral oedema guideline)",
+   "v": 1
+  },
+  "V3-026": {
+   "deck": "NEURO03",
+   "topic": "Reading a CT head for subarachnoid haemorrhage",
+   "type": "spotter",
+   "q": "Spotter: non-contrast CT head showing subarachnoid haemorrhage. What do you describe, and how do you grade it?",
+   "a": [
+    "Name it: **hyperdense** blood in the subarachnoid spaces: basal cisterns (the suprasellar star), sylvian fissures, interhemispheric fissure, cortical sulci.",
+    "Where the blood is thickest hints at the aneurysm: interhemispheric fissure → **ACom**; sylvian fissure → **MCA**; prepontine cistern and fourth ventricle → posterior circulation.",
+    "Blood only in the cisterns in front of the midbrain and pons, with a normal angiogram = **perimesencephalic** (non-aneurysmal) SAH, with a benign course.",
+    "Then the complications: **IVH** (blood layering in the occipital horns), **hydrocephalus** (dilated temporal horns), parenchymal clot, oedema, midline shift.",
+    "Grade it on **modified Fisher** (Frontera 2006): thin vs thick cisternal blood, with or without IVH. Symptomatic vasospasm about 24%, 33%, 33% and **40%** for grades 1–4.",
+    "Close with the plan: CTA for the aneurysm, EVD if hydrocephalus, nimodipine, early securing."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-185"
+   ],
+   "src": "Frontera JA et al., Neurosurgery 2006;59:21 (modified Fisher scale); Hoh BL et al., AHA/ASA aSAH guideline, Stroke 2023;54:e314",
+   "v": 1
+  },
+  "V3-027": {
+   "deck": "HY4",
+   "topic": "Stroke reperfusion: tenecteplase and thrombectomy windows",
+   "type": "qa",
+   "q": "Acute ischaemic stroke: what are the thrombolysis and thrombectomy windows, and what is the tenecteplase dose?",
+   "a": [
+    "IV lysis within **4.5 h** of last known well, disabling deficit (any NIHSS), no bleed on CT: **alteplase 0.9 mg/kg** (max 90 mg) or **tenecteplase 0.25 mg/kg** (max 25 mg) as one bolus. TNK 0.4 mg/kg is not recommended.",
+    "Tenecteplase: non-inferior to alteplase (AcT, Lancet 2022); better reperfusion before thrombectomy (EXTEND-IA TNK, NEJM 2018). One bolus suits transfer.",
+    "Unknown onset, wake-up or **4.5–9 h**: lysis only if imaging shows salvageable brain: MRI DWI–FLAIR mismatch (WAKE-UP, NEJM 2018) or perfusion mismatch (AHA/ASA 2026).",
+    "Thrombectomy, ICA or M1 occlusion, NIHSS ≥6, prestroke mRS 0–1: within **6 h** if ASPECTS **3–10**, even after lysis. Do not delay lysis for CTA or perfusion imaging.",
+    "**6–16 h**: DEFUSE-3 perfusion criteria (core under 70 mL, mismatch ratio ≥1.8, penumbra ≥15 mL; n = 182): mRS 0–2 at 90 days **45% vs 17%**.",
+    "**6–24 h**: DAWN clinical–core mismatch (small core, NIHSS ≥10; n = 206): functional independence at 90 days **49% vs 13%**.",
+    "Large core (AHA/ASA 2026): ICA or M1, age under 80, NIHSS ≥6, ASPECTS **3–5**, no mass effect: EVT up to **24 h** (SELECT2, ANGEL-ASPECT, RESCUE-Japan LIMIT). ASPECTS 0–2 within 6 h: reasonable.",
+    "Basilar occlusion: EVT within **24 h** if NIHSS ≥10, prestroke mRS 0–1, PC-ASPECTS ≥6. After successful EVT, pushing SBP under **140** is harmful."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-086"
+   ],
+   "src": "Prabhakaran S et al., 2026 AHA/ASA guideline for early management of AIS, Stroke 2026 (doi 10.1161/STR.0000000000000513; replaces Powers 2019); Menon BK et al., Lancet 2022;400:161 (AcT); Campbell BCV et al., NEJM 2018;378:1573 (EXTEND-IA TNK); Thomalla G et al., NEJM 2018;379:611 (WAKE-UP); Albers GW et al., NEJM 2018;378:708 (DEFUSE 3); Nogueira RG et al., NEJM 2018;378:11 (DAWN); Yoshimura S et al., NEJM 2022;386:1303; Sarraj A et al., NEJM 2023;388:1259; Huo X et al., NEJM 2023;388:1272",
+   "v": 1
+  },
+  "V3-028": {
+   "deck": "NMD03",
+   "topic": "Tetanus: mechanism, forms and Ablett grading",
+   "type": "qa",
+   "q": "What happens in tetanus, and how do you grade its severity?",
+   "a": [
+    "**Tetanospasmin** from *C. tetani* in a wound travels up motor nerves and stops inhibitory interneurons releasing **GABA and glycine**: the motor neurons and sympathetic outflow fire unchecked.",
+    "Result: **rigidity** (trismus first), **reflex spasms** and **autonomic overactivity**. Consciousness is preserved, so spasms are painful.",
+    "Forms: **generalised** (commonest), **localised** (near the wound), **cephalic** (head wounds, cranial nerves) and **neonatal**.",
+    "**ABLETT GRADE** | **FEATURES**",
+    "**I (mild)** | Mild–moderate trismus, spasticity; no spasms, no respiratory compromise, little dysphagia",
+    "**II (moderate)** | Moderate trismus, marked rigidity, short spasms; RR **>30**; mild dysphagia",
+    "**III (severe)** | Severe trismus, prolonged reflex spasms; RR **>40**, apnoeic spells, severe dysphagia; HR **>120**",
+    "**IV (very severe)** | Grade III plus **violent autonomic swings**: hypertension and tachycardia alternating with hypotension and bradycardia"
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-188"
+   ],
+   "src": "Ablett JJL 1967 (classification), as tabulated in Int J Emerg Med 2021 (s12245-021-00346-9); CDC Clinical Care of Tetanus",
+   "v": 1
+  },
+  "V3-029": {
+   "deck": "NMD03",
+   "topic": "Tetanus: wound, antitoxin, antibiotic and vaccine",
+   "type": "qa",
+   "q": "How do you stop the toxin in tetanus: wound care, antitoxin dose, antibiotic and vaccination?",
+   "a": [
+    "**Wound**: clean, debride necrotic tissue, remove foreign material. The wound is the toxin factory.",
+    "**Human tetanus immunoglobulin (HTIG)**: a **single IM dose** as soon as possible (WHO 2017). CDC: **500 IU** IM is as effective as the older **3000–6000 IU**, with less pain.",
+    "Antitoxin neutralises only **unbound** toxin; toxin already inside nerves is untouched, so it does not reverse established signs. Infiltrating part around the wound is unproven.",
+    "No HTIG: **equine antitoxin**, one large dose after a sensitivity test (WHO). Van Hao 2022: equine **21,000 IU** IM was as good as human 3000 IU (ventilation 44% vs 45%).",
+    "**Antibiotic**: WHO prefers **metronidazole or penicillin G**; IV metronidazole is **500 mg 6-hourly**. Ahmadsyah 1985 (n = 173, non-randomised): metronidazole had lower mortality and shorter stay than procaine penicillin.",
+    "But Ganesh Kumar 2004 (India, RCT, n = 161): oral metronidazole 600 mg 6-hourly × 10 days = benzathine or IV benzylpenicillin. Metronidazole is favoured; penicillin is acceptable.",
+    "**Vaccinate**: the disease gives **no immunity**. Start or complete tetanus toxoid once the patient is stable."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-188"
+   ],
+   "src": "WHO Tetanus vaccines position paper, Wkly Epidemiol Rec 2017;92(6):53; CDC Clinical Care of Tetanus (web page); Van Hao N et al., Lancet Glob Health 2022;10:e862; Ahmadsyah I et al., BMJ 1985;291:648; Ganesh Kumar AV et al., Ann Trop Med Parasitol 2004;98:59; Karnad DR, Gupta V, Indian J Crit Care Med 2021;25(Suppl 2):S155",
+   "v": 1
+  },
+  "V3-030": {
+   "deck": "NMD03",
+   "topic": "Tetanus: spasms, autonomic storm and magnesium",
+   "type": "qa",
+   "q": "How do you control spasms and autonomic instability in tetanus, and what did the magnesium trial show?",
+   "a": [
+    "**Spasms**: benzodiazepines first (diazepam; Cochrane in children, death RR **0.36** vs phenobarbitone plus chlorpromazine). Dark, quiet room; minimal handling.",
+    "Refractory spasms or laryngospasm: **neuromuscular blocker and ventilation**. Ventilation runs weeks (median about **16 days** in Van Hao 2022): plan a tracheostomy.",
+    "**Thwaites, Lancet 2006** (Vietnam): **195** severe tetanus patients, magnesium vs placebo infusion for 7 days. Need for ventilation not reduced: **OR 0.71 (0.36–1.40)**.",
+    "But magnesium cut the doses of **midazolam and pipecuronium**, and patients were **4.7 times** less likely to need **verapamil** for cardiovascular instability. Survival was the same.",
+    "Rodrigo 2012 meta-analysis (**3 trials, 275** patients): **no fall in mortality** (vs placebo RR **0.80, 0.41–1.58**). Use it to spare sedatives and calm the autonomic storm, not to avoid the ventilator.",
+    "Regimens: Thwaites 2006 **40 mg/kg over 30 min**, then **2 g/h**; Attygalle 1997 **5 g** load, then **2–3 g/h** to spasms. Target **2–4 mmol/L** (4–8 mEq/L); keep the **patellar reflex present**.",
+    "Autonomic storm: short-acting agents only: labetalol, esmolol, clonidine, morphine, dexmedetomidine; each has only small series behind it. **No long-acting β-blockers**: the storm can flip to bradycardia, hypotension and asystole."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-188"
+   ],
+   "src": "Thwaites CL et al., Lancet 2006;368:1436 (ISRCTN74651862); Rodrigo C et al., Anaesthesia 2012;67:1370; Rodrigo C, Fernando D, Rajapakse S, Crit Care 2014;18:217; Attygalle D, Rodrigo N, Anaesthesia 1997;52:956; Karnad DR, Gupta V, Indian J Crit Care Med 2021;25(Suppl 2):S155; Okoromah CN, Lesi FE, Cochrane review (diazepam for neonatal tetanus), as cited in Rodrigo 2014",
+   "v": 1
+  },
+  "V3-031": {
+   "deck": "NMD03",
+   "topic": "Intrathecal antitetanus immunoglobulin: the evidence",
+   "type": "qa",
+   "q": "Should antitetanus immunoglobulin be given intrathecally? Give the evidence.",
+   "a": [
+    "Why try it: the toxin acts **inside the CNS**, and IM antitoxin crosses the blood-brain barrier poorly.",
+    "**Kabura 2006** meta-analysis (Trop Med Int Health): **12 trials, 942 patients**: intrathecal cut mortality, **RR 0.71 (0.62–0.81)**. But most trials were weak: only **two** concealed allocation, and safety was rarely reported.",
+    "**Agarwal 1998** (CMC Vellore, Natl Med J India): **36** adults, **250 IU** intrathecal vs sham. In mild tetanus: slower progression, shorter ICU and hospital stay, fewer tracheostomies; mortality 20% vs 30%.",
+    "**Miranda-Filho 2004** (BMJ, Brazil ICU): **120** patients, **1000 IU** intrathecal plus 3000 IU IM vs IM alone. Better clinical progression, shorter spasms and respiratory support; deaths 4 vs 10, NS.",
+    "**Van Hao 2022** (Lancet Glob Health, Vietnam, 2×2, **272** adults): **500 IU** intrathecal vs sham. Ventilation **43% vs 50%, RR 0.87 (0.66–1.13)**, NS. Safe, no deaths from the procedure.",
+    "Verdict: intrathecal is **safe but unproven** where ventilation is available. Standard care is **IM** antitoxin; US preparations are not licensed for intrathecal use.",
+    "If used, it must be a **preservative-free** product, within a trial or local protocol."
+   ],
+   "tier": "B",
+   "qref": [
+    "P3-188"
+   ],
+   "src": "Kabura L et al., Trop Med Int Health 2006;11:1075 (figures as cited in Van Hao 2022); Agarwal M et al., Natl Med J India 1998;11:209; Miranda-Filho DB et al., BMJ 2004;328:615; Van Hao N et al., Lancet Glob Health 2022;10:e862; CDC Clinical Care of Tetanus",
+   "v": 1
+  }
+ },
+ "lines": {},
+ "questions": [
+  {
+   "q": "P3-079",
+   "text": "Case: fever and altered sensorium. What will you do with the CSF in an ABG machine?",
+   "tier": "S",
+   "gen": "G1",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "CCM08|CNS-03",
+     "bridge": "Fever plus altered sensorium has a short list, and infection leads it. Next: what the CSF must be sent for →"
+    },
+    {
+     "card": "CCM08|CNS-15",
+     "bridge": "Culture is the gold standard but slow, and neutrophils fall within an hour. Next: the patterns that separate the causes →"
+    },
+    {
+     "card": "CCM08|CNS-17",
+     "bridge": "Neutrophils and glucose below 40% say bacterial. Next: how well CSF lactate separates bacterial from aseptic →"
+    },
+    {
+     "card": "CCM08|CNS-19",
+     "bridge": "Lactate is 93% sensitive and 96% specific, but halves after antibiotics. Next: where CSF lactate comes from →"
+    },
+    {
+     "card": "CCM08|CNS-02",
+     "bridge": "Lysis drives cytokines, low cerebral flow and ischaemia. Next: running the CSF on the blood-gas analyser and reading it →"
+    },
+    {
+     "card": "V3-001",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Present: fever with altered sensorium is meningitis or encephalitis until proved otherwise; I also think of cerebral malaria and septic encephalopathy.",
+    "What I do: blood cultures, LP at once if no CT criterion, dexamethasone and antibiotics within the hour; fresh CSF straight into the ICU blood-gas analyser for lactate and glucose.",
+    "Reading it: CSF lactate **>3.5 mmol/L** favours bacterial. The meta-analysis optimum is **35 mg/dL (3.9 mmol/L)**: sensitivity **93%**, specificity **96%**.",
+    "Why it is high: it is made inside the CNS, by ischaemic brain (low flow, vasculitis, raised ICP) through anaerobic glycolysis, and by neutrophils and bacteria. Not from blood.",
+    "Caution: after antibiotics sensitivity falls to **49%**; a bloody tap, delay, seizures or neurosurgery raise it. It supports Gram stain, culture and PCR, never replaces them."
+   ]
+  },
+  {
+   "q": "P3-077",
+   "text": "Bacterial vs viral vs TB meningitis — how do you differentiate?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "CCM08|CNS-16",
+     "bridge": "Bacterial is cloudy with over 1000 cells; viral is gin-clear. Next: the differential, glucose and protein →"
+    },
+    {
+     "card": "CCM08|CNS-17",
+     "bridge": "Neutrophils mean bacterial; TB has the lowest glucose and highest protein. Next: real numbers from a bacterial vs non-bacterial series →"
+    },
+    {
+     "card": "CCM08|CNS-18",
+     "bridge": "Procalcitonin and the glucose ratio separate the groups best. Next: how CSF lactate performs →"
+    },
+    {
+     "card": "CCM08|CNS-19",
+     "bridge": "The optimal lactate cut-off is about 35 mg/dL. Next: the same cut-off in mmol/L, and why lactate rises →"
+    },
+    {
+     "card": "V3-001",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: cells, CSF:blood glucose ratio and protein separate the three; lactate, ADA and PCR sharpen it.",
+    "Bacterial: cloudy, often **>1000** cells, neutrophils, glucose ratio **<0.4**, protein **>1 g/L**.",
+    "Viral: clear, lymphocytes, normal glucose, protein normal or mildly raised. TB: lymphocytes under 500, glucose very low (**<0.3**), protein 1–5 g/L, ADA and GeneXpert.",
+    "Lactate: **>3.5 mmol/L** favours bacterial; the meta-analysis optimum is **35 mg/dL, about 3.9 mmol/L** (Sakushima 2011: sensitivity 0.93, specificity 0.96).",
+    "Caution: early viral and partly treated bacterial overlap; after antibiotics lactate sensitivity is only **0.49**. CMV and early TB can mimic bacterial."
+   ]
+  },
+  {
+   "q": "P3-075",
+   "text": "What is the role of CT in meningitis, and what are the findings?",
+   "tier": "A",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "CCM08|CNS-20",
+     "bridge": "CT before LP is a herniation screen, and only a few need it. Next: what CT and MRI each show →"
+    },
+    {
+     "card": "CCM08|CNS-21",
+     "bridge": "CT is the quick screen; MRI with gadolinium is the imaging of choice. Next: the patterns that point to TB, HSV or JE →"
+    },
+    {
+     "card": "CCM08|CNS-22",
+     "bridge": "TB is basal, HSV temporal, JE thalamic. Next: the three guidelines compared, the evidence for prompt LP, and the CT findings →"
+    },
+    {
+     "card": "V3-002",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: CT before LP is a safety screen for shift or swelling that would make LP cause herniation. Most patients do not need it.",
+    "When: UK 2016: focal signs, papilloedema, uncontrolled seizures, **GCS ≤12**. ESCMID 2016: focal deficit, new seizures, severe immunocompromise, **GCS <10**.",
+    "Can I do LP without CT: yes, if none apply. Glimåker 2018: prompt LP had lower mortality than CT first (adjusted OR **0.38**).",
+    "What I do: if CT is needed, blood cultures, dexamethasone and antibiotics go in first, then the scan, then the LP.",
+    "Findings: often normal; oedema, hydrocephalus, infarcts, cerebritis or abscess, subdural empyema, meningeal enhancement, and a sinus or mastoid source. MRI is better."
+   ]
+  },
+  {
+   "q": "P3-074",
+   "text": "How do you treat community-acquired meningitis?",
+   "tier": "A",
+   "gen": "G1",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "CCM08|CNS-10",
+     "bridge": "The organism follows age, and Listeria sits at both extremes. Next: the drug and dose for each organism →"
+    },
+    {
+     "card": "CCM08|CNS-24",
+     "bridge": "Cephalosporins cover all but Listeria, which needs amoxicillin. Next: how this becomes one empirical regimen →"
+    },
+    {
+     "card": "V3-003",
+     "bridge": "Ceftriaxone, vancomycin if resistance, ampicillin if Listeria risk. Next: the steroid that goes in with the first dose →"
+    },
+    {
+     "card": "CCM08|CNS-26",
+     "bridge": "Dexamethasone goes with or before the first antibiotic. Next: how long to treat once the organism is known →"
+    },
+    {
+     "card": "CCM08|CNS-25",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What I do: blood cultures, then dexamethasone 10 mg and antibiotics at once. I never wait for CT or LP.",
+    "Regimen: ceftriaxone **2 g 12-hourly** (or cefotaxime 2 g 4–6-hourly), plus vancomycin where resistant pneumococcus is possible.",
+    "Ampicillin **2 g 4-hourly** for Listeria if age **>50**, pregnant, immunosuppressed, alcoholic, diabetic or with cancer: cephalosporins never cover Listeria.",
+    "If encephalitis is possible (seizures, focal signs, behaviour change), I add aciclovir **10 mg/kg 8-hourly** until the HSV PCR returns.",
+    "Then narrow: meningococcus **7 days**, pneumococcus **10–14**, Listeria **at least 21**; dexamethasone 4 days, continued only if pneumococcal (IDSA)."
+   ]
+  },
+  {
+   "q": "P3-076",
+   "text": "Dexamethasone in meningitis — when?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "CCM08|CNS-02",
+     "bridge": "Bacterial lysis releases cell-wall products that drive the cytokine surge. Next: the steroid dose and timing that blunt it →"
+    },
+    {
+     "card": "CCM08|CNS-26",
+     "bridge": "Dexamethasone 4 days, with or before the first antibiotic. Next: the trial behind it, the window and when to stop →"
+    },
+    {
+     "card": "V3-004",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What: dexamethasone **0.15 mg/kg (10 mg) 6-hourly for 4 days**, started 15–20 minutes before or with the first antibiotic.",
+    "Why: it blunts the cytokine surge from antibiotic-induced bacterial lysis, so it must be on board before or with that lysis.",
+    "Evidence: de Gans 2002, 301 adults: unfavourable outcome **15% vs 25%**, death **7% vs 15%**; in pneumococcal meningitis death **14% vs 34%**.",
+    "Antibiotics already in: ESCMID allows a start up to **4 h** after the first dose, not later. IDSA says do not start; UK 2016 allows up to 12 h.",
+    "Stop or continue: 4 days if pneumococcal (IDSA), or pneumococcal or H. influenzae (ESCMID); consider stopping for others, stop for **Listeria** or if not bacterial."
+   ]
+  },
+  {
+   "q": "P3-193",
+   "text": "What is the role of steroids in tuberculous meningitis?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "CCM08|CNS-22",
+     "bridge": "TB meningitis is a basal exudate with hydrocephalus and infarcts. Next: the drugs and the steroid dose →"
+    },
+    {
+     "card": "CCM08|CNS-27",
+     "bridge": "2HRZE then HR, with dexamethasone 0.4 mg/kg/day tapered. Next: the two trials, HIV-negative and HIV-positive →"
+    },
+    {
+     "card": "V3-005",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What: dexamethasone about **0.4 mg/kg/day**, tapered over **6–8 weeks** (WHO; ICMR 8–12), alongside 2 months HRZE then HR (HRE in NTEP). WHO: strong recommendation.",
+    "Why: thick basal exudate causes hydrocephalus, vasculitic infarcts and cranial nerve palsies; steroids damp that inflammation.",
+    "HIV-negative: Thwaites 2004, 545 patients in Vietnam: 9-month death **31.8% vs 41.3%** (RR **0.69**), but no fewer severely disabled survivors.",
+    "ACT HIV (Donovan, NEJM 2023), 520 HIV-positive adults: 12-month death **44.1% vs 49.0%**, HR **0.85** (0.66–1.10), p = 0.22: no survival benefit.",
+    "So: every HIV-negative patient gets it. In HIV the benefit is unproven, so I weigh it case by case; WHO still recommends steroids in all TB meningitis."
+   ]
+  },
+  {
+   "q": "P3-078",
+   "text": "How do you treat viral meningitis / encephalitis?",
+   "tier": "B",
+   "gen": "G1",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "CCM08|CNS-13",
+     "bridge": "Enteroviruses cause most aseptic meningitis, which is self-limiting. Next: what tells you the brain itself is involved →"
+    },
+    {
+     "card": "CCM08|CNS-08",
+     "bridge": "Encephalitis is parenchymal: disorientation, speech and behaviour change, seizures. Next: where HSV shows on MRI →"
+    },
+    {
+     "card": "CCM08|CNS-22",
+     "bridge": "HSV is temporal and orbitofrontal, bilateral but asymmetrical. Next: the aciclovir dose and duration →"
+    },
+    {
+     "card": "CCM08|CNS-28",
+     "bridge": "10 mg/kg 8-hourly, 14 or 21 days, repeat LP at the end. Next: what the outcome is even with treatment →"
+    },
+    {
+     "card": "CCM08|CNS-29",
+     "bridge": "Only 14% recover fully, so time matters. Next: why you start aciclovir before any result →"
+    },
+    {
+     "card": "V3-006",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Viral meningitis: usually enterovirus and self-limiting; supportive care with analgesia, antipyretics and fluids.",
+    "Encephalitis (altered sensorium, seizures, focal signs): IV aciclovir **10 mg/kg 8-hourly** at once, before HSV PCR or MRI returns (IDSA 2008).",
+    "Why urgent: treated HSV encephalitis still had **28%** mortality at 18 months, and **8%** when aciclovir started within 4 days of onset.",
+    "Duration: **14–21 days**; 14 if immunocompetent, 21 if immunocompromised; repeat LP and continue if the PCR is still positive.",
+    "Caution: early PCR can be falsely negative, so repeat it in **3–7 days** before stopping. Adjust to renal function and hydrate well against crystal nephropathy."
+   ]
+  },
+  {
+   "q": "P3-189",
+   "text": "What is the GCS and the FOUR score - which is better in the ICU?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "SC-B|SC-B-01",
+     "bridge": "GCS adds eye 1–4, verbal 1–5 and motor 1–6 for a total of 3–15. Next: what happens to it once the patient is intubated →"
+    },
+    {
+     "card": "SC-B|SC-B-05",
+     "bridge": "Intubated means verbal is untestable, so GCS can only record VT. Next: when to score it and how it grades TBI →"
+    },
+    {
+     "card": "NEURO01|NEURO-20",
+     "bridge": "Score after resuscitation, before sedation; 3–8 is severe TBI. Next: the scale built for the intubated, comatose patient →"
+    },
+    {
+     "card": "V3-007",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: GCS is eye, verbal and motor, **3–15**. FOUR (Wijdicks 2005) is eye, motor, brainstem and respiration, each 0–4, total **0–16**.",
+    "Why FOUR in the ICU: it has **no verbal part**, so an intubated patient gets a full score; GCS can only write VT.",
+    "It adds what GCS misses: pupils, corneals and cough, the breathing pattern, and eye tracking or blinking to command, which detects **locked-in syndrome**.",
+    "Evidence: validated in **120 ICU patients**, inter-rater agreement as good as GCS (κ **0.82**); it splits the GCS-3 group and its lowest totals carried higher mortality.",
+    "What I do: GCS stays the language of TBI guidelines, triage and trials, so I record both. I follow the intubated or comatose patient with FOUR.",
+    "Caution: score GCS after resuscitation and before sedation or paralysis. FOUR 0 means no brainstem reflexes or breathing: exclude confounders and consider formal brain death testing."
+   ]
+  },
+  {
+   "q": "P3-081",
+   "text": "ICP monitoring indications in TBI — abnormal vs normal CT.",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "NEURO05|NEURO-101",
+     "bridge": "Clinical signs of high ICP come late; a monitor guides CPP and drainage. Next: which TBI patients need one →"
+    },
+    {
+     "card": "NEURO02|NEURO-44",
+     "bridge": "Severe TBI with abnormal CT, or normal CT with 2 of age >40, posturing, SBP <90. Next: indications beyond TBI and when not to →"
+    },
+    {
+     "card": "NEURO05|NEURO-100",
+     "bridge": "ICP monitors also serve ICH, SAH, hydrocephalus and liver failure; coagulopathy limits them. Next: what number you treat →"
+    },
+    {
+     "card": "NEURO02|NEURO-48",
+     "bridge": "BTF 4th: treat ICP above 22 mmHg, read with clinical and CT findings. Next: the CPP that goes with it →"
+    },
+    {
+     "card": "NEURO02|NEURO-49",
+     "bridge": "CPP 60–70 mmHg, with no aggressive push above 70. Next: the whole answer as one worked question →"
+    },
+    {
+     "card": "HY4|NEU-01",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Who: severe TBI, **GCS 3–8** after resuscitation, salvageable, with an **abnormal CT** (haematoma, contusion, swelling, herniation or compressed cisterns).",
+    "Normal CT: monitor if **≥2 of 3**: age **>40**, uni- or bilateral motor posturing, SBP **<90 mmHg**. These come from the 3rd edition, Level III (Narayan 1982).",
+    "What I treat: BTF 4th ed. (2016), treat ICP **>22 mmHg** (Level IIB), together with the clinical picture and CT, and keep CPP **60–70 mmHg**.",
+    "Evidence: the 4th edition says only that managing severe TBI with ICP data lowers in-hospital and 2-week mortality. BEST-TRIP (2012) found ICP-guided care no better than imaging plus exam.",
+    "Caution: a normal CT does not rule out monitoring. Coagulopathy is the main practical contraindication; the EVD is the gold standard and also drains CSF."
+   ]
+  },
+  {
+   "q": "P3-087",
+   "text": "What does ONSD tell you?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "NEURO05|NEURO-109",
+     "bridge": "The orbital sheath fills with CSF under pressure; measure 3 mm behind the globe, cut-off about 5–5.9 mm. Next: how it ranks among non-invasive tools →"
+    },
+    {
+     "card": "NEURO05|NEURO-110",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot: linear probe on the closed eyelid; the optic nerve sheath measured **3 mm behind the globe**.",
+    "Why it works: the subarachnoid space around the optic nerve is continuous with intracranial CSF, so a raised ICP distends the sheath.",
+    "Cut-off: about **5.0–5.9 mm** across studies. Higher cut-offs (about **5.6–6.3 mm**) are more specific for raised ICP.",
+    "Evidence: meta-analyses give sensitivity about **0.90** and specificity about **0.85** against invasive ICP.",
+    "Caution: it screens, it does not give a number, and it is not a replacement for an invasive monitor. Optic neuritis, trauma or an orbital mass also widen the sheath."
+   ]
+  },
+  {
+   "q": "P3-195",
+   "text": "Spotter - ICP waveform. What does it show?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "NEURO05|NEURO-99",
+     "bridge": "ICP is 5–15 mmHg; the pressure-volume curve turns steep once reserve is spent. Next: how each pulse shows that reserve →"
+    },
+    {
+     "card": "NEURO05|NEURO-102",
+     "bridge": "P1 is the arterial pulse, P2 brain compliance, P3 the dicrotic notch; P2 above P1 means a stiff brain. Next: the exam version with traps →"
+    },
+    {
+     "card": "HY4|NEU-02",
+     "bridge": "P2 above P1 warns even before the mean ICP is high; a damped trace is a line fault. Next: the slow waves on the trend →"
+    },
+    {
+     "card": "NEURO05|NEURO-103",
+     "bridge": "A plateau waves (50–100 for 5–20 min) are always bad; C waves are physiological. Next: check yourself on the traps →"
+    },
+    {
+     "card": "NEURO05|NEURO-111",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot: an ICP pulse waveform with three peaks. **P1** percussion (arterial pulse via choroid plexus), **P2** tidal (brain compliance), **P3** dicrotic (aortic valve closure).",
+    "Normal: **P1 > P2 > P3**, a descending staircase.",
+    "Here: **P2 taller than P1** means intracranial compliance is exhausted. We are on the steep part of the pressure-volume curve, even if the mean ICP is not yet high.",
+    "Mechanism: once CSF and venous blood have been displaced, each arterial pulse makes a bigger pressure rise in the brain itself, so the tidal wave grows.",
+    "What I do: act before the number climbs. Head up, sedation, CO₂ in range, osmotherapy or CSF drainage; look on the trend for Lundberg A plateau waves (**50–100 mmHg**, 5–20 min).",
+    "Caution: a damped, rounded trace with lost peaks is air or a blocked catheter, not a good reading. Flush or re-zero first."
+   ]
+  },
+  {
+   "q": "P3-181",
+   "text": "What is the CPP target and what is cerebral autoregulation?",
+   "tier": "B",
+   "gen": "G2",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "NEURO05|NEURO-99",
+     "bridge": "CPP is MAP minus ICP; autoregulation holds flow steady over MAP 50–150, and injury breaks it. Next: what the guideline sets as the target →"
+    },
+    {
+     "card": "NEURO02|NEURO-49",
+     "bridge": "BTF: CPP 60–70 mmHg; forcing it above 70 is discouraged. Next: where CPP and the MAP challenge sit in the escalation ladder →"
+    },
+    {
+     "card": "HY4|NEU-03",
+     "bridge": "SIBICC uses CPP 60–70 in Tier 1 and a MAP challenge in Tier 2. Next: how PRx finds each patient's own best CPP →"
+    },
+    {
+     "card": "V3-008",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: CPP = MAP − ICP. BTF 4th ed. target **60–70 mmHg** (Level IIB); below 60 risks ischaemia, and pushing above 70 with fluid and pressors risks ARDS.",
+    "Autoregulation: arterioles constrict or dilate to keep cerebral blood flow steady over a plateau, classically **MAP 50–150**. After injury it narrows, shifts right or is lost.",
+    "Individualise: **PRx** is a moving correlation of slow MAP and ICP waves. Near zero or negative = intact; above about **0.2–0.3** = impaired. PRx >0.25 was linked to death.",
+    "CPPopt: plot PRx against CPP; the bottom of the U is the patient's optimal CPP (Steiner 2002). **COGiTATE** (2021, 60 patients) showed targeting it is feasible and safe.",
+    "What I do: aim for 60–70; with PRx available, aim near CPPopt. Without it, a SIBICC MAP challenge: if ICP falls or stays flat as MAP rises, autoregulation is intact.",
+    "Caution: CPPopt is not yet outcome-proven; a phase III trial is still needed."
+   ]
+  },
+  {
+   "q": "P3-082",
+   "text": "How do you manage raised ICP in TBI — the tiers?",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "NEURO05|NEURO-99",
+     "bridge": "A stiff box: once compensation is spent, small volumes give big ICP rises. Next: the thresholds that trigger treatment →"
+    },
+    {
+     "card": "NEURO01|NEURO-25",
+     "bridge": "Treat ICP above 22 and hold CPP 60–70, with osmotherapy in bolus doses. Next: how SIBICC stacks the measures into tiers →"
+    },
+    {
+     "card": "HY4|NEU-03",
+     "bridge": "SIBICC climbs from Tier 0 basics to Tier 3 rescue only as each tier fails. Next: how this differs from the older ladder in your notes →"
+    },
+    {
+     "card": "NEURO01|NEURO-24",
+     "bridge": "The older ladder hyperventilates early; SIBICC keeps PaCO2 35–38 in Tier 1. Next: the follow-up, mannitol or saline →"
+    },
+    {
+     "card": "HY4|NEU-04",
+     "bridge": "Both osmotic agents work; choose by volume status and sodium. Next: the Tier 3 drugs and what BTF says of them →"
+    },
+    {
+     "card": "NEURO02|NEURO-37",
+     "bridge": "Barbiturates for refractory ICP only, never as prophylaxis. Next: the surgical Tier 3 option and its two trials →"
+    },
+    {
+     "card": "NEURO02|NEURO-30",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: SIBICC 2019 is a tiered ladder for ICP above **22 mmHg**. Escalate only when the lower tier fails, and keep CPP **60–70**.",
+    "Tier 0: head up 30–45°, neutral neck, sedation and analgesia, SpO2 ≥94%, PaCO2 35–45, no fever, avoid low sodium, Hb >7.",
+    "Tier 1: deeper sedation, PaCO2 **35–38**, mannitol 0.25–1 g/kg or hypertonic saline boluses, CSF drainage by EVD, consider EEG.",
+    "Tier 2: mild hypocapnia **32–35**, paralysis, MAP challenge. Tier 3: barbiturate coma, secondary decompressive craniectomy, mild hypothermia **35–36 °C**.",
+    "Mannitol or saline: saline if hypotensive or hypovolaemic, mannitol if sodium is high. Boluses only. Limits: Na **155**, osmolality **320**.",
+    "Caution: no steroids, no routine PaCO2 <30, no CPP >90. DECRA: early DC worsened function; RESCUEicp: last-tier DC saved lives at the cost of disability."
+   ]
+  },
+  {
+   "q": "P3-178",
+   "text": "Mannitol or hypertonic saline for raised ICP?",
+   "tier": "A",
+   "gen": "G3",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "HY4|NEU-04",
+     "bridge": "Both pull water from the brain; the doses and the switch rules are here. Next: how each agent actually works and what trials show →"
+    },
+    {
+     "card": "V3-011",
+     "bridge": "Saline expands volume, mannitol diureses; NCS leans to saline, no outcome gain. Next: what the guideline base says →"
+    },
+    {
+     "card": "NEURO02|NEURO-34",
+     "bridge": "BTF: both lower ICP, no evidence to pick one or claim outcome benefit. Next: how to monitor mannitol safely →"
+    },
+    {
+     "card": "V3-012",
+     "bridge": "The osmolar gap tracks mannitol still in blood; redose when it falls. Next: how the gap is calculated →"
+    },
+    {
+     "card": "TOX01|TOX-08",
+     "bridge": "Gap = measured minus calculated osmolality; mannitol is one unmeasured osmole. Next: the sodium and osmolality ceilings →"
+    },
+    {
+     "card": "NEURO01|NEURO-25",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What they share: both raise plasma osmolality and pull water from brain where the barrier is intact. Mannitol dose **0.25–1 g/kg** as a bolus.",
+    "Mechanism: mannitol first lowers blood viscosity, then pulls water, then causes a diuresis. Hypertonic saline stays in the vessels and expands volume.",
+    "Evidence: NCS 2020 suggests saline first for ICP in TBI, with mannitol an effective alternative. No trial shows better outcome; COBI continuous saline did not help.",
+    "What I do: hypotensive or bleeding patient gets saline; high sodium or chloride gets mannitol. Bolus for a rise, and keep Na at or below **155**.",
+    "Monitoring mannitol: check the **osmolar gap**, measured minus calculated, before each repeat dose; it tracks unmeasured mannitol. Redose when the trough is under about **20**.",
+    "Caution: a high gap goes with AKI, and repeated doses can leak into injured brain and cause rebound. Replace urine losses."
+   ]
+  },
+  {
+   "q": "P3-179",
+   "text": "Tell us about decompressive craniectomy trials.",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "NEURO02|NEURO-28",
+     "bridge": "Primary DC is done with a clot evacuation; secondary DC treats raised ICP. Next: the outcome scale both trials used →"
+    },
+    {
+     "card": "NEURO02|NEURO-31",
+     "bridge": "GOS-E runs 1–8; DECRA called 1–4 unfavourable, RESCUEicp counted upper severe disability (4) as favourable. Next: the two trials →"
+    },
+    {
+     "card": "NEURO02|NEURO-30",
+     "bridge": "DECRA: early DC, same deaths, worse function; RESCUEicp: last-tier DC, fewer deaths, more disability. Next: why DECRA did worse →"
+    },
+    {
+     "card": "V3-013",
+     "bridge": "Early trigger, bifrontal technique and a pupil imbalance explain DECRA. Next: what BTF now recommends →"
+    },
+    {
+     "card": "NEURO02|NEURO-29",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: secondary decompressive craniectomy removes bone and opens dura for raised ICP. Two trials frame it: DECRA (early) and RESCUEicp (last tier).",
+    "DECRA 2011: 155 diffuse TBI, bifrontal DC for ICP **>20 for 15 min**. ICP fell, mortality the same (**19 vs 18%**), unfavourable outcome worse (**70 vs 51%**).",
+    "Why worse: trigger too early and too low, bifrontal without dividing the falx, and more unreactive pupils in the DC arm (**27 vs 12%**). Adjusted, significance was lost.",
+    "RESCUEicp 2016: 408 patients, ICP **>25 for 1–12 h** despite medical tiers. Deaths **26.9 vs 48.9%**, but more vegetative state (8.5 vs 2.1%) and severe disability.",
+    "At 12 months favourable outcome was **45.4 vs 32.4%**. DC trades death for dependency, so the family must hear that before consent.",
+    "What I do: DC as Tier 3 for refractory ICP, large frontotemporoparietal flap (at least 12 × 15 cm), not early bifrontal DC (BTF)."
+   ]
+  },
+  {
+   "q": "P3-190",
+   "text": "Role of therapeutic hypothermia in TBI?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "NEURO02|NEURO-32",
+     "bridge": "Eurotherm cooled for high ICP and did harm; POLAR cooled early and did nothing. Next: why Eurotherm stopped, with the numbers →"
+    },
+    {
+     "card": "V3-014",
+     "bridge": "Stopped by its monitoring committee for worse outcomes despite ICP control. Next: what BTF says of prophylactic cooling →"
+    },
+    {
+     "card": "NEURO02|NEURO-33",
+     "bridge": "BTF IIB: no early prophylactic hypothermia in diffuse injury. Next: where mild cooling still sits in the ICP ladder →"
+    },
+    {
+     "card": "HY4|NEU-03",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: cooling lowers cerebral metabolism and ICP. Two uses were tested: cooling to treat high ICP (Eurotherm) and cooling to prevent injury (POLAR).",
+    "Eurotherm3235 2015: ICP >20 despite stage-1 therapy, cooled to **32–35 °C**. ICP was controlled with fewer stage-3 drugs, but outcome was worse: adjusted OR **1.53**.",
+    "Why stopped: the monitoring committee halted it at 387 of 600 because outcomes, including deaths (**34.9 vs 26.6%**), were worse with cooling.",
+    "POLAR 2018: 511 severe TBI, early prophylactic cooling to **33 °C** for at least 72 h. Favourable outcome **48.8 vs 49.1%**, with more pneumonia and bradycardia.",
+    "What I do: normothermia and aggressive fever control. Mild hypothermia **35–36 °C** only as a SIBICC Tier 3 rescue for refractory ICP.",
+    "Caution: a lower ICP number is not a better brain. BTF advises against prophylactic hypothermia."
+   ]
+  },
+  {
+   "q": "P3-180",
+   "text": "What is the transfusion threshold in brain injury?",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "trial",
+   "steps": [
+    {
+     "card": "HY5|HEO-02",
+     "bridge": "The general ICU trigger is 7 g/dL. Next: why the brain was thought to need more, first in SAH →"
+    },
+    {
+     "card": "NEURO03|NEURO-79",
+     "bridge": "SAH guidance left 7–10 as a grey zone guided by brain oxygen. Next: the TBI trial, HEMOTION →"
+    },
+    {
+     "card": "TRIALS01B|TRL-17",
+     "bridge": "HEMOTION: transfusing at 10 leaned better but missed significance. Next: TRAIN and SAHaRA side by side →"
+    },
+    {
+     "card": "V3-015",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: the general ICU trigger is Hb **7 g/dL**, but injured brain may need more oxygen delivery. Three trials tested a higher trigger in 2024–25.",
+    "TRAIN (JAMA 2024): 820 TBI, SAH or ICH; transfuse at **<9 vs <7**. Unfavourable outcome **62.6 vs 72.6%** (RR 0.86), with less cerebral ischaemia.",
+    "HEMOTION (NEJM 2024): 742 TBI, **≤10 vs ≤7**, **68.4 vs 73.5%**, not significant. SAHaRA (NEJM 2025): 742 SAH, **≤10 vs ≤8**, 33.5 vs 37.7%, not significant.",
+    "Did liberal help? It improved outcome in TRAIN only; the other two leaned the same way without significance. TRAIN and HEMOTION showed no safety signal.",
+    "What I do: in acute brain injury I do not wait for 7; I transfuse at about **9 g/dL**, sooner if PbtO2 is low or vasospasm is active.",
+    "Caution: each unit carries TACO, TRALI and infection risk, so I give single units and recheck."
+   ]
+  },
+  {
+   "q": "P3-184",
+   "text": "Spotter - CT head showing extradural vs subdural haematoma.",
+   "tier": "B",
+   "gen": "G3",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "NEURO01|NEURO-11",
+     "bridge": "EDH and SDH are both extra-axial, outside the brain. Next: how to tell them apart on CT →"
+    },
+    {
+     "card": "V3-016",
+     "bridge": "Lens that stops at sutures is extradural; crescent that crosses sutures is subdural. Next: which ones go to theatre →"
+    },
+    {
+     "card": "V3-017",
+     "bridge": "EDH over 30 mL, SDH over 10 mm or shift over 5 mm: operate at any GCS. Next: the imaging rules around the scan →"
+    },
+    {
+     "card": "NEURO01|NEURO-27",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot: a biconvex, lens-shaped hyperdensity that stops at sutures is **extradural**. A crescent that crosses sutures and hugs the hemisphere is **subdural**.",
+    "Mechanism: EDH is usually arterial, the middle meningeal artery under a temporal fracture, sometimes with a lucid interval. SDH comes from torn bridging veins.",
+    "Measure: thickness, midline shift, basal cisterns, contusions, and volume by **ABC/2**.",
+    "Surgery (BTF 2006): EDH **>30 mL** at any GCS, or any EDH in coma with anisocoria. Acute SDH **>10 mm** thick or shift **>5 mm** at any GCS.",
+    "Smaller lesions: watch EDH if <30 mL, <15 mm, shift <5 mm, GCS >8, no deficit. Small SDH in coma: operate if GCS falls by **2**, pupils change, or ICP is >20.",
+    "Caution: SDH has the worse prognosis because of injury beneath. Reverse anticoagulants, repeat CT for growth, and image the C-spine."
+   ]
+  },
+  {
+   "q": "P3-080",
+   "text": "Case: TBI with hyponatraemia — present it.",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "NEURO01|NEURO-20",
+     "bridge": "Severity is the post-resuscitation GCS, before sedation. Next: who with this injury needs ICP monitored →"
+    },
+    {
+     "card": "NEURO02|NEURO-44",
+     "bridge": "Severe TBI with an abnormal CT gets an ICP monitor. Next: what a falling sodium does to that swollen brain →"
+    },
+    {
+     "card": "ELEC01A|NA-08",
+     "bridge": "Low sodium drives water into astrocytes, so oedema and ICP rise. Next: is the cause SIADH or salt wasting →"
+    },
+    {
+     "card": "ELEC01A|NA-11",
+     "bridge": "Same salty urine, opposite volume: SIADH is euvolaemic, CSW is dry. Next: why restricting fluid is risky in brain injury →"
+    },
+    {
+     "card": "V3-021",
+     "bridge": "Restriction drops MAP and CPP and worsens CSW, so treat by volume, avoid hypotonic fluid. Next: the emergency 3% bolus →"
+    },
+    {
+     "card": "ELEC01B|NA-13",
+     "bridge": "150 mL of 3% over 20 min, repeated until sodium is up by 5. Next: how far and how fast it may then rise →"
+    },
+    {
+     "card": "ELEC01B|NA-15",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Present: young man, fall or RTA, GCS after resuscitation, CT findings, ICP monitor. Day 3–5 sodium falls to 128 with drowsiness or a rising ICP.",
+    "Why it matters: hypotonic plasma pulls water into the injured brain, so oedema and ICP rise and CPP falls. Even mild hyponatraemia counts here.",
+    "SIADH or CSW: both have low sodium and urine sodium over 30. **Volume status** decides: SIADH euvolaemic, CSW hypovolaemic with high urine output and a negative balance.",
+    "What I do: symptoms or raised ICP → **3% saline 150 mL over 20 min**, repeat until sodium is up **5**. Then CSW → isotonic saline, salt, ± fludrocortisone.",
+    "SIADH in brain injury: no hypotonic fluids, salt or urea; restrict only if CPP is safe. No vaptan with CNS symptoms.",
+    "Caution: rise no more than **10 mmol/L in 24 h** (8 per day after). Fluid restriction in hypovolaemic patients was linked to infarction (Wijdicks 1985)."
+   ]
+  },
+  {
+   "q": "P3-176",
+   "text": "Differentiate SIADH, cerebral salt wasting and diabetes insipidus.",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "xvy",
+   "steps": [
+    {
+     "card": "ELEC01A|NA-10",
+     "bridge": "Urine osmolality over 100 and urine sodium over 30 point to SIAD or salt wasting. Next: how to split those two →"
+    },
+    {
+     "card": "ELEC01A|NA-11",
+     "bridge": "SIAD and CSW share the urine; only volume and urine flow differ. Next: the three-way table with DI added →"
+    },
+    {
+     "card": "V3-022",
+     "bridge": "SIADH and CSW lose sodium balance, DI loses water; volume decides restrict vs saline. Next: why saline can fail in true SIADH →"
+    },
+    {
+     "card": "ELEC01B|NA-22",
+     "bridge": "Fixed concentrated urine turns isotonic saline into retained free water. Next: the treatment by volume status →"
+    },
+    {
+     "card": "ELEC01B|NA-17",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: SIADH and CSW both give low sodium with concentrated, salty urine (Na over 30). DI gives high sodium with dilute urine.",
+    "The split: **volume**. SIADH is euvolaemic, normal or low urine flow. CSW is hypovolaemic: high urine output, negative balance, rising haematocrit and urea.",
+    "Helpful test: fractional urate excretion stays high (over **11%**) after sodium is corrected in CSW, but normalises in SIADH.",
+    "DI: urine over **250 mL/h** for 2 h, urine osmolality under **300**, sodium over 145. Treat with desmopressin 1–2 µg and free water.",
+    "What I do: euvolaemic SIADH → fluid restriction, then urea or salt. Hypovolaemic CSW → isotonic saline, salt, fludrocortisone. Severe symptoms in either → 3% saline.",
+    "Caution: in SAH and TBI never fluid-restrict; most hyponatraemic SAH patients are volume depleted, and restriction was linked to infarction."
+   ]
+  },
+  {
+   "q": "P3-177",
+   "text": "How fast do you correct hyponatraemia and what happens if you overcorrect?",
+   "tier": "A",
+   "gen": "G4",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "ELEC01A|NA-08",
+     "bridge": "The brain adapts in about 48 h, so fast correction of chronic hyponatraemia shrinks cells: demyelination. Next: the limits →"
+    },
+    {
+     "card": "ELEC01B|NA-15",
+     "bridge": "Rise 5 to relieve oedema; never more than 10 in the first 24 h, 8 after. Next: how the emergency rise is given →"
+    },
+    {
+     "card": "ELEC01B|NA-13",
+     "bridge": "Guidelines give 3% as repeated 150 mL boluses. Next: did a trial test boluses against a slow drip →"
+    },
+    {
+     "card": "V3-023",
+     "bridge": "SALSA: boluses no more overcorrection than infusion, with less relowering. Next: why overcorrection happens at all →"
+    },
+    {
+     "card": "ELEC01A|NA-05",
+     "bridge": "Restoring volume switches ADH off and a water diuresis overshoots. Next: how desmopressin can clamp that →"
+    },
+    {
+     "card": "V3-024",
+     "bridge": "Desmopressin clamp: proactive, reactive or rescue, all to stop free-water loss. Next: the exact re-lowering steps →"
+    },
+    {
+     "card": "ELEC01B|NA-16",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Why it matters: the brain adapts to chronic hyponatraemia in about 48 h; a fast rise then shrinks cells and causes osmotic demyelination days later.",
+    "How fast: aim for **5 mmol/L** in the first hours if symptomatic; limit **10 in 24 h**, then **8** per day (European 2014). US 2013: 10–12, or 8 if high risk.",
+    "Evidence: **SALSA** 2021, 178 patients: 3% boluses vs slow infusion, overcorrection **17.2 vs 24.2%** (NS); boluses needed less relowering (41 vs 57%).",
+    "Overcorrection: usually a water diuresis once volume, cortisol or drug cause is fixed. Watch urine over 100 mL/h of dilute urine.",
+    "Rescue: stop saline, give **10 mL/kg** electrolyte-free water over 1 h and **desmopressin 2 µg IV**, up to 8-hourly. A proactive clamp is 1–2 µg every 6–8 h with 3%.",
+    "Caution: newer cohorts show ODS is rare (0.05%) and slow correction carries its own risk; keep the limits strictly for high-risk patients (Na under 105, alcohol, low K)."
+   ]
+  },
+  {
+   "q": "P3-192",
+   "text": "How do you manage hypernatraemia in brain injury?",
+   "tier": "B",
+   "gen": "G4",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "ELEC01B|NA-23",
+     "bridge": "Hypernatraemia is too little water for the sodium: loss, pure water loss, or salt gain. Next: the kind we cause on purpose →"
+    },
+    {
+     "card": "HY4|NEU-04",
+     "bridge": "Osmotherapy keeps sodium about 145–155 deliberately. Next: how urine osmolality finds the unwanted kind →"
+    },
+    {
+     "card": "ELEC01B|NA-24",
+     "bridge": "Urine osmolality under 300 with high sodium means DI. Next: the formal DI criteria in the ICU →"
+    },
+    {
+     "card": "ENDO01B|ENDO-21",
+     "bridge": "Polyuria, dilute urine, high serum osmolality; confirm with desmopressin. Next: what changes after brain injury →"
+    },
+    {
+     "card": "V3-025",
+     "bridge": "Post-TBI DI: 250 mL/h for 2 h, desmopressin 1–2 µg, and the triphasic trap. Next: how to treat central vs nephrogenic DI →"
+    },
+    {
+     "card": "ENDO01B|ENDO-22",
+     "bridge": "Central DI needs desmopressin and free water; nephrogenic needs thiazide. Next: how much water to give and how fast →"
+    },
+    {
+     "card": "ELEC01B|NA-25",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: in brain injury, sodium is either kept high on purpose (osmotherapy, about **145–155**) or rises unwanted from DI or free-water deficit.",
+    "Why it matters: hypernatraemia after severe TBI is linked to higher mortality, and early DI often marks severe injury or coming brain death.",
+    "Central DI: urine over **250 mL/h for 2 h** without mannitol or diuretic, urine osmolality under **300** (SG under 1.005), sodium over 145 and rising.",
+    "What I do: replace losses with free water and give **desmopressin 1–2 µg IV/SC**, repeated when polyuria returns. Check sodium every 6–8 h.",
+    "Triphasic response: DI for about a week, then SIADH-like phase for days to 2 weeks, then permanent DI. In phase 2, desmopressin causes hyponatraemia.",
+    "Caution: lower chronic hypernatraemia about **0.5 mmol/L/h**, under **10–12 per day**; with raised ICP avoid any fast fall, as rebound oedema can push ICP up."
+   ]
+  },
+  {
+   "q": "P3-083",
+   "text": "SAH grading scores.",
+   "tier": "B",
+   "gen": "G5",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "NEURO03|NEURO-65",
+     "bridge": "WFNS uses GCS plus motor deficit; II and III differ only by deficit. Next: the symptom-based scale →"
+    },
+    {
+     "card": "NEURO03|NEURO-66",
+     "bridge": "Hunt and Hess grades the clinical picture, 1 to 5. Next: the CT scales that predict vasospasm →"
+    },
+    {
+     "card": "NEURO03|NEURO-64",
+     "bridge": "Fisher keys on 1 mm thickness; modified Fisher on thick vs thin plus IVH. Next: the vasospasm risk by grade →"
+    },
+    {
+     "card": "HY4|NEU-07",
+     "bridge": "Modified Fisher 0–4: thick cisternal blood with IVH carries the highest risk. Next: when vasospasm comes and who gets it →"
+    },
+    {
+     "card": "NEURO03|NEURO-71",
+     "bridge": "Days 4–14; high Fisher grade and female sex predict it. Next: the one drug proven to improve outcome →"
+    },
+    {
+     "card": "NEURO03|NEURO-74",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What they are: clinical scales grade the patient, CT scales grade the blood. Clinical grade predicts outcome; CT grade predicts vasospasm.",
+    "WFNS: GCS plus motor deficit. I = 15; II = 13–14 no deficit; III = 13–14 with deficit; IV = 7–12; V = 3–6. Grades IV–V are poor grade.",
+    "Hunt and Hess: 1 mild headache, 2 severe headache or cranial nerve palsy, 3 drowsy or mild focal deficit, 4 stupor or hemiparesis, 5 deep coma.",
+    "Modified Fisher (Frontera 2006): 0 none; 1 thin; 2 thin + IVH; 3 thick; 4 thick + IVH. Symptomatic vasospasm about **24, 33, 33, 40%** for grades 1–4.",
+    "Other predictors: poor clinical grade and female sex; vasospasm peaks days 4–14, so I monitor with TCD and serial neuro checks.",
+    "What I do: **nimodipine 60 mg every 4 h for 21 days** in all patients (Class 1, A); 30 mg 2-hourly if it drops the pressure."
+   ]
+  },
+  {
+   "q": "P3-185",
+   "text": "Spotter - CT showing subarachnoid haemorrhage.",
+   "tier": "B",
+   "gen": "G5",
+   "kind": "spotter",
+   "steps": [
+    {
+     "card": "NEURO03|NEURO-61",
+     "bridge": "Plain CT is near 100% sensitive in the first days, falling by a week. Next: what to describe on the film →"
+    },
+    {
+     "card": "V3-026",
+     "bridge": "Describe the blood, its pattern, then IVH and hydrocephalus. Next: the two CT grading scales side by side →"
+    },
+    {
+     "card": "NEURO03|NEURO-64",
+     "bridge": "Fisher and modified Fisher share 1–4 but use different criteria. Next: grade this scan on modified Fisher →"
+    },
+    {
+     "card": "HY4|NEU-07",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Spot: non-contrast CT with **hyperdense blood** in the basal cisterns (the suprasellar star), sylvian and interhemispheric fissures: subarachnoid haemorrhage.",
+    "Pattern: thickest blood hints at the aneurysm: interhemispheric → ACom, sylvian → MCA. Blood only in front of the midbrain may be perimesencephalic, non-aneurysmal.",
+    "Complications: look for IVH, hydrocephalus (dilated temporal horns), parenchymal clot and shift.",
+    "Grade: modified Fisher 0 none, 1 thin, 2 thin + IVH, 3 thick, 4 thick + IVH. Thick blood with IVH (grade 4) carries the highest vasospasm risk.",
+    "Next: CTA for the aneurysm, EVD if hydrocephalus, nimodipine, and secure the aneurysm early. If CT is normal after 6 h but the story fits, LP for xanthochromia."
+   ]
+  },
+  {
+   "q": "P3-182",
+   "text": "How do you manage vasospasm and delayed cerebral ischaemia after SAH?",
+   "tier": "B",
+   "gen": "G5",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "NEURO03|NEURO-71",
+     "bridge": "DCI is a new deficit or GCS drop of 2 for over an hour, days 4–14. Next: how TCD picks it up →"
+    },
+    {
+     "card": "NEURO03|NEURO-72",
+     "bridge": "Mean MCA velocity over 120 suggests spasm, over 200 severe. Next: how to tell spasm from hyperaemia →"
+    },
+    {
+     "card": "NEURO03|NEURO-73",
+     "bridge": "Lindegaard (MCA/ICA) over 3 means spasm; under 3, hyperaemia. Next: the drug every patient gets →"
+    },
+    {
+     "card": "NEURO03|NEURO-74",
+     "bridge": "Nimodipine 60 mg 4-hourly for 21 days, the only proven outcome benefit. Next: volume and blood pressure →"
+    },
+    {
+     "card": "NEURO03|NEURO-75",
+     "bridge": "Keep euvolaemia; raise BP only for symptomatic DCI, never prophylactically. Next: what became of triple-H →"
+    },
+    {
+     "card": "HY4|NEU-08",
+     "bridge": "Triple-H is obsolete: euvolaemia plus induced hypertension replaced it. Next: what to do when spasm is refractory →"
+    },
+    {
+     "card": "NEURO03|NEURO-76",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: delayed cerebral ischaemia, a new focal deficit or GCS fall of **2 or more** for over an hour, usually **days 4–14**. Angiographic spasm is one cause.",
+    "Monitoring: serial neuro exams, TCD (velocity over 120, Lindegaard over 3), CT perfusion or cEEG in poor-grade patients.",
+    "Prevention: **nimodipine 60 mg every 4 h for 21 days**; if hypotensive, 30 mg 2-hourly. Keep euvolaemia, sodium normal, avoid fever.",
+    "Treatment of DCI: induced hypertension (noradrenaline or phenylephrine) with euvolaemia (AHA/ASA 2023: 2b). Refractory: angioplasty or intra-arterial vasodilators (2b).",
+    "Triple-H: no longer used. AHA/ASA 2023 says prophylactic hypervolaemia and haemodynamic augmentation should not be done; they add harm without benefit.",
+    "Caution: magnesium, statins and endothelin antagonists do not help. Milrinone is an option, but its load is 0.1–0.2 mg/kg, not 0.5."
+   ]
+  },
+  {
+   "q": "P3-086",
+   "text": "Acute stroke — thrombolysis and thrombectomy windows.",
+   "tier": "B",
+   "gen": "G5",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "HY8|LYS-01",
+     "bridge": "Lyse within 4.5 h: alteplase 0.9 mg/kg or tenecteplase 0.25 mg/kg, max 25 mg. Next: BP around lysis and when to pull the clot →"
+    },
+    {
+     "card": "HY4|NEU-05",
+     "bridge": "BP under 185/110 before lysis, 180/105 after; lysis does not bar thrombectomy. Next: how far the windows stretch →"
+    },
+    {
+     "card": "V3-027",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Lysis: disabling ischaemic stroke, CT without bleed, within **4.5 h** of last known well. Wake-up or 4.5–9 h: lyse only if MRI or perfusion imaging shows salvageable brain.",
+    "Drugs: **alteplase 0.9 mg/kg** (max 90 mg; 10% bolus, rest over 60 min) or **tenecteplase 0.25 mg/kg** (max 25 mg) as one bolus.",
+    "Thrombectomy: ICA or M1 occlusion, NIHSS ≥6, within **6 h**, even after lysis. Up to **24 h** with imaging selection; AHA/ASA 2026 adds large cores (ASPECTS **3–5**, age under 80).",
+    "Evidence: **DEFUSE-3** (6–16 h, perfusion mismatch) mRS 0–2 45 vs 17%; **DAWN** (6–24 h, clinical–core mismatch) 49 vs 13%.",
+    "BP: below **185/110** before lysis and **180/105** for 24 h after. No lysis: treat only above 220/120.",
+    "Caution: platelets under 100,000 or a recent bleed exclude lysis. Tenecteplase is non-inferior (AcT 2022) and one bolus suits transfer; 0.4 mg/kg is not recommended."
+   ]
+  },
+  {
+   "q": "P3-085",
+   "text": "Status epilepticus — management.",
+   "tier": "B",
+   "gen": "G6",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "HY4|NEU-10",
+     "bridge": "Treat by the clock: benzodiazepine, then a second-line drug, then an anaesthetic infusion. Next: the trial behind the second step →"
+    },
+    {
+     "card": "V3-018",
+     "bridge": "ESETT: levetiracetam, fosphenytoin and valproate are equal, each about half. Next: what to do when they fail →"
+    },
+    {
+     "card": "V3-019",
+     "bridge": "Refractory SE needs intubation, continuous EEG and an infusion held 24–48 h. Next: the options beyond 24 hours →"
+    },
+    {
+     "card": "SC-E|SC-E-17",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: a convulsive seizure beyond **5 min** (ILAE t1), with lasting harm likely after **30 min** (t2). Treat by the clock: ABC, glucose, IV access.",
+    "First line at 5 min: lorazepam **0.1 mg/kg** IV (max 4 mg, repeat once) or midazolam **10 mg** IM. Benzodiazepines fail with time as GABA-A receptors are internalised.",
+    "Second line at 20 min: levetiracetam **60**, fosphenytoin **20 PE** or valproate **40 mg/kg**. ESETT: equal, about half stopped (**47, 45, 46%**).",
+    "Refractory, when a benzodiazepine and one second-line drug fail: intubate, continuous EEG, and a midazolam, propofol or barbiturate infusion.",
+    "Titrate to seizure or burst suppression, hold **24–48 h**, then wean. Super-refractory beyond 24 h: ketamine, volatiles, immunotherapy, ketogenic diet.",
+    "Caution: find the cause (glucose, sodium, toxins, infection, eclampsia), and suspect non-convulsive status if the patient does not wake."
+   ]
+  },
+  {
+   "q": "P3-084",
+   "text": "ICU protocol for eclampsia.",
+   "tier": "A",
+   "gen": "G6",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "HY5|HEO-11",
+     "bridge": "Eclampsia needs three jobs at once: magnesium, BP control and delivery. Next: the magnesium regimen in detail →"
+    },
+    {
+     "card": "OBS02A|OBS-23",
+     "bridge": "Load, maintain to 24 h after delivery, and monitor clinically. Next: the two named regimens and the stop rules →"
+    },
+    {
+     "card": "V3-020",
+     "bridge": "Pritchard is IM 4-hourly, Zuspan is IV 1 g/h; check reflex, RR and urine before each dose. Next: what toxicity looks like →"
+    },
+    {
+     "card": "OBS02A|OBS-24",
+     "bridge": "Knee jerk goes first, then breathing, then the heart. Next: the drugs that bring BP down →"
+    },
+    {
+     "card": "OBS02A|OBS-18",
+     "bridge": "Labetalol, hydralazine or oral nifedipine, each with its own caution. Next: when to deliver →"
+    },
+    {
+     "card": "OBS02A|OBS-20",
+     "bridge": "Eclampsia means delivery once she is stable, at any gestation. Next: the fluid trap around delivery →"
+    },
+    {
+     "card": "OBS02A|OBS-19",
+     "bridge": "Dry inside despite oedema: restrict fluid, no diuretics. Next: what else causes seizures in pregnancy →"
+    },
+    {
+     "card": "OBS02A|OBS-26",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Present: a seizure in pregnancy is eclampsia until proven otherwise. ABC, left lateral, oxygen, prevent injury, then magnesium, BP control and a delivery plan.",
+    "Magnesium: Pritchard 4 g IV plus 10 g IM, then 5 g IM 4-hourly; or Zuspan 4 g IV then **1 g/h**. Continue **24 h** after delivery or the last seizure.",
+    "BP: treat **≥160/110** that persists 15 min within **30–60 min**, with IV labetalol, IV hydralazine or oral nifedipine. Aim for about **140–150/90–100**.",
+    "Toxicity signs: knee jerk lost first, then slow breathing, then heart block and arrest. Check reflex, RR ≥16 and urine ≥25–30 mL/h; antidote **calcium gluconate 1 g**.",
+    "Deliver once stable: delivery is the definitive treatment. Restrict fluid to about **80 mL/h**, and no diuretics unless there is pulmonary oedema.",
+    "Watch for: pulmonary oedema, HELLP, abruption, PRES or bleeding. CT head if focal signs or seizures continue despite magnesium."
+   ]
+  },
+  {
+   "q": "P3-194",
+   "text": "What is MgSO4 toxicity and how do you monitor it?",
+   "tier": "B",
+   "gen": "G6",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "OBS02A|OBS-25",
+     "bridge": "Magnesium blocks calcium and NMDA channels and cuts acetylcholine release. Next: the regimen and target level →"
+    },
+    {
+     "card": "OBS02A|OBS-23",
+     "bridge": "Target 4.8–8.4 mg/dL, monitored at the bedside, not by levels. Next: what each higher level does →"
+    },
+    {
+     "card": "OBS02A|OBS-24",
+     "bridge": "In mg/dL: reflex lost above 9, breathing above 12, arrest above 30. Next: the same ladder in mEq/L and the hourly checks →"
+    },
+    {
+     "card": "HY5|HEO-12",
+     "bridge": "Hourly reflex, RR and urine; stop and give calcium if toxic. Next: the exact stop rules and antidote dose →"
+    },
+    {
+     "card": "V3-020",
+     "bridge": "Withhold if any check fails; calcium gluconate 1 g over about 10 min for respiratory depression. Next: hypermagnesaemia care beyond the antidote →"
+    },
+    {
+     "card": "ELEC03B|MGP-08",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: magnesium blocks calcium and NMDA channels, cuts acetylcholine release and dilates cerebral vessels. Target **4–7 mEq/L** (4.8–8.4 mg/dL).",
+    "Toxicity by level: knee jerk lost at about **7–10 mEq/L**, respiratory depression at **10–13**, conduction block above 15, cardiac arrest above **25**.",
+    "Why it builds up: it leaves only through the kidney, so oliguria or renal failure lets it accumulate.",
+    "Monitor before each dose and hourly: patellar reflex present, **RR ≥16**, urine **≥25–30 mL/h**, SpO2. Check a level if renal function is poor or reflexes are lost.",
+    "What I do: if a check fails, stop or reduce the dose. For respiratory depression, ventilate and give **calcium gluconate 1 g (10 mL of 10%)** slowly over about 10 min.",
+    "Caution: magnesium potentiates neuromuscular blockers. With Pritchard there is no infusion to stop, so I check before every 4-hourly IM dose."
+   ]
+  },
+  {
+   "q": "P3-186",
+   "text": "What are the ventilation criteria and treatment in Guillain-Barre syndrome?",
+   "tier": "B",
+   "gen": "G7",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "NMD03|NMD-24",
+     "bridge": "GBS climbs legs to arms to breathing to face, with autonomic swings. Next: the numbers that tell you the pump is failing →"
+    },
+    {
+     "card": "NMD01|NMD-04",
+     "bridge": "VC under 20, MIP weaker than −30, MEP under 40, or a 30% fall. Next: who will need it, predicted on admission →"
+    },
+    {
+     "card": "NMD01|NMD-07",
+     "bridge": "EGRIS 5–7 means about 65% ventilated in week 1. Next: the bedside triggers and the drug to avoid at intubation →"
+    },
+    {
+     "card": "NMD03|NMD-28",
+     "bridge": "Intubate on the trend and bulbar weakness, never with suxamethonium. Next: the two treatments that shorten the disease →"
+    },
+    {
+     "card": "NMD03|NMD-30",
+     "bridge": "IVIG and plasma exchange are equal; never both in sequence, no steroids. Next: the autonomic traps while you wait →"
+    },
+    {
+     "card": "NMD03|NMD-29",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: acute immune polyneuropathy, ascending and areflexic; **20–30%** need ventilation, and SpO₂ and gases fall late.",
+    "Ventilation criteria, the 20/30/40 rule: VC **<20 mL/kg**, MIP weaker than **−30**, MEP **<40 cmH₂O**, or a **>30%** fall.",
+    "Predict on admission with EGRIS (**0–7**): fast onset, facial or bulbar weakness, low MRC. **5–7 = 65%** ventilated in week 1; EAN/PNS 2023 prefers modified EGRIS.",
+    "What I do: elective intubation on the trend, bulbar weakness or fatigue; no suxamethonium; watch bradycardia on suction.",
+    "Treatment: **IVIG 0.4 g/kg/day × 5** within 2 weeks, or **plasma exchange 4–5 sessions (12–15 L)** within 4 weeks: equal.",
+    "Caution: no steroids, no exchange followed by IVIG, no routine second IVIG course (EAN/PNS 2023)."
+   ]
+  },
+  {
+   "q": "P3-187",
+   "text": "How do you manage myasthenic crisis?",
+   "tier": "B",
+   "gen": "G7",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "NMD02|NMD-17",
+     "bridge": "Crisis is weakness needing ventilation, usually set off by infection. Next: the drugs that can tip a myasthenic over →"
+    },
+    {
+     "card": "NMD02|NMD-18",
+     "bridge": "Aminoglycosides, quinolones, macrolides, magnesium and β-blockers worsen it. Next: the numbers that say intubate →"
+    },
+    {
+     "card": "NMD02|NMD-20",
+     "bridge": "VC under 15, NIF weaker than −20, PEmax under 40: not the GBS rule. Next: how to intubate and ventilate safely →"
+    },
+    {
+     "card": "NMD02|NMD-21",
+     "bridge": "RSI, low-dose non-depolariser, stop pyridostigmine while ventilated. Next: the treatment that ends the crisis →"
+    },
+    {
+     "card": "NMD02|NMD-22",
+     "bridge": "Plasma exchange or IVIG, equal in trials, exchange a little faster. Both wear off. Next: what bridges beyond 3 weeks →"
+    },
+    {
+     "card": "NMD02|NMD-23",
+     "bridge": "Steroids follow, under ventilatory cover, as they can worsen weakness first. Next: is it myasthenic or cholinergic? →"
+    },
+    {
+     "card": "NMD02|NMD-19",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: myasthenic weakness needing ventilation or airway protection; **15–20%** of patients, mostly after infection or a drug.",
+    "Monitor: intubate at VC **<15 mL/kg**, NIF weaker than **−20** or PEmax **<40 cmH₂O**; bulbar weakness may force it earlier.",
+    "What I do: RSI with a low-dose non-depolariser, stop pyridostigmine while ventilated, treat the trigger, stop offending drugs.",
+    "Treatment: **plasma exchange (5 sessions)** or **IVIG 0.4 g/kg/day × 5**; equal in trials, exchange faster by consensus; steroids alongside.",
+    "Myasthenic vs cholinergic: cholinergic is too much pyridostigmine: small pupils, secretions, bradycardia, fasciculations.",
+    "Caution: edrophonium is largely abandoned (off the US market since 2018); if unsure, secure the airway and stop the anticholinesterase, which settles both."
+   ]
+  },
+  {
+   "q": "P3-188",
+   "text": "How do you manage tetanus in the ICU?",
+   "tier": "B",
+   "gen": "G7",
+   "kind": "scenario",
+   "steps": [
+    {
+     "card": "V3-028",
+     "bridge": "The toxin removes spinal inhibition; Ablett IV adds autonomic storm. Next: how to stop more toxin reaching the nerves →"
+    },
+    {
+     "card": "V3-029",
+     "bridge": "Debride, one IM antitoxin dose, metronidazole, then vaccinate. Next: does putting antitoxin in the CSF do better? →"
+    },
+    {
+     "card": "V3-031",
+     "bridge": "Intrathecal is safe but unproven where ventilation exists (Van Hao 2022). Next: controlling spasms and the autonomic storm →"
+    },
+    {
+     "card": "V3-030",
+     "bridge": "Magnesium spares sedatives, relaxants and verapamil but not ventilation. Next: how to spot magnesium toxicity →"
+    },
+    {
+     "card": "ELEC03B|MGP-07",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What it is: tetanospasmin blocks inhibitory interneurons: rigidity, spasms, autonomic storm. Ablett I–IV; grade IV = autonomic instability.",
+    "Stop the toxin: debride the wound, one IM dose of human antitoxin (CDC **500 IU**), metronidazole or penicillin, then toxoid.",
+    "Spasms: benzodiazepines in a quiet room, early airway, relaxants and ventilation, often about **16 days**, so plan a tracheostomy.",
+    "Magnesium (Thwaites, Lancet 2006, n = **195**): no fall in ventilation (OR **0.71**, NS), but less midazolam, pipecuronium and verapamil.",
+    "Route: intrathecal looked good in old trials (Kabura 2006, RR **0.71**), but Van Hao 2022: ventilation **43% vs 50%**, NS. I give IM.",
+    "Caution: titrate magnesium to a present knee jerk (serum **2–4 mmol/L**); recovery gives no immunity, so complete vaccination."
+   ]
+  },
+  {
+   "q": "P3-191",
+   "text": "What are the ICU targets in acute spinal cord injury?",
+   "tier": "B",
+   "gen": "G8",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "HY4|NEU-12",
+     "bridge": "ASIA grade, MAP support, no hypotonic fluid, VTE prophylaxis within 72 h. Next: where the steroid story started →"
+    },
+    {
+     "card": "SPECIAL05B|POLY-22",
+     "bridge": "NASCIS II and III suggested an early steroid benefit that did not hold up. Next: the 2024 MAP update, early surgery and today's steroid positions →"
+    },
+    {
+     "card": "V3-009",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "What I target: no hypotension or hypoxia. MAP floor **75–80 mmHg**, no active push above **90–95**, for about **3–7 days** (AO Spine/Praxis 2024, updating AANS/CNS 2013).",
+    "Why: the injured cord loses autoregulation, and neurogenic shock is common, so hypoperfusion adds secondary ischaemia. The old target was **85–90 for 7 days**, from Level III data.",
+    "Evidence: a 2025 RCT (92 patients) of MAP >85–90 vs >65–70 found no neurological gain but more respiratory complications (**78% vs 39%**).",
+    "Also: decompression **within 24 h** (strong, 2024), VTE prophylaxis **within 72 h**, no hypotonic fluids, close watch on breathing and heart rate in cervical injury.",
+    "Steroids: NASCIS II gave methylprednisolone **30 mg/kg then 5.4 mg/kg/h for 23 h**; the primary outcome was negative and the <8 h benefit was post hoc.",
+    "Now: AANS/CNS 2013 says **not recommended**. AO Spine 2017 (weak) suggests offering a 24-h course only if started **within 8 h**, not a 48-h course. I do not give it routinely."
+   ]
+  },
+  {
+   "q": "P3-183",
+   "text": "How do you declare brain stem death in India?",
+   "tier": "B",
+   "gen": "G8",
+   "kind": "direct",
+   "steps": [
+    {
+     "card": "SPECIAL01|DONOR-01",
+     "bridge": "THOA 1994 made brainstem death legal death in India; THOTA rules followed in 2014. Next: what must be true before you test →"
+    },
+    {
+     "card": "SPECIAL01|DONOR-02",
+     "bridge": "Known cause, no drugs or paralysis, temp >36, SBP >100, metabolic causes corrected. Next: the reflexes that must all be absent →"
+    },
+    {
+     "card": "SPECIAL01|DONOR-03",
+     "bridge": "Pupils, corneal, gag, cough, oculocephalic and caloric all absent; spinal reflexes allowed. Next: how to run the apnoea test →"
+    },
+    {
+     "card": "SPECIAL01|DONOR-04",
+     "bridge": "Pre-oxygenate, disconnect, O2 at the carina, ABG at 8–10 min, PaCO2 ≥60 and ≥20 rise. Next: what to do when you cannot complete it →"
+    },
+    {
+     "card": "SPECIAL01|DONOR-05",
+     "bridge": "Ancillary tests only when the exam or apnoea test cannot be completed. Next: who certifies under Indian law →"
+    },
+    {
+     "card": "SPECIAL01|DONOR-06",
+     "bridge": "A board of four, two examinations at least 6 h apart. Next: the 2026 national guideline numbers and the live court question →"
+    },
+    {
+     "card": "V3-010",
+     "bridge": null
+    }
+   ],
+   "spine": [
+    "Law: **THOA 1994** (Rules 2014) recognises brain stem death. A board of four certifies on **Form 10**: medical administrator, authorised specialist, neurologist or neurosurgeon, treating doctor.",
+    "Prerequisites: known irreversible cause, no sedatives or paralysis, temp **≥36 °C**, SBP **≥100** (MAP ≥60), metabolic and endocrine causes corrected (2026 national guideline).",
+    "Exam: deep coma; pupils, corneal, oculocephalic, cold caloric, gag and cough all absent. Spinal reflexes are allowed.",
+    "Apnoea test: 100% O₂ for **10 min**, disconnect, O₂ catheter at the carina **4–6 L/min**, watch **8–10 min**, ABG. Positive: no breath with PaCO₂ **≥60 and ≥20 above baseline**.",
+    "Twice: two examinations at least **6 h apart** in adults. Abort if SBP **<90** or SpO₂ **<85% for >30 s**, then an ancillary test.",
+    "Caution: in Apr 2026 the Supreme Court asked AIIMS for an expert review of apnoea test safety and its alternatives; judgment reserved. So I follow Form 10 exactly, independent of donation."
+   ]
+  }
+ ],
+ "explain": {},
+ "fixes": [
+  {
+   "card": "CCM08|CNS-20",
+   "field": "a",
+   "old": "**GCS ≤12**",
+   "new": "**GCS ≤12** (UK 2016; ESCMID 2016 uses **GCS <10**; IDSA any reduced consciousness)",
+   "src": "McGill F et al., UK joint specialist societies guideline, J Infect 2016;72:405; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37; Glimåker M et al., Clin Infect Dis 2018;66:321 (Table 1 compares the criteria)",
+   "checked": "web-verified 10 Nov: Glimåker 2018 Table 1 gives ESCMID GCS <10 and IDSA GCS <15; UK GCS <=12 taken from error register (UK full text not reachable)"
+  },
+  {
+   "card": "CCM08|CNS-26",
+   "field": "a",
+   "old": "**dexamethasone 0.15 mg/kg 6-hourly for 5 days**",
+   "new": "**dexamethasone 0.15 mg/kg (10 mg adult) 6-hourly for 4 days**",
+   "src": "de Gans J, van de Beek D, NEJM 2002;347:1549; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37",
+   "checked": "web-verified 10 Nov: de Gans 2002 abstract (10 mg 6-hourly for 4 days). Register marks this ALREADY_FIXED but the card as displayed (cardfix applied) still reads 5 days"
+  },
+  {
+   "card": "CCM08|CNS-27",
+   "field": "a",
+   "old": "Continuation | **HRZ for 10 months**",
+   "new": "Continuation | **HRE for at least 10 months** (NTEP); WHO: **HR for 10 months**. Z only in the 2-month intensive phase",
+   "src": "ICMR Standard Treatment Workflow, NTEP TB meningitis (adult), 2022; WHO 2HRZE/10HR regimen (WHO 2010 rapid advice, carried into Module 4, 2022)",
+   "checked": "web-verified 10 Nov (reviewer): ICMR STW PDF reads 'Intensive Phase: 2 months of RHZE or RHZS; Continuation phase: 3 drugs-RHE for at least 10 months'; WHO 2HRZE/10HR via Front Pharmacol 2023 review. Register marks ALREADY_FIXED but the displayed card still reads HRZ"
+  },
+  {
+   "card": "CCM08|CNS-27",
+   "field": "a",
+   "old": "taper gradually over **8-12 weeks**",
+   "new": "taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**",
+   "src": "ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025 (maintained); Thwaites GE et al., NEJM 2004;351:1741",
+   "checked": "reviewer 10 Nov: the card's 8-12 weeks is the ICMR STW wording ('Discharge on oral steroids on tapering doses for total duration of 8-12 weeks'), so it is kept and labelled rather than replaced. Writer: WHO recommendation text (dexamethasone or prednisolone tapered over 6-8 weeks, strong, moderate certainty); MSF adult 0.4 mg/kg/day for 7 days then taper over 6-8 weeks; ACT HIV also used a 6-8-week taper"
+  },
+  {
+   "card": "CCM08|CNS-27",
+   "field": "watch",
+   "old": "(0.4 mg/kg/day, tapered over 8-12 weeks) is a completely different regimen from bacterial meningitis dexamethasone (0.15 mg/kg 6-hourly for 5 days)",
+   "new": "(0.4 mg/kg/day, tapered over 8-12 weeks by ICMR, 6-8 by WHO) is a completely different regimen from bacterial meningitis dexamethasone (0.15 mg/kg 6-hourly for 4 days)",
+   "src": "ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025; de Gans J, van de Beek D, NEJM 2002;347:1549",
+   "checked": "web-verified 10 Nov: ICMR STW 8-12 weeks, WHO 6-8 weeks, de Gans 4 days"
+  },
+  {
+   "card": "CCM08|CNS-19",
+   "field": "a",
+   "old": "**35 mg/dL (34-36)**",
+   "new": "**35 mg/dL (34-36)**, i.e. about **3.9 mmol/L**",
+   "src": "Sakushima K et al., J Infect 2011;62:255",
+   "checked": "web-verified 10 Nov: Sakushima abstract (33 studies, sens 0.93, spec 0.96, 0.49 after antibiotics, 35 mg/dL optimal); conversion 35 / 9.01 = 3.9 mmol/L"
+  },
+  {
+   "card": "CCM08|CNS-26",
+   "field": "a",
+   "old": "**H. influenzae:** reduction in ataxia and labyrinthitis",
+   "new": "**H. influenzae:** reduction in **severe hearing loss** in children (RR 0.34)",
+   "src": "Brouwer MC, McIntyre P, Prasad K, van de Beek D, Cochrane Database Syst Rev 2015;(9):CD004405",
+   "checked": "web-verified 10 Nov (reviewer): Cochrane summary 'Corticosteroids reduced severe hearing loss in children with H influenzae meningitis (RR 0.34, 95% CI 0.20 to 0.59)'; no mention of ataxia"
+  },
+  {
+   "card": "HY4|NEU-12",
+   "field": "a",
+   "old": "**ASIA B = sensory only · MAP 85–90 for 7 days**",
+   "new": "**ASIA B = sensory only · MAP floor 75–80 for 3–7 days**",
+   "src": "Kwon BK et al., Global Spine J 2024;14(3 Suppl):187S-211S",
+   "checked": "web-verified 10 Nov: 2024 AO Spine/Praxis guideline (updates AANS/CNS 2013) recommends MAP ≥75–80, not actively above 90–95, for 3–7 days; old substring unique"
+  },
+  {
+   "card": "HY4|NEU-12",
+   "field": "a",
+   "old": "b **MAP 85–90 mmHg for 7 days** (fluids + noradrenaline/dopamine).",
+   "new": "b **MAP at least 75–80 mmHg, not pushed above 90–95, for 3–7 days** (fluids + noradrenaline/dopamine). The older 85–90 for 7 days (AANS/CNS 2013) is superseded.",
+   "src": "Kwon BK et al., Global Spine J 2024;14(3 Suppl):187S-211S; Sajdeya R et al., JAMA Netw Open 2025;8(9):e2525364",
+   "checked": "web-verified 10 Nov: guideline abstract (PubMed 38526923) and 2025 RCT showing no benefit and more respiratory harm with MAP >85–90; old substring unique"
+  },
+  {
+   "card": "HY4|NEU-12",
+   "field": "a",
+   "old": "Steroids are not recommended.",
+   "new": "Steroids: not recommended (AANS/CNS 2013); AO Spine 2017 only suggests offering a 24-h course if started within 8 h.",
+   "src": "Hurlbert RJ et al., Neurosurgery 2013;72 Suppl 2:93; Fehlings MG et al., Global Spine J 2017;7(3 Suppl):203S",
+   "checked": "web-verified 10 Nov: AO Spine 2017 wording (suggest 24-h MPSS within 8 h; not after 8 h; not 48 h); old substring unique"
+  },
+  {
+   "card": "SPECIAL01|DONOR-04",
+   "field": "a",
+   "old": "**PaCO₂ 60 or more**, or a **rise of 20 or\nmore** from baseline.",
+   "new": "**PaCO₂ 60 or more** and a **rise of 20 or\nmore** from baseline (both needed).",
+   "src": "Greer DM et al., Neurology 2023;101:1112; National Guidelines on Brain Stem Death Certification, MoHFW/NOTTO 2026",
+   "checked": "web-verified 10 Nov: AAN 2023 consensus and 2026 Indian national guideline (apnoea test section) both require PaCO2 ≥60 AND ≥20 above baseline; old substring unique"
+  },
+  {
+   "card": "SPECIAL01|DONOR-06",
+   "field": "a",
+   "old": "(or anaesthetist/intensivist if\nnone).",
+   "new": "(if none: a surgeon or physician plus an\nanaesthetist or intensivist).",
+   "src": "Transplantation of Human Organs and Tissues Rules 2014, Form 10",
+   "checked": "web-verified 10 Nov: Form 10 (SOTTO Goa copy) substitution rule; old substring unique"
+  },
+  {
+   "card": "SPECIAL01|DONOR-06",
+   "field": "a",
+   "old": "nominated **physician, surgeon or intensivist**",
+   "new": "**specialist** authorised from the approved panel",
+   "src": "Transplantation of Human Organs and Tissues Rules 2014, Form 10; National Guidelines on Brain Stem Death Certification, Edition I, MoHFW/NOTTO 2026",
+   "checked": "reviewer web-verified 10 Nov: Form 10 lists (i) medical administrator in-charge, (ii) authorised specialist, (iii) neurologist/neurosurgeon, (iv) treating medical officer; (ii) and (iii) co-opted from the panel approved by the Appropriate Authority"
+  },
+  {
+   "card": "SPECIAL01|DONOR-06",
+   "field": "a",
+   "old": "certification withheld, care\ncontinued until cardiac death (per your notes).",
+   "new": "brain stem death is still certified\n(independent of donation); ventilation may then be withdrawn per\nhospital and State procedure (2026 national guideline).",
+   "src": "National Guidelines on Brain Stem Death Certification, Edition I, MoHFW/NOTTO 2026 (Executive Summary; Chapter 2, non-donation cases)",
+   "checked": "reviewer web-verified 10 Nov: guideline PDF says determination 'is an independent medical and legal responsibility', 'must never be influenced by considerations relating to organ donation', and in non-donation cases 'ventilatory support may then be withdrawn in accordance with applicable hospital and State procedure' (it calls this an interpretation of the current medicolegal position)"
+  },
+  {
+   "card": "SPECIAL05B|POLY-22",
+   "field": "a",
+   "old": "NASCIS III: 48 h better than 24 h if started 3–8 h.",
+   "new": "NASCIS III: 48 h better than 24 h only in the 3–8 h subgroup, with more severe pneumonia.",
+   "src": "Bracken MB et al., NEJM 1990;322:1405; Bracken MB et al., JAMA 1997;277:1597",
+   "checked": "reviewer web-verified 10 Nov: NASCIS II primary analysis negative, <8 h benefit post hoc; NASCIS III 48 h vs 24 h overall P=0.07 at 6 months, benefit only in 3–8 h subgroup; severe pneumonia 5.8% vs 2.6% (criticalcarereviews.com summary of JAMA 1997)"
+  },
+  {
+   "card": "NEURO01|NEURO-20",
+   "field": "a",
+   "old": "**13-14** | Mild TBI",
+   "new": "**13-15** | Mild TBI",
+   "src": "Standard GCS severity bands for TBI (mild 13–15, moderate 9–12, severe 3–8); Teasdale G et al., Lancet Neurol 2014;13:844",
+   "checked": "reviewer 10 Nov: standard TBI severity bands put GCS 15 in mild; the card's 13-14 leaves 15 unclassified"
+  },
+  {
+   "card": "NEURO05|NEURO-102",
+   "field": "watch",
+   "old": "A rising P2 predicts failing autoregulation before the mean ICP climbs.",
+   "new": "A rising P2 warns of exhausted compliance before the mean ICP climbs.",
+   "src": "Czosnyka M, Pickard JD, J Neurol Neurosurg Psychiatry 2004;75:813-821 (monitoring and interpretation of ICP)",
+   "checked": "reviewer 10 Nov: P2 tracks intracranial compliance (the card's own answer line and HY4|NEU-02); autoregulation is assessed with PRx, not P2"
+  },
+  {
+   "card": "HY4|NEU-03",
+   "field": "a",
+   "old": "PaCO2 low-normal; EEG",
+   "new": "PaCO2 low-normal (**35–38**); EEG",
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783",
+   "checked": "web-verified 10 Nov: SIBICC algorithm poster and paper text give Tier 1 PaCO2 at low end of normal, 35–38 mmHg"
+  },
+  {
+   "card": "NEURO02|NEURO-30",
+   "field": "why",
+   "old": "lower severe disability and upper severe disability",
+   "new": "lower severe disability (21.9% vs 14.4%) and upper severe disability (15.4% vs 8.0%). At 12 months favourable outcome (upper severe disability or better) **45.4% vs 32.4%**",
+   "src": "Hutchinson PJ et al., NEJM 2016;375:1119 (RESCUEicp)",
+   "checked": "web-verified 10 Nov: RESCUEicp 6-month GOS-E categories and 12-month favourable outcome (WikiJournalClub summary of NEJM paper)"
+  },
+  {
+   "card": "NEURO02|NEURO-34",
+   "field": "watch",
+   "old": "Mannitol dose here (0.25-1 g/kg, prior edition) differs from\nthe 1-2 g/kg quoted in the ch.53 escalation algorithm (NEURO-25).\nBoth appear in your notes.",
+   "new": "Mannitol dose here (0.25-1 g/kg, prior edition) is the dose to use; SIBICC 2019 gives the same 0.25-1 g/kg as intermittent boluses.\nThe old 1-2 g/kg 6-hourly figure (now corrected on NEURO-25) should not be used.",
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Carney N et al., BTF 4th ed., Neurosurgery 2017;80:6",
+   "checked": "web-verified 10 Nov: SIBICC mannitol 0.25-1.0 g/kg by intermittent bolus; NEURO-25 already corrected in app (cardfix), so this watch note was stale"
+  },
+  {
+   "card": "TRIALS01B|TRL-17",
+   "field": "watch",
+   "old": "TRAIN (2023) found a threshold of 9 better in acute brain injury.",
+   "new": "TRAIN (JAMA 2024) found a threshold of 9 better in acute brain injury (unfavourable outcome 62.6% vs 72.6%).",
+   "src": "Taccone FS et al., JAMA 2024;332:1623 (TRAIN)",
+   "checked": "web-verified 10 Nov: TRAIN published JAMA 2024;332(19):1623-1633; primary outcome 62.6% vs 72.6%, RR 0.86"
+  },
+  {
+   "card": "HY5|HEO-11",
+   "field": "a",
+   "old": "If **SBP ≥ 160 or DBP ≥ 105–110**",
+   "new": "If **SBP ≥ 160 or DBP ≥ 110** (persisting 15 min; treat within 30–60 min)",
+   "src": "ACOG Committee Opinion 767, Obstet Gynecol 2019; ACOG Practice Bulletin 222, Obstet Gynecol 2020",
+   "checked": "web-verified 10 Nov: ACOG CO 767 abstract (treat within 30–60 min of confirmed severe hypertension); severe range ≥160 and/or ≥110 sustained ≥15 min (secondary summary of ACOG)"
+  },
+  {
+   "card": "HY5|HEO-19",
+   "field": "a",
+   "old": "SBP ≥ 160 or DBP ≥ 105–110.",
+   "new": "SBP ≥ 160 or DBP ≥ 110.",
+   "src": "ACOG Committee Opinion 767, Obstet Gynecol 2019",
+   "checked": "web-verified 10 Nov: same as HEO-11; keeps the sweep consistent with the fixed card"
+  },
+  {
+   "card": "HY4|NEU-04",
+   "field": "watch",
+   "old": "'Avoid sodium' → mannitol (GT4 correct).",
+   "new": "'Avoid sodium' → mannitol (GT4 correct). The ≥3-bolus switch is the exam key, not guideline: SIBICC gives hyperosmolar therapy as intermittent boluses, and COBI (JAMA 2021) found continuous saline no better.",
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Roquilly A et al., JAMA 2021;325:2056 (COBI)",
+   "checked": "web-verified 10 Nov: SIBICC Table 1 'do not' list (mannitol by non-bolus continuous infusion; scheduled hyperosmolar therapy every 4–6 h) and Tier 1 bolus osmotherapy (PMC6863785); COBI abstract: 370 pts, continuous 20% saline ≥48 h, adjusted common OR for 6-month GOS-E 1.02 (0.71–1.47). Keyed answer left intact; caveat added to watch"
+  },
+  {
+   "card": "HY5|HEO-12",
+   "field": "a",
+   "old": "**~12–15** | Respiratory depression",
+   "new": "**~10–13** | Respiratory depression",
+   "src": "Lu JF, Nightingale CH, Clin Pharmacokinet 2000;38:305",
+   "checked": "web-verified 10 Nov: Lu & Nightingale table (mmol/L): reflex loss 3.5–5, respiratory paralysis 5–6.5, conduction >7.5, arrest >12.5 = 7–10, 10–13, >15, >25 mEq/L; matches the P3-194 spine"
+  },
+  {
+   "card": "OBS02A|OBS-25",
+   "field": "a",
+   "old": "(relative risk about 0.41)",
+   "new": "(relative risk **0.42**, 95% CI 0.29–0.60)",
+   "src": "Magpie Trial Collaborative Group, Lancet 2002;359:1877",
+   "checked": "standard citation of the Magpie primary result (58% lower risk, RR 0.42, 0.29–0.60); not re-opened this session"
+  },
+  {
+   "card": "NEURO02|NEURO-31",
+   "field": "a",
+   "old": "Independent at home, dependent outside.",
+   "new": "Independent at home and outside (shops, travels), but disabled.",
+   "src": "Wilson JTL et al., Structured interviews for the GOS and GOS-E, J Neurotrauma 1998;15:573",
+   "checked": "standard GOS-E definitions: 'independent at home, dependent outside' is upper severe disability (4); moderate disability (5–6) is independent outside the home. web-verified 10 Nov against the GOS-E category table in Trials 2022 (s13063-022-06184-1, Table 2): 4 = left alone 8 h but cannot shop or use transport; 6 = works at reduced capacity; 8 = no current problems"
+  },
+  {
+   "card": "NEURO02|NEURO-31",
+   "field": "a",
+   "old": "= GR+; without any deficits = GR-",
+   "new": "**Upper good recovery** - no current problems from the injury; minor deficits = GR- (7)",
+   "src": "Wilson JTL et al., J Neurotrauma 1998;15:573",
+   "checked": "standard GOS-E: 8 = upper good recovery (no problems), 7 = lower good recovery (minor deficits); card row 8 had the labels reversed. web-verified 10 Nov against the GOS-E category table in Trials 2022 (s13063-022-06184-1, Table 2): 4 = left alone 8 h but cannot shop or use transport; 6 = works at reduced capacity; 8 = no current problems"
+  },
+  {
+   "card": "NEURO03|NEURO-80",
+   "field": "a",
+   "old": "Hypernatraemia: **fludrocortisone and hypertonic saline** for prevention and correction",
+   "new": "Hyponatraemia (natriuresis): **fludrocortisone and hypertonic saline** for prevention and correction",
+   "src": "Connolly ES et al., AHA/ASA aSAH guideline, Stroke 2012;43:1711 (fludrocortisone and hypertonic saline reasonable to prevent and correct hyponatraemia, IIa B); Hoh BL et al., Stroke 2023;54:e314 (mineralocorticoids reasonable for hyponatraemia/natriuresis)",
+   "checked": "web-verified 10 Nov: 2023 AHA/ASA position that mineralocorticoids are reasonable for hyponatraemia/natriuresis (US Pharmacist 2024 review; Neurocrit Care 2023 letter citing level 2a); fludrocortisone trials reduce natriuresis (2023 guideline text). The drugs treat low, not high, sodium."
+  },
+  {
+   "card": "HY4|NEU-08",
+   "field": "a",
+   "old": "**SBP below 160 until secured · nimodipine 60 mg 4-hourly × 21 days**\na **SBP below 160** (rebleeding risk). After securing, don't routinely lower it.",
+   "new": "**Short-acting BP control until secured · nimodipine 60 mg 4-hourly × 21 days**\na **No set target** (AHA/ASA 2023): frequent monitoring, **short-acting** drugs, avoid hypotension and spikes. Older target **SBP below 160** (rebleeding risk), still the usual exam key. After securing, don't routinely lower it.",
+   "src": "Hoh BL et al., AHA/ASA aSAH guideline, Stroke 2023;54:e314 (Section 6: BP monitoring and control with short-acting medication, COR 1, LOE C-EO; evidence insufficient for any specific BP target)",
+   "checked": "reviewer web-verified 10 Nov: guideline text (UCSD-hosted PDF and ahajournals full text) states the short-acting recommendation and that evidence is insufficient to recommend a specific BP target; SBP >160 linked to rebleeding is older guidance (NEURO-67, NEURO-68 agree)."
+  },
+  {
+   "card": "NEURO03|NEURO-75",
+   "field": "a",
+   "old": "(Class 1, A)",
+   "new": "(Class 2a, B-NR; AHA/ASA 2023)",
+   "src": "Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4)",
+   "checked": "reviewer web-verified 10 Nov from a secondary table (Wyckoff & Chou: 'maintain euvolemia is beneficial (2a, B-NR)'); US Pharmacist 2024 review quotes 'goal-directed treatment to target euvolemia is reasonable'. Primary recommendation table could not be fetched."
+  },
+  {
+   "card": "NEURO03|NEURO-75",
+   "field": "a",
+   "old": "Class 2a, Level B",
+   "new": "Class 2b, B-NR (AHA/ASA 2023: raising SBP 'may be reasonable')",
+   "src": "Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4)",
+   "checked": "reviewer web-verified 10 Nov from a secondary table ('in symptomatic vasospasm, elevate systolic BP may be reasonable (2b, B-NR)'); 2023 top-10 message 8 confirms BP elevation is for symptomatic DCI only. Primary table not fetched."
+  },
+  {
+   "card": "NEURO03|NEURO-76",
+   "field": "a",
+   "old": "(Class 2a, B)",
+   "new": "(Class 2b, B-NR; AHA/ASA 2023)",
+   "src": "Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4)",
+   "checked": "reviewer web-verified 10 Nov from a secondary table: IA vasodilators and angioplasty in severe vasospasm 'may be reasonable (2b, B-NR)'. Primary table not fetched."
+  },
+  {
+   "card": "NMD03|NMD-30",
+   "field": "a",
+   "old": "4–6 exchanges on alternate\ndays (scan: '4-lo')",
+   "new": "**4–5 exchanges, 12–15 L** in\ntotal over 1–2 weeks",
+   "src": "van Doorn PA et al., EAN/PNS Guideline on diagnosis and treatment of Guillain-Barré syndrome, Eur J Neurol / J Peripher Nerv Syst 2023 (PMID 37814552)",
+   "checked": "web-verified 10 Nov: EAN/PNS 2023 abstract recommends PE 12–15 L in four to five exchanges over 1–2 weeks"
+  },
+  {
+   "card": "NMD03|NMD-30",
+   "field": "a",
+   "old": "Within 2–4 weeks",
+   "new": "**Within 2 weeks**; 2–4 weeks is\ngood practice only",
+   "src": "van Doorn PA et al., EAN/PNS GBS Guideline 2023 (PMID 37814552)",
+   "checked": "web-verified 10 Nov: EAN/PNS 2023 recommends IVIg within 2 weeks of onset; 2–4 weeks only as a good practice point (PE up to 4 weeks)"
+  },
+  {
+   "card": "HY4|NEU-11",
+   "field": "a",
+   "old": "**Edrophonium** (short-acting anticholinesterase) — transient improvement.",
+   "new": "**Edrophonium** (short-acting anticholinesterase) — transient improvement. Now **largely abandoned** (false positives, cholinergic risk; unavailable in the US since 2018): diagnose with antibodies and repetitive stimulation.",
+   "src": "UpToDate, Diagnosis of myasthenia gravis (as cited in Wikipedia, Tensilon test); Sanders DB et al., Neurology 2016 (international consensus guidance)",
+   "checked": "web-verified 10 Nov: edrophonium no longer available in the US and many countries as of 2018, fallen out of use for suboptimal sensitivity and specificity (secondary source citing UpToDate)"
+  },
+  {
+   "card": "NMD02|NMD-16",
+   "field": "a",
+   "old": "**contraindicated in asthma and cardiac\ndisease**.",
+   "new": "**contraindicated in asthma and cardiac\ndisease**; now **largely abandoned** (unavailable in the US since 2018).",
+   "src": "UpToDate, Diagnosis of myasthenia gravis (as cited in Wikipedia, Tensilon test)",
+   "checked": "web-verified 10 Nov: edrophonium withdrawn in the US and many countries as of 2018 (secondary source citing UpToDate)"
+  },
+  {
+   "card": "NMD01|NMD-07",
+   "field": "a",
+   "old": "3–4 intermediate (your notes print 3–5)",
+   "new": "3–4 intermediate, **24%** (your notes print 3–5)",
+   "src": "Walgaard C et al., Ann Neurol 2010;67:781 (EGRIS); bands as tabulated in Ann Intensive Care 2025 (s13613-025-01464-w, table 5)",
+   "checked": "reviewer web-verified 10 Nov: EGRIS 0–2 = 4%, 3–4 = 24%, 5–7 = 65% ventilated in week 1"
+  },
+  {
+   "card": "ELEC03B|MGP-07",
+   "field": "a",
+   "old": "**Hyporeflexia** (lost knee jerk)",
+   "new": "**Hyporeflexia** (knee jerk lost near **10**)",
+   "src": "Magnesium sulfate injection, US prescribing information (Pfizer), Overdosage section",
+   "checked": "reviewer web-verified 10 Nov: label says deep tendon reflexes decrease above 4 mEq/L and disappear near 10 mEq/L, when respiratory paralysis may occur"
+  }
+ ]
+}

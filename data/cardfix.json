@@ -1,20 +1,20 @@
 {
- "note": "Card text corrections (7–8 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "35414172c0",
+ "note": "Card text corrections (7–10 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P3, P6 and P7 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
+ "version": "8b2501eb17",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
-    "why": "In BICAR-ICU (2018) bicarbonate gave no overall benefit; the\npre-specified subgroup with pH ≤ 7.2 plus AKI stage 2–3 showed a\nsignal of lower mortality and less dialysis. That subgroup\nbecame the SSC 2021 suggestion. BICARICU-2 (JAMA 2025, n = 627,\npH ≤ 7.20 + AKI 2–3) then tested it directly: 90-day mortality\n62.1% vs 61.7% (no benefit); only less kidney replacement\ntherapy (35% vs 50%). Bicarbonate also\nmakes CO2 (needs ventilation), lowers ionised calcium\nand can worsen intracellular acidosis."
+    "why": "In BICAR-ICU (2018) bicarbonate gave no overall benefit; the\npre-specified subgroup with pH ≤ 7.2 plus AKI stage 2–3 showed a\nsignal of lower mortality and less dialysis. That subgroup\nbecame the SSC 2021 suggestion, kept in SSC 2026 (very low certainty). BICARICU-2 (JAMA 2025, n = 627,\npH ≤ 7.20 + AKI 2–3) then tested it directly: 90-day mortality\n62.1% vs 61.7% (no benefit); only less kidney replacement\ntherapy (35% vs 50%). Bicarbonate also\nmakes CO2 (needs ventilation), lowers ionised calcium\nand can worsen intracellular acidosis."
    },
-   "src": "Jaber S et al. BICARICU-2 RCT. JAMA 2025;334(22):2000-2010. doi:10.1001/jama.2025.20231",
-   "date": "7 Nov 2026"
+   "src": "Jaber S et al. BICARICU-2 RCT. JAMA 2025;334(22):2000-2010. doi:10.1001/jama.2025.20231 · Surviving Sepsis Campaign International Guidelines for Adults 2026 (survivingsepsis.org adult guidelines page; Crit Care Med / Intensive Care Med 2026)",
+   "date": "10 Nov 2026"
   },
   "CCM01|GLU-26": {
    "fields": {
-    "a": "- **HbA1c < 7%** (Newbie): **140-180** mg/dL\n- **HbA1c > 7%** (Seasoned veteran), surgical: **140-180** mg/dL\n- **HbA1c > 7%** (Seasoned veteran), medical: **180-220** mg/dL\n- **Caution:** these HbA1c tiers are expert opinion, not guideline. **SCCM 2024**: start insulin at persistent BG **≥180 mg/dL**, keep the conventional **~140–180 mg/dL**, and avoid an intensive 80–139 target. **CONTROLING (2021, n = 2,075)**: an HbA1c-individualised target gave no benefit (90-day mortality ~32.8% vs 30.4%) and was stopped early.\nMNEMONIC: **Newbies + Seasoned in SICU -> tight control. Seasoned in MICU -> relaxed window.**"
+    "a": "- **HbA1c < 7%** (Newbie): **140-180** mg/dL\n- **HbA1c > 7%** (Seasoned veteran), surgical: **140-180** mg/dL\n- **HbA1c > 7%** (Seasoned veteran), medical: 180-220 mg/dL in the old notes only; **no guideline uses HbA1c tiers**: start insulin at **≥180** and target **140-180** for all\n- **Caution:** these HbA1c tiers are expert opinion, not guideline. **SCCM 2024**: start insulin at persistent BG **≥180 mg/dL**, keep a conventional target (SCCM compared **140–200**; ADA uses **140–180 mg/dL**), and avoid an intensive 80–139 target. **CONTROLING (2021, n = 2,075)**: an HbA1c-individualised target gave no benefit (90-day mortality ~32.8% vs 30.4%) and was stopped early.\nMNEMONIC: **Newbies + Seasoned in SICU -> tight control. Seasoned in MICU -> relaxed window.**"
    },
-   "src": "Honarmand K et al. SCCM glycemic control guideline 2024. Crit Care Med 2024;52(4):e161-e181; Bohe J et al. CONTROLING. Intensive Care Med 2021 (doi:10.1007/s00134-021-06526-8)",
-   "date": "7 Nov 2026"
+   "src": "Honarmand K et al. SCCM glycemic control guideline 2024. Crit Care Med 2024;52(4):e161-e181; Bohe J et al. CONTROLING. Intensive Care Med 2021 (doi:10.1007/s00134-021-06526-8) · SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024); CONTROLING RCT (Bohe et al., 2021); NICE-SUGAR NEJM 2009 · SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024)",
+   "date": "10 Nov 2026"
   },
   "HY6|GIN-01": {
    "fields": {
@@ -26,10 +26,10 @@
   "HY6|GIN-12": {
    "fields": {
     "q": "Managing acute liver failure in the ICU:\na NAC: in whom does it work?\nb Cerebral oedema — sodium target\nc Ammonia above 150 with grade III–IV\nd FFP for a high INR?",
-    "a": "**NAC (proven in paracetamol; early-grade non-paracetamol) · Na 145–155 · CRRT for ammonia**\n\na **N-acetylcysteine**: proven in paracetamol ALF. In adult non-paracetamol ALF it improves transplant-free survival **only in coma grade I–II** (52% vs 30%); no benefit in grade III–IV and no overall survival benefit (Lee 2009). Paediatric non-paracetamol ALF: no benefit (worse under 2 years; Squires 2013).\nb Hypertonic saline to **Na 145–155** (not 155–160); mannitol 0.5–1 g/kg if ICP rises.\nc Early **CRRT** to clear ammonia; intubate grade III–IV for airway protection.\nd **No** — only for bleeding or procedures (INR is a prognostic marker)."
+    "a": "**NAC (proven in paracetamol; early-grade non-paracetamol) · Na 145–155 · CRRT for ammonia**\n\na **N-acetylcysteine**: proven in paracetamol ALF. In adult non-paracetamol ALF it improves transplant-free survival **only in coma grade I–II** (52% vs 30%); no benefit in grade III–IV and no overall survival benefit (Lee 2009). Paediatric non-paracetamol ALF: no survival benefit and lower 1-year transplant-free survival (35% vs 53%), worst under 2 years (Squires 2013).\nb Hypertonic saline to **Na 145–155** (not 155–160); mannitol 0.5–1 g/kg if ICP rises.\nc Early **CRRT** to clear ammonia; intubate grade III–IV for airway protection.\nd **No** — only for bleeding or procedures (INR is a prognostic marker)."
    },
-   "src": "Lee WM et al., Gastroenterology 2009;137:856; Squires RH et al., Hepatology 2013;57:1542",
-   "date": "7 Nov 2026"
+   "src": "Lee WM et al., Gastroenterology 2009;137:856; Squires RH et al., Hepatology 2013;57:1542 · Squires RH et al., Hepatology 2013;57:1542",
+   "date": "10 Nov 2026"
   },
   "TOX03A|PEST-10": {
    "fields": {
@@ -143,11 +143,11 @@
   },
   "SPECIAL05B|POLY-22": {
    "fields": {
-    "a": "- a Cofactor for clotting, cardiac contractility and vascular tone; monitor every 10 units transfused; keep **ionised Ca in the normal range (about 1.1–1.3 mmol/L)**; >0.9 mmol/L is an outdated threshold.\n- b **rFVIIa**: off-label; no outcome benefit; thrombosis; status unclear (notes); last resort only *(standard teaching, not in your notes)*.\n- c NASCIS II: high-dose methylprednisolone within 8 h improved motor recovery; NASCIS III: 48 h better than 24 h if started 3–8 h. **Now not recommended** (CNS, CAEP): harms, no long-term benefit.\n- d Vitamins A, C, E: less inflammation; vitamin C may protect the kidneys.",
+    "a": "- a Cofactor for clotting, cardiac contractility and vascular tone; monitor every 10 units transfused; keep **ionised Ca in the normal range (about 1.1–1.3 mmol/L)**; >0.9 mmol/L is an outdated threshold.\n- b **rFVIIa**: off-label; no outcome benefit; thrombosis; status unclear (notes); last resort only *(standard teaching, not in your notes)*.\n- c NASCIS II: high-dose methylprednisolone within 8 h improved motor recovery in a subgroup only; NASCIS III: 48 h better than 24 h only in the 3–8 h subgroup, with more severe pneumonia. **Now not recommended** (CNS, CAEP): harms, no long-term benefit.\n- d Vitamins A, C, E: less inflammation; vitamin C may protect the kidneys.",
     "watch": "European trauma bleeding guideline (2023): keep ionised calcium in the normal range during massive transfusion."
    },
-   "src": "Rossaint R et al. European trauma bleeding guideline 6th ed. Crit Care 2023;27:80, Rec 31",
-   "date": "7 Nov 2026"
+   "src": "Rossaint R et al. European trauma bleeding guideline 6th ed. Crit Care 2023;27:80, Rec 31 · Bracken MB et al., NASCIS II, N Engl J Med 1990;322:1405 · Bracken MB et al., NEJM 1990;322:1405; Bracken MB et al., JAMA 1997;277:1597",
+   "date": "10 Nov 2026"
   },
   "MISC05B|BURN-12": {
    "fields": {
@@ -247,11 +247,11 @@
   "NEURO02|NEURO-30": {
    "fields": {
     "a": "Trial | Details\nDECRA | Patients with **DIFFUSE** traumatic brain injury. Early bifrontal DC for ICP **>20 mmHg for 15 min**: mortality **similar (19% vs 18%)** but **worse function** (unfavourable GOS-E 70% vs 51%)\nRESCUE-ICP | Hutchinson et al. Medical care vs DC in **408** patients aged **10-65** with TBI (**not focal-only: about 80% diffuse**) and refractory raised ICP (**>25 mmHg**), last-tier DC. Outcome: GOS-E at 6 months",
-    "why": "- RESCUE-ICP at 6 months: DC had **lower**\n**mortality** (26.9% vs 48.9%), but **higher rates of vegetative state** (8.5% vs 2.1%),\nlower severe disability and upper severe disability",
+    "why": "- RESCUE-ICP at 6 months: DC had **lower**\n**mortality** (26.9% vs 48.9%), but **higher rates of vegetative state** (8.5% vs 2.1%),\nlower severe disability (21.9% vs 14.4%) and upper severe disability (15.4% vs 8.0%). At 12 months favourable outcome (upper severe disability or better) **45.4% vs 32.4%**",
     "watch": "The two trials reached opposite-looking conclusions\nbecause the QUESTIONS differ - DECRA did DC EARLY at a lower threshold (ICP >20\nfor 15 min), RESCUE-ICP used it as a LAST TIER for refractory ICP >25. Both\nlargely diffuse injury. DC trades mortality for disability."
    },
-   "src": "Cooper DJ et al., NEJM 2011;364:1493 (DECRA)",
-   "date": "7 Nov 2026"
+   "src": "Cooper DJ et al., NEJM 2011;364:1493 (DECRA) · Hutchinson PJ et al., NEJM 2016;375:1119 (RESCUEicp)",
+   "date": "10 Nov 2026"
   },
   "NEURO02|NEURO-32": {
    "fields": {
@@ -276,10 +276,10 @@
   },
   "NEURO03|NEURO-75": {
    "fields": {
-    "a": "**Prophylactic hypervolaemia is NOT recommended**\n**Euvolaemia** is beneficial for preventing DCI and improving functional outcomes (Class 1, A)\n**Induced hypertension** indicated for patients with **delayed cerebral ischaemia (DCI)** - Class 2a, Level B\nOptimal BP target **not defined**\nPreferred agents: **norepinephrine and phenylephrine**; adjust by neurological status; maintain **2-3 days**\nAlternative: **Milrinone IV** - inodilator. Loading **0.1–0.2 mg/kg** (Montreal protocol; the cardiac load is 50 mcg/kg), infusion **0.75-1.25 mcg/kg/min**. Maintain euvolaemia; if MAP falls, add norepinephrine"
+    "a": "**Prophylactic hypervolaemia is NOT recommended**\n**Euvolaemia** is beneficial for preventing DCI and improving functional outcomes (Class 2a, B-NR; AHA/ASA 2023)\n**Induced hypertension** indicated for patients with **delayed cerebral ischaemia (DCI)** - Class 2b, B-NR (AHA/ASA 2023: raising SBP 'may be reasonable')\nOptimal BP target **not defined**\nPreferred agents: **norepinephrine and phenylephrine**; adjust by neurological status; maintain **2-3 days**\nAlternative: **Milrinone IV** - inodilator. Loading **0.1–0.2 mg/kg** (Montreal protocol; the cardiac load is 50 mcg/kg), infusion **0.75-1.25 mcg/kg/min**. Maintain euvolaemia; if MAP falls, add norepinephrine"
    },
-   "src": "Lannes M et al. Neurocrit Care 2012;16:354-362 (dosing confirmed via secondary sources citing it; abstract has no dosing)",
-   "date": "7 Nov 2026"
+   "src": "Lannes M et al. Neurocrit Care 2012;16:354-362 (dosing confirmed via secondary sources citing it; abstract has no dosing) · Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4)",
+   "date": "10 Nov 2026"
   },
   "HY7|VNX-03": {
    "fields": {
@@ -446,6 +446,565 @@
    },
    "src": "Villar J et al., Lancet Respir Med 2020 (DEXA-ARDS); Qadir N et al., ATS guideline, AJRCCM 2024; Chaudhuri D et al., SCCM guideline, Crit Care Med 2024",
    "date": "8 Nov 2026"
+  },
+  "SOD01A|SOD-06": {
+   "fields": {
+    "a": "**CHAMBER** | **FINDINGS**\n**LV systolic** | EF **<45%**; S' <7.5 cm/s; global longitudinal strain worse than –20%; low output\n**LV diastolic** | Septal e' <7, lateral e' <10 cm/s; E/e' lateral >13, septal >15\n**RV** | RV/LV >0.6; **TAPSE <17 mm**; S' <10 cm/s; fractional area change <35%"
+   },
+   "src": "Lang RM et al., ASE/EACVI chamber quantification, J Am Soc Echocardiogr 2015;28:1",
+   "date": "10 Nov 2026"
+  },
+  "SEP01B|SEP-23": {
+   "fields": {
+    "a": "- a Resuscitation to normalise **capillary refill time** (≤3 s) vs to lower **lactate** (by 20% every 2 hours).\n- b 28-day mortality 34.9% vs 43.4%, **P = 0.06**: not significant, but less organ dysfunction.\n- c Capillary refill time entered the guideline as an adjunct.\n- **ANDROMEDA-SHOCK-2** (JAMA 2025; 1467 pts): CRT-targeted phenotype-based resuscitation beat usual care on a hierarchical outcome (**win ratio 1.16**) through less organ support; 28-day mortality 26.5% vs 26.6%."
+   },
+   "src": "ANDROMEDA-SHOCK-2 Investigators, JAMA 2025;334(22):1988-1999; SSC 2026 (Prescott et al., Intensive Care Med / Crit Care Med 2026)",
+   "date": "10 Nov 2026"
+  },
+  "SEP02|SEP-62": {
+   "fields": {
+    "a": "- **Code sepsis / sepsis huddle**\n- **Pre-hospital** antibiotics (transfer >60 min)\n- Against **beta-blockers**; against all blood purification\n- **MAP 60–65** for age 65 and over\n- **Source control within 6 hours**\n- MDR and Candida-biomarker statements; against empiric **anaerobic** or **antifungal** cover unless risk factors\n- **Noradrenaline or adrenaline** first line with cardiac dysfunction\n- **ICU admission within 6 hours**\n- Against **vitamin D**\n- **Selective digestive decontamination**: suggested in ventilated patients in low-resistance units\n- **Awake prone positioning**\n- **Active fluid removal**\n- Against routine **antipyretics, probiotics, Xuebijing**\n- Methylene blue, midodrine: insufficient evidence"
+   },
+   "src": "SSC 2026 (Prescott et al., Intensive Care Med / Crit Care Med 2026) (129 statements, 46 new)",
+   "date": "10 Nov 2026"
+  },
+  "MISC05A|BURN-07": {
+   "fields": {
+    "a": "**Early intubation** if stridor or impending obstruction. Extubate after **48–72 h**: **cuff leak test**; consider IV steroids before extubation if at high risk of stridor (e.g. failed leak test; evidence extrapolated from general ICU).\n**Nebulised heparin** (about 5,000–10,000 IU 4–6-hourly; scan unclear) **+ N-acetylcysteine** (less inflammation); **no systemic corticosteroids** (no benefit, infection risk); no prophylactic antibiotics.\n**Fibreoptic bronchoscopy**: tracheobronchial toilet; reduces VAP."
+   },
+   "src": "ABA ABLS Provider Manual 2018; ISBI Practice Guidelines for Burn Care, Burns 2016 · General ICU post-extubation stridor trials (e.g. François, Lancet 2007); burn-specific evidence thin",
+   "date": "10 Nov 2026"
+  },
+  "HEMO03B|CO-14": {
+   "fields": {
+    "a": "**Variable** | **Drawback**\n**CO (thermo)** | Not continuous (but as reliable as pulmonary\nthermodilution)\n**CO (contour)** | Needs regular recalibration\n**GEDV** | Cannot separate right from left ventricle\n**SVV** | Invalid in spontaneous breathing, arrhythmias, ARDS\n**CFI / GEF** | UNDERESTIMATE LV function when the right ventricle is\ndilated\n**EVLW, PVPI** | Unreliable in pulmonary embolism, lung resection, large\npleural effusions"
+   },
+   "src": "GEF = 4×SV/GEDV; RV dilatation raises GEDV, so GEF/CFI underestimate LV function (Combes A et al., Intensive Care Med 2004;30:1377)",
+   "date": "10 Nov 2026"
+  },
+  "CVS06B|RVF-32": {
+   "fields": {
+    "a": "**Method** | **Abnormal**\n**RVEF on 2D** | **<44%**\n**Fractional area change (FAC)** | **<35%**\n**TAPSE** | **<1.7 cm**\n**RIMP** | **Pulsed >0.44**; **Tissue >0.55**\n**Isovolumic acceleration (IVA)** | **NOT DEFINED**\n**S' (pulsed)** | **<10 cm/sec**\n**RVEF on 3D** | **<44%**"
+   },
+   "src": "Rudski LG et al., J Am Soc Echocardiogr 2010; Lang RM et al., ASE/EACVI 2015",
+   "date": "10 Nov 2026"
+  },
+  "NEURO01|NEURO-26": {
+   "fields": {
+    "a": "Trial | Findings\nCRASH-2 | **Polytrauma**. TXA vs placebo. Dose **1 g loading then 1 g over 8 hours**. TXA group: less haemorrhage growth, fewer focal brain lesions\nCRASH-3 | **TBI patients**, **12,000** patients. TXA vs placebo. **Mild–moderate TBI (GCS 9–15): lower head-injury death (subgroup). Severe TBI (GCS 3–8): NO benefit**\nOral anticoagulants: more pronounced expansion of extra-axial lesions, significant haemorrhagic progression, higher risk of delayed traumatic ICH\nManagement: assess coagulation profile; **FFP / PCC / vitamin K**; dose by weight and INR; **repeat CT before discharge**\nReversal for dabigatran: **idarucizumab**",
+    "watch": "CRASH-3's benefit was confined to MILD–MODERATE TBI (GCS 9–15) - the intuition that sicker patients benefit more is wrong here."
+   },
+   "src": "CRASH-3 collaborators, Lancet 2019;394:1713",
+   "date": "10 Nov 2026"
+  },
+  "MISC05B|BURN-14": {
+   "fields": {
+    "a": "a Hypercatabolic: insulin resistance, lipolysis, proteolysis; poor healing, immune suppression.\nb **Early** enteral feeding (within about 12 h): prevents stress ulcers, reduces infection, boosts immunoglobulins.\nc Estimate REE × factor by TBSA: **1.2** (under 10%), **1.3** (10–20%), **1.5** (20–40%), **1.7** (40–60%), **2.0** (over 60%).\nd Adults **1.5–2 g/kg/day**; children 2–4 g/kg/day (notes; ESPEN 2.5–4).\ne **Low fat** (under about 25% of calories: fatty infiltration of organs); **no glutamine** (RE-ENERGIZE, Heyland NEJM 2022: no benefit on discharge or mortality);  Zn, Cu, Se, Ca, vitamins B1, C, D, E."
+   },
+   "src": "Heyland DK et al., RE-ENERGIZE, N Engl J Med 2022;387:1001",
+   "date": "10 Nov 2026"
+  },
+  "HY5|HEO-03": {
+   "fields": {
+    "a": "**Damage-control resuscitation: permissive hypotension + early balanced blood**\na **Permissive hypotension** (SBP 80–90 / MAP 50–60) until bleeding is controlled; minimal crystalloid.\nb **1 : 1 : 1** (plasma : platelets : red cells); give calcium.\nc **1 g over 10 min, then 1 g over 8 h, within 3 h** of injury (CRASH-2: ↓ mortality).\nd **Traumatic brain injury** — keep MAP ≥ 80 for cerebral perfusion."
+   },
+   "src": "Rossaint R et al., European guideline on management of major bleeding after trauma, 6th ed, Crit Care 2023",
+   "date": "10 Nov 2026"
+  },
+  "CVS09|AD-17": {
+   "fields": {
+    "a": "**Test** | **Role / limitation**\n**TTE** | Shows **severe AR** if root or valve involved; **may\nmiss** the dissection\n**TEE** | **Superior to TTE** - sees nearly all the aorta (blind spot: distal ascending aorta and proximal arch, behind the trachea); useful if\nCT contraindicated or patient cannot be transported\n**CT aortogram** | The **DEFINITIVE** test - whole aorta; preferred over\nroutine contrast CT chest or CT pulmonary\nangiography\n**MR angiography** | Detailed, but **slow** - unsuitable for unstable patients\n2024 ESC: first-line imaging is ECG-gated contrast CT from\nneck to pelvis (I, C); TEE to guide perioperative management (I,\nC)."
+   },
+   "src": "ESC 2024 peripheral arterial and aortic disease guideline; standard TEE anatomy",
+   "date": "10 Nov 2026"
+  },
+  "OBS02B|OBS-37": {
+   "fields": {
+    "a": "a Aggressive multi-organ support; correct coagulopathy;\n**massive transfusion protocol**.\nb **Emergency delivery**; caesarean with ligation of uterine or\ninternal iliac arteries, even hysterectomy.\nc **VA-ECMO** as rescue for refractory collapse (case series only).\nd **Chorioamnionitis** (altered vaginal pH, amniocentesis);\n**pyelonephritis** (ureteric tone lost to progesterone;\nGram-negative colonisation); **endometritis** (instrumentation);\npneumonia."
+   },
+   "src": "Amniotic fluid embolism case series and SMFM 2016 guidance",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL05B|POLY-11": {
+   "fields": {
+    "a": "- a **Hypothermia** (under 34 °C), **acidosis** (pH under 7.2), **coagulopathy**: each worsens the others; all three = very high mortality.\n- b pH under 7.1 (**OR 12.3**), temperature under 34 °C (OR 8.7), ISS over 25 (OR 7.7), SBP under 70: predictors of life-threatening coagulopathy (Cosgriff 1997); all four ≈ 98% incidence.\n- c Lost thermoregulation, no shivering, low metabolism, cold fluids, exposure; core under **32 °C** in trauma ≈ **100% mortality**.\n- d Poor perfusion, **saline** resuscitation; factor VIIa, Xa/Va complex and platelets fail; myocardial depression."
+   },
+   "src": "Cosgriff N et al., J Trauma 1997;42:857",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL05B|POLY-19": {
+   "fields": {
+    "watch": "Viscoelastic tests (TEG, ROTEM): faster, detect hyperfibrinolysis, run at body temperature, reduce transfusion; a Cochrane review found lower mortality but at very low certainty, mostly in cardiac surgery; survival benefit not shown in trauma. European targets: fibrinogen 1.5–2 g/L *(standard teaching, not in your notes)*; platelets over 50 (over 100 in TBI)."
+   },
+   "src": "Wikkelsø A et al., Cochrane CD007871 (2016)",
+   "date": "10 Nov 2026"
+  },
+  "CVS01|CVS-27": {
+   "fields": {
+    "a": "- Haemodynamically **unstable**: **tamponade**\n- **Stable** patients: large effusion **>20 mm**; chronic effusion **>3 months**; symptomatic moderate-to-large effusion not responding to medical therapy; **small** effusion if TB, bacterial or neoplastic\n- Puncture sites: **subcostal, parasternal, apical**\n**ABSOLUTE C/I** | **RELATIVE C/I**\nAortic dissection | Platelets <50 K\nPost-MI free wall rupture | Coagulopathy\n— | Anticoagulant therapy; severe PAH (caution: RV may fail after drainage)"
+   },
+   "src": "ESC 2015 pericardial disease guideline: only aortic dissection and free-wall rupture are absolute contraindications",
+   "date": "10 Nov 2026"
+  },
+  "CVS06B|RVF-29": {
+   "fields": {
+    "watch": "Increased wall thickness is the only sign that dates the process - it means CHRONIC overload, since an acutely loaded RV dilates rather than hypertrophies. TAPSE <17 mm is the ASE/EACVI cut-off: normal is ≥17 mm, with no upper limit."
+   },
+   "src": "Lang RM et al., ASE/EACVI chamber quantification, J Am Soc Echocardiogr 2015;28:1",
+   "date": "10 Nov 2026"
+  },
+  "CCM08|CNS-20": {
+   "fields": {
+    "a": "- Indications: **focal neurological signs** • **papilloedema** • **continuous or uncontrolled seizures** • **GCS ≤12** (UK 2016; ESCMID 2016 uses **GCS <10**; IDSA any reduced consciousness)\n- Purpose: to exclude significant brain swelling and shift that may predispose to **cerebral herniation post-LP**\n- **Radiological contraindications to LP:** significant brain shift/swelling • tight basal cisterns • alternative diagnosis\n- **Inability to view the fundus is NOT a contraindication to LP**"
+   },
+   "src": "McGill F et al., UK joint specialist societies guideline, J Infect 2016;72:405; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37; Glimåker M et al., Clin Infect Dis 2018;66:321 (Table 1 compares the criteria)",
+   "date": "10 Nov 2026"
+  },
+  "CCM08|CNS-26": {
+   "fields": {
+    "a": "- MOA: inhibit synthesis of **IL-1 and TNF** at the mRNA level • decrease CSF **outflow resistance** • **stabilize the BBB**\n- Dose: **dexamethasone 0.15 mg/kg (10 mg adult) 6-hourly for 4 days**\n- Timing: given **early, ideally with or BEFORE the first dose of antibiotics**\n- **H. influenzae:** reduction in **severe hearing loss** in children (RR 0.34)\n- May reduce mortality and neurological sequelae especially in **pneumococcal meningitis**\n- **Should NOT be used routinely in HSV encephalitis**"
+   },
+   "src": "de Gans J, van de Beek D, NEJM 2002;347:1549; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37 · Brouwer MC, McIntyre P, Prasad K, van de Beek D, Cochrane Database Syst Rev 2015;(9):CD004405",
+   "date": "10 Nov 2026"
+  },
+  "CCM08|CNS-27": {
+   "fields": {
+    "a": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); WHO: **HR for 10 months**. Z only in the 2-month intensive phase\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
+    "watch": "TB meningitis dexamethasone (0.4 mg/kg/day, tapered over 8-12 weeks by ICMR, 6-8 by WHO) is a completely different regimen from bacterial meningitis dexamethasone (0.15 mg/kg 6-hourly for 4 days)."
+   },
+   "src": "ICMR Standard Treatment Workflow, NTEP TB meningitis (adult), 2022; WHO 2HRZE/10HR regimen (WHO 2010 rapid advice, carried into Module 4, 2022) · ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025 (maintained); Thwaites GE et al., NEJM 2004;351:1741 · ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025; de Gans J, van de Beek D, NEJM 2002;347:1549",
+   "date": "10 Nov 2026"
+  },
+  "CCM08|CNS-19": {
+   "fields": {
+    "a": "- Sensitivity **0.93** (95% CI 0.89-0.96)\n- Specificity **0.96** (95% CI 0.93-0.98)\n- **Pretreatment with antibiotics reduces sensitivity to 0.49** (95% CI 0.23-0.75)\n- Optimal level: around **35 mg/dL (34-36)**, i.e. about **3.9 mmol/L** offers higher sensitivity and specificity than levels around 27 mg/dL (26-28)"
+   },
+   "src": "Sakushima K et al., J Infect 2011;62:255",
+   "date": "10 Nov 2026"
+  },
+  "HY4|NEU-12": {
+   "fields": {
+    "a": "**ASIA B = sensory only · MAP floor 75–80 for 3–7 days**\na **ASIA B**. (A: complete incl. S4–5. C: motor preserved, most key muscles below grade 3. D: at least half ≥ 3.)\nb **MAP at least 75–80 mmHg, not pushed above 90–95, for 3–7 days** (fluids + noradrenaline/dopamine). The older 85–90 for 7 days (AANS/CNS 2013) is superseded.\nc **Hypotonic** fluids — 5% dextrose, 0.45% saline (worsen cord oedema).\nd **Within 72 h**. Steroids: not recommended (AANS/CNS 2013); AO Spine 2017 only suggests offering a 24-h course if started within 8 h."
+   },
+   "src": "Kwon BK et al., Global Spine J 2024;14(3 Suppl):187S-211S · Kwon BK et al., Global Spine J 2024;14(3 Suppl):187S-211S; Sajdeya R et al., JAMA Netw Open 2025;8(9):e2525364 · Hurlbert RJ et al., Neurosurgery 2013;72 Suppl 2:93; Fehlings MG et al., Global Spine J 2017;7(3 Suppl):203S",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL01|DONOR-04": {
+   "fields": {
+    "a": "**1.** Haemodynamically stable; adjust ventilation to **PaCO₂\n35–45**.\n**2.** **Pre-oxygenate with FiO₂ 1.0 for over 10 min** to PaO₂ over\n200; PEEP 5.\n**3.** Disconnect; oxygen via a catheter at the carina (**6 L/min**) or\na T-piece with CPAP 10.\n**4.** Watch for breathing; **ABG at 8–10 min**; reconnect.\n**5. Positive** (no breathing): **PaCO₂ 60 or more** and a **rise of 20 or\nmore** from baseline (both needed)."
+   },
+   "src": "Greer DM et al., Neurology 2023;101:1112; National Guidelines on Brain Stem Death Certification, MoHFW/NOTTO 2026",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL01|DONOR-06": {
+   "fields": {
+    "a": "a A board of four: **doctor in charge**, **hospital administrator**, a\n**specialist** authorised from the approved panel, and a\n**neurologist or neurosurgeon** (if none: a surgeon or physician plus an\nanaesthetist or intensivist).\nb **Two examinations** with apnoea tests, at least **6 hours apart**.\nc Counsel the family about brain death and donation after the\nfirst test.\nd Family unwilling: tests still done, brain stem death is still certified\n(independent of donation); ventilation may then be withdrawn per\nhospital and State procedure (2026 national guideline)."
+   },
+   "src": "Transplantation of Human Organs and Tissues Rules 2014, Form 10 · Transplantation of Human Organs and Tissues Rules 2014, Form 10; National Guidelines on Brain Stem Death Certification, Edition I, MoHFW/NOTTO 2026 · National Guidelines on Brain Stem Death Certification, Edition I, MoHFW/NOTTO 2026 (Executive Summary; Chapter 2, non-donation cases)",
+   "date": "10 Nov 2026"
+  },
+  "NEURO01|NEURO-20": {
+   "fields": {
+    "a": "GCS | Severity\n**13-15** | Mild TBI\n**9-12** | Moderate TBI\n**3-8** | Severe TBI\nPerformed **after resuscitation** and **before administering sedatives or paralytics**\nSerial GCS: a change of **>2** is a significant prognosticator"
+   },
+   "src": "Standard GCS severity bands for TBI (mild 13–15, moderate 9–12, severe 3–8); Teasdale G et al., Lancet Neurol 2014;13:844",
+   "date": "10 Nov 2026"
+  },
+  "NEURO05|NEURO-102": {
+   "fields": {
+    "watch": "A rising P2 warns of exhausted compliance before the mean ICP climbs."
+   },
+   "src": "Czosnyka M, Pickard JD, J Neurol Neurosurg Psychiatry 2004;75:813-821 (monitoring and interpretation of ICP)",
+   "date": "10 Nov 2026"
+  },
+  "HY4|NEU-03": {
+   "fields": {
+    "a": "**Tier 0 basics → Tier 1 osmotherapy/CSF → Tier 2 → Tier 3 rescue**\nTIER | INTERVENTIONS\n**0** | Head up 30°, analgesia + sedation, normothermia (no fever), PaCO2 35–45, SpO2 ≥ 94%, Na/glucose, seizure prophylaxis 7 days\n**1** | CPP 60–70; deeper sedation; **mannitol or hypertonic saline boluses**; **CSF drainage (EVD)**; PaCO2 low-normal (**35–38**); EEG\n**2** | Mild hypocapnia 32–35; neuromuscular blockade; MAP challenge to test autoregulation\n**3** | **Barbiturate coma**, **decompressive craniectomy**, mild hypothermia 35–36 °C\n**NOT recommended**: steroids (CRASH — ↑ mortality), prophylactic PaCO2 below 30, CPP above 90, prophylactic hypothermia, high-dose propofol."
+   },
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783",
+   "date": "10 Nov 2026"
+  },
+  "NEURO02|NEURO-34": {
+   "fields": {
+    "watch": "Mannitol dose here (0.25-1 g/kg, prior edition) is the dose to use; SIBICC 2019 gives the same 0.25-1 g/kg as intermittent boluses.\nThe old 1-2 g/kg 6-hourly figure (now corrected on NEURO-25) should not be used."
+   },
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Carney N et al., BTF 4th ed., Neurosurgery 2017;80:6",
+   "date": "10 Nov 2026"
+  },
+  "TRIALS01B|TRL-17": {
+   "fields": {
+    "watch": "Verdict: no significant difference. Unfavourable outcome 68.4% vs 73.5% *(standard teaching, not in your notes)*. Contrast: in general ICU patients restrictive (7) is standard; TRAIN (JAMA 2024) found a threshold of 9 better in acute brain injury (unfavourable outcome 62.6% vs 72.6%)."
+   },
+   "src": "Taccone FS et al., JAMA 2024;332:1623 (TRAIN)",
+   "date": "10 Nov 2026"
+  },
+  "HY5|HEO-11": {
+   "fields": {
+    "a": "**MgSO4 4–6 g IV over 15–20 min → 1–2 g/h**\na **4–6 g IV over 15–20 min, then 1–2 g/h** (extra 2 g for a recurrent seizure). Continue 24 h after delivery.\nb If **SBP ≥ 160 or DBP ≥ 110** (persisting 15 min; treat within 30–60 min) → IV labetalol, hydralazine or oral nifedipine; aim ~140–150/90–100.\nc **CT head** — exclude haemorrhage or venous thrombosis.\nd **Diuretics** — intravascularly depleted; reduce uterine perfusion. Delivery is definitive."
+   },
+   "src": "ACOG Committee Opinion 767, Obstet Gynecol 2019; ACOG Practice Bulletin 222, Obstet Gynecol 2020",
+   "date": "10 Nov 2026"
+  },
+  "HY5|HEO-19": {
+   "fields": {
+    "a": "**Sweep — the nine statements**\nT/F | WHY\n**a** | F | Normal HEPTEM = heparin → protamine.\n**b** | T | Threshold 1.5 g/L.\n**c** | T | CRASH-2; later = harm.\n**d** | F | TACO does; TRALI does not.\n**e** | T | Bolus then infusion/6-hourly.\n**f** | F | Iodine ≥ 1 h AFTER thionamide.\n**g** | F | Add dextrose, continue insulin.\n**h** | F | SBP ≥ 160 or DBP ≥ 110.\n**i** | T | Bronchospasm."
+   },
+   "src": "ACOG Committee Opinion 767, Obstet Gynecol 2019",
+   "date": "10 Nov 2026"
+  },
+  "HY4|NEU-04": {
+   "fields": {
+    "watch": "Escalation trigger (44%). 'Avoid sodium' → mannitol (GT4 correct). The ≥3-bolus switch is the exam key, not guideline: SIBICC gives hyperosmolar therapy as intermittent boluses, and COBI (JAMA 2021) found continuous saline no better.\n*Neuro mini Mar Q2 · GT4 Q15*"
+   },
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Roquilly A et al., JAMA 2021;325:2056 (COBI)",
+   "date": "10 Nov 2026"
+  },
+  "HY5|HEO-12": {
+   "fields": {
+    "a": "**Patellar reflex goes first — antidote calcium gluconate**\nSERUM MG (MEQ/L) | EFFECT\n**4–7** | Therapeutic\n**~10** | Loss of patellar reflex\n**~10–13** | Respiratory depression\n**above 25** | Cardiac arrest\nMonitor every hour: **patellar reflex, RR above 12, urine above 30 mL/h**. Toxic → stop infusion, **calcium gluconate 1 g IV**."
+   },
+   "src": "Lu JF, Nightingale CH, Clin Pharmacokinet 2000;38:305",
+   "date": "10 Nov 2026"
+  },
+  "OBS02A|OBS-25": {
+   "fields": {
+    "a": "a Cerebral **vasodilatation**: relieves vasospasm.\nb Reduces **acetylcholine release** at the motor end-plate.\nc Antagonises intracellular calcium; blocks **NMDA** receptors.\nd About **10,000 women in 33 countries**; magnesium vs\nplacebo in pre-eclampsia.\ne A **58% lower risk of eclampsia** (relative risk **0.42**, 95% CI 0.29–0.60)."
+   },
+   "src": "Magpie Trial Collaborative Group, Lancet 2002;359:1877",
+   "date": "10 Nov 2026"
+  },
+  "NEURO02|NEURO-31": {
+   "fields": {
+    "a": "Score | Category\n**1** | Dead\n**2** | **Vegetative state** - unawareness with only reflex responses, but periods of spontaneous eye opening\n**3** Low SD- | **Severe disability** - dependent for daily support.\n**4** Upper SD+ | If can be left alone **>8h at home** = SD+, if not = SD-\n**5** Low MD- | **Moderate disability** - aphasia, hemiparesis, epilepsy, memory/personality deficit.\n**6** Upper MD+ | Independent at home and outside (shops, travels), but disabled. If able to **return to work** (even with special arrangement) = MD+\n**7** Low GR- | **Good recovery** - resumption of normal life with capacity to work. Non-disabling minor deficits\n**8** Upper GR+ | **Upper good recovery** - no current problems from the injury; minor deficits = GR- (7)"
+   },
+   "src": "Wilson JTL et al., Structured interviews for the GOS and GOS-E, J Neurotrauma 1998;15:573 · Wilson JTL et al., J Neurotrauma 1998;15:573",
+   "date": "10 Nov 2026"
+  },
+  "NEURO03|NEURO-80": {
+   "fields": {
+    "a": "**Complication** | **Frequency**\nECG abnormalities | **92%**\nST segment changes | 15-67%\nT wave changes | 12-92%\nArrhythmias (incl. AF) | 8%\nMyocardial infarction | 6%\nTroponin I elevated | 20%\nPneumonia (aspiration) | 20%\nNeurogenic pulmonary oedema | 14%\n**Hyponatraemia** (SIADH / CSW) | **20-40%**\nHypomagnesaemia | 40%\nHypokalaemia | 25%\nHypernatraemia | 20%\n**Stunned myocardium** = most severe cardiac injury; echo shows regional wall motion abnormalities; caused by sympathetic nerve injury from **excessive catecholamine surge**\nHyponatraemia (natriuresis): **fludrocortisone and hypertonic saline** for prevention and correction (Class 2a, B)\nGlucose target: **80-120 mg/dL**; strictly avoid hypoglycaemia (Class 2b, B)"
+   },
+   "src": "Connolly ES et al., AHA/ASA aSAH guideline, Stroke 2012;43:1711 (fludrocortisone and hypertonic saline reasonable to prevent and correct hyponatraemia, IIa B); Hoh BL et al., Stroke 2023;54:e314 (mineralocorticoids reasonable for hyponatraemia/natriuresis)",
+   "date": "10 Nov 2026"
+  },
+  "HY4|NEU-08": {
+   "fields": {
+    "a": "**Short-acting BP control until secured · nimodipine 60 mg 4-hourly × 21 days**\na **No set target** (AHA/ASA 2023): frequent monitoring, **short-acting** drugs, avoid hypotension and spikes. Older target **SBP below 160** (rebleeding risk), still the usual exam key. After securing, don't routinely lower it.\nb **60 mg orally every 4 h for 21 days**, clipped or coiled. Improves outcome (not by reversing angiographic spasm).\nc Days **3–14** (peak ~7) → euvolaemia + **induced hypertension**; endovascular therapy if refractory. Triple-H is obsolete.\nd **Volume status**: SIADH euvolaemic → restrict; **CSW hypovolaemic → saline ± fludrocortisone**. Never fluid-restrict in SAH."
+   },
+   "src": "Hoh BL et al., AHA/ASA aSAH guideline, Stroke 2023;54:e314 (Section 6: BP monitoring and control with short-acting medication, COR 1, LOE C-EO; evidence insufficient for any specific BP target)",
+   "date": "10 Nov 2026"
+  },
+  "NEURO03|NEURO-76": {
+   "fields": {
+    "a": "Refractory (unresponsive to HTN therapy): **cerebral angioplasty or intra-arterial vasodilator therapy** (Class 2b, B-NR; AHA/ASA 2023)\nCommon vasodilators used: **nicardipine, verapamil, nimodipine**\n**NO role in cerebral vasospasm:**\n- Endothelin-1 antagonists\n- Magnesium sulphate\n- Prophylactic hypervolaemia\n- Statins"
+   },
+   "src": "Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4)",
+   "date": "10 Nov 2026"
+  },
+  "NMD03|NMD-30": {
+   "fields": {
+    "a": " | **PLASMA EXCHANGE** | **IVIG**\n**Indications** | Respiratory failure, bulbar\ninvolvement, **cannot walk**\n**unaided** | Same\n**Timing** | Best **within 2 weeks**; up to\n4 weeks | **Within 2 weeks**; 2–4 weeks is\ngood practice only\n**Regimen** | **4–5 exchanges, 12–15 L** in\ntotal over 1–2 weeks | **0.4 g/kg/day for 5 days**\n**Effect** | Halves ventilation time,\nstay, time to walk | Equivalent; easier to give\n**Adverse** | Line problems,\nhaemodynamic swings | **Renal failure**, pulmonary\noedema, proteinuria,\n**anaphylaxis in IgA**\n**deficiency**"
+   },
+   "src": "van Doorn PA et al., EAN/PNS Guideline on diagnosis and treatment of Guillain-Barré syndrome, Eur J Neurol / J Peripher Nerv Syst 2023 (PMID 37814552) · van Doorn PA et al., EAN/PNS GBS Guideline 2023 (PMID 37814552)",
+   "date": "10 Nov 2026"
+  },
+  "HY4|NEU-11": {
+   "fields": {
+    "a": "**GBS: serial FVC — '20–30–40' rule**\na **Serial FVC by spirometry** (SpO2 and gases fall late). Intubate if FVC below **20 mL/kg**, MIP weaker than **−30**, MEP below **40** cmH2O.\nb **IVIG 0.4 g/kg/day × 5** or **plasma exchange** (equal). Steroids don't work.\nc Ophthalmoplegia, ataxia, areflexia; anti-GQ1b → **plasmapheresis/IVIG**.\nd **Edrophonium** (short-acting anticholinesterase) — transient improvement. Now **largely abandoned** (false positives, cholinergic risk; unavailable in the US since 2018): diagnose with antibodies and repetitive stimulation."
+   },
+   "src": "UpToDate, Diagnosis of myasthenia gravis (as cited in Wikipedia, Tensilon test); Sanders DB et al., Neurology 2016 (international consensus guidance)",
+   "date": "10 Nov 2026"
+  },
+  "NMD02|NMD-16": {
+   "fields": {
+    "a": "a **Anti-AChR**: positive in 80% of generalised, only **50% of\nocular** disease.\nb **Edrophonium**: subjective unless clear ptosis or eye\nmovement change; **contraindicated in asthma and cardiac\ndisease**; now **largely abandoned** (unavailable in the US since 2018).\nc **Repetitive stimulation**: **decrement over 10%** in CMAP.\nd **Single-fibre EMG**: most sensitive (jitter) *(standard teaching,\nnot in your notes)*.\ne In crisis, **FVC** matters more than confirming the diagnosis."
+   },
+   "src": "UpToDate, Diagnosis of myasthenia gravis (as cited in Wikipedia, Tensilon test)",
+   "date": "10 Nov 2026"
+  },
+  "NMD01|NMD-07": {
+   "fields": {
+    "a": "**MEASURE** | **CATEGORY** | **POINTS**\n**Days from weakness onset**\n**to admission** | Over 7 / 4–7 / 3 or less | 0 / 1 / 2\n**Facial or bulbar weakness** | Absent / present | 0 / 1\n**MRC sum score** | 60–51 / 50–41 / 40–31 /\n30–21 / 20 or less | 0 / 1 / 2 / 3 / 4\n- Total **0–7**. **5–7: high risk** of needing ventilation in the first\nweek; 3–4 intermediate, **24%** (your notes print 3–5); 0–2 low\n*(standard teaching, not in your notes).*"
+   },
+   "src": "Walgaard C et al., Ann Neurol 2010;67:781 (EGRIS); bands as tabulated in Ann Intensive Care 2025 (s13613-025-01464-w, table 5)",
+   "date": "10 Nov 2026"
+  },
+  "ELEC03B|MGP-07": {
+   "fields": {
+    "a": "**SERUM MAGNESIUM (MEQ/L)** | **SIGN**\n**Over 4** | **Hyporeflexia** (knee jerk lost near **10**)\n**Over 5** | **First-degree AV block**\n**Over 10** | **Complete heart block**\n**Over 13** | **Cardiac arrest**"
+   },
+   "src": "Magnesium sulfate injection, US prescribing information (Pfizer), Overdosage section",
+   "date": "10 Nov 2026"
+  },
+  "RENAL01|AKI-06": {
+   "fields": {
+    "a": "**Localise AKI as perfusion, parenchyma or plumbing**\n**1 PRERENAL - PERFUSION**\nSudden fall in renal perfusion: blood loss, dehydration, heart failure, sepsis, vascular occlusion\n**2 INTRINSIC - PARENCHYMA**\nATN: drugs, toxins, prolonged hypotension\nGlomerulonephritis\nAIN*: drugs, infection, immune causes\nSmall-vessel vasculitis\n**3 POSTRENAL - PLUMBING**\nBPH / prostate cancer • calculi • bladder injury or tumour\nCervical cancer • meatal stenosis / phimosis • retroperitoneal fibrosis\n***The source repeats ATN; this second cluster is represented as AIN.**\n**BEST KIDNEY STUDY**\n29,269 ICU patients • 5.7% developed severe AKI • septic shock was the largest aetiologic group"
+   },
+   "src": "Uchino S et al. (BEST Kidney), JAMA 2005;294:813",
+   "date": "10 Nov 2026"
+  },
+  "HY1|ABE-25": {
+   "fields": {
+    "watch": "Creatinine 1.0 → 2.2 (stage 2) BUT 120 mL urine in 24 h\nin a 70 kg man = 0.07 mL/kg/h → STAGE 3. In septic\nshock on pressors that is intrinsic septic AKI, not prerenal.\nOnly 12% got it.\n*GT2 Q13 — lost*"
+   },
+   "src": "Bellomo R et al., Intensive Care Med 2017;43:816; Langenberg C et al., Kidney Int 2006;69:1996",
+   "date": "10 Nov 2026"
+  },
+  "RENAL03|RRT-02": {
+   "fields": {
+    "a": "**RRT begins when complications become refractory or immediately dangerous**\n**ELECTROLYTES AND ACID** | **UREMIA AND ORGANS**\nRefractory K above 6.5 mmol/L, or above 6 with ECG change or rising despite therapy | Encephalopathy, pericarditis or bleeding\nMg above 4 mmol/L with anuria or absent reflexes | Severe azotemia with symptoms\npH at or below 7.15 despite treatment | Diuretic resistant pulmonary or organ edema\n**OUTPUT AND TRAJECTORY** | **NONRENAL PURPOSES**\nPersistent oligoanuria | Dialyzable intoxication\nAnuria or output below 200 mL in 12 h | Temperature control\nRising burden despite corrective treatment | Selected sepsis adjunct or inborn metabolic disorder\n**CLINICAL CONTEXT**\n**Integrate severity, trend, reversibility and the ability of medical therapy to control the complication.**\n**Interpret urea near 100 mg/dL as an alert within the full clinical picture.**"
+   },
+   "src": "KDIGO AKI 2012 (5.1.1); Gaudry NEJM 2016 (AKIKI); STARRT-AKI NEJM 2020;383:240 (standard-arm trigger K above 6); aligns with HY1|ABE-26",
+   "date": "10 Nov 2026"
+  },
+  "RENAL04|RRT2-02": {
+   "fields": {
+    "a": "**Modality choice follows physiology**\n**and local capability**\n**IHD** | **SLED / PIRRT**\n**about 3-4 h** | **about 6-12 h**\nHighest hourly clearance. Rapid fluid and osmotic shifts. Low anticoagulation burden. Widely available. | Middle ground for stability. Standard HD platform. Diffusion with lower flows. Some treatment-free time.\n**CRRT** | **ACUTE PD**\n**continuous** | **repeated cycles**\nSmooth cumulative control. Best fit for unstable patients and brain risk. Needs expertise. Anticoagulation often used. | No vascular access. No circuit anticoagulation. Useful with coagulopathy or limited resources. Abdominal limits matter.\n**OUTCOMES**\n**No clear mortality or kidney-recovery advantage separates IHD, PIRRT and CRRT. Treat them as complementary tools. Choose by hemodynamics, brain risk, urgency, access, mobility and resources.**"
+   },
+   "src": "Clark EG, Vijayan A, How I prescribe prolonged intermittent renal replacement therapy, Crit Care 2023;27:88 (PIRRT 6-12 h vs IHD 3-4 h); aligns with RRT2-01 (SLED 6-12 h) and SC-E-10 (IHD 3 to 4 hours)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-05": {
+   "fields": {
+    "a": "- **Hyperglycaemia**: glucose **≥ 200 mg/dL**, or known diabetes at any glucose (2024 consensus).\n- **Ketosis**: β-hydroxybutyrate **≥ 3.0 mmol/L** or ketonuria **≥ 2+**.\n- **Acidaemia**: pH **< 7.3** and/or bicarbonate **< 18 mmol/L**."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-06": {
+   "fields": {
+    "a": "Item | DKA | HHS\nGlucose | **≥ 200** or known diabetes (2024) | **≥ 600**\npH | **7.25-7.30 / 7.0-7.24 / < 7.0** | **> 7.30**\nOsmolality | variable | effective **> 300** (or total > 320)\nAnion gap | **> 10 / > 12 / > 12** | variable\nMental | **alert / drowsy / stupor-coma** | stupor or coma"
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-01": {
+   "fields": {
+    "a": "Item | DKA | HHS\nInsulin | **Absolute** (or near) | **Severe relative**\nOnset | **Hours to 1-2 days** | **Days to weeks**\nPatient | **Type 1** (increasingly type 2) | **Older, type 2** or unrecognised\nKetoacidosis | **Yes** | **No significant** ketosis or acidosis\nMortality | **Under 1%** with treatment (2024) | **5- to 10-fold** higher than DKA"
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-12": {
+   "fields": {
+    "a": "a **0.9% NaCl 1 L/h** (15-20 mL/kg).\nb High or normal Na: **0.45% NaCl**; low Na: **0.9% NaCl**; both **250-500 mL/h** by hydration.\nc Glucose **< 250 mg/dL** in both DKA and HHS (2024; was 200 / 300) → add **5-10% dextrose** to the saline; keep insulin running.\nd **Ringer's lactate, Plasma-Lyte** acceptable; **HES not preferred**; no crystalloid proven better.\ne **Haemodynamic monitoring and pressors**, not blind fluid loading."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-13": {
+   "fields": {
+    "q": "Potassium in DKA/HHS:\na The precondition\nb K < 3.5\nc K 3.5-5.0\nd K > 5.0\ne Why total-body K is low despite a high serum level",
+    "a": "a **Urine output about 50 mL/h**.\nb **Hold insulin**; give potassium (about **10 mmol/h**, 2024) until K > **3.5**.\nc **20-30 mEq K in each litre** to keep K **4-5**.\nd **No K**; recheck **2-hourly**.\ne **Glycosuria washes K out**; acidosis and insulin lack shift K out of cells, so it **falls precipitously** once insulin starts.",
+    "watch": "Marrow's second chart uses 5.3 as the upper cut-off; the ADA 2009 flowchart uses 5.2; the 2024 consensus uses **3.5 and 5.0**. Hypokalaemia needs HDU care."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-15": {
+   "fields": {
+    "q": "Insulin dosing:\na The two starting options\nb If glucose falls < 10% in the first hour\nc Target rate of fall\nd At glucose < 250 in DKA (2024; was 200)\ne At glucose < 250 in HHS (2024; was 300)",
+    "a": "a 2024: **fixed 0.1 U/kg/h**, bolus optional. ADA 2009 options: **0.1 U/kg bolus + 0.1 U/kg/h**, or **0.14 U/kg/h** without a bolus.\nb **0.14 U/kg IV bolus**, then continue.\nc **50-70 mg/dL/h** (Marrow); if not reached, **double the rate**.\nd Cut to **0.05 U/kg/h** (2024; ADA 2009 0.02-0.05) (or SC rapid-acting 0.1 U/kg 2-hourly); hold glucose about **200** (2024) until ketoacidosis resolves.\ne Cut to **0.02-0.05 U/kg/h**; hold glucose **200-300** until mentally alert."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-16": {
+   "fields": {
+    "a": "a **β-hydroxybutyrate < 0.6 mmol/L** and **venous pH ≥ 7.3 or HCO3 ≥ 18** (2024); do not use the anion gap or urine ketones.\nb **0.5-0.8 U/kg/day**.\nc **Home insulin dose**.\nd **1-2 h** after the first SC dose (Marrow text: 2 h).\ne Electrolytes, BUN, venous pH, creatinine and glucose **every 2-4 h**."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-17": {
+   "fields": {
+    "a": "a Only if **pH < 7.0** (2024 consensus; ADA 2009 used 6.9): **100 mmol in 400 mL water + 20 mEq KCl over 2 h**, repeated 2-hourly until pH ≥ 7. None if pH ≥ 7.0.\nb **Myocardial depression, cerebral vasodilation, coma**.\nc **Hypokalaemia, less tissue O2 uptake, cerebral oedema**.\nd **No improvement in outcomes**."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-21": {
+   "fields": {
+    "a": "a **Pregnancy** and **SGLT2 inhibitors**.\nb Ketoacidosis with glucose **< 200 mg/dL** (2024); about 10% of DKA. Also alcohol, liver failure, poor intake.\nc Starvation ketosis gives only **mild acidosis**, without diabetes *(DocT)*.\nd Give **dextrose with insulin from the start** to clear ketones *(standard)*."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "CCM01|GLU-02": {
+   "fields": {
+    "a": "- CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2); level 3 = severe event needing help"
+   },
+   "src": "ADA Standards of Care 2024/2025 (glycaemic targets); SCCM 2024 Glycemic Control Guideline (Honarmand, Crit Care Med 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02A|GLY-01": {
+   "fields": {
+    "a": "a CBG **> 180-200 mg/dL**.\nb CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2).\nc **140-180 mg/dL**.\nd Anything **below 110 mg/dL**: the intensive targets of the trials."
+   },
+   "src": "ADA Standards of Care 2024/2025 (glycaemic targets)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02A|GLY-11": {
+   "fields": {
+    "a": "a When glycaemia is **> 180 mg/dL**.\nb To **separate stress hyperglycaemia from diabetes**, for **prognosis**, and to **shape the protocol**.\nc HbA1c **< 7%**: 140-180. HbA1c **> 7%**: the old notes gave medical 180-220, but **no guideline uses HbA1c tiers**; SCCM 2024: start at **≥180**, avoid 80-139; use **140-180** for all."
+   },
+   "src": "SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024); CONTROLING RCT (Bohe et al., 2021)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-23": {
+   "fields": {
+    "a": "a **Improve tissue perfusion**; treat the cause; correct electrolytes.\nb **Volume first, then insulin**.\nc **No proven benefit** from a bolus; **0.05 U/kg/h** infusion (2024; **0.1** if ketotic or mixed DKA-HHS).\nd **Gradual** fall in glucose and osmolality.\ne Metabolic profile, **osmolality, serum and urine ketones, ABG, lactate**, CBC, urinalysis, ECG, blood cultures."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-22": {
+   "fields": {
+    "a": "a **More common than DKA**; mortality **5- to 10-fold** that of DKA (2024; older texts 15-30% vs 5%), higher with age and comorbidity.\nb **Impaired access to water**.\nc **Older, debilitated**, brought by a carer, many comorbidities, often **unrecognised type 2 DM**; onset over **weeks**.\nd **Dehydration, hyperglycaemia, hypernatraemia, hyperosmolality**.\ne **Feeding (PN/EN), GI bleed, PE, pancreatitis, heat illness, mesenteric ischaemia, infection, MI**."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-09": {
+   "fields": {
+    "a": "a **High anion gap metabolic acidosis** (AG > 12) from **keto-acid anions**.\nb **Hyperchloraemic, normal anion gap acidosis**: saline chloride plus renal HCO3 loss.\nc 2024: **β-hydroxybutyrate < 0.6 mmol/L** with venous pH ≥ 7.3 or HCO3 ≥ 18; anion-gap closure (older teaching) is no longer used."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ENDO02B|DKA-10": {
+   "fields": {
+    "a": "a **Acetoacetate, β-hydroxybutyrate, acetone**.\nb **Acetoacetate and acetone, not β-hydroxybutyrate** (needs a special assay).\nc Beta-hydroxybutyrate converts back to acetoacetate, so the test **rises as the patient improves**.\nd **Blood β-hydroxybutyrate** (2024: resolved below **0.6 mmol/L**); not urine ketones or the anion gap."
+   },
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "date": "10 Nov 2026"
+  },
+  "ELEC02|KAL-11": {
+   "fields": {
+    "watch": "Calcium does NOT lower potassium. Only furosemide, binders and dialysis remove it from the body. UK Kidney Association (2023, updated 2026): calcium gluconate **30 mL of 10%**; binder of choice **sodium zirconium cyclosilicate 10 g three times daily** (up to 72 h); resins no longer routine."
+   },
+   "src": "UK Kidney Association, Clinical Practice Guideline: Management of Hyperkalaemia in Adults (2020; updated October 2023 and July 2026), ukkidney.org",
+   "date": "10 Nov 2026"
+  },
+  "GI01A|ALF-10": {
+   "fields": {
+    "a": "**CAUSE** | **TREATMENT**\n**Paracetamol** | **N-acetylcysteine**; charcoal 1 g/kg if under 4 hours\n**Hepatitis A, E** | Supportive\n**Hepatitis B** | **Nucleos(t)ide analogue** (entecavir or tenofovir); list early\n**HSV, varicella zoster** | **Aciclovir**\n**Mushroom poisoning** | **Penicillin G and silymarin**; transplant\n**Autoimmune hepatitis** | Consider biopsy; **prednisone 40–60 mg/day**\n**Acute fatty liver of** **pregnancy** | **Immediate delivery**\n**Wilson disease** | **Immediate transplant listing**"
+   },
+   "src": "ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023); EASL Clinical Practical Guidelines on ALF, J Hepatol 2017",
+   "date": "10 Nov 2026"
+  },
+  "TOX02|APAP-11": {
+   "fields": {
+    "a": "a **Arterial pH <7.30** after fluid resuscitation; **OR all three**:\ncreatinine **>3.4 mg/dL**, grade **3 or 4 encephalopathy**, and\n**INR >6.5** (PT >100 s) *(standard teaching, not in your notes).*\nb Specificity **90%**, sensitivity only **60%**: it misses patients who\nwill die.\nc Lactate **>3.5** early (about 4 h after admission), or **>3.0** after\nfull fluid resuscitation (about 12 h)."
+   },
+   "src": "Bernal W et al., Lancet 2002;359:558",
+   "date": "10 Nov 2026"
+  },
+  "GI01B|ALF-28": {
+   "fields": {
+    "q": "**Circulation, kidney, bleeding and**\n**glucose:**\na Haemodynamic pattern\nb Target for fluids and vasopressors\nc Second vasopressor\nd Renal replacement mode\ne Coagulopathy\nf Hypoglycaemia",
+    "a": "a Hyperdynamic: **peripheral vasodilatation** with **renal\nvasoconstriction**.\nb **Cerebral perfusion pressure above 60 mmHg**, rather than\nMAP alone.\nc **Low-dose vasopressin** added to noradrenaline if hypotension\npersists (ACG 2023, SCCM 2020).\nd **Continuous**, not intermittent; avoid nephrotoxins.\ne **Rebalanced haemostasis**: correct platelets (under 50,000)\nor INR only for **bleeding or before a procedure**; PPI.\nf In **40%**: lost glycogen and gluconeogenesis, high insulin;\n10% or 50% dextrose."
+   },
+   "src": "ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023); SCCM Guidelines for ALF and ACLF in the ICU, Part I (Nanchal R et al., Crit Care Med 2020;48:e173) · ACG Clinical Guideline: Acute Liver Failure (Shingina A et al., Am J Gastroenterol 2023); Nanchal R et al., Crit Care Med 2020;48:e173",
+   "date": "10 Nov 2026"
+  },
+  "GI01C|ALF-33": {
+   "fields": {
+    "a": "**PARACETAMOL** | **NON-PARACETAMOL**\n**Arterial pH under 7.3** | **INR above 6.5** (PT over 100 s)\n**OR all three:** | OR any three of:\n**INR above 6.5 (PT over 100 s)** | Cause: non-A non-B, drug or\nhalothane\n**Creatinine above 3.4 mg/dL** | Jaundice to encephalopathy over **7**\n**days**\n**Grade 3–4 encephalopathy** | Age **under 10 or over 40**\n | INR above **3.5** (PT over 50 s)\n | Bilirubin above **17.5 mg/dL**"
+   },
+   "src": "O'Grady JG et al., Gastroenterology 1989;97:439",
+   "date": "10 Nov 2026"
+  },
+  "GI01C|ALF-41": {
+   "fields": {
+    "watch": "Plasma exchange is the one extracorporeal therapy with a positive\nrandomised trial. ACG 2023: evidence still insufficient; SCCM 2023:\nsuggest it, where available, in ALF with hyperammonaemia."
+   },
+   "src": "SCCM Guidelines for ALF and ACLF in the ICU, Part II (Crit Care Med 2023;51:657)",
+   "date": "10 Nov 2026"
+  },
+  "GI06|ACLF-02": {
+   "fields": {
+    "watch": "APASL is the only one that excludes prior decompensation and extrahepatic\ntriggers. Its 2025 Kyoto consensus proposes adding: with or without kidney\ndysfunction (creatinine above 1.5 mg/dL). A global multi-society definition\nfollowed in October 2026 (V-card)."
+   },
+   "src": "Choudhury A et al., Hepatol Int 2025;19:1 (Kyoto consensus); Global multi-society ACLF consensus, Hepatology 2026",
+   "date": "10 Nov 2026"
+  },
+  "GI07A|CLD-12": {
+   "fields": {
+    "a": "**CLASS** | **ACTION** | **EXAMPLES**\n**Splanchnic vasoconstrictors** | Reduce **portal venous inflow** | Vasopressin, **terlipressin**, somatostatin, vapreotide\n**Non-selective beta-blockers** | Lower the hepatic venous pressure gradient | **Propranolol**\n**Venodilators** | Lower intrahepatic and collateral resistance | Isosorbide mononitrate\n**Antifibrinolytics** | Slow plasminogen to plasmin | Tranexamic acid: **not recommended** (HALT-IT: no fewer bleeding deaths, more venous thrombosis)"
+   },
+   "src": "HALT-IT Trial Collaborators, Lancet 2020;395:1927; Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.25)",
+   "date": "10 Nov 2026"
+  },
+  "CCM03|VAP-41": {
+   "fields": {
+    "a": "Intervention | Impact\nHOB elevation | May lower - understudied, few/contradictory trials\nTapered cuffs / ultrathin cuff | No impact - subclinical aspiration persists\nAutomated cuff pressure monitoring | May lower - understudied\nSubglottic secretion drainage | May lower - no impact on MV duration/LOS/mortality\nOral care with chlorhexidine | Unclear - may increase mortality in some analyses\nSelective oral/digestive decontamination | Likely lowers - also reduces antibiotic use\nProbiotics | Unclear - no signal on double-blind studies\nStress ulcer prophylaxis | **No clear increase** in large blinded RCTs (REVISE 2024: VAP 23.2% vs 23.8%); the fear came from older, smaller and observational data\nVAP prevention bundles | Likely lowers - strongest evidence overall"
+   },
+   "src": "Cook D et al., NEJM 2024;391:9 (REVISE); Krag M et al., NEJM 2018;379:2199 (SUP-ICU); MacLaren R et al., Crit Care Med 2024;52:e421 (SCCM/ASHP)",
+   "date": "10 Nov 2026"
+  },
+  "HY6|GIN-09": {
+   "fields": {
+    "a": "**Vasoactive + antibiotic before scope → band within 12 h → early TIPS if high risk**\n\n**1** **Terlipressin** 2 mg 4-hourly for 24–48 h, then 1 mg 4-hourly (or octreotide 50 µg bolus + 50 µg/h) — start before endoscopy, continue 2–5 days.\n**2** **Ceftriaxone 1 g/day** (up to 7 days) — ↓ infection, rebleeding and death.\n**3** **Restrictive transfusion** (Hb 7); avoid FFP.\n**4** **Endoscopic band ligation within 12 h**.\n**5** **Pre-emptive TIPS within 72 h** (ideally < 24 h) for Child C 10–13, Child B > 7 with active bleeding, or HVPG ≥ 20 mmHg.\n**6** Uncontrolled → covered oesophageal stent (preferred) or balloon tamponade (≤ 24 h) as bridge to rescue TIPS."
+   },
+   "src": "Garcia-Tsao G et al., Hepatology 2017;65:310 (AASLD); Pfisterer N et al., World J Hepatol 2021;13:731 (Table 2, adapted from Baveno VI and AASLD) · Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.31); García-Pagán JC et al., NEJM 2010;362:2370 · Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.35)",
+   "date": "10 Nov 2026"
+  },
+  "HY6|GIN-08": {
+   "fields": {
+    "a": "**Restrictive transfusion, early endoscopy — don't wait to fix the INR**\n\na **Hb 7–8 g/dL** — over-transfusion raises portal pressure.\nb **Early endoscopy** (within 12 h variceal / 24 h non-variceal).\nc Stop warfarin; **no routine FFP** (the cirrhotic INR does not predict bleeding); **PCC + low-dose vitamin K** only if unstable; don't delay endoscopy for INR.\nd **No** — count is normal.\ne Glasgow–Blatchford 0–1 = outpatient; shock index ≥ 0.9 = massive bleed; lactate above 2.5 = higher risk."
+   },
+   "src": "Gralnek IM et al., Endoscopy 2021;53:300 (ESGE); Baveno VIII Faculty, J Hepatol 2026 (statement 5.23)",
+   "date": "10 Nov 2026"
+  },
+  "HY6|GIN-03": {
+   "fields": {
+    "a": "**SUP only while risk persists · mobilise when the safety screen is passed**\n\na **Coagulopathy, shock, chronic liver disease** (SCCM/ASHP 2024; ventilation alone is not a firm risk factor). Older lists: ventilated above 48 h, TBI/burns, prior GI bleed. **PPI (e.g. esomeprazole)** or H2RA, **enteral or IV — whichever is feasible**.\nb When risk factors resolve — **never continue it after ICU discharge** (↑ C. difficile, pneumonia).\nc **Progressive assisted mobilisation** (sit, stand, march). Passive range of motion is for sedated/unstable patients."
+   },
+   "src": "MacLaren R et al., Crit Care Med 2024;52:e421 (SCCM/ASHP); Cook DJ et al., NEJM 1994;330:377",
+   "date": "10 Nov 2026"
+  },
+  "CCM03|VAP-36": {
+   "fields": {
+    "a": "H2 BLOCKERS / PPIS | SUCRALFATE\n→ Raise gastric pH | Doesn't raise pH, but bleeds more: **3.8% vs 1.7%** with ranitidine (RR 0.44); VAP 16.2% vs 19.1% (not significant)\npromotes bacterial colonization of the stomach |\nDVT prophylaxis: no direct data linking it to reduced VAP rates - VAP falls most when **all** bundle elements are applied together"
+   },
+   "src": "Cook D et al., NEJM 1998;338:791",
+   "date": "10 Nov 2026"
+  },
+  "GI02A|PANC-04": {
+   "fields": {
+    "a": " | **AMYLASE** | **LIPASE**\n**Rises** | **2–12 hours** | **4–8 hours**\n**Peaks** | 12–72 hours | **24 hours**\n**Normalises** | **3–4 days** | **8–14 days**\n**Specificity** | **Low**: salivary gland, bowel, ovary, fat, muscle | **High**\n**False positives** | Renal disease, appendicitis, cholecystitis | Fewer, not none: **renal failure** (both enzymes), bowel obstruction or ischaemia, perforated ulcer, cholecystitis, DKA"
+   },
+   "src": "Tenner S et al., Am J Gastroenterol 2024;119:419 (ACG 2024); CAP lipase guidance for clinicians (renal insufficiency, level not prognostic, no daily trending)",
+   "date": "10 Nov 2026"
+  },
+  "GI02B|PANC-15": {
+   "fields": {
+    "a": " | **AGGRESSIVE** | **MODERATE**\n**Bolus** | **20 mL/kg** | **10 mL/kg only if hypovolaemic**; none if not\n**Then** | **3 mL/kg/h** | **1.5 mL/kg/h**\n**Fluid overload** | **20.5%** | **6.3%**\n- Fluid: Ringer's lactate. Checkpoints at 12, 24, 48 and 72 hours.\n- Aggressive fluids: **three times the fluid overload, no better outcomes**.\n- Primary outcome (moderately severe or severe pancreatitis): **22.1% vs 17.3%** (NS). Stopped at interim (**249** of 744 planned) for harm."
+   },
+   "src": "de-Madaria E et al., N Engl J Med 2022;387:989 (WATERFALL)",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL03|NUT-04": {
+   "fields": {
+    "a": "**VARIABLE** | **BANDS** | **POINTS**\n**Age** | Under 50 / 50–74 / 75+ | 0 / 1 / 2\n**APACHE II** | Under 15 / 15–19 / 20–27 / 28+ | 0 / 1 / 2 / 3\n**SOFA** | Under 6 / 6–9 / 10+ | 0 / 1 / 2\n**Comorbidities** | 0–1 / 2+ | 0 / 1\n**Days hospital → ICU** | 0 / 1+ | 0 / 1\n**IL-6** | Under 400 / 400+ | 0 / 1\n**High risk**: 6–10 (with IL-6) or **5–9 (modified, no IL-6)**: worse\noutcomes; more feeding linked to survival only in **observational** data; the RCT in high-risk patients (EFFORT Protein) showed no benefit from more protein. Low: 0–5 or\n0–4."
+   },
+   "src": "Heyland DK et al., Crit Care 2011;15:R268; Rahman A et al., Clin Nutr 2016;35:158; Heyland DK et al., Lancet 2023;401:568 (EFFORT Protein)",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL03|NUT-14": {
+   "fields": {
+    "a": " | **ENTERAL** | **PARENTERAL**\n**Cost** | **Lower** | Higher\n**Physiology** | **Physiological**; gut barrier | Bypasses gut\n**Infection** | Lower | **CLABSI**\n**Access** | No central line | **Central line, PICC or**\n**midline**\n**Specific risks** | Aspiration, **bowel**\n**ischaemia** | Hyperglycaemia, steatosis\n(dextrose and energy\noverfeeding),\nhypertriglyceridaemia\n**PN advantage** | | **Avoids aspiration and**\n**bowel ischaemia**"
+   },
+   "src": "Mundi MS et al., Front Nutr 2025;12:1718116; Pironi L et al., Clin Nutr 2023;42:1940 (ESPEN chronic intestinal failure)",
+   "date": "10 Nov 2026"
+  },
+  "SPECIAL03|NUT-15": {
+   "fields": {
+    "watch": "EPaNIC: early PN (from day 3, after IV dextrose on days 1–2) was worse than late (from day 8) *(standard*\n*teaching, not in your notes).*"
+   },
+   "src": "Casaer MP et al., NEJM 2011;365:506 (EPaNIC)",
+   "date": "10 Nov 2026"
   }
  }
 }

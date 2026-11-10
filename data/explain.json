@@ -4929,7 +4929,93 @@
      "punch": "Paraquat leaves the plasma for the lung within hours and cannot be pulled back, so care is early binding, fluids and withholding oxygen — and when the dose is lethal, honest palliative care."
     }
    },
-   "topups": []
+   "topups": [
+    {
+     "id": "T_1dbd9a24",
+     "topic": "Strychnine poisoning",
+     "type": "qa",
+     "q": "What is the airway trap in strychnine poisoning?",
+     "a": [
+      "- Strychnine is a glycine-receptor antagonist: awake patient with painful generalised muscle spasms, opisthotonus, trismus and risus sardonicus, triggered by noise or touch.",
+      "- The sensorium stays clear - it is spinal disinhibition, not a seizure - and the muscles relax COMPLETELY between spasms, within minutes to an hour of ingestion. Tetanus differs: persistent baseline rigidity and trismus between spasms, onset days after a wound, autonomic storm later.",
+      "- Benzodiazepines first for the spasms, in a dark quiet room; add paralysis and ventilation if spasms threaten ventilation or hyperthermia.",
+      "- Avoid DEPOLARISING blockers (suxamethonium) for rapid sequence induction: rhabdomyolysis gives hyperkalaemia and hyperthermia risk - use a non-depolarising agent.",
+      "- Supportive care with active cooling; death is from respiratory failure and hyperthermia."
+     ],
+     "tier": 2,
+     "n": 3,
+     "banks": "DocT GT Marrow",
+     "recall": false,
+     "src": "Marrow:QB57-Q45; GT:148 (CGT5); GT:106 (CGT6)",
+     "x": {
+      "v": 2,
+      "sub": "Toxicology → Rodenticides → Strychnine and the airway",
+      "intro": "Strychnine is one of the highly toxic rodenticides in PEST-14. It removes the brake on spinal motor neurons, so every stimulus sets off a full-body spasm in a patient who is awake throughout. The exam tests three things: how to tell it from a seizure, how to tell it from tetanus, and which drug to avoid at intubation.",
+      "why": [
+       [
+        "a",
+        "**Strychnine is a glycine-receptor antagonist: awake patient with painful generalised muscle spasms, opisthotonus, trismus and risus sardonicus, triggered by noise or touch.** Glycine is the main inhibitory transmitter in the spinal cord and brainstem; blocking its receptor leaves motor neurons firing unopposed. Extensors overpower flexors, giving the arched back, and a small sensory input produces a massive reflex response."
+       ],
+       [
+        "b",
+        "**The sensorium stays clear — it is spinal disinhibition, not a seizure — and the muscles relax COMPLETELY between spasms, within minutes to an hour of ingestion. Tetanus differs: persistent baseline rigidity and trismus between spasms, onset days after a wound, autonomic storm later.** Glycine has little role in the cortex, so the patient is alert and feels every spasm. Tetanus toxin blocks the release of glycine and GABA from the inhibitory neuron, which produces a steady rigidity rather than discrete episodes."
+       ],
+       [
+        "c",
+        "**Benzodiazepines first for the spasms, in a dark quiet room; add paralysis and ventilation if spasms threaten ventilation or hyperthermia.** Benzodiazepines strengthen the other inhibitory system, GABA-A, which partly replaces the lost glycine inhibition. Removing stimuli prevents triggers. There is no antidote, so paralysis is the definitive control."
+       ],
+       [
+        "d",
+        "**Avoid DEPOLARISING blockers (suxamethonium) for rapid sequence induction: rhabdomyolysis gives hyperkalaemia and hyperthermia risk — use a non-depolarising agent.** Repeated spasms break down muscle and raise potassium; suxamethonium adds a further potassium rise and its own fasciculation. Rocuronium paralyses without either."
+       ],
+       [
+        "e",
+        "**Supportive care with active cooling; death is from respiratory failure and hyperthermia.** Spasm of the chest wall and diaphragm stops ventilation, and constant muscle work generates heat, lactic acidosis and rhabdomyolysis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Strychnine vs generalised seizure",
+        "Strychnine leaves consciousness intact; a tonic–clonic seizure removes it and leaves post-ictal confusion."
+       ],
+       [
+        "Strychnine vs tetanus",
+        "Strychnine: onset within an hour, full relaxation between spasms. Tetanus: onset days after a wound, rigidity and trismus persist between spasms."
+       ]
+      ],
+      "traps": [
+       [
+        "“Hyperthermia, lactic acidosis or rhabdomyolysis favour strychnine over seizures”",
+        "All three follow any prolonged muscle activity, including seizures; only preserved consciousness separates them."
+       ],
+       [
+        "“Persistent trismus or sympathetic overactivity favours strychnine”",
+        "Both point to tetanus; complete relaxation between spasms is the strychnine sign."
+       ],
+       [
+        "“Suxamethonium for the RSI”",
+        "Avoid it: rhabdomyolysis and hyperkalaemia; use a non-depolarising agent."
+       ]
+      ],
+      "decode": [
+       [
+        "Unknown rodenticide, awake, extensor spasms triggered by noise — best feature against tonic–clonic seizures? [DocT GT]",
+        "Preserved consciousness."
+       ],
+       [
+        "Trismus and painful spasms — feature that most reliably separates strychnine from tetanus? [DocT GT]",
+        "Complete muscle relaxation between spasms."
+       ],
+       [
+        "Strychnine poisoning needing RSI — avoid? [Marrow]",
+        "Depolarising neuromuscular blockers."
+       ]
+      ],
+      "punch": "Strychnine takes the glycine brake off the spinal cord, so an awake patient spasms and then relaxes completely; control it with benzodiazepines and, if needed, a non-depolarising blocker, never suxamethonium.",
+      "topup": true
+     }
+    }
+   ]
   },
   "TOX04": {
    "cards": {
@@ -6006,7 +6092,165 @@
      ]
     }
    },
-   "topups": []
+   "topups": [
+    {
+     "id": "T_dbdbadf0",
+     "topic": "Alcohol withdrawal in the ICU: timeline and stepwise treatment",
+     "type": "algorithm",
+     "q": "Chronic alcohol use, seizures at 24 h, then delirium - what is the sequence and the drug ladder?",
+     "a": [
+      "- Timeline: tremor 6-24 h, withdrawal seizures 6-48 h (peak about 24 h; brief generalised clusters - status epilepticus is uncommon and should prompt a search for epilepsy or head injury), delirium tremens 48-96 h; score with CIWA-Ar.",
+      "- Thiamine 200-500 mg IV 8-hourly, given before or with glucose.",
+      "- Symptom-triggered benzodiazepine is first line (diazepam or lorazepam; lorazepam or oxazepam in liver failure).",
+      "- Benzodiazepine-refractory: phenobarbital 10 mg/kg IV (Rosenson 2013: ICU admission 25% to 8%) or propofol with intubation.",
+      "- Phenytoin, carbamazepine and levetiracetam do not work (GABA loss and NMDA rebound, not an epileptic focus); dexmedetomidine and clonidine only blunt autonomic signs; haloperidol never alone."
+     ],
+     "tier": 1,
+     "n": 5,
+     "banks": "DocT GT Marrow",
+     "recall": false,
+     "src": "DocT:12 (Seizure Disorders); DocT:10; DocT:13 (Substance-Related P1); Marrow:QB57-Q35; GT:46 (GT6)",
+     "x": {
+      "v": 2,
+      "sub": "Toxicology → Alcohol → Withdrawal in the ICU: timeline and drug ladder",
+      "intro": "Chronic alcohol enhances GABA-A inhibition and blocks NMDA excitation, and the brain adapts by turning GABA down and NMDA up. Stopping drinking leaves that adapted brain unopposed: an excitable, sympathetic state that runs on a predictable clock. The treatment replaces the missing GABA effect, which is why only some drugs work.",
+      "why": [
+       [
+        "a",
+        "**Timeline: tremor 6–24 h, withdrawal seizures 6–48 h (peak about 24 h; brief generalised clusters — status epilepticus is uncommon and should prompt a search for epilepsy or head injury), delirium tremens 48–96 h; score with CIWA-Ar.** Withdrawal seizures are brief, generalised and usually over before delirium starts. Status epilepticus or a focal seizure suggests another cause. CIWA-Ar scores the severity and triggers each dose."
+       ],
+       [
+        "b",
+        "**Thiamine 200–500 mg IV 8-hourly, given before or with glucose.** Glucose metabolism uses thiamine, so glucose given to a depleted patient can precipitate Wernicke encephalopathy; high IV doses are needed because absorption and stores are poor."
+       ],
+       [
+        "c",
+        "**Symptom-triggered benzodiazepine is first line (diazepam or lorazepam; lorazepam or oxazepam in liver failure).** Benzodiazepines act at the same GABA-A receptor as alcohol, so they replace it and prevent both seizures and delirium. Lorazepam and oxazepam are glucuronidated without active metabolites, so they do not accumulate in liver failure."
+       ],
+       [
+        "d",
+        "**Benzodiazepine-refractory: phenobarbital 10 mg/kg IV (Rosenson 2013: ICU admission 25% to 8%) or propofol with intubation.** Phenobarbital acts on the GABA-A receptor at a different site and also blocks glutamate, so it works when benzodiazepines no longer do. Rosenson’s randomised trial was not in refractory patients: 102 emergency-department patients with withdrawal received a single 10 mg/kg IV dose or placebo on top of a symptom-guided lorazepam protocol, and ICU admission fell from 25% to 8% without more adverse events; mortality was not an outcome. In the ICU the same drug is used as rescue when large benzodiazepine doses fail."
+       ],
+       [
+        "e",
+        "**Phenytoin, carbamazepine and levetiracetam do not work (GABA loss and NMDA rebound, not an epileptic focus); dexmedetomidine and clonidine only blunt autonomic signs; haloperidol never alone.** Phenytoin and levetiracetam do not prevent or stop withdrawal seizures, because the problem is a global GABA deficit with NMDA excess rather than an epileptic focus. Carbamazepine is the partial exception: it reduces symptoms in mild-to-moderate withdrawal and is used in outpatient detoxification, but it has no place in severe withdrawal, delirium tremens or the treatment of a seizure. α₂ agonists lower heart rate and blood pressure but do not prevent seizures or delirium, so they are only adjuncts; haloperidol lowers the seizure threshold and is only an add-on for hallucinations."
+       ]
+      ],
+      "mimic": [
+       [
+        "Withdrawal seizure vs epilepsy or head injury",
+        "Withdrawal: brief generalised seizures 6–48 h after the last drink. Focal seizures or status epilepticus: look for a structural cause (CT)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Status epilepticus is the commonest seizure complication of withdrawal”",
+        "It is uncommon; brief generalised clusters are typical (79% knew this on DocT GT)."
+       ],
+       [
+        "“Carbamazepine, levetiracetam or valproate for withdrawal seizures”",
+        "They do not treat the GABA deficit or stop a withdrawal seizure; diazepam with thiamine is the answer (89%)."
+       ],
+       [
+        "“Phenobarbital reduced DT mortality in the MATCH trial / VA Cooperative Study”",
+        "Both trial names in the DocT keys are wrong (MATCH was a psychotherapy trial), and no trial shows a mortality benefit; the evidence is fewer ICU admissions (Rosenson 2013). Phenobarbital is still the right choice of the options (16% and 73%)."
+       ],
+       [
+        "“Dexmedetomidine as sole therapy”",
+        "It only blunts autonomic signs; it does not prevent seizures or delirium."
+       ]
+      ],
+      "decode": [
+       [
+        "Chronic drinker, seizures after 24 h abstinence, confused — best treatment? [DocT]",
+        "Diazepam and thiamine."
+       ],
+       [
+        "Delirium tremens — next best step? [Marrow]",
+        "IV benzodiazepine."
+       ],
+       [
+        "Benzodiazepine-refractory withdrawal or DT in ICU — which drug has evidence? [DocT ×2]",
+        "Phenobarbital."
+       ],
+       [
+        "Alcohol and epilepsy — all true except? [DocT GT]",
+        "Status epilepticus is the commonest seizure complication."
+       ]
+      ],
+      "punch": "Withdrawal is a brain short of GABA: give thiamine, replace GABA with a benzodiazepine, step up to phenobarbital or propofol when that fails, and do not expect antiepileptics or α₂ agonists to prevent seizures.",
+      "topup": true
+     }
+    },
+    {
+     "id": "T_db6f11ba",
+     "topic": "Alcoholic cardiomyopathy vs wet beriberi",
+     "type": "pairs",
+     "q": "Chronic drinker with Wernicke features stays in pressor-dependent shock after thiamine - what is it?",
+     "a": [
+      "- Alcoholic dilated cardiomyopathy: LOW-output cardiogenic shock; echo shows a dilated, poorly contracting LV, and thiamine does not reverse it.",
+      "- Wet beriberi (Shoshin): HIGH-output failure with warm peripheries and lactic acidosis that reverses within hours of IV thiamine.",
+      "- So shock that persists after thiamine points away from beriberi and towards the cardiomyopathy.",
+      "- Wernicke encephalopathy itself does not cause neurogenic shock."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "DocT GT",
+     "recall": false,
+     "src": "GT:62 (CGT4)",
+     "x": {
+      "v": 2,
+      "sub": "Toxicology → Alcohol → Alcoholic cardiomyopathy vs wet beriberi",
+      "intro": "A chronic drinker in shock has two alcohol-related causes of heart failure, and they behave in opposite ways. One is a high-output state from thiamine deficiency that thiamine cures within hours; the other is a dilated, weak heart that thiamine cannot help. The stem gives thiamine first, so the response to it is the clue.",
+      "why": [
+       [
+        "a",
+        "**Alcoholic dilated cardiomyopathy: LOW-output cardiogenic shock; echo shows a dilated, poorly contracting LV, and thiamine does not reverse it.** Years of alcohol damage the myocytes directly, so the ventricle dilates and the ejection fraction falls; peripheries are cold and filling pressures high. It improves only slowly, over months of abstinence."
+       ],
+       [
+        "b",
+        "**Wet beriberi (Shoshin): HIGH-output failure with warm peripheries and lactic acidosis that reverses within hours of IV thiamine.** Without thiamine, pyruvate cannot enter the citric acid cycle, so lactate accumulates and vessels dilate; the heart pumps hard into a low-resistance circulation until it fails. Replacing thiamine restores aerobic metabolism quickly."
+       ],
+       [
+        "c",
+        "**So shock that persists after thiamine points away from beriberi and towards the cardiomyopathy.** The response to the treatment is the diagnostic test."
+       ],
+       [
+        "d",
+        "**Wernicke encephalopathy itself does not cause neurogenic shock.** Neurogenic shock comes from spinal cord injury above about T6, which cuts sympathetic outflow; confusion, ataxia and ophthalmoplegia do not."
+       ]
+      ],
+      "mimic": [
+       [
+        "Cardiomyopathy vs beriberi",
+        "Cold, dilated, low output, no thiamine response = cardiomyopathy. Warm, high output, lactic acidosis, prompt thiamine response = beriberi."
+       ]
+      ],
+      "traps": [
+       [
+        "“Neurogenic shock from Wernicke’s”",
+        "Neurogenic shock is a spinal cord injury; Wernicke’s does not cause it."
+       ],
+       [
+        "“Septic shock from aspiration”",
+        "Possible in a drinker, but the stem gives no fever or infection; the answer is the heart."
+       ],
+       [
+        "“Hypovolaemia from vomiting”",
+        "Not described; it would also respond to fluid rather than need vasopressors."
+       ]
+      ],
+      "decode": [
+       [
+        "Drinker with confusion, ataxia, ophthalmoplegia; thiamine given; now vasopressor-dependent — cause? [DocT GT]",
+        "Alcoholic cardiomyopathy causing cardiogenic shock."
+       ]
+      ],
+      "punch": "Beriberi is a warm, high-output heart that thiamine fixes in hours; shock that outlasts the thiamine is the cold, dilated alcoholic cardiomyopathy.",
+      "topup": true
+     }
+    }
+   ]
   },
   "TOX05": {
    "cards": {
@@ -7104,7 +7348,174 @@
      "punch": "Supportive care must not add to the venom’s harm: no NSAIDs on a bleeding kidney, no plasma before the venom is neutralised, and no knife until the blood clots and the pressure proves it is needed."
     }
    },
-   "topups": []
+   "topups": [
+    {
+     "id": "T_1467a2fc",
+     "topic": "Spiders and scorpions: toxin, picture, treatment",
+     "type": "pairs",
+     "q": "Black widow vs brown recluse vs funnel-web vs scorpion - which toxin, which picture?",
+     "a": [
+      "- Black widow (Latrodectus): alpha-latrotoxin floods presynaptic transmitter release - local sweating, cramps, rigid abdomen, hypertension.",
+      "- Brown recluse (Loxosceles): sphingomyelinase D - painless bite, necrosis over days, with haemolysis, DIC or AKI delayed 24-72 h (up to a week).",
+      "- Funnel-web: delta-atracotoxin slows sodium-channel inactivation - autonomic storm; pressure bandage plus antivenom.",
+      "- Bark scorpion (Centruroides, US): sodium-channel neurotoxin - jerking limbs and roving eye movements in children.",
+      "- Indian red scorpion: catecholamine storm with myocarditis and pulmonary oedema - prazosin 30 microgram/kg, repeated 3-hourly."
+     ],
+     "tier": 1,
+     "n": 5,
+     "banks": "DocT",
+     "recall": false,
+     "src": "DocT:13; DocT:14; DocT:15; DocT:16; DocT:18 (Animal-Related P2)",
+     "x": {
+      "v": 2,
+      "sub": "Toxicology → Envenomation → Spiders and scorpions",
+      "intro": "Spider and scorpion venoms act on a few targets: transmitter release, sodium channels, or cell membranes. Each target gives a recognisable picture, so the exam either describes the picture and asks for the creature, or names the creature and asks for the mechanism.",
+      "why": [
+       [
+        "a",
+        "**Black widow (Latrodectus): alpha-latrotoxin floods presynaptic transmitter release — local sweating, cramps, rigid abdomen, hypertension.** The toxin forms calcium-permeable pores in nerve terminals, so acetylcholine and noradrenaline pour out. The bite shows a small puncture with a blanched halo and local sweating; abdominal rigidity can mimic an acute abdomen."
+       ],
+       [
+        "b",
+        "**Brown recluse (Loxosceles): sphingomyelinase D — painless bite, necrosis over days, with haemolysis, DIC or AKI delayed 24–72 h (up to a week).** The enzyme damages cell membranes and activates complement, so tissue necroses slowly and red cells lyse. Systemic illness is late, not within minutes, and steroids have not been shown to prevent the haemolysis."
+       ],
+       [
+        "c",
+        "**Funnel-web: delta-atracotoxin slows sodium-channel inactivation — autonomic storm; pressure bandage plus antivenom.** Channels that stay open keep nerves firing, releasing transmitter at autonomic and motor terminals: sweating, salivation, hypertension, fasciculation, pulmonary oedema. The venom spreads by lymph, so a pressure-immobilisation bandage slows it."
+       ],
+       [
+        "d",
+        "**Bark scorpion (Centruroides, US): sodium-channel neurotoxin — jerking limbs and roving eye movements in children.** Its toxins open sodium channels so nerves fire repeatedly; it is the only US scorpion that causes serious systemic illness."
+       ],
+       [
+        "e",
+        "**Indian red scorpion: catecholamine storm with myocarditis and pulmonary oedema — prazosin 30 microgram/kg, repeated 3-hourly.** The venom’s neurotoxins act on sodium and potassium channels of autonomic nerves and release a surge of catecholamines; α₁-mediated vasoconstriction raises afterload and the catecholamine-injured myocardium fails. Prazosin blocks α₁ receptors and lowers afterload, which is why it is the treatment in India. The 30 microgram/kg dose is the paediatric one; adults get a fixed oral dose (0.5–1 mg; 1 mg in Bawaskar’s 2011 randomised trial of prazosin with or without antivenom), repeated 3-hourly until the extremities warm and signs settle."
+       ]
+      ],
+      "mimic": [
+       [
+        "Black widow vs brown recluse",
+        "Black widow: painful bite, neurotoxic within an hour (cramps, sweating, rigid abdomen). Brown recluse: painless bite, local necrosis and haemolysis days later."
+       ]
+      ],
+      "traps": [
+       [
+        "“Loxosceles: violin marking always present” or “systemic symptoms within 15 minutes”",
+        "The marking is not consistent and systemic effects are delayed; delayed haemolysis is the feature (only 28% chose it)."
+       ],
+       [
+        "“Child with jerking after a US scorpion sting — desert hairy or stripe-tailed scorpion”",
+        "Only the bark scorpion causes this (21% on DocT)."
+       ],
+       [
+        "“Black widow venom blocks sodium channels”",
+        "It releases transmitter presynaptically; sodium channels are funnel-web and scorpion targets."
+       ]
+      ],
+      "decode": [
+       [
+        "Painful bite, puncture with blanched halo, localised sweating — which spider? [DocT]",
+        "Black widow (72%)."
+       ],
+       [
+        "Mechanism of funnel-web venom [DocT]",
+        "Slowed inactivation of sodium channels (76%)."
+       ],
+       [
+        "Mechanism of Latrodectus venom [DocT]",
+        "Presynaptic transmitter release (63%)."
+       ],
+       [
+        "Characteristic of Loxosceles envenomation [DocT]",
+        "Delayed systemic complications, including haemolysis."
+       ]
+      ],
+      "punch": "Black widow releases transmitter, funnel-web and scorpions jam sodium channels open, brown recluse dissolves membranes slowly; and the Indian red scorpion’s catecholamine storm is treated with prazosin.",
+      "topup": true
+     }
+    },
+    {
+     "id": "T_dfc56d26",
+     "topic": "Snakebite VICC vs snakebite TMA",
+     "type": "pairs",
+     "q": "After a viper bite, how do you separate venom-induced consumption coagulopathy from snakebite thrombotic microangiopathy?",
+     "a": [
+      "- VICC: procoagulant venom consumes fibrinogen, giving incoagulable blood (positive 20WBCT, high INR); antivenom reverses it in about 6-24 h.",
+      "- TMA: about 5-15% of VICC, mainly Russell's viper - schistocytes, low platelets, high LDH and AKI that PERSIST after clotting has recovered.",
+      "- ADAMTS13 is normal in snakebite TMA, and plasma exchange gives no benefit (Isbister/Noutsos 2020).",
+      "- Antivenom neither prevents nor shortens the TMA - it is given for the venom effect, not the microangiopathy.",
+      "- Treatment is supportive, with dialysis for the AKI."
+     ],
+     "tier": 2,
+     "n": 2,
+     "banks": "DocT",
+     "recall": false,
+     "src": "DocT:13 (Animal-Related P1); DocT:11 (Animal-Related P2)",
+     "x": {
+      "v": 2,
+      "sub": "Toxicology → Snakes & Venom → VICC vs snakebite TMA",
+      "intro": "A viper bite can cause two different blood disorders. VICC is the familiar one: venom consumes clotting factors and the blood will not clot (SNAKE-03, SNAKE-09). A minority then develop a thrombotic microangiopathy, which damages red cells and kidneys and does not respond to antivenom.",
+      "why": [
+       [
+        "a",
+        "**VICC: procoagulant venom consumes fibrinogen, giving incoagulable blood (positive 20WBCT, high INR); antivenom reverses it in about 6–24 h.** Venom prothrombin and factor X activators drive clotting until fibrinogen is used up. Antivenom neutralises circulating venom and the liver then restores factors, which is why the 20WBCT is repeated at 6 hours (SNAKE-14)."
+       ],
+       [
+        "b",
+        "**TMA: about 5–15% of VICC, mainly Russell’s viper — schistocytes, low platelets, high LDH and AKI that PERSIST after clotting has recovered.** Endothelial injury forms platelet microthrombi that shear red cells and block glomerular vessels. A normal coagulation profile with ongoing haemolysis and AKI is the marker that VICC has given way to TMA. In the 2020 systematic review (Noutsos, Currie, Wijewickrama, Isbister; PLoS NTD) about four in five cases followed viper bites, hump-nosed and Russell’s vipers being the commonest, with Australian brown snakes next; in the Australian cohort TMA followed about 10% of VICC."
+       ],
+       [
+        "c",
+        "**ADAMTS13 is normal in snakebite TMA, and plasma exchange gives no benefit (Isbister/Noutsos 2020).** The lesion is not the ADAMTS13 deficiency of TTP, so removing an inhibitor or replacing the enzyme has nothing to correct. The normal ADAMTS13 comes from small case series (Isbister’s brown-snake patients), not from the 2020 review; the review’s contribution is that plasma exchange showed no benefit on dialysis-free survival, so it ‘cannot be recommended’."
+       ],
+       [
+        "d",
+        "**Antivenom neither prevents nor shortens the TMA — it is given for the venom effect, not the microangiopathy.** By the time TMA is evident the venom has done its damage; the 2020 review found no evidence that antivenom changes the course of the TMA, but it is still given for active envenoming."
+       ],
+       [
+        "e",
+        "**Treatment is supportive, with dialysis for the AKI.** Most patients with snakebite TMA develop AKI and many need dialysis; the kidney often recovers over weeks."
+       ]
+      ],
+      "mimic": [
+       [
+        "Snakebite TMA vs DIC vs TTP vs HUS",
+        "DIC prolongs PT and lowers fibrinogen; TTP has ADAMTS13 <10%; snakebite TMA follows a bite with normal clotting by then and AKI."
+       ]
+      ],
+      "traps": [
+       [
+        "“The MAHA is VICC fibrin deposition and antivenom is essential to halt it”",
+        "This is the DocT key, and it is wrong in substance: TMA is a separate process and antivenom does not prevent or shorten it. B was keyed only because the other options were more wrong."
+       ],
+       [
+        "“Plasmapheresis, as in TTP”",
+        "ADAMTS13 is not severely deficient and plasma exchange showed no benefit."
+       ],
+       [
+        "“Normal coagulation profile excludes a venom cause”",
+        "That is exactly the TMA picture (84% chose correctly)."
+       ]
+      ],
+      "decode": [
+       [
+        "Haematuria, thrombocytopenia, MAHA and AKI after a snakebite; coagulation normal [DocT]",
+        "Viper-induced thrombotic microangiopathy."
+       ],
+       [
+        "Post-snakebite MAHA with schistocytes, high LDH, AKI — pathophysiology and intervention [DocT]",
+        "Key: VICC plus antivenom and renal support (disputed; dialysis is the treatment that matters)."
+       ],
+       [
+        "VICC vs TTP — which statement is true? [DocT]",
+        "VICC is driven by venom prothrombin activators (91%)."
+       ]
+      ],
+      "punch": "VICC is a clotting problem that antivenom fixes; snakebite TMA is an endothelial problem that persists after clotting recovers, needs no plasma exchange, and is treated with dialysis.",
+      "topup": true
+     }
+    }
+   ]
   },
   "TOX06": {
    "cards": {
@@ -8849,7 +9260,67 @@
      "step": 6
     }
    },
-   "topups": [],
+   "topups": [
+    {
+     "id": "T_d0febbed",
+     "topic": "Goals in acute hypoxaemic respiratory failure",
+     "type": "cloze",
+     "q": "Therapeutic goals in acute hypoxaemic respiratory failure?",
+     "a": [
+      "- Least PEEP that gives SpO2 ≥90% on FiO2 <0.6.",
+      "- Least VT/plateau pressure compatible with pH >7.2 (accept hypercapnia).",
+      "- Least circulating volume/PAWP that keeps adequate O2 delivery and urine output."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "Marrow",
+     "recall": false,
+     "src": "Marrow QB20-Q09",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → ARDS → Goals of support in hypoxaemic failure",
+      "intro": "Step 3 explains why the hypoxaemia of ARDS comes from shunt and why the aerated lung is small. Support therefore has a cost at every point: more PEEP, more volume and more fluid each help one number and harm something else. The goals on this card (from Principles of Critical Care) are all written as the least that is enough.",
+      "why": [
+       [
+        "a",
+        "**Least PEEP that gives SpO₂ ≥90% on FiO₂ <0.6.** SpO₂ 90% sits near PaO₂ 60 mmHg, the shoulder of the dissociation curve, so higher targets add little oxygen content. FiO₂ is kept below 0.6 to limit oxygen toxicity and absorption collapse, and PEEP is the tool that lets FiO₂ come down; beyond what is needed it overdistends the open lung and cuts venous return."
+       ],
+       [
+        "b",
+        "**Least VT/plateau pressure compatible with pH >7.2 (accept hypercapnia).** The baby lung (ARDS-10) is overstretched by normal tidal volumes, so CO₂ is allowed to rise; a pH above about 7.2 is well tolerated by most patients. This is the logic behind ARMA’s 6 mL/kg and plateau ≤30 (RESP01B)."
+       ],
+       [
+        "c",
+        "**Least circulating volume/PAWP that keeps adequate O₂ delivery and urine output.** A leaky capillary floods with oedema in proportion to hydrostatic pressure, so the lowest filling that keeps cardiac output, oxygen delivery and kidneys perfused is the target; once shock has resolved, a conservative fluid strategy shortens ventilation (FACTT)."
+       ]
+      ],
+      "mimic": [],
+      "traps": [
+       [
+        "“The goal is a normal PaCO₂ and pH”",
+        "Hypercapnia is accepted to protect the lung; the floor is pH about 7.2, not 7.35."
+       ],
+       [
+        "“Push PEEP until SpO₂ is 100%”",
+        "The aim is the least PEEP for SpO₂ about 90% on a non-toxic FiO₂; more risks overdistension and hypotension."
+       ]
+      ],
+      "decode": [
+       [
+        "Therapeutic goals in acute hypoxaemic respiratory failure — which is NOT one? [Marrow]",
+        "None: least PEEP, least VT and least volume are all goals."
+       ],
+       [
+        "Which target is acceptable in a ventilated ARDS patient: PaCO₂ 60 with pH 7.25? [pattern]",
+        "Yes — permissive hypercapnia within pH >7.2."
+       ]
+      ],
+      "punch": "Every lever in hypoxaemic failure is set to the least that works: enough PEEP for SpO₂ about 90% on FiO₂ under 0.6, enough volume for pH above 7.2, enough fluid for perfusion.",
+      "topup": true,
+      "step": 3
+     }
+    }
+   ],
    "spine": [
     [
      "Insults that injure the lung",
@@ -9809,7 +10280,93 @@
      "step": 6
     }
    },
-   "topups": [],
+   "topups": [
+    {
+     "id": "T_d7c5bd2c",
+     "topic": "NIV: CPAP vs BiPAP and contraindications",
+     "type": "qa",
+     "q": "NIV: CPAP vs BiPAP — what each pressure does, and who must not get NIV?",
+     "a": [
+      "- CPAP = one continuous pressure: recruits alveoli, raises FRC and oxygenation (cardiogenic pulmonary oedema, OSA).",
+      "- BiPAP = IPAP + EPAP; pressure support (IPAP − EPAP) unloads breathing and clears CO2, EPAP recruits and oxygenates (and offsets auto-PEEP).",
+      "- Contraindications: GCS <8 or cannot protect the airway, apnoea/arrest, vomiting or upper GI bleed, shock, agitation/non-cooperation, facial trauma, undrained pneumothorax.",
+      "- Cardiogenic shock with confusion and hypoxaemic oedema → intubate, not NIV; overdose with GCS <8 and RR 6 → intubate."
+     ],
+     "tier": 1,
+     "n": 6,
+     "banks": "DocT Marrow GT",
+     "recall": false,
+     "src": "DocT ARDS Q04; DocT ARDS Q28; Marrow QB05-Q14; Marrow QB11-Q09; DocT GT CGT4 Q88; DocT GT CGT6 Q44",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Non-invasive support → CPAP, BiPAP and who must not get NIV",
+      "intro": "Step 1 is support before the tube. Beside HFNC (ARDS-14), the two mask modes are CPAP and BiPAP, and they do different jobs: one pressure that holds the lung open, or two pressures that also help each breath in. The exam asks what each pressure does, then hands you a patient in whom any mask is the wrong answer.",
+      "why": [
+       [
+        "a",
+        "**CPAP = one continuous pressure: recruits alveoli, raises FRC and oxygenation (cardiogenic pulmonary oedema, OSA).** The same pressure in inspiration and expiration splints collapsed alveoli open and raises FRC, so shunt falls; in cardiogenic oedema it also lowers LV afterload and preload. It gives no inspiratory help, so it does little for CO₂."
+       ],
+       [
+        "b",
+        "**BiPAP = IPAP + EPAP; pressure support (IPAP − EPAP) unloads breathing and clears CO₂, EPAP recruits and oxygenates (and offsets auto-PEEP).** The difference between the two levels is the inspiratory assist: it enlarges tidal volume and takes over muscle work, which is why it is the mode for hypercapnia. EPAP is simply CPAP at end-expiration; in COPD it also balances intrinsic PEEP so the patient triggers more easily (COPD-03)."
+       ],
+       [
+        "c",
+        "**Contraindications: GCS <8 or cannot protect the airway, apnoea/arrest, vomiting or upper GI bleed, shock, agitation/non-cooperation, facial trauma, undrained pneumothorax.** A mask needs a patient who breathes, keeps the airway clear and tolerates it. Positive pressure into the stomach risks aspiration, raises intrathoracic pressure in a failing circulation, and enlarges an undrained pneumothorax."
+       ],
+       [
+        "d",
+        "**Cardiogenic shock with confusion and hypoxaemic oedema → intubate, not NIV; overdose with GCS <8 and RR 6 → intubate.** Cardiogenic oedema is the best indication for CPAP, but shock and confusion turn it into a contraindication. The overdose patient cannot protect the airway or generate breaths for a mask to support."
+       ]
+      ],
+      "mimic": [
+       [
+        "CPAP vs pressure support",
+        "CPAP raises FRC and oxygenation; pressure support helps inspiration and tidal volume. For low FRC in a spontaneously breathing patient, CPAP is the answer."
+       ]
+      ],
+      "traps": [
+       [
+        "“BiPAP works by decreasing lung compliance”",
+        "It recruits lung and improves compliance; the distractor reverses the physiology."
+       ],
+       [
+        "“BiPAP delivers a constant volume”",
+        "It is pressure-set; tidal volume varies with effort and mechanics."
+       ],
+       [
+        "“Hypoxaemic, low FRC, breathing spontaneously — pressure support”",
+        "CPAP raises FRC; pressure support only adds inspiratory help (DocT GT)."
+       ],
+       [
+        "“Switch a ventilated severe ARDS patient to BiPAP”",
+        "The DocT stem is clinically odd: NIV is reserved for mild ARDS (ARDS-04, ARDS-14); answer the pressure question it asks."
+       ]
+      ],
+      "decode": [
+       [
+        "Characteristic feature of BiPAP [DocT; DocT GT]",
+        "Two levels: higher inspiratory, lower expiratory pressure (80%)."
+       ],
+       [
+        "Primary advantage of BiPAP in this patient [DocT]",
+        "Spontaneous breathing with support in both phases (91%)."
+       ],
+       [
+        "Spontaneously breathing, hypoxaemic from low FRC — best mode? [DocT GT]",
+        "CPAP."
+       ],
+       [
+        "Propafenone overdose, GCS <8, RR 6; cardiogenic shock, confused, hypoxaemic oedema [Marrow]",
+        "Intubate in both."
+       ]
+      ],
+      "punch": "CPAP holds the lung open, the gap between IPAP and EPAP breathes for the patient; and a patient who cannot protect the airway, breathe, cooperate or hold a blood pressure needs a tube, not a mask.",
+      "topup": true,
+      "step": 1
+     }
+    }
+   ],
    "spine": [
     [
      "Supporting the patient before intubation",
@@ -11780,7 +12337,197 @@
      "step": 6
     }
    },
-   "topups": [],
+   "topups": [
+    {
+     "id": "T_ade9b5a5",
+     "topic": "CXR of emphysema",
+     "type": "image",
+     "q": "Chest X-ray signs of emphysema / hyperinflation?",
+     "a": [
+      "- Flat hemidiaphragms (>6 anterior or >10 posterior ribs above them).",
+      "- Wide retrosternal air space on the lateral film; long, narrow vertical heart.",
+      "- Pruned peripheral vessels; bullae.",
+      "- Why: lost elastic recoil raises FRC and RV, so the chest sits at high volume; acute asthma can hyperinflate too."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "DocT",
+     "recall": false,
+     "src": "DocT COPD & Respiratory Failure Q5",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → COPD → Chest X-ray of emphysema",
+      "intro": "Step 1 says emphysema destroys elastic recoil, so compliance rises. The chest X-ray shows the result: a chest that rests at a larger volume than normal. The exam gives the film with a COPD history and asks you to name it, and the signs below are what you look for.",
+      "why": [
+       [
+        "a",
+        "**Flat hemidiaphragms (>6 anterior or >10 posterior ribs above them).** The over-expanded lung pushes the diaphragm down and flattens its dome; counting ribs above the mid-clavicular diaphragm is the simplest measure of hyperinflation."
+       ],
+       [
+        "b",
+        "**Wide retrosternal air space on the lateral film; long, narrow vertical heart.** On the lateral film the clear space behind the sternum widens (more than about 2.5 cm) as lung fills it. The low diaphragm pulls the heart down into a long, narrow shape."
+       ],
+       [
+        "c",
+        "**Pruned peripheral vessels; bullae.** Destroyed alveolar walls take their capillaries with them, so vessels thin out quickly toward the periphery; bullae are avascular air spaces over 1 cm across with walls under 1 mm thick, seen as lucent areas bounded by hairline curves."
+       ],
+       [
+        "d",
+        "**Why: lost elastic recoil raises FRC and RV, so the chest sits at high volume; acute asthma can hyperinflate too.** FRC is where inward recoil of lung balances outward recoil of the chest wall; weaker lung recoil moves that balance to a higher volume. Air trapping in an asthma attack does the same, temporarily."
+       ]
+      ],
+      "mimic": [
+       [
+        "Emphysema vs pneumonia vs pulmonary embolism",
+        "Pneumonia shows consolidation; PE usually leaves the film near normal; emphysema is the large, dark, vessel-poor chest."
+       ]
+      ],
+      "traps": [
+       [
+        "“Acute asthma shows normal lung volumes”",
+        "DocT’s explanation says so, and it is wrong: air trapping hyperinflates the chest in a severe attack; the history (smoker, COPD) is what points to emphysema."
+       ]
+      ],
+      "decode": [
+       [
+        "60-year-old with COPD, worsening dyspnoea, CXR shown — diagnosis? [DocT]",
+        "COPD with emphysema (86%)."
+       ],
+       [
+        "Smoker, RR 36, PaO₂ 55, PaCO₂ 70, CXR hyperinflation and flat diaphragms [DocT GT]",
+        "Type 2 respiratory failure due to COPD (94%)."
+       ]
+      ],
+      "punch": "Emphysema is lost recoil, so the chest rests at high volume: low flat diaphragms, a wide retrosternal space, a narrow heart and thinned peripheral vessels.",
+      "topup": true,
+      "step": 1
+     }
+    },
+    {
+     "id": "T_a8369bdb",
+     "topic": "Tracheomalacia/EDAC mimicking asthma",
+     "type": "qa",
+     "q": "'Asthma' that repeatedly needs intubation and settles once intubated — what is it, and how is it shown?",
+     "a": [
+      "- Suspect tracheomalacia or excessive dynamic airway collapse (EDAC): the tube stents the collapsing airway, so the 'bronchospasm' vanishes on intubation.",
+      "- Diagnose by dynamic bronchoscopy after extubation (forced expiration/cough) or dynamic expiratory CT — an inspiratory CT can be normal.",
+      "- Vocal-cord dysfunction is the other mimic (speech therapy); treat EDAC with CPAP, stenting or tracheobronchoplasty."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "Marrow",
+     "recall": false,
+     "src": "Marrow QB08-Q04",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Asthma → Tracheomalacia and EDAC as asthma mimics",
+      "intro": "Step 4 is about recognising severity, but it starts with being sure the disease is asthma. A patient who keeps arriving in ‘status asthmaticus’, needs a tube, and is easy to ventilate as soon as the tube is in, has a large-airway problem the tube has bypassed.",
+      "why": [
+       [
+        "a",
+        "**Suspect tracheomalacia or excessive dynamic airway collapse (EDAC): the tube stents the collapsing airway, so the ‘bronchospasm’ vanishes on intubation.** In tracheomalacia the cartilage is weak; in EDAC the posterior membrane bows inward. Either way the central airway collapses on forced expiration and cough, causing wheeze and obstruction. A tube holds that segment open, while true asthma persists below the tube."
+       ],
+       [
+        "b",
+        "**Diagnose by dynamic bronchoscopy after extubation (forced expiration/cough) or dynamic expiratory CT — an inspiratory CT can be normal.** The collapse happens only on expiration, so the test must be done while the patient breathes out forcefully; the usual threshold is a fall in airway lumen of more than 50% on expiration, although some healthy people exceed it, so the finding must match the symptoms; bronchoscopy needs the tube out because the tube itself splints the airway."
+       ],
+       [
+        "c",
+        "**Vocal-cord dysfunction is the other mimic (speech therapy); treat EDAC with CPAP, stenting or tracheobronchoplasty.** In vocal-cord dysfunction the cords close paradoxically on inspiration, shown by laryngoscopy during symptoms, and it is treated with speech therapy. In EDAC, CPAP acts as a pneumatic stent; stenting or surgery is for severe cases."
+       ]
+      ],
+      "mimic": [
+       [
+        "EDAC vs vocal-cord dysfunction",
+        "Both mimic asthma and both settle with a tube; EDAC is expiratory, central airway collapse seen on dynamic bronchoscopy, vocal-cord dysfunction is inspiratory cord closure seen on laryngoscopy."
+       ]
+      ],
+      "traps": [
+       [
+        "“Inspiratory CT is normal, so the airway is normal”",
+        "The collapse is expiratory; only a dynamic expiratory CT or bronchoscopy shows it."
+       ],
+       [
+        "“Speech therapy”",
+        "That treats vocal-cord dysfunction; first show the airway on bronchoscopy once extubated."
+       ]
+      ],
+      "decode": [
+       [
+        "Recurrent ‘status asthmaticus’ that settles once intubated — next investigation? [Marrow]",
+        "Bronchoscopy once extubated."
+       ]
+      ],
+      "punch": "If the ‘asthma’ disappears the moment the tube is in, the tube has splinted a collapsing central airway; look for it with dynamic bronchoscopy after extubation.",
+      "topup": true,
+      "step": 4
+     }
+    },
+    {
+     "id": "T_a68aceb6",
+     "topic": "Restrictive PFT pattern (IPF)",
+     "type": "cloze",
+     "q": "Pulmonary function pattern in idiopathic pulmonary fibrosis?",
+     "a": [
+      "- Restrictive: TLC, FRC, RV, FEV1 and FVC all reduced; FEV1/FVC normal or raised (increased elastic recoil).",
+      "- DLCO reduced early (thickened membrane); desaturation on exercise.",
+      "- Volumes fall further as the lung stiffens."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "GT",
+     "recall": false,
+     "src": "DocT GT GT7 Q140",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Lung function → Restrictive pattern in IPF",
+      "intro": "Step 1 sets COPD as the lung that has lost its recoil. Idiopathic pulmonary fibrosis is the opposite lesion: the lung has too much recoil, so every volume shrinks. The exam tests this by asking which volumes fall.",
+      "why": [
+       [
+        "a",
+        "**Restrictive: TLC, FRC, RV, FEV₁ and FVC all reduced; FEV₁/FVC normal or raised (increased elastic recoil).** A stiff lung cannot be expanded, so TLC falls, and it recoils to a smaller FRC and RV. FEV₁ and FVC fall in proportion to the smaller lung; stiff lung and traction on the airways push expiratory flow, so the ratio stays normal or rises. A low TLC is what proves restriction."
+       ],
+       [
+        "b",
+        "**DLCO reduced early (thickened membrane); desaturation on exercise.** Fibrosis thickens the alveolar membrane and destroys capillary bed, so gas transfer falls, often before volumes do. On exercise, faster blood flow leaves less time to equilibrate across the thickened membrane, so SpO₂ drops."
+       ],
+       [
+        "c",
+        "**Volumes fall further as the lung stiffens.** Falling FVC and DLCO over time track progression and prognosis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Fibrotic lung vs chest-wall or muscle restriction",
+        "Both lower TLC; in obesity, kyphoscoliosis or neuromuscular weakness the lung itself is normal, so DLCO corrected for volume (KCO) is normal or raised."
+       ]
+      ],
+      "traps": [
+       [
+        "“Low FEV₁ means obstruction”",
+        "FEV₁ falls in restriction too; it is the ratio that separates them — under 0.7 is COPD, normal or high is restriction."
+       ],
+       [
+        "“Residual volume rises in IPF”",
+        "RV rises in obstruction (air trapping); in IPF all volumes fall."
+       ]
+      ],
+      "decode": [
+       [
+        "PFT in idiopathic pulmonary fibrosis will show: reduced TLC, FRC, RV, or all? [DocT GT]",
+        "All of the above (83%)."
+       ],
+       [
+        "Low FEV₁ and FEV₁/FVC <0.7 — COPD, ILD, restrictive disease or normal? [NEET 2025 recall]",
+        "COPD; ILD keeps the ratio normal or high."
+       ]
+      ],
+      "punch": "Fibrosis is too much recoil: every volume falls, the FEV₁/FVC ratio stays normal or rises, and gas transfer falls early.",
+      "topup": true,
+      "step": 1
+     }
+    }
+   ],
    "spine": [
     [
      "The lesion: narrow airways, lost recoil",
@@ -12700,7 +13447,93 @@
      "step": 6
     }
    },
-   "topups": [],
+   "topups": [
+    {
+     "id": "T_a6c60300",
+     "topic": "MDI on the ventilator",
+     "type": "qa",
+     "q": "MDI on a ventilated patient — how do you maximise delivery?",
+     "a": [
+      "- Spacer in the inspiratory limb ~15 cm from the Y-piece; actuate at the START of inspiration.",
+      "- Low inspiratory flow, VT >500 mL, longer Ti with a pause; remove the HME (or place the device between HME and patient).",
+      "- Wider ETT helps; deposition falls with high flow, small tubes and humidified gas; typical dose 4–8 puffs.",
+      "- Nebuliser with the HME left in place: the filter traps the aerosol and almost no drug arrives — remove the HME during nebulisation; volume control with a square, low inspiratory flow carries aerosol more consistently than pressure control.",
+      "- Vibrating-mesh nebuliser is electrically powered: no added driving gas, so VT, trigger and FiO2 are undisturbed and it refills without breaking the circuit; a jet nebuliser adds 6–8 L/min of gas."
+     ],
+     "tier": 1,
+     "n": 5,
+     "banks": "GT",
+     "recall": false,
+     "src": "DocT GT GT3 Q88; DocT GT CGT5 Q8; DocT GT CGT6 Q8; DocT GT CGT6 Q9; DocT GT GT4 Q116",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Drugs → Inhaled bronchodilators on the ventilator",
+      "intro": "Step 4 gives the drugs for the attack; on the ventilator the question becomes how much of an inhaled dose actually reaches the lung. Aerosol must travel through tubing and an endotracheal tube, and most of it can stick to the circuit on the way. Every rule on this card either gives the aerosol a slower, larger, longer breath to ride or removes something that traps it.",
+      "why": [
+       [
+        "a",
+        "**Spacer in the inspiratory limb ~15 cm from the Y-piece; actuate at the START of inspiration.** The spacer lets the fast MDI plume slow down and evaporate into fine particles before the tube. Firing at the start of inspiration means the breath carries the aerosol in; fired during expiration it is lost down the expiratory limb. The exact distance matters less than the position: the 2023 international aerosol consensus (Ann Intensive Care 2023) asks for the pMDI with a spacer larger than 150 mL in the inspiratory limb before the Y-piece and gives no fixed distance."
+       ],
+       [
+        "b",
+        "**Low inspiratory flow, VT >500 mL, longer Ti with a pause; remove the HME (or place the device between HME and patient).** Slow flow means less turbulence and less impaction in the circuit and tube; a large tidal volume and an end-inspiratory pause carry particles deep and let them settle. A heat–moisture exchanger is a filter and traps aerosol. These settings come from bench and small clinical studies; the 2023 consensus advises against changing tidal volume, flow pattern or mode solely for aerosol delivery, so in a lung-protective ARDS patient the low tidal volume is kept and the dose is titrated to response instead."
+       ],
+       [
+        "c",
+        "**Wider ETT helps; deposition falls with high flow, small tubes and humidified gas; typical dose 4–8 puffs.** Narrow tubes and fast flow make particles impact on the tube wall; humidity makes them grow and rain out in the circuit. Because so much is lost, the usual dose is higher than in a spontaneously breathing patient."
+       ],
+       [
+        "d",
+        "**Nebuliser with the HME left in place: the filter traps the aerosol and almost no drug arrives — remove the HME during nebulisation; volume control with a square, low inspiratory flow carries aerosol more consistently than pressure control.** A poor response with the HME still in the circuit is a delivery failure, not resistant bronchospasm. Volume control guarantees the breath size, whereas pressure control’s tidal volume falls exactly when the airways are tightest. This is the exam answer; in practice the mode is not changed just to give a nebuliser."
+       ],
+       [
+        "e",
+        "**Vibrating-mesh nebuliser is electrically powered: no added driving gas, so VT, trigger and FiO₂ are undisturbed and it refills without breaking the circuit; a jet nebuliser adds 6–8 L/min of gas.** Extra gas from a jet nebuliser enlarges delivered volume, dilutes FiO₂ and can make triggering harder; the mesh device avoids all three and leaves less drug unused."
+       ]
+      ],
+      "mimic": [],
+      "traps": [
+       [
+        "“Increase inspiratory flow to push the drug in”",
+        "Higher flow increases impaction and reduces delivery; flow is lowered."
+       ],
+       [
+        "“Reduce tidal volume below 400 mL”",
+        "Larger tidal volumes (>500 mL) improve delivery."
+       ],
+       [
+        "“Pressure control or a square waveform?”",
+        "DocT keys volume control; a square low flow is the waveform volume control usually delivers, so read the options carefully when both appear."
+       ],
+       [
+        "“Minimal response to nebulised salbutamol — refractory asthma”",
+        "Check the HME first; left in the circuit it traps the aerosol."
+       ]
+      ],
+      "decode": [
+       [
+        "MDI with spacer near the Y-piece — which other adjustment improves delivery? [DocT GT ×2]",
+        "Deliver during the inspiratory phase (75–80%)."
+       ],
+       [
+        "Nebulised salbutamol, minimal response, HME left in the circuit [DocT GT]",
+        "Markedly reduced drug deposition."
+       ],
+       [
+        "Ventilator setting giving the greatest aerosol delivery [DocT GT]",
+        "Volume-controlled ventilation."
+       ],
+       [
+        "Main advantage of a vibrating-mesh nebuliser over a jet nebuliser [DocT GT]",
+        "Electrically powered — no added gas."
+       ]
+      ],
+      "punch": "Aerosol on a ventilator is lost to fast flow, small tubes, humidity and filters, so fire it at the start of a slow, large inspiration with the HME out of the path.",
+      "topup": true,
+      "step": 4
+     }
+    }
+   ],
    "spine": [
     [
      "Ventilating the obstructed lung",
@@ -13485,7 +14318,220 @@
      "step": 6
     }
    },
-   "topups": [],
+   "topups": [
+    {
+     "id": "T_938aa87a",
+     "topic": "Respiratory failure types I–IV",
+     "type": "pairs",
+     "q": "Respiratory failure types I–IV — mechanism and typical setting?",
+     "a": [
+      "- Type I (hypoxaemic): V/Q mismatch/shunt; PaO2 <60 with normal or low PaCO2 (pneumonia, ARDS, oedema).",
+      "- Type II (hypercapnic): alveolar hypoventilation; PaCO2 >45–50 with acidosis (COPD, opioids, neuromuscular).",
+      "- Type III (perioperative): atelectasis from low FRC, pain and splinting after upper abdominal surgery; mainly hypoxaemia, CO2 may rise.",
+      "- Type IV (shock): normal lungs and pump, but respiratory-muscle hypoperfusion and high ventilatory demand (sepsis, cardiogenic shock) → fatigue; ventilate to unload the muscles until shock is reversed."
+     ],
+     "tier": 1,
+     "n": 5,
+     "banks": "GT",
+     "recall": false,
+     "src": "DocT GT GT2 Q9; DocT GT CGT2 Q74; DocT GT GT5 Q53; DocT GT GT5 Q56; DocT GT GT6 Q104",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Respiratory failure → Types I–IV",
+      "intro": "Step 2 asks what goes wrong with the lung after surgery, and the four-type classification (Principles of Critical Care) gives post-operative failure its own place. The types are sorted by mechanism, not by the blood gas alone, and the exam tests exactly that: a stem whose gas fits one type but whose setting fits another.",
+      "why": [
+       [
+        "a",
+        "**Type I (hypoxaemic): V/Q mismatch/shunt; PaO₂ <60 with normal or low PaCO₂ (pneumonia, ARDS, oedema).** Alveoli that are perfused but flooded or collapsed cannot oxygenate the blood through them; the patient breathes harder, so CO₂ is normal or low."
+       ],
+       [
+        "b",
+        "**Type II (hypercapnic): alveolar hypoventilation; PaCO₂ >45–50 with acidosis (COPD, opioids, neuromuscular).** The pump — drive, nerves, muscles or the load on them — cannot move enough air, so CO₂ rises and pH falls; PaO₂ falls with it."
+       ],
+       [
+        "c",
+        "**Type III (perioperative): atelectasis from low FRC, pain and splinting after upper abdominal surgery; mainly hypoxaemia, CO₂ may rise.** Anaesthesia, a painful wound and opioids shrink FRC below closing capacity, so dependent lung collapses (RSC-04). It is a type I lesion with a type II component, given its own label because the setting and the treatment — re-expansion — are specific."
+       ],
+       [
+        "d",
+        "**Type IV (shock): normal lungs and pump, but respiratory-muscle hypoperfusion and high ventilatory demand (sepsis, cardiogenic shock) → fatigue; ventilate to unload the muscles until shock is reversed.** In shock the respiratory muscles take a large share of a cardiac output that is already too small, while acidosis and sepsis drive ventilation up; they fatigue and CO₂ rises. Ventilating them frees that blood flow for other organs."
+       ]
+      ],
+      "mimic": [
+       [
+        "Type III vs type II after surgery",
+        "Both can show a high CO₂; type III is atelectasis in the post-operative setting, type II is a primary failure of the pump."
+       ],
+       [
+        "Type IV vs type I in sepsis",
+        "Type IV has clear lungs and fatigue; type I has infiltrates (pneumonia, ARDS)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Day 1 after upper abdominal surgery on opioids, pH 7.30, PaCO₂ 58 — type II”",
+        "DocT keys type III from the setting (56% and 72% chose it); the gas is hypercapnic, so type II is defensible — in the exam, a post-operative stem goes to type III."
+       ],
+       [
+        "“Sepsis, clear lungs, rising CO₂ from fatigue — type II”",
+        "The pump is normal; the failure is demand outstripping supply, which is type IV."
+       ]
+      ],
+      "decode": [
+       [
+        "Post-op day 1, upper abdominal surgery, opioids, drowsy, PaCO₂ 58 [DocT GT ×2]",
+        "Type III — perioperative."
+       ],
+       [
+        "Sepsis with normal lungs and a normal respiratory pump [DocT GT]",
+        "Type IV (88%)."
+       ],
+       [
+        "Post-op sepsis, clear lung fields, progressive hypercapnia, intubated for fatigue [DocT GT]",
+        "Type IV — increased ventilatory demand."
+       ],
+       [
+        "Smoker, PaO₂ 55, PaCO₂ 70, hyperinflation [DocT GT]",
+        "Type II from COPD (94%)."
+       ]
+      ],
+      "punch": "Type I is a lung that cannot oxygenate, type II a pump that cannot ventilate, type III the collapsed post-operative lung and type IV normal lungs failing because shock starves the muscles.",
+      "topup": true,
+      "step": 2
+     }
+    },
+    {
+     "id": "T_23f59da7",
+     "topic": "Anterior mediastinal mass and induction",
+     "type": "case",
+     "q": "Lymphoma with a large anterior mediastinal mass needs intubation — best predictor of collapse at induction, and the plan?",
+     "a": [
+      "- Symptoms when supine (orthopnoea, cough, stridor) predict compression; normal PFTs or auscultation do not reassure.",
+      "- Induction, paralysis and positive pressure remove the muscle tone and negative intrathoracic pressure that hold the airway open, so the mass compresses trachea, bronchi or pulmonary artery.",
+      "- Plan: CT first, keep spontaneous breathing (awake fibreoptic intubation, sitting up), rigid bronchoscope ready, ECMO standby if high risk; steroids or radiotherapy can shrink the mass first."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "GT",
+     "recall": false,
+     "src": "DocT GT GT1o Q59",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Airway → Anterior mediastinal mass at induction",
+      "intro": "Step 5 turns to the airway that is harder to secure. A large anterior mediastinal mass is the extreme case: an airway that stays open while the patient breathes and may close the moment anaesthesia is induced. The exam asks which bedside finding predicts that collapse.",
+      "why": [
+       [
+        "a",
+        "**Symptoms when supine (orthopnoea, cough, stridor) predict compression; normal PFTs or auscultation do not reassure.** If lying flat already narrows the airway, the patient is relying on posture and muscle tone to keep it open. Normal tests done upright and awake say nothing about the anaesthetised, supine state; an echo looks for cardiac or vascular compression, not the airway."
+       ],
+       [
+        "b",
+        "**Induction, paralysis and positive pressure remove the muscle tone and negative intrathoracic pressure that hold the airway open, so the mass compresses trachea, bronchi or pulmonary artery.** Awake, the negative pleural pressure of inspiration pulls the airways open and smooth-muscle tone stiffens them. Anaesthesia lowers lung volume, abolishes that tone and replaces negative with positive pressure, so the mass meets less resistance; a tube may pass the narrowing yet the bronchi beyond it can still collapse."
+       ],
+       [
+        "c",
+        "**Plan: CT first, keep spontaneous breathing (awake fibreoptic intubation, sitting up), rigid bronchoscope ready, ECMO standby if high risk; steroids or radiotherapy can shrink the mass first.** CT shows where and how badly the airway is narrowed. Keeping the patient breathing preserves the forces that hold the airway open; a rigid bronchoscope can be passed beyond a compression, and ECMO (or bypass) supports a patient whose airway cannot be rescued. Treating lymphoma first can shrink the mass but may compromise the histology, so where possible tissue is taken first, often from a peripheral node or under local anaesthesia; when the airway cannot wait, a short steroid course is given after discussion with the oncologists, who also watch for tumour lysis."
+       ]
+      ],
+      "mimic": [],
+      "traps": [
+       [
+        "“Normal recent pulmonary function tests make induction safe”",
+        "They are done awake and upright; supine symptoms are the predictor (65% chose correctly)."
+       ],
+       [
+        "“An echocardiogram best predicts airway collapse”",
+        "Echo shows cardiac and vessel compression or effusion, not the airway."
+       ],
+       [
+        "“Standard rapid sequence induction with paralysis”",
+        "Paralysis removes the tone that keeps the airway open; keep spontaneous breathing."
+       ]
+      ],
+      "decode": [
+       [
+        "New lymphoma, widened superior mediastinum, needs intubation — best test of airway-collapse risk? [DocT GT]",
+        "Ability to lie supine without orthopnoea or cough."
+       ]
+      ],
+      "punch": "An anterior mediastinal mass is held off the airway by the patient’s own breathing, so the best predictor is whether lying flat already causes symptoms, and the plan is to keep the patient breathing.",
+      "topup": true,
+      "step": 5
+     }
+    },
+    {
+     "id": "T_3e6c3480",
+     "topic": "Lobar collapse on the ventilator",
+     "type": "image",
+     "q": "Ventilated patient, sudden hypoxaemia not fixed by FiO2/PEEP/tube check; CXR: retrocardiac triangle with loss of the left hemidiaphragm — diagnosis and next step?",
+     "a": [
+      "- Left lower lobe collapse ('sail sign'), usually from a mucus plug.",
+      "- Next: therapeutic bronchoscopy to clear the plug (plus suction, humidification, physiotherapy).",
+      "- Not needle decompression (tension pneumothorax is hyperlucent with shift away); not advancing the tube (right mainstem intubation collapses the whole left lung)."
+     ],
+     "tier": 3,
+     "n": 1,
+     "banks": "GT",
+     "recall": false,
+     "src": "DocT GT GT2o Q20",
+     "x": {
+      "v": 2,
+      "sub": "Respiratory → Post-operative lung → Lobar collapse on the ventilator",
+      "intro": "Step 2 makes atelectasis the commonest pulmonary complication; lobar collapse is its sudden form. A ventilated patient with secretions desaturates, and the usual fixes — more oxygen, more PEEP, checking the tube — do nothing, because no gas reaches a lobe sealed off by a plug.",
+      "why": [
+       [
+        "a",
+        "**Left lower lobe collapse (‘sail sign’), usually from a mucus plug.** The collapsed lobe lies behind the heart as a triangular opacity; it removes the outline of the medial left hemidiaphragm and the descending aorta, and gives a double cardiac contour. It is easily missed because the heart hides it."
+       ],
+       [
+        "b",
+        "**Next: therapeutic bronchoscopy to clear the plug (plus suction, humidification, physiotherapy).** Removing the plug reopens the lobe, so the shunt closes. Physiotherapy and suction often work as well: in Marini’s 1979 randomised trial of acute lobar atelectasis (31 patients), bronchoscopy added nothing to vigorous respiratory therapy, and an air bronchogram (patent proximal airways) predicted slow resolution with either. So in a stable patient chest physiotherapy comes first; bronchoscopy is chosen, as here, when hypoxaemia is severe and has not responded, when physiotherapy cannot be done or has failed, or when the absence of air bronchograms suggests a central plug."
+       ],
+       [
+        "c",
+        "**Not needle decompression (tension pneumothorax is hyperlucent with shift away); not advancing the tube (right mainstem intubation collapses the whole left lung).** Collapse is white with volume loss, and the mediastinum moves toward it; tension pneumothorax is black and pushes everything away. A tube already checked is in place; pushing it 3 cm further enters the right main bronchus. Prone positioning is for ARDS, not a plugged lobe."
+       ]
+      ],
+      "mimic": [
+       [
+        "Lobar collapse vs tension pneumothorax",
+        "Collapse: white, volume loss, shift toward it. Tension: black, no lung markings, shift away, hypotension."
+       ],
+       [
+        "Lobar collapse vs ARDS",
+        "Collapse is one lobe with volume loss; ARDS is bilateral opacities without volume loss."
+       ]
+      ],
+      "traps": [
+       [
+        "“Advance the tube by 3 cm”",
+        "The tube was already repositioned; advancing it causes right mainstem intubation."
+       ],
+       [
+        "“Needle decompression”",
+        "Nothing on the film is hyperlucent; this is collapse, not tension."
+       ],
+       [
+        "“Prone him”",
+        "Proning treats diffuse ARDS; a plugged lobe needs the plug removed (only 28% chose bronchoscopy)."
+       ],
+       [
+        "“Bronchoscopy is always better than physiotherapy for lobar collapse”",
+        "Marini 1979 found no difference overall; bronchoscopy is for severe or refractory hypoxaemia, as in this stem."
+       ]
+      ],
+      "decode": [
+       [
+        "Ventilated, productive cough, hypoxaemia not fixed by FiO₂, PEEP or tube repositioning; CXR retrocardiac triangle [DocT GT]",
+        "Bronchoscopy."
+       ]
+      ],
+      "punch": "Hypoxaemia that ignores oxygen, PEEP and the tube, with a triangle behind the heart, is a plugged left lower lobe, and the treatment is to remove the plug.",
+      "topup": true,
+      "step": 2
+     }
+    }
+   ],
    "spine": [
     [
      "Sepsis: oxygen and ARDS ventilation",
@@ -13513,6 +14559,735 @@
     ]
    ],
    "primer": "Predicted body weight comes from height and sex, not from what the patient weighs, because lung size follows height; tidal volumes are set in mL/kg of it. The respiratory system is the lung and the chest wall (rib cage, diaphragm and abdomen) in series, so its compliance falls if either one stiffens, and the plateau pressure (end-inspiratory pressure at zero flow) reflects both. Driving pressure is plateau minus PEEP, the pressure that stretches each breath; transpulmonary pressure is alveolar minus pleural pressure (estimated from an oesophageal balloon), the pressure that stretches the lung itself. Functional residual capacity (FRC) is the volume left at the end of a quiet breath; when it falls below closing capacity, small dependent airways shut during normal breathing and the alveoli behind them collapse."
+  },
+  "RESP04": {
+   "cards": {
+    "RSC-17": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised → Causes of acute respiratory failure",
+     "intro": "The deck opens with the question every immunocompromised patient with new hypoxaemia poses: what is it? Most causes are infections and treatable, so the cause, not the oxygen device, decides the outcome.",
+     "why": [
+      [
+       "a",
+       "**Infectious about 60%; non-infectious about 25%.** The non-infectious share is drug toxicity, the disease itself infiltrating the lung, haemorrhage and heart failure; the rest stay unexplained."
+      ],
+      [
+       "b",
+       "**Bacterial infection 33%; then viral 13%, Pneumocystis 8%, invasive aspergillosis 7%, disease-related infiltrates 7%, cardiogenic 3%.** Ordinary bacteria still come first even in deep immunosuppression, so empirical antibacterial cover is never omitted. In EFRAIM (1,611 patients, 2017) the order was the same: bacterial 29.5%, viral 15.4%, fungal 14.7%."
+      ],
+      [
+       "c",
+       "**15% undetermined, and an undetermined cause carries a worse outcome.** If the cause is not found, it is not treated. In EFRAIM an undetermined cause (13.2%) was linked to both intubation and hospital death, which is why the diagnostic work-up (RSC-20d) is part of the treatment."
+      ],
+      [
+       "d",
+       "**The type and mechanism of immunosuppression, and the nature, phase and duration of treatment.** The defect predicts the organism (RSC-18), and the phase matters: a neutropenic patient in the first weeks of chemotherapy is at risk of different organisms from one on long-term steroids or months after a transplant (RSC-19)."
+      ]
+     ],
+     "mimic": [
+      [
+       "Infection vs the disease or drug itself",
+       "Infiltrates may be leukaemic or lymphomatous infiltration, drug pneumonitis or haemorrhage; these are found only by looking for them once infection has been sought."
+      ]
+     ],
+     "traps": [
+      [
+       "“In the immunocompromised, opportunistic organisms are the commonest cause”",
+       "Ordinary bacterial infection is the single commonest cause; Pneumocystis and aspergillosis follow well behind."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] Commonest identified cause of acute respiratory failure in immunocompromised patients?",
+       "Bacterial infection."
+      ],
+      [
+       "[pattern] Which factor in the work-up is linked to higher mortality?",
+       "Failure to identify the cause."
+      ]
+     ],
+     "punch": "Bacteria are the commonest cause, the immune defect predicts the rest, and an undetermined cause carries a worse outcome, so finding it matters more than the oxygen device.",
+     "step": 1
+    },
+    "RSC-18": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised → Immune defect and typical infections",
+     "intro": "Step 1 continues: the kind of immune defect narrows the list of organisms before any test returns. Each defect removes one line of defence, and the organisms that line normally handles take over.",
+     "why": [
+      [
+       "a",
+       "**Neutrophil defect (acute leukaemia, chemotherapy): Gram-negative and Gram-positive bacteria, Candida, Aspergillus.** Neutrophils kill extracellular bacteria and the hyphae of moulds. Without them, gut and skin bacteria invade within days, and Aspergillus becomes the threat after about 10 days of profound neutropenia. Long-term steroids add to this risk, because they impair neutrophil and macrophage killing too."
+      ],
+      [
+       "b",
+       "**T-cell defect (steroids, calcineurin inhibitors, lymphoma, transplant): Pneumocystis, CMV and herpes viruses, mycobacteria, Nocardia, Listeria, Legionella, Cryptococcus.** T cells control organisms that live inside cells or that need cell-mediated immunity, so the infections are slower, opportunistic and often reactivations. A patient on long-term prednisone with a lung nodule and a brain lesion has Nocardia (RSC-20)."
+      ],
+      [
+       "c",
+       "**B-cell or antibody defect (myeloma, CLL, rituximab, asplenia): encapsulated bacteria — pneumococcus, H. influenzae.** A capsule resists phagocytosis unless antibody and complement coat it, and the spleen removes coated bacteria from the blood. Without antibody or spleen, pneumococcal pneumonia and sepsis can be fulminant."
+      ]
+     ],
+     "mimic": [
+      [
+       "Neutropenia vs T-cell defect",
+       "Neutropenia: acute, bacterial and mould infection within weeks of chemotherapy. T-cell defect: subacute Pneumocystis, viral, mycobacterial and Nocardia infection on steroids or after transplant."
+      ]
+     ],
+     "traps": [
+      [
+       "“Aspergillus is a T-cell infection”",
+       "Invasive aspergillosis follows neutropenia (and steroids); neutrophils kill hyphae (RSC-29b)."
+      ],
+      [
+       "“Pneumocystis follows neutropenia”",
+       "Pneumocystis follows loss of T-cell immunity: steroids, transplant, lymphoma, HIV."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] Prolonged neutropenia after induction chemotherapy, new nodules — likely organism?",
+       "Aspergillus."
+      ],
+      [
+       "[pattern] On rituximab or after splenectomy, fulminant pneumonia — likely organism?",
+       "Pneumococcus (encapsulated bacteria)."
+      ]
+     ],
+     "punch": "Neutropenia lets in bacteria, Candida and Aspergillus; a T-cell defect lets in Pneumocystis, viruses, mycobacteria and Nocardia; an antibody or spleen defect lets in encapsulated bacteria.",
+     "step": 1
+    },
+    "RSC-19": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised → Lung complications after stem-cell transplant",
+     "intro": "Step 2 narrows to the patient after a haematopoietic stem-cell transplant (HSCT), the card asked most often in this deck. Immunity returns in a predictable order — neutrophils at engraftment, T cells over months, antibodies last — so the number of days since transplant tells you which infections and which non-infectious syndromes to expect. The questions test the non-infectious syndromes, each defined by its timing and by what the lavage does or does not show.",
+     "why": [
+      [
+       "a",
+       "**About two-thirds of patients.** Most reviews give 30–60%, depending on the transplant and the era, so two-thirds is at the high end; lung complications account for about half of transplant-related deaths."
+      ],
+      [
+       "b",
+       "**Pre-engraftment (first month): bacterial, fungal and viral infection; drug toxicity, engraftment syndrome, diffuse alveolar haemorrhage.** The patient is neutropenic, so bacteria and moulds dominate (RSC-18). Engraftment syndrome comes within 96 hours of neutrophil engraftment: by Spitzer's criteria, three major features (fever without infection, an erythematous rash, non-cardiogenic pulmonary oedema with hypoxaemia) or two major plus one minor (weight gain, liver or renal dysfunction, transient encephalopathy). The returning neutrophils release cytokines and make capillaries leak; it responds to steroids. Diffuse alveolar haemorrhage (DAH) is diagnosed at bronchoscopy, when successive lavage aliquots return progressively bloodier; haemoptysis is uncommon despite the name. It affects about 5–12% of recipients, with a median onset that varies by series from about day 11 to day 30, and it carries a high mortality and is treated with high-dose methylprednisolone and correction of platelets and clotting."
+      ],
+      [
+       "c",
+       "**Early post-engraftment (to day 100): CMV, fungal and Pneumocystis infection; acute GVHD, idiopathic pneumonia syndrome, radiation pneumonitis.** Neutrophils are back but T cells are not, so the T-cell organisms take over. Idiopathic pneumonia syndrome (IPS) is widespread alveolar injury — multilobar infiltrates, symptoms and signs of pneumonia, a raised A–a gradient or new oxygen need — with no active lower respiratory infection and no cardiac failure, acute renal failure or iatrogenic fluid overload to explain it (ATS 2011). It usually appears within the first 120 days, with a median onset of about day 21–65 in different series; donor T cells and TNF-α drive it as well as conditioning toxicity, and mortality is 60–80%, above 95% once ventilated. Treatment is high-dose steroids with antimicrobials continued; etanercept was added on the basis of the TNF-α link, but the adult phase III trial (BMT CTN 0403, 34 patients) closed early for slow accrual and showed no difference in response at day 28 (62.5% with etanercept vs 66.7% with placebo)."
+      ],
+      [
+       "d",
+       "**Late (after day 100): encapsulated bacteria, fungal and viral infection; bronchiolitis obliterans (chronic GVHD), post-transplant lymphoproliferative disorder.** Antibody and splenic function are the last to recover, so pneumococcus returns. Bronchiolitis obliterans syndrome is the lung form of chronic GVHD: an obstructive defect (FEV₁/FVC <0.7 and FEV₁ <75% predicted) with air trapping on expiratory CT, appearing a median of about a year after transplant."
+      ]
+     ],
+     "mimic": [
+      [
+       "Engraftment syndrome vs acute GVHD",
+       "Both cause fever and rash and both respond to steroids. Engraftment syndrome comes with neutrophil recovery and brings capillary-leak lung; acute GVHD targets skin, gut and liver, and whether it injures the lung directly is not accepted."
+      ],
+      [
+       "DAH vs IPS",
+       "Both are diffuse, non-infectious and early. DAH is defined by blood in the lavage; IPS is the diagnosis left when lavage shows neither blood nor organisms."
+      ]
+     ],
+     "traps": [
+      [
+       "“Rash, fever and lung infiltrates at 4 weeks: acute GVHD of the lung and skin”",
+       "This picture at neutrophil recovery is engraftment syndrome; acute GVHD targets skin, gut and liver, and acute lung GVHD is not an accepted entity. DocT keys GVHD because engraftment syndrome is not offered — the least wrong option, chosen by 59%."
+      ],
+      [
+       "“DAH is diagnosed by more than 20% haemosiderin-laden macrophages in a lavage taken in the first 24 hours”",
+       "Haemosiderin-laden macrophages take 48–72 hours to appear; the early, defining finding is aliquots that become progressively bloodier."
+      ],
+      [
+       "“IPS is purely conditioning toxicity, or needs documented lung GVHD”",
+       "Donor T cells and TNF-α contribute, and GVHD is not required; IPS is a diagnosis of exclusion."
+      ],
+      [
+       "“Stop the antibiotics once the lavage is negative”",
+       "Antimicrobials are continued while steroids start, because a negative lavage does not exclude every infection."
+      ],
+      [
+       "“Iatrogenic fluid overload is an IPS criterion”",
+       "It is an exclusion: fluid overload, cardiac failure and renal failure must be absent (93% got this right)."
+      ],
+      [
+       "“DAH is a late complication” (RSC-29c)",
+       "It belongs to the first month."
+      ]
+     ],
+     "decode": [
+      [
+       "ALL, 4 weeks post-HSCT, fever, maculopapular rash, respiratory distress, lavage negative, perivascular lymphocytes on skin biopsy [DocT, 59% right]",
+       "GVHD of skin and lung as keyed; engraftment syndrome is the better answer whenever it is offered."
+      ],
+      [
+       "Post-HSCT, sudden dyspnoea and haemoptysis — which lavage finding is most diagnostic of DAH? [DocT GT]",
+       "Successive aliquots that become progressively more blood-stained."
+      ],
+      [
+       "Day 20, bilateral infiltrates, no cardiac failure, lavage negative for all organisms — true statement about IPS? [DocT GT]",
+       "High-dose steroids with possible etanercept, because TNF-α drives IPS."
+      ],
+      [
+       "Which is NOT a criterion for IPS? [DocT GT, 93% right]",
+       "Iatrogenic fluid overload (it is an exclusion)."
+      ]
+     ],
+     "punch": "After stem-cell transplant the day decides the cause: engraftment syndrome and alveolar haemorrhage in the first month, idiopathic pneumonia syndrome before day 100 once infection, heart, kidney and fluid are excluded, and bronchiolitis obliterans after.",
+     "table": {
+      "title": "The non-infectious syndromes, by what decides them",
+      "head": [
+       "Syndrome",
+       "When",
+       "What decides it"
+      ],
+      "rows": [
+       [
+        "Engraftment syndrome",
+        "within 96 h of neutrophil recovery",
+        "fever, rash, capillary-leak lung; steroid-responsive"
+       ],
+       [
+        "Diffuse alveolar haemorrhage",
+        "first month",
+        "**progressively bloodier lavage aliquots**"
+       ],
+       [
+        "Idiopathic pneumonia syndrome",
+        "usually <120 days",
+        "alveolar injury with infection, cardiac, renal and fluid causes **excluded**"
+       ],
+       [
+        "Bronchiolitis obliterans",
+        "after day 100",
+        "obstruction and air trapping (chronic GVHD)"
+       ]
+      ]
+     },
+     "step": 2
+    },
+    "RSC-20": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised → CT pattern and diagnostic work-up",
+     "intro": "Step 3 turns the clinical picture into a diagnosis. CT narrows the organism by pattern, and the questions pair a pattern with the immune defect and ask for the organism or the test that confirms it.",
+     "why": [
+      [
+       "a",
+       "**Ground-glass opacities: Pneumocystis, viral (CMV), atypical bacteria.** These organisms fill alveoli with fluid and protein and thicken the interstitium without solid consolidation. Ground glass with interlobular septal thickening (crazy paving) in a patient on steroids, cyclophosphamide or after transplant is Pneumocystis until proven otherwise; it is confirmed by immunofluorescence or PCR on lavage or induced sputum, and a raised serum beta-D-glucan supports it."
+      ],
+      [
+       "b",
+       "**Nodules with or without cavitation: Aspergillus, mucormycosis, Nocardia, mycobacteria, S. aureus.** Angioinvasive moulds infarct lung around a nodule: a halo of ground glass (haemorrhage) appears early in neutropenia and an air crescent later, as neutrophils return; mucormycosis may show a reversed halo. Nocardia gives nodules or cavities and spreads to the brain, so a lung nodule with a brain lesion in a patient on long-term steroids is Nocardia; the brain is imaged in every case and treatment is high-dose co-trimoxazole (with imipenem or amikacin for brain or severe disease) for 6–12 months, and at least 12 months when the patient is immunosuppressed or the brain is involved."
+      ],
+      [
+       "c",
+       "**Consolidation: bacterial pneumonia, aspergillosis.** Lobar or segmental consolidation is usually bacterial, the commonest cause overall (RSC-17)."
+      ],
+      [
+       "d",
+       "**Non-invasive tests first (induced sputum, nasopharyngeal viral PCR, urinary Legionella antigen, serum galactomannan and beta-D-glucan, echo, BNP); bronchoscopy only for diagnostic uncertainty, because it is risky on high oxygen.** Lavage in a hypoxaemic patient can precipitate intubation. Each test answers a specific question: galactomannan for Aspergillus, beta-D-glucan for Pneumocystis and other fungi, echo and BNP for a cardiac cause."
+      ]
+     ],
+     "mimic": [
+      [
+       "Pneumocystis vs CMV pneumonitis",
+       "Both cause ground glass after transplant; crazy paving with a high beta-D-glucan favours Pneumocystis, and CMV is shown by PCR or antigen in blood and lavage."
+      ],
+      [
+       "Nocardia vs tuberculosis",
+       "Both cavitate; a lung lesion with a brain lesion in a steroid-treated patient points to Nocardia."
+      ]
+     ],
+     "traps": [
+      [
+       "“Sarcoidosis on prednisone, seizure, lung nodule and brain lesion — tuberculosis or sarcoid”",
+       "The lung-and-brain combination on long-term steroids is Nocardia. Only 19% chose it on DocT GT."
+      ],
+      [
+       "“Ground glass in the immunocompromised: send a serum galactomannan”",
+       "Galactomannan detects Aspergillus, which gives nodules; ground glass and crazy paving call for lavage for Pneumocystis."
+      ],
+      [
+       "“Crazy paving 4 months after lung transplant is CMV”",
+       "CMV also gives ground glass, but crazy paving is keyed as Pneumocystis (68% right)."
+      ],
+      [
+       "“Bronchoscopy first in every immunocompromised patient with infiltrates”",
+       "Non-invasive tests come first; lavage on high oxygen can tip the patient into intubation."
+      ]
+     ],
+     "decode": [
+      [
+       "Systemic sclerosis on cyclophosphamide, insidious dyspnoea, ground glass with septal thickening (crazy paving), antibiotics failed — confirmatory test? [DocT, 71% right]",
+       "Lavage for Pneumocystis immunofluorescence."
+      ],
+      [
+       "4 months after lung transplant, fever, dry cough, crazy paving on HRCT — organism? [DocT, 68% right]",
+       "Pneumocystis."
+      ],
+      [
+       "Sarcoidosis on prednisone 10–60 mg for a year, seizure, 2.5 cm lung nodule and 3 cm brain lesion [DocT GT, 19% right]",
+       "Nocardiosis."
+      ]
+     ],
+     "punch": "Ground glass means Pneumocystis or a virus, nodules mean moulds or Nocardia, and a lung lesion with a brain lesion on steroids means Nocardia; non-invasive tests come before bronchoscopy.",
+     "table": {
+      "title": "Pattern to organism",
+      "head": [
+       "CT",
+       "Think of",
+       "Confirm with"
+      ],
+      "rows": [
+       [
+        "Ground glass, crazy paving",
+        "**Pneumocystis**, CMV",
+        "lavage immunofluorescence or PCR; beta-D-glucan"
+       ],
+       [
+        "Nodule with halo or air crescent",
+        "**Aspergillus**",
+        "galactomannan (serum or lavage)"
+       ],
+       [
+        "Nodule or cavity + brain lesion, on steroids",
+        "**Nocardia**",
+        "culture; image the brain"
+       ],
+       [
+        "Lobar consolidation",
+        "bacteria",
+        "cultures, urinary antigens"
+       ]
+      ]
+     },
+     "step": 3
+    },
+    "RSC-21": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised → NIV and high-flow oxygen: the evidence",
+     "intro": "Step 4 asks how to support the failing lung. Intubation used to carry a very high mortality in these patients, so avoiding it with a mask was attractive; the small early trials supported that, and the larger modern trials did not.",
+     "why": [
+      [
+       "a",
+       "**Early trials: NIV better than oxygen, but small and with a high control mortality.** Antonelli (2000, 40 solid-organ transplant recipients): intubation 20% vs 70%, ICU mortality 20% vs 50%. Hilbert (2001, 52 patients with infiltrates, fever and hypoxaemia): intubation 46% vs 77%, ICU mortality 38% vs 69%, hospital mortality 50% vs 81%. Control mortality that high reflects an era when intubating these patients was often fatal."
+      ],
+      [
+       "b",
+       "**Lemiale 2015 (374 patients): NIV vs oxygen, no difference in mortality.** Day-28 mortality was 24.1% with NIV vs 27.3% with oxygen alone; intubation (38.2% vs 44.8%), ICU-acquired infection and length of stay did not differ either. With modern care control mortality had fallen to about a quarter, leaving far less room for NIV to help."
+      ],
+      [
+       "c",
+       "**HIGH trial 2018 (776 patients): high-flow vs standard oxygen, no difference in mortality.** Day-28 mortality was 35.6% vs 36.1% and intubation 38.7% vs 43.8% (not significant); only oxygenation was better with high flow. Among the 82 immunocompromised patients in FLORALI, a post hoc analysis found intubation in 65% with NIV (alternating with high flow) vs 31% with high flow alone and 43% with standard oxygen; but FLORALI-IM (2022, 299 patients) then found NIV alternating with high flow no better or worse than high flow alone (day-28 mortality 35% vs 36%)."
+      ],
+      [
+       "d",
+       "**LUNG SAFE: NIV used more often first-line in the immunocompromised (20.9% vs 15.9%), and failed more often.** About half of those given NIV were intubated, and in LUNG SAFE their mortality matched that of patients intubated at once; other cohorts (Azoulay 2014, ARDS in malignancy) found NIV failure linked to higher mortality."
+      ],
+      [
+       "e",
+       "**A time-limited trial of NIV or high flow in early or mild disease; invasive ventilation with shock, renal failure or high work of breathing.** The risk is a late intubation after hours of large, injurious breaths. ERS/ATS 2017 still says “we suggest early NIV for immunocompromised patients with ARF” (conditional, moderate certainty, weighted by the early trials); ERS 2022 conditionally prefers high flow over NIV in hypoxaemic failure generally."
+      ]
+     ],
+     "mimic": [
+      [
+       "Where NIV works vs where it fails",
+       "It works where positive pressure reverses the problem: COPD hypercapnia (COPD-10), cardiogenic pulmonary oedema, high-risk extubation. It fails in severe hypoxaemia and in an exacerbation of ILD, where stiff lungs do not recruit."
+      ]
+     ],
+     "traps": [
+      [
+       "“NIV helps an exacerbation of interstitial lung disease”",
+       "Stiff, non-recruitable lungs make NIV fail in most patients, and it delays intubation; ILD is the condition where NIV is NOT useful [NEET 2025]."
+      ],
+      [
+       "“Hilbert proved that NIV saves immunocompromised patients”",
+       "Its control mortality of 69–81% belongs to another era; Lemiale (2015) found no difference."
+      ],
+      [
+       "“The HIGH trial showed lower mortality with high flow” (RSC-29d)",
+       "No difference: 35.6% vs 36.1%."
+      ],
+      [
+       "“NIV failure was linked to higher mortality in LUNG SAFE”",
+       "In LUNG SAFE mortality after NIV failure matched that of primary intubation; the excess appears in other cohorts."
+      ]
+     ],
+     "decode": [
+      [
+       "NIV is NOT useful in which: ILD exacerbation, cardiogenic pulmonary oedema, COPD exacerbation, high-risk post-extubation? [NEET 2025]",
+       "ILD exacerbation."
+      ],
+      [
+       "[pattern] Immunocompromised, hypoxaemic, no shock — what did Lemiale 2015 or HIGH 2018 show?",
+       "No difference in mortality with NIV or high flow."
+      ]
+     ],
+     "punch": "Early small trials favoured NIV, but Lemiale, HIGH and FLORALI-IM found no mortality benefit from NIV or high flow, so either is a time-limited trial and shock, renal failure or tiring mean intubation.",
+     "step": 4
+    },
+    "RSC-22": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised → ARDS: ventilation and outcome",
+     "intro": "Step 4 continues once the patient has ARDS. About one in five patients with ARDS in LUNG SAFE was immunocompromised, and their hospital mortality was higher (52.4% vs 36.2%) despite similar severity; the card asks what predicts it.",
+     "why": [
+      [
+       "a",
+       "**No: the same ARDSNet strategy, and plateau, driving pressure and compliance predict mortality as usual.** In the EFRAIM ARDS analysis (789 patients, hospital mortality 56.3%) higher driving pressure and plateau pressure and lower compliance were each linked to death, and tidal volume was not; the rules of ARDS-19 and ARDS-26 apply unchanged."
+      ],
+      [
+       "b",
+       "**Vasopressors, renal replacement therapy, ARDS of undetermined cause.** Each raised the odds of death (adjusted odds ratios about 1.9, 2.0 and 1.7 in EFRAIM); organ failure beyond the lung and an untreated cause (RSC-17c) are what kill."
+      ],
+      [
+       "c",
+       "**Not linked: neutropenia and the type of underlying disease.** Neither neutropenia on admission nor the kind of malignancy or immunosuppression predicted death once organ failures were counted, so neither is a reason to withhold ICU care."
+      ],
+      [
+       "d",
+       "**ECMO: 6-month survival 30%; worst with haematological malignancy; better with a recently diagnosed immunodeficiency.** In 203 immunocompromised patients given ECMO (Schmidt), cannulation within 30 days of the diagnosis was linked to lower mortality, so ECMO is kept for patients with a realistic prognosis (ARDS-35)."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“Neutropenia predicts mortality in immunocompromised ARDS” (RSC-29a)",
+       "It was not linked once vasopressors, renal replacement and an undetermined cause were counted."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] Immunocompromised ARDS — which factor is NOT associated with mortality?",
+       "Neutropenia (or the type of underlying disease)."
+      ]
+     ],
+     "punch": "Immunocompromised ARDS is ventilated as any ARDS, and death follows vasopressors, renal replacement and an undetermined cause, not neutropenia or the type of disease.",
+     "step": 4
+    },
+    "RSC-23": {
+     "v": 2,
+     "sub": "Respiratory → Air leak → Bronchopleural fistula",
+     "intro": "Step 5 moves from infection to a mechanical problem: a hole between the airway and the pleura. On a ventilator, gas goes out through the hole rather than into the lung, and the questions test when a leak means an airway injury and when air outside the lung can be watched.",
+     "why": [
+      [
+       "a",
+       "**A communication between a bronchus and the pleural cavity with a persistent air leak (beyond 24 hours).** In ventilated patients a leak lasting more than 24 hours is the usual threshold; after lung surgery, a prolonged air leak is usually defined as one lasting beyond 5–7 days."
+      ],
+      [
+       "b",
+       "**Lung resection, trauma, mechanical ventilation, ARDS, spontaneous pneumothorax, radiation or radiofrequency ablation, infection.** Resection leaves a bronchial stump that can break down; necrotising infection and ARDS weaken the lung, and positive pressure forces gas through any weak point."
+      ],
+      [
+       "c",
+       "**Loss of PEEP and of tidal volume (expired below inspired), hypoxaemia, persistent surgical emphysema or pneumomediastinum, bubbling in the water seal.** The difference between inspired and expired tidal volume measures the leak per breath. After chest trauma a persistent large leak, or a pneumothorax that recurs despite a working drain, means a tracheobronchial injury until bronchoscopy proves otherwise."
+      ],
+      [
+       "d",
+       "**Mortality 27–50% (other reviews 18–67%).** The 67% comes from an older series in which 39 of 1,700 ventilated patients had a leak beyond 24 hours, ventilated with tidal volumes far larger than today's (about 14 mL/kg); with lung-protective ventilation the figures are lower."
+      ]
+     ],
+     "mimic": [
+      [
+       "Air leak through the lung vs air outside it",
+       "A fistula leaks into the pleura and bubbles in the drain. Pneumomediastinum and pneumopericardium in ARDS are air tracking along the bronchovascular sheaths (barotrauma, ARDS-18); if the patient is stable they are watched, not drained."
+      ]
+     ],
+     "traps": [
+      [
+       "“An occult pneumothorax needs a drain, especially on positive-pressure ventilation”",
+       "A stable occult (CT-only) pneumothorax can be observed even on positive pressure (OPTICC)."
+      ],
+      [
+       "“Every traumatic haemothorax needs a drain and VATS”",
+       "Only a retained collection (more than about 300 mL) after tube drainage needs VATS."
+      ],
+      [
+       "“Pneumopericardium in ARDS needs pericardiocentesis”",
+       "Without haemodynamic compromise it is observed with serial chest X-rays; drainage is for tamponade."
+      ]
+     ],
+     "decode": [
+      [
+       "Trauma, right haemopneumothorax with rib fractures, chest drain inserted — true statement? [DocT GT, 65% right]",
+       "A persistent air leak or recurrent pneumothorax should prompt evaluation for tracheobronchial injury."
+      ],
+      [
+       "ARDS with pneumomediastinum and pneumopericardium, haemodynamically stable — intervention? [Marrow]",
+       "Observe with serial chest X-rays."
+      ]
+     ],
+     "punch": "A leak lasting beyond 24 hours on the ventilator is a bronchopleural fistula, shown by expired volume below inspired; after trauma it means an airway injury until bronchoscopy says otherwise, while stable air in the mediastinum is watched.",
+     "step": 5
+    },
+    "RSC-24": {
+     "v": 2,
+     "sub": "Respiratory → Air leak → Ventilator and drain strategy",
+     "intro": "Step 5 continues with how to ventilate around the hole. Every setting is judged by one question: does it raise or lower the pressure pushing gas through the fistula, and for how long?",
+     "why": [
+      [
+       "a",
+       "**The transpulmonary pressure gradient (airway minus pleural pressure) and the duration of inspiration.** Flow through the fistula follows the pressure across it and the time that pressure is applied, so peak and mean airway pressure, PEEP and inspiratory time all feed the leak (ARDS-28)."
+      ],
+      [
+       "b",
+       "**Peak pressure <30; tidal volume 4–6 mL/kg (3–4 for one lung); lowest possible PEEP; short inspiratory time; low rate; permissive hypercapnia; pressure support or spontaneous breathing if tolerated.** Small breaths and a short inspiration shorten the time the gradient is high; low PEEP removes the gradient during expiration; a low rate reduces the number of high-pressure periods per minute. Spontaneous breathing lowers mean airway pressure most, so early weaning is part of the treatment."
+      ],
+      [
+       "c",
+       "**Avoid negative suction: water seal only. Check the tube’s position and patency; consider an unexpandable lung. Intrapleural pressure can be matched to PEEP.** Suction makes pleural pressure more negative, which widens the gradient and keeps the fistula open. Applying positive pressure to the drain during expiration, equal to PEEP, removes the expiratory gradient."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“Chest-drain suction helps a bronchopleural fistula heal” (RSC-29e)",
+       "Suction widens the gradient and increases flow through the fistula; water seal only."
+      ],
+      [
+       "“High PEEP is used with an air leak” (RSC-29f)",
+       "The lowest PEEP that keeps oxygenation acceptable."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] Ventilated patient with a large bronchopleural fistula — which change reduces the leak?",
+       "Lower PEEP, smaller tidal volume, shorter inspiratory time, water seal instead of suction."
+      ]
+     ],
+     "punch": "Whatever lowers airway pressure, or the time it is applied, lowers the leak: small breaths, short inspiration, minimal PEEP, spontaneous breathing, and a drain on water seal rather than suction.",
+     "step": 5
+    },
+    "RSC-25": {
+     "v": 2,
+     "sub": "Respiratory → Air leak → Lung isolation and high-frequency ventilation",
+     "intro": "When the leak is too large for ordinary settings, the healthy lung can be separated from the leaking one, or breaths made so small that little gas escapes. The questions test high-frequency jet ventilation and the bedside check of a double-lumen tube.",
+     "why": [
+      [
+       "a",
+       "**Double-lumen tube; single-lumen tube with a bronchial blocker; endobronchial blocker (Arndt).** Isolation lets each lung be ventilated separately, or the leaking one rested. The bronchial limb goes into the healthy lung, away from the fistula and any suture line, so that lung is protected from spill and ventilated without pushing gas through the hole. A left-sided tube is the usual default, because the right upper lobe bronchus arises close to the carina and is easily blocked, but a left-sided fistula (such as a left pneumonectomy stump) needs a right-sided tube or a blocker. If a double-lumen tube is thought to have moved, position is checked by bedside fibreoptic bronchoscopy, not by transporting the patient."
+      ],
+      [
+       "b",
+       "**Synchronous: the same rate to both lungs, with different tidal volume, flow, PEEP and FiO₂. Asynchronous: everything differs, including the mode.** Two ventilators are used; synchronous ventilation links them so both lungs inflate together. Each lung gets settings matched to its own mechanics, so the leaking lung can take small volumes and low PEEP."
+      ],
+      [
+       "c",
+       "**High-frequency ventilation: tidal volume 2–5 mL/kg at 100–200/min; it raises airway impedance and so lowers fistula flow; weak evidence, selected patients. These are jet-ventilation figures; oscillation runs at 3–15 Hz.** Jet ventilation pulses small jets near the dead-space volume with passive expiration, keeping peak pressure low, so less gas passes through the fistula with each breath. It is not recommended for adult ARDS (OSCAR and OSCILLATE, ARDS-34); its niche is the large leak and airway surgery. VV-ECMO allows ultra-protective ventilation and may let the fistula close."
+      ]
+     ],
+     "mimic": [
+      [
+       "Jet ventilation vs oscillation",
+       "Jet: small pulses at high rates (the card gives 100–200 a minute; devices and reports vary, and neonatal jets run faster), passive expiration. Oscillation: 3–15 Hz (180–900 a minute), active expiration, high mean airway pressure."
+      ]
+     ],
+     "traps": [
+      [
+       "“Jet ventilation gives larger tidal volumes, or removes the need for PEEP”",
+       "It gives very small volumes at high rates; minimising lung injury is its theory, not a proven benefit in ARDS (93% right)."
+      ],
+      [
+       "“Suspected double-lumen tube migration: take the patient for a chest X-ray or CT”",
+       "Confirm at the bedside with a fibreoptic bronchoscope."
+      ]
+     ],
+     "decode": [
+      [
+       "Severe influenza ARDS, considering high-frequency jet ventilation — primary advantage? [DocT, 93% right]",
+       "Very small tidal volumes at high rates, minimising ventilator-induced lung injury."
+      ],
+      [
+       "After thoracic surgery, suspected double-lumen tube migration — next step? [Marrow]",
+       "Bedside flexible bronchoscopy."
+      ]
+     ],
+     "punch": "A large leak is managed by isolating the lungs, ventilating each to its own needs, or making the breaths so small with jet ventilation that little gas escapes, with ECMO as the last step.",
+     "step": 5
+    },
+    "RSC-26": {
+     "v": 2,
+     "sub": "Respiratory → Air leak → Bronchoscopic closure",
+     "intro": "If the leak persists and the patient cannot go to surgery, the hole can be plugged from inside the airway. The technique depends on the size and site of the defect.",
+     "why": [
+      [
+       "a",
+       "**Small defects (<5 mm): occlusive material — fibrin glue, gel foam, tetracycline, autologous blood patch.** A small hole can be sealed directly, or made to scar shut by inflammation."
+      ],
+      [
+       "b",
+       "**Proximal defects: airway stents, Watanabe spigots, Amplatzer occluder.** A stent covers a hole in the trachea or a main bronchus; an occluder device plugs a larger stump fistula. Watanabe spigots are silicone plugs placed in the bronchus that leads to the leak, and are also used for peripheral leaks."
+      ],
+      [
+       "c",
+       "**Distal defects: one-way endobronchial valves.** The valve lets air and secretions out during expiration but stops air entering, so the segment beyond collapses and the leak seals. The leaking segment is found by blocking segmental bronchi in turn with a balloon until the bubbling stops; in one series of 40 patients (Travaline 2009) the leak resolved or decreased in about 93%."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“One-way valves are for proximal stump defects”",
+       "Valves are for distal leaks; proximal defects need stents or occluders (RSC-29g)."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] Persistent distal air leak in a patient unfit for surgery — bronchoscopic option?",
+       "One-way endobronchial valves."
+      ]
+     ],
+     "punch": "Small holes are glued, proximal defects are stented or occluded, and distal leaks are closed with one-way valves that collapse the segment beyond.",
+     "step": 5
+    },
+    "RSC-27": {
+     "v": 2,
+     "sub": "Respiratory → Lung donor → Why so few donor lungs",
+     "intro": "The last step is the brain-dead patient whose lungs could save someone else. The lung is the organ most often lost during donor care, because brain death and the ICU stay injure it before retrieval.",
+     "why": [
+      [
+       "a",
+       "**Only 15–25% of donors yield lungs.** Far fewer than kidneys or liver, because the lungs are exposed to aspiration, infection and ventilator injury as well as the effects of brain death. The usual ideal criterion is a PaO₂ above 300 mmHg on FiO₂ 1.0 and PEEP 5 cmH₂O, though no firm lower limit has been defined."
+      ],
+      [
+       "b",
+       "**Sympathetic storm (neurogenic pulmonary oedema, inflammation), then atelectasis, aspiration, trauma, ventilator-associated pneumonia and VILI.** As the brainstem herniates a catecholamine surge raises systemic and left atrial pressure, forcing fluid into the lung and damaging capillaries; brain death then releases inflammatory mediators that injure the lung further. The ICU adds collapse, infection and ventilator injury."
+      ],
+      [
+       "c",
+       "**Extended donor criteria; ex vivo lung perfusion; optimised donor management.** Ex vivo perfusion ventilates and perfuses retrieved lungs outside the body, so marginal lungs can be assessed and improved before transplant. Donor management is the part the ICU controls (RSC-28)."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“Donor lungs are lost mainly to the original trauma”",
+       "Most are lost to brain-death injury and to what happens in the ICU, much of which can be prevented."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] What share of brain-dead donors yield transplantable lungs?",
+       "About 15–25%."
+      ]
+     ],
+     "punch": "Only 15–25% of donors yield lungs, because the sympathetic storm and then collapse, aspiration, infection and ventilator injury damage them; better donor care and ex vivo perfusion recover more.",
+     "step": 6
+    },
+    "RSC-28": {
+     "v": 2,
+     "sub": "Respiratory → Lung donor → Ventilating the donor",
+     "intro": "Step 6 continues with what the ICU can change. The donor’s lungs are injured lungs, so the same protective principles apply, with the apnoea test as an extra hazard.",
+     "why": [
+      [
+       "a",
+       "**Volume control; tidal volume 6–8 mL/kg PBW; rate 8–16; PEEP 5–10; FiO₂ 100% then down to 40%.** Protective volumes limit stretch, PEEP prevents collapse, and FiO₂ is lowered to avoid absorption atelectasis and oxygen toxicity."
+      ],
+      [
+       "b",
+       "**PaCO₂ 35–45 mmHg; peak pressure <30.** Normocapnia avoids acidosis in a circulation that is already unstable; protective-ventilation protocols usually state the 30 cmH₂O limit as a plateau pressure."
+      ],
+      [
+       "c",
+       "**Protective ventilation (tidal volume ≤8 and PEEP ≥8) raised the odds of lung procurement (odds ratio 1.43).** In a French national cohort of 1,626 brain-dead donors (2020) recipients’ 1-year survival did not differ (82.7% vs 82.3%). In Mascia’s trial (JAMA 2010, 118 donors) tidal volume 6–8 mL/kg PBW, PEEP 8–10, an apnoea test on CPAP and closed suction, compared with 10–12 mL/kg and PEEP 3–5, raised the share of donors with eligible lungs from 54% to 95% and lungs harvested from 27% to 54%, with similar 6-month recipient survival (69% vs 75%)."
+      ],
+      [
+       "d",
+       "**Closed suction, positioning, VAP bundle. Kidneys want fluid; lungs want restriction.** Disconnection for an apnoea test or open suction collapses the lung; a recruitment manoeuvre after the apnoea test reversed the fall in P/F in a small study. Fluid is given to a euvolaemic target rather than liberally, because the lung leaks."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“The apnoea test is done disconnected from the ventilator”",
+       "Disconnection collapses the lung; Mascia used CPAP during the test, then re-recruited."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] Brain-dead donor — which ventilation strategy increased lungs harvested?",
+       "Tidal volume 6–8 mL/kg PBW, PEEP 8–10, apnoea test on CPAP, closed suction (Mascia 2010)."
+      ]
+     ],
+     "punch": "Ventilate the donor as an injured lung: 6–8 mL/kg PBW, PEEP 8–10, apnoea test on CPAP, closed suction; in Mascia’s trial this doubled the lungs harvested.",
+     "step": 6
+    },
+    "RSC-29": {
+     "v": 2,
+     "sub": "Respiratory → Immunocompromised, air leak and donor → Revision: true or false",
+     "intro": "A sweep through the deck. Each statement turns on one detail from an earlier card.",
+     "why": [
+      [
+       "a",
+       "**False — neutropenia is not linked to mortality** in immunocompromised ARDS (RSC-22c)."
+      ],
+      [
+       "b",
+       "**True — with Candida and bacteria** (RSC-18a)."
+      ],
+      [
+       "c",
+       "**False — diffuse alveolar haemorrhage comes in the first 30 days** (RSC-19b)."
+      ],
+      [
+       "d",
+       "**False — no difference in mortality** with high flow vs standard oxygen (RSC-21c)."
+      ],
+      [
+       "e",
+       "**False — water seal only;** suction widens the gradient through the fistula (RSC-24c)."
+      ],
+      [
+       "f",
+       "**False — the lowest possible PEEP** (RSC-24b)."
+      ],
+      [
+       "g",
+       "**True — one-way valves close distal defects** (RSC-26c)."
+      ]
+     ],
+     "mimic": [],
+     "traps": [
+      [
+       "“Settings that protect the ARDS lung also suit a fistula”",
+       "Protective volumes do, but the higher PEEP of ARDS feeds the leak; with a fistula PEEP is kept as low as possible."
+      ]
+     ],
+     "decode": [
+      [
+       "[pattern] True/false on immunocompromised failure and air leak",
+       "Neutropenia not predictive, Aspergillus after neutropenia, DAH early, HIGH no difference, no suction, low PEEP, valves distal."
+      ]
+     ],
+     "punch": "In the immunocompromised the cause and organ failures decide outcome, not neutropenia or the oxygen device; with a fistula, everything that lowers airway and pleural pressure gradients lowers the leak.",
+     "step": 6
+    }
+   },
+   "topups": [],
+   "spine": [
+    [
+     "Who fails, and from what",
+     "In the immunocompromised patient with respiratory failure infection causes most cases, bacteria first, and the kind of immune defect predicts which organism; a cause left undetermined carries a worse outcome."
+    ],
+    [
+     "The transplant lung by calendar",
+     "After stem-cell transplant the date tells you the likely cause: neutropenic infection, engraftment syndrome and alveolar haemorrhage in the first month, CMV, Pneumocystis and idiopathic pneumonia syndrome to day 100, and bronchiolitis obliterans after that."
+    ],
+    [
+     "Pattern to pathogen",
+     "On CT, ground glass points to Pneumocystis or a virus, nodules to moulds and Nocardia, and the non-invasive tests come before a risky bronchoscopy."
+    ],
+    [
+     "Support and outcome",
+     "NIV and high-flow oxygen have not lowered mortality in the large trials, so they are time-limited trials, and once ARDS develops it is ventilated as any ARDS, with organ failures and an undetermined cause, not neutropenia, predicting death."
+    ],
+    [
+     "The leaking lung",
+     "Flow through a bronchopleural fistula follows the transpulmonary pressure and the time it is applied, so the ventilator and the drain are set to keep that pressure low, with lung isolation, high-frequency ventilation and bronchoscopic plugs or valves for leaks that persist."
+    ],
+    [
+     "The brain-dead lung donor",
+     "Only a small share of donors yield lungs, because brain death injures them and ventilation can add to it; protective donor ventilation and an apnoea test on CPAP roughly doubled the lungs harvested."
+    ]
+   ],
+   "primer": "Each arm of immunity guards against its own set of organisms: neutrophils clear bacteria and moulds, T cells control viruses, Pneumocystis and intracellular organisms, and antibodies with the spleen clear encapsulated bacteria. After a stem-cell transplant the patient is neutropenic until engraftment, the day the donor marrow starts making neutrophils, usually in the second to fourth week; T-cell and antibody immunity take months to return. The P/F ratio (PaO₂ divided by FiO₂) grades hypoxaemia, and in the Berlin definition ARDS is mild at 200–300, moderate at 100–200 and severe below 100 mmHg. Transpulmonary pressure is airway minus pleural pressure, the pressure that holds the lung open and that pushes gas through any hole in it."
   }
  },
  "patterns": {
@@ -13714,5 +15489,5 @@
    ]
   }
  },
- "version": "98873b3e28"
+ "version": "b64292b023"
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="712.8pt" height="309.6pt" viewBox="0 0 712.8 309.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 309.6 
+L 712.8 309.6 
+L 712.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.719 283.880 
+L 705.6 283.880 
+L 705.6 7.2 
+L 25.719 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 25.719 283.880 
+L 148.098 283.880 
+L 148.098 7.2 
+L 25.719 7.2 
+z
+" clip-path="url(#p25896ce1b5)" style="fill: #e8eef0; stroke: #e8eef0; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 297.671 283.880 
+L 467.641 283.880 
+L 467.641 7.2 
+L 297.671 7.2 
+z
+" clip-path="url(#p25896ce1b5)" style="fill: #e8eef0; stroke: #e8eef0; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="text_1">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="365.659" y="299.505" transform="rotate(-0 365.659 299.505)">time</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="text_2">
+     <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="18.825" y="145.540" transform="rotate(-90 18.825 145.540)">cumulative fluid balance</text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 25.719 266.587 
+L 146.700 143.503 
+L 148.404 141.974 
+L 296.649 90.129 
+L 298.353 89.737 
+L 467.045 81.155 
+L 468.749 81.794 
+L 705.6 224.869 
+L 705.6 224.869 
+" clip-path="url(#p25896ce1b5)" style="fill: none; stroke: #152126; stroke-width: 2.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 25.719 266.587 
+L 705.6 266.587 
+" clip-path="url(#p25896ce1b5)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #5b6b71"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 25.719 283.880 
+L 25.719 7.2 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 25.719 283.880 
+L 705.6 283.880 
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="86.908" y="26.654" transform="rotate(-0 86.908 26.654)">Resuscitation</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="86.908" y="43.946" transform="rotate(-0 86.908 43.946)">rescue, minutes</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="222.884" y="26.654" transform="rotate(-0 222.884 26.654)">Optimisation</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="222.884" y="43.946" transform="rotate(-0 222.884 43.946)">titrate, hours</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #152126" x="382.656" y="26.654" transform="rotate(-0 382.656 26.654)">Stabilisation</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="382.656" y="43.946" transform="rotate(-0 382.656 43.946)">maintenance only</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #b5452f" x="586.620" y="26.654" transform="rotate(-0 586.620 26.654)">Evacuation</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: middle; fill: #5b6b71" x="586.620" y="43.946" transform="rotate(-0 586.620 43.946)">remove the excess</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 12px; font-family: Inter, Arial, Helvetica, sans-serif; text-anchor: end; fill: #5b6b71" x="702.200" y="261.400" transform="rotate(-0 702.200 261.400)">neutral balance</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p25896ce1b5">
+   <rect x="25.719" y="7.2" width="679.880" height="276.680"/>
+  </clipPath>
+ </defs>
+</svg>
