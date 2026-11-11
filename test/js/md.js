@@ -16,10 +16,27 @@ const SUB_P = /^\s*([a-h])[.)]?\s+(?=[A-Z0-9*(“"'≥≤<>])(.*)$/;  // a Text 
 const SUB = { test: l => SUB_B.test(l) || SUB_P.test(l) };
 const subMatch = l => l.match(SUB_B) || l.match(SUB_P);
 
-function line(l) {
-  const m = subMatch(l);
+// T-131: "1. text" numbered steps keep their own lines and numbers
+const NUM = /^\s*(\d{1,2})[.)]\s+(?=\S)(.*)$/;
+function line(l, noSub) {
+  const m = !noSub && subMatch(l);
   if (m && m[2]) return `<p class="sub"><span class="sp">${m[1]}</span><span>${inline(m[2])}</span></p>`;
+  const n = l.match(NUM);
+  if (n) return `<p class="sub num"><span class="sp np">${n[1]}</span><span>${inline(n[2])}</span></p>`;
   return `<p>${inline(l)}</p>`;
+}
+// T-131: a lone "a" (no "b" in the same field) that starts with bold text, or follows an unfinished line, is the article
+// "a", not a part letter: "… induction dose and / a **full paralytic dose**"
+function falseParts(lines) {
+  const letters = new Set(lines.map(l => { const m = subMatch(l); return m ? m[1] : null; }).filter(Boolean));
+  const bad = new Set();
+  if (letters.has('b')) return bad;
+  lines.forEach((l, i) => {
+    const m = l.match(SUB_P); if (!m || m[1] !== 'a') return;
+    const prev = i ? plain(lines[i - 1]).trim() : '';
+    if (/^\*\*/.test(m[2]) || (prev && !/[.:!?]$/.test(prev))) bad.add(i);
+  });
+  return bad;
 }
 
 // T-130: a row is any line with a | between cells ("a | b", "a| b", " | b" for an empty first cell, "a |"); a bullet
@@ -57,15 +74,17 @@ const CAPS_WORD = /^[A-Z]{2,}[A-Z0-9'\-]*\b/;
 const OPEN_END = /([,(\-–/+&→←]|\b(the|a|an|and|or|of|to|with|for|in|on|by|at|from|than|as|is|are|be|if|vs|via|per|not|no|THE|OF|AND|OR|TO|WITH|FOR|IN|ON|BY|AT|AS|IS|NOT|NO))$/;
 export const SOFT = '\u2028';
 export function reflow(md) {
-  const out = [];
-  for (const raw of (md || '').split('\n')) {
+  const out = [], src = (md || '').split('\n'), bad = falseParts(src);
+  for (let li = 0; li < src.length; li++) {
+    const raw = src[li];
     let l = raw.replace(/\s+$/, '');
     if (/\s\|$/.test(l)) l += ' ';            // "cell |" = row with an empty last cell
     if (!l.trim()) { out.push(''); continue; }
     const bare = plain(l).trim();
     const prev = out.length ? out[out.length - 1] : null;
     const startsCont = CONT_START.test(bare);
-    const marker = subMatch(l) || /^\s*[-•]\s+/.test(l) || (isRow(l) && !startsCont);
+    const marker = (subMatch(l) && !bad.has(li)) || NUM.test(l) || /^\s*[-•]\s+/.test(l) || (isRow(l) && !startsCont);
+    if (bad.has(li) && prev && prev.trim()) { out[out.length - 1] = prev.replace(/\s+$/, '') + ' ' + l.trim(); continue; }
     if (prev && !marker && prev.trim()) {
       const pb = plain(prev.split(SOFT).pop()).trim();
       const prevOpen = !/[.:!?]$/.test(pb);
