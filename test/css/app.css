@@ -1650,3 +1650,8 @@ details.xp-before:not([open]){padding:6px 12px}
 .xp-bar .xp-tog[hidden]{display:none!important}
 .ls-pane .vx-sw button,.xp-head .vx-sw button{padding:3px 8px}
 .lesson .lw{outline:none}
+
+/* T-129: viva opening / closing lessons in their own card face (size, Fit, ink) */
+.vi-tags{display:flex;justify-content:flex-end;padding:8px 14px 0;min-height:0}
+.c-q.vi-lesson{gap:0}
+.c-q.vi-lesson .c-done{flex:0 0 auto;justify-content:flex-start;padding:14px 4px}

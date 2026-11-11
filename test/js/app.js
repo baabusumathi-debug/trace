@@ -1559,14 +1559,27 @@ function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - 
 // looking back → one card further back; browse → previous card
 function leftAction() {
   if (!flow || flow.busy || flow.userPause || flow.done) return;
-  if (flow.inter) { clearInter(); return; }
+  // T-129: Back from a viva lesson or spine card (Naven, 11 Nov): closing lesson and opening lesson → the card before;
+  // spine → its closing lesson
+  if (flow.inter) {
+    const it = flow.inter;
+    if (it.kind === 'spine' && lessonOf(it.pkg, it.q, 'c')) { vStop(); flow.inter = { kind: 'vclose', pkg: it.pkg, q: it.q }; animate('back', () => { drawCard(); updateFlowChrome(); }); return; }
+    if ((it.kind === 'vclose' || it.kind === 'vq' || it.kind === 'spine') && flow.hist.length) { vStop(); if (it.kind === 'vq' && flow.vqSeen) delete flow.vqSeen[it.at]; animate('back', () => undo()); return; }
+    clearInter(); return;
+  }
   if (flow.browse) { undo(); return; }
   if (flow.peek) { peekBack(); return; }
   if (flow.face === 'a') { animate('flip', () => { flow.face = 'q'; drawCard(); }); return; }
   peekBack();
 }
 function leftLabel() {
-  if (!flow || flow.done || flow.inter) return '';
+  if (!flow || flow.done) return '';
+  if (flow.inter) {
+    const it = flow.inter;
+    if (it.kind === 'spine' && lessonOf(it.pkg, it.q, 'c')) return `${ICON.prev}<span>Lesson</span>`;
+    if ((it.kind === 'vclose' || it.kind === 'vq' || it.kind === 'spine') && flow.hist.length) return `${ICON.prev}<span>Back</span>`;
+    return '';
+  }
   if (flow.browse) return `${ICON.prev}<span>Back</span>`;
   if (flow.peek) return `${ICON.prev}<span>Further back</span>`;
   return flow.face === 'a' ? `${ICON.prev}<span>Question</span>` : `${ICON.prev}<span>Back</span>`;
@@ -1715,27 +1728,41 @@ function drawInter(el, big) {
   big.innerHTML = it.kind === 'map' ? `START${ICON.next}` : `CONTINUE${ICON.next}`;
   bindBridges(el);
 }
+// T-129: opening and closing lessons sit in a card face of their own, so the size slider, Fit, the pen, the highlighter
+// and Select text work on them as on any card; their ink is kept under VIVA-<pkg> | <question>-open / -close
+const viLessonFrame = body => `<div class="c-tags vi-tags"></div><div class="c-q vi-lesson">${body}</div>`;
+function viLessonTools(el, it, slot) {
+  const pc = { deck: 'VIVA-' + it.pkg, code: it.q + '-' + slot, section: 'Viva lesson' };
+  setupFit(el);
+  mountInk(el, pc, 'q', inkOpts(pc));
+}
+function viLeft() { const lb = $('#f-left'); if (lb) { lb.innerHTML = leftLabel(); lb.classList.toggle('dimmed', !leftLabel()); } }
 // T-095: the viva question card (before its steps) and the spine card (after them)
 function drawVivaInter(el, big, it) {
   if (it.kind === 'vq') {
     const steps = flow.queue.filter((x, j) => j >= it.at && x.vq && x.vq.q === it.q && x.vq.pkg === it.pkg);
     const lx = lessonOf(it.pkg, it.q, 'o');
-    el.innerHTML = qHeadHtml(it.pkg, it.q, { n: steps.length, reps: steps.filter(x => x.vq.rep).length }) + (lx ? `<div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">OPENING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>` : '');
+    const body = qHeadHtml(it.pkg, it.q, { n: steps.length, reps: steps.filter(x => x.vq.rep).length }) + (lx ? `<div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">OPENING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>` : '');
+    el.innerHTML = lx ? viLessonFrame(body) : body;
     big.innerHTML = `START${ICON.next}`;
-    if (lx) { bindAutoChip(el); mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } }); }
+    if (lx) { bindAutoChip(el); mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } }); viLessonTools(el, it, 'open'); }
+    viLeft();
     return;
   }
   if (it.kind === 'vclose') {
     const lx = lessonOf(it.pkg, it.q, 'c'), q = vivaQ(it.pkg, it.q);
-    el.innerHTML = `<div class="c-done vq-head"><span class="mono kick dark">VIVA ${esc(it.pkg)} · CLOSING LESSON · ${esc(it.q)}</span><h2 class="vq-t">${esc(q ? q.text : '')}</h2><p class="muted-d">The recap, then the spine card: say it yourself in 60 seconds.</p></div><div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">CLOSING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>`;
+    el.innerHTML = viLessonFrame(`<div class="c-done vq-head"><span class="mono kick dark">VIVA ${esc(it.pkg)} · CLOSING LESSON · ${esc(it.q)}</span><h2 class="vq-t">${esc(q ? q.text : '')}</h2><p class="muted-d">The recap, then the spine card: say it yourself in 60 seconds.</p></div><div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">CLOSING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>`);
     big.innerHTML = `SPINE${ICON.next}`;
     bindAutoChip(el);
     mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } });
+    viLessonTools(el, it, 'close');
+    viLeft();
     return;
   }
   vivaMarks().then(m => {
     if (!flow || flow.inter !== it) return;
     el.innerHTML = spineHtml(it.pkg, it.q, vivaLast(m, it.pkg, it.q));
+    viLeft();
     const more = flow.queue.slice(flow.idx).some(x => x.vq);
     big.innerHTML = more ? `NEXT QUESTION${ICON.next}` : `FINISH${ICON.next}`;
     const clk = el.querySelector('[data-vclock]'), tb = el.querySelector('[data-vtimer]');
