@@ -1564,7 +1564,7 @@ function leftAction() {
   if (flow.inter) {
     const it = flow.inter;
     if (it.kind === 'spine' && lessonOf(it.pkg, it.q, 'c')) { vStop(); flow.inter = { kind: 'vclose', pkg: it.pkg, q: it.q }; animate('back', () => { drawCard(); updateFlowChrome(); }); return; }
-    if ((it.kind === 'vclose' || it.kind === 'vq' || it.kind === 'spine') && flow.hist.length) { vStop(); if (it.kind === 'vq' && flow.vqSeen) delete flow.vqSeen[it.at]; animate('back', () => undo()); return; }
+    if ((it.kind === 'vclose' || it.kind === 'vq' || it.kind === 'spine') && flow.hist.length) { vStop(); if (it.kind === 'vq' && flow.vqSeen) delete flow.vqSeen[it.at]; undo(); return; }
     clearInter(); return;
   }
   if (flow.browse) { undo(); return; }
