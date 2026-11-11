@@ -1685,3 +1685,5 @@ p.sub.tlab{margin-bottom:6px}
 .ik-tsel .ik-sw.on{border-color:#fff;box-shadow:0 0 0 2px #2b2b2f inset}
 .ik-tsel button:hover{filter:brightness(1.25)}
 @media (any-pointer:fine){.c-q[role=button]:not(.inking){-webkit-user-select:text;user-select:text}}
+/* T-136: the lesson's sticky player bar keeps its normal size when the card is zoomed, so it doesn't cover the text */
+.flow .zw .ls-bar{zoom:calc(1 / (var(--cs,1) * var(--z,1)))}
