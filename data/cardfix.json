@@ -1,6 +1,6 @@
 {
  "note": "Card text corrections (7–10 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P3, P6 and P7 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "8b2501eb17",
+ "version": "aa2965163a",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -804,9 +804,9 @@
   "ENDO02B|DKA-15": {
    "fields": {
     "q": "Insulin dosing:\na The two starting options\nb If glucose falls < 10% in the first hour\nc Target rate of fall\nd At glucose < 250 in DKA (2024; was 200)\ne At glucose < 250 in HHS (2024; was 300)",
-    "a": "a 2024: **fixed 0.1 U/kg/h**, bolus optional. ADA 2009 options: **0.1 U/kg bolus + 0.1 U/kg/h**, or **0.14 U/kg/h** without a bolus.\nb **0.14 U/kg IV bolus**, then continue.\nc **50-70 mg/dL/h** (Marrow); if not reached, **double the rate**.\nd Cut to **0.05 U/kg/h** (2024; ADA 2009 0.02-0.05) (or SC rapid-acting 0.1 U/kg 2-hourly); hold glucose about **200** (2024) until ketoacidosis resolves.\ne Cut to **0.02-0.05 U/kg/h**; hold glucose **200-300** until mentally alert."
+    "a": "a 2024: **fixed 0.1 U/kg/h**, bolus optional. ADA 2009 options: **0.1 U/kg bolus + 0.1 U/kg/h**, or **0.14 U/kg/h** without a bolus.\nb **0.14 U/kg IV bolus**, then continue.\nc **50-75 mg/dL/h** (ADA 2009; Marrow 50-70); if not falling, increase the rate. The 2024 consensus sets no DKA rate.\nd Cut to **0.05 U/kg/h** (2024; ADA 2009 0.02-0.05) (or SC rapid-acting 0.1 U/kg 2-hourly); hold glucose about **200** (2024) until ketoacidosis resolves.\ne Cut to **0.02-0.05 U/kg/h**; hold glucose **200-300** until mentally alert."
    },
-   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024) · Kitabchi 2009; Umpierrez 2024",
    "date": "10 Nov 2026"
   },
   "ENDO02B|DKA-16": {
@@ -1004,6 +1004,62 @@
     "watch": "EPaNIC: early PN (from day 3, after IV dextrose on days 1–2) was worse than late (from day 8) *(standard*\n*teaching, not in your notes).*"
    },
    "src": "Casaer MP et al., NEJM 2011;365:506 (EPaNIC)",
+   "date": "10 Nov 2026"
+  },
+  "RENAL04|RRT2-12": {
+   "fields": {
+    "a": "**Fluid composition creates the gradient**\n**and prevents new derangement**\n**Typical values vary by product and protocol**\n**HEMODIALYSIS** | **PERITONEAL DIALYSIS**\n**Na** **136-140 mEq/L** | **Na** **about 132 mEq/L**\n**Cl** **99-110 mEq/L** | **Cl** **about 96 mEq/L**\n**K** **0-4 mEq/L** | **K** **usually 0**\n**Ca** **about 2.5 mEq/L** | **Ca** **2.5-3.5 mEq/L**\n**Mg** **about 0.5 mEq/L** | **Mg** **0.5-1 mEq/L**\n**HCO3** **27-39 mEq/L** | **Lactate** **35-40 mEq/L**\n**Glucose** **100-200 mg/dL** | **Glucose** **1.5-4.25 g/dL**\nBicarbonate is the principal buffer. Potassium and bicarbonate are adjusted to the clinical target. | Glucose supplies the osmotic gradient for water removal. Potassium can be added when monitored hypokalemia requires it.\n**CRRT SOLUTION RULES**\n**Use sterile dialysate and replacement fluid. Prefer bicarbonate in shock, liver failure or lactic acidemia. Select K, phosphate, bicarbonate and glucose content from the patient's daily chemistry.**"
+   },
+   "src": "Dianeal PD prescribing information; HD dialysate Na 138-140 · Dianeal PD prescribing information",
+   "date": "10 Nov 2026"
+  },
+  "RENAL04|RRT2-01": {
+   "fields": {
+    "a": "**Hemodynamic tolerance comes from**\n**slower shifts and protected vascular tone**\n**VOLUME**\nPrime the circuit with 0.9% saline. Start isovolemic, use gentle ultrafiltration and\nextend the session to preserve preload.\n**TONE + TEMPERATURE**\nCool dialysate by about 0.5-1.5 C. This limits heat-related vasodilation and helps\npreserve systemic vascular resistance.\n**OSMOLALITY**\nReduce dialysate flow when needed. The source example is 50-100 mL/min. Use sodium profiling\nonly through a protocol and avoid rapid osmotic shifts.\n**BUFFER + CALCIUM**\nPrefer bicarbonate buffer. Keep systemic ionized calcium in the normal range to support myocardial\ncontractility and vasomotor tone.\n**PIRRT / SLED**: spreads the same correction over more hours\n**6-12 h** | **Qb 100-200** | **Qd 100-300**\nstandard HD machine | mL/min | mL/min\n**Mostly diffusive clearance. Slower solute and fluid shifts improve tolerance without maintaining a 24-hour circuit.**"
+   },
+   "src": "Deranged Physiology (SLED); World J Nephrol review table",
+   "date": "10 Nov 2026"
+  },
+  "ABG02|ABG-24": {
+   "fields": {
+    "watch": "Your notes' example: sodium 143, chloride 100, gap 35, excess 23:\nbicarbonate should have fallen from 25 to 2. It is 8 (the slide also prints 10),\nso by a strict 1:1 rule there is a metabolic alkalosis as well. But the delta ratio is 23 ÷ 16 = 1.4, inside 1–2 (pure): a borderline example. Quote the ratio bands."
+   },
+   "src": "arithmetic; delta-ratio bands (Rastegar 2007)",
+   "date": "10 Nov 2026"
+  },
+  "HY1|ABE-06": {
+   "fields": {
+    "a": "**High gap = an added acid · Normal gap = lost bicarbonate (or added chloride)**\nHIGH ANION GAP | NORMAL ANION GAP\nLactate (shock, sepsis, metformin) | Diarrhoea, pancreatic fistula\nKetones (DKA, alcohol, starvation) | Renal tubular acidosis 1, 2, 4\nToxic alcohols, salicylate | Large volumes of 0.9% saline\nUraemia (late renal failure) | Ureteric diversion, acetazolamide\nPyroglutamic acid (paracetamol) | Recovery phase of DKA\n**URINE ANION GAP**\nUrine AG = (U-Na + U-K) − U-Cl. **Negative = gut\nloss** ('neGUTive'). **Positive = renal** (distal RTA, type 1 or 4; proximal type 2 is usually zero or negative)."
+   },
+   "src": "Kraut JA, Madias NE. Clin J Am Soc Nephrol 2012",
+   "date": "10 Nov 2026"
+  },
+  "ABG02|ABG-22": {
+   "fields": {
+    "a": "a **Na − (Cl + HCO3)**.\nb **12 ± 4** mEq/L.\nc **Albumin**: for every 1 g/dL below 4, **add 2.5** to the gap.\n**UNMEASURED ANIONS** | **MEQ/L** | **UNMEASURED CATIONS** | **MEQ/L**\n**Proteins (mostly albumin)** | 15 | Calcium | 5\n**Organic acids** | 5 | Potassium | 4.5\n**Phosphate** | 2 | Magnesium | 1.5\n**Sulphate** | 1 | |\n**Total** | 23 | Total | 11"
+   },
+   "src": "Figge 1998",
+   "date": "10 Nov 2026"
+  },
+  "HY1|ABE-02": {
+   "fields": {
+    "why": "Albumin is the biggest unmeasured anion (proteins, mostly albumin, are about 15 of\nthe normal 23 mEq of unmeasured anions). ICU\npatients have low albumin, so their gap starts lower —\na lactic acid load can push it back only to 'normal' and\nlook innocent."
+   },
+   "src": "Figge 1998",
+   "date": "10 Nov 2026"
+  },
+  "HY1|ABE-17": {
+   "fields": {
+    "a": "**Stabilise → shift → remove**\nSTEP | DRUG AND DOSE | ONSET | NOTE\n**1 Stabilise** | Calcium gluconate 10%, **30 mL** IV over 10 min (UKKA; older texts 10 mL); repeat if ECG unchanged | 1–3 min | Does NOT lower K; lasts 30–60 min\n**2 Shift** | Insulin 10 U + 50 mL of 50% dextrose | 15–30 min | Lasts 2–4 h; check glucose\n**2 Shift** | Salbutamol 10–20 mg nebulised | 30 min | Adds to insulin\n**2 Shift** | Sodium bicarbonate | — | Only if acidotic\n**3 Remove** | Furosemide (if passing urine), binders, dialysis | Hours | Dialysis = definitive\n**WHAT ACTUALLY REMOVES K**\nOnly step 3 lowers total body K — **loop diuretic,\nbinders (SZC, patiromer), dialysis**."
+   },
+   "src": "UKKA Hyperkalaemia guideline, updated July 2026, 16.2a",
+   "date": "10 Nov 2026"
+  },
+  "ELEC03A|CAL-13": {
+   "fields": {
+    "a": "**STEP** | **DRUG AND DOSE** | **NOTE**\n**Mild (under 12)** | Stop thiazides, lithium, supplements; oral fluids; mobilise | Avoid loop diuretics\n**Moderate (12–14)** | Stop offending agents; IV isotonic saline; loop diuretic | Caution in heart and renal failure\n**Severe: enhance excretion** | **Isotonic saline 200–500 mL/h**; target urine 100–150 mL/h | Furosemide 40–80 mg only if overloaded\n**Stop bone resorption** | **Zoledronic acid 4 mg** over 30 min; pamidronate 60–90 mg over 2–4 h; ibandronate 2 mg over 2 h | Onset **2–4 days** (Endocrine Society: 48–72 h); nephrotoxic\n**Refractory** | **Denosumab** (binds RANK ligand) | Blocks osteoclast formation\n**Rapid but weak** | **Calcitonin** | Falls only 0.5 mmol/L; **tachyphylaxis**\n**Vitamin D-mediated** | Hydrocortisone 100–300 mg/day or prednisolone 40–60 mg/day, 3–5 days | Onset 4 days or more"
+   },
+   "src": "El-Hajj Fuleihan G et al. JCEM 2023;108:507",
    "date": "10 Nov 2026"
   }
  }

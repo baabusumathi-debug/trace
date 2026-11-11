@@ -3,16 +3,25 @@
 // a question card, its steps with a bridge under each answer, then the spine card (60 s timer, Fluent / Patchy / Blank).
 // Card text is never changed here; the viva explanation is its own layer, beside the NEET one.
 import { db } from './db.js';
-import { IS_HT } from './config.js';
+import { IS_HT, CONFIG } from './config.js';
+import { call, batch, hasBackend } from './api.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
-export const VIVA_PKGS = ['P1', 'P3', 'P4', 'P6', 'P7'];   // in package order (T-125)
-const IMG = pkg => `./data/viva/img/${pkg}/`;
+export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
+// a lesson figure: the repo copy, or for a package that came from Drive its SVG fetched through the bridge (blob URL)
+// packages taken from Drive once their card corrections are in data/cardfix.json and their decks are on test
+const VIVA_DRIVE = ['P6'];
+const vimg = {};   // 'P6/name.svg' → blob URL
+export const imgSrc = (pkg, name) => vimg[pkg + '/' + name] || `./data/viva/img/${pkg}/${name}`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g, '$1<i>$2</i>');
 
 // Viva is Naven's only (INI interview): HT's profile never loads a package, so no tile, chip, cards or explain appear
-export async function initViva() { S.viva = IS_HT ? {} : (await db.kv.get('viva')) || {}; }
+export async function initViva() {
+  S.viva = IS_HT ? {} : (await db.kv.get('viva')) || {};
+  if (IS_HT) return;
+  try { const m = (await db.kv.get('vimg')) || {}; for (const [k, t] of Object.entries(m)) vimg[k] = URL.createObjectURL(new Blob([t], { type: 'image/svg+xml' })); } catch (e) { /* no stored figures */ }
+}
 export async function loadViva() {
   if (IS_HT) return;
   let changed = false;
@@ -21,10 +30,63 @@ export async function loadViva() {
       const r = await fetch(`./data/viva/${pkg}.json`, { cache: 'no-cache' });
       if (!r.ok) continue;
       const p = await r.json();
-      if (p && p.version && p.version !== (S.viva[pkg] && S.viva[pkg].version)) { S.viva = { ...S.viva, [pkg]: p }; changed = true; }
+      const cur = S.viva[pkg];
+      // a Drive copy (T-128) is kept unless the repo carries a newer version of that package
+      if (p && p.version && (!cur || (cur._src === 'drive' ? p.version > cur.version : p.version !== cur.version))) { S.viva = { ...S.viva, [pkg]: p }; changed = true; }
     } catch (e) { /* offline: keep the stored copy */ }
   }
+  if (await loadDriveViva()) changed = true;
   if (changed) { await db.kv.set('viva', S.viva); recount(); emit(); }
+}
+// T-128: the viva writer keeps full packages (with lessons and figures) in Drive › Trace › viva › Pn, split into
+// Pn_*.json pieces of ≤60 KB: 00a/00b carry package, title, version, cards, lines, explain, fixes; the numbered
+// pieces append `questions` in study order. They are read through the bridge and joined here, only when a piece changed.
+let driving = false;
+async function loadDriveViva() {
+  if (driving || !hasBackend() || !CONFIG.traceFolderId) return false;
+  driving = true;
+  let changed = false;
+  try {
+    const root = await call({ op: 'listFolder', id: CONFIG.traceFolderId });
+    const vf = root.find(f => f.kind === 'folder' && f.name === 'viva'); if (!vf) return false;
+    const subs = (await call({ op: 'listFolder', id: vf.id })).filter(f => f.kind === 'folder' && VIVA_DRIVE.includes(f.name));
+    const lists = await batch(subs.map(s => ({ op: 'listFolder', id: s.id })));
+    for (let i = 0; i < subs.length; i++) {
+      const pkg = subs[i].name, r = lists[i]; if (!r || !r.ok) continue;
+      const re = new RegExp('^' + pkg + '_[^/]*\\.json$');
+      const pieces = r.data.filter(f => f.kind === 'file' && re.test(f.name)).sort((a, b) => a.name < b.name ? -1 : 1);
+      if (!pieces.length) continue;
+      const sig = pieces.map(f => f.name + '@' + f.modified).join('|'), cur = S.viva[pkg];
+      if (cur && cur._sig === sig) continue;
+      const got = await batch(pieces.map(f => ({ op: 'readFile', id: f.id })), 180000);
+      if (got.some(g => !g.ok)) continue;
+      const P = {};
+      for (const g of got) {
+        const d = JSON.parse(g.data.text), q = d.questions || []; delete d.questions;
+        for (const [k, v] of Object.entries(d)) { if (['package', 'title', 'version'].includes(k)) { if (!(k in P)) P[k] = v; } else P[k] = v; }
+        (P.questions = P.questions || []).push(...q);
+      }
+      if (!P.version || !P.questions || !P.questions.length || !P.cards) continue;
+      if (cur && cur._src !== 'drive' && cur.version > P.version) continue;   // the repo has a newer one
+      P._src = 'drive'; P._sig = sig;
+      S.viva = { ...S.viva, [pkg]: P }; changed = true;
+      const img = r.data.find(f => f.kind === 'folder' && f.name === 'img');
+      if (img) await loadDriveImgs(pkg, img.id);
+    }
+  } catch (e) { /* offline or bridge busy: keep what is stored */ }
+  finally { driving = false; }
+  return changed;
+}
+async function loadDriveImgs(pkg, folderId) {
+  try {
+    const fs = (await call({ op: 'listFolder', id: folderId })).filter(f => f.kind === 'file' && /\.svg$/i.test(f.name));
+    const m = (await db.kv.get('vimg')) || {};
+    for (let i = 0; i < fs.length; i += 8) {
+      const part = fs.slice(i, i + 8), got = await batch(part.map(f => ({ op: 'readFile', id: f.id })), 120000);
+      got.forEach((g, j) => { if (!g.ok) return; const k = pkg + '/' + part[j].name; m[k] = g.data.text; if (vimg[k]) URL.revokeObjectURL(vimg[k]); vimg[k] = URL.createObjectURL(new Blob([g.data.text], { type: 'image/svg+xml' })); });
+    }
+    await db.kv.set('vimg', m);
+  } catch (e) { /* figures stay as they were */ }
 }
 export const pkgs = () => VIVA_PKGS.filter(p => S.viva && S.viva[p]).map(p => S.viva[p]);
 export const pkgOf = p => (S.viva && S.viva[p]) || null;
@@ -78,7 +140,7 @@ export function vivaPanelHtml(vx, sw) {
   const x = vx.x, intro = String(x.intro || '').split('\n');
   const see = intro.filter(l => /^See it:/i.test(l)), body = intro.filter(l => !/^See it:/i.test(l));
   const why = (x.why || []).map(([l, t]) => `<p class="xv-part"><b class="xl">${esc(l || '•')}</b><span>${md(t)}</span></p>`).join('');
-  const pic = x.pic ? `<figure class="vx-fig"><img src="${IMG(vx.pkg)}${esc(x.pic)}" alt="${esc(x.cap || 'Diagram')}" loading="lazy"><figcaption>${md(x.cap || '')}</figcaption></figure>` : '';
+  const pic = x.pic ? `<figure class="vx-fig"><img src="${esc(imgSrc(vx.pkg, x.pic))}" alt="${esc(x.cap || 'Diagram')}" loading="lazy"><figcaption>${md(x.cap || '')}</figcaption></figure>` : '';
   return `<div class="xp v2 vx open" data-depth="learn">
     <div class="xp-bar"><button class="xp-tog" data-xp-tog aria-expanded="true"><span>Viva explain</span></button>${sw || ''}</div>
     <div class="xp-body">

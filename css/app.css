@@ -1650,3 +1650,31 @@ details.xp-before:not([open]){padding:6px 12px}
 .xp-bar .xp-tog[hidden]{display:none!important}
 .ls-pane .vx-sw button,.xp-head .vx-sw button{padding:3px 8px}
 .lesson .lw{outline:none}
+
+/* T-129: viva opening / closing lessons in their own card face (size, Fit, ink) */
+.vi-tags{display:flex;justify-content:flex-end;padding:8px 14px 0;min-height:0}
+.c-q.vi-lesson{gap:0}
+.c-q.vi-lesson .c-done{flex:0 0 auto;justify-content:flex-start;padding:14px 4px}
+
+/* T-130: tables drawn as tables — a frame, row lines and column lines (columns when wide, stacked on phones) */
+.tbl{border:1px solid #cfc3a6;border-radius:6px;overflow:hidden;background:rgba(255,255,255,.25)}
+.tbl > .tr{padding:10px 12px}
+.tbl > .tr:last-child{border-bottom:0}
+.tbl > .tr.th{padding:8px 12px;background:#ece3cc;font-size:10.5px;color:#4e4530}
+.tbl .td.empty{display:none}
+p.sub.tlab{margin-bottom:6px}
+@media (orientation:landscape) and (min-width:900px){
+  .tbl > .tr,.tbl > .tr.th{gap:0;padding:0}
+  .tbl .td{padding:10px 12px;border-left:1px solid #ddd3bc}
+  .tbl .td:first-child{border-left:0}
+  .tbl .td.empty{display:block}
+  .tbl > .tr.th .td{padding:8px 12px}
+}
+/* two- and three-column tables stay as columns on narrow screens too (stacking loses which column a line belongs to) */
+.tbl.c2 > .tr,.tbl.c3 > .tr{display:grid;grid-template-columns:var(--gtc);gap:0;padding:0}
+.tbl.c2 .td,.tbl.c3 .td{padding:9px 10px;border-left:1px solid #ddd3bc}
+.tbl.c2 .td:first-child,.tbl.c3 .td:first-child{border-left:0}
+.tbl.c2 .td.empty,.tbl.c3 .td.empty{display:block}
+.tbl.c2 .td[data-label]::before,.tbl.c3 .td[data-label]::before{display:none}
+.tbl.c2 > .tr.th .td,.tbl.c3 > .tr.th .td{padding:7px 10px}
+.sp.np{border-radius:5px}
