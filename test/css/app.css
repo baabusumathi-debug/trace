@@ -1290,7 +1290,7 @@ details.qfold>.bx{margin-top:8px}
 .ik-selbar .ik-unclear{background:#6a4fe0;color:#fff;border-color:#6a4fe0}
 /* lasso over words (T-072) */
 .ik-tmark{position:fixed;z-index:70;background:rgba(122,92,255,.18);border-radius:3px;pointer-events:none}
-.ik-tsel{position:fixed;z-index:80;display:flex;gap:4px;background:#2b2b2f;border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.ik-tsel{position:fixed;z-index:80;display:flex;flex-direction:column;gap:5px;max-width:calc(100vw - 16px);background:#2b2b2f;border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
 .ik-tsel button{border:0;border-radius:7px;background:#3a3b40;color:#fff;font-size:13px;padding:6px 10px;cursor:pointer}
 .ik-tsel .ik-unclear{background:#6a4fe0}
 /* controls stay tappable above the ink layer */
@@ -1678,3 +1678,10 @@ p.sub.tlab{margin-bottom:6px}
 .tbl.c2 .td[data-label]::before,.tbl.c3 .td[data-label]::before{display:none}
 .tbl.c2 > .tr.th .td,.tbl.c3 > .tr.th .td{padding:7px 10px}
 .sp.np{border-radius:5px}
+
+/* T-136: right-click marking menu (mouse) + mouse text selection on the question side */
+.ik-tsr{display:flex;flex-wrap:wrap;gap:4px}
+.ik-tsel .ik-sw{width:28px;height:28px;padding:0;border-radius:50%;border:2px solid transparent}
+.ik-tsel .ik-sw.on{border-color:#fff;box-shadow:0 0 0 2px #2b2b2f inset}
+.ik-tsel button:hover{filter:brightness(1.25)}
+@media (any-pointer:fine){.c-q[role=button]:not(.inking){-webkit-user-select:text;user-select:text}}
