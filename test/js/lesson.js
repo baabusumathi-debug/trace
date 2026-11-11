@@ -73,6 +73,18 @@ export function alignRun(words, W, dur) {
   const st = new Array(n).fill(null);
   let lastI = -1, lastEnd = 0, firstI = -1;
   for (let i = 0, j = 0; i < n && j < m;) { if (eq(i, j)) { st[i] = W[j][1] / 1000; if (firstI < 0) firstI = i; lastI = i; lastEnd = W[j][2] / 1000; i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) i++; else j++; }
+  // T-132: matching from the front takes the FIRST place a word is heard, so a script that starts with a word the voice
+  // also said in its read-aloud style note ("…Normal short pauses at full stops only. Normal SvO2 is…") began inside the
+  // note. Match again from the back, which takes the LAST place, and use that for words the front match put before it.
+  const P = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) P[i][j] = eq(i - 1, j - 1) ? P[i - 1][j - 1] + 1 : Math.max(P[i - 1][j], P[i][j - 1]);
+  const sb = new Array(n).fill(null); let firstB = -1;
+  for (let i = n, j = m; i > 0 && j > 0;) { if (eq(i - 1, j - 1)) { sb[i - 1] = W[j - 1][1] / 1000; firstB = i - 1; i--; j--; } else if (P[i - 1][j] >= P[i][j - 1]) i--; else j--; }
+  if (firstB >= 0 && firstI >= 0 && sb[firstB] > st[firstI] + 0.5) {
+    const t0 = sb[firstB];
+    for (let i = 0; i < n; i++) if (st[i] != null && st[i] < t0) st[i] = sb[i];
+    firstI = st.findIndex(x => x != null);
+  }
   // the clip stops just after the script's last word (Gemini sometimes runs on after it); words left unmatched at the end get time by length
   const tail = words.slice(lastI + 1).reduce((s2, w) => s2 + w.length * 0.08 + 0.1, 0);
   const cut = lastI >= 0 ? lastEnd + tail + 0.45 : 0;
