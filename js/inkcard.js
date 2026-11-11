@@ -38,7 +38,10 @@ function anchorsOf(box) {
   els.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = (e.classList.contains('rm') ? 'rm:' + e.dataset.room : 'b' + i); });
   // T-090: the primer and story boxes carry their own fixed keys (arc:…), so they never shift the numbering of the card's own lines
   // (T-091: only while their box is open — a folded box's marks are kept as saved and hidden)
-  return els.concat([...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')].filter(e => !e.closest('details:not([open])') && e.getClientRects().length));
+  // T-136: viva lesson lines get their own fixed keys (ls:…), so card numbering never shifts
+  const ls = [...box.querySelectorAll('.ls-p, .vq-t, .vq-head > p')];
+  ls.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = 'ls:' + i; });
+  return els.concat(ls.filter(e => !els.includes(e)), [...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')].filter(e => !e.closest('details:not([open])') && e.getClientRects().length));
 }
 function lineEls(box) {
   const out = [];
@@ -139,7 +142,8 @@ function makeOverlay(box, rec, face) {
     const el = blockOf[o.tr.ak]; if (!el) return;
     const rg = rangeOf(el, Math.min(o.tr.s, o.tr.e), Math.max(o.tr.s, o.tr.e)); if (!rg) return;
     const b = bandsOf(rg, cv); if (!b.length) return;
-    o.rects = b; o.pts = [[b[0][0], b[0][1]], [b[b.length - 1][2], b[b.length - 1][1]]]; o.h = b[0][3];
+    const bb = o.ul ? ulBands(b, o.ulw || 2) : b;
+    o.rects = bb; o.pts = [[bb[0][0], bb[0][1]], [bb[bb.length - 1][2], bb[bb.length - 1][1]]]; o.h = bb[0][3];
   };
   let initial = [];
   if (saved && saved.objs) {
@@ -244,7 +248,16 @@ function readClips() {
 function saveClips(a) { try { localStorage.setItem(CLIP_KEY, JSON.stringify(a.slice(0, CLIP_MAX))); localStorage.removeItem(OLD_CLIP); } catch (e) { /* private mode or full */ } }
 function writeClip(c) { const a = readClips(); a.unshift({ id: 'c' + c.ts + Math.random().toString(36).slice(2, 5), ...c }); saveClips(a); }
 // while writing, no browser text selection or long-press menu anywhere on the card (the S Pen button triggers both on the Tab)
-document.addEventListener('contextmenu', e => { if (writing && cur && cur.box.contains(e.target)) e.preventDefault(); }, true);
+document.addEventListener('contextmenu', e => {
+  const st = cur; if (!st) return;
+  if (writing && st.box.contains(e.target)) { e.preventDefault(); return; }
+  // T-136: mouse (DeX / desktop): select words, right-click → the marking menu instead of the browser's
+  const ws = getSelection(); if (!ws || ws.isCollapsed || !ws.rangeCount) return;
+  const s = st.xbox && st.overlayX && st.xbox.contains(e.target) ? st.overlayX : st.box.contains(e.target) ? st.overlay : null;
+  if (!s || !s.parentEl) return;
+  const sel = selFromRange(s, ws.getRangeAt(0)); if (!sel.length) return;
+  e.preventDefault(); ws.removeAllRanges(); textBar(s, sel, e.clientX, e.clientY);
+}, true);
 document.addEventListener('selectstart', e => { if (writing && cur && cur.box.contains(e.target) && !e.target.closest('.ink-tx')) e.preventDefault(); }, true);
 addEventListener('storage', e => { if (e.key === CLIP_KEY && cur && cur.toolbar) cur.toolbar.draw(); });
 function copySel(s) {
@@ -406,25 +419,66 @@ function lassoText(s, poly) {
   const last = P.reduce((m, p) => p[1] > m[1] ? p : m, P[0]);
   textBar(s, sel, Math.min(...P.map(p => p[0])), last[1]);
 }
+// T-136: marking colours: [highlighter, ink for underline / box / circle / bold]
+const MK = [['#ffcc00', '#b98a00'], ['#7ee07e', '#1f8f3a'], ['#ff8fc8', '#c81f6e'], ['#8fd0ff', '#1f4fd8'], ['#ffb066', '#d75f00']];
+const MK_KEY = 'trace.mk';
+const mkNow = () => { try { const i = +localStorage.getItem(MK_KEY); return MK[i] ? i : 0; } catch (e) { return 0; } };
+export const ulBands = (b, w) => b.map(r => [r[0], r[1] + r[3] / 2 + w / 2, r[2], w]);
+function selFromRange(s, rg) {
+  const out = [];
+  for (const el of leafBlocks(s.parentEl)) {
+    if (!rg.intersectsNode(el)) continue;
+    const t = el.textContent, off = (n, o) => { const r = document.createRange(); r.setStart(el, 0); r.setEnd(n, o); return r.toString().length; };
+    let a = el.contains(rg.startContainer) ? off(rg.startContainer, rg.startOffset) : 0, b = el.contains(rg.endContainer) ? off(rg.endContainer, rg.endOffset) : t.length;
+    [a, b] = wordSnap(t, a, b); if (b - a < 1) continue;
+    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
+  }
+  return out;
+}
 function textBar(s, sel, x, y) {
   document.querySelectorAll('.ik-tsel').forEach(n => n.remove());
   drawMarks(sel); const marks = tmarks;
   const bar = document.createElement('div'); bar.className = 'ik-tsel';
-  bar.innerHTML = `<button data-t="hl">Highlight</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="tocard">→ Move to card</button><button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}${cur && cur.opts.onAsk ? '<button data-t="ask" class="ik-ask">Ask ▸</button>' : ''}<button data-t="x" aria-label="Close">✕</button>`;
-  Object.assign(bar.style, { left: Math.max(8, Math.min(innerWidth - 380, x)) + 'px', top: Math.min(innerHeight - 60, y + 8) + 'px' });
+  const sw = () => MK.map((m, i) => `<button data-sw="${i}" class="ik-sw${i === mkNow() ? ' on' : ''}" style="background:${m[0]}" aria-label="Colour ${i + 1}"></button>`).join('');
+  bar.innerHTML = `<div class="ik-tsr">${sw()}</div><div class="ik-tsr"><button data-t="hl">Highlight</button><button data-t="ul">Underline</button><button data-t="box">Box</button><button data-t="circ">Circle</button><button data-t="bold">Bold</button></div><div class="ik-tsr"><button data-t="move">Select &amp; move</button><button data-t="copy">Copy text</button>${s === (cur && cur.overlayX) ? '<button data-t="tocard">→ Move to card</button><button data-t="unclear" class="ik-unclear">? Still unclear</button>' : ''}${cur && cur.opts.onAsk ? '<button data-t="ask" class="ik-ask">Ask ▸</button>' : ''}<button data-t="x" aria-label="Close">✕</button></div>`;
+  Object.assign(bar.style, { left: Math.max(8, Math.min(innerWidth - 470, x)) + 'px', top: Math.max(8, Math.min(innerHeight - 150, y + 8)) + 'px' });
   document.body.appendChild(bar);
-  const close = () => { bar.remove(); drawMarks([]); removeEventListener('scroll', close, true); };
-  addEventListener('scroll', close, true);
+  const made = [];
+  const close = () => { bar.remove(); drawMarks([]); removeEventListener('scroll', close, true); removeEventListener('pointerdown', away, true); };
+  const away = e => { if (!bar.contains(e.target)) close(); };
+  addEventListener('scroll', close, true); setTimeout(() => addEventListener('pointerdown', away, true), 0);
   bar.addEventListener('pointerdown', e => e.stopPropagation());
+  bar.addEventListener('contextmenu', e => e.preventDefault());
+  bar.querySelectorAll('[data-sw]').forEach(b => b.onclick = e => { e.stopPropagation(); try { localStorage.setItem(MK_KEY, b.dataset.sw); } catch (er) { /* */ } bar.querySelectorAll('[data-sw]').forEach(n => n.classList.toggle('on', n === b)); });
+  const mark = k => {
+    s.snapshot(); const S = settings(), m = MK[mkNow()], u = s.unitPerPx ? s.unitPerPx() : 1, n0 = s.objs.length, all = [];
+    for (const t of sel) { const rg = rangeOf(t.el, t.a, t.b); if (!rg) continue; const rects = bandsOf(rg, s.cv); if (!rects.length) continue;
+      all.push(...rects); const tr = { ak: t.el.dataset.ak, s: t.a, e: t.b };
+      if (k === 'hl' || k === 'ul' || k === 'bold') {
+        const w = (k === 'bold' ? 3.6 : 1.8) * u, rr = k === 'hl' ? rects : ulBands(rects, w);
+        const o = { type: 'hl', snap: true, c: k === 'hl' ? m[0] : m[1], o: k === 'hl' ? S.hl.op / 100 : 1, h: rr[0][3], rects: rr, pts: [[rr[0][0], rr[0][1]], [rr[rr.length - 1][2], rr[rr.length - 1][1]]], tr };
+        if (k !== 'hl') { o.ul = 1; o.ulw = w; }
+        o.a = s.anchorFor(o.pts[0]); s.objs.push(o);
+      } }
+    if ((k === 'box' || k === 'circ') && all.length) {
+      const x0 = Math.min(...all.map(r => r[0])), x1 = Math.max(...all.map(r => r[2])), y0 = Math.min(...all.map(r => r[1] - r[3] / 2)), y1 = Math.max(...all.map(r => r[1] + r[3] / 2));
+      const px = (k === 'circ' ? 10 : 4) * u, py = (k === 'circ' ? 7 : 3) * u;
+      const o = { type: 'shape', kind: k === 'box' ? 'rect' : 'ellipse', c: m[1], s: 2 * u, pts: [[x0 - px, y0 - py], [x1 + px, y1 + py]] };
+      o.a = s.anchorFor(o.pts[0]); s.objs.push(o);
+    }
+    for (let i = n0; i < s.objs.length; i++) made.push(i);
+    s.render(); markDirty(); drawMarks([]);
+  };
   bar.querySelectorAll('[data-t]').forEach(b => b.onclick = async e => {
     e.stopPropagation(); const k = b.dataset.t, st = cur;
-    if (k === 'hl' && st) {
-      s.snapshot(); const S = settings();
-      for (const t of sel) { const rg = rangeOf(t.el, t.a, t.b); if (!rg) continue; const rects = bandsOf(rg, s.cv); if (!rects.length) continue;
-        const o = { type: 'hl', snap: true, c: S.hl.color, o: S.hl.op / 100, h: rects[0][3], rects, pts: [[rects[0][0], rects[0][1]], [rects[rects.length - 1][2], rects[rects.length - 1][1]]], tr: { ak: t.el.dataset.ak, s: t.a, e: t.b } };
-        o.a = s.anchorFor(o.pts[0]); s.objs.push(o); }
-      s.render(); markDirty();
-    } else if (k === 'copy') { const txt = sel.map(t => t.text).join('\n'); try { await navigator.clipboard.writeText(txt); toast('Text copied'); } catch (er) { toast('Copy was blocked by the browser'); } }
+    if (['hl', 'ul', 'box', 'circ', 'bold'].includes(k) && st) { mark(k); return; }   // the menu stays: add a box to a highlight, or pick Select & move
+    if (k === 'move' && st) {
+      if (!made.length) mark('hl');
+      close(); quiet = false; setWriting(true); settings().tool = 'lasso';
+      s.sel = { ids: made.filter(i => s.objs[i]) }; st.last = s; s.render(); if (st.toolbar) st.toolbar.draw();
+      toast('Selected · drag it to move it'); return;
+    }
+    if (k === 'copy') { const txt = sel.map(t => t.text).join('\n'); try { await navigator.clipboard.writeText(txt); toast('Text copied'); } catch (er) { toast('Copy was blocked by the browser'); } }
     else if (k === 'ask' && st && st.opts.onAsk) { const r = b.getBoundingClientRect(); close(); st.opts.onAsk(sel.map(t => t.text).filter(Boolean), s === st.overlayX ? 'Explain' : 'card', r); return; }
     else if (k === 'tocard' && st) { close(); textToCard(st, sel.map(t => t.text).filter(Boolean).join(' ')); return; }
     else if (k === 'unclear' && st && st.opts.onUnclear) { st.opts.onUnclear(sel.map(t => t.text).filter(Boolean)); toast('Saved to “Still unclear” · the next rewrite of this deck expands it'); }

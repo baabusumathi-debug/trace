@@ -1731,7 +1731,7 @@ function drawInter(el, big) {
 }
 // T-129: opening and closing lessons sit in a card face of their own, so the size slider, Fit, the pen, the highlighter
 // and Select text work on them as on any card; their ink is kept under VIVA-<pkg> | <question>-open / -close
-const viLessonFrame = body => `<div class="c-tags vi-tags"></div><div class="c-q vi-lesson">${body}</div>`;
+const viLessonFrame = body => `<div class="c-tags vi-tags"></div><div class="c-q vi-lesson"><div class="zw">${body}</div></div>`;
 function viLessonTools(el, it, slot) {
   const pc = { deck: 'VIVA-' + it.pkg, code: it.q + '-' + slot, section: 'Viva lesson' };
   setupFit(el);
@@ -2113,7 +2113,7 @@ function drawCard() {
   const xpn = el.querySelector('.xp-pane'); if (xpn) xpn.scrollTop = 0;
   big.innerHTML = flow.peek ? `BACK TO CURRENT${ICON.next}` : isQ ? `${ICON.flip}REVEAL` : `NEXT${ICON.next}`;
   const lb = $('#f-left'); if (lb) { lb.innerHTML = leftLabel(); lb.classList.toggle('dimmed', !flow.browse && !flow.peek && isQ && !flow.hist.length); }
-  el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = e => { if (isWriting()) return; if (e.target.closest && e.target.closest('.xp-before, .xp-bridge')) return; reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
+  el.querySelectorAll('[data-act=reveal]').forEach(b => { b.onclick = e => { if (isWriting()) return; { const ws = getSelection(); if ((ws && !ws.isCollapsed && b.contains(ws.anchorNode)) || document.querySelector('.ik-tsel')) return; } if (e.target.closest && e.target.closest('.xp-before, .xp-bridge')) return; reveal(); }; b.onkeydown = e => { if (e.key === 'Enter') { e.preventDefault(); reveal(); } }; });
   const ag = el.querySelector('[data-act=again]'); if (ag) ag.onclick = () => next(true);
   const ed = el.querySelector('[data-act=edit]'); if (ed) ed.onclick = () => openEditor(current());
   const ib = el.querySelector('[data-act=ink]'); if (ib) ib.onclick = e => { e.stopPropagation(); setWriting(!isWriting()); };
