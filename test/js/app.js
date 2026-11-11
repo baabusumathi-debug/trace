@@ -13,7 +13,7 @@ import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, arcHtml, spineOf, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
-import { initViva, loadViva, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
+import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast } from './viva.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
 import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
@@ -736,9 +736,9 @@ function lessonPic(x, c) {
   // a card's own figure: cut from its PDF page into data/viva/img/<pkg>/card_<DECK>_<CODE>.png (button if it is not there)
   if (L.pic === 'card' || /^card:/.test(L.pic)) {
     const key = (L.pic === 'card' ? (c ? c.deck + '|' + c.code : '') : L.pic.slice(5)).replace('|', '_');
-    return `<figure class="vx-fig ls-fig-img"><img src="./data/viva/img/${esc(x.pkg)}/card_${esc(key)}.png" alt="${esc(L.cap || 'Card figure')}" loading="lazy" onerror="this.closest('figure').outerHTML='<button class=&quot;ls-fig mono&quot; data-lcardfig>◈ The card&#39;s figure</button>'"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
+    return `<figure class="vx-fig ls-fig-img"><img src="${esc(vivaImgSrc(x.pkg, 'card_' + key + '.png'))}" alt="${esc(L.cap || 'Card figure')}" loading="lazy" onerror="this.closest('figure').outerHTML='<button class=&quot;ls-fig mono&quot; data-lcardfig>◈ The card&#39;s figure</button>'"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
   }
-  return `<figure class="vx-fig ls-fig-img"><img src="./data/viva/img/${esc(x.pkg)}/${esc(L.pic)}" alt="${esc(L.cap || 'Diagram')}" loading="lazy"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
+  return `<figure class="vx-fig ls-fig-img"><img src="${esc(vivaImgSrc(x.pkg, L.pic))}" alt="${esc(L.cap || 'Diagram')}" loading="lazy"><figcaption>${esc(L.cap || '')}</figcaption></figure>`;
 }
 function autoChip() { return `<button class="chip ls-auto${flow && flow.vauto ? ' on' : ''}" data-vauto>${flow && flow.vauto ? 'Autoplay on' : 'Tap to play'}</button>`; }
 function bindAutoChip(el, then) { el.querySelectorAll('[data-vauto]').forEach(b => b.onclick = e => { e.stopPropagation(); setVAuto(!flow.vauto); el.querySelectorAll('[data-vauto]').forEach(x => { x.classList.toggle('on', flow.vauto); x.textContent = flow.vauto ? 'Autoplay on' : 'Tap to play'; }); then && then(); }); }
@@ -2030,7 +2030,7 @@ function drawCard() {
     const arc = spineOf(c.deck) && xq && xq.step ? { open: ((flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xq, n, xpDepth())) !== 'revise' } : null;
     // T-090: the primer and story boxes sit inside the question face so the pen, highlighter, Select text and Ask work on them
     const vrep = c.vq && c.vq.rep ? `<p class="vq-rep mono">SEEN ABOVE · under ${esc(c.vq.rep)} · not counted again · Reveal to look, Next to move on</p>` : '';
-    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${vrep}${flow.viva ? '' : arc ? arcHtml(c, xq, arc.open) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${c.vpic ? `<img class="vq-pic" src="./data/viva/img/${esc(c.vcard)}/${esc(c.vpic)}" alt="Spotter image">` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
+    body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${vrep}${flow.viva ? '' : arc ? arcHtml(c, xq, arc.open) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${c.vpic ? `<img class="vq-pic" src="${esc(vivaImgSrc(c.vcard, c.vpic))}" alt="Spotter image">` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
     const lx = c.vq && c.vq.j != null ? lessonOf(c.vq.pkg, c.vq.q, 's' + c.vq.j) : null;
     const xa = xOf(c), vx = vivaX(c), v2 = !!(xa && xa.v === 2) || !!vx || !!lx, xOpen = (flow.viva && (vx || lx)) || xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
