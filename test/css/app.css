@@ -1670,3 +1670,10 @@ p.sub.tlab{margin-bottom:6px}
   .tbl .td.empty{display:block}
   .tbl > .tr.th .td{padding:8px 12px}
 }
+/* two- and three-column tables stay as columns on narrow screens too (stacking loses which column a line belongs to) */
+.tbl.c2 > .tr,.tbl.c3 > .tr{display:grid;grid-template-columns:var(--gtc);gap:0;padding:0}
+.tbl.c2 .td,.tbl.c3 .td{padding:9px 10px;border-left:1px solid #ddd3bc}
+.tbl.c2 .td:first-child,.tbl.c3 .td:first-child{border-left:0}
+.tbl.c2 .td.empty,.tbl.c3 .td.empty{display:block}
+.tbl.c2 .td[data-label]::before,.tbl.c3 .td[data-label]::before{display:none}
+.tbl.c2 > .tr.th .td,.tbl.c3 > .tr.th .td{padding:7px 10px}
