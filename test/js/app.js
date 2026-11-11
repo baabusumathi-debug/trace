@@ -1558,7 +1558,7 @@ function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - 
 // the left bottom button (T-078): question side → look at the card before; answer side → back to this card's question;
 // looking back → one card further back; browse → previous card
 function leftAction() {
-  if (!flow || flow.busy || flow.userPause || flow.done) return;
+  if (!flow || flow.busy || flow.userPause || (flow.done && !flow.inter)) return;
   // T-129: Back from a viva lesson or spine card (Naven, 11 Nov): closing lesson and opening lesson → the card before;
   // spine → its closing lesson
   if (flow.inter) {
@@ -1573,13 +1573,14 @@ function leftAction() {
   peekBack();
 }
 function leftLabel() {
-  if (!flow || flow.done) return '';
+  if (!flow) return '';
   if (flow.inter) {
     const it = flow.inter;
     if (it.kind === 'spine' && lessonOf(it.pkg, it.q, 'c')) return `${ICON.prev}<span>Lesson</span>`;
     if ((it.kind === 'vclose' || it.kind === 'vq' || it.kind === 'spine') && flow.hist.length) return `${ICON.prev}<span>Back</span>`;
     return '';
   }
+  if (flow.done) return '';
   if (flow.browse) return `${ICON.prev}<span>Back</span>`;
   if (flow.peek) return `${ICON.prev}<span>Further back</span>`;
   return flow.face === 'a' ? `${ICON.prev}<span>Question</span>` : `${ICON.prev}<span>Back</span>`;
