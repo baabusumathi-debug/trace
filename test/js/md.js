@@ -22,15 +22,26 @@ function line(l) {
   return `<p>${inline(l)}</p>`;
 }
 
+// T-130: a row is any line with a | between cells ("a | b", "a| b", " | b" for an empty first cell, "a |"); a bullet
+// at the start of a cell is kept as "• "; a row group whose first row starts with a part letter ("b B. LOW | C. HIGH")
+// shows that letter above the table
+const ROW = /(^\s*\|\s*\S)|(\S\s*\|\s*\S)|(\S\s*\|\s*$)/;
+export const isRow = l => ROW.test(plain(l || ''));
+const cellsOf = r => r.replace(/^\s+|\s+$/g, '').split(/\s*\|\s*/).map(c => c.trim().replace(/^[-•]\s+/, '• '));
 function table(rows) {
-  const cells = rows.map(r => r.split(' | ').map(c => c.trim()));
-  cells.forEach(r => { if (r.length > 1 && r[r.length - 1] === '') r[r.length - 1] = ''; });
-  const head = cells[0], body = cells.slice(1);
+  let pre = '';
+  const m = subMatch(rows[0]);
+  if (m && m[2] && isRow(m[2])) { pre = `<p class="sub tlab"><span class="sp">${m[1]}</span></p>`; rows = [m[2], ...rows.slice(1)]; }
+  const cells = rows.map(cellsOf);
   const n = Math.max(...cells.map(c => c.length));
-  const labels = head.map(plain);
-  let h = `<div class="tbl c${n}" style="--gtc:minmax(0,.75fr) repeat(${Math.max(1, n - 1)},minmax(0,1.25fr))"><div class="tr th">` + head.map(c => `<div class="td">${inline(c)}</div>`).join('') + '</div>';
+  cells.forEach(r => { while (r.length < n) r.push(''); });
+  // the first row is a header only when its cells are short labels; a long first row is data like the rest
+  const hasHead = cells.length > 1 && cells[0].every(c => plain(c).length <= 45);
+  const head = hasHead ? cells[0] : null, body = hasHead ? cells.slice(1) : cells;
+  const labels = head ? head.map(plain) : [];
+  let h = pre + `<div class="tbl c${n}${head ? '' : ' nohead'}" style="--gtc:minmax(0,.75fr) repeat(${Math.max(1, n - 1)},minmax(0,1.25fr))">` + (head ? '<div class="tr th">' + head.map(c => `<div class="td">${inline(c)}</div>`).join('') + '</div>' : '');
   for (const r of body) {
-    h += '<div class="tr">' + r.map((c, j) => `<div class="td${j === 0 ? ' t0' : ''}"${j ? ` data-label="${esc(labels[j] || '')}"` : ''}>${inline(c)}</div>`).join('') + '</div>';
+    h += '<div class="tr">' + r.map((c, j) => `<div class="td${j === 0 && !/^• /.test(c) ? ' t0' : ''}${c ? '' : ' empty'}"${j ? ` data-label="${esc(labels[j] || '')}"` : ''}>${inline(c)}</div>`).join('') + '</div>';
   }
   return h + '</div>';
 }
@@ -45,7 +56,6 @@ const CONT_START = /^[a-z0-9(\[→←↑↓–\-\/,;:%+×=<>≥≤~&·]/;
 const CAPS_WORD = /^[A-Z]{2,}[A-Z0-9'\-]*\b/;
 const OPEN_END = /([,(\-–/+&→←]|\b(the|a|an|and|or|of|to|with|for|in|on|by|at|from|than|as|is|are|be|if|vs|via|per|not|no|THE|OF|AND|OR|TO|WITH|FOR|IN|ON|BY|AT|AS|IS|NOT|NO))$/;
 export const SOFT = '\u2028';
-const isRow = l => l.includes(' | ') || /\s\|$/.test(l);
 export function reflow(md) {
   const out = [];
   for (const raw of (md || '').split('\n')) {
@@ -77,8 +87,8 @@ export function render(md) {
   };
   for (const raw of lines) {
     const l = raw.replace(/\s+$/, '');
+    if (isRow(l)) { if (ul.length) flush(); tbl.push(l); continue; }
     if (/^\s*[-•]\s+/.test(l)) { if (tbl.length) flush(); ul.push(l.replace(/^\s*[-•]\s+/, '')); continue; }
-    if (l.includes(' | ')) { if (ul.length) flush(); tbl.push(l); continue; }
     flush();
     if (l.trim()) out += line(l);
   }
@@ -92,7 +102,7 @@ export function splitQ(q) {
   const head = [], rest = [];
   let inRest = false;
   for (const l of lines) {
-    if (!inRest && (SUB.test(l) || / \| /.test(l) || /^\s*[-•]\s/.test(l))) inRest = true;
+    if (!inRest && (SUB.test(l) || isRow(l) || /^\s*[-•]\s/.test(l))) inRest = true;
     (inRest ? rest : head).push(l);
   }
   return { head: head.join(' ').replace(/\s+/g, ' ').trim(), rest: reflow(rest.join('\n')) };
