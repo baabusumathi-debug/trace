@@ -17,12 +17,12 @@ const SUB = { test: l => SUB_B.test(l) || SUB_P.test(l) };
 const subMatch = l => l.match(SUB_B) || l.match(SUB_P);
 
 // T-131: "1. text" numbered steps keep their own lines and numbers
-const NUM = /^\s*(\d{1,2})[.)]\s+(?=\S)(.*)$/;
+const NUM = /^\s*(\*\*)?(\d{1,2})[.)]\s+(?=\S)(.*)$/;
 function line(l, noSub) {
   const m = !noSub && subMatch(l);
   if (m && m[2]) return `<p class="sub"><span class="sp">${m[1]}</span><span>${inline(m[2])}</span></p>`;
   const n = l.match(NUM);
-  if (n) return `<p class="sub num"><span class="sp np">${n[1]}</span><span>${inline(n[2])}</span></p>`;
+  if (n) return `<p class="sub num"><span class="sp np">${n[2]}</span><span>${inline((n[1] || '') + n[3])}</span></p>`;
   return `<p>${inline(l)}</p>`;
 }
 // T-131: a lone "a" (no "b" in the same field) that starts with bold text, or follows an unfinished line, is the article
@@ -83,7 +83,8 @@ export function reflow(md) {
     const bare = plain(l).trim();
     const prev = out.length ? out[out.length - 1] : null;
     const startsCont = CONT_START.test(bare);
-    const marker = (subMatch(l) && !bad.has(li)) || NUM.test(l) || /^\s*[-•]\s+/.test(l) || (isRow(l) && !startsCont);
+    // a table row right after a table row is always its own row, even when it starts with a digit ("**1. Exclude…** | …")
+    const marker = (subMatch(l) && !bad.has(li)) || NUM.test(l) || /^\s*[-•]\s+/.test(l) || (isRow(l) && (!startsCont || (prev != null && isRow(prev))));
     if (bad.has(li) && prev && prev.trim()) { out[out.length - 1] = prev.replace(/\s+$/, '') + ' ' + l.trim(); continue; }
     if (prev && !marker && prev.trim()) {
       const pb = plain(prev.split(SOFT).pop()).trim();
