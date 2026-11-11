@@ -38,7 +38,10 @@ function anchorsOf(box) {
   els.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = (e.classList.contains('rm') ? 'rm:' + e.dataset.room : 'b' + i); });
   // T-090: the primer and story boxes carry their own fixed keys (arc:…), so they never shift the numbering of the card's own lines
   // (T-091: only while their box is open — a folded box's marks are kept as saved and hidden)
-  return els.concat([...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')].filter(e => !e.closest('details:not([open])') && e.getClientRects().length));
+  // T-136: viva lesson lines get their own fixed keys (ls:…), so card numbering never shifts
+  const ls = [...box.querySelectorAll('.ls-p, .vq-t, .vq-head > p')];
+  ls.forEach((e, i) => { if (!e.dataset.ak) e.dataset.ak = 'ls:' + i; });
+  return els.concat(ls.filter(e => !els.includes(e)), [...box.querySelectorAll('.xp-before [data-ak], .xp-bridge [data-ak]')].filter(e => !e.closest('details:not([open])') && e.getClientRects().length));
 }
 function lineEls(box) {
   const out = [];
