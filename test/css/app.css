@@ -1799,3 +1799,5 @@ p.sub.tlab{margin-bottom:6px}
   .pdk-ring{width:96px;height:96px}.pdk-big{font-size:20px}.pdk-tm b{font-size:18px}.pdk-where{font-size:15px}
 }
 .pdk-x{color:var(--gold);text-decoration:none;font-size:16px;margin-right:4px}
+.pdk-pair[hidden],.pdk-cover[hidden]{display:none}
+.pdk-hrs span:last-child{transform:translateX(-100%)}
