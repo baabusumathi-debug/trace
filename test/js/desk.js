@@ -87,7 +87,7 @@ export async function joinDesk() {
   try {
     const f = await findJ(fname('o')).catch(() => null), o = f && await readId(f.id).catch(() => null);
     if (g !== G.gen) return;
-    if (!o || !o.sdp || o.ts <= G.lastOffer) { gtell('noflow'); retry(g, document.visibilityState === 'visible' ? 8000 : 30000); return; }   // no flow open, or the same offer that failed
+    if (!o || !o.sdp || o.ts <= G.lastOffer) { gtell(o && o.sdp && G.state === 'apart' ? 'apart' : 'noflow'); retry(g, document.visibilityState === 'visible' ? 8000 : 30000); return; }   // no flow open, or the same offer that failed
     G.lastOffer = o.ts;
     const pc = new RTCPeerConnection(ICE); G.pc = pc;
     pc.ondatachannel = e => {
