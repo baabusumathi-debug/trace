@@ -1788,7 +1788,7 @@ function renderFlow() {
       <button class="iconbtn sm" data-act="close" aria-label="End flow">${ICON.close}</button>
       <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
       <span class="ring" id="f-ring"></span>
-      <div class="f-stats mono"><span><i>TIME</i><b id="f-time">0:00</b></span>${flow.viva ? '<span class="f-qs"><i id="f-ql">QUESTION</i><b id="f-qt">0:00</b></span><span><i id="f-stl">CARD</i><b id="f-stp">0:00</b></span>' : ''}<span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
+      <div class="f-stats mono"><span><i>${flow.viva ? 'SESSION' : 'TIME'}</i><b id="f-time">0:00</b></span>${flow.viva ? '<span class="f-qs"><i id="f-ql">QUESTION</i><b id="f-qt">0:00</b></span><span><i id="f-stl">CARD</i><b id="f-stp">0:00</b></span>' : ''}<span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
       <span class="f-grow"></span>
       <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" title="${flow.browse ? 'Previous card' : 'Undo the last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
       ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" title="Pause (P)" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}

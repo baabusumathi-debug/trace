@@ -182,4 +182,16 @@ export async function setMark(pkg, qid, mark) {
   m[k] = (m[k] || []).concat({ ts: Date.now(), mark });
   await db.kv.set('vivaMarks', m);
 }
+/* ---------- T-138: time per question, on this device: {pkg|qid: {session: {ts, ms, lesson, cards}}} ---------- */
+let qtQ = Promise.resolve();
+export function addQTime(pkg, qid, session, ms, kind) {
+  if (!pkg || !qid || !(ms > 0)) return;
+  qtQ = qtQ.then(async () => {
+    const m = (await db.kv.get('vivaTimes')) || {}, k = pkg + '|' + qid, r = m[k] || (m[k] = {});
+    const x = r[session] || (r[session] = { ts: Date.now(), ms: 0, lesson: 0, cards: 0 });
+    x.ms += ms; x[kind === 'card' ? 'cards' : 'lesson'] += ms; x.ts = Date.now();
+    await db.kv.set('vivaTimes', m);
+  }).catch(() => {});
+}
+export async function qTimes() { return (await db.kv.get('vivaTimes')) || {}; }
 export const lastMark = (m, pkg, qid) => { const l = m[pkg + '|' + qid]; return l && l.length ? l[l.length - 1].mark : ''; };

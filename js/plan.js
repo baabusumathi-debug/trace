@@ -205,3 +205,42 @@ export function todayParts(st, r = compute(st)) {
   }
   return parts;
 }
+
+/* ---------- T-138: viva lanes — a viva package planned in questions, not cards ----------
+   st.viva = [{ id, pkg, qs: [question ids in package order], perDay (null = spread to the stretch's end), from, addedAt }].
+   A question is done when its spine is reached in a walk (markVivaDone). Card pace and day totals are never touched. */
+const VKEY = KEY.replace(/plan$/, 'vivaDone');
+let VD = null;
+const vd = () => VD || (VD = (() => { try { return JSON.parse(localStorage.getItem(VKEY) || '{}') || {}; } catch (e) { return {}; } })());
+export function markVivaDone(pkg, q) { const m = vd(), k = pkg + '|' + q; (m[k] || (m[k] = [])).push(Date.now()); try { localStorage.setItem(VKEY, JSON.stringify(m)); } catch (e) { /* full */ } }
+export const vivaDoneToday = (pkg, q) => { const a = vd()[pkg + '|' + q]; const t0 = dayStart(today()); return !!(a && a.some(t => t >= t0)); };
+const vDoneAfter = (pkg, q, t0) => { const a = vd()[pkg + '|' + q]; if (!a) return null; const t = a.find(x => x >= t0); return t == null ? null : t; };
+export function addVivaLane(st, { pkg, qs, perDay, from }) {
+  st.viva = st.viva || [];
+  const l = { id: rid(), pkg, qs: [...qs], perDay: perDay || null, from: from && from > st.start ? from : null, addedAt: Date.now() };
+  st.viva.push(l); savePlan(); return l;
+}
+export function removeVivaLane(st, id) { st.viva = (st.viva || []).filter(l => l.id !== id); savePlan(); }
+export function computeViva(st) {
+  const td = today(), days = dayList(st), t0 = dayStart(td), out = {};
+  for (const l of st.viva || []) {
+    const doneAt = q => vDoneAfter(l.pkg, q, l.addedAt);
+    const actual = {};
+    for (const q of l.qs) { const t = doneAt(q); if (t != null) { const d = dkey(t); if (days.includes(d)) actual[d] = (actual[d] || 0) + 1; } }
+    const leftQs = l.qs.filter(q => { const t = doneAt(q); return t == null || t >= t0; });        // not finished before today
+    const fromD = l.from && l.from > td ? l.from : td;
+    const work = days.filter(d => d >= fromD && dayType(st, d) !== 'off');
+    const cells = {}; let i = 0;
+    work.forEach((d, k) => { const want = l.perDay || Math.ceil((leftQs.length - i) / (work.length - k)); const n = Math.max(0, Math.min(want, leftQs.length - i)); if (n) cells[d] = n; i += n; });
+    const todayQs = days.includes(td) && cells[td] ? leftQs.slice(0, cells[td]) : [];
+    const extraToday = l.qs.filter(q => { const t = doneAt(q); return t != null && t >= t0 && !todayQs.includes(q); });
+    out[l.id] = { lane: l, cells, actual, over: Math.max(0, leftQs.length - i), todayQs, doneToday: todayQs.filter(q => doneAt(q) != null && doneAt(q) >= t0).length, extraToday, left: leftQs.length };
+  }
+  return out;
+}
+// today's viva frame for one package, from the current stretch (null when nothing of it is planned today)
+export function vivaPlanToday(pkg) {
+  const st = currentStretch(); if (!st || !st.viva || !st.viva.length) return null;
+  const v = Object.values(computeViva(st)).find(x => x.lane.pkg === pkg && x.todayQs.length);
+  return v || null;
+}
