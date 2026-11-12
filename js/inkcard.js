@@ -379,7 +379,7 @@ function selBetween(s, c0, c1) {
   for (let i = i0; i <= i1; i++) {
     const el = blocks[i], t = el.textContent; let a = i === i0 ? c0.off : 0, b = i === i1 ? c1.off : t.length;
     [a, b] = wordSnap(t, a, b); if (b - a < 1) continue;
-    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
+    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-j](?=[A-Z(“"])/, '') });
   }
   return out;
 }
@@ -395,7 +395,7 @@ function textSelect(s, act, e, phase) {
   const tap = Math.hypot(e.clientX - act.sx, e.clientY - act.sy) < 8;
   if (phase === 'move') { if (tap) return; const c1 = caretIn(s, e.clientX, e.clientY); if (c1) { act.sel = selBetween(s, act.c0, c1); drawMarks(act.sel); } return; }
   let sel = act.sel || [];
-  if (tap) { const el = act.c0.el, t = el.textContent; sel = [{ el, a: 0, b: t.length, text: t.replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') }]; }
+  if (tap) { const el = act.c0.el, t = el.textContent; sel = [{ el, a: 0, b: t.length, text: t.replace(/\s+/g, ' ').trim().replace(/^[a-j](?=[A-Z(“"])/, '') }]; }
   if (!sel.length) { drawMarks([]); return; }
   textBar(s, sel, e.clientX, e.clientY);
 }
@@ -413,7 +413,7 @@ function lassoText(s, poly) {
     const a = caretIn(s, f.left + 2, f.top + f.height / 2), b = caretIn(s, l.right - 2, l.top + l.height / 2);
     let A = a && a.el === el ? a.off : 0, B = b && b.el === el ? b.off + 1 : t.length;
     [A, B] = wordSnap(t, A, Math.min(B, t.length)); if (B - A < 1) continue;
-    sel.push({ el, a: A, b: B, text: t.slice(A, B).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
+    sel.push({ el, a: A, b: B, text: t.slice(A, B).replace(/\s+/g, ' ').trim().replace(/^[a-j](?=[A-Z(“"])/, '') });
   }
   if (!sel.length) return;
   const last = P.reduce((m, p) => p[1] > m[1] ? p : m, P[0]);
@@ -431,7 +431,7 @@ function selFromRange(s, rg) {
     const t = el.textContent, off = (n, o) => { const r = document.createRange(); r.setStart(el, 0); r.setEnd(n, o); return r.toString().length; };
     let a = el.contains(rg.startContainer) ? off(rg.startContainer, rg.startOffset) : 0, b = el.contains(rg.endContainer) ? off(rg.endContainer, rg.endOffset) : t.length;
     [a, b] = wordSnap(t, a, b); if (b - a < 1) continue;
-    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-h](?=[A-Z(“"])/, '') });
+    out.push({ el, a, b, text: t.slice(a, b).replace(/\s+/g, ' ').trim().replace(/^[a-j](?=[A-Z(“"])/, '') });
   }
   return out;
 }
