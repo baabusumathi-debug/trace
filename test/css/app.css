@@ -1801,3 +1801,11 @@ p.sub.tlab{margin-bottom:6px}
 .pdk-x{color:var(--gold);text-decoration:none;font-size:16px;margin-right:4px}
 .pdk-pair[hidden],.pdk-cover[hidden]{display:none}
 .pdk-hrs span:last-child{transform:translateX(-100%)}
+/* T-143: a wide screen (the Mac) shows the Desk side by side too */
+@media (min-width:900px) and (min-height:601px){
+  .pdk-body{flex-direction:row}
+  .pdk-left{width:min(520px,42%);flex-shrink:0;border-right:1px solid var(--line2);padding:6px 22px 16px;overflow:auto;gap:14px}
+  .pdk-right{border-top:0;margin-top:0;padding:6px 22px 16px}
+  .pdk-ring{width:150px;height:150px}.pdk-big{font-size:30px}.pdk-tm b{font-size:26px}.pdk-where{font-size:20px;max-height:none}
+  .pdk-row>div{grid-template-columns:repeat(auto-fill,minmax(30px,1fr))}.pt{font-size:10.5px}
+}
