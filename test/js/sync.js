@@ -27,6 +27,14 @@ export async function recordView(ev) {
   recount();
   return e;
 }
+// T-153: time in a viva walk that is not a card (opening/closing lesson, spine, looking back), kept and synced like a view
+export async function recordStudy(ev) {
+  const e = { kind: 'study', synced: 0, logged: 1, dev: S.device, no: 0, again: false, ...ev };
+  (S.study || (S.study = [])).push(e);
+  await db.put('events', e);
+  recount();
+  return e;
+}
 export async function undoView(e) {
   S.events = S.events.filter(x => x.id !== e.id);
   if (!e.synced) await db.del('events', e.id);
@@ -311,7 +319,7 @@ async function mergeRemoteEvents(data, fromRow) {
   if (add.length) {
     await db.putMany('events', add);
     for (const e of add) {
-      if (e.kind === 'undo') S.undone.add(e.ref); else S.events.push(e);
+      if (e.kind === 'undo') S.undone.add(e.ref); else if (e.kind === 'study') (S.study || (S.study = [])).push(e); else S.events.push(e);
     }
     S.events.sort((a, b) => a.ts - b.ts);
   }
