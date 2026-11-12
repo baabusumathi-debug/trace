@@ -79,7 +79,7 @@ async function boot() {
   if (demo && !S.library) {
     status.state = 'syncing';
   }
-  S.listeners.add(() => { if (!flow) route(); else updateFlowChrome(); });
+  S.listeners.add(() => { if (!flow) { if (/^#\/desk/.test(location.hash) && document.querySelector('.screen.pdk')) return; route(); } else updateFlowChrome(); });   // T-144: a sync never redraws the Desk (it flickered)
   window.addEventListener('hashchange', async () => {
     if (/#setup=/.test(location.hash) && !isDemo()) { if (await trySetup(location.href)) { await countPending(); startAutoSync(); } }
     route();
@@ -1331,7 +1331,7 @@ function renderDeskPage() {
   // keep the phone's screen on while the Desk is open
   let wl = null; const lock = async () => { try { if (navigator.wakeLock && document.visibilityState === 'visible') wl = await navigator.wakeLock.request('screen'); } catch (e) { /* */ } };
   lock(); document.addEventListener('visibilitychange', lock);
-  let lastM = '';
+  let lastM = '', lastScroll = '';
   const paint = () => {
     if (!document.querySelector('.screen.pdk')) { clearInterval(tk); document.removeEventListener('visibilitychange', lock); try { wl && wl.release(); } catch (e) { /* */ } return; }
     const S2 = DESK.guestSnap(), off = S2 ? DESK.guestAt() - S2.ts : 0, now = Date.now() - off, nm = DAYP.nowMin(now);
@@ -1368,7 +1368,8 @@ function renderDeskPage() {
     if (view() === 'q') M.innerHTML = `<div class="pdk-qg">${(F.qs || []).map(([n2, st, mk, sec]) => `<span class="pq s${st}${mk ? ' m' + mk : ''}"><b>${n2}</b><i>${sec ? clockShort(sec) : ''}</i></span>`).join('')}</div>`;
     else if (rows() === '5') M.innerHTML = `<div class="pdk-g5">${F.g.flatMap(([n2, t]) => t.split(',').map((x, i) => i === 0 ? tile(x).replace('>O<', '>O' + n2 + '<') : tile(x))).join('')}</div>`;
     else M.innerHTML = F.g.map(([n2, t], i) => `<div class="pdk-row${i === F.gi ? ' on' : ''}"><span class="mono">Q${n2}</span><div>${t.split(',').map(tile).join('')}</div></div>`).join('');
-    const on = M.querySelector('.pdk-row.on, .pq.s2, .pt.n'); if (on) on.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    const on = M.querySelector('.pdk-row.on, .pq.s2, .pt.n'), ok2 = view() + rows() + (F.step ? F.step.qn : '') + ':' + F.gi;
+    if (on && ok2 !== lastScroll) { lastScroll = ok2; on.scrollIntoView({ block: 'center', behavior: 'smooth' }); }   // only when the place changes
   };
   const tk = setInterval(paint, 1000); paint();
   if (DESK.guestCode() && ['off', 'notfound', 'error'].includes(DESK.guestState())) DESK.joinDesk(DESK.guestCode());
