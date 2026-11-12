@@ -1748,3 +1748,54 @@ p.sub.tlab{margin-bottom:6px}
 .flow .f-day{font-size:10.5px;color:var(--muted);white-space:nowrap}.flow .f-day b{color:var(--gold2);font-weight:500}
 .f-due{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 12px;border:1px solid #2c5a53;background:#15201f;color:#cfeee8;border-radius:12px;font-size:13px}
 .f-due span{margin-right:auto}
+
+/* T-142: the phone Desk (#/desk) — portrait: timers above the mosaic; landscape: side by side */
+.screen.pdk{display:flex;flex-direction:column;height:100%;background:var(--bg);overflow:hidden;position:relative}
+.pdk-top{display:flex;justify-content:space-between;align-items:flex-end;padding:calc(14px + var(--safe-t)) 18px 8px}
+.pdk-top>div:first-child{display:flex;flex-direction:column;gap:3px}
+.pdk-link{font-size:10.5px;color:var(--faint)}
+.pdk-clock{display:flex;flex-direction:column;align-items:flex-end}.pdk-clock b{font-size:30px;font-weight:500}.pdk-clock span{font-size:10px;color:var(--faint)}
+.pdk-body{flex:1;min-height:0;display:flex;flex-direction:column}
+.pdk-left{padding:0 14px;display:flex;flex-direction:column;gap:10px}
+.pdk-right{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:10px 14px 12px;border-top:1px solid var(--line2);margin-top:10px}
+.pdk-card{border:1px solid var(--line2);border-radius:18px;background:var(--bg2);padding:12px;display:flex;gap:14px;align-items:center}
+.pdk-ring{width:118px;height:118px;flex-shrink:0}
+.pdk-ring circle{fill:none;stroke-width:8}.pdk-ring .r0{stroke:var(--line2)}.pdk-ring .r1{stroke:var(--gold);stroke-linecap:round;transform:rotate(-90deg);transform-origin:64px 64px;transition:stroke-dashoffset .6s}
+.pdk-ring text{fill:var(--ink);font-family:var(--mono);font-size:22px;font-weight:500}.pdk-ring text.sm{font-size:9.5px;fill:var(--muted);letter-spacing:1.5px}
+.pdk-sx{display:flex;flex-direction:column;gap:4px;min-width:0}
+.pdk-big{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.05}
+.pdk-next{font-size:10.5px;color:#7fcfc1}.pdk-earn{font-size:10px;color:var(--faint)}
+.pdk-tm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pdk-tm>div{border:1px solid var(--line2);border-radius:14px;background:#171a20;padding:9px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pdk-tm>div.q{border-color:#5b4d2a;background:#1f1c14}.pdk-tm>div.q b{color:var(--gold2)}
+.pdk-tm .kick{font-size:9px}.pdk-tm b{font-size:21px;font-weight:500}.pdk-tm i{font-style:normal;font-size:9.5px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdk-strip{position:relative}.pdk-hrs{position:relative;height:14px;font-size:9.5px;color:var(--faint)}.pdk-hrs span{position:absolute;transform:translateX(-0%)}
+.pdk-bar{position:relative;height:14px;border-radius:7px;background:var(--bg2);overflow:hidden}
+.pdk-bar i{position:absolute;top:0;bottom:0}.pdk-bar i.dz-study{background:#d1b77c}.pdk-bar i.dz-break{background:#5fb3a6}.pdk-bar i.dz-rest{background:#6b5a8e}.pdk-bar i.dz-meal{background:#9a6a4a}.pdk-bar i.dz-out{background:#4f6f94}
+.pdk-bar b{position:absolute;top:0;bottom:0;width:2px;background:#fff}
+.pdk-where{margin:0;font-family:var(--serif);font-size:17px;color:var(--ink);line-height:1.2;max-height:2.5em;overflow:hidden}
+.pdk-mh{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.pdk-pos{font-family:var(--serif);font-size:18px;font-weight:600;margin-right:auto}
+.pdk-mosaic{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:5px}
+.pdk-row{display:grid;grid-template-columns:34px minmax(0,1fr);gap:6px;align-items:center}.pdk-row>span{font-size:10px;color:var(--faint)}.pdk-row.on>span{color:var(--gold2)}
+.pdk-row>div{display:grid;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));gap:4px}
+.pt{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font:500 9px var(--mono);font-style:normal;box-sizing:border-box}
+.pt.d{background:var(--gold);color:#3a2f12}.pt.s{background:rgba(209,183,124,.28);color:var(--gold2);box-shadow:inset 0 0 0 1px var(--gold)}.pt.a{background:#1f232a;color:#6f6b62;box-shadow:inset 0 0 0 1px #2a2d33}.pt.n{background:var(--bg);color:var(--gold2);box-shadow:0 0 0 2px var(--gold2)}.pt.les{border-radius:50%}.pt.look{outline:2px dashed #ead6a0}
+.pdk-g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.pdk-g5 .pt{font-size:10px}
+.pdk-qg{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px}
+.pq{border-radius:8px;padding:6px;display:flex;justify-content:space-between;align-items:baseline;border:1px solid #2a2d33;background:#1b1f25;min-height:36px;box-sizing:border-box}
+.pq b{font:500 12px var(--mono);color:#6f6b62}.pq i{font:9px var(--mono);font-style:normal;color:var(--faint)}
+.pq.s1{background:#2a2617;border-color:#5b4d2a}.pq.s1 b{color:var(--ink)}.pq.s2{border:2px solid var(--gold2)}.pq.s2 b{color:var(--gold2)}
+.pq.mf{background:#3a3220;border-color:var(--gold)}.pq.mp{background:#3a2c14;border-color:#a57d3a}.pq.mb{background:#2e1c1c;border-color:#a55}
+.pdk-leg{font-size:9.5px;color:var(--faint);margin:0}.pdk-leg .d{color:var(--gold)}.pdk-leg .s{color:#bfa76f}.pdk-leg .n{color:var(--gold2)}
+.pdk-cover{position:absolute;inset:auto 14px 14px 14px;border-radius:14px;background:rgba(20,23,28,.92);border:1px solid #2c5a53;padding:12px 16px;display:flex;flex-direction:column;gap:2px}.pdk-cover b{font-family:var(--serif);font-size:20px}
+.pdk-pair{position:absolute;inset:auto 14px 14px 14px;border-radius:16px;background:var(--bg2);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.pdk-pair input{font:500 28px var(--mono);letter-spacing:.3em;width:7ch;text-align:center}
+.pdk-code{font-size:46px;letter-spacing:.25em;text-align:center;color:var(--gold2);margin:8px 0}
+@media (orientation:landscape) and (max-height:600px){
+  .pdk-top{padding-top:calc(8px + var(--safe-t));padding-bottom:4px}.pdk-clock b{font-size:24px}
+  .pdk-body{flex-direction:row}
+  .pdk-left{width:44%;flex-shrink:0;border-right:1px solid var(--line2);padding-bottom:10px;overflow:auto}
+  .pdk-right{border-top:0;margin-top:0;padding-top:0}
+  .pdk-ring{width:96px;height:96px}.pdk-big{font-size:20px}.pdk-tm b{font-size:18px}.pdk-where{font-size:15px}
+}
+.pdk-x{color:var(--gold);text-decoration:none;font-size:16px;margin-right:4px}
