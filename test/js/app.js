@@ -839,7 +839,7 @@ function renderFlowTab() {
     const lf = lastFlowCards(), ag = againCards(), avg = avgPace() || 75000, mins = n => Math.max(1, Math.round(n * avg / 60000));
     const sys = systems();
     app.innerHTML = `<div class="screen flowtab">
-      <header class="top"><span class="tt"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></span><button class="btn ghost" data-pdk>Phone Desk${DESK.deskState() === 'live' ? ' ●' : ''}</button>${goingOutButton()}</header>
+      <header class="top"><span class="tt"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></span><button class="btn ghost" data-pdk>Phone Desk${['live', 'relay'].includes(DESK.deskState()) ? ' ●' : ''}</button>${goingOutButton()}</header>
       <div class="scroll pad desk">
         ${planDesk()}
         ${targetBlock(!currentStretch())}
@@ -1283,7 +1283,7 @@ function deskChooser() {
   });
 }
 function deskHostSheet() {
-  const ST = { off: 'Not linked', waiting: 'Waiting for the phone…', live: 'Linked · the phone is showing this Tab', lost: 'Link lost · offering it again…', idle: 'The phone did not answer in 3 minutes', error: 'Could not reach Drive to offer the link', unsupported: 'This browser cannot make the link' };
+  const ST = { off: 'Not linked', waiting: 'Waiting for the phone…', live: 'Linked · the phone is showing this Tab', relay: 'Linked through Drive (this network keeps the two apart) · the phone updates every 15 s', lost: 'Link lost · offering it again…', idle: 'The phone did not answer in 3 minutes', error: 'Could not reach Drive to offer the link', unsupported: 'This browser cannot make the link' };
   planSheet('Link a phone', 'TRACE DESK', `<p class="muted small">On the phone: open Trace, then Flow › Phone Desk › This is the phone, and type this code.</p>
     <p class="pdk-code mono" data-dcode>${esc(DESK.deskCode())}</p><p class="mono small" data-dst></p>
     <div class="sheet-f"><button class="btn ghost" data-dnew>New code</button><button class="btn ghost" data-doff>Unlink</button><button class="btn primary" data-dgo>Offer the link</button></div>`, (w, c) => {
@@ -1322,10 +1322,10 @@ function renderDeskPage() {
   app.querySelectorAll('[data-pv]').forEach(b => b.onclick = () => { P.set('pdkView', b.dataset.pv); segs(); lastM = ''; paint(); });
   app.querySelectorAll('[data-pr]').forEach(b => b.onclick = () => { P.set('pdkRows', b.dataset.pr); segs(); lastM = ''; paint(); });
   segs();
-  const GS = { off: 'Not linked', looking: 'Looking for the Tab…', connecting: 'Linking…', live: '● linked to the Tab', lost: 'Link lost · trying again…', notfound: 'The Tab is not offering a link (open Phone Desk on the Tab)', badcode: 'The code has 4 digits', error: 'Could not reach Drive', unsupported: 'This browser cannot make the link' };
+  const GS = { off: 'Not linked', looking: 'Looking for the Tab…', connecting: 'Linking…', live: '● linked to the Tab', relay: '● linked through Drive · every 15 s', lost: 'Link lost · trying again…', notfound: 'The Tab is not offering a link (open Phone Desk on the Tab)', badcode: 'The code has 4 digits', error: 'Could not reach Drive', unsupported: 'This browser cannot make the link' };
   app.querySelector('[data-pjoin]').onclick = () => DESK.joinDesk(app.querySelector('[data-pc]').value);
   app.querySelector('[data-pleave]').onclick = () => { DESK.leaveDesk(); app.querySelector('[data-pc]').value = ''; };
-  const showState = st => { $p('pdk-link').textContent = GS[st] || st; $p('pdk-pst').textContent = GS[st] || st; $p('pdk-pair').hidden = st === 'live' || (DESK.guestSnap() && ['lost', 'connecting'].includes(st)); };
+  const showState = st => { $p('pdk-link').textContent = GS[st] || st; $p('pdk-pst').textContent = GS[st] || st; $p('pdk-pair').hidden = st === 'live' || st === 'relay' || (DESK.guestSnap() && ['lost', 'connecting'].includes(st)); };
   const offG = DESK.onGuest(st => { if (!document.querySelector('.screen.pdk')) return offG(); showState(st); paint(); });
   showState(DESK.guestState());
   // keep the phone's screen on while the Desk is open

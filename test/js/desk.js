@@ -1,7 +1,9 @@
 // T-142: Trace Desk — the phone beside the Tab. The Tab (host) sends a small picture of where you are (session, question,
 // card, day plan, breaks, tiles) to the phone over a direct WebRTC link on the same Wi-Fi or hotspot. The Drive bridge
-// is used only to introduce the two: the Tab leaves an offer in Trace/desk-<code>-o.json, the phone answers in
-// desk-<code>-a.json (two small files, overwritten each time). Nothing about study goes through Drive. Display only.
+// is used to introduce the two: the Tab leaves an offer in Trace/desk-<code>-o.json, the phone answers in
+// desk-<code>-a.json (small files, overwritten each time). When the direct link cannot open (a network that keeps
+// devices apart), the two fall back to a relay through Drive: the Tab writes desk-<code>-s.json when something changes
+// (and every 2 min), the phone reads it every 15 s and runs the clocks itself in between. Display only.
 import { CONFIG, CHANNEL, IS_HT } from './config.js';
 import { batch, hasBackend } from './api.js';
 
@@ -36,7 +38,7 @@ export async function startHost() {
   tell('waiting');
   const pc = new RTCPeerConnection(ICE), ch = pc.createDataChannel('desk', { ordered: true });
   H.pc = pc; H.ch = ch;
-  ch.onopen = () => { if (g !== H.gen) return; tell('live'); H.last = ''; pushDesk(true); clearInterval(H.tick); H.tick = setInterval(() => pushDesk(false), 2000); };
+  ch.onopen = () => { if (g !== H.gen) return; lset('deskRelay', false); tell('live'); H.last = ''; pushDesk(true); clearInterval(H.tick); H.tick = setInterval(() => pushDesk(false), 2000); };
   ch.onclose = () => { if (g !== H.gen) return; clearInterval(H.tick); tell('lost'); setTimeout(() => { if (g === H.gen && deskOn()) startHost(); }, 1500); };
   pc.onconnectionstatechange = () => { if (g === H.gen && ['failed', 'disconnected'].includes(pc.connectionState) && H.state === 'live') { try { ch.close(); } catch (e) { /* */ } } };
   try {
@@ -47,10 +49,28 @@ export async function startHost() {
       await wait(3000);
       const a = await readJ(fname(H.code, 'a')).catch(() => null);
       if (g !== H.gen) return;
-      if (a && a.ts > ts && a.of === ts && a.sdp) { await pc.setRemoteDescription(a.sdp); return; }
+      if (a && a.ts > ts && a.of === ts && a.sdp) {
+        await pc.setRemoteDescription(a.sdp);
+        setTimeout(() => { if (g === H.gen && H.state === 'waiting') startRelay(g); }, 20000);   // no direct link: relay
+        return;
+      }
     }
-    if (g === H.gen && H.state === 'waiting') tell('idle');
+    if (g === H.gen && H.state === 'waiting') { if (lget('deskRelay', false)) startRelay(g); else tell('idle'); }   // a phone already on the relay keeps reading it
   } catch (e) { if (g === H.gen) tell('error'); }
+}
+function startRelay(g) {
+  lset('deskRelay', true); H.relay0 = Date.now();
+  tell('relay'); H.last = ''; H.relayAt = 0; clearInterval(H.tick);
+  H.tick = setInterval(() => { if (g !== H.gen) return; if (Date.now() - H.relay0 > 4 * 3600e3) { clearInterval(H.tick); tell('idle'); return; } relayPush(); }, 5000); relayPush();
+}
+async function relayPush() {
+  if (!H.src || H.busy) return;
+  let snap; try { snap = H.src(); } catch (e) { return; }
+  const j = JSON.stringify({ ...snap, ts: 0 });
+  if (j === H.last && Date.now() - H.relayAt < 120000) return;
+  if (Date.now() - H.relayAt < 12000) return;                       // at most one write in 12 s
+  H.busy = true; H.last = j; H.relayAt = Date.now();
+  try { await writeJ(fname(H.code, 's'), { ...snap, ts: Date.now() }); } catch (e) { /* next time */ } finally { H.busy = false; }
 }
 function closeHost(keepOn) {
   clearInterval(H.tick);
@@ -62,6 +82,7 @@ function closeHost(keepOn) {
 export const stopHost = () => closeHost(false);
 // send when something changed (and at least every 10 s, so the phone knows the link is alive)
 export function pushDesk(force) {
+  if (H.state === 'relay') { if (force) H.relayAt = Math.min(H.relayAt, Date.now() - 12000); relayPush(); return; }
   if (!H.ch || H.ch.readyState !== 'open' || !H.src) return;
   let snap; try { snap = H.src(); } catch (e) { return; }
   const j = JSON.stringify({ ...snap, ts: 0 });
@@ -106,7 +127,22 @@ export async function joinDesk(code) {
     await pc.setRemoteDescription(o.sdp);
     await pc.setLocalDescription(await pc.createAnswer()); await iceDone(pc);
     await writeJ(fname(code, 'a'), { ts: Date.now(), of: o.ts, sdp: pc.localDescription });
-    setTimeout(() => { if (g === G.gen && G.state === 'connecting') { gtell('lost'); joinDesk(code); } }, 25000);
+    setTimeout(() => { if (g === G.gen && G.state === 'connecting') relayRead(g, code); }, 25000);   // no direct link: read the relay
   } catch (e) { if (g === G.gen) gtell('error'); }
+}
+async function relayRead(g, code) {
+  gtell('relay'); let seen = '';
+  try { if (G.pc) G.pc.close(); } catch (e) { /* */ }
+  while (g === G.gen) {
+    try {
+      const [f] = await batch([{ op: 'findFile', folderId: CONFIG.traceFolderId, name: fname(code, 's') }]);
+      if (g !== G.gen) return;
+      if (f && f.ok && f.data && f.data.id && f.data.modified !== seen) {
+        const [r] = await batch([{ op: 'readFile', id: f.data.id }]);
+        if (r && r.ok) { const sn = JSON.parse(r.data.text); seen = f.data.modified; if (sn.ts) { G.snap = sn; G.at = Date.now(); gtell('relay'); } }
+      }
+    } catch (e) { /* try again */ }
+    await wait(document.visibilityState === 'visible' ? 15000 : 60000);
+  }
 }
 export function leaveDesk() { G.gen++; try { if (G.pc) G.pc.close(); } catch (e) { /* */ } G.pc = null; lset('deskJoin', ''); gtell('off'); }
