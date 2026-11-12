@@ -11,8 +11,8 @@ export function inline(s) {
 export function plain(s) { return (s || '').replace(/\*\*/g, '').replace(/(^|[^*])\*([^*]+)\*/g, '$1$2'); }
 
 // "**a** text", "a text", "**a.** text" -> letter + rest
-const SUB_B = /^\s*\*\*([a-h])[.)]?\*\*\s+(.*)$/;            // **a** text
-const SUB_P = /^\s*([a-h])[.)]?\s+(?=[A-Z0-9*(“"'≥≤<>])(.*)$/;  // a Text  (not "a patient…")
+const SUB_B = /^\s*\*\*([a-j])[.)]?\*\*\s+(.*)$/;            // **a** text
+const SUB_P = /^\s*([a-j])[.)]?\s+(?=[A-Z0-9*(“"'≥≤<>])(.*)$/;  // a Text  (not "a patient…")
 const SUB = { test: l => SUB_B.test(l) || SUB_P.test(l) };
 const subMatch = l => l.match(SUB_B) || l.match(SUB_P);
 

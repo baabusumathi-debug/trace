@@ -3,7 +3,7 @@ import json, re, sys
 deck = sys.argv[1]; f = f'/home/claude/map/explain/{deck.lower()}_learn.py'
 ns = {}; exec(open(f).read(), ns); L = ns['L']
 cards = [json.loads(l) for l in open(f'/home/claude/map/cards/{deck}.jsonl')]
-let = lambda t: [m for m in re.findall(r'^(?:\*\*)?([a-h])(?:\*\*)?\s', t, re.M)]
+let = lambda t: [m for m in re.findall(r'^(?:\*\*)?([a-j])(?:\*\*)?\s', t, re.M)]
 bad = 0
 def err(*a):
     global bad; bad += 1; print('ERR', *a)
