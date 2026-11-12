@@ -122,15 +122,16 @@ export async function joinDesk(code) {
       ch.onmessage = m => { if (g !== G.gen) return; try { G.snap = JSON.parse(m.data); G.at = Date.now(); gtell('live'); } catch (er) { /* */ } };
       ch.onclose = () => { if (g !== G.gen) return; gtell('lost'); setTimeout(() => { if (g === G.gen) joinDesk(code); }, 2000); };
     };
-    pc.onconnectionstatechange = () => { if (g === G.gen && pc.connectionState === 'failed') { gtell('lost'); setTimeout(() => { if (g === G.gen) joinDesk(code); }, 2000); } };
+    pc.onconnectionstatechange = () => { if (g === G.gen && pc.connectionState === 'failed' && G.state !== 'live') relayRead(g, code); };   // never opened: the relay
     gtell('connecting');
     await pc.setRemoteDescription(o.sdp);
     await pc.setLocalDescription(await pc.createAnswer()); await iceDone(pc);
     await writeJ(fname(code, 'a'), { ts: Date.now(), of: o.ts, sdp: pc.localDescription });
-    setTimeout(() => { if (g === G.gen && G.state === 'connecting') relayRead(g, code); }, 25000);   // no direct link: read the relay
+    setTimeout(() => { if (g === G.gen && !['live', 'relay'].includes(G.state)) relayRead(g, code); }, 25000);   // no direct link: read the relay
   } catch (e) { if (g === G.gen) gtell('error'); }
 }
 async function relayRead(g, code) {
+  if (G.relaying === g) return; G.relaying = g;
   gtell('relay'); let seen = '';
   try { if (G.pc) G.pc.close(); } catch (e) { /* */ }
   while (g === G.gen) {
