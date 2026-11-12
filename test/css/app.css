@@ -1702,3 +1702,17 @@ p.sub.tlab{margin-bottom:6px}
 .flow.v3 .f-strip .ft.look{outline:2px dashed #ead6a0;outline-offset:1px}
 .flow.v3 .f-strip.open .vg{flex-wrap:wrap}
 .flow.v3 .f-strip .f-cnt{white-space:nowrap}
+
+/* T-138: viva thread and viva rows in the Plan */
+.th-sw{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:2px 9px;font-size:9.5px;cursor:pointer;margin-left:6px}
+.th-sw:hover{color:var(--gold2);border-color:var(--gold)}
+.vthread .vth-b{display:flex;flex-wrap:wrap;gap:4px;height:auto}
+.vthread .bd.vb{width:26px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:5px}
+.vthread .bd.vb b{font-size:9px;color:#8f8a7f;font-weight:500}
+.vthread .bd.vb.vdone{background:var(--gold);border-color:var(--gold)}.vthread .bd.vb.vdone b{color:#3a2f12}
+.vthread .bd.vb.vm-patchy{background:#a57d3a;border-color:#a57d3a}.vthread .bd.vb.vm-patchy b{color:#fff}
+.vthread .bd.vb.vm-blank{background:#5a2f2f;border-color:#c77}.vthread .bd.vb.vm-blank b{color:#fff}
+.vthread .bd.vb.now{outline:2px solid var(--gold2);outline-offset:1px}
+.vthread .vth-x{font-size:9px;color:var(--gold);align-self:center;margin:0 4px 0 8px}
+.pgrid tr.vrow td.nm b{color:var(--gold2)}
+.pgrid td.pc.vq.on{background:rgba(209,183,124,.14)}
