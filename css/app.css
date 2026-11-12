@@ -1809,3 +1809,5 @@ p.sub.tlab{margin-bottom:6px}
   .pdk-ring{width:150px;height:150px}.pdk-big{font-size:30px}.pdk-tm b{font-size:26px}.pdk-where{font-size:20px;max-height:none}
   .pdk-row>div{grid-template-columns:repeat(auto-fill,minmax(30px,1fr))}.pt{font-size:10.5px}
 }
+/* T-146: the timeline keeps its full height (it was squeezed, so the note under it showed over the rows) */
+.dayp .dz-tl,.dayp .dz-now,.dayp .dz-bar,.dayp .dz-add{flex-shrink:0}
