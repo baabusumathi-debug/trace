@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–10 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P3, P6 and P7 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "aa2965163a",
+ "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7 and P8 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
+ "version": "e38c147358",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -33,10 +33,10 @@
   },
   "TOX03A|PEST-10": {
    "fields": {
-    "a": "a **1–3 mg IV bolus** (by severity), **doubling every 5 minutes** until atropinised (Eddleston, Lancet 2008).\nb **Clear chest** (no wheeze or secretions), heart rate >80, systolic BP >80, **dry axillae**, pupils no longer pinpoint.\nc Infusion of 10–20% of the total loading dose per hour *(standard teaching, not in your notes)*.\nd Stop, then restart at **70–80% of the previous rate**.\ne **Nicotinic** effects: weakness and paralysis."
+    "a": "a **1.8–3 mg IV bolus** (by severity), **doubling every 5 minutes** until atropinised (Eddleston, Lancet 2008).\nb **Clear chest** (no wheeze or secretions), heart rate >80, systolic BP >80, **dry axillae**, pupils no longer pinpoint.\nc Infusion of 10–20% of the total loading dose per hour *(standard teaching, not in your notes)*.\nd Stop, then restart at **70–80% of the previous rate**.\ne **Nicotinic** effects: weakness and paralysis."
    },
    "src": "Eddleston M et al., Lancet 2008;371:597",
-   "date": "7 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "TOX01|TOX-13": {
    "fields": {
@@ -174,10 +174,10 @@
   "CCM06|MDR-15": {
    "fields": {
     "q": "**Per IDSA 2026 for CRE, give**\n**the agents for:**\na KPC producers\nb NDM / MBL\nc OXA-48-like producers\nd The fallback common to all three\nbranches",
-    "a": "**Branch** | **Agents**\n**KPC producers** | **Meropenem-vaborbactam, ceftazidime-avibactam or imipenem-relebactam** (all preferred; slight edge to meropenem-vaborbactam); cefiderocol alternative\n**NDM / MBL** | **Aztreonam-avibactam** (slightly favoured) or **ceftazidime-avibactam PLUS aztreonam**; or **cefiderocol**\n**OXA-48-like** | **Ceftazidime-avibactam** preferred (not meropenem-vaborbactam or imipenem-relebactam); cefiderocol alternative\n- Polymyxins are not a routine fallback in IDSA (colistin only for simple cystitis); tigecycline/eravacycline only for non-bloodstream, non-urinary infections"
+    "a": "**Branch** | **Agents**\n**KPC producers** | **Meropenem-vaborbactam, ceftazidime-avibactam or imipenem-relebactam** (all preferred; slight edge to meropenem-vaborbactam); cefiderocol alternative\n**NDM / MBL** | **Aztreonam-avibactam or cefiderocol** (both preferred); **ceftazidime-avibactam PLUS aztreonam** if aztreonam-avibactam is unavailable\n**OXA-48-like** | **Ceftazidime-avibactam** preferred (not meropenem-vaborbactam or imipenem-relebactam); cefiderocol alternative\n- Polymyxins are not a routine fallback in IDSA (colistin only for simple cystitis); tigecycline/eravacycline only for non-bloodstream, non-urinary infections"
    },
-   "src": "IDSA 2026 AMR Guidance (Tamma et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481)",
-   "date": "7 Nov 2026"
+   "src": "IDSA 2026 AMR Guidance (Tamma et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481); Tamma PD et al., IDSA 2026 AMR Guidance, Clin Infect Dis 2026, doi:10.1093/cid/ciag481",
+   "date": "13 Nov 2026"
   },
   "CCM06|MDR-22": {
    "fields": {
@@ -188,11 +188,11 @@
   },
   "CCM06|MDR-23": {
    "fields": {
-    "a": "- 1. **Meropenem-colistin combination is NOT\nrecommended**\n- 2. **Sulbactam-durlobactam + imipenem or meropenem** is preferred (IDSA 2026). If unavailable, bridge with **high-dose ampicillin-sulbactam** (**9 g sulbactam/day** = 27 g/day, extended or continuous infusion) plus at least one other agent\n- 3. Add an **additional agent** as combination\ntherapy: **minocycline, tigecycline, or polymyxin\nB**\n- 4. **Step down to oral therapy**",
+    "a": "- 1. **Meropenem-colistin combination is NOT\nrecommended**\n- 2. **Sulbactam-durlobactam + imipenem or meropenem** is preferred (IDSA 2026). If unavailable, bridge with **high-dose ampicillin-sulbactam** (**9 g sulbactam/day** = 27 g/day, extended or continuous infusion) plus at least one other agent\n- 3. Add an **additional agent** as combination\ntherapy: **cefiderocol, minocycline or polymyxin\nB** (tigecycline only if minocycline cannot be used)\n- 4. **Step down to oral therapy**",
     "watch": "High-dose sulbactam is now one number: 9 g of sulbactam a day (27 g/day of\nampicillin-sulbactam). The older 6-9 g range is outdated."
    },
-   "src": "IDSA 2026 AMR Guidance (Tamma et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481)",
-   "date": "7 Nov 2026"
+   "src": "IDSA 2026 AMR Guidance (Tamma et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481); IDSA 2026 AMR Guidance (Q5.2, Q5.4)",
+   "date": "13 Nov 2026"
   },
   "CCM03|VAP-29": {
    "fields": {
@@ -255,10 +255,10 @@
   },
   "NEURO02|NEURO-32": {
    "fields": {
-    "a": "Trial | Details\nEurotherm | Andrews PJD et al. (NEJM 2015). Hypothermia (**32-35°C**) + standard care vs standard care alone, in adults with intractably raised ICP (**>20 mmHg**). Primary outcome GOS-E at 6 months. **Stopped early for harm: worse functional outcome** (adjusted OR 1.53), trend to higher mortality\nPOLAR | **500** patients, 2 groups: normothermic vs early prophylactic hypothermia (**33°C**). **No change in outcomes**"
+    "a": "Trial | Details\nEurotherm | Andrews PJD et al. (NEJM 2015). Hypothermia (**32-35°C**) + standard care vs standard care alone, in adults with intractably raised ICP (**>20 mmHg**). Primary outcome GOS-E at 6 months. **Stopped early for harm: worse functional outcome** (adjusted OR 1.53), higher mortality (34.9% vs 26.6%, HR 1.45, P = 0.047)\nPOLAR | **511** patients randomised (500 analysed), 2 groups: normothermic vs early prophylactic hypothermia (**33°C**). **No change in outcomes**"
    },
-   "src": "Andrews PJD et al., NEJM 2015;373:2403 (Eurotherm3235)",
-   "date": "7 Nov 2026"
+   "src": "Andrews PJD et al., NEJM 2015;373:2403 (Eurotherm3235); Andrews PJD et al. NEJM 2015;373:2403; Cooper DJ et al. JAMA 2018;320:2211",
+   "date": "13 Nov 2026"
   },
   "NEURO01|NEURO-24": {
    "fields": {
@@ -276,10 +276,11 @@
   },
   "NEURO03|NEURO-75": {
    "fields": {
-    "a": "**Prophylactic hypervolaemia is NOT recommended**\n**Euvolaemia** is beneficial for preventing DCI and improving functional outcomes (Class 2a, B-NR; AHA/ASA 2023)\n**Induced hypertension** indicated for patients with **delayed cerebral ischaemia (DCI)** - Class 2b, B-NR (AHA/ASA 2023: raising SBP 'may be reasonable')\nOptimal BP target **not defined**\nPreferred agents: **norepinephrine and phenylephrine**; adjust by neurological status; maintain **2-3 days**\nAlternative: **Milrinone IV** - inodilator. Loading **0.1–0.2 mg/kg** (Montreal protocol; the cardiac load is 50 mcg/kg), infusion **0.75-1.25 mcg/kg/min**. Maintain euvolaemia; if MAP falls, add norepinephrine"
+    "a": "**Prophylactic hypervolaemia is NOT recommended**\n**Euvolaemia** is beneficial for preventing DCI and improving functional outcomes (Class 2a, B-NR; AHA/ASA 2023)\n**Induced hypertension** indicated for patients with **delayed cerebral ischaemia (DCI)** - Class 2b, B-NR (AHA/ASA 2023: raising SBP 'may be reasonable')\nOptimal BP target **not defined**\nPreferred agents: **norepinephrine and phenylephrine**; adjust by neurological status; maintain **2-3 days**\nAlternative: **Milrinone IV** - inodilator. Loading **0.1–0.2 mg/kg** (Montreal protocol; the cardiac load is 50 mcg/kg), infusion **0.75-1.25 mcg/kg/min**. Maintain euvolaemia; if MAP falls, add norepinephrine",
+    "watch": "Induced hypertension is for ESTABLISHED DCI only. Prophylactic haemodynamic augmentation is Class 3: HARM."
    },
-   "src": "Lannes M et al. Neurocrit Care 2012;16:354-362 (dosing confirmed via secondary sources citing it; abstract has no dosing) · Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4)",
-   "date": "10 Nov 2026"
+   "src": "Lannes M et al. Neurocrit Care 2012;16:354-362 (dosing confirmed via secondary sources citing it; abstract has no dosing) · Hoh BL et al., Stroke 2023;54:e314, as tabulated in Wyckoff S, Chou SH-Y, Neurol Clin 2025;43:107 (Table 4); Hoh BL et al. Stroke 2023 (other harm statements exist: phenytoin, hypervolaemia)",
+   "date": "13 Nov 2026"
   },
   "HY7|VNX-03": {
    "fields": {
@@ -332,10 +333,10 @@
   },
   "HY2|CAR-01": {
    "fields": {
-    "a": "**Unstable tachycardia = synchronised**\n**cardioversion NOW**\n**Immediate synchronised DC cardioversion.** Do not\nwait for TOE or 3 weeks of anticoagulation — give\nheparin, but shock first.\nRHYTHM (SYNCHRONISED) | BIPHASIC ENERGY\n**Atrial flutter** | **200 J** may be reasonable (AHA 2025, COR 2b); older 50–100 J\n**AF** | **≥ 200 J** (AHA 2025, COR 2a); older 120–200 J\n**Other narrow regular (SVT)** | no AHA 2025 joule figure; older 50–100 J\n**Monomorphic VT with pulse** | 100 J\n**Polymorphic VT / VF** | Unsynchronised = defibrillate"
+    "a": "**Unstable tachycardia = synchronised**\n**cardioversion NOW**\n**Immediate synchronised DC cardioversion.** Do not\nwait for TOE or 3 weeks of anticoagulation — give\nheparin, but shock first.\nRHYTHM (SYNCHRONISED) | BIPHASIC ENERGY\n**Atrial flutter** | **200 J** may be reasonable (AHA 2025, COR 2b); older 50–100 J\n**AF** | **≥ 200 J** (AHA 2025, COR 2a); older 120–200 J\n**Other narrow regular (SVT)** | **100 J** (AHA 2025 cardioversion algorithm; the guideline text gives no figure); older 50–100 J\n**Monomorphic VT with pulse** | 100 J\n**Polymorphic VT / VF** | Unsynchronised = defibrillate"
    },
-   "src": "AHA 2025 CPR & ECC Guidelines Part 9 Adult Advanced Life Support, sec 18.1 (Circulation 2025)",
-   "date": "7 Nov 2026"
+   "src": "AHA 2025 CPR & ECC Guidelines Part 9 Adult Advanced Life Support, sec 18.1 (Circulation 2025); AHA 2025 Adult Electrical Cardioversion Algorithm (cpr.heart.org, 2025 algorithms); AHA 2025 Guidelines for CPR and ECC, Part 9: Adult Advanced Life Support (Circulation 2025;152 suppl 2)",
+   "date": "13 Nov 2026"
   },
   "HY2|CAR-13": {
    "fields": {
@@ -362,11 +363,11 @@
   "CVS07B|PCA-29": {
    "fields": {
     "q": "**For the practical conduct of TTM, give:**\na The phases and their durations\nb The nature of the rewarming phase\nc What TTM involves, in three parts\nd The stated preference",
-    "a": "- **AHA 2025:** if not following commands, deliberate temperature control at **32–37.5 °C** (COR 1) for **at least 36 h** (COR 2a); **controlled rewarming no faster than 0.5 °C/h** (COR 2b)\n- **ERC-ESICM 2025:** prevent fever (**>37.5 °C**) for at least **72 h**\n- There is no fixed 24 h + 24 h schedule\n- TTM involves: **careful monitoring of temperature with an INVASIVE temperature probe** • **targeting a safe temperature** • **coordinated MULTIMODAL control of shivering**\n- **It is always preferable to PREVENT fever and shivering, if possible**",
-    "watch": "Rewarming is CONTROLLED (≤0.5 °C/h), not passive, and fever prevention runs on for 72 h - the intervention does not end when the target temperature is released."
+    "a": "- **AHA 2025:** if not following commands, deliberate temperature control at **32–37.5 °C** (COR 1) for **at least 36 h** (COR 2a); **controlled rewarming no faster than 0.5 °C/h** (COR 2b)\n- **ERC-ESICM 2025:** actively prevent fever (target **≤37.5 °C**) for **36–72 h**; do not actively rewarm mild hypothermia (32–36 °C)\n- There is no fixed 24 h + 24 h schedule\n- TTM involves: **careful monitoring of temperature with an INVASIVE temperature probe** • **targeting a safe temperature** • **coordinated MULTIMODAL control of shivering**\n- **It is always preferable to PREVENT fever and shivering, if possible**",
+    "watch": "Rewarming is CONTROLLED (≤0.5 °C/h), not passive, and fever prevention runs on for 36–72 h - the intervention does not end when the target temperature is released."
    },
-   "src": "AHA 2025 CPR & ECC Guidelines Part 11 Post-Cardiac Arrest Care (Circulation 2025); Nolan JP/Sandroni C et al. ERC-ESICM temperature control guideline, Resuscitation 2022;172:229 and Intensive Care Med 2022",
-   "date": "7 Nov 2026"
+   "src": "AHA 2025 CPR & ECC Guidelines Part 11 Post-Cardiac Arrest Care (Circulation 2025); Nolan JP/Sandroni C et al. ERC-ESICM temperature control guideline, Resuscitation 2022;172:229 and Intensive Care Med 2022; Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213)",
+   "date": "13 Nov 2026"
   },
   "SEP01A|SEP-08": {
    "fields": {
@@ -520,10 +521,11 @@
   },
   "OBS02B|OBS-37": {
    "fields": {
-    "a": "a Aggressive multi-organ support; correct coagulopathy;\n**massive transfusion protocol**.\nb **Emergency delivery**; caesarean with ligation of uterine or\ninternal iliac arteries, even hysterectomy.\nc **VA-ECMO** as rescue for refractory collapse (case series only).\nd **Chorioamnionitis** (altered vaginal pH, amniocentesis);\n**pyelonephritis** (ureteric tone lost to progesterone;\nGram-negative colonisation); **endometritis** (instrumentation);\npneumonia."
+    "a": "a Aggressive multi-organ support; correct coagulopathy;\n**massive transfusion protocol**.\nb **Emergency delivery**; caesarean with ligation of uterine or\ninternal iliac arteries, even hysterectomy.\nc **VA-ECMO** as rescue for refractory collapse (case series only).\nd **Chorioamnionitis** (altered vaginal pH, amniocentesis);\n**pyelonephritis** (ureteric tone lost to progesterone;\nGram-negative colonisation); **endometritis** (instrumentation);\npneumonia.",
+    "watch": "If she arrests: resuscitative delivery (old name: perimortem caesarean), completed by 5 minutes."
    },
-   "src": "Amniotic fluid embolism case series and SMFM 2016 guidance",
-   "date": "10 Nov 2026"
+   "src": "Amniotic fluid embolism case series and SMFM 2016 guidance; AHA 2025 Guidelines for CPR and ECC, Part 10: Adult and Pediatric Special Circumstances of Resuscitation (Circulation 2025;152 suppl 2), section 19 Pregnancy, 19.3",
+   "date": "13 Nov 2026"
   },
   "SPECIAL05B|POLY-11": {
    "fields": {
@@ -555,10 +557,10 @@
   },
   "CCM08|CNS-20": {
    "fields": {
-    "a": "- Indications: **focal neurological signs** • **papilloedema** • **continuous or uncontrolled seizures** • **GCS ≤12** (UK 2016; ESCMID 2016 uses **GCS <10**; IDSA any reduced consciousness)\n- Purpose: to exclude significant brain swelling and shift that may predispose to **cerebral herniation post-LP**\n- **Radiological contraindications to LP:** significant brain shift/swelling • tight basal cisterns • alternative diagnosis\n- **Inability to view the fundus is NOT a contraindication to LP**"
+    "a": "- Indications: **focal neurological signs** • **papilloedema** • **continuous or uncontrolled seizures** • **GCS ≤12** (UK 2016; ESCMID 2016 uses **GCS <10**; IDSA any reduced consciousness) (UK 2016; ESCMID 2016 uses **GCS <10**; IDSA any reduced consciousness)\n- Purpose: to exclude significant brain swelling and shift that may predispose to **cerebral herniation post-LP**\n- **Radiological contraindications to LP:** significant brain shift/swelling • tight basal cisterns • alternative diagnosis\n- **Inability to view the fundus is NOT a contraindication to LP**"
    },
    "src": "McGill F et al., UK joint specialist societies guideline, J Infect 2016;72:405; van de Beek D et al., ESCMID guideline, Clin Microbiol Infect 2016;22:S37; Glimåker M et al., Clin Infect Dis 2018;66:321 (Table 1 compares the criteria)",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "CCM08|CNS-26": {
    "fields": {
@@ -569,18 +571,18 @@
   },
   "CCM08|CNS-27": {
    "fields": {
-    "a": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); WHO: **HR for 10 months**. Z only in the 2-month intensive phase\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
+    "a": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); WHO: **HR for 10 months**. Z only in the 2-month intensive phase\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
     "watch": "TB meningitis dexamethasone (0.4 mg/kg/day, tapered over 8-12 weeks by ICMR, 6-8 by WHO) is a completely different regimen from bacterial meningitis dexamethasone (0.15 mg/kg 6-hourly for 4 days)."
    },
    "src": "ICMR Standard Treatment Workflow, NTEP TB meningitis (adult), 2022; WHO 2HRZE/10HR regimen (WHO 2010 rapid advice, carried into Module 4, 2022) · ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025 (maintained); Thwaites GE et al., NEJM 2004;351:1741 · ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025; de Gans J, van de Beek D, NEJM 2002;347:1549",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "CCM08|CNS-19": {
    "fields": {
-    "a": "- Sensitivity **0.93** (95% CI 0.89-0.96)\n- Specificity **0.96** (95% CI 0.93-0.98)\n- **Pretreatment with antibiotics reduces sensitivity to 0.49** (95% CI 0.23-0.75)\n- Optimal level: around **35 mg/dL (34-36)**, i.e. about **3.9 mmol/L** offers higher sensitivity and specificity than levels around 27 mg/dL (26-28)"
+    "a": "- Sensitivity **0.93** (95% CI 0.89-0.96)\n- Specificity **0.96** (95% CI 0.93-0.98)\n- **Pretreatment with antibiotics reduces sensitivity to 0.49** (95% CI 0.23-0.75)\n- Optimal level: around **35 mg/dL (34-36)**, i.e. about **3.9 mmol/L**, i.e. about **3.9 mmol/L** offers higher sensitivity and specificity than levels around 27 mg/dL (26-28)"
    },
    "src": "Sakushima K et al., J Infect 2011;62:255",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "HY4|NEU-12": {
    "fields": {
@@ -605,10 +607,10 @@
   },
   "NEURO01|NEURO-20": {
    "fields": {
-    "a": "GCS | Severity\n**13-15** | Mild TBI\n**9-12** | Moderate TBI\n**3-8** | Severe TBI\nPerformed **after resuscitation** and **before administering sedatives or paralytics**\nSerial GCS: a change of **>2** is a significant prognosticator"
+    "a": "GCS | Severity\n**13-15** | Mild TBI\n**9-12** | Moderate TBI\n**3-8** | Severe TBI\nPerformed **after resuscitation** and **before administering sedatives or paralytics**\nSerial GCS: a fall of **2 or more** points is significant"
    },
-   "src": "Standard GCS severity bands for TBI (mild 13–15, moderate 9–12, severe 3–8); Teasdale G et al., Lancet Neurol 2014;13:844",
-   "date": "10 Nov 2026"
+   "src": "Standard GCS severity bands for TBI (mild 13–15, moderate 9–12, severe 3–8); Teasdale G et al., Lancet Neurol 2014;13:844; NSW Health Closed Head Injury in Adults algorithm; ATLS",
+   "date": "13 Nov 2026"
   },
   "NEURO05|NEURO-102": {
    "fields": {
@@ -619,10 +621,10 @@
   },
   "HY4|NEU-03": {
    "fields": {
-    "a": "**Tier 0 basics → Tier 1 osmotherapy/CSF → Tier 2 → Tier 3 rescue**\nTIER | INTERVENTIONS\n**0** | Head up 30°, analgesia + sedation, normothermia (no fever), PaCO2 35–45, SpO2 ≥ 94%, Na/glucose, seizure prophylaxis 7 days\n**1** | CPP 60–70; deeper sedation; **mannitol or hypertonic saline boluses**; **CSF drainage (EVD)**; PaCO2 low-normal (**35–38**); EEG\n**2** | Mild hypocapnia 32–35; neuromuscular blockade; MAP challenge to test autoregulation\n**3** | **Barbiturate coma**, **decompressive craniectomy**, mild hypothermia 35–36 °C\n**NOT recommended**: steroids (CRASH — ↑ mortality), prophylactic PaCO2 below 30, CPP above 90, prophylactic hypothermia, high-dose propofol."
+    "a": "**Tier 0 basics → Tier 1 osmotherapy/CSF → Tier 2 → Tier 3 rescue**\nTIER | INTERVENTIONS\n**0** | Head up 30°, analgesia + sedation, no fever, normal PaCO2 (no SIBICC number until Tier 1), SpO2 ≥ 94%, avoid low sodium, Hb above 7, seizure prophylaxis 7 days (glucose control is general care)\n**1** | CPP 60–70; deeper sedation; **mannitol or hypertonic saline boluses**; **CSF drainage (EVD)**; PaCO2 low-normal (**35–38**); EEG\n**2** | Mild hypocapnia 32–35; neuromuscular blockade; MAP challenge to test autoregulation\n**3** | **Barbiturate coma**, **decompressive craniectomy**, mild hypothermia 35–36 °C\n**NOT recommended**: steroids (CRASH — ↑ mortality), prophylactic PaCO2 below 30, CPP above 90, prophylactic hypothermia, high-dose propofol."
    },
-   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783",
-   "date": "10 Nov 2026"
+   "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Hawryluk GWJ et al. Intensive Care Med 2019;45:1783, Fig 1",
+   "date": "13 Nov 2026"
   },
   "NEURO02|NEURO-34": {
    "fields": {
@@ -654,17 +656,17 @@
   },
   "HY4|NEU-04": {
    "fields": {
-    "watch": "Escalation trigger (44%). 'Avoid sodium' → mannitol (GT4 correct). The ≥3-bolus switch is the exam key, not guideline: SIBICC gives hyperosmolar therapy as intermittent boluses, and COBI (JAMA 2021) found continuous saline no better.\n*Neuro mini Mar Q2 · GT4 Q15*"
+    "watch": "Escalation trigger (44%). 'Avoid sodium' → mannitol (GT4 correct). The ≥3-bolus switch is the exam key, not guideline: SIBICC gives hyperosmolar therapy as intermittent boluses, and COBI (JAMA 2021) found continuous saline no better. The ≥3-bolus switch is the exam key, not guideline: SIBICC gives hyperosmolar therapy as intermittent boluses, and COBI (JAMA 2021) found continuous saline no better.\n*Neuro mini Mar Q2 · GT4 Q15*"
    },
    "src": "Hawryluk GWJ et al., SIBICC, Intensive Care Med 2019;45:1783; Roquilly A et al., JAMA 2021;325:2056 (COBI)",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "HY5|HEO-12": {
    "fields": {
-    "a": "**Patellar reflex goes first — antidote calcium gluconate**\nSERUM MG (MEQ/L) | EFFECT\n**4–7** | Therapeutic\n**~10** | Loss of patellar reflex\n**~10–13** | Respiratory depression\n**above 25** | Cardiac arrest\nMonitor every hour: **patellar reflex, RR above 12, urine above 30 mL/h**. Toxic → stop infusion, **calcium gluconate 1 g IV**."
+    "a": "**Patellar reflex goes first — antidote calcium gluconate**\nSERUM MG (MEQ/L) | EFFECT\n**4–7** | Therapeutic\n**~7–10** | Loss of patellar reflex\n**~10–13** | Respiratory depression\n**above 25** | Cardiac arrest\nMonitor every hour: **patellar reflex, RR above 12, urine above 30 mL/h** (US); WHO: **RR ≥16, urine ≥25–30 mL/h or 100 mL in 4 h**. Toxic → stop infusion, **calcium gluconate 1 g IV**."
    },
-   "src": "Lu JF, Nightingale CH, Clin Pharmacokinet 2000;38:305",
-   "date": "10 Nov 2026"
+   "src": "Lu JF, Nightingale CH, Clin Pharmacokinet 2000;38:305; Lu JF, Nightingale CH. Clin Pharmacokinet 2000;38:305; WHO MCPC 2nd ed 2017; ACOG Practice Bulletin 222, 2020",
+   "date": "13 Nov 2026"
   },
   "OBS02A|OBS-25": {
    "fields": {
@@ -689,10 +691,10 @@
   },
   "HY4|NEU-08": {
    "fields": {
-    "a": "**Short-acting BP control until secured · nimodipine 60 mg 4-hourly × 21 days**\na **No set target** (AHA/ASA 2023): frequent monitoring, **short-acting** drugs, avoid hypotension and spikes. Older target **SBP below 160** (rebleeding risk), still the usual exam key. After securing, don't routinely lower it.\nb **60 mg orally every 4 h for 21 days**, clipped or coiled. Improves outcome (not by reversing angiographic spasm).\nc Days **3–14** (peak ~7) → euvolaemia + **induced hypertension**; endovascular therapy if refractory. Triple-H is obsolete.\nd **Volume status**: SIADH euvolaemic → restrict; **CSW hypovolaemic → saline ± fludrocortisone**. Never fluid-restrict in SAH."
+    "a": "**Short-acting BP control until secured · nimodipine 60 mg 4-hourly × 21 days**\na **No set target** (AHA/ASA 2023): frequent monitoring, **short-acting** drugs, avoid hypotension and spikes. Older target **SBP below 160** (rebleeding risk), still the usual exam key. After securing, don't routinely lower it.\nb **60 mg orally every 4 h for 21 days**, clipped or coiled. Improves outcome (not by reversing angiographic spasm).\nc Days **4–14** (can start from day 3; peak ~7) → euvolaemia + **induced hypertension**; endovascular therapy if refractory. Triple-H is obsolete.\nd **Volume status**: SIADH euvolaemic → restrict; **CSW hypovolaemic → saline ± fludrocortisone**. Never fluid-restrict in SAH."
    },
-   "src": "Hoh BL et al., AHA/ASA aSAH guideline, Stroke 2023;54:e314 (Section 6: BP monitoring and control with short-acting medication, COR 1, LOE C-EO; evidence insufficient for any specific BP target)",
-   "date": "10 Nov 2026"
+   "src": "Hoh BL et al., AHA/ASA aSAH guideline, Stroke 2023;54:e314 (Section 6: BP monitoring and control with short-acting medication, COR 1, LOE C-EO; evidence insufficient for any specific BP target); Hoh BL et al. Stroke 2023;54:e314 (harmonised with NEURO-71)",
+   "date": "13 Nov 2026"
   },
   "NEURO03|NEURO-76": {
    "fields": {
@@ -710,10 +712,10 @@
   },
   "HY4|NEU-11": {
    "fields": {
-    "a": "**GBS: serial FVC — '20–30–40' rule**\na **Serial FVC by spirometry** (SpO2 and gases fall late). Intubate if FVC below **20 mL/kg**, MIP weaker than **−30**, MEP below **40** cmH2O.\nb **IVIG 0.4 g/kg/day × 5** or **plasma exchange** (equal). Steroids don't work.\nc Ophthalmoplegia, ataxia, areflexia; anti-GQ1b → **plasmapheresis/IVIG**.\nd **Edrophonium** (short-acting anticholinesterase) — transient improvement. Now **largely abandoned** (false positives, cholinergic risk; unavailable in the US since 2018): diagnose with antibodies and repetitive stimulation."
+    "a": "**GBS: serial FVC — '20–30–40' rule**\na **Serial FVC by spirometry** (SpO2 and gases fall late). Intubate if FVC below **20 mL/kg**, MIP weaker than **−30**, MEP below **40** cmH2O.\nb **IVIG 0.4 g/kg/day × 5** or **plasma exchange** (equal). Steroids don't work.\nc Ophthalmoplegia, ataxia, areflexia; anti-GQ1b → **plasmapheresis/IVIG**.\nd **Edrophonium** (short-acting anticholinesterase) — transient improvement. Now **largely abandoned** (false positives, cholinergic risk; unavailable in the US since 2018): diagnose with antibodies and repetitive stimulation. Now **largely abandoned** (false positives, cholinergic risk; unavailable in the US since 2018): diagnose with antibodies and repetitive stimulation."
    },
    "src": "UpToDate, Diagnosis of myasthenia gravis (as cited in Wikipedia, Tensilon test); Sanders DB et al., Neurology 2016 (international consensus guidance)",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "NMD02|NMD-16": {
    "fields": {
@@ -731,10 +733,10 @@
   },
   "ELEC03B|MGP-07": {
    "fields": {
-    "a": "**SERUM MAGNESIUM (MEQ/L)** | **SIGN**\n**Over 4** | **Hyporeflexia** (knee jerk lost near **10**)\n**Over 5** | **First-degree AV block**\n**Over 10** | **Complete heart block**\n**Over 13** | **Cardiac arrest**"
+    "a": "**SERUM MAGNESIUM (MMOL/L)** | **SIGN**\n**Over 4** | **Hyporeflexia** (knee jerk lost near **10**)\n**Over 5** | **First-degree AV block**\n**Over 10** | **Complete heart block**\n**Over 13** | **Cardiac arrest**"
    },
-   "src": "Magnesium sulfate injection, US prescribing information (Pfizer), Overdosage section",
-   "date": "10 Nov 2026"
+   "src": "Magnesium sulfate injection, US prescribing information (Pfizer), Overdosage section; Lu JF, Nightingale CH. Clin Pharmacokinet 2000;38:305 (toxicity table in mmol/L: patellar reflex lost 3.5–5, respiratory paralysis 5–6.5, conduction change >7.5, arrest >12.5); 1 mmol/L = 2 mEq/L",
+   "date": "13 Nov 2026"
   },
   "RENAL01|AKI-06": {
    "fields": {
@@ -931,10 +933,10 @@
   },
   "GI07A|CLD-12": {
    "fields": {
-    "a": "**CLASS** | **ACTION** | **EXAMPLES**\n**Splanchnic vasoconstrictors** | Reduce **portal venous inflow** | Vasopressin, **terlipressin**, somatostatin, vapreotide\n**Non-selective beta-blockers** | Lower the hepatic venous pressure gradient | **Propranolol**\n**Venodilators** | Lower intrahepatic and collateral resistance | Isosorbide mononitrate\n**Antifibrinolytics** | Slow plasminogen to plasmin | Tranexamic acid: **not recommended** (HALT-IT: no fewer bleeding deaths, more venous thrombosis)"
+    "a": "**CLASS** | **ACTION** | **EXAMPLES**\n**Splanchnic vasoconstrictors** | Reduce **portal venous inflow** | Vasopressin, **terlipressin**, somatostatin, vapreotide\n**Non-selective beta-blockers** | Lower the hepatic venous pressure gradient | **Propranolol**\n**Venodilators** | Lower intrahepatic and collateral resistance | Isosorbide mononitrate\n**Antifibrinolytics** | Slow plasminogen to plasmin | Tranexamic acid: **not recommended** (HALT-IT: no fewer bleeding deaths, more venous thrombosis): **not recommended** (HALT-IT: no fewer bleeding deaths, more venous thrombosis)"
    },
    "src": "HALT-IT Trial Collaborators, Lancet 2020;395:1927; Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.25)",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "CCM03|VAP-41": {
    "fields": {
@@ -945,10 +947,10 @@
   },
   "HY6|GIN-09": {
    "fields": {
-    "a": "**Vasoactive + antibiotic before scope → band within 12 h → early TIPS if high risk**\n\n**1** **Terlipressin** 2 mg 4-hourly for 24–48 h, then 1 mg 4-hourly (or octreotide 50 µg bolus + 50 µg/h) — start before endoscopy, continue 2–5 days.\n**2** **Ceftriaxone 1 g/day** (up to 7 days) — ↓ infection, rebleeding and death.\n**3** **Restrictive transfusion** (Hb 7); avoid FFP.\n**4** **Endoscopic band ligation within 12 h**.\n**5** **Pre-emptive TIPS within 72 h** (ideally < 24 h) for Child C 10–13, Child B > 7 with active bleeding, or HVPG ≥ 20 mmHg.\n**6** Uncontrolled → covered oesophageal stent (preferred) or balloon tamponade (≤ 24 h) as bridge to rescue TIPS."
+    "a": "**Vasoactive + antibiotic before scope → band within 12 h → early TIPS if high risk**\n\n**1** **Terlipressin** 2 mg 4-hourly for 24–48 h, then 1 mg 4-hourly for 24–48 h, then 1 mg 4-hourly (or octreotide 50 µg bolus + 50 µg/h) — start before endoscopy, continue 2–5 days.\n**2** **Ceftriaxone 1 g/day** (up to 7 days) — ↓ infection, rebleeding and death.\n**3** **Restrictive transfusion** (Hb 7); avoid FFP.\n**4** **Endoscopic band ligation within 12 h**.\n**5** **Pre-emptive TIPS within 72 h** (ideally < 24 h) for Child C 10–13, Child B > 7 with active bleeding, or HVPG ≥ 20 mmHg.\n**6** Uncontrolled → covered oesophageal stent (preferred) or balloon tamponade (≤ 24 h) as bridge to rescue TIPS."
    },
    "src": "Garcia-Tsao G et al., Hepatology 2017;65:310 (AASLD); Pfisterer N et al., World J Hepatol 2021;13:731 (Table 2, adapted from Baveno VI and AASLD) · Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.31); García-Pagán JC et al., NEJM 2010;362:2370 · Baveno VIII Faculty (Berzigotti A et al.), J Hepatol 2026, doi:10.1016/j.jhep.2026.07.030 (statement 5.35)",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "HY6|GIN-08": {
    "fields": {
@@ -980,10 +982,10 @@
   },
   "GI02B|PANC-15": {
    "fields": {
-    "a": " | **AGGRESSIVE** | **MODERATE**\n**Bolus** | **20 mL/kg** | **10 mL/kg only if hypovolaemic**; none if not\n**Then** | **3 mL/kg/h** | **1.5 mL/kg/h**\n**Fluid overload** | **20.5%** | **6.3%**\n- Fluid: Ringer's lactate. Checkpoints at 12, 24, 48 and 72 hours.\n- Aggressive fluids: **three times the fluid overload, no better outcomes**.\n- Primary outcome (moderately severe or severe pancreatitis): **22.1% vs 17.3%** (NS). Stopped at interim (**249** of 744 planned) for harm."
+    "a": " | **AGGRESSIVE** | **MODERATE**\n**Bolus** | **20 mL/kg** | **10 mL/kg only if hypovolaemic**; none if not\n**Then** | **3 mL/kg/h** | **1.5 mL/kg/h**\n**Fluid overload** | **20.5%** | **6.3%**\n- Fluid: Ringer's lactate. Checkpoints at 12, 24, 48 and 72 hours.\n- Aggressive fluids: **three times the fluid overload, no better outcomes**.\n- Primary outcome (moderately severe or severe pancreatitis): **22.1% vs 17.3%** (NS). Stopped at interim (**249** of 744 planned) for harm.\n- Primary outcome (moderately severe or severe pancreatitis): **22.1% vs 17.3%** (NS). Stopped at interim (**249** of 744 planned) for harm."
    },
    "src": "de-Madaria E et al., N Engl J Med 2022;387:989 (WATERFALL)",
-   "date": "10 Nov 2026"
+   "date": "13 Nov 2026"
   },
   "SPECIAL03|NUT-04": {
    "fields": {
@@ -1061,6 +1063,704 @@
    },
    "src": "El-Hajj Fuleihan G et al. JCEM 2023;108:507",
    "date": "10 Nov 2026"
+  },
+  "CCM07|MIC-09": {
+   "fields": {
+    "a": "- Inoculate bacteria to a final density of **5 × 10⁵ CFU/mL**\n- Add rich broth with a **dilution series** of the test antibiotic to the tubes (e.g. 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256 mg/L)\n- After overnight incubation, the MIC is the **lowest concentration that prevents visible growth**"
+   },
+   "src": "CLSI M07 (broth dilution methods); ISO 20776-1:2019; EUCAST broth microdilution reference method",
+   "date": "13 Nov 2026"
+  },
+  "CCM07|MIC-16": {
+   "fields": {
+    "a": "An **interpretative category** for antimicrobial susceptibility testing\nCefepime **S = MIC ≤2 µg/mL**, based on the usual dose **1 g q12h**; **SDD = MIC 4–8 µg/mL**; R ≥16\nFor SDD: higher exposure is needed for efficient killing: MIC 4 → **1 g q8h or 2 g q12h**; MIC 8 → **2 g q8h**"
+   },
+   "src": "CLSI M100, Table 2A (Enterobacterales, cefepime comment) and Appendix E (SDD dosing); CLSI M100, Appendix E (cefepime SDD dosage regimens)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-20": {
+   "fields": {
+    "a": "**Antibiotic** | **MIC**\nPiperacillin/tazobactam | ≥128 / 4\nCeftriaxone | ≥64\nCefoperazone/sulbactam | ≥64 (no CLSI breakpoint; cefoperazone value used)\nCefepime | ≥32\nImipenem | ≥8\nMeropenem | ≥8\nAmikacin | ≥64\nGentamicin | ≥16\nCiprofloxacin | ≥4\n- At or above these values the isolate is reported **R** (CLSI). A VITEK report prints its top value, e.g. ≥16 for carbapenems"
+   },
+   "src": "CLSI M100, Table 2B-2 (Acinetobacter spp.); CLSI M100 (no cefoperazone-sulbactam breakpoint for Acinetobacter); CLSI M100, Table 2B-2 (Acinetobacter spp.: carbapenems S ≤2, I 4, R ≥8); CLSI M100, Table 2B-2; FDA rationale for recognition decision: meropenem (Acinetobacter S ≤2, I 4, R ≥8)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-21": {
+   "fields": {
+    "a": "**Branch** | **Action**\n**Non-sterile site**\n(airway, lungs, skin)\n— signs of infection | **Treat**\n(fever, ↑WBC, ↑inflammatory\nmarkers, abnormal imaging)\nNon-sterile site\n— no active infection | **Observe**\n**Sterile site**\n(blood, CSF, pleura,\nurine)\n— no indwelling device | **Treat**\n(urine: only if symptomatic)\nSterile site + device\n(CVC, EVD, chest\ntube)\n— signs of infection | **Replace/remove device**\n**& treat**\nSterile site + device\n— no active infection | **Observe, replace device**\n**if possible**"
+   },
+   "src": "Nicolle LE et al., IDSA asymptomatic bacteriuria guideline, Clin Infect Dis 2019;68:e83",
+   "date": "13 Nov 2026"
+  },
+  "CCM07|MIC-06": {
+   "fields": {
+    "a": "**Method** | **Gives MIC?**\n**Kirby-Bauer** (disk diffusion) | **NO**\n**Broth micro dilution (BMD)** | **YES**\n**Gradient method (E-test)** | YES\n**Automated systems** (VITEK 2, BD Phoenix, MicroScan) | YES - and rapid turnaround time"
+   },
+   "src": "Jorgensen JH, Ferraro MJ, Clin Infect Dis 2009;49:1749 (automated AST systems)",
+   "date": "13 Nov 2026"
+  },
+  "CCM07|MIC-14": {
+   "fields": {
+    "a": "The **MIC (or zone-diameter) cut-off that classes an isolate as susceptible, intermediate or resistant**\nInhibition zone diameters and MICs **must be compared to clinical breakpoints**\n**EUCAST** - European Committee on Antimicrobial Susceptibility Testing\n**CLSI** - US Clinical and Laboratory Standards Institute\n**EUCAST breakpoints are often LOWER than those of the CLSI**"
+   },
+   "src": "EUCAST definitions of clinical breakpoints; CLSI M100",
+   "date": "13 Nov 2026"
+  },
+  "SPECIAL04A|PK-10": {
+   "fields": {
+    "a": "**DRUG** | **TARGET**\n**β-lactams** | **50–70% fT > MIC** (penicillins,\ncephalosporins)\n**Carbapenems** | **40% fT > MIC**\n**Critically ill / MDR** | **100% fT > MIC**; maximal killing at **4–5 × MIC**\n**Aminoglycosides** | **Cmax/MIC 8–10**\n**Fluoroquinolones** | **AUC/MIC 125** (Gram-negatives); Cmax/MIC\n10\n**Vancomycin** | **AUC/MIC 400** (Staph aureus)\n**Daptomycin** | Cmax/MIC; AUC/MIC 100\n**Colistin** | **fAUC/MIC**; target average level about **2 mg/L** (AUC about 50 mg·h/L)\n**Linezolid** | 40–80% fT > MIC; AUC/MIC"
+   },
+   "src": "Tsuji BT et al., international consensus guidelines for the optimal use of the polymyxins, Pharmacotherapy 2019;39:10",
+   "date": "13 Nov 2026"
+  },
+  "SPECIAL04B|PK-15": {
+   "fields": {
+    "a": " | **FLUOROQUINOLONES** | **AMINOGLYCOSIDES**\n**Nature** | **Lipophilic**, large Vd; oral\n70–90% bioavailable | Hydrophilic; low Vd; penetrate lung,\nCSF and abscesses **poorly**\n**Clearance** | **Cipro, levo: renal** unchanged;\n**moxifloxacin hepatic**: no\nrenal or hepatic adjustment | **Renal**; half-life 1.5–3.5 h\n**Killing** | Concentration-dependent;\n**AUC/MIC** | **Concentration-dependent**;\n**post-antibiotic effect**;\nsynergy with cell-wall drugs\n**Key ratio** | AUC/MIC (over 87.5–125) | **AUC/MIC for**\n**Enterobacterales**; **peak/MIC**\n**for Pseudomonas**\n**TDM** |  | **Yes**, especially in renal\ndysfunction"
+   },
+   "src": "Roberts JA, Lipman J, Crit Care Med 2009;37:840; Goodman & Gilman (aminoglycosides)",
+   "date": "13 Nov 2026"
+  },
+  "CCM03|VAP-21": {
+   "fields": {
+    "a": "Blind technique - suction of endotracheal secretions\nThreshold: **>100,000 CFU/mL** considered positive\nAdvantages: bedside, no special equipment, inexpensive\nDisadvantages: specimen easily contaminated; **sensitivity 38-100%**; **low, variable specificity (14-100%)**"
+   },
+   "src": "Cook D, Mancebo J. Chest 2000;117(4 Suppl 2):195S",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-35": {
+   "fields": {
+    "a": "**Agent** | **MBL activity**\nCeftazidime-avibactam | **NO** — add **aztreonam**\nMeropenem-vaborbactam | **NO**\nImipenem-relebactam | **NO** (also no OXA)\nCeftolozane-tazobactam | **NO** (also no CRE, no OXA)\n**Cefiderocol** | **YES**\n**Eravacycline** | **YES** (incl. NDM strains)\n**Plazomicin** | **Variable**: MBLs do not hydrolyse it, but 16S rRNA methylases (common with NDM) make it resistant\n**Aztreonam-avibactam** | **YES** — stable vs NDM, IMP, VIM"
+   },
+   "src": "Castanheira M et al. JMI ECCMID 2018; Livermore DM et al. JAC 2011;66:48",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-32": {
+   "fields": {
+    "a": "**ERAVACYCLINE**\nTetracycline compound,\nstable against **efflux\npumps and ribosomal\nprotection proteins**\nCovers **MRSA, VRE,\nESBL-E, CRE (incl. NDM\nstrains)**, Acinetobacter\nDose: **1 mg/kg q12h** (60\nmin infusion)\nS/E: nausea, vomiting\n**PLAZOMICIN**\nActivity against **CRE\n(KPC; MBL only if no 16S rRNA methylase, which is common with NDM)**, MDR P.\naeruginosa, A. baumannii\n**Synergistic** with other\nagents against MDR\norganisms\nApproved for **cUTI**\nDose: **15 mg/kg q24h** (30\nmin infusion)"
+   },
+   "src": "as MDR-35",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-34": {
+   "fields": {
+    "a": "- β-lactam / β-lactamase inhibitor combination;\n**FDA approved May 2023**; no activity against MBL (NDM)\n- **ATTACK trial: 181** patients with HAP, VAP,\nbloodstream infections\n- Sulbactam-durlobactam **vs colistin**, both with **imipenem**\n- Mortality **19%** with sulbactam-durlobactam vs **32%**\nwith colistin\n- Nephrotoxicity significantly lower: **13% vs 38%**"
+   },
+   "src": "Kaye KS et al. (ATTACK), Lancet Infect Dis 2023;23(9):1072-1084; Kaye KS et al. (ATTACK), Lancet Infect Dis 2023; IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026); FDA approval of Xacduro, 23 May 2023; IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-33": {
+   "fields": {
+    "a": "- Activity against **CRE (KPC and MBL), ESBL-E,\nMDR A. baumannii and P. aeruginosa**\n- Approved for **cUTI, HABP/VABP**\n- **CREDIBLE-CR RCT:** clinical cure similar to best available\ntherapy, but **mortality 34% vs 18%**, mainly in Acinetobacter\n- Dose: **2 g q8h** (3 h infusion)"
+   },
+   "src": "Bassetti M et al. (CREDIBLE-CR), Lancet Infect Dis 2021;21:226-240",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-18": {
+   "fields": {
+    "watch": "Single-dose aminoglycoside is an option ONLY in\nuncomplicated cystitis. Outside the urinary tract cefiderocol becomes an ALTERNATIVE,\nand ceftolozane-tazobactam is preferred for pneumonia (IDSA 2026)."
+   },
+   "src": "IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (Q4.3)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-08": {
+   "fields": {
+    "a": "- Both are **serine dependent**\n- **Class C:** AmpC beta-lactamases (cephalosporinases, **not** ESBLs). **No\nintrinsic carbapenemase activity**\n- **Class D:** OXA subtypes - able to hydrolyse\n**oxacillin**\n- → **OXA-48**: Klebsiella\n- → **OXA-51**: Acinetobacter (intrinsic, chromosomal); its acquired\ncarbapenemases are **OXA-23**, OXA-24/40 and OXA-58"
+   },
+   "src": "Bush K, Jacoby GA, Antimicrob Agents Chemother 2010;54:969 (functional classification); IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (ESBL-E and AmpC-E are separate sections); IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (CRAB section introduction); standard microbiology for OXA-51 being intrinsic to A. baumannii",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-11": {
+   "fields": {
+    "a": "**Enzyme** | **Pathogens** | **Resists** | **Treatment**\n**ESBL** | Enterobacterales: mainly E. coli, K. pneumoniae,\nK. oxytoca | Penicillins, cephalo-\nsporins, aztreonam, pip-tazo | **Carbapenems**\nNon-BL (fluoro-\nquinolones)\n**AmpC** | Enterobacter cloacae complex, Klebsiella aerogenes, Citrobacter freundii, Hafnia alvei | Cephalo-\nsporins, pip-tazo, aztreonam | Cefepime\nCarbapenem\nNon-BL"
+   },
+   "src": "IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (AmpC-E section); IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (ESBL-E section, Q1.1–1.3)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-16": {
+   "fields": {
+    "a": "- **Novel BLI preferred over polymyxin-based\ntherapy**\n- **Colistin: the polymyxin for cystitis** (an alternative only;\npolymyxin B reaches urine poorly)\n- **Tigecycline: NOT effective in bloodstream\ninfection**"
+   },
+   "src": "IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (Q3.1, Q4.6); Tsuji BT et al., international consensus guidelines for polymyxins, Pharmacotherapy 2019;39:10",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-17": {
+   "fields": {
+    "a": "- **Ceftazidime**\n- **Cefepime**\n- **Fluoroquinolones**\n- **Piperacillin-tazobactam**\n- **Carbapenems** (meropenem and imipenem)\n- **Aztreonam** (also in the IDSA definition)",
+    "q": "**Define DTR P. aeruginosa**\n**by listing the six drug**\n**groups it is resistant to.**"
+   },
+   "src": "IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (section 4 definitions); Kadri SS et al., Clin Infect Dis 2018;67:1803; IDSA 2026 AMR Guidance (section 4)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-24": {
+   "fields": {
+    "a": "**Agent** | **Dose** | **Toxicity**\nAmpicillin-\nsulbactam | Standard dose 3 g q6h over\n30 min; IDSA 2026 favours the\nhigh dose even if susceptible | Hepatotoxicity\n(1%)\nAmpicillin-\nsulbactam\n(high dose) | **9 g q8h**, each dose over 4 h;\nor **27 g continuous** over 24\nh | Suitable for\namp-sulbactam-\nresistant CRAB\nCefiderocol | **2 g q8h** infused over 3 h | ↑Liver tests\n(2-16%);\nhypokalaemia\n(11%)\nColistin | Per international consensus\nguidelines | Nephrotoxicity\n(about 30%; ATTACK 38%);\nneurotoxicity\n(1-7%)\nEravacycline | **1 mg/kg/dose q12h** | GI (2-7%)"
+   },
+   "src": "IDSA 2026 AMR Guidance (Tamma PD et al., Clin Infect Dis 2026, doi:10.1093/cid/ciag481; published 30 Jul 2026) (Q5.2); IDSA 2026 AMR Guidance (Q3.1); Kaye KS et al. Lancet Infect Dis 2023;23:1072",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-29": {
+   "fields": {
+    "a": "- Effective against **difficult-to-treat P. aeruginosa**\nand many ESBL producers\n- **NOT reliable against CRE, MBL, or OXA**\n- **No reliable A. baumannii activity**; limited anaerobic cover\n(add metronidazole for cIAI)\n- Dose: **1.5 to 3 g q8h** (1 or 3 h infusion)\n- Approved for **cUTI / pyelonephritis, cIAI,\nHABP/VABP**\n- S/E: nausea, diarrhoea, headache, increased LFTs"
+   },
+   "src": "Zerbaxa (ceftolozane-tazobactam) US prescribing information: cIAI indication is in combination with metronidazole",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-01": {
+   "fields": {
+    "a": "- **E. coli: about 40%** (ICMR 2024: 58–63% carbapenem-susceptible)\n- **Klebsiella: about 65–70%** (ICMR 2024: 31–35% susceptible; ICU 22–24%)\n- **Gram-negative organisms in India: >50%**"
+   },
+   "src": "ICMR AMRSN Annual Report 2024 (executive summary and chapter 2)",
+   "date": "13 Nov 2026"
+  },
+  "CCM06|MDR-26": {
+   "fields": {
+    "a": "**Antibiotic** | **Dosage in adults**\nCeftazidime-avibactam\n+ aztreonam | Ceftazidime-avibactam **2.5 g IV q8h**\nover 3 h **PLUS** aztreonam **2 g IV\nq8h** over 3 h\nColistin | **9 million units** loading, then\n**4.5 million units q12h**\nPolymyxin B | **15 lakh IU** loading, then\n**7.5 lakh IU q12h**\nHigh-dose\nmeropenem | **2 g IV q8h**, infused over 3 h\nHigh-dose imipenem | **1 g IV q8h**, infused over 2 h\n(ATTACK, with sulbactam-durlobactam: 1 g q6h over 1 h)"
+   },
+   "src": "Kaye KS et al. Lancet Infect Dis 2023;23:1072",
+   "date": "13 Nov 2026"
+  },
+  "CCM02|CLABSI-02": {
+   "fields": {
+    "watch": "DTP is about 81% sensitive and 92% specific overall, but\nsensitivity is LOW for S. aureus (34-41%) - a negative DTP never\nrules out CRBSI."
+   },
+   "src": "Dhaliwal M, Daneman N, Clin Infect Dis 2023;77:428",
+   "date": "13 Nov 2026"
+  },
+  "CCM02|CLABSI-17": {
+   "fields": {
+    "a": "**Remove the central line immediately**\nAntibiotic: **MSSA: cefazolin or cloxacillin** (better than vancomycin); **MRSA: vancomycin**; if MIC ≥ 2 µg/mL → **daptomycin, ceftaroline or telavancin**\nDuration: minimum **14 days** systemic antibiotics\nHigh-risk (endovascular infection/prosthesis, metastatic infection, IE): extend to **4-6 weeks**\n**TEE or TTE strongly advised** to rule out endocarditis\nRepeat blood cultures **during treatment and 1-2 weeks after** completion"
+   },
+   "src": "Mermel LA et al., IDSA catheter-related infection guideline, Clin Infect Dis 2009;49:1",
+   "date": "13 Nov 2026"
+  },
+  "CCM11|CDI-20": {
+   "fields": {
+    "a": "Warrants treatment when there are **≥3 unformed stools in 24 h AND a positive diagnostic assay**\n**Asymptomatic carriers require NO treatment**\nDuration **10 days** in non-severe patients; longer in\nsevere and fulminant cases\nSurgical: **subtotal colectomy with end ileostomy** (rectum preserved), or **diversion loop**\n**ileostomy with colonic lavage**"
+   },
+   "src": "McDonald LC et al., IDSA/SHEA guideline, Clin Infect Dis 2018;66:e1; McDonald LC et al. CID 2018;66:e1",
+   "date": "13 Nov 2026"
+  },
+  "CCM11|CDI-12": {
+   "fields": {
+    "watch": "The lack of anti-toxin-B antibody is why bezlotoxumab\n(CDI-24), a monoclonal against toxin B, reduced recurrence.\nIt was withdrawn from the market on 31 Jan 2025 and is no longer an option."
+   },
+   "src": "Merck ZINPLAVA discontinuation (31 Jan 2025); Antimicrob Steward Healthc Epidemiol 2025, 'Navigating recurrent C. difficile infection without bezlotoxumab'",
+   "date": "13 Nov 2026"
+  },
+  "D05C|IC-56": {
+   "fields": {
+    "a": "**MONOTHERAPY OPTIONS** | **DUAL THERAPY: ADD AG OR FQ IF**\nAntipseudomonal penicillins: piperacillin-tazobactam | Haemodynamically unstable\nExtended-spectrum antipseudomonal cephalosporins: cefepime, ceftazidime | Pneumonia\nCarbapenem: imipenem-cilastatin, meropenem | H/O P. aeruginosa colonization or invasive disease"
+   },
+   "src": "Freifeld AG et al., IDSA febrile neutropenia guideline, Clin Infect Dis 2011;52:e56",
+   "date": "13 Nov 2026"
+  },
+  "CCM11|CDI-21": {
+   "fields": {
+    "a": "**Episode** | **Criteria** | **Treatment**\n**Non-severe** | WBC ≤**15,000** AND creatinine **<1.5 mg/dL** | **FDX 200 mg BD × 10 d** (preferred)\nOR **VAN 125 mg QID × 10 d**\nAlternate: metronidazole 500 mg TDS × 10 d\n**Severe** | WBC ≥**15,000** OR creatinine **>1.5 mg/dL** | **FDX 200 mg BD × 10 d** (preferred)\nOR **VAN 125 mg QID × 10 d**\n**Fulminant** | Hypotension or shock, ileus, megacolon | **VAN 500 mg QID** PO or NG.\nIf ileus, add **rectal VAN**.\n**IV metronidazole 500 mg q8h** together with oral or rectal VAN"
+   },
+   "src": "Johnson S et al., IDSA/SHEA focused update, Clin Infect Dis 2021;73:e1029",
+   "date": "13 Nov 2026"
+  },
+  "CCM02|CLABSI-16": {
+   "fields": {
+    "a": "**Category** | **Remove?** | **Empiric therapy** | **Duration**\nGram-negative | Yes, always | Cephalosporin / Carbapenem / Aminoglycoside | 7-14 days\nCONS | May retain | (per general regimen) | No implant: 5-7d Retained + lock: 10-14d (implant: longer, no fixed figure)\nFungal (Candida) | Yes, immed. | Echinocandin | 14d from first neg. culture\nSeptic thrombosis | Yes | Systemic Abx + anticoagulation | 4-6 weeks or longer"
+   },
+   "src": "Mermel LA et al., IDSA catheter-related infection guideline, Clin Infect Dis 2009;49:1; Mermel LA et al., IDSA catheter-related infection guideline, Clin Infect Dis 2009;49:1; Pappas PG et al., IDSA candidiasis guideline, Clin Infect Dis 2016;62:e1; Mermel LA et al. CID 2009;49:1",
+   "date": "13 Nov 2026"
+  },
+  "TRIALS01A|TRL-07": {
+   "fields": {
+    "a": "a **Selective digestive decontamination**: an oropharyngeal **paste** and a gastric **suspension** of **colistin, tobramycin and amphotericin or nystatin**, plus a **4-day** course of IV antibiotic.\nb **No mortality benefit**: 27.0% vs 29.1%, OR 0.91 (0.82–1.02) (your notes give HR 0.93).\nc Lower 90-day in-hospital death: **32.3% vs 38.0%**, **HR 0.83** (0.71–0.96); **NNT 18**; ICU death 25.5% vs 29.6%. The effect did not differ significantly from patients without brain injury.\nd Fewer antibiotic-resistant organisms (23.1% vs 34.6%), fewer C. difficile; more ventilator-free days."
+   },
+   "src": "SuDDICU Investigators, JAMA 2022;328:1911",
+   "date": "13 Nov 2026"
+  },
+  "TRIALS01A|TRL-09": {
+   "fields": {
+    "watch": "No proven mortality benefit in any of the three: PROPHY-VAP's lower 28-day mortality (15% vs 25%) was a secondary outcome, and the SDD result is a post-hoc subgroup of a negative trial.",
+    "a": "**TRIAL** | **INTERVENTION** | **POPULATION** | **RESULT**\n**AMIKINHAL** | Inhaled amikacin, 3 days | Ventilated ≥72 h | **Less VAP**; mortality same\n**PROPHY-VAP** | Ceftriaxone 2 g, one dose | Brain injury, ventilated 48 h | **Less early VAP**\n**SuDDICU (post hoc)** | SDD | Brain injury | **Lower mortality** (NNT 18)"
+   },
+   "src": "Dahyot-Fizelier 2024; Ehrmann 2023; Ehrmann S et al. NEJM 2023;389:2052",
+   "date": "13 Nov 2026"
+  },
+  "D05C|IC-50": {
+   "fields": {
+    "a": "- 1,165 blood cultures from febrile neutropenic\npatients; **105 isolated bacteraemias**\n- **Gram-negative dominated: n=78 (72.9%)**\n- **Acinetobacter** spp. most common pathogen: n=20\n(**18.7%**)\n- Acinetobacter + Pseudomonas together: **42.9%** of\nall BSIs\n- Very high resistance: Acinetobacter: MDR **90.0%**, ESBL **90.0%**;\nPseudomonas: MDR **76.9%**, ESBL **84.6%**"
+   },
+   "src": "Sood P et al. J Indian Med Assoc 2012;110:439; Sood 2012",
+   "date": "13 Nov 2026"
+  },
+  "D05B|IC-30": {
+   "fields": {
+    "a": "- >100 species, but majority of human illness from **A.**\n**fumigatus** and **A. flavus** (then A. niger, A. terreus)\n- Transmission of fungal spores via **inhalation**\n- Broad spectrum: from **hypersensitivity reactions**\nto direct **angioinvasion**"
+   },
+   "src": "CDC, Clinical Overview of Aspergillosis (accessed 11 Nov 2026); Patterson TF et al., IDSA aspergillosis guideline, Clin Infect Dis 2016;63:e1",
+   "date": "13 Nov 2026"
+  },
+  "CCM02|CLABSI-22": {
+   "fields": {
+    "a": "**Organism** | **Regimen**\nCONS | May **retain** CVC + systemic Abx 7d + antibiotic lock 10-14d\nS. aureus | Remove CVC, systemic Abx 14d if TOE-neg. Salvage possible: systemic + lock 14d if TOE-neg\nGram-negative bacilli | Remove CVC, treat 10-14d. Salvage: systemic + antimicrobial lock 14d\nCandida | Remove CVC + antifungal 14d after first negative culture"
+   },
+   "src": "Mermel LA et al., IDSA CRBSI guideline, Clin Infect Dis 2009;49:1; Pappas PG et al., IDSA candidiasis guideline, Clin Infect Dis 2016;62:e1; Cornely OA et al., Lancet Infect Dis 2025;25:e280",
+   "date": "13 Nov 2026"
+  },
+  "D05B|IC-36": {
+   "fields": {
+    "a": "- **Culture:** yield from BAL and sputum only **~30%**;\ntakes **10 days** to grow plus identification time\n- **Histopathology:** lung tissue by thoracoscopic or\nopen-lung biopsy - **gold standard** for IPA\n- **Galactomannan:** polysaccharide cell-wall\ncomponent. Serum GM detected **several days**\n**before** clinical signs or abnormal radiograph\n- Serial GM determination assesses evolution of\ninfection during treatment\n- Serum GM performance (pooled, mainly haematology patients; in non-neutropenic ICU patients serum sensitivity is only about 40%): **sensitivity 71%, specificity**\n**89%, NPV 92%, PPV 62%**",
+    "watch": "Galactomannan's NPV (92%) far exceeds its PPV (62%) - in haematology patients it\nis much better at RULING OUT than ruling in. In the non-neutropenic ICU patient a\nnegative SERUM GM rules out nothing (sensitivity about 40%): send BAL GM. Culture is slow and\nlow-yield, so GM carries the early diagnosis."
+   },
+   "src": "Pfeiffer CD et al., Clin Infect Dis 2006;42:1417 (meta-analysis, 27 studies); Meersseman W et al., Am J Respir Crit Care Med 2008;177:27; Meersseman W et al. AJRCCM 2008;177:27; Pfeiffer CD et al. CID 2006;42:1417",
+   "date": "13 Nov 2026"
+  },
+  "SEP01D|SEP-40": {
+   "fields": {
+    "a": "a **Suggest against**.\nb Low incidence, high cost; nephro- and hepatotoxicity, visual disturbance, encephalopathy, CYP interactions (azoles).\nc High risk: immunosuppression, prolonged antibiotics or hospitalisation, **intra-abdominal source**.\nd **Not to be used to start or to stop** empirical antifungals (new; case by case in selected high-risk patients): cost without better outcome."
+   },
+   "src": "Prescott HC et al., Surviving Sepsis Campaign 2026, Crit Care Med 2026; recommendation text at survivingsepsis.org (adult guidelines page)",
+   "date": "13 Nov 2026"
+  },
+  "CCM08|CNS-36": {
+   "fields": {
+    "a": "- **Any cerebral dysfunction in a patient with malaria** is generally considered cerebral malaria\n- At least **3 blood smears, taken 6 hours apart**, should be examined before ruling it out\n- **Thick film:** enhanced sensitivity, detects low parasitaemia. **Thin film:** identifies the species\n- RDTs recommended for all suspected malaria cases\n**Drug** | **Schedule**\n**Artesunate** (IV preferred, or IM) | **2.4 mg/kg** on admission (t=0), then at **12 and 24 hours**, then once daily until oral intake is possible (parenteral for at least **24 hours**; **3 mg/kg** per dose if under 20 kg). Then a full **3-day oral ACT**\n**Artemether** (IM) | **3.2 mg/kg** on day 1, then **1.6 mg/kg** daily for minimum 3 days until oral treatment possible. Then complete a course of ACT\n- CSF typically normal, may show mild pleocytosis (10-50 cells/mm³), protein up to 200 mg/dL\n- Neuroimaging usually normal; may show oedema or watershed infarcts in **15-20%**"
+   },
+   "src": "WHO guidelines for malaria (consolidated; version of 10 Sep 2026, severe malaria recommendation unchanged since the 2015 3rd ed.); NVBDCP, Diagnosis and Treatment of Malaria, 2013",
+   "date": "13 Nov 2026"
+  },
+  "CCM09|LEP-16": {
+   "fields": {
+    "a": "Mild leptospirosis | Dose\n**Doxycycline** | 100 mg bd for 7-10 days\nAmoxicillin | 500 mg qid for 7-10 days\nAmpicillin | 500-750 mg qid for 7-10 days\nAzithromycin | 500 mg od for 3 days\nSevere leptospirosis | Dose\nPenicillin | 1.5 million units IV qid for 7 days\nCeftriaxone | 1 g IV od for 7 days\n- **Start treatment before 5 days.** Empiric therapy recommended (WHO)\n- **Mild disease: doxycycline is the drug of choice. Severe disease: IV penicillin G or ceftriaxone** (NCDC 2015 also lists doxycycline for severe disease)"
+   },
+   "src": "NCDC, National Guidelines: Diagnosis, Case Management, Prevention and Control of Leptospirosis, 2015",
+   "date": "13 Nov 2026"
+  },
+  "CCM09|LEP-30": {
+   "fields": {
+    "a": "Situation | Drug\n**Drug of choice** | **Doxycycline 100 mg BD**\nAlternatives | Azithromycin 500 mg OD; chloramphenicol 500 mg QID\nChildren & pregnant women | **Azithromycin**: 500 mg OD in pregnancy (drug of choice); **10 mg/kg OD** in children, for 5 days\nPoor response to doxycycline | **Azithromycin** (resistant strains reported from South-East Asia are azithromycin-sensitive). Rifampicin is second line only, after active TB is excluded\n- Based on **presumptive diagnosis**; early therapy prevents MODS\n- Typically **afebrile within 48 hrs** of therapy. Duration **7-10 days**\n- **CMC Vellore study:** combination therapy gave better outcomes (33% vs 47% doxycycline, 48% azithromycin) without much adverse effect. Caution: 28-day mortality did not differ (11-13%); the benefit came mainly from fewer persistent complications at day 7 (INTREST, NEJM 2023, IV drugs for 7 days)"
+   },
+   "src": "DHR-ICMR Guidelines for diagnosis and management of rickettsial diseases in India (Rahi M et al., Indian J Med Res 2015;141:417-422); DHR-ICMR Guidelines for diagnosis and management of rickettsial diseases in India, 2015; El Sayed I et al., Cochrane Database Syst Rev 2018;(9):CD002150; Varghese GM et al. (INTREST), N Engl J Med 2023;388:792-803",
+   "date": "13 Nov 2026"
+  },
+  "CCM10|DEN-24": {
+   "fields": {
+    "a": "**Category** | **Initial bolus**\nModerate, with warning signs | **7-10 mL/kg over 1 hour**\nSevere, **compensated** shock (pulse pressure ≤20 mmHg, SBP >90) | **10-20 mL/kg over 1 hour**\nSevere, **decompensated** shock | **20 mL/kg RAPID over 15 min** (crystalloid or colloid)\nDecompensated shock: if no improvement give a 2nd rapid bolus **10-20 mL/kg over 15-30 min** (500 mL maximum); if still none, a 3rd rapid bolus\nThen evaluate for cardiogenic/septic shock, metabolic causes, persistent acidosis and hidden haemorrhage",
+    "watch": "What changes most is the SPEED: compensated shock gets 10-20 mL/kg over ONE HOUR, decompensated shock gets 20 mL/kg in 15 MINUTES."
+   },
+   "src": "NCVBDC, National Guidelines for Clinical Management of Dengue Fever, 2023, section 7.3.2 and Figure 13",
+   "date": "13 Nov 2026"
+  },
+  "CCM10|DEN-25": {
+   "fields": {
+    "a": "Transfuse **if bleeding is present**\n**No routine prophylactic transfusion**; it may be considered for counts **<10,000/mm³** without bleeding (national 2023). ISCCM 2024 is against prophylaxis\nAlso without bleed in those who may need emergency surgery\n**1 SDP: 30K-50K rise**\n**1 RDP: 5K-7K rise**\nSevere haemorrhage: identify the source of bleeding; replace blood and coagulation factors/platelets"
+   },
+   "src": "NCVBDC, National Guidelines for Clinical Management of Dengue Fever, 2023 (section 7.3.2 and Box 8); Bhalla A et al., Indian J Crit Care Med 2024;28(S2):S42-S58; NCVBDC, National Guidelines for Clinical Management of Dengue Fever, 2023, annexure on platelet products",
+   "date": "13 Nov 2026"
+  },
+  "CCM09|LEP-21": {
+   "fields": {
+    "a": "Disease | Distinguishing feature\n**Scrub typhus** | **Eschar + lymph node enlargement**\nEndemic typhus | **NO eschar**; rash in only about half, faint, on the trunk\nIndian tick typhus | **Rash reaching palms and soles**, often purpuric; eschar is rare\n**Q fever** | **Pneumonia**; may present as PUO\n- **Most important in the Indian scenario: scrub typhus**"
+   },
+   "src": "CDC Yellow Book (rickettsial diseases); Rahi M et al. IJMR 2015;141:417; Parola P et al. EID 2001;7:909; Rovery C et al. EID 2008;14:1360",
+   "date": "13 Nov 2026"
+  },
+  "CCM08|CNS-03": {
+   "fields": {
+    "a": "- **Infectious:** encephalitis • meningitis • **cerebral malaria** • brain abscess, subdural or epidural empyema • **sepsis-associated encephalopathy (SAE)**\n- **Overproduction of heat:** neuroleptic malignant syndrome • malignant hyperthermia • serotonin syndrome • cocaine/amphetamine toxicity • ecstasy intoxication • salicylate poisoning • thyrotoxic encephalopathy • convulsive status epilepticus • catatonic schizophrenia\n- **Impaired heat dissipation:** anticholinergic toxicity (e.g. amitriptyline) • **heat stroke** • structural lesions • hypothalamic lesion • brainstem lesions (stroke) • intraventricular and subarachnoid haemorrhage\n- Also: **autoimmune encephalitis**"
+   },
+   "src": "Epstein Y, Yanovich R. NEJM 2019;380:2478",
+   "date": "13 Nov 2026"
+  },
+  "CCM08|CNS-13": {
+   "fields": {
+    "a": "- Family **Picornaviridae**\n- **Enterovirus 71:** epidemic hand-foot-and-mouth disease with **aseptic meningitis, brainstem encephalitis, myelitis**\n- **Poliovirus, coxsackieviruses, echoviruses, parechovirus:** mostly **aseptic meningitis**\n- **HHV-6 and 7** (herpesviruses, not enteroviruses): **exanthem subitum (= roseola infantum)** in children; febrile convulsions or meningoencephalitis in the immunocompromised"
+   },
+   "src": "Yamanishi K et al. Lancet 1988;1:1065; ICTV (Roseolovirus)",
+   "date": "13 Nov 2026"
+  },
+  "CCM08|CNS-22": {
+   "fields": {
+    "a": "**Condition** | **Imaging**\n**TB meningitis** | Contrast-enhanced T1: **basal meningeal enhancement** (thick basal exudate); parenchymal infarcts hyperintense on T2/FLAIR and DWI. Cerebral miliary TB, multiple tuberculoma. Hydrocephalus, parenchymal infarcts\n**HSV encephalitis** | **Anterior and medial temporal** and **orbitofrontal** regions, **bilateral but ASYMMETRICAL**. Hyperintense on T2WI and FLAIR\n**Japanese encephalitis** | T2W and FLAIR: hyperintense in **THALAMIC and BASAL GANGLIA** regions"
+   },
+   "src": "Bernaerts A et al. Eur Radiol 2003;13:1876",
+   "date": "13 Nov 2026"
+  },
+  "CCM08|CNS-15": {
+   "fields": {
+    "a": "- **Culture and sensitivity is the GOLD STANDARD**\n- Cell count: a delay of **1 hour** after lumbar puncture can reduce the neutrophil count by **about 50%**\n- **CSF biofire PCR panel: >90% sensitivity**\n- TB: **ADA / GeneXpert**\n- Cryptococcus: **India ink staining / cryptococcal antigen**\n- Also: opening pressure, Gram stain, protein/glucose/lactate"
+   },
+   "src": "de Graaf MT et al. J Neuroimmunol 2011;230:192",
+   "date": "13 Nov 2026"
+  },
+  "SPECIAL01|DONOR-01": {
+   "fields": {
+    "a": "a About **0.8 per million** population (up from 0.05), vs about\n50 in Spain and the USA (2024); about 4 lakh die\neach year waiting.\nb **THOA 1994** recognised brainstem death; amended to include\ntissues (**THOTA**, in force 2014); national, regional and state\norganisations (NOTTO, ROTTO, SOTTO).\nc Brainstem death, or a catastrophic irreversible brain injury\nheading for it.\nd Identify donors, declare brain death, and keep the organs\nviable."
+   },
+   "src": "GODT 2024 data via La Moncloa (Government of Spain), 14 Aug 2025: Spain 53.9, USA 49.7 per million",
+   "date": "13 Nov 2026"
+  },
+  "SPECIAL01|DONOR-05": {
+   "fields": {
+    "a": "a **Only when the clinical exam cannot be completed** (facial\ntrauma, cervical injury) or the apnoea test is inconclusive or\naborted; one test suffices.\nb **Four-vessel cerebral angiography**: no intracranial filling of\ncarotid or vertebral arteries.\nc **EEG**: no reactivity to intense stimuli.\nd **TCD**: reverberating flow or small systolic spikes; **absent flow\nis NOT reliable** (bone window).\ne AAN 2023 accepts neither CT/MR angiography nor EEG; the Indian 2026 guideline still lists EEG."
+   },
+   "src": "Greer DM et al. Neurology 2023 (AAN/AAP/CNS/SCCM brain death guideline); NOTTO/MoHFW National Guidelines Ed. I, 2026",
+   "date": "13 Nov 2026"
+  },
+  "NEURO05|NEURO-103": {
+   "fields": {
+    "a": " | **A (PLATEAU)** | **B** | **C**\nHeight | **50–100 mmHg** | Up to 50 mmHg | Small\nRhythm | Last **5–20 min** *(standard teaching, not in your notes)* (5–30 in your notes) | **0.5–2 per min** | **4–8 per min**\nCause | Exhausted compliance, vasodilatory cascade | Vasomotor instability at the edge of autoregulation | Blood pressure (Traube-Hering-Mayer) and breathing cycles\nMeaning | **Always pathological**: act urgently | Pathological; unstable ICP | **Physiological**"
+   },
+   "src": "Lundberg 1960; LITFL Intracranial pressure",
+   "date": "13 Nov 2026"
+  },
+  "OBS02A|OBS-24": {
+   "fields": {
+    "watch": "Units trap: your electrolyte chapter (MGP-07) is in mmol/L (reflexes above 4,\narrest above 13); this table is mg/dL. 1 mmol/L = 2 mEq/L = 2.4 mg/dL, so the\ntwo tables roughly agree. 1 mEq/L = 1.2 mg/dL. In both, the knee jerk goes first. Your\nnotes also print the therapeutic range two ways: 4.8–8.4 and 5–9 mg/dL."
+   },
+   "src": "Lu JF, Nightingale CH. Clin Pharmacokinet 2000;38:305; magnesium molar mass 24.3",
+   "date": "13 Nov 2026"
+  },
+  "NEURO02|NEURO-29": {
+   "fields": {
+    "watch": "BIFRONTAL DC is not recommended, but a LARGE\nfrontotemporoparietal DC IS recommended. The recommendation\nturns on the type and size, not on DC as a concept. 2020 BTF update (after RESCUEicp): secondary DC for LATE refractory ICP is recommended (Level IIA); for EARLY refractory ICP it is not; the bifrontal wording was replaced; large flap retained."
+   },
+   "src": "Hawryluk GWJ et al. Neurosurgery 2020;87:427",
+   "date": "13 Nov 2026"
+  },
+  "NEURO03|NEURO-61": {
+   "fields": {
+    "a": "NCCT sensitivity: **close to 100% within the first 3 days**; truly **100% only within 6 h** on a modern scanner read by a radiologist (Perry 2011)\nDrops to **50% by one week**\nAdditional testing recommended if CT negative but clinical suspicion remains high\n**Test** | **Role**\nLumbar puncture | Detects blood or **xanthochromia** in CSF. Performed if CT negative but suspicion high (value is debated)\nMRI-FLAIR | Detects **heme** in CSF\nCTA | Detects aneurysms as small as **2 mm**\nDSA | **GOLD STANDARD** for diagnosing aneurysms"
+   },
+   "src": "Perry JJ et al. BMJ 2011;343:d4277",
+   "date": "13 Nov 2026"
+  },
+  "NEURO03|NEURO-71": {
+   "fields": {
+    "a": "This is the definition of **delayed cerebral ischaemia (DCI)**: new focal neurological deficit **or** drop in GCS by **≥2 points lasting ≥1 hour**, with no other cause. Vasospasm itself is arterial narrowing on imaging\n**Most common complication** of aSAH and a major cause of death and disability\nTimeline: typically **days 4-14** after the initial haemorrhage\nRisk factors: **high Fisher grade** and **female sex**\nDiagnostic tools: **TCD, CT perfusion, cEEG** (Class 2a)"
+   },
+   "src": "Vergouwen MDI et al. Stroke 2010;41:2391",
+   "date": "13 Nov 2026"
+  },
+  "NEURO03|NEURO-72": {
+   "fields": {
+    "a": "**Severity** | **Velocity**\nMild | >**120** cm/s\nModerate | >**160** cm/s\nSevere | >**200** cm/s\nCut-off for moderate vasospasm: **160 cm/s**\n≥200 cm/s: PPV **87%**; <120 cm/s: NPV **94%** (Vora 1999); 120–199 is indeterminate"
+   },
+   "src": "Vora YY et al. Neurosurgery 1999;44:1237 (card figures at 160 cm/s untraceable)",
+   "date": "13 Nov 2026"
+  },
+  "NMD02|NMD-21": {
+   "fields": {
+    "a": "a Selected cases; avoided intubation in **14 of 24** (58%; Seneviratne 2008), fails if PaCO₂ >45; **not** with weak\ncough or poor secretion control.\nb **Rapid sequence intubation**.\nc **Suxamethonium**: **higher dose** needed (fewer receptors).\n**Non-depolarisers**: very sensitive, **low dose**.\nd **Stop anticholinesterases while ventilated** (secretions,\natelectasis); restart before weaning.\ne Short-acting sedation with daily interruption; PSV weaning.\nf **Extubation failure 40–45%**; median ventilation **2 weeks**;\ntracheostomy if prolonged."
+   },
+   "src": "Seneviratne J et al. Arch Neurol 2008;65:54",
+   "date": "13 Nov 2026"
+  },
+  "ELEC03B|MGP-15": {
+   "fields": {
+    "a": "**T/F** | **REASON**\n**a** | F | Thick ascending limb.\n**b** | T\n**c** | F | Under 50% excreted.\n**d** | F | 2 g over 2–5 minutes.\n**e** | F | Above 4 mmol/L (about 8 mEq/L).\n**f** | T\n**g** | F | To the left.\n**h** | F | Alkalosis.\n**i** | T"
+   },
+   "src": "Lu & Nightingale 2000 (matches corrected MGP-07)",
+   "date": "13 Nov 2026"
+  },
+  "NMD03|NMD-29": {
+   "fields": {
+    "a": "a **Tetraplegia, respiratory failure, bulbar involvement**.\nb Hypotension (about 10%): fluids ± pressors. Hypertension:\nshort-acting IV labetalol, GTN, nicardipine, nitroprusside.\nc **Gabapentin**, opioids.\nd Adynamic ileus (neostigmine, watch for bradycardia), pulmonary\nembolism, aspiration."
+   },
+   "src": "clarity: PE here = pulmonary embolism (NMD-30 uses PE for plasma exchange)",
+   "date": "13 Nov 2026"
+  },
+  "NMD02|NMD-22": {
+   "fields": {
+    "a": " | **PLASMA EXCHANGE** | **IVIG**\n**Role** | Preferred in crisis by consensus; start early | **Equal in trials**\n**Mechanism** | Removes AChR antibodies,\ncomplement, cytokines | Unknown\n**Regimen** | **5 exchanges of 2–3 L** every\n24–48 h | **0.4 g/kg/day for 5 days**\n**Onset** | **Slightly quicker** | Similar outcome\n**Duration** | About **3 weeks** | About 3 weeks"
+   },
+   "src": "Sanders DB et al. Neurology 2016;87:419",
+   "date": "13 Nov 2026"
+  },
+  "CVS08C|ACLS-42": {
+   "fields": {
+    "a": "- **100% FiO2 initially**\n- **Waveform capnography** to confirm and monitor\nET tube placement\n- **Keep the maximal feasible FiO2 throughout CPR**; titrate only after ROSC (SpO2 90-98%)\n- **EtCO2 goal: at least 10 mmHg, ideally 20 or more**\n- **Advanced airway in place: 1 breath every 6**\n**seconds (10 breaths/min)** with **continuous chest**\n**compressions**",
+    "watch": "There is NO intra-arrest saturation target: during CPR give the\nmaximal feasible FiO2. Titration starts after ROSC, to 90-98% with\nPaO2 60-105 mmHg (AHA 2025). 92-98% was the 2020 post-ROSC figure."
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 9 Adult ALS (oxygen during CPR, COR 2b, C-LD) and Part 11 Post-Cardiac Arrest Care (SpO2 90-98%), Circulation 2025; AHA 2025 Guidelines for CPR and ECC, Part 9 Adult ALS and Part 11 Post-Cardiac Arrest Care, Circulation 2025; AHA 2025 Guidelines for CPR and ECC, Part 9 Adult ALS (physiological monitoring during CPR), Circulation 2025",
+   "date": "13 Nov 2026"
+  },
+  "CVS08C|ACLS-44": {
+   "fields": {
+    "a": "- **Monitor CPR quality** via **EtCO2**\n- **EtCO2 goal >10 mmHg**\n- **Arterial diastolic BP: no adult target in AHA 2025; ERC 2025 suggests ≥30 mmHg**\n- **Attach monitor / defibrillator** • **obtain IV/IO**\n**access** • use drugs appropriately",
+    "watch": "Arterial diastolic pressure is the invasive-line partner of EtCO2\n- both are surrogates for coronary perfusion pressure during\ncompressions, and both are quality targets, not prognostic\nthresholds."
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 9 Adult ALS, Circulation 2025; ERC Guidelines 2025 Adult ALS, Resuscitation 2025;215(Suppl 1):110769",
+   "date": "13 Nov 2026"
+  },
+  "CVS08A|ACLS-02": {
+   "fields": {
+    "a": "- **Ensure scene safety** → **check responsiveness** (call out, loud tap)\n- **Activate EMS**\n- **Check the carotid pulse for NO MORE THAN 10 SECONDS**, together with breathing (sounds and chest rise); no definite pulse = start CPR\n- **AGONAL GASP is NOT normal breathing** → **START CPR**"
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org)",
+   "date": "13 Nov 2026"
+  },
+  "CVS08E|ACLS-73": {
+   "fields": {
+    "a": "a As short as possible (AHA 2025, class 1); ERC 2025 puts a number on it: under 5 seconds. Charge the defibrillator **while compressions continue**.\nb As short as possible - resume compressions immediately after the shock, with no rhythm or pulse check (AHA 2025, class 2a).\nc At least 60% of the resuscitation spent compressing (AHA 2025, class 2b: a minimum); high-performing teams reach above 80%, but that is not a guideline target.\nd Every 2 minutes, timed to coincide with the compressor change.\nCoronary perfusion pressure decays within seconds of stopping compressions and needs several compressions to rebuild. Every pause resets the pressure that determines whether the next shock works."
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org); ERC Guidelines 2025 Adult ALS, Resuscitation 2025;215(Suppl 1):110769",
+   "date": "13 Nov 2026"
+  },
+  "CVS08A|ACLS-03": {
+   "fields": {
+    "watch": "The 6 cm ceiling is NOT new: 2020 and 2025 use the same words, 'at least 5 cm while avoiding excessive depths (greater than 6 cm)'. Depth did not change in 2025. Interruptions should be minimised and pauses kept under 10 seconds."
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org); AHA 2020 Guidelines, Part 3 Adult Basic and Advanced Life Support, Circulation 2020;142(suppl 2):S366",
+   "date": "13 Nov 2026"
+  },
+  "CVS08D|ACLS-64": {
+   "fields": {
+    "a": " | **2020 / older** | **2025**\n**Cardioversion, AF** | 120-200 J | **≥200 J**\n**Cardioversion, flutter** | 50-100 J | **200 J**\n**Compression depth** | ≥5 cm, avoid >6 cm | **unchanged: ≥5 cm, avoid >6 cm**\n**Post-ROSC SpO2** | 92-98% | **90-98%**\n**Temperature duration** | ≥24 hours | **≥36 hours**\n**Temperature range** | 32-36°C | **32-37.5°C**\n**Vascular access** | IV first, weaker recommendation (algorithm box: IV/IO) | **IV first (class 1), IO if IV fails**",
+    "watch": "Five of these moved (depth did not; access was already IV first in 2020, now class 1) and they are the highest-risk items in a transition year: the old number is still in circulating question banks, and both figures are defensible depending on which guideline a paper was keyed to. Know both and which is which."
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org); AHA 2020 Guidelines, Part 3 Adult Basic and Advanced Life Support, Circulation 2020;142(suppl 2):S366; AHA 2020 Part 3, Circulation 2020;142(suppl 2):S366; AHA 2025 Part 9",
+   "date": "13 Nov 2026"
+  },
+  "CVS08B|ACLS-26": {
+   "fields": {
+    "watch": "This supersedes the older 120-200 J for AF and 50-100 J\nfor flutter - both are now 200 J. Note AHA's guideline text gives joules only for AF (at least\n200 J, class 2a) and flutter (200 J, class 2b); the 100 J for\nnarrow-complex tachycardia and monomorphic VT is from its\nELECTRICAL CARDIOVERSION ALGORITHM."
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 9: Adult Advanced Life Support (Circulation 2025;152 suppl 2), sections 15, 17, 18.1",
+   "date": "13 Nov 2026"
+  },
+  "CVS08C|ACLS-53": {
+   "fields": {
+    "a": "- **2025 term: RESUSCITATIVE DELIVERY** -\nreplaces **'perimortem caesarean delivery'**\n- **Preparation should begin AT THE**\n**RECOGNITION OF CARDIAC ARREST**\n- **Goal: COMPLETE DELIVERY BY 5 MINUTES**\n- Purpose: **improve BOTH maternal and fetal**\n**outcomes**\n- **ECPR is reasonable** in pregnant or peripartum\npatients not responding to standard resuscitation\n(reported survival after arrest: 55% in the ELSO registry,\n87% of 57 patients in a systematic review)\n- **A MASSIVE TRANSFUSION PROTOCOL with a**\n**BALANCED strategy** should be used for\nsuspected **life-threatening AMNIOTIC FLUID**\n**EMBOLISM**, together with **TRANEXAMIC ACID** (both class 1)"
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 10: Adult and Pediatric Special Circumstances of Resuscitation (Circulation 2025;152 suppl 2), section 19 Pregnancy, 19.3 supportive text; AHA 2025 Guidelines for CPR and ECC, Part 10: Adult and Pediatric Special Circumstances of Resuscitation (Circulation 2025;152 suppl 2), section 19 Pregnancy, 19.4",
+   "date": "13 Nov 2026"
+  },
+  "OBS02B|OBS-35": {
+   "fields": {
+    "a": "a Rare: about **2–6 per 100,000** deliveries.\nb Mortality about **20%** in current registries (range 11–43%); older\nseries reported up to 85%, half in the first hour.\nc Sudden **hypoxia** (respiratory failure), **hypotension or arrest**,\n**seizures**, then **DIC**.\nd During labour, delivery or within 30 minutes after.\ne Clinical, by exclusion."
+   },
+   "src": "Knight M et al., BMC Pregnancy Childbirth 2012;12:7; Fitzpatrick KE et al., BJOG 2016;123:100 (UKOSS); Fitzpatrick KE et al., BJOG 2016;123:100 (UKOSS); Knight M et al., BMC Pregnancy Childbirth 2012;12:7",
+   "date": "13 Nov 2026"
+  },
+  "OBS02B|OBS-39": {
+   "fields": {
+    "a": "a Continuous **manual left uterine displacement**.\nb IV access **above the diaphragm**.\nc Expect a difficult airway: most experienced operator; 100%\noxygen; waveform capnography; then **1 breath every 6**\n**seconds** with continuous compressions.\nd If on magnesium: **stop it and give calcium**.\ne **Resuscitative delivery** (old name: perimortem caesarean): if no return of circulation, aim to\ndeliver by **5 minutes**.\nf Detach fetal monitors; call the neonatal team.\ng Compressions, defibrillation energy and drug doses are\n**unchanged** *(standard teaching, not in your notes).*"
+   },
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 10: Adult and Pediatric Special Circumstances of Resuscitation (Circulation 2025;152 suppl 2), section 19 Pregnancy, 19.3",
+   "date": "13 Nov 2026"
+  },
+  "CVS07A|PCA-10": {
+   "fields": {
+    "a": "**Ventilation** | Start at **10 breaths/min**, titrate to **PETCO₂ 35-40 mmHg**. Avoid excessive ventilation\n**FiO₂** | **100% until SpO₂ reads reliably**, then titrate to the **MINIMUM necessary** for **SpO₂ 90–98%** (PaO₂ 60–105 mmHg; AHA 2025)\n**IV bolus** | **1-2 L** normal saline or lactated Ringer's\n**Epinephrine** | **0.1-0.5 mcg/kg/min** (70 kg adult: 7-35 mcg/min)\n**Dopamine** | **5-10 mcg/kg/min**\n**Norepinephrine** | **0.1-0.5 mcg/kg/min** (70 kg adult: 7-35 mcg/min)"
+   },
+   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2)",
+   "date": "13 Nov 2026"
+  },
+  "CVS07A|PCA-16": {
+   "fields": {
+    "a": "- **Airway** • **stomach decompression (NG/OG tube)**\n- **Lung-protective ventilation**\n- **Maintain PaCO₂ 35-45 mmHg**\n- **Target saturation 90-98%** (PaO₂ 60-105 mmHg; AHA 2025)\n- **AVOID HYPERVENTILATION and HYPEROXIA**"
+   },
+   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2)",
+   "date": "13 Nov 2026"
+  },
+  "HY2|CAR-15": {
+   "fields": {
+    "a": "**MAP ≥ 65 · normocapnia · 32–37.5 °C for all**\n**comatose patients**\na **MAP ≥ 65, SBP ≥ 90 mmHg.**\nb **SpO2 90–98% (PaO2 60–105); PaCO2 35–45.**\nc **32–37.5 °C, any rhythm, any location; at least**\n36 h (2025); rewarm no faster than 0.5 °C/h;\nprevent fever.\nd **Seizure ≥ 10 min continuous, or seizures for**\n≥ 20% of any 60 min.\ne **STEMI, or cardiogenic shock / suspected**\ncoronary cause — not everyone."
+   },
+   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2)",
+   "date": "13 Nov 2026"
+  },
+  "CVS07C|PCA-49": {
+   "fields": {
+    "a": " | **Findings and timing**\n**MRI** | **MORE SENSITIVE**. **DWI**, measure **ADC**. **Hyperintensity in CORTEX and BASAL** **GANGLIA**. **Do at 2-7 DAYS after arrest**\n**CT** | **Early CT can already show a reduced grey-white ratio; if the first CT is normal and the patient is still unconscious, REPEAT at 72-96 h**",
+    "watch": "CT can show loss of grey-white differentiation early, but an early normal CT does not exclude injury - repeat it at 72-96 h. MRI diffusion changes are read at 2-7 days: before day 2 they may not have appeared, and after a week they fade."
+   },
+   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2); Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Intensive Care Med 2025;51:2213",
+   "date": "13 Nov 2026"
+  },
+  "CVS07C|PCA-52": {
+   "fields": {
+    "a": "- **Resuscitation from cardiac arrest**\n- **Targeted temperature management AND**\n**REWARMING complete**\n- **Unconscious patient, M **≤**5 at **≥**72 hours** (ERC-ESICM 2025; was M ≤3 in 2021)\n- **WITHOUT CONFOUNDERS**",
+    "watch": "The entry threshold widened in 2025: any patient not obeying commands (M ≤5, i.e. GCS motor <6) at ≥72 h now enters, where 2021 required M ≤3. Quote M ≤5 as the current guideline figure (PCA-43 now matches)."
+   },
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Intensive Care Med 2025;51:2213; Lagebrant A et al. Resuscitation 2025;214:110686",
+   "date": "13 Nov 2026"
+  },
+  "CVS07C|PCA-53": {
+   "fields": {
+    "a": "- **AT LEAST 2 OF:**\n- 1. **NO pupillary AND corneal reflex at **≥**72 h**\n- 2. **BILATERALLY ABSENT N20 SSEP wave at **≥**24 h**\n- 3. **Highly malignant EEG at >24 h** (suppressed background ± periodic discharges, or burst suppression)\n- 4. **NSE >60 at 48 h and/or 72 h**\n- 5. **Status myoclonus **≤**72 h**\n- 6. **Diffuse and extensive anoxic injury on brain**\n**CT/MRI**\n- **YES** → **POOR OUTCOME LIKELY** • **NO** →\n**OBSERVE AND RE-EVALUATE**"
+   },
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Intensive Care Med 2025;51:2213; Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213)",
+   "date": "13 Nov 2026"
+  },
+  "CVS07B|PCA-26": {
+   "fields": {
+    "a": "- **Open-label trial with BLINDED outcome assessment**, comatose adults after OHCA; **n = 1850**\n- **Hypothermia (target 33°C, then controlled rewarming), n=925** | **Normothermia (≤37.5°C; fever treated early, device cooling at ≥37.8°C), n=925**\n- **Death, any cause, 6 mo** | **50%** | **48%**\n- **mRS ≥4 at 6 months** | **55%** | **55%**\n- **Arrhythmia with haemodynamic compromise** | **24%** | **17%**\n- **Conclusion: hypothermia did NOT lead to a lower 6-month incidence of death than normothermia**"
+   },
+   "src": "Dankiewicz J et al. NEJM 2021;384:2283 (TTM2)",
+   "date": "13 Nov 2026"
+  },
+  "CVS07B|PCA-28": {
+   "fields": {
+    "a": "**Stage** | **Finding**\n**Early trials** | **Hypothermia BETTER than normothermia** - favourable outcome roughly doubled\n**TTM 2013** | **36°C is AS GOOD AS 33°C** - the depth of cooling does not matter\n**TTM2** | **Hypothermia is NO BETTER than normothermia**, and causes more arrhythmia\n**ERC/ESICM 2021** | **TTM at 36°C**; constant temperature **32-36°C** for ≥24 h; **PREVENT FEVER for at least 72 h**\n**ERC-ESICM 2025** | **Actively PREVENT FEVER: ≤37.5°C for 36-72 h**; the constant 32-36°C target is dropped; mild hypothermia (32-36°C) is not actively rewarmed\n**AHA 2025** | **Temperature control for AT LEAST 36 HOURS** in patients unresponsive to verbal commands; **goal 32-37.5°C**. Hypothermic (32-34°C) and normothermic / fever-prevention (36-37.5°C) are BOTH 'temperature control'\n- **What survives: FEVER IS HARMFUL** (PCA-27). The debate was only ever about how far BELOW normal to go"
+   },
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213)",
+   "date": "13 Nov 2026"
+  },
+  "CVS07C|PCA-43": {
+   "fields": {
+    "a": "- **Most patients improve in 5-10 DAYS, rarely after**\n**that**\n- **No major confounders: TEMPERATURE,**\n**DRUGS, SUGAR, PCO2**\n- **Use an ALGORITHM**; applies to post-arrest\ncomatose patients with **GCS MOTOR ≤5** (not obeying commands) at ≥72 h - ERC-ESICM 2025; was ≤3 in 2021\n- **Start with the MOST ROBUST predictors first** -\n**FPR <5% with narrow 95% CI**:\n- → **PUPILLARY REFLEX** and **SSEP - bilateral N20**\n- Then: **status myoclonus, EEG, NSE**"
+   },
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213); Nolan JP et al. ERC-ESICM Guidelines for Post-resuscitation Care 2015, Resuscitation 2015;95:202",
+   "date": "13 Nov 2026"
+  },
+  "CVS07A|PCA-12": {
+   "fields": {
+    "watch": "ERC targets SBP >100 mmHg, while the ROSC algorithm (PCA-09) only treats below 90 and the systems targets (PCA-17) say SBP >90. Three different pressure figures in one chapter - ERC's 100 is the 2021 number. SUPERSEDED: ERC-ESICM 2025 targets MAP >60-65 mmHg, keeps SpO₂ 94-98% (PaO₂ 75-100 mmHg) and replaces the constant 32-36°C with fever prevention (≤37.5°C for 36-72 h; mild hypothermia is not actively rewarmed). AHA 2025: MAP ≥65, SpO₂ 90-98%, 32-37.5°C for ≥36 h."
+   },
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213); Hirsch KG et al. AHA 2025 Part 11, Circulation 2025;152(suppl 2)",
+   "date": "13 Nov 2026"
+  },
+  "CVS07A|PCA-14": {
+   "fields": {
+    "watch": "SUPERSEDED IN PART. AHA 2025 requires temperature control for AT LEAST 36 HOURS, goal 32-37.5°C - not the 24 h at 32-36°C given here. ERC-ESICM 2025 has also dropped the constant 32-36°C target: actively prevent fever (≤37.5°C) for 36-72 h and do not actively rewarm mild hypothermia. The 72-hour delay before prognostication stands."
+   },
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213)",
+   "date": "13 Nov 2026"
+  },
+  "RESP06B|PE-15": {
+   "fields": {
+    "watch": "RV dysfunction on imaging or raised troponin makes a patient\nintermediate-low risk even when PESI is I–II or sPESI is 0.\n2026 AHA/ACC regrades these tiers as categories A–E: low = A–B, intermediate-low = C1–C2,\nintermediate-high = C3, a new pre-shock rung D, high = E."
+   },
+   "src": "Creager MA et al. 2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN guideline for acute pulmonary embolism in adults. Circulation 2026;153(12):e977-e1051 (doi:10.1161/CIR.0000000000001415)",
+   "date": "13 Nov 2026"
+  },
+  "CVS08B|ACLS-38": {
+   "fields": {
+    "watch": "Epinephrine here is dosed in mcg/MINUTE, not mcg/kg/min\n- unlike the post-ROSC infusion (0.1-0.5 mcg/kg/min). Reading one\nas the other is about a seventy-fold error in a 70 kg adult\n(2-10 mcg/min is only about 0.03-0.14 mcg/kg/min)."
+   },
+   "src": "AHA 2025 Adult Bradycardia With a Pulse Algorithm (2 to 10 micrograms per minute); arithmetic",
+   "date": "13 Nov 2026"
+  },
+  "CVS08B|ACLS-27": {
+   "fields": {
+    "watch": "The source says rule out LA clot 'in case of new onset atrial\nflutter' - inverted. The clot risk applies to AF/flutter of MORE than 48\nhours or unknown duration; genuinely new-onset under 48 h is the\ngroup that does not need it. The >150 / ≤150 wording is from AHA's 2025\nELECTRICAL CARDIOVERSION ALGORITHM; its main 2025 tachyarrhythmia\nalgorithm says 'heart rate typically ≥150/min'. Say 'about 150 or more'."
+   },
+   "src": "AHA 2025 Adult Electrical Cardioversion Algorithm; AHA 2025 Adult Tachyarrhythmia With a Pulse Algorithm",
+   "date": "13 Nov 2026"
+  },
+  "CVS08C|ACLS-52": {
+   "fields": {
+    "watch": "IV ABOVE THE DIAPHRAGM, because the gravid uterus\nobstructs venous return from below it - a femoral line delivers drug\nnowhere. Stopping magnesium and giving calcium treats the\nclassic iatrogenic cause of peripartum arrest."
+   },
+   "src": "no source found for 'commonest'; softened",
+   "date": "13 Nov 2026"
+  },
+  "HY8|LYS-04": {
+   "fields": {
+    "a": "**Stroke: no antithrombotics 24 h · STEMI: DAPT + enoxaparin + angio · PE: UFH**\nNEXT 24 H | THEN\n**Stroke** | BP **below 180/105**; neuro + BP checks (15 → 30 → 60 min); **no antiplatelet or anticoagulant for 24 h** | CT at 24 h, then antiplatelet\n**STEMI** | Aspirin + **clopidogrel** (300 mg; 75 mg if above 75 y) + **enoxaparin** (no IV bolus if ≥ 75); ECG at 60–90 min | ≥ 50% ST resolution → angio 2–24 h; failed → **rescue PCI**\n**PE** | **UFH infusion** (restart when aPTT below 2× normal) — reversible if bleeding; 2026 AHA/ACC prefers LMWH over UFH after thrombolysis (Class 1) | Failed lysis → catheter-directed therapy or surgical embolectomy"
+   },
+   "src": "Creager MA et al. 2026 AHA/ACC acute PE guideline, Circulation 2026;153(12):e977-e1051, 4.2.1 rec 19",
+   "date": "13 Nov 2026"
+  },
+  "CVS07A|PCA-17": {
+   "fields": {
+    "a": "- **Arterial and central lines**\n- **MAP >65**, **SBP >90**, **urine output 0.5-1 mL/kg/hr** → **to optimise CEREBRAL PERFUSION**\n- **12-lead ECG** to rule out MI • **ECHO and critical care USG screening**\n- **Fluid only if volume-responsive** (isotonic crystalloid in small boluses, reassessed on echo); no fixed 20-30 mL/kg load\n- **Vasopressors: noradrenaline first** (ERC-ESICM 2025; AHA 2025: no specific agent proven, class 2b) • dobutamine if the stunned pump is the problem\n- **Mechanical support: IABP, ECMO, IMPELLA** • immunomodulation"
+   },
+   "src": "Nolan JP et al. ERC-ESICM 2025 Post-resuscitation care, Resuscitation 2025;215:110809; AHA 2025 Part 11; ERC-ESICM 2025; AHA 2025 Part 11",
+   "date": "13 Nov 2026"
+  },
+  "CVS07C|PCA-41": {
+   "fields": {
+    "watch": "Two clocks in 2025. AHA: at least 72 h after NORMOTHERMIA and discontinuation of sedatives (typically 5 days or more after ROSC if cooled). ERC-ESICM: 72 h or later after ROSC, confounders excluded. Safe answer: whichever is later. With fever prevention alone the two clocks coincide."
+   },
+   "src": "AHA 2025 Part 11 section 14.2 rec 4 (2a); ERC-ESICM 2025",
+   "date": "13 Nov 2026"
+  },
+  "CVS08D|ACLS-70": {
+   "fields": {
+    "a": "- **The section now includes predictors of FAVOURABLE outcome**, not only of poor outcome\n- **NEUROFILAMENT LIGHT CHAIN (NfL)** added as a serum biomarker\n- **A continuous EEG background WITHOUT DISCHARGES within 72 h** supports a **FAVOURABLE** prognosis, when interpreted with other tests\n- **Treatment to suppress myoclonus WITHOUT an EEG correlate is NOT recommended** - no evidence it contributes to secondary brain injury\n- **Multimodal approach with delayed impressions: consolidate at ≥72 hours after NORMOTHERMIA and discontinuation of sedatives** (class 2a)"
+   },
+   "src": "AHA 2025 Part 11 section 14.2 rec 4",
+   "date": "13 Nov 2026"
+  },
+  "HY6|GIN-13": {
+   "fields": {
+    "a": "**SBP: PMN ≥ 250 → treat now + albumin**\n\na **Start ceftriaxone/cefotaxime now** — cultures are negative in 30–40%.\nb **1.5 g/kg day 1, 1 g/kg day 3** (if creatinine above 1, BUN above 30 or bilirubin above 4) — prevents HRS.\nc Stop diuretics/nephrotoxins, volume if needed (albumin 1 g/kg), reassess at 24 h, then **terlipressin + albumin**.\nd Albumin **6–8 g per litre** removed if above 5 L."
+   },
+   "src": "Nadim MK et al. J Hepatol 2024;81:163 (ADQI/ICA)",
+   "date": "13 Nov 2026"
+  },
+  "SEP01E|SEP-54": {
+   "fields": {
+    "a": "a Hb **<7 g/dL**, unless myocardial ischaemia, severe\nhypoxaemia or bleeding.\nb <10,000 with no bleeding; <20,000 with bleeding risk;\n**≥50,000** for active bleeding, surgery or procedures.\nc Start insulin at **≥180 mg/dL** (two consecutive readings);\ntarget 144–180.\nd **LMWH over UFH** (strong); pharmacological alone, not\ncombined with mechanical.\ne Only with **risk factors** for GI bleeding (conditional; PPI or H2\nblocker).\nf Enteral, **within 72 hours**."
+   },
+   "src": "Evans L et al. Crit Care Med 2021;49:e1063 (SSC 2021: typical target 144–180 mg/dL)",
+   "date": "13 Nov 2026"
+  },
+  "GI02B|PANC-17": {
+   "fields": {
+    "watch": "Nasogastric feeding is as good as nasojejunal. Probiotics: not recommended. At best a shorter stay; PROPATRIA (predicted severe disease) found higher mortality (16% vs 6%).",
+    "a": "a **Multimodal**; patient-controlled analgesia.\nb In **acute kidney injury**.\nc **Opioid-sparing**; lower kidney injury and organ failure in observational studies only (EPIPAN RCT 2023: no benefit).\nd **Enteral**: maintains the gut barrier, prevents bacterial translocation.\ne **On-demand oral feeding** rather than nil by mouth.\nf If no oral intake for **3 days**: **nasogastric** (nasojejunal for gastroparesis).\ng **Avoided**."
+   },
+   "src": "Besselink MG et al. Lancet 2008;371:651 (PROPATRIA); Jabaudon M et al. Crit Care 2023;27:213 (EPIPAN)",
+   "date": "13 Nov 2026"
+  },
+  "SPECIAL03|NUT-16": {
+   "fields": {
+    "a": "a Hyperglycaemia, **raised CO₂ production** (harder weaning),\nliver steatosis.\nb **Propofol** (1.1 kcal/mL in lipid), dextrose infusions, citrate.\nc ASPEN 2016: hypocaloric, high-protein: **11–14 kcal/kg actual** weight (BMI 30–50) or 22–25 kcal/kg **ideal** weight (BMI >50); protein 2–2.5 g/kg ideal weight. ESPEN: calorimetry, else adjusted weight."
+   },
+   "src": "McClave SA et al. JPEN 2016;40:159; Singer P et al. Clin Nutr 2019;38:48",
+   "date": "13 Nov 2026"
+  },
+  "SPECIAL03|NUT-09": {
+   "fields": {
+    "a": "a **Indirect calorimetry**: measures VO₂ and VCO₂ (Weir\nequation, RQ *(standard teaching, not in your notes)*).\nb **Harris-Benedict**: men 66 + 13.7W + 5H − 6.8A; women 655 +\n9.6W + 1.8H − 4.7A (W kg, H cm, A years).\nc Pneumonia with ARDS 1.2–1.3; minor surgery 1.1–1.3; major\nsurgery 1.2–1.4; multiple trauma 1.4–1.6; trauma with closed\nhead injury **1.5–1.7**.\nd Obesity: **ideal body weight** (ASPEN, protein) or adjusted weight (ESPEN); not actual weight at the usual dose."
+   },
+   "src": "McClave 2016; Singer 2019",
+   "date": "13 Nov 2026"
+  },
+  "TOX01|TOX-11": {
+   "fields": {
+    "watch": "**WATCH**\nYour notes also list calcium-channel blockers and beta-blockers under dialysis. They are not: EXTRIP 2021 recommends **against** dialysis for amlodipine, diltiazem, verapamil and propranolol. Only **atenolol and sotalol** qualify, and only with impaired kidney function and refractory bradycardia or hypotension.",
+    "q": "**Extracorporeal removal:**\n**a** Properties of a dialysable toxin\n**b** Toxins removed by haemodialysis\n**c** The old haemoperfusion list, and what is done now",
+    "a": "**a** **Low molecular weight, low protein binding, small volume of distribution** (stays in extracellular fluid).\n**b** **Salicylates, lithium, methanol, ethylene glycol, isopropanol**.\n**c** **Barbiturates, carbamazepine, theophylline, valproate** were the classic list (charcoal or resin cartridge). EXTRIP now prefers **intermittent haemodialysis** for all four; haemoperfusion is only the alternative when dialysis is unavailable."
+   },
+   "src": "Wong A et al. (EXTRIP), Clin Toxicol 2021;59:361-375 (calcium-channel blockers); Bouchard J et al. (EXTRIP), Crit Care 2021;25:201 (beta-blockers); EXTRIP: Mactier R et al. Am J Kidney Dis 2014;64:347 (barbiturates); Ghannoum M et al. Clin Toxicol 2014;52:993 (carbamazepine), 2015;53:215 (theophylline), 2015;53:454 (valproate)",
+   "date": "13 Nov 2026"
+  },
+  "ABG03|ABG-52": {
+   "fields": {
+    "a": "1. Calculated osmolality = 2 × 140 + 28/2.8 + 180/18 = **300**.\n2. Osmolal gap = 330 − 300 = **30** (normal below 10).\n**Toxic alcohol: methanol or ethylene glycol.** Give fomepizole; consider dialysis."
+   },
+   "src": "University of Iowa Pathology Handbook, Osmolality gap; Kraut JA, Kurtz I. Clin J Am Soc Nephrol 2008;3:208",
+   "date": "13 Nov 2026"
+  },
+  "TOX03A|PEST-11": {
+   "fields": {
+    "a": "a **Pralidoxime**, obidoxime, trimedoxime.\nb Bind the anionic site and pull the phosphate off the esteratic site: **reactivate cholinesterase** before ageing; also slow ageing.\nc Pralidoxime **1–2 g over 30 minutes**; repeat in 1 hour if weakness persists, or infuse *(standard teaching, not in your notes)*.\nd **Not recommended**; but do not withhold when the agent is unknown.\ne Useless once the enzyme has aged; no CNS effect; rapid injection causes laryngospasm and hypertension. **No proven clinical benefit**: the WHO regimen (30 mg/kg then 8 mg/kg/h) failed in a 235-patient RCT (death 24.8% vs 15.8%) and Cochrane 2022 calls the evidence insufficient."
+   },
+   "src": "Eddleston M et al., PLoS Med 2009;6:e1000104; Buckley NA et al., Cochrane Database Syst Rev 2022;3:CD005085",
+   "date": "13 Nov 2026"
+  },
+  "TOX03A|PEST-12": {
+   "fields": {
+    "a": "a **Succinylcholine**: metabolised by plasma cholinesterase, so paralysis is prolonged.\nb Remove clothes, wash skin; activated charcoal 1 g/kg within 1 hour; **no forced emesis**.\nc Does not cross the blood–brain barrier: so it causes less central confusion and hallucination; the only RCT (Bardin 1990, **39 patients evaluated**) found it and atropine equally effective, with no difference in outcome. Dose: **7.5 mg in 200 mL**, infused until mucous membranes are dry.\nd **FFP: harmful**. Haemodialysis and bicarbonate: no role. Magnesium: small early trials only, benefit unproven; clonidine: one small phase II safety trial; vitamin E: animal studies only."
+   },
+   "src": "Bardin PG, van Eeden SF, Crit Care Med 1990;18:956 (atropine vs glycopyrrolate RCT); Eddleston M, Chowdhury FR, Br J Clin Pharmacol 2016;81:462; Basher A et al., Clin Toxicol 2013 (phase II magnesium, 50 patients); Perera PM et al., Trials 2009 (phase II clonidine)",
+   "date": "13 Nov 2026"
+  },
+  "TOX01|TOX-14": {
+   "fields": {
+    "a": "**TOXIN** | **ANTIDOTE**\n**Digoxin** | **Digoxin Fab**: acute 10–20 vials, chronic 3–6\n**Calcium-channel blocker** | **High-dose insulin** 1 U/kg bolus, then 1–10 U/kg/h with dextrose; calcium; lipid emulsion only as a last resort\n**Beta-blocker** | Atropine; **glucagon** *(standard teaching, not in your notes)*; high-dose insulin\n**Tricyclic antidepressant** | **Sodium bicarbonate** 1–2 mEq/kg; lipid\n**Sulfonylurea** | **Octreotide** 50 µg SC 6-hourly + dextrose\n**Benzodiazepine** | Flumazenil (rarely: seizure risk)\n**Local anaesthetic** | **20% lipid emulsion**"
+   },
+   "src": "Lavonas EJ et al. 2023 AHA focused update on cardiac arrest or life-threatening toxicity due to poisoning. Circulation 2023;148:e149-e184; St-Onge M et al. Crit Care Med 2017;45:e306-e315",
+   "date": "13 Nov 2026"
+  },
+  "TOX01|TOX-07": {
+   "fields": {
+    "a": "**a** QRS **<0.12 s** (in poisoning act at **0.10 s or more**: sodium-channel block, give bicarbonate); QTc **<440 ms**.\n**b** **Tricyclic antidepressants**, cocaine, carbamazepine (sodium-channel block): ventricular tachycardia.\n**c** **IV sodium bicarbonate**, 1–2 mEq/kg.\n**d** **Class Ia and Ic**.\n**e** Beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics."
+   },
+   "src": "Boehnert MT, Lovejoy FH. N Engl J Med 1985;313:474-479; Lavonas EJ et al. 2023 AHA focused update on cardiac arrest or life-threatening toxicity due to poisoning. Circulation 2023;148:e149-e184",
+   "date": "13 Nov 2026"
   }
  }
 }
