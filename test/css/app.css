@@ -1687,3 +1687,18 @@ p.sub.tlab{margin-bottom:6px}
 @media (any-pointer:fine){.c-q[role=button]:not(.inking){-webkit-user-select:text;user-select:text}}
 /* T-136: the lesson's sticky player bar keeps its normal size when the card is zoomed, so it doesn't cover the text */
 .flow .zw .ls-bar{zoom:calc(1 / (var(--cs,1) * var(--z,1)))}
+
+/* T-138: viva walk tiles, one group per question (O opening lesson · cards · C closing lesson · S spine) */
+.flow.v3 .f-strip .vg{display:flex;gap:3px;align-items:center;padding:2px 5px;border:1px solid var(--line2);border-radius:7px;flex-shrink:0}
+.flow.v3 .f-strip .vg.on{border-color:#5b4d2a;background:rgba(209,183,124,.08)}
+.flow.v3 .f-strip .vg-n{font-family:var(--mono);font-size:9px;color:var(--faint);margin-right:2px}
+.flow.v3 .f-strip .vg.on .vg-n{color:var(--gold2)}
+.flow.v3 .f-strip .vg-more{color:var(--faint);font-size:10px;flex-shrink:0}
+.flow.v3 .f-strip .ft.vdone{background:var(--gold);color:#3a2f12}
+.flow.v3 .f-strip .ft.vahead{background:#1f232a;color:#8f8a7f;box-shadow:inset 0 0 0 1px #2a2d33}
+.flow.v3 .f-strip .ft.cur{background:var(--bg);color:var(--gold2);outline:2px solid var(--gold2)}
+.flow.v3 .f-strip .ft.vt-vq,.flow.v3 .f-strip .ft.vt-vclose{border-radius:50%}
+.flow.v3 .f-strip .ft.vrep{opacity:.55}
+.flow.v3 .f-strip .ft.look{outline:2px dashed #ead6a0;outline-offset:1px}
+.flow.v3 .f-strip.open .vg{flex-wrap:wrap}
+.flow.v3 .f-strip .f-cnt{white-space:nowrap}
