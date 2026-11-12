@@ -1788,7 +1788,7 @@ function renderFlow() {
       <button class="iconbtn sm" data-act="close" aria-label="End flow">${ICON.close}</button>
       <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
       <span class="ring" id="f-ring"></span>
-      <div class="f-stats mono"><span><i>TIME</i><b id="f-time">0:00</b></span>${flow.viva ? '<span><i id="f-stl">CARD</i><b id="f-stp">0:00</b></span><span class="f-qs"><i id="f-ql">QUESTION</i><b id="f-qt">0:00</b></span>' : ''}<span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
+      <div class="f-stats mono"><span><i>TIME</i><b id="f-time">0:00</b></span>${flow.viva ? '<span class="f-qs"><i id="f-ql">QUESTION</i><b id="f-qt">0:00</b></span><span><i id="f-stl">CARD</i><b id="f-stp">0:00</b></span>' : ''}<span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
       <span class="f-grow"></span>
       <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" title="${flow.browse ? 'Previous card' : 'Undo the last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
       ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" title="Pause (P)" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
@@ -1894,6 +1894,8 @@ function viLessonTools(el, it, slot) {
   setupFit(el);
   mountInk(el, pc, 'q', inkOpts(pc));
 }
+// T-138: turning Autoplay on starts the lesson straight away (also when looking back at an earlier lesson)
+function autoKick(el) { if (!flow || !flow.vauto) return; const pp = el.querySelector('[data-lpp]'); if (pp && pp.textContent.trim() === '▶') pp.click(); }
 function viLeft() { const lb = $('#f-left'); if (lb) { lb.innerHTML = leftLabel(); lb.classList.toggle('dimmed', !leftLabel()); } }
 // T-095: the viva question card (before its steps) and the spine card (after them)
 function drawVivaInter(el, big, it) {
@@ -1904,7 +1906,7 @@ function drawVivaInter(el, big, it) {
     el.innerHTML = lx ? viLessonFrame(body) : body;
     big.innerHTML = `START${ICON.next}`;
     if (it.look) big.innerHTML = `BACK TO NOW${ICON.next}`;
-    if (lx) { bindAutoChip(el); mountLesson(el, lx, { auto: flow.vauto && !it.look, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } }); viLessonTools(el, it, 'open'); }
+    if (lx) { bindAutoChip(el, () => autoKick(el)); mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } }); viLessonTools(el, it, 'open'); }
     viLeft();
     return;
   }
@@ -1912,8 +1914,8 @@ function drawVivaInter(el, big, it) {
     const lx = lessonOf(it.pkg, it.q, 'c'), q = vivaQ(it.pkg, it.q);
     el.innerHTML = viLessonFrame(`<div class="c-done vq-head"><span class="mono kick dark">VIVA ${esc(it.pkg)} · CLOSING LESSON · ${esc(it.q)}</span><h2 class="vq-t">${esc(q ? q.text : '')}</h2><p class="muted-d">The recap, then the spine card: say it yourself in 60 seconds.</p></div><div class="c-done ls-wrap"><div class="ls-head"><span class="mono kick dark">CLOSING LESSON</span></div>${lessonHtml(lx, lessonPic(lx), autoChip())}</div>`);
     big.innerHTML = it.look ? `BACK TO NOW${ICON.next}` : `SPINE${ICON.next}`;
-    bindAutoChip(el);
-    mountLesson(el, lx, { auto: flow.vauto && !it.look, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } });
+    bindAutoChip(el, () => autoKick(el));
+    mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.inter === it) setTimeout(() => { if (flow && flow.inter === it) clearInter(); }, 1500); } });
     viLessonTools(el, it, 'close');
     viLeft();
     return;
@@ -2501,13 +2503,15 @@ function updateFlowChrome() {
 // T-138: the viva walk's tiles, question by question: O opening lesson · 1…n cards · C closing lesson · S spine
 function drawVivaTiles() {
   const steps = vivaSteps(), live = stepKey(liveStep()), done = new Set(flow.trail.map(stepKey));
+  const ck = i => { const c = flow.queue[i]; return c ? c.deck + '|' + c.code : ''; };
+  const walkedK = new Set(flow.trail.filter(x => x.kind === 'card').map(x => ck(x.idx)));   // a card done once lights up wherever it comes again
   const look = flow.look ? stepKey(flow.trail[liveAt() - flow.look]) : '';
   const groups = []; let g = null;
   for (const s of steps) { const q = s.q || ''; if (!g || g.q !== q || s.kind === 'vq') { g = { q, pkg: s.pkg, steps: [] }; groups.push(g); } g.steps.push(s); }
   let gi = groups.findIndex(x => x.steps.some(s => stepKey(s) === (look || live)));
   if (gi < 0) gi = flow.done ? groups.length - 1 : 0;
   const a = Math.max(0, gi - 2), b = Math.min(groups.length, a + 8);
-  const tile = s => { const k = stepKey(s), lab = s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''); const st = k === live && !flow.done ? ' cur' : done.has(k) ? ' vdone' : ' vahead';
+  const tile = s => { const k = stepKey(s), lab = s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''); const st = k === live && !flow.done ? ' cur' : done.has(k) ? ' vdone' : s.kind === 'card' && walkedK.has(ck(s.idx)) ? ' vseen' : ' vahead';
     return `<span data-sk="${k}" class="ft vt-${s.kind}${st}${k === look ? ' look' : ''}${s.rep ? ' vrep' : ''}" title="${esc(s.kind === 'vq' ? 'Opening lesson' : s.kind === 'vclose' ? 'Closing lesson' : s.kind === 'spine' ? 'Spine' : 'Card ' + s.n)}"><b>${lab}</b></span>`; };
   $('#f-tiles').innerHTML = (a ? '<span class="vg-more mono">…</span>' : '') + groups.slice(a, b).map((x, j) => `<span class="vg${a + j === gi ? ' on' : ''}"><span class="vg-n mono">Q${qNumOf(x.pkg, x.q)}</span>${x.steps.map(tile).join('')}</span>`).join('') + (b < groups.length ? '<span class="vg-more mono">…</span>' : '');
   const cur = groups[gi], P2 = cur && vivaPkg(cur.pkg), qn = cur ? qNumOf(cur.pkg, cur.q) : 0;
