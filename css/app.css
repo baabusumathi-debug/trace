@@ -1811,3 +1811,11 @@ p.sub.tlab{margin-bottom:6px}
 }
 /* T-146: the timeline keeps its full height (it was squeezed, so the note under it showed over the rows) */
 .dayp .dz-tl,.dayp .dz-now,.dayp .dz-bar,.dayp .dz-add{flex-shrink:0}
+
+/* T-153: viva tiles — covered before: three blues (×1, ×2, ×3+); new: three golds (ahead, done now, again in this walk) */
+.flow.v3 .f-strip .ft.vb1{background:var(--s1);color:var(--s1f)}
+.flow.v3 .f-strip .ft.vb2{background:var(--s2);color:var(--s2f)}
+.flow.v3 .f-strip .ft.vb3{background:var(--s3);color:var(--s3f)}
+.flow.v3 .f-strip .ft.vg0{background:#2e2817;color:#a8935f;box-shadow:inset 0 0 0 1px #5b4d2a}
+.flow.v3 .f-strip .ft.vg1{background:var(--gold);color:#3a2f12}
+.flow.v3 .f-strip .ft.vg2{background:#efe0b4;color:#5a4718}

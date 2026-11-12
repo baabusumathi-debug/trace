@@ -15,6 +15,7 @@ import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubje
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
+import { recordStudy } from './sync.js';
 import * as DESK from './desk.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
 import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
@@ -1268,7 +1269,7 @@ function deskSnap() {
   if (!flow.viva) return o;
   const L = flow.look ? flow.lookStep : flow.st ? flow.st.s : null;
   f.step = L ? { k: L.kind, qn: L.q ? qNumOf(L.pkg, L.q) : 0, t0: flow.look ? flow.lookT0 : flow.st ? flow.st.t0 : 0, look: !!flow.look, qms: L.q ? flow.qms[L.pkg + '|' + L.q] || 0 : 0 } : null;
-  const td = vivaTileData(), SC = { cur: 'n', vdone: 'd', vseen: 's', vahead: 'a' };
+  const td = vivaTileData(), SC = { cur: 'n', vb1: 'd', vb2: 'd', vb3: 'd', vg1: 'd', vg2: 's', vg0: 'a' };
   f.gi = td.gi; f.g = td.groups.map(g => [g.qn, g.steps.map(x => x.lab + SC[x.st] + (x.look ? '!' : '')).join(',')]);
   const P2 = vivaPkg(flow.viva), curQ = L && L.q, mk = q => (flow.vm ? vivaLast(flow.vm, flow.viva, q) : '') || '';
   if (P2) { f.pt = P2.title; f.qs = P2.questions.map(q => [qNumOf(flow.viva, q.q), q.q === curQ ? 2 : (flow.vdone && flow.vdone[flow.viva + '|' + q.q]) || vivaDoneToday(flow.viva, q.q) ? 1 : 0, mk(q.q).slice(0, 1), Math.round((flow.qms[flow.viva + '|' + q.q] || 0) / 1000)]); const cq = curQ && vivaQ(flow.viva, curQ); f.qt = cq ? cq.text : ''; }
@@ -1837,6 +1838,16 @@ function closeStep() {
   flow.st = null;
   const ms = Math.max(0, Math.min(30 * 60e3, (flow.pausedAt || Date.now()) - st.t0));
   if (st.s.q) { const k = st.s.pkg + '|' + st.s.q; flow.qms[k] = (flow.qms[k] || 0) + ms; addQTime(st.s.pkg, st.s.q, flow.session, ms, st.s.kind); }
+  keepStudy(st.s, ms);
+}
+// T-153: viva time is study time like any card's: a lesson, the spine, a "seen above" card and looking back are stored
+// as study events (synced to TraceEvents with kind "study"), so they count in the day's minutes and study hours. A card
+// walked for the first time is already stored by its view, so it is not counted twice.
+function keepStudy(s, ms) {
+  if (!flow || !s || !(ms >= 1000) || flow.browse) return;
+  const c = s.kind === 'card' ? flow.queue[s.idx] : null;
+  if (c && !(c.vq && c.vq.rep)) return;
+  recordStudy({ id: uid('t'), ts: Date.now(), deck: 'VIVA-' + (s.pkg || flow.viva || ''), code: (s.q || '') + ':' + s.kind + (c ? ':' + c.code : ''), ms: Math.round(ms), session: flow.session }).catch(() => {});
 }
 function noteStep() {
   if (!flow || !flow.viva || flow.browse || flow.look || flow.peek) return;
@@ -1858,6 +1869,7 @@ function lookSet(look) {
   if (was && flow.lookT0 && flow.lookStep && flow.lookStep.q) {          // time spent looking back belongs to the question looked at
     const ms = Math.max(0, Math.min(30 * 60e3, (flow.pausedAt || now) - flow.lookT0)), k = flow.lookStep.pkg + '|' + flow.lookStep.q;
     flow.qms[k] = (flow.qms[k] || 0) + ms; addQTime(flow.lookStep.pkg, flow.lookStep.q, flow.session, ms, flow.lookStep.kind);
+    keepStudy({ ...flow.lookStep, kind: 'look' }, ms);
   }
   if (!was && look) { closeStep(); flow.lookFrom = now; }
   vStop();
@@ -2527,6 +2539,7 @@ function mountVoice(el, c, isQ) {
 }
 const TABN = { lesson: 'Lesson', neet: 'NEET', viva: 'Viva' };
 const tabSwitch = (tab, avail) => `<span class="xv-seg vx-sw" role="group" aria-label="Which explanation">${avail.map(k => `<button class="${tab === k ? 'on' : ''}" data-xtab="${k}" aria-pressed="${tab === k}">${TABN[k]}</button>`).join('')}</span>`;
+let vStripNow = null;
 const mmss = t => { t = Math.max(0, Math.round(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
 function voiceStrip(c, show, host, where, what, noChips) {
   const strip = document.createElement('div'); strip.className = 'vstrip';
@@ -2549,12 +2562,15 @@ function voiceStrip(c, show, host, where, what, noChips) {
     bar.hidden = !k; clearInterval(tick); if (k) { draw(); tick = setInterval(draw, 250); }
   };
   const go = async list => {
-    if (vNow()) { vStop(); return; }
+    // T-153: this strip's own Listen: a second press stops it, and a paused one carries on. Anything else playing
+    // (a paused Listen left behind on another side or card) is stopped and this one plays, on the first press.
+    if (vNow() && vStripNow === strip) { if (vPaused()) { vResume(); draw(); } else vStop(); return; }
+    vStop(); vStripNow = strip;
     const ok = await vPlay(c.deck, list, cb);
     if (!ok) strip.querySelector('.vmsg').textContent = 'no voice yet · make it on the deck page';
   };
   lis.onclick = () => go(show);
-  strip.querySelectorAll('[data-vk]').forEach(b => b.onclick = () => { const i = show.findIndex(p => p.k === b.dataset.vk); vStop(); go(show.slice(i)); });
+  strip.querySelectorAll('[data-vk]').forEach(b => b.onclick = () => { const i = show.findIndex(p => p.k === b.dataset.vk); vStop(); vStripNow = null; go(show.slice(i)); });
   strip.querySelectorAll('[data-vs]').forEach(b => b.onclick = () => { const v = Math.round(Math.min(2, Math.max(0.8, vSpeed() + 0.1 * +b.dataset.vs)) * 10) / 10; vSetSpeed(v); strip.querySelector('.vspd b').textContent = v.toFixed(1) + '×'; });
   bar.querySelectorAll('[data-vj]').forEach(b => b.onclick = () => { vSkip(+b.dataset.vj); draw(); });
   pp.onclick = () => { if (vPaused()) vResume(); else vPause(); draw(); };
@@ -2726,7 +2742,16 @@ function vivaTileData() {
   for (const s of steps) {
     const q = s.q || ''; if (!g || g.q !== q || s.kind === 'vq') { g = { q, pkg: s.pkg, qn: qNumOf(s.pkg, s.q), steps: [] }; groups.push(g); }
     const k = stepKey(s);
-    g.steps.push({ ...s, k, lab: s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''), st: k === live && !flow.done ? 'cur' : done.has(k) ? 'vdone' : s.kind === 'card' && walkedK.has(ck(s.idx)) ? 'vseen' : 'vahead', look: k === look });
+    // T-153 colours: a card covered before today is blue, darker the more times it has been covered (×1, ×2, ×3+);
+    // a new card is gold: dark while ahead, gold once done in this walk, pale gold where it comes again. Lessons and the
+    // spine: gold once done, dark ahead.
+    let st;
+    if (k === live && !flow.done) st = 'cur';
+    else if (s.kind === 'card') {
+      const c = flow.queue[s.idx], n = c ? seen(c.deck, c.no) : 0, before = n - (c && seenOn(c.deck, c.no, today()) ? 1 : 0);
+      st = before > 0 ? 'vb' + Math.min(3, n) : done.has(k) ? 'vg1' : walkedK.has(ck(s.idx)) ? 'vg2' : 'vg0';
+    } else st = done.has(k) ? 'vg1' : 'vg0';
+    g.steps.push({ ...s, k, lab: s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''), st, look: k === look });
   }
   let gi = groups.findIndex(x => x.steps.some(s => s.k === (look || live)));
   if (gi < 0) gi = flow.done ? groups.length - 1 : 0;

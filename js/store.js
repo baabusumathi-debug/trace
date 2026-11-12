@@ -39,6 +39,7 @@ export async function loadAll() {
   applyTopupDecks();
   const evs = await db.all('events');
   S.events = evs.filter(e => e.kind === 'view');
+  S.study = evs.filter(e => e.kind === 'study');        // T-153: lesson, spine and look-back time in viva walks (no card)
   S.undone = new Set(evs.filter(e => e.kind === 'undo').map(e => e.ref));
   S.logBase = (await db.kv.get('logBase')) || {};
   S.chunks = (await db.kv.get('chunks')) || {};
@@ -229,6 +230,11 @@ export function recount() {
     if (!(deckLast.get(e.deck) > e.ts)) deckLast.set(e.deck, e.ts);
     const dk = dkey(e.ts), t = traceDaily[dk] || (traceDaily[dk] = { ms: 0, cards: new Set() });
     t.ms += Math.min(e.ms || 0, 20 * 60000); t.cards.add(k);
+  }
+  for (const e of S.study || []) {                   // study time with no card: counts in the day's minutes, never as a card
+    if (S.undone.has(e.id)) continue;
+    const dk = dkey(e.ts), t = traceDaily[dk] || (traceDaily[dk] = { ms: 0, cards: new Set() });
+    t.ms += Math.min(e.ms || 0, 30 * 60000);
   }
   // Again pile: a card marked Again stays until it is walked without Again in a later session.
   againMap = new Map();

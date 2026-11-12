@@ -7,10 +7,10 @@ import { IS_HT, CONFIG } from './config.js';
 import { call, batch, hasBackend } from './api.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
-export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
+export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
 // a lesson figure: the repo copy, or for a package that came from Drive its SVG fetched through the bridge (blob URL)
 // packages taken from Drive once their card corrections are in data/cardfix.json and their decks are on test
-const VIVA_DRIVE = ['P6'];
+const VIVA_DRIVE = ['P2', 'P3', 'P5', 'P6', 'P7', 'P8'];
 const vimg = {};   // 'P6/name.svg' → blob URL
 export const imgSrc = (pkg, name) => vimg[pkg + '/' + name] || `./data/viva/img/${pkg}/${name}`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
@@ -49,10 +49,21 @@ async function loadDriveViva() {
   try {
     const root = await call({ op: 'listFolder', id: CONFIG.traceFolderId });
     const vf = root.find(f => f.kind === 'folder' && f.name === 'viva'); if (!vf) return false;
-    const subs = (await call({ op: 'listFolder', id: vf.id })).filter(f => f.kind === 'folder' && VIVA_DRIVE.includes(f.name));
+    // T-154: a package's folder is "Pn" or "Pn_<anything>" (the writer renames folders, e.g. P6_v13Nov); folders with "old"
+    // in the name are skipped; with several, the exact name wins, else the newest. pkg is the "Pn" part.
+    const pick = {}, alt = {};   // alt: every folder of a package, old ones too (the figures may have stayed there)
+    for (const f of await call({ op: 'listFolder', id: vf.id })) {
+      const a = f.kind === 'folder' && /^(P\d+)(?:_|$)/.exec(f.name);
+      if (a) (alt[a[1]] = alt[a[1]] || []).push(f);
+      const m = a && !/old/i.test(f.name) && a;
+      if (!m || !VIVA_DRIVE.includes(m[1])) continue;
+      const b = pick[m[1]], exact = f.name === m[1];
+      if (!b || (exact && b.name !== m[1]) || (!exact && b.name !== m[1] && f.modified > b.modified)) pick[m[1]] = f;
+    }
+    const pkgs = Object.keys(pick), subs = pkgs.map(k => pick[k]);
     const lists = await batch(subs.map(s => ({ op: 'listFolder', id: s.id })));
     for (let i = 0; i < subs.length; i++) {
-      const pkg = subs[i].name, r = lists[i]; if (!r || !r.ok) continue;
+      const pkg = pkgs[i], r = lists[i]; if (!r || !r.ok) continue;
       const re = new RegExp('^' + pkg + '_[^/]*\\.json$');
       const pieces = r.data.filter(f => f.kind === 'file' && re.test(f.name)).sort((a, b) => a.name < b.name ? -1 : 1);
       if (!pieces.length) continue;
@@ -70,7 +81,10 @@ async function loadDriveViva() {
       if (cur && cur._src !== 'drive' && cur.version > P.version) continue;   // the repo has a newer one
       P._src = 'drive'; P._sig = sig;
       S.viva = { ...S.viva, [pkg]: P }; changed = true;
-      const img = r.data.find(f => f.kind === 'folder' && f.name === 'img');
+      let img = r.data.find(f => f.kind === 'folder' && f.name === 'img');
+      if (!img) for (const o of (alt[pkg] || []).filter(o => o.id !== subs[i].id).sort((x, y) => x.modified < y.modified ? 1 : -1)) {
+        const l = await call({ op: 'listFolder', id: o.id }); img = l.find(f => f.kind === 'folder' && f.name === 'img'); if (img) break;
+      }
       if (img) await loadDriveImgs(pkg, img.id);
     }
   } catch (e) { /* offline or bridge busy: keep what is stored */ }

@@ -119,7 +119,8 @@ export function cardsPerDay(n) {
 /** Study intervals from card views (each view covers its own time, at most 20 min), merged when < 3 min apart. */
 export function studyIntervals(day) {
   const a = new Date(day + 'T00:00:00').getTime(), b = a + DAY, iv = [];
-  for (const e of views()) {
+  const all = peekOn() ? views() : views().concat((S.study || []).filter(e => !S.undone.has(e.id))).sort((x, y) => x.ts - y.ts);   // T-153: lessons and spines count as study
+  for (const e of all) {
     if (e.ts < a || e.ts >= b) continue;
     const s = e.ts - Math.min(e.ms || 0, 20 * 60000);
     const last = iv[iv.length - 1];
