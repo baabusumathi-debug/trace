@@ -89,7 +89,7 @@ async function boot() {
   registerSW();
   watchAway();
   DESK.setDeskSource(deskSnap);
-  if (hasBackend() && DESK.deskOn() && !/^#\/desk/.test(location.hash)) setTimeout(() => DESK.startHost(), 4000);   // T-142: the Tab offers the link again
+
   // visual decks: look for new versions a little after opening, then every 30 minutes (each check is skipped if done < 6 h ago)
   const vcheck = (force) => syncVisuals(d => (S.decks.get(d) || { cards: [] }).cards, { force }).then(() => { if (!flow && /^#\/status/.test(location.hash)) route(); });
   window._vcheck = vcheck;
@@ -839,7 +839,7 @@ function renderFlowTab() {
     const lf = lastFlowCards(), ag = againCards(), avg = avgPace() || 75000, mins = n => Math.max(1, Math.round(n * avg / 60000));
     const sys = systems();
     app.innerHTML = `<div class="screen flowtab">
-      <header class="top"><span class="tt"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></span><button class="btn ghost" data-pdk>Phone Desk${['live', 'relay'].includes(DESK.deskState()) ? ' ●' : ''}</button>${goingOutButton()}</header>
+      <header class="top"><span class="tt"><span class="mono kick">FLOW</span><span class="h1s">Today’s desk.</span></span><button class="btn ghost" data-pdk>Phone Desk</button>${goingOutButton()}</header>
       <div class="scroll pad desk">
         ${planDesk()}
         ${targetBlock(!currentStretch())}
@@ -872,7 +872,7 @@ function renderFlowTab() {
     bindGo(); bindTarget(draw); hideTip(); bindTips(app); bindGoingOut();
     app.querySelectorAll('[data-mosaic]').forEach(a => a.addEventListener('click', () => P.set('sysTab', 'mosaic')));
     const c = app.querySelector('[data-cont]');
-    const pdk = app.querySelector('[data-pdk]'); if (pdk) pdk.onclick = () => deskChooser();
+    const pdk = app.querySelector('[data-pdk]'); if (pdk) pdk.onclick = () => go('#/desk');
     if (c) c.onclick = () => startFlow(lf.cards, { label: lf.label || 'Continue', returnTo: lf.viva ? '#/viva/' + lf.viva : '#/flow', viva: lf.viva || '' });
     const r = app.querySelector('[data-again]');
     if (r) r.onclick = () => startFlow(ag, { label: 'Again pile', returnTo: '#/flow' });
@@ -1274,27 +1274,6 @@ function deskSnap() {
   if (P2) { f.pt = P2.title; f.qs = P2.questions.map(q => [qNumOf(flow.viva, q.q), q.q === curQ ? 2 : (flow.vdone && flow.vdone[flow.viva + '|' + q.q]) || vivaDoneToday(flow.viva, q.q) ? 1 : 0, mk(q.q).slice(0, 1), Math.round((flow.qms[flow.viva + '|' + q.q] || 0) / 1000)]); const cq = curQ && vivaQ(flow.viva, curQ); f.qt = cq ? cq.text : ''; }
   return o;
 }
-// Flow tab → Phone Desk: which device is this?
-function deskChooser() {
-  planSheet('Phone Desk', 'TRACE DESK', `<p class="muted small">The phone beside the Tab shows the time, your session and breaks, this question and card, and the mosaic, live. Both need Trace open and the same Wi-Fi or hotspot.</p>
-    <div class="rs-grid"><button class="btn ghost rs" data-dtab><b>This is the Tab</b><small>show a code for the phone</small></button><button class="btn ghost rs" data-dph><b>This is the phone</b><small>open the Desk</small></button></div>`, (w, c) => {
-    w.querySelector('[data-dtab]').onclick = () => { c(); deskHostSheet(); };
-    w.querySelector('[data-dph]').onclick = () => { c(); go('#/desk'); };
-  });
-}
-function deskHostSheet() {
-  const ST = { off: 'Not linked', waiting: 'Waiting for the phone…', live: 'Linked · the phone is showing this Tab', relay: 'Linked through Drive (this network keeps the two apart) · the phone updates every 15 s', lost: 'Link lost · offering it again…', idle: 'The phone did not answer in 3 minutes', error: 'Could not reach Drive to offer the link', unsupported: 'This browser cannot make the link' };
-  planSheet('Link a phone', 'TRACE DESK', `<p class="muted small">On the phone: open Trace, then Flow › Phone Desk › This is the phone, and type this code.</p>
-    <p class="pdk-code mono" data-dcode>${esc(DESK.deskCode())}</p><p class="mono small" data-dst></p>
-    <div class="sheet-f"><button class="btn ghost" data-dnew>New code</button><button class="btn ghost" data-doff>Unlink</button><button class="btn primary" data-dgo>Offer the link</button></div>`, (w, c) => {
-    const st = w.querySelector('[data-dst]'), show = s2 => { st.textContent = ST[s2] || s2; };
-    show(DESK.deskState()); const off = DESK.onDesk(s2 => { if (!w.isConnected) return off(); show(s2); });
-    w.querySelector('[data-dgo]').onclick = () => DESK.startHost();
-    w.querySelector('[data-dnew]').onclick = () => { w.querySelector('[data-dcode]').textContent = DESK.newDeskCode(); DESK.startHost(); };
-    w.querySelector('[data-doff]').onclick = () => { DESK.stopHost(); };
-    if (!['live', 'waiting'].includes(DESK.deskState())) DESK.startHost();
-  });
-}
 // the phone: #/desk (portrait: timers on top, mosaic below; landscape: side by side)
 function renderDeskPage() {
   const view = () => P.get('pdkView', 'cards'), rows = () => P.get('pdkRows', 'q');
@@ -1315,17 +1294,14 @@ function renderDeskPage() {
       </section>
     </div>
     <div class="pdk-cover" id="pdk-cover" hidden></div>
-    <div class="pdk-pair" id="pdk-pair" hidden><span class="mono kick">LINK TO THE TAB</span><p class="muted small">On the Tab: Flow › Phone Desk › This is the Tab. Type the code it shows.</p><div class="pnew"><input type="text" inputmode="numeric" maxlength="4" placeholder="0000" data-pc value="${esc(DESK.guestCode())}"></div><button class="btn primary" data-pjoin>Link</button><button class="linkbtn muted small" data-pleave>Forget this Tab</button><p class="mono small" id="pdk-pst"></p></div>
   </div>`;
   const $p = id => document.getElementById(id);
   const segs = () => { app.querySelectorAll('[data-pv]').forEach(b => b.classList.toggle('on', b.dataset.pv === view())); app.querySelectorAll('[data-pr]').forEach(b => b.classList.toggle('on', b.dataset.pr === rows())); $p('pdk-rowseg').hidden = view() !== 'cards'; };
   app.querySelectorAll('[data-pv]').forEach(b => b.onclick = () => { P.set('pdkView', b.dataset.pv); segs(); lastM = ''; paint(); });
   app.querySelectorAll('[data-pr]').forEach(b => b.onclick = () => { P.set('pdkRows', b.dataset.pr); segs(); lastM = ''; paint(); });
   segs();
-  const GS = { off: 'Not linked', looking: 'Looking for the Tab…', connecting: 'Linking…', live: '● linked to the Tab', relay: '● linked through Drive · every 15 s', lost: 'Link lost · trying again…', notfound: 'The Tab is not offering a link (open Phone Desk on the Tab)', badcode: 'The code has 4 digits', error: 'Could not reach Drive', unsupported: 'This browser cannot make the link' };
-  app.querySelector('[data-pjoin]').onclick = () => DESK.joinDesk(app.querySelector('[data-pc]').value);
-  app.querySelector('[data-pleave]').onclick = () => { DESK.leaveDesk(); app.querySelector('[data-pc]').value = ''; };
-  const showState = st => { $p('pdk-link').textContent = GS[st] || st; $p('pdk-pst').textContent = GS[st] || st; $p('pdk-pair').hidden = st === 'live' || st === 'relay' || (DESK.guestSnap() && ['lost', 'connecting'].includes(st)); };
+  const GS = { off: 'Not linked', looking: 'Looking for the Tab…', connecting: 'Linking to the Tab…', live: '● linked to the Tab', lost: 'Link lost · linking again…', noflow: 'No flow open on the Tab · it links as soon as you start one', apart: 'Can’t reach the Tab on this Wi-Fi · put both on the same Wi-Fi, or the phone’s hotspot', error: 'Could not reach Drive · trying again', unsupported: 'This browser cannot link' };
+  const showState = st => { $p('pdk-link').textContent = GS[st] || st; if (st !== 'live' && !DESK.guestSnap()) $p('pdk-where').textContent = GS[st] || ''; };
   const offG = DESK.onGuest(st => { if (!document.querySelector('.screen.pdk')) return offG(); showState(st); paint(); });
   showState(DESK.guestState());
   // keep the phone's screen on while the Desk is open
@@ -1333,10 +1309,10 @@ function renderDeskPage() {
   lock(); document.addEventListener('visibilitychange', lock);
   let lastM = '', lastScroll = '';
   const paint = () => {
-    if (!document.querySelector('.screen.pdk')) { clearInterval(tk); document.removeEventListener('visibilitychange', lock); try { wl && wl.release(); } catch (e) { /* */ } return; }
+    if (!document.querySelector('.screen.pdk')) { clearInterval(tk); document.removeEventListener('visibilitychange', lock); try { wl && wl.release(); } catch (e) { /* */ } DESK.leaveDesk(); return; }
     const S2 = DESK.guestSnap(), off = S2 ? DESK.guestAt() - S2.ts : 0, now = Date.now() - off, nm = DAYP.nowMin(now);
     $p('pdk-clock').textContent = DAYP.hm(DAYP.nowMin()); $p('pdk-date').textContent = new Date().toLocaleDateString([], { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
-    if (!S2) { $p('pdk-where').textContent = 'Waiting for the Tab.'; return; }
+    if (!S2) return;
     const D2 = S2.day, bl = D2.bl.map(([t, a, b, l, d]) => ({ t, a, b, l, d })), cur = bl.find(x => x.a <= nm && x.b > nm);
     let s0 = null, s1 = null; if (cur && cur.t === 'study') { s0 = cur.a; s1 = cur.b; for (const x of bl) if (x.a === s1 && x.t === 'study') s1 = x.b; for (const x of [...bl].reverse()) if (x.b === s0 && x.t === 'study') s0 = x.a; }
     const nb = bl.find(x => x.a > nm && x.t !== 'study');
@@ -1372,7 +1348,7 @@ function renderDeskPage() {
     if (on && ok2 !== lastScroll) { lastScroll = ok2; on.scrollIntoView({ block: 'center', behavior: 'smooth' }); }   // only when the place changes
   };
   const tk = setInterval(paint, 1000); paint();
-  if (DESK.guestCode() && ['off', 'notfound', 'error'].includes(DESK.guestState())) DESK.joinDesk(DESK.guestCode());
+  if (!['live', 'connecting', 'looking'].includes(DESK.guestState())) DESK.joinDesk();
 }
 const clockHM = m => { m = Math.max(0, Math.round(m)); return Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0'); };
 const clockShort = sec => sec >= 3600 ? Math.floor(sec / 3600) + 'h' + String(Math.floor(sec % 3600 / 60)).padStart(2, '0') : Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
@@ -1796,6 +1772,7 @@ function startFlow(list, opts = {}) {
   _lastDeck = queue[0].deck;
   renderFlow();
   if (flow.viva) vivaMarks().then(m => { if (flow) { flow.vm = m; drawThread(); } });
+  if (!flow.browse) DESK.startHost();                // T-148: a flow offers itself to the Desk, nothing to link by hand
   flow.tick = setInterval(updateClock, 1000);
   document.addEventListener('keydown', flowKeys);
 }
@@ -1837,7 +1814,7 @@ async function endFlow() {
   closePanel(); releaseUrls();
   if (flow.pilot) stopPolling();
   const sid = flow.session, back = flow.returnTo, browse = flow.browse;
-  flow = null;
+  flow = null; DESK.stopHost();
   if (!browse) { await buildLogRows(sid); await countPending(); }
   if (location.hash === back) route(); else go(back);
   if (!browse && hasBackend()) sync({ downloadAll: false });
@@ -2655,7 +2632,7 @@ function updateClock() {
   const fd = $('#f-day');
   if (fd && (!flow.dayT || Date.now() - flow.dayT > 20000)) {
     flow.dayT = Date.now();
-    try { const n = DAYP.nowInfo(), b = DAYP.bank(); fd.innerHTML = (n.sessionEnd != null ? `until ${DAYP.hm(n.sessionEnd)} · <b>${DAYP.dur(n.left)}</b> left` : n.cur ? esc(DAYP.typeName(n.cur.type)) + ' now' : n.next ? 'next ' + esc(DAYP.typeName(n.next.type)) + ' ' + DAYP.hm(n.next.a) : '') + (b.left >= 1 ? ` · break ${Math.floor(b.left)}m earned` : ''); } catch (e) { fd.textContent = ''; }
+    try { const n = DAYP.nowInfo(), b = DAYP.bank(); fd.innerHTML = (DESK.deskState() === 'live' ? '<b>DESK ●</b> · ' : '') + (n.sessionEnd != null ? `until ${DAYP.hm(n.sessionEnd)} · <b>${DAYP.dur(n.left)}</b> left` : n.cur ? esc(DAYP.typeName(n.cur.type)) + ' now' : n.next ? 'next ' + esc(DAYP.typeName(n.next.type)) + ' ' + DAYP.hm(n.next.a) : '') + (b.left >= 1 ? ` · break ${Math.floor(b.left)}m earned` : ''); } catch (e) { fd.textContent = ''; }
   }
   // T-138: in a viva walk, this step's time (card or lesson) and this question's time, both running
   const stp = $('#f-stp'); if (!stp) return;
