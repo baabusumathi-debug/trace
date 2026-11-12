@@ -14,6 +14,7 @@ import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml,
 import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
+import * as DAYP from './day.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
 import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
@@ -127,6 +128,7 @@ function routeInner() {
   if (page === 'flow') return renderFlowTab();
   if (page === 'loft') return renderLoft();
   if (page === 'plan') return renderPlan();
+  if (page === 'day') return renderDay();
   if (page === 'status') return renderStatus();
   if (page === 'changes') return renderChanges();
   if (page === 'shelf') return renderCabinet();
@@ -1108,7 +1110,7 @@ function renderPlan() {
     : `<span class="ahead">${r.cards} cards, room for ${r.room}. It fits, ${r.spare} spare.</span>`;
   app.innerHTML = `<div class="screen plan">
     <header class="top"><a class="iconbtn" href="#/loft" aria-label="Back to the Loft">${ICON.back}</a>
-      <span class="tt"><span class="mono kick">${esc(st.name.toUpperCase())} · ${dShort(days[0]).toUpperCase()} – ${dShort(days[days.length - 1]).toUpperCase()} · ${st.days} DAYS</span><span class="h1s">The Plan</span></span><button class="btn ghost pundo-top" data-pundo ${canUndoPlan() ? '' : 'disabled'} aria-label="Undo last change to the plan" title="Undo last change">↶ Undo</button>${goingOutButton()}</header>
+      <span class="tt"><span class="mono kick">${esc(st.name.toUpperCase())} · ${dShort(days[0]).toUpperCase()} – ${dShort(days[days.length - 1]).toUpperCase()} · ${st.days} DAYS</span><span class="h1s">The Plan</span></span><a class="btn ghost" href="#/day">Day plan</a><button class="btn ghost pundo-top" data-pundo ${canUndoPlan() ? '' : 'disabled'} aria-label="Undo last change to the plan" title="Undo last change">↶ Undo</button>${goingOutButton()}</header>
     <div class="scroll pad planbody">
       ${p.stretches.length > 1 ? `<div class="chips small">${p.stretches.map(s => `<button class="chip${s.id === st.id ? ' on' : ''}" data-stretch="${s.id}">${esc(s.name)}</button>`).join('')}<button class="chip dash" data-newstretch>+ New stretch</button></div>` : ''}
       <ol class="steps">
@@ -1156,6 +1158,109 @@ function renderPlan() {
   const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); re(); } };
   app.querySelector('[data-delstretch]').onclick = () => confirmSheet(`Delete ${st.name}? Its subjects and numbers go; your walked cards stay.`, 'Delete', () => { deleteStretch(st.id); re(); toast(`Deleted ${st.name}. Undo is on the Plan.`); });
   if (planPending) { const pend = planPending; planPending = null; nameSubjectSheet(st, pend, re); }
+}
+/* ============================ T-141: the day plan ============================
+   Blocks of the day in 10, 15, 30 or 60-minute rows. Meals and Out are fixed; breaks are earned while studying and fall due
+   at the end of a question; a break taken late moves what follows (up to the next fixed block). */
+const DCOL = { study: 'dz-study', break: 'dz-break', rest: 'dz-rest', meal: 'dz-meal', out: 'dz-out' };
+const DDEF = { study: 60, break: 10, rest: 30, meal: 45, out: 60 };
+function renderDay() {
+  const day = today(), set = DAYP.settingsDay(), z = set.zoom, n = DAYP.nowInfo(), b = DAYP.bank(), list = n.list;
+  const lo = Math.min(n.m - 60, ...list.map(x => x.a)), hi = Math.max(23 * 60, ...list.map(x => x.b));
+  const from = Math.max(0, Math.floor(lo / 60) * 60), to = Math.min(24 * 60, Math.ceil(hi / 60) * 60);
+  const RH = 30, ppm = RH / z, rows = [];
+  for (let m = from; m < to; m += z) rows.push(m);
+  const tot = t => list.filter(x => x.type === t).reduce((a, x) => a + x.b - x.a, 0);
+  const cur = n.cur, nx = n.next;
+  const nowLine = cur ? `<b>${esc(DAYP.typeName(cur.type))}${cur.label ? ' · ' + esc(cur.label) : ''}</b> until ${DAYP.hm(n.sessionEnd || cur.b)} · <b>${DAYP.dur((n.sessionEnd || cur.b) - n.m)}</b> left` : nx ? `Free now · next <b>${esc(DAYP.typeName(nx.type))}</b> at ${DAYP.hm(nx.a)}` : 'Nothing planned for the rest of today';
+  const nb = n.nextBreak && (!cur || n.nextBreak.id !== cur.id) ? `Next: ${esc(DAYP.typeName(n.nextBreak.type))} ${DAYP.dur(n.nextBreak.b - n.nextBreak.a)} at ${DAYP.hm(n.nextBreak.a)} · in ${DAYP.dur(n.nextBreak.a - n.m)}` : '';
+  app.innerHTML = `<div class="screen dayp">
+    <header class="top"><a class="iconbtn" href="#/plan" aria-label="Back to the Plan">${ICON.back}</a>
+      <span class="tt"><span class="mono kick">DAY PLAN · ${esc(new Date().toLocaleDateString([], { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase())}</span><span class="h1s">Today</span></span><span class="dz-clock mono" id="dz-clock">${DAYP.hm(n.m)}</span>${goingOutButton()}</header>
+    <div class="scroll pad dzbody">
+      <section class="dz-now">
+        <p class="dz-l1">${nowLine}</p>${nb ? `<p class="dz-l2 mono">${nb}</p>` : ''}
+        <p class="dz-l2 mono">BREAKS EARNED <b>${Math.floor(b.left)} min</b> · studied ${DAYP.dur(b.studied)} today · ${DAYP.dur(b.since)} since the last break</p>
+      </section>
+      <div class="dz-bar">
+        <div class="seg">${[10, 15, 30, 60].map(v => `<button class="${v === z ? 'on' : ''}" data-dzz="${v}">${v === 60 ? '1 h' : v + ' min'}</button>`).join('')}</div>
+        <span class="dz-tot mono"><span class="dz-study">STUDY ${DAYP.dur(tot('study'))}</span> · <span class="dz-break">BREAKS ${DAYP.dur(tot('break'))}</span> · <span class="dz-rest">REST, MEALS, OUT ${DAYP.dur(tot('rest') + tot('meal') + tot('out'))}</span></span>
+      </div>
+      <div class="chips dz-add">${DAYP.TYPES.map(([k, l]) => `<button class="chip ${DCOL[k]}" data-dzadd="${k}">+ ${l}</button>`).join('')}<button class="chip dash" data-dzfill>Fill free time…</button><button class="chip dash" data-dzrule>Breaks: 1 min per ${set.ratio} min · ${set.size} min</button></div>
+      <div class="dz-tl" style="height:${(to - from) * ppm}px">
+        ${rows.map(m => `<button class="dz-row${m % 60 === 0 ? ' hr' : ''}" style="top:${(m - from) * ppm}px;height:${RH}px" data-dzat="${m}" aria-label="Add at ${DAYP.hm(m)}"><span class="mono">${m % 60 === 0 || z < 60 ? DAYP.hm(m) : ''}</span></button>`).join('')}
+        ${list.map(x => { const h = Math.max(8, (x.b - x.a) * ppm - 2), small = h < 24; return `<button class="dz-blk ${DCOL[x.type]}${x.done ? ' done' : ''}${x === cur ? ' now' : ''}" style="top:${(x.a - from) * ppm}px;height:${h}px" data-dzb="${x.id}">${small ? '' : `<b>${esc(DAYP.typeName(x.type))}</b><span class="mono">${DAYP.hm(x.a)}–${DAYP.hm(x.b)}</span>${x.label ? `<i>${esc(x.label)}</i>` : ''}`}</button>`; }).join('')}
+        ${n.m >= from && n.m <= to ? `<div class="dz-nowl" style="top:${(n.m - from) * ppm}px"></div>` : ''}
+      </div>
+      <p class="muted small">Tap a row to add a block there, or a block to change it. Meals and Out stay where you put them. A break falls due at the end of a question (never in the middle of one); if you take it late, the blocks after it move, up to the next meal or Out.</p>
+      <button class="linkbtn muted small" data-dzclear>Clear today’s plan</button>
+    </div>
+    ${nav('')}
+  </div>`;
+  bindGo(); bindGoingOut();
+  const re = () => keep(renderDay);
+  app.querySelectorAll('[data-dzz]').forEach(x => x.onclick = () => { DAYP.setSetting('zoom', +x.dataset.dzz); re(); });
+  app.querySelectorAll('[data-dzat]').forEach(x => x.onclick = () => dayBlockSheet(day, { type: 'study', a: +x.dataset.dzat }, re));
+  app.querySelectorAll('[data-dzb]').forEach(x => x.onclick = () => dayBlockSheet(day, list.find(y => y.id === x.dataset.dzb), re));
+  app.querySelectorAll('[data-dzadd]').forEach(x => x.onclick = () => { const t = x.dataset.dzadd, a = Math.ceil(n.m / z) * z; dayBlockSheet(day, { type: t, a, b: a + DDEF[t] }, re); });
+  app.querySelector('[data-dzfill]').onclick = () => dayFillSheet(day, n.m, re);
+  app.querySelector('[data-dzrule]').onclick = () => dayRuleSheet(re);
+  app.querySelector('[data-dzclear]').onclick = () => confirmSheet('Clear today’s day plan?', 'Clear', () => { DAYP.clearDay(day); re(); });
+  const nl = app.querySelector('.dz-nowl'); if (nl) nl.scrollIntoView({ block: 'center' });
+  clearInterval(window.__dzT); window.__dzT = setInterval(() => { if (!document.querySelector('.screen.dayp')) return clearInterval(window.__dzT); const c = document.getElementById('dz-clock'); if (c) c.textContent = DAYP.hm(DAYP.nowMin()); }, 15000);
+}
+const toHM = m => String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(Math.round(m) % 60).padStart(2, '0');
+const fromHM = v => { const [h, mm] = String(v || '').split(':').map(Number); return isNaN(h) ? null : h * 60 + (mm || 0); };
+function dayBlockSheet(day, x, re) {
+  const isNew = !x.id; let type = x.type || 'study', a = x.a, b = x.b != null ? x.b : x.a + DDEF[type];
+  planSheet(isNew ? 'Add to the day' : DAYP.typeName(type) + ' block', 'DAY PLAN', `<div class="chips" data-dzt>${DAYP.TYPES.map(([k, l]) => `<button class="chip ${DCOL[k]}${k === type ? ' on' : ''}" data-t="${k}">${l}</button>`).join('')}</div>
+    <div class="pnew"><label>From <input type="time" step="300" value="${toHM(a)}" data-dza></label><label>to <input type="time" step="300" value="${toHM(b)}" data-dzb2></label><label>Note <input type="text" placeholder="e.g. Viva P1 Q5–Q9" value="${esc(x.label || '')}" data-dzl></label></div>
+    <div class="chips small">${[10, 15, 20, 30, 45, 60, 90, 120].map(d => `<button class="chip" data-dzd="${d}">${d < 60 ? d + ' min' : d / 60 + ' h'}</button>`).join('')}</div>
+    <div class="sheet-f">${isNew ? '' : '<button class="btn ghost" data-dzdel>Remove</button>'}<button class="btn primary" data-dzsave>${isNew ? 'Add' : 'Save'}</button></div>`, (w, c) => {
+    const A = w.querySelector('[data-dza]'), B = w.querySelector('[data-dzb2]');
+    w.querySelectorAll('[data-t]').forEach(t => t.onclick = () => { type = t.dataset.t; w.querySelectorAll('[data-t]').forEach(y => y.classList.toggle('on', y === t)); if (isNew) B.value = toHM((fromHM(A.value) || a) + DDEF[type]); });
+    w.querySelectorAll('[data-dzd]').forEach(t => t.onclick = () => { B.value = toHM((fromHM(A.value) || a) + +t.dataset.dzd); });
+    w.querySelector('[data-dzsave]').onclick = () => {
+      const a2 = fromHM(A.value), b2 = fromHM(B.value); if (a2 == null || b2 == null || b2 <= a2) { toast('The end must be after the start.'); return; }
+      const ch = { type, a: a2, b: b2, label: w.querySelector('[data-dzl]').value.trim() };
+      if (isNew) DAYP.addBlock(day, ch); else DAYP.updateBlock(day, x.id, ch);
+      c(); re();
+    };
+    const dl = w.querySelector('[data-dzdel]'); if (dl) dl.onclick = () => { DAYP.removeBlock(day, x.id); c(); re(); };
+  });
+}
+function dayFillSheet(day, now, re) {
+  const a0 = Math.ceil(now / 15) * 15;
+  planSheet('Fill free time', 'DAY PLAN', `<p class="muted small">Puts study in the empty time between two times, with a break every so often. Blocks already there are kept. The breaks are a plan: when one falls due you finish the question you are on first.</p>
+    <div class="pnew"><label>From <input type="time" step="300" value="${toHM(a0)}" data-fa></label><label>to <input type="time" step="300" value="${toHM(Math.min(23 * 60 + 30, a0 + 180))}" data-fb></label></div>
+    <div class="chips">${[[50, 10], [45, 15], [90, 15], [120, 20]].map(([s2, b2], i) => `<button class="chip${i === 0 ? ' on' : ''}" data-fr="${s2}|${b2}">Study ${s2} min · break ${b2}</button>`).join('')}</div>
+    <div class="sheet-f"><button class="btn primary" data-fgo>Fill</button></div>`, (w, c) => {
+    let r = [50, 10];
+    w.querySelectorAll('[data-fr]').forEach(t => t.onclick = () => { r = t.dataset.fr.split('|').map(Number); w.querySelectorAll('[data-fr]').forEach(y => y.classList.toggle('on', y === t)); });
+    w.querySelector('[data-fgo]').onclick = () => { const a = fromHM(w.querySelector('[data-fa]').value), b = fromHM(w.querySelector('[data-fb]').value); if (a == null || b == null || b <= a) { toast('The end must be after the start.'); return; } DAYP.fillRhythm(day, a, b, r[0], r[1]); c(); re(); };
+  });
+}
+function dayRuleSheet(re) {
+  const s0 = DAYP.settingsDay();
+  planSheet('Earned breaks', 'DAY PLAN', `<p class="muted small">Every few minutes of study earn a minute of break. When enough is earned after a long stretch, a break falls due at the end of the question you are on.</p>
+    <p class="mono small">ONE MINUTE OF BREAK FOR EVERY</p><div class="chips">${[4, 5, 6, 8].map(v => `<button class="chip${s0.ratio === v ? ' on' : ''}" data-rr="${v}">${v} min studied</button>`).join('')}</div>
+    <p class="mono small">A BREAK IS</p><div class="chips">${[5, 10, 15, 20].map(v => `<button class="chip${s0.size === v ? ' on' : ''}" data-rs="${v}">${v} min</button>`).join('')}</div>
+    <p class="mono small">DUE AFTER AT LEAST</p><div class="chips">${[30, 45, 60, 90].map(v => `<button class="chip${s0.gap === v ? ' on' : ''}" data-rg="${v}">${v} min of study</button>`).join('')}</div>
+    <div class="sheet-f"><button class="btn primary" data-x>Done</button></div>`, (w, c) => {
+    const bind = (attr, key) => w.querySelectorAll(`[${attr}]`).forEach(t => t.onclick = () => { DAYP.setSetting(key, +t.getAttribute(attr)); w.querySelectorAll(`[${attr}]`).forEach(y => y.classList.toggle('on', y === t)); });
+    bind('data-rr', 'ratio'); bind('data-rs', 'size'); bind('data-rg', 'gap');
+    w.querySelector('[data-x]').addEventListener('click', () => re());
+  });
+}
+// in a flow: is a break due? asked only between questions (viva) or between sections (other flows)
+function checkBreakDue() {
+  if (!flow || flow.browse || flow.pausedAt || document.querySelector('.f-due')) return;
+  const d = DAYP.breakDue(); if (!d) return;
+  const el = document.createElement('div'); el.className = 'f-due';
+  el.innerHTML = `<span><b>Break due</b> · ${d.why === 'planned' ? `planned ${d.mins} min` : d.why === 'end' ? 'this study block is over' : `${Math.floor(d.bank.left)} min earned`} · ${DAYP.dur(d.bank.since)} since the last one</span><button class="pillbtn" data-dtake>Take a break</button><button class="btn ghost" data-dsnz>One more ${flow.viva ? 'question' : 'section'}</button>`;
+  el.querySelector('[data-dtake]').onclick = () => { el.remove(); goingOutSheet(); };
+  el.querySelector('[data-dsnz]').onclick = () => { el.remove(); DAYP.snooze(); };
+  const main = document.querySelector('.flow .f-main'); if (main) main.prepend(el);
 }
 // T-138: a viva package in the plan: which questions, how many a day, from which day
 function vivaLaneSheet(st, id, re) {
@@ -1378,7 +1483,8 @@ function goingOutSheet() {
       if (flow.userPause) { shiftClocks(Date.now() - flow.pausedAt); flow.userPause = false; const sc = $('.screen.flow'); if (sc) sc.classList.remove('paused'); const pb = $('#f-pause'); if (pb) pb.innerHTML = `${ICON.pause}<span class="lbl">Pause</span>`; }
       flow.pausedAt = Date.now(); if (vNow() && !vPaused()) vPause();
     }
-    await startBreak(b.dataset.go); drawBanner();
+    await startBreak(b.dataset.go); try { DAYP.onBreakStart(); } catch (e) { /* */ } drawBanner();
+    const fd = document.querySelector('.f-due'); if (fd) fd.remove();
     toast(reasonOf(b.dataset.go)[1] + ': timer started.');
   });
   document.body.appendChild(wrap);
@@ -1639,6 +1745,7 @@ function noteStep() {
   if (!s) return;
   const tr = flow.trail; if (!tr.length || stepKey(tr[tr.length - 1]) !== k) tr.push(s);
   flow.st = { k, s, t0: flow.pausedAt || Date.now() };
+  if (s.kind === 'vq' && tr.length > 1) setTimeout(checkBreakDue, 400);     // T-141: between questions, never inside one
   // reaching the spine finishes the question for the plan (once per walk)
   if (s.kind === 'spine' && s.q) { flow.vdone = flow.vdone || {}; const dk = s.pkg + '|' + s.q; if (!flow.vdone[dk]) { flow.vdone[dk] = 1; markVivaDone(s.pkg, s.q); } }
 }
@@ -1789,6 +1896,7 @@ function renderFlow() {
       <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
       <span class="ring" id="f-ring"></span>
       <div class="f-stats mono"><span><i>${flow.viva ? 'SESSION' : 'TIME'}</i><b id="f-time">0:00</b></span>${flow.viva ? '<span class="f-qs"><i id="f-ql">QUESTION</i><b id="f-qt">0:00</b></span><span><i id="f-stl">CARD</i><b id="f-stp">0:00</b></span>' : ''}<span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
+      <span class="f-day mono" id="f-day"></span>
       <span class="f-grow"></span>
       <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" title="${flow.browse ? 'Previous card' : 'Undo the last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
       ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" title="Pause (P)" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
@@ -2419,6 +2527,12 @@ if (!window.__fitBar) { window.__fitBar = 1; addEventListener('resize', () => fi
 function updateClock() {
   if (!flow) return;
   const t = $('#f-time'); if (t) t.textContent = clock(((flow.pausedAt || Date.now()) - flow.t0) / 1000);
+  // T-141: the day plan in the bar: this block's end, time left, breaks earned (worked out every 20 s)
+  const fd = $('#f-day');
+  if (fd && (!flow.dayT || Date.now() - flow.dayT > 20000)) {
+    flow.dayT = Date.now();
+    try { const n = DAYP.nowInfo(), b = DAYP.bank(); fd.innerHTML = (n.sessionEnd != null ? `until ${DAYP.hm(n.sessionEnd)} · <b>${DAYP.dur(n.left)}</b> left` : n.cur ? esc(DAYP.typeName(n.cur.type)) + ' now' : n.next ? 'next ' + esc(DAYP.typeName(n.next.type)) + ' ' + DAYP.hm(n.next.a) : '') + (b.left >= 1 ? ` · break ${Math.floor(b.left)}m earned` : ''); } catch (e) { fd.textContent = ''; }
+  }
   // T-138: in a viva walk, this step's time (card or lesson) and this question's time, both running
   const stp = $('#f-stp'); if (!stp) return;
   const now = flow.pausedAt || Date.now(), L = flow.look ? flow.lookStep : flow.st && flow.st.s;
@@ -2576,6 +2690,7 @@ async function next(again) {
     flow.face = 'q';
     flow.cardT0 = Date.now();
     if (flow.idx >= flow.queue.length) flow.done = true;
+    else if (!flow.viva) { const nc = flow.queue[flow.idx]; if (nc.deck !== c.deck || chunkOf(nc).key !== chunkOf(c).key) setTimeout(checkBreakDue, 400); }
     saveLastFlow();
     drawCard(); updateFlowChrome();
   });
