@@ -16,6 +16,7 @@ import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, brea
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
 import { recordStudy } from './sync.js';
+import { renderVivaMap, migrateViva, noteDone, noteMark } from './vivamap.js';
 import * as DESK from './desk.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
 import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
@@ -75,6 +76,7 @@ async function boot() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
   await initExplain(); await initViva();
+  if (!IS_HT) migrateViva(P).catch(e => console.warn('viva sync', e));   // T-160: device-only walks and marks join the synced record, once
   loadQbank(); loadQmap(); loadCardfix(); loadExplain(); loadViva();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
@@ -140,6 +142,7 @@ function routeInner() {
   if (page === 'meditation') return renderMeditation(app, { nav: nav(''), back: '#/loft', P });
   if (page === 'pilot') return startPilot();
   if (page === 'viva') return renderViva(arg ? decodeURIComponent(arg) : '');
+  if (page === 'vmap') return renderVivaMap({ app, ICON, nav, startFlow, toast, P, setMark: vivaSetMark });
   renderPalace(app, { nav: nav('palace'), top: topBar(true) });
   vivaTile();
   bindGo(); bindGoingOut();
@@ -763,6 +766,7 @@ function renderVivaIndex(ps) {
   app.innerHTML = `<div class="screen vivap">
     <header class="top"><a class="iconbtn" href="#/" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA · ${ps.length} PACKAGES</span><span class="h1s">Viva</span></span></header>
     <div class="scroll pad">
+      <a class="vp-q vp-pkg vm-entry" href="#/vmap"><span class="vp-n mono">▦</span><span class="vp-t">Viva Map<small class="mono">every question · sections · walks · pick and order what to walk</small></span></a>
       ${ps.map(p => `<a class="vp-q vp-pkg" href="#/viva/${esc(p.package)}"><span class="vp-n mono">${esc(p.package)}</span><span class="vp-t">${esc(p.title)}<small class="mono">${p.questions.length} questions${hasLessons(p.package) ? ' · narrated' : ''}</small></span><span></span><span class="mono muted">›</span></a>`).join('')}
     </div>
     ${nav('flow')}
@@ -787,7 +791,7 @@ async function renderViva(pkg) {
         <p class="muted small">Each question opens with its card, then the cards behind it with a bridge under each answer, then the spine to say in 60 seconds. A card that came under an earlier question shows as “seen above” and is not counted twice.</p>
         <p class="mono small vp-tally"><span class="vm-fluent">${tally.fluent} fluent</span> · <span class="vm-patchy">${tally.patchy} patchy</span> · <span class="vm-blank">${tally.blank} blank</span> · ${tally.none} not marked</p>
         ${(() => { const v = vivaPlanToday(pkg); return v ? `<div class="chips"><button class="chip on" data-vplanwalk>${ICON.walkS} Today’s plan · Q${qNumOf(pkg, v.todayQs[0])}–Q${qNumOf(pkg, v.todayQs[v.todayQs.length - 1])} · ${v.doneToday}/${v.todayQs.length} done</button></div>` : `<div class="chips"><button class="chip dash" data-vplanadd>+ Plan this package</button></div>`; })()}
-        <div class="chips"><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
+        <div class="chips"><a class="chip dash" href="#/vmap">▦ Viva Map</a><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
         ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
         ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
       </section>
@@ -1869,7 +1873,7 @@ function noteStep() {
   flow.st = { k, s, t0: flow.pausedAt || Date.now() };
   if (s.kind === 'vq' && tr.length > 1) setTimeout(checkBreakDue, 400);     // T-141: between questions, never inside one
   // reaching the spine finishes the question for the plan (once per walk)
-  if (s.kind === 'spine' && s.q) { flow.vdone = flow.vdone || {}; const dk = s.pkg + '|' + s.q; if (!flow.vdone[dk]) { flow.vdone[dk] = 1; markVivaDone(s.pkg, s.q); } }
+  if (s.kind === 'spine' && s.q) { flow.vdone = flow.vdone || {}; const dk = s.pkg + '|' + s.q; if (!flow.vdone[dk]) { flow.vdone[dk] = 1; markVivaDone(s.pkg, s.q); noteDone(s.pkg, s.q, flow.session); } }
 }
 // where "now" sits in the trail: on the last step, or just past it once the walk is finished
 const liveAt = () => { const tr = flow.trail, s = liveStep(); return s && tr.length && stepKey(tr[tr.length - 1]) === stepKey(s) ? tr.length - 1 : tr.length; };
@@ -2163,7 +2167,7 @@ function drawVivaInter(el, big, it) {
       flow.vtimer = setInterval(() => { if (!flow) return; const left = Math.max(0, 60 - Math.floor(((flow.pausedAt || Date.now()) - flow.vt0) / 1000)); if (!clk.isConnected) return clearInterval(flow && flow.vtimer); clk.textContent = '0:' + String(left).padStart(2, '0'); clk.classList.toggle('over', left === 0); if (!left) { clearInterval(flow.vtimer); const d = el.querySelector('[data-vspine]'); if (d) d.open = true; } }, 250);
     };
     el.querySelectorAll('[data-vmark]').forEach(b => b.onclick = async e => {
-      e.stopPropagation(); await vivaSetMark(it.pkg, it.q, b.dataset.vmark); vivaMarks().then(m2 => { if (flow) { flow.vm = m2; drawThread(); } });
+      e.stopPropagation(); await vivaSetMark(it.pkg, it.q, b.dataset.vmark); noteMark(it.pkg, it.q, b.dataset.vmark, flow && flow.session); vivaMarks().then(m2 => { if (flow) { flow.vm = m2; drawThread(); } });
       el.querySelectorAll('[data-vmark]').forEach(x => x.classList.toggle('on', x === b));
       const d = el.querySelector('[data-vspine]'); if (d) d.open = true;
     });

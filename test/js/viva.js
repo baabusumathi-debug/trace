@@ -190,7 +190,19 @@ export function spineHtml(pkg, qid, mark) {
 }
 
 /* ---------- self-marks: kept per profile on this device ---------- */
-export async function marks() { return (await db.kv.get('vivaMarks')) || {}; }
+export async function marks() {
+  const m = JSON.parse(JSON.stringify((await db.kv.get('vivaMarks')) || {}));
+  // T-160: marks made on other devices arrive as study events "<q>:mark:<mark>"; merged in time order
+  for (const e of S.study || []) {
+    if (S.undone && S.undone.has(e.id)) continue;
+    const pkg = String(e.deck || '').replace(/^VIVA-/, ''), [q, kind, mark] = String(e.code || '').split(':');
+    if (kind !== 'mark' || !mark || pkg === e.deck) continue;
+    const k = pkg + '|' + q, l = m[k] || (m[k] = []);
+    if (!l.some(x => Math.abs(x.ts - e.ts) < 2000 && x.mark === mark)) l.push({ ts: e.ts, mark });
+  }
+  for (const l of Object.values(m)) l.sort((a, b) => a.ts - b.ts);
+  return m;
+}
 export async function setMark(pkg, qid, mark) {
   const m = await marks(), k = pkg + '|' + qid;
   m[k] = (m[k] || []).concat({ ts: Date.now(), mark });
