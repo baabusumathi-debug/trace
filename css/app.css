@@ -1919,3 +1919,11 @@ p.sub.tlab{margin-bottom:6px}
 .vg-leg .ft{display:inline-block;width:12px!important;height:12px!important;border-radius:3px}
 .flow.v3 .f-strip.open .vg-leg{display:flex}
 .flow.v3.browse .f-stats{visibility:hidden}   /* T-166: looking at cards is not timed */
+/* T-168: viva lists in the Plan, and today's list on the Viva Map */
+.vlists{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.vlist{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.vlist.today{border-color:var(--gold)}
+.vl-t{display:flex;flex-direction:column;gap:2px;font-size:13px}.vl-t b{font-family:var(--serif);font-size:20px}.vl-t small{font-size:10.5px;color:var(--faint)}
+.vl-b{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.vl-b input{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+.vm-todayl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:#1d2129;border:1px solid var(--gold);border-radius:12px;padding:10px 14px;margin-bottom:12px}
+.vm-todayl>span:first-child{display:flex;flex-direction:column;gap:2px;font-size:13px;margin-right:auto}

@@ -11,12 +11,12 @@ import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, best
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, arcHtml, spineOf, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, vivaDoneEver, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, vivaDoneEver, vivaLists, removeVivaList, moveVivaList, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
 import { recordStudy } from './sync.js';
-import { renderVivaMap, migrateViva, noteDone, noteMark } from './vivamap.js';
+import { renderVivaMap, migrateViva, noteDone, noteMark, vlistInfo, walkList } from './vivamap.js';
 import * as DESK from './desk.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
 import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
@@ -1136,6 +1136,7 @@ function renderPlan() {
           <tr class="tot"><td class="nm"><i>Day total (cards)</i></td>${days.map(d => `<td>${d < td ? (r.done[d] || '–') : d === td ? `${r.done[d] || 0}/${r.total[d] || 0}` : `${r.total[d] || 0}/${r.cap(d)}`}${d < td && r.done[d] >= st.pace ? ' ✓' : ''}</td>`).join('')}${anyOver ? '<td></td>' : ''}</tr></tbody>
       </table></div>
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
+      ${vlistsHtml()}
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button><button class="btn ghost" data-addviva>+ Add viva</button></div>
       ${vr.filter(x => x.todayQs.some(q => !vivaDoneToday(x.lane.pkg, q))).map(x => `<div class="two pbtns"><button class="btn ghost" data-vwalkplan="${esc(x.lane.pkg)}">${ICON.walkS} Walk today’s viva ${esc(x.lane.pkg)} · Q${qNumOf(x.lane.pkg, x.todayQs[0])}–Q${qNumOf(x.lane.pkg, x.todayQs[x.todayQs.length - 1])} (${x.doneToday}/${x.todayQs.length} done)</button></div>`).join('')}
 
@@ -1160,6 +1161,7 @@ function renderPlan() {
   app.querySelectorAll('td.nm[data-subj]').forEach(t => t.onclick = () => { const id = t.dataset.subj; if (id === 'repair') repairSheet(st, re); else subjectSheet(st, id, re); });
   app.querySelector('[data-addsubj]').onclick = () => addSubjectSheet(st, re);
   app.querySelector('[data-addviva]').onclick = () => vivaLaneSheet(st, null, re);
+  bindVlists();
   app.querySelectorAll('td.nm[data-vlane]').forEach(t => t.onclick = () => vivaLaneSheet(st, t.dataset.vlane, re));
   app.querySelectorAll('[data-vwalkplan]').forEach(b => b.onclick = () => walkVivaPlan(b.dataset.vwalkplan));
   app.querySelector('[data-pickmosaic]').onclick = () => { P.set('pickOn', true); P.set('pickForPlan', true); go('#/sys/all'); };
@@ -1399,10 +1401,26 @@ function walkVivaPlan(pkg) {
   if (!list.length) { toast('These cards are not on this device yet.'); return; }
   startFlow(list, { viva: pkg, label: 'Viva ' + pkg + ' · today’s plan', returnTo: location.hash });
 }
+
+// T-168: viva lists made in the Viva Map, by day (kept in the plan file, so they sync)
+function vlistsHtml() {
+  const td = today(), L = vivaLists().filter(x => x.qs.length && x.day >= addDaysKey(td, -1));
+  if (!L.length) return '';
+  const name = d => d === td ? 'Today' : d === addDaysKey(td, 1) ? 'Tomorrow' : d === addDaysKey(td, -1) ? 'Yesterday' : new Date(d + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+  return `<section class="vlists"><span class="mono kick">VIVA LISTS</span>${L.map(x => { const I = vlistInfo(x.qs, x.day), m = I.min;
+    return `<div class="vlist${x.day === td ? ' today' : ''}"><span class="vl-t"><b>${name(x.day)}</b><span>${I.done}/${I.n} walked · about ${m >= 60 ? Math.floor(m / 60) + ' h ' : ''}${m % 60} m</span><small class="mono">${esc(I.xs.slice(0, 6).map(y => y.pkg + ' Q' + y.n).join(' · '))}${I.n > 6 ? ' …' : ''}</small></span>
+      <span class="vl-b">${I.left.length ? `<button class="btn ghost" data-vlgo="${x.id}">${ICON.walkS} Start${I.done ? ' the ' + I.left.length + ' left' : ''}</button>` : '<span class="mono">all walked ✓</span>'}<label class="mono small">Move <input type="date" value="${x.day}" data-vlmove="${x.id}"></label><button class="linkbtn muted small" data-vldel="${x.id}">Remove</button></span></div>`; }).join('')}</section>`;
+}
+function bindVlists() {
+  app.querySelectorAll('[data-vlgo]').forEach(b => b.onclick = () => { const x = vivaLists().find(y => y.id === b.dataset.vlgo); if (!x) return; const I = vlistInfo(x.qs, x.day); if (I.left.length) walkList({ app, ICON, nav, startFlow, toast, P, setMark: vivaSetMark }, I.left, 'Viva list · ' + I.left.length + ' questions'); });
+  app.querySelectorAll('[data-vlmove]').forEach(i => i.onchange = () => { if (i.value) { moveVivaList(i.dataset.vlmove, i.value); route(); } });
+  app.querySelectorAll('[data-vldel]').forEach(b => b.onclick = () => { removeVivaList(b.dataset.vldel); route(); });
+}
+const addDaysKey = (d, n) => dkey(new Date(d + 'T12:00:00').getTime() + n * 864e5);
 function renderPlanNew() {
   app.innerHTML = `<div class="screen plan">
     <header class="top"><a class="iconbtn" href="#/loft" aria-label="Back to the Loft">${ICON.back}</a><span class="tt"><span class="mono kick">PHASE 1 · TO 30 NOV</span><span class="h1s">The Plan</span></span></header>
-    <div class="scroll pad planbody"><div class="lcard">
+    <div class="scroll pad planbody">${vlistsHtml()}<div class="lcard">
       <span class="mono kick">FIRST STRETCH</span>
       <p>A stretch is a run of days with the subjects you want to finish in it. Trace counts the cards, spreads them over the days at your pace, and re-plans every morning.</p>
       <div class="pnew"><label>Starts <input type="date" value="${today()}" data-nstart></label><label>Days <input type="number" min="1" max="60" value="10" data-ndays></label><label>Pace <input type="number" min="20" max="150" value="65" data-npace> a day</label></div>
@@ -1410,6 +1428,7 @@ function renderPlanNew() {
       <button class="btn ghost pundo" data-pundo ${canUndoPlan() ? '' : 'disabled'}>↶ Undo last change</button>
     </div></div>${nav('')}</div>`;
   bindGo();
+  bindVlists();
   const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); renderPlan(); } };
   app.querySelector('[data-ncreate]').onclick = () => { newStretch({ start: app.querySelector('[data-nstart]').value || today(), days: +app.querySelector('[data-ndays]').value || 10, pace: +app.querySelector('[data-npace]').value || 65 }); renderPlan(); };
 }

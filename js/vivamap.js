@@ -12,7 +12,8 @@ import { pkgs, pkgOf, qOf, vivaQueue, marks as localMarks } from './viva.js';
 import { lessonOf } from './lesson.js';
 import { plain, splitQ } from './md.js';
 import { recordStudy, uid } from './sync.js';
-import { vivaDoneAll } from './plan.js';
+import { vivaDoneAll, addVivaList, vivaLists } from './plan.js';
+import { today, dkey } from './store.js';
 
 /* ---------------- section names (drafted 13 Nov from each group's questions; rename freely) ---------------- */
 export const SECTIONS = {
@@ -78,6 +79,32 @@ function walkTimes(pkg, q) {
   WC.set(k, walks); return walks;
 }
 export const walksOf = (R, pkg, q) => walkTimes(pkg, q).length;
+export const walkedOn = (pkg, q, day) => walkTimes(pkg, q).some(t => dkey(t) === day);
+/* ---------- T-168: a viva list in the Plan ---------- */
+export function vlistInfo(keys, day) {
+  const all = allQs(), xs = keys.map(k => all.find(x => x.pkg + '|' + x.q.q === k)).filter(Boolean);
+  const done = xs.filter(x => walkedOn(x.pkg, x.q.q, day));
+  return { xs, n: xs.length, done: done.length, left: xs.filter(x => !done.includes(x)), min: xs.reduce((a, x) => a + x.min, 0) };
+}
+export function walkList(c, xs, label) { ctx = ctx || c; walk(xs, label); }
+const VIVA_LAST = '2026-11-16';
+function daysLeft() { const out = []; let d = today(); for (let i = 0; i < 10 && d <= VIVA_LAST; i++) { out.push(d); d = dkey(new Date(d + 'T12:00:00').getTime() + 864e5); } return out.length ? out : [today()]; }
+const dayName = d => d === today() ? 'Today' : d === dkey(Date.now() + 864e5) ? 'Tomorrow' : new Date(d + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+function addToPlan(xs) {
+  const keys = xs.map(x => x.pkg + '|' + x.q.q), days = daysLeft();
+  const wrap = document.createElement('div'); wrap.className = 'modal';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-label="Add to the Plan"><div class="sheet-h"><span><span class="mono kick">ADD TO THE PLAN</span><span class="sh-t">${keys.length} question${keys.length === 1 ? '' : 's'} · which day?</span></span></div>
+    <div class="chips">${days.map(d => `<button class="chip" data-vpday="${d}">${dayName(d)}</button>`).join('')}${days.length > 1 ? `<button class="chip" data-vpspread>Spread over ${days.length} days (${days.map(dayName).join(', ')})</button>` : ''}</div>
+    <p class="muted small">It shows in the Plan as that day's viva list, in this order. Adding to a day that already has a list puts these at its end.</p>
+    <div class="sheet-f"><button class="btn ghost" data-vpcancel>Cancel</button></div></div>`;
+  document.body.appendChild(wrap);
+  const done = msg => { wrap.remove(); ctx.toast(msg); rerender(); };
+  wrap.onclick = e => { if (e.target === wrap) wrap.remove(); };
+  wrap.querySelector('[data-vpcancel]').onclick = () => wrap.remove();
+  wrap.querySelectorAll('[data-vpday]').forEach(b => b.onclick = () => { addVivaList(b.dataset.vpday, keys); done('Added to the Plan · ' + dayName(b.dataset.vpday) + ' · ' + keys.length + ' questions'); });
+  const sp = wrap.querySelector('[data-vpspread]');
+  if (sp) sp.onclick = () => { const per = Math.ceil(keys.length / days.length); days.forEach((d, i) => { const part = keys.slice(i * per, (i + 1) * per); if (part.length) addVivaList(d, part); }); done('Spread over ' + days.length + ' days · about ' + per + ' a day'); };
+}
 export function noteDone(pkg, q, session) {
   return recordStudy({ id: uid('t'), ts: Date.now(), deck: 'VIVA-' + pkg, code: q + ':done', ms: 0, session: session || 'vmap' }).catch(() => {});
 }
@@ -187,6 +214,7 @@ export function renderVivaMap(c) {
         <div class="vm-tiers">${['S', 'A', 'B'].map(t => { const xs = all.filter(x => x.q.tier === t), w = xs.filter(x => walksOf(R, x.pkg, x.q.q)).length; return `<div class="vm-tr"><i class="vm-sw vm-${t}"></i><b>${TIERN[t]}</b>${bar(w, xs.length, 'vm-' + t)}<span class="mono">${w}/${xs.length} walked</span></div>`; }).join('')}</div>
         <div class="vm-days"><span class="vm-dn">${days} day${days === 1 ? '' : 's'} left</span><span>Gold + silver not yet walked: <b>${sa}</b>${days ? ` → about <b>${Math.ceil(sa / days)}</b> a day` : ''}</span></div>
       </section>
+      ${(() => { const L = vivaLists().find(x => x.day === today()); if (!L || !L.qs.length) return ''; const I = vlistInfo(L.qs, today()); return `<div class="vm-todayl"><span><span class="mono kick">TODAY'S VIVA LIST</span><span><b>${I.done}/${I.n}</b> walked · about ${I.min >= 60 ? Math.floor(I.min / 60) + ' h ' : ''}${I.min % 60} m in all</span></span>${I.left.length ? `<button class="pillbtn" data-vmtoday>${c.ICON.walkS} Walk the ${I.left.length} left</button>` : '<span class="mono">all walked ✓</span>'}<a class="chip" href="#/plan">In the Plan</a></div>`; })()}
       <div class="vm-ctl">
         <label class="vm-search">Search <input type="search" id="vm-q" value="${esc(st.q)}" placeholder="brain death, pregnancy, REBOA…" autocomplete="off"></label>
         ${st.tab !== 'prio' ? `<span class="mono vm-lab">SHOW</span>${['S', 'A', 'B'].map(t => `<button class="chip${st.tiers.includes(t) ? ' on' : ''}" data-vmtier="${t}">${TIERN[t]}</button>`).join('')}<button class="chip${st.notWalked ? ' on' : ''}" data-vmnw>Not walked only</button>` : ''}
@@ -198,7 +226,7 @@ export function renderVivaMap(c) {
     </div>
     ${lq.length ? `<div class="vm-tray"><span class="vm-tt"><span class="mono kick">WALK LIST</span><span><b>${lq.length}</b> question${lq.length === 1 ? '' : 's'} · about <b>${lmin >= 60 ? Math.floor(lmin / 60) + ' h ' : ''}${lmin % 60} m</b>${st.ex.length ? ` · ${st.ex.length} left out` : ''}</span></span>
       <span class="vm-pills">${st.list.map((e, i) => `<span class="vm-pill"><b class="mono">${i + 1}</b><span>${esc(e.pkg)} ${e.q ? 'Q' + ((qOf(e.pkg, e.q) && pkgOf(e.pkg).questions.indexOf(qOf(e.pkg, e.q)) + 1) || '') : esc(e.g) + ' ' + esc(secName(e.pkg, e.g))}</span><button data-vmup="${i}" aria-label="Move earlier"${i ? '' : ' disabled'}>↑</button><button data-vmdn="${i}" aria-label="Move later"${i < st.list.length - 1 ? '' : ' disabled'}>↓</button><button data-vmrm="${i}" aria-label="Remove">×</button></span>`).join('')}</span>
-      <span class="vm-ta"><button class="chip" data-vmclear>Clear</button><button class="pillbtn" data-vmgo>${c.ICON.walkS} Start flow</button></span></div>` : ''}
+      <span class="vm-ta"><button class="chip" data-vmclear>Clear</button><button class="chip" data-vmplan>+ Add to plan</button><button class="pillbtn" data-vmgo>${c.ICON.walkS} Start flow</button></span></div>` : ''}
     ${c.nav('flow')}
   </div>`;
   const s2 = c.app.querySelector('.vmap .scroll'); if (s2 && y) s2.scrollTop = y;
@@ -321,6 +349,8 @@ function bind(all, R) {
   on('[data-vmdn]', b => { const i = +b.dataset.vmdn; if (i < st.list.length - 1) { [st.list[i + 1], st.list[i]] = [st.list[i], st.list[i + 1]]; save(); rerender(); } });
   on('[data-vmrm]', b => { const e = st.list.splice(+b.dataset.vmrm, 1)[0]; if (e && !e.q) st.ex = st.ex.filter(k => !k.startsWith(e.pkg + '|') || !all.some(x => x.pkg + '|' + x.q.q === k && x.g === e.g)); save(); rerender(); });
   on('[data-vmclear]', () => { st.list = []; st.ex = []; save(); rerender(); });
+  on('[data-vmplan]', () => { const xs = listQs(all); if (xs.length) addToPlan(xs); });
+  on('[data-vmtoday]', () => { const L = vivaLists().find(x => x.day === today()); if (!L) return; const I = vlistInfo(L.qs, today()); if (I.left.length) walk(I.left, 'Viva list · today · ' + I.left.length + ' left'); });
   on('[data-vmgo]', () => { const xs = listQs(all); if (xs.length) walk(xs, 'Viva Map · ' + xs.length + ' question' + (xs.length === 1 ? '' : 's')); });
   on('[data-vmarr]', b => { st.arrange = b.dataset.vmarr; save(); rerender(); });
   on('[data-vmpt]', b => { const t = b.dataset.vmpt; st.ptiers = st.ptiers.includes(t) ? st.ptiers.filter(x => x !== t) : st.ptiers.concat(t); if (!st.ptiers.length) st.ptiers = [t]; save(); rerender(); });
