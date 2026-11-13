@@ -40,6 +40,24 @@ export function undoPlan() {
 }
 export function replacePlan(next) { if (next && Array.isArray(next.stretches)) { P = next; savePlan(false); } }
 export const planJson = () => loadPlan();
+
+/* ---------- T-168: viva lists — an ordered set of viva questions planned for a day (from the Viva Map) ----------
+   P.vlists = [{ id, day: 'YYYY-MM-DD', qs: ['P1|P1-046', …] }]; one list per day, kept in the plan file so it syncs. */
+export function vivaLists() { const p = loadPlan(); return p.vlists || (p.vlists = []); }
+export function addVivaList(day, keys) {
+  const L = vivaLists(); let e = L.find(x => x.day === day);
+  if (!e) L.push(e = { id: rid(), day, qs: [] });
+  for (const k of keys) if (!e.qs.includes(k)) e.qs.push(k);
+  L.sort((a, b) => a.day < b.day ? -1 : 1); savePlan(); return e;
+}
+export function removeVivaList(id) { const p = loadPlan(); p.vlists = vivaLists().filter(x => x.id !== id); savePlan(); }
+export function moveVivaList(id, day) {
+  const L = vivaLists(), e = L.find(x => x.id === id); if (!e || e.day === day) return;
+  const t = L.find(x => x.day === day && x.id !== id);
+  if (t) { for (const k of e.qs) if (!t.qs.includes(k)) t.qs.push(k); loadPlan().vlists = L.filter(x => x.id !== id); }
+  else e.day = day;
+  vivaLists().sort((a, b) => a.day < b.day ? -1 : 1); savePlan();
+}
 export function currentStretch() {
   const p = loadPlan(), td = today();
   let st = p.stretches.find(s => s.id === p.current);
