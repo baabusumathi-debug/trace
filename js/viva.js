@@ -7,10 +7,10 @@ import { IS_HT, CONFIG } from './config.js';
 import { call, batch, hasBackend } from './api.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
-export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
+export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P10'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
 // a lesson figure: the repo copy, or for a package that came from Drive its SVG fetched through the bridge (blob URL)
 // packages taken from Drive once their card corrections are in data/cardfix.json and their decks are on test
-const VIVA_DRIVE = ['P2', 'P3', 'P5', 'P6', 'P7', 'P8'];
+const VIVA_DRIVE = ['P2', 'P3', 'P5', 'P6', 'P7', 'P8', 'P10'];
 const vimg = {};   // 'P6/name.svg' → blob URL
 export const imgSrc = (pkg, name) => vimg[pkg + '/' + name] || `./data/viva/img/${pkg}/${name}`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
@@ -190,7 +190,19 @@ export function spineHtml(pkg, qid, mark) {
 }
 
 /* ---------- self-marks: kept per profile on this device ---------- */
-export async function marks() { return (await db.kv.get('vivaMarks')) || {}; }
+export async function marks() {
+  const m = JSON.parse(JSON.stringify((await db.kv.get('vivaMarks')) || {}));
+  // T-160: marks made on other devices arrive as study events "<q>:mark:<mark>"; merged in time order
+  for (const e of S.study || []) {
+    if (S.undone && S.undone.has(e.id)) continue;
+    const pkg = String(e.deck || '').replace(/^VIVA-/, ''), [q, kind, mark] = String(e.code || '').split(':');
+    if (kind !== 'mark' || !mark || pkg === e.deck) continue;
+    const k = pkg + '|' + q, l = m[k] || (m[k] = []);
+    if (!l.some(x => Math.abs(x.ts - e.ts) < 2000 && x.mark === mark)) l.push({ ts: e.ts, mark });
+  }
+  for (const l of Object.values(m)) l.sort((a, b) => a.ts - b.ts);
+  return m;
+}
 export async function setMark(pkg, qid, mark) {
   const m = await marks(), k = pkg + '|' + qid;
   m[k] = (m[k] || []).concat({ ts: Date.now(), mark });

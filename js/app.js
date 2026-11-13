@@ -11,11 +11,12 @@ import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, best
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, arcHtml, spineOf, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, vivaDoneEver, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
 import { recordStudy } from './sync.js';
+import { renderVivaMap, migrateViva, noteDone, noteMark } from './vivamap.js';
 import * as DESK from './desk.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
 import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
@@ -75,6 +76,7 @@ async function boot() {
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
   await initExplain(); await initViva();
+  if (!IS_HT) migrateViva(P).catch(e => console.warn('viva sync', e));   // T-160: device-only walks and marks join the synced record, once
   loadQbank(); loadQmap(); loadCardfix(); loadExplain(); loadViva();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
@@ -140,6 +142,7 @@ function routeInner() {
   if (page === 'meditation') return renderMeditation(app, { nav: nav(''), back: '#/loft', P });
   if (page === 'pilot') return startPilot();
   if (page === 'viva') return renderViva(arg ? decodeURIComponent(arg) : '');
+  if (page === 'vmap') return renderVivaMap({ app, ICON, nav, startFlow, toast, P, setMark: vivaSetMark });
   renderPalace(app, { nav: nav('palace'), top: topBar(true) });
   vivaTile();
   bindGo(); bindGoingOut();
@@ -763,6 +766,7 @@ function renderVivaIndex(ps) {
   app.innerHTML = `<div class="screen vivap">
     <header class="top"><a class="iconbtn" href="#/" aria-label="Back">${ICON.back}</a><span class="tt"><span class="mono kick">VIVA · ${ps.length} PACKAGES</span><span class="h1s">Viva</span></span></header>
     <div class="scroll pad">
+      <a class="vp-q vp-pkg vm-entry" href="#/vmap"><span class="vp-n mono">▦</span><span class="vp-t">Viva Map<small class="mono">every question · sections · walks · pick and order what to walk</small></span></a>
       ${ps.map(p => `<a class="vp-q vp-pkg" href="#/viva/${esc(p.package)}"><span class="vp-n mono">${esc(p.package)}</span><span class="vp-t">${esc(p.title)}<small class="mono">${p.questions.length} questions${hasLessons(p.package) ? ' · narrated' : ''}</small></span><span></span><span class="mono muted">›</span></a>`).join('')}
     </div>
     ${nav('flow')}
@@ -787,7 +791,7 @@ async function renderViva(pkg) {
         <p class="muted small">Each question opens with its card, then the cards behind it with a bridge under each answer, then the spine to say in 60 seconds. A card that came under an earlier question shows as “seen above” and is not counted twice.</p>
         <p class="mono small vp-tally"><span class="vm-fluent">${tally.fluent} fluent</span> · <span class="vm-patchy">${tally.patchy} patchy</span> · <span class="vm-blank">${tally.blank} blank</span> · ${tally.none} not marked</p>
         ${(() => { const v = vivaPlanToday(pkg); return v ? `<div class="chips"><button class="chip on" data-vplanwalk>${ICON.walkS} Today’s plan · Q${qNumOf(pkg, v.todayQs[0])}–Q${qNumOf(pkg, v.todayQs[v.todayQs.length - 1])} · ${v.doneToday}/${v.todayQs.length} done</button></div>` : `<div class="chips"><button class="chip dash" data-vplanadd>+ Plan this package</button></div>`; })()}
-        <div class="chips"><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
+        <div class="chips"><a class="chip dash" href="#/vmap">▦ Viva Map</a><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
         ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
         ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
       </section>
@@ -1827,6 +1831,15 @@ function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - 
    in order; flow.look = how many steps back from now you are looking; flow.st = the step being timed now. */
 function shiftClocks(d) { if (!flow || !(d > 0)) return; flow.cardT0 += d; flow.t0 += d; if (flow.peekT0) flow.peekT0 += d; if (flow.st) flow.st.t0 += d; if (flow.lookT0) flow.lookT0 += d; if (flow.vt0) flow.vt0 += d; }
 const stepKey = s => s ? s.kind + ':' + s.idx : '';
+// T-158: which opening lessons, closing lessons and spines have been heard, on this device (localStorage, per profile)
+// heard = this device's record plus every synced study event (TraceEvents kind "study", code "<q>:<vq|vclose|spine>"),
+// so a lesson heard on the Tab shows on the Mac and on later days too
+const heardMap = () => {
+  const m = { ...(P.get('vivaHeard', {}) || {}) };
+  for (const e of S.study || []) { if (S.undone && S.undone.has(e.id)) continue; const pkg = String(e.deck || '').replace(/^VIVA-/, ''), [q, kind] = String(e.code || '').split(':'); if (q && /^(vq|vclose|spine)$/.test(kind)) m[pkg + '|' + q + '|' + kind] = m[pkg + '|' + q + '|' + kind] || e.ts; }
+  return m;
+};
+function heardSet(pkg, q, kind) { const m = heardMap(), k = pkg + '|' + q + '|' + kind; if (!m[k]) { m[k] = Date.now(); P.set('vivaHeard', m); } }
 function liveStep() {
   if (!flow || flow.done) return null;
   const it = flow.inter;
@@ -1856,10 +1869,11 @@ function noteStep() {
   closeStep();
   if (!s) return;
   const tr = flow.trail; if (!tr.length || stepKey(tr[tr.length - 1]) !== k) tr.push(s);
+  if (s.kind !== 'card' && s.q) heardSet(s.pkg, s.q, s.kind);   // T-158: lessons and spines heard are remembered (strip colours)
   flow.st = { k, s, t0: flow.pausedAt || Date.now() };
   if (s.kind === 'vq' && tr.length > 1) setTimeout(checkBreakDue, 400);     // T-141: between questions, never inside one
   // reaching the spine finishes the question for the plan (once per walk)
-  if (s.kind === 'spine' && s.q) { flow.vdone = flow.vdone || {}; const dk = s.pkg + '|' + s.q; if (!flow.vdone[dk]) { flow.vdone[dk] = 1; markVivaDone(s.pkg, s.q); } }
+  if (s.kind === 'spine' && s.q) { flow.vdone = flow.vdone || {}; const dk = s.pkg + '|' + s.q; if (!flow.vdone[dk]) { flow.vdone[dk] = 1; markVivaDone(s.pkg, s.q); noteDone(s.pkg, s.q, flow.session); } }
 }
 // where "now" sits in the trail: on the last step, or just past it once the walk is finished
 const liveAt = () => { const tr = flow.trail, s = liveStep(); return s && tr.length && stepKey(tr[tr.length - 1]) === stepKey(s) ? tr.length - 1 : tr.length; };
@@ -2153,7 +2167,7 @@ function drawVivaInter(el, big, it) {
       flow.vtimer = setInterval(() => { if (!flow) return; const left = Math.max(0, 60 - Math.floor(((flow.pausedAt || Date.now()) - flow.vt0) / 1000)); if (!clk.isConnected) return clearInterval(flow && flow.vtimer); clk.textContent = '0:' + String(left).padStart(2, '0'); clk.classList.toggle('over', left === 0); if (!left) { clearInterval(flow.vtimer); const d = el.querySelector('[data-vspine]'); if (d) d.open = true; } }, 250);
     };
     el.querySelectorAll('[data-vmark]').forEach(b => b.onclick = async e => {
-      e.stopPropagation(); await vivaSetMark(it.pkg, it.q, b.dataset.vmark); vivaMarks().then(m2 => { if (flow) { flow.vm = m2; drawThread(); } });
+      e.stopPropagation(); await vivaSetMark(it.pkg, it.q, b.dataset.vmark); noteMark(it.pkg, it.q, b.dataset.vmark, flow && flow.session); vivaMarks().then(m2 => { if (flow) { flow.vm = m2; drawThread(); } });
       el.querySelectorAll('[data-vmark]').forEach(x => x.classList.toggle('on', x === b));
       const d = el.querySelector('[data-vspine]'); if (d) d.open = true;
     });
@@ -2471,14 +2485,16 @@ function drawCard() {
   el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
   placeXpBar(el);
   if (voiceOn()) mountVoice(el, c, isQ);
-  if (!flow.peek && flow.viva && c.vq && c.vq.j != null) {
+  // T-158: looking back at a card (peek) mounts its lesson player too, so its voice plays; only the live card auto-advances
+  if (flow.viva && c.vq && c.vq.j != null) {
     const lx = lessonOf(c.vq.pkg, c.vq.q, 's' + c.vq.j);
-    if (lx && isQ && flow.vauto) { const at = flow.idx; setTimeout(() => { if (flow && flow.idx === at && flow.face === 'q' && !flow.inter) reveal(); }, 1200); }
+    if (lx && isQ && flow.vauto && !flow.peek) { const at = flow.idx; setTimeout(() => { if (flow && flow.idx === at && flow.face === 'q' && !flow.inter) reveal(); }, 1200); }
     if (lx && !isQ && el.querySelector('[data-lesson]')) {
       bindAutoChip(el);
       const at = flow.idx;
       el.querySelectorAll('[data-lcardfig]').forEach(b => b.onclick = e => { e.stopPropagation(); const v = el.querySelector('.vchip'); if (v && !v.disabled) v.click(); else toast(c.img ? 'The figure is on page ' + (c.a_page || c.q_page || '?') + ' of the PDF deck.' : 'No figure for this card on this device.'); });
-      mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.idx === at && !flow.inter) setTimeout(() => { if (flow && flow.idx === at && !flow.inter) next(false); }, 1500); } });
+      const pk = !!flow.peek;
+      mountLesson(el, lx, { auto: flow.vauto && !pk, onEnd: () => { if (!pk && flow && flow.vauto && flow.idx === at && !flow.inter && !flow.peek) setTimeout(() => { if (flow && flow.idx === at && !flow.inter && !flow.peek) next(false); }, 1500); } });
     }
   }
   el.classList.toggle('peeking', !!flow.peek);
@@ -2738,6 +2754,7 @@ function vivaTileData() {
   const ck = i => { const c = flow.queue[i]; return c ? c.deck + '|' + c.code : ''; };
   const walkedK = new Set(flow.trail.filter(x => x.kind === 'card').map(x => ck(x.idx)));   // a card done once lights up wherever it comes again
   const look = flow.look ? stepKey(flow.trail[liveAt() - flow.look]) : '';
+  const heard = heardMap();
   const groups = []; let g = null;
   for (const s of steps) {
     const q = s.q || ''; if (!g || g.q !== q || s.kind === 'vq') { g = { q, pkg: s.pkg, qn: qNumOf(s.pkg, s.q), steps: [] }; groups.push(g); }
@@ -2750,7 +2767,7 @@ function vivaTileData() {
     else if (s.kind === 'card') {
       const c = flow.queue[s.idx], n = c ? seen(c.deck, c.no) : 0, before = n - (c && seenOn(c.deck, c.no, today()) ? 1 : 0);
       st = before > 0 ? 'vb' + Math.min(3, n) : done.has(k) ? 'vg1' : walkedK.has(ck(s.idx)) ? 'vg2' : 'vg0';
-    } else st = done.has(k) ? 'vg1' : 'vg0';
+    } else st = done.has(k) ? 'vg1' : (heard[s.pkg + '|' + s.q + '|' + s.kind] || (s.q && vivaDoneEver(s.pkg, s.q))) ? 'vb1' : 'vg0';   // T-158: heard before (or the question walked to its spine before) = blue
     g.steps.push({ ...s, k, lab: s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''), st, look: k === look });
   }
   let gi = groups.findIndex(x => x.steps.some(s => s.k === (look || live)));

@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7 and P8 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "e38c147358",
+ "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
+ "version": "b1f21e7a13",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -1760,6 +1760,48 @@
     "a": "**a** QRS **<0.12 s** (in poisoning act at **0.10 s or more**: sodium-channel block, give bicarbonate); QTc **<440 ms**.\n**b** **Tricyclic antidepressants**, cocaine, carbamazepine (sodium-channel block): ventricular tachycardia.\n**c** **IV sodium bicarbonate**, 1–2 mEq/kg.\n**d** **Class Ia and Ic**.\n**e** Beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics."
    },
    "src": "Boehnert MT, Lovejoy FH. N Engl J Med 1985;313:474-479; Lavonas EJ et al. 2023 AHA focused update on cardiac arrest or life-threatening toxicity due to poisoning. Circulation 2023;148:e149-e184",
+   "date": "13 Nov 2026"
+  },
+  "HY3|EMS-15": {
+   "fields": {
+    "a": "**HACE → descend + dexamethasone · HAPE**\n**prophylaxis → nifedipine**\na **Cold-water immersion**; stop at ~38.3–38.8 °C\nto avoid overshoot.\nb **HACE** → descend, oxygen, **dexamethasone** 8\nmg then 4 mg 6-hourly.\nc **Nifedipine** (extended release). Acetazolamide\nprevents AMS; dexamethasone prevents HACE.\nd **Hot-water immersion** (~40–45 °C, 30–90\nmin) — the venom protein is heat-labile."
+   },
+   "src": "Eifling KP et al., Wilderness Environ Med 2024;35(1 suppl):112S-127S (WMS heat illness 2024 update); AHA 2025 Part 10 (stop at 38.6 °C)",
+   "date": "13 Nov 2026"
+  },
+  "ENDO01A|ENDO-06": {
+   "fields": {
+    "a": "**DOMAIN** | **POINTS**\n**Temperature** (°F) | 99–99.9: 5, then **+5 per degree** up to 104+: 30\n**Heart rate** | 99–109: 5, then +5 per 10 up to 140+: 25; **AF: +10**\n**Heart failure** | Pedal oedema 5, bibasal rales 10, pulmonary oedema 15\n**CNS** | Agitation 10; delirium, psychosis, lethargy 20; seizure, coma 30\n**GI-hepatic** | Diarrhoea, vomiting, pain 10; unexplained jaundice 20\n**Precipitant** | Present 10; absent 0\n**Under 25**: storm unlikely. **25–44**: impending storm. **45 or more**:\nthyroid storm."
+   },
+   "src": "Burch HB, Wartofsky L. Endocrinol Metab Clin North Am 1993;22:263; quoted in Satoh T et al. Endocr J 2016",
+   "date": "13 Nov 2026"
+  },
+  "ENDO01A|ENDO-13": {
+   "fields": {
+    "a": " | **T/F** | **REASON**\n**a** | T |\n**b** | F | At least 1 h AFTER the thionamide.\n**c** | T |\n**d** | F | 45 or more.\n**e** | F | Paracetamol; aspirin frees hormone.\n**f** | T |\n**g** | F | Steroid first.\n**h** | F | Low or normal."
+   },
+   "src": "Burch HB, Wartofsky L. 1993; Satoh T et al. Endocr J 2016",
+   "date": "13 Nov 2026"
+  },
+  "ENDO01A|ENDO-12": {
+   "fields": {
+    "a": "- **Hydrocortisone IV first**: concurrent adrenal insufficiency\n(**Schmidt's syndrome**) or panhypopituitarism.\n- **IV levothyroxine**: **200–400 µg load** (lower if old or cardiac), then 1.6 µg/kg/day (75% while IV); ± **IV**\n**liothyronine (T3) 5–20 µg**, then 2.5–10 µg 8-hourly.\n- **Sodium**: water restriction; 0.9% saline if Na under 120 (notes);\n3% saline if severe; vaptans if not severe; sodium 8-hourly.\n- Ventilate for respiratory acidosis; furosemide for pulmonary\noedema; passive rewarming if under 35 °C; treat infection.\n- **Complications**: respiratory or cardiac failure, **MI from too**\n**much T4**, pulmonary oedema, shock, bleeding (**acquired von**\n**Willebrand**; factors V, VII, VIII, IX, X low)."
+   },
+   "src": "Jonklaas J et al. ATA hypothyroidism guideline, Thyroid 2014;24:1670",
+   "date": "13 Nov 2026"
+  },
+  "ENDO01A|ENDO-08": {
+   "fields": {
+    "a": "**DRUG** | **DOSE (NOTES)** | **WHY**\n**Propranolol** | IV 1–2 mg; oral 60–80 mg 4-hourly (ATA 2016; notes: 40–80 mg 6–8-hourly) | Blocks adrenergic effects; **reduces T4→T3**\n**PTU** (preferred) | 500–1000 mg load, then 200–250 mg | Blocks synthesis **and** **peripheral conversion**\n**Methimazole /** **carbimazole** | 10–50 mg (scan unclear), 6-hourly; IV not in India | Blocks synthesis\n**Lugol's iodine** / SSKI | **At least 1 h after** the thionamide | Wolff-Chaikoff: stops release and synthesis\n**Hydrocortisone** | Steroid of choice | Reduces conversion; covers relative adrenal insufficiency\n**Lithium** **carbonate** | 300 mg 6-hourly (rarely used) | Inhibits colloid proteolysis (release)\n**L-carnitine** | Adjuvant | Blocks hormone entry to nuclei"
+   },
+   "src": "Ross DS et al. ATA hyperthyroidism guideline, Thyroid 2016;26:1343 (Table: thyroid storm); reproduced in De Groot LJ, Bartalena L. Thyroid Storm, Endotext",
+   "date": "13 Nov 2026"
+  },
+  "ENDO01A|ENDO-10": {
+   "fields": {
+    "a": "a Decompensated severe hypothyroidism with altered\nmentation; prevalence **0.01%**; mortality **20–50% even with**\n**treatment**; TSH usually **over 100 mIU/L**.\nb Hashimoto's, thyroidectomy, radioiodine or radiotherapy,\nantithyroid drugs, **tyrosine kinase inhibitors**; pituitary\ndisease.\nc **Infection, cold exposure, stroke**, drugs (**sedatives,**\n**analgesics, amiodarone, lithium**).\nd Coma, **hypothermia** (under 33 °C in your notes),\nbradycardia, non-pitting oedema, dry yellow skin,\nhyporeflexia, muffled heart sounds (effusion), constipation;\nrarely seizures."
+   },
+   "src": "Wiersinga WM. Myxedema and Coma, Endotext (reported mortality 20–50%); Ono Y et al. J Epidemiol 2017;27:117 (29.5% of 149)",
    "date": "13 Nov 2026"
   }
  }
