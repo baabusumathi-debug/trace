@@ -233,7 +233,7 @@ function pkgView(all, R, show) {
     const vis = g.xs.filter(show); if (!vis.length) return '';
     const w = g.xs.filter(x => walksOf(R, x.pkg, x.q.q)).length, mins = g.xs.reduce((a, x) => a + x.min, 0);
     return `<section class="vm-psec"><div class="vm-psh"><span><span class="mono kick">${esc(g.g)} · ${g.xs.length} QUESTIONS · ${mins} MIN</span><b>${esc(secName(P.package, g.g))}</b></span><span class="vm-psr">${bar(w, g.xs.length)}<span class="mono">${w}/${g.xs.length}</span><button class="chip" data-vmaddsec="${esc(P.package)}|${esc(g.g)}">${inList(P.package, g.g) >= 0 ? '✓ In walk list' : '+ Walk list'}</button></span></div>
-      ${vis.map(x => `<button class="vm-row" data-vmq="${esc(x.pkg)}|${esc(x.q.q)}">${tile(x, R)}<span class="vm-rt">${esc(plain(x.q.text))}<small class="mono">${KIND[x.q.kind] || ''} · ${x.q.steps.length} cards · ${x.min} min</small></span>${mosaic(x, R)}</button>`).join('')}</section>`;
+      ${vis.map(x => `<div class="vm-row">${tile(x, R)}<button class="vm-rt" data-vmq="${esc(x.pkg)}|${esc(x.q.q)}">${esc(plain(x.q.text))}<small class="mono">${KIND[x.q.kind] || ''} · ${x.q.steps.length} cards · ${x.min} min</small></button>${mosaic(x, R)}</div>`).join('')}</section>`;
   }).join('')}</div>`;
 }
 
