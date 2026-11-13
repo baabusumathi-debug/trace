@@ -1828,7 +1828,13 @@ function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - 
 function shiftClocks(d) { if (!flow || !(d > 0)) return; flow.cardT0 += d; flow.t0 += d; if (flow.peekT0) flow.peekT0 += d; if (flow.st) flow.st.t0 += d; if (flow.lookT0) flow.lookT0 += d; if (flow.vt0) flow.vt0 += d; }
 const stepKey = s => s ? s.kind + ':' + s.idx : '';
 // T-158: which opening lessons, closing lessons and spines have been heard, on this device (localStorage, per profile)
-const heardMap = () => P.get('vivaHeard', {}) || {};
+// heard = this device's record plus every synced study event (TraceEvents kind "study", code "<q>:<vq|vclose|spine>"),
+// so a lesson heard on the Tab shows on the Mac and on later days too
+const heardMap = () => {
+  const m = { ...(P.get('vivaHeard', {}) || {}) };
+  for (const e of S.study || []) { if (S.undone && S.undone.has(e.id)) continue; const pkg = String(e.deck || '').replace(/^VIVA-/, ''), [q, kind] = String(e.code || '').split(':'); if (q && /^(vq|vclose|spine)$/.test(kind)) m[pkg + '|' + q + '|' + kind] = m[pkg + '|' + q + '|' + kind] || e.ts; }
+  return m;
+};
 function heardSet(pkg, q, kind) { const m = heardMap(), k = pkg + '|' + q + '|' + kind; if (!m[k]) { m[k] = Date.now(); P.set('vivaHeard', m); } }
 function liveStep() {
   if (!flow || flow.done) return null;
