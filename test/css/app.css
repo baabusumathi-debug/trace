@@ -1902,3 +1902,16 @@ p.sub.tlab{margin-bottom:6px}
 .vm-sib{display:flex;flex-wrap:wrap;gap:5px;margin-left:auto}.vm-sib .vm-t{width:28px;height:28px;font-size:11px}
 .vm-entry .vp-n{font-size:18px}
 @media (max-width:700px){.vm-pkg{flex-direction:column}.vm-pgrid{grid-template-columns:1fr}.vm-mos{max-width:120px}.vm-days{margin-left:0;text-align:left}}
+/* T-162: the walk strip uses the Viva Map code — cards white/×1/×2/×3+, round lessons blue once heard, bullseye spine */
+.flow.v3 .f-strip .vg .ft.vb0,.vg-leg .ft.vb0{background:var(--s0);color:var(--s0f);box-shadow:inset 0 0 0 1px #3a4250}
+.flow.v3 .f-strip .vg .ft.vb1,.vg-leg .ft.vb1{background:var(--s1);color:var(--s1f)}
+.flow.v3 .f-strip .vg .ft.vb2,.vg-leg .ft.vb2{background:var(--s2);color:var(--s2f)}
+.flow.v3 .f-strip .vg .ft.vb3,.vg-leg .ft.vb3{background:var(--s3);color:var(--s3f)}
+.flow.v3 .f-strip .vg .ft.vl0{background:var(--s0);color:var(--s0f);box-shadow:inset 0 0 0 1px #3a4250;border-radius:50%}
+.flow.v3 .f-strip .vg .ft.vl1,.vg-leg .ft.vl1{background:var(--s2);color:#fff;border-radius:50%}
+.flow.v3 .f-strip .vg .ft.vs0{border-radius:50%;background:radial-gradient(circle,var(--s0) 0 30%,#14171c 31% 46%,var(--s0) 47% 100%);box-shadow:inset 0 0 0 1px #3a4250}
+.flow.v3 .f-strip .vg .ft.vs1,.vg-leg .ft.vs1{border-radius:50%;background:radial-gradient(circle,var(--s2) 0 30%,#14171c 31% 46%,var(--s2) 47% 100%)}
+.flow.v3 .f-strip .vg .ft.cur{outline:2px solid var(--gold2);outline-offset:1px}
+.vg-leg{display:none;align-items:center;gap:4px;font-size:10px;color:var(--muted);flex-basis:100%;margin-top:6px}
+.vg-leg .ft{display:inline-block;width:12px!important;height:12px!important;border-radius:3px}
+.flow.v3 .f-strip.open .vg-leg{display:flex}
