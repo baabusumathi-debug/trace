@@ -218,7 +218,7 @@ export const vivaDoneAll = () => vd();
 const syncedDone = (pkg, q) => (S.study || []).filter(e => e.deck === 'VIVA-' + pkg && e.code === q + ':done' && !(S.undone && S.undone.has(e.id))).map(e => e.ts);
 export const vivaDoneEver = (pkg, q) => !!(vd()[pkg + '|' + q] || []).length || syncedDone(pkg, q).length > 0;   // T-158/T-160
 export const vivaDoneToday = (pkg, q) => { const a = (vd()[pkg + '|' + q] || []).concat(syncedDone(pkg, q)); const t0 = dayStart(today()); return a.some(t => t >= t0); };
-const vDoneAfter = (pkg, q, t0) => { const a = vd()[pkg + '|' + q]; if (!a) return null; const t = a.find(x => x >= t0); return t == null ? null : t; };
+const vDoneAfter = (pkg, q, t0) => { const a = (vd()[pkg + '|' + q] || []).concat(syncedDone(pkg, q)).sort((x, y) => x - y); const t = a.find(x => x >= t0); return t == null ? null : t; };   // T-164: walks from every device
 export function addVivaLane(st, { pkg, qs, perDay, from }) {
   st.viva = st.viva || [];
   const l = { id: rid(), pkg, qs: [...qs], perDay: perDay || null, from: from && from > st.start ? from : null, addedAt: Date.now() };
