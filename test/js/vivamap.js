@@ -81,7 +81,7 @@ function allQs() {
   for (const P of pkgs()) P.questions.forEach((q, i) => out.push({ pkg: P.package, P, q, n: i + 1, g: q.gen, sec: secName(P.package, q.gen), min: lessonMin(q) }));
   return out;
 }
-const hay = x => (x.q.text + ' ' + x.sec + ' ' + shortTitle(x.P) + ' ' + (x.q.spine || []).join(' ') + ' ' + x.q.q).toLowerCase();
+const hay = x => (x.q.text + ' ' + x.sec + ' ' + shortTitle(x.P) + ' ' + x.q.q).toLowerCase();   // the question, its section and package (spines matched too much)
 
 /* ---------------- state ---------------- */
 let st = null, ctx = null;
@@ -142,7 +142,7 @@ export function renderVivaMap(c) {
   const all = allQs(), R = vivaRecord();
   const qq = st.q.trim().toLowerCase(), hit = x => !qq || hay(x).includes(qq);
   const show = x => st.tiers.includes(x.q.tier) && (!st.notWalked || !walksOf(R, x.pkg, x.q.q)) && hit(x);
-  const days = Math.max(0, Math.ceil((VIVA_DAY - Date.now()) / 864e5));
+  const days = Math.max(0, Math.floor((VIVA_DAY - Date.now()) / 864e5));
   const sa = all.filter(x => 'SA'.includes(x.q.tier) && !walksOf(R, x.pkg, x.q.q)).length;
   const tabs = [['map', 'Map'], ['pkg', 'Package'], ['prio', 'Priority']];
   const lq = listQs(all), lmin = lq.reduce((a, x) => a + x.min, 0);
