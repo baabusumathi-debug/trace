@@ -1420,7 +1420,7 @@ const addDaysKey = (d, n) => dkey(new Date(d + 'T12:00:00').getTime() + n * 864e
 function renderPlanNew() {
   app.innerHTML = `<div class="screen plan">
     <header class="top"><a class="iconbtn" href="#/loft" aria-label="Back to the Loft">${ICON.back}</a><span class="tt"><span class="mono kick">PHASE 1 · TO 30 NOV</span><span class="h1s">The Plan</span></span></header>
-    <div class="scroll pad planbody"><div class="lcard">
+    <div class="scroll pad planbody">${vlistsHtml()}<div class="lcard">
       <span class="mono kick">FIRST STRETCH</span>
       <p>A stretch is a run of days with the subjects you want to finish in it. Trace counts the cards, spreads them over the days at your pace, and re-plans every morning.</p>
       <div class="pnew"><label>Starts <input type="date" value="${today()}" data-nstart></label><label>Days <input type="number" min="1" max="60" value="10" data-ndays></label><label>Pace <input type="number" min="20" max="150" value="65" data-npace> a day</label></div>
@@ -1428,6 +1428,7 @@ function renderPlanNew() {
       <button class="btn ghost pundo" data-pundo ${canUndoPlan() ? '' : 'disabled'}>↶ Undo last change</button>
     </div></div>${nav('')}</div>`;
   bindGo();
+  bindVlists();
   const un = app.querySelector('[data-pundo]'); if (un) un.onclick = () => { if (undoPlan()) { toast('Undone.'); renderPlan(); } };
   app.querySelector('[data-ncreate]').onclick = () => { newStretch({ start: app.querySelector('[data-nstart]').value || today(), days: +app.querySelector('[data-ndays]').value || 10, pace: +app.querySelector('[data-npace]').value || 65 }); renderPlan(); };
 }
