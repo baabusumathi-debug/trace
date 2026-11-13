@@ -11,7 +11,7 @@ import { todayBeads, chase, livePace, cardsPerDay, studyIntervals, studyMs, best
 import { peekOn, setPeek, PEAK_LABEL } from './peek.js';
 import { mountInk, setWriting, isWriting, unmountInk } from './inkcard.js';
 import { X, initExplain, loadExplain, xOf, mapOf, closeOf, hasExplain, gistHtml, panelHtml, depthOf, partsQHtml, partsAHtml, bridgeHtml, arcHtml, spineOf, mapHtml, closeHtml, patternHtml, getNote, setNote, feedback } from './explain.js';
-import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
+import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubject, compute, todayCards, todayParts, subjectDone, dayType, dayList as planDays, DAY_TYPES, repairOpts, dayOrder, setDayOrder, rowOrder, moveRow, undoPlan, canUndoPlan, markVivaDone, vivaDoneToday, vivaDoneEver, addVivaLane, removeVivaLane, computeViva, vivaPlanToday } from './plan.js';
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
@@ -1827,6 +1827,9 @@ function current() { return flow.peek ? flow.queue[flow.hist[flow.hist.length - 
    in order; flow.look = how many steps back from now you are looking; flow.st = the step being timed now. */
 function shiftClocks(d) { if (!flow || !(d > 0)) return; flow.cardT0 += d; flow.t0 += d; if (flow.peekT0) flow.peekT0 += d; if (flow.st) flow.st.t0 += d; if (flow.lookT0) flow.lookT0 += d; if (flow.vt0) flow.vt0 += d; }
 const stepKey = s => s ? s.kind + ':' + s.idx : '';
+// T-158: which opening lessons, closing lessons and spines have been heard, on this device (localStorage, per profile)
+const heardMap = () => P.get('vivaHeard', {}) || {};
+function heardSet(pkg, q, kind) { const m = heardMap(), k = pkg + '|' + q + '|' + kind; if (!m[k]) { m[k] = Date.now(); P.set('vivaHeard', m); } }
 function liveStep() {
   if (!flow || flow.done) return null;
   const it = flow.inter;
@@ -1856,6 +1859,7 @@ function noteStep() {
   closeStep();
   if (!s) return;
   const tr = flow.trail; if (!tr.length || stepKey(tr[tr.length - 1]) !== k) tr.push(s);
+  if (s.kind !== 'card' && s.q) heardSet(s.pkg, s.q, s.kind);   // T-158: lessons and spines heard are remembered (strip colours)
   flow.st = { k, s, t0: flow.pausedAt || Date.now() };
   if (s.kind === 'vq' && tr.length > 1) setTimeout(checkBreakDue, 400);     // T-141: between questions, never inside one
   // reaching the spine finishes the question for the plan (once per walk)
@@ -2471,14 +2475,16 @@ function drawCard() {
   el.innerHTML = (flow.peek ? `<div class="peek-bar mono"><span>LOOKING BACK · ${flow.peek} card${flow.peek > 1 ? 's' : ''} back · nothing changes</span><span>← further · → forward</span></div>` : '') + (split ? '' : top) + body;
   placeXpBar(el);
   if (voiceOn()) mountVoice(el, c, isQ);
-  if (!flow.peek && flow.viva && c.vq && c.vq.j != null) {
+  // T-158: looking back at a card (peek) mounts its lesson player too, so its voice plays; only the live card auto-advances
+  if (flow.viva && c.vq && c.vq.j != null) {
     const lx = lessonOf(c.vq.pkg, c.vq.q, 's' + c.vq.j);
-    if (lx && isQ && flow.vauto) { const at = flow.idx; setTimeout(() => { if (flow && flow.idx === at && flow.face === 'q' && !flow.inter) reveal(); }, 1200); }
+    if (lx && isQ && flow.vauto && !flow.peek) { const at = flow.idx; setTimeout(() => { if (flow && flow.idx === at && flow.face === 'q' && !flow.inter) reveal(); }, 1200); }
     if (lx && !isQ && el.querySelector('[data-lesson]')) {
       bindAutoChip(el);
       const at = flow.idx;
       el.querySelectorAll('[data-lcardfig]').forEach(b => b.onclick = e => { e.stopPropagation(); const v = el.querySelector('.vchip'); if (v && !v.disabled) v.click(); else toast(c.img ? 'The figure is on page ' + (c.a_page || c.q_page || '?') + ' of the PDF deck.' : 'No figure for this card on this device.'); });
-      mountLesson(el, lx, { auto: flow.vauto, onEnd: () => { if (flow && flow.vauto && flow.idx === at && !flow.inter) setTimeout(() => { if (flow && flow.idx === at && !flow.inter) next(false); }, 1500); } });
+      const pk = !!flow.peek;
+      mountLesson(el, lx, { auto: flow.vauto && !pk, onEnd: () => { if (!pk && flow && flow.vauto && flow.idx === at && !flow.inter && !flow.peek) setTimeout(() => { if (flow && flow.idx === at && !flow.inter && !flow.peek) next(false); }, 1500); } });
     }
   }
   el.classList.toggle('peeking', !!flow.peek);
@@ -2738,6 +2744,7 @@ function vivaTileData() {
   const ck = i => { const c = flow.queue[i]; return c ? c.deck + '|' + c.code : ''; };
   const walkedK = new Set(flow.trail.filter(x => x.kind === 'card').map(x => ck(x.idx)));   // a card done once lights up wherever it comes again
   const look = flow.look ? stepKey(flow.trail[liveAt() - flow.look]) : '';
+  const heard = heardMap();
   const groups = []; let g = null;
   for (const s of steps) {
     const q = s.q || ''; if (!g || g.q !== q || s.kind === 'vq') { g = { q, pkg: s.pkg, qn: qNumOf(s.pkg, s.q), steps: [] }; groups.push(g); }
@@ -2750,7 +2757,7 @@ function vivaTileData() {
     else if (s.kind === 'card') {
       const c = flow.queue[s.idx], n = c ? seen(c.deck, c.no) : 0, before = n - (c && seenOn(c.deck, c.no, today()) ? 1 : 0);
       st = before > 0 ? 'vb' + Math.min(3, n) : done.has(k) ? 'vg1' : walkedK.has(ck(s.idx)) ? 'vg2' : 'vg0';
-    } else st = done.has(k) ? 'vg1' : 'vg0';
+    } else st = done.has(k) ? 'vg1' : (heard[s.pkg + '|' + s.q + '|' + s.kind] || (s.q && vivaDoneEver(s.pkg, s.q))) ? 'vb1' : 'vg0';   // T-158: heard before (or the question walked to its spine before) = blue
     g.steps.push({ ...s, k, lab: s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''), st, look: k === look });
   }
   let gi = groups.findIndex(x => x.steps.some(s => s.k === (look || live)));

@@ -213,6 +213,7 @@ const VKEY = KEY.replace(/plan$/, 'vivaDone');
 let VD = null;
 const vd = () => VD || (VD = (() => { try { return JSON.parse(localStorage.getItem(VKEY) || '{}') || {}; } catch (e) { return {}; } })());
 export function markVivaDone(pkg, q) { const m = vd(), k = pkg + '|' + q; (m[k] || (m[k] = [])).push(Date.now()); try { localStorage.setItem(VKEY, JSON.stringify(m)); } catch (e) { /* full */ } }
+export const vivaDoneEver = (pkg, q) => !!(vd()[pkg + '|' + q] || []).length;   // T-158
 export const vivaDoneToday = (pkg, q) => { const a = vd()[pkg + '|' + q]; const t0 = dayStart(today()); return !!(a && a.some(t => t >= t0)); };
 const vDoneAfter = (pkg, q, t0) => { const a = vd()[pkg + '|' + q]; if (!a) return null; const t = a.find(x => x >= t0); return t == null ? null : t; };
 export function addVivaLane(st, { pkg, qs, perDay, from }) {
