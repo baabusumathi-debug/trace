@@ -48,7 +48,36 @@ export function vivaRecord() {
   }
   return { done, mark, heard };
 }
-export const walksOf = (R, pkg, q) => (R.done[pkg + '|' + q] || new Set()).size;
+// T-165: a walk of a question is any of: reaching its spine ("<q>:done"), marking it Fluent/Patchy/Blank (marks are
+// given at the spine), or a session in which every card of the question was walked. Times within 30 minutes of each
+// other are one walk, so a session that does all three counts once. Works from data already synced from every device.
+let WC = null, WKEY = '';
+function walkTimes(pkg, q) {
+  const key = (S.events || []).length + '|' + (S.study || []).length;
+  if (WKEY !== key) { WC = new Map(); WKEY = key; }
+  const k = pkg + '|' + q; if (WC.has(k)) return WC.get(k);
+  const ts = [];
+  for (const e of S.study || []) {
+    if (S.undone && S.undone.has(e.id)) continue;
+    if (e.deck !== 'VIVA-' + pkg) continue;
+    const [qq, kind] = String(e.code || '').split(':');
+    if (qq === q && (kind === 'done' || kind === 'mark')) ts.push(e.ts);
+  }
+  const cards = vivaQueue(pkg, q).list.filter(c => !c.vq.rep);
+  if (cards.length) {
+    const want = new Set(cards.map(c => c.deck + '|' + c.no)), bySess = new Map();
+    for (const e of S.events || []) {
+      if (!want.has(e.deck + '|' + e.no) || (S.undone && S.undone.has(e.id))) continue;
+      const m = bySess.get(e.session) || bySess.set(e.session, new Map()).get(e.session);
+      m.set(e.deck + '|' + e.no, Math.max(m.get(e.deck + '|' + e.no) || 0, e.ts));
+    }
+    for (const m of bySess.values()) if (m.size === want.size) ts.push(Math.max(...m.values()));
+  }
+  ts.sort((a, b) => a - b);
+  const walks = []; for (const t of ts) if (!walks.length || t - walks[walks.length - 1] > 30 * 60e3) walks.push(t); else walks[walks.length - 1] = t;
+  WC.set(k, walks); return walks;
+}
+export const walksOf = (R, pkg, q) => walkTimes(pkg, q).length;
 export function noteDone(pkg, q, session) {
   return recordStudy({ id: uid('t'), ts: Date.now(), deck: 'VIVA-' + pkg, code: q + ':done', ms: 0, session: session || 'vmap' }).catch(() => {});
 }

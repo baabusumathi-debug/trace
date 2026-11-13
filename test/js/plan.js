@@ -215,7 +215,7 @@ const vd = () => VD || (VD = (() => { try { return JSON.parse(localStorage.getIt
 export function markVivaDone(pkg, q) { const m = vd(), k = pkg + '|' + q; (m[k] || (m[k] = [])).push(Date.now()); try { localStorage.setItem(VKEY, JSON.stringify(m)); } catch (e) { /* full */ } }
 export const vivaDoneAll = () => vd();
 // T-160: a walk that reached the spine on any device is in the synced record (study event "<q>:done")
-const syncedDone = (pkg, q) => (S.study || []).filter(e => e.deck === 'VIVA-' + pkg && e.code === q + ':done' && !(S.undone && S.undone.has(e.id))).map(e => e.ts);
+const syncedDone = (pkg, q) => (S.study || []).filter(e => e.deck === 'VIVA-' + pkg && (e.code === q + ':done' || String(e.code || '').startsWith(q + ':mark:')) && !(S.undone && S.undone.has(e.id))).map(e => e.ts);   // T-165: a mark is given at the spine, so it counts as reaching it
 export const vivaDoneEver = (pkg, q) => !!(vd()[pkg + '|' + q] || []).length || syncedDone(pkg, q).length > 0;   // T-158/T-160
 export const vivaDoneToday = (pkg, q) => { const a = (vd()[pkg + '|' + q] || []).concat(syncedDone(pkg, q)); const t0 = dayStart(today()); return a.some(t => t >= t0); };
 const vDoneAfter = (pkg, q, t0) => { const a = (vd()[pkg + '|' + q] || []).concat(syncedDone(pkg, q)).sort((x, y) => x - y); const t = a.find(x => x >= t0); return t == null ? null : t; };   // T-164: walks from every device
