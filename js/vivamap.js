@@ -233,7 +233,7 @@ function pkgView(all, R, show) {
     const vis = g.xs.filter(show); if (!vis.length) return '';
     const w = g.xs.filter(x => walksOf(R, x.pkg, x.q.q)).length, mins = g.xs.reduce((a, x) => a + x.min, 0);
     return `<section class="vm-psec"><div class="vm-psh"><span><span class="mono kick">${esc(g.g)} · ${g.xs.length} QUESTIONS · ${mins} MIN</span><b>${esc(secName(P.package, g.g))}</b></span><span class="vm-psr">${bar(w, g.xs.length)}<span class="mono">${w}/${g.xs.length}</span><button class="chip" data-vmaddsec="${esc(P.package)}|${esc(g.g)}">${inList(P.package, g.g) >= 0 ? '✓ In walk list' : '+ Walk list'}</button></span></div>
-      ${vis.map(x => `<button class="vm-row" data-vmq="${esc(x.pkg)}|${esc(x.q.q)}">${tile(x, R)}<span class="vm-rt">${esc(plain(x.q.text))}<small class="mono">${KIND[x.q.kind] || ''} · ${x.q.steps.length} cards · ${x.min} min</small></span>${mosaic(x, R)}</button>`).join('')}</section>`;
+      ${vis.map(x => `<div class="vm-row">${tile(x, R)}<button class="vm-rt" data-vmq="${esc(x.pkg)}|${esc(x.q.q)}">${esc(plain(x.q.text))}<small class="mono">${KIND[x.q.kind] || ''} · ${x.q.steps.length} cards · ${x.min} min</small></button>${mosaic(x, R)}</div>`).join('')}</section>`;
   }).join('')}</div>`;
 }
 
@@ -263,11 +263,11 @@ function openQ(pkg, qid) {
   const x = allQs().find(y => y.pkg === pkg && y.q.q === qid); if (!x) return;
   const R = vivaRecord(), w = walksOf(R, pkg, qid), mk = R.mark[pkg + '|' + qid], cards = vivaQueue(pkg, qid).list;
   const sib = allQs().filter(y => y.pkg === pkg && y.g === x.g);
-  const lessonRow = (k, label) => `<li><span class="vm-ic"><i class="vm-ml big${heardOf(R, pkg, qid, k) ? ' on' : ''}"></i></span><span class="vm-st"><b>${label}</b><small class="mono">${heardOf(R, pkg, qid, k) ? 'heard' : 'not yet'}</small></span></li>`;
+  const lessonRow = (k, label) => `<li><span class="vm-line"><span class="vm-ic"><i class="vm-ml big${heardOf(R, pkg, qid, k) ? ' on' : ''}"></i></span><span class="vm-st"><b>${label}</b><small class="mono">${heardOf(R, pkg, qid, k) ? 'heard' : 'not yet'}</small></span></span></li>`;
   const rows = (lessonOf(pkg, qid, 'o') ? lessonRow('vq', 'Opening lesson') : '') +
-    cards.map((c, j) => { const n = seen(c.deck, c.no); return `<li><button class="vm-step" data-vmstart="${j}"><span class="vm-ic"><i class="vm-mc big ${shade(n)}">${j + 1}</i></span><span class="vm-st"><b>${esc(plain(splitQ(c.q).head).replace(/:$/, ''))}</b><small class="mono">${esc(c.deck)} · ${esc(c.code)} · walked ×${n}${c.vq.rep ? ' · seen above in this question' : ''}</small></span><span class="vm-go mono">start here ›</span></button></li>`; }).join('') +
+    cards.map((c, j) => { const n = seen(c.deck, c.no); return `<li><span class="vm-line"><button class="vm-step" data-vmlook="${j}" aria-label="Look at card ${j + 1} (nothing is counted)"><span class="vm-ic"><i class="vm-mc big ${shade(n)}">${j + 1}</i></span><span class="vm-st"><b>${esc(plain(splitQ(c.q).head).replace(/:$/, ''))}</b><small class="mono">${esc(c.deck)} · ${esc(c.code)} · walked ×${n}${c.vq.rep ? ' · seen above in this question' : ''}</small></span></button><button class="chip vm-go" data-vmstart="${j}">Start here ›</button></span></li>`; }).join('') +
     (lessonOf(pkg, qid, 'c') ? lessonRow('vclose', 'Closing lesson') : '') +
-    `<li><span class="vm-ic">${bullseye(w > 0)}</span><span class="vm-st"><b>Spine</b><small class="mono">${w ? 'walked to the end ×' + w : 'not yet'} · say it in 60 s</small></span></li>`;
+    `<li><span class="vm-line"><span class="vm-ic">${bullseye(w > 0)}</span><span class="vm-st"><b>Spine</b><small class="mono">${w ? 'walked ×' + w : 'not yet'} · say it in 60 s</small></span></span></li>`;
   const wrap = document.createElement('div'); wrap.className = 'modal vm-modal';
   wrap.innerHTML = `<div class="sheet vm-q vm-q-${x.q.tier}" role="dialog" aria-label="${esc(x.q.text)}">
     <div class="vm-qh"><nav class="mono">${esc(pkg)} ${esc(shortTitle(x.P))} › ${esc(x.g)} ${esc(x.sec)} › Q${x.n} of ${x.P.questions.length}</nav><button class="iconbtn" data-vmclose aria-label="Close">${ctx.ICON.close || '×'}</button></div>
@@ -276,7 +276,7 @@ function openQ(pkg, qid) {
     <p class="muted small">${cards.length} cards · lessons about ${x.min} min</p>
     <div class="vm-btns"><button class="pillbtn" data-vmwalk>${ctx.ICON.walkS} Walk from the start</button><button class="chip" data-vmspine>Spine only · 60 s</button><button class="chip" data-vmadd>${st.list.some(e => e.q === qid && e.pkg === pkg) ? '✓ In walk list' : '+ Add to walk list'}</button></div>
     <div class="vm-spine" hidden><span class="mono vm-clock">1:00</span><ol>${(x.q.spine || []).map(l => `<li>${esc(plain(l))}</li>`).join('')}</ol></div>
-    <h3 class="mono kick">THE WALK · TAP A CARD TO START THERE</h3>
+    <h3 class="mono kick">THE WALK · TAP A CARD TO LOOK · START HERE TO WALK FROM IT</h3>
     <ol class="vm-walk">${rows}</ol>
     <div class="vm-qf"><span class="mono vm-lab">MARK</span>${['fluent', 'patchy', 'blank'].map(m => `<button class="chip${mk && mk.mark === m ? ' on' : ''}" data-vmmark="${m}">${m[0].toUpperCase() + m.slice(1)}</button>`).join('')}
       <span class="vm-sib">${sib.map(y => tile(y, R, y.q.q === qid ? ' sel' : '')).join('')}</span></div>
@@ -287,6 +287,11 @@ function openQ(pkg, qid) {
   wrap.onclick = e => { if (e.target === wrap) close(); };
   wrap.querySelector('[data-vmclose]').onclick = close;
   wrap.querySelector('[data-vmwalk]').onclick = () => { close(); walk([x], 'Viva ' + pkg + ' · Q' + x.n); };
+  // looking at a card is a browse: nothing is timed, counted or logged
+  wrap.querySelectorAll('[data-vmlook]').forEach(b => b.onclick = () => {
+    const j = +b.dataset.vmlook, list = cards.map(c => { const { vq, ...rest } = c; return rest; });
+    close(); if (list.length) ctx.startFlow(list, { browse: true, start: j, label: 'Looking · ' + pkg + ' Q' + x.n, returnTo: '#/vmap' });
+  });
   wrap.querySelectorAll('[data-vmstart]').forEach(b => b.onclick = () => {
     const j = +b.dataset.vmstart, list = buildWalk([x]).slice(j);
     close(); if (list.length) ctx.startFlow(list, { viva: pkg, label: 'Viva ' + pkg + ' · Q' + x.n + ' from card ' + (j + 1), returnTo: '#/vmap' });

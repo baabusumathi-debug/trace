@@ -1889,15 +1889,18 @@ p.sub.tlab{margin-bottom:6px}
 .vm-spine{background:#1d2129;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:16px}.vm-spine ol{margin:8px 0 0;padding-left:18px}.vm-spine li{padding:4px 0;font-size:14px;line-height:1.45}
 .vm-clock{font-size:22px;color:var(--gold2)}
 .vm-walk{list-style:none;margin:8px 0 18px;padding:0;display:flex;flex-direction:column;gap:2px}
-.vm-walk li>span,.vm-step{display:flex;align-items:center;gap:14px;padding:9px 10px;border-radius:10px;width:100%;background:none;border:0;color:var(--ink);text-align:left}
-.vm-walk li{display:flex}
+.vm-walk li{display:block}
+.vm-line{display:flex;align-items:center;gap:10px;width:100%}
+.vm-line>.vm-ic{margin:9px 0 9px 10px}
+.vm-step{display:flex;align-items:center;gap:14px;padding:9px 10px;border-radius:10px;flex:1;min-width:0;background:none;border:0;color:var(--ink);text-align:left}
+.vm-line>.vm-st{padding:9px 0}
 .vm-step:hover,.vm-step:focus-visible{background:#232831}
 .vm-ic{width:40px;display:flex;justify-content:center;flex-shrink:0}
 .vm-mc.big{width:34px;height:42px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;color:#1b2a40}.vm-mc.big.s2,.vm-mc.big.s3{color:#fff}
 .vm-ml.big{width:32px;height:32px}
 .vm-walk .vm-bull{width:34px;height:34px}
 .vm-st{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.vm-st b{font-size:15px;font-weight:500;line-height:1.35}.vm-st small{font-size:11px;color:var(--faint)}
-.vm-go{font-size:11px;color:var(--gold)}
+.vm-go{flex-shrink:0;margin-right:6px}
 .vm-qf{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-top:1px solid var(--line);padding-top:14px}
 .vm-sib{display:flex;flex-wrap:wrap;gap:5px;margin-left:auto}.vm-sib .vm-t{width:28px;height:28px;font-size:11px}
 .vm-entry .vp-n{font-size:18px}
@@ -1915,3 +1918,4 @@ p.sub.tlab{margin-bottom:6px}
 .vg-leg{display:none;align-items:center;gap:4px;font-size:10px;color:var(--muted);flex-basis:100%;margin-top:6px}
 .vg-leg .ft{display:inline-block;width:12px!important;height:12px!important;border-radius:3px}
 .flow.v3 .f-strip.open .vg-leg{display:flex}
+.flow.v3.browse .f-stats{visibility:hidden}   /* T-166: looking at cards is not timed */
