@@ -1821,7 +1821,7 @@ p.sub.tlab{margin-bottom:6px}
 .flow.v3 .f-strip .ft.vg2{background:#efe0b4;color:#5a4718}
 
 /* ---------- T-160 Viva Map (#/vmap) ---------- */
-.vmap{--vS:linear-gradient(160deg,#b3801f 0%,#e8bd4f 38%,#fde9a3 50%,#e6b843 62%,#b3801f 100%);--vA:linear-gradient(160deg,#8a949f 0%,#cbd2da 38%,#f5f8fb 50%,#c4ccd4 62%,#8a949f 100%);--vB:linear-gradient(160deg,#5a2d14 0%,#8c4f27 38%,#bf7f4b 50%,#84481f 62%,#4f2711 100%)}
+:root{--vS:linear-gradient(160deg,#b3801f 0%,#e8bd4f 38%,#fde9a3 50%,#e6b843 62%,#b3801f 100%);--vA:linear-gradient(160deg,#8a949f 0%,#cbd2da 38%,#f5f8fb 50%,#c4ccd4 62%,#8a949f 100%);--vB:linear-gradient(160deg,#5a2d14 0%,#8c4f27 38%,#bf7f4b 50%,#84481f 62%,#4f2711 100%)}
 .vmap .top{flex-wrap:wrap}
 .vm-tabs{margin-left:auto}
 .vm-S{background:var(--vS);color:#2a1f05}.vm-A{background:var(--vA);color:#1c2128}.vm-B{background:var(--vB);color:#fbe3c8}
