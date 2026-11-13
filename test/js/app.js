@@ -2779,7 +2779,7 @@ function drawVivaTiles() {
   const { groups, gi } = vivaTileData();
   const a = Math.max(0, gi - 2), b = Math.min(groups.length, a + 8);
   const tile = s => `<span data-sk="${s.k}" class="ft vt-${s.kind} ${s.st}${s.look ? ' look' : ''}${s.rep ? ' vrep' : ''}" title="${esc(s.kind === 'vq' ? 'Opening lesson' : s.kind === 'vclose' ? 'Closing lesson' : s.kind === 'spine' ? 'Spine' : 'Card ' + s.n)}"><b>${s.lab}</b></span>`;
-  $('#f-tiles').innerHTML = (a ? '<span class="vg-more mono">…</span>' : '') + groups.slice(a, b).map((x, j) => `<span class="vg${a + j === gi ? ' on' : ''}"><span class="vg-n mono">Q${x.qn}</span>${x.steps.map(tile).join('')}</span>`).join('') + (b < groups.length ? '<span class="vg-more mono">…</span>' : '') + '<span class="vg-leg mono"><i class="ft vb0"></i><i class="ft vb1"></i><i class="ft vb2"></i><i class="ft vb3"></i> cards: not yet, ×1, ×2, ×3+ · <i class="ft vt-vq vl1"></i> lesson heard · <i class="ft vt-spine vs1"></i> spine · gold outline = here</span>';
+  $('#f-tiles').innerHTML = (a ? '<span class="vg-more mono">…</span>' : '') + groups.slice(a, b).map((x, j) => `<span class="vg${a + j === gi ? ' on' : ''}"><span class="vg-n mono">Q${x.qn}</span>${x.steps.map(tile).join('')}</span>`).join('') + (b < groups.length ? '<span class="vg-more mono">…</span>' : '');
   const cur = groups[gi], P2 = cur && vivaPkg(cur.pkg), qn = cur ? cur.qn : 0;
   const cards = flow.queue.length, cardAt = Math.min(cards, flow.idx + (flow.done ? 0 : 1));
   const fc = $('#f-cnt'); if (fc) fc.innerHTML = `Q <b>${qn}</b>/${P2 ? P2.questions.length : '–'} · card ${cardAt}/${cards}`;
