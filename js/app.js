@@ -2762,13 +2762,14 @@ function vivaTileData() {
     // T-153 colours: a card covered before today is blue, darker the more times it has been covered (×1, ×2, ×3+);
     // a new card is gold: dark while ahead, gold once done in this walk, pale gold where it comes again. Lessons and the
     // spine: gold once done, dark ahead.
+    // T-162: the strip follows the Viva Map colour code. Cards: white, ×1, ×2, ×3+ (every walk counts, today's too);
+    // lessons: round, blue once heard; the spine: a bullseye, blue once walked to. The step you are on gets a gold outline.
     let st;
-    if (k === live && !flow.done) st = 'cur';
-    else if (s.kind === 'card') {
-      const c = flow.queue[s.idx], n = c ? seen(c.deck, c.no) : 0, before = n - (c && seenOn(c.deck, c.no, today()) ? 1 : 0);
-      st = before > 0 ? 'vb' + Math.min(3, n) : done.has(k) ? 'vg1' : walkedK.has(ck(s.idx)) ? 'vg2' : 'vg0';
-    } else st = done.has(k) ? 'vg1' : (heard[s.pkg + '|' + s.q + '|' + s.kind] || (s.q && vivaDoneEver(s.pkg, s.q))) ? 'vb1' : 'vg0';   // T-158: heard before (or the question walked to its spine before) = blue
-    g.steps.push({ ...s, k, lab: s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? 'S' : String(s.n || ''), st, look: k === look });
+    if (s.kind === 'card') { const c = flow.queue[s.idx], n = c ? seen(c.deck, c.no) : 0; st = 'vb' + Math.min(3, n); }
+    else if (s.kind === 'spine') st = (done.has(k) || (s.q && vivaDoneEver(s.pkg, s.q))) ? 'vs1' : 'vs0';
+    else st = (done.has(k) || heard[s.pkg + '|' + s.q + '|' + s.kind] || (s.q && vivaDoneEver(s.pkg, s.q))) ? 'vl1' : 'vl0';
+    if (k === live && !flow.done) st += ' cur';
+    g.steps.push({ ...s, k, lab: s.kind === 'vq' ? 'O' : s.kind === 'vclose' ? 'C' : s.kind === 'spine' ? '' : String(s.n || ''), st, look: k === look });
   }
   let gi = groups.findIndex(x => x.steps.some(s => s.k === (look || live)));
   if (gi < 0) gi = flow.done ? groups.length - 1 : 0;
@@ -2778,7 +2779,7 @@ function drawVivaTiles() {
   const { groups, gi } = vivaTileData();
   const a = Math.max(0, gi - 2), b = Math.min(groups.length, a + 8);
   const tile = s => `<span data-sk="${s.k}" class="ft vt-${s.kind} ${s.st}${s.look ? ' look' : ''}${s.rep ? ' vrep' : ''}" title="${esc(s.kind === 'vq' ? 'Opening lesson' : s.kind === 'vclose' ? 'Closing lesson' : s.kind === 'spine' ? 'Spine' : 'Card ' + s.n)}"><b>${s.lab}</b></span>`;
-  $('#f-tiles').innerHTML = (a ? '<span class="vg-more mono">…</span>' : '') + groups.slice(a, b).map((x, j) => `<span class="vg${a + j === gi ? ' on' : ''}"><span class="vg-n mono">Q${x.qn}</span>${x.steps.map(tile).join('')}</span>`).join('') + (b < groups.length ? '<span class="vg-more mono">…</span>' : '');
+  $('#f-tiles').innerHTML = (a ? '<span class="vg-more mono">…</span>' : '') + groups.slice(a, b).map((x, j) => `<span class="vg${a + j === gi ? ' on' : ''}"><span class="vg-n mono">Q${x.qn}</span>${x.steps.map(tile).join('')}</span>`).join('') + (b < groups.length ? '<span class="vg-more mono">…</span>' : '') + '<span class="vg-leg mono"><i class="ft vb0"></i><i class="ft vb1"></i><i class="ft vb2"></i><i class="ft vb3"></i> cards: not yet, ×1, ×2, ×3+ · <i class="ft vt-vq vl1"></i> lesson heard · <i class="ft vt-spine vs1"></i> spine · gold outline = here</span>';
   const cur = groups[gi], P2 = cur && vivaPkg(cur.pkg), qn = cur ? cur.qn : 0;
   const cards = flow.queue.length, cardAt = Math.min(cards, flow.idx + (flow.done ? 0 : 1));
   const fc = $('#f-cnt'); if (fc) fc.innerHTML = `Q <b>${qn}</b>/${P2 ? P2.questions.length : '–'} · card ${cardAt}/${cards}`;
