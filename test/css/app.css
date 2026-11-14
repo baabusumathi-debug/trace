@@ -1972,3 +1972,9 @@ p.sub.tlab{margin-bottom:6px}
 .flow .f-bar .f-due .btn.ghost{color:#d8d2c2;border-color:#3a3f46}
 .flow .f-bar:has(#f-due:not([hidden])) .fd-brk{display:none}
 .flow .f-bar.tight3 .f-due .fdd{display:none}
+.flow.v3 .f-bar.tworow .ik-host.ik-dock.folded{order:11;margin-left:0;flex-basis:auto!important}
+.flow .f-bar:has(#f-due:not([hidden])) #f-day:not(:has(>span:not(.fd-brk))){display:none}
+.flow .f-bar .f-due .fds{display:none}
+.flow .f-bar.tight3 .f-due .fdl{display:none}.flow .f-bar.tight3 .f-due .fds{display:inline}
+.flow .f-bar.tight3 .f-due{padding:3px 4px}
+.flow.v3 .f-bar.tight3{column-gap:6px}
