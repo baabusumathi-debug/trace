@@ -1367,7 +1367,7 @@ function checkBreakDue() {
   if (!flow || flow.browse || flow.pausedAt || !el || !el.hidden) return;
   const d = DAYP.breakDue(); if (!d) return;
   // T-171: asked in the top bar, in its own small box (no stripe over the card)
-  el.innerHTML = `<span class="fdd"><i>BREAK DUE</i><b>${d.why === 'planned' ? 'planned ' + d.mins + 'm' : d.why === 'end' ? 'block over' : Math.floor(d.bank.left) + 'm earned'}</b></span><button class="pillbtn" data-dtake aria-label="Take a break" title="${esc(DAYP.dur(d.bank.since))} since the last break">Take<span class="fdl"> break</span></button><button class="btn ghost" data-dsnz aria-label="One more ${flow.viva ? 'question' : 'section'}"><span class="fdl">One more </span><span class="fds">+1 </span>${flow.viva ? 'Q' : 'section'}</button>`;
+  el.innerHTML = `<span class="fdd"><i>BREAK DUE</i><b>${d.why === 'planned' ? 'planned ' + d.mins + 'm' : d.why === 'end' ? 'block over' : Math.floor(d.bank.left) + 'm earned'}</b></span><button class="pillbtn" data-dtake aria-label="Take a break" title="${esc(DAYP.dur(d.bank.since))} since the last break"><span class="fdl">Take break</span><span class="fds">Take</span></button><button class="btn ghost" data-dsnz aria-label="One more ${flow.viva ? 'question' : 'section'}"><span class="fdl">One more ${flow.viva ? 'Q' : 'section'}</span><span class="fds">+1 ${flow.viva ? 'Q' : 'section'}</span></button>`;
   el.hidden = false; fitBar();
   const done = () => { el.hidden = true; el.innerHTML = ''; fitBar(); };
   el.querySelector('[data-dtake]').onclick = e => { e.stopPropagation(); done(); goingOutSheet(); };
