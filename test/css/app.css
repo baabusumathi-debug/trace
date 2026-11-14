@@ -1978,3 +1978,8 @@ p.sub.tlab{margin-bottom:6px}
 .flow .f-bar.tight3 .f-due .fdl{display:none}.flow .f-bar.tight3 .f-due .fds{display:inline}
 .flow .f-bar.tight3 .f-due{padding:3px 4px}
 .flow.v3 .f-bar.tight3{column-gap:6px}
+/* the tiles get at least half the strip; the "This walk" summary gives way (it ends in … when short of room) */
+.flow.v3 .f-strip:not(.open) .f-tiles{flex:1 1 auto;min-width:50%}
+.flow.v3 .f-strip:not(.open) .thread{flex:0 1 auto;min-width:0;overflow:hidden}
+.flow.v3 .f-strip:not(.open) .th-h{overflow:hidden;text-overflow:ellipsis}
+.flow.v3 .f-strip>.f-sl,.flow.v3 .f-strip>.f-cnt{flex-shrink:0}
