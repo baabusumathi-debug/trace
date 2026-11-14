@@ -1946,10 +1946,10 @@ p.sub.tlab{margin-bottom:6px}
 .flow.v3 .f-bar.tworow #f-gear{order:12}
 .flow.v3 .f-bar.tworow .f-grow{order:10;flex:1 1 0;min-width:0}
 .flow.v3 .f-bar>*{flex-shrink:0}
-.flow.v3 .f-bar .f-title{flex-shrink:1;min-width:0;overflow:hidden}
+.flow.v3 .f-bar .f-title{flex-shrink:1;min-width:150px;overflow:hidden}
 .flow.v3 .f-bar .f-title>*{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .flow.v3 .f-bar.tight2 .f-stats>span:nth-last-child(-n+2){display:none!important}
-.flow.v3 .f-bar.tight3 .f-title{max-width:120px}
+.flow.v3 .f-bar.tight3 .f-title{min-width:96px;max-width:130px}
 .flow.v3 .f-bar.tight3 .f-stats i{display:none}
 /* the day plan: label-over-value cells in the same dark box as the clocks */
 .flow .f-day{display:flex;align-items:center;background:#1c1e23;border:1px solid #2f3238;border-radius:10px;padding:4px 2px;white-space:nowrap;font-size:inherit}

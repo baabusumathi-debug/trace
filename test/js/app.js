@@ -2671,7 +2671,7 @@ function fitBar() {
   // the pinned pen tools keep the width they have when open, folded or not, so nothing else ever moves
   const dk = b.querySelector('.ik-dock');
   if (dk) { const bar = dk.querySelector('.ik-bar'); if (bar) { const w = Math.ceil(bar.getBoundingClientRect().width); if (w > 60) try { localStorage.setItem('trace.ink.dockw', w); } catch (e) { /* */ } }
-    let w2 = 510; try { w2 = +(localStorage.getItem('trace.ink.dockw') || 510); } catch (e) { /* */ } dk.style.minWidth = Math.min(w2, innerWidth - 24) + 'px'; }
+    let w2 = 510; try { w2 = +(localStorage.getItem('trace.ink.dockw') || 510); } catch (e) { /* */ } dk.style.minWidth = bar ? Math.min(w2, innerWidth - 24) + 'px' : ''; }   // T-171: folded = just the pen, on row 1
   // one row when it fits; otherwise row 1 = title, progress, time, ⚙ and row 2 = Back, Undo, Pause, Going out, pen tools
   b.classList.remove('tight', 'tworow');
   const over = () => b.scrollWidth > b.clientWidth + 1;
