@@ -1363,13 +1363,15 @@ const clockHM = m => { m = Math.max(0, Math.round(m)); return Math.floor(m / 60)
 const clockShort = sec => sec >= 3600 ? Math.floor(sec / 3600) + 'h' + String(Math.floor(sec % 3600 / 60)).padStart(2, '0') : Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
 // in a flow: is a break due? asked only between questions (viva) or between sections (other flows)
 function checkBreakDue() {
-  if (!flow || flow.browse || flow.pausedAt || document.querySelector('.f-due')) return;
+  const el = document.getElementById('f-due');
+  if (!flow || flow.browse || flow.pausedAt || !el || !el.hidden) return;
   const d = DAYP.breakDue(); if (!d) return;
-  const el = document.createElement('div'); el.className = 'f-due';
-  el.innerHTML = `<span><b>Break due</b> · ${d.why === 'planned' ? `planned ${d.mins} min` : d.why === 'end' ? 'this study block is over' : `${Math.floor(d.bank.left)} min earned`} · ${DAYP.dur(d.bank.since)} since the last one</span><button class="pillbtn" data-dtake>Take a break</button><button class="btn ghost" data-dsnz>One more ${flow.viva ? 'question' : 'section'}</button>`;
-  el.querySelector('[data-dtake]').onclick = () => { el.remove(); goingOutSheet(); };
-  el.querySelector('[data-dsnz]').onclick = () => { el.remove(); DAYP.snooze(); };
-  const main = document.querySelector('.flow .f-main'); if (main) main.prepend(el);
+  // T-171: asked in the top bar, in its own small box (no stripe over the card)
+  el.innerHTML = `<span class="fdd"><i>BREAK DUE</i><b>${d.why === 'planned' ? 'planned ' + d.mins + 'm' : d.why === 'end' ? 'block over' : Math.floor(d.bank.left) + 'm earned'}</b></span><button class="pillbtn" data-dtake title="${esc(DAYP.dur(d.bank.since))} since the last break">Take break</button><button class="btn ghost" data-dsnz>One more ${flow.viva ? 'Q' : 'section'}</button>`;
+  el.hidden = false; fitBar();
+  const done = () => { el.hidden = true; el.innerHTML = ''; fitBar(); };
+  el.querySelector('[data-dtake]').onclick = e => { e.stopPropagation(); done(); goingOutSheet(); };
+  el.querySelector('[data-dsnz]').onclick = e => { e.stopPropagation(); done(); DAYP.snooze(); };
 }
 // T-138: a viva package in the plan: which questions, how many a day, from which day
 function vivaLaneSheet(st, id, re) {
@@ -1610,7 +1612,7 @@ function goingOutSheet() {
       flow.pausedAt = Date.now(); if (vNow() && !vPaused()) vPause();
     }
     await startBreak(b.dataset.go); try { DAYP.onBreakStart(); } catch (e) { /* */ } drawBanner();
-    const fd = document.querySelector('.f-due'); if (fd) fd.remove();
+    const fd = document.getElementById('f-due'); if (fd) { fd.hidden = true; fd.innerHTML = ''; }
     toast(reasonOf(b.dataset.go)[1] + ': timer started.');
   });
   document.body.appendChild(wrap);
@@ -2044,7 +2046,7 @@ function renderFlow() {
       <div class="f-title"><span class="mono kick" id="f-kick"></span><span class="f-sec" id="f-sec"></span><span class="f-sub muted" id="f-sub">${esc(m.title || '')}</span></div>
       <span class="ring" id="f-ring"></span>
       <div class="f-stats mono"><span><i>${flow.viva ? 'SESSION' : 'TIME'}</i><b id="f-time">0:00</b></span>${flow.viva ? '<span class="f-qs"><i id="f-ql">QUESTION</i><b id="f-qt">0:00</b></span><span><i id="f-stl">CARD</i><b id="f-stp">0:00</b></span>' : ''}<span><i>PER CARD</i><b id="f-pace">–</b></span><span><i>VS AVG</i><b id="f-diff">–</b></span></div>
-      <span class="f-day mono" id="f-day"></span>
+      <span class="f-day mono" id="f-day"></span><span class="f-due" id="f-due" hidden></span>
       <span class="f-grow"></span>
       <button class="iconbtn" data-act="undo" aria-label="${flow.browse ? 'Previous card' : 'Undo last card'}" title="${flow.browse ? 'Previous card' : 'Undo the last card'}" id="f-undo">${flow.browse ? ICON.prev : ICON.undo}<span class="lbl">${flow.browse ? 'Back' : 'Undo'}</span></button>
       ${flow.browse ? '' : `<button class="iconbtn" data-act="pause" aria-label="Pause the flow" title="Pause (P)" id="f-pause">${ICON.pause}<span class="lbl">Pause</span></button>`}
@@ -2680,7 +2682,7 @@ function fitBar() {
   // tools go to row 2. If row 1 is still too wide: button labels go first, then the two pace cells, then the title narrows.
   b.classList.remove('tight2', 'tight3');
   const x0 = b.querySelector('[data-act="close"]'), top0 = x0 ? x0.getBoundingClientRect().top : 0;
-  const r1 = () => [...b.querySelectorAll('.f-title, .f-stats, #f-day, #f-peek, #f-undo, #f-pause, .goout, #f-gear')].some(x => x.offsetParent && (x.getBoundingClientRect().top > top0 + 30 || x.getBoundingClientRect().right > b.getBoundingClientRect().right - 4));
+  const r1 = () => [...b.querySelectorAll('.f-title, .f-stats, #f-day, #f-due, #f-peek, #f-undo, #f-pause, .goout, #f-gear')].some(x => x.offsetParent && (x.getBoundingClientRect().top > top0 + 30 || x.getBoundingClientRect().right > b.getBoundingClientRect().right - 4));
   if (r1()) b.classList.add('tight');
   if (r1()) b.classList.add('tight2');
   if (r1()) b.classList.add('tight3');
@@ -2695,7 +2697,7 @@ function updateClock() {
     flow.dayT = Date.now();
     // T-171: small two-line cells (label over value), like the clock cells, so the day plan never stretches into a long line
     try { const n = DAYP.nowInfo(), b = DAYP.bank(), cell = (i, v) => `<span><i>${i}</i><b>${v}</b></span>`;
-      const cells = (DESK.deskState() === 'live' ? cell('DESK', '●') : '') + (n.sessionEnd != null ? cell('UNTIL ' + DAYP.hm(n.sessionEnd), DAYP.dur(n.left) + ' left') : n.cur ? cell('NOW', esc(DAYP.typeName(n.cur.type))) : n.next ? cell('NEXT ' + DAYP.hm(n.next.a), esc(DAYP.typeName(n.next.type))) : '') + (b.left >= 1 ? cell('BREAK', Math.floor(b.left) + 'm earned') : '');
+      const cells = (DESK.deskState() === 'live' ? cell('DESK', '●') : '') + (n.sessionEnd != null ? cell('UNTIL ' + DAYP.hm(n.sessionEnd), DAYP.dur(n.left) + ' left') : n.cur ? cell('NOW', esc(DAYP.typeName(n.cur.type))) : n.next ? cell('NEXT ' + DAYP.hm(n.next.a), esc(DAYP.typeName(n.next.type))) : '') + (b.left >= 1 ? cell('BREAK', Math.floor(b.left) + 'm earned').replace('<span>', '<span class="fd-brk">') : '');
       if (fd.innerHTML !== cells) { fd.innerHTML = cells; fd.hidden = !cells; fitBar(); } } catch (e) { fd.textContent = ''; fd.hidden = true; }
   }
   // T-138: in a viva walk, this step's time (card or lesson) and this question's time, both running
