@@ -7,10 +7,10 @@ import { IS_HT, CONFIG } from './config.js';
 import { call, batch, hasBackend } from './api.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
-export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P10'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
+export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P10', 'P11'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
 // a lesson figure: the repo copy, or for a package that came from Drive its SVG fetched through the bridge (blob URL)
 // packages taken from Drive once their card corrections are in data/cardfix.json and their decks are on test
-const VIVA_DRIVE = ['P2', 'P3', 'P5', 'P6', 'P7', 'P8', 'P10'];
+const VIVA_DRIVE = ['P2', 'P3', 'P5', 'P6', 'P7', 'P8', 'P10', 'P11'];
 const vimg = {};   // 'P6/name.svg' → blob URL
 export const imgSrc = (pkg, name) => vimg[pkg + '/' + name] || `./data/viva/img/${pkg}/${name}`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
