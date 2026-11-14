@@ -1927,3 +1927,15 @@ p.sub.tlab{margin-bottom:6px}
 .vl-b{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.vl-b input{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
 .vm-todayl{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:#1d2129;border:1px solid var(--gold);border-radius:12px;padding:10px 14px;margin-bottom:12px}
 .vm-todayl>span:first-child{display:flex;flex-direction:column;gap:2px;font-size:13px;margin-right:auto}
+
+/* T-170: 3D echo model in a viva card (the iframe itself is #echoLayer, laid over .echo-box) */
+.echo-slot{flex:0 0 auto;display:flex;flex-direction:column;margin:8px 14px 0;border:1px solid #22313a;border-radius:12px;background:#0d1316;overflow:hidden}
+.echo-slot.off{background:transparent;border-color:var(--line,#e5e1d8)}
+.echo-bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 10px;font-size:11px;letter-spacing:.06em;color:#9fb0b7}
+.echo-slot.off .echo-bar{color:inherit}
+.echo-bar .linkbtn{color:inherit;text-decoration:underline}
+.echo-box{height:min(46vh,430px)}
+.a-split:not(.xp-on) .echo-box,.pane-card .echo-box{min-height:220px}
+@media (orientation:portrait){.echo-box{height:min(34vh,360px)}}
+#echoLayer{position:fixed;z-index:8;border-radius:0 0 11px 11px;overflow:hidden;background:#0d1316}
+#echoLayer iframe{width:100%;height:100%;border:0;display:block}
