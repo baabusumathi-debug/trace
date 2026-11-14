@@ -2676,8 +2676,14 @@ function fitBar() {
   b.classList.remove('tight', 'tworow');
   const over = () => b.scrollWidth > b.clientWidth + 1;
   if (over()) b.classList.add('tworow');
-  const row2 = [...b.querySelectorAll('#f-peek, #f-undo, #f-pause, .goout, .ik-dock')];
-  if (b.classList.contains('tworow') && row2.some(x => x.getBoundingClientRect().right > innerWidth - 4)) b.classList.add('tight');
+  // T-171: row 1 keeps the buttons (Back, Undo, Pause, Going out, ⚙) with the title, clocks and day plan; only the pen
+  // tools go to row 2. If row 1 is still too wide: button labels go first, then the two pace cells, then the title narrows.
+  b.classList.remove('tight2', 'tight3');
+  const x0 = b.querySelector('[data-act="close"]'), top0 = x0 ? x0.getBoundingClientRect().top : 0;
+  const r1 = () => [...b.querySelectorAll('.f-title, .f-stats, #f-day, #f-peek, #f-undo, #f-pause, .goout, #f-gear')].some(x => x.offsetParent && (x.getBoundingClientRect().top > top0 + 30 || x.getBoundingClientRect().right > b.getBoundingClientRect().right - 4));
+  if (r1()) b.classList.add('tight');
+  if (r1()) b.classList.add('tight2');
+  if (r1()) b.classList.add('tight3');
 }
 if (!window.__fitBar) { window.__fitBar = 1; addEventListener('resize', () => fitBar()); }
 function updateClock() {
@@ -2687,7 +2693,10 @@ function updateClock() {
   const fd = $('#f-day');
   if (fd && (!flow.dayT || Date.now() - flow.dayT > 20000)) {
     flow.dayT = Date.now();
-    try { const n = DAYP.nowInfo(), b = DAYP.bank(); fd.innerHTML = (DESK.deskState() === 'live' ? '<b>DESK ●</b> · ' : '') + (n.sessionEnd != null ? `until ${DAYP.hm(n.sessionEnd)} · <b>${DAYP.dur(n.left)}</b> left` : n.cur ? esc(DAYP.typeName(n.cur.type)) + ' now' : n.next ? 'next ' + esc(DAYP.typeName(n.next.type)) + ' ' + DAYP.hm(n.next.a) : '') + (b.left >= 1 ? ` · break ${Math.floor(b.left)}m earned` : ''); } catch (e) { fd.textContent = ''; }
+    // T-171: small two-line cells (label over value), like the clock cells, so the day plan never stretches into a long line
+    try { const n = DAYP.nowInfo(), b = DAYP.bank(), cell = (i, v) => `<span><i>${i}</i><b>${v}</b></span>`;
+      const cells = (DESK.deskState() === 'live' ? cell('DESK', '●') : '') + (n.sessionEnd != null ? cell('UNTIL ' + DAYP.hm(n.sessionEnd), DAYP.dur(n.left) + ' left') : n.cur ? cell('NOW', esc(DAYP.typeName(n.cur.type))) : n.next ? cell('NEXT ' + DAYP.hm(n.next.a), esc(DAYP.typeName(n.next.type))) : '') + (b.left >= 1 ? cell('BREAK', Math.floor(b.left) + 'm earned') : '');
+      if (fd.innerHTML !== cells) { fd.innerHTML = cells; fd.hidden = !cells; fitBar(); } } catch (e) { fd.textContent = ''; fd.hidden = true; }
   }
   // T-138: in a viva walk, this step's time (card or lesson) and this question's time, both running
   const stp = $('#f-stp'); if (!stp) return;
@@ -2769,6 +2778,7 @@ function updateFlowChrome() {
   const seenNow = new Set(flow.queue.slice(0, flow.idx).map(c => c.code));
   const w0 = Math.max(0, Math.min(flow.idx - 20, flow.queue.length - 60)), fq = flow.queue.slice(w0, w0 + 60);   // T-138: a window around where you are
   $('#f-tiles').innerHTML = fq.map((c, i0) => { const i = i0 + w0; return `<span data-ti="${i}" class="ft${i0 && (c.deck !== fq[i0 - 1].deck || chunkOf(c).key !== chunkOf(fq[i0 - 1]).key) ? ' cs' : ''} s${shade(seen(c.deck, c.no))}${c.topup || c.tdeck ? (seen(c.deck, c.no) ? ' tu tu1' : ' tu') : ''}${i === flow.idx && !flow.done ? ' cur' : ''}${seenNow.has(c.code) ? ' was' : ''}${flow.peek && flow.hist[flow.hist.length - flow.peek] && flow.hist[flow.hist.length - flow.peek].idx === i ? ' look' : ''}"><b>${c.no}</b><i>×${seen(c.deck, c.no)}</i></span>`; }).join('');
+  tilesToCur();
 }
 // T-138: the viva walk's tiles, question by question: O opening lesson · 1…n cards · C closing lesson · S spine
 // the walk's tiles as data (used by the strip here and by the phone Desk)
@@ -2798,11 +2808,19 @@ function vivaTileData() {
   if (gi < 0) gi = flow.done ? groups.length - 1 : 0;
   return { groups, gi };
 }
+// T-171: the strip slides sideways; on every card the tile you are on is brought to the left edge (swipe right for earlier ones)
+function tilesToCur() {
+  const t = $('#f-tiles'); if (!t || ($('#f-strip') && $('#f-strip').classList.contains('open'))) return;
+  const c = t.querySelector('.ft.look') || t.querySelector('.ft.cur'); if (!c) return;
+  const g = c.closest('.vg'), first = g && g.querySelector('.ft') === c;   // the first step of a question: show its "Q n" label too
+  t.scrollLeft = Math.max(0, (first ? g.offsetLeft : c.offsetLeft) - 6);
+}
 function drawVivaTiles() {
   const { groups, gi } = vivaTileData();
-  const a = Math.max(0, gi - 2), b = Math.min(groups.length, a + 8);
+  const a = Math.max(0, gi - 8), b = Math.min(groups.length, gi + 12);
   const tile = s => `<span data-sk="${s.k}" class="ft vt-${s.kind} ${s.st}${s.look ? ' look' : ''}${s.rep ? ' vrep' : ''}" title="${esc(s.kind === 'vq' ? 'Opening lesson' : s.kind === 'vclose' ? 'Closing lesson' : s.kind === 'spine' ? 'Spine' : 'Card ' + s.n)}"><b>${s.lab}</b></span>`;
   $('#f-tiles').innerHTML = (a ? '<span class="vg-more mono">…</span>' : '') + groups.slice(a, b).map((x, j) => `<span class="vg${a + j === gi ? ' on' : ''}"><span class="vg-n mono">Q${x.qn}</span>${x.steps.map(tile).join('')}</span>`).join('') + (b < groups.length ? '<span class="vg-more mono">…</span>' : '');
+  tilesToCur();
   const cur = groups[gi], P2 = cur && vivaPkg(cur.pkg), qn = cur ? cur.qn : 0;
   const cards = flow.queue.length, cardAt = Math.min(cards, flow.idx + (flow.done ? 0 : 1));
   const fc = $('#f-cnt'); if (fc) fc.innerHTML = `Q <b>${qn}</b>/${P2 ? P2.questions.length : '–'} · card ${cardAt}/${cards}`;

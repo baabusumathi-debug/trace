@@ -1939,3 +1939,26 @@ p.sub.tlab{margin-bottom:6px}
 @media (orientation:portrait){.echo-box{height:min(34vh,360px)}}
 #echoLayer{position:fixed;z-index:8;border-radius:0 0 11px 11px;overflow:hidden;background:#0d1316}
 #echoLayer iframe{width:100%;height:100%;border:0;display:block}
+
+/* T-171: the top bar. Row 1 = close, title, clocks, day plan, Back/Undo/Pause/Going out, ⚙ (never split);
+   row 2 = only the pen tools. Short on room: labels go, then the pace cells, then the title narrows. */
+.flow.v3 .f-bar.tworow #f-peek,.flow.v3 .f-bar.tworow #f-undo,.flow.v3 .f-bar.tworow #f-pause,.flow.v3 .f-bar.tworow .goout{order:11}
+.flow.v3 .f-bar.tworow #f-gear{order:12}
+.flow.v3 .f-bar.tworow .f-grow{order:10;flex:1 1 0;min-width:0}
+.flow.v3 .f-bar>*{flex-shrink:0}
+.flow.v3 .f-bar .f-title{flex-shrink:1;min-width:0;overflow:hidden}
+.flow.v3 .f-bar .f-title>*{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.flow.v3 .f-bar.tight2 .f-stats>span:nth-last-child(-n+2){display:none!important}
+.flow.v3 .f-bar.tight3 .f-title{max-width:120px}
+.flow.v3 .f-bar.tight3 .f-stats i{display:none}
+/* the day plan: label-over-value cells in the same dark box as the clocks */
+.flow .f-day{display:flex;align-items:center;background:#1c1e23;border:1px solid #2f3238;border-radius:10px;padding:4px 2px;white-space:nowrap;font-size:inherit}
+.flow .f-day[hidden],.flow .f-day:empty{display:none}
+.flow .f-day>span{display:flex;flex-direction:column;padding:0 10px}
+.flow .f-day>span+span{border-left:1px solid #33363c}
+.flow .f-day i{font-style:normal;font-size:8px;letter-spacing:.14em;color:#8d8778}
+.flow .f-day b{font-size:13px;font-weight:400;color:var(--gold2);font-variant-numeric:tabular-nums}
+/* the strip slides sideways (no scrollbar); the tile you are on is brought to the left edge on every card */
+.flow.v3 .f-strip .f-tiles{position:relative;overflow-x:auto!important;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x;-webkit-overflow-scrolling:touch;padding:3px 2px}
+.flow.v3 .f-strip .f-tiles::-webkit-scrollbar{display:none}
+.flow.v3 .f-strip.open .f-tiles{overflow-x:visible!important}
