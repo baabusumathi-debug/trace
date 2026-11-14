@@ -16,6 +16,7 @@ import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, brea
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
 import { recordStudy } from './sync.js';
+import { initEcho, stepModel, echoSlotHtml, mountEcho, hideEcho } from './echo.js';
 import { renderVivaMap, migrateViva, noteDone, noteMark, vlistInfo, walkList } from './vivamap.js';
 import * as DESK from './desk.js';
 import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
@@ -219,6 +220,7 @@ const P = {
   get(k, d) { try { const v = localStorage.getItem(PK + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(PK + k, JSON.stringify(v)); } catch (e) { /* private mode */ } }
 };
+initEcho(P);
 const sysNum = name => String(name || '').slice(0, 2);
 const sysLabel = name => String(name || '').replace(/^\d+\s+/, '');
 const pctWalked = d => d.cards ? walked(d.deck) / d.cards : 0;
@@ -2485,7 +2487,8 @@ function drawCard() {
     const xpPane = o => xtab === 'lesson' ? `<div class="xp v2 vx open ls-pane" data-depth="learn"><div class="xp-bar"><span class="xp-tog"${sw ? ' hidden' : ''}><span>Lesson</span></span>${sw}</div><div class="xp-body">${lessonHtml(lx, lessonPic(lx, c), autoChip())}</div></div>`
       : xtab === 'viva' ? vivaPanelHtml(vx, sw) : (sw ? panelHtml(c, xa, o).replace('<div class="xp-bar">', '<div class="xp-bar">' + sw) : panelHtml(c, xa, o));
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
-    body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
+    const em = flow.viva && c.vq && c.vq.j != null ? stepModel(c.vq.pkg, c.vq.q, c.vq.j) : null;
+    body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>${echoSlotHtml(em)}` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
       <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
       ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
       ${qbFix(c)}
@@ -2516,6 +2519,7 @@ function drawCard() {
       mountLesson(el, lx, { auto: flow.vauto && !pk, onEnd: () => { if (!pk && flow && flow.vauto && flow.idx === at && !flow.inter && !flow.peek) setTimeout(() => { if (flow && flow.idx === at && !flow.inter && !flow.peek) next(false); }, 1500); } });
     }
   }
+  mountEcho(el);
   el.classList.toggle('peeking', !!flow.peek);
   el.classList.toggle('ng', isNeet(c));
   closePanel();
