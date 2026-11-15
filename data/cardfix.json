@@ -1,6 +1,6 @@
 {
  "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "b1f21e7a13",
+ "version": "1281a06875",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -1803,6 +1803,13 @@
    },
    "src": "Wiersinga WM. Myxedema and Coma, Endotext (reported mortality 20–50%); Ono Y et al. J Epidemiol 2017;27:117 (29.5% of 149)",
    "date": "13 Nov 2026"
+  },
+  "SPECIAL04A|PK-09": {
+   "fields": {
+    "a": " | **TIME-DEPENDENT** | **CONCENTRATION** | **CONC. + TIME**\n**Index** | **%fT > MIC** | **Cmax/MIC** | **AUC₀₋₂₄/MIC**\n**Drugs** | **β-lactams**, carbapenems, linezolid, erythromycin, clarithromycin, lincosamides | **Aminoglycosides**, FQ, daptomycin, metronidazole | **Fluoroquinolones**, **glycopeptides**, linezolid, tigecycline, azithromycin, tetracyclines, colistin\n**Dosing** | **Extended or continuous infusion** | **Big dose, long interval** | Enough total daily dose\n**PAE** | Minimal to moderate | **Prolonged** | Moderate"
+   },
+   "src": "Layout only: table rows rejoined from the PDF's wrapped lines (SPECIAL04A p19); wording unchanged",
+   "date": "15 Nov 2026"
   }
  }
 }
