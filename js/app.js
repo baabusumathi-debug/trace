@@ -2812,8 +2812,28 @@ function vivaTileData() {
   return { groups, gi };
 }
 // T-171: the strip slides sideways; on every card the tile you are on is brought to the left edge (swipe right for earlier ones)
+// T-173: a mouse (Tab or Mac) slides the strip too: the wheel scrolls it sideways, and click-and-drag pulls it
+function stripMouse(t) {
+  if (!t || t.dataset.mouse) return; t.dataset.mouse = '1';
+  t.addEventListener('wheel', e => {
+    if ($('#f-strip') && $('#f-strip').classList.contains('open')) return;
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY; if (!d) return;
+    const max = t.scrollWidth - t.clientWidth; if (max <= 0) return;
+    e.preventDefault(); t.scrollLeft = Math.max(0, Math.min(max, t.scrollLeft + d * (e.deltaMode === 1 ? 32 : 1)));
+  }, { passive: false });
+  let drag = null;
+  t.addEventListener('pointerdown', e => { if (e.pointerType === 'touch' || e.button !== 0) return; drag = { x: e.clientX, l: t.scrollLeft, moved: false, id: e.pointerId }; });
+  t.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return; const dx = e.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) > 6) { drag.moved = true; try { t.setPointerCapture(e.pointerId); } catch (x) { /* ok */ } t.classList.add('dragging'); }
+    if (drag.moved) t.scrollLeft = drag.l - dx;
+  });
+  const end = e => { if (!drag) return; const was = drag.moved; drag = null; t.classList.remove('dragging'); if (was) { const stop = ev => { ev.stopPropagation(); ev.preventDefault(); }; t.addEventListener('click', stop, { capture: true, once: true }); setTimeout(() => t.removeEventListener('click', stop, true), 50); } };
+  t.addEventListener('pointerup', end); t.addEventListener('pointercancel', end);
+}
 function tilesToCur() {
   const t = $('#f-tiles'); if (!t || ($('#f-strip') && $('#f-strip').classList.contains('open'))) return;
+  stripMouse(t);
   const c = t.querySelector('.ft.look') || t.querySelector('.ft.cur'); if (!c) return;
   const g = c.closest('.vg'), first = g && g.querySelector('.ft') === c;   // the first step of a question: show its "Q n" label too
   t.scrollLeft = Math.max(0, (first ? g.offsetLeft : c.offsetLeft) - 6);

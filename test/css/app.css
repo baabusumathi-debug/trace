@@ -1987,3 +1987,4 @@ p.sub.tlab{margin-bottom:6px}
 .vm-qid{opacity:.6;margin-left:6px}
 .vm-paste{width:100%;box-sizing:border-box;font:inherit;font-size:14px;padding:10px;border-radius:10px;border:1px solid var(--line,#ccc);background:transparent;color:inherit;resize:vertical;margin:8px 0}
 .vm-pinfo{min-height:2.6em}
+.flow.v3 .f-strip .f-tiles{cursor:grab}.flow.v3 .f-strip .f-tiles.dragging{cursor:grabbing;user-select:none}
