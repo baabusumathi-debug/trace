@@ -792,7 +792,7 @@ async function renderViva(pkg) {
         <div class="dk-h"><span><span class="mono kick">WALK</span><span class="dk-t">All ${P2.questions.length} questions, in study order</span></span><button class="pillbtn" data-vwalk>${ICON.walkS}Walk</button></div>
         <p class="muted small">Each question opens with its card, then the cards behind it with a bridge under each answer, then the spine to say in 60 seconds. A card that came under an earlier question shows as “seen above” and is not counted twice.</p>
         <p class="mono small vp-tally"><span class="vm-fluent">${tally.fluent} fluent</span> · <span class="vm-patchy">${tally.patchy} patchy</span> · <span class="vm-blank">${tally.blank} blank</span> · ${tally.none} not marked</p>
-        ${(() => { const v = vivaPlanToday(pkg); return v ? `<div class="chips"><button class="chip on" data-vplanwalk>${ICON.walkS} Today’s plan · Q${qNumOf(pkg, v.todayQs[0])}–Q${qNumOf(pkg, v.todayQs[v.todayQs.length - 1])} · ${v.doneToday}/${v.todayQs.length} done</button></div>` : `<div class="chips"><button class="chip dash" data-vplanadd>+ Plan this package</button></div>`; })()}
+        ${(() => { const v = vivaPlanToday(pkg); return v ? `<div class="chips"><button class="chip on" data-vplanwalk>${ICON.walkS} Today’s plan · Q${qIdN(pkg, v.todayQs[0])}–Q${qIdN(pkg, v.todayQs[v.todayQs.length - 1])} · ${v.doneToday}/${v.todayQs.length} done</button></div>` : `<div class="chips"><button class="chip dash" data-vplanadd>+ Plan this package</button></div>`; })()}
         <div class="chips"><a class="chip dash" href="#/vmap">▦ Viva Map</a><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
         ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
         ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
@@ -1109,7 +1109,7 @@ function renderPlan() {
     if (d === td) return `<td class="pc today vq${plan || did ? ' on' : ''}">${plan || did ? `<b>${did}</b><i>/${plan}</i>` : ''}</td>`;
     return `<td class="pc vq${plan ? ' on' : ''}">${plan || ''}</td>`;
   };
-  const vrow = x => { const l = x.lane, P2 = vivaPkg(l.pkg); return `<tr class="vrow"><td class="nm tap" data-vlane="${l.id}"><b>Viva ${esc(l.pkg)}${P2 ? ' · ' + esc(P2.title) : ''}</b><i>${l.qs.length} questions (Q${qNumOf(l.pkg, l.qs[0])}–Q${qNumOf(l.pkg, l.qs[l.qs.length - 1])}) · ${l.perDay ? l.perDay + ' a day' : 'spread over the days'}${l.from ? ' · from ' + dShort(l.from) : ''} · ${x.left} left</i></td>${days.map(d => vcell(x, d)).join('')}${anyOver ? `<td class="pc ov${x.over ? ' on' : ''}">${x.over || ''}</td>` : ''}</tr>`; };
+  const vrow = x => { const l = x.lane, P2 = vivaPkg(l.pkg); return `<tr class="vrow"><td class="nm tap" data-vlane="${l.id}"><b>Viva ${esc(l.pkg)}${P2 ? ' · ' + esc(P2.title) : ''}</b><i>${l.qs.length} questions (Q${qIdN(l.pkg, l.qs[0])}–Q${qIdN(l.pkg, l.qs[l.qs.length - 1])}) · ${l.perDay ? l.perDay + ' a day' : 'spread over the days'}${l.from ? ' · from ' + dShort(l.from) : ''} · ${x.left} left</i></td>${days.map(d => vcell(x, d)).join('')}${anyOver ? `<td class="pc ov${x.over ? ' on' : ''}">${x.over || ''}</td>` : ''}</tr>`; };
   const cell = (row, d) => {
     const plan = r.cells[row.id][d] || 0, did = r.actual[row.id][d] || 0, pin = st.pins[row.id + '|' + d] != null;
     if (d < td) return `<td class="pc past${did ? ' on' : ''}">${did || ''}</td>`;
@@ -1140,7 +1140,7 @@ function renderPlan() {
       <p class="pverdict"><span class="mono kick">VERDICT</span> ${verdict}</p>
       ${vlistsHtml()}
       <div class="two pbtns"><button class="btn primary" data-addsubj>+ Add subject</button><button class="btn ghost" data-pickmosaic>Pick cards in the Mosaic</button><button class="btn ghost" data-addviva>+ Add viva</button></div>
-      ${vr.filter(x => x.todayQs.some(q => !vivaDoneToday(x.lane.pkg, q))).map(x => `<div class="two pbtns"><button class="btn ghost" data-vwalkplan="${esc(x.lane.pkg)}">${ICON.walkS} Walk today’s viva ${esc(x.lane.pkg)} · Q${qNumOf(x.lane.pkg, x.todayQs[0])}–Q${qNumOf(x.lane.pkg, x.todayQs[x.todayQs.length - 1])} (${x.doneToday}/${x.todayQs.length} done)</button></div>`).join('')}
+      ${vr.filter(x => x.todayQs.some(q => !vivaDoneToday(x.lane.pkg, q))).map(x => `<div class="two pbtns"><button class="btn ghost" data-vwalkplan="${esc(x.lane.pkg)}">${ICON.walkS} Walk today’s viva ${esc(x.lane.pkg)} · Q${qIdN(x.lane.pkg, x.todayQs[0])}–Q${qIdN(x.lane.pkg, x.todayQs[x.todayQs.length - 1])} (${x.doneToday}/${x.todayQs.length} done)</button></div>`).join('')}
 
       ${r.active ? `<div class="two pbtns">${r.todayPlan ? `<button class="btn ghost" data-plantoday>${ICON.walkS} Walk today’s ${r.todayPlan} in Flow</button>` : ''}<button class="btn ghost" data-chtoday>Change today…</button></div>` : ''}
       <p class="muted small">Past days show what you walked; today shows walked / planned; later days are re-planned every morning from what is left. Extra cards never lower tomorrow; a short day is spread over the days left, up to your ceiling. • marks a number you fixed.</p>
@@ -1276,11 +1276,11 @@ function deskSnap() {
   const f = o.f = { label: flow.label, viva: flow.viva || '', t0: flow.t0, p: flow.pausedAt || 0, up: !!flow.userPause, done: !!flow.done, idx: flow.idx, total: flow.queue.length, avg: Math.round(avg), cardT0: flow.cardT0, card: c ? [c.deck, c.code, c.section || ''] : null };
   if (!flow.viva) return o;
   const L = flow.look ? flow.lookStep : flow.st ? flow.st.s : null;
-  f.step = L ? { k: L.kind, qn: L.q ? qNumOf(L.pkg, L.q) : 0, t0: flow.look ? flow.lookT0 : flow.st ? flow.st.t0 : 0, look: !!flow.look, qms: L.q ? flow.qms[L.pkg + '|' + L.q] || 0 : 0 } : null;
+  f.step = L ? { k: L.kind, qn: L.q ? qIdN(L.pkg, L.q) : 0, t0: flow.look ? flow.lookT0 : flow.st ? flow.st.t0 : 0, look: !!flow.look, qms: L.q ? flow.qms[L.pkg + '|' + L.q] || 0 : 0 } : null;
   const td = vivaTileData(), SC = { cur: 'n', vb1: 'd', vb2: 'd', vb3: 'd', vg1: 'd', vg2: 's', vg0: 'a' };
   f.gi = td.gi; f.g = td.groups.map(g => [g.qn, g.steps.map(x => x.lab + SC[x.st] + (x.look ? '!' : '')).join(',')]);
   const P2 = vivaPkg(flow.viva), curQ = L && L.q, mk = q => (flow.vm ? vivaLast(flow.vm, flow.viva, q) : '') || '';
-  if (P2) { f.pt = P2.title; f.qs = P2.questions.map(q => [qNumOf(flow.viva, q.q), q.q === curQ ? 2 : (flow.vdone && flow.vdone[flow.viva + '|' + q.q]) || vivaDoneToday(flow.viva, q.q) ? 1 : 0, mk(q.q).slice(0, 1), Math.round((flow.qms[flow.viva + '|' + q.q] || 0) / 1000)]); const cq = curQ && vivaQ(flow.viva, curQ); f.qt = cq ? cq.text : ''; }
+  if (P2) { f.pt = P2.title; f.qs = P2.questions.map(q => [qIdN(flow.viva, q.q), q.q === curQ ? 2 : (flow.vdone && flow.vdone[flow.viva + '|' + q.q]) || vivaDoneToday(flow.viva, q.q) ? 1 : 0, mk(q.q).slice(0, 1), Math.round((flow.qms[flow.viva + '|' + q.q] || 0) / 1000)]); const cq = curQ && vivaQ(flow.viva, curQ); f.qt = cq ? cq.text : ''; }
   return o;
 }
 // the phone: #/desk (portrait: timers on top, mosaic below; landscape: side by side)
@@ -1952,7 +1952,8 @@ function vivaSteps() {
   });
   return out;
 }
-const qNumOf = (pkg, q) => { const P2 = vivaPkg(pkg); return P2 ? P2.questions.findIndex(x => x.q === q) + 1 : 0; };
+const qNumOf = (pkg, q) => { const P2 = vivaPkg(pkg); return P2 ? P2.questions.findIndex(x => x.q === q) + 1 : 0; };   // position (ranges)
+const qIdN = (pkg, q) => { const m = /-0*(\d+)$/.exec(String(q || '')); return m ? +m[1] : qNumOf(pkg, q); };   // T-172: the number shown = the question ID's
 /* Back = look at cards already walked in this flow; nothing is logged or changed, and the time spent looking back is not
    counted as card time. Pause stops the clock and covers the card. (T-070, Naven's notes 5 Nov) */
 // the left bottom button (T-078): question side → look at the card before; answer side → back to this card's question;
@@ -2706,7 +2707,7 @@ function updateClock() {
   const lab = !L ? 'STEP' : L.kind === 'card' ? 'CARD' : L.kind === 'spine' ? 'SPINE' : 'LESSON';
   const stepMs = flow.look ? now - (flow.lookT0 || now) : flow.st ? now - flow.st.t0 : 0;
   $('#f-stl').textContent = (flow.look ? 'LOOK · ' : '') + lab; stp.textContent = clock(Math.max(0, stepMs) / 1000);
-  if (L && L.q) { const k = L.pkg + '|' + L.q; $('#f-ql').textContent = 'Q' + qNumOf(L.pkg, L.q); $('#f-qt').textContent = clock(Math.max(0, (flow.qms[k] || 0) + stepMs) / 1000); }
+  if (L && L.q) { const k = L.pkg + '|' + L.q; $('#f-ql').textContent = 'Q' + qIdN(L.pkg, L.q); $('#f-qt').textContent = clock(Math.max(0, (flow.qms[k] || 0) + stepMs) / 1000); }
 }
 // Today's thread: one bead per card walked today, against today's planned number. Read by lightness and shape, never by
 // hue alone: new = light, ×2 = mid, ×3+ = dark, repair = ring; beads past the target carry a gold edge; at the target
@@ -2741,7 +2742,7 @@ function drawVivaThread(el) {
   let frame, extra = [];
   if (v) { frame = v.todayQs; extra = todayDone.filter(q => !frame.includes(q)); if (curQ && !frame.includes(curQ) && !extra.includes(curQ)) extra.push(curQ); }
   else frame = todayDone.concat(curQ && !todayDone.includes(curQ) ? [curQ] : []);
-  const bead = q => `<i class="bd vb${doneQ(q) ? ' vdone vm-' + mk(q) : ''}${q === curQ ? ' now' : ''}" title="Q${qNumOf(pkg, q)}"><b class="mono">${qNumOf(pkg, q)}</b></i>`;
+  const bead = q => `<i class="bd vb${doneQ(q) ? ' vdone vm-' + mk(q) : ''}${q === curQ ? ' now' : ''}" title="Q${qIdN(pkg, q)}"><b class="mono">${qIdN(pkg, q)}</b></i>`;
   const n = frame.length, done = frame.filter(doneQ).length;
   const td = today(), a = winStart(td), b = winEnd(td), f = Math.min(1, Math.max(0, (Date.now() - a) / (b - a)));
   const should = Math.round(n * f), diff = done + extra.filter(doneQ).length - should, sealed = v && done >= n;
@@ -2792,7 +2793,7 @@ function vivaTileData() {
   const heard = heardMap();
   const groups = []; let g = null;
   for (const s of steps) {
-    const q = s.q || ''; if (!g || g.q !== q || s.kind === 'vq') { g = { q, pkg: s.pkg, qn: qNumOf(s.pkg, s.q), steps: [] }; groups.push(g); }
+    const q = s.q || ''; if (!g || g.q !== q || s.kind === 'vq') { g = { q, pkg: s.pkg, qn: qIdN(s.pkg, s.q), steps: [] }; groups.push(g); }
     const k = stepKey(s);
     // T-153 colours: a card covered before today is blue, darker the more times it has been covered (×1, ×2, ×3+);
     // a new card is gold: dark while ahead, gold once done in this walk, pale gold where it comes again. Lessons and the
@@ -2825,7 +2826,7 @@ function drawVivaTiles() {
   tilesToCur();
   const cur = groups[gi], P2 = cur && vivaPkg(cur.pkg), qn = cur ? cur.qn : 0;
   const cards = flow.queue.length, cardAt = Math.min(cards, flow.idx + (flow.done ? 0 : 1));
-  const fc = $('#f-cnt'); if (fc) fc.innerHTML = `Q <b>${qn}</b>/${P2 ? P2.questions.length : '–'} · card ${cardAt}/${cards}`;
+  const fc = $('#f-cnt'); if (fc) fc.innerHTML = `Q <b>${qn}</b> · card ${cardAt}/${cards}`;
 }
 
 function animate(kind, swap) {

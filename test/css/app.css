@@ -1983,3 +1983,7 @@ p.sub.tlab{margin-bottom:6px}
 .flow.v3 .f-strip:not(.open) .thread{flex:0 1 auto;min-width:0;overflow:hidden}
 .flow.v3 .f-strip:not(.open) .th-h{overflow:hidden;text-overflow:ellipsis}
 .flow.v3 .f-strip>.f-sl,.flow.v3 .f-strip>.f-cnt{flex-shrink:0}
+/* T-172 */
+.vm-qid{opacity:.6;margin-left:6px}
+.vm-paste{width:100%;box-sizing:border-box;font:inherit;font-size:14px;padding:10px;border-radius:10px;border:1px solid var(--line,#ccc);background:transparent;color:inherit;resize:vertical;margin:8px 0}
+.vm-pinfo{min-height:2.6em}
