@@ -91,6 +91,31 @@ export function walkList(c, xs, label) { ctx = ctx || c; walk(xs, label); }
 const VIVA_LAST = '2026-11-16';
 function daysLeft() { const out = []; let d = today(); for (let i = 0; i < 10 && d <= VIVA_LAST; i++) { out.push(d); d = dkey(new Date(d + 'T12:00:00').getTime() + 864e5); } return out.length ? out : [today()]; }
 const dayName = d => d === today() ? 'Today' : d === dkey(Date.now() + 864e5) ? 'Tomorrow' : new Date(d + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+// T-172: paste a planner's reply; every question ID in it, in its order, becomes a walk list
+function pastePlan() {
+  const wrap = document.createElement('div'); wrap.className = 'modal';
+  wrap.innerHTML = `<div class="sheet" role="dialog" aria-label="Paste a plan"><div class="sheet-h"><span><span class="mono kick">PASTE A PLAN</span><span class="sh-t">Question IDs from any chat</span></span></div>
+    <textarea class="vm-paste" placeholder="Paste the plan here: any text with IDs like P2-072, P4-011 … in the order to study" rows="8"></textarea>
+    <p class="muted small vm-pinfo">Trace picks out every ID, in order, and ignores the rest of the text.</p>
+    <div class="sheet-f"><button class="btn ghost" data-vpcancel>Cancel</button><button class="btn ghost" data-vpwalk disabled>Walk now</button><button class="btn primary" data-vpplan disabled>Add to plan…</button></div></div>`;
+  document.body.appendChild(wrap);
+  const ta = wrap.querySelector('textarea'), info = wrap.querySelector('.vm-pinfo'), bw = wrap.querySelector('[data-vpwalk]'), bp = wrap.querySelector('[data-vpplan]');
+  const byId = new Map(allQs().map(x => [x.pkg + '|' + x.n, x]));
+  let xs = [];
+  const read = () => {
+    const ids = parseIds(ta.value), miss = ids.filter(i => !byId.has(i.pkg + '|' + i.n));
+    xs = ids.map(i => byId.get(i.pkg + '|' + i.n)).filter(Boolean);
+    const min = xs.reduce((a, x) => a + x.min, 0);
+    info.innerHTML = ids.length ? `<b>${xs.length}</b> question${xs.length === 1 ? '' : 's'} found · about ${min >= 60 ? Math.floor(min / 60) + ' h ' : ''}${min % 60} m${miss.length ? ` · <b>not in Trace:</b> ${miss.map(i => esc(i.pkg + '-' + String(i.n).padStart(3, '0'))).join(', ')}` : ''}<br><span class="mono">${xs.slice(0, 40).map(x => esc(x.pkg + ' ' + x.n)).join(' · ')}${xs.length > 40 ? ' …' : ''}</span>` : 'Trace picks out every ID, in order, and ignores the rest of the text.';
+    bw.disabled = bp.disabled = !xs.length;
+  };
+  ta.oninput = read; setTimeout(() => ta.focus(), 50);
+  wrap.onclick = e => { if (e.target === wrap) wrap.remove(); };
+  wrap.querySelector('[data-vpcancel]').onclick = () => wrap.remove();
+  bw.onclick = () => { wrap.remove(); walk(xs, 'Pasted plan · ' + xs.length + ' questions'); };
+  bp.onclick = () => { wrap.remove(); addToPlan(xs); };
+}
+
 function addToPlan(xs) {
   const keys = xs.map(x => x.pkg + '|' + x.q.q), days = daysLeft();
   const wrap = document.createElement('div'); wrap.className = 'modal';
@@ -135,9 +160,14 @@ export async function migrateViva(P) {
 const lessonMin = q => { const t = [q.open, q.close, ...q.steps.map(s => s.lesson)].reduce((a, L) => a + (L && L.text ? L.text.length : 0), 0); return Math.max(1, Math.round(t / 720)); };
 function allQs() {
   const out = [];
-  for (const P of pkgs()) P.questions.forEach((q, i) => out.push({ pkg: P.package, P, q, n: i + 1, g: q.gen, sec: secName(P.package, q.gen), min: lessonMin(q) }));
+  for (const P of pkgs()) P.questions.forEach((q, i) => out.push({ pkg: P.package, P, q, n: idNum(q.q, i + 1), i: i + 1, g: q.gen, sec: secName(P.package, q.gen), min: lessonMin(q) }));
   return out;
 }
+// T-172: the number shown is the writer's question ID (P2-072 → 72), so plans from any chat read straight off the map
+export const idNum = (qid, dflt) => { const m = /-0*(\d+)$/.exec(String(qid)); return m ? +m[1] : dflt; };
+// "P2-072", "P2 72", "p2q72", "P2 · Q72" → {pkg:'P2', n:72}
+const ID_RE = /\bP\s*(\d{1,2})\s*(?:[-–—·.:_]|\s)*\s*Q?\s*0*(\d{1,3})\b/gi;
+export function parseIds(text) { const out = [], seen = new Set(); let m; ID_RE.lastIndex = 0; while ((m = ID_RE.exec(String(text)))) { const k = 'P' + (+m[1]) + '|' + (+m[2]); if (!seen.has(k)) { seen.add(k); out.push({ pkg: 'P' + (+m[1]), n: +m[2], raw: m[0] }); } } return out; }
 const hay = x => (x.q.text + ' ' + x.sec + ' ' + shortTitle(x.P) + ' ' + x.q.q).toLowerCase();   // the question, its section and package (spines matched too much)
 
 /* ---------------- state ---------------- */
@@ -197,7 +227,7 @@ export function renderVivaMap(c) {
   ctx = c; if (!st) load();
   const sc = c.app.querySelector('.vmap .scroll'), y = sc ? sc.scrollTop : 0;
   const all = allQs(), R = vivaRecord();
-  const qq = st.q.trim().toLowerCase(), hit = x => !qq || hay(x).includes(qq);
+  const qq = st.q.trim().toLowerCase(), qid = parseIds(qq), idq = qid.length && qid.map(i => i.raw).join(' ').length >= qq.replace(/[,;\s]+/g, ' ').trim().length - 2, hit = x => !qq || (idq ? qid.some(i => i.pkg === x.pkg && i.n === x.n) : hay(x).includes(qq));
   const show = x => st.tiers.includes(x.q.tier) && (!st.notWalked || !walksOf(R, x.pkg, x.q.q)) && hit(x);
   const days = Math.max(0, Math.floor((VIVA_DAY - Date.now()) / 864e5));
   const sa = all.filter(x => 'SA'.includes(x.q.tier) && !walksOf(R, x.pkg, x.q.q)).length;
@@ -217,8 +247,9 @@ export function renderVivaMap(c) {
       </section>
       ${(() => { const L = vivaLists().find(x => x.day === today()); if (!L || !L.qs.length) return ''; const I = vlistInfo(L.qs, today()); return `<div class="vm-todayl"><span><span class="mono kick">TODAY'S VIVA LIST</span><span><b>${I.done}/${I.n}</b> walked · about ${I.min >= 60 ? Math.floor(I.min / 60) + ' h ' : ''}${I.min % 60} m in all</span></span>${I.left.length ? `<button class="pillbtn" data-vmtoday>${c.ICON.walkS} Walk the ${I.left.length} left</button>` : '<span class="mono">all walked ✓</span>'}<a class="chip" href="#/plan">In the Plan</a></div>`; })()}
       <div class="vm-ctl">
-        <label class="vm-search">Search <input type="search" id="vm-q" value="${esc(st.q)}" placeholder="brain death, pregnancy, REBOA…" autocomplete="off"></label>
+        <label class="vm-search">Search <input type="search" id="vm-q" value="${esc(st.q)}" placeholder="brain death, REBOA, or an ID like P2-072…" autocomplete="off"></label>
         ${st.tab !== 'prio' ? `<span class="mono vm-lab">SHOW</span>${['S', 'A', 'B'].map(t => `<button class="chip${st.tiers.includes(t) ? ' on' : ''}" data-vmtier="${t}">${TIERN[t]}</button>`).join('')}<button class="chip${st.notWalked ? ' on' : ''}" data-vmnw>Not walked only</button>` : ''}
+        <button class="chip" data-vmpaste>Paste plan</button>
         ${st.tab === 'map' ? `<span class="mono vm-lab">SELECT</span><button class="chip${st.pick ? ' on' : ''}" data-vmpick>${st.pick ? '✓ Picking' : 'Pick to walk'}</button>${st.pick ? `<button class="chip" data-vmall="S">+ All gold</button><button class="chip" data-vmall="SA">+ Gold &amp; silver</button>` : ''}` : ''}
       </div>
       <p class="vm-legend mono"><span><i class="vm-sw vm-S"></i>Gold = tier S</span><span><i class="vm-sw vm-A"></i>Silver = A</span><span><i class="vm-sw vm-B"></i>Bronze = B</span><span><span class="vm-dots"><i></i><i></i><i></i></span> one dot per full walk (to the spine)</span>${st.tab === 'pkg' ? `<span><i class="vm-mc s0"></i><i class="vm-mc s1"></i><i class="vm-mc s2"></i><i class="vm-mc s3"></i> cards: white, ×1, ×2, ×3+</span><span><i class="vm-ml on"></i> lesson heard</span><span>${bullseye(true)} spine</span>` : ''}${st.pick && st.tab === 'map' ? '<span class="vm-hint">Tick a section to add it · tap a question to leave it out (or add it alone)</span>' : ''}</p>
@@ -271,7 +302,7 @@ function prioView(all, R, hit) {
   let xs = all.filter(x => st.ptiers.includes(x.q.tier) && hit(x));
   const ti = t => 'SAB'.indexOf(t);
   xs.sort(st.arrange === 'tier' ? (a, b) => ti(a.q.tier) - ti(b.q.tier) || order.indexOf(a.pkg) - order.indexOf(b.pkg) || a.n - b.n
-    : (a, b) => order.indexOf(a.pkg) - order.indexOf(b.pkg) || ti(a.q.tier) - ti(b.q.tier) || a.n - b.n);
+    : (a, b) => order.indexOf(a.pkg) - order.indexOf(b.pkg) || ti(a.q.tier) - ti(b.q.tier) || a.i - b.i);
   const ticked = xs.filter(x => !pex.has(x.pkg + '|' + x.q.q));
   let last = '';
   const rows = xs.map(x => {
@@ -299,7 +330,7 @@ function openQ(pkg, qid) {
     `<li><span class="vm-line"><span class="vm-ic">${bullseye(w > 0)}</span><span class="vm-st"><b>Spine</b><small class="mono">${w ? 'walked ×' + w : 'not yet'} · say it in 60 s</small></span></span></li>`;
   const wrap = document.createElement('div'); wrap.className = 'modal vm-modal';
   wrap.innerHTML = `<div class="sheet vm-q vm-q-${x.q.tier}" role="dialog" aria-label="${esc(x.q.text)}">
-    <div class="vm-qh"><nav class="mono">${esc(pkg)} ${esc(shortTitle(x.P))} › ${esc(x.g)} ${esc(x.sec)} › Q${x.n} of ${x.P.questions.length}</nav><button class="iconbtn" data-vmclose aria-label="Close">${ctx.ICON.close || '×'}</button></div>
+    <div class="vm-qh"><nav class="mono">${esc(pkg)} ${esc(shortTitle(x.P))} › ${esc(x.g)} ${esc(x.sec)} › Q${x.n} <span class="vm-qid">${esc(x.q.q)}</span></nav><button class="iconbtn" data-vmclose aria-label="Close">${ctx.ICON.close || '×'}</button></div>
     <p class="vm-tags"><span class="vm-badge vm-${x.q.tier}">${TIERN[x.q.tier]} · Tier ${x.q.tier}</span>${x.q.kind ? `<span class="vm-tag mono">${KIND[x.q.kind] || x.q.kind}</span>` : ''}${mk ? `<span class="vm-tag mono">last mark: ${esc(mk.mark)}</span>` : ''}<span class="vm-tag mono">${w ? 'walked ×' + w : 'not walked yet'}</span></p>
     <h2 class="vm-qt">${esc(plain(x.q.text))}</h2>
     <p class="muted small">${cards.length} cards · lessons about ${x.min} min</p>
@@ -341,6 +372,7 @@ function bind(all, R) {
   on('[data-vmtier]', b => { const t = b.dataset.vmtier; st.tiers = st.tiers.includes(t) ? st.tiers.filter(x => x !== t) : st.tiers.concat(t); if (!st.tiers.length) st.tiers = [t]; save(); rerender(); });
   on('[data-vmnw]', () => { st.notWalked = !st.notWalked; save(); rerender(); });
   on('[data-vmpick]', () => { st.pick = !st.pick; save(); rerender(); });
+  on('[data-vmpaste]', () => pastePlan());
   on('[data-vmall]', b => { const ts = b.dataset.vmall; all.filter(x => ts.includes(x.q.tier)).forEach(x => { const k = x.pkg + '|' + x.q.q; if (!listQs(all).some(y => y.pkg + '|' + y.q.q === k)) st.list.push({ pkg: x.pkg, q: x.q.q }); st.ex = st.ex.filter(e => e !== k); }); save(); rerender(); });
   on('[data-vmsec]', b => { const [p, g] = b.dataset.vmsec.split('|'), i = inList(p, g); if (i >= 0) st.list.splice(i, 1); else st.list.push({ pkg: p, g }); save(); rerender(); });
   on('[data-vmaddsec]', b => { const [p, g] = b.dataset.vmaddsec.split('|'), i = inList(p, g); if (i >= 0) st.list.splice(i, 1); else st.list.push({ pkg: p, g }); save(); rerender(); });
@@ -359,7 +391,7 @@ function bind(all, R) {
   on('[data-vmpgo]', () => {
     const pex = new Set(st.pex), order = pkgs().map(p => p.package), ti = t => 'SAB'.indexOf(t), qq = st.q.trim().toLowerCase();
     let xs = all.filter(x => st.ptiers.includes(x.q.tier) && !pex.has(x.pkg + '|' + x.q.q) && (!qq || hay(x).includes(qq)));
-    xs.sort(st.arrange === 'tier' ? (p, q) => ti(p.q.tier) - ti(q.q.tier) || order.indexOf(p.pkg) - order.indexOf(q.pkg) || p.n - q.n : (p, q) => order.indexOf(p.pkg) - order.indexOf(q.pkg) || ti(p.q.tier) - ti(q.q.tier) || p.n - q.n);
+    xs.sort(st.arrange === 'tier' ? (p, q) => ti(p.q.tier) - ti(q.q.tier) || order.indexOf(p.pkg) - order.indexOf(q.pkg) || p.i - q.i : (p, q) => order.indexOf(p.pkg) - order.indexOf(q.pkg) || ti(p.q.tier) - ti(q.q.tier) || p.n - q.n);
     if (xs.length) walk(xs, 'Viva priority · ' + xs.length + ' questions');
   });
   // tiles: in picking mode on the map they add/leave out; otherwise they open the question
