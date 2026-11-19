@@ -102,7 +102,8 @@ function learnHtml(c, x, opts) {
   const depth = opts.depth || 'learn', learn = depth === 'learn';
   const sec = (cls, lab, body) => body ? `<section class="xv ${cls}"><h4 class="mono">${lab}</h4>${body}</section>` : '';
   const why = (x.why || []).map(([l, t]) => `<p class="xv-part"><b class="xl">${esc(l)}</b><span>${md(t)}</span></p>`).join('');
-  const tbl = x.table ? `<div class="xp-grid">${x.table.title ? `<p class="xv-tt">${md(x.table.title)}</p>` : ''}<table><thead><tr>${x.table.head.map(h => `<th>${md(h)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(r => `<tr>${r.map((v, i) => i ? `<td>${md(v)}</td>` : `<th>${md(v)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
+  const xt = Array.isArray(x.table) ? { head: x.table[0], rows: x.table.slice(1) } : x.table;   // T-176: a bare row list broke the answer side
+  const tbl = xt && xt.head && xt.rows ? `<div class="xp-grid">${xt.title ? `<p class="xv-tt">${md(xt.title)}</p>` : ''}<table><thead><tr>${xt.head.map(h => `<th>${md(h)}</th>`).join('')}</tr></thead><tbody>${xt.rows.map(r => `<tr>${r.map((v, i) => i ? `<td>${md(v)}</td>` : `<th>${md(v)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
   const mim = (x.mimic || []).map(([a, b]) => `<li><b>${md(a)}</b> — ${md(b)}</li>`).join('');
   const trp = (x.traps || []).map(([a, b], i) => `<li><b>${md(a)}</b> is wrong. ${md(b)}</li>`).join('');
   const dec = (x.decode || []).map(([a, b]) => `<li><span class="xv-stem">${md(a)}</span><span class="xv-ar" aria-hidden="true">→</span><b>${md(b)}</b></li>`).join('');

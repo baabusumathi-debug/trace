@@ -13,7 +13,7 @@ def v2(e, topup=False):
     x = {'v': 2, 'sub': e.get('sub', ''), 'intro': e['intro'], 'why': [list(p) for p in e['parts']],
          'mimic': [list(p) for p in e.get('mimic', [])], 'traps': [list(p) for p in e.get('traps', [])],
          'decode': [list(p) for p in e.get('decode', [])], 'punch': e['punch']}
-    if e.get('table'): x['table'] = e['table']
+    if e.get('table'): x['table'] = e['table'] if isinstance(e['table'], dict) else {'head': e['table'][0], 'rows': e['table'][1:]}  # a bare row list (CVS01 CVS-22) broke the answer side
     if e.get('extra'): x['parts'] = e['extra']
     if e.get('before'): x['before'] = e['before']
     if topup: x['topup'] = True
