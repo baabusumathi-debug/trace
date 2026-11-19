@@ -34,7 +34,7 @@ export const htOf = c => (c && H[c.deck] && H[c.deck][c.code]) || null;
 export const htDecks = () => Object.keys(H);
 
 export function htPaneHtml(c, sw) {
-  const pg = htOf(c) || [];
+  const all = htOf(c) || [], pg = all.length > 1 ? [...all.slice(1), all[0]] : all;   // answer page and her added pages first, the question page last
   return `<div class="xp v2 vx open ht-pane" data-depth="learn"><div class="xp-bar"><span class="xp-tog"${sw ? ' hidden' : ''}><span>HT's notes</span></span>${sw}</div>
     <div class="xp-body"><p class="ht-src mono">HT's deck · page${pg.length > 1 ? 's' : ''} ${pg.map(x => x.p).join(', ')}${pg.some(x => x.ins) ? ' · includes pages she added' : ''}</p>
     ${pg.map(x => `<figure class="ht-pg${x.ins ? ' ins' : ''}"><img src="${x.img}" alt="HT's page ${x.p}" loading="lazy">${x.ins ? '<figcaption class="mono">added by HT</figcaption>' : ''}</figure>`).join('')}</div></div>`;
