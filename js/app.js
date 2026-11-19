@@ -2437,7 +2437,7 @@ function bindXp(el, c) {
   const ab = el.querySelector('[data-act=ask]'); if (ab) ab.onclick = e => { e.stopPropagation(); askMenu(ab.getBoundingClientRect(), { c, texts: [], from: 'card' }); };
   const xt = el.querySelector('[data-xp-tog]');
   if (xt) xt.onclick = e => { e.stopPropagation(); const xp = el.querySelector('.xp-pane .xp') || xt.closest('.xp'), body = xp.querySelector('.xp-body'), open = body.hidden; body.hidden = !open; xp.classList.toggle('open', open); xt.setAttribute('aria-expanded', open); const hn = xt.querySelector('.xp-hint'); if (hn) hn.textContent = open ? 'hide' : 'mechanism · context · what the exam tempts you with'; const sp = xt.closest('.a-split'); if (sp) sp.classList.toggle('xp-on', open); };
-  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; if (vivaX(cc)) { drawCard(); return; } const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); } });
+  el.querySelectorAll('[data-xp-depth]').forEach(b => b.onclick = e => { e.stopPropagation(); const cc = current(); flow.depthOver = flow.depthOver || {}; flow.depthOver[cc.deck + '|' + cc.code] = b.dataset.xpDepth; if (vivaX(cc)) { drawCard(); return; } const pane = el.querySelector('.xp-pane'); const xx = xOf(cc); if (pane && xx) { pane.innerHTML = panelHtml(cc, xx, { open: true, traps: xpTraps(), depth: b.dataset.xpDepth }); pane.scrollTop = 0; placeXpBar(el); const sp = el.querySelector('.a-split'); if (sp) sp.classList.add('xp-on'); bindXp(el, cc); setupFit(el); mountInk(el, cc, 'a', inkOpts(cc)); if (voiceOn()) mountVoice(el, cc, false, true); } });
   el.querySelectorAll('[data-pat]').forEach(b => b.onclick = e => { e.stopPropagation(); const k = b.dataset.pat; planSheet(X.patterns[k].name, 'PATTERN', patternHtml(k), () => {}); });
   const nt = el.querySelector('[data-xp-note]');
   if (nt) { getNote(c).then(v => { if (v && !nt.value) nt.value = v; }); nt.onkeydown = e => e.stopPropagation(); nt.onchange = () => setNote(c, nt.value.trim()); nt.onblur = () => setNote(c, nt.value.trim()); }
@@ -2572,8 +2572,9 @@ function xParts(c, only) {
   }
   return out;
 }
-function mountVoice(el, c, isQ) {
+function mountVoice(el, c, isQ, xpOnly) {
   if (!isQ) { const xp = el.querySelector('.xp-pane .xp-body'); if (xp && !xp.querySelector('[data-lesson]')) { const tab = xp.closest('.xp.vx') ? 'viva' : 'neet'; const xs = partsOf({ code: c.code, q: '' }, xParts(c, tab)).filter(p => p.k.split('.').pop() !== 'q'); if (xs.length) voiceStrip(c, xs, xp, 'prepend', 'explanation'); } }
+  if (xpOnly) return;   // T-178: re-mount only the explanation's Listen strip (Learn ↔ Revise redraws that pane)
   const all = partsOf(c), show = isQ ? all.filter(p => p.label === 'Q') : all;
   if (!show.length) return;
   const host = isQ ? el.querySelector('.c-q .zw') : el.querySelector('.c-a .ans');
