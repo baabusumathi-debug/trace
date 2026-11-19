@@ -21,7 +21,8 @@ for f in sorted(glob.glob(M + 'out/doct_map_*_v2.csv')) + [M + 'out/pilot_ARDS_d
 for f in sorted(glob.glob(M + 'out/gt_map_*.csv')) + sorted(glob.glob(M + 'out/gt2_map_*.csv')):
     for r in csv.DictReader(open(f)): take('NEET 2025 recall' if 'Recall25' in f else 'DocT GT · ' + r.get('module', ''), r)
 for r in csv.DictReader(open(M + 'QMap_full_932.csv')): take('Marrow QBank', r)
-for r in csv.DictReader(open(M + 'explain/neet2024_resp.csv')): r['stem'] = r['question']; r['mcq_id'] = r['rid']; take('NEET 2024 recall', r)
+for f24 in ('explain/neet2024_resp.csv', 'explain/neet2024_cvs.csv'):
+    for r in csv.DictReader(open(M + f24)): r['stem'] = r['question']; r['mcq_id'] = r['rid']; take('NEET 2024 recall', r)
 out = [f'# {deck}: real questions linked to each card', '']
 for c in cards:
     hs = hits.get(c['code'], [])

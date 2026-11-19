@@ -1,0 +1,379 @@
+{
+ "CVS03": [
+  {
+   "id": "T_62274f28",
+   "topic": "Chronic HF drugs by LVEF",
+   "type": "qa",
+   "q": "Chronic HF by LVEF — which drugs improve prognosis, and which only relieve symptoms?",
+   "a": [
+    "Classes: HFrEF ≤40% · HFmrEF 41–49% · HFpEF ≥50% (plus structural/diastolic abnormality or raised natriuretic peptides).",
+    "HFrEF: four pillars started together, before discharge once stable after a decompensation — ARNI (sacubitril/valsartan beat enalapril in PARADIGM-HF) or ACEi/ARB, β-blocker, MRA, SGLT2 inhibitor; each cuts death and HF admission.",
+    "HFpEF/HFmrEF: SGLT2 inhibitor is the class I outcome drug (EMPEROR-Preserved, DELIVER); treat BP, AF and comorbidities.",
+    "Loop diuretics relieve congestion in every class but do not change survival.",
+    "No mortality benefit: digoxin (fewer admissions only), nitrates; IV inotropes (milrinone) raise mortality."
+   ],
+   "tier": 1,
+   "n": 6,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT Heart Failure Q8; DocT Heart Failure Q14; DocT Heart Failure Q18; DocT Heart Failure Q19; DocT Heart Failure Q25; DocT GT AIM1 Q17"
+  }
+ ],
+ "CVS05A": [
+  {
+   "id": "T_4d72df8c",
+   "topic": "Probe manoeuvres",
+   "type": "cloze",
+   "q": "Name the ultrasound probe manoeuvres.",
+   "a": [
+    "Slide — move across the skin; sweep — slide a long distance (track a vessel).",
+    "ROCK (heel–toe) — tilt along the long axis with the contact point fixed.",
+    "Fan/tilt — angle across the short axis, contact fixed.",
+    "Rotate — turn on the spot (PLAX → PSAX); compress — press (vein compressibility).",
+    "Probe choice: linear 5–15 MHz for superficial work (pleura, vascular access, ONSD, airway); curvilinear 2–5 MHz for abdomen, FAST and lung bases; phased array 1–5 MHz between ribs (heart, TCD). Higher frequency = better resolution, less depth."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT Procedures, Techniques & POCUS Q19; DocT GT GT5 Q99"
+  }
+ ],
+ "CVS05B": [
+  {
+   "id": "T_8cd6b5dd",
+   "topic": "Shock on POCUS (RUSH)",
+   "type": "algorithm",
+   "q": "Shock on POCUS (RUSH: pump, tank, pipes) — which type?",
+   "a": [
+    "Pump: poor LV contraction with dilated chambers → cardiogenic; hyperdynamic LV → hypovolaemic or distributive.",
+    "Tank: small IVC (<1.5 cm) collapsing >50% with 'kissing' papillary muscles → hypovolaemic (VTI rise >10–15% on PLR confirms responsiveness).",
+    "Plethoric IVC + a cause → obstructive: effusion with RA/RV diastolic collapse (tamponade), RV > LV with D-shaped septum (PE), absent sliding (tension pneumothorax).",
+    "Plethoric IVC + poor LV + bilateral B-lines → cardiogenic; normal/small IVC + hyperdynamic LV → early sepsis.",
+    "Pipes: aortic aneurysm/dissection flap and leg-vein compression complete the scan."
+   ],
+   "tier": 2,
+   "n": 3,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT Procedures, Techniques & POCUS Q32; DocT GT GT8 Q113; DocT GT AIM2 Q65"
+  },
+  {
+   "id": "T_11e87634",
+   "topic": "TEE vs TTE indications",
+   "type": "qa",
+   "q": "When is TEE the right tool — and when is it not?",
+   "a": [
+    "TEE: prosthetic and native valve detail, LA/LAA thrombus before cardioversion, aortic dissection, endocarditis (vegetation, abscess), guiding valvuloplasty, LAA occlusion and ASD/PFO closure, intra-operative monitoring.",
+    "Pericardiocentesis is guided by TTE (subcostal/apical) — TEE sees the anterior pericardial space poorly.",
+    "TEE is semi-invasive (sedation, oesophageal injury); TTE comes first in most ICU questions.",
+    "In shock, the transgastric mid-papillary short-axis view gives LV size, systolic function and wall motion in all three coronary territories in one look; mid-oesophageal views give valves and chambers, upper-oesophageal views the great vessels."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "Marrow GT",
+   "recall": false,
+   "src": "Marrow QB02-Q02; DocT GT CGT5 Q40"
+  },
+  {
+   "id": "T_ee74dd4a",
+   "topic": "Valve echo numbers",
+   "type": "cloze",
+   "q": "AR severity cut-offs and normal prosthetic-valve Doppler?",
+   "a": [
+    "AR vena contracta <0.3 mild / 0.3–0.6 moderate / >0.6 cm severe.",
+    "AR regurgitant volume <30 / 30–59 / ≥60 mL; pressure half-time >500 / 200–500 / <200 ms.",
+    "Normal prosthetic aortic valve: peak velocity ≤3 m/s, mean gradient ≤20 mmHg.",
+    "Normal prosthetic mitral valve: peak velocity <1.9 m/s, mean gradient ≤5 mmHg."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow QB02-Q03; Marrow QB02-Q04"
+  }
+ ],
+ "CVS06A": [
+  {
+   "id": "T_a1c52257",
+   "topic": "Myocardial O2 demand and Laplace",
+   "type": "qa",
+   "q": "Determinants of myocardial O2 demand — and why does dobutamine cause ischaemia in CAD?",
+   "a": [
+    "Heart rate (most important: more beats AND a shorter diastole for coronary filling), contractility and wall tension.",
+    "Laplace: wall stress = P × r / 2h — rises with pressure and radius, falls with wall thickness (the logic of compensatory hypertrophy).",
+    "Dobutamine raises HR and contractility → demand outruns a fixed supply → ST depression.",
+    "Reducing preload/radius lowers demand; anaemia lowers supply, not demand."
+   ],
+   "tier": 2,
+   "n": 3,
+   "banks": "GT Marrow",
+   "recall": false,
+   "src": "DocT GT GT2 Q123; Marrow QB20-Q04; DocT GT GT6 Q37"
+  }
+ ],
+ "CVS07A": [
+  {
+   "id": "T_db59d55f",
+   "topic": "Pittsburgh Cardiac Arrest Category",
+   "type": "cloze",
+   "q": "Pittsburgh Cardiac Arrest Category (PCAC) after ROSC — the four levels?",
+   "a": [
+    "I: awake, follows commands.",
+    "II: comatose, mild cardiopulmonary dysfunction.",
+    "III: comatose with moderate–severe cardiopulmonary failure (SOFA cardiovascular + respiratory ≥4).",
+    "IV: comatose with loss of brainstem reflexes.",
+    "Survival falls step-wise (~80% → 60% → 40% → <10%), so it stratifies outcome at ICU entry."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT Brain Death Q10"
+  }
+ ],
+ "CVS08B": [
+  {
+   "id": "T_cfb2066c",
+   "topic": "Premature ventricular beats",
+   "type": "reverse",
+   "q": "Irregular pulse; ECG shows early, wide (>120 ms), bizarre QRS with no preceding P wave — diagnosis and ICU approach?",
+   "a": [
+    "Ventricular premature beats: premature wide QRS, T wave opposite the QRS, full compensatory pause.",
+    "PACs differ: premature abnormal P wave, narrow QRS, incomplete pause.",
+    "ICU causes: low K/Mg, ischaemia, hypoxia, catheter/wire irritation, inotropes — treat the cause, not the beats; couplets or R-on-T in ischaemia warn of VT/VF."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT Arrhythmia Q6"
+  },
+  {
+   "id": "T_991ff9a2",
+   "topic": "Sick sinus syndrome",
+   "type": "qa",
+   "q": "Elderly patient on no drugs: sinus bradycardia with pauses — cause, what to exclude, and fix?",
+   "a": [
+    "Sick sinus syndrome: idiopathic degenerative fibrosis of the SA node is the commonest cause in the elderly; may coexist with AV-nodal disease and AF (tachy–brady).",
+    "Exclude reversible causes first: β-blocker, CCB, digoxin, hypothyroidism, hyperkalaemia, hypothermia, raised ICP.",
+    "Symptomatic → permanent pacemaker; atropine or transcutaneous pacing only as a bridge if unstable."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT4 Q133"
+  },
+  {
+   "id": "T_47f36503",
+   "topic": "Pacemaker leads: unipolar vs bipolar",
+   "type": "pairs",
+   "q": "Pacemaker leads — unipolar vs bipolar?",
+   "a": [
+    "Unipolar: tip electrode is the cathode and the can is the anode, so the circuit spans the chest wall → large spike, more myopotential/EMI oversensing and pocket muscle stimulation.",
+    "Bipolar: tip + ring electrode ~10 mm proximal → small local circuit, less oversensing; the standard today (so 'unipolar is better' is false).",
+    "One lead per paced chamber; RA lead usually in or near the appendage."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT6 Q1"
+  }
+ ],
+ "CVS08C": [
+  {
+   "id": "T_db9d2577",
+   "topic": "Echo at the CPR pulse check",
+   "type": "qa",
+   "q": "Focused echo at a CPR pulse check — what does each finding mean, and true vs pseudo-PEA?",
+   "a": [
+    "Effusion with RV diastolic collapse = tamponade → pericardiocentesis during CPR.",
+    "Dilated RV with a D-shaped LV = massive PE → lysis; small hyperdynamic 'kissing' ventricles = hypovolaemia → volume or blood.",
+    "No cardiac motion = true PEA (CPR + adrenaline; poor prognosis); coordinated motion without a pulse = pseudo-PEA — profound shock where fluids/vasopressor may restore a pulse, better survival.",
+    "AHA 2025: POCUS may be used by experienced operators to find a reversible cause only if it does not lengthen pauses (subxiphoid or TEE views, <10 s); not routine, not a replacement for pulse checks and not a sole reason to stop. CTPA, MRI or CXR mean leaving the resuscitation."
+   ],
+   "tier": 1,
+   "n": 4,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT Cardiac Arrest & Resuscitation in Pregnancy Q14; DocT GT GrandT1 Q24; DocT GT GT5 Q147; DocT GT CGT4 Q126"
+  },
+  {
+   "id": "T_cbaf1745",
+   "topic": "Drowning",
+   "type": "qa",
+   "q": "Drowning — the insult, the first resuscitation step, and why observe the 'well' patient?",
+   "a": [
+    "The insult is hypoxia: 5 rescue breaths, then CPR (ERC); no Heimlich; fresh vs salt water does not change management.",
+    "Post-hypoxic cerebral oedema builds over hours and peaks at 24–72 h, so an alert patient can deteriorate later.",
+    "Observe at least 6–8 h; ARDS can also appear late.",
+    "Pulseless after long submersion: start CPR if submerged <60 min (cold water protects the brain); hypothermic → continue CPR with active rewarming (ECLS if available) — 'not dead until warm and dead'."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT Pediatric Critical Care Q5; DocT GT GT4 Q27"
+  },
+  {
+   "id": "T_60914e52",
+   "topic": "Confirming anaphylaxis (tryptase)",
+   "type": "cloze",
+   "q": "How do you confirm a perioperative reaction was anaphylaxis?",
+   "a": [
+    "Serum mast-cell tryptase 15 min–3 h after onset (peak 1–2 h), plus a baseline >24 h later.",
+    "A rise above 1.2 × baseline + 2 ng/mL confirms mast-cell activation; a normal value does not exclude anaphylaxis (asthma does not raise it).",
+    "Refer for skin testing at 4–6 weeks (NMBAs, cefazolin, chlorhexidine, latex)."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT1o Q113"
+  },
+  {
+   "id": "T_238aeb8c",
+   "topic": "Anaphylaxis: first-line adrenaline",
+   "type": "cloze",
+   "q": "Anaphylaxis — first drug, dose, route and site?",
+   "a": [
+    "IM adrenaline 0.5 mg (0.5 mL of 1 mg/mL; child 0.01 mg/kg) into the anterolateral thigh (vastus lateralis): faster, higher peak than deltoid or SC; repeat every 5 min.",
+    "Refractory after 2 IM doses → IV adrenaline infusion; on β-blockers add glucagon.",
+    "Antihistamine and steroid are adjuncts that never replace adrenaline; confirm with tryptase at 1–2 h."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT PYQ Q93"
+  }
+ ],
+ "CVS09": [
+  {
+   "id": "T_e50055cb",
+   "topic": "Neuraxial/spinal-drain anticoagulant holds",
+   "type": "cloze",
+   "q": "Minimum anticoagulant stop times before neuraxial or spinal-drain placement (ASRA 2018)?",
+   "a": [
+    "Aspirin alone: no hold; clopidogrel 5–7 days.",
+    "Enoxaparin prophylactic 12 h, therapeutic 24 h; IV UFH 4–6 h with a normal aPTT.",
+    "Apixaban, rivaroxaban: 72 h.",
+    "Dabigatran: 120 h (5 days) by default (72 h only if CrCl >80 and no other risk) — the longest hold."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT GT2o Q57"
+  }
+ ],
+ "CVS10A": [
+  {
+   "id": "T_3a5116ba",
+   "topic": "Chest pain relieved by nitrate",
+   "type": "qa",
+   "q": "Chest pain relieved by nitroglycerin, normal ECG, negative troponin — what does the nitrate response tell you?",
+   "a": [
+    "Nothing diagnostic: nitrates relax smooth muscle, so they relieve both myocardial ischaemia and oesophageal spasm (NTG response does not predict ACS in ED studies).",
+    "One normal ECG + one negative troponin excludes MI, not unstable angina → repeat hs-troponin at 1–3 h and risk-stratify (HEART score).",
+    "Oesophageal spasm clues: dysphagia, relation to swallowing or hot/cold liquids; confirm by manometry."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "DocT GT AIM1 Q140"
+  }
+ ],
+ "CVS10B": [
+  {
+   "id": "T_bf76f00d",
+   "topic": "Wellens vs de Winter",
+   "type": "pairs",
+   "q": "Wellens vs de Winter — two STEMI-equivalent patterns of the proximal LAD?",
+   "a": [
+    "Wellens: deep symmetric or biphasic T waves in V2–V3 with isoelectric or <1 mm ST, preserved R waves and no Q waves, usually recorded pain-free → critical proximal LAD stenosis: angiography, avoid stress testing.",
+    "de Winter: 1–3 mm UPsloping ST depression at the J point in V1–V6 with tall symmetric T waves and ~1 mm ST elevation in aVR → acute proximal LAD occlusion = STEMI equivalent → primary PCI.",
+    "ST elevation in aVR is not a Wellens feature."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow QB21-Q14; Marrow QB21-Q27"
+  }
+ ],
+ "CVS10E": [
+  {
+   "id": "T_08cd9563",
+   "topic": "Retroperitoneal bleed after femoral access",
+   "type": "case",
+   "q": "Hypotension with back/flank pain hours after femoral-access PCI, no visible groin haematoma?",
+   "a": [
+    "Retroperitoneal haematoma: high puncture above the inguinal ligament; women, obesity, anticoagulation.",
+    "Diagnose with CT abdomen/pelvis; resuscitate, stop/reverse anticoagulation.",
+    "Covered stent or embolisation (or surgery) if ongoing bleeding."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow:QB59-Q12"
+  }
+ ],
+ "HY2": [
+  {
+   "id": "T_6ad11458",
+   "topic": "Hypertensive emergency",
+   "type": "algorithm",
+   "q": "Hypertensive emergency: define it, how fast to lower, with what, and the exceptions?",
+   "a": [
+    "BP ≥180/120 + acute organ damage (encephalopathy, ICH/stroke, ACS, pulmonary oedema, dissection, AKI/TMA, eclampsia) = emergency → ICU + IV titratable drug; no organ damage = urgency → oral drugs over 24–48 h.",
+    "Lower MAP by ≤25% in the 1st hour → 160/100–110 over the next 2–6 h → normal over 24–48 h (autoregulation is reset upward; fast drops cause watershed ischaemia).",
+    "Drugs by organ: encephalopathy/stroke → labetalol, nicardipine or clevidipine; acute pulmonary oedema → IV nitroglycerin + loop diuretic + NIV (avoid labetalol/β-blockers in decompensated HF); renal failure → fenoldopam, nicardipine or clevidipine (no prolonged nitroprusside: cyanide/thiocyanate); avoid nitroprusside with raised ICP; oral drugs are too slow.",
+    "Go faster: dissection SBP <120 and HR <60 within 20 min (β-blocker first); severe pre-eclampsia SBP <160 within 1 h; phaeochromocytoma α before β. Ischaemic stroke: treat only if >185/110 (before lysis) or >220/120.",
+    "Clonidine withdrawal: restart clonidine; if organ damage, phentolamine or labetalol — never an unopposed pure β-blocker.",
+    "Why it spirals: an abrupt BP rise injures the endothelium (lost NO, fibrinoid necrosis) and activates RAAS → more vasoconstriction; malignant hypertension's pressure natriuresis and RAAS surge cause volume depletion, hypokalaemia, polyuria and weight loss."
+   ],
+   "tier": 1,
+   "n": 15,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT Cardiac Fundamentals Q7; DocT Cardiac Fundamentals Q8; DocT GT GT2 Q104; DocT GT GT2o Q11; DocT GT GrandT1 Q58; DocT GT GT6 Q14; DocT GT GT6 Q51; DocT PYQ Q90; DocT GT CGT1 Q25; DocT GT AIM1 Q6; DocT GT AIM1 Q30; DocT GT AIM1 Q135; DocT GT GT4 Q26; DocT GT GT4 Q124; DocT GT GT4 Q145"
+  },
+  {
+   "id": "T_74c38a9d",
+   "topic": "First rhythm in sudden cardiac arrest",
+   "type": "qa",
+   "q": "First recorded rhythm in sudden cardiac arrest — which is commonest?",
+   "a": [
+    "Overall out-of-hospital arrest: asystole/PEA now outnumber VF (VF ~20–25% and falling).",
+    "Witnessed collapse in the young or athletes: VF/VT is classic (HCM, channelopathy, commotio cordis) — the earlier the rhythm is recorded, the likelier VF.",
+    "Late sudden death weeks after MI: asystole ~50%, PEA ~20% as first rhythm (Tintinalli)."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow QB22-Q12; Marrow QB22-Q15"
+  },
+  {
+   "id": "T_6ad11458b",
+   "topic": "Hypertensive emergency",
+   "type": "qa",
+   "q": "Hypertensive emergency (end-organ damage), no stroke or dissection: fundus grades and how fast to lower?",
+   "a": [
+    "Keith-Wagener-Barker: I narrowing; II AV nipping; III haemorrhages, exudates, cotton-wool; IV = III + papilloedema (malignant).",
+    "Lower MAP 10–20% (≤25%) in the first hour, then to 160/100 over 2–6 h, normal over 24–48 h.",
+    "Exceptions: aortic dissection (SBP <120 in 20 min), pre-eclampsia (<160/110, aim 140–150/90–100), ischaemic stroke and ICH have their own targets."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT Marrow",
+   "recall": false,
+   "src": "DocT:16; Marrow:QB44-Q08"
+  }
+ ]
+}

@@ -12,7 +12,7 @@ for c in cards:
     if not e: err(c['code'], 'missing'); continue
     for k in ('sub', 'intro', 'parts', 'mimic', 'traps', 'decode', 'punch'):
         if k not in e: err(c['code'], 'no field', k)
-    la, lq = let(c['a']), let(c['q'])
+    la, lq = let(c['a']), let(re.sub(r'^\*\*.*?\*\*', '', c['q'], count=1, flags=re.S))  # skip letters inside the bold stem (e.g. a wrapped 'a durable LVAD')
     want = lq if len(lq) > len(la) else (la or lq)   # the question's letters win when the answer prints a part as a table
     got = [p[0] for p in e.get('parts', [])]
     if want and got != want: err(c['code'], 'letters', got, 'card has', want)

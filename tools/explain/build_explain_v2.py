@@ -28,7 +28,7 @@ for t in ns['TOPUPS']['TOX01']:
 decks = {'TOX01': {'cards': cards, 'topups': topups}}
 # T-083: the other Toxicology decks (main cards only; their few bank Top-ups are not explained yet)
 import os
-for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06', 'RESP01A', 'RESP01B', 'RESP01C', 'RESP02A', 'RESP02B', 'RESP03', 'RESP04', 'RESP05', 'RESP06A', 'RESP06B', 'RESP07A', 'RESP07B', 'OBS01', 'OBS02A', 'OBS02B', 'SPECIAL01', 'SPECIAL02', 'SPECIAL03', 'SPECIAL04A', 'SPECIAL04B', 'SPECIAL05A', 'SPECIAL05B']:
+for dk in ['TOX02', 'TOX03A', 'TOX03B', 'TOX04', 'TOX05', 'TOX06', 'RESP01A', 'RESP01B', 'RESP01C', 'RESP02A', 'RESP02B', 'RESP03', 'RESP04', 'RESP05', 'RESP06A', 'RESP06B', 'RESP07A', 'RESP07B', 'OBS01', 'OBS02A', 'OBS02B', 'SPECIAL01', 'SPECIAL02', 'SPECIAL03', 'SPECIAL04A', 'SPECIAL04B', 'SPECIAL05A', 'SPECIAL05B', 'CVS01', 'CVS02', 'CVS03', 'CVS04', 'CVS05A', 'CVS05B', 'CVS06A', 'CVS06B', 'CVS07A', 'CVS07B', 'CVS07C', 'CVS08A', 'CVS08B', 'CVS08C', 'CVS08D', 'CVS08E', 'CVS09', 'CVS10A', 'CVS10B', 'CVS10C', 'CVS10D', 'CVS10E', 'HY2', 'TU-IE']:
     f = dk.lower() + '_learn.py'
     if not os.path.exists(f): print('skip', dk); continue
     n2 = {}; exec(open(f).read(), n2)

@@ -1,0 +1,2798 @@
+{
+ "HY2|CAR-25": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 13
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 10
+   }
+  ],
+  "lines": [
+   "DocT: A massive unilateral pleural effusion (tension hydrothorax) causes OBSTRUCTIVE shock with a HIGH CVP (15–18), the tamponade pattern: raised pleural pressure compresses the heart and cuts venous return. Clue = white-out hemithorax with mediastinal shift away; fix = urgent drainage, not pressors. LV failure (B) gives bilateral effusions with a high PAWP; PE (A) gives a near-clear film.",
+   "Marrow: NEUROGENIC shock is distributive: lost sympathetic tone gives low SVR with venous pooling, so low CVP/PAWP and low CO — with BRADYCARDIA and warm skin, unlike other shock. Warm high-output states: sepsis, cirrhosis/liver failure, pancreatitis, burns, anaphylaxis, thyrotoxicosis, AV fistula, beriberi, severe anaemia; MI shock is cold."
+  ],
+  "cross": [
+   "DocT keys PE for CVP 18 + acute respiratory failure + tachycardia with BP 140/90 (and its explanation calls the patient hypotensive). Truth: a normal BP makes this at most intermediate-risk PE, and a smoker's COPD exacerbation with cor pulmonale fits equally. If the stem gives SBP <90 or a clear chest with RV strain, pick PE; if a smoker with wheeze and chronic hypercapnia, pick COPD with cor pulmonale.",
+   "DocT GT keys 'cirrhosis with portal hypertension' as the cause of a CVP of 22 in a cirrhotic. Truth: portal hypertension sits upstream of the IVC and cirrhosis is hyperdynamic with a normal-low CVP; a CVP of 22 means right-heart failure or volume overload (AKI fluid overload, cirrhotic cardiomyopathy, tense ascites). If AKI with fluid overload is offered, it is the physiological answer; DocT's cohort followed the key."
+  ]
+ },
+ "CVS03|CS-02": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06B|RVF-29": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Dilated RV + CVP 20 + abdominal distension (ascites) = CHRONIC RV failure from pulmonary hypertension, not massive PE: PE dilates the RV abruptly (McConnell, 60/60 sign) with no time for ascites to build or the wall to thicken; tamponade gives small, collapsed right chambers."
+  ]
+ },
+ "HY2|CAR-19": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS03|CS-22": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Kerley lines are oedematous (thickened) interlobular septa, not swollen lymphatics. B lines: short (~1 cm) horizontal lines at the peripheral bases, perpendicular to the pleura; A lines: longer (2–6 cm) lines deep in the lung radiating toward the hila.",
+   "DocT GT: Cardiogenic pulmonary oedema on CXR: cardiomegaly, upper-lobe diversion, perihilar 'bat-wing' opacities, Kerley B lines, peribronchial cuffing, widened vascular pedicle (>70 mm) and effusions. ARDS gives patchy peripheral opacities with a normal heart and pedicle, air bronchograms and few effusions or septal lines.",
+   "DocT Recall25: BNP rises with any myocardial stretch or poor clearance, not only heart failure: PE (RV strain), AF, renal failure, sepsis, ACS and older age. Obesity LOWERS BNP, and hypothyroidism has no stretch mechanism, so it is the odd one out in 'all raise BNP except'."
+  ]
+ },
+ "CVS03|CS-26": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 6
+   }
+  ],
+  "lines": [
+   "DocT: Hypotension that appears AFTER diuresis in a patient who was 120/80 is over-diuresis (preload removed): hold the diuretic and reassess volume before any vasoactive drug. Milrinone (C) would vasodilate further.",
+   "Marrow: Recurrent flash pulmonary oedema with resistant hypertension and rising creatinine = bilateral renal artery stenosis (Pickering syndrome): renal angiography and stenting prevents recurrence; renal denervation does not."
+  ],
+  "cross": [
+   "DocT keys dopamine for post-diuresis hypotension. Truth: dopamine is outdated (SOAP II: more arrhythmias, higher mortality in cardiogenic shock); first stop the diuretic, then norepinephrine for MAP or dobutamine for output if a drug is needed. If norepinephrine is offered, pick it.",
+   "Crossfire · ESC HF 2021 profile algorithm: wet-cold SBP <90 → inotrope, vasopressor if refractory; AHA/ACC 2022 HF, SCAI & ACC/AHA ACS 2025: hypotensive cardiogenic shock → noradrenaline first, then add dobutamine. In exam: SBP <90 = noradrenaline first; SBP ≥90 low output = dobutamine."
+  ]
+ },
+ "CVS03|CS-30": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 6
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Dopamine is no longer preferred in low-output HF or cardiogenic shock: in SOAP II's cardiogenic subgroup it caused more arrhythmias AND higher mortality than norepinephrine; current practice is norepinephrine for MAP + dobutamine for output. Dopamine now survives mainly in the bradycardia algorithm.",
+   "Marrow: In calcium-channel-blocker poisoning, after IV calcium and high-dose insulin euglycaemia, choose the vasoactive drug by phenotype: low cardiac index → inotrope (dobutamine/adrenaline); low SVR (vasoplegia) → norepinephrine."
+  ],
+  "cross": [
+   "DocT keys 'decrease dobutamine' for a patient still hypotensive on dobutamine. Truth: dobutamine's β2 effect vasodilates, so the BP fix is to add norepinephrine (MAP <65 → norepinephrine, as this card says); cutting dobutamine slows HR but does not raise BP. If the stem stresses tachyarrhythmia on dobutamine, pick reduce dobutamine; if hypotension, pick add norepinephrine.",
+   "DocT keys dopamine for low output at BP 80/50. Truth: outdated (SOAP II); norepinephrine for the BP, dobutamine or milrinone for output. If norepinephrine is offered with hypotension, pick it; pick dopamine only if it is the sole vasoactive option."
+  ]
+ },
+ "CVS03|CS-29": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT GT + Marrow: Omecamtiv mecarbil is a cardiac myosin activator — longer systolic ejection and more SV WITHOUT raising cAMP, intracellular Ca2+ or MVO2 (GALACTIC-HF: modest fall in HF events), its edge over dobutamine/milrinone; serelaxin is a relaxin-2 VASODILATOR, not an inotrope.",
+   "Marrow: Milrinone is renally excreted, so it accumulates in AKI/ESRD (hypotension, arrhythmias): reduce the infusion rate by creatinine clearance and skip the loading dose.",
+   "DocT GT: Dobutamine (β1) → Gs → adenylate cyclase → cAMP → protein kinase A. PKA phosphorylates L-type Ca channels and ryanodine receptors (more systolic Ca release: inotropy), phospholamban (releases SERCA2a: faster Ca reuptake, lusitropy) and troponin I (faster Ca release from troponin C)."
+  ]
+ },
+ "HY2|CAR-04": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Dobutamine speeds AV-nodal conduction and can worsen AF with RVR; in low-EF AF digoxin is a first rate-control option because it slows the node without negative inotropy."
+  ],
+  "cross": [
+   "DocT keys an IV β-blocker for AF with RVR in HFrEF admitted with worsening dyspnoea. Truth: that is decompensated HF — avoid IV β-blockers; use amiodarone or digoxin for rate and IV diuretics for congestion. If the patient is decompensated, pick amiodarone/digoxin; β-blocker only once compensated."
+  ]
+ },
+ "HY2|CAR-18": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Levosimendan also keeps working under β-blockade: it sensitises troponin C to calcium (and opens K-ATP channels), bypassing the β-receptor/cAMP pathway, so ESC prefers it (or milrinone) over dobutamine in β-blocked patients. Dopamine, adrenaline and dopexamine all act through β-receptors and lose effect."
+  ],
+  "cross": [
+   "DocT keys dobutamine for HFrEF with low output at SBP 85 (ESC: wet-cold SBP <90 → inotrope first, vasopressor if refractory). Truth: AHA/SCAI, as this card says, start norepinephrine below SBP 90. If the stem says 'low output' with a borderline SBP, pick dobutamine; if 'shock' with MAP <65 or SBP clearly <90, pick norepinephrine first."
+  ]
+ },
+ "CVS10D|MI-57": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS03|CS-19": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT: S3 gallop + bibasal crackles without ST change = congestive (left, systolic) heart failure. The S3 is rapid early-diastolic filling into a stiff, overfilled ventricle with raised LVEDP — specific (~90%) but insensitive for low EF or high filling pressure."
+  ]
+ },
+ "HY2|CAR-10": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: A survivor of VF/VT arrest with no reversible cause (no acute MI, electrolyte or drug cause) gets a secondary-prevention ICD regardless of EF (class I; AVID, CIDS, CASH: ICD beats amiodarone on mortality). Coronary assessment is part of the work-up but must not delay the ICD decision."
+  ]
+ },
+ "CVS10B|MI-25": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Chest pain + no ST elevation + troponin above the 99th centile with a rise/fall = NSTEMI even with a normal ECG. With BP 180/110 and no prior CAD think type 2 MI from a hypertensive surge, and exclude aortic dissection (D) — BP in both arms, pain character — before antithrombotics.",
+   "Marrow: High ACS likelihood: prior documented angina or known CAD, transient MR murmur or hypotension during pain, new ST deviation ≥1 mm or T inversion in multiple precordial leads; low likelihood: T flattening or inversion <1 mm in leads with a dominant R."
+  ]
+ },
+ "HY2|CAR-02": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT + Marrow: Carotid sinus massage: supine, on continuous ECG, one side only (right first) at the level of C3 for 5–10 s, never bilateral; contraindicated with a carotid bruit or prior TIA/stroke (plaque embolism). Modified Valsalva (strain at 40 mmHg for 15 s, then supine with legs raised; REVERT 43% vs 17% conversion) is the safer first manoeuvre."
+  ]
+ },
+ "CVS08B|ACLS-35": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: SA exit block — Type I (Wenckebach): PP intervals progressively shorten, then a pause shorter than two PP; Type II: constant PP with a sudden pause that is an exact multiple (usually 2×) of the basic PP. A sinus pause/arrest bears no fixed relation to the PP cycle."
+  ]
+ },
+ "CVS08B|ACLS-36": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow + DocT GT: Nodal (Mobitz I) vs infranodal (Mobitz II) block: atropine and exercise speed AV-nodal conduction, so they IMPROVE Mobitz I but WORSEN Mobitz II; carotid massage does the opposite. Mobitz I usually has a narrow QRS, Mobitz II a wide one, so in 2:1 block a narrow QRS in a vagal setting (sleeping athlete) favours benign nodal block, a wide QRS infranodal block needing pacing."
+  ]
+ },
+ "CVS10B|MI-28": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 3
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT: Inferior STEMI: ST elevation III > II with reciprocal depression in aVL/I = RCA; II ≥ III with ST elevation in I/aVL or V5–V6 = LCx. The RCA supplies the AV node in ~90%, hence the bradycardia and AV block of inferior MI.",
+   "DocT: Pathological Q waves (≥40 ms or ≥25% of the following R, in ≥2 contiguous leads) WITHOUT ST elevation mean an OLD healed infarct — Q in I, aVL, V5 = prior lateral MI. Q waves are permanent scar; ST elevation marks acute injury.",
+   "Marrow: ST elevation in V1 with a NEW RBBB = PROXIMAL LAD occlusion (the septal perforators supply the right bundle); distal LAD gives V3–V4 elevation without RBBB."
+  ]
+ },
+ "CVS08B|ACLS-33": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 5
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: New AF in septic shock or with labile BP: correct triggers first (K, Mg, volume, catecholamine dose); for rate control a short-acting β1-blocker (esmolol: onset 2–3 min, t½ ~9 min via red-cell esterases, so it can be switched off within minutes; or landiolol) beats diltiazem, whose negative inotropy and vasodilation worsen hypotension. IV amiodarone if BP is marginal; DC cardioversion only if unstable, and AF often recurs while sepsis persists.",
+   "Marrow: Never give IV verapamil or diltiazem soon after an oral or IV β-blocker: additive AV-nodal block and negative inotropy can cause profound bradycardia, hypotension or asystole.",
+   "Marrow + DocT GT: Pharmacological cardioversion of recent-onset (<48 h) AF or flutter: ibutilide 1 mg IV over 10 min, repeat once; it converts typical flutter (~60–75%) better than AF (~30–50%); torsades risk, so correct K/Mg and monitor ≥4 h. Flecainide only without structural heart disease (give an AV-nodal blocker first in flutter to avoid 1:1 conduction); amiodarone when there is structural disease."
+  ],
+  "cross": [
+   "Marrow keys ibutilide for stable recent-onset AF. Truth: the AHA stable irregular narrow-complex pathway is rate control (β-blocker or non-DHP CCB); ibutilide is a rhythm-control drug for AF <48 h. If rate control is offered, pick it; if the stem asks to restore sinus rhythm in AF <48 h, pick ibutilide."
+  ]
+ },
+ "HY2|CAR-03": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "Marrow: Flecainide toxicity: blurred vision (commonest dose-related non-cardiac effect), dizziness, QRS widening and proarrhythmia; contraindicated in structural or ischaemic heart disease (CAST: excess deaths after MI)."
+  ],
+  "cross": [
+   "DocT GT (AIM1 Q36, GT4 Q56) keys verapamil as THE drug contraindicated in pre-excited AF. Truth: adenosine, β-blockers (esmolol) and IV amiodarone are also harmful (AHA 2023 class 3), so several options are correct. Pick verapamil as the classic answer; treatment is cardioversion if unstable, procainamide/ibutilide if stable."
+  ]
+ },
+ "CVS08B|ACLS-28": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Paediatric SVT that converts with adenosine but recurs within seconds and leaves the child unstable → synchronised cardioversion 0.5–1 J/kg, then 2 J/kg; repeating adenosine buys only another 30 s. Avoid verapamil and diltiazem (C) in infants — cardiovascular collapse."
+  ],
+  "cross": [
+   "Marrow keys securing the airway first for an unstable tachyarrhythmia when cardioversion is not among the options. Truth: unstable tachycardia → synchronised cardioversion; intubating first delays electrical therapy. If cardioversion is offered, pick it; if not, the airway option is the keyed least-wrong."
+  ]
+ },
+ "HY2|CAR-01": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS10B|MI-30": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Cardiac myosin-binding protein C (cMyC) is cardiac-restricted, more abundant than troponin and released faster, so with hs-troponin it improves early rule-in/rule-out; copeptin is the other early add-on. IMA, BNP and microRNA-208b are not used for MI diagnosis.",
+   "Marrow: Reinfarction is diagnosed with TROPONIN, not CK-MB (ESC/ACC): a >20% rise from an already raised baseline (sampled at symptom onset and 3–6 h later). CK-MB is used only where troponin is unavailable."
+  ],
+  "fix": [
+   {
+    "t": "CK-MB: less specific; only if troponin unavailable. Re-infarction: repeat hs-cTn — >20% rise from a stable/falling raised baseline.",
+    "why": "Uses CK-MB for re-infarction. ESC/ACC use troponin (>20% rise from a raised baseline).",
+    "src": "Fourth Universal Definition of MI 2018; ESC ACS 2023",
+    "url": "https://doi.org/10.1093/eurheartj/ehy462",
+    "v": "partly"
+   }
+  ]
+ },
+ "CVS10A|MI-17": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT keys 'ibuprofen and reassure' for chest pain with chest-wall tenderness. Truth: tenderness does not exclude ACS, and exertional pain relieved by rest with a family history of MI is anginal — ECG + troponin (and aspirin) first. If an ECG/troponin option is offered, pick it."
+  ]
+ },
+ "CVS10C|MI-53": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Active diabetic haemorrhagic retinopathy is a relative contraindication to fibrinolysis; a previous MI is not a contraindication; CPR counts only if prolonged (>10 min) or traumatic."
+  ]
+ },
+ "HY2|CAR-17": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10C|MI-38": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Riociguat (soluble guanylate cyclase stimulator) is a nitrate contraindication alongside PDE-5 inhibitors: both amplify the NO–cGMP pathway, so a nitrate causes profound hypotension."
+  ],
+  "cross": [
+   "DocT keys oesophageal spasm as 'most likely' for acute chest pain relieved by nitroglycerin with a normal ECG and negative troponin. Truth: nitrate relief proves nothing, and with a single negative troponin unstable angina is still the classic answer; oesophageal spasm is a diagnosis of exclusion after serial hs-troponin. If serial troponins are negative and ACS is ruled out, pick spasm; otherwise pick unstable angina."
+  ]
+ },
+ "CVS10C|MI-40": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10C|MI-41": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT Recall25: Stent thrombosis presenting with ST elevation is a STEMI: load DAPT (aspirin + P2Y12) with anticoagulation and send for immediate primary PCI. Lysis works poorly on platelet-rich stent thrombus; heparin alone or beta-blockers are not reperfusion."
+  ]
+ },
+ "CVS10B|MI-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10A|MI-05": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS09|AD-17": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: TEE signs of dissection: an undulating intimal flap separating true and false lumens, colour-flow in both lumens, entry/exit tears, false-lumen stasis or thrombus, and intramural haematoma (crescentic wall thickening without a flap)."
+  ],
+  "cross": [
+   "DocT keys TEE as first imaging for a stable patient (BP 205/110). Truth: 2024 ESC first-line is ECG-gated contrast CT neck to pelvis (I, C); TEE is for patients too unstable to move, CT contraindication, or intra-operative guidance. If the patient is stable and CT is offered, pick CT; if unstable in theatre/ED, pick TEE."
+  ]
+ },
+ "CVS08C|ACLS-55": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 7
+   }
+  ],
+  "lines": [
+   "DocT + Marrow: Rewarm below the ECLS tier by stage: mild 32–35 °C passive external (dry, insulate; shivering adds ~1–2 °C/h; room-temperature fluid cools); moderate 28–32 °C active external (forced air) + IV fluid warmed to 38–42 °C; severe <28 °C or unstable = active internal (ECLS first, thoracic/peritoneal lavage if unavailable), which also counters afterdrop.",
+   "DocT: Hypothermic arrest <30 °C (ERC 2021): up to 3 shocks, then withhold further shocks, adrenaline and antiarrhythmics until core >30 °C (cold myocardium does not respond, drugs accumulate); at 30–35 °C double the drug interval (adrenaline every 6–10 min). Handle gently and keep horizontal — the cold heart is irritable and lidocaine does not work. AHA is more permissive; DocT keys ERC.",
+   "Marrow: In hypothermic arrest a serum K >12 mmol/L means massive cell lysis (asphyxia or death before cooling) — non-survivable, so stop CPR and do not start ECLS; fixed pupils and Osborn waves are unreliable for prognosis in the cold."
+  ]
+ },
+ "CVS08A|ACLS-09": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS07B|PCA-28": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: No RCT shows that earlier cooling helps: prehospital cold-saline cooling (Kim, JAMA 2014, n=1,359; RINSE) gave no survival or neurological benefit and caused more re-arrest and pulmonary oedema."
+  ],
+  "cross": [
+   "DocT keys 32–34 °C for 12–24 h (the 2002–2010 AHA answer). Truth: after TTM (33 vs 36) and TTM2 (≤33 vs ≤37.5) showed no difference, AHA 2025 recommends temperature control 32–37.5 °C for ≥36 h in any comatose survivor, any rhythm; ERC/ESICM 2021 prevent fever (≤37.7 °C) for 72 h. If a 32–37.5 °C / fever-prevention option exists, pick it.",
+   "DocT keys 'cooling as early as possible (time to target)'. Truth: no RCT shows time-to-target matters and prehospital cooling trials are negative; every option is flawed by 2025 standards. If forced, pick DocT's 'early' option as least-wrong.",
+   "Marrow keys 34 °C. Truth: 34 °C sits inside AHA's 32–36/32–37.5 range, but TTM2 and ERC 2021 favour fever prevention ≤37.5 °C. If the question follows AHA, 34 °C is acceptable; if ERC, pick normothermia/fever prevention."
+  ]
+ },
+ "CVS07B|PCA-35": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT: Skin counter-warming plus magnesium is the first answer for shivering during temperature control because neither sedates nor drops BP; opioid boluses (D) are a later sedating tier, cold saline (A) worsens shivering, and paralysis (B) is the last resort, with EEG."
+  ],
+  "cross": [
+   "DocT GT keys dexmedetomidine for controlling shivering while minimising hypotension and sedation. Truth: the Columbia ladder puts magnesium (with buspirone, paracetamol and counter-warming) BEFORE dexmedetomidine, and magnesium has the least hypotension and sedation. If magnesium is offered for 'least hypotension/sedation', pick magnesium; dexmedetomidine is the next tier."
+  ]
+ },
+ "CVS07B|PCA-29": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Rewarm after temperature control at ≤0.25–0.5 °C/h: fast rewarming raises cerebral metabolic demand in a brain with fragile O2 delivery, causes vasodilatory hypotension and REBOUND HYPERkalaemia as K+ moves back out of cells (option C has the direction wrong). Afterdrop (D) is an accidental-hypothermia phenomenon.",
+   "DocT GT: Temperature control is for comatose survivors after ROSC (not every arrest); hypothermia is held for 24 h (not 48), shivering must be suppressed, and earlier initiation is linked to better outcome. Current ERC-ESICM practice is active fever prevention (≤37.5–37.7 °C) for at least 72 h."
+  ]
+ },
+ "CVS07B|PCA-36": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Temperature control slows CYP450 metabolism by roughly 7–22% per °C below 37: midazolam (CYP3A4) and fentanyl accumulate, prolonging sedation and confounding neuroprognostication. Atracurium and cisatracurium (Hofmann elimination/ester hydrolysis) are not CYP-dependent; hydromorphone is glucuronidated.",
+   "Marrow: Bedside Shivering Assessment Scale 0–3: 0–1 → counter-warming (skin surface warming); 2 → add sedation/analgesia; 3 (trunk + limbs shaking) → escalate to neuromuscular blockade under deep sedation."
+  ]
+ },
+ "CVS07B|PCA-21": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "HY2|CAR-21": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 3
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 12
+   }
+  ],
+  "lines": [
+   "DocT GT: Warfarin with INR 4.5–10 and no bleeding: hold 1–2 doses and recheck; low-dose oral vitamin K (1–2.5 mg) only if bleeding risk is high. INR >10 without bleeding → oral vitamin K 2.5–5 mg. PCC and IV vitamin K 5–10 mg are only for major bleeding and would over-correct a mechanical valve."
+  ],
+  "cross": [
+   "Marrow keys FFP + vitamin K for a warfarin bleed in a patient with a recent thrombotic event (4F-PCC is prothrombotic and PCC trials excluded MI/stroke/TIA/DIC within 3 months). Truth: AHA/ESO still prefer 4F-PCC + IV vitamin K over FFP for life-threatening bleeding or ICH. If the stem stresses a recent MI/stroke and asks for the 'safest' agent, pick FFP + vitamin K; otherwise pick 4F-PCC."
+  ]
+ },
+ "CVS08C|ACLS-53": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT: Evidence for resuscitative delivery is observational only: Katz, Dotters and Droegemueller 1986 (the '4-minute rule': start at 4 min, deliver by 5 min, because the gravid uterus cuts CPR output to ~30%), then Katz 2005 and Einav 2012 case reviews where ROSC often followed delivery. No RCT exists; MOMS = fetal myelomeningocele surgery, ALPS = late-preterm steroids, PROWESS = drotrecogin alfa.",
+   "DocT: Resuscitative hysterotomy uses a vertical midline incision from just above the symphysis to the umbilicus (fastest, best exposure), then a classical vertical uterine incision, done where the patient lies with CPR and uterine displacement continuing. Supra-umbilical or xiphoid incisions miss the uterus."
+  ],
+  "cross": [
+   "DocT keys a 'HELP trial' as the evidence for resuscitative delivery. Truth: no such trial exists — the evidence is Katz 1986/2005 and the Einav 2012 review. If Katz or a case series is offered, pick it; otherwise eliminate MOMS, ALPS and PROWESS."
+  ]
+ },
+ "CVS08C|ACLS-52": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Obstetric haemorrhage is the commonest cause of maternal cardiac arrest (~38% in AHA pooled data), so treat PEA in pregnancy as hypovolaemia first: wide-bore lines above the diaphragm, massive transfusion, uterotonics, obstetrician to theatre; eclampsia itself rarely arrests the heart."
+  ],
+  "cross": [
+   "DocT keys 'give magnesium promptly as part of ACLS' in an eclampsia-related arrest. Truth: the AHA maternal arrest algorithm says if on IV magnesium, STOP it and give calcium chloride or gluconate; seizure prophylaxis resumes after ROSC. If she was already on magnesium, pick calcium."
+  ]
+ },
+ "CVS08C|ACLS-45": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: The 1 mg arrest dose is 10 mL of 1:10,000 (0.1 mg/mL). 1:1000 is 1 mg/mL (the IM anaphylaxis strength, 0.5 mL), so 10 mL of 1:1000 would be a tenfold overdose."
+  ]
+ },
+ "CVS08B|ACLS-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08C|ACLS-51": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08A|ACLS-12": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Suspect tension pneumothorax in arrest with unilateral absent breath sounds, tracheal deviation (late) or rapidly rising airway pressures on the ventilator: decompress immediately (needle or finger thoracostomy) without imaging, then place a chest tube."
+  ]
+ },
+ "CVS01|CVS-27": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: In arrest, an effusion seen on POCUS at the rhythm check is treated as tamponade and drained at once (subxiphoid, ultrasound-guided) during CPR, because compressions cannot fill a compressed heart. Thrombolysis (B) is for a dilated RV."
+  ]
+ },
+ "CVS08C|ACLS-46": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT keys amiodarone + magnesium for maternal refractory VF with eclampsia. Truth: AHA lists amiodarone OR lidocaine, so lidocaine + magnesium is equally correct (fetal thyroid risk is irrelevant in arrest). If only one antiarrhythmic + magnesium pair is offered, pick it; with both, pick the keyed amiodarone."
+  ]
+ },
+ "CVS08A|ACLS-14": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: VF is the one rhythm that can never perfuse: chaotic ventricular activity gives zero output by definition (asystole is the other always-pulseless rhythm). VT, AF with RVR and junctional rhythm can each carry a pulse, so VT is shockable only when pulseless; with a pulse it is synchronised cardioversion or drugs."
+  ]
+ },
+ "CVS08D|ACLS-65": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Paediatric compressions: rate 100–120/min (as adults); depth at least one-third of the AP chest diameter — about 4 cm in infants, 5 cm in children; adolescents use the adult 5–6 cm. Ratio 30:2 with one rescuer, 15:2 with two."
+  ]
+ },
+ "CVS05B|ECHO-27": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS05A|ECHO-02": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Match the probe to depth and window: pleural fluid/consolidation, abdomen and FAST → curvilinear 2–5 MHz (deep, wide field); pleural line and sliding, vessels, ONSD and the cricothyroid membrane → linear 5–15 MHz (sharp but ≤6 cm deep). The phased array fits between ribs for the heart but has a narrow near field — second choice for pleural fluid."
+  ]
+ },
+ "CVS05A|ECHO-12": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS05B|ECHO-22": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: PLAX is the best transthoracic view of the aortic root and proximal ascending aorta (dilatation, intimal flap, AR, pericardial effusion) and shows the descending thoracic aorta in cross-section behind the LA; TTE can still miss a dissection, so CT aortogram or TEE confirms."
+  ]
+ },
+ "CVS10B|MI-35": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS05B|ECHO-17": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS05B|ECHO-40": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: RVSP = 4 × (peak TR velocity)² + RAP: 4 × 3.5² = 49, + 10 = 59 ≈ 60 mmHg. 49 (the commonest wrong pick) is only the RV–RA gradient with RAP forgotten; TR velocity >2.8 m/s suggests pulmonary hypertension."
+  ]
+ },
+ "CVS03|CS-11": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: In a chronic drinker, shock that persists after IV thiamine is alcoholic dilated cardiomyopathy (>80 g/day for >5 years; low EF, cold, needs inotropes; partly reversible with abstinence). Wet beriberi is the look-alike — warm high-output failure with low SVR that reverses within hours of thiamine.",
+   "Marrow: Peripartum cardiomyopathy — good prognosis if at diagnosis LVEDD <5.5–6 cm, EF >30–35% (FS >20%), no troponin rise and no LV thrombus.",
+   "DocT PYQ: Takotsubo: an emotional or physical stressor (often a post-menopausal woman) → chest pain with ST elevation or deep T inversion and a modest troponin rise, but unobstructed coronaries and apical ballooning with basal hyperkinesis. It recovers over weeks; if LVOT obstruction develops, avoid inotropes and use fluids, phenylephrine and beta-blockers."
+  ]
+ },
+ "CVS09|AD-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT: Nitroprusside releases 5 cyanide ions per molecule. Cyanide toxicity comes early (doses above ~2 µg/kg/min or low thiosulfate stores: lactic acidosis, high venous O2, confusion); thiocyanate builds up after 48–72 h or in renal failure (toxic >60 mg/L on a serum level). Stop the infusion; give hydroxocobalamin or sodium thiosulfate.",
+   "DocT GT: Prolonged nitroglycerin causes headache and reflex tachycardia, tachyphylaxis within 24 h, methaemoglobinaemia (its nitrite oxidises Hb) and inhibited platelet aggregation — but NOT cyanide toxicity, which belongs to nitroprusside."
+  ],
+  "cross": [
+   "DocT GT (GrandT1) keys nitroglycerin for confusion, tachycardia, metabolic acidosis and bitter-almond breath after a high-dose infusion. Truth: that is cyanide toxicity from sodium nitroprusside; the GT3 and AIM2 repeats both key nitroprusside, as does DocT's own explanation. Pick nitroprusside."
+  ]
+ },
+ "HY2|CAR-07": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: Bidirectional VT with exercise- or emotion-triggered syncope in a young person (no digoxin) = catecholaminergic polymorphic VT (RyR2/calsequestrin calcium leak, like digoxin toxicity). Beta-blockers (nadolol) are first-line, flecainide added; ICD is reserved because shocks trigger catecholamine storms. So 'beta-blockers contraindicated' is false."
+  ]
+ },
+ "CVS07C|PCA-49": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: DWI-MRI is timed after temperature control and sedation clear: too early, DWI underestimates injury; too late (beyond ~1 week), ADC changes pseudo-normalise."
+  ],
+  "cross": [
+   "DocT GT keys MRI at days 3–7 after arrest. Truth: ERC-ESICM 2021/2025 places DWI-MRI at 2–5 days after ROSC (AHA: 2–7 days); this card's 'wait 7 days' is later than both. If 2–5 days is offered in an ERC-framed stem, pick it; otherwise pick 3–7."
+  ],
+  "fix": [
+   {
+    "t": "MRI: DWI/ADC at 2–5 days after ROSC (AHA: 2–7 days). CT: early — oedema/GWR loss seen from hours, usually within 72 h. Prognosis consolidated ≥72 h after normothermia/sedation off.",
+    "why": "Wait 7 days for MRI after cardiac arrest. ERC-ESICM puts DWI-MRI at 2–5 days after ROSC (AHA 2–7).",
+    "src": "ERC-ESICM 2021 (Sandroni ICM 2020 review); AHA 2025 Part 11",
+    "url": "https://link.springer.com/10.1007/s00134-020-06198-w",
+    "v": "confirmed"
+   }
+  ]
+ },
+ "CVS10E|MI-71": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: New ST elevation in the stented territory hours after PCI = acute stent thrombosis (most within 30 days; high mortality): treat it as a STEMI with urgent repeat angiography and PCI; nitrates, observation or echo first only delay reperfusion.",
+   "Marrow: SCAD (a primary MI under UDMI 2026) typically strikes young to middle-aged women, often peripartum; up to ~80% have fibromuscular dysplasia (renal bruit, resistant hypertension), so screen renal, iliac and cerebral arteries."
+  ]
+ },
+ "CVS06A|RVF-22": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Eisenmenger syndrome is treated with PAH-targeted therapy — first-line evidence for bosentan (BREATHE-5: better exercise capacity and haemodynamics without worsening saturation), PDE-5 inhibitors as the alternative. Calcium-channel blockers lower SVR and increase the right-to-left shunt."
+  ]
+ },
+ "CVS01|CVS-26": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS09|AD-06": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06B|RVF-46": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Shock within hours of heart transplant = primary graft dysfunction (long ischaemic time), RV failure against the recipient's pulmonary hypertension, or tamponade from mediastinal bleeding. Acute cellular rejection takes days to weeks; only hyperacute antibody-mediated rejection strikes within minutes to hours."
+  ]
+ },
+ "CVS08C|ACLS-57": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY2|CAR-22": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Rescue agents for catecholamine-refractory vasoplegia (liver transplant, bypass): vasopressin (V1), angiotensin II (ATHOS-3), methylene blue (blocks NOS and guanylate cyclase) and hydroxocobalamin (scavenges NO and H2S). Angiotensin I is the inactive precursor that needs pulmonary ACE — not a vasopressor drug."
+  ]
+ },
+ "CVS02|CVS-42": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: CMR yield in myocarditis is highest when done >~7 days after symptom onset (ideally within 2–3 weeks), when oedema, hyperaemia and LGE are all visible. CMR cannot tell viral from non-viral cause and does not replace endomyocardial biopsy when giant-cell or fulminant myocarditis is suspected."
+  ],
+  "cross": [
+   "DocT GT keys LVEF, not LGE, as the prognostic marker. Truth: LGE presence and extent (especially mid-wall septal) independently predict events (ITAMY, Grani JACC 2017, ESC 2025). If only one is allowed and the question is DocT's, pick its key; in a newer paper, LGE extent is also correct."
+  ]
+ },
+ "CVS10D|MI-58": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT GT: Ventricular arrhythmias 24–72 h after a large MI (PVCs, NSVT, VT) arise mainly from ABNORMAL AUTOMATICITY in partially depolarised ischaemic myocytes and Purkinje fibres, driven by catecholamines and low K/Mg; AIVR at reperfusion is enhanced normal automaticity; LATE sustained monomorphic VT (weeks–years) is scar re-entry. Afterdepolarisations belong to long QT (early) and digoxin/Ca overload (delayed)."
+  ]
+ },
+ "CVS04|CS-46": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS10C|MI-48": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Cangrelor is the only IV P2Y12 inhibitor — reversible, t½ 3–6 min, platelet function back within 30–60 min — so it bridges a recent-stent patient whose oral P2Y12 must stop for urgent surgery (BRIDGE). Eptifibatide and tirofiban block GP IIb/IIIa, not P2Y12.",
+   "Marrow + DocT GT: Eptifibatide inhibits platelets within ~15 min, t½ ~2.5 h, function recovers in ~4–8 h; renal dosing differs by drug: eptifibatide halved when CrCl <50 (contraindicated on dialysis), tirofiban halved when CrCl <30, abciximab none. Today GP IIb/IIIa inhibitors are bail-out drugs for no-reflow or thrombotic complications during PCI.",
+   "DocT GT: Aspirin IRREVERSIBLY acetylates platelet COX-1, so thromboxane A2 production stops for the platelet's life (7–10 days); absent aggregation to arachidonic acid confirms it. Recovery needs new platelets (~10%/day), so platelet transfusion reverses it for urgent bleeding. NSAIDs block COX-1 reversibly; P2Y12 blockers abolish the ADP response."
+  ]
+ },
+ "CVS03|CS-32": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT GT: Decompensated severe AS (AVA <1 cm², even with a low gradient from low stroke volume = classical low-flow low-gradient AS) needs urgent valve replacement, TAVI preferred in the acutely ill elderly; balloon valvuloplasty is only a bridge (restenosis within months).",
+   "DocT GT: Acute AR with pulmonary oedema but a normal BP: nitroprusside bridges to urgent surgery (cuts afterload and regurgitant volume); avoid IABP (worsens AR) and β-blockers (slower rate lengthens diastole and regurgitation). Dopamine or pacing is for the hypotensive patient."
+  ]
+ },
+ "CVS10A|MI-09": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06B|RVF-36": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: In IPAH with acute RV failure on IV epoprostenol: never interrupt the prostacyclin (rebound PH crisis), optimise preload cautiously (loop diuretic, no aggressive diuresis), keep systemic BP up; CCB vasoreactivity trials are for stable outpatients only."
+  ],
+  "cross": [
+   "DocT GT keys lifelong anticoagulation as the correct step in IPAH. Truth: ESC/ERS 2022 makes no general recommendation for anticoagulation in IPAH (individualise, e.g. catheter-thrombosis risk on epoprostenol). If other options are clearly wrong, anticoagulation is the least-wrong key; otherwise pick 'continue epoprostenol'."
+  ]
+ },
+ "CVS07B|PCA-31": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Transnasal evaporative cooling (RhinoChill) is the only brain-selective method — cools via the nasopharynx, works prehospital, few side effects — but induction is slow and it has no feedback control, so it cannot hold a target (PRINCESS: no outcome benefit)."
+  ]
+ },
+ "CVS05B|ECHO-19": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT GT: A small IVC (<2.1 cm) that varies a lot with breathing suggests low RAP (0–5 mmHg). In a ventilated patient the IVC DISTENDS with each breath, so use the distensibility index (>18% = fluid responsive); the >50% sniff-collapse rule applies only to spontaneous breathing."
+  ]
+ },
+ "CVS07A|PCA-19": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "HY2|CAR-08": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow + DocT GT: In the denervated (transplanted) heart atropine, glycopyrrolate and ephedrine fail — use isoprenaline/adrenaline or pacing. Sinus-node dysfunction after orthotopic transplant (up to 50%) comes mainly from surgical trauma or ischaemia to the donor SA node and usually resolves within weeks to 3 months: epicardial atrial pacing or isoprenaline to HR 90–110; permanent pacing only if it persists."
+  ]
+ },
+ "CVS10C|MI-47": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Ticagrelor causes dose-related dyspnoea in up to ~14% (PLATO) — sudden air hunger with normal SpO2, examination, ECG and CT — from adenosine accumulation (it blocks ENT1 reuptake); usually mild and self-limiting, not a reason to stop unless intolerable. The same adenosine effect causes ventricular pauses."
+  ]
+ },
+ "CVS10B|MI-22": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Posterior/inferior MI threatens the posteromedial papillary muscle, which has a single blood supply (PDA); a new apical holosystolic murmur with crackles and preserved BP = acute ischaemic mitral regurgitation.",
+   "Marrow: RV-infarct shock = PROXIMAL RCA occlusion (above the RV marginal branches): high RAP, dilated RV, clear lungs, often mild–moderate LV dysfunction; give volume to a RAP of ~10–15 mmHg, then inotrope — no nitrates or diuretics."
+  ]
+ },
+ "CVS03|CS-34": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS07A|PCA-18": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS09|AD-07": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: On echo the TRUE lumen expands in systole with systolic forward colour flow in phase with the cardiac cycle; the FALSE lumen is usually larger, compressed in systole, with slow, delayed or reversed flow, spontaneous contrast or thrombus, and 'cobwebs' (residual media strands)."
+  ]
+ },
+ "CVS09|AD-09": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: DeBakey type III is subdivided: IIIa is confined to the descending THORACIC aorta (above the diaphragm), IIIb extends below the diaphragm into the abdominal aorta; both are Stanford B."
+  ],
+  "cross": [
+   "DocT GT keys one pairing (A: DeBakey II with mesenteric/renal malperfusion) as the wrong one, but C (DeBakey III with aortic regurgitation) is equally wrong. Truth: type II is ascending-only, so no visceral malperfusion; type III is descending-only, so no AR. If asked which pairing is wrong, both A and C are; pick DocT's key A."
+  ]
+ },
+ "CVS10D|MI-64": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 5
+   }
+  ]
+ },
+ "CVS08E|ACLS-81": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Cardiac arrest on VV ECMO is managed by standard ACLS — start compressions at once, because VV gives no circulatory support and oxygenated blood still needs the native heart to reach the body. Defibrillate only VF/pVT and treat the cause (e.g. hyperkalaemia); conversion to VA is a later decision."
+  ]
+ },
+ "CVS01|CVS-04": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06A|RVF-21": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: CTEPH ladder: lifelong anticoagulation for all → pulmonary endarterectomy if operable (the only potentially curative step) → balloon pulmonary angioplasty if inoperable → riociguat is the first-line drug for inoperable or residual PH; IV epoprostenol only for the critically ill."
+  ]
+ },
+ "CVS08C|ACLS-42": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: During CPR avoid excessive ventilation: each breath over ~1 s with just enough volume for visible chest rise (~500–600 mL, 6–7 mL/kg). Hyperinflation raises intrathoracic pressure and cuts venous return, coronary and cerebral perfusion; with a bag-mask the ratio is 30:2, and 10/min applies only once an advanced airway is in.",
+   "DocT Recall25: Tube IN THE TRACHEA is confirmed by sustained waveform capnography; seeing the cords pass, chest movement and breath sounds can all mislead. The chest X-ray only checks DEPTH (tip 2–5 cm above the carina) and cannot exclude oesophageal intubation."
+  ],
+  "cross": [
+   "Recall25 keys chest radiograph to confirm the tube after cords were seen and colorimetric ETCO2 was positive. Truth: CXR confirms depth only; waveform capnography (not offered) is the standard for tracheal placement (AHA/DAS). If the stem asks for 'proper position' after ETCO2, pick CXR; if capnography is offered, pick it."
+  ],
+  "fix": [
+   {
+    "t": "\"Titrate down to SpO2 92–98% during CPR\" — AHA gives maximal oxygen during CPR and titrates only after ROSC.",
+    "why": "",
+    "src": "",
+    "url": "",
+    "v": "found in verification"
+   }
+  ]
+ },
+ "CVS08B|ACLS-29": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 5
+   }
+  ],
+  "lines": [
+   "DocT GT + Marrow: A regular narrow-complex tachycardia in a young woman without structural disease is most often AVNRT (~60% of paroxysmal SVT; women 2:1) — P hidden in the QRS or pseudo-r' in V1. Overall SVT incidence: sinus tachycardia > AF/flutter > AVNRT > AVRT > atrial tachycardia > junctional.",
+   "Marrow: IRREGULAR narrow-complex tachycardia = AF, flutter with variable block, atrial tachycardia with variable block, or multifocal atrial tachycardia; AVNRT and AVRT are always regular, so adenosine has no therapeutic role in an irregular NCT.",
+   "Marrow: Narrow-QRS algorithm by P:QRS: more P than QRS → flutter or atrial tachycardia; 1:1 with RP <70 ms → typical AVNRT; short RP >70 ms → orthodromic AVRT; long RP (RP > PR) → atypical AVNRT, PJRT or atrial tachycardia."
+  ]
+ },
+ "CVS06A|RVF-01": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: RV FAILURE = RV dysfunction PLUS limited RV filling: the RV cannot fill without a high CVP (venous congestion) and cannot deliver enough stroke volume to the LV. RV dysfunction with a normal CVP is dysfunction, not failure; a high CVP with normal RV function is volume, not failure."
+  ]
+ },
+ "CVS02|CVS-32": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: Diphtheria (exotoxin myocarditis with conduction block, the leading cause of death in diphtheria) and Q fever (Coxiella burnetii) are also infective causes of myocarditis, alongside Coxsackie B (the commonest viral cause), so 'all of the above' is right."
+  ]
+ },
+ "CVS06B|RVF-42": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Abrupt withdrawal of inhaled NO causes rebound pulmonary hypertension and hypoxaemia (endogenous NO synthase is suppressed): restart it and wean slowly, stepping down to 1 ppm before stopping."
+  ]
+ },
+ "CVS09|AD-19": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ]
+ },
+ "CVS09|AD-23": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Accidental/clinical hypothermia grades differ from the surgical DHCA consensus: mild 32–35 °C, moderate 28–32 °C, severe <28 °C (some add profound <24 °C). So 30 °C in the ICU is MODERATE, though on the cardiac-surgery scale it would be 'mild' (28.1–34 °C)."
+  ]
+ },
+ "CVS10B|MI-24": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06A|RVF-20": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 5
+   }
+  ],
+  "lines": [
+   "DocT GT + Marrow: Pulmonary hypertension is now mPAP >20 mmHg at right heart catheter (ESC 2022; this card's >25 is the old cut-off); PAWP ≤15 = pre-capillary and excludes left heart disease (Group 2), PVR >2 WU. Exertional dyspnoea, right heart failure and a loud P2 in a young woman with Raynaud's = Group 1 PAH from connective-tissue disease (systemic sclerosis).",
+   "DocT GT: The commonest symptom of pulmonary hypertension is exertional dyspnoea (the RV cannot raise output); then fatigue, exertional angina (RV ischaemia), exertional syncope or near-syncope (fixed output) and late peripheral oedema."
+  ],
+  "cross": [
+   "DocT GT keys 'mPAP >25 mmHg' as the true RHC statement for PAH. Truth: ESC/ERS 2022 uses mPAP >20 with PAWP ≤15 and PVR >2 WU. If >20 is offered, pick it; if only >25 appears with PAWP ≤15, pick that."
+  ],
+  "fix": [
+   {
+    "t": "Pulmonary hypertension: mPAP >20 mmHg at rest (PAH: + PAWP ≤15, PVR >2 WU)",
+    "why": "Defines pulmonary hypertension as mPAP >25. ESC 2022 uses >20.",
+    "src": "ESC/ERS PH Guidelines 2022",
+    "url": "https://doi.org/10.1093/eurheartj/ehac237",
+    "v": "confirmed"
+   }
+  ]
+ },
+ "CVS04|CS-42": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: IABP practicalities: 7–8 Fr femoral sheath (13–14 Fr is Impella/ECMO territory), femoral artery ≥4 mm to avoid limb ischaemia, balloon sized to height, regular rhythm for ECG triggering; support is days, beyond ~1–2 weeks limb ischaemia, infection and thrombocytopenia rise. Absolute contraindications: moderate–severe aortic regurgitation (diastolic inflation drives more regurgitation), aortic dissection, severe aorto-iliac disease.",
+   "DocT GT: Blood in the IABP gas line = balloon rupture: stop pumping, clamp the line and remove the IABP at once (helium embolism; clot inside can trap the balloon); never reinsert the same balloon. Tip ~2 cm below the top of the aortic arch, above the renal arteries.",
+   "Marrow + DocT GT: Timing: inflate at aortic-valve closure (dicrotic notch) and deflate just before systole. Early inflation inflates against LV ejection (raises afterload and LV work); late inflation loses augmentation; late deflation is the most harmful (balloon still up as the LV ejects). A stationary balloon is thrombogenic, so anticoagulate and never leave it switched off in situ."
+  ]
+ },
+ "CVS01|CVS-15": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08E|ACLS-73": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS01|CVS-24": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: RA collapse is the earliest and most sensitive echo sign of tamponade; LA collapse is late (and can occur with a loculated posterior effusion); electrical alternans means a large effusion with the heart swinging."
+  ]
+ },
+ "CVS06B|RVF-28": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Pulmonary artery pulsatility index PAPi = (PASP − PADP) / RAP; <0.9 in acute inferior MI predicts RV failure and in-hospital death (<1.85 is the post-LVAD cut-off).",
+   "Marrow: Right heart catheterisation is the gold standard to confirm pulmonary hypertension (mPAP, PAWP, PVR) before the aetiological work-up; echo only estimates probability."
+  ]
+ },
+ "CVS06B|RVF-26": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: In inferior STEMI, ST elevation in III > II and ST elevation in V1 point to RV involvement (proximal RCA), alongside ST elevation ≥1 mm in V3R/V4R."
+  ]
+ },
+ "CVS03|CS-13": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Obstructive shock also includes tension pneumothorax and obstruction to forward flow — critical AS, dynamic LVOT obstruction (HCM), MS, LA myxoma; adrenal crisis is DISTRIBUTIVE (endocrine), and myocardial contusion is a contractility (cardiogenic) cause."
+  ]
+ },
+ "CVS03|CS-18": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS03|CS-03": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06A|RVF-10": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Septal shift explains a high LA pressure with a LOW LV end-diastolic volume in pulmonary hypertension, high PEEP and severe acute hypoxaemic respiratory failure — the LV is compressed, not overfilled; aortic regurgitation, by contrast, raises LVEDV."
+  ]
+ },
+ "CVS03|CS-27": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10D|MI-62": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: AMI cardiogenic-shock risk: older age, anterior MI, multivessel disease, prior MI, diabetes, prior HF (a first posterior infarct with shock → look for a mechanical complication or RV involvement). Lactate >2 mmol/L (the higher the worse) and admission glucose independently predict death; transaminases rise from hypoperfusion; cystatin C/NGAL add little over creatinine."
+  ]
+ },
+ "CVS10C|MI-36": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Most early STEMI deaths (within 24 h, mostly in the first hour) are from VF — hence continuous monitoring and defibrillator-capable transport from first medical contact."
+  ]
+ },
+ "CVS10C|MI-39": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: IV β-blocker contraindications in ACS: signs of HF or low output, LVEF ≤40% with shock risk, PR >240 ms or 2nd/3rd-degree block, hypotension (SBP <120 with risk factors), active asthma/bronchospasm, and age >70 with tachycardia >110 (COMMIT: more cardiogenic shock)."
+  ]
+ },
+ "CVS06B|RVF-39": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   }
+  ]
+ },
+ "CVS10A|MI-04": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: A troponin rise after acute stroke is usually myocardial injury (neurogenic catecholamine surge), not NSTEMI — no ACS antithrombotics, and after alteplase antiplatelets are held for 24 h."
+  ],
+  "cross": [
+   "Marrow keys 21-day DAPT for a patient who woke with a stroke and received alteplase. Truth: 21-day DAPT is for minor stroke (NIHSS ≤3) or high-risk TIA without lysis; after alteplase no antiplatelet for 24 h, and wake-up stroke needs MRI mismatch before lysis. If the stroke is minor and not lysed, pick DAPT; after alteplase, pick 'no antiplatelet for 24 h'."
+  ]
+ },
+ "CVS10A|MI-02": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: NSTEMI is a subendocardial (non-transmural) infarct; STEMI is transmural — the wavefront spreads from endocardium to epicardium, so ST elevation marks full-thickness injury."
+  ],
+  "cross": [
+   "Marrow keys NSTEMI (subendocardial) for ST depression in V1–V3 with a troponin rise. Truth: ST depression confined to V1–V3 may be a posterior STEMI (transmural; check V7–V9 ≥0.5 mm). If the stem gives posterior leads or tall R in V1–V2, pick posterior STEMI; otherwise NSTEMI."
+  ]
+ },
+ "HY2|CAR-05": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: CHA2DS2-VASc: CHF 1, hypertension 1, age ≥75 = 2, diabetes 1, stroke/TIA/thromboembolism = 2, vascular disease 1, age 65–74 = 1, female sex 1. Anticoagulate at ≥2 in men or ≥3 in women (consider at 1/2); female sex alone adds risk only with another factor."
+  ]
+ },
+ "HY2|CAR-13": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Class Ib drugs (lidocaine, mexiletine) work only on ventricular arrhythmias — they bind Na channels in the long ventricular action potential, and the short atrial one gives them no time — and they SHORTEN the QT. ECG by class: Ia widens QRS and lengthens QT, Ib shortens QT, Ic lengthens PR and QRS, III lengthens QT."
+  ]
+ },
+ "HY2|CAR-06": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: In Brugada the ICD is also indicated after arrhythmic syncope, not only after arrest; quinidine is used if an ICD is refused or for recurrent shocks/electrical storm (isoprenaline acutely).",
+   "Marrow: Polymorphic VT from a reversible cause (drug-induced long QT, electrolytes) is treated by removing the cause — no ICD; an ICD is for polymorphic VT/VF without a reversible cause."
+  ]
+ },
+ "CVS08B|ACLS-37": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "cross": [
+   "Marrow keys atropine 0.5 mg. Truth: 0.5 mg (max 3 mg) is the pre-2020 AHA dose; AHA 2020/2025 give 1 mg every 3–5 min, max 3 mg. If 1 mg is offered, pick it; pick 0.5 mg only when it is the only atropine option.",
+   "Recall25 keys dopamine when transcutaneous pacing fails in symptomatic bradycardia. Truth: AHA lists dopamine OR adrenaline infusion as equals (ERC prefers adrenaline/isoprenaline). Pick dopamine for this recall; pick adrenaline if dopamine is not offered."
+  ]
+ },
+ "CVS08B|ACLS-31": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Start adenosine at 3 mg (not 6) when given via a central line, after heart transplant (denervated, supersensitive) or with dipyridamole or carbamazepine (which potentiate it); theophylline and caffeine antagonise it, so larger doses may be needed."
+  ]
+ },
+ "CVS08B|ACLS-40": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10B|MI-27": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Takotsubo mimics STEMI (ST elevation + troponin) but the wall-motion abnormality extends beyond one coronary territory with unobstructed coronaries; contraction-band necrosis on histology, recovery within weeks. Variants: apical ballooning (typical), mid-ventricular, basal/reverse (basal akinesis with hyperkinetic apex — post-operative or catecholamine-driven), focal and RV; men are fewer but do worse.",
+   "Marrow: Apical HCM (Yamaguchi): giant precordial T-wave inversion (>10 mm) with a spade-shaped LV cavity on ventriculography or echo; lower sudden-death risk than septal HCM."
+  ]
+ },
+ "CVS06A|RVF-17": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: ARVC = desmosomal gene mutation (commonly plakophilin-2) with fibrofatty replacement of the RV; Naxos disease = ARVC + woolly hair + palmoplantar keratoderma; Carvajal syndrome = the same skin/hair with a dilated LV."
+  ]
+ },
+ "CVS02|CVS-40": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: The ECG in myocarditis is INSENSITIVE and non-specific (sinus tachycardia, non-specific ST-T changes) — it screens but cannot exclude; troponin I is more specific than sensitive, so CMR or biopsy confirms."
+  ]
+ },
+ "CVS02|CVS-43": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: AHA/Fink indications for endomyocardial biopsy: refractory HF or worsening EF despite therapy, new heart block or VT, HF with rash/fever/eosinophilia, connective-tissue disease, suspected amyloid/sarcoid/haemochromatosis, and suspected giant-cell myocarditis.",
+   "DocT GT: Giant cell myocarditis (giant cells + extensive myocyte necrosis on biopsy) is the one myocarditis where combined immunosuppression (steroid + cyclosporine ± azathioprine) is life-saving; refractory VT and shock are typical, so plan early mechanical support or transplant. Lymphocytic viral myocarditis gets supportive care."
+  ],
+  "cross": [
+   "Marrow treats persistent LV dysfunction after 3 months as NOT an EMB indication (Fink/AHA table). Truth: ESC (CVS-45) sends persistent LV dysfunction after 3 months to EMB. If the question follows AHA, exclude it; if ESC, it is an indication."
+  ]
+ },
+ "CVS02|CVS-46": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS03|CS-33": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS02|CVS-37": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08B|ACLS-25": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08A|ACLS-19": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: If neither IV nor IO is possible, endotracheal adrenaline needs 2–2.5× the IV dose (diluted in 5–10 mL); the intracardiac route is abandoned. 1 mg adrenaline = 10 mL of 1:10,000.",
+   "DocT GT: In haemorrhagic shock, if peripheral IV access fails after 2 attempts or 90 s, place an intraosseous needle (proximal humerus is fastest, or tibia): blood, drugs and pressure infusion within a minute. Central lines take longer and risk pneumothorax in a collapsed patient.",
+   "DocT GT: IO infusion is painful in a conscious patient (periosteal and marrow stretch): inject 40 mg preservative-free 2% lidocaine slowly into the marrow over 2 min, let it dwell ~1 min, flush 5–10 mL saline, then 20 mg more if needed. Contraindications: fracture or prior IO in that bone, site infection, osteogenesis imperfecta."
+  ]
+ },
+ "CVS08A|ACLS-02": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Adult BLS order is C-A-B: compressions (30:2) start before airway opening and breaths, because in primary cardiac arrest the blood is still oxygenated and any delay to compressions cuts coronary perfusion."
+  ]
+ },
+ "CVS08A|ACLS-06": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08A|ACLS-13": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08A|ACLS-20": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Traumatic arrest — resuscitative thoracotomy is for penetrating trauma with downtime <15 min (blunt <10 min); beyond ~20 min of CPR with no cardiac activity on echo, stop."
+  ]
+ },
+ "CVS09|AD-02": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Aortic dissection or rupture is the leading cause of death in Marfan syndrome; mitral valve prolapse is commoner but far less lethal."
+  ]
+ },
+ "CVS04|CS-44": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: The IABP-SHOCK II risk score uses six variables: age >73, prior stroke, glucose >191 mg/dL, creatinine >1.5 mg/dL, TIMI flow <3 after PCI and lactate >5 mmol/L."
+  ]
+ },
+ "CVS03|CS-28": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow + DocT Recall25: Sympathetic crashing acute pulmonary oedema (SCAPE, hypertensive AHF, e.g. SBP 180): high-dose IV nitrates are first-line to unload the LV, with NIV; IV furosemide second; avoid nitrates if hypotensive. Morphine is no longer routine (more ventilation and mortality)."
+  ]
+ },
+ "CVS09|AD-16": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Other chest X-ray signs of dissection: double or irregular aortic contour and inward displacement of intimal calcification >5 mm from the outer aortic wall (calcium sign)."
+  ]
+ },
+ "CVS01|CVS-22": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "Marrow: On an arterial line, tamponade's pulsus paradoxus shows as an inspiratory fall in systolic pressure (>10 mmHg) and pulse pressure while the diastolic barely changes — inspiration fills the RV, the septum shifts left and LV stroke volume falls."
+  ]
+ },
+ "CVS10C|MI-46": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Retroperitoneal haematoma after PCI follows a femoral puncture ABOVE the inguinal ligament: back/flank pain and hypotension with little groin swelling — diagnose by non-contrast CT; radial access avoids it.",
+   "DocT GT: Hypotension hours after an uncomplicated RADIAL PCI with no new ECG change → urgent bedside echo for tamponade from coronary or wire perforation (or a new mechanical complication); retroperitoneal bleeding belongs to femoral access, stent thrombosis to new ST elevation."
+  ]
+ },
+ "CVS03|CS-12": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Blunt cardiac injury: screen every significant chest trauma with ECG and troponin; if either is abnormal, monitor for 24–48 h (arrhythmias) and get an echo if haemodynamically unstable; normal ECG + normal troponin excludes significant injury.",
+   "DocT GT: Cold, clammy, confused and oliguric 6–12 h after on-pump CABG = low cardiac output syndrome (the commonest early complication: stunning after bypass). Optimise preload and afterload, correct K/Mg/Ca, rate and rhythm (pacing), then inotropes (dobutamine/milrinone), IABP/MCS if refractory, and exclude tamponade and graft ischaemia; high-dose vasoconstrictors alone worsen output."
+  ]
+ },
+ "HY2|CAR-23": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "HY2|CAR-15": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "Marrow: Poor-prognosis signs after arrest (multimodal, ≥72 h): status epilepticus or myoclonic status during temperature control, bilaterally absent pupillary and corneal reflexes, high NSE, burst suppression on EEG, sustained upgaze. Absent arm movement with preserved legs may be man-in-a-barrel (watershed infarct) and is not always poor; a brief 3–5 min arrest can recover fully.",
+   "Marrow: Rewarm after temperature control at ~0.25 °C/h on an automated device (about 16 h for 4 °C) and never faster than 0.5 °C/h; rapid rewarming causes vasodilatory hypotension, potassium shifts and rebound fever."
+  ],
+  "fix": [
+   {
+    "t": "b: SpO2 90–98% (PaO2 60–105); PaCO2 35–45. a: MAP ≥ 65 (2025 dropped the SBP target). [ACLS-42 watch is correct.]",
+    "why": "Post-ROSC SpO2 target: 92–98% vs 90–98% (AHA 2025). Check against the AHA 2025 text.",
+    "src": "AHA 2025 Part 11 Post-Cardiac Arrest Care",
+    "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/post-cardiac-arrest-care",
+    "v": "confirmed"
+   }
+  ]
+ },
+ "CVS07C|PCA-50": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Diffuse hypoattenuation with lost grey–white differentiation after arrest = global anoxic injury: there is no surgical role, so the step is multimodal prognostication and counselling the family, not a neurosurgical referral."
+  ]
+ },
+ "CVS07C|PCA-54": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Donation after circulatory death: the treating team decides and performs withdrawal of life-sustaining treatment (can be in theatre) → circulatory death → mandatory no-touch period (2–5 min) → procurement; comfort care continues, and the donation team is contacted but never leads WLST."
+  ],
+  "cross": [
+   "Marrow keys delaying temperature control because of residual sedation. Truth: AHA/ERC give temperature control to ALL comatose post-arrest patients; residual sedation delays brain-death testing and neuroprognostication, not temperature control. If the question asks about starting temperature control, pick 'start it'; if about prognosis/brain death, pick 'wait for sedation to clear'."
+  ]
+ },
+ "CVS01|CVS-13": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS07A|PCA-09": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "CVS07C|PCA-55": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Clinical brain-death criteria: coma of known irreversible cause, absent brainstem reflexes, positive apnoea test (no breathing at PaCO2 ≥60 or ≥20 above baseline in CO2 retainers, pH <7.30); spinal reflexes may persist. Prerequisites: core temperature ≥36 °C, SBP ≥100 (vasopressors allowed), eucapnia at start, no confounding drugs; locked-in syndrome is a mimic."
+  ]
+ },
+ "CVS05B|ECHO-21": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT PYQ: On M-mode a pleural effusion gives the sinusoid sign: the lung line (visceral pleura) moves toward the pleural line in inspiration, tracing a sine wave; with the quad sign it confirms free fluid. Pneumothorax gives the barcode (stratosphere) sign and a lung point.",
+   "DocT GT: Liver or spleen 'mirrored' above the diaphragm is a normal artefact that needs air-filled lung, so it means NO effusion at that spot (do not needle there). With an effusion the mirror image disappears and the spine becomes visible above the diaphragm (spine sign); hepatisation is real consolidated lung, not an artefact."
+  ]
+ },
+ "CVS05B|ECHO-36": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT PYQ: Hypovolaemia on echo: small hyperdynamic LV with end-systolic cavity obliteration ('kissing' papillary muscles) and a small collapsing IVC. A dilated, poorly contracting LV is cardiogenic; a dilated RV with septal flattening points to PE or RV failure.",
+   "DocT GT: In PLAX, fluid ANTERIOR to the descending thoracic aorta (between aorta and LA) is pericardial; fluid posterior or lateral to it is pleural, because the pericardial reflection stops at the aorta."
+  ]
+ },
+ "CVS08B|ACLS-30": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: Stable monomorphic VT with heart failure or poor LV function → amiodarone. Procainamide and sotalol are negatively inotropic and hypotensive, so avoided in HFrEF; procainamide is first choice only with preserved LV function (PROCAMIO). Adenosine and verapamil are wrong in VT; DC cardioversion is for instability."
+  ]
+ },
+ "CVS10D|MI-61": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "Marrow: Killip class: I no heart failure; II S3 and/or rales in <50% of lung fields; III frank pulmonary oedema (rales >50%); IV cardiogenic shock — mortality rises steeply with each class.",
+   "DocT GT: Hypertensive acute pulmonary oedema (SCAPE): high-dose IV nitroglycerin (titratable preload and afterload reduction) plus NIV/CPAP first; most patients are redistributed, not overloaded, so 'loop diuretic and wait' is too slow. Hydralazine is unpredictable with reflex tachycardia, labetalol's β-blockade depresses a failing LV, oral ACEi is too slow; intubate only for NIV failure or falling GCS."
+  ]
+ },
+ "CVS01|CVS-18": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Chronic calcific constrictive pericarditis is cured only by pericardiectomy. Diuretics only palliate congestion, and anti-inflammatory therapy helps only transient (inflammatory, CMR late-gadolinium-positive) constriction. Calcification on CT after cardiac surgery or TB is the classic clue.",
+   "DocT GT: Constriction vs restrictive cardiomyopathy on echo: constriction shows >25% respiratory variation of mitral inflow, septal bounce, a preserved or high septal e' (annulus paradoxus/reversus: septal e' ≥ lateral) and a thick or calcified pericardium. Restriction (amyloid) has little respiratory variation, a low e' (<8 cm/s), thick myocardium and biatrial enlargement. TB is the classic cause of constriction in India.",
+   "DocT GT: At catheterisation the discriminator is DISCORDANT RV and LV systolic pressures with breathing in constriction (inspiration: RV up, LV down, from ventricular interdependence inside a fixed pericardium) vs CONCORDANT changes in restriction. Dip-and-plateau and equalised end-diastolic pressures occur in both, so they do not separate them; BNP is high in restriction and near-normal in constriction."
+  ]
+ },
+ "CVS10A|MI-11": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10C|MI-37": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS03|CS-05": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY2|CAR-16": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS07C|PCA-47": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: NSE is also present in red cells and platelets, so a HAEMOLYSED sample (or haemolysis on ECMO) gives a falsely high NSE; check free Hb before prognosticating. S-100B (glia) and NfL are not raised by haemolysis in the same way.",
+   "DocT GT: Neurofilament light chain is a structural protein of large myelinated AXONS, so raised CSF/serum NfL means axonal injury; it rises even after repetitive mild TBI (boxers). Contrast: NSE = neuronal cell body, S-100B/GFAP = glia/astrocytes."
+  ]
+ },
+ "CVS08D|ACLS-70": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08C|ACLS-44": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Coronary perfusion pressure (aortic DIASTOLIC minus right-atrial diastolic pressure during the release phase) is the best predictor of ROSC; ≥15–20 mmHg is usually needed. That is why the arterial-line target is diastolic >20 mmHg; systolic peaks and a palpable femoral pulse (may be venous) do not reflect myocardial perfusion."
+  ]
+ },
+ "CVS08B|ACLS-34": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08E|ACLS-71": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: In drowning the arrest is hypoxic, so CPR starts with rescue breaths (ERC: 5 initial breaths, then 30:2), care-first even for a lone rescuer. Abdominal thrusts to 'drain water' are not recommended: little water is aspirated, and they delay ventilation and cause regurgitation."
+  ]
+ },
+ "CVS06B|RVF-25": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: On CT a main pulmonary artery diameter >3 cm (≥29 mm, measured before the bifurcation) or a PA:aorta ratio >1 suggests pulmonary hypertension; the PA:A ratio >1 also predicts COPD exacerbations and mortality. Confirm with echo (TR velocity >2.8 m/s) and right-heart catheter."
+  ]
+ },
+ "CVS01|CVS-03": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Pericarditis by time course: acute = fibrinous or effusive (serous, purulent, haemorrhagic); subacute = effusive-constrictive or constrictive; chronic (>3 months) = constrictive, adhesive or effusive. So 'fibrinous' is the acute form."
+  ]
+ },
+ "CVS08B|ACLS-27": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: For AF >48 h or of unknown duration, anticoagulate 3 weeks before cardioversion (or TEE to exclude LA thrombus) and at least 4 weeks after, whatever the CHA2DS2-VASc, because atrial stunning keeps clot risk high after sinus rhythm returns; long-term need then follows the stroke-risk score.",
+   "DocT Recall25: Any tachyarrhythmia with instability (hypotension, shock, chest pain, acute heart failure) gets immediate synchronised cardioversion, AF included (AHA 2025: ≥200 J biphasic for AF). Rate-control drugs (diltiazem, metoprolol) are for stable patients; digoxin is too slow."
+  ]
+ },
+ "CVS05A|ECHO-05": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Acoustic impedance (Z = tissue density × speed of sound) is a medium's resistance to sound propagation; reflection at an interface depends on the impedance mismatch (air–tissue is huge, hence gel, and lung and bowel gas block the beam). Attenuation is energy lost with depth; higher frequency means more attenuation and less penetration."
+  ]
+ },
+ "CVS08C|ACLS-43": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS08A|ACLS-07": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY2|CAR-11": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS08D|ACLS-61": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS06A|RVF-18": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10C|MI-55": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Before URGENT CABG stop clopidogrel or ticagrelor ≥24 h (ACC/AHA class I) to cut bleeding; for elective CABG ≥3 days ticagrelor, ≥5 days clopidogrel, ≥7 days prasugrel. Aspirin is continued; the irreversible/long-acting P2Y12 blocker is the drug to stop first.",
+   "DocT GT: The short-acting GP IIb/IIIa inhibitors eptifibatide and tirofiban (reversible, renally cleared) need stopping only 2–4 h before urgent CABG because platelet function recovers within hours; abciximab binds irreversibly and needs ≥12 h."
+  ]
+ },
+ "CVS03|CS-06": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Haemodynamic criteria for cardiogenic shock (SHOCK trial): SBP <90 mmHg for ≥30 min (or vasopressors needed), cardiac index <2.2 L/min/m² on support (<1.8 without), and PCWP >15 mmHg. The raised wedge separates a pump problem from hypovolaemia; cold extremities and a narrow pulse pressure are supportive, not defining."
+  ]
+ },
+ "CVS08E|ACLS-85": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT GT keys Impella CP as the device that works despite recurrent arrhythmias. Truth: only the IABP needs cardiac synchrony; TandemHeart and VA-ECMO are continuous-flow and equally rhythm-independent (VA-ECMO even supports VF). If only one non-IABP device is offered pick it; here pick Impella as keyed."
+  ]
+ },
+ "CVS01|CVS-20": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Intubating a patient in tamponade can precipitate arrest: positive intrathoracic pressure cuts the venous return that keeps the compressed right heart filling, and induction removes compensating sympathetic tone. Drain first (pericardiocentesis under local anaesthesia, sitting up); if intubation is unavoidable keep spontaneous breathing, use ketamine, low PEEP and VT, with the needle ready."
+  ]
+ },
+ "CVS10C|MI-50": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "CVS08E|ACLS-84": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08C|ACLS-41": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: In an EMS system with low intubation success or little training, a supraglottic airway is the preferred advanced airway in OHCA: faster placement with fewer compression pauses. Endotracheal intubation is for systems with high success rates or frequent practice.",
+   "DocT GT: The main limitation of bag-valve-mask ventilation is gastric insufflation: pharyngeal pressure above ~20 cmH2O opens the lower oesophageal sphincter, risking regurgitation, aspiration and a splinted diaphragm. Give each breath over 1 s with just visible chest rise (~500–600 mL), two-person technique, adjuncts, early SGA."
+  ]
+ },
+ "CVS08A|ACLS-16": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT GT keys immediate unsynchronised shock for polymorphic VT 'with a pulse'. Truth: defibrillation is for UNSTABLE or pulseless polymorphic VT; stable polymorphic VT is treated by cause (IV magnesium if long QT, ischaemia work-up, amiodarone if QT normal). If instability is stated or implied, pick defibrillation; if stable with long QT, pick magnesium."
+  ]
+ },
+ "CVS08B|ACLS-26": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS10B|MI-26": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS03|CS-17": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS06B|RVF-30": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   }
+  ]
+ },
+ "CVS01|CVS-19": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT Recall25: Penetrating chest wound + Beck's triad (hypotension, raised JVP, muffled sounds) + clear lungs = traumatic tamponade. Pericardiocentesis is the bedside life-saving step when offered; the definitive treatment in trauma is thoracotomy or sternotomy to repair the injury."
+  ]
+ },
+ "CVS08C|ACLS-48": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT Recall25: Symptomatic bradycardia after ACS/stenting: atropine first, then pacing or dopamine/adrenaline infusion. Caveat: atropine rarely works in Mobitz II or complete block below the node (typical of anterior MI) or in a transplanted heart; go straight to pacing there."
+  ]
+ },
+ "CVS08A|ACLS-15": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08E|ACLS-82": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Surugadai (Tokyo) ECPR criteria exclude a presumed non-cardiac cause, ROSC within 10 min of arrival, core temperature <30 °C and pregnancy; a core temperature of 30–35 °C is NOT an exclusion (hypothermia is a favourable reversible cause)."
+  ]
+ },
+ "CVS10D|MI-60": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: AV block complicates 10–25% of acute MIs and is usually transient, mostly first-degree or Mobitz I. Inferior MI gives AV-nodal block with a narrow escape that usually resolves; anterior MI gives infranodal block with a wide escape that needs pacing."
+  ],
+  "cross": [
+   "DocT GT keys 'Mobitz I, benign, will resolve' for a block after ANTERIOR MI, contradicting its own explanation. Truth: block after anterior MI is infranodal (LAD, His–Purkinje), does not respond to atropine and needs pacing. Pick the infranodal/pacing option.",
+   "DocT GT keys 'AV block develops transiently in acute MI', but 'inferior MI most commonly produces 1st and 2nd degree block' is also true. If both appear, pick the transient-block statement as keyed."
+  ]
+ },
+ "CVS04|CS-47": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: TandemHeart is contraindicated in VSD (LA decompression reverses the shunt right-to-left → hypoxaemia), isolated RV failure (an LA-to-artery device cannot fill), severe peripheral vascular disease, LA thrombus and moderate–severe AR; LV failure/cardiogenic shock is its indication."
+  ]
+ },
+ "HY2|CAR-09": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Unstable Mobitz II (infranodal) → transcutaneous pacing at once as the bridge to transvenous pacing. Atropine acts on the AV node, rarely helps infranodal block (it can worsen the conduction ratio) and must not delay pacing; dobutamine is not the rescue."
+  ]
+ },
+ "CVS07A|PCA-16": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS08A|ACLS-18": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS05B|ECHO-25": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "CVS07A|PCA-17": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT GT keys raising MAP to >80 mmHg in a comatose post-arrest patient already at MAP 65. Truth: ERC-ESICM 2021 and AHA 2025 target MAP ≥65; BOX (2022) found no difference between MAP 63 and 77. If the stem is DocT's, pick >80; on any guideline-framed question, keep ≥65."
+  ]
+ },
+ "HY2|CAR-14": {
+  "lines": [
+   "Marrow: In local-anaesthetic arrest run standard ACLS first, then 20% lipid emulsion (1.5 mL/kg bolus, 0.25 mL/kg/min, max ~12 mL/kg); use smaller adrenaline doses (≤1 µg/kg); propofol is no substitute for lipid, and waiting for ECMO must not delay either."
+  ]
+ },
+ "CVS08B|ACLS-39": {
+  "lines": [
+   "DocT GT: AHA 2025: routine electrical pacing is NOT recommended in established cardiac arrest (asystole or PEA), whatever the timing, because it does not improve ROSC or survival. Pacing belongs to bradycardia WITH a pulse: transcutaneous, then transvenous if refractory."
+  ]
+ }
+}

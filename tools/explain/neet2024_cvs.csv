@@ -1,0 +1,14 @@
+rid,question,answer,deck,card,note
+2024-M1-Q5,Indication for MgSO4 in cardiac arrest,Torsades de pointes (2 g IV),CVS08C,ACLS-47,
+2024-M1-Q8,Ventilation rate in CPR after advanced airway,1 breath every 6 s (10/min); best option 1 per 5-6 s,CVS08A,ACLS-04,
+2024-M2-Q15,Haemodynamic effects of PEEP,"Down RV preload, up RV afterload, down LV afterload",CVS03,CS-27,"related: PEEP effects per ventricle"
+2024-M3-Q1,"Blunt chest trauma, equal air entry, fluid-unresponsive hypotension",Cardiac tamponade,CVS01,CVS-22,
+2024-M3-Q5,Milrinone mechanism: FALSE statement,"PDE3 inhibitor, raises cAMP, inodilator",CVS03,CS-29,"acts downstream of beta-receptor (works when beta-blocked)"
+2024-M3-Q7,Adverse effect of sotalol due to,QT prolongation from K-channel block (class III),CVS08B,ACLS-32,
+2024-M3-Q8,"Woman after emotional stressor, chest pain, dyspnoea",Takotsubo cardiomyopathy,CVS03,CS-11,related
+2024-M3-Q9,Echo finding in PE,RV dilatation; McConnell sign,CVS06B,RVF-30 RVF-29,
+2024-M3-Q10,Best view to measure EPSS,Parasternal long axis,CVS05B,ECHO-39,"EPSS >7 mm = low EF (MSS)"
+2024-M3-Q12,Normal IVC diameter,<2.1 cm with >50% collapse,CVS05B,ECHO-19,
+2024-M3-Q13,SCAPE post-CABG: drug of choice,Nitroglycerin,CVS03,CS-28,"related: SCAPE = afterload surge -> high-dose NTG + NIV"
+2024-M3-Q14,NTG infusion dose in hypertensive emergency,"Start 5 mcg/min, titrate",CVS09,AD-21,
+2024-M10-Q5,"Core temperature cannot be measured at (oesophagus, PA, femoral artery)",Femoral artery,CVS07B,PCA-33,"related"
