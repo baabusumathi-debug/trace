@@ -15,6 +15,7 @@ import { loadPlan, savePlan, currentStretch, newStretch, deleteStretch, addSubje
 import { REASONS, reasonOf, MEALS, TEAS, AWAY_MIN, current as currentBreak, breaksOn, startBreak, endBreak, logAway, hiddenAt, markHidden, pendingAway, setPendingAway } from './breaks.js';
 import { initViva, loadViva, imgSrc as vivaImgSrc, pkgs as vivaPkgs, pkgOf as vivaPkg, vivaQueue, vivaKeys, qOf as vivaQ, vivaX, vivaLines, keyOf as vivaKey, vivaPanelHtml, xpSwitch, qHeadHtml, spineHtml, marks as vivaMarks, setMark as vivaSetMark, lastMark as vivaLast, addQTime, qTimes as vivaTimes } from './viva.js';
 import * as DAYP from './day.js';
+import { initHtNotes, loadHtNotes, htOf, htPaneHtml } from './htnotes.js';
 import { recordStudy } from './sync.js';
 import { initEcho, stepModel, echoSlotHtml, mountEcho, hideEcho } from './echo.js';
 import { renderVivaMap, migrateViva, noteDone, noteMark, vlistInfo, walkList } from './vivamap.js';
@@ -76,9 +77,9 @@ async function boot() {
   if (!demo) await trySetup(location.href);
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   await loadAll();
-  await initExplain(); await initViva();
+  await initExplain(); await initViva(); await initHtNotes();
   if (!IS_HT) migrateViva(P).catch(e => console.warn('viva sync', e));   // T-160: device-only walks and marks join the synced record, once
-  loadQbank(); loadQmap(); loadCardfix(); loadExplain(); loadViva();
+  loadQbank(); loadQmap(); loadCardfix(); loadExplain(); loadViva(); loadHtNotes();
   if (!IS_HT) await loadVisuals();      // HT's profile has no visual decks
   if (demo && !S.library) {
     status.state = 'syncing';
@@ -2481,14 +2482,14 @@ function drawCard() {
     body = `<div class="c-q" data-act="reveal" role="button" tabindex="0" aria-label="Reveal answer"><div class="zw">${vrep}${flow.viva ? '' : arc ? arcHtml(c, xq, arc.open) : bridgeHtml(c, xq, skippedBefore(c))}<span class="qh${rest ? '' : ' solo'}">${inline(head)}</span>${rest ? `<div class="qr">${render(rest)}</div>` : ''}${c.vpic ? `<img class="vq-pic" src="${esc(vivaImgSrc(c.vcard, c.vpic))}" alt="Spotter image">` : ''}${n > 0 ? partsQHtml(c, xq) : ''}<span class="star">✦</span></div></div>`;
   } else {
     const lx = c.vq && c.vq.j != null ? lessonOf(c.vq.pkg, c.vq.q, 's' + c.vq.j) : null;
-    const xa = xOf(c), vx = vivaX(c), v2 = !!(xa && xa.v === 2) || !!vx || !!lx, xOpen = (flow.viva && (vx || lx)) || xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
+    const xa = xOf(c), vx = vivaX(c), hn = htOf(c), v2 = !!(xa && xa.v === 2) || !!vx || !!lx || !!hn, xOpen = (flow.viva && (vx || lx)) || xpOpenMode() !== 'tap' || (xpOpenMode() === 'new' && n === 0);
     // T-095: NEET | Viva switch when a card has both; opens on Viva in a viva walk, on NEET elsewhere
     const ck = c.deck + '|' + c.code; flow.xpTab = flow.xpTab || {};
-    const avail = [lx && 'lesson', xa && 'neet', vx && 'viva'].filter(Boolean);
-    let xtab = flow.xpTab[ck]; if (!avail.includes(xtab)) xtab = lx ? 'lesson' : !vx ? 'neet' : !xa ? 'viva' : (flow.viva ? 'viva' : 'neet');
+    const avail = [lx && 'lesson', xa && 'neet', vx && 'viva', hn && 'ht'].filter(Boolean);
+    let xtab = flow.xpTab[ck]; if (!avail.includes(xtab)) xtab = lx ? 'lesson' : !xa && !vx ? 'ht' : !vx ? 'neet' : !xa ? 'viva' : (flow.viva ? 'viva' : 'neet');
     const sw = avail.length > 1 ? tabSwitch(xtab, avail) : '';
     const xpPane = o => xtab === 'lesson' ? `<div class="xp v2 vx open ls-pane" data-depth="learn"><div class="xp-bar"><span class="xp-tog"${sw ? ' hidden' : ''}><span>Lesson</span></span>${sw}</div><div class="xp-body">${lessonHtml(lx, lessonPic(lx, c), autoChip())}</div></div>`
-      : xtab === 'viva' ? vivaPanelHtml(vx, sw) : (sw ? panelHtml(c, xa, o).replace('<div class="xp-bar">', '<div class="xp-bar">' + sw) : panelHtml(c, xa, o));
+      : xtab === 'ht' ? htPaneHtml(c, sw) : xtab === 'viva' ? vivaPanelHtml(vx, sw) : (sw ? panelHtml(c, xa, o).replace('<div class="xp-bar">', '<div class="xp-bar">' + sw) : panelHtml(c, xa, o));
     const depth = (flow.depthOver && flow.depthOver[c.deck + '|' + c.code]) || depthOf(xa, n, xpDepth());
     const em = flow.viva && c.vq && c.vq.j != null ? stepModel(c.vq.pkg, c.vq.q, c.vq.j) : null;
     body = `${v2 ? `<div class="a-split${xOpen ? ' xp-on' : ''}"><section class="pane-card"><div class="pane-head">${top}</div>${echoSlotHtml(em)}` : ''}<div class="c-a${hasExplain(c) && !v2 ? ' has-xp' : ''}"><div class="zw">
@@ -2579,7 +2580,7 @@ function mountVoice(el, c, isQ) {
   if (!host) return;
   voiceStrip(c, show, host, isQ ? 'append' : 'after', isQ ? 'question' : 'answer', isQ);
 }
-const TABN = { lesson: 'Lesson', neet: 'NEET', viva: 'Viva' };
+const TABN = { lesson: 'Lesson', neet: 'NEET', viva: 'Viva', ht: 'HT' };
 const tabSwitch = (tab, avail) => `<span class="xv-seg vx-sw" role="group" aria-label="Which explanation">${avail.map(k => `<button class="${tab === k ? 'on' : ''}" data-xtab="${k}" aria-pressed="${tab === k}">${TABN[k]}</button>`).join('')}</span>`;
 let vStripNow = null;
 const mmss = t => { t = Math.max(0, Math.round(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };

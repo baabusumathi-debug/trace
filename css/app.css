@@ -1988,3 +1988,10 @@ p.sub.tlab{margin-bottom:6px}
 .vm-paste{width:100%;box-sizing:border-box;font:inherit;font-size:14px;padding:10px;border-radius:10px;border:1px solid var(--line,#ccc);background:transparent;color:inherit;resize:vertical;margin:8px 0}
 .vm-pinfo{min-height:2.6em}
 .flow.v3 .f-strip .f-tiles{cursor:grab}.flow.v3 .f-strip .f-tiles.dragging{cursor:grabbing;user-select:none}
+/* T-176 HT's notes: her annotated deck pages beside the card */
+.ht-pane .xp-body { display: flex; flex-direction: column; gap: 10px; }
+.ht-src { font-size: 11px; opacity: .7; margin: 0; }
+.ht-pg { margin: 0; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.ht-pg img { display: block; width: 100%; height: auto; }
+.ht-pg.ins { outline: 2px dashed rgba(127,127,127,.6); }
+.ht-pg figcaption { font-size: 10px; padding: 3px 8px; background: rgba(127,127,127,.15); color: #333; }
