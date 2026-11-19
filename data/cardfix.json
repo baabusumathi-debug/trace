@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these.",
- "version": "1281a06875",
+ "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged).",
+ "version": "2e3b5e0243",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -514,7 +514,7 @@
   },
   "CVS09|AD-17": {
    "fields": {
-    "a": "**Test** | **Role / limitation**\n**TTE** | Shows **severe AR** if root or valve involved; **may\nmiss** the dissection\n**TEE** | **Superior to TTE** - sees nearly all the aorta (blind spot: distal ascending aorta and proximal arch, behind the trachea); useful if\nCT contraindicated or patient cannot be transported\n**CT aortogram** | The **DEFINITIVE** test - whole aorta; preferred over\nroutine contrast CT chest or CT pulmonary\nangiography\n**MR angiography** | Detailed, but **slow** - unsuitable for unstable patients\n2024 ESC: first-line imaging is ECG-gated contrast CT from\nneck to pelvis (I, C); TEE to guide perioperative management (I,\nC)."
+    "a": "**Test** | **Role / limitation**\n**TTE** | Shows **severe AR** if root or valve involved; **may miss** the dissection\n**TEE** | **Superior to TTE** - sees nearly all the aorta (blind spot: distal ascending aorta and proximal arch, behind the trachea); useful if CT contraindicated or patient cannot be transported\n**CT aortogram** | The **DEFINITIVE** test - whole aorta; preferred over routine contrast CT chest or CT pulmonary angiography\n**MR angiography** | Detailed, but **slow** - unsuitable for unstable patients\n2024 ESC: first-line imaging is ECG-gated contrast CT from\nneck to pelvis (I, C); TEE to guide perioperative management (I,\nC)."
    },
    "src": "ESC 2024 peripheral arterial and aortic disease guideline; standard TEE anatomy",
    "date": "10 Nov 2026"
@@ -1810,6 +1810,106 @@
    },
    "src": "Layout only: table rows rejoined from the PDF's wrapped lines (SPECIAL04A p19); wording unchanged",
    "date": "15 Nov 2026"
+  },
+  "CVS02|CVS-35": {
+   "fields": {
+    "a": "**Phase** | **Timing** | **Events**\n**1** | Minutes to hours → 1-7 days | Viral entry, activation of **innate** immune response. Viral uptake by CAR and DAF; active viral replication; cardiomyocytolysis\n**2** | 1-4 weeks | Activation of **acquired/adaptive** immune response. Cytokine and chemokine release; T-cell-mediated clearance and myocardial injury\n**3** | Months to years | **Resolution** (viral clearance, normal LV function) OR **dilated cardiomyopathy** (chronic inflammation, fibrosis, remodelling)"
+   }
+  },
+  "CVS02|CVS-43": {
+   "fields": {
+    "a": "**Gold standard** for diagnosis of myocarditis\nIdentifies specific aetiology, allowing treatment to be tailored\nIt is the **basis for starting immunosuppressive**\n**treatment**\nImmunosuppression should be started **only after**\n**ruling out active infection on EMB by PCR**\n\n**EMB pattern** | **Aetiology**\n**Lymphocytic** | Viral / autoimmune\n**Neutrophilic** | Bacterial / fungal / early viral\n**Eosinophilic** | Hypersensitivity myocarditis / hypereosinophilic syndrome\n**Granulomatous** | Sarcoidosis\n**Giant cells** | Giant cell myocarditis"
+   }
+  },
+  "CVS02|CVS-45": {
+   "fields": {
+    "a": "**Branch** | **Action**\nFirst step | **Exclude coronary artery disease** where appropriate\nHaemodynamically **stable** | **Cardiac MRI**\nHaemodynamically **unstable** | **EMB**\nNormal LV function | **Supportive care**\nLV dysfunction | Initiation of **neurohormonal antagonists**\n\nPersistent LV dysfunction despite **3 months** of optimal therapy → **EMB**\n→ Evidence of lymphocytic myocarditis virus negative (PCR): consider **immunosuppressive**\n**therapy**; virus positive: consider **antiviral therapy**"
+   }
+  },
+  "CVS02|CVS-46": {
+   "fields": {
+    "a": "**Situation** | **Treatment**\nClass IV shock, **normal BP** | **Vasodilators**\nClass IV shock, **low BP** | **Inotropes and vasopressors**\nIncreased filling pressures | **Diuretics**\nRefractory shock | **IABP, ECMO, VAD**\nNo recovery within **4 weeks** | **Cardiac transplantation**"
+   }
+  },
+  "CVS03|CS-02": {
+   "fields": {
+    "a": "**Term** | **Definition**\n**Shock** | **Inadequate organ perfusion** to meet tissue's oxygen demand\n**Cardiogenic shock** | State of **critical end-organ hypoperfusion and hypoxia** due to **primary cardiac disorders**\n**Clinical definition** | Cardiac disorder that results in **BOTH clinical AND biochemical** evidence of tissue hypoperfusion"
+   }
+  },
+  "CVS03|CS-28": {
+   "fields": {
+    "a": "**Therapy** | **Physiological effects**\n**Loop diuretics** | ↓ circulating volume, **mild venodilator**, ↓ LVEDP / RVEDP\n**NIV** | ↑ oxygenation, ↓ work of breathing, ↓ **LV wall stress**\n**Vasodilators** (nitroglycerin) | **Veno-arterial dilatation**, ↓ preload / LVEDP, ↓ afterload\n**HD / HDF / HF** | ↓ circulating volume and LVEDP / RVEDP, **correction of electrolyte abnormalities**"
+   }
+  },
+  "CVS03|CS-29": {
+   "fields": {
+    "a": "**Drug** | **Physiological effects**\n**Dobutamine** | **beta-1** agonism: ↑ contractility and heart rate **beta-2** agonism: arteriolar dilatation Net effect: **'inodilation'**\n**Adrenaline** | **beta-1** agonism: ↑ contractility and heart rate At **higher doses alpha-1**: vasoconstriction, ↑ **lactate production**\n**PDE-3 inhibitors** | ↑ myocardial cAMP and contractility, ↑ vascular cAMP → vasodilatation (**esp. pulmonary vasodilatation**)\n**Levosimendan** | ↑ contractility, **reduced calcium flux**, activation of vascular potassium → vasodilatation and ↓ **afterload**"
+   }
+  },
+  "CVS05A|ECHO-12": {
+   "fields": {
+    "a": " | **PWD** | **CWD**\nCrystals | **1** | **2**\nTransmit / receive | One crystal transmits, then receives after a **preset delay (Nyquist limit)** | One transmits **continuously**, one receives **continuously**\nLocalisation | **YES** - sample volume at the region of interest | **LIMITED** - signal from anywhere along the beam\nHigh velocities | Limited | **Good resolution**\nUsed for | Localising a flow disturbance; velocity from a **small region** | **Regurgitation velocities**; **systolic flow through AV**"
+   }
+  },
+  "CVS05B|ECHO-26": {
+   "fields": {
+    "a": "**Level** | **Assessed**\n**Mitral valve** | **Measure mitral valve AREA** · **Assess regurgitant flow** · **Vegetations**\n**Aortic valve** | **Structural abnormalities** · **MERCEDES-BENZ sign** is seen"
+   }
+  },
+  "CVS06B|RVF-39": {
+   "fields": {
+    "a": "**Maintain adequate RV preload** • **carefully titrated fluid boluses** (in **RVMI, when afterload is NORMAL**) • **AVOID OVERDISTENSION**\n\n | **Volume loading**\n**Strategy** | **Saline or Ringer lactate, >200 mL / 15-30 min**\n**Use** | Decompensated RV failure with **NORMAL central venous pressure** and **LOW arterial pressure**\n**Caveat** | Can **OVERDISTEND the ventricles**, **worsen ventricular interdependence**, and **REDUCE cardiac output**"
+   }
+  },
+  "CVS07B|PCA-23": {
+   "fields": {
+    "a": "Favourable neuro outcome | **Normothermia** | **Hypothermia**\n**VF / VT** | **39%** | **77%**\n**PEA / asystole** | **7%** | **25%**\n | Control | **Hypothermia**\n**GCS 15 at ICU discharge** | **20%** | **41%**\n**Mortality at 6 months** | **78%** | **56%**"
+   }
+  },
+  "CVS09|AD-20": {
+   "fields": {
+    "a": "**Drug** | **IV dose**\n**Esmolol (β1)** | Bolus **500 mcg/kg over 1 min**, then **50 mcg/kg/min**, titrate up to **300 mcg/kg/min**\n**Labetalol bolus** | **20 mg over 2 min**, then **20-80 mg every 10 min**\n**Labetalol infusion** | Load **20 mg**, then **1-2 mg/min**\n**Metoprolol** | **5 mg over 2 min**, repeat every 5 min, up to **3 doses**"
+   }
+  },
+  "CVS09|AD-21": {
+   "fields": {
+    "a": "**Drug** | **IV dose**\n**Diltiazem (non-DHP)** | **0.25 mg/kg over 2 min**, then **5-10 mg/h**, up to **15 mg/h**\n**Nicardipine (DHP)** | **5 mg/h**, increase **2.5 mg/h every 5-15 min**, max **15 mg/h**\n**Nitroprusside** | **0.3 mcg/kg/min**, max **10 mcg/kg/min** (no more than 10 min at max) - **cyanide toxicity**, unsuitable for prolonged use\n**Nitroglycerin** | **5 mcg/min**, increase **5 mcg/min every 3-5 min** (ceiling commonly quoted as 200 mcg/min)\nVasodilators only AFTER heart-rate control."
+   }
+  },
+  "CVS09|AD-26": {
+   "fields": {
+    "a": "**System** | **Watch for**\n**Visceral** | Malperfusion, **abdominal compartment syndrome**; repeat CT if **lactate rises**\n**Pulses** | Check **all four limbs** for deficits\n**Neurological** | **Embolic events and stroke**\n**Coagulation** | **Coagulopathy** (platelet consumption) - blood products\n**Renal** | AKI; **wine-coloured urine = haemolysis**"
+   }
+  },
+  "CVS10B|MI-29": {
+   "fields": {
+    "a": " | **Troponin T** | **Troponin I**\n**Role** | **Inhibits** actin-myosin interaction | Binds **tropomyosin**\n**Sens / spec** | Lower | **Higher**\n**Reference level** | **Multiple** assay-dependent | **Single**\n**Cytoplasmic pool** | **6%** | **3%**"
+   }
+  },
+  "HY2|CAR-21": {
+   "fields": {
+    "a": "**Each anticoagulant has its own key**\nDRUG | REVERSAL | NOTE\n**Dabigatran** | **Idarucizumab 5 g IV** | Specific, immediate. Side effects: delirium, fever, constipation, hypoKALAEMIA\n**Xa inhibitors (apixaban, rivaroxaban)** | **Andexanet alfa**; or 4F-PCC 50 U/kg | Ciraparantag = investigational\n**Warfarin + major bleed** | **4F-PCC** (25–50 U/kg by INR) + **vitamin K 10 mg IV** | FFP only if no PCC\n**Heparin (UFH)** | **Protamine 1 mg per 100 U** given in last 2–3 h (max 50 mg) | Full reversal\n**Enoxaparin** | **Protamine 1 mg per mg** if dose < 8 h ago; **0.5 mg/mg** if 8–12 h | Only ~60% reversal; none after 12 h"
+   }
+  },
+  "HY2|CAR-23": {
+   "fields": {
+    "a": "**Hypotension decides lysis — not RV strain, not troponin**\nCLASS | DEFINED BY | TREATMENT\n**High** | SBP below 90 (or fall ≥ 40, or pressors) / arrest | **Systemic thrombolysis** (alteplase 100 mg over 2 h)\n**Intermediate-high** | Normotensive + RV dysfunction AND troponin | **Anticoagulate, monitor;** rescue lysis if decompensates\n**Intermediate-low** | One or neither of RV / troponin; PESI III–V | Anticoagulate on ward\n**Low** | sPESI 0 | Early discharge, DOAC"
+   }
+  },
+  "HY2|CAR-25": {
+   "fields": {
+    "a": "**High RAP + LOW PAWP = obstruction before the left heart**\nSHOCK | RAP | PAWP | CO | SVR\n**Hypovolaemic** | ↓ | ↓ | ↓ | ↑\n**Cardiogenic (LV)** | ↑/N | ↑ | ↓ | ↑\n**Distributive (early)** | ↓/N | ↓/N | ↑ | ↓\n**Obstructive — PE** | ↑ | ↓/N | ↓ | ↑\n**Obstructive — tamponade** | ↑ | ↑ (equal) | ↓ | ↑"
+   }
+  },
+  "HY2|CAR-26": {
+   "fields": {
+    "a": "**IABP least · Impella middle · VA-ECMO most (full support)**\nDEVICE | SUPPORTS | FLOW | KEY POINT\n**IABP** | LV | ~0.5–1 L | ↓ afterload, ↑ coronary perfusion; no routine benefit in shock\n**Impella CP** | LV | ~3.5–4 L | Pulls blood LV → aorta; can vent the LV on VA-ECMO\n**Impella RP / TandemHeart RA–PA** | RV | ~4 L | Right-sided support\n**VA-ECMO** | Heart + lungs | up to ~7 L | Biventricular failure, ECPR, fulminant myocarditis"
+   }
+  },
+  "HY2|CAR-27": {
+   "fields": {
+    "a": "**Sweep — the nine statements**\n | T/F | WHY\na | F | Verapamil — adenosine can trigger bronchospasm.\nb | F | Negatively inotropic; avoid with EF below 40%.\nc | F | Warfarin; DOACs contraindicated.\nd | F | Hyperkalaemia; digoxin = reverse tick, short QT.\ne | T | 1 mg every 3–5 min.\nf | F | Resume CPR for 2 min straight away.\ng | T | Rescue PCI if lysis fails.\nh | F | VA — the heart must be bypassed.\ni | F | Anticoagulate; lysis only if hypotensive."
+   }
   }
  }
 }
