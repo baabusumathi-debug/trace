@@ -1,0 +1,1328 @@
+{
+ "GI01A|ALF-01": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI01A|ALF-02": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "GI01A|ALF-06": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: ALF with abdominal pain, tender hepatomegaly and ascites in a myeloproliferative neoplasm (PV, ET; test JAK2) = Budd–Chiari syndrome from hepatic-vein or IVC thrombosis. Doppler ultrasound confirms it; anticoagulate, then angioplasty/TIPS, transplant if fulminant (ALF-32)."
+  ]
+ },
+ "GI01A|ALF-07": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI01A|ALF-08": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "GI01A|ALF-09": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Halothane hepatitis is immune-mediated (trifluoroacetylated protein adducts), typically after repeated exposure within weeks; fulminant cases have high mortality and count as a non-paracetamol cause under King's criteria (ALF-33)."
+  ]
+ },
+ "GI01A|ALF-10": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Autoimmune hepatitis presenting as ALF: steroids only in early ALF (no grade 3–4 HE), with transplant listing in parallel; no improvement in bilirubin/INR within ~7 days = steroid failure → urgent transplant. Do not escalate steroids or add azathioprine/MMF: they act slowly and add sepsis risk.",
+   "DocT + DocT GT: Hepatitis B is the exception to 'viral hepatitis = supportive': start tenofovir or entecavir at once in acute severe HBV/ALF, HBV reactivation, HBV-ACLF and decompensated HBV cirrhosis, whatever the HBV DNA. Reactivation under rituximab, chemotherapy or steroids can bring back IgM anti-HBc (so it does not prove new infection), and is prevented by screening HBsAg and anti-HBc and giving prophylactic entecavir/tenofovir.",
+   "DocT GT: Autoantibodies in autoimmune hepatitis: anti-LKM1 marks type 2 (children and young women, more often acute severe or fulminant) and is the most specific; ANA and anti-smooth-muscle mark the commoner type 1. Anti-mitochondrial = PBC; anti-centromere = limited scleroderma."
+  ]
+ },
+ "GI01A|ALF-13": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: HEV IgM can be falsely negative (early, or immunosuppressed), so send HEV RNA PCR when suspicion is high: pregnancy, travel to an endemic area, or acute-on-chronic liver failure in India.",
+   "DocT GT: Factor V is the liver-made factor that is NOT vitamin K-dependent: low II/VII with normal V = vitamin K deficiency (cholestasis, antibiotics, poor intake) → IV vitamin K 10 mg; low II, VII and V = synthetic failure; low V with low VIII = DIC."
+  ]
+ },
+ "GI01B|ALF-21": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI01B|ALF-26": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Suspected infection in ALF (fever, rising WBC, new infiltrate; pneumonia commonest) → immediate empirical extended-spectrum β-lactam (piperacillin-tazobactam or a carbapenem by local Gram-negative ecology) after cultures, without waiting for results. Add antifungals only for deterioration despite antibiotics or a prolonged course."
+  ]
+ },
+ "GI01B|ALF-28": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Vasopressor-refractory shock in ALF (vasodilatory, with frequent relative adrenal insufficiency) → low-dose hydrocortisone 200 mg/day on top of noradrenaline; it cuts the vasopressor dose without proven survival benefit (AASLD/EASL). High-dose steroids and adrenaline boluses are wrong."
+  ],
+  "fix": [
+   {
+    "t": "c None absolute: noradrenaline first; low-dose vasopressin may be added (SCCM 2020); use terlipressin cautiously if ICP high.",
+    "why": "Says vasopressin is \"better avoided\". AASLD/EASL allow vasopressin or terlipressin as an add-on to noradrenaline.",
+    "src": "SCCM ALF/ACLF Guidelines 2020; EASL ALF CPG 2017",
+    "url": "https://www.sccm.org/clinical-resources/guidelines/guidelines/guidelines-for-the-management-of-adult-acute-and-a",
+    "v": "partly"
+   }
+  ]
+ },
+ "GI01B|ALF-31": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: A mainly bilirubin/ALP (cholestatic) rise points to rifampicin; isoniazid and pyrazinamide give a hepatocellular ALT rise. Stop the drugs when bilirubin exceeds 2× normal (jaundice) as well as on the card's ALT rules; a fluoroquinolone stands in for rifampicin if it cannot be reintroduced."
+  ],
+  "cross": [
+   "GT6 Q34 key: option D, garbled ('…should not be substituted by Q'), as the false statement. Truth: a fluoroquinolone is the standard substitute when rifampicin cannot be reintroduced, so D read as 'never substitute a quinolone' is false. If an option says a quinolone must never replace rifampicin, pick it as the false one."
+  ]
+ },
+ "GI01C|ALF-32": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Budd–Chiari presenting as ALF: anticoagulate, decompress with TIPS (or angioplasty/stent), and list for transplant if that fails. Doppler/MRI confirms the hepatic-vein block; ursodiol and open shunt surgery have no role."
+  ],
+  "cross": [
+   "Marrow QB58-Q02 key: transplant evaluation for fulminant Budd–Chiari despite colon cancer 2 months earlier. Truth: fulminant Budd–Chiari is a transplant indication, but a recent extrahepatic malignancy is a contraindication (ALF-32c). If the stem has active or recent cancer, pick TIPS + anticoagulation; if not, pick transplant evaluation."
+  ]
+ },
+ "GI01C|ALF-33": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 6
+   }
+  ]
+ },
+ "GI01C|ALF-34": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT 12 key: MELD as the prognostic tool in paracetamol ALF. Truth: King's College criteria are the standard (pH <7.30, or INR >6.5 + creatinine >3.4 mg/dL + grade 3–4 HE; lactate as add-on); MELD >33 is a secondary marker. If KCC is offered, pick it; otherwise MELD is least wrong."
+  ]
+ },
+ "GI02A|PANC-01": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT + DocT GT: Post-ERCP pancreatitis is the commonest ERCP complication (3–15%): new epigastric pain within hours with lipase/amylase >3× normal, from papillary trauma plus hydrostatic and chemical injury of contrast injected into the pancreatic duct. Highest risk with difficult cannulation, pancreatic-duct injection and young women; prevent it with rectal indomethacin or diclofenac 100 mg, a pancreatic-duct stent in high-risk cases and generous Ringer's lactate.",
+   "Marrow: ALT >150 IU/L (~3× normal) with raised ALP/bilirubin early in acute pancreatitis predicts a gallstone cause; AST > ALT points to alcohol. Confirm with ultrasound."
+  ]
+ },
+ "GI02A|PANC-03": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI02A|PANC-04": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI02A|PANC-05": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "cross": [
+   "GT5 Q116 key: hepatic + coagulation dysfunction as most predictive of death in post-pancreatitis MODS. Truth: Revised Atlanta and modified Marshall score respiratory, cardiovascular and renal failure, and mortality tracks PERSISTENT (>48 h) and MULTIPLE organ failure (~30–50%); no guideline ranks liver + coagulation highest. If a respiratory/cardiovascular/renal combination or 'persistent multi-organ failure' is offered, pick it; otherwise accept the bank key."
+  ]
+ },
+ "GI02A|PANC-07": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI02A|PANC-08": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "GI02A|PANC-09": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: A raised or rising BUN at 24 h (prerenal azotaemia from third-space loss) is the lab marker of intravascular depletion in acute pancreatitis and predicts mortality, which is why BUN sits in BISAP. Amylase level has no prognostic value, and hypocalcaemia reflects saponification and low albumin, not volume."
+  ]
+ },
+ "GI02A|PANC-10": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT 19 key: CTSI 6 for a peripancreatic collection plus 30–50% necrosis. Truth: Balthazar scores a single fluid collection 3 (peripancreatic inflammation alone 2), so collection + 30–50% necrosis (4) = 7. If the CT shows a discrete collection, pick 7; if only peripancreatic inflammation, 6."
+  ]
+ },
+ "GI02A|PANC-11": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI02A|PANC-12": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT: Plain X-ray signs of acute pancreatitis are the sentinel loop (a single dilated jejunal loop in the left upper quadrant = localised ileus) and the colon cut-off sign (gas-filled transverse colon stopping at the splenic flexure). Both are non-specific; the film's real job in an acute abdomen is to exclude free gas.",
+   "DocT: Idiopathic (recurrent) pancreatitis with a normal ultrasound needs EUS and/or MRCP: secretin-MRCP for duct anatomy (divisum, strictures), EUS for microlithiasis, sludge and small tumours, mandatory to exclude a neoplasm if age >40. ERCP is not a diagnostic test: it causes pancreatitis in 3–15%."
+  ],
+  "cross": [
+   "DocT 8 key: MRCP as the sole first-line test for idiopathic pancreatitis. Truth: ACG/AGA place EUS at least level with MRCP (higher yield for microlithiasis and small tumours) and ahead of it after 40. If both are offered and the patient is >40, pick EUS; if only MRCP is offered, it is acceptable."
+  ]
+ },
+ "GI02B|PANC-14": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Early fluids in severe pancreatitis = goal-directed Ringer's lactate at a moderate rate (DocT keys ~3 mL/kg/h; WATERFALL 2022 used 1.5 mL/kg/h plus a 10 mL/kg bolus only if hypovolaemic, and stopped early for overload in the aggressive arm). Reassess at 3, 12 and 24 h against urine output >0.5 mL/kg/h and falling haematocrit and BUN."
+  ]
+ },
+ "GI02B|PANC-17": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: With ileus, give analgesia IV (oral absorption is unreliable). Avoid NSAIDs once there is AKI (ketorolac carries the highest renal risk); opioids are acceptable but worsen ileus, which is why the card stresses multimodal and epidural opioid-sparing."
+  ],
+  "cross": [
+   "Marrow QB38-Q10 key: early oral feeding within 24 h. Truth: same as the card: ACG 2024/AGA advise starting oral diet within 24 h as tolerated ('on-demand') rather than nil by mouth. If 'NPO until pain and enzymes settle' is offered, it is wrong; pick early oral feeding."
+  ]
+ },
+ "GI02B|PANC-18": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "GI02B|PANC-20": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "GI02B|PANC-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT 9 key: minimise PEEP in IAH. Truth: WSACS 2013 makes no such recommendation; PEEP is set by best compliance or transpulmonary pressure, often higher to offset IAP-driven atelectasis (this card). If 'titrate PEEP to compliance/oesophageal pressure' is offered, pick it."
+  ]
+ },
+ "GI02B|PANC-22": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: TENSION (Lancet 2018; 98 infected-necrosis patients): endoscopic step-up vs surgical step-up gave the same major complications or death (43% vs 45%), but fewer pancreatic fistulas (5% vs 32%) and a shorter stay. So PANTER = step-up beats open necrosectomy; TENSION = endoscopic step-up equals surgical step-up, with fewer fistulas."
+  ]
+ },
+ "GI02B|PANC-23": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Disconnected duct syndrome (viable tail cut off from the head → persistent high-output external fistula or recurrent collections) cannot be bridged by a transpapillary stent. First line now is EUS-guided transmural drainage with long-term indwelling plastic stents; distal pancreatectomy is the definitive surgery when that fails, and octreotide only lowers output.",
+   "DocT: A PARTIAL duct leak (duct still in continuity: high-amylase drain fluid, pancreatic ascites or effusion) is treated by ERCP with a transpapillary pancreatic stent that bridges the leak and turns an external fistula into internal drainage."
+  ]
+ },
+ "GI02B|PANC-24": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Suspected pseudoaneurysm bleed (shock, falling Hb, a collection that suddenly enlarges, blood in a drain) → CT angiography first to find it, then angio-embolisation; surgery only if embolisation fails or the patient cannot be stabilised."
+  ]
+ },
+ "GI03|GUT-03": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI03|GUT-05": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Suspected intra-abdominal abscess → contrast CT is the definitive test and guides percutaneous drainage; plain films and bedside ultrasound are insensitive in the gassy, post-operative abdomen.",
+   "DocT Recall25: Desaturation and rising airway pressures right after NG insertion, with the tube in a bronchus on X-ray → stop feeds, remove the tube, re-insert under direct (video-laryngoscope) vision and confirm by X-ray or aspirate pH ≤5.5 before any feed. Never advance it further; a cuffed ETT does not prevent tracheobronchial placement."
+  ]
+ },
+ "GI03|GUT-07": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "GT 52 key: venting gastrostomy. Truth: gastroparesis in type 1 DM with glucose 350 and a new α2-agonist (clonidine) is treated first by stopping the drug, tight glucose control, small low-fat low-fibre meals and a prokinetic; venting gastrostomy is a last resort for refractory symptoms. If the stem has a reversible trigger, pick correcting it."
+  ]
+ },
+ "GI03|GUT-08": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: ICU/post-operative ileus and Ogilvie's syndrome are driven by inflammatory mediators (IL-6, nitric oxide, VIP), sympathetic overactivity with parasympathetic suppression, opioids and bowel handling, which stop the migrating motor complex. That is why neostigmine (more acetylcholine) decompresses Ogilvie's; parasympathetic tone promotes peristalsis, it does not cause atony.",
+   "DocT Recall25: Day-3 post-laparotomy bilious vomiting, distension and sluggish bowel sounds with no stool = postoperative ileus: nil by mouth, IV fluids, Ryle's tube decompression, correct K/Mg, cut opioids, mobilise. Relaparotomy only for signs of obstruction, leak or ischaemia (fever, peritonism, rising lactate) or failure to settle."
+  ]
+ },
+ "GI03|GUT-09": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Diarrhoea on enteral feeding is not a reason to stop or slow the feed: keep the same rate, review drugs and test for C. difficile. Do not raise density or rate, give fluid boluses, or add supplemental PN before day 7."
+  ]
+ },
+ "GI03|GUT-12": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT + Marrow: First step in new ICU diarrhoea is a drug review (stop prokinetics, laxatives, sorbitol syrups and Mg salts) plus a C. difficile test. Avoid antimotility agents (loperamide, diphenoxylate) until infection is excluded: in invasive or C. difficile diarrhoea they raise the risk of bacteraemia and toxic megacolon."
+  ]
+ },
+ "GI04|MES-06": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: NOMI is splanchnic vasospasm in low-flow states: shock, high-dose vasopressors, cardiogenic shock, post-arrest, haemodialysis fluid removal, burns, cardiac surgery, digoxin and cocaine. Infrarenal aorto-bifemoral bypass is the exception: it causes ISCHAEMIC COLITIS of the left colon because the IMA is sacrificed, not NOMI."
+  ]
+ },
+ "GI04|MES-08": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ]
+ },
+ "GI04|MES-10": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI04|MES-11": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Portal venous gas with pneumatosis in acute mesenteric ischaemia means transmural infarction (mortality ~75–85%) and is a near-universal indication for urgent laparotomy. It is not specific for venous thrombosis and never means early, reversible ischaemia."
+  ]
+ },
+ "GI04|MES-13": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Any bowel obstruction (including adult intussusception) with signs of sepsis or ischaemia (peritonism, rising lactate, shock) goes straight to emergency laparotomy; CT angiography only delays it."
+  ]
+ },
+ "GI05|IAH-01": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI05|IAH-02": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI05|IAH-03": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI05|IAH-04": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI05|IAH-08": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI05|IAH-10": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   }
+  ]
+ },
+ "GI05|IAH-11": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT + DocT GT: After decompression, keep the abdomen open with temporary closure (negative-pressure preferred, WSACS 2013) and close the fascia as early as physiology allows: DocT keys 48–72 h, WSES 2018 says ideally within 4–7 days. Closure rates fall and fistula, infection and 'frozen abdomen' risk rise each day; TAC prevents recurrent ACS rather than causing it."
+  ],
+  "cross": [
+   "DocT 3; CGT4 Q33; GT6 Q105 key: 'decompressive laparotomy after failure of conservative measures'. Truth: IAP 26 + oliguria + hypotension from a perforated ulcer = ACS with an unsourced perforation, so immediate laparotomy (source control + decompression) is right, as DocT's own explanation and its identical Q11 say. If ACS has a surgical cause, pick immediate laparotomy over a conservative trial."
+  ]
+ },
+ "GI06|ACLF-11": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Bacterial infection is the commonest ACLF trigger (~1/3 of cases) and 40–60% of infections in cirrhosis progress to ACLF, so prevention covers every infection, not only SBP. Norfloxacin prophylaxis selects quinolone-resistant organisms and C. difficile and carries QT/tendon toxicity; rifaximin is minimally absorbed with few systemic effects."
+  ]
+ },
+ "GI06|ACLF-13": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Diagnostic or banding endoscopy is a low-bleeding-risk procedure: AGA 2021, EASL 2022 and AASLD 2024 advise no prophylactic platelets, FFP or cryoprecipitate before it in cirrhosis whatever the count or INR, because transfusion raises portal pressure. A platelet target (~50,000) is considered only for high-risk procedures (polypectomy, liver biopsy).",
+   "DocT GT: Factor VIII (with von Willebrand factor) RISES in cirrhosis because it is made by endothelium and its clearance falls, while II, V, VII, IX, X and protein C fall. High VIII with low protein C is why cirrhotics clot despite a raised INR, and a low VIII points to DIC rather than liver failure."
+  ],
+  "cross": [
+   "DocT 2 key: transfuse platelets to >50,000 before endoscopy. Truth: endoscopy is low-risk, and current cirrhosis guidance is to proceed without correction. If the procedure is low-risk (endoscopy, paracentesis, central line), pick 'proceed without intervention'; consider a platelet target only for high-risk procedures.",
+   "GT7 Q118 key: PCC lacks factor VII. Truth: only the old 3-factor PCC lacks VII; the 4-factor PCC used for warfarin reversal contains II, VII, IX and X plus proteins C and S (this card). If factor V or VIII is offered, pick it; pick VII only if the stem means 3-factor PCC."
+  ],
+  "fix": [
+   {
+    "t": "d No prophylactic platelets/TPO-RA for low-risk procedures at any count; high-risk procedure with <50,000: individualise (TPO-RA e.g. avatrombopag/lusutrombopag, or platelets). Transfuse for active bleeding.",
+    "why": "Platelets 20–50k before invasive procedures is outdated for low-risk procedures (AGA 2021, EASL 2022, AASLD 2024: no prophylactic products).",
+    "src": "AGA Clinical Practice Update 2021; EASL CPG 2022",
+    "url": "https://doi.org/10.1016/j.jhep.2021.09.003",
+    "v": "partly"
+   }
+  ]
+ },
+ "GI06|ACLF-14": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI06|ACLF-15": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Non-response to terlipressin + albumin is the strongest predictor of death in HRS-AKI: non-responders survive weeks to months, and RRT is only a bridge to transplant. Baseline creatinine and bilirubin predict who will respond; ascites volume and ammonia are weak outcome predictors."
+  ]
+ },
+ "GI06|ACLF-16": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 5
+   }
+  ],
+  "lines": [
+   "DocT: Bubble echo: agitated saline reaching the left atrium after ≥3 cardiac cycles (typically 3–6) = intrapulmonary shunt (HPS); within <3 cycles = intracardiac shunt (PFO/ASD). The card's '3–4' is where the window starts, so a bubble at beat 5 or 6 still counts as HPS.",
+   "DocT GT: Platypnoea = breathlessness on sitting/standing, relieved lying flat; orthodeoxia = the matching SaO2 fall (≥4–5%) upright. Both point to HPS because the basal intrapulmonary shunts get more flow when upright. Orthopnoea is the reverse (worse lying flat); trepopnoea is worse lying on one side.",
+   "DocT GT: Hepatopulmonary syndrome is graded by room-air PaO2 (with an A–a gradient ≥15 mmHg, ≥20 if over 64): mild ≥80, moderate 60–79, severe 50–59, very severe <50 mmHg. PaO2 <60 earns MELD exception points for transplant, and <50 raises post-transplant mortality."
+  ]
+ },
+ "GI06|ACLF-17": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Portal hypertension does not raise the CVP: portal pressure sits upstream of the liver, and the hyperdynamic cirrhotic circulation leaves CVP low-normal. A CVP of 22 in a cirrhotic points to the right heart or chest: portopulmonary hypertension, cirrhotic cardiomyopathy, tense ascites/hydrothorax raising intrathoracic pressure, or volume overload from AKI."
+  ],
+  "cross": [
+   "DocT 4 key: portal hypertension raises the CVP. Truth: physiologically wrong; a high CVP in cirrhosis means a cardiac, pulmonary-vascular or volume cause. If 'AKI with fluid overload' or a cardiac cause is offered, pick it."
+  ]
+ },
+ "GI07A|CLD-04": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "GI07A|CLD-05": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: GAVE ('watermelon stomach': red stripes radiating from the pylorus in the ANTRUM) is not caused by portal pressure, so β-blockers and TIPS do not help; treat with argon plasma coagulation or band ligation. Portal hypertensive gastropathy is a mosaic 'snakeskin' pattern in the fundus/body and does respond to β-blockers."
+  ]
+ },
+ "GI07A|CLD-06": {
+  "lines": [
+   "DocT GT: Ascites is the commonest decompensating event (~50% of compensated cirrhotics within 10 years), and cirrhosis causes ~80–85% of all ascites. Its onset marks decompensation: about 15–20% die within 1 year and ~44% within 5 years."
+  ]
+ },
+ "GI07A|CLD-07": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Child-Pugh predicts overall survival, variceal bleeding and operative risk: 1-year survival A ~100%, B ~80%, C ~45%. Older versions score prothrombin-time prolongation (1–3 s / 4–6 s / >6 s) in place of INR.",
+   "DocT PYQ: The best single marker of severity in chronic liver disease is PT/INR, since factor VII's short half-life makes it move first; albumin and bilirubin add to it (MELD = bilirubin, INR, creatinine ± Na). Transaminases measure ongoing injury, not hepatic reserve, and can be normal in end-stage cirrhosis."
+  ]
+ },
+ "GI07A|CLD-08": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: MELD and 3-month mortality: ≤9 ~2%, 10–19 ~6%, 20–29 ~20%, 30–39 ~53%, ≥40 ~71%. Refer for transplant once MELD ≥15, where transplant survival benefit exceeds operative risk; so MELD 25 = high risk, evaluate for transplant."
+  ]
+ },
+ "GI07A|CLD-09": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI07A|CLD-10": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 7
+   }
+  ],
+  "lines": [
+   "DocT + DocT GT: In NON-variceal bleeding, high-dose IV PPI works by holding gastric pH above 6 (pepsin inactive, clot stable), which H2 blockers cannot. Given before endoscopy (80 mg bolus ± 8 mg/h) it downstages ulcers (Lau, NEJM 2007) but does not cut rebleeding, surgery or death, so it must never delay the scope; REDUCE is a COPD steroid trial, not a PPI trial.",
+   "DocT GT: Intubate BEFORE endoscopy in variceal bleeding when there is encephalopathy or low GCS, massive ongoing haematemesis or an unprotected airway, because aspiration of blood is a leading cause of death. NIV is contraindicated (vomiting, low GCS) and nasal oxygen protects nothing."
+  ],
+  "cross": [
+   "Marrow QB37-Q02 key: a first step other than antibiotics. Truth: in a cirrhotic variceal bleeder, vasoactive drug AND IV ceftriaxone 1 g/day (up to 7 days) are both guideline-mandated before endoscopy; antibiotics cut rebleeding and death. If 'IV ceftriaxone' is among the options and the vasoactive drug is already running, pick it."
+  ]
+ },
+ "GI07A|CLD-11": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT Recall25: Sudden respiratory distress, hypoxaemia and high airway pressures just after inflating a Sengstaken–Blakemore tube = gastric balloon in (or migrated into) the airway: cut and deflate the balloons at once. Hence intubate first and confirm the gastric balloon below the diaphragm on X-ray before full inflation."
+  ]
+ },
+ "GI07A|CLD-12": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 3
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Secondary prophylaxis after a variceal bleed = EVL every 2–4 weeks to eradication PLUS a non-selective β-blocker (propranolol or carvedilol), better than either alone (Baveno VII/AASLD). TIPS is for failure of this combination, or pre-emptive (within 72 h) in high-risk bleeders (Child C 10–13, or Child B >7 with active bleeding at endoscopy).",
+   "Marrow: Primary prophylaxis of large varices = NSBB (carvedilol preferred) or EVL if β-blockers are not tolerated. Portal vein thrombosis in cirrhosis → anticoagulate, usually with LMWH first; warfarin is hard to monitor because the baseline INR is already raised."
+  ],
+  "cross": [
+   "DocT 16 key: C, TIPS first-line. Truth: EVL + NSBB is first-line secondary prophylaxis; TIPS is rescue or pre-emptive within 72 h in high-risk patients, and DocT's own explanation says so. If the stem is a stabilised patient after a first bleed, pick EVL + NSBB."
+  ]
+ },
+ "GI07A|CLD-13": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI07A|CLD-14": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: First step for hypervolaemic hyponatraemia in cirrhosis is fluid restriction to 1–1.5 L/day once Na <125, with diuretics stopped; hypertonic saline only for severe symptoms or just before transplant. Correct by ≤8 mmol/L in 24 h (high osmotic-demyelination risk) and avoid tolvaptan in liver disease (FDA hepatotoxicity warning).",
+   "DocT GT: Long-term albumin (ANSWER 2018: 40 g twice weekly for 2 weeks, then 40 g weekly, in uncomplicated ascites on diuretics) improved 18-month survival (77% vs 66%) and cut SBP, HE, renal dysfunction and paracenteses. MACHT (wait-listed patients) was negative, and ATTIRE (in-hospital albumin to ≥3 g/dL) gave no benefit and more pulmonary oedema."
+  ],
+  "fix": [
+   {
+    "t": "d No serum-albumin target (ATTIRE 2021: no benefit, more pulmonary oedema). Give with LVP >5 L (6–8 g/L removed), SBP (1.5 g/kg d1, 1 g/kg d3), HRS-AKI.",
+    "why": "Replace albumin to keep serum albumin above 3 g/dL. ATTIRE showed no benefit from that target; albumin is for LVP, SBP, HRS.",
+    "src": "ATTIRE NEJM 2021; AASLD ascites guidance 2021",
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2022166",
+    "v": "confirmed"
+   }
+  ]
+ },
+ "GI07B|CLD-17": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: A cirrhotic with ascites who suddenly becomes hypotensive and confused has SBP until proved otherwise: infection drives both the encephalopathy and the vasodilatory shock, whereas HE alone does not cause shock. Tap the ascites before antibiotics."
+  ]
+ },
+ "GI07B|CLD-18": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "GI07B|CLD-19": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "GI07B|CLD-20": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "GI07B|CLD-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI07B|CLD-22": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI07B|CLD-24": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ]
+ },
+ "GI07B|CLD-25": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Hyponatraemia (especially Na <130) is an independent HE precipitant: astrocytes already loaded with glutamine have used up their organic osmolytes (myo-inositol), so low plasma osmolality swells them further. In a cirrhotic on furosemide with Na 122, name hyponatraemia as the precipitant; furosemide is its cause and ammonia the mediator."
+  ],
+  "cross": [
+   "DocT 21 key: 'All of the above', including a high-fat meal. Truth: fat is not an HE precipitant (protein load/GI blood is), and in that stem the real trigger is the diuretic (hyponatraemia, hypokalaemia, volume loss). If 'all of the above' contains a non-precipitant, pick the diuretic-related option.",
+   "GT 148; GT4 Q101, same key A key: one option keyed though all four are recognised precipitants. Truth: infection (including SBP) is the commonest trigger in recent series; GI bleeding is the classic textbook answer. If asked 'commonest', pick infection; if asked 'classic', pick GI bleed."
+  ]
+ },
+ "GI07B|CLD-26": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ]
+ },
+ "GI07B|CLD-27": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT: In a confused cirrhotic, a symmetrical non-focal exam with asterixis = metabolic (hepatic) encephalopathy. Raised tone, clonus and extensor plantars occur in West Haven grade 3 HE, so they do not by themselves point to a structural lesion; a FOCAL deficit does."
+  ]
+ },
+ "GI07B|CLD-28": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: Judge the response in hepatic encephalopathy clinically, by clearing disorientation and asterixis (West Haven grade falling). Serum ammonia correlates poorly with grade in cirrhosis and is not used to monitor treatment (AASLD/EASL); EEG and bilirubin do not track it either."
+  ]
+ },
+ "GI07B|CLD-29": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT + Marrow: Zinc deficiency is common in cirrhosis (poor intake, diuretic-driven urinary loss, malabsorption). Zinc is a cofactor for ornithine transcarbamylase (urea cycle) and muscle glutamine synthetase, so deficiency raises ammonia; replacement gives only a modest mental-state benefit.",
+   "DocT: Rifaximin to prevent recurrent HE = Bass, NEJM 2010: 299 cirrhotics after ≥2 episodes, 550 mg BD vs placebo for 6 months (91% also on lactulose); breakthrough HE 22% vs 46%, HE admissions 14% vs 23%. CONFIRM is the terlipressin-HRS trial, not an HE trial.",
+   "DocT GT: BCAA (leucine, isoleucine, valine) supplements improve nitrogen balance in malnourished or critically ill patients, but no trial shows lower mortality or shorter ventilation. Their encephalopathy benefit is limited to cirrhosis (fewer HE episodes, not lower mortality), so they are not routine ICU nutrition."
+  ]
+ },
+ "GI07B|CLD-31": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "GI07B|CLD-32": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Renal Doppler in HRS shows normal-sized, unobstructed kidneys with a raised resistive index (>0.70; DocT quotes >0.9) from intense renal arterial vasoconstriction, and the RI can rise before creatinine. ATN shows parenchymal change; obstruction shows hydronephrosis.",
+   "DocT GT: Stage 1A AKI in cirrhosis = monitor closely and remove risk factors (stop NSAIDs and nephrotoxins, taper diuretics and non-selective β-blockers, treat infection, replace losses). Terlipressin + albumin only once HRS-AKI criteria are met and AKI is beyond stage 1A, so terlipressin is the wrong pick at 1A."
+  ]
+ },
+ "GI07B|CLD-33": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: If neither terlipressin nor noradrenaline is offered, midodrine + octreotide with albumin is the answer. Dialysis is only for refractory fluid overload, hyperkalaemia or acidosis, as a bridge to transplant, not as HRS treatment."
+  ],
+  "cross": [
+   "Marrow QB40-Q07 key: midodrine + octreotide + albumin. Truth: terlipressin + albumin is first-line (noradrenaline in the ICU); midodrine/octreotide is the weaker fallback. If terlipressin or noradrenaline is offered, pick it; midodrine only when neither is."
+  ]
+ },
+ "GI07B|CLD-35": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY6|GIN-01": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "HY6|GIN-02": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY6|GIN-03": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: In acute spinal cord injury, high-dose methylprednisolone raised GI bleeding ~1.5× (NASCIS II), so steroid-treated patients have the strongest SUP indication; early enteral feeding lowers risk, and chronic SCI needs none. Steroids are no longer routine in SCI."
+  ]
+ },
+ "HY6|GIN-04": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ]
+ },
+ "HY6|GIN-05": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY6|GIN-06": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY6|GIN-07": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: When ultrasound and CT are equivocal for cholecystitis, HIDA scintigraphy is the most accurate test: gallbladder non-filling at 4 h (or 30 min after morphine) = cystic duct obstruction. Fasting, TPN and critical illness cause false positives, which lowers its specificity in ICU acalculous cholecystitis.",
+   "DocT GT: Acalculous cholecystitis affects mainly elderly men and the critically ill (shock, trauma, burns, TPN), not young women; mortality is 10–50% (vs ~1% calculous) because gangrene and perforation come early and RUQ signs are often absent. Ultrasound (wall >3.5 mm, distension, pericholecystic fluid, sludge) is the first test."
+  ]
+ },
+ "HY6|GIN-08": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 4
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 5
+   }
+  ],
+  "lines": [
+   "DocT: AIMS65 (albumin <3 g/dL, INR >1.5, altered mental status, SBP ≤90, age ≥65) predicts in-hospital mortality, whereas Glasgow–Blatchford predicts the need for intervention. Full Rockall needs endoscopic findings, and MELD is a cirrhosis score, not a bleed score.",
+   "DocT: The restrictive trigger in upper GI bleeding is Hb <7 g/dL (Villanueva 2013) but <8 g/dL with ischaemic heart disease (ACG/ESGE), so an IHD patient at Hb 8.1 is not transfused yet. TRIGGER (2015) only showed that <8 vs <10 was feasible and safe."
+  ]
+ },
+ "HY6|GIN-09": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ]
+ },
+ "HY6|GIN-10": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 4
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT + DocT GT: A diverticular bleed found at colonoscopy is treated there and then (clips or band ligation ± adrenaline injection), so a stable patient needs neither embolisation nor surgery. Polyethylene glycol is bowel preparation, not treatment.",
+   "DocT + DocT GT: An unstable lower GI bleeder after failed endoscopic therapy goes to catheter mesenteric angiography + embolisation, which both localises and treats (ACG 2023 puts CTA first only if it causes no delay). A tagged-RBC scan is slow and non-therapeutic, and total colectomy is the last resort.",
+   "DocT GT: Upper GI blood is digested and absorbed as protein, so hepatic urea production rises and BUN climbs out of proportion to creatinine (BUN:creatinine >30) with a stable GFR. That is why a high urea points to an upper source, and why it should not be read as AKI."
+  ]
+ },
+ "HY6|GIN-12": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ }
+}

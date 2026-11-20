@@ -1,0 +1,289 @@
+{
+ "GI02A": [
+  {
+   "id": "T_9299d85e",
+   "topic": "Cutaneous signs of haemorrhagic pancreatitis",
+   "type": "qa",
+   "q": "Cutaneous haemorrhage signs in acute pancreatitis: names, sites and what they tell you?",
+   "a": [
+    "Grey Turner: flank; Cullen: periumbilical; Fox: upper thigh below the inguinal ligament; Bryant: scrotum",
+    "Retroperitoneal blood tracking from haemorrhagic necrotising pancreatitis",
+    "Seen in <5% of severe AP: very low sensitivity and NPV, so their absence excludes nothing; their presence signals high mortality",
+    "Cullen also occurs in ruptured ectopic pregnancy and other haemoperitoneum"
+   ],
+   "tier": 2,
+   "n": 3,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow:QB38-Q02; Marrow:QB38-Q07; Marrow:QB38-Q09"
+  }
+ ],
+ "GI02B": [
+  {
+   "id": "T_305a0e05",
+   "topic": "Pancreatic encephalopathy",
+   "type": "qa",
+   "q": "Fluctuating confusion, agitation and myoclonus on day 5 of severe necrotising pancreatitis: what is it, and what must be excluded?",
+   "a": [
+    "Pancreatic encephalopathy: ~10–20% of severe acute pancreatitis, usually in the first 2 weeks",
+    "Mechanism: circulating phospholipase A2/lipase demyelinate, plus cytokines and microcirculatory injury",
+    "Exclude Wernicke's (usually later, >2 weeks; alcohol, vomiting, TPN), withdrawal, low Ca/glucose/Na, sepsis, drugs",
+    "Treat the pancreatitis and give empirical thiamine"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:22"
+  }
+ ],
+ "GI03": [
+  {
+   "id": "T_6e2cdcbd",
+   "topic": "Contained oesophageal perforation",
+   "type": "case",
+   "q": "Stable patient, small CONTAINED mid-oesophageal perforation after endoscopy, minimal mediastinal soiling. Initial therapy?",
+   "a": [
+    "Non-operative: covered oesophageal stent (or endoscopic clip), nil by mouth, PPI",
+    "Broad-spectrum antibiotics + antifungal, nutrition (jejunal/parenteral), drain any collection",
+    "Surgery (primary repair + drainage; diversion or oesophagectomy if non-viable) for uncontained leaks, sepsis or instability",
+    "Boerhaave (barogenic, full-thickness, usually distal) is more often surgical",
+    "Any full-thickness oesophageal perforation (caustic, instrumental, Boerhaave) → acute POSTERIOR mediastinitis: chest pain, fever, sepsis, mediastinal air; anterior mediastinitis follows sternotomy"
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "GT",
+   "recall": false,
+   "src": "GT:51; GT6:91"
+  },
+  {
+   "id": "T_a1086ece",
+   "topic": "Board-like abdomen: perforated ulcer vs bile peritonitis",
+   "type": "pairs",
+   "q": "Board-like rigid abdomen: perforated peptic ulcer vs bile peritonitis — clue, first test, treatment?",
+   "a": [
+    "Perforated ulcer: sudden severe epigastric pain, shoulder-tip pain (diaphragm, C3–5), ulcer/NSAID history, shock",
+    "Erect CXR after 10 min upright shows free gas in ~75–85% (CT if negative) → resuscitate, NG, IV PPI, antibiotics, urgent omental-patch repair",
+    "Bile peritonitis: days after cholecystectomy, liver biopsy or trauma; generalised pain, ascites, ileus, rising bilirubin",
+    "Confirm by US/CT collection, HIDA leak or bile on aspiration → percutaneous drainage + ERCP stent/sphincterotomy; surgery if generalised peritonitis"
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "GT",
+   "recall": false,
+   "src": "CGT1:53; GT6:62"
+  },
+  {
+   "id": "T_e215de25",
+   "topic": "Clostridial gas gangrene of the abdomen",
+   "type": "reverse",
+   "q": "Diabetic with peritonitis, shock, abdominal-wall crepitus and gas in bowel wall, mesentery and soft tissue: organism?",
+   "a": [
+    "Clostridium perfringens: anaerobic, spore-forming Gram-positive rod",
+    "Alpha-toxin (lecithinase) → myonecrosis, haemolysis and shock",
+    "Immediate radical debridement + penicillin with clindamycin (stops toxin synthesis) ± hyperbaric O2",
+    "Gas without myonecrosis in diabetics (emphysematous pyelonephritis/cholecystitis) is usually E. coli/Klebsiella"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:5"
+  },
+  {
+   "id": "T_ce178f52",
+   "topic": "Visceral abdominal pain map",
+   "type": "cloze",
+   "q": "Where is visceral abdominal pain felt, by embryological gut?",
+   "a": [
+    "Foregut (stomach, duodenum, biliary tree, pancreas) → epigastrium",
+    "Midgut (small bowel, appendix, colon to mid-transverse) → periumbilical",
+    "Hindgut (distal colon, rectum) → hypogastrium",
+    "Visceral pain is dull and midline (bilateral autonomic afferents); parietal pain is sharp and localised, so appendicitis moves from umbilicus to RIF"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:7"
+  },
+  {
+   "id": "T_142d1a37",
+   "topic": "Peritoneal clearance by the diaphragm",
+   "type": "cloze",
+   "q": "How does the diaphragm clear peritoneal fluid and bacteria?",
+   "a": [
+    "Expiration: the diaphragm relaxes, stomata on its peritoneal surface open, and fluid and bacteria enter lymphatic lacunae",
+    "Inspiration: it contracts and pushes lymph on to the thoracic duct",
+    "So peritoneal infection reaches the blood fast, and splinting (IAH, ventilation) slows clearance"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:8"
+  },
+  {
+   "id": "T_dc881b68",
+   "topic": "Perforation site and contamination",
+   "type": "qa",
+   "q": "Which perforation gives the worst faecal peritonitis, and why?",
+   "a": [
+    "Bacterial load rises down the gut: stomach <10^3/mL (acid), jejunum ~10^4, ileum ~10^7–8, colon ~10^11–12",
+    "Colon flora is anaerobe-dominant (Bacteroides ~1000:1 over aerobes)",
+    "So distal colonic perforation = heaviest polymicrobial contamination → source control + cover for Gram-negatives and anaerobes",
+    "Gastroduodenal perforation is initially chemical peritonitis with a low bacterial load"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow:QB41-Q06"
+  },
+  {
+   "id": "T_051129df",
+   "topic": "Delayed post-pancreatectomy haemorrhage",
+   "type": "case",
+   "q": "Two weeks after a Whipple: abdominal pain, hypotension responding to transfusion, free fluid. Next step?",
+   "a": [
+    "Delayed post-pancreatectomy haemorrhage (>24 h): usually a gastroduodenal-artery stump pseudoaneurysm eroded by a pancreatic leak",
+    "Often heralded by a 'sentinel bleed' (blood in drain or NG)",
+    "Responds to resuscitation → urgent CT angiography and interventional radiology (embolisation or covered stent)",
+    "Unstable or IR fails → laparotomy; early (<24 h) haemorrhage goes back to theatre"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "GT:62"
+  }
+ ],
+ "GI06": [
+  {
+   "id": "T_cc325a06",
+   "topic": "Severe alcoholic hepatitis vs Zieve syndrome",
+   "type": "pairs",
+   "q": "Jaundiced alcoholic: severe alcoholic hepatitis vs Zieve syndrome — how to tell, and what to do?",
+   "a": [
+    "Severe alcoholic hepatitis: Maddrey DF ≥32 (or MELD >20) → admit, prednisolone 40 mg/day × 28 days if no infection or GI bleed",
+    "Lille score at day 7 >0.45 = non-response → stop steroids; 30-day mortality 30–50%; not for outpatient care",
+    "Zieve syndrome: after a binge on fatty liver/hepatitis; Coombs-negative haemolysis (spherocytes, high LDH) + jaundice + marked hypertriglyceridaemia",
+    "Zieve treatment is supportive (abstinence, transfusion); settles in 4–6 weeks; no steroids"
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT Marrow",
+   "recall": false,
+   "src": "DocT:20; Marrow:QB39-Q09"
+  },
+  {
+   "id": "T_6144df58",
+   "topic": "Phases of decompensated cirrhosis",
+   "type": "pairs",
+   "q": "Decompensated cirrhosis: separate the phases (EASL/PREDICT).",
+   "a": [
+    "Acute decompensation (AD): rapid ascites, HE, variceal bleed or infection needing HOSPITAL admission",
+    "Non-acute decompensation (NAD): slowly progressive ascites or mild HE NOT needing admission",
+    "ACLF: AD plus organ failure(s), high 28-day mortality",
+    "Stable decompensated: previous decompensation, now controlled; hospitalisation is the dividing line between AD and NAD"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "GT:29"
+  },
+  {
+   "id": "T_b7c7f544",
+   "topic": "Alcohol withdrawal in cirrhosis",
+   "type": "qa",
+   "q": "Agitated, tachycardic alcoholic with cirrhosis: initial treatment and drug choice?",
+   "a": [
+    "Alcohol withdrawal → symptom-triggered benzodiazepine (CIWA-Ar)",
+    "With liver disease prefer lorazepam (or oxazepam): glucuronidation only, no active metabolites",
+    "Diazepam/chlordiazepoxide accumulate (oxidative metabolism, active metabolites) and can precipitate HE",
+    "Thiamine before glucose; phenobarbital or dexmedetomidine adjunct for refractory withdrawal"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "Marrow",
+   "recall": false,
+   "src": "Marrow:QB39-Q07"
+  }
+ ],
+ "GI07B": [
+  {
+   "id": "T_584f592f",
+   "topic": "Pallidal manganese in cirrhosis",
+   "type": "reverse",
+   "q": "Cirrhotic with chronic HE; MRI shows bilateral T1-HYPERintense globus pallidus. What is it?",
+   "a": [
+    "Manganese deposition: manganese is cleared in bile, and portosystemic shunting (cirrhosis, TIPS) lets it reach the pallidum",
+    "Linked to parkinsonism (acquired hepatocerebral degeneration); regresses after transplant",
+    "Wilson disease differs: T2-hyperintense putamen/thalami ('face of the giant panda')"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:18"
+  }
+ ],
+ "HY6": [
+  {
+   "id": "T_2659f047",
+   "topic": "Small-bowel (obscure) GI bleeding",
+   "type": "algorithm",
+   "q": "Overt or occult GI bleeding with a normal OGD and colonoscopy: the pathway?",
+   "a": [
+    "Treat as suspected small-bowel bleeding (~5–10% of GI bleeds); repeat a scope only if the first was inadequate",
+    "Stable → capsule endoscopy first (highest yield, non-invasive)",
+    "Capsule positive → device-assisted (balloon) enteroscopy to treat the lesion",
+    "Brisk bleeding or unstable → CT angiography, then catheter embolisation",
+    "Stable, slow intermittent bleed (0.1–0.5 mL/min) with negative scopes → Tc-99m red-cell scintigraphy: most sensitive and images for up to 24 h, but localises poorly",
+    "Commonest lesion in the elderly: angiodysplasia (right colon/small bowel; CKD, vWD, aortic stenosis = Heyde); recurrent bleeding despite endotherapy and unfit for surgery → octreotide (or thalidomide)"
+   ],
+   "tier": 1,
+   "n": 5,
+   "banks": "DocT GT Marrow",
+   "recall": false,
+   "src": "DocT:7; DocT:19; Marrow:QB37-Q04; CGT5:95; AIM2:40"
+  },
+  {
+   "id": "T_b3c4366a",
+   "topic": "Forrest classification",
+   "type": "algorithm",
+   "q": "Bleeding peptic ulcer at endoscopy: Forrest class → rebleed risk → what to do?",
+   "a": [
+    "Ia spurting / Ib oozing: active bleeding → endoscopic therapy (dual: adrenaline + clip or thermal)",
+    "IIa visible vessel: rebleed ~40–50% → endoscopic therapy",
+    "IIb adherent clot: ~20–30% → remove clot and treat the base if possible (high-dose PPI alone is acceptable)",
+    "IIc flat pigmented spot (~10%) and III clean base (<5%) → no endotherapy, oral PPI, early feeding",
+    "After endotherapy of Ia–IIb: high-dose PPI for 72 h (intermittent IV bolus is non-inferior to infusion)"
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT:3; GT7:107"
+  },
+  {
+   "id": "T_9fa98033",
+   "topic": "Antiplatelets after GI bleeding",
+   "type": "case",
+   "q": "GI bleed on aspirin + clopidogrel with a coronary stent placed 20 days ago: what happens to the antiplatelets?",
+   "a": [
+    "Never stop aspirin: stopping DAPT in the first month after a stent carries a high risk of stent thrombosis (often fatal MI)",
+    "DocT keys: continue DAPT",
+    "ESGE 2021 / ACG-CAG 2022: if bleeding is life-threatening with high-risk stigmata, interrupt the P2Y12 inhibitor briefly and resume within ≤5 days, with cardiology input",
+    "Control the bleed: urgent endoscopic haemostasis + high-dose IV PPI; platelet transfusion does not help",
+    "Primary-prevention aspirin can be stopped; secondary-prevention aspirin restarts as soon as haemostasis is secure"
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "GT",
+   "recall": false,
+   "src": "AIM1:71"
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged).",
- "version": "2e3b5e0243",
+ "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged).",
+ "version": "a7c461ee26",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -1909,6 +1909,61 @@
   "HY2|CAR-27": {
    "fields": {
     "a": "**Sweep — the nine statements**\n | T/F | WHY\na | F | Verapamil — adenosine can trigger bronchospasm.\nb | F | Negatively inotropic; avoid with EF below 40%.\nc | F | Warfarin; DOACs contraindicated.\nd | F | Hyperkalaemia; digoxin = reverse tick, short QT.\ne | T | 1 mg every 3–5 min.\nf | F | Resume CPR for 2 min straight away.\ng | T | Rescue PCI if lysis fails.\nh | F | VA — the heart must be bypassed.\ni | F | Anticoagulate; lysis only if hypotensive."
+   }
+  },
+  "GI01B|ALF-22": {
+   "fields": {
+    "a": " | **MANNITOL** | **HYPERTONIC SALINE**\n**Dose** | Bolus 0.5–1 g/kg *(standard teaching, not in your notes)* | **23.4%, 30 mL** or **7.5%, 2 mL/kg**; repeat every 2–3 h; or 3% infusion at 5–20 mL/h\n**Response** | **15–60 min** after a bolus | \n**Target** | Osmolality under 320 *(standard teaching, not in your notes)* | Sodium **145–155 mmol/L**\n**Limits** | **Paradoxical ICP rise in 20%**; best in mild to moderate rise | Sodium rise no more than **12 mmol/L in 24 h** (18 in 48 h)\n**Evidence** | Survival **47.1% vs 5.9%** | "
+   }
+  },
+  "GI01B|ALF-27": {
+   "fields": {
+    "a": " | **WEST** | **INDIA**\n**Culture positive** | 80% | **52%**\n**Organisms** | **Gram-positive** (Staph. aureus) | **Gram-negative** (57%): Acinetobacter, Klebsiella\n**Fungal** | **32%** | Aspergillus in 23% (scan unclear)\n**OUTCOME** | **NO INFECTION** | **INFECTION**\n**Encephalopathy worse or static** | 9.1% | **60.3%**\n**Seizures** | 2.3% | 22.1%\n**Renal failure** | 4.5% | 33.8%\n**Mortality** | 11.4% | **52.9%**"
+   }
+  },
+  "GI01C|ALF-37": {
+   "fields": {
+    "a": " | **BIOLOGICAL** | **NON-BIOLOGICAL**\n**Principle** | **Hepatocytes** in a bioreactor | **Artificial detoxification**\n**Devices** | **BAL** (HepatAssist), **ELAD**, BLSS | **MARS**, **Prometheus**, **SPAD**, plasmapheresis, charcoal haemoperfusion\n**Risk** | Infection, zoonosis | Infection, bio-incompatibility"
+   }
+  },
+  "GI01C|ALF-39": {
+   "fields": {
+    "a": " | **MARS** | **SPAD**\n**Full form** | Molecular Adsorbent Recirculating System | Single-Pass Albumin Dialysis\n**Albumin** | **20%**, **recirculated** | Dilute, counter-current, **discarded** after one pass\n**Regeneration** | **Charcoal** and **anion-exchange** columns, then a dialyser | None\n**Circuits** | Three: blood, albumin, dialysate | Standard CRRT machine\n**Clearance** | Improves encephalopathy, renal function, haemodynamics | Ammonia and bilirubin clearance **similar or better**; cheaper"
+   }
+  },
+  "GI01C|ALF-40": {
+   "fields": {
+    "a": "**TRIAL** | **DESIGN** | **RESULT**\n**HepatAssist** | Randomised, 147 patients, 20 centres (USA, Europe) | **No difference** in 30-day survival; safe\n**ELAD** | 24 patients | No difference in 30-day survival\n**MARS** (French trial) | 102 patients, 16 transplant centres | 6-month survival in paracetamol cases 85.0% vs 68.4%, **P = 0.46**"
+   }
+  },
+  "GI02B|PANC-25": {
+   "fields": {
+    "a": "High-volume haemofiltration (17 studies): lowers **short-term** (under 4 weeks) but **not long-term** mortality.\nCytoSorb: improves haemodynamics; **no effect on mortality**.\n | **T/F** | **REASON**\n**a** | F | Ringer's lactate.\n**b** | F | More overload, no benefit.\n**c** | F | Not recommended.\n**d** | F | Enteral; avoid parenteral.\n**e** | F | Delay to weeks 3–4.\n**f** | T\n**g** | F | Deferred."
+   }
+  },
+  "GI04|MES-08": {
+   "fields": {
+    "a": " | **SMALL BOWEL** | **COLON**\n**Age** | Varies with cause | **90% over 60**\n**Precipitant** | **Typical** | **Rare**\n**Appearance** | **Severely ill** | Not severely ill\n**Pain, tenderness** | Severe pain, little tenderness early | Mild pain, tenderness present\n**Bleeding** | Uncommon until late | **Rectal bleeding, bloody diarrhoea**\n**Test of choice** | **CT angiography** | **Colonoscopy**"
+   }
+  },
+  "GI04|MES-16": {
+   "fields": {
+    "a": " | **T/F** | **REASON**\n**a** | F | Rectosigmoid; Griffiths' is the splenic flexure.\n**b** | F | Late.\n**c** | F | It obscures vessels.\n**d** | T\n**e** | F | Colonoscopy.\n**f** | F | Avoid it.\n**g** | F | No role with peritonitis.\n**h** | T"
+   }
+  },
+  "GI05|IAH-05": {
+   "fields": {
+    "a": " | **PRIMARY** | **SECONDARY**\n**Origin** | Injury or disease **in the** **abdomen or pelvis** | **Outside** the abdomen\n**Typical setting** | After **damage-control** **laparotomy**; failed non-operative management of organ injury | **Massive resuscitation** for shock: burns, pelvic or limb fractures, chest injury\n**Mechanism** | Bleeding, packs, bowel oedema | Bowel and retroperitoneal oedema, ascites\n**Diagnosis** | Expected | **Elusive, delayed**\n**Treatment** | Early surgery or radiology | Medical first"
+   }
+  },
+  "GI05|IAH-13": {
+   "fields": {
+    "a": " | **T/F** | **REASON**\n**a** | F | 5–7 mmHg.\n**b** | F | 12 or more.\n**c** | F | Over 20 plus organ dysfunction.\n**d** | F | 25 mL.\n**e** | F | Mid-axillary line, supine.\n**f** | T\n**g** | F | 15 mmHg.\n**h** | F | Falsely high.\n**i** | F | Secondary."
+   }
+  },
+  "HY6|GIN-14": {
+   "fields": {
+    "a": "**Sweep — the nine statements**\n\n | **T/F** | **WHY**\n**a** | F | Day 4–7.\n**b** | F | Stop when risk resolves.\n**c** | F | Decompress (drain, NMB, laparotomy).\n**d** | F | Only if doubt, or after 72 h.\n**e** | F | No benefit; treat proven infection.\n**f** | F | Early endoscopy; no routine reversal.\n**g** | T | Laparotomy if it fails.\n**h** | T | Early-grade encephalopathy.\n**i** | F | PMN ≥ 250 = treat now."
    }
   }
  }
