@@ -2187,7 +2187,10 @@ function drawVivaInter(el, big, it) {
     const more = flow.queue.slice(flow.idx).some(x => x.vq);
     big.innerHTML = it.look ? `BACK TO NOW${ICON.next}` : more ? `NEXT QUESTION${ICON.next}` : `FINISH${ICON.next}`;
     const clk = el.querySelector('[data-vclock]'), tb = el.querySelector('[data-vtimer]');
-    tb.onclick = e => {
+    // T-181: a NEET packet's check — tap an item to open or close it; Reveal all / Close all
+    el.querySelectorAll('.vq-di').forEach(d => d.addEventListener('click', e => e.stopPropagation()));
+    el.querySelectorAll('[data-dall]').forEach(b => b.onclick = e => { e.stopPropagation(); el.querySelectorAll('.vq-di').forEach(d => { d.open = b.dataset.dall === '1'; }); });
+    if (tb) tb.onclick = e => {
       e.stopPropagation(); clearInterval(flow.vtimer); flow.vt0 = Date.now(); tb.textContent = 'Restart';
       flow.vtimer = setInterval(() => { if (!flow) return; const left = Math.max(0, 60 - Math.floor(((flow.pausedAt || Date.now()) - flow.vt0) / 1000)); if (!clk.isConnected) return clearInterval(flow && flow.vtimer); clk.textContent = '0:' + String(left).padStart(2, '0'); clk.classList.toggle('over', left === 0); if (!left) { clearInterval(flow.vtimer); const d = el.querySelector('[data-vspine]'); if (d) d.open = true; } }, 250);
     };

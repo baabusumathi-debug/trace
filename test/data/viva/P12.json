@@ -1,0 +1,566 @@
+{
+ "package": "P12",
+ "title": "NEET cardiology",
+ "kind": "neet",
+ "version": "P12.20261123.1",
+ "cards": {
+  "V12-001": {
+   "deck": "CVS03",
+   "topic": "Loss of atrial kick in aortic stenosis",
+   "type": "qa",
+   "tier": "S",
+   "q": "**A patient with severe aortic stenosis develops new atrial fibrillation and becomes hypotensive. Give:**\na The mechanism\nb Why the AS ventricle is so dependent on it\nc The usual atrial contribution to filling, normal vs stiff ventricle\nd The management principle",
+   "a": [
+    "**Loss of the atrial kick** (atrial systole) → LV filling falls → stroke volume and output fall",
+    "Pressure-overload **hypertrophy** makes the LV **stiff (diastolic dysfunction)**: early passive filling is poor, so late filling by atrial contraction matters most",
+    "Atrial contribution: about **15–20%** of filling in a normal heart, up to **~40%** in a stiff, hypertrophied ventricle",
+    "The fast rate of AF also shortens diastole, cutting filling and coronary perfusion time further",
+    "Restore sinus rhythm: **synchronised cardioversion if unstable**; avoid vasodilators and maintain preload and SVR",
+    "Trap: the tempting answer is coronary thrombosis; the muscle is unchanged, the **filling** has failed"
+   ]
+  }
+ },
+ "lines": {},
+ "questions": [
+  {
+   "q": "P12-101",
+   "text": "What counts as cardiogenic shock, and where does it come from?",
+   "steps": [
+    {
+     "card": "CVS03|CS-02",
+     "bridge": "Shock is a tissue diagnosis. The trials had to turn it into numbers, and the SHOCK trial did it first.",
+     "lesson": {
+      "v": 1,
+      "text": "You've just been given the idea for this packet. Every shock is three numbers failing: filling, pump and squeeze. Before we read those numbers, we need to know what we're naming. So start with the word shock itself.\n\nShock is inadequate organ perfusion to meet the tissues' oxygen demand. Notice what that definition leaves out. It doesn't mention blood pressure. Shock is defined at the tissue. A normal pressure with a rising lactate is shock. A low pressure with warm hands, a clear head and a good urine output may not be.\n\nCardiogenic shock is that same state, critical end-organ hypoperfusion and hypoxia, caused by a primary cardiac disorder. The word primary matters. In sepsis the heart is depressed too, but there it's a casualty of another disease, not the cause. In our three numbers, cardiogenic shock is the one where the pump fails first, and the other two only react.\n\nAnd the clinical definition asks for proof on two sides. [[Cardiogenic shock is a cardiac disorder with both clinical and biochemical evidence of tissue hypoperfusion.]] Why both? Because cold, clammy skin alone can be fear or a cold room, and a raised lactate alone can be adrenaline or a failing liver. Asking for both makes the diagnosis specific.\n\nThe bank tests this card from the other end. An asthmatic with wheeze, a heart rate of one hundred, a pressure of one hundred and thirty over eighty and a CVP of six. The tempting answer is some form of shock, because he looks sick. But nothing in that stem is under-perfused. It's acute asthma without shock.\n\nSo shock is a tissue diagnosis. Now, the trials had to turn that into numbers."
+     }
+    },
+    {
+     "card": "CVS03|CS-03",
+     "bridge": "SHOCK needs a catheter: CI 2.2 or less with a wedge of 15 or more. The ESC definition needs only the bedside and the lab.",
+     "lesson": {
+      "v": 1,
+      "text": "A definition in words won't enrol patients in a trial. In nineteen ninety-nine the SHOCK trial, which tested early revascularisation in infarct shock, wrote the definition in numbers, and those are still the numbers examiners quote.\n\nIt has two halves. The clinical half first. A systolic pressure below ninety millimetres of mercury for at least thirty minutes. Why thirty minutes? To exclude the brief dip of a vagal reaction or a drug bolus. Or, as the alternative, support needed to keep the systolic at ninety or above. So a patient on norepinephrine with a pressure of one hundred still qualifies, because the drug is hiding the shock. Then add end-organ hypoperfusion: a urine output below thirty millilitres an hour, or cool extremities.\n\nThen the haemodynamic half, and here our three numbers appear for the first time. [[The SHOCK trial needed a cardiac index of two point two litres per minute per square metre or less, together with a wedge pressure of fifteen millimetres of mercury or more.]] Read that as two statements. The low index says the pump is failing. The high wedge says the ventricle is full, so filling is not the problem. A low index alone proves nothing about the heart, because a bled patient has a low index too. That's the wrong option to watch for here: a low cardiac index, by itself, defines cardiogenic shock.\n\n{{**SHOCK trial (1999)**\nSBP <90 mmHg for ≥30 min, or support to keep it ≥90\n+ urine <30 mL/h or cool extremities\n+ **CI ≤2.2 L/min/m² AND PCWP ≥15 mmHg**}}\n\nOne thing about how it's asked. Many textbooks, and one grand test, split the index: below one point eight without support, below two point two on support. Accept either in an option. The numbers that never change are ninety for thirty minutes, and a wedge of fifteen.\n\nThat's the definition with a catheter in it. The guideline definition manages without one."
+     }
+    },
+    {
+     "card": "CVS03|CS-05",
+     "bridge": "Lactate answers 'is this shock?'. The next card asks the reverse: the shock is given, so what proves the heart did it?",
+     "lesson": {
+      "v": 1,
+      "text": "The SHOCK definition needs a catheter. The ESC heart failure guideline defines the same state from the bedside and the laboratory, and the best question on this section comes from it.\n\nThe card gives the wording of twenty sixteen. A systolic pressure below ninety with adequate volume, plus clinical or laboratory signs of hypoperfusion. Adequate volume is there to make you exclude an empty circulation first.\n\nThe lists matter more than the pressure. Five clinical signs: cold extremities, oliguria, mental confusion, dizziness and a narrow pulse pressure. Each one is the body moving flow away from skin, kidney and brain, and the narrow pulse pressure is simply a small stroke volume. Three laboratory signs: metabolic acidosis, a raised lactate and a raised creatinine.\n\nNow the update. The ESC guideline of twenty twenty-one kept those lists but dropped the demand for hypotension. It defines cardiogenic shock as primary cardiac dysfunction causing life-threatening tissue hypoperfusion, and it says plainly that hypoperfusion is not always accompanied by a low pressure. Why? Because the squeeze number can hide the failure. Vasoconstriction, or a vasopressor, holds the pressure up while the tissues starve. That's normotensive cardiogenic shock. So if an option says the ESC still requires a systolic below ninety, recognise it as the old wording.\n\nHere's the question that fewer than half answered. After an infarct: a cardiac index of one point nine, a wedge of nineteen, oliguria and a raised lactate. Which finding separates cardiogenic shock from heart failure alone? The favourite wrong option is one of the catheter numbers. But decompensated heart failure has exactly the same low index and the same high wedge. [[What turns heart failure into cardiogenic shock is hypoperfusion, and the raised lactate is the finding that shows it.]] The catheter says the pump is the cause. Only the tissues say it's shock.\n\n{{**ESC hypoperfusion**\nClinical: cold extremities · oliguria · confusion · dizziness · narrow pulse pressure\nLaboratory: metabolic acidosis · lactate ↑ · creatinine ↑\n**ESC 2021:** hypotension no longer required}}\n\nSo lactate answers the question, is this shock. The next card asks the question the other way round."
+     }
+    },
+    {
+     "card": "CVS03|CS-06",
+     "bridge": "It is shock, and the heart caused it. Next: how far along is it? SCAI stages A to E.",
+     "lesson": {
+      "v": 1,
+      "text": "Turn the last question round. There, the heart failure was given and you had to prove shock. Here the shock is given, and you have to prove the heart did it.\n\nIn practice, cardiogenic shock is diagnosed on three clinical criteria. First, persistent hypotension, a systolic below ninety. Persistent means sustained, the thirty minutes of the trials, not a single reading. Second, no adequate response to volume resuscitation. That's the bedside test of our filling number: an empty circulation recovers with fluid, and a failing pump doesn't, and may get worse. Third, end-organ hypoperfusion, clinical and biochemical. Both, as before.\n\nNow the grand test stem. An anterior infarct, a systolic of eighty-six for forty minutes on norepinephrine, a cardiac index of one point eight, a wedge of twenty, and a urine output of twenty millilitres an hour. Which finding confirms that this shock is cardiogenic? The tempting options are cold extremities, a narrow pulse pressure, or a lactate of two. But every low-output shock is cold with a narrow pulse pressure, a bled patient included. And lactate tells you there is shock, not where it came from. [[A wedge pressure of fifteen or more with a low cardiac index is what pins the shock on the left ventricle, because it proves the ventricle is full and still not ejecting.]]\n\nSo keep the two questions apart, because the examiner swaps them. Is this shock? Hypoperfusion answers, and lactate is its marker. Is this shock cardiogenic? A high filling pressure with a low output answers.\n\nWe know it's shock, and we know it's the heart. The next thing to ask is how far along it is."
+     }
+    },
+    {
+     "card": "CVS03|CS-08",
+     "bridge": "The line is drawn and the severity graded. Now the causes: first, the muscle that fails with clean coronaries.",
+     "lesson": {
+      "v": 1,
+      "text": "How far along is it? You met the SCAI stages in the cardiogenic shock walk, so this is a recall, pointed at MCQs.\n\nFive stages, A to E, and the whole scale turns on one thing, hypoperfusion. Stage A is at risk: a large infarct or acute heart failure, but no signs yet. Stage B is beginning: relative hypotension or a tachycardia, without hypoperfusion, so the lactate is normal. Stage C is classic: hypoperfusion that needs an intervention beyond volume, meaning an inotrope, a vasopressor or mechanical support. Stage D is deteriorating: like C, but failing the first interventions. Stage E is extremis: on several supports at once, perhaps in arrest with CPR or ECMO running.\n\n[[The line between stage B and stage C is hypoperfusion, not blood pressure.]] So the wrong option to expect is that hypotension defines stage C. A patient with a pressure of eighty-eight over sixty who is warm, with a lactate of one point four and a good urine output, is stage B. A normotensive patient with a lactate of four can be stage C. It's the same lesson as the last three cards, turned into a scale.\n\nThree details from the current version, the update of twenty twenty-two, in case they appear. Stage C carries a lactate of two millimoles per litre or more. Stage E carries a lactate of eight or more, with a pH below seven point two. And the arrest modifier, the letter A, was narrowed. On the card it's any CPR, including defibrillation. In the update it's an arrest with coma afterwards, because a brief arrest with prompt waking doesn't carry the same risk.\n\n{{**SCAI stages**\nA At risk · B Beginning (low BP or fast HR, **no hypoperfusion**) · **C Classic (hypoperfusion needing more than volume; lactate ≥2)** · D Deteriorating · E Extremis (lactate ≥8, pH <7.2)\nModifier **A** = cardiac arrest (2022: with coma)}}\n\nSo we've drawn the line around cardiogenic shock and graded it. Now, what actually breaks the pump?"
+     }
+    },
+    {
+     "card": "CVS03|CS-11",
+     "bridge": "Those hearts failed from within. The next group were stunned from outside: bypass, arrest, sepsis or a blow to the chest.",
+     "lesson": {
+      "v": 1,
+      "text": "What breaks the pump? The commonest answer is an infarct, and the coronary packet owns that. This card is the muscle that fails with clean coronaries, and it's asked often, because in each stem the history gives the cause away.\n\nFirst, heart failure itself, in two forms. Chronic heart failure of known cause that decompensates, or acute heart failure as the first presentation.\n\nThen four muscle diseases: chronic ischaemia, dilated cardiomyopathy, myocarditis, and stress-induced cardiomyopathy, Takotsubo. Two of these carry the questions.\n\nAlcohol first, because two thirds of the cohort missed it. A chronic drinker with confusion, ataxia and ophthalmoplegia is given thiamine, and the hypotension persists. The wrong picks were neurogenic shock and sepsis. But Wernicke's has no cord lesion to cut the sympathetic outflow, and nothing in the stem points to infection. The answer is alcoholic dilated cardiomyopathy: heavy drinking, usually quoted as more than eighty grams a day for more than five years, giving a large, poorly contracting ventricle. The pump number has failed, so the patient is cold, and needs inotropes. Its mimic is wet beriberi, also in a drinker, also heart failure. [[Wet beriberi is warm, high-output failure with a low SVR that reverses within hours of thiamine. Alcoholic cardiomyopathy is cold, low-output failure that persists after thiamine.]]\n\nThen Takotsubo. A woman, usually past the menopause, has chest pain after a bereavement. ST elevation or deep T inversion, a modest troponin rise. It looks like an anterior infarct. The discriminator is the angiogram: open coronaries, with an apex that balloons and a base that contracts hard, a pattern wider than any single coronary territory. It recovers over weeks. And here's the trap in its treatment. If that hyperkinetic base obstructs the outflow tract, an inotrope makes the obstruction worse. So Takotsubo with hypotension and outflow obstruction gets fluid, phenylephrine and a beta-blocker, not dobutamine.\n\nNext, two causes that belong to pregnancy: peripartum cardiomyopathy and coronary artery dissection. Peripartum cardiomyopathy is systolic failure, with an ejection fraction below forty-five percent, late in pregnancy or in the months after delivery. One bank asked the favourable signs at diagnosis, and the answer was all of them: a left ventricle less than about five and a half to six centimetres in diastole, an ejection fraction above thirty to thirty-five percent, no troponin rise and no thrombus in the ventricle.\n\nAnd two endocrine causes. Thyroid disease, too little or too much, and phaeochromocytoma, whose catecholamine surge can look exactly like Takotsubo.\n\n{{**Muscle causes, clean coronaries**\nADHF (decompensated chronic, or first presentation)\nChronic ischaemia · DCM (alcohol) · myocarditis · Takotsubo\nPregnancy: PPCM · coronary dissection\nEndocrine: thyroid (hypo or hyper) · phaeochromocytoma}}\n\nThose hearts failed from within. The next group were stunned by something outside them."
+     }
+    },
+    {
+     "card": "CVS03|CS-12",
+     "bridge": "So far the muscle. A heart can also fail with healthy muscle: a valve, a rhythm, or a block to flow.",
+     "lesson": {
+      "v": 1,
+      "text": "The last card was muscle that failed from within. This one is muscle stunned from outside. Five causes, and in most of them the pump number recovers if you support it and don't make it worse.\n\nStart with the one that's asked, post-cardiotomy shock. Its two mechanisms are a prolonged cardiopulmonary bypass and insufficient cardioprotection. Ischaemia during the cross-clamp, then reperfusion, stun the myocardium, and the output falls over the first hours, classically to a low point around four to six hours after bypass, recovering over the next day. So the stem reads: eight hours after an on-pump bypass operation, confused, cold, clammy and oliguric. That's low cardiac output syndrome.\n\nWhat do you do? Think in our three numbers, in order. Optimise the filling and the afterload. Correct potassium, magnesium and calcium. Fix the rate and the rhythm, with pacing if needed. Then an inotrope, dobutamine or milrinone. Then a balloon pump or another device if that fails. And all the while exclude the two surgical causes, tamponade and graft ischaemia. The wrong option is high-dose vasoconstrictors alone. [[Raising the squeeze against a stunned ventricle lowers the output further, so after cardiac surgery you optimise loading, electrolytes and rhythm, then add an inotrope.]]\n\nOne mimic here. Tamponade after cardiac surgery is also cold and oliguric. What separates it is that the filling pressures rise and equalise while the chest drains fall silent. That patient needs re-opening, not an inotrope.\n\nNow the other four, briefly. Dynamic outflow tract obstruction, where a small, hard-working ventricle pulls the mitral leaflet into its own outflow. You've just met it in Takotsubo. Post-cardiac-arrest stunning, which depresses the heart for one to three days and usually recovers. Myocardial depression in septic shock, which is reversible and secondary. That's why it sits on this card and yet doesn't count as primary cardiogenic shock, the word we stressed at the very start.\n\nAnd myocardial contusion. One bank asks its screening rule. Every significant blunt chest injury gets an ECG and a troponin. If either is abnormal, monitor for twenty-four to forty-eight hours for arrhythmia, and add an echo if the patient is unstable. If both are normal, significant injury is excluded. So a stable patient with ectopic beats on the ECG after chest trauma is admitted for monitoring.\n\nSo far, everything has been muscle. But a heart can fail with perfectly healthy muscle."
+     }
+    },
+    {
+     "card": "CVS03|CS-13",
+     "bridge": "Whatever the cause, once output falls the body reacts. That reaction is the next problem: the spiral.",
+     "lesson": {
+      "v": 1,
+      "text": "A heart can fail with healthy muscle. This last card of causes gives the three ways: a valve, a rhythm, or a block to flow. No bank asked it as a list. They asked its edges, so that's where we'll spend the time.\n\nValves first. On a native valve: stenosis, acute regurgitation, or obstruction of the valve. Acute regurgitation is the deadly one, because a ventricle of normal size suddenly has to take a large regurgitant volume, and its filling pressure soars. On a prosthetic valve: obstruction by thrombus or pannus, leaflet failure or restriction, mechanical failure, and dehiscence.\n\nThen rhythm. An atrial arrhythmia with a rapid ventricular rate, ventricular tachycardia, or bradycardia. A fast rate cuts the filling time. A slow one cuts the number of beats.\n\nJoin those two branches, because a recent grand test did, and it was missed. A patient with aortic stenosis goes into atrial fibrillation and collapses. Why? The tempting answer was coronary thrombosis. The key was loss of the atrial kick. A ventricle thickened by aortic stenosis is stiff, so it fills poorly in early diastole and depends on atrial contraction for the last part of its filling. [[In aortic stenosis, new atrial fibrillation removes the atrial kick that the stiff ventricle depends on, so the filling number collapses even though the muscle is unchanged.]] In a normal heart the atrial kick gives about a fifth of the filling. In a stiff one it can be nearer two fifths.\n\nThen the block to flow. The card lists cardiac tamponade, constriction and pulmonary embolism. The wider list of obstructive shock adds tension pneumothorax. And obstruction to forward flow, as one bank words it, includes critical aortic stenosis, dynamic outflow obstruction in hypertrophic cardiomyopathy, mitral stenosis and a left atrial myxoma.\n\nTwo edges are tested. Which of these is not obstructive shock? Adrenal crisis. It's distributive, a failure of squeeze, with a low SVR. And which does not obstruct forward flow? Myocardial contusion, because a bruised muscle is a pump problem, not a block.\n\nThe card ends with two others: toxidromes, such as beta-blocker and calcium-channel-blocker poisoning, and the myocardial depression of hypothermia.\n\n{{**Not the muscle**\nValve: stenosis · **acute regurgitation** · prosthetic thrombosis or dehiscence\nRhythm: fast AF · VT · bradycardia (AF in AS = lost atrial kick)\nObstruction: tamponade · constriction · PE · tension pneumothorax\nAdrenal crisis = distributive}}\n\nSo that's where the first failure comes from. But whatever the cause, once the output falls, the body reacts. And its reaction is the next problem."
+     }
+    }
+   ],
+   "spine": [
+    "Shock is a tissue diagnosis: perfusion too low for oxygen demand. Cardiogenic = a primary cardiac cause, proven by clinical AND biochemical hypoperfusion.",
+    "SHOCK trial: SBP <90 for ≥30 min (or support), urine <30 mL/h or cool limbs, CI ≤2.2 with PCWP ≥15. ESC 2021 needs hypoperfusion, not hypotension.",
+    "Two questions: 'Is it shock?' → hypoperfusion (lactate). 'Is it cardiogenic?' → high wedge with low index.",
+    "SCAI A–E turns on hypoperfusion: B has low BP without it; C has it and needs more than volume.",
+    "Muscle causes: alcohol (persists after thiamine), Takotsubo (no inotrope if LVOT obstruction), PPCM, endocrine; stunned: post-CABG low output, arrest, sepsis, contusion.",
+    "Non-muscle causes: valve, rhythm, obstruction. AF in aortic stenosis = lost atrial kick. Adrenal crisis is distributive, contusion is contractility."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Two patients arrive in your ICU within the same hour, and their monitors read exactly the same. A blood pressure of eighty-two over fifty. A heart rate of one hundred and ten.\n\nPatient A had an anterior infarct this morning. His hands are cold and wet, his urine has almost stopped, and he has crackles halfway up both lungs. Patient B has pneumonia. Her hands are warm, her pulse is bounding, and her chest is clear.\n\nSame pressure. Opposite problems. And if you give them the same treatment, one of them gets worse.\n\nSo let's ask what a blood pressure actually is. The pressure in the arteries is the flow the heart pushes into them, multiplied by how hard the vessels squeeze back. Flow times resistance. And flow itself depends on two things: how much blood comes back to fill the heart, and how strongly the heart pumps it out.\n\nThat gives you three numbers. Filling, pump and squeeze. Preload, contractility and systemic vascular resistance.\n\n[[Every shock is one of three numbers failing: the filling, the pump or the squeeze. Everything in this packet is a way of reading which one.]]\n\nWhen one of them fails, the other two try to cover for it, and that pattern of covering is what names the shock. Patient A's pump has failed. Output falls, so his body clamps down on its vessels, and that's why his hands are cold. Blood can't get through the failing left ventricle, so it backs up into his lungs, and that's why he's wet. Patient B is the other way round. Her squeeze has failed. Her vessels have opened, her heart pumps harder to fill them, and that's why she's warm.\n\nNow, how does NEET ask this? In four disguises, and they're the four parts of this packet.\n\nFirst, definitions. What exactly counts as cardiogenic shock, and which numbers the trials used. Second, the bedside. Warm or cold, wet or dry, and why a failing pump makes itself worse. Third, the catheter. A table of four pressures and flows that names the shock. That one card is the most-asked cardiology card in your question banks, thirty questions, so we'll take it slowly. And fourth, the probe. You'll learn echo here, once and properly, with the model beside you, because every later packet will lean on it. Then we finish with the question you face at every shocked bedside: will fluid help?\n\nOne promise before we start. Shock Two will take the same three numbers and ask what pushes on each one: which drug, which receptor, which machine. So everything you learn to read here, you'll learn to treat there.\n\nStart with the word itself. What counts as cardiogenic shock?"
+   },
+   "tier": "S",
+   "gen": "S1",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-102",
+   "text": "Why does a failing pump make itself worse, and how do you read it at the bedside?",
+   "steps": [
+    {
+     "card": "CVS03|CS-17",
+     "bridge": "The spiral leaves each patient somewhere on two axes: perfusion and congestion. Forrester drew them as a grid.",
+     "lesson": {
+      "v": 1,
+      "text": "Whatever broke the pump, the output has now fallen. This card explains why cardiogenic shock then gets worse by itself. In our three numbers: the pump fails first, and the body answers by pushing on the other two, filling and squeeze. Each push adds load to a heart that's already injured.\n\nFollow the chain. Myocardial injury reduces the cardiac output. Two sensors notice. The carotid baroreceptors are stretched less, so they stop restraining the sympathetic outflow. And the kidney is perfused less, so it releases renin. Two systems switch on: the sympathetic nervous system, and the renin-angiotensin-aldosterone system.\n\nTake the sympathetic system first. It raises the heart rate and the inotropy. That sounds helpful, but both raise the oxygen demand of a heart that's short of supply, and catecholamines are directly toxic to myocytes. It's the limb that beta-blockers inhibit.\n\nThen renin, which has two limbs. Angiotensin two constricts the vessels, and that raises the afterload. That's the squeeze. Aldosterone holds on to salt and water, and that raises the preload. That's the filling. These are the limbs blocked by ACE inhibitors, angiotensin receptor blockers and aldosterone antagonists, and the card adds ADH antagonists for the water.\n\nBoth systems arrive at the same place: negative remodelling and a worse left ventricle. Only one thing pushes back. BNP and ANP, released by the stretched chambers, oppose the vasoconstriction and the fluid retention. Keep that in mind; it's why BNP is a test for a stretched heart.\n\nNow the question. A large anterior infarct in shock, and the SVR stays high even after reperfusion. What worsens the myocardial injury? The distractors are reduced oxygen extraction and capillary recruitment, which sound physiological and mean nothing here. [[A persistently high SVR harms the injured heart through a higher afterload: wall stress and oxygen demand go up, and stroke volume goes down.]]\n\nKeep the two harms distinct, because options trade on them. Afterload raises wall stress and cuts the stroke volume. Preload raises the filling pressure and floods the lungs.\n\nOne honest exception. In about a fifth of infarct shock, a systemic inflammatory response dilates the vessels instead, so the SVR isn't always high. That patient is warm when you expected cold.\n\nAnd that's the next step. The spiral leaves every patient somewhere on two axes, and one man drew them as a grid."
+     }
+    },
+    {
+     "card": "CVS03|CS-18",
+     "bridge": "The grid needed a catheter. At the bedside you find wet and cold with your ears, a film and a probe.",
+     "lesson": {
+      "v": 1,
+      "text": "The spiral leaves each patient somewhere on two axes. Has the output fallen far enough to starve the tissues? And has the filling pressure risen far enough to flood the lungs? You met this grid in the cardiogenic shock walk. Here it is again, aimed at MCQs.\n\nIn the nineteen seventies James Forrester and his colleagues put the new pulmonary artery catheter into patients after myocardial infarction and sorted them by two numbers: a cardiac index of two point two litres per minute per square metre, and a wedge pressure of eighteen millimetres of mercury. Four groups fell out. Mortality was a few percent with both numbers normal, and about half with both abnormal.\n\nToday the same grid is read in bedside words. Cold or warm is perfusion. Wet or dry is congestion. And the shock version on your card adds the third number, the SVR.\n\nCold and wet is classic cardiogenic shock. The index is low, the SVR is high as the body clamps down, and the wedge is high. About two thirds of infarct shock sits here.\n\nCold and dry is euvolaemic cardiogenic shock. A low index and a high SVR, but a normal wedge. This is the one cardiogenic patient who may take a small, careful fluid bolus.\n\nWarm and wet is vasodilatory cardiogenic shock, or mixed shock. The index is still low, but the SVR is low or normal, and the wedge is high. It's the inflamed infarct from the last card, or an infarct with sepsis.\n\nWarm and dry has a high index, a low SVR and a low wedge. That's vasodilatory shock, and it isn't cardiogenic at all.\n\n{{ | **WET** | **DRY**\n**COLD** | Classic CS: CI ↓ · SVRI ↑ · PCWP ↑ | Euvolaemic CS: CI ↓ · SVRI ↑ · PCWP ↔\n**WARM** | Vasodilatory or mixed CS: CI ↓ · SVRI ↓/↔ · PCWP ↑ | **Not CS:** CI ↑ · SVRI ↓ · PCWP ↓}}\n\n[[Three quadrants have a low cardiac index, and that is what makes them cardiogenic. Warm and dry is the only one with a high index, and it is not cardiogenic shock.]]\n\nOne caution about the word warm. In Forrester's own grid, warm meant an index above two point two. In the shock grid, warm means dilated vessels. So a warm and wet patient in shock still has a low index.\n\nHow is it asked? Mostly as a pressure and a CVP. A previous infarct, a pressure of eighty over fifty, a heart rate of one hundred and ten, and a CVP of fifteen. Or chronic heart failure, ninety over fifty, a CVP of eighteen and a low ejection fraction. Both are cardiogenic shock, and nine in ten get them. The one that catches people is from the warm corner. The commonest cause of hypotension with a high output? The wrong picks are thyrotoxicosis and arteriovenous shunts. They do raise the output, but sepsis is far commoner.\n\nAnd one warning for later. A high CVP with a low pressure isn't always the left ventricle. If the wedge is low while the CVP is high, the trouble is on the right: right ventricular failure or a pulmonary embolus. The catheter will sort that out.\n\nBut Forrester needed a catheter. How do you find the quadrant with your hands and a probe?"
+     }
+    },
+    {
+     "card": "CVS03|CS-19",
+     "bridge": "The bedside gives the quadrant in words. The PA catheter gives it in four numbers, and names the shock.",
+     "lesson": {
+      "v": 1,
+      "text": "Forrester needed a catheter to place a patient on the grid. This card places him without one. Wet is something you hear, see on a film, and count on lung ultrasound. Cold is something you feel in the hands.\n\nWet means pulmonary congestion. The symptoms are dyspnoea and orthopnoea. The chest film shows pulmonary oedema. And lung ultrasound shows B-lines. A B-line is a bright vertical streak that starts at the pleura and runs to the bottom of the screen, made by a thickened, fluid-filled septum just under the pleura. Three or more in one rib space, in several zones on both sides, with the lung still sliding, is interstitial oedema. That's a direct bank question: more than three B-lines per field with sliding preserved means pulmonary oedema. Its one mimic on the options is pneumothorax, and the tell is simple. A pneumothorax abolishes both the sliding and the B-lines.\n\nAdd one sound. A third heart sound with crackles at both bases, sinus tachycardia and no ST change, in a patient with coronary disease, is congestive heart failure. The third sound is rapid early filling into a ventricle that's already overfull, with a high end-diastolic pressure. It's specific, about ninety percent, but insensitive. So its presence helps you and its absence doesn't.\n\nDry is the plain opposite. No signs of pulmonary congestion. Clear lungs, and no orthopnoea.\n\nNow the warm type, and the question that a third of the cohort missed. The card says the warm patient can present as hypertensive heart failure. Here's the stem. A pressure of two hundred over one hundred and twenty, chest pain, disorientation, a normal ECG, and pulmonary oedema on the film. The wrong picks were aortic dissection and acute infarction. [[Severe hypertension with pulmonary oedema, a normal ECG and no pulse or pressure difference between the arms is acute hypertensive heart failure, not dissection.]] The mechanism is in our three numbers. The squeeze has gone too high, and fluid is pushed out of the circulation into the lungs. So the treatment is to take the squeeze off with a vasodilator.\n\nThat brings a trap in the words. In the heart failure wards, warm and wet means well perfused but congested, and it's treated with diuretics and vasodilators, not an inotrope. In the shock grid of the last card, warm and wet meant a low index with dilated vessels, and it needed norepinephrine. Same two words, two grids. Read the pressure and the perfusion in the stem before you choose.\n\nOne more bank stem. A hypertensive diabetic who is breathless and oedematous, with a pressure of one hundred over sixty and a CVP of eighteen. The key is acute pulmonary oedema from left heart failure. The distractor is fluid overload from kidney disease.\n\nSo the bedside gives you the quadrant in words. The catheter gives it in numbers, and names the shock."
+     }
+    }
+   ],
+   "spine": [
+    "Injury → low output → baroreceptors and kidney sense it → SNS and RAAS switch on.",
+    "SNS: rate and inotropy up (more O₂ demand, toxicity). RAAS: angiotensin II raises afterload, aldosterone raises preload. BNP/ANP oppose.",
+    "A persistently high SVR hurts through afterload: more wall stress, less stroke volume. About a fifth of infarct shock is vasodilated instead.",
+    "Forrester: CI 2.2 and PCWP 18. Cold-wet classic, cold-dry euvolaemic, warm-wet mixed (all low CI); warm-dry has a high CI and is not cardiogenic.",
+    "Bedside: wet = orthopnoea, oedema on film, ≥3 B-lines with sliding; S3 is specific. Severe hypertension + pulmonary oedema + normal ECG = hypertensive heart failure."
+   ],
+   "tier": "S",
+   "gen": "S1",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-103",
+   "text": "How does the PA catheter name the shock?",
+   "steps": [
+    {
+     "card": "HY2|CAR-25",
+     "bridge": "Four numbers name the shock, but they reach you down a long fluid-filled tube. The tubing can lie.",
+     "lesson": {
+      "v": 1,
+      "text": "Everything so far has been walking towards this card. Thirty bank questions sit on it, more than on any other card in this packet. And it is our three numbers, written down by a catheter.\n\nThe catheter gives four readings. The right atrial pressure, which is the CVP, is the filling of the right heart. The wedge pressure, the PAWP, is the filling of the left heart. The cardiac output is what the pump delivers. And the SVR is the squeeze.\n\nDon't learn the table as twenty arrows. Each shock starts with one number failing, and the body moves the others. Find the first failure.\n\nIn hypovolaemic shock, the filling fails. Both filling pressures are low, the output falls, and the SVR rises to defend the pressure.\n\nIn cardiogenic shock, the pump fails. Blood backs up behind the left ventricle, so the wedge is high and the right atrial pressure high or normal. The output is low and the SVR is high.\n\nIn distributive shock, the squeeze fails. The SVR is low, the output rises to compensate, and the filling pressures are low or normal. It is the only shock with a high output and a low SVR.\n\nIn obstructive shock, something blocks the flow, and where it sits decides the pattern. A pulmonary embolus sits between the right heart and the left. Pressure piles up behind it, so the right atrial pressure is high, while the left atrium is starved, so the wedge is low or normal. A right ventricular infarct gives the same pair. Tamponade squeezes all four chambers at once, so the diastolic pressures rise and become equal.\n\n{{**Shock** | **RAP** | **PAWP** | **CO** | **SVR**\nHypovolaemic | ↓ | ↓ | ↓ | ↑\nCardiogenic (LV) | ↑/N | ↑ | ↓ | ↑\nDistributive (early) | ↓/N | ↓/N | ↑ | ↓\nObstructive, PE | ↑ | ↓/N | ↓ | ↑\nObstructive, tamponade | ↑ | ↑ (equal) | ↓ | ↑}}\n\nSo read the two filling pressures against each other first. [[Both low is hypovolaemia. A high wedge is the left ventricle. A high right atrial pressure with a low wedge is a block or a failure before the left heart. Both high and equal is tamponade.]] Then the output and the SVR separate the one warm shock from the cold ones.\n\nNow the traps, each where it forms. A grand test gave a right atrial pressure of fourteen, a wedge of six and a high SVR. Many chose hypovolaemic, because the wedge was low and the SVR high. But hypovolaemia makes both pressures low. A high right atrial pressure with a low wedge is obstructive, or a failing right ventricle.\n\nTamponade. What best confirms it on a catheter? The tempting options are pulsus paradoxus and electrical alternans. The key is equalisation of the diastolic pressures.\n\nA film with one hemithorax white and the mediastinum pushed away, a pressure of eighty-five over fifty-five, and a CVP of fifteen to eighteen. That's obstructive shock from a massive pleural effusion. It behaves like tamponade, and the answer is drainage, not a vasopressor.\n\nThere's a fifth number, the central venous oxygen saturation. When the output is low, the tissues extract more, so it falls and the skin is cold. In distributive shock it's normal or high, and the skin is warm. [[Cold with a low venous saturation means low output. Warm with a wide pulse pressure and a high venous saturation means distributive.]] One bank item keys septic shock for cold peripheries with a low saturation and a CVP of ten. That key is disputed. Only early, unresuscitated sepsis looks like that.\n\nTwo more. Neurogenic shock is distributive, but with the sympathetic drive lost the patient is warm, bradycardic, and has a low output. And one key names cirrhosis for a CVP of twenty-two. Cirrhosis is a high-output state with a normal or low CVP. A CVP of twenty-two means right heart failure or fluid overload.\n\nThe recent NEET recall asked the simplest pair, hypovolaemic against cardiogenic. Only the filling pressures differ.\n\nFour numbers, then. But they reach you down a long, fluid-filled tube."
+     }
+    },
+    {
+     "card": "HEMO01B|HDM-11",
+     "bridge": "Long, narrow or soft tubing lowers the natural frequency and the trace overshoots. The fast flush is how you check.",
+     "lesson": {
+      "v": 1,
+      "text": "Those four numbers travel down a column of saline before you ever see them. And a column of fluid in a tube has a behaviour of its own, which a recent grand test asked, and which was missed.\n\nFlick a fluid-filled line and it rings, like a pendulum given a push. The rate at which it rings is its natural frequency. You want that frequency high, well above anything in the pulse. And three properties of the tubing set it. It's highest when the tubing is wide, short and stiff. Make the tubing narrow, or long, or soft and compliant, and the natural frequency falls.\n\nWhy does a low one matter? Because the arterial pulse isn't one frequency. It's a fundamental, the heart rate, with a stack of faster harmonics on top that give the upstroke its shape. If the natural frequency of the system falls among those harmonics, the system resonates and amplifies them. The trace overshoots, and the displayed systolic is falsely high.\n\nSo here's the question. What does long tubing do to the natural frequency of the system? The wrong pick was that it raises it. [[Long tubing lowers the natural frequency, bringing it close to the harmonics of the pulse, so the trace resonates, overshoots and reads a falsely high systolic pressure.]]\n\nAnd the number to trust when a trace is ringing is the mean, which resonance hardly changes.\n\nSo how do you find out, at the bedside, whether your own line is ringing?"
+     }
+    },
+    {
+     "card": "HEMO01B|HDM-13",
+     "bridge": "The catheter reads the three numbers through tubing. The echo probe reads them directly, and that is the next section.",
+     "lesson": {
+      "v": 1,
+      "text": "You find out with the fast flush test, which you met with the arterial waveform. A short recall, then we leave the tubing behind.\n\nThe test checks the dynamic response of the whole system, and it reports the two things that decide whether the trace can be believed: the natural frequency, and the damping. You pull the flush and let go sharply. That's the push on the pendulum. Then you watch how the trace settles.\n\n[[An optimally damped system shows only one or two oscillations after the flush, each no more than a third of the one before, and then a crisp wave with a clear dicrotic notch.]]\n\nTwo failures lie either side of that. Many oscillations mean an underdamped, ringing system. It's the long tubing of the last card, and it reads the systolic too high and the diastolic too low. No oscillation at all means an overdamped system, from an air bubble, a clot or a kink. That one reads the systolic too low and the diastolic too high, and the dicrotic notch disappears. In both, the mean is close to the truth.\n\nThe trace also gives you numbers, if a stem asks for them. The natural frequency is the paper speed divided by the length of one oscillation cycle. And the amplitude ratio is the height of the second oscillation divided by the first. The trap is its direction. A higher ratio means less damping, not more.\n\n{{**Fast flush**\nOptimal: 1–2 oscillations, each ≤1/3 of the last\nNatural frequency = paper speed ÷ one cycle length (25 mm/s ÷ 1.2 mm ≈ 20 Hz)\nAmplitude ratio = D2 ÷ D1; **higher = less damping**}}\n\nOne last point about the pulmonary artery catheter, because an INI paper asked it and it was lost. The catheter gives a wedge pressure and a thermodilution output, continuous on some models. It doesn't give extravascular lung water. If a stem wants lung water together with a continuous cardiac output, the monitor is transpulmonary thermodilution with pulse contour analysis, the PiCCO.\n\nSo the catheter reads our three numbers through a tube. There's a second instrument that reads them with no tube at all, by looking straight at the heart."
+     }
+    }
+   ],
+   "spine": [
+    "Four readings: RAP (right filling), PAWP (left filling), CO (pump), SVR (squeeze). Each shock starts with one failing.",
+    "Hypovolaemic ↓↓↓↑ · cardiogenic ↑↑↓↑ · distributive: CO ↑, SVR ↓ · PE: RAP ↑ with PAWP ↓/N · tamponade: RAP = PAWP, both ↑.",
+    "Read RAP against PAWP first; then CO, SVR and ScvO₂ separate warm distributive shock from the cold low-output kinds.",
+    "High RAP + low PAWP is a problem before the left heart: obstruction (PE) or RV failure (RV infarct), never hypovolaemia.",
+    "Tubing: wide, short, stiff = high natural frequency. Long tubing lowers it → resonance → overshoot, falsely high systolic; the mean survives.",
+    "Fast flush: 1–2 oscillations, each ≤1/3 of the last = optimal. PA catheter gives no lung water: EVLW + continuous CO = PiCCO."
+   ],
+   "tier": "S",
+   "gen": "S1",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-104",
+   "text": "Echo basics: what does the probe show in shock?",
+   "steps": [
+    {
+     "card": "CVS05B|ECHO-22",
+     "bridge": "PLAX cuts the heart lengthways and shows the left side. To set the two ventricles side by side, go to the apex.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** parasternal long axis. Probe at the left sternal edge, marker to the right shoulder. Highlighted: the LV outflow tract, the aortic root, and the descending aorta behind the left atrium.}}\n\nThe catheter read our three numbers through a tube. The probe reads them by looking. Filling is the size of the chambers and of the IVC. Pump is how the walls move. And squeeze you infer, from a ventricle that empties too easily. This is the one place in the cardiology packets where echo is taught from the beginning, so we'll build it one view at a time, with the model beside you.\n\nTwo ideas first. Ultrasound can't cross air, so you reach the heart through three windows where lung doesn't cover it: beside the sternum, at the apex, and under the ribs. And every probe has a marker dot on one side. Where the dot points sets the plane of the cut.\n\nThe first view is the parasternal long axis. The probe sits at the left sternal edge, in the second to fourth intercostal space, with the marker towards the right shoulder. Why the right shoulder? Because the left ventricle lies along a line from the right shoulder to the left hip, and you're cutting along it.\n\nNow look at the model. At the top, nearest the probe, is the right ventricle. Below it the septum, then the left ventricular cavity and its back wall. To one side, the outflow tract leads through the aortic valve into the aortic root, and beneath that lie the mitral valve and the left atrium. And behind the left atrium is a small circle. That's the descending thoracic aorta, cut across. Remember it.\n\nThe card gives four uses: assessing contractility, calculating the ejection fraction, detecting regional wall motion abnormalities, and measuring the diameter of the outflow tract. That diameter is measured here because the beam meets the walls at right angles, so the edges are sharp. And it matters, because stroke volume is the area of the outflow tract multiplied by the velocity time integral, and the area comes from the diameter squared.\n\nThe banks ask this view three ways.\n\nFirst, by position. Left fourth space, marker to the right shoulder: which structure is best seen? The left ventricular outflow tract and the aortic valve. The wrong options are the pulmonary artery bifurcation, which belongs to the short axis view at aortic valve level, and the IVC, which is subcostal.\n\nSecond, by fluid. [[On the parasternal long axis, fluid in front of the descending aorta, between the aorta and the left atrium, is pericardial. Fluid behind the aorta is pleural.]] The pericardium is reflected in front of the aorta, so pericardial fluid can't get behind it.\n\nThird, by the aorta. The best transthoracic view for aortic dissection or an aneurysm of the root? The parasternal long axis, not the short axis at the aortic valve, because it shows the root and the first part of the ascending aorta lengthways. But a normal transthoracic study doesn't exclude dissection. A CT aortogram or a transoesophageal echo confirms.\n\nSo this view cuts the heart lengthways and shows the left side. To set the two ventricles side by side, move to the apex."
+     },
+     "model": {
+      "view": "PLAX",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "front",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "normal",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "LVOT",
+       "Ao",
+       "DAo"
+      ]
+     }
+    },
+    {
+     "card": "CVS05B|ECHO-27",
+     "bridge": "Both chest windows fail when inflated lung covers the heart. One window comes from below the lung: subcostal.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** apical four-chamber. Probe at the apex, marker to the left shoulder. Right ventricle beside the left; the M-mode line runs through the lateral tricuspid annulus (TAPSE).}}\n\nFrom the left sternal edge, slide the probe down to the apex of the heart, with the marker pointing to the patient's left, towards the left shoulder and armpit. Now you're looking up the heart from its tip, and all four chambers appear at once. Both ventricles near the probe, both atria beyond them, and the mitral and tricuspid valves between.\n\nThe card gives four uses: chamber enlargement, detecting and quantifying regurgitant and stenotic lesions, the contractility of both ventricles, and the inflow pattern across the mitral and tricuspid valves. Two reasons explain all four.\n\nThe first is that the ventricles sit side by side. Normally the right is less than two thirds the size of the left. When it's as big as the left, it's in trouble, and a ratio above one is a sign of right ventricular dysfunction in pulmonary embolism. In our three numbers, that's the obstructive pattern, seen instead of measured.\n\nThe second reason is Doppler. Doppler measures velocity only along the beam. From the apex, blood crossing the mitral and tricuspid valves runs straight along the beam, towards the probe as it fills and away from it as it leaks. So this is the view for inflow patterns, and for the jet of tricuspid regurgitation.\n\nAnd that jet is the question, asked three times, with only about half the cohort right in two of them. Which view grades tricuspid regurgitation and estimates the right ventricular systolic pressure? The popular wrong option is the subcostal IVC view. [[The tricuspid regurgitation jet is measured in the apical four-chamber view, where it runs along the beam. The subcostal IVC view supplies only the right atrial pressure that is added to it.]] The other wrong options fail for simple reasons. In the long axis view the jet runs across the beam. And the apical two-chamber view contains no right ventricle at all.\n\nOne more measurement lives here, and the model is showing it. As the right ventricle contracts, the tricuspid ring is pulled towards the apex, straight along the beam. An M-mode line through its lateral edge measures how far it travels. That's TAPSE, and seventeen millimetres or less is abnormal. The same measurement at the mitral ring is MAPSE.\n\nBoth the views so far go through the chest wall. In a ventilated patient with inflated lungs, they often disappear. One window still works."
+     },
+     "model": {
+      "view": "A4C",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "normal",
+      "phase": "play",
+      "mmode": "TAPSE",
+      "highlight": [
+       "RV",
+       "LV",
+       "RA"
+      ]
+     }
+    },
+    {
+     "card": "CVS05B|ECHO-17",
+     "bridge": "Turn the subcostal probe towards the head and the IVC appears. It is the most-asked structure in echo.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** subcostal four-chamber, seen through the liver. Probe under the xiphisternum, marker to the left shoulder. Shown with a pericardial effusion in tamponade; the right heart lies nearest the probe.}}\n\nWhen air-filled lung lies between the chest wall and the heart, the parasternal and apical windows fail. The subcostal view comes from below the lung, so it's the window that survives.\n\nThe set-up first. The patient lies supine with a relaxed abdomen; bending the knees slackens the abdominal wall. The probe goes under the xiphisternum with the marker towards the left shoulder, and the beam reaches the heart through the liver, which carries sound well. No turning of the patient is needed. That's why it suits the ventilated patient, and the pulse check in cardiac arrest.\n\nThe card names three situations where it's especially useful: obesity, emphysema and chest wall deformity. The reason is the same in each. Something is spoiling the chest windows. High PEEP does the same.\n\nAnd it names three things the view assesses: IVC variability, pericardial effusions and right ventricular enlargement. Look at the model to see why. The right ventricle and right atrium lie nearest the probe, so fluid around them, and their collapse in diastole, are seen clearly. And the IVC is one turn of the wrist away.\n\nThat's the bank question, and one in four missed it. An ICU patient with suspected tamponade: which view assesses IVC collapse and right atrial filling? The wrong pick was the apical four-chamber. It does show the right atrium, and it can show it collapsing. But the IVC is out of its reach. [[The IVC can't be seen from the apex, so the view for tamponade physiology, effusion, right-sided collapse and IVC together, is the subcostal one.]]\n\nSo turn the probe until the marker points towards the head, and follow the vein."
+     },
+     "model": {
+      "view": "SUB4C",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "feet",
+      "show": [
+       "chest",
+       "liver",
+       "labels"
+      ],
+      "path": "tamponade",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "RV",
+       "RA",
+       "pericardium"
+      ]
+     }
+    },
+    {
+     "card": "CVS05B|ECHO-19",
+     "bridge": "Three views and one vein. FATE is the protocol that puts them in order and tells you what to ask of each.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** subcostal IVC in long axis, running through the liver into the right atrium, with an M-mode line across it. Shown plethoric: wide, and barely moving with breathing.}}\n\nWith the marker towards the head, a dark tube appears, running through the liver into the right atrium. That's the IVC, and with seven bank questions it's the most-asked structure in echo. In our three numbers it reads filling: the pressure of the right atrium, without a catheter.\n\nHere's the mechanism. The IVC is a thin, floppy vein that opens straight into the right atrium. When the atrial pressure is low, the vein is half empty and small. As the patient breathes in, the pressure in his chest falls, blood is drawn upwards, and the vein collapses. A sniff exaggerates that. When the atrial pressure is high, the vein is stretched tight by that pressure, and a sniff barely moves it.\n\nSo you ask two things, just below the right atrium. Is it wider than two point one centimetres? And does it collapse by more than half on a sniff?\n\nSmall and collapsing is a normal pressure, zero to five, taken as three. Large and fixed is a high pressure, ten to twenty, taken as fifteen. One of each, a small vein that won't collapse or a large one that does, is the middle band, five to ten, taken as eight.\n\n{{**IVC** | **Sniff collapse** | **RAP (mmHg)**\n≤2.1 cm | >50% | **0–5 (3)**\n≤2.1 cm | <50% | 5–10 (8)\n>2.1 cm | >50% | 5–10 (8)\n>2.1 cm | <50% | **10–20 (15)**\nRVSP = 4 × TR velocity² + RAP}}\n\nTo settle a doubtful case you look for secondary signs of a high right atrial pressure. Your card lists a large right atrium, right ventricular hypertrophy, hepatic vein flow with the systolic wave smaller than the diastolic, and a tricuspid E over e prime above six. The echo society's guideline of twenty twenty-five keeps all of those except the hypertrophy. It also adds a top band: a vein wider than two point five centimetres that collapses by less than half, with dilated hepatic veins, can be taken as twenty.\n\nNow the traps.\n\nA ventilated patient has an IVC of seventeen millimetres that varies by more than twenty percent. Only half got this. The wrong picks were tamponade and right ventricular failure, and both of those give a wide, fixed vein. This vein is small and moving, so the right atrial pressure is low. But notice the setting. [[The sniff rule belongs to spontaneous breathing. On a ventilator the IVC distends with each breath instead, and a distensibility above eighteen percent suggests fluid responsiveness.]]\n\nNext, a calculation that only a third got right. The tricuspid jet is three point five metres per second and the right atrial pressure is ten. Four times three point five squared is forty-nine, and most stopped there. Forty-nine is only the gradient between the right ventricle and the right atrium. [[The right ventricular systolic pressure is four times the velocity squared, plus the right atrial pressure. Forty-nine plus ten is about sixty.]]\n\nThird, shock with a dilated IVC and minimal collapse. It indicates a raised right atrial pressure. It does not indicate fluid responsiveness; if anything, the opposite.\n\nAnd the tamponade profile, built from this card. An effusion, a right atrium that collapses in diastole, and a dilated, fixed IVC. So: a small left ventricle, a wide IVC, a narrow pulse pressure and a high CVP. Right ventricular failure gives the same vein, but with a dilated right ventricle and no chamber collapse.\n\nYou now have three views and one vein. One protocol puts them in order."
+     },
+     "model": {
+      "view": "SUBIVC",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "left",
+      "show": [
+       "chest",
+       "liver",
+       "labels"
+      ],
+      "path": "ivc-plethoric",
+      "phase": "play",
+      "mmode": "IVC",
+      "highlight": [
+       "IVC",
+       "RA"
+      ]
+     }
+    },
+    {
+     "card": "CVS05B|ECHO-36",
+     "bridge": "FATE says how to look. The next card says what to look for in cardiogenic shock, and adds the film and the blood tests.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** parasternal short axis at papillary muscle level. From the long axis, turn the probe a quarter turn clockwise, marker to the left shoulder. The LV is a circle, the RV a crescent on it. Shown hyperdynamic.}}\n\nThree views and a vein need an order. FATE, focus assessed transthoracic echocardiography, was described by Jensen and colleagues in two thousand and four, and you met it in the shock scan. It has four imaging goals, running from the dangerous to the detailed, and a last step of relating what you saw to the clinical picture.\n\nGoal one, exclude obvious pathology: pleural and pericardial effusions, valvular disease, aortic dissection and pulmonary embolism. Goal two, assess wall thickness and chamber dimensions: hypertrophy, the relative size of the two ventricles, and chamber enlargement. Goal three, assess contractility by eye, in five grades: hyperdynamic, normal, and mild, moderate or severe dysfunction. Goal four, image the pleura on both sides.\n\nThe model shows the view that serves goals two and three best, and it completes your set. From the long axis, turn the probe a quarter turn clockwise. Now the left ventricle is cut across, a circle with its two papillary muscles, and the right ventricle is a crescent on its side. You see every wall at once. And you see the septum. Round is normal. A flattened septum, which turns the circle into the letter D, means the right ventricle is overloaded.\n\nNow put our three numbers onto what you see.\n\nFilling has failed: a small left ventricle whose walls meet in systole, the kissing papillary muscles, with a small, collapsing IVC. That was a previous-year question. Oliguria after a period of hypotension: which finding points to a hypovolaemic cause? A hyperdynamic ventricle with near-complete obliteration of the cavity in systole.\n\nThe pump has failed: a dilated, poorly contracting left ventricle.\n\nFlow is blocked on the right: a dilated right ventricle with a flattened septum, meaning a pulmonary embolus or right ventricular failure.\n\nAnd the squeeze has failed. This is the trap, answered correctly by only thirty-eight percent. A hyperdynamic left ventricle with a normal volume status. The popular answer was hypovolaemic shock. But the stem tells you the volume is normal. A ventricle that starts at a normal size and still empties almost completely is ejecting against very little resistance. That's a low SVR: sepsis, anaemia, liver failure, thyrotoxicosis. [[A hyperdynamic left ventricle means hypovolaemia only if it is also small in diastole, with a small collapsing IVC. If its diastolic size is normal, it means a low SVR.]]\n\nLast, goal four. A transudate is anechoic, plain black. Specks swirling in the fluid, the plankton sign, point to infection or a haemothorax. One bank shows dependent black fluid that swings in a sine wave on M-mode, and keys a simple transudative effusion. Take that key. But strictly, the sinusoid sign proves only that the fluid is thin and free-flowing.\n\n{{**FATE**\n1 Exclude obvious pathology: effusions · valves · dissection · PE\n2 Wall thickness and chamber size\n3 Contractility: hyperdynamic → severe dysfunction\n4 Both pleurae: transudate anechoic; plankton = infection or blood}}\n\nFATE tells you how to look. The next card tells you what you're looking for when the shock is cardiogenic."
+     },
+     "model": {
+      "view": "PSAX-PM",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "hyperdynamic",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "LV",
+       "RV",
+       "septum"
+      ]
+     }
+    },
+    {
+     "card": "CVS03|CS-22",
+     "bridge": "Pictures first, numbers last. One equation turns every Doppler velocity into a pressure.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** apical four-chamber with a dilated, poorly contracting left ventricle: the pump number, seen directly.}}\n\nFATE was the method. This card is the work-up of cardiogenic shock itself, five tests, with echo first because it answers the most.\n\nOn echo you seek four things: left and right ventricular dysfunction, valvular abnormalities, chamber dimensions, and the response to therapy. That last one is the point people forget. Echo isn't done once. You repeat it to see whether your treatment has worked. It also finds the causes that need a surgeon, not a drug: tamponade, a ruptured papillary muscle or septum, and outflow tract obstruction. The model shows the commonest finding, and one bank asks it plainly. A heart failure patient, hypotensive, with a poor ejection fraction on echo, has cardiogenic shock from acute left-sided failure. Barely half got it. Don't hunt for a cleverer answer.\n\nThe twelve-lead ECG excludes an arrhythmia and looks for new ischaemia or infarction, because an occluded artery needs opening, not just support.\n\nThen the chest film, and the hardest question on this card. The four signs are upper lobe diversion, Kerley B lines, a pleural effusion and cardiomegaly. A grand test asked: all are true about Kerley lines, except? Only one in five found it. The false statement was that they represent swollen lymphatics. [[Kerley lines are thickened, oedematous interlobular septa, not lymphatics. B lines are short, one to two centimetres, horizontal, at the bases against the pleura. A lines are longer, deep in the lung, running towards the hila.]] Most people rejected the A line description, and it was true.\n\nThe film also separates the two wet lungs, and you need one discriminator. Cardiogenic oedema has a big heart and a wide vascular pedicle, above seventy millimetres, with bat-wing shadowing around the hila, septal lines and effusions. ARDS has a normal heart and pedicle, with patchy peripheral shadowing and air bronchograms.\n\nThen BNP, with troponin I beside it. You know its mechanism from the spiral: it's the hormone a stretched heart releases to push back. So it rises with any stretch or any failure to clear it. Pulmonary embolism, atrial fibrillation, renal failure, sepsis, an acute coronary syndrome, and age. Obesity lowers it. And the recall question asked, all of these raise BNP except? Hypothyroidism, which has no stretch behind it. One drug point. Sacubitril raises BNP but not NT-proBNP, so on that drug you follow NT-proBNP.\n\nAnd lactate. The higher it is, the higher the mortality. It's the marker of hypoperfusion from the first section, come round again.\n\n{{**CS work-up**\nEcho: LV/RV function · valves · chambers · **response to therapy**\nECG: arrhythmia, new ischaemia\nCXR: upper lobe diversion · Kerley B · effusion · cardiomegaly\nBNP ↑ (not in hypothyroidism; ↓ in obesity) · lactate ↑ = mortality ↑}}\n\nThat's what the probe shows. The numbers it measures come last."
+     },
+     "model": {
+      "view": "A4C",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "lv-poor",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "LV"
+      ]
+     }
+    },
+    {
+     "card": "CVS05B|ECHO-40",
+     "bridge": "The probe has read filling, pump and squeeze. Before any treatment, one question: will fluid raise the output?",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** apical four-chamber, the Doppler view. Continuous-wave Doppler across the tricuspid valve gives the regurgitant velocity; pulsed-wave Doppler at the mitral leaflet tips gives E and A.}}\n\nPictures first, numbers last. Doppler measures velocity, and nothing else. Every pressure you'll ever quote from an echo comes out of one equation.\n\nWhen blood is forced through a narrow opening it speeds up, and pressure is traded for velocity. The simplified Bernoulli equation says the pressure gradient, in millimetres of mercury, is four times the velocity squared, with the velocity in metres per second. A grand test asked which equation gives the pressure gradient between two chambers, and fewer than half got it. The wrong pick was Laplace. Laplace relates wall tension to pressure and radius. Poiseuille relates flow to the radius and length of a tube. [[Bernoulli turns a velocity into a pressure gradient: four times the velocity squared.]]\n\nNow the card's normal values, in three groups.\n\nContinuous-wave Doppler, which measures high velocities. Across the aortic valve, below two metres per second. Across the pulmonary valve, below one. And a tricuspid regurgitant jet below two point five. Put that jet into Bernoulli and add the right atrial pressure from the IVC, and you have the right ventricular systolic pressure, the calculation you did with the IVC. A tricuspid velocity above two point eight raises the probability of pulmonary hypertension.\n\nPulsed-wave Doppler, at the tips of the mitral leaflets. There are two waves. E is early, passive filling. A is atrial contraction, the atrial kick whose loss sank the patient with aortic stenosis. Normally E is below one point two metres per second, the ratio of E to A is above one, though that falls with age, and the deceleration time of the E wave is one hundred and forty to two hundred and forty milliseconds. When relaxation is impaired, E falls and A rises. When the left atrial pressure is high, E is tall and stops abruptly.\n\nAnd the third group, which the card labels TVI. Here that means tissue velocity imaging, not the velocity time integral. It measures how fast the mitral ring itself moves in early diastole, written e prime. Divide E by e prime and you track the left atrial pressure. In our three numbers, that's the filling of the left heart, the job the wedge did on the catheter. The card's normal is below eight to ten. The figure in current guidelines is that an average above fourteen means a raised filling pressure.\n\nOne small mismatch to know. This card gives a normal IVC as below twenty millimetres with fifty percent collapse on inspiration. That's the FATE figure. If a stem asks for right atrial pressure bands, use two point one centimetres.\n\n{{**Normal Doppler**\nΔP = 4V² (Bernoulli)\nCW: AO <2 · PA <1 · TR <2.5 m/s (TR >2.8 suggests PH)\nPW mitral: E <1.2 m/s · E/A >1 · DT 140–240 ms\nTissue Doppler: E/e′ <8–10 normal; >14 raised LA pressure}}\n\nSo the probe has read all three numbers. One practical question is left before you treat anything. If you give fluid, will the output rise?"
+     },
+     "model": {
+      "view": "A4C",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "normal",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "RV",
+       "RA",
+       "LV",
+       "LA"
+      ]
+     }
+    }
+   ],
+   "spine": [
+    "Echo reads the same three numbers by sight: filling (chamber and IVC size), pump (wall motion), squeeze (inferred from a ventricle that empties too easily).",
+    "PLAX (left sternal edge, marker to right shoulder): LVOT, aortic valve and root; fluid in front of the descending aorta is pericardial, behind it pleural.",
+    "A4C (apex): RV beside LV, and Doppler along flow: TR jet and RVSP = 4V² + RAP. Subcostal: works when lung blocks the chest; effusion, RV and IVC.",
+    "IVC ≤2.1 cm collapsing >50% = RAP 3; >2.1 cm collapsing <50% = RAP 15; one of each = 8. Sniff rule is for spontaneous breathing only.",
+    "FATE: obvious pathology, walls and chambers, contractility, pleura. Hyperdynamic LV + small in diastole = hypovolaemia; normal size = low SVR.",
+    "CS work-up: echo (repeat for response), ECG, CXR (Kerley lines are oedematous septa), BNP, lactate. Bernoulli: ΔP = 4V²."
+   ],
+   "tier": "S",
+   "gen": "S1",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-105",
+   "text": "Will fluid help this heart?",
+   "steps": [
+    {
+     "card": "CVS05B|ECHO-20",
+     "bridge": "The IVC only hints. Tests of fluid responsiveness come in three families, and they are not equally good.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** subcostal IVC again, with the M-mode line across it. Shown small, and collapsing with each spontaneous breath.}}\n\nYou've named the shock. Before any drug, there's one question about the filling number: if I give fluid, will the stroke volume rise? Go back to the same vein and ask it this different question.\n\nYou check two things, as before: the absolute diameter, and how much it collapses with inspiration. A vein wider than two centimetres that collapses by less than half makes the patient less likely to respond. A vein narrower than one centimetre that collapses by more than half makes him more likely to respond. Between one and two centimetres the rule says nothing, and a great many patients sit there.\n\n{{**IVC** | **Diameter** | **Collapse**\nLess likely fluid responsive | >2 cm | <50%\nMore likely fluid responsive | <1 cm | >50%\nGrey zone | 1–2 cm |\nVentilated, passive: distensibility >18%}}\n\nNotice the numbers have changed. For right atrial pressure the cut-off was two point one centimetres. Here it's one and two. Same vein, two questions, two sets of thresholds. An option that carries one set into the other question is wrong.\n\nWhy does the IVC only suggest? For the stroke volume to rise with fluid, both ventricles must be on the steep part of their curves, and this vein reports only the right side. And its collapse depends on effort. A patient breathing hard will collapse a well-filled vein, and a tense abdomen will squash it. [[A small, collapsing IVC only suggests fluid responsiveness. Confirm it with a passive leg raise or a change in the velocity time integral.]]\n\nOn a ventilator, as you saw with the right atrial pressure table, the vein distends instead of collapsing. The index is the maximum minus the minimum, divided by the minimum, and above eighteen percent suggests a responder. It needs a passive patient on a tidal volume of about eight millilitres per kilogram. Unlike pulse pressure variation, it doesn't need sinus rhythm.\n\nNow the question. Septic shock, one litre given, and the IVC still varies by more than fifty percent. What next? A quarter went wrong, choosing to start norepinephrine and stop the fluid. The key is another bolus of five hundred to one thousand millilitres. The vein is still showing a need for filling, and one litre is well short of the initial thirty millilitres per kilogram. Norepinephrine can run alongside if the pressure stays low. Stopping fluid at that point is the error.\n\nSo the IVC gives a hint. How good are the other tests?"
+     },
+     "model": {
+      "view": "SUBIVC",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "left",
+      "show": [
+       "chest",
+       "liver",
+       "labels"
+      ],
+      "path": "ivc-collapsing",
+      "phase": "play",
+      "mmode": "IVC",
+      "highlight": [
+       "IVC"
+      ]
+     }
+    },
+    {
+     "card": "HEMO04|FR-03",
+     "bridge": "The best family moves the patient along his curve. The passive leg raise does it with his own blood.",
+     "lesson": {
+      "v": 1,
+      "text": "The IVC gave a hint and no more. To see why, sort every test of fluid responsiveness into three families. You met them in haemodynamics, so this is a recall with the numbers.\n\nThe question behind all of them is the slope. Is this heart on the steep part of its Frank-Starling curve, where more filling gives more output, or on the flat part, where it gives only congestion?\n\nThe first family is static. One pressure or one size, taken at one moment: the CVP, the wedge pressure, the diameter of the IVC or the superior vena cava, the corrected flow time, and the end-diastolic volumes. Their area under the ROC curve is about zero point five to zero point six, and zero point five is a coin toss. Why so poor? Because a single point tells you where the patient is, not the slope he's on. The same filling pressure sits on the steep part in one heart and the flat part in another.\n\nThe second family is dynamic. Each ventilator breath is a small, repeated change in filling, and you watch how far the stroke volume swings. Pulse pressure variation, stroke volume variation, the pleth variability index, aortic blood flow variation, and the respiratory variation of the IVC. Their area is about zero point seven to zero point eight.\n\nThe third family is the challenge. You actually move the patient along his curve and measure what happens. A real one, a rapid fluid challenge of one hundred to two hundred and fifty millilitres. Or a virtual one, the passive leg raise. Their area is about zero point nine.\n\n[[Static measures are near a coin toss, dynamic indices are good, and a challenge, real or virtual, is best. The more directly a test probes the slope, the better it performs.]]\n\n{{**Family** | **Examples** | **ROC**\nStatic | CVP, PAOP, IVC diameter, EDV | 0.5–0.6\nDynamic | PPV, SVV, PVI, IVC variation | 0.7–0.8\nChallenge | PLR; fluid 100–250 mL | ~0.9}}\n\nSo the wrong option to expect is a filling pressure offered as the best predictor. A CVP, or a wedge, however carefully measured, is a static number. And notice where the IVC belongs. Its diameter is static. Its change with breathing is dynamic.\n\nThe best family includes a test that needs no fluid at all."
+     }
+    },
+    {
+     "card": "HEMO04|FR-12",
+     "bridge": "PLR is positive at a 10% rise in output. Every other test has its own cut-off: one table to finish.",
+     "lesson": {
+      "v": 1,
+      "text": "The best family was the challenge, and the leg raise is the challenge you can take back. You learned it in haemodynamics. It's here again because a recent grand test showed it as an image, and it was missed.\n\nThe method. Start with the patient semi-recumbent, trunk at forty-five degrees, not flat. Then use the bed to tip him, so the trunk goes flat and the legs come up. Why start semi-recumbent? Because lowering the trunk also empties the large splanchnic reservoir, not just the legs. Together that's about three hundred millilitres of his own blood. And you tilt with the bed, without touching him, because pain or arousal raises the output by itself.\n\nThe effect arrives within sixty to ninety seconds, and it reverses fully when you return him to the start.\n\nNow the part the question turns on. What do you measure? Not the blood pressure. A real rise in stroke volume may hardly move the pressure, so you'd miss true responders. You measure cardiac output or stroke volume in real time: pulse contour analysis, the velocity time integral on echo, or oesophageal Doppler. [[A passive leg raise is positive when cardiac output or stroke volume rises by ten percent or more.]] With end-tidal carbon dioxide as the surrogate, the threshold is a rise of five percent or more.\n\nSo to the image. The stroke volume was thirteen percent higher after the leg raise. The wrong pick was an artefact of tachycardia. But thirteen is above ten, and that's the whole question. The patient is fluid responsive.\n\nAnd why does this test matter more than the others? It doesn't use the ventilator, and it doesn't use the rhythm. [[The leg raise stays valid with spontaneous breathing, with arrhythmias and at low tidal volume, exactly where pulse pressure variation fails.]]\n\nOne caution. With the velocity time integral, a responder shows a rise of ten to fifteen percent. A change of a few percent is within the error of the measurement.\n\nThat's one threshold. The exam can ask any of ten."
+     }
+    },
+    {
+     "card": "HEMO04|FR-17",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Ten tests, ten thresholds. You don't need them all equally. No bank question has hit this table yet, so learn it in three groups and put your effort on the first.\n\nThe first group are the indices of the ventilator breath. Pulse pressure variation above thirteen percent. Stroke volume variation above ten to thirteen percent. Systolic pressure variation above ten millimetres of mercury. The pleth variability index above fourteen percent. And IVC distensibility above eighteen percent. They share their conditions: a passive patient, a tidal volume of at least eight millilitres per kilogram, and for the arterial ones a regular rhythm. Break a condition and the number stops meaning anything.\n\nThe second group rescues you when those conditions fail. The tidal volume challenge: raise the tidal volume from six to eight millilitres per kilogram for a minute, and a rise in pulse pressure variation of more than three point five percentage points is positive. The end-expiratory occlusion: hold the breath out for fifteen seconds, and a rise in output of more than five percent is positive.\n\nThe third group changes the filling directly. The passive leg raise, ten percent or more. The mini fluid challenge, one hundred millilitres, with a rise in the velocity time integral of more than ten percent. And the odd one, the recruitment manoeuvre, where a fall in stroke volume of thirty percent or more marks a responder. It's the only threshold that's a fall.\n\n{{**Test** | **Positive**\nPPV | >13%\nSVV | >10–13%\nSPV | >10 mmHg\nPVI | >14%\nIVC distensibility | >18%\nTidal volume challenge | PPV rise >3.5%\nPLR | CO/SV rise ≥10%\nMini fluid challenge | VTI rise >10%\nEnd-expiratory occlusion | rise >5%\nRecruitment manoeuvre | SV fall ≥30%}}\n\n[[The two to carry are pulse pressure variation above thirteen percent and a passive leg raise of ten percent or more. The rest are variations on those two ideas.]]\n\nNow step back, because this is where the packet turns. You began with three numbers: filling, pump and squeeze. The definitions told you when their failure counts as shock. The catheter measured them, and the probe showed them. And these last four cards settled the first of the three: whether filling is still worth giving.\n\nWhen the answer is no, the heart is on the flat part of its curve, and more fluid only floods the lungs. Then you must push on the pump or on the squeeze, with a drug or with a machine. Which drug acts on which receptor, and what it costs the heart in oxygen. Which device unloads the ventricle and which one loads it. That's Shock Two."
+     }
+    }
+   ],
+   "spine": [
+    "Fluid helps only if stroke volume rises: the heart must be on the steep part of its Frank–Starling curve.",
+    "IVC as a fluid test: <1 cm collapsing >50% suggests yes; >2 cm collapsing <50% suggests no; 1–2 cm says nothing. Not the 2.1 cm RAP cut-off.",
+    "Three families by ROC area: static 0.5–0.6 (CVP, wedge), dynamic 0.7–0.8 (PPV, SVV), challenge about 0.9 (PLR, fluid bolus).",
+    "PLR: from 45° semi-recumbent, tilt with the bed, about 300 mL in 60–90 s; measure CO or SV, not BP; positive at ≥10% (ETCO₂ ≥5%).",
+    "PPV >13% needs a passive patient, tidal volume ≥8 mL/kg and regular rhythm; PLR works without them.",
+    "If fluid will not help, push on the pump or the squeeze: Shock II."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's walk back through it, slowly, the way you'd want it in the exam hall.\n\nYou started with Patient A and Patient B. The same pressure, opposite problems. And you now have three numbers that tell them apart. Filling, pump and squeeze.\n\nThe definitions told you when a failing pump counts as shock. It's defined at the tissue, by hypoperfusion, not by a pressure. The trials gave it numbers: a systolic under ninety for half an hour, a cardiac index at or below two point two, and a wedge pressure of fifteen or more. And that wedge is the number that pins the low output on the left ventricle.\n\nThe bedside told you the same story with your hands. Cold means low output. Wet means high filling behind the ventricle. And a failing pump makes itself worse, because the body's own rescue, the sympathetic system and renin, raises the afterload and the filling that the injured heart has to work against.\n\nThe catheter wrote the story in four columns. The probe showed it in pictures. And the last four cards asked whether filling was still worth giving.\n\nNow the traps. These are the ones NEET has actually set, again and again. Listen for the wrong answer first.\n\nOne. Right atrial pressure of fourteen, wedge of six, high resistance. The tempting answer is hypovolaemia. [[Hypovolaemia makes both filling pressures low. A high right pressure with a low wedge means the trouble sits before the left heart: a pulmonary embolism blocking the way, or a right ventricular infarct failing to pump.]]\n\nTwo. Warm and wet, in heart failure. The tempting answer is an inotrope. But a warm patient is perfusing. He needs the water taken off, with a diuretic and a vasodilator. The inotrope is for cold.\n\nThree. A wide inferior vena cava that barely moves. The tempting answer is to give fluid. That vein is full. It tells you the right atrial pressure is high, and that patient is the least likely to respond to fluid.\n\nFour. A passive leg raise. The tempting move is to watch the blood pressure. [[A passive leg raise is judged by stroke volume or cardiac output, measured in real time. A rise of ten percent or more means the heart will respond to fluid.]]\n\nFive. The arterial line. Long tubing. The tempting answer is that it raises the natural frequency. It lowers it, closer to the frequencies inside the pulse, so the trace rings and overshoots, and the systolic reads falsely high.\n\nAnd six. A patient with aortic stenosis who collapses the moment he goes into atrial fibrillation. It isn't a new clot. His thick, stiff ventricle fills on the atrial kick, and fibrillation has taken it away.\n\nNow the check. The questions come up on the next screen. Answer each one in your head before you tap it open. The numbers are there on purpose, because the exam wants them exact.\n\nAnd when you're done, carry one thought into Shock Two. You can now read which of the three numbers has failed. Next comes the harder question. What do you push with?"
+   },
+   "tier": "S",
+   "gen": "S1",
+   "kind": "direct",
+   "drill": [
+    {
+     "q": "PA catheter: RAP ↓, PAWP ↓, CO ↓, SVR ↑. Which shock?",
+     "a": "Hypovolaemic. Both filling pressures low; SVR rises to compensate."
+    },
+    {
+     "q": "PA catheter: RAP 14, PAWP 6, SVR high. Which shock?",
+     "a": "Obstruction before the left heart (PE), or RV failure (RV infarct). Not hypovolaemic: that needs BOTH pressures low (GT4 Q75)."
+    },
+    {
+     "q": "RAP and PAWP both high and equal, CO low. Diagnosis, and what confirms it on the catheter?",
+     "a": "Tamponade. Equalisation of diastolic pressures (not pulsus paradoxus or electrical alternans)."
+    },
+    {
+     "q": "The only shock with a high cardiac output and a low SVR?",
+     "a": "Distributive (early sepsis): warm, wide pulse pressure, ScvO2 normal or high. Commonest cause of high-output hypotension = sepsis."
+    },
+    {
+     "q": "Hypovolaemic vs cardiogenic by CVP, PCWP, CI, SVR (NEET 2025 recall)?",
+     "a": "Hypovolaemic ↓ ↓ ↓ ↑. Cardiogenic ↑ ↑ ↓ ↑. Only the filling pressures differ."
+    },
+    {
+     "q": "Cold peripheries with a low ScvO2: low output or distributive?",
+     "a": "Low output (cardiogenic or hypovolaemic). Distributive is warm with a normal or high ScvO2."
+    },
+    {
+     "q": "Neurogenic shock: type, heart rate, skin?",
+     "a": "Distributive, with bradycardia and warm skin; low SVR, low filling pressures, low CO."
+    },
+    {
+     "q": "White-out hemithorax with mediastinal shift away, BP 85/55, CVP 16. Type of shock and treatment?",
+     "a": "Obstructive (massive pleural effusion, tamponade pattern). Urgent drainage."
+    },
+    {
+     "q": "SHOCK trial haemodynamic criteria?",
+     "a": "CI ≤2.2 L/min/m² AND PCWP ≥15 mmHg, with SBP <90 for ≥30 min (or support) and urine <30 mL/h or cool extremities."
+    },
+    {
+     "q": "Post-MI: CI 1.9, PCWP 19, oliguria, raised lactate. Which finding separates shock from heart failure?",
+     "a": "The raised lactate (hypoperfusion). CI and wedge are the same in decompensated heart failure."
+    },
+    {
+     "q": "Shock is established. Which finding proves it is cardiogenic?",
+     "a": "PCWP ≥15 mmHg with a low cardiac index: a full ventricle that is not ejecting."
+    },
+    {
+     "q": "SCAI B vs C: what is the boundary? Lactate for C and for E (2022 version)?",
+     "a": "Hypoperfusion, not blood pressure. C: lactate ≥2 mmol/L; E: lactate ≥8 with pH <7.2."
+    },
+    {
+     "q": "Forrester cut-offs, and the one quadrant that is not cardiogenic?",
+     "a": "CI 2.2 L/min/m² and PCWP 18 mmHg. Warm and dry: high CI, low SVR, low wedge."
+    },
+    {
+     "q": "Chronic drinker, Wernicke's treated, hypotension persists after thiamine?",
+     "a": "Alcoholic dilated cardiomyopathy (cold, low output). Wet beriberi would be warm and reverse with thiamine."
+    },
+    {
+     "q": "Aortic stenosis collapses when AF starts. Mechanism?",
+     "a": "Loss of the atrial kick: the stiff hypertrophied ventricle depends on atrial systole to fill (GT8 Q16)."
+    },
+    {
+     "q": "Long tubing on a pressure transducer: natural frequency and the displayed systolic?",
+     "a": "Natural frequency falls; resonance; overshoot with a falsely high systolic (GT8 Q87). Mean pressure is reliable."
+    },
+    {
+     "q": "Fast flush: what is optimal damping?",
+     "a": "1–2 oscillations, each no more than 1/3 of the last. Higher amplitude ratio (D2/D1) = less damping."
+    },
+    {
+     "q": "IVC and RAP: the three bands?",
+     "a": "≤2.1 cm, collapse >50% = 3 (0–5). >2.1 cm, collapse <50% = 15 (10–20). One of each = 8 (5–10). Spontaneous breathing only."
+    },
+    {
+     "q": "TR velocity 3.5 m/s, RAP 10 mmHg. RVSP? Which view measures the jet?",
+     "a": "4 × 3.5² + 10 = 59 ≈ 60 mmHg (49 is only the gradient). Apical 4-chamber; subcostal gives only the RAP."
+    },
+    {
+     "q": "PLAX: probe, marker, best-seen structure, and where pericardial fluid lies?",
+     "a": "Left sternal edge, 2nd–4th space, marker to right shoulder. LVOT and aortic valve. Pericardial fluid is anterior to the descending aorta."
+    },
+    {
+     "q": "Hyperdynamic LV with normal volume status?",
+     "a": "Low SVR (sepsis, anaemia, liver failure, thyrotoxicosis). Hypovolaemia needs a small diastolic LV, kissing walls and a small collapsing IVC."
+    },
+    {
+     "q": "Kerley lines: what are they? B vs A?",
+     "a": "Oedematous interlobular septa, not lymphatics. B: 1–2 cm, horizontal, basal, perpendicular to pleura. A: 2–6 cm, deep, towards the hila."
+    },
+    {
+     "q": "Which equation gives the pressure gradient between two chambers?",
+     "a": "Simplified Bernoulli: ΔP = 4V². (Laplace = wall tension.)"
+    },
+    {
+     "q": "Passive leg raise: start position, what to measure, positive threshold?",
+     "a": "Semi-recumbent 45°, tilt with the bed. CO or SV in real time, not BP. Rise ≥10% (ETCO2 ≥5%). SV +13% = fluid responsive (GT8 Q3)."
+    },
+    {
+     "q": "IVC as a fluid test: likely, unlikely, and on a ventilator?",
+     "a": "<1 cm collapsing >50% = likely; >2 cm collapsing <50% = unlikely; 1–2 cm grey. Ventilated: distensibility >18%. PPV >13%."
+    }
+   ],
+   "packet": "Shock I: reading the failing heart"
+  }
+ ],
+ "explain": {},
+ "fixes": []
+}
