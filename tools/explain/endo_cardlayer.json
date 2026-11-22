@@ -1,0 +1,928 @@
+{
+ "CCM01|GLU-02": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: For hypoglycaemia on an insulin infusion: stop the infusion, give IV dextrose (D50 25 g or D10), recheck every 15 min and flush the carrier line, which can hold residual insulin. Note the threshold difference - the QBank uses <70 mg/dL while this card uses <60 mg/dL."
+  ],
+  "cross": [
+   "Crossfire · Marrow/ICU texts: ICU hypoglycaemia CBG <60 mg/dL; ADA Standards 2025 & SCCM 2024: level 1 <70, level 2 (clinically significant) <54, level 3 = severe with altered mentation. In exam: <70 if ADA framing/levels in options, else <60 (Marrow key). [Claim is wrong that GLY-01 says <70 — it also says <60.]"
+  ]
+ },
+ "CCM01|GLU-16": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO01A|ENDO-03": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: In overt primary hyperthyroidism TSH is undetectable (<0.01-0.05 mIU/L on third-generation assays); a low but detectable TSH of 0.1-0.4 suggests subclinical disease, non-thyroidal illness or dopamine/steroids. Pick undetectable over low when both are offered; the exception is a TSH-secreting adenoma, where TSH is normal or high.",
+   "DocT: Lithium belongs on the drug list twice over - it blocks hormone release (hypothyroidism, goitre) and causes painless silent thyroiditis with transient thyrotoxicosis. Checkpoint inhibitors and interferon-alpha give the same thyroiditis-then-hypothyroidism sequence.",
+   "DocT GT: In the first trimester TSH FALLS (often <0.1) because hCG shares the alpha subunit and weakly stimulates the TSH receptor, raising free T4; this is physiological and peaks at 10-12 weeks. Prolactin, cortisol and ACTH rise through pregnancy, while vasopressin is unchanged despite faster clearance by placental vasopressinase."
+  ]
+ },
+ "ENDO01A|ENDO-04": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Infection is the commonest trigger of thyroid storm in a patient whose hyperthyroidism was never diagnosed, while stopping antithyroid drugs leads in known treated patients (Japanese national survey). Work up and treat infection alongside the storm, because fever alone cannot separate the two.",
+   "DocT: Storm up-regulates beta-1 receptors, so coexisting infection, beta-agonists or high-dose pressors readily trigger AF, ischaemia or high-output failure. Give propranolol early, but switch to short-acting esmolol if storm cardiomyopathy has lowered the ejection fraction."
+  ]
+ },
+ "ENDO01A|ENDO-05": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Thyroid storm has no confirmatory test, so its ICU mimics matter: sepsis (fever, tachycardia, delirium, shock) and adrenal crisis (shock, vomiting, confusion) first, then phaeochromocytoma crisis, sympathomimetic toxicity, NMS and serotonin syndrome. Send TSH, free T4 and a cortisol, take cultures, and give hydrocortisone, which covers both storm and adrenal insufficiency."
+  ]
+ },
+ "ENDO01A|ENDO-08": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT GT: Thyroid storm with AF and decompensated heart failure: full-dose propranolol can precipitate cardiogenic collapse, so rate control uses a short-acting titratable beta-1 blocker (esmolol or landiolol, stoppable at once) or digoxin with a cautious beta-blocker - digoxin needs higher doses in thyrotoxicosis, and diltiazem is negatively inotropic."
+  ],
+  "cross": [
+   "GT5 Q90 keys digoxin plus a cautious beta-blocker for storm with AF and severe heart failure. Truth: the Japan Thyroid Association 2016 prefers landiolol or esmolol when Killip >=III, so an esmolol infusion is equally supported. If both appear, pick digoxin plus cautious beta-blocker as DocT does; never full-dose propranolol or diltiazem."
+  ]
+ },
+ "ENDO01A|ENDO-09": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ]
+ },
+ "ENDO01A|ENDO-10": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ]
+ },
+ "ENDO01A|ENDO-11": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Myxoedema also flattens or inverts T waves (diffuse repolarisation change, worse with a pericardial effusion), and T-wave inversion is the keyed ECG finding. Distractors map elsewhere: ST elevation to MI or pericarditis, AF to thyrotoxicosis, short QT to hypercalcaemia.",
+   "DocT: Hypothyroid hyponatraemia comes mainly from a low cardiac output and GFR, so less filtrate reaches the diluting segments and free water cannot be excreted, with non-osmotic ADH release adding to it. Glucocorticoid deficiency works the same way, since cortisol is needed for water excretion and CRH is co-secreted with ADH."
+  ]
+ },
+ "ENDO01A|ENDO-12": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: T3 is the riskier hormone in myxoedema coma - 3-4 times as potent as T4 and acting within hours, it raises myocardial oxygen demand fast and can cause angina, arrhythmia or MI in the elderly or coronary patient. IV T4 is the backbone; T3 is a cautious add-on at the low end (5-10 microgram, then 2.5-10 microgram 8-hourly) or avoided in cardiac patients.",
+   "DocT: Aspiration pneumonitis is the typical pulmonary complication: depressed consciousness, blunted airway reflexes, hypoventilation, ileus and macroglossia all favour it. Protect the airway early (intubate if obtunded or hypercapnic) and decompress the stomach."
+  ]
+ },
+ "ENDO01B|ENDO-14": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT: Autoimmune adrenalitis causes 80-90% of primary adrenal insufficiency (tuberculosis still matters in India). The trap: chronic steroid use is the commonest cause of adrenal insufficiency overall, but it is secondary through HPA suppression, so aldosterone and potassium stay normal."
+  ]
+ },
+ "ENDO01B|ENDO-15": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: The card names only steroid withdrawal, but a patient ON chronic prednisone (>=5 mg/day, HPA suppressed) who develops sepsis needs stress-dose hydrocortisone even without withdrawal - the axis cannot mount the extra cortisol the illness demands."
+  ]
+ },
+ "ENDO01B|ENDO-16": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: CIRCI means cortisol activity inadequate for the severity of illness - a dysregulated HPA axis, tissue glucocorticoid resistance and low CBG, with NO structural adrenal or pituitary lesion, so a normal-looking cortisol can still be too low in septic shock. Autoimmune destruction, pituitary tumour and adrenal haemorrhage are absolute, structural causes."
+  ],
+  "cross": [
+   "GrandT1 Q49 keys autoimmune adrenal destruction as the basis of CIRCI, and DocT Q18 keys the high-baseline, low-increment pattern as the only CIRCI response. Truth: CIRCI is functional and has no structural cause (the GT2 repeat keys this correctly), and the 2017 SCCM/ESICM criterion is a cortisol increment <9 microgram/dL, which a normal baseline with no rise also meets. If asked for the mechanism, pick the functional/dysregulated axis; if asked which Synacthen response is CIRCI, any delta <9 qualifies."
+  ]
+ },
+ "ENDO01B|ENDO-17": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT: The same doses are the surgical steroid cover for Addison's or a chronic steroid user (prednisolone >=5 mg/day for over 4 weeks): hydrocortisone 100 mg IV at induction, then 200 mg/24 h while nil by mouth, then double the usual oral dose for 48 h (Association of Anaesthetists 2020). Minor procedures need only the usual dose plus a single 25-50 mg; 200 mg is the daily total, never the induction bolus.",
+   "Marrow: A single dose of etomidate inhibits 11-beta-hydroxylase for 6-48 h and can produce pressor-refractory shock; the treatment is hydrocortisone 100 mg IV, not more catecholamine."
+  ]
+ },
+ "ENDO01B|ENDO-18": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Drugs that precipitate CIRCI: etomidate (one dose blocks 11-beta-hydroxylase for 24-72 h), azoles such as ketoconazole (block steroidogenesis) and enzyme inducers - phenytoin, rifampicin, phenobarbital - that speed cortisol metabolism. A patient on all three needs hydrocortisone."
+  ],
+  "cross": [
+   "DocT keys CIRCI for a flat cosyntropin response (delta <9 microgram/dL) in a long-term steroid user. Truth: in that patient the same flat response is adrenal atrophy from HPA suppression (secondary/tertiary insufficiency), and the test cannot separate the two. If the stem names chronic steroid use, secondary insufficiency is at least as correct; either way the treatment is hydrocortisone 200 mg/day."
+  ]
+ },
+ "ENDO01B|ENDO-19": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Sheehan's syndrome is an anterior pituitary loss, so it gives chronic central hypothyroidism, failed lactation and amenorrhoea; DI is rare because the posterior pituitary is spared. That is the discriminator from pituitary apoplexy with stalk involvement.",
+   "DocT GT: Diabetes mellitus, sickle cell disease and hypertension predispose to pituitary apoplexy (microvascular ischaemia or BP surges inside an adenoma) and belong beside the card's triggers; hyperthyroidism does not."
+  ]
+ },
+ "ENDO01B|ENDO-20": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 5
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ],
+  "lines": [
+   "DocT: In lithium nephrogenic DI, lithium enters principal cells through ENaC and inhibits GSK-3beta, down-regulating aquaporin-2 (main mechanism); loss of the urea transporter UT-A1 lowers medullary tonicity as well. Lithium never stimulates V2 or ADH release, so urine osmolality stays ~180-200 at a normal plasma osmolality.",
+   "DocT: After pituitary stalk injury (transsphenoidal surgery, TBI) sodium can run triphasic: DI from axonal shock on days 1-5, then SIADH as degenerating neurons leak stored ADH on days 5-10 (stop desmopressin, restrict water), then permanent DI if >80-90% of neurons are lost. Many patients show only phase 1 or an isolated day-7 hyponatraemia.",
+   "DocT: Adipsic DI (hypothalamic lesion, anterior communicating aneurysm clipping) destroys the osmoreceptors, so thirst and osmotic ADH release are both lost while baroreceptor-driven release persists; hypertonic saline produces no ADH rise. Treat with fixed-dose desmopressin plus a prescribed daily water intake guided by weight and sodium."
+  ],
+  "cross": [
+   "DocT keys sarcoidosis as NOT a cause of nephrogenic DI. Truth: sarcoid causes central DI directly by granulomatous infiltration of the hypothalamus and stalk, and nephrogenic DI indirectly through hypercalcaemia and nephrocalcinosis. If the question asks for sarcoid's primary mechanism, pick central DI; the ENDO-20 table listing sarcoid under nephrogenic should be read as the indirect route."
+  ],
+  "fix": [
+   {
+    "t": "Central: add \"granulomatous — sarcoidosis, histiocytosis (LCH)\". Nephrogenic: keep sarcoid but tag \"(via hypercalcaemia / interstitial nephritis)\".",
+    "why": "Lists sarcoid under nephrogenic DI. Sarcoid mainly causes central DI; nephrogenic only via hypercalcaemia.",
+    "src": "Harrison's 21e (DI causes table); Endotext DI 2022",
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK279073/",
+    "v": "partly"
+   }
+  ]
+ },
+ "ENDO01B|ENDO-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 5
+   }
+  ],
+  "lines": [
+   "DocT: Check cortisol in central DI (pituitary surgery, TBI, apoplexy): the same lesion often removes ACTH, and cortisol lack masks DI because cortisol is needed to excrete free water. Polyuria may appear only once hydrocortisone is started, so give steroid cover first.",
+   "DocT + DocT GT: Read the water-deprivation-then-desmopressin test by urine osmolality: complete central DI stays <300 and then rises >50% after DDAVP; partial central DI rises submaximally to 300-800 and then another 10-50%; nephrogenic DI stays <300 with <10% rise; primary polydipsia concentrates to >600-800 with no further rise."
+  ]
+ },
+ "ENDO01B|ENDO-22": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: Hyponatraemia is the commonest complication of desmopressin: continuous antidiuresis means any water drunk or infused is retained (usually mild, Na 131-134). Check sodium daily, restrict free water, and allow a daily escape by delaying a dose so a water diuresis can break through.",
+   "DocT: For early lithium-induced nephrogenic DI, amiloride is the first drug - it blocks ENaC, the channel lithium uses to enter collecting-duct cells, reducing polyuria and further injury without raising lithium levels as thiazides do. Desmopressin fails (the receptor is resistant) and fluid restriction risks hypernatraemia.",
+   "Marrow: Desmopressin's adverse effects are hyponatraemia (main) and, rarely, thrombocytopenia or purpura, especially in type 2B von Willebrand disease."
+  ],
+  "cross": [
+   "Marrow keys desmopressin as the cause of new thrombocytopenic purpura. Truth: desmopressin-related thrombocytopenia is rare and essentially confined to type 2B vWD, while co-trimoxazole is a far commoner drug cause of immune thrombocytopenia. Pick desmopressin only when the stem says the lesions appeared before, or names type 2B vWD."
+  ],
+  "fix": [
+   {
+    "t": "Nephrogenic: stop the drug, correct K/Ca; thiazide ± NSAID. Lithium NDI: AMILORIDE first (blocks ENaC, the channel lithium enters the collecting-duct cell through). [Card already lists amiloride — only the lithium-specific line is missing.]",
+    "why": "Thiazide given as the drug for lithium nephrogenic DI. Amiloride is first-line: it blocks the ENaC channel lithium uses to enter the cell.",
+    "src": "Endotext DI 2022; KDIGO-era reviews (Christensen, Kidney Int)",
+    "url": "https://www.ncbi.nlm.nih.gov/books/NBK279073/",
+    "v": "partly"
+   }
+  ]
+ },
+ "ENDO02A|GLY-01": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO02A|GLY-05": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ]
+ },
+ "ENDO02A|GLY-06": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT: IL-6 acts beyond the anterior pituitary - it also stimulates the adrenal cortex directly, releasing cortisol independently of ACTH, which partly explains high cortisol with low ACTH in prolonged critical illness. IL-1 and TNF-alpha act mainly on the hypothalamus, and TNF-alpha actually blunts the adrenal response to ACTH."
+  ]
+ },
+ "ENDO02A|GLY-08": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ]
+ },
+ "ENDO02A|GLY-17": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO02A|GLY-19": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: The NICE-SUGAR follow-up (NEJM 2012) found moderate (41-70 mg/dL) and especially severe (<=40) hypoglycaemia carried dose-dependent excess mortality, mostly deaths from distributive shock. It is an association, not proven causation, and the risk is raised by longer ICU stay and poor pre-admission control rather than by tight control alone."
+  ]
+ },
+ "ENDO02A|GLY-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Treat hypoglycaemia by consciousness and access: awake and able to swallow gets 15-20 g oral glucose with a recheck at 15 min; obtunded or unsafe swallow with IV access gets 25 g dextrose (50 mL of D50 or 250 mL of D10); no IV access gets glucagon 1 mg IM or SC."
+  ],
+  "cross": [
+   "DocT keys oral glucose tablets for a confused-but-arousable ICU patient on an insulin infusion. Truth: glucose 48 mg/dL is level 2 hypoglycaemia, and with altered sensorium plus existing IV access most ICU protocols give IV dextrose. Pick oral glucose only when the stem makes the swallow clearly safe; otherwise IV dextrose."
+  ]
+ },
+ "ENDO02A|GLY-22": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   }
+  ]
+ },
+ "ENDO02B|DKA-01": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO02B|DKA-03": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: The counter-regulatory hormones - glucagon, catecholamines, cortisol and growth hormone - drive both DKA and HHS, raising gluconeogenesis and glycogenolysis and, with insulin lack, lipolysis and ketogenesis; stress (infection, MI) pushes them higher. Insulin deficiency is the other half - never insulin excess."
+  ]
+ },
+ "ENDO02B|DKA-04": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: In DKA, hypotension persisting after adequate fluid (e.g. 4 L) with a HIGH CVP and ST changes is cardiogenic - think MI as precipitant or complication, often silent in diabetics; hypovolaemia or GI bleeding gives a low CVP. Acidosis and hyperkalaemia also distort the ECG and raise troponin, so confirm with echo."
+  ]
+ },
+ "ENDO02B|DKA-05": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Current DKA criteria (ADA/EASD/JBDS 2024 consensus): glucose >=200 mg/dL (11.1 mmol/L) OR known diabetes, ketones >=3.0 mmol/L, and pH <7.3 and/or bicarbonate <18 mmol/L - the card's 250 mg/dL is the older ADA cut-off, and euglycaemic DKA meets the new definition. pH <7.1 and bicarbonate <10 mark severity, not diagnosis."
+  ],
+  "fix": [
+   {
+    "t": "DKA-05: Glucose ≥200 mg/dL OR known diabetes; ketones (BHB) ≥3.0 mmol/L or urine ≥2+; pH <7.3 and/or HCO3 <18. DKA-06: glucose ≥200; grade by pH/HCO3 (7.25–7.30/15–18; 7.0–<7.25/10–<15; <7.0/<10); HHS glucose ≥600, effective osm >300 (total >320), pH ≥7.3, HCO3 ≥15, BHB <3.",
+    "why": "Define DKA by glucose >250 mg/dL. 2024 consensus: glucose ≥200 mg/dL or known diabetes, ketones ≥3.0 mmol/L, pH <7.3 and/or bicarbonate <18.",
+    "src": "ADA/EASD/JBDS/AACE/DTS Hyperglycaemic Crises Consensus 2024",
+    "url": "https://doi.org/10.2337/dci24-0032",
+    "v": "partly"
+   }
+  ]
+ },
+ "ENDO02B|DKA-06": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: In HHS depressed consciousness tracks effective osmolality: stupor, coma and seizures appear once it passes ~320-330 and are typical above 350 mOsm/kg. Coma at a lower osmolality should send you looking for another cause (stroke, sepsis, drugs)."
+  ]
+ },
+ "ENDO02B|DKA-07": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT + DocT GT: Alcoholic ketoacidosis (binge, then starvation and vomiting; glucose normal or low, anion gap high, beta-hydroxybutyrate dominant so urine ketones read only trace) is treated with thiamine BEFORE dextrose-saline (D5NS or D5-half-NS), with K, Mg and PO4 replacement. Dextrose triggers endogenous insulin and switches off ketogenesis, so insulin and bicarbonate are not used; plain saline lacks the carbohydrate and D5W lacks the volume.",
+   "DocT GT: A fasting binge drinker becomes hypoglycaemic 6-36 h after drinking because ethanol oxidation floods the liver with NADH, diverting pyruvate to lactate and oxaloacetate to malate, so gluconeogenesis stops while glycogen is already exhausted. Treat with thiamine and IV dextrose; glucagon fails because there is no glycogen to release."
+  ]
+ },
+ "ENDO02B|DKA-09": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO02B|DKA-10": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Beta-hydroxybutyrate is the most abundant ketone in DKA: the high NADH:NAD ratio pushes acetoacetate to beta-OHB, taking the ratio from about 1:1 up to 10:1. Measure beta-OHB directly (diagnostic at >=3 mmol/L); acetone is exhaled as the fruity breath and lactate is not a ketone.",
+   "Marrow: The same trap runs the other way at presentation - a pump patient with an anion gap of 23 and vomiting can have NEGATIVE urine ketones, because the nitroprusside dipstick misses beta-OHB. A negative urine ketone test never excludes DKA."
+  ]
+ },
+ "ENDO02B|DKA-12": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Corrected Na = measured Na + 1.6 x (glucose mg/dL - 100)/100 (Katz; Hillier's 2.4 is better above 400 mg/dL): Na 130 with glucose 600 corrects to 138. The measured low sodium is dilutional, and the corrected value - not the measured one - chooses 0.45% vs 0.9% saline after the first litre."
+  ]
+ },
+ "ENDO02B|DKA-13": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ]
+ },
+ "ENDO02B|DKA-15": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO02B|DKA-16": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: Work out the subcutaneous dose from the infusion: average rate over the last 6-8 h x 24 x 70-80% = total daily dose; if the patient is nil by mouth give 100% of it as basal, and give that basal dose 2-3 h BEFORE stopping the drip so the two overlap."
+  ]
+ },
+ "ENDO02B|DKA-18": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "ENDO02B|DKA-19": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: Headache, irritability and a falling GCS during DKA treatment in a child mean cerebral oedema (0.5-1% of paediatric DKA, mortality up to 25%): treat on clinical grounds BEFORE imaging with mannitol 0.5-1 g/kg over 10-15 min or 3% saline 2.5-5 mL/kg, head up, and slow (not stop) the fluids. CT comes afterwards, to exclude a bleed or thrombosis."
+  ]
+ },
+ "ENDO02B|DKA-21": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ]
+ },
+ "HY5|HEO-01": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 7
+   }
+  ],
+  "lines": [
+   "DocT GT + Recall25 + Marrow: TEG names the same channels as ROTEM: long R = clotting factors (give FFP), long K time with a low alpha angle = fibrinogen (give cryoprecipitate), low MA with normal R, K and angle = platelets, LY30 >7.5% = fibrinolysis (give TXA). A normal R with normal PT and aPTT rules out residual heparin, so protamine is not needed.",
+   "DocT GT: Of the viscoelastic variables in trauma, low clot strength (TEG MA / ROTEM MCF or A5) is the one most consistently linked to death and massive transfusion. Most trauma patients arrive in fibrinolytic shutdown rather than hyperfibrinolysis, and INR >1.2 is a conventional, slow test rather than a VHA variable."
+  ]
+ },
+ "HY5|HEO-02": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 15
+   }
+  ],
+  "cross": [
+   "GT7 Q90 keys 6 g/dL as the haemoglobin below which transfusion benefits. Truth: that is the old ASA 'almost always indicated' figure; the trial-based restrictive threshold (TRICC, TRISS, AABB 2023) is 7 g/dL, 8 in cardiac surgery or active ischaemia. If 7 is offered pick 7; pick 6 only when it is the lowest option and the stem echoes the 'almost always' wording."
+  ]
+ },
+ "HY5|HEO-03": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ],
+  "lines": [
+   "DocT GT: A positive FAST changes management only together with the haemodynamics: unstable plus free fluid goes straight to laparotomy with no CT, stable goes to contrast CT. FAST needs roughly 200 mL (100-250 mL) of free fluid to be visible, so a negative FAST does not exclude injury."
+  ]
+ },
+ "HY5|HEO-04": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 7
+   }
+  ],
+  "lines": [
+   "DocT GT: The 2019 TRALI definition splits it in two: type I = no ARDS risk factor, onset within 6 h, P/F <=300 (or SpO2 <90% on air), bilateral infiltrates, no left-atrial hypertension; type II = an ARDS risk factor or mild pre-existing ARDS that had been stable for 12 h before transfusion. Deterioration driven by the underlying risk factor is ARDS, not TRALI.",
+   "Marrow: An acute haemolytic transfusion reaction is a type II (antibody-mediated) reaction from ABO incompatibility - preformed IgM against transfused red cells: fever, hypotension, loin pain, oozing from DIC and AKI. Stop the transfusion, notify the blood bank and send the unit with samples; the first move in any suspected reaction is to stop it.",
+   "Marrow: Hold the two reflexes side by side: TACO is hypertensive with a high BNP and responds to an IV diuretic; TRALI is hypotensive and diuretics are harmful - give oxygen and lung-protective ventilation instead."
+  ],
+  "cross": [
+   "GrandT1 Q43 keys TRALI type II for a trauma patient whose stem states there are NO ARDS risk factors. Truth: no risk factor defines type I, DocT's own explanation describes type I, and the later repeats (CGT1 Q116, GT8 Q53) key type I. Read the risk-factor sentence first: no risk factor = type I, risk factor present (or stable mild ARDS for 12 h) = type II.",
+   "AIM2 Q105 keys TRALI for sudden refractory hypoxaemia with bilateral fluffy opacities after trauma, but the stem never mentions a transfusion. Truth: TRALI needs a transfusion within 6 h; fat embolism (24-72 h after a long-bone fracture, with petechiae and confusion) fits the same picture. If a transfusion is stated or implied, pick TRALI; if a long-bone fracture with petechiae is given, pick fat embolism."
+  ]
+ },
+ "HY5|HEO-05": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "Marrow: In suspected TTP, send ADAMTS13 and then start plasma exchange immediately - never wait for the result; steroids go with it, with caplacizumab and rituximab as add-ons."
+  ]
+ },
+ "HY5|HEO-07": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY5|HEO-08": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "Marrow: Transition off the DKA infusion by overlap: give the basal SC insulin 1-2 h BEFORE stopping the drip, with prandial rapid-acting insulin when eating, since the infusion's effect ends within minutes and ketosis can rebound. Diabetes-specific enteral formulas give no benefit."
+  ],
+  "cross": [
+   "Marrow's option text for the transition omits the basal overlap. Truth: resolution criteria plus the ability to eat allow the switch, but only with SC basal insulin given 1-2 h before the infusion stops. Pick the option that includes an overlap; if none does, pick the one that continues the infusion."
+  ]
+ },
+ "HY5|HEO-11": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ]
+ },
+ "HY5|HEO-12": {
+  "chips": [
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 3
+   }
+  ]
+ },
+ "HY5|HEO-13": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 2
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 3
+   },
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT Recall25: HELLP with hypotension and a falling Hb means a subcapsular liver haematoma (crescentic collection under the capsule on CT). Unruptured and stable: embolisation or conservative care with delivery; ruptured (free fluid, shock): resuscitate with blood products and do emergency caesarean with laparotomy for the liver (packing, embolisation) - not steroids or expectant care."
+  ]
+ },
+ "HY5|HEO-14": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   },
+   {
+    "k": "doct",
+    "t": "DocT",
+    "n": 1
+   }
+  ],
+  "cross": [
+   "DocT keys expectant management (admit, pelvic rest, steroids, cross-match) for placenta praevia with a small painless bleed. Truth: ACOG/SMFM 2021 plan caesarean at 36+0 to 37+6 weeks, or 34+0 to 35+6 with recurrent bleeding, so at 36 weeks with a second bleed caesarean is the current-guideline answer. Pick expectant care only before 34 weeks with a single stable bleed."
+  ]
+ },
+ "HY5|HEO-15": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 4
+   }
+  ]
+ },
+ "HY5|HEO-16": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 2
+   }
+  ],
+  "lines": [
+   "DocT GT: Amniotic fluid embolism runs in two phases: pulmonary vasospasm with acute RV failure (collapse, hypoxia), then LV failure with consumptive DIC. Care is supportive; A-OK (atropine, ondansetron, ketorolac) is an unproven adjunct, fetal squames in pulmonary blood are not diagnostic, and thrombolysis is not indicated."
+  ]
+ },
+ "HY5|HEO-17": {
+  "chips": [
+   {
+    "k": "marrow",
+    "t": "Marrow",
+    "n": 1
+   }
+  ]
+ },
+ "HY5|HEO-18": {
+  "chips": [
+   {
+    "k": "recall",
+    "t": "NEET 25 recall",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT Recall25: Postpartum endometritis is a clinical diagnosis and FEVER is the key criterion (>=38 C after the first 24 h, typically with uterine tenderness); foul lochia and leucocytosis are supportive but non-specific, since leucocytosis is normal after delivery."
+  ]
+ },
+ "HY5|HEO-19": {
+  "chips": [
+   {
+    "k": "gt",
+    "t": "DocT GT",
+    "n": 1
+   }
+  ],
+  "lines": [
+   "DocT GT: In active bleeding after cardiac surgery, platelet FUNCTION is tested with viscoelastic assays (TEG MA or ROTEM EXTEM MCF against FIBTEM, platelet mapping if available) - point-of-care, fast, and they separate platelets from fibrinogen from residual heparin. PT, aPTT and thrombin time do not measure platelets, and PFA-100 is unreliable when the haematocrit is <30% or platelets <100."
+  ]
+ }
+}

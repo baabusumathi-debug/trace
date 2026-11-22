@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged).",
- "version": "a7c461ee26",
+ "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged). 22 Nov 2026: endocrine/HY5 table layouts repaired (layout only).",
+ "version": "81074cc0eb",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -649,7 +649,7 @@
   },
   "HY5|HEO-19": {
    "fields": {
-    "a": "**Sweep — the nine statements**\nT/F | WHY\n**a** | F | Normal HEPTEM = heparin → protamine.\n**b** | T | Threshold 1.5 g/L.\n**c** | T | CRASH-2; later = harm.\n**d** | F | TACO does; TRALI does not.\n**e** | T | Bolus then infusion/6-hourly.\n**f** | F | Iodine ≥ 1 h AFTER thionamide.\n**g** | F | Add dextrose, continue insulin.\n**h** | F | SBP ≥ 160 or DBP ≥ 110.\n**i** | T | Bronchospasm."
+    "a": "**Sweep — the nine statements**\n | T/F | WHY\n**a** | F | Normal HEPTEM = heparin → protamine.\n**b** | T | Threshold 1.5 g/L.\n**c** | T | CRASH-2; later = harm.\n**d** | F | TACO does; TRALI does not.\n**e** | T | Bolus then infusion/6-hourly.\n**f** | F | Iodine ≥ 1 h AFTER thionamide.\n**g** | F | Add dextrose, continue insulin.\n**h** | F | SBP ≥ 160 or DBP ≥ 110.\n**i** | T | Bronchospasm."
    },
    "src": "ACOG Committee Opinion 767, Obstet Gynecol 2019",
    "date": "10 Nov 2026"
@@ -1964,6 +1964,16 @@
   "HY6|GIN-14": {
    "fields": {
     "a": "**Sweep — the nine statements**\n\n | **T/F** | **WHY**\n**a** | F | Day 4–7.\n**b** | F | Stop when risk resolves.\n**c** | F | Decompress (drain, NMB, laparotomy).\n**d** | F | Only if doubt, or after 72 h.\n**e** | F | No benefit; treat proven infection.\n**f** | F | Early endoscopy; no routine reversal.\n**g** | T | Laparotomy if it fails.\n**h** | T | Early-grade encephalopathy.\n**i** | F | PMN ≥ 250 = treat now."
+   }
+  },
+  "ENDO01B|ENDO-20": {
+   "fields": {
+    "a": "**TYPE** | **DEFECT** | **CAUSES**\n**Central** | Too little ADH | Tumour (primary, metastatic), meningitis,\nencephalitis, SLE, snake venom, genetic;\n**head injury, surgery**, brain death\n*(standard teaching, not in your notes)*\n**Nephrogenic** | Kidney does not respond | **Lithium**, demeclocycline, vaptans, aminoglycosides, amphotericin, rifampicin, polymyxin; **hypokalaemia,** **hypercalcaemia**; sickle cell, ATN, obstruction, amyloid, PKD, Bartter, sarcoid\n**Gestational** | Placental vasopressinase | Third trimester; reversible"
+   }
+  },
+  "HY5|HEO-04": {
+   "fields": {
+    "a": "**TRALI = leaky lungs, no overload · TACO = overload**\n | TRALI | TACO\n**Timing** | Within 6 h | Within 6–12 h\n**BP** | Hypotension | Hypertension\n**Fever** | Often | No\n**JVP / BNP** | Normal | Raised\n**Diuretic** | No response / harmful | Improves\n**Prevention** | **Male-only donor plasma** | Slow rate, diuretic\n\nAcute haemolytic (ABO): fever, loin pain, haemoglobinuria, DIC → stop. Anaphylaxis: IgA-deficient recipient. Febrile non-haemolytic: fever only."
    }
   }
  }

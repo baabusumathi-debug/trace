@@ -1,0 +1,189 @@
+{
+ "ENDO01A": [
+  {
+   "id": "T_2b8a9a37",
+   "topic": "Non-thyroidal illness (sick euthyroid): mechanism, pattern, what to do",
+   "type": "algorithm",
+   "q": "A septic or post-operative patient has a low T3 with a normal or low TSH - what is happening, and what do you do?",
+   "a": [
+    "Cytokines, cortisol and fasting cut type 1 and 2 deiodinase (less T4 to T3) and raise type 3 (more reverse T3), so T3 falls first.",
+    "Hypothalamic TRH falls, so TSH is normal or low: an acquired, transient CENTRAL hypothyroidism (dopamine and steroids suppress TSH further).",
+    "Low T3 alone = mild illness; low T4 with low TSH = severe (total T4 <4 microgram/dL carries about 50% mortality).",
+    "In recovery TSH can overshoot to 10-20 mIU/L - this is not primary hypothyroidism.",
+    "Do not screen TFTs or give thyroxine: treat the illness, feed the patient, recheck 4-6 weeks after recovery; treat only clear primary disease (TSH >20 with low free T4)."
+   ],
+   "tier": 1,
+   "n": 10,
+   "banks": "DocT GT",
+   "recall": true,
+   "src": "DocT:15; DocT:16; DocT:17; DocT:18; DocT:19; DocT:20 (Thyroid-Related); GT:36 (GT1o); GT:102 (GT2o); Recall25:120; Recall25:122"
+  },
+  {
+   "id": "T_38ffd8d5",
+   "topic": "Hashimoto encephalopathy (SREAT)",
+   "type": "qa",
+   "q": "Autoimmune thyroiditis with subacute confusion, seizures and stroke-like episodes - what is it, and how is it treated?",
+   "a": [
+    "Steroid-responsive encephalopathy with autoimmune thyroiditis: high anti-TPO, usually EUTHYROID.",
+    "Subacute confusion, seizures, myoclonus, stroke-like episodes, headache or visual change.",
+    "CSF protein high, EEG diffusely slow, MRI often non-specific; a diagnosis of exclusion.",
+    "High-dose steroids (methylprednisolone 1 g/day for 3-5 days, then taper) - the response is the confirmation.",
+    "IVIG or plasma exchange if refractory."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:14 (Thyroid-Related)"
+  }
+ ],
+ "ENDO01B": [
+  {
+   "id": "T_fa1bba17",
+   "topic": "Phaeochromocytoma: clue, confirmation, and the blockade order",
+   "type": "algorithm",
+   "q": "Paroxysmal headache, palpitations and sweating with surging blood pressure - how do you confirm it and prepare the patient?",
+   "a": [
+    "Paroxysmal headache, palpitations and sweating with episodic severe hypertension; crises are triggered by surgery, tumour handling, steroids, metoclopramide, beta-blockers and contrast. In pregnancy the episodic pattern with normal labs separates it from pre-eclampsia.",
+    "Confirm with plasma free (fractionated) metanephrines, sensitivity 96-100% - COMT converts catecholamines continuously, so they stay high between bursts; 24-h urine metanephrines are the alternative.",
+    "Image only after biochemistry (>3-4x upper limit is near-diagnostic); MRI in pregnancy (no MIBG or CT). Untreated in pregnancy, maternal and fetal mortality approaches 40-50% (crises at labour or anaesthesia), so remove the tumour laparoscopically in the second trimester or at caesarean section.",
+    "Alpha-blockade FIRST: phenoxybenzamine or doxazosin for 10-14 days with liberal salt and fluid; IV phentolamine 1-5 mg (or nitroprusside, nicardipine, clevidipine) for a crisis.",
+    "Beta-blocker only AFTER alpha-blockade, and never labetalol first (beta:alpha about 7:1 leaves alpha unopposed). After removal expect hypotension and hypoglycaemia."
+   ],
+   "tier": 1,
+   "n": 12,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "DocT:5; DocT:7 (Adrenal Insufficiency); GT:35 (GT1o); GT:107 (GT2o); GT:46; GT:140 (GrandT1); GT:136 (CGT5); GT:87 (CGT6); GT:52 (GT4); GT:36 (GT5); GT:51 (AIM2); GT:52 (AIM1)"
+  },
+  {
+   "id": "T_465b75d2",
+   "topic": "The adrenal gland: what each zone makes, and how cortisol acts",
+   "type": "cloze",
+   "q": "Which zone makes what, and by what mechanism does cortisol act?",
+   "a": [
+    "Zona glomerulosa: aldosterone, driven by angiotensin II and potassium - which is why it is SPARED in secondary adrenal insufficiency.",
+    "Zona fasciculata: cortisol (ACTH-driven). Zona reticularis: androgens. GFR = salt, sugar, sex.",
+    "Medulla: adrenaline and noradrenaline (chromaffin cells, sympathetic ganglion origin).",
+    "Cortisol binds a cytoplasmic receptor; the complex enters the nucleus and alters gene transcription - hence the delay of hours.",
+    "About 90% is bound to CBG and albumin; only free cortisol is active."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:8; DocT:9 (Adrenal Insufficiency)"
+  },
+  {
+   "id": "T_022928ac",
+   "topic": "The cortisol axis in critical illness: what rises and what falls",
+   "type": "qa",
+   "q": "In prolonged critical illness, why is cortisol high while ACTH is low?",
+   "a": [
+    "Early: CRH, ACTH and cortisol all rise.",
+    "After a few days ACTH falls while cortisol stays high - the ACTH-cortisol dissociation.",
+    "Drivers: paracrine and cytokine (IL-6) stimulation of the adrenal cortex, plus slower cortisol breakdown as hepatic and renal enzymes are suppressed.",
+    "CBG FALLS (cleaved by neutrophil elastase, synthesis reduced), so free cortisol rises further and a total cortisol underestimates activity.",
+    "Consequence: a single total cortisol cannot diagnose CIRCI in the ICU."
+   ],
+   "tier": 2,
+   "n": 2,
+   "banks": "DocT",
+   "recall": false,
+   "src": "DocT:10; DocT:16 (Adrenal Insufficiency)"
+  },
+  {
+   "id": "T_bc5d58f3",
+   "topic": "Reninoma and the renin-aldosterone pattern",
+   "type": "qa",
+   "q": "Young patient with resistant hypertension, hypokalaemia, HIGH renin AND high aldosterone, normal metanephrines and a renal mass?",
+   "a": [
+    "Reninoma (juxtaglomerular cell tumour) causing secondary hyperaldosteronism.",
+    "Pattern rule: primary aldosteronism = high aldosterone with LOW renin; renovascular disease or reninoma = BOTH high.",
+    "Hypokalaemia comes with metabolic ALKALOSIS, not acidosis.",
+    "Diagnose with CT (small hypovascular cortical mass), not ultrasound.",
+    "Blood pressure is very hard to control until resection; ACE inhibitors or ARBs help most. Alpha-before-beta is a phaeochromocytoma rule, not a reninoma rule."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "GT:39 (GT1o)"
+  },
+  {
+   "id": "T_0daf26c0",
+   "topic": "Carcinoid syndrome and carcinoid crisis",
+   "type": "qa",
+   "q": "When does carcinoid syndrome occur without liver metastases, and how is a crisis treated?",
+   "a": [
+    "Mediators (serotonin, histamine, bradykinin, prostaglandins) must reach the systemic circulation - usually only after liver metastases, because the liver inactivates gut-derived amines.",
+    "Exception: bronchial, ovarian and retroperitoneal primaries drain outside the portal system, so they cause the syndrome WITHOUT metastases.",
+    "Features: flushing, diarrhoea, bronchospasm, right-sided valve fibrosis (tricuspid regurgitation, pulmonary stenosis).",
+    "Crisis (anaesthesia, tumour handling): octreotide 50-100 microgram IV bolus, then 50-100 microgram/h.",
+    "Avoid catecholamines and histamine releasers; use vasopressin or phenylephrine for hypotension."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "GT:108 (GT2o)"
+  }
+ ],
+ "ENDO02A": [
+  {
+   "id": "T_d6d166b0",
+   "topic": "Hypoglycaemia in a non-diabetic: insulin, C-peptide and the sulfonylurea screen",
+   "type": "pairs",
+   "q": "Glucose 42 with no diabetes - how do insulin, C-peptide and a sulfonylurea screen separate the causes?",
+   "a": [
+    "Exogenous insulin: insulin HIGH, C-peptide LOW or undetectable, sulfonylurea screen negative.",
+    "Sulfonylurea: insulin HIGH, C-peptide HIGH, screen POSITIVE.",
+    "Insulinoma: insulin HIGH, C-peptide HIGH, screen negative.",
+    "Non-islet tumour hypoglycaemia: large mesenchymal tumours secrete big pro-IGF2, so insulin, C-peptide, proinsulin and beta-hydroxybutyrate are all SUPPRESSED, with an IGF2:IGF1 ratio >10.",
+    "Draw the critical sample DURING the low (glucose <55): insulin, C-peptide, proinsulin, beta-hydroxybutyrate and a sulfonylurea screen, then treat. It works because C-peptide is cleaved 1:1 from endogenous proinsulin, while injected insulin carries none."
+   ],
+   "tier": 1,
+   "n": 5,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "GT:77 (GT2); GT:41 (GT4); GT:44 (GT6); GT:114 (GT7); GT:65 (AIM1)"
+  },
+  {
+   "id": "T_a674f960",
+   "topic": "Oral diabetes drugs: the ICU-relevant facts",
+   "type": "qa",
+   "q": "Which oral diabetes drugs matter in the ICU, and at what thresholds?",
+   "a": [
+    "Metformin: full dose at eGFR 45 or above, reduce at 30-44, stop below 30 (the old eGFR <60 cut-off is outdated). Hold it in shock, hypoxia or sepsis because of lactic acidosis, and around contrast if eGFR <30 or AKI.",
+    "SGLT2 inhibitors: volume depletion, AKI and euglycaemic DKA - stop about 3 days before surgery.",
+    "Sulfonylureas: prolonged, recurrent hypoglycaemia; octreotide treats the overdose. They cut microvascular complications, with weak macrovascular benefit (a late UKPDS legacy effect).",
+    "GLP-1 agonists and DPP-4 inhibitors: reported pancreatitis; GLP-1 agonists also delay gastric emptying, which matters for aspiration risk.",
+    "In the ICU all are stopped and replaced by an IV insulin protocol."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "GT:30 (GT1o)"
+  }
+ ],
+ "ENDO02B": [
+  {
+   "id": "T_6f96ae33",
+   "topic": "Intubating severe DKA: why, and the ventilator trap",
+   "type": "qa",
+   "q": "Severe DKA (pH 7.08) tiring despite maximal breathing - why intubate, and what is the trap?",
+   "a": [
+    "The indication is impending respiratory-muscle fatigue: the huge compensatory minute ventilation is what keeps the pH survivable.",
+    "Ventilation does not correct the metabolic acidosis itself.",
+    "Trap: a 'normal' ventilator rate lets PaCO2 rise and the pH crash - set a high minute ventilation (RR 25-30+) matching the pre-intubation PaCO2.",
+    "Keep apnoea at induction as short as possible; even a minute can drop the pH sharply and precipitate arrest."
+   ],
+   "tier": 3,
+   "n": 1,
+   "banks": "DocT GT",
+   "recall": false,
+   "src": "GT:6 (CGT6)"
+  }
+ ]
+}
