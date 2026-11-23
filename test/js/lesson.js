@@ -57,8 +57,8 @@ const spokenLen = paras => partsOfLesson(paras).reduce((s, p) => s + p.t.length,
 const norm = s => String(s).toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]/g, '');
 const tim = {};
 async function whisperWords(deck, p) {
-  if (usesK(deck, p)) return null;   // Kokoro clips have no word timings: the read-along spreads the words over the clip
-  const e = ((await deckIndex(deck)) || {})[p.k]; if (!e || !e.tid) return null;
+  // Kokoro clips: word timings only once a "tid" has been added to the Kokoro index (otherwise the read-along spreads the words)
+  const e = usesK(deck, p) ? kIdxNow(deck)[p.k] : ((await deckIndex(deck)) || {})[p.k]; if (!e || !e.tid) return null;
   if (tim[e.tid]) return tim[e.tid];
   let t = await db.kv.get('vtim:' + e.tid);
   if (!t) { try { const r = await call({ op: 'readFile', id: e.tid }); t = JSON.parse(r.text); db.kv.set('vtim:' + e.tid, t).catch(() => {}); } catch (x) { return null; } }
