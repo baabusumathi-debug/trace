@@ -2,7 +2,7 @@
  "package": "P12",
  "title": "NEET cardiology",
  "kind": "neet",
- "version": "P12.20261123.1",
+ "version": "P12.20261123.2",
  "cards": {
   "V12-001": {
    "deck": "CVS03",
@@ -143,6 +143,10 @@
     "Forrester: CI 2.2 and PCWP 18. Cold-wet classic, cold-dry euvolaemic, warm-wet mixed (all low CI); warm-dry has a high CI and is not cardiogenic.",
     "Bedside: wet = orthopnoea, oedema on film, ≥3 B-lines with sliding; S3 is specific. Severe hypertension + pulmonary oedema + normal ECG = hypertensive heart failure."
    ],
+   "open": {
+    "v": 1,
+    "text": "You now know what counts as cardiogenic shock, and the four ways a heart can fail. This section is about what happens next.\n\nHere's the puzzle. Most patients with infarct shock aren't in shock when they arrive. They come in with a fair pressure, and over the next hours they slide. Why does a heart get worse when nothing new has happened to it?\n\nThe answer is that the body helps. It pushes on the other two numbers, the filling and the squeeze, to hold the pressure up. And every push costs the injured heart more work. That's the spiral, and it's the first card.\n\nThen you'll learn to read the same state with your hands, before any catheter is in. Warm or cold tells you about the pump. Wet or dry tells you about the filling. Four boxes, and NEET loves to ask which box needs which drug.\n\n[[Cold means the output is low. Wet means the filling behind the ventricle is high.]]\n\nSo start with the spiral. Why does a failing pump make itself worse?"
+   },
    "tier": "S",
    "gen": "S1",
    "kind": "direct"
@@ -184,6 +188,10 @@
     "Tubing: wide, short, stiff = high natural frequency. Long tubing lowers it → resonance → overshoot, falsely high systolic; the mean survives.",
     "Fast flush: 1–2 oscillations, each ≤1/3 of the last = optimal. PA catheter gives no lung water: EVLW + continuous CO = PiCCO."
    ],
+   "open": {
+    "v": 1,
+    "text": "Your hands gave you the box. Now a catheter gives you the numbers.\n\nThis short section carries the most-asked cardiology card in your banks. Thirty questions sit on one table of four readings. The right atrial pressure, the wedge, the cardiac output and the resistance. The questions all look different, but they're the same move, again and again: read which number failed first, and the rest follows.\n\nListen for one pattern above all. A high pressure on the right with a low wedge on the left. It's the pattern NEET uses to catch people, and by the end of the card you'll know why it can never be hypovolaemia.\n\nThen two shorter cards on the line itself. A pressure trace can lie, and NEET asks exactly how. Long tubing is the classic, and it was a miss in your grand test.\n\nSo, the table. How does the catheter name the shock?"
+   },
    "tier": "S",
    "gen": "S1",
    "kind": "direct"
@@ -383,6 +391,10 @@
     "FATE: obvious pathology, walls and chambers, contractility, pleura. Hyperdynamic LV + small in diastole = hypovolaemia; normal size = low SVR.",
     "CS work-up: echo (repeat for response), ECG, CXR (Kerley lines are oedematous septa), BNP, lactate. Bernoulli: ΔP = 4V²."
    ],
+   "open": {
+    "v": 1,
+    "text": "The catheter reads the three numbers through a tube. The probe reads them by looking at the heart itself.\n\nThis is the one place in the cardiology packets where echo is taught from the start. Later packets will only remind you. So take it slowly, and watch the model beside each card: where the probe sits, where the marker points, and what that slice of the heart shows.\n\nYou need very little for NEET. Three windows: the parasternal long axis, the apical four-chamber, and the subcostal. One vein, the IVC, and the right atrial pressure it gives you. The bedside echo protocol, step by step. And at the end, a handful of normal Doppler values, because those are asked as pure numbers.\n\n[[Filling is the size of the chambers and the IVC. Pump is how the walls move. Squeeze you infer, from a ventricle that empties too easily.]]\n\nStart where every echo starts. The probe at the left sternal edge."
+   },
    "tier": "S",
    "gen": "S1",
    "kind": "direct"
@@ -452,6 +464,10 @@
    "close": {
     "v": 1,
     "text": "So let's walk back through it, slowly, the way you'd want it in the exam hall.\n\nYou started with Patient A and Patient B. The same pressure, opposite problems. And you now have three numbers that tell them apart. Filling, pump and squeeze.\n\nThe definitions told you when a failing pump counts as shock. It's defined at the tissue, by hypoperfusion, not by a pressure. The trials gave it numbers: a systolic under ninety for half an hour, a cardiac index at or below two point two, and a wedge pressure of fifteen or more. And that wedge is the number that pins the low output on the left ventricle.\n\nThe bedside told you the same story with your hands. Cold means low output. Wet means high filling behind the ventricle. And a failing pump makes itself worse, because the body's own rescue, the sympathetic system and renin, raises the afterload and the filling that the injured heart has to work against.\n\nThe catheter wrote the story in four columns. The probe showed it in pictures. And the last four cards asked whether filling was still worth giving.\n\nNow the traps. These are the ones NEET has actually set, again and again. Listen for the wrong answer first.\n\nOne. Right atrial pressure of fourteen, wedge of six, high resistance. The tempting answer is hypovolaemia. [[Hypovolaemia makes both filling pressures low. A high right pressure with a low wedge means the trouble sits before the left heart: a pulmonary embolism blocking the way, or a right ventricular infarct failing to pump.]]\n\nTwo. Warm and wet, in heart failure. The tempting answer is an inotrope. But a warm patient is perfusing. He needs the water taken off, with a diuretic and a vasodilator. The inotrope is for cold.\n\nThree. A wide inferior vena cava that barely moves. The tempting answer is to give fluid. That vein is full. It tells you the right atrial pressure is high, and that patient is the least likely to respond to fluid.\n\nFour. A passive leg raise. The tempting move is to watch the blood pressure. [[A passive leg raise is judged by stroke volume or cardiac output, measured in real time. A rise of ten percent or more means the heart will respond to fluid.]]\n\nFive. The arterial line. Long tubing. The tempting answer is that it raises the natural frequency. It lowers it, closer to the frequencies inside the pulse, so the trace rings and overshoots, and the systolic reads falsely high.\n\nAnd six. A patient with aortic stenosis who collapses the moment he goes into atrial fibrillation. It isn't a new clot. His thick, stiff ventricle fills on the atrial kick, and fibrillation has taken it away.\n\nNow the check. The questions come up on the next screen. Answer each one in your head before you tap it open. The numbers are there on purpose, because the exam wants them exact.\n\nAnd when you're done, carry one thought into Shock Two. You can now read which of the three numbers has failed. Next comes the harder question. What do you push with?"
+   },
+   "open": {
+    "v": 1,
+    "text": "You've named the shock, with your hands, the catheter and the probe. One question is left before any drug. Will fluid help?\n\nIt's the question at every shocked bedside, and NEET asks it in many costumes. A CVP. A vein on ultrasound. A pressure that swings with the ventilator. A leg raise. They all ask the same thing: is this heart still on the steep part of its curve, where a little more filling gives a lot more output?\n\nHere's the order to hold. The static numbers, the CVP and the wedge, barely predict it at all. The dynamic ones do better. And a challenge you can take back, the passive leg raise, does best.\n\n[[Fluid helps only if the stroke volume rises. A pressure can't tell you that. A change in flow can.]]\n\nSo go back to the vein from the last section, and ask it a new question."
    },
    "tier": "S",
    "gen": "S1",
