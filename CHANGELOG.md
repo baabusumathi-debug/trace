@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-187 — 2026-11-23 — Claude — data only (test and live: `data/cardfix.json`, no version change)
+- **171 card corrections** (Naven, 23 Nov: "you yourself decide and choose"): every flag from the cardiology (19 Nov), endocrine (22 Nov) and NEET-packet (23 Nov) lists decided by Claude. A card was changed when it was wrong, contradictory, missing the tested fact, or out of date against a current guideline (then the current answer goes on the card with an "Older keys" line); it was left when only a bank key or wording was disputed. Every change independently fact-checked; 2 dropped, 20 corrected by the checker (`tools/flagfix/VERIFY.md`, decisions in `decisions_cardio.md`, `decisions_endo.md`). Includes three Top-ups (CVS08C TU-02, CVS10A TU-01, CVS10E TU-01) and four endocrine Top-ups. Cards whose text changed show their card voice as not made.
+
 ## T-186 — 2026-11-23 — Claude — test 1.3.163 (test only)
 - P12: the tenth and last cardiology packet, **Arrest, from the first minute to prognosis** (7 sections, 51 cards; new V12-035 accidental hypothermia), taught to AHA/ERC 2025 with the older numbers named as traps, written by Fable 5.2 with Claude's opening and closing, independently fact-checked (`tools/viva/p12/AR_review.md`). Package P12.20261123.7 (48 sections, 10 packets). The Michael voice is made for the nine earlier packets (2,548 pieces). Card-text flags from all ten packets (93) are in Drive › Trace › `P12_Card_Flags_23Nov.md` for Naven's approval; none applied.
 

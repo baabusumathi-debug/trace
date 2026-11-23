@@ -1,0 +1,224 @@
+{
+ "CCM01|GLU-01": {
+  "fields": {
+   "a": "- CBG **> 140 mg/dL** (ADA hospital definition); insulin starts at **≥ 180**\n- Older keys: > 180-200 mg/dL"
+  },
+  "src": "ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline; same fact as ENDO02A GLY-01 flag"
+ },
+ "CCM01|GLU-14": {
+  "fields": {
+   "a": "- **IL-1 / TNF** -> hypothalamus (PVN)\n- **IL-6** -> anterior pituitary, and **directly on the adrenal cortex**\n- **Cortisol** -> negative feedback on **BOTH**"
+  },
+  "src": "Boonen et al NEJM 2013 (ccm01_review 22 Nov 2026)"
+ },
+ "CCM01|GLU-28": {
+  "fields": {
+   "a": "- **Hourly** initially\n- **Every 1-2 h** once stable while IV insulin runs (ADA 30 min-2 h); 4-hourly only on SC insulin\n- Older keys: 4th hourly once stabilised (Marrow)"
+  },
+  "src": "ADA Standards of Care S16 (glucose every 30 min-2 h on IV insulin)"
+ },
+ "CCM01|GLU-35": {
+  "fields": {
+   "a": "- **No difference in mortality** (40.0 vs 37.3%), but **less morbidity**: less new kidney injury, earlier weaning, earlier ICU and hospital discharge; mortality fell in those staying ≥ 3 days\n- Severe hypoglycaemia with IIT: **18.7%**\nMNEMONIC: **IIT - no difference in the MICU**"
+  },
+  "src": "Van den Berghe NEJM 2006 abstract (endo02a_review 22 Nov 2026)"
+ },
+ "CCM01|GLU-38": {
+  "fields": {
+   "a": "- Outcomes: **28-day mortality** + mean organ failure score\n- **No significant difference in** **mortality**\n- IIT: lower mean glucose, but **higher severe** **hypoglycaemia** (17.0 vs 4.1%) and serious adverse events - **IIT arm also stopped early**\n- Starch: **inc. AKI and RRT** - trial **stopped early**\nMNEMONIC: **VISEP ends prematurely**"
+  },
+  "src": "Brunkhorst NEJM 2008 VISEP (endo02a_review 22 Nov 2026)"
+ },
+ "ENDO01A|ENDO-03": {
+  "fields": {
+   "a": "**STATE** | **TSH** | **T3, T4**\n**Primary hyperthyroid** | **Low** | High\n**Primary hypothyroid** | **High** | Low\n**Secondary (pituitary) hypothyroid** | **Low or inappropriately normal** | Low\n**Subclinical hyperthyroid / hypothyroid** | Low / High | **Normal**\n- **Overproduction**: Graves', toxic multinodular goitre,\nTSH-secreting adenoma.\n- **Leak from destruction**: subacute, lymphocytic (painless,\npostpartum) thyroiditis, radiation. Riedel thyroiditis is fibrosis, not thyrotoxicosis.\n- **Drugs**: thyroxine, **amiodarone**, iodinated contrast; metastatic\nthyroid cancer."
+  },
+  "src": "Standard endocrinology (Harrison; Endotext thyroiditis), endo01a_review 22 Nov 2026"
+ },
+ "ENDO01A|ENDO-07": {
+  "fields": {
+   "a": " | **BURCH-WARTOFSKY** | **AKAMIZU (JAPAN)**\n**Thyrotoxicosis** | Not required | **Prerequisite**\n**Format** | **Points score** | Criteria, no score\n**Fever** | From 37.2 °C | 38 °C\n**Heart rate** | From 99 (some tables 90) | **130**\n**AF** | Included | Not included\n**Heart failure** | Oedema to pulmonary oedema | NYHA IV or Killip III+\n**Liver** | Jaundice | **Bilirubin over 3 mg/dL**"
+  },
+  "src": "Burch-Wartofsky 1993 reproductions differ (MDCalc 90-109; ENDO-06 99-109); made consistent with ENDO-06"
+ },
+ "ENDO01A|ENDO-08": {
+  "fields": {
+   "a": "**DRUG** | **DOSE (NOTES)** | **WHY**\n**Propranolol** | IV 1–2 mg; oral 60–80 mg 4-hourly (ATA 2016; notes: 40–80 mg 6–8-hourly) | Blocks adrenergic effects; **reduces T4→T3**\n**PTU** (preferred, ATA 2016) | 500–1000 mg load, then 200–250 mg | Blocks synthesis **and** **peripheral conversion**\n**Methimazole /** **carbimazole** | **60–80 mg/day** in divided doses (ATA 2016; JTA 60 mg/day); IV not in India | Blocks synthesis\n**Lugol's iodine** / SSKI | **At least 1 h after** the thionamide | Wolff-Chaikoff: stops release and synthesis\n**Hydrocortisone** | Steroid of choice | Reduces conversion; covers relative adrenal insufficiency\n**Lithium** **carbonate** | 300 mg 6-hourly (rarely used) | Inhibits colloid proteolysis (release)\n**L-carnitine** | Adjuvant | Blocks hormone entry to nuclei\nJTA 2016 differs: either thionamide, iodide given with it, β1-selective blocker (landiolol, esmolol) rather than propranolol. Exam answers follow ATA."
+  },
+  "src": "ATA 2016 storm doses via Endotext; JTA/JES 2016 full text (endo01a_review 22 Nov 2026)"
+ },
+ "ENDO01A|ENDO-09": {
+  "fields": {
+   "a": "- **First line**: **β-blocker** (propranolol) → **thionamide** (PTU best) →\n**iodine** (Lugol's, potassium or sodium iodide; ≥ 1 h later) → **hydrocortisone**.\n- **Second line**: lithium → L-carnitine.\n- **Support**: fluids and electrolytes, **paracetamol** (not aspirin:\n*displaces hormone from TBG (standard teaching, not in your*\n*notes)), phenobarbital, furosemide and ACE inhibitor for heart*\nfailure, sedation.\n- **Selected**: ventilation for hypoxaemia; cooling mattresses and\ncold packs if over 40 °C.\n- Treat the trigger."
+  },
+  "src": "ATA 2016 and JTA 2016 both give iodine in the initial regimen (endo01a_review 22 Nov 2026)"
+ },
+ "ENDO01A|ENDO-10": {
+  "fields": {
+   "a": "a Decompensated severe hypothyroidism with altered\nmentation; incidence about **0.2 per million/year** (West; ~1 in Japan); mortality **20–50% even with**\n**treatment**; TSH usually high (low or normal if central); no TSH cut-off defines it.\nb Hashimoto's, thyroidectomy, radioiodine or radiotherapy,\nantithyroid drugs, **tyrosine kinase inhibitors**; pituitary\ndisease.\nc **Infection, cold exposure, stroke**, drugs (**sedatives,**\n**analgesics, amiodarone, lithium**).\nd Coma, **hypothermia** (below **35–35.5 °C**; lower is worse; notes said 33 °C),\nbradycardia, non-pitting oedema, dry yellow skin,\nhyporeflexia, muffled heart sounds (effusion), constipation;\nrarely seizures."
+  },
+  "src": "Endotext Myxedema coma; patient.info; Popoveniuc 2024 review (endo01a_review 22 Nov 2026)"
+ },
+ "ENDO01A|ENDO-11": {
+  "fields": {
+   "a": "**TEST** | **FINDING**\n**Thyroid** | Free T4, T3 low; **TSH over 100** (low or normal if pituitary)\n**ABG** | **Hypoxaemia, hypercapnia**, respiratory acidosis\n**Blood** | **Hyponatraemia** (low free-water clearance: low GFR, high ADH), **hypoglycaemia**, anaemia, high CK and LDH, high transaminases, creatinine, cholesterol\n**ECG** | **Sinus bradycardia, low voltage**, **T-wave flattening or inversion**, long QT\n**Echo** | **Pericardial effusion**, concentric LVH, reduced EF"
+  },
+  "src": "Endotext Myxedema coma; DocT key (endo01a_review 22 Nov 2026)"
+ },
+ "ENDO01A|TU-01": {
+  "fields": {
+   "a": "- Cytokines, cortisol and fasting cut type 1 deiodinase (less T4 to T3) and raise type 3 (type 2 changes inconsistent) (more reverse T3), so T3 falls first.\n- Hypothalamic TRH falls, so TSH is normal or low: an acquired, transient CENTRAL hypothyroidism (dopamine and steroids suppress TSH further).\n- Low T3 alone = mild illness; low T4 with low TSH = severe (total T4 <4 microgram/dL carries up to about 50% mortality).\n- In recovery TSH can rise transiently above normal (usually below 20 mIU/L) - this is not primary hypothyroidism.\n- Do not screen TFTs or give thyroxine: treat the illness, feed the patient, recheck 4-6 weeks after recovery; treat only clear primary disease (TSH >20 with low free T4)."
+  },
+  "src": "Endotext NTI; StatPearls (endo01a_review 22 Nov 2026); top-up T_2b8a9a37 [app code ENDO01A|TU-01; explain.json id T_2b8a9a37]"
+ },
+ "ENDO01A|TU-02": {
+  "fields": {
+   "a": "- Steroid-responsive encephalopathy with autoimmune thyroiditis: high anti-TPO, at ANY thyroid status (most reported cases subclinical or overt hypothyroid; older keys: usually euthyroid).\n- Subacute confusion, seizures, myoclonus, stroke-like episodes, headache or visual change.\n- CSF protein high, EEG diffusely slow, MRI often non-specific; a diagnosis of exclusion.\n- High-dose steroids (methylprednisolone 1 g/day for 3-7 days, then taper) - the response is the confirmation.\n- IVIG or plasma exchange if refractory."
+  },
+  "src": "Chong et al Arch Neurol 2003 review (endo01a_review 22 Nov 2026); top-up T_38ffd8d5 [app code ENDO01A|TU-02; explain.json id T_38ffd8d5]"
+ },
+ "ENDO01B|ENDO-14": {
+  "fields": {
+   "a": " | **PRIMARY (ADRENAL)** | **SECONDARY (PITUITARY)**\n**ACTH** | **High** | **Low**\n**Cortisol** | Low | Low\n**Aldosterone** | **Low**: high K, low Na | **Spared**: K normal; **Na often low** (ADH unsuppressed)\n**Skin** | **Hyperpigmented** (ACTH) | Not pigmented\n**Replace** | **Cortisol +** **mineralocorticoid** | **Cortisol only**"
+  },
+  "src": "Endocrine Society PAI 2016; standard endocrinology (endo01b_review 22 Nov 2026)"
+ },
+ "ENDO01B|ENDO-15": {
+  "fields": {
+   "a": "a **Refractory hypotension** (shock not responding to fluids or\npressors), abdominal cramps, vomiting, diarrhoea, anorexia,\nconfusion.\nb **Hyponatraemia, hyperkalaemia, hypoglycaemia, metabolic**\n**acidosis**.\nc Secondary (steroid withdrawal, or **still on chronic steroids** ≥ 5 mg prednisolone without stress cover): potassium is usually **normal**\n*(standard teaching, not in your notes).*"
+  },
+  "src": "Association of Anaesthetists 2020; Endocrine Society PAI 2016 (endo01b_review 22 Nov 2026)"
+ },
+ "ENDO01B|ENDO-16": {
+  "fields": {
+   "a": "a **A random cortisol over 20 µg/dL** excludes it **outside critical illness** (your notes); not in the ICU.\nb **Short Synacthen test**: 250 µg ACTH IV *(standard teaching,*\n*not in your notes)*; cortisol at **0, 30 and 60 min**.\nc CIRCI likely if the **rise is under 9 µg/dL** or a **random cortisol**\n**is under 10 µg/dL** (SCCM/ESICM 2017); outside the ICU, a peak **under 18 µg/dL (500 nmol/L)** (Endocrine Society 2016) *(standard teaching,*\n*not in your notes).*\nd **Never delay treatment** for testing."
+  },
+  "src": "SCCM/ESICM CIRCI 2017; Endocrine Society PAI 2016 (endo01b_review 22 Nov 2026)"
+ },
+ "ENDO01B|ENDO-23": {
+  "fields": {
+   "a": " | **T/F** | **REASON**\na | F | Primary.\nb | T | Outside critical illness only.\nc | F | Treat first; test later.\nd | T |\ne | F | A normal pituitary.\nf | T |\ng | F | Rises in central DI.\nh | F | Thiazide + amiloride."
+  },
+  "src": "SCCM/ESICM CIRCI 2017; follows ENDO-16 fix"
+ },
+ "ENDO01B|ENDO-20": {
+  "fields": {
+   "a": "**TYPE** | **DEFECT** | **CAUSES**\n**Central** | Too little ADH | Tumour (primary, metastatic), meningitis,\nencephalitis, SLE, **sarcoid**, snake venom, genetic;\n**head injury, surgery**, brain death\n*(standard teaching, not in your notes)*\n**Nephrogenic** | Kidney does not respond | **Lithium**, demeclocycline, vaptans, aminoglycosides, amphotericin, rifampicin, polymyxin; **hypokalaemia,** **hypercalcaemia**; sickle cell, ATN, obstruction, amyloid, PKD, Bartter\n**Gestational** | Placental vasopressinase | Third trimester; reversible"
+  },
+  "src": "Standard endocrinology: neurosarcoid causes central DI; renal effect via hypercalcaemia (endo01b_review 22 Nov 2026)"
+ },
+ "ENDO01B|ENDO-22": {
+  "fields": {
+   "a": "**Central**: **desmopressin** SC or IV 1 µg (notes; 1–2 µg standard),\nonce or twice daily (also nasal, oral, sublingual); replace free\nwater.\n**Nephrogenic**: **thiazide + amiloride** (**amiloride first for lithium DI**: blocks lithium entry via ENaC); **indomethacin**; high-dose\ndesmopressin; stop the drug, correct K and Ca.\nCorrect hypernatraemia slowly."
+  },
+  "src": "Standard nephrology; endo01b_review 22 Nov 2026 (amiloride first for lithium DI checked)"
+ },
+ "ENDO01B|TU-01": {
+  "fields": {
+   "a": "- Paroxysmal headache, palpitations and sweating with episodic severe hypertension; crises are triggered by surgery, tumour handling, steroids, metoclopramide, beta-blockers and contrast. In pregnancy the episodic pattern with normal labs separates it from pre-eclampsia.\n- Confirm with plasma free (fractionated) metanephrines, sensitivity 96-100% - COMT converts catecholamines continuously, so they stay high between bursts; 24-h urine metanephrines are the alternative.\n- Image only after biochemistry (>3-4x upper limit is near-diagnostic); MRI in pregnancy (no MIBG or CT). In pregnancy (Bancos 2021, 249 pregnancies) maternal death or severe complication about 8% and fetal death about 9%, far higher if unrecognised (older keys: 40-50% mortality; crises at labour or anaesthesia), so remove the tumour laparoscopically in the second trimester or at caesarean section.\n- Alpha-blockade FIRST: phenoxybenzamine or doxazosin for 7-14 days (ES 2014) with liberal salt and fluid; IV phentolamine 1-5 mg (or nitroprusside, nicardipine, clevidipine) for a crisis.\n- Beta-blocker only AFTER alpha-blockade, and never labetalol first (beta:alpha about 7:1 leaves alpha unopposed). After removal expect hypotension and hypoglycaemia."
+  },
+  "src": "Endocrine Society PPGL 2014; Bancos et al 2021 (249 pregnancies) (endo01b_review 22 Nov 2026); top-up T_fa1bba17 [app code ENDO01B|TU-01; explain.json id T_fa1bba17]"
+ },
+ "ENDO01B|TU-05": {
+  "fields": {
+   "a": "- Mediators (serotonin, histamine, bradykinin, prostaglandins) must reach the systemic circulation - usually only after liver metastases, because the liver inactivates gut-derived amines.\n- Exception: bronchial, ovarian and retroperitoneal primaries drain outside the portal system, so they cause the syndrome WITHOUT metastases.\n- Features: flushing, diarrhoea, bronchospasm, right-sided valve fibrosis (tricuspid regurgitation, pulmonary stenosis).\n- Crisis (anaesthesia, tumour handling): octreotide IV bolus then infusion (NANETS 2017: infusions of 100-500 microgram/h are common practice); routine preventive octreotide is unproven. Older keys: 50-100 microgram bolus, 50-100 microgram/h.\n- Avoid catecholamines and histamine releasers; use vasopressin or phenylephrine for hypotension."
+  },
+  "src": "NANETS perioperative consensus 2017 (endo01b_review 22 Nov 2026); top-up T_0daf26c0 [app code ENDO01B|TU-05; explain.json id T_0daf26c0]"
+ },
+ "ENDO02A|GLY-01": {
+  "fields": {
+   "a": "a CBG **> 140 mg/dL** (ADA hospital definition); insulin starts at **≥ 180**. Older keys: > 180-200.\nb CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2).\nc **140-180 mg/dL**.\nd **80-139 mg/dL** (SCCM 2024); ADA allows 110-140 only in selected patients. Older keys: below 110 (the intensive trial targets)."
+  },
+  "src": "ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline"
+ },
+ "ENDO02A|GLY-06": {
+  "fields": {
+   "a": "a **Hypothalamus (PVN)** → CRH.\nb **Anterior pituitary** → ACTH → adrenal cortex → cortisol; IL-6 also stimulates the **adrenal cortex directly**.\nc **PVN, pituitary and immune cells** (negative feedback).\nd Locus coeruleus → **adrenal medulla (epinephrine)** and **sympathetic nerves (norepinephrine)**; both drive hepatic gluconeogenesis and glycogenolysis."
+  },
+  "src": "Boonen et al NEJM 2013 (endo02a_review 22 Nov 2026)"
+ },
+ "ENDO02A|GLY-11": {
+  "fields": {
+   "a": "a When glucose is **> 140 mg/dL** or diabetes is known, if none in the past 3 months (ADA). Older notes: > 180.\nb To **separate stress hyperglycaemia from diabetes**, for **prognosis**, and to **shape the protocol**.\nc HbA1c **< 7%**: 140-180. HbA1c **> 7%**: the old notes gave medical 180-220, but **no guideline uses HbA1c tiers**; SCCM 2024: start at **≥180**, avoid 80-139; use **140-180** for all."
+  },
+  "src": "ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline"
+ },
+ "ENDO02A|GLY-12": {
+  "fields": {
+   "a": "a **IV insulin**: poor microcirculation makes SC absorption unpredictable. Use a regional protocol.\nb **Hourly** at first, then **every 1-2 h** while the infusion runs (ADA 30 min-2 h); 4-hourly only on SC insulin. Older keys: 4-hourly once stable.\nc Better control, **fewer treatment errors**, more **time in target range**, and **less hypoglycaemia**."
+  },
+  "src": "ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline"
+ },
+ "ENDO02A|GLY-18": {
+  "fields": {
+   "a": "a It samples interstitial fluid intermittently (**every 1-5 min** on current sensors; older devices up to 15 min); **sensor drift and lag time**; most devices fail accuracy standards.\nb **Paracetamol, dopamine, mannitol** interfere; evidence limited; AACE/ACE 2016: likely useful **whenever IIT is used**; cost is a concern.\nc **Sensor + control algorithm + IV pump**.\nd Better control **without more hypoglycaemia**, less variability and nursing work, more time in range; **evidence limited**."
+  },
+  "src": "SCCM 2024 glycaemic guideline; device specifications (endo02a_review 22 Nov 2026)"
+ },
+ "ENDO02B|DKA-04": {
+  "fields": {
+   "a": "a **Infection 30-40%**, **insulin omission 33%**, new-onset diabetes 5-40%, acute illness 10-20%; ischaemia, pancreatitis or trauma < 10%. 2024 ranges: infection 14-58% (DKA), 30-60% (HHS); insulin omission the leading cause in US urban series (over two-thirds in one).\nb **Infection, Ischaemia/infarction, Iatrogenic** (steroids), **Intoxication, Insulin missed, Intra-abdominal** process (pancreatitis, cholecystitis)."
+  },
+  "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)"
+ },
+ "ENDO02B|DKA-06": {
+  "fields": {
+   "a": "Item | DKA | HHS\nGlucose | **≥ 200** or known diabetes (2024) | **≥ 600**\npH | **7.25-7.30 / 7.0-7.24 / < 7.0** | **> 7.30**\nOsmolality | variable | effective **> 300** (or total > 320)\nAnion gap | **> 10 / > 12 / > 12** | variable\nMental | **alert / drowsy / stupor-coma** | stupor or coma\n2024 grades DKA by pH and **HCO3 (≥ 15 / 10 to < 15 / < 10)**, not anion gap; HHS needs **pH ≥ 7.3, HCO3 ≥ 15, BHB < 3.0**. Older keys: the anion-gap row (ADA 2009)."
+  },
+  "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)"
+ },
+ "ENDO02B|DKA-08": {
+  "fields": {
+   "a": "a **Tachypnoea, Kussmaul breathing**; **tachycardia and hypotension** from hypovolaemia.\nb Vomiting, cramps, ileus, **fruity breath**; **AKI and polyuria**.\nc **Leucocytosis**.\nd **Translocational (dilutional) hyponatraemia, HAGMA, hyperkalaemia, phosphate normal or high (falls with insulin), hypomagnesaemia**."
+  },
+  "src": "ADA 2009 consensus text; 2024 consensus (endo02b_review 22 Nov 2026); matches DKA-18 a"
+ },
+ "ENDO02B|DKA-11": {
+  "fields": {
+   "a": "Item | DKA | HHS\nWater | **100** | **100-200**\nNa | **7-10** | **5-13**\nK | **3-5** | **4-6**\nPO4 | **5-7** | **3-7**\nCl, Mg, Ca | 3-5, 1-2, 1-2 | 5-15, 1-2, 1-2"
+  },
+  "src": "Kitabchi ADA 2006 Table 1, carried into ADA 2009 (endo02b_review 22 Nov 2026)"
+ },
+ "ENDO02B|DKA-12": {
+  "fields": {
+   "a": "a **0.9% NaCl 1 L/h** (15-20 mL/kg).\nb High or normal Na: **0.45% NaCl**; low Na: **0.9% NaCl**; both **250-500 mL/h** by hydration.\nc Glucose **< 250 mg/dL** in both DKA and HHS (2024; was 200 / 300) → add **5-10% dextrose** to the saline; keep insulin running.\nd **Ringer's lactate, Plasma-Lyte** acceptable; **HES not preferred**; 2024: saline or **balanced crystalloids**; balanced linked to faster resolution and less hyperchloraemia. Older keys: no crystalloid proven better.\ne **Haemodynamic monitoring and pressors**, not blind fluid loading."
+  },
+  "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)"
+ },
+ "ENDO02B|DKA-16": {
+  "fields": {
+   "a": "a **β-hydroxybutyrate < 0.6 mmol/L** and **venous pH ≥ 7.3 or HCO3 ≥ 18** (2024); do not use the anion gap or urine ketones.\nb **0.5-0.6 U/kg/day** (2024; lower, about 0.3, if at risk of hypoglycaemia). Older keys: 0.5-0.8 (ADA 2009).\nc **Home insulin dose**.\nd **1-2 h** after the first SC dose (Marrow text: 2 h).\ne Electrolytes, BUN, venous pH, creatinine and glucose **every 2-4 h**."
+  },
+  "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026); endo02b_review 22 Nov 2026"
+ },
+ "ENDO02B|DKA-19": {
+  "fields": {
+   "a": "a **Too-rapid correction** of glucose and osmolality.\nb **Children** with DKA; uncommon in adults.\nc **Headache, bradycardia, falling sodium** despite improving glucose *(DocT)*.\nd **Bicarbonate**; fluid rate and tonicity did not change cerebral injury in PECARN FLUID (2018). Older keys: fast fluid shifts, large fluid volumes."
+  },
+  "src": "Kuppermann NEJM 2018 PECARN FLUID; ISPAD 2022 ch 11 (endo02b_review 22 Nov 2026)"
+ },
+ "HY5|HEO-08": {
+  "fields": {
+   "a": "**Glucose falls before ketones clear → ADD dextrose, keep insulin**\na K below **3.5** → hold insulin, replace K first (2024; older keys 3.3, ADA 2009).\nb Fixed-rate IV **0.1 U/kg/h** after the first litre of saline.\nc **Continue insulin, add 5–10% dextrose** — insulin is treating the ketosis, not the glucose.\nd Only if **pH below 7.0** (2024; ADA 2009 below 6.9).\ne **β-hydroxybutyrate below 0.6 mmol/L** and pH ≥ 7.3 or HCO3 ≥ 18 (2024; anion gap no longer used). Older keys: pH > 7.3, HCO3 ≥ 15–18, normal anion gap."
+  },
+  "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)"
+ },
+ "HY5|HEO-04": {
+  "fields": {
+   "a": "**TRALI = leaky lungs, no overload · TACO = overload**\n | TRALI | TACO\n**Timing** | Within 6 h | Within 12 h (≥ 3 ISBT criteria)\n**BP** | Hypotension | Hypertension\n**Fever** | Often | Usually no (does not exclude)\n**JVP / BNP** | Normal | Raised\n**Diuretic** | No response / harmful | Improves\n**Prevention** | **Male-only donor plasma** | Slow rate, diuretic\n\nAcute haemolytic (ABO): fever, loin pain, haemoglobinuria, DIC → stop. Anaphylaxis: IgA-deficient recipient. Febrile non-haemolytic: fever only."
+  },
+  "src": "ISBT 2018 TACO definition via SHOT; TRALI 2019 redefinition (hy5_review 22 Nov 2026)"
+ },
+ "HY5|HEO-13": {
+  "fields": {
+   "a": "**HELLP → magnesium + delivery · AFLP → hypoglycaemia, coagulopathy**\na Haemolysis (LDH above 600), AST/ALT above 70, platelets below 100,000 → **MgSO4 + control BP + delivery**.\nb **Hypoglycaemia**, low fibrinogen/coagulopathy, AKI, encephalopathy, mildly raised ammonia — liver FAILURE, not just enzymes.\nc Imaging is often normal → **liver biopsy** (rarely needed).\nd **Haemorrhage from coagulopathy**."
+  },
+  "src": "Card structure: part d answer was inside line c (hy5_review 22 Nov 2026)"
+ },
+ "HY5|HEO-17": {
+  "fields": {
+   "a": "**PE in pregnancy with normal CXR → V/Q scan**\na **V/Q (lung scintigraphy)**. Abnormal CXR → CTPA. D-dimer unreliable.\nb Pregnancy of unknown location → **repeat hCG + transvaginal US in 48 h** — don't treat on one value.\nc **Anti-D 50 µg** (fetal Rh antigen present from ~6 weeks) - the traditional and exam answer. Now contested: NICE NG126 gives it only after SURGICAL management (none for medical management); ACOG 2024 may forgo it before 12 weeks.\nd **Amoxicillin or cephalexin 3–7 days** (nitrofurantoin avoided in 1st trimester; no fluoroquinolones)."
+  },
+  "src": "NICE NG126 1.18; ACOG CPU 2024 (PubMed 39255498) (hy5_review 22 Nov 2026); ACOG PB 181 traditional"
+ }
+}

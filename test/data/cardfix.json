@@ -1,6 +1,6 @@
 {
- "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged). 22 Nov 2026: endocrine/HY5 table layouts repaired (layout only).",
- "version": "81074cc0eb",
+ "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged). 22 Nov 2026: endocrine/HY5 table layouts repaired (layout only). 23 Nov 2026: 171 card corrections from the cardiology, endocrine and NEET-packet flags, decided by Claude on Naven's instruction and independently fact-checked (tools/flagfix/VERIFY.md); updated guideline answers carry an \"Older keys\" line.",
+ "version": "ff2750be10",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -347,9 +347,9 @@
   },
   "CVS07A|PCA-09": {
    "fields": {
-    "a": "- **1. ROSC**\n- **2. Optimise ventilation and oxygenation:** **SpO₂ 90–98%** (PaO₂ 60–105 mmHg; avoid hypoxaemia and hyperoxia; AHA 2025) • consider **advanced airway** • **and waveform capnography** • **DO NOT HYPERVENTILATE**\n- **3. Treat hypotension (SBP <90 mmHg):** IV/IO bolus • vasopressor infusion • consider treatable causes\n- **4. 12-lead ECG: STEMI or high suspicion of AMI?** → **YES: 5. CORONARY REPERFUSION**\n- **6. Follows commands?** → **NO: 7. Initiate TARGETED TEMPERATURE MANAGEMENT** → **YES: 8. Advanced critical care**"
+    "a": "- **1. ROSC**\n- **2. Optimise ventilation and oxygenation:** **SpO₂ 90–98%** (PaO₂ 60–105 mmHg; avoid hypoxaemia and hyperoxia; AHA 2025) • consider **advanced airway** • **and waveform capnography** • **DO NOT HYPERVENTILATE**\n- **3. Treat hypotension (keep MAP ≥65 mmHg; AHA 2025 - older algorithm: SBP <90):** IV/IO bolus • vasopressor infusion • consider treatable causes\n- **4. 12-lead ECG: STEMI or high suspicion of AMI?** → **YES: 5. CORONARY REPERFUSION**\n- **6. Follows commands?** → **NO: 7. Initiate TARGETED TEMPERATURE MANAGEMENT** → **YES: 8. Advanced critical care**"
    },
-   "src": "AHA 2025 Guidelines for CPR & ECC, Part 11 Post-Cardiac Arrest Care (Circulation 2025)",
+   "src": "AHA 2025 Guidelines for CPR & ECC, Part 11 Post-Cardiac Arrest Care (Circulation 2025) | AHA 2025 adult post-cardiac arrest care (MAP ≥65; SBP target dropped); checked 23 Nov 2026",
    "date": "7 Nov 2026"
   },
   "CVS07A|PCA-18": {
@@ -485,9 +485,10 @@
   },
   "CVS06B|RVF-32": {
    "fields": {
-    "a": "**Method** | **Abnormal**\n**RVEF on 2D** | **<44%**\n**Fractional area change (FAC)** | **<35%**\n**TAPSE** | **<1.7 cm**\n**RIMP** | **Pulsed >0.44**; **Tissue >0.55**\n**Isovolumic acceleration (IVA)** | **NOT DEFINED**\n**S' (pulsed)** | **<10 cm/sec**\n**RVEF on 3D** | **<44%**"
+    "a": "**Method** | **Abnormal**\n**RVEF on 2D** | **<44%**\n**Fractional area change (FAC)** | **<35%**\n**TAPSE** | **<1.7 cm**\n**RIMP** | **Pulsed >0.43**; **Tissue >0.54**\n**Isovolumic acceleration (IVA)** | **NOT DEFINED**\n**S' (pulsed)** | **<9.5 cm/sec**\n**RVEF on 3D** | **<45%**\n- ASE 2015 values (ASE 2025 RIMP: >0.40 / >0.55); older (2010) table: S' <10, RIMP 0.40/0.55, 3D RVEF <44%",
+    "watch": "IVA has NO defined abnormal threshold - it is listed as a measure but is not usable as a cut-off. 2D RVEF is not recommended by ASE 2015; use 3D RVEF (<45%)."
    },
-   "src": "Rudski LG et al., J Am Soc Echocardiogr 2010; Lang RM et al., ASE/EACVI 2015",
+   "src": "Rudski LG et al., J Am Soc Echocardiogr 2010; Lang RM et al., ASE/EACVI 2015 | ASE/EACVI chamber quantification 2015 (RV function cut-offs); checked 23 Nov 2026",
    "date": "10 Nov 2026"
   },
   "NEURO01|NEURO-26": {
@@ -543,9 +544,10 @@
   },
   "CVS01|CVS-27": {
    "fields": {
-    "a": "- Haemodynamically **unstable**: **tamponade**\n- **Stable** patients: large effusion **>20 mm**; chronic effusion **>3 months**; symptomatic moderate-to-large effusion not responding to medical therapy; **small** effusion if TB, bacterial or neoplastic\n- Puncture sites: **subcostal, parasternal, apical**\n**ABSOLUTE C/I** | **RELATIVE C/I**\nAortic dissection | Platelets <50 K\nPost-MI free wall rupture | Coagulopathy\n— | Anticoagulant therapy; severe PAH (caution: RV may fail after drainage)"
+    "a": "- Haemodynamically **unstable**: **tamponade**\n- **Stable** patients: large effusion **>20 mm**; chronic effusion **>3 months**; symptomatic moderate-to-large effusion not responding to medical therapy; **small** effusion if TB, bacterial or neoplastic\n- Puncture sites: **subcostal, parasternal, apical**\n**ABSOLUTE C/I** | **RELATIVE C/I**\nAortic dissection | Platelets <50 K\nPost-MI free wall rupture (surgery preferred; small controlled drainage only as a bridge) | Coagulopathy\n— | Anticoagulant therapy; severe PAH (caution: RV may fail after drainage)\n- ESC names **aortic dissection** as the only MAJOR contraindication",
+    "q": "**For pericardiocentesis, give:**\na The indication in unstable patients\nb The four indications in stable patients\nc The three puncture sites\nd The absolute contraindications\ne The relative contraindications"
    },
-   "src": "ESC 2015 pericardial disease guideline: only aortic dissection and free-wall rupture are absolute contraindications",
+   "src": "ESC 2015 pericardial disease guideline: only aortic dissection and free-wall rupture are absolute contraindications | ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921) (aortic dissection the major contraindication; surgery preferred for rupture/traumatic haemopericardium); checked 23 Nov 2026",
    "date": "10 Nov 2026"
   },
   "CVS06B|RVF-29": {
@@ -775,9 +777,9 @@
   },
   "ENDO02B|DKA-06": {
    "fields": {
-    "a": "Item | DKA | HHS\nGlucose | **≥ 200** or known diabetes (2024) | **≥ 600**\npH | **7.25-7.30 / 7.0-7.24 / < 7.0** | **> 7.30**\nOsmolality | variable | effective **> 300** (or total > 320)\nAnion gap | **> 10 / > 12 / > 12** | variable\nMental | **alert / drowsy / stupor-coma** | stupor or coma"
+    "a": "Item | DKA | HHS\nGlucose | **≥ 200** or known diabetes (2024) | **≥ 600**\npH | **7.25-7.30 / 7.0-7.24 / < 7.0** | **> 7.30**\nOsmolality | variable | effective **> 300** (or total > 320)\nAnion gap | **> 10 / > 12 / > 12** | variable\nMental | **alert / drowsy / stupor-coma** | stupor or coma\n2024 grades DKA by pH and **HCO3 (≥ 15 / 10 to < 15 / < 10)**, not anion gap; HHS needs **pH ≥ 7.3, HCO3 ≥ 15, BHB < 3.0**. Older keys: the anion-gap row (ADA 2009)."
    },
-   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024) | ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)",
    "date": "10 Nov 2026"
   },
   "ENDO02B|DKA-01": {
@@ -789,9 +791,9 @@
   },
   "ENDO02B|DKA-12": {
    "fields": {
-    "a": "a **0.9% NaCl 1 L/h** (15-20 mL/kg).\nb High or normal Na: **0.45% NaCl**; low Na: **0.9% NaCl**; both **250-500 mL/h** by hydration.\nc Glucose **< 250 mg/dL** in both DKA and HHS (2024; was 200 / 300) → add **5-10% dextrose** to the saline; keep insulin running.\nd **Ringer's lactate, Plasma-Lyte** acceptable; **HES not preferred**; no crystalloid proven better.\ne **Haemodynamic monitoring and pressors**, not blind fluid loading."
+    "a": "a **0.9% NaCl 1 L/h** (15-20 mL/kg).\nb High or normal Na: **0.45% NaCl**; low Na: **0.9% NaCl**; both **250-500 mL/h** by hydration.\nc Glucose **< 250 mg/dL** in both DKA and HHS (2024; was 200 / 300) → add **5-10% dextrose** to the saline; keep insulin running.\nd **Ringer's lactate, Plasma-Lyte** acceptable; **HES not preferred**; 2024: saline or **balanced crystalloids**; balanced linked to faster resolution and less hyperchloraemia. Older keys: no crystalloid proven better.\ne **Haemodynamic monitoring and pressors**, not blind fluid loading."
    },
-   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024) | ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)",
    "date": "10 Nov 2026"
   },
   "ENDO02B|DKA-13": {
@@ -813,9 +815,9 @@
   },
   "ENDO02B|DKA-16": {
    "fields": {
-    "a": "a **β-hydroxybutyrate < 0.6 mmol/L** and **venous pH ≥ 7.3 or HCO3 ≥ 18** (2024); do not use the anion gap or urine ketones.\nb **0.5-0.8 U/kg/day**.\nc **Home insulin dose**.\nd **1-2 h** after the first SC dose (Marrow text: 2 h).\ne Electrolytes, BUN, venous pH, creatinine and glucose **every 2-4 h**."
+    "a": "a **β-hydroxybutyrate < 0.6 mmol/L** and **venous pH ≥ 7.3 or HCO3 ≥ 18** (2024); do not use the anion gap or urine ketones.\nb **0.5-0.6 U/kg/day** (2024; lower, about 0.3, if at risk of hypoglycaemia). Older keys: 0.5-0.8 (ADA 2009).\nc **Home insulin dose**.\nd **1-2 h** after the first SC dose (Marrow text: 2 h).\ne Electrolytes, BUN, venous pH, creatinine and glucose **every 2-4 h**."
    },
-   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024)",
+   "src": "Umpierrez GE et al., Hyperglycemic crises in adults with diabetes: a consensus report, Diabetes Care 2024;47:1257-1275 (also Diabetologia 2024) | ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026); endo02b_review 22 Nov 2026",
    "date": "10 Nov 2026"
   },
   "ENDO02B|DKA-17": {
@@ -841,16 +843,16 @@
   },
   "ENDO02A|GLY-01": {
    "fields": {
-    "a": "a CBG **> 180-200 mg/dL**.\nb CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2).\nc **140-180 mg/dL**.\nd Anything **below 110 mg/dL**: the intensive targets of the trials."
+    "a": "a CBG **> 140 mg/dL** (ADA hospital definition); insulin starts at **≥ 180**. Older keys: > 180-200.\nb CBG **< 70 mg/dL** (level 1); **< 54 mg/dL** clinically significant (level 2).\nc **140-180 mg/dL**.\nd **80-139 mg/dL** (SCCM 2024); ADA allows 110-140 only in selected patients. Older keys: below 110 (the intensive trial targets)."
    },
-   "src": "ADA Standards of Care 2024/2025 (glycaemic targets)",
+   "src": "ADA Standards of Care 2024/2025 (glycaemic targets) | ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline",
    "date": "10 Nov 2026"
   },
   "ENDO02A|GLY-11": {
    "fields": {
-    "a": "a When glycaemia is **> 180 mg/dL**.\nb To **separate stress hyperglycaemia from diabetes**, for **prognosis**, and to **shape the protocol**.\nc HbA1c **< 7%**: 140-180. HbA1c **> 7%**: the old notes gave medical 180-220, but **no guideline uses HbA1c tiers**; SCCM 2024: start at **≥180**, avoid 80-139; use **140-180** for all."
+    "a": "a When glucose is **> 140 mg/dL** or diabetes is known, if none in the past 3 months (ADA). Older notes: > 180.\nb To **separate stress hyperglycaemia from diabetes**, for **prognosis**, and to **shape the protocol**.\nc HbA1c **< 7%**: 140-180. HbA1c **> 7%**: the old notes gave medical 180-220, but **no guideline uses HbA1c tiers**; SCCM 2024: start at **≥180**, avoid 80-139; use **140-180** for all."
    },
-   "src": "SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024); CONTROLING RCT (Bohe et al., 2021)",
+   "src": "SCCM 2024 Glycemic Control Guideline (Honarmand et al., Crit Care Med 2024); CONTROLING RCT (Bohe et al., 2021) | ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline",
    "date": "10 Nov 2026"
   },
   "ENDO02B|DKA-23": {
@@ -1492,9 +1494,9 @@
   },
   "CVS08A|ACLS-02": {
    "fields": {
-    "a": "- **Ensure scene safety** → **check responsiveness** (call out, loud tap)\n- **Activate EMS**\n- **Check the carotid pulse for NO MORE THAN 10 SECONDS**, together with breathing (sounds and chest rise); no definite pulse = start CPR\n- **AGONAL GASP is NOT normal breathing** → **START CPR**"
+    "a": "- **Ensure scene safety** → **check responsiveness** (call out, loud tap)\n- **Activate EMS** - India: **108** (ambulance) / **112** (unified emergency)\n- **Check the carotid pulse for NO MORE THAN 10 SECONDS**, together with breathing (sounds and chest rise); no definite pulse = start CPR\n- **AGONAL GASP is NOT normal breathing** → **START CPR**"
    },
-   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org)",
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org) | Indian emergency numbers (108 ambulance, 112 unified); 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS08E|ACLS-73": {
@@ -1513,17 +1515,18 @@
   },
   "CVS08D|ACLS-64": {
    "fields": {
-    "a": " | **2020 / older** | **2025**\n**Cardioversion, AF** | 120-200 J | **≥200 J**\n**Cardioversion, flutter** | 50-100 J | **200 J**\n**Compression depth** | ≥5 cm, avoid >6 cm | **unchanged: ≥5 cm, avoid >6 cm**\n**Post-ROSC SpO2** | 92-98% | **90-98%**\n**Temperature duration** | ≥24 hours | **≥36 hours**\n**Temperature range** | 32-36°C | **32-37.5°C**\n**Vascular access** | IV first, weaker recommendation (algorithm box: IV/IO) | **IV first (class 1), IO if IV fails**",
+    "a": " | **2020 / older** | **2025**\n**Cardioversion, AF** | 120-200 J (2010/2015; 2020: device-recommended) | **≥200 J**\n**Cardioversion, flutter** | 50-100 J (2010/2015) | **200 J**\n**Compression depth** | ≥5 cm, avoid >6 cm | **unchanged: ≥5 cm, avoid >6 cm**\n**Post-ROSC SpO2** | 92-98% | **90-98%**\n**Temperature duration** | ≥24 hours | **≥36 hours**\n**Temperature range** | 32-36°C (2020; 32-37.5 from the 2023 update) | **32-37.5°C**\n**Vascular access** | IV first, weaker recommendation (algorithm box: IV/IO) | **IV first (class 1), IO if IV fails**",
     "watch": "Five of these moved (depth did not; access was already IV first in 2020, now class 1) and they are the highest-risk items in a transition year: the old number is still in circulating question banks, and both figures are defensible depending on which guideline a paper was keyed to. Know both and which is which."
    },
-   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org); AHA 2020 Guidelines, Part 3 Adult Basic and Advanced Life Support, Circulation 2020;142(suppl 2):S366; AHA 2020 Part 3, Circulation 2020;142(suppl 2):S366; AHA 2025 Part 9",
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 7 Adult Basic Life Support, Circulation 2025 (cpr.heart.org); AHA 2020 Guidelines, Part 3 Adult Basic and Advanced Life Support, Circulation 2020;142(suppl 2):S366; AHA 2020 Part 3, Circulation 2020;142(suppl 2):S366; AHA 2025 Part 9 | AHA 2015/2020 algorithms; AHA 2023 focused update; AHA 2025; checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS08B|ACLS-26": {
    "fields": {
-    "watch": "This supersedes the older 120-200 J for AF and 50-100 J\nfor flutter - both are now 200 J. Note AHA's guideline text gives joules only for AF (at least\n200 J, class 2a) and flutter (200 J, class 2b); the 100 J for\nnarrow-complex tachycardia and monomorphic VT is from its\nELECTRICAL CARDIOVERSION ALGORITHM."
+    "watch": "This supersedes the older 120-200 J for AF and 50-100 J\nfor flutter - both are now 200 J. Note AHA's guideline text gives joules only for AF (at least\n200 J, class 2a) and flutter (200 J, class 2b); the 100 J for\nnarrow-complex tachycardia and monomorphic VT is from its\nELECTRICAL CARDIOVERSION ALGORITHM.",
+    "a": "**Rhythm** | **Energy**\n**Atrial fibrillation** | **≥200 J**\n**Atrial flutter** | **200 J**\n**Narrow-complex tachycardia** | **100 J**\n**Monomorphic VT** | **100 J**\n**Polymorphic VT** | **UNSYNCHRONISED, HIGH-ENERGY SHOCK (defibrillation)**\nRationale: **low-energy shocks were significantly**\n**MORE LIKELY TO PROVOKE VF** when cardioverting AF, and to provoke AF when\ncardioverting flutter"
    },
-   "src": "AHA 2025 Guidelines for CPR and ECC, Part 9: Adult Advanced Life Support (Circulation 2025;152 suppl 2), sections 15, 17, 18.1",
+   "src": "AHA 2025 Guidelines for CPR and ECC, Part 9: Adult Advanced Life Support (Circulation 2025;152 suppl 2), sections 15, 17, 18.1 | AHA 2025 adult ALS (AF at least 200 J, 2a); checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS08C|ACLS-53": {
@@ -1549,9 +1552,9 @@
   },
   "CVS07A|PCA-10": {
    "fields": {
-    "a": "**Ventilation** | Start at **10 breaths/min**, titrate to **PETCO₂ 35-40 mmHg**. Avoid excessive ventilation\n**FiO₂** | **100% until SpO₂ reads reliably**, then titrate to the **MINIMUM necessary** for **SpO₂ 90–98%** (PaO₂ 60–105 mmHg; AHA 2025)\n**IV bolus** | **1-2 L** normal saline or lactated Ringer's\n**Epinephrine** | **0.1-0.5 mcg/kg/min** (70 kg adult: 7-35 mcg/min)\n**Dopamine** | **5-10 mcg/kg/min**\n**Norepinephrine** | **0.1-0.5 mcg/kg/min** (70 kg adult: 7-35 mcg/min)"
+    "a": "**Ventilation** | Start at **10 breaths/min**, titrate to **PETCO₂ 35-40 mmHg**. Avoid excessive ventilation\n**FiO₂** | **100% until SpO₂ reads reliably**, then titrate to the **MINIMUM necessary** for **SpO₂ 90–98%** (PaO₂ 60–105 mmHg; AHA 2025)\n**IV bolus** | **1-2 L** normal saline or lactated Ringer's\n**Epinephrine** | **0.1-0.5 mcg/kg/min** (70 kg adult: 7-35 mcg/min)\n**Dopamine** | **5-10 mcg/kg/min**\n**Norepinephrine** | **0.1-0.5 mcg/kg/min** (70 kg adult: 7-35 mcg/min)\n- Doses are from the 2015/2020 algorithm; AHA 2025 prints no doses: **MAP ≥65**, SpO₂ 90-98%, **PaCO₂ 35-45**"
    },
-   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2)",
+   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2) | AHA 2025 adult post-cardiac arrest algorithm (no dose panel); checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS07A|PCA-16": {
@@ -1563,9 +1566,9 @@
   },
   "HY2|CAR-15": {
    "fields": {
-    "a": "**MAP ≥ 65 · normocapnia · 32–37.5 °C for all**\n**comatose patients**\na **MAP ≥ 65, SBP ≥ 90 mmHg.**\nb **SpO2 90–98% (PaO2 60–105); PaCO2 35–45.**\nc **32–37.5 °C, any rhythm, any location; at least**\n36 h (2025); rewarm no faster than 0.5 °C/h;\nprevent fever.\nd **Seizure ≥ 10 min continuous, or seizures for**\n≥ 20% of any 60 min.\ne **STEMI, or cardiogenic shock / suspected**\ncoronary cause — not everyone."
+    "a": "**MAP ≥ 65 · normocapnia · 32–37.5 °C for all**\n**comatose patients**\na **MAP ≥ 65 mmHg** (AHA 2025; older keys: also SBP ≥ 90).\nb **SpO2 90–98% (PaO2 60–105); PaCO2 35–45.**\nc **32–37.5 °C, any rhythm, any location; at least**\n36 h (2025); rewarm no faster than 0.5 °C/h;\nprevent fever.\nd **Seizure ≥ 10 min continuous, or seizures for**\n≥ 20% of any 60 min.\ne **STEMI, or cardiogenic shock / suspected**\ncoronary cause — not everyone."
    },
-   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2)",
+   "src": "Hirsch KG et al. Part 11: Post-Cardiac Arrest Care, 2025 AHA Guidelines for CPR and ECC, Circulation 2025;152(suppl 2) | AHA 2025 post-cardiac arrest care (MAP ≥65 only); checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS07C|PCA-49": {
@@ -1586,9 +1589,10 @@
   },
   "CVS07C|PCA-53": {
    "fields": {
-    "a": "- **AT LEAST 2 OF:**\n- 1. **NO pupillary AND corneal reflex at **≥**72 h**\n- 2. **BILATERALLY ABSENT N20 SSEP wave at **≥**24 h**\n- 3. **Highly malignant EEG at >24 h** (suppressed background ± periodic discharges, or burst suppression)\n- 4. **NSE >60 at 48 h and/or 72 h**\n- 5. **Status myoclonus **≤**72 h**\n- 6. **Diffuse and extensive anoxic injury on brain**\n**CT/MRI**\n- **YES** → **POOR OUTCOME LIKELY** • **NO** →\n**OBSERVE AND RE-EVALUATE**"
+    "a": "- **AT LEAST 2 OF:**\n- 1. **NO pupillary AND corneal reflex at **≥**72 h**\n- 2. **BILATERALLY ABSENT N20 SSEP wave at **≥**24 h**\n- 3. **Highly malignant EEG at >24 h** (suppressed background ± periodic discharges, or burst suppression)\n- 4. **NSE >60 at 48 h and/or 72 h**\n- 5. **Status myoclonus **≤**72 h**\n- 6. **Diffuse and extensive anoxic injury on brain**\n**CT/MRI**\n- **YES** → **POOR OUTCOME LIKELY** • **NO** →\n**OBSERVE AND RE-EVALUATE**",
+    "watch": "The timings differ per criterion and are part of the criterion:\nreflexes at ≥72 h, NSE at 48 and/or 72 h, EEG at >24 h, status myoclonus WITHIN\n72 h. Status myoclonus is the only one defined by an EARLY\nappearance rather than persistence."
    },
-   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Intensive Care Med 2025;51:2213; Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213)",
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Intensive Care Med 2025;51:2213; Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213) | ERC-ESICM 2025 post-resuscitation care guideline; checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS07B|PCA-26": {
@@ -1600,16 +1604,16 @@
   },
   "CVS07B|PCA-28": {
    "fields": {
-    "a": "**Stage** | **Finding**\n**Early trials** | **Hypothermia BETTER than normothermia** - favourable outcome roughly doubled\n**TTM 2013** | **36°C is AS GOOD AS 33°C** - the depth of cooling does not matter\n**TTM2** | **Hypothermia is NO BETTER than normothermia**, and causes more arrhythmia\n**ERC/ESICM 2021** | **TTM at 36°C**; constant temperature **32-36°C** for ≥24 h; **PREVENT FEVER for at least 72 h**\n**ERC-ESICM 2025** | **Actively PREVENT FEVER: ≤37.5°C for 36-72 h**; the constant 32-36°C target is dropped; mild hypothermia (32-36°C) is not actively rewarmed\n**AHA 2025** | **Temperature control for AT LEAST 36 HOURS** in patients unresponsive to verbal commands; **goal 32-37.5°C**. Hypothermic (32-34°C) and normothermic / fever-prevention (36-37.5°C) are BOTH 'temperature control'\n- **What survives: FEVER IS HARMFUL** (PCA-27). The debate was only ever about how far BELOW normal to go"
+    "a": "**Stage** | **Finding**\n**Early trials** | **Hypothermia BETTER than normothermia** - favourable outcome roughly doubled\n**TTM 2013** | **36°C is AS GOOD AS 33°C** - the depth of cooling does not matter\n**TTM2** | **Hypothermia is NO BETTER than normothermia**, and causes more arrhythmia\n**ERC/ESICM 2021** | **TTM**: constant temperature **32-36°C** for ≥24 h (no single target); **PREVENT FEVER for at least 72 h**\n**ERC-ESICM 2025** | **Actively PREVENT FEVER: ≤37.5°C for 36-72 h**; the constant 32-36°C target is dropped; mild hypothermia (32-36°C) is not actively rewarmed\n**AHA 2025** | **Temperature control for AT LEAST 36 HOURS** in patients unresponsive to verbal commands; **goal 32-37.5°C**. Hypothermic (32-34°C) and normothermic / fever-prevention (36-37.5°C) are BOTH 'temperature control'\n- **What survives: FEVER IS HARMFUL** (PCA-27). The debate was only ever about how far BELOW normal to go"
    },
-   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213)",
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213) | ERC-ESICM 2021 post-resuscitation care guideline (Nolan, Resuscitation 2021); checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS07C|PCA-43": {
    "fields": {
-    "a": "- **Most patients improve in 5-10 DAYS, rarely after**\n**that**\n- **No major confounders: TEMPERATURE,**\n**DRUGS, SUGAR, PCO2**\n- **Use an ALGORITHM**; applies to post-arrest\ncomatose patients with **GCS MOTOR ≤5** (not obeying commands) at ≥72 h - ERC-ESICM 2025; was ≤3 in 2021\n- **Start with the MOST ROBUST predictors first** -\n**FPR <5% with narrow 95% CI**:\n- → **PUPILLARY REFLEX** and **SSEP - bilateral N20**\n- Then: **status myoclonus, EEG, NSE**"
+    "a": "- **Most patients improve in 5-10 DAYS, rarely after**\n**that**\n- **No major confounders: TEMPERATURE,**\n**DRUGS, SUGAR, PCO2**\n- **Use an ALGORITHM**; applies to post-arrest\ncomatose patients with **GCS MOTOR ≤5** (not obeying commands) at ≥72 h - ERC-ESICM 2025; was ≤3 in 2021\n- **Predictors: FPR <5% with narrow 95% CI** - **PUPILLARY/CORNEAL REFLEX**, **SSEP (bilateral N20)**, **status myoclonus, EEG, NSE**, imaging\n- **Since 2021: any 2 of the 6, no fixed order** (PCA-53). Older keys (2015): start with pupils + SSEP"
    },
-   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213); Nolan JP et al. ERC-ESICM Guidelines for Post-resuscitation Care 2015, Resuscitation 2015;95:202",
+   "src": "Nolan JP et al. ERC-ESICM Guidelines 2025: Post-resuscitation care, Resuscitation 2025;215:110809 (co-published Intensive Care Med 2025;51:2213); Nolan JP et al. ERC-ESICM Guidelines for Post-resuscitation Care 2015, Resuscitation 2015;95:202 | ERC-ESICM 2021 and 2025 prognostication algorithm (≥2 of 6, no order); checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS07A|PCA-12": {
@@ -1663,16 +1667,17 @@
   },
   "CVS07A|PCA-17": {
    "fields": {
-    "a": "- **Arterial and central lines**\n- **MAP >65**, **SBP >90**, **urine output 0.5-1 mL/kg/hr** → **to optimise CEREBRAL PERFUSION**\n- **12-lead ECG** to rule out MI • **ECHO and critical care USG screening**\n- **Fluid only if volume-responsive** (isotonic crystalloid in small boluses, reassessed on echo); no fixed 20-30 mL/kg load\n- **Vasopressors: noradrenaline first** (ERC-ESICM 2025; AHA 2025: no specific agent proven, class 2b) • dobutamine if the stunned pump is the problem\n- **Mechanical support: IABP, ECMO, IMPELLA** • immunomodulation"
+    "a": "- **Arterial and central lines**\n- **MAP ≥65** (AHA 2025: MAP only; ERC-ESICM 2025: SBP >100 or MAP >60-65), **urine output 0.5-1 mL/kg/hr** → **to optimise CEREBRAL PERFUSION**\n- **12-lead ECG** to rule out MI • **ECHO and critical care USG screening**\n- **Fluid only if volume-responsive** (isotonic crystalloid in small boluses, reassessed on echo); no fixed 20-30 mL/kg load\n- **Vasoactives: fluids, noradrenaline and/or dobutamine according to need** (ERC-ESICM 2025, no agent ranked; AHA 2025: no specific agent proven, class 2b) • dobutamine if the stunned pump is the problem\n- **Mechanical support: IABP, ECMO, IMPELLA** • immunomodulation"
    },
-   "src": "Nolan JP et al. ERC-ESICM 2025 Post-resuscitation care, Resuscitation 2025;215:110809; AHA 2025 Part 11; ERC-ESICM 2025; AHA 2025 Part 11",
+   "src": "Nolan JP et al. ERC-ESICM 2025 Post-resuscitation care, Resuscitation 2025;215:110809; AHA 2025 Part 11; ERC-ESICM 2025; AHA 2025 Part 11 | AHA 2025 post-cardiac arrest care; ERC-ESICM 2025 post-resuscitation care guideline; checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS07C|PCA-41": {
    "fields": {
-    "watch": "Two clocks in 2025. AHA: at least 72 h after NORMOTHERMIA and discontinuation of sedatives (typically 5 days or more after ROSC if cooled). ERC-ESICM: 72 h or later after ROSC, confounders excluded. Safe answer: whichever is later. With fever prevention alone the two clocks coincide."
+    "watch": "Two clocks in 2025. AHA: at least 72 h after NORMOTHERMIA and discontinuation of sedatives (typically 5 days or more after ROSC if cooled). ERC-ESICM: 72 h or later after ROSC, confounders excluded. Safe answer: whichever is later. With fever prevention alone the two clocks coincide.",
+    "a": "- **After TTM, wait 72 HOURS for**\n**neuroprognostication**\n- **Give adequate time after ROSC: 72 hours**\n**AFTER EUTHERMIA**\n- **ERC/ESICM 2021:** emphasis on **PCI in OHCA** •\n**TTM (constant 32-36°C ≥24 h; avoid fever >37.7°C for 72 h)** • **neurological assessment after**\n**sufficient time and MULTI-MODALITY** •\n**rehabilitation and post-discharge care**"
    },
-   "src": "AHA 2025 Part 11 section 14.2 rec 4 (2a); ERC-ESICM 2025",
+   "src": "AHA 2025 Part 11 section 14.2 rec 4 (2a); ERC-ESICM 2025 | ERC-ESICM 2021 post-resuscitation care guideline; checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "CVS08D|ACLS-70": {
@@ -1750,9 +1755,9 @@
   },
   "TOX01|TOX-14": {
    "fields": {
-    "a": "**TOXIN** | **ANTIDOTE**\n**Digoxin** | **Digoxin Fab**: acute 10–20 vials, chronic 3–6\n**Calcium-channel blocker** | **High-dose insulin** 1 U/kg bolus, then 1–10 U/kg/h with dextrose; calcium; lipid emulsion only as a last resort\n**Beta-blocker** | Atropine; **glucagon** *(standard teaching, not in your notes)*; high-dose insulin\n**Tricyclic antidepressant** | **Sodium bicarbonate** 1–2 mEq/kg; lipid\n**Sulfonylurea** | **Octreotide** 50 µg SC 6-hourly + dextrose\n**Benzodiazepine** | Flumazenil (rarely: seizure risk)\n**Local anaesthetic** | **20% lipid emulsion**"
+    "a": "**TOXIN** | **ANTIDOTE**\n**Digoxin** | **Digoxin Fab**: acute 10–20 vials, chronic 3–6\n**Calcium-channel blocker** | **High-dose insulin** 1 U/kg bolus, then 1–10 U/kg/h with dextrose; calcium; lipid emulsion only as a last resort\n**Beta-blocker** | Atropine; **glucagon** *(classic exam answer; AHA 2023 2a)*; **high-dose insulin** (AHA 2023 class 1)\n**Tricyclic antidepressant** | **Sodium bicarbonate** 1–2 mEq/kg; lipid\n**Sulfonylurea** | **Octreotide** 50 µg SC 6-hourly + dextrose\n**Benzodiazepine** | Flumazenil (rarely: seizure risk)\n**Local anaesthetic** | **20% lipid emulsion**"
    },
-   "src": "Lavonas EJ et al. 2023 AHA focused update on cardiac arrest or life-threatening toxicity due to poisoning. Circulation 2023;148:e149-e184; St-Onge M et al. Crit Care Med 2017;45:e306-e315",
+   "src": "Lavonas EJ et al. 2023 AHA focused update on cardiac arrest or life-threatening toxicity due to poisoning. Circulation 2023;148:e149-e184; St-Onge M et al. Crit Care Med 2017;45:e306-e315 | AHA 2023 focused update on toxicology (high-dose insulin class 1, glucagon 2a in beta-blocker poisoning); checked 23 Nov 2026",
    "date": "13 Nov 2026"
   },
   "TOX01|TOX-07": {
@@ -1792,16 +1797,16 @@
   },
   "ENDO01A|ENDO-08": {
    "fields": {
-    "a": "**DRUG** | **DOSE (NOTES)** | **WHY**\n**Propranolol** | IV 1–2 mg; oral 60–80 mg 4-hourly (ATA 2016; notes: 40–80 mg 6–8-hourly) | Blocks adrenergic effects; **reduces T4→T3**\n**PTU** (preferred) | 500–1000 mg load, then 200–250 mg | Blocks synthesis **and** **peripheral conversion**\n**Methimazole /** **carbimazole** | 10–50 mg (scan unclear), 6-hourly; IV not in India | Blocks synthesis\n**Lugol's iodine** / SSKI | **At least 1 h after** the thionamide | Wolff-Chaikoff: stops release and synthesis\n**Hydrocortisone** | Steroid of choice | Reduces conversion; covers relative adrenal insufficiency\n**Lithium** **carbonate** | 300 mg 6-hourly (rarely used) | Inhibits colloid proteolysis (release)\n**L-carnitine** | Adjuvant | Blocks hormone entry to nuclei"
+    "a": "**DRUG** | **DOSE (NOTES)** | **WHY**\n**Propranolol** | IV 1–2 mg; oral 60–80 mg 4-hourly (ATA 2016; notes: 40–80 mg 6–8-hourly) | Blocks adrenergic effects; **reduces T4→T3**\n**PTU** (preferred, ATA 2016) | 500–1000 mg load, then 200–250 mg | Blocks synthesis **and** **peripheral conversion**\n**Methimazole /** **carbimazole** | **60–80 mg/day** in divided doses (ATA 2016; JTA 60 mg/day); IV not in India | Blocks synthesis\n**Lugol's iodine** / SSKI | **At least 1 h after** the thionamide | Wolff-Chaikoff: stops release and synthesis\n**Hydrocortisone** | Steroid of choice | Reduces conversion; covers relative adrenal insufficiency\n**Lithium** **carbonate** | 300 mg 6-hourly (rarely used) | Inhibits colloid proteolysis (release)\n**L-carnitine** | Adjuvant | Blocks hormone entry to nuclei\nJTA 2016 differs: either thionamide, iodide given with it, β1-selective blocker (landiolol, esmolol) rather than propranolol. Exam answers follow ATA."
    },
-   "src": "Ross DS et al. ATA hyperthyroidism guideline, Thyroid 2016;26:1343 (Table: thyroid storm); reproduced in De Groot LJ, Bartalena L. Thyroid Storm, Endotext",
+   "src": "Ross DS et al. ATA hyperthyroidism guideline, Thyroid 2016;26:1343 (Table: thyroid storm); reproduced in De Groot LJ, Bartalena L. Thyroid Storm, Endotext | ATA 2016 storm doses via Endotext; JTA/JES 2016 full text (endo01a_review 22 Nov 2026)",
    "date": "13 Nov 2026"
   },
   "ENDO01A|ENDO-10": {
    "fields": {
-    "a": "a Decompensated severe hypothyroidism with altered\nmentation; prevalence **0.01%**; mortality **20–50% even with**\n**treatment**; TSH usually **over 100 mIU/L**.\nb Hashimoto's, thyroidectomy, radioiodine or radiotherapy,\nantithyroid drugs, **tyrosine kinase inhibitors**; pituitary\ndisease.\nc **Infection, cold exposure, stroke**, drugs (**sedatives,**\n**analgesics, amiodarone, lithium**).\nd Coma, **hypothermia** (under 33 °C in your notes),\nbradycardia, non-pitting oedema, dry yellow skin,\nhyporeflexia, muffled heart sounds (effusion), constipation;\nrarely seizures."
+    "a": "a Decompensated severe hypothyroidism with altered\nmentation; incidence about **0.2 per million/year** (West; ~1 in Japan); mortality **20–50% even with**\n**treatment**; TSH usually high (low or normal if central); no TSH cut-off defines it.\nb Hashimoto's, thyroidectomy, radioiodine or radiotherapy,\nantithyroid drugs, **tyrosine kinase inhibitors**; pituitary\ndisease.\nc **Infection, cold exposure, stroke**, drugs (**sedatives,**\n**analgesics, amiodarone, lithium**).\nd Coma, **hypothermia** (below **35–35.5 °C**; lower is worse; notes said 33 °C),\nbradycardia, non-pitting oedema, dry yellow skin,\nhyporeflexia, muffled heart sounds (effusion), constipation;\nrarely seizures."
    },
-   "src": "Wiersinga WM. Myxedema and Coma, Endotext (reported mortality 20–50%); Ono Y et al. J Epidemiol 2017;27:117 (29.5% of 149)",
+   "src": "Wiersinga WM. Myxedema and Coma, Endotext (reported mortality 20–50%); Ono Y et al. J Epidemiol 2017;27:117 (29.5% of 149) | Endotext Myxedema coma; patient.info; Popoveniuc 2024 review (endo01a_review 22 Nov 2026)",
    "date": "13 Nov 2026"
   },
   "SPECIAL04A|PK-09": {
@@ -1828,8 +1833,10 @@
   },
   "CVS02|CVS-46": {
    "fields": {
-    "a": "**Situation** | **Treatment**\nClass IV shock, **normal BP** | **Vasodilators**\nClass IV shock, **low BP** | **Inotropes and vasopressors**\nIncreased filling pressures | **Diuretics**\nRefractory shock | **IABP, ECMO, VAD**\nNo recovery within **4 weeks** | **Cardiac transplantation**"
-   }
+    "a": "**Situation** | **Treatment**\nClass IV shock, **normal BP** | **Vasodilators**\nClass IV shock, **low BP** | **Inotropes and vasopressors**\nIncreased filling pressures | **Diuretics**\nRefractory shock | **IABP, ECMO, VAD**\nNo recovery, **cannot wean from MCS** (no fixed interval; notes say 4 weeks) | **Durable LVAD or cardiac transplantation** - not in the acute phase",
+    "q": "**For haemodynamically**\n**unstable myocarditis, give the**\n**treatment for:**\na Cardiogenic shock with normal\nBP\nb Cardiogenic shock with low BP\nc Increased filling pressures\nd Refractory shock\ne Failure to recover / cannot be weaned from support"
+   },
+   "src": "ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025) (no fixed interval; transplant deferred in the acute phase); checked 23 Nov 2026"
   },
   "CVS03|CS-02": {
    "fields": {
@@ -1843,13 +1850,15 @@
   },
   "CVS03|CS-29": {
    "fields": {
-    "a": "**Drug** | **Physiological effects**\n**Dobutamine** | **beta-1** agonism: ↑ contractility and heart rate **beta-2** agonism: arteriolar dilatation Net effect: **'inodilation'**\n**Adrenaline** | **beta-1** agonism: ↑ contractility and heart rate At **higher doses alpha-1**: vasoconstriction, ↑ **lactate production**\n**PDE-3 inhibitors** | ↑ myocardial cAMP and contractility, ↑ vascular cAMP → vasodilatation (**esp. pulmonary vasodilatation**)\n**Levosimendan** | ↑ contractility, **reduced calcium flux**, activation of vascular potassium → vasodilatation and ↓ **afterload**"
-   }
+    "a": "**Drug** | **Physiological effects**\n**Dobutamine** | **beta-1** agonism: ↑ contractility and heart rate **beta-2** agonism: arteriolar dilatation Net effect: **'inodilation'**\n**Adrenaline** | **beta-1** agonism: ↑ contractility and heart rate At **higher doses alpha-1**: vasoconstriction, ↑ **lactate production**\n**PDE-3 inhibitors** | ↑ myocardial cAMP and contractility, ↑ vascular cAMP → vasodilatation (**esp. pulmonary vasodilatation**)\n**Levosimendan** | ↑ contractility by **sensitising troponin C to calcium** (no rise in intracellular calcium), opening of vascular **K-ATP channels** → vasodilatation and ↓ **afterload**"
+   },
+   "src": "Levosimendan pharmacology (calcium sensitiser; ESC HF guideline); checked 23 Nov 2026"
   },
   "CVS05A|ECHO-12": {
    "fields": {
-    "a": " | **PWD** | **CWD**\nCrystals | **1** | **2**\nTransmit / receive | One crystal transmits, then receives after a **preset delay (Nyquist limit)** | One transmits **continuously**, one receives **continuously**\nLocalisation | **YES** - sample volume at the region of interest | **LIMITED** - signal from anywhere along the beam\nHigh velocities | Limited | **Good resolution**\nUsed for | Localising a flow disturbance; velocity from a **small region** | **Regurgitation velocities**; **systolic flow through AV**"
-   }
+    "a": " | **PWD** | **CWD**\nCrystals | **1** | **2**\nTransmit / receive | One crystal transmits, then receives after a **preset delay (sets sample depth)** | One transmits **continuously**, one receives **continuously**\nLocalisation | **YES** - sample volume at the region of interest | **LIMITED** - signal from anywhere along the beam\nHigh velocities | Limited (**aliasing above Nyquist limit = PRF/2**) | **Good resolution**\nUsed for | Localising a flow disturbance; velocity from a **small region** | **Regurgitation velocities**; **systolic flow through AV**"
+   },
+   "src": "Echo physics: range gating; Nyquist limit = PRF/2; checked 23 Nov 2026"
   },
   "CVS05B|ECHO-26": {
    "fields": {
@@ -1858,18 +1867,21 @@
   },
   "CVS06B|RVF-39": {
    "fields": {
-    "a": "**Maintain adequate RV preload** • **carefully titrated fluid boluses** (in **RVMI, when afterload is NORMAL**) • **AVOID OVERDISTENSION**\n\n | **Volume loading**\n**Strategy** | **Saline or Ringer lactate, >200 mL / 15-30 min**\n**Use** | Decompensated RV failure with **NORMAL central venous pressure** and **LOW arterial pressure**\n**Caveat** | Can **OVERDISTEND the ventricles**, **worsen ventricular interdependence**, and **REDUCE cardiac output**"
-   }
+    "a": "**Maintain adequate RV preload** • **carefully titrated fluid boluses** (in **RVMI, when afterload is NORMAL**) • **AVOID OVERDISTENSION**\n\n | **Volume loading**\n**Strategy** | **Saline or Ringer lactate, >200 mL / 15-30 min** (HFA 2016); ESC 2019 PE: cautious, **≤500 mL** over 15-30 min\n**Use** | Decompensated RV failure with **NORMAL central venous pressure** and **LOW arterial pressure**\n**Caveat** | Can **OVERDISTEND the ventricles**, **worsen ventricular interdependence**, and **REDUCE cardiac output**"
+   },
+   "src": "ESC 2019 acute PE guideline (cautious volume ≤500 mL); HFA/ESC 2016 acute RV failure statement; checked 23 Nov 2026"
   },
   "CVS07B|PCA-23": {
    "fields": {
-    "a": "Favourable neuro outcome | **Normothermia** | **Hypothermia**\n**VF / VT** | **39%** | **77%**\n**PEA / asystole** | **7%** | **25%**\n | Control | **Hypothermia**\n**GCS 15 at ICU discharge** | **20%** | **41%**\n**Mortality at 6 months** | **78%** | **56%**"
-   }
+    "a": "Favourable neuro outcome | **Normothermia** | **Hypothermia**\n**VF / VT** | **39%** | **77%**\n**PEA / asystole** | **7%** | **25%**\n | Control | **Hypothermia**\n**GCS 15 at ICU discharge** | **20%** | **41%**\n**Mortality at 6 months** | **78%** | **56%**\n- The landmark RCTs: **HACA 2002** favourable outcome **55% vs 39%**, 6-month death **41% vs 55%**; **Bernard 2002** good outcome **49% vs 26%** (the figures above are from the notes, source untraced)"
+   },
+   "src": "HACA, NEJM 2002;346:549; Bernard, NEJM 2002;346:557; checked 23 Nov 2026"
   },
   "CVS09|AD-20": {
    "fields": {
-    "a": "**Drug** | **IV dose**\n**Esmolol (β1)** | Bolus **500 mcg/kg over 1 min**, then **50 mcg/kg/min**, titrate up to **300 mcg/kg/min**\n**Labetalol bolus** | **20 mg over 2 min**, then **20-80 mg every 10 min**\n**Labetalol infusion** | Load **20 mg**, then **1-2 mg/min**\n**Metoprolol** | **5 mg over 2 min**, repeat every 5 min, up to **3 doses**"
-   }
+    "a": "**Drug** | **IV dose**\n**Esmolol (β1)** | Bolus **500 mcg/kg over 1 min**, then **50 mcg/kg/min**, titrate up to **300 mcg/kg/min**\n**Labetalol bolus** | **20 mg over 2 min**, then **40-80 mg every 10 min** (total 300 mg)\n**Labetalol infusion** | Load **20 mg**, then **1-2 mg/min**\n**Metoprolol** | **5 mg over 2 min**, repeat every 5 min, up to **3 doses**"
+   },
+   "src": "Labetalol IV prescribing information; checked 23 Nov 2026"
   },
   "CVS09|AD-21": {
    "fields": {
@@ -1883,13 +1895,15 @@
   },
   "CVS10B|MI-29": {
    "fields": {
-    "a": " | **Troponin T** | **Troponin I**\n**Role** | **Inhibits** actin-myosin interaction | Binds **tropomyosin**\n**Sens / spec** | Lower | **Higher**\n**Reference level** | **Multiple** assay-dependent | **Single**\n**Cytoplasmic pool** | **6%** | **3%**"
-   }
+    "a": " | **Troponin T** | **Troponin I**\n**Role** | Binds **tropomyosin** | **Inhibits** actin-myosin interaction\n**Sens / spec** | Lower | **Higher**\n**Reference level** | **Single** (one manufacturer; hs-cTnT 14 ng/L) | **Multiple** assay-dependent\n**Cytoplasmic pool** | **6%** | **3%**"
+   },
+   "src": "Troponin complex biochemistry; UDMI 2018 (hs-cTnT single URL 14 ng/L); checked 23 Nov 2026"
   },
   "HY2|CAR-21": {
    "fields": {
-    "a": "**Each anticoagulant has its own key**\nDRUG | REVERSAL | NOTE\n**Dabigatran** | **Idarucizumab 5 g IV** | Specific, immediate. Side effects: delirium, fever, constipation, hypoKALAEMIA\n**Xa inhibitors (apixaban, rivaroxaban)** | **Andexanet alfa**; or 4F-PCC 50 U/kg | Ciraparantag = investigational\n**Warfarin + major bleed** | **4F-PCC** (25–50 U/kg by INR) + **vitamin K 10 mg IV** | FFP only if no PCC\n**Heparin (UFH)** | **Protamine 1 mg per 100 U** given in last 2–3 h (max 50 mg) | Full reversal\n**Enoxaparin** | **Protamine 1 mg per mg** if dose < 8 h ago; **0.5 mg/mg** if 8–12 h | Only ~60% reversal; none after 12 h"
-   }
+    "a": "**Each anticoagulant has its own key**\nDRUG | REVERSAL | NOTE\n**Dabigatran** | **Idarucizumab 5 g IV** | Specific, immediate. Side effects: delirium, fever, constipation, hypoKALAEMIA\n**Xa inhibitors (apixaban, rivaroxaban)** | **Andexanet alfa**; or 4F-PCC 50 U/kg | Andexanet withdrawn in the US (Dec 2025, thrombosis) → **4F-PCC** in practice; still the classic key. Ciraparantag = investigational\n**Warfarin + major bleed** | **4F-PCC** (25–50 U/kg by INR) + **vitamin K 10 mg IV** | FFP only if no PCC\n**Heparin (UFH)** | **Protamine 1 mg per 100 U** given in last 2–3 h (max 50 mg) | Full reversal\n**Enoxaparin** | **Protamine 1 mg per mg** if dose < 8 h ago; **0.5 mg/mg** if 8–12 h | Only ~60% reversal; none after 12 h"
+   },
+   "src": "FDA safety communication and end of US Andexxa sales, 22 Dec 2025; ANNEXA-I (NEJM 2024); checked 23 Nov 2026"
   },
   "HY2|CAR-23": {
    "fields": {
@@ -1968,13 +1982,878 @@
   },
   "ENDO01B|ENDO-20": {
    "fields": {
-    "a": "**TYPE** | **DEFECT** | **CAUSES**\n**Central** | Too little ADH | Tumour (primary, metastatic), meningitis,\nencephalitis, SLE, snake venom, genetic;\n**head injury, surgery**, brain death\n*(standard teaching, not in your notes)*\n**Nephrogenic** | Kidney does not respond | **Lithium**, demeclocycline, vaptans, aminoglycosides, amphotericin, rifampicin, polymyxin; **hypokalaemia,** **hypercalcaemia**; sickle cell, ATN, obstruction, amyloid, PKD, Bartter, sarcoid\n**Gestational** | Placental vasopressinase | Third trimester; reversible"
-   }
+    "a": "**TYPE** | **DEFECT** | **CAUSES**\n**Central** | Too little ADH | Tumour (primary, metastatic), meningitis,\nencephalitis, SLE, **sarcoid**, snake venom, genetic;\n**head injury, surgery**, brain death\n*(standard teaching, not in your notes)*\n**Nephrogenic** | Kidney does not respond | **Lithium**, demeclocycline, vaptans, aminoglycosides, amphotericin, rifampicin, polymyxin; **hypokalaemia,** **hypercalcaemia**; sickle cell, ATN, obstruction, amyloid, PKD, Bartter\n**Gestational** | Placental vasopressinase | Third trimester; reversible"
+   },
+   "src": "Standard endocrinology: neurosarcoid causes central DI; renal effect via hypercalcaemia (endo01b_review 22 Nov 2026)"
   },
   "HY5|HEO-04": {
    "fields": {
-    "a": "**TRALI = leaky lungs, no overload · TACO = overload**\n | TRALI | TACO\n**Timing** | Within 6 h | Within 6–12 h\n**BP** | Hypotension | Hypertension\n**Fever** | Often | No\n**JVP / BNP** | Normal | Raised\n**Diuretic** | No response / harmful | Improves\n**Prevention** | **Male-only donor plasma** | Slow rate, diuretic\n\nAcute haemolytic (ABO): fever, loin pain, haemoglobinuria, DIC → stop. Anaphylaxis: IgA-deficient recipient. Febrile non-haemolytic: fever only."
-   }
+    "a": "**TRALI = leaky lungs, no overload · TACO = overload**\n | TRALI | TACO\n**Timing** | Within 6 h | Within 12 h (≥ 3 ISBT criteria)\n**BP** | Hypotension | Hypertension\n**Fever** | Often | Usually no (does not exclude)\n**JVP / BNP** | Normal | Raised\n**Diuretic** | No response / harmful | Improves\n**Prevention** | **Male-only donor plasma** | Slow rate, diuretic\n\nAcute haemolytic (ABO): fever, loin pain, haemoglobinuria, DIC → stop. Anaphylaxis: IgA-deficient recipient. Febrile non-haemolytic: fever only."
+   },
+   "src": "ISBT 2018 TACO definition via SHOT; TRALI 2019 redefinition (hy5_review 22 Nov 2026)"
+  },
+  "CVS01|CVS-01": {
+   "fields": {
+    "a": "- A **double walled sac**: serous **visceral** layer and fibrous **parietal** layer\n- Pericardial cavity contains **10-50 mL** of fluid (ESC)\n- Functions:\n→ **Fixes** the heart to the mediastinum\n→ Gives **protection against infection**\n→ **Limits distention** of cardiac chambers"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921); checked 23 Nov 2026"
+  },
+  "CVS01|CVS-02": {
+   "fields": {
+    "a": "**Form** | **Duration**\n**Acute** | A **new episode** (2 of 4 criteria) - no time cut-off in ESC; usual course **1-2 weeks**\n**Incessant** | **>4-6 weeks but <3 months**, without remission\n**Chronic** | **>3 months**\n**Recurrent** | Recurrence after a **symptom-free interval of 4-6 weeks** or longer\nOlder keys (classical): acute <6 weeks, subacute 6 weeks-6 months, chronic >6 months"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921) Table 1; classical scheme (Harrison/AAFP); checked 23 Nov 2026"
+  },
+  "CVS01|CVS-05": {
+   "fields": {
+    "a": "- Present in **>90%** of cases\n- **Sharp, stabbing, pleuritic** - different from ACS pain, which is **pressure-like / squeezing**\n- **Retro-sternal / precordial**\n- Aggravated by **inspiration and the supine position**\n- **Relieved by leaning forward**\n- Radiates to the **trapezius ridge**, or no radiation"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921); standard texts; checked 23 Nov 2026"
+  },
+  "CVS01|CVS-06": {
+   "fields": {
+    "a": "- Present in **≤33%** of cases (ESC; older texts quote >50%)\n- A **high-pitched scratchy** sound, best heard with the **diaphragm** of the stethoscope in the **parasternal** location\n**Hold the breath** | **Result**\nPleural rub | **Rub will disappear**\nPericardial rub | **Rub will be present**"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921) (rub in up to 33%); checked 23 Nov 2026"
+  },
+  "CVS01|CVS-10": {
+   "fields": {
+    "a": "- Diagnosis requires **2 of the 4** following criteria:\n→ **Pericarditic chest pain**\n→ **Pericardial rubs**\n→ New widespread **ST elevation or PR depression** on ECG\n→ **Pericardial effusion** (new or worsening)\n- Additional criteria: **CRP, ESR, WBC**; evidence of pericardial inflammation on **CT or CMR**\n- **ESC 2025:** compatible pain/presentation + additional criteria (rub, ECG, new/worsening effusion, **raised CRP**, **CMR inflammation**) - **one = possible, more than one = definite**"
+   },
+   "src": "ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025); Imazio review of ESC 2025, 2026; checked 23 Nov 2026"
+  },
+  "CVS01|CVS-12": {
+   "fields": {
+    "q": "**Per the 2015 ESC guidelines, give the predictors of poor prognosis:**\na The five major predictors\nb The four minor predictors",
+    "a": "**MAJOR** | **MINOR**\n**Fever >38°C** | Myo-pericarditis\n**Subacute onset** | Immunosuppression\n**Large pericardial effusion** (>20 mm; less likely to be post-viral) | Oral anticoagulant therapy\n**Cardiac tamponade** | **Trauma**\n**Lack of response** to aspirin or NSAIDs after at least 1 week |"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921) and ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025) (Table 16); checked 23 Nov 2026"
+  },
+  "CVS01|CVS-15": {
+   "fields": {
+    "a": "**Drug** | **Usual initial dose**\n**Aspirin** | **750-1000 mg every 8 h**\n**Ibuprofen** | **600 mg every 8 h**\nIndomethacin | 25-50 mg every 8 h\nNaproxen | 500-1000 mg daily every 12 h\n- First uncomplicated episode: **1-2 weeks**\n- Recurrences: **2-4 weeks up to several months**\n- **CRP** should be used as a marker of disease activity to guide length of treatment\n- Taper gradually (every 1-2 weeks), **only if asymptomatic and CRP is normal**"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921) Table; ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025); checked 23 Nov 2026"
+  },
+  "CVS01|CVS-17": {
+   "fields": {
+    "a": "- **Second line** - used only if contraindications to aspirin/NSAID/colchicine, and **after exclusion of an infectious cause**\n- **Avoided in active infection** (bacterial, TB)\n- Failure of response to NSAIDs means:\n→ Continued chest pain needing analgesic agents\n→ Fever\n→ Worsening effusion despite at least 1 week of treatment\n- Starting dose **0.2-0.5 mg/kg/day** (low dose)\n- ESC 2025: **avoid** steroids as **initial** therapy (more recurrences); reserve for failure of, or contraindication to, first-line therapy"
+   },
+   "src": "ESC 2015 pericardial guideline (Adler, Eur Heart J 2015;36:2921) (prednisone 0.2-0.5 mg/kg/day); ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025) (Imazio review); checked 23 Nov 2026"
+  },
+  "CVS01|CVS-18": {
+   "fields": {
+    "a": "**Line** | **Recurrent pericarditis**\nFirst | Aspirin or NSAID + colchicine + exercise restriction\nSecond | Low-dose corticosteroids\nThird | **IL-1 blockers (anakinra, rilonacept)**; IVIG, azathioprine\nFourth | **Pericardiectomy**\n- **ESC 2025:** IL-1 blockers **class I** for recurrent, **steroid-dependent**, colchicine-resistant pericarditis with **raised CRP** (IIa if CRP normal but CMR inflammation); ACC 2025 allows them before steroids. Older keys (ESC 2015): IVIG, anakinra or azathioprine as equal third-line options\n- TB pericarditis ATT: **2 months HRZE, then 4 months HR**\n- Pericardiectomy if not improving or deteriorating after **4-8 weeks** of ATT\n- Constrictive pericarditis occurs in **50%**; **ATT reduces it to 17%**"
+   },
+   "src": "ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025); ACC 2025 pericarditis concise guidance; ESC 2025 TB section; checked 23 Nov 2026"
+  },
+  "CVS02|CVS-29": {
+   "fields": {
+    "q": "**Give the ESC 2013**\n**immunohistochemical**\n**criteria for myocarditis:**\na The leukocyte count threshold\nb The monocyte allowance\nc The CD3-positive T lymphocyte\nthreshold",
+    "a": "At least **14 leukocytes/mm²** in the myocardium\nIncluding up to **4 monocytes/mm²**\nWith detection of **7 or more CD3-positive T**\n**lymphocytes**\nDallas (histological) criteria: inflammatory infiltrate **with myocyte necrosis** not typical of ischaemia"
+   },
+   "src": "ESC 2013 myocarditis position statement (Caforio, Eur Heart J 2013); checked 23 Nov 2026"
+  },
+  "CVS02|CVS-42": {
+   "fields": {
+    "a": "Non-invasive assessment; should be performed in **symptomatic patients with clinical suspicion**\nof myocarditis\nThree markers of tissue injury:\n→ Intracellular and interstitial **oedema**\n→ **Hyperaemia** and capillary leakage\n→ **Necrosis and fibrosis**\n**Late gadolinium enhancement (LGE)** of myocardial pattern\nLake Louise 2018 (current): **≥1 T2-based** criterion (oedema) **+ ≥1 T1-based** criterion (raised T1 / ECV, or non-ischaemic LGE). Older keys: 2 of 3 (2009)"
+   },
+   "src": "Updated Lake Louise criteria (Ferreira, JACC 2018), used by ESC 2025 myocarditis and pericarditis guideline (Eur Heart J 2025); checked 23 Nov 2026"
+  },
+  "CVS02|CVS-44": {
+   "fields": {
+    "a": "- **Presentations:** acute chest pain (pericarditic/pseudo-ischaemic) • new onset or\nworsening heart failure • subacute or chronic heart failure • palpitations/syncope • cardiogenic shock\n- **Diagnostic criteria:**\n- 1. ECG / Holter / stress test features (ST-T changes, AV block, arrhythmia)\n- 2. Myocardial cytolysis markers: elevated TnT / TnI\n- 3. Functional and structural abnormalities on cardiac imaging (echo / angio / CMR)\n- 4. Tissue characterization by CMR\n- Diagnosis if: **≥1 clinical presentation AND ≥1**\n**diagnostic criterion**; OR, if **asymptomatic**, **≥2 diagnostic criteria**\n- **In the absence of CAD or pre-existing heart**\n**disease**"
+   },
+   "src": "ESC 2013 myocarditis position statement (Caforio); checked 23 Nov 2026"
+  },
+  "CVS03|CS-05": {
+   "fields": {
+    "a": "- **ESC 2021:** tissue **hypoperfusion due to primary cardiac dysfunction**; hypotension (SBP <90) is usual but **not required**\n- Older keys (ESC 2016): SBP **<90 mmHg** with **adequate volume**, plus\nclinical or laboratory signs of hypoperfusion\n**CLINICAL HYPOPERFUSION** | **LABORATORY HYPOPERFUSION**\nCold extremities | Metabolic acidosis\nOliguria | Elevated serum lactate\nMental confusion | Elevated serum creatinine\nDizziness |\n**Narrow pulse pressure** |",
+    "watch": "ESC 2016 requires ADEQUATE VOLUME first - it is the only\ndefinition that builds volume adequacy into the wording rather than\nleaving it implicit."
+   },
+   "src": "ESC 2021 HF guideline (McDonagh, Eur Heart J 2021); HFA 2020 statement; checked 23 Nov 2026"
+  },
+  "CVS03|CS-07": {
+   "fields": {
+    "a": " | **SHOCK trial** | **IABP-SHOCK II** | **ESC HF**\nSBP | <90 × 30 min | <90 × 30 min | <90\nSupport clause | Support to keep SBP ≥90 | **Catecholamines** to keep SBP >90 | —\nCongestion | — | **Required** | —\nVolume | — | — | **Adequate volume**\nHaemodynamic | **CI ≤2.2 PCWP ≥15** | — | —\nPerfusion markers | UO <30 mL/hr, cool extremities | UO <30 mL/h, **lactate >2.0**, AMS, clammy | Clinical OR laboratory\n- ESC column = **ESC 2016**; ESC 2021 no longer requires hypotension (CS-05)"
+   },
+   "src": "ESC 2021 HF guideline; checked 23 Nov 2026"
+  },
+  "CVS03|CS-08": {
+   "fields": {
+    "a": "**Stage** | **Definition**\n**A - At risk** | Risk factors for CS, **NOT currently** experiencing signs or symptoms (large AMI, prior infarction, acute or acute-on-chronic heart failure)\n**B - Beginning** | Clinical evidence of **relative hypotension or tachycardia WITHOUT hypoperfusion**\n**C - Classic** | **Hypoperfusion requiring intervention beyond volume resuscitation** (inotrope, pressor, or mechanical support including ECMO). Typically **relative hypotension**\n**D - Deteriorating** | **Fails to respond to initial interventions.** Similar to stage C and getting worse\n**E - Extremis** | Supported by **multiple interventions**, may be **experiencing cardiac arrest with ongoing CPR and/or ECMO**\n- **Arrest (A) modifier (SCAI 2022):** cardiac arrest **with coma** (concern for anoxic brain injury); 2019 wording: CPR, including defibrillation\n- Typical lactate: stage C **≥2**, stage E **≥8** mmol/L (pH <7.2, base deficit >10)"
+   },
+   "src": "SCAI SHOCK stage classification expert consensus update 2022 (Naidu, JACC 2022); checked 23 Nov 2026"
+  },
+  "CVS03|CS-14": {
+   "fields": {
+    "a": "- **AMI accounts for 80%** of patients with CS (older series - classic key)\n- Contemporary registries: **AMI-CS ~27%, HF-CS ~59%** (SHARC 2024)\n- CS complicates **5-10%** of cases of acute MI\n- **Leading cause of death after MI**\n- **STEMI > NSTEMI (2-fold)** in frequency\n- **NSTEMI > STEMI** in **mortality**\n- **6- and 12-month mortality ~50%**\n- **18.6%** risk of **30-day readmission** (MI and CHF)"
+   },
+   "src": "SHARC registry 2024; CCCTN registry; checked 23 Nov 2026"
+  },
+  "CVS03|CS-26": {
+   "fields": {
+    "a": "**Profile** | **Treatment**\n**Wet & warm** vascular type | **Vasodilator + diuretic**\n**Wet & warm** cardiac type | **Diuretic + vasodilator**; **ultrafiltration** if diuretic resistance\n**Wet & cold** SBP <90 | **Inotropic agent**; vasopressor if refractory; diuretic **once perfusion corrected**; **mechanical circulatory support** if no drug response\n**Wet & cold** SBP ≥90 | **Vasodilators + diuretics**; inotrope only in refractory cases\n**Dry & warm** | Adequately perfused, compensated → **adjust oral therapy**\n**Dry & cold** | Hypoperfused, hypovolaemic → **fluid challenge**; inotrope if still hypoperfused\n- **Wet = 95%** of all AHF patients; **dry = 5%**\n- This is the **ESC 2016** algorithm. Current practice (AHA 2017, SCAI, ACC/AHA 2025): hypotensive CS → **norepinephrine first**, then inotrope (CS-31)"
+   },
+   "src": "AHA 2017 cardiogenic shock statement; ACC/AHA 2025 ACS guideline; ESC 2021 HF guideline; checked 23 Nov 2026"
+  },
+  "CVS03|CS-35": {
+   "fields": {
+    "a": "- Provided **strong evidence for the use of PCI in**\n**CS**\n- **n = 302**, MI complicated by CS, randomised\n- **Overall mortality at 30 days was SIMILAR**\n- Revascularisation **50.3%** vs medical therapy **63.1%** at **6 months** (30 days: 46.7% vs 56.0%, p 0.11)\n- **6-month and 1-year difference WAS significant**\n- Successful vs unsuccessful PCI: **39% vs 85%**\n**mortality** at 1 year (Webb 2003; notes: 35% vs 80%)"
+   },
+   "src": "Hochman, NEJM 1999;341:625 (SHOCK); Webb, JACC 2003; checked 23 Nov 2026"
+  },
+  "CVS04|CS-37": {
+   "fields": {
+    "watch": "Bridge to decision and bridge to bridge use short-term MCS; bridge to\ntransplant (and sometimes recovery) often uses a DURABLE LVAD. The\nstrategy names the intended destination, not the device class."
+   },
+   "src": "ESC 2021 HF guideline (MCS terminology); checked 23 Nov 2026"
+  },
+  "CVS04|CS-41": {
+   "fields": {
+    "a": "**Device** | **Loop change** | **Effect**\n**IABP** | Loop slightly **WIDER** (↑ SV) but **lower peak pressure** | **Increased stroke volume**; stroke work and MVO2 **fall modestly**\n**Impella / TandemHeart** | **SMALLER PV loop area** | **Significant reduction in LV stroke work** and **myocardial oxygen consumption**\n**Peripheral ECMO** | Loop **not unloaded** | **FAILURE to unload the LV.** **Increased arterial elastance**, **increased stroke work**, MVO2 **unchanged or even increasing**"
+   },
+   "src": "IABP pressure-volume physiology (Burkhoff; SCAI); checked 23 Nov 2026"
+  },
+  "CVS04|CS-44": {
+   "fields": {
+    "a": "- Demonstrated **NO difference in 30-day mortality**\nin **AMI-related cardiogenic shock**, IABP vs no\nIABP\n- **IABP is NOT routinely recommended in**\n**cardiogenic shock**\n- **Major limitation: the MOST SEVERE shock was not tested** - excluded CPR >30 min, fixed pupils, no intrinsic activity\n(45% had been resuscitated; mortality ~40%; textbooks say \"mild to moderate\")"
+   },
+   "src": "Thiele, NEJM 2012 (IABP-SHOCK II); checked 23 Nov 2026"
+  },
+  "CVS04|CS-45": {
+   "fields": {
+    "a": "- **Transvalvular axial flow pump**, placed **across**\n**the aortic valve**\n- Displaces blood **directly from the LV into the**\n**ascending aorta**\n- **Tip lies in the left ventricle**\n- **Impella CP:** catheter **9 Fr**, pump head and sheath **14 Fr** • peak flow up to **4.3 L/min**"
+   },
+   "src": "Impella CP device specifications (Abiomed); checked 23 Nov 2026"
+  },
+  "CVS04|CS-49": {
+   "fields": {
+    "a": "**Device** | **Mechanism** | **Insertion**\n**IABP** | **Pneumatic** | Percutaneous (**femoral artery**)\n**Tandem Heart** | Centrifugal, **paracorporeal** | Percutaneous - **femoral vein → transseptal LA cannula**, return to **femoral artery** (LA → aorta). IJ dual-lumen (ProtekDuo) = right-sided, RA → PA\n**Impella** | **Axial, transvalvular** | Percutaneous or peripheral surgical\n**VA ECMO** | Centrifugal, **extracorporeal** | Percutaneous or peripheral surgical\n**Surgical VAD** | Centrifugal, extracorporeal | **CENTRAL surgical**"
+   },
+   "src": "TandemHeart and ProtekDuo device descriptions (LivaNova); checked 23 Nov 2026"
+  },
+  "CVS04|CS-54": {
+   "fields": {
+    "a": "- **Implantable LVADs** may be an **alternative to**\n**heart transplantation**\n- 5-year survival with HeartMate 3 **~58%** (MOMENTUM 3, 2022) -\nstill **NOT as good as transplantation**",
+    "watch": "LVAD is positioned as an alternative, not an equal. The\nlong-term result is still inferior to transplant - a stem claiming\nequivalence is wrong."
+   },
+   "src": "Mehra, JAMA 2022 (MOMENTUM 3 5-year); checked 23 Nov 2026"
+  },
+  "CVS05A|ECHO-07": {
+   "fields": {
+    "q": "**For pulse wave Doppler (PWD), give:**\na. What the signal depicts\nb. How many crystals, and what they do\nc. What the preset delay determines\nd. What is placed over the 2-D image, and where\ne. What PWD is used for",
+    "a": "Doppler signal analysed to depict **velocity and direction of flow**. **A SINGLE crystal** transmits the ultrasound and **receives it after a preset time delay**. The preset delay sets the **sampling DEPTH (range gating)**; the **Nyquist limit = PRF/2** is the velocity ceiling before aliasing. **'Sample volume'** placed over the 2-D image at the **region of interest**. Used when **flow disturbance must be LOCALISED**, or blood velocity from a **small region** measured."
+   },
+   "src": "Echo physics: range gating; Nyquist limit = PRF/2 (ASE/EACVI texts); checked 23 Nov 2026"
+  },
+  "CVS05A|ECHO-04": {
+   "fields": {
+    "a": "Detects and records **RAPID MOVEMENTS**. **ECG or respiratory pressure waveforms** traced alongside. Calculates **chamber dimensions**, **fractional shortening** and **ejection fraction** (EF from M-mode is possible but **not recommended** by ASE 2015 - use 2D biplane Simpson).",
+    "watch": "M-mode gives most linear measurements in this chapter - IVC diameter, FS, MAPSE and TAPSE. EF is better from 2D (biplane Simpson)."
+   },
+   "src": "ASE/EACVI chamber quantification 2015 (Lang, JASE 2015): no EF from linear measurements; checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-19": {
+   "fields": {
+    "a": "**RAP** | **0-5 (3)** | **5-10 (8)** | **5-10 (8)** | **10-20 (15)**\n**IVC diameter (cm)** | ≤**2.1** | ≤2.1 | **>2.1** | **>2.1**\n**Collapse with sniff** | **>50%** | **<50%** | **>50%** | **<50%**\n**Secondary indices of ↑ RAP** (move the INTERMEDIATE 8 to 3 or 15): **RAE** •\n**IAS bulging into LA** • **restrictive RV filling** • **hepatic vein S/D <1 (SFF <55%)** • **tricuspid E/e' >6**\nASE 2025: IVC **>2.5 cm**, <50% collapse + dilated hepatic veins = **20 mmHg**"
+   },
+   "src": "ASE 2025 right heart guideline; Rudski ASE 2010; checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-31": {
+   "fields": {
+    "a": "Transducer: **APEX of the heart**\nTransducer **turned COUNTER-CLOCKWISE by ~60° from the**\n**A2C view**\n**Mitral AND aortic valves in the SAME PLANE**\n**Measure LVOT velocities**"
+   },
+   "src": "Standard echo views (ASE 2019 comprehensive TTE): A3C counter-clockwise from A2C; checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-32": {
+   "fields": {
+    "a": "**View** | **Manoeuvre** | **From** | **Angle**\n**PSAX** | **Rotate clockwise** | **PLAX** | **90°**\n**A5C** | **Angulate anteriorly** | **A4C** | —\n**A2C** | **Rotate counter-clockwise** | **A4C** | **~90°**\n**A3C** | **Rotate counter-clockwise** | **A2C** | **60°**"
+   },
+   "src": "Standard echo views (ASE 2019 comprehensive TTE); checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-35": {
+   "fields": {
+    "a": "1. **Subcostal IVC view**\n2. **Apical 2-chamber view**\n3. **Apical 3-chamber view**\n4. **Apical 5-chamber view**\n5. **Parasternal short axis (MITRAL and AORTIC VALVE levels)**"
+   },
+   "src": "FATE protocol card (Jensen/Sloth); checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-37": {
+   "fields": {
+    "a": "**Measurement** | **Normal**\nInternal diameter, **end-systolic** | **2.0-4.0 cm**\nInternal diameter, **end-diastolic** | **3.5-5.6 cm**\nWall thickness **diastolic** - septum | **0.6-1.2 cm**\nWall thickness **diastolic** - posterior | **0.6-1.2 cm**\nWall thickness **systolic** - septum | **0.9-1.8 cm**\nWall thickness **systolic** - posterior | **0.9-1.8 cm**\n**Fractional shortening** | **30-45%**\n**Ejection fraction** | **50-85%**\n- ASE 2015 (sex-specific): LVIDd men **4.2-5.8**, women **3.8-5.2 cm**; wall thickness men **0.6-1.0**, women **0.6-0.9 cm**; LVEF men **52-72%**, women **54-74%**"
+   },
+   "src": "ASE/EACVI chamber quantification 2015 (Lang, JASE 2015); checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-38": {
+   "fields": {
+    "a": "**Structure** | **Normal diameter**\n**Left atrium** | **2.0-4.0 cm**\n**Aortic root** | **2.0-4.0 cm**\n**Right ventricle** (systolic-diastolic) | **0.7-2.3 cm**\n- ASE 2015 (current): LA by volume - **LAVI ≤34 mL/m²**; RV basal **≤4.1 cm**, mid **≤3.5 cm**"
+   },
+   "src": "ASE/EACVI chamber quantification 2015 (Lang, JASE 2015); checked 23 Nov 2026"
+  },
+  "CVS05B|ECHO-40": {
+   "fields": {
+    "a": "**Normal values**\n**CW**\n**Peak pressure = V² × 4**\n**AO <2 m/s** • **PA <1 m/s** • **TI <2.5 m/s** (ESC/ERS 2022: TR >2.8 m/s = PH possible)\n**PW**\n**Mitral inflow deceleration time 140-240 ms**\n**MAX E <1.2 m/s** • **E/A >1** (age dependent)\n**TVI (tissue velocity imaging)**\n**E/e' <8-10** (FATE; average **E/e' >14** = raised filling pressure, ASE 2016) • **IVC <20 mm** (ASE: ≤2.1 cm)\n**50% collapse during inspiration is normal**"
+   },
+   "src": "ASE/EACVI diastolic function 2016; ESC/ERS 2022 PH guideline; ASE 2015; checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-20": {
+   "fields": {
+    "a": "- **Pulmonary hypertension: mean PAP (mPAP) >20 mmHg** (ESC/ERS 2022); pre-capillary adds **PAWP ≤15** and **PVR >2 WU**. Older keys: mPAP ≥25\nGroup | Content\n**1. Pulmonary arterial hypertension** | **Idiopathic • heritable (BMPR2, ALK-1, endoglin, unknown)** • drug and toxin induced • associated with PAH: **connective tissue diseases**, HIV, portal HTN, congenital heart disease, schistosomiasis • 1° pulmonary veno-occlusive disease / capillary haemangiomatosis • **1° persistent pulmonary HTN of the newborn (PPHN)**\n**2. PH due to LEFT HEART disease** (post-capillary) | LV systolic dysfunction • LV diastolic dysfunction • valvular disease • congenital / acquired left heart inflow or outflow tract obstruction • congenital cardiomyopathy"
+   },
+   "src": "ESC/ERS 2022 PH guideline (Humbert, Eur Heart J 2022;43:3618); checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-21": {
+   "fields": {
+    "a": "Group | Content\n**3. Lung disease and/or hypoxia** | **COPD, ILD** • obstructive and restrictive lung diseases • **sleep-disordered breathing •** alveolar hypoventilation disorders • **chronic exposure to high altitude •** developmental lung diseases\n**4. PH associated with pulmonary artery obstructions** (CTEPH; other obstructions) | **Complication of pulmonary embolism •** large or proximal vessel disorders • **reduced compliance and luminal narrowing** • screen with **V/Q scan**; **PEA** if operable; inoperable → **riociguat** and/or **BPA**\n**5. Unclear and/or multi-factorial** | **Haematological** (chronic haemolytic anaemia, myeloproliferative disorders) • **systemic** (sarcoidosis, pulmonary LCH, NF1) • **metabolic** (glycogen storage disease, Gaucher) • **chronic renal failure ± dialysis** • **pulmonary tumour thrombotic microangiopathy** • **fibrosing mediastinitis**\n- ESC/ERS 2022 removed splenectomy, vasculitis, thyroid disorders and CHD from group 5 (CHD → groups 1 and 2)\n- **LCH** = Langerhans cell histiocytosis • **NF** =\nneurofibromatosis"
+   },
+   "src": "ESC/ERS 2022 PH guideline Table 6 and CTEPH section; checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-22": {
+   "fields": {
+    "a": "VOLUME overload | PRESSURE overload\n**Septal defects: ASD, VSD** | **Pulmonary stenosis**\n**Left → right shunts** • **post-TOF (late PR)** | **Post-TOF with residual RVOT obstruction**\n- **RA and RV → ↑ pulmonary vascular resistance**\n→ **pulmonary vascular REMODELLING → PVR >**\n**SVR → becomes a RIGHT-TO-LEFT shunt →**\n**EISENMENGER SYNDROME**",
+    "watch": "Eisenmenger is defined by the shunt REVERSING, and the\nreversal happens at the moment PVR exceeds SVR. Repaired TOF is\nmainly VOLUME overload late (pulmonary regurgitation); pressure\noverload only with residual RVOT obstruction."
+   },
+   "src": "Standard congenital cardiology (repaired TOF: chronic pulmonary regurgitation); checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-17": {
+   "fields": {
+    "a": "Chronic cause | Mechanism\n**RV cardiomyopathy • ARVC** | ↓Contractility\n**Ebstein anomaly** | ↓**Contractility + Volume overload**\n**LH disease • Single ventricle** | **Volume + Pressure overload**\n**PR • TGA • TR** | Volume overload (but a **systemic RV in TGA** is mainly **pressure** loaded)\n**Pericardial disease • PAH** | Pressure overload\n**Chronic thromboembolic PH • PS** | Pressure overload\n**Left-sided valvular heart disease** | Pressure overload\n**Restrictive cardiomyopathy** | Pressure overload"
+   },
+   "src": "Systemic RV physiology (atrial-switch d-TGA, ccTGA); checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-07": {
+   "fields": {
+    "a": "Feature | RV | LV\n**ED thickness / volume / EF** | **≤3 mm** / 49-101 / **40-68%** | **≤11 mm** / 44-89 / **57-74%**\n**Systolic pressure / coronary perfusion** | **25 mmHg / CONTINUOUS** | **120 mmHg / DIASTOLIC**\n**Response to disease** | **VOLUME overload better tolerated** → ↑ compliance | **PRESSURE overload better tolerated**\n**P-V loop** | **TRAPEZOIDAL** | **RECTANGULAR** → rapid rise and fall in pressures\n- RV figures are MRI-type ranges; ASE 2015 echo: **RVEF <45%** abnormal, RV wall **>5 mm** = RVH"
+   },
+   "src": "ASE/EACVI chamber quantification 2015; checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-18": {
+   "fields": {
+    "a": "- RV dysfunction occurs in **22-55%** of ARDS\n- **Mortality is higher with SEVERE acute cor pulmonale**\n(~57% vs 42%); milder RV dysfunction less clearly\n- **Predisposing:** hypoxia • hypercarbia • respiratory\nacidosis • **high PEEP • PPV → ↑PVR**\n- **RV-protective ventilation:**\n- → **Minimise plateau and driving pressures**\n- → **Lower PVR by improving PaO2 and PaCO2**\n- → **PRONE POSITIONING to unload the RV**"
+   },
+   "src": "Mekontso Dessap, Intensive Care Med 2016 (acute cor pulmonale in ARDS); checked 23 Nov 2026"
+  },
+  "CVS06A|RVF-05": {
+   "fields": {
+    "a": "- **80% of the population:** RV supplied by the **right**\n**coronary artery**\n- **Remaining 20%:** the **left coronary artery** supplies\nthe RV (80/20 = coronary dominance)\n- The **LAD** also supplies the **anterior RV wall** and the **moderator band**\n- **UNLIKE the LV, RV perfusion occurs during**\n**BOTH SYSTOLE AND DIASTOLE** - providing\nmyocardial oxygen delivery **throughout the**\n**cardiac cycle**\n- Disrupted by disease states such as **pulmonary**\n**arterial hypertension (PAH)**"
+   },
+   "src": "Coronary anatomy of the RV (standard texts); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-25": {
+   "fields": {
+    "a": "a **CXR:** **enlarged main PA**, **regional oligaemia** and **clear lung fields** (pulmonary oedema only with left heart disease). CT: main PA **≥3 cm**, PA:aorta **>0.9-1**\nb **Prognosis** → **tailoring of therapy** → **BNP** → **assess the appropriate grade of treatment**"
+   },
+   "src": "ESC/ERS 2022 PH guideline (CT PA ≥30 mm, PA:Ao >0.9); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-26": {
+   "fields": {
+    "a": "**Pattern** | **ECG findings**\n**General** | **Right axis deviation** • **RBBB** • **P pulmonale**\n**RV MI** | **ST ELEVATION in V3R, V4R**; **ST elevation in V1**; ST↑ **III > II** (inferior MI); Q waves non-specific\n**RV STRAIN** | **T wave INVERSION in V1-V4**; **S1Q3T3**"
+   },
+   "src": "UDMI 2018 (right-sided leads); standard ECG texts; checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-31": {
+   "fields": {
+    "a": "**Dimension** | **Normal range (cm)**\n**RV length** (base-to-apex) | **7.1-7.9**\n**Basal RV** | **2.0-2.8**\n**Mid RV** | **2.7-3.3**\n**RV outflow tract** | **2.5-2.9**\n**Pulmonary artery** | **1.5-2.1**\n- Table above = ASE 2005. **ASE 2015:** basal **2.5-4.1**, mid **1.9-3.5**, length **5.9-8.3** cm (abnormal >4.1 / >3.5 / >8.3); RVOT PLAX **≤3.0**, proximal **≤3.5**, distal **≤2.7** cm",
+    "watch": "In current (ASE 2015) values the BASAL RV is the widest (≤4.1 cm) and mid ≤3.5 cm; the older table made mid look wider than basal."
+   },
+   "src": "ASE/EACVI chamber quantification 2015 (RV dimensions); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-34": {
+   "fields": {
+    "watch": "The figures come from two editions: the p.322 table is ASE 2010 (TAPSE <16 mm, S' <10, 3D RVEF <44%); the p.321 figures are ASE 2015. For an exam quote ASE 2015 (RVF-32): TAPSE <17 mm, S' <9.5 cm/s, RIMP >0.43 / >0.54, 3D RVEF <45%, FAC <35%, strain <20%."
+   },
+   "src": "ASE/EACVI 2015 vs Rudski ASE 2010; checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-41": {
+   "fields": {
+    "watch": "No guideline names an agent of choice. Levosimendan is attractive in RV failure because it treats both sides of the problem - inotropy AND pulmonary vasodilation, i.e. RV-arterial uncoupling. Dobutamine needs a vasopressor beside it; noradrenaline works partly by fixing coronary perfusion, not just by raising pressure."
+   },
+   "src": "No guideline names an RV inotrope of choice (HFA/ESC 2016 acute RV failure statement); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-42": {
+   "fields": {
+    "a": " | **Inhaled prostaglandins** | **Inhaled nitric oxide**\n**Reduces** | **PVR, hypoxic pulmonary vasoconstriction**, and **SYSTEMIC vascular resistance** | **PVR ONLY at WELL-VENTILATED lung zones**\n**Effects** | — | **Improves V/Q matching** and **RV EJECTION FRACTION**\n**Adverse** | **Hypotension and HYPOXIA** mainly with **IV prostacyclin**; inhaled: cough, bronchospasm, platelet inhibition | **REBOUND PH on abrupt withdrawal** (wean to 1 ppm); methaemoglobinaemia, NO₂\n**Dose** | — | **Start 5 ppm; overall 20-40 ppm**",
+    "watch": "The difference is selectivity. NO acts only where ventilation reaches, so it IMPROVES V/Q matching. Prostaglandins also blunt hypoxic pulmonary vasoconstriction and drop systemic resistance, which is why IV prostacyclin causes hypoxia and hypotension (inhaled is largely selective)."
+   },
+   "src": "Inhaled vs IV prostacyclin pharmacology; iNO rebound (standard ICU texts); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-44": {
+   "fields": {
+    "a": "a **Transvalvular AXIAL FLOW pump** placed **across the PULMONARY VALVE**\nb Displaces blood **from the inlet at the IVC-RA junction to the PA**; placed percutaneously via the **RIGHT FEMORAL VEIN**\nc Flows **>4 L/min**\nd ↓ **RA pressure** • ↓ **RV native stroke volume** • ↑ **RV and PA systolic pressure** • ↑ **pulmonary blood flow** → ↑ **LV preload and stroke volume**\ne **CANNOT oxygenate blood**. **Low-level systemic anticoagulation, target ACT 160-180 s**. **Haemolysis** from high pump speed",
+    "watch": "Impella RP mirrors the LV Impella of CS-45 exactly: pulmonary valve not aortic, right femoral VEIN not artery, RA-to-PA not LV-to-aorta. The mirroring is what makes both memorable. Neither oxygenates; both cause haemolysis."
+   },
+   "src": "Impella RP device description (Abiomed; RECOVER RIGHT); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-28": {
+   "fields": {
+    "a": "a **Diagnosis of RV failure** and **guiding appropriate management**\nb Allows accurate measurement of **CO**, which allows calculation of **PVR as a surrogate marker for afterload**\nc **Acute RV dysfunction is suggested by:**\n→ **CVP > PCWP**\n→ **Low cardiac index (CI)**\n→ **Low stroke volume index (SVI)**\n→ **Mixed venous oxygen saturation <55%**\n- **PAPi = (PASP − PADP) / RAP**: **<0.9** in inferior MI predicts RV failure and death (<1.85 after LVAD)"
+   },
+   "src": "Korabathina 2012 (PAPi in inferior MI); Kang 2016 (PAPi after LVAD); checked 23 Nov 2026"
+  },
+  "CVS06B|RVF-30": {
+   "fields": {
+    "a": "a Seen in **PULMONARY EMBOLISM**\nb **LATERAL WALL HYPOKINESIA + APEX SPARING**\n- Also seen in **RV infarction**; the **60/60 sign** (PAAT <60 ms + TR gradient <60 mmHg) is more specific for PE"
+   },
+   "src": "Kurzyna 2002 (60/60 sign); McConnell sign also in RV infarction (Casazza 2005); checked 23 Nov 2026"
+  },
+  "CVS07A|PCA-01": {
+   "fields": {
+    "q": "**Give the survival and favourable neurological outcome rates by CPR duration:**\na Overall (whole cohort)\nb At 20 minutes\nc At 30 minutes\nd At 53 minutes",
+    "a": "**CPR duration** | **Survival** | **Favourable neurological outcome**\n**Overall cohort** | **36.8%** | **21.8%**\n**After 20 minutes** | **4.6%** | **1.9%**\n**After 30 minutes** | **0.8%** | **0.4%**\n**53 minutes** | **0%** | **0%**\nN = 17,238",
+    "watch": "Survival and good neurological outcome fall steeply with CPR duration: over 99% of the CPC 1-2 survivors had ROSC by 35 minutes, and no one survived beyond 53 minutes."
+   },
+   "src": "Goto Y et al., J Am Heart Assoc 2016 (n 17,238, full text); checked 23 Nov 2026"
+  },
+  "CVS07A|PCA-19": {
+   "fields": {
+    "a": "- Seizures occur in **~33%** of comatose patients after ROSC; **myoclonus is the commonest TYPE (18-25%)** within that third\n- Both are **POOR PROGNOSTIC MARKERS**; cerebral oedema is a consequence of hypoxic brain injury\n- **Management**\n- **Seizures** | **NO sufficient evidence for PROPHYLAXIS**; **EEG to monitor treatment effects**; **levetiracetam or sodium valproate first line**\n- **Myoclonus** | **PHENYTOIN IS INEFFICIENT**; use **propofol, sodium valproate, clonazepam, levetiracetam**",
+    "watch": "Myoclonus is a subset of the one third with seizures, not a separate larger group. UPDATED: AHA 2025 states that treatment to suppress MYOCLONUS WITHOUT AN EEG CORRELATE IS NOT RECOMMENDED - the drug list applies only to myoclonus with an EEG correlate. Phenytoin's inefficiency remains the examinable point."
+   },
+   "src": "ERC-ESICM 2015/2021 post-resuscitation care (seizures ~1/3; myoclonus 18-25%); checked 23 Nov 2026"
+  },
+  "CVS07B|PCA-25": {
+   "fields": {
+    "q": "**Give the TTM 2013 secondary outcomes - figures, risk ratio and p value for:**\na CPC of 3-5\nb Modified Rankin scale score of 4-6\nc Deaths at 180 days",
+    "a": "**Secondary** | **33°C** | **36°C** | **RR** | **p**\n**CPC 3-5** | 251/469 **(54%)** | 242/464 **(52%)** | 1.02 (0.88-1.16) | **0.78**\n**mRS 4-6** | 245/469 **(52%)** | 239/464 **(52%)** | 1.01 (0.89-1.14) | **0.87**\n**Deaths at 180 days** | 226/473 **(48%)** | 220/466 **(47%)** | 1.01 (0.87-1.15) | **0.92**",
+    "watch": "Every risk ratio is essentially 1.00 and every p value is far from significance - the trial is uniformly negative across primary and all secondary endpoints, not negative on the primary and suggestive elsewhere."
+   },
+   "src": "Nielsen, NEJM 2013 (TTM): secondary outcomes reported as risk ratios; checked 23 Nov 2026"
+  },
+  "CVS07B|PCA-27": {
+   "fields": {
+    "a": "- To evaluate the impact of **body temperature on neurologic outcome** after successful CPR\n- **Lowest temp within 4 h:** favourable **35.8°C** vs unfavourable **35.2°C** (p = 0.002)\n- **Highest temp in first 48 h:** favourable **37.7°C** vs unfavourable **38.3°C** (p < 0.001)\n- **For each degree Celsius above 37°C, the risk of UNFAVOURABLE neurologic recovery rises with an ODDS RATIO OF 2.26 (95% CI 1.24-4.12)**\n- **Conclusion: hyperthermia is a potential factor for unfavourable functional neurologic recovery after successful CPR**"
+   },
+   "src": "Zeiner, Arch Intern Med 2001;161:2007 (abstract); checked 23 Nov 2026"
+  },
+  "CVS07B|PCA-37": {
+   "fields": {
+    "a": "**System** | **Complications**\n**Cardiovascular** | **Myocardial ischaemia** • **hypertension / tachycardia** (induction, shivering) • **BRADYCARDIA** (maintenance) • **deep venous thrombosis**\n**Coagulation** | **Platelet activation** • **coagulopathy**\n**Immune** | **Increased infection** - mainly **PNEUMONIA** (wound infection in perioperative data)",
+    "watch": "Tachycardia and hypertension belong to induction and shivering; once at target, hypothermia causes BRADYCARDIA, the classic exam answer."
+   },
+   "src": "Hypothermia physiology (Polderman, Crit Care Med 2009); checked 23 Nov 2026"
+  },
+  "CVS07C|PCA-47": {
+   "fields": {
+    "a": "**Biomarker** | **Source**\n**NSE** | Released following injury from **NEURONS**\n**S-100B** | Released following injury from **GLIAL tissue**\n- **NSE is BETTER STUDIED**\n- **NOT influenced by SEDATIVES and NMBD**\n- **Tested at 24, 48 and 72 HOURS**; NSE **>60 µg/L at 48 and/or 72 h** = poor outcome\n- **SERIAL INCREASING values are a better**\n**predictor than a single value**\n- **AHA 2025 addition:** **NEUROFILAMENT LIGHT**\n**CHAIN (NfL)** is now included as a serum biomarker\nfor neuroprognostication"
+   },
+   "src": "ERC-ESICM 2025 post-resuscitation care guideline (NSE at 24, 48, 72 h; >60 µg/L at 48/72 h); checked 23 Nov 2026"
+  },
+  "CVS07C|PCA-56": {
+   "fields": {
+    "q": "**State which route applies, and**\n**the key distinguishing feature,**\n**for a post-arrest unresponsive**\n**patient who has:**\na A suspected neurological cause of\narrest\nb All four brainstem reflexes absent\nafter rewarming and confounder\nexclusion\nc Some brainstem reflexes present at\n≥72 h, not obeying commands\nd Fewer than 2 of the six ERC criteria",
+    "a": "**Finding** | **Route**\n**Suspected neurological cause** | **Brain CT first** (not TTM first)\n**ALL brainstem reflexes absent** | **BRAIN DEATH determination**\n**Reflexes present, M **≤**5 at** ≥**72 h** (ERC-ESICM 2025; M ≤3 in 2021), **no confounders** | **ERC prognostication algorithm** (the six criteria)\n**Fewer than 2 criteria met** | **OBSERVE AND RE-EVALUATE**"
+   },
+   "src": "ERC-ESICM 2025 post-resuscitation care guideline (entry GCS-M ≤5 at ≥72 h); checked 23 Nov 2026"
+  },
+  "CVS08A|ACLS-13": {
+   "fields": {
+    "a": "- **Return of palpable PULSE and measurable BLOOD PRESSURE**\n- **ABRUPT SUSTAINED INCREASE in PETCO₂** (AHA 2025: a sudden rise of **>10 mmHg** may indicate ROSC; older keys: typically ≥40 mmHg)\n- **Spontaneous arterial pressure waves** with intra-arterial monitoring",
+    "watch": "ROSC is an ABRUPT RISE (>10 mmHg; 2020 printed ≥40); the CPR-quality goal is an absolute value ≥10, ideally ≥20 mmHg (ACLS-44)."
+   },
+   "src": "AHA 2025 adult ALS (abrupt ETCO2 rise; >10 mmHg in supporting text); checked 23 Nov 2026"
+  },
+  "CVS08A|ACLS-19": {
+   "fields": {
+    "a": "- **Attempt IV access FIRST** for drug administration in adults in cardiac arrest\n- **IO access is reasonable if initial IV attempts are unsuccessful or not feasible**\n- A **2025 ILCOR review including three large RCTs** found IO gave **no statistically significant improvement** in outcomes, and noted **LOWER odds of achieving sustained ROSC with the IO route**\n- **Endotracheal drug route REMOVED** in AHA 2025\n- IO in a conscious patient: **40 mg preservative-free 2% lidocaine** into the marrow over 2 min before flushing",
+    "watch": "Marrow's update is right that endotracheal drug administration was removed in 2025. Quote IV first, IO if IV fails, no ET route."
+   },
+   "src": "AHA 2025 adult ALS (ET route removed; IV first, IO 2a); ILCOR 2025; checked 23 Nov 2026"
+  },
+  "CVS08A|ACLS-20": {
+   "fields": {
+    "watch": "The BLS rule = these same three criteria (it is the universal rule). The ALS rule adds two: arrest NOT bystander-witnessed and NO bystander CPR. If ANY criterion is missing, continue resuscitation and transport."
+   },
+   "src": "AHA 2025 adult ALS (TOR rules); Morrison 2006/2009; checked 23 Nov 2026"
+  },
+  "CVS08A|ACLS-07": {
+   "fields": {
+    "a": "**Group** | **Sequence**\n**Adults and children** | **5 back blows** → **5 ABDOMINAL thrusts**, repeated\n**Infants** | **5 back blows** → **5 CHEST thrusts**, using the **HEEL OF ONE HAND**, repeated. **ABDOMINAL THRUSTS are NOT used in infants** (never recommended) - risk of abdominal organ injury; new in 2025 = heel of one hand\n**Late pregnancy, or abdomen cannot be encircled** | **5 CHEST thrusts** instead of abdominal thrusts"
+   },
+   "src": "AHA 2020 and 2025 FBAO recommendations; checked 23 Nov 2026"
+  },
+  "CVS08B|ACLS-22": {
+   "fields": {
+    "a": "**Shock** | **Energy**\n**First** | **2 J/kg** (2-4 J/kg)\n**Second** | **4 J/kg**\n**Subsequent** | **≥4 J/kg** (higher allowed)\n**Maximum** | **10 J/kg OR the adult dose**",
+    "watch": "The default is 2 → 4 → 4, but higher subsequent doses are allowed up to the maximum. The ceiling is\nwhichever comes first: 10 J/kg or the adult dose - in a large\nadolescent the adult dose is reached before 10 J/kg."
+   },
+   "src": "AHA 2025 PALS; checked 23 Nov 2026"
+  },
+  "CVS08B|ACLS-35": {
+   "fields": {
+    "a": "**Rhythm** | **ECG** | **Notes**\n**Sinus bradycardia** | **NORMAL PR interval** | Physiologic, **medication-induced**, or pathologic: **hypoxia, MI, increased ICP, hypothyroidism**\n**Junctional bradycardia** | **P waves INVERTED, ABSENT, or AFTER the QRS**; QRS typically **narrow** | **Hyperkalaemia, sino-atrial exit block, severe sinus bradycardia**. Treat underlying cause if symptomatic\n**Bradycardia = heart rate <60/min** (ECG); the AHA algorithm treats bradyarrhythmia at **typically <50/min**; may be **physiological or pathological**\n- **SA exit block:** type I - PP shortens before a dropped P; type II - pause = exact multiple of PP; sinus pause/arrest - pause NOT a multiple"
+   },
+   "src": "AHA 2025 bradyarrhythmia algorithm (typically <50/min); standard ECG texts on SA exit block; checked 23 Nov 2026"
+  },
+  "CVS08C|ACLS-41": {
+   "fields": {
+    "a": "- **Head tilt-chin lift**; adjuncts **OPA / NPA**\n- Definitive airway: **cuffed tube in the trachea** (ETT or surgical); **SGA / i-gel / Combitube** = **advanced**, not definitive\n- **Ladder:** compression-only CPR → mouth-to-mouth\n→ bag-mask ← **BASIC** | **ADVANCED** →\nsupraglottic airway → tracheal intubation\n- **2025:** in an adult with **head and neck trauma**, if the\nairway **cannot be opened with a jaw thrust and**\n**airway adjunct insertion**, a trained rescuer\n**SHOULD open it using head tilt-chin lift**"
+   },
+   "src": "ATLS 10th ed. (definitive airway = cuffed tube in trachea); checked 23 Nov 2026"
+  },
+  "CVS08C|ACLS-43": {
+   "fields": {
+    "a": "- **LOW or FLAT trace (around 5-10 mmHg)** →\n**IMPROVE CHEST COMPRESSIONS** - EtCO2\nreflects pulmonary blood flow and therefore\ncompression quality\n- **ABRUPT SUSTAINED RISE** (AHA 2025: sudden rise **>10 mmHg**; older keys: typically ≥40 mmHg) → **ROSC**\n- **Chest compression depth - GOOD: 2-2.4 inches**\n**(5-6 cm)**\n- **BAD: <2 inches (<5 cm)**"
+   },
+   "src": "AHA 2025 adult ALS (abrupt ETCO2 rise; >10 mmHg in supporting text); checked 23 Nov 2026"
+  },
+  "CVS08C|ACLS-46": {
+   "fields": {
+    "a": "**Drug** | **Dose**\n**Amiodarone** (class III) | **Adult: first 300 mg bolus, second 150 mg Paediatric: 5 mg/kg bolus, may repeat up to 3 total doses**\n**Lidocaine** (class Ib) | **Adult: first 1-1.5 mg/kg, second 0.5-0.75 mg/kg**"
+   },
+   "src": "Vaughan Williams classification; 23 Nov 2026"
+  },
+  "CVS08C|ACLS-58": {
+   "fields": {
+    "q": "**For the stroke algorithm, give the\nNINDS time goals from ED arrival\nfor:**\na Immediate general assessment and\nstabilisation\nb Immediate neurologic assessment by\nthe stroke team\nc CT interpretation\nd Administration of IV thrombolysis\ne The post-thrombolysis pathway\nf What is given if the patient is NOT a\nfibrinolytic candidate",
+    "a": "**From ED arrival** | **Action**\n**10 minutes** | **Immediate general assessment and stabilisation** - ABCs, oxygen if hypoxic, IV access and labs, **check glucose**, neurologic screening, activate stroke team, **order emergent CT or MRI**, 12-lead ECG\n**25 minutes** | **Immediate neurologic assessment** by the stroke team - history, **time of symptom onset or last known normal**, **NIH Stroke Scale**\n**45 minutes** | **CT interpretation: does it show HAEMORRHAGE?**\n**60 minutes** | **GIVE IV thrombolysis** (**tenecteplase** or alteplase) if still a candidate; **no anticoagulants or antiplatelets for 24 hours**\n**3 hours** | **Begin post-thrombolysis stroke pathway**; aggressive monitoring, BP per protocol; admit to stroke unit or ICU\n- **Haemorrhage** → **consult neurologist or neurosurgeon**, consider transfer\n- **NOT a fibrinolytic candidate** → **ADMINISTER**\n**ASPIRIN**"
+   },
+   "src": "AHA/ASA 2026 acute ischaemic stroke guideline (tenecteplase or alteplase); checked 23 Nov 2026"
+  },
+  "CVS08D|ACLS-62": {
+   "fields": {
+    "a": "- **Pregnancy: 'RESUSCITATIVE DELIVERY' replaces 'perimortem caesarean delivery'**; prepare from recognition, **complete by 5 min**; **ECPR reasonable**; **balanced massive transfusion for amniotic fluid embolism**\n- **LVAD: new algorithm** - compressions if perfusion impaired, assess device simultaneously\n- **Opioid: redrawn algorithm; lay naloxone possession, use and immunity (class 1 policy), naloxone distribution programmes (2a)**; take-home naloxone at discharge\n- **Asthma:** ECLS and **volatile anaesthetics** may be considered\n- **Hypothermia:** ECLS rewarming; **HOPE and ICE scores** to guide it\n- **Hyperthermia: ICE WATER IMMERSION (1-5°C)**, cooling **≥0.15°C/min**\n- **Hyperkalaemia: IV calcium effectiveness NOT WELL ESTABLISHED**"
+   },
+   "src": "AHA 2025 special circumstances (opioid) recommendations; checked 23 Nov 2026"
+  },
+  "CVS08D|ACLS-63": {
+   "fields": {
+    "a": "- **30:2** - but the rationale changed: it lets the rescuer **SEE CHEST RISE** and confirm adequate ventilation, not to protect compression fraction\n- **Rate 100-120/min** (depth 5-6 cm, also unchanged)\n- **Epinephrine 1 mg every 3-5 min**\n- **Amiodarone 300 then 150 mg; lidocaine 1-1.5 then 0.5-0.75 mg/kg**\n- **Monophasic 360 J**\n- **Atropine 1 mg × 3, max 3 mg, bradycardia only**\n- **5 H's and 5 T's** - though IV calcium for hyperkalaemia is now downgraded"
+   },
+   "src": "AHA 2020 and 2025 adult BLS (avoid >6 cm already in 2020); checked 23 Nov 2026"
+  },
+  "CVS08D|ACLS-65": {
+   "fields": {
+    "a": "- **The TWO-FINGER technique for infants is NO LONGER RECOMMENDED** → use the **HEEL OF ONE HAND** or the **TWO THUMB-ENCIRCLING HANDS** technique\n- **Pauses in chest compressions should be LESS THAN 10 SECONDS**\n- **Non-shockable rhythm: epinephrine AS EARLY AS POSSIBLE** (best outcomes when <3 min)\n- **Invasive arterial monitoring: target DBP ≥25 mmHg in INFANTS, ≥30 mmHg in CHILDREN ≥1 year**\n- **Post-arrest: maintain systolic and mean BP above the 10th percentile for age**\n- **FBAO: children 5 back blows + 5 ABDOMINAL thrusts; infants 5 back blows + 5 CHEST thrusts (heel of one hand)** - abdominal thrusts are not used in infants (never recommended)"
+   },
+   "src": "AHA 2020 and 2025 PALS FBAO; checked 23 Nov 2026"
+  },
+  "CVS08D|ACLS-68": {
+   "fields": {
+    "a": "- **Beneficence • non-maleficence • respect for autonomy • justice**\n- **POLST = Portable (originally Physician) Orders for Life-Sustaining Treatment** - portable orders giving clear guidance on patient wishes regarding resuscitation and advanced interventions\n- **Default is to INITIATE CPR**, except: **serious risk of physical harm to the professional**, **objective signs of irreversible death**, or **an advance directive declining treatment**\n- **Family presence during CPR reduces complicated grief** and improves psychological outcomes - institutions should have policies supporting it\n- Determinations of no realistic benefit should rely on an **INSTITUTIONAL COMMITTEE or ETHICS CONSULTANT**, not an individual clinician, to limit bias and moral distress\n- **Organ donation should be considered in ALL post-arrest patients** who progress to death by neurological criteria or for whom WLST is planned - **decided BEFORE and INDEPENDENTLY of the donation discussion**"
+   },
+   "src": "AHA 2025 ethics chapter; checked 23 Nov 2026"
+  },
+  "CVS08E|ACLS-71": {
+   "fields": {
+    "watch": "Call first or care first. For an adult witnessed collapse, call first - the arrest is likely arrhythmic and needs the defibrillator. For a child, or drowning/asphyxia, a LONE rescuer WITHOUT a phone gives 2 minutes of CPR first (ERC: 1 min), then calls; with a phone, call on speaker and start CPR at once; a child's witnessed sudden collapse = call and get the AED first."
+   },
+   "src": "AHA 2025 adult and paediatric BLS; ERC 2025 paediatric BLS; checked 23 Nov 2026"
+  },
+  "CVS09|AD-10": {
+   "fields": {
+    "a": "- **Type A** - involves the **ASCENDING aorta**, wherever the tear (notes: \"proximal to the left subclavian\")\n- **Type B** - ascending aorta NOT involved (usually **distal to the left subclavian**)\n**DeBakey** | **Stanford**\n**I (ascending + descending)** | **A**\n**II (ascending only)** | **A**\n**III (descending only)** | **B**\n- Deciding feature: is the **ASCENDING** aorta involved?"
+   },
+   "src": "ESC 2024 peripheral arterial and aortic diseases guideline (TEM); checked 23 Nov 2026"
+  },
+  "CVS09|AD-16": {
+   "fields": {
+    "a": "- **Widened mediastinum ~60%** (IRAD 61.6%); abnormal aortic contour ~50%; **normal CXR ~12%**; calcium sign (displaced intimal calcium)\n- Falsely reassuring → **missed diagnosis**\n- **Leukocytosis** or **thrombocytopenia** (platelet\nconsumption)\n- **Gut ischaemia** - compromised **coeliac or superior\nmesenteric** arteries"
+   },
+   "src": "Hagan, JAMA 2000 (IRAD); checked 23 Nov 2026"
+  },
+  "CVS09|AD-22": {
+   "fields": {
+    "a": "- Proximity to the **aortic root** and involvement of the\n**coronary origins** - makes endovascular repair challenging\n- **Resect** the diseased segment → replace with a **synthetic\ngraft**\n- **AR with normal leaflets** → valve **RESUSPENSION** (ACC/AHA 2022); **root destroyed / aneurysmal or genetic aortopathy (Marfan)** → **root replacement** (valved conduit or valve-sparing). Notes: root >55 mm → AVR\n- **Midline sternotomy**"
+   },
+   "src": "ACC/AHA 2022 aortic disease guideline (valve resuspension with normal leaflets); checked 23 Nov 2026"
+  },
+  "CVS10A|MI-02": {
+   "fields": {
+    "a": "- ↓**cellular glycogen**, **relaxed myofibrils**, **sarcolemmal disruption**\n- As early as **10-15 minutes** after ischaemia onset (UDMI 2018)\n- **ENDOCARDIUM** → **EPICARDIUM**\n- **Timely reperfusion therapy**"
+   },
+   "src": "Fourth Universal Definition of MI (Thygesen, Eur Heart J 2019 / Circulation 2018); checked 23 Nov 2026"
+  },
+  "CVS10A|MI-05": {
+   "fields": {
+    "a": "**Type** | **Mechanism**\n**1** | **Atherothrombotic** - STEMI and NSTEMI, significant CAD\n**2** | **O2 supply/demand mismatch**, no acute atherothrombosis (fixed CAD may be present)\n**3** | **Sudden cardiac death** before biomarkers obtained\n**4** | **PCI**-related\n**5** | **CABG**-related\n- Syndromic: **STEMI** vs **NSTE-ACS** - NSTEMI (biomarkers ↑) and **unstable angina** (biomarkers NOT raised)"
+   },
+   "src": "Fourth Universal Definition of MI (Thygesen, Eur Heart J 2019 / Circulation 2018); checked 23 Nov 2026"
+  },
+  "CVS10A|MI-09": {
+   "fields": {
+    "a": "**Type 4a (PCI)** | **Type 5 (CABG)**\nNormal baseline: cTn **>5 × 99th URL** | cTn **>10 × 99th URL**\nWindow: **≤48 h** of procedure | **≤48 h** of procedure\nRaised, stable baseline: Rise **>20%** and value still >5× | Rise **>20%** and value still >10×\n- **4b** = stent / scaffold thrombosis • **4c** = restenosis\n- **Type 4a** also needs: new ischaemic ECG, new Q waves, imaging loss of viable myocardium / RWMA, or angiographic flow-limiting complication (dissection, vessel or side-branch occlusion, thrombus, lost collateral flow, distal embolisation)\n- **Type 5** needs: new pathological **Q waves**, angiographic **new graft or native occlusion**, or **imaging** (new ST-T change alone does NOT count)"
+   },
+   "src": "Fourth Universal Definition of MI (Thygesen, Eur Heart J 2019 / Circulation 2018) (type 4a vs type 5 criteria); checked 23 Nov 2026"
+  },
+  "CVS10A|MI-19": {
+   "fields": {
+    "q": "**In suspected ACS, give what each bedside**\n**finding points to:**\na BP difference between arms\nb Rales / crepitations or raised JVP\nc New systolic murmur (two causes)\nd Pericardial rub or effusion\ne The most common peri-infarct arrhythmia (notes, ch. 28)",
+    "a": "- **Aortic dissection**\n- **Heart failure**\n- Mechanical complication: **papillary muscle rupture** (MR), **VSD**; free wall rupture presents as **tamponade / PEA**, not a murmur\n- **Pericarditis**\n- **Non-sustained VT** (notes); counted strictly, **ventricular premature beats** are commonest - pick VPBs if offered"
+   },
+   "src": "ACC/AHA and ESC mechanical complications; standard texts (VPBs commonest); checked 23 Nov 2026"
+  },
+  "CVS10B|MI-22": {
+   "fields": {
+    "a": "- **ST depression in V1-V3** with a **positive terminal T wave**\n- **V7** posterior axillary line • **V8** posterior scapular (mid-scapular) line • **V9** paraspinal\n- **≥0.5 mm** (≥1 mm in men <40) - usually **LEFT CIRCUMFLEX**\n- **Right mid-clavicular line, 5th intercostal space** (mirror of V4)\n- **1 mm** strongly suggests RV infarction (classic); UDMI: **≥0.5 mm** in V3R/V4R (≥1 mm in men <30)"
+   },
+   "src": "Fourth Universal Definition of MI (Thygesen, Eur Heart J 2019 / Circulation 2018); checked 23 Nov 2026"
+  },
+  "CVS10B|MI-25": {
+   "fields": {
+    "a": "- **ST depression ≥1 mm in ≥6 leads** (ESC 2023; older keys: 8 leads, UDMI 2018 / ESC 2017) + **ST elevation in aVR and/or V1** → left main, left main equivalent, or severe three-vessel ischaemia\n- **0.5 mm**, **horizontal or downsloping**\n- In leads with a prominent R wave or **R/S ratio >1**"
+   },
+   "src": "ESC 2023 ACS guideline (≥6 leads); UDMI 2018 and ESC 2017 (≥8 leads); checked 23 Nov 2026"
+  },
+  "CVS10B|MI-27": {
+   "fields": {
+    "a": "**ST elevation** | **ST depression** | **T inversion**\nPericarditis | Hypokalaemia | Persistent juvenile pattern\nMyocarditis | Digoxin effect | Stokes-Adams syncope\nCor pulmonale / RV strain | LVH, LBBB | Post-tachycardia\nLV aneurysm | — | Post pacemaker insertion\nHCM | Paced rhythm | Intracranial pathology\nHypothermia | — | Pericarditis\nPaced rhythm | Myocardial diseases | \nLVH, LBBB, RBBB, PE, MVP | Stress cardiomyopathy | \nBrugada | Myocardial contusion | \n**Early repolarisation** |  | \n**Stress (Takotsubo) cardiomyopathy** (commonly ST elevation) |  | "
+   },
+   "src": "Standard ECG texts; ESC 2018 Takotsubo position (ST elevation commonest); checked 23 Nov 2026"
+  },
+  "CVS10B|MI-30": {
+   "fields": {
+    "a": "**Marker** | **Rises** | **Peaks** | **Normal by**\n**Troponin T** | 3-12 h | 12-48 h | **14 days**\n**Troponin I** | 3-12 h | 24 h | **10 days**\n**CK-MB** | 4-6 h | 24 h | 48-72 h\n**Myoglobin** | **2-4 h** | 8-12 h | **24 h**\n- CK-MB: less specific (skeletal muscle) - only when troponin unavailable. **Re-infarction: troponin >20% rise** from a stable or falling value (UDMI 2018). Older keys: CK-MB for re-infarction\n- Myoglobin: earliest riser - sometimes added for early diagnosis"
+   },
+   "src": "Fourth Universal Definition of MI (Thygesen, Eur Heart J 2019 / Circulation 2018) (reinfarction: >20% troponin rise); checked 23 Nov 2026"
+  },
+  "CVS10C|MI-38": {
+   "fields": {
+    "q": "**For sublingual nitroglycerin in ACS, give:**\na The dose and repeat schedule\nb The contraindications\nc What relief of pain proves",
+    "a": "- **0.4 mg** (0.3-0.6 mg) SL, every **5 min**, up to **3 doses**\n- **Hypotension** • **tachycardia** (marked bradycardia too) • **right ventricular MI** • **recent PDE-5 inhibitor** (sildenafil/vardenafil 24 h, tadalafil 48 h) • **riociguat**\n- **NOTHING** - does not confirm or exclude MI; biomarkers are needed"
+   },
+   "src": "ESC 2023 ACS guideline; ACC/AHA nitrate contraindications; riociguat label; checked 23 Nov 2026"
+  },
+  "CVS10C|MI-39": {
+   "fields": {
+    "a": "- **300 mg** on arrival\n- **P2Y12 inhibitor** loading dose - prasugrel, ticagrelor or clopidogrel\n- **High-dose statin** - atorvastatin **80 mg** →\n- SBP **>120 mmHg** and **no acute HF** → **IV metoprolol** (ESC IIa, A; limits infarct size); avoid in **heart failure**, **hypotension**, **PR >240 ms or 2nd/3rd-degree block**, **bronchospasm**, **high shock risk** (age >70, HR >110, SBP <120 - COMMIT)"
+   },
+   "src": "ESC 2023 ACS guideline (IV beta-blocker IIa, A); COMMIT, Lancet 2005; checked 23 Nov 2026"
+  },
+  "CVS10C|MI-45": {
+   "fields": {
+    "a": "- **Bleeding**, **vascular complications** (pseudoaneurysm), need for **transfusion**; better overall survival\n- **MATRIX**\n- **RIFLE-STEACS** (lower cardiac mortality, shorter stay); **MATRIX** also lowered all-cause mortality; **RIVAL** neutral overall (benefit in STEMI)\n- Only when radial is **not feasible** - higher complication risk"
+   },
+   "src": "Valgimigli, Lancet 2015 (MATRIX); Jolly, Lancet 2011 (RIVAL); Romagnoli, JACC 2012 (RIFLE-STEACS); checked 23 Nov 2026"
+  },
+  "CVS10C|MI-47": {
+   "fields": {
+    "a": "- **Clopidogrel** and **prasugrel**. Ticagrelor is **NOT** - a reversible, direct-acting agent (cyclopentyl-triazolopyrimidine)\n- **Prasugrel or ticagrelor** over clopidogrel (superior efficacy); clopidogrel if unavailable / contraindicated\n- **Prior stroke or TIA**; avoid in older patients\n- Prior **haemorrhagic stroke**; liver disease; **dyspnoea** (~14%, adenosine-mediated, benign: SpO₂, exam, ECG normal)"
+   },
+   "src": "Wallentin, NEJM 2009 (PLATO dyspnoea ~14%); checked 23 Nov 2026"
+  },
+  "CVS10C|MI-55": {
+   "fields": {
+    "a": "- Anatomy **unsuitable for PCI** • **failed PCI** • **mechanical complications** (coronary dissection, VSD, papillary muscle rupture)\n- **Higher mortality** (non-randomised data)\n- After **3-7 days**\n- **Refractory ischaemia**, **cardiogenic shock**\n- A **second antiplatelet** is typically given after the procedure\n- Stop before CABG: elective - **ticagrelor 3 d, clopidogrel 5 d, prasugrel 7 d**; urgent - ticagrelor/clopidogrel **≥24 h**; eptifibatide/tirofiban **2-4 h**"
+   },
+   "src": "ESC 2023 ACS guideline; ACC/AHA 2025 ACS guideline (pre-CABG interruption); checked 23 Nov 2026"
+  },
+  "CVS10D|MI-57": {
+   "fields": {
+    "a": "**Drug** | **LVEF **≤**40% or HF** | **LVEF >40%**\n**Oral β-blocker** | **I, A** | IIa, B (figure)\n**ACE inhibitor** | **I, A** | IIa, A (no HF)\n**MRA** | **I, A** - LVEF ≤40% with **HF or diabetes** (ESC 2017: I, B) | -\n**High-dose statin** | **I, A** - all | **I, A** - all\n**DAPT** | **12 months** - all | **12 months** - all"
+   },
+   "src": "ESC 2023 ACS guideline (Byrne, Eur Heart J 2023); checked 23 Nov 2026"
+  },
+  "CVS10D|MI-59": {
+   "fields": {
+    "a": "**Recommendation** | **Class**\n**IV beta-blocker** - polymorphic VT / VF | I, B\n**Prompt complete revascularisation** - recurrent VT / VF | I, C\n**IV beta-blocker and/or amiodarone** - polymorphic VT / VF | I, B (ESC 2023; 2017: amiodarone I, C)\nAmiodarone - recurrent VT despite repeated cardioversion | IIa, C\nTransvenous overdrive pacing | IIa, C\nRF ablation then ICD - recurrent VT / VF / storm | IIa, C\n**Lidocaine** - if the above fail | IIb, C\n**Prophylactic** antiarrhythmics | **III, B**\nTreating asymptomatic, irrelevant VAs | **III, C**\nArrest and tachycardia algorithms: ACLS-14 to ACLS-34."
+   },
+   "src": "ESC 2023 ACS guideline (Byrne, Eur Heart J 2023); checked 23 Nov 2026"
+  },
+  "CVS10D|MI-60": {
+   "fields": {
+    "a": "| **Proximal** | **Distal**\n**Type** | 1st degree, **Mobitz I**, also **complete block** (narrow escape, usually transient) | **Mobitz II**, **3rd degree** (wide escape)\n**Artery** | **RCA** (inferior MI) | **LAD** (anterior MI)\n**Course** | Usually **transient**, resolves with reperfusion | Life-threatening\n**Pacemaker** | Not typically needed | Often **required**\n- **IV positive chronotropes** (epinephrine, vasopressin and/or atropine) - I, C\n- **Temporary pacing** if they fail - I, C\n- **Urgent angiography** if no prior reperfusion - I, C\n- Inferior MI causes MORE AV block of every degree than anterior MI\nBradycardia drugs and doses: ACLS-35 to ACLS-40."
+   },
+   "src": "ESC 2023 ACS guideline (Byrne, Eur Heart J 2023); standard texts on AV block in MI; checked 23 Nov 2026"
+  },
+  "CVS10D|MI-61": {
+   "fields": {
+    "a": "- **Diuretics**, **vasodilators**, **NIV**\n- **Vasopressor** for hypotension (norepinephrine); **inotrope** for output (dobutamine)\n- Longer stay, more **mechanical ventilation**, more **RRT**\n- **Pulmonary congestion**; **cardiogenic shock / low output / hypotension**\n- **Killip:** I no HF • II rales / S3 • III frank pulmonary oedema • IV cardiogenic shock"
+   },
+   "src": "Killip and Kimball 1967; ESC 2023 ACS guideline; checked 23 Nov 2026"
+  },
+  "CVS10D|MI-63": {
+   "fields": {
+    "a": "- **IABP-SHOCK II** (n = 600): **no** 30-day mortality benefit (39.7% vs 41.3%)\n- **ECLS-SHOCK** (n = 420): **VA-ECMO** - **no** 30-day benefit (47.8% vs 49.0%)\n- **DANGER-SHOCK** (n = 360, **STEMI** shock): **Impella CP** - 180-day death **45.8% vs 58.5%**, HR 0.74, NNT 8\n- More **bleeding**, **limb ischaemia**, haemolysis, device failure, AR (safety composite **24.0% vs 6.2%**, RR 4.7); **RRT 41.9% vs 26.7%**\n- Microaxial flow pump **reasonable (IIa)** in selected **STEMI** shock; routine IABP / VA-ECMO **not recommended**"
+   },
+   "src": "Møller, NEJM 2024 (DANGER-SHOCK); ACC/AHA 2025 ACS guideline; checked 23 Nov 2026"
+  },
+  "CVS10D|MI-64": {
+   "fields": {
+    "a": "| **Free wall** | **VSR** | **Papillary**\n**Presents** | Sudden pain + **collapse**, EMD | Rapid AHF / shock, **days 1-7** | Sudden pulmonary oedema ± shock\n**Finding** | **Haemopericardium**, tamponade | **New loud systolic murmur** | Murmur (not always obvious); **posteromedial** muscle\n**Manage** | Pericardiocentesis (bridge) → wall repair + patch | IABP bridge → surgery; percutaneous closure | Diuretic, vasodilator / inotrope ± IABP → MVR / repair\n**Mortality** | **75-80%** | Early surgery **~54%** (<7 days; 18% after 7 days) | **20-25%**\n- Free wall rupture: **<1%**; risk - older age, no reperfusion, **late lysis**"
+   },
+   "src": "Arnaoutakis, Am J Cardiol 2012 (STS VSR repair); checked 23 Nov 2026"
+  },
+  "CVS10D|MI-65": {
+   "fields": {
+    "a": "- **Anterior** (apical VSR) or **inferior** (basal VSR, worse prognosis) MI\n- High mortality (**~50%**; STS 54% within 7 days) - for **refractory** symptoms\n- Risk of **rupture extension and death** while waiting - if **responding** to therapy\n- **Percutaneous closure**"
+   },
+   "src": "Arnaoutakis 2012 (STS); ESC 2023 ACS / ACC mechanical complications statement; checked 23 Nov 2026"
+  },
+  "CVS10D|MI-66": {
+   "fields": {
+    "a": "- **<5%** of AMI; **anteroseptal / apical** LV\n- **Persistent ST elevation**; **Q waves**\n- **LV thrombus** (apex) → systemic embolism → **oral anticoagulation for 3-6 months**, guided by repeat imaging (ESC 2023 IIa, C). Older keys: long-term OAC\n- Large aneurysm, **recurrent thromboembolism**, mural / apical thrombus"
+   },
+   "src": "ESC 2023 ACS guideline (Byrne, Eur Heart J 2023) (LV thrombus OAC 3-6 months, IIa C); checked 23 Nov 2026"
+  },
+  "CVS10D|MI-67": {
+   "fields": {
+    "a": "**Background** | **Admission / stay**\n- Age | - Heart rate\n- History of heart failure | - Systolic BP\n- History of AMI | - ST depression\n| - Serum creatinine\n| - Elevated cardiac enzymes\n| - No in-hospital PCI\n- **6-month mortality** after ACS\n- In-hospital model (age, HR, SBP, creatinine, **Killip class**, **arrest at admission**, ST deviation, raised enzymes) gives the ESC cut-off:\n- **GRACE >140** = high risk (early invasive, MI-43; discharge threshold, MI-32)"
+   },
+   "src": "Granger 2003 (in-hospital GRACE); Eagle 2004 (6-month model); ESC 2020/2023; checked 23 Nov 2026"
+  },
+  "CVS10E|MI-74": {
+   "fields": {
+    "a": "- **Recommended (I)** - index or staged; not in cardiogenic shock (culprit-only, CS-36)\n- **Class 1** to guide PCI of **left main or complex lesions**\n- **Radial** preferred\n- **Reasonable (IIa)** in selected patients - DANGER-SHOCK (MI-63)\n- **Not recommended (III)**\n- Transfer to **shock centres** (hub-and-spoke; ACC 2025 shock guidance, no class found in the ACS guideline)"
+   },
+   "src": "ACC/AHA 2025 ACS guideline; ACC 2025 concise clinical guidance on cardiogenic shock; checked 23 Nov 2026"
+  },
+  "HY2|CAR-03": {
+   "fields": {
+    "a": "**WPW: block the pathway, never the node**\na Short PR, **delta wave** (slurred QRS upstroke),\nwide QRS.\nb **Adenosine, verapamil, diltiazem,**\n**β-blockers, digoxin, IV amiodarone** — blocking the AV node\nsends every AF beat down the accessory pathway\n→ VF.\nc Unstable → **cardioversion**. Stable →\n**procainamide** (or ibutilide).\nd **Flecainide** (class Ic) — blocks conduction in\nthe accessory pathway."
+   },
+   "src": "ACC/AHA/HRS 2023 AF guideline; AHA 2025 ALS (IV amiodarone COR 3 harm in pre-excited AF); checked 23 Nov 2026"
+  },
+  "HY2|CAR-18": {
+   "fields": {
+    "a": "**Shock + STEMI** → **transfer for**\n**revascularisation regardless of delay**\na **Immediate transfer** for PCI/CABG, whatever\nthe delay. Culprit-only PCI (CULPRIT-SHOCK). (ESC 2023: lysis IIa if PPCI >120 min and no mechanical complication.)\nb **Dobutamine** — low output without frank\nhypotension.\nc **Noradrenaline first**, then add the inotrope.\nd **Levosimendan** (DocT key) or **milrinone** — both work downstream of the\nblocked β-receptor.\ne Not routinely (IABP-SHOCK II: no mortality\nbenefit)."
+   },
+   "src": "ESC 2023 ACS (lysis in shock IIa, C); ESC 2021 HF (levosimendan with beta-blockade); checked 23 Nov 2026"
+  },
+  "HY2|CAR-05": {
+   "fields": {
+    "a": "**Valvular AF = warfarin, never a DOAC**\na **Warfarin** (INR 2–3; mechanical mitral 2.5–3.5).\nDOACs are contraindicated; aspirin is inadequate.\nb **3 weeks of anticoagulation, or TOE** to\nexclude LA thrombus — then 4 weeks after. (ESC 2024: threshold **24 h**; score CHA₂DS₂-VA.)\nc No difference in **mortality, stroke or quality**\n**of life**; rate control → **fewer rehospitalisations**."
+   },
+   "src": "ESC 2024 AF guideline (24 h threshold; CHA₂DS₂-VA); ACC/AHA 2023; checked 23 Nov 2026"
+  },
+  "HY2|CAR-06": {
+   "fields": {
+    "a": "**Torsades** → **magnesium · Brugada** →\n**SCN5A, coved ST in V1–V2**\na **Magnesium sulphate 2 g IV**; overdrive\npacing or isoprenaline if recurrent; defibrillate if\npulseless.\nb **Amiodarone, procainamide, sotalol** — all\nprolong QT further.\nc **SCN5A** loss of function (sodium channel).\n**Coved ST elevation ≥ 2 mm with a NEGATIVE**\n**T** in V1–V2.\nd At **rest, sleep, fever**. Treat fever aggressively;\n**ICD** after survived arrest (class I) or arrhythmic syncope; **quinidine** if ICD refused or recurrent shocks."
+   },
+   "src": "AHA/ACC/HRS 2017 VA guideline; HRS 2022 Brugada; AHA 2025 ALS (Mg COR 2b); checked 23 Nov 2026"
+  },
+  "HY2|CAR-14": {
+   "fields": {
+    "a": "**β-blocked anaphylaxis** → **glucagon**\na **Glucagon 1–5 mg IV** — plus fluids. Not IM\nadrenaline in arrest; not sugammadex as\nmonotherapy.\nb Calcium, **high-dose insulin**, vasopressors;\n**lipid emulsion** if refractory (exam key; AHA 2023: not recommended routinely - VA-ECMO 2a).\nc **20% lipid emulsion** 1.5 mL/kg bolus.\nd **Naloxone** — but never ahead of compressions."
+   },
+   "src": "AHA 2023 focused update on toxicology (lipid emulsion class 3 in BB/CCB poisoning; VA-ECMO 2a); checked 23 Nov 2026"
+  },
+  "HY2|CAR-24": {
+   "fields": {
+    "a": "**D-dimer cut-off = age × 10 above 50 ·**\n**subsegmental** → **surveillance**\na Age × 10 µg/L (FEU) if above 50 years.\nb **Clinical surveillance**, no anticoagulation\n(repeat leg ultrasound).\nc Add the points in the table below.\nDANIEL ECG SCORE ITEM | POINTS\n**Heart rate above 100** | 2\n**Incomplete RBBB** | 2\n**Complete RBBB** | 3\n**T inversion in all of V1–V4** | 4\n**S1 Q3 T3 (complete)** | 2\n**Score ≥ 10** | Severe\npulmonary\nhypertension (sPAP >50 mmHg)"
+   },
+   "src": "Daniel, Chest 2001 (ECG score ≥10 ~ sPAP >50 mmHg); checked 23 Nov 2026"
+  },
+  "NEURO04|NEURO-92": {
+   "fields": {
+    "a": "**DRUG** | **REVERSAL**\n**Warfarin** | Stop; **vitamin K 10 mg IV** over 30 min + **4-factor PCC** (INR 1.3–1.9: 10–20 IU/kg; INR 2 or more: **25–50 IU/kg**); FFP only if PCC unavailable\n**Dabigatran** | **Idarucizumab**; else PCC or aPCC; haemodialysis\n**Xa inhibitors** | **Andexanet alfa** (withdrawn in the US Dec 2025); else **4F-PCC** or aPCC\n**Any DOAC under** **2 h** | **Activated charcoal**\n**Unfractionated** **heparin** | **Protamine 1 mg per 100 units** (dalteparin: 1 mg per 100 anti-Xa units)\n**Enoxaparin** | **Protamine 1 mg per 1 mg** if <8 h; **0.5 mg/mg** at 8-12 h; none after 12 h"
+   },
+   "src": "FDA safety communication, end of US Andexxa sales Dec 2025; protamine for enoxaparin (CHEST/ACC); checked 23 Nov 2026"
+  },
+  "HY4|NEU-09": {
+   "fields": {
+    "a": "**ICH: SBP ~140, reverse anticoagulation fast**\na Lower SBP to **~140** (130–150) early; avoid big drops.\nb **4F-PCC + vitamin K 10 mg IV**.\nc **Idarucizumab 5 g IV**.\nd **Cerebellar haematoma ≥15 mL** (older keys: >3 cm), neurological deterioration, brainstem compression or hydrocephalus → evacuation; EVD for hydrocephalus."
+   },
+   "src": "AHA/ASA 2022 spontaneous ICH guideline (cerebellar ≥15 mL); checked 23 Nov 2026"
+  },
+  "TU-IE|IE-08": {
+   "fields": {
+    "a": "**TIMING** | **INDICATION**\n**Emergency (<24 h)** | **HF with cardiogenic shock or pulmonary oedema** from severe acute regurgitation, obstruction or fistula\n**Urgent (3–5 days)** | HF without shock; **locally uncontrolled infection** (abscess, pseudoaneurysm, fistula, enlarging vegetation, new AV block)\n**Urgent** | **Fungal** or multiresistant organism\n**Urgent (I)** | **Vegetation ≥10 mm + ≥1 embolic event** on antibiotics, or **≥10 mm + any other surgical indication** (incl. severe valve disease)\n**Urgent (IIa)** | **Persistent bacteraemia** despite correct antibiotics and source control; S. aureus or non-HACEK Gram-negative PVE\n**IIb** | Isolated vegetation ≥10 mm, no embolism or severe dysfunction, low surgical risk (older keys: ≥30 mm, ESC 2015)"
+   },
+   "src": "ESC 2023 endocarditis guideline (Delgado, Eur Heart J 2023); checked 23 Nov 2026"
+  },
+  "TU-IE|IE-09": {
+   "fields": {
+    "a": "1 Any neuro symptom → **CT/MRI brain ± CT/MR angiography** (mycotic aneurysm, haemorrhage).\n2 **No thrombolysis** (bleeding from septic arteritis); **thrombectomy may be considered** for large-vessel occlusion.\n3 **Ischaemic stroke/TIA, no haemorrhage, not comatose** + a surgical indication → **operate without delay**.\n4 **Intracranial haemorrhage** → usually **postpone surgery ≥4 weeks**; operate earlier only if HF/uncontrolled infection forces it, weighing neuro prognosis.\n5 **Coma or severe neurological damage** → defer.\n6 ICH → **stop all anticoagulation**; with a mechanical valve **restart UFH as soon as possible** after heart-team review (IIa); ischaemic stroke on a mechanical valve → switch warfarin to **UFH** (ESC 2015: for 1–2 weeks). Do not start aspirin/anticoagulants to prevent emboli.\n7 Large or ruptured mycotic aneurysm → endovascular/neurosurgical repair, ideally before valve surgery."
+   },
+   "src": "ESC 2023 endocarditis guideline (Delgado, Eur Heart J 2023); checked 23 Nov 2026"
+  },
+  "TU-IE|IE-10": {
+   "fields": {
+    "a": "**SETTING** | **REGIMEN**\nCommunity NVE or **late PVE (≥12 months)** | **Ampicillin + ceftriaxone**, or ampicillin + (flu)cloxacillin + gentamicin\nPenicillin allergy | **Cefazolin or vancomycin** + gentamicin (IIb)\n**Early PVE (<12 months)** or healthcare-associated | **Vancomycin** (or daptomycin) + **gentamicin** + **rifampicin** (rifampicin only for PVE)\nCulture-negative early PVE (AHA) | Vancomycin + gentamicin + **cefepime** + rifampicin\nNarrow | Switch to organism-specific therapy once cultures return"
+   },
+   "src": "ESC 2023 endocarditis guideline (Delgado, Eur Heart J 2023) empirical regimens table; checked 23 Nov 2026"
+  },
+  "TU-IE|IE-03": {
+   "fields": {
+    "a": "a **Major**:\n- **Micro**: *typical* organism (S. aureus, S. lugdunensis, E. faecalis, streptococci except pneumoniae/pyogenes, HACEK, Gemella, Abiotrophia, Granulicatella) in **≥2 sets**; *non-typical* (e.g. E. coli) in **≥3 sets**; Coxiella phase I IgG **>1:800**; Bartonella IgG ≥1:800; positive PCR\n- **Imaging**: vegetation, abscess, perforation, pseudoaneurysm, fistula, new dehiscence on echo/**cardiac CT**; **PET-CT** uptake at a valve/graft/lead (>3 months after surgery); **new** regurgitation on echo\n- **Surgical**: IE seen at operation\nb **Minor**: predisposition (prosthesis, prior IE, RHD, IVDU, CIED, HCM, congenital), **fever >38 °C**, **vascular** (emboli, septic lung infarcts, cerebral/splenic abscess, mycotic aneurysm, ICH, Janeway), **immunological** (Osler, Roth, RF, immune-complex GN), **micro** not meeting major, **imaging** (PET-CT uptake <3 months after valve surgery), **new regurgitant murmur on auscultation** if echo unavailable\nc **Definite** = 2 major, 1 major + 3 minor, or 5 minor. **Possible** = 1 major + 1 minor, or 3 minor."
+   },
+   "src": "Duke-ISCVID 2023 criteria (Fowler, Clin Infect Dis 2023); checked 23 Nov 2026"
+  },
+  "CVS08C|TU-02": {
+   "fields": {
+    "a": "- The insult is hypoxia: 5 rescue breaths, then CPR (ERC); no Heimlich; fresh vs salt water does not change management.\n- Post-hypoxic cerebral oedema builds over hours and peaks at 24–72 h, so an alert patient can deteriorate later.\n- Observe at least 6–8 h; ARDS can also appear late.\n- Pulseless after long submersion: survival becomes extremely unlikely after about 30 min submerged, or about 90 min in water ≤6 °C (ERC 2025; cold water protects the brain); hypothermic → continue CPR with active rewarming (ECLS if available) — 'not dead until warm and dead'."
+   },
+   "src": "ERC 2025 special circumstances, drowning (30 min; ~90 min in water ≤6 °C); top-up T_cbaf1745; checked 23 Nov 2026"
+  },
+  "CVS10A|TU-01": {
+   "fields": {
+    "a": "- Nothing diagnostic: nitrates relax smooth muscle, so they relieve both myocardial ischaemia and oesophageal spasm (NTG response does not predict ACS in ED studies).\n- One normal ECG + one negative troponin does not exclude MI unless the hs-troponin is very low and the pain began >3 h earlier (ESC 2023); otherwise repeat hs-troponin at 1–3 h and risk-stratify (HEART score). Troponin never excludes unstable angina.\n- Oesophageal spasm clues: dysphagia, relation to swallowing or hot/cold liquids; confirm by manometry."
+   },
+   "src": "ESC 2023 ACS guideline (single-sample rule-out: very low hs-cTn and onset >3 h); top-up T_3a5116ba; checked 23 Nov 2026"
+  },
+  "CVS10E|TU-01": {
+   "fields": {
+    "a": "- Retroperitoneal haematoma: high puncture above the inguinal ligament; women, low body weight, anticoagulation.\n- Diagnose with CT abdomen/pelvis; resuscitate, stop/reverse anticoagulation.\n- Covered stent or embolisation (or surgery) if ongoing bleeding."
+   },
+   "src": "Farouque, JACC 2005 (retroperitoneal haemorrhage after PCI: female sex, low body surface area, high puncture); top-up T_08cd9563; checked 23 Nov 2026"
+  },
+  "CCM01|GLU-01": {
+   "fields": {
+    "a": "- CBG **> 140 mg/dL** (ADA hospital definition); insulin starts at **≥ 180**\n- Older keys: > 180-200 mg/dL"
+   },
+   "src": "ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline; same fact as ENDO02A GLY-01 flag"
+  },
+  "CCM01|GLU-14": {
+   "fields": {
+    "a": "- **IL-1 / TNF** -> hypothalamus (PVN)\n- **IL-6** -> anterior pituitary, and **directly on the adrenal cortex**\n- **Cortisol** -> negative feedback on **BOTH**"
+   },
+   "src": "Boonen et al NEJM 2013 (ccm01_review 22 Nov 2026)"
+  },
+  "CCM01|GLU-28": {
+   "fields": {
+    "a": "- **Hourly** initially\n- **Every 1-2 h** once stable while IV insulin runs (ADA 30 min-2 h); 4-hourly only on SC insulin\n- Older keys: 4th hourly once stabilised (Marrow)"
+   },
+   "src": "ADA Standards of Care S16 (glucose every 30 min-2 h on IV insulin)"
+  },
+  "CCM01|GLU-35": {
+   "fields": {
+    "a": "- **No difference in mortality** (40.0 vs 37.3%), but **less morbidity**: less new kidney injury, earlier weaning, earlier ICU and hospital discharge; mortality fell in those staying ≥ 3 days\n- Severe hypoglycaemia with IIT: **18.7%**\nMNEMONIC: **IIT - no difference in the MICU**"
+   },
+   "src": "Van den Berghe NEJM 2006 abstract (endo02a_review 22 Nov 2026)"
+  },
+  "CCM01|GLU-38": {
+   "fields": {
+    "a": "- Outcomes: **28-day mortality** + mean organ failure score\n- **No significant difference in** **mortality**\n- IIT: lower mean glucose, but **higher severe** **hypoglycaemia** (17.0 vs 4.1%) and serious adverse events - **IIT arm also stopped early**\n- Starch: **inc. AKI and RRT** - trial **stopped early**\nMNEMONIC: **VISEP ends prematurely**"
+   },
+   "src": "Brunkhorst NEJM 2008 VISEP (endo02a_review 22 Nov 2026)"
+  },
+  "ENDO01A|ENDO-03": {
+   "fields": {
+    "a": "**STATE** | **TSH** | **T3, T4**\n**Primary hyperthyroid** | **Low** | High\n**Primary hypothyroid** | **High** | Low\n**Secondary (pituitary) hypothyroid** | **Low or inappropriately normal** | Low\n**Subclinical hyperthyroid / hypothyroid** | Low / High | **Normal**\n- **Overproduction**: Graves', toxic multinodular goitre,\nTSH-secreting adenoma.\n- **Leak from destruction**: subacute, lymphocytic (painless,\npostpartum) thyroiditis, radiation. Riedel thyroiditis is fibrosis, not thyrotoxicosis.\n- **Drugs**: thyroxine, **amiodarone**, iodinated contrast; metastatic\nthyroid cancer."
+   },
+   "src": "Standard endocrinology (Harrison; Endotext thyroiditis), endo01a_review 22 Nov 2026"
+  },
+  "ENDO01A|ENDO-07": {
+   "fields": {
+    "a": " | **BURCH-WARTOFSKY** | **AKAMIZU (JAPAN)**\n**Thyrotoxicosis** | Not required | **Prerequisite**\n**Format** | **Points score** | Criteria, no score\n**Fever** | From 37.2 °C | 38 °C\n**Heart rate** | From 99 (some tables 90) | **130**\n**AF** | Included | Not included\n**Heart failure** | Oedema to pulmonary oedema | NYHA IV or Killip III+\n**Liver** | Jaundice | **Bilirubin over 3 mg/dL**"
+   },
+   "src": "Burch-Wartofsky 1993 reproductions differ (MDCalc 90-109; ENDO-06 99-109); made consistent with ENDO-06"
+  },
+  "ENDO01A|ENDO-09": {
+   "fields": {
+    "a": "- **First line**: **β-blocker** (propranolol) → **thionamide** (PTU best) →\n**iodine** (Lugol's, potassium or sodium iodide; ≥ 1 h later) → **hydrocortisone**.\n- **Second line**: lithium → L-carnitine.\n- **Support**: fluids and electrolytes, **paracetamol** (not aspirin:\n*displaces hormone from TBG (standard teaching, not in your*\n*notes)), phenobarbital, furosemide and ACE inhibitor for heart*\nfailure, sedation.\n- **Selected**: ventilation for hypoxaemia; cooling mattresses and\ncold packs if over 40 °C.\n- Treat the trigger."
+   },
+   "src": "ATA 2016 and JTA 2016 both give iodine in the initial regimen (endo01a_review 22 Nov 2026)"
+  },
+  "ENDO01A|ENDO-11": {
+   "fields": {
+    "a": "**TEST** | **FINDING**\n**Thyroid** | Free T4, T3 low; **TSH over 100** (low or normal if pituitary)\n**ABG** | **Hypoxaemia, hypercapnia**, respiratory acidosis\n**Blood** | **Hyponatraemia** (low free-water clearance: low GFR, high ADH), **hypoglycaemia**, anaemia, high CK and LDH, high transaminases, creatinine, cholesterol\n**ECG** | **Sinus bradycardia, low voltage**, **T-wave flattening or inversion**, long QT\n**Echo** | **Pericardial effusion**, concentric LVH, reduced EF"
+   },
+   "src": "Endotext Myxedema coma; DocT key (endo01a_review 22 Nov 2026)"
+  },
+  "ENDO01A|TU-01": {
+   "fields": {
+    "a": "- Cytokines, cortisol and fasting cut type 1 deiodinase (less T4 to T3) and raise type 3 (type 2 changes inconsistent) (more reverse T3), so T3 falls first.\n- Hypothalamic TRH falls, so TSH is normal or low: an acquired, transient CENTRAL hypothyroidism (dopamine and steroids suppress TSH further).\n- Low T3 alone = mild illness; low T4 with low TSH = severe (total T4 <4 microgram/dL carries up to about 50% mortality).\n- In recovery TSH can rise transiently above normal (usually below 20 mIU/L) - this is not primary hypothyroidism.\n- Do not screen TFTs or give thyroxine: treat the illness, feed the patient, recheck 4-6 weeks after recovery; treat only clear primary disease (TSH >20 with low free T4)."
+   },
+   "src": "Endotext NTI; StatPearls (endo01a_review 22 Nov 2026); top-up T_2b8a9a37 [app code ENDO01A|TU-01; explain.json id T_2b8a9a37]"
+  },
+  "ENDO01A|TU-02": {
+   "fields": {
+    "a": "- Steroid-responsive encephalopathy with autoimmune thyroiditis: high anti-TPO, at ANY thyroid status (most reported cases subclinical or overt hypothyroid; older keys: usually euthyroid).\n- Subacute confusion, seizures, myoclonus, stroke-like episodes, headache or visual change.\n- CSF protein high, EEG diffusely slow, MRI often non-specific; a diagnosis of exclusion.\n- High-dose steroids (methylprednisolone 1 g/day for 3-7 days, then taper) - the response is the confirmation.\n- IVIG or plasma exchange if refractory."
+   },
+   "src": "Chong et al Arch Neurol 2003 review (endo01a_review 22 Nov 2026); top-up T_38ffd8d5 [app code ENDO01A|TU-02; explain.json id T_38ffd8d5]"
+  },
+  "ENDO01B|ENDO-14": {
+   "fields": {
+    "a": " | **PRIMARY (ADRENAL)** | **SECONDARY (PITUITARY)**\n**ACTH** | **High** | **Low**\n**Cortisol** | Low | Low\n**Aldosterone** | **Low**: high K, low Na | **Spared**: K normal; **Na often low** (ADH unsuppressed)\n**Skin** | **Hyperpigmented** (ACTH) | Not pigmented\n**Replace** | **Cortisol +** **mineralocorticoid** | **Cortisol only**"
+   },
+   "src": "Endocrine Society PAI 2016; standard endocrinology (endo01b_review 22 Nov 2026)"
+  },
+  "ENDO01B|ENDO-15": {
+   "fields": {
+    "a": "a **Refractory hypotension** (shock not responding to fluids or\npressors), abdominal cramps, vomiting, diarrhoea, anorexia,\nconfusion.\nb **Hyponatraemia, hyperkalaemia, hypoglycaemia, metabolic**\n**acidosis**.\nc Secondary (steroid withdrawal, or **still on chronic steroids** ≥ 5 mg prednisolone without stress cover): potassium is usually **normal**\n*(standard teaching, not in your notes).*"
+   },
+   "src": "Association of Anaesthetists 2020; Endocrine Society PAI 2016 (endo01b_review 22 Nov 2026)"
+  },
+  "ENDO01B|ENDO-16": {
+   "fields": {
+    "a": "a **A random cortisol over 20 µg/dL** excludes it **outside critical illness** (your notes); not in the ICU.\nb **Short Synacthen test**: 250 µg ACTH IV *(standard teaching,*\n*not in your notes)*; cortisol at **0, 30 and 60 min**.\nc CIRCI likely if the **rise is under 9 µg/dL** or a **random cortisol**\n**is under 10 µg/dL** (SCCM/ESICM 2017); outside the ICU, a peak **under 18 µg/dL (500 nmol/L)** (Endocrine Society 2016) *(standard teaching,*\n*not in your notes).*\nd **Never delay treatment** for testing."
+   },
+   "src": "SCCM/ESICM CIRCI 2017; Endocrine Society PAI 2016 (endo01b_review 22 Nov 2026)"
+  },
+  "ENDO01B|ENDO-23": {
+   "fields": {
+    "a": " | **T/F** | **REASON**\na | F | Primary.\nb | T | Outside critical illness only.\nc | F | Treat first; test later.\nd | T |\ne | F | A normal pituitary.\nf | T |\ng | F | Rises in central DI.\nh | F | Thiazide + amiloride."
+   },
+   "src": "SCCM/ESICM CIRCI 2017; follows ENDO-16 fix"
+  },
+  "ENDO01B|ENDO-22": {
+   "fields": {
+    "a": "**Central**: **desmopressin** SC or IV 1 µg (notes; 1–2 µg standard),\nonce or twice daily (also nasal, oral, sublingual); replace free\nwater.\n**Nephrogenic**: **thiazide + amiloride** (**amiloride first for lithium DI**: blocks lithium entry via ENaC); **indomethacin**; high-dose\ndesmopressin; stop the drug, correct K and Ca.\nCorrect hypernatraemia slowly."
+   },
+   "src": "Standard nephrology; endo01b_review 22 Nov 2026 (amiloride first for lithium DI checked)"
+  },
+  "ENDO01B|TU-01": {
+   "fields": {
+    "a": "- Paroxysmal headache, palpitations and sweating with episodic severe hypertension; crises are triggered by surgery, tumour handling, steroids, metoclopramide, beta-blockers and contrast. In pregnancy the episodic pattern with normal labs separates it from pre-eclampsia.\n- Confirm with plasma free (fractionated) metanephrines, sensitivity 96-100% - COMT converts catecholamines continuously, so they stay high between bursts; 24-h urine metanephrines are the alternative.\n- Image only after biochemistry (>3-4x upper limit is near-diagnostic); MRI in pregnancy (no MIBG or CT). In pregnancy (Bancos 2021, 249 pregnancies) maternal death or severe complication about 8% and fetal death about 9%, far higher if unrecognised (older keys: 40-50% mortality; crises at labour or anaesthesia), so remove the tumour laparoscopically in the second trimester or at caesarean section.\n- Alpha-blockade FIRST: phenoxybenzamine or doxazosin for 7-14 days (ES 2014) with liberal salt and fluid; IV phentolamine 1-5 mg (or nitroprusside, nicardipine, clevidipine) for a crisis.\n- Beta-blocker only AFTER alpha-blockade, and never labetalol first (beta:alpha about 7:1 leaves alpha unopposed). After removal expect hypotension and hypoglycaemia."
+   },
+   "src": "Endocrine Society PPGL 2014; Bancos et al 2021 (249 pregnancies) (endo01b_review 22 Nov 2026); top-up T_fa1bba17 [app code ENDO01B|TU-01; explain.json id T_fa1bba17]"
+  },
+  "ENDO01B|TU-05": {
+   "fields": {
+    "a": "- Mediators (serotonin, histamine, bradykinin, prostaglandins) must reach the systemic circulation - usually only after liver metastases, because the liver inactivates gut-derived amines.\n- Exception: bronchial, ovarian and retroperitoneal primaries drain outside the portal system, so they cause the syndrome WITHOUT metastases.\n- Features: flushing, diarrhoea, bronchospasm, right-sided valve fibrosis (tricuspid regurgitation, pulmonary stenosis).\n- Crisis (anaesthesia, tumour handling): octreotide IV bolus then infusion (NANETS 2017: infusions of 100-500 microgram/h are common practice); routine preventive octreotide is unproven. Older keys: 50-100 microgram bolus, 50-100 microgram/h.\n- Avoid catecholamines and histamine releasers; use vasopressin or phenylephrine for hypotension."
+   },
+   "src": "NANETS perioperative consensus 2017 (endo01b_review 22 Nov 2026); top-up T_0daf26c0 [app code ENDO01B|TU-05; explain.json id T_0daf26c0]"
+  },
+  "ENDO02A|GLY-06": {
+   "fields": {
+    "a": "a **Hypothalamus (PVN)** → CRH.\nb **Anterior pituitary** → ACTH → adrenal cortex → cortisol; IL-6 also stimulates the **adrenal cortex directly**.\nc **PVN, pituitary and immune cells** (negative feedback).\nd Locus coeruleus → **adrenal medulla (epinephrine)** and **sympathetic nerves (norepinephrine)**; both drive hepatic gluconeogenesis and glycogenolysis."
+   },
+   "src": "Boonen et al NEJM 2013 (endo02a_review 22 Nov 2026)"
+  },
+  "ENDO02A|GLY-12": {
+   "fields": {
+    "a": "a **IV insulin**: poor microcirculation makes SC absorption unpredictable. Use a regional protocol.\nb **Hourly** at first, then **every 1-2 h** while the infusion runs (ADA 30 min-2 h); 4-hourly only on SC insulin. Older keys: 4-hourly once stable.\nc Better control, **fewer treatment errors**, more **time in target range**, and **less hypoglycaemia**."
+   },
+   "src": "ADA Standards of Care 2024 S16 (Diabetes Care 47 Suppl 1); SCCM 2024 glycaemic control guideline"
+  },
+  "ENDO02A|GLY-18": {
+   "fields": {
+    "a": "a It samples interstitial fluid intermittently (**every 1-5 min** on current sensors; older devices up to 15 min); **sensor drift and lag time**; most devices fail accuracy standards.\nb **Paracetamol, dopamine, mannitol** interfere; evidence limited; AACE/ACE 2016: likely useful **whenever IIT is used**; cost is a concern.\nc **Sensor + control algorithm + IV pump**.\nd Better control **without more hypoglycaemia**, less variability and nursing work, more time in range; **evidence limited**."
+   },
+   "src": "SCCM 2024 glycaemic guideline; device specifications (endo02a_review 22 Nov 2026)"
+  },
+  "ENDO02B|DKA-04": {
+   "fields": {
+    "a": "a **Infection 30-40%**, **insulin omission 33%**, new-onset diabetes 5-40%, acute illness 10-20%; ischaemia, pancreatitis or trauma < 10%. 2024 ranges: infection 14-58% (DKA), 30-60% (HHS); insulin omission the leading cause in US urban series (over two-thirds in one).\nb **Infection, Ischaemia/infarction, Iatrogenic** (steroids), **Intoxication, Insulin missed, Intra-abdominal** process (pancreatitis, cholecystitis)."
+   },
+   "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)"
+  },
+  "ENDO02B|DKA-08": {
+   "fields": {
+    "a": "a **Tachypnoea, Kussmaul breathing**; **tachycardia and hypotension** from hypovolaemia.\nb Vomiting, cramps, ileus, **fruity breath**; **AKI and polyuria**.\nc **Leucocytosis**.\nd **Translocational (dilutional) hyponatraemia, HAGMA, hyperkalaemia, phosphate normal or high (falls with insulin), hypomagnesaemia**."
+   },
+   "src": "ADA 2009 consensus text; 2024 consensus (endo02b_review 22 Nov 2026); matches DKA-18 a"
+  },
+  "ENDO02B|DKA-11": {
+   "fields": {
+    "a": "Item | DKA | HHS\nWater | **100** | **100-200**\nNa | **7-10** | **5-13**\nK | **3-5** | **4-6**\nPO4 | **5-7** | **3-7**\nCl, Mg, Ca | 3-5, 1-2, 1-2 | 5-15, 1-2, 1-2"
+   },
+   "src": "Kitabchi ADA 2006 Table 1, carried into ADA 2009 (endo02b_review 22 Nov 2026)"
+  },
+  "ENDO02B|DKA-19": {
+   "fields": {
+    "a": "a **Too-rapid correction** of glucose and osmolality.\nb **Children** with DKA; uncommon in adults.\nc **Headache, bradycardia, falling sodium** despite improving glucose *(DocT)*.\nd **Bicarbonate**; fluid rate and tonicity did not change cerebral injury in PECARN FLUID (2018). Older keys: fast fluid shifts, large fluid volumes."
+   },
+   "src": "Kuppermann NEJM 2018 PECARN FLUID; ISPAD 2022 ch 11 (endo02b_review 22 Nov 2026)"
+  },
+  "HY5|HEO-08": {
+   "fields": {
+    "a": "**Glucose falls before ketones clear → ADD dextrose, keep insulin**\na K below **3.5** → hold insulin, replace K first (2024; older keys 3.3, ADA 2009).\nb Fixed-rate IV **0.1 U/kg/h** after the first litre of saline.\nc **Continue insulin, add 5–10% dextrose** — insulin is treating the ketosis, not the glucose.\nd Only if **pH below 7.0** (2024; ADA 2009 below 6.9).\ne **β-hydroxybutyrate below 0.6 mmol/L** and pH ≥ 7.3 or HCO3 ≥ 18 (2024; anion gap no longer used). Older keys: pH > 7.3, HCO3 ≥ 15–18, normal anion gap."
+   },
+   "src": "ADA/EASD hyperglycaemic crises consensus 2024 (Diabetes Care 47:1257; CCJM 2025 92:152 summary, read 23 Nov 2026)"
+  },
+  "HY5|HEO-13": {
+   "fields": {
+    "a": "**HELLP → magnesium + delivery · AFLP → hypoglycaemia, coagulopathy**\na Haemolysis (LDH above 600), AST/ALT above 70, platelets below 100,000 → **MgSO4 + control BP + delivery**.\nb **Hypoglycaemia**, low fibrinogen/coagulopathy, AKI, encephalopathy, mildly raised ammonia — liver FAILURE, not just enzymes.\nc Imaging is often normal → **liver biopsy** (rarely needed).\nd **Haemorrhage from coagulopathy**."
+   },
+   "src": "Card structure: part d answer was inside line c (hy5_review 22 Nov 2026)"
+  },
+  "HY5|HEO-17": {
+   "fields": {
+    "a": "**PE in pregnancy with normal CXR → V/Q scan**\na **V/Q (lung scintigraphy)**. Abnormal CXR → CTPA. D-dimer unreliable.\nb Pregnancy of unknown location → **repeat hCG + transvaginal US in 48 h** — don't treat on one value.\nc **Anti-D 50 µg** (fetal Rh antigen present from ~6 weeks) - the traditional and exam answer. Now contested: NICE NG126 gives it only after SURGICAL management (none for medical management); ACOG 2024 may forgo it before 12 weeks.\nd **Amoxicillin or cephalexin 3–7 days** (nitrofurantoin avoided in 1st trimester; no fluoroquinolones)."
+   },
+   "src": "NICE NG126 1.18; ACOG CPU 2024 (PubMed 39255498) (hy5_review 22 Nov 2026); ACOG PB 181 traditional"
   }
  }
 }
