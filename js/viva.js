@@ -7,7 +7,7 @@ import { IS_HT, CONFIG } from './config.js';
 import { call, batch, hasBackend } from './api.js';
 import { S, emit, recount, cardsOf } from './store.js';
 
-export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P10', 'P11'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
+export const VIVA_PKGS = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P10', 'P11', 'P12'];   // in package order (T-125); a package loads from the repo or from Drive (T-128)
 // a lesson figure: the repo copy, or for a package that came from Drive its SVG fetched through the bridge (blob URL)
 // packages taken from Drive once their card corrections are in data/cardfix.json and their decks are on test
 const VIVA_DRIVE = ['P2', 'P3', 'P5', 'P6', 'P7', 'P8', 'P10', 'P11'];
@@ -169,6 +169,11 @@ export const xpSwitch = tab => `<span class="xv-seg vx-sw" role="group" aria-lab
 export function qHeadHtml(pkg, qid, at) {
   const P = pkgOf(pkg), q = qOf(pkg, qid); if (!q) return '';
   const no = P.questions.indexOf(q) + 1;
+  if (P.kind === 'neet') return `<div class="c-done vq-head">
+    <span class="mono kick dark">NEET ${esc(pkg)} · ${esc(P.title || '')} · SECTION ${no} OF ${P.questions.length}</span>
+    <h2 class="vq-t">${md(q.text)}</h2>
+    <p class="muted-d">${at.n} card${at.n === 1 ? '' : 's'} in this section${at.reps ? ` (${at.reps} seen above)` : ''}. ${(q.drill || []).length ? 'The tap-to-reveal check comes at the end.' : 'The chain of the section comes last.'}</p>
+  </div>`;
   return `<div class="c-done vq-head">
     <span class="mono kick dark">VIVA ${esc(pkg)} · QUESTION ${no} OF ${P.questions.length}</span>
     <p class="vq-tags mono"><span class="vt vt-${esc(q.tier)}">${TIER[q.tier] || esc(q.tier)}</span><span>${esc(q.gen)}${q.handle ? ' ' + esc(q.handle) : ''}</span>${q.kind ? `<span>${KIND[q.kind] || esc(q.kind)}</span>` : ''}<span>${esc(q.q)}</span></p>
@@ -177,8 +182,22 @@ export function qHeadHtml(pkg, qid, at) {
   </div>`;
 }
 const MARKS = [['fluent', 'Fluent'], ['patchy', 'Patchy'], ['blank', 'Blank']];
+const secTitle = q => q.packet || '';
 export function spineHtml(pkg, qid, mark) {
   const q = qOf(pkg, qid); if (!q) return '';
+  const P = pkgOf(pkg);
+  if (P && P.kind === 'neet') {   // T-181: a NEET packet ends each section with its chain, and the packet with a tap-to-reveal check
+    const drill = q.drill || [], last = drill.length > 0;   // the check sits on each packet's last section
+    return `<div class="c-done vq-spine vq-neet">
+    <span class="mono kick dark">${last ? 'CHECK · ' + esc(secTitle(q) || P.title || pkg) : 'CHAIN · ' + esc(q.q)}</span>
+    <h2 class="vq-t">${md(q.text)}</h2>
+    <details class="vq-lines" data-vspine${drill.length ? '' : ' open'}><summary class="mono">THE CHAIN · ${q.spine.length} lines</summary><ol>${q.spine.map(l => `<li>${md(l)}</li>`).join('')}</ol></details>
+    ${drill.length ? `<div class="vq-drill"><p class="muted-d">Answer each in your head, then tap to check. ${drill.length} items.</p>
+      <div class="vq-dbar"><button class="pillbtn" data-dall="1">Reveal all</button><button class="pillbtn" data-dall="0">Close all</button></div>
+      ${drill.map((d, i) => `<details class="vq-di" data-di="${i}"><summary><span class="mono">${i + 1}</span> ${md(d.q)}</summary><div class="vq-da">${md(d.a)}</div></details>`).join('')}</div>` : ''}
+    <div class="vq-marks" role="group" aria-label="How did it go">${MARKS.map(([k, l]) => `<button class="chip${mark === k ? ' on' : ''}" data-vmark="${k}">${l}</button>`).join('')}</div>
+  </div>`;
+  }
   return `<div class="c-done vq-spine">
     <span class="mono kick dark">SPINE · ${esc(q.q)} · SAY IT IN 60 SECONDS</span>
     <h2 class="vq-t">${md(q.text)}</h2>
