@@ -22,6 +22,15 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-190 — 2026-11-24 — Claude — recorder — v2.9
+- Recorder source now kept in the repo: `tools/recorder/` (v2.8 as installed, v2.9). No secrets in it; the connection stays in Tampermonkey storage.
+- **v2.9 fixes** (found in the GT 7 and GT 8 captures):
+  - Sectional GTs: DocT leaves finished sections marked `active`, so v2.8 read every section as A; sections B and C overwrote A's 50 records (answers, times, guess flags). Now the last unlocked active tab is the section. Checked on the 17 Nov Section B snapshot: v2.8 → A001, v2.9 → B001 (Q51).
+  - Switching Mode relabelled an already-captured review to the new person (how HT's GT 8 review continued Naven's session and kept his wrong marks). Now only an unfinished live attempt is relabelled.
+  - A review question showing the key with no wrong mark clears a stale wrong mark.
+  - List filters ticked one after another each get their own list (the new one = grid minus the lists already read), so cumulative ticking no longer produces combined lists like "Wrong+Skipped+Guessed Right".
+- GT 7 and GT 8 need re-capturing from DocT's review (both people) to recover guesses and HT's own wrong marks.
+
 ## T-189 — 2026-11-24 — Claude — live — 1.4.54
 - Promoted test 1.3.164 to live on Naven's "promote" (24 Nov). Same copy rules as T-082 (root keeps `index.html` and `manifest.webmanifest`; `CONFIG.onlyDecks` stays `null` on live).
 - Live gains T-181 to T-188: viva package **P12, NEET cardiology** (ten packets, 48 sections, drills at the end of each packet); the **Michael (Kokoro) voice** with the Voice: Michael / Iapetus chip; Michael word timings (all 3,131 clips have a `tid`, made by Naven's ChatGPT agent, checked 23 Nov: index read in the test tab, 3,131/3,131); "VT" said as "V T" in cardiac context.
