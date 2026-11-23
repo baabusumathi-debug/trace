@@ -1,0 +1,870 @@
+{
+ "questions": [
+  {
+   "q": "P12-901",
+   "text": "How a dissection forms and how it is classified",
+   "open": {
+    "v": 1,
+    "text": "Patient D is sixty-five, hypertensive, and has had sudden tearing pain through to his back for an hour. His blood pressure is one hundred and ninety in the right arm and one hundred and fifty in the left. His ECG shows ST elevation in the inferior leads.\n\nHere's the trap this packet is built around. That ECG looks like an infarct, and the reflex is to give a clot-dissolving drug. If this is a dissection that has torn back into the right coronary artery, that drug may kill him.\n\nSo what is a dissection? The aorta's wall has three layers. A tear in the inner layer lets blood force its way into the middle one and split it, and the split runs along the vessel with every heartbeat. What drives it is not just the pressure, but how sharply the pressure rises with each beat.\n\n[[A dissection is driven by the force of each heartbeat. That's why the first drug is a beta-blocker, to slow the heart and soften the rise in pressure, before any vasodilator.]]\n\nThe packet runs in three parts. First, how a dissection forms, the true and false lumens, and the three classifications NEET asks, including the new one from the twenty twenty-four guideline. Second, how you recognise it: the pain, the signs, and the imaging, and the overlap with an infarct that catches people. Third, how you treat it: the order of the drugs, the targets, and who goes to surgery and who gets a stent.\n\nTwo numbers will matter most, the heart rate and the blood pressure you aim for. Listen for them.\n\nStart with who gets a dissection, and why."
+   },
+   "steps": [
+    {
+     "card": "CVS09|AD-02",
+     "bridge": "The media is weak. What happens when the lining over it gives way?",
+     "lesson": {
+      "v": 1,
+      "text": "Start with the wall, because a dissection is a wall that has failed.\n\nThe aorta has three layers, and the one that carries the load is the middle one, the media: sheets of elastin and smooth muscle that stretch with each beat and spring back. It can fail in two ways. Either the load on it has been too high for too long, or it was built weak in the first place.\n\nLoad first. Hypertension is the most common predisposing factor, present in about three quarters of patients. Years of high pressure raise the tension in the wall and damage the vasa vasorum, the small vessels that feed the media, so the media slowly degenerates. Age does the same thing more gently, which is why the typical patient is a man in his fifth to seventh decade. Smoking, atherosclerosis and high lipids sit in the same group. They change the structure of the wall.\n\nThen the media that was built weak. Marfan syndrome is a fault in fibrillin one, and the vascular type of Ehlers-Danlos is a fault in type three collagen. Add the other gene mutations, and the infections that inflame the aorta, and you have the card's list. So when the patient is young and not hypertensive, look for a syndrome.\n\nOne question lives here, and it's Marrow's. What do patients with Marfan syndrome die of? Mitral valve prolapse is their commonest cardiac finding, and it's the wrong answer. They die of the aorta.\n\n[[Hypertension is the commonest predisposing factor for dissection. In Marfan syndrome, mitral valve prolapse is the commonest cardiac lesion, but aortic dissection or rupture is the leading cause of death.]]\n\nThat's why a Marfan aortic root is replaced early, before it tears.\n\nSo the media is weak. Now watch what happens when the lining over it gives way."
+     }
+    },
+    {
+     "card": "CVS09|AD-04",
+     "bridge": "Blood is in the wall. What decides how far it travels?",
+     "lesson": {
+      "v": 1,
+      "text": "The media is weak, and the pressure keeps coming. What gives first is the lining.\n\nThe tear starts in the intima. It forms where the stress on the wall is highest, and there are two such places: the right side of the ascending aorta, a few centimetres above the valve, and the descending aorta just beyond the left subclavian artery, where the mobile arch meets the fixed descending aorta. Keep those two sites in mind. The whole classification grows from them.\n\nOnce the intima is open, each systole drives blood into the wall. It doesn't run between the intima and the media. It splits the media itself, along its outer third, the plane where the vasa vasorum run. The channel it carves is the false lumen. Now the aorta has two barrels: the true lumen, still lined with intima, and the false one, with the torn flap between them.\n\nLook at what that plane does to the two walls of the false lumen. The outer wall is only the last thin layer of media and the adventitia. So it can burst outward, into the pericardium, the pleura or the mediastinum. The inner wall is the flap, and the false lumen often holds the higher pressure. So the flap bulges into the true lumen and squeezes it, or the dissection runs into a branch and blocks it. That's malperfusion.\n\n[[A dissection kills in two ways. The thin outer wall of the false lumen ruptures outward, or the flap squeezes the true lumen and its branches, and the organs beyond them starve.]]\n\nNEET's wrong option here is a false lumen lying between the intima and the media. It's inside the media, in its outer third.\n\nOne relative to know. If the vasa vasorum bleed into the media without any intimal tear, you get an intramural haematoma: a crescent of thickened wall, with no flap and no flow. It's managed like a dissection of the same segment.\n\nSo blood is in the wall. What decides how far it travels?"
+     }
+    },
+    {
+     "card": "CVS09|AD-06",
+     "bridge": "Hold the principle: rate before pressure. Now look inside the two barrels.",
+     "lesson": {
+      "v": 1,
+      "text": "Blood is in the wall. What pushes it further isn't what you'd guess.\n\nYou'd say pressure. But think about what happens at the tear. With each systole a wave of pressure arrives, and how hard it strikes the edge of the flap depends on how steeply the pressure rises, not on how high it finally gets. That steepness is the rate of rise of pressure over time, written dP by dt, and the force it puts on the wall is shear stress. A slow swell to one hundred and eighty pushes less than a sharp snap to one hundred and forty.\n\nWhat sets the steepness? The ventricle: how fast it contracts, and how often. A faster heart delivers more upstrokes each minute, and each one is steeper, because the sympathetic drive that raises the rate also raises contractility. So propagation is influenced more by heart rate than by mean arterial pressure. That's the card's central line, and the consequence follows directly. Lowering the heart rate is the first job.\n\n[[A dissection spreads with dP by dt, the steepness of each upstroke, and that depends more on heart rate than on mean arterial pressure. So the heart is slowed first, to about sixty.]]\n\nNow see why the obvious drug is the wrong one. Give a pure vasodilator and the pressure falls. The baroreceptors notice. The heart speeds up and contracts harder. The cuff reads better, and the shear on the flap is worse.\n\nThat's the DocT Grand Test question. Type A on CT, an aortic regurgitation murmur, heart rate one hundred and twelve, pressure one hundred and eighty-two over ninety-three. Next best step? Start an esmolol infusion, and only sixty-two per cent chose it. The wrong options were nitroprusside for the pressure, a TEE to look again, and a cardiology consult. CT has already made the diagnosis. Nothing comes before the beta-blocker.\n\nThis also separates dissection from the other hypertensive emergencies. In most of them the target is the pressure, and you lower the mean by no more than about a quarter in the first hour. In dissection you slow the heart first, then take the systolic below one hundred and twenty within that hour.\n\nThe drugs and doses wait for the third section. For now, hold the principle, and look inside the two barrels."
+     }
+    },
+    {
+     "card": "CVS09|AD-07",
+     "bridge": "Two lumens, told apart by flow. Next: how far has the dissection run? That is what the classifications record.",
+     "lesson": {
+      "v": 1,
+      "text": "There are two barrels now, and you have to know which is which. The surgeon's cannula and the stent graft both have to end up in the true lumen, and the organs fed by the false one are the organs at risk.\n\nPosition first, because it's on the card. The true lumen usually lies anteromedially, and the false lumen spirals round the outer curve. The coeliac, the superior mesenteric and the right renal artery usually stay with the true lumen. The left renal artery often comes off the false lumen. So when a dissection reaches the abdomen, the left kidney is the one that tends to suffer.\n\nPosition is only a habit, though. Behaviour is the proof, and the reasoning is simple. The true lumen is the one still connected to the ventricle. So in systole it receives the stroke volume first: it expands, and colour Doppler shows forward flow in time with the cardiac cycle. The false lumen is a side channel filled through a tear. Its flow is slow, delayed or even reversed. Blood stagnates there, so you see spontaneous echo contrast, the smoke, and then thrombus. In systole, as the true lumen swells, the false one is compressed. And strands of torn media cross it, called cobwebs.\n\n{{**Echo: which lumen?**\nFeature | True | False\nSystole | expands | compressed\nColour flow | systolic, forward, in phase | slow, delayed or reversed\nSize | usually smaller | usually LARGER\nSmoke, thrombus, cobwebs | no | yes}}\n\n[[The true lumen expands in systole, with forward flow in phase with the heartbeat. The false lumen is usually the larger one, with slow or reversed flow, smoke, thrombus and cobwebs.]]\n\nThe DocT Grand Test asked for the most helpful echo feature of the true lumen in a descending dissection. The answer is colour flow in phase with the cardiac cycle, with systolic expansion, and only fifty-six per cent got it. The trap is size. You expect the real channel to be the big one. It's usually the smaller one, because the false lumen has ballooned beside it. The other wrong option puts the cobwebs in the true lumen.\n\nSo that's one dissected aorta. How far along it has the dissection run? That's what the classifications record."
+     }
+    },
+    {
+     "card": "CVS09|AD-09",
+     "bridge": "DeBakey gives the extent. Stanford cut it down to the one question that decides treatment.",
+     "lesson": {
+      "v": 1,
+      "text": "A dissection is named by how far it has run. The first map was drawn by Michael DeBakey in Houston, in nineteen sixty-five, and it asks two things. Where did it start, and how far did it go?\n\nRemember the two places where tears form. Above the valve, and beyond the left subclavian. DeBakey's types follow from them.\n\nType one starts in the ascending aorta and keeps going, through the arch and usually down the descending aorta. Type two starts in the same place and stays there, confined to the ascending aorta, stopping before the innominate artery. Type three starts beyond the left subclavian and involves the descending aorta only.\n\nThen one subdivision, and it's the one the exam took. Type three is split at the diaphragm. Three A stays above it, in the descending thoracic aorta. Three B extends below it, into the abdominal aorta.\n\n{{**DeBakey**\n**I** | ascending AND beyond (arch, descending)\n**II** | ascending ONLY\n**IIIa** | descending thoracic only (above the diaphragm)\n**IIIb** | descending, extending below the diaphragm}}\n\n[[DeBakey one is the ascending aorta and beyond, two is the ascending aorta only, three is the descending aorta only. Three A stops above the diaphragm, and three B extends below it.]]\n\nThe DocT Grand Test gave a dissection of the descending thoracic aorta and asked for the type. Three A, and only thirty-eight per cent chose it. Most picked a bare three, or three B. When the subdivision is on offer, thoracic only is three A.\n\nA way to hold them. One is everything, two is the top only, three is what lies past the arch.\n\nAnd a true footnote. DeBakey himself had a type two dissection at the age of ninety-seven, and survived the operation he had helped to develop.\n\nHis map tells you the extent. Five years later a group at Stanford asked a blunter question, and theirs is the one that decides treatment."
+     }
+    },
+    {
+     "card": "CVS09|AD-10",
+     "bridge": "Two maps. Now use them: which complication can go with which type?",
+     "lesson": {
+      "v": 1,
+      "text": "DeBakey tells you the extent. In nineteen seventy the surgeons at Stanford cut it down to one question, because one question decides the treatment. Is the ascending aorta involved?\n\nIf it is, that's type A. If it isn't, that's type B. Nothing else counts. Not where the tear began, and not how far down it runs.\n\nWhy that question? Look at what sits on the ascending aorta. The coronary ostia, the aortic valve, and the pericardium wrapped round the root. A dissection there can block a coronary, unhinge the valve, or rupture into the pericardial sac. Those are mechanical problems, and no drug mends them. So type A goes to the theatre. Type B has none of those at risk, and usually stays on drugs in the ICU.\n\nThe mapping is then easy. DeBakey one and two both involve the ascending aorta, so both are Stanford A. DeBakey three, both of its subtypes, is Stanford B.\n\n[[Stanford asks one thing: is the ascending aorta involved? Yes is type A, wherever the tear began, and it means surgery. No is type B. DeBakey one and two are Stanford A, and DeBakey three is Stanford B.]]\n\nTwo fine points. First, a tear in the descending aorta that runs backwards into the ascending aorta is still type A. The involvement decides it, not the entry.\n\nSecond, your card defines A and B by the origin of the left subclavian, proximal or distal. That's the usual teaching line and it's fine for the exam, but it leaves a gap. A dissection that involves the arch and never reaches the ascending aorta is proximal to the subclavian, and yet it isn't a true type A. Hold that gap. The newest classification was built to fill it.\n\nBefore that, put both maps to work. The hardest question in this packet gives you a type and a complication, and asks whether the two can go together."
+     }
+    },
+    {
+     "card": "V12-030",
+     "bridge": "One gap is left: the arch on its own. The 2024 guideline names it.",
+     "lesson": {
+      "v": 1,
+      "text": "You have two maps. Now use them, because a Grand Test question on this was answered correctly by twelve per cent.\n\nThe rule is one line. A dissection can only damage what its segment supplies. So divide the aorta in your head into a top half and a bottom half.\n\nThe top half is the ascending aorta and the arch. From the root come the coronaries, so a flap there gives a troponin rise and an infarct pattern. At the root sits the valve, so you get a new aortic regurgitation murmur. Round the root lies the pericardium, so you get tamponade. And from the arch come the vessels to the brain, so you get a stroke.\n\nThe bottom half is the descending and abdominal aorta. From it come the intercostals to the spinal cord, the coeliac and mesenteric arteries to the gut and the liver, the renal arteries, and the iliacs to the legs. So paraplegia, a rising lactate, a rising INR from an ischaemic liver, kidney injury, a cold leg.\n\nNow lay the types over it. DeBakey one covers both halves, so everything is possible. DeBakey two is the ascending aorta only: the valve, the coronaries and the pericardium, and nothing below. DeBakey three is the descending aorta only: the cord, the gut, the kidneys and the legs, and nothing at the root.\n\n{{**What each type can cause**\nDeBakey I (Stanford A) | everything\nDeBakey II (Stanford A) | AR, tamponade, coronary. NOT visceral, renal, spinal\nDeBakey III (Stanford B) | spinal, visceral, renal, limb. NOT AR, tamponade, coronary}}\n\n[[A dissection can only harm what its segment supplies. DeBakey two cannot cause gut, liver or kidney malperfusion. DeBakey three cannot cause aortic regurgitation, tamponade or a coronary occlusion.]]\n\nThe question listed four pairings and asked which was not correct. A troponin rise with Stanford A: correct. Hemiplegia with DeBakey one: correct. High lactate, high INR and kidney injury with DeBakey two: impossible. A new aortic regurgitation murmur with DeBakey three: also impossible, unless the dissection has run backwards. So two options are wrong, and that's why it scored twelve per cent. DocT keys the DeBakey two pairing. If you meet it again, pick that one.\n\nNEET's related trap is the statement that a raised troponin cannot occur in Stanford A. It can. The flap reaches a coronary ostium.\n\nOne gap is left from the last card: the arch on its own. The twenty twenty-four guideline deals with it."
+     }
+    },
+    {
+     "card": "CVS09|AD-11",
+     "bridge": "You can name it. Now the patient arrives, and he looks as if he is having a heart attack.",
+     "lesson": {
+      "v": 1,
+      "text": "Stanford left a gap. A dissection of the arch that never reaches the ascending aorta is neither a clean A nor a clean B. The twenty twenty-four ESC guideline adopted a classification that names it. It's called TEM, and it works like the TNM staging of a tumour: three letters, each answering one question.\n\nT is the type. It's still Stanford's question, with a third answer added. Type A, type B, and non-A non-B. Non-A non-B is a dissection limited to the arch, or one that began in the descending aorta and ran backwards into the arch, but stopped short of the ascending aorta.\n\nE is the entry tear, because the surgeon has to remove it or cover it. E zero means no entry is seen. E one is an entry in the ascending aorta, E two in the arch, E three in the descending aorta.\n\nM is malperfusion, because it changes both the prognosis and the operation. M zero is none. M one is coronary. M two is the vessels to the head and arms. M three is the visceral, renal or iliac arteries: the gut, the kidneys or the legs. A plus sign is added when the patient has clinical signs of it, and a minus when it's seen only on the scan.\n\n{{**TEM (ESC 2024)**\n**T** type | A, B, non-A non-B\n**E** entry | E0 none seen, E1 ascending, E2 arch, E3 descending\n**M** malperfusion | M0 none, M1 coronary, M2 supra-aortic, M3 visceral, renal, iliac (+ clinical signs, − imaging only)}}\n\n[[TEM stands for type, entry tear and malperfusion. It keeps Stanford A and B and adds non-A non-B, where the arch is involved and the ascending aorta is not.]]\n\nThis hasn't been asked yet. If it is, it will be the expansion of the three letters, or the meaning of non-A non-B. You don't need the sub-numbers by heart. You need the three words and the third type.\n\nThat completes the first section: why the wall fails, how it splits, what drives the split on, and how it's named. Now the patient arrives, and he looks as if he's having a heart attack."
+     }
+    }
+   ],
+   "spine": [
+    "The wall fails by load (hypertension, the commonest factor; age) or by weak build (Marfan, vascular Ehlers-Danlos). Marfan: MVP is commonest, the aorta is what kills.",
+    "Intimal tear → blood splits the OUTER THIRD of the media → false lumen. Its thin outer wall ruptures; its flap squeezes the true lumen and branches (malperfusion).",
+    "Propagation = shear stress = dP/dt, set more by heart rate than by MAP. So slow the heart first; a vasodilator alone speeds it up.",
+    "True lumen: expands in systole, forward in-phase flow, usually smaller. False lumen: larger, slow or reversed flow, smoke, thrombus, cobwebs; often feeds the LEFT renal.",
+    "DeBakey I ascending + beyond, II ascending only, III descending only (IIIa above, IIIb below the diaphragm). Stanford A = ascending involved (I, II); B = not (III).",
+    "Each type harms only what its segment supplies. TEM (ESC 2024) = Type (A, B, non-A non-B), Entry tear, Malperfusion."
+   ]
+  },
+  {
+   "q": "P12-902",
+   "text": "Recognising it, and the ACS trap",
+   "open": {
+    "v": 1,
+    "text": "You know how the aorta splits, and how the split is named. Now turn it round. The patient doesn't arrive with a label. He arrives with chest pain, a raised pressure and an abnormal ECG, and most patients who look like that have an acute coronary syndrome.\n\nThat's the problem this section answers. Dissection is far rarer than infarction, and it looks like it. You spent two packets learning to give antiplatelets, heparin and sometimes a fibrinolytic for chest pain. Give those to a dissection, and the false lumen bleeds.\n\nSo listen for three things. First, what at the bedside separates the two: how the pain starts, and what the two arms tell you. Second, which tests can only raise suspicion, and which one settles it. Third, the trap that only a quarter of candidates escaped: fluid round the heart on the echo of a hypertensive patient with chest pain, and what you must not do to it.\n\n[[Dissection imitates acute coronary syndrome, and the treatment for one can kill the other. Before any lysis, ask how the pain began and take the pressure in both arms.]]\n\nBegin at the bedside."
+   },
+   "steps": [
+    {
+     "card": "CVS09|AD-14",
+     "bridge": "That is the classic picture. Now see how well it imitates an infarct.",
+     "lesson": {
+      "v": 1,
+      "text": "Every sign of a dissection follows from the anatomy you already have. So build the picture from the wall outward.\n\nThe wall tears, and that's the pain. The feature that matters most is the onset. The pain is at its worst the moment it begins, because the tear happens all at once. In IRAD, the international registry, eighty-five per cent described it as abrupt. The word tearing or ripping is famous, but only about half of patients use it, and sharp is the commonest description. Pain in the front of the chest points to the ascending aorta. Pain in the back or the abdomen points to the descending. It may move as the dissection extends. And about six per cent have no pain at all.\n\nNext, the pressure. It's usually high, and that's most typical of type B. Type A patients are more often normal or low, for reasons you'll hear in a moment.\n\nThen the branches. The flap squeezes a subclavian or the innominate, so one arm reads lower than the other. A difference of more than twenty millimetres of mercury is significant, and it may come with a weak radial pulse. But a pulse deficit is found in only about fifteen per cent. Its absence excludes nothing.\n\nThen the root. The flap dilates it or unhinges a valve cusp, and you hear the early diastolic murmur of aortic regurgitation, in about a third.\n\nAnd last, the pericardium. Blood leaks into it: low pressure, muffled heart sounds, raised neck veins.\n\n{{**The bedside picture**\nPain | abrupt, maximal at onset (85%); \"tearing\" in only ~50%\nBP | usually HIGH; inter-arm difference >20 mmHg\nPulse deficit | only ~15%\nDiastolic murmur (AR) | ~1 in 3\nHypotension | LATE: tamponade, rupture, severe AR, coronary}}\n\n[[The pain of dissection is maximal at onset. Blood pressure is usually high, and hypotension is a late and ominous sign: it means tamponade, rupture, severe aortic regurgitation or a blocked coronary.]]\n\nSo when the card asks whether hypotension is early or late, the answer is late. Syncope belongs with it. About one in ten faint, and it usually means tamponade or a blocked vessel to the brain.\n\nThe mimic is the infarct, and one feature separates them. Ischaemic pain builds over minutes. Dissection pain starts at its peak. NEET's wrong statement here is that no pulse deficit means no dissection.\n\nThis classic picture, tearing pain, two hundred and five over one hundred and ten, a diastolic murmur and a wide mediastinum, was used to ask for the preferred test. Hold that question until the imaging card. First see how well this disease imitates the infarct."
+     }
+    },
+    {
+     "card": "CVS09|AD-15",
+     "bridge": "The coronary is only one branch the flap can block. Run down the rest of the aorta.",
+     "lesson": {
+      "v": 1,
+      "text": "The commonest misdiagnosis of a dissection is an acute coronary syndrome. See why it's so easy to make.\n\nThe two patients are the same person: an older hypertensive man with sudden severe chest pain. Then the ECG. You'd hope it would be normal in a dissection, and it's normal in only about a third. In IRAD, around four in ten had non-specific ST and T wave changes, and about fifteen per cent had changes that looked ischaemic. Hypertension, a thick ventricle and a fast heart are enough to do that.\n\nAnd sometimes the infarct is real. A type A flap can reach a coronary ostium, and when it does it's usually the right one, because the dissection tends to run down the right side of the ascending aorta. The right coronary supplies the inferior wall. So the patient has a true inferior ST elevation infarct, caused by a dissection. It's uncommon, about three in a hundred. But it's the one that kills.\n\nTroponin doesn't rescue you either. It rises when a coronary is involved, and it can rise from hypotension or strain alone. A raised troponin doesn't prove a coronary plaque, and a normal one doesn't exclude a dissection.\n\n[[A type A dissection can cause a true inferior STEMI through the right coronary ostium. Neither the ECG nor troponin separates dissection from ACS, so check both arms and image the aorta before any lysis.]]\n\nNow the consequence. In the second ACS packet you learned the absolute contraindications to fibrinolysis, and aortic dissection was on that list. This is why. A fibrinolytic, heparin and two antiplatelets turn the false lumen into a cavity that won't stop bleeding, and the patient dies of tamponade.\n\nSo what makes you stop? Pain that was maximal at onset. A pressure or pulse difference between the arms. A new diastolic murmur. A wide mediastinum, or fluid round the heart on bedside echo. Any one of those with an inferior infarct, and you look at the aorta first.\n\nNEET's wrong statements here come as a pair: a normal troponin excludes dissection, and a raised troponin confirms ACS. Neither is true.\n\nThe coronary is only one branch the flap can block. Now run down the rest of the aorta."
+     }
+    },
+    {
+     "card": "CVS09|AD-05",
+     "bridge": "Back to the bedside. Which simple tests help, and how far can you trust them?",
+     "lesson": {
+      "v": 1,
+      "text": "The coronary was the first branch. Go on down the aorta, and every branch the false lumen reaches gives its own syndrome. You met the idea in the classification. This is the full list.\n\nThere are two ways a branch loses its flow. The flap may bulge across its mouth with each beat, like a curtain. That's dynamic obstruction. Or the dissection may run into the branch itself and narrow it. That's static.\n\nNow top to bottom. The coronaries: an infarct. The vessels to the brain: a stroke. Both need the ascending aorta or the arch. Then the intercostals that feed the spinal cord: paraplegia or paraparesis. The critical one is the artery of Adamkiewicz, which usually arises between the ninth and twelfth thoracic levels. Then the coeliac and superior mesenteric arteries: gut ischaemia, with abdominal pain and lactic acidosis. Then the renals: oliguria and kidney injury, the left more often, because it tends to come off the false lumen. And last the iliacs, or a subclavian: a limb that's numb, weak or painful, with a lost pulse.\n\n{{**Malperfusion by bed**\nCoronary | MI (usually inferior)\nCerebral | stroke\nSpinal | paraplegia, paraparesis\nVisceral | gut ischaemia: pain, lactic acidosis\nRenal | oliguria, AKI\nLimb | pain, numbness, weakness}}\n\n[[Each branch the false lumen blocks gives its own syndrome: infarct, stroke, paraplegia, gut ischaemia with a rising lactate, kidney injury, an ischaemic limb. Any one of them makes the dissection complicated.]]\n\nThe gut is the one to respect. The twenty twenty-four guideline puts the mortality of mesenteric malperfusion at sixty-five to ninety-five per cent. And it's quiet early on. The patient has pain out of proportion to a soft abdomen, and a lactate that keeps climbing. Tenderness and guarding come late, when the bowel is already dying. So early abdominal tenderness is the wrong statement.\n\nThis hasn't been asked on its own. It's the reasoning behind the pairing question, and it's what turns a type B from a medical disease into an interventional one. You'll use it in the last section.\n\nBack to the bedside. Which simple tests help, and how far can you trust them?"
+     }
+    },
+    {
+     "card": "CVS09|AD-16",
+     "bridge": "Nothing at the bedside settles it. Which test does?",
+     "lesson": {
+      "v": 1,
+      "text": "You suspect it. Before the scanner come the tests that every chest pain gets, and the thing to know about each is how far to trust it.\n\nThe chest X-ray first. The classic finding is a widened mediastinum, and your card gives it as about half. IRAD found it in about sixty-two per cent, with an abnormal aortic contour in about half. So half to two thirds. Marrow asked which sign is seen, and the list is worth one pass: a widened mediastinum, a double or irregular aortic contour, and the calcium sign. That last one is intimal calcification displaced inward, more than five millimetres from the outer edge of the aortic shadow, because the false lumen has opened up between them. Some texts say ten millimetres. Marrow uses five.\n\nNow the danger. About one film in eight is completely normal. So the X-ray can raise your suspicion, and it can never lower it.\n\n[[The chest X-ray shows a widened mediastinum in about half to two thirds of dissections, and it is completely normal in about one in eight. A normal film never excludes a dissection.]]\n\nThe blood count may show a raised white count, and a low platelet count, because the false lumen is a large raw surface and platelets are consumed on it. On that same surface fibrin is laid down and broken up, so D-dimer rises. That gives you the one useful rule-out, and the twenty twenty-four guideline builds it into an algorithm with a bedside score, the ADD-RS, the aortic dissection detection risk score. In a patient at low clinical risk, a score of zero or one, a D-dimer under five hundred nanograms per millilitre makes an acute dissection unlikely. It doesn't apply to the high-risk patient. He goes straight to imaging.\n\nAnd lactate. It rises when the coeliac or superior mesenteric artery is compromised and the gut is ischaemic, or when the patient is in shock.\n\nThe guideline's word on all of these is blunt. An X-ray and an ECG are done to look for other causes, and they must not delay the scan.\n\nSo nothing at the bedside settles it. Which test does?"
+     }
+    },
+    {
+     "card": "CVS09|AD-17",
+     "bridge": "The probe has a place. What does it show, and which of its findings is the trap?",
+     "lesson": {
+      "v": 1,
+      "text": "Nothing at the bedside settles it, so the aorta has to be imaged. There are four tests, and the choice turns on one question. Can this patient safely go to the scanner?\n\nIf he can, the answer is CT. Your card calls the CT aortogram the definitive test, and the twenty twenty-four ESC guideline makes it first line: an ECG-gated contrast CT from the neck to the pelvis. Each part of that phrase has a reason. Gated to the ECG, because the root moves with every beat and the blur can imitate a flap. Neck to pelvis, because you need the whole extent, every branch, and any malperfusion. Sensitivity is one hundred per cent and specificity ninety-eight. And it has to be an aortic protocol. A CT pulmonary angiogram times the contrast for the pulmonary arteries and can miss the aorta.\n\nTransthoracic echo is the first look at the bedside, not the answer. It sees the root, the valve, the pericardium and the ventricle, so it shows aortic regurgitation, an effusion or a dilated root. But it sees only parts of the aorta, and it may miss the dissection altogether.\n\nTEE is far better. The probe lies right behind the heart and sees nearly all of the thoracic aorta. It has one blind spot, the distal ascending aorta and the proximal arch, where the air-filled trachea comes between the probe and the vessel. Its place is the patient who is too unstable to move or who can't have CT, and the operating theatre, where the guideline recommends it to guide the operation.\n\nMR angiography gives fine detail and takes too long. It's for follow-up, not for an unstable patient.\n\n{{**Which test?**\nStable | ECG-gated CT aortogram, neck to pelvis (ESC 2024: I, C)\nToo unstable to move, or CT contraindicated | TEE (bedside TTE first)\nIn theatre | TEE\nFollow-up | MR or CT}}\n\n[[If the patient is stable, the test is an ECG-gated CT aortogram from neck to pelvis. TEE is for the patient who cannot be moved, and for the theatre. Its blind spot is the distal ascending aorta and proximal arch.]]\n\nNow the question you were holding. Tearing pain, two hundred and five over one hundred and ten, a diastolic murmur, a wide mediastinum, and a stable patient. Preferred investigation? DocT's QBank keys TEE, and forty per cent chose it. That key reflects older teaching, when TEE was the fast bedside test. It's out of date. So know both. If you meet that exact question in that bank, TEE is what it wants. In the exam, with a stable patient and CT angiography on offer, choose CT. It's the current guideline, and it's the definitive test on your own card.\n\nIt's the same split as in pulmonary embolism. The stable patient goes to the scanner. The unstable one gets the probe.\n\nTwo smaller points. A CT angiogram showing an intimal flap and two lumens is an aortic dissection, and sixty-eight per cent recognised it. And NEET's wrong statement is that TEE sees the whole aorta.\n\nSo the probe has a place. What does it show, and which of its findings is the trap?"
+     }
+    },
+    {
+     "card": "V12-031",
+     "bridge": "The diagnosis is on the screen. Now you have minutes to stop it spreading.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** parasternal long axis with a pericardial effusion. Highlighted: the aortic root and the pericardium. With chest pain and a high pressure, this picture is a type A dissection until CT says otherwise.}}\n\nPut the probe on. You learned these views in the first shock packet, and here they answer two questions. Is there a dissection? And has it reached the root?\n\nOn TEE, Marrow lists the signs, and the answer to that question is all of them. An undulating intimal flap that separates two lumens. Colour flow in both lumens. The entry and exit tears. Stasis or thrombus in the false lumen. And the intramural haematoma, a crescent of thickened wall with no flap. Telling the lumens apart you already have: the true one expands in systole, with flow in phase.\n\nFrom the chest wall you see less of the aorta and more of its consequences. A dilated root. Aortic regurgitation. And fluid round the heart. That last finding is the trap.\n\nHere's the DocT Grand Test question. Chest pain. Pressure two hundred over eighty-nine. Troponin negative. Bedside ultrasound shows a moderate pericardial effusion. Next step? Only twenty-four per cent got it right. The popular answers were pericardiocentesis and coronary angiography.\n\nThink about where that fluid came from. In the pericardium packet, an effusion with a falling pressure meant tamponade, and you drained it. This patient's pressure is two hundred. He isn't in tamponade. He has severe chest pain, hypertension, a normal troponin, and fluid appearing in the sac that wraps the aortic root. That's a type A dissection leaking, until proved otherwise. So the next step is a contrast CT of the chest to image the aorta, and then the theatre.\n\nWhy not the needle? You met this exception in the pericardium packet, and here's the reason again. In a dissection, the pressure in the pericardium is partly holding the leak shut. Drain it, the arterial pressure rebounds, and the tear bleeds freely. So the treatment of this tamponade is surgery. The twenty twenty-four guideline leaves one opening. If the patient is about to arrest and can't reach the theatre in time, a pericardial puncture is a temporary life-saving bridge, and you take off only enough to restore a pressure.\n\nAnd why not the catheter lab? It delays the surgeon, and it brings heparin and antiplatelets with it.\n\n[[A pericardial effusion in a hypertensive patient with chest pain and a negative troponin is a type A dissection until CT says otherwise. Image the aorta. Don't drain it, and don't send the patient for coronary angiography.]]\n\nThat's recognition. The diagnosis is on the screen, and now you have minutes to stop it spreading."
+     },
+     "model": {
+      "view": "PLAX",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "front",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "effusion",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "Ao",
+       "pericardium"
+      ]
+     }
+    }
+   ],
+   "spine": [
+    "Pain maximal at onset (85%), tearing in only half; BP usually high; inter-arm difference >20 mmHg; pulse deficit only 15%; AR murmur in a third; hypotension is LATE.",
+    "Commonest misdiagnosis is ACS. A type A flap can block the right coronary → true inferior STEMI. ECG and troponin do not separate them; lysis is catastrophic.",
+    "Malperfusion follows the branch: coronary, cerebral, spinal (Adamkiewicz), visceral (lactate; mortality 65–95%), renal (left), limb.",
+    "CXR: wide mediastinum in half to two thirds, calcium sign >5 mm, normal in 1 in 8: never excludes. D-dimer <500 ng/mL rules out only with low risk (ADD-RS 0–1).",
+    "Stable → ECG-gated CT aortogram, neck to pelvis (ESC 2024). Unstable or in theatre → TEE (blind spot: distal ascending aorta, proximal arch). DocT keys TEE: outdated.",
+    "Effusion + chest pain + high BP + negative troponin = type A until CT says otherwise. No pericardiocentesis, no coronary angiography."
+   ]
+  },
+  {
+   "q": "P12-903",
+   "text": "Treating it: the drug sequence, surgery or stent",
+   "open": {
+    "v": 1,
+    "text": "The diagnosis is made. Two jobs now run together. One is to stop the dissection spreading, with drugs, starting now. The other is to decide who repairs it: a surgeon, a stent, or nobody.\n\nThe drugs come back to the principle from the first section. The tear spreads with the steepness of each upstroke, and that depends on heart rate more than on pressure. So there's an order, and nearly every question here tests it. The wrong options are always a drug that lowers the pressure and lets the heart speed up, or the right drug by too slow a route.\n\n[[The order in dissection is pain, then heart rate, then pressure. An intravenous beta-blocker comes first, and a vasodilator is added only once the rate is controlled.]]\n\nThen the busiest card of the packet, with six questions on what nitroprusside and nitroglycerin do after a day or two of infusion. One carries cyanide and the other doesn't, and one Grand Test key has them the wrong way round.\n\nLast, the repair. Type A to the theatre, type B to the ICU, and a stent if type B turns complicated.\n\nStart with the first ten minutes."
+   },
+   "steps": [
+    {
+     "card": "CVS09|AD-18",
+     "bridge": "You have the targets. Which drug gets you there, and in what order?",
+     "lesson": {
+      "v": 1,
+      "text": "The first ten minutes. Three things drive dP by dt in this patient, and you remove them in order: pain, rate, pressure.\n\nPain first, and it isn't only kindness. Pain releases catecholamines, and catecholamines raise the heart rate and the force of contraction. So an opioid, morphine on your card, is the first anti-impulse drug. It cuts the sympathetic drive. It also gives you a monitor. If the pain persists or returns despite good analgesia and good numbers, the dissection is still extending.\n\nThen the two targets. Heart rate below sixty. Systolic pressure below one hundred and twenty. The twenty twenty-four ESC guideline writes them as sixty or less, and under one hundred and twenty. The American guideline of twenty twenty-two allows a heart rate of sixty to eighty, with the same systolic target. For the exam, about sixty and under one hundred and twenty answers both.\n\n{{**Targets in acute dissection**\nHR | ≤60/min (ESC 2024); 60–80 (ACC/AHA 2022)\nSBP | <120 mmHg, or the lowest that keeps organs perfused\nOrder | pain → rate → pressure}}\n\n[[In acute dissection, treat the pain with an opioid, slow the heart to about sixty, then bring the systolic below one hundred and twenty. Watch it on an arterial line in the arm with the higher pressure.]]\n\nOne qualification to the pressure target. It's the lowest pressure that still perfuses the organs. If the spinal cord or the brain is ischaemic, the guideline accepts a higher mean pressure.\n\nNow the lines. You're running short-acting infusions against a moving target, so you need the pressure beat by beat: an arterial line. And think about which arm. One subclavian may be squeezed by the flap, and that arm reads falsely low. Titrate to it, and you'll leave the aorta at a much higher pressure than you believe. So the line goes in the arm with the higher reading. A central line carries the vasoactive drugs.\n\nNEET's wrong option is the arterial line in the arm with the lower pressure.\n\nAnd remember the patient whose pressure is already low. He doesn't need these drugs. Hypotension in a dissection means tamponade, rupture or severe regurgitation, and he needs a surgeon.\n\nSo you have targets. Which drug gets you there, and in what order?"
+     }
+    },
+    {
+     "card": "CVS09|AD-19",
+     "bridge": "Beta-blocker first. Next the doses, and they explain why esmolol keeps winning.",
+     "lesson": {
+      "v": 1,
+      "text": "You have two targets, and the order matters more than the drug. Rate first.\n\nSo the first-line class is an intravenous beta-blocker. It slows the heart and it weakens the contraction, and both of those flatten the upstroke before the pressure has even moved. Your card names three. Labetalol blocks alpha one as well as beta, so it slows the heart and dilates the arteries, and it can reach both targets on its own. The twenty twenty-four ESC guideline makes it the first choice for that reason. Esmolol is a pure beta one blocker with a very short action, given as an infusion, so it's the easiest to titrate and the safest to stop. And metoprolol, in small boluses.\n\nWhat if a beta-blocker can't be given? Then you need another drug that slows the heart. That's a non-dihydropyridine calcium channel blocker, diltiazem or verapamil, because they act on the sinus and AV nodes. Both the European and the American guidelines say so.\n\nNow the pressure. If the rate is controlled and the systolic is still above one hundred and twenty, add a vasodilator: nicardipine, nitroglycerin or nitroprusside. And the rule on your card is absolute. Only after, or with, a beta-blocker. You know why from the first section. A vasodilator alone drops the pressure, the baroreflex speeds the heart and strengthens the beat, and dP by dt goes up while the cuff reading goes down.\n\n[[Every dissection drug question has one answer: an intravenous beta-blocker first, or diltiazem if one cannot be given, and a vasodilator only after the heart rate is controlled.]]\n\nThe one mimic is inside the calcium channel blockers. Diltiazem slows the heart, so it can replace the beta-blocker. Nicardipine is a dihydropyridine. It only dilates, so it must follow one.\n\nNow the questions, and there are five. First-line drug to limit propagation: intravenous esmolol, seventy-six per cent. Type A with a pressure of one hundred and eighty over one hundred: esmolol infusion, seventy-three per cent. Type B, two hundred and ten over one hundred and fifteen, heart rate one hundred and two, asked in two Grand Tests: esmolol followed by nicardipine, fifty-nine and eighty-three per cent. And Marrow's dissection with a pressure difference between the arms on CT: esmolol.\n\nLook at the wrong options, because they repeat. Nitroprusside alone, or nicardipine alone: no rate control. Oral metoprolol: the right class by the wrong route, because the targets have to be reached within the hour. Sublingual nitroglycerin followed by an ACE inhibitor: uncontrolled, and nothing for the rate.\n\nOne subtle point. In those Grand Tests, labetalol alone sat beside esmolol then nicardipine. Labetalol alone is a correct treatment, and it's the European guideline's first choice. But DocT keys the pair, because the pair spells out the rule. When both are offered, pick esmolol then nicardipine.\n\nNext the doses, and they explain why esmolol keeps winning."
+     }
+    },
+    {
+     "card": "CVS09|AD-20",
+     "bridge": "The rate is controlled. If the pressure is still up, the vasodilators come in, with six questions.",
+     "lesson": {
+      "v": 1,
+      "text": "Esmolol keeps winning the questions, and its dose shows why.\n\nIt's broken down by esterases in the red cells, with a half-life of about nine minutes. So you load it and run it, and if the patient wheezes, or the pressure falls, or a leaking aortic valve can't cope with the slower heart, you turn it off, and within about twenty minutes it has gone. The load is five hundred micrograms per kilogram over one minute. The infusion starts at fifty micrograms per kilogram per minute and is titrated up to three hundred.\n\nLabetalol is the opposite kind of drug. Its half-life is five to eight hours, so what you give stays. The bolus is twenty milligrams over two minutes, then twenty to eighty milligrams every ten minutes, to a total of three hundred. Or load twenty milligrams and run an infusion at one to two milligrams a minute.\n\nMetoprolol is given only as boluses: five milligrams over two minutes, repeated every five minutes, up to three doses. That gives a less smooth control, which is why it ranks third.\n\n{{**IV beta-blockers**\nEsmolol | 500 mcg/kg over 1 min, then 50 → 300 mcg/kg/min\nLabetalol bolus | 20 mg over 2 min, then 20–80 mg every 10 min (max 300 mg)\nLabetalol infusion | load 20 mg, then 1–2 mg/min\nMetoprolol | 5 mg over 2 min, every 5 min, × 3}}\n\n[[Esmolol is loaded at five hundred micrograms per kilogram over one minute, then run at fifty to three hundred micrograms per kilogram per minute. It wears off in minutes, which makes it the safest beta-blocker to titrate.]]\n\nYou don't need the labetalol and metoprolol numbers cold. You need esmolol's: five hundred, then fifty. And you need the route. Oral metoprolol offered to limit propagation is wrong, because it's too slow.\n\nThe rate is controlled. If the pressure is still up, the vasodilators come in, and with them the most-asked card of this packet."
+     }
+    },
+    {
+     "card": "CVS09|AD-21",
+     "bridge": "The drugs buy time. Who needs more than drugs?",
+     "lesson": {
+      "v": 1,
+      "text": "The rate is at sixty and the systolic is still one hundred and fifty. Now a vasodilator is allowed. Your card lists four drugs. Take the doses quickly, because the questions are somewhere else.\n\nDiltiazem is on this card but doesn't belong with the others. It's the rate drug for the patient who can't have a beta-blocker: a quarter of a milligram per kilogram over two minutes, then five to fifteen milligrams an hour. Nicardipine is the pure arterial dilator: five milligrams an hour, raised by two and a half every five to fifteen minutes, to a maximum of fifteen. Nitroglycerin starts at five micrograms a minute and goes up by five every three to five minutes. NEET twenty twenty-four asked exactly that, as the dose in a hypertensive emergency. Nitroprusside starts at zero point three micrograms per kilogram per minute, with a ceiling of ten, and no more than ten minutes at that ceiling.\n\n{{**Vasodilators (only after rate control)**\nDiltiazem | 0.25 mg/kg over 2 min, then 5–15 mg/h (the rate drug)\nNicardipine | 5 mg/h, +2.5 every 5–15 min, max 15\nNitroglycerin | 5 mcg/min, +5 every 3–5 min\nNitroprusside | 0.3 → max 10 mcg/kg/min (≤10 min at max)}}\n\nWhy that limit on nitroprusside? This is where the six questions sit, and one piece of chemistry answers them all. Nitroprusside carries cyanide. Nitroglycerin carries nitrite.\n\nTake nitroprusside. Each molecule releases five cyanide ions. The enzyme rhodanese detoxifies them by adding sulfur from thiosulfate, which makes thiocyanate, and the kidney excretes that. So two things can go wrong, at two different times. Early, at high doses, above about two micrograms per kilogram per minute, or when the thiosulfate runs out, cyanide accumulates. Cells can't use oxygen. So you see lactic acidosis, a high venous oxygen saturation, confusion, tachycardia, and breath that smells of bitter almonds. Later, after forty-eight to seventy-two hours, or sooner in renal failure, thiocyanate accumulates. That one is a nerve poison: confusion, psychosis, seizures.\n\nThe treatment is to stop the infusion and give sodium thiosulfate, which feeds rhodanese, or hydroxocobalamin, which binds cyanide directly. The older cyanide kit pairs thiosulfate with sodium nitrite, which makes methaemoglobin on purpose to draw cyanide away from the cells. Thiocyanate itself has no antidote. It is removed by haemodialysis.\n\nNitroglycerin's side effects come from nitrite and from dilatation: headache, reflex tachycardia, tolerance within twenty-four hours, methaemoglobinaemia, and reduced platelet aggregation. Never cyanide.\n\n{{**Toxicity**\n | Nitroprusside | Nitroglycerin\nProduct | cyanide (early); thiocyanate (late, renal failure) | nitrite → methaemoglobin\nClues | lactic acidosis, high venous O₂, almond breath | headache, tachycardia, tolerance\nAntidote | thiosulfate, hydroxocobalamin | methylene blue}}\n\n[[Nitroprusside releases five cyanide ions per molecule. Cyanide toxicity comes early and at high dose, thiocyanate late or in renal failure, and the antidotes are sodium thiosulfate and hydroxocobalamin. Nitroglycerin causes methaemoglobinaemia, never cyanide.]]\n\nNow the six. A nitroglycerin drip for a day, least likely side effect, asked twice: cyanide toxicity, and only about four in ten got it. Nitroprusside for thirty-two hours in renal failure, with confusion and acidosis, what treats it: sodium thiosulfate, thirty-nine per cent. The wrong options were thiocyanate, which is the poison, and cyanocobalamin, which is what hydroxocobalamin turns into. Seventy-two hours of high-dose nitroprusside with lactic acidosis, confirmatory test: a thiocyanate level, fifty-eight per cent. A blood gas shows the acidosis but not its cause. The most critical thing to monitor on prolonged nitroprusside: cyanide toxicity.\n\nAnd the bad key. A high-dose infusion, then confusion, tachycardia, acidosis and almond breath. Which drug? One Grand Test keyed nitroglycerin, and sixteen per cent agreed with it. That key is wrong. Two later repeats and DocT's own explanation say nitroprusside. Pick nitroprusside.\n\nThat's the drugs. They buy time. Now, who needs more than drugs?"
+     }
+    },
+    {
+     "card": "CVS09|AD-12",
+     "bridge": "Notice the word uncomplicated. What makes a dissection complicated?",
+     "lesson": {
+      "v": 1,
+      "text": "The drugs buy time. Whether they're the whole treatment depends on Stanford's question, and the numbers on this card are the reason.\n\nTake type A. Its killers sit at the root: tamponade, a blocked coronary, a valve torn loose. They're mechanical, and no infusion fixes them. Left on drugs alone, about half of these patients are dead within forty-eight hours. That's the famous one to two per cent per hour. Modern registry figures are lower, about a quarter at forty-eight hours, but the exam keeps fifty. Surgery is dangerous too, with a mortality of fifteen to twenty per cent on your card, and up to twenty-five in the current guideline. But against fifty, it's the better number. So type A means surgery.\n\nNow type B. Nothing at the root is at risk, and an uncomplicated descending dissection rarely ruptures early. On drugs alone, mortality is about ten to fifteen per cent. Open surgery on the descending aorta means a thoracotomy and a clamped aorta, with the risks of paraplegia and renal failure, and its mortality is about thirty per cent. So here the numbers turn round. Type B means medical treatment.\n\n{{**Mortality**\n | Type A | Type B\nPreferred | SURGERY | MEDICAL\nMedical | ~50% (1–2% per hour, first 48 h) | ~15%\nSurgical | 15–20% | ~30%}}\n\n[[Type A goes to surgery: about fifty per cent die on drugs alone, against fifteen to twenty with an operation. Uncomplicated type B stays on drugs: about fifteen per cent die, against thirty with open surgery.]]\n\nOne honest note on that thirty. The type B patients who were operated on were the complicated ones, so the figure is inflated by who was chosen. It's still the number to give.\n\nThe question here is the type A vignette you met in the first section. CT shows type A, the patient is tachycardic and hypertensive, next best step? Start esmolol, with surgery arranged at the same time. Sixty-two per cent. So for type A, is it drugs or surgery? Both. The drug is the bridge to the theatre, and neither waits for the other. Ordering a TEE or a consult first is the wrong answer.\n\nAnd NEET's wrong statement is that surgery improves survival in all dissections. In uncomplicated type B it adds risk and no benefit.\n\nNotice that word, uncomplicated. What makes a dissection complicated?"
+     }
+    },
+    {
+     "card": "CVS09|AD-13",
+     "bridge": "A type B with a cold leg or a rising lactate is no longer a medical disease. What then?",
+     "lesson": {
+      "v": 1,
+      "text": "Uncomplicated type B stays on drugs. So the word complicated carries a decision, and your card gives it five meanings.\n\nGo back to the two ways a dissection kills. It bursts outward, or it squeezes inward. Rupture, or impending rupture, is the first: blood outside the aorta, in the pleura or round the vessel, or an aorta that's enlarging quickly. Malperfusion is the second: any of the syndromes you ran through, the gut, the kidney, the cord, the limb.\n\nThe third is the bedside sign that the tear is still moving. Intractable pain, pain that persists or returns despite full analgesia and controlled numbers.\n\nThe last two belong to the root, and so to type A. Cardiac tamponade, and severe aortic regurgitation.\n\n[[A dissection is complicated if there is rupture or impending rupture, intractable pain, malperfusion, tamponade or severe aortic regurgitation. In type B, complicated means TEVAR now.]]\n\nThe twenty twenty-four guideline's list for type B is the same idea in more words: rupture, malperfusion, rapid expansion, a haematoma round the aorta, paraplegia, and pain or hypertension that won't settle on optimal treatment.\n\nNotice the wording on hypertension. A high pressure at presentation doesn't make a dissection complicated. Nearly every type B has one. Only hypertension that resists full treatment counts, because it suggests that the tear is extending or that a kidney is ischaemic.\n\nThis hasn't been asked directly. Its use is as the hinge of the next card. A type B with a cold leg, or a rising lactate, has stopped being a medical disease.\n\nSo what do you do for it?"
+     }
+    },
+    {
+     "card": "CVS09|AD-27",
+     "bridge": "A stent can seal a tear in the descending aorta. Why not in the ascending?",
+     "lesson": {
+      "v": 1,
+      "text": "A type B dissection has two paths, and complicated is the fork.\n\nUncomplicated: medical. That's the anti-impulse treatment you've just built. Intravenous at first, to a heart rate of about sixty and a systolic under one hundred and twenty, and then oral beta-blockers after about twenty-four hours, once the gut is working.\n\nComplicated: TEVAR, thoracic endovascular aortic repair, and it's a class one recommendation when the anatomy allows. See how little it does, and how much follows. A covered stent graft is passed up from the femoral artery, inside the true lumen, and opened across the entry tear. That seals the door. Blood stops entering the false lumen, so the false lumen clots and shrinks, the true lumen re-expands, and the squeezed branches fill again. Nobody opens the chest or clamps the aorta. That's why the stent has replaced open surgery here.\n\nOpen repair is kept for the patient whose anatomy won't take a stent. It means a posterolateral thoracotomy, or a midline sternotomy, often on bypass, with a higher morbidity and mortality.\n\nThen a third group, which is new. Some uncomplicated dissections carry high-risk features on the scan: an aorta wider than forty millimetres, a false lumen wider than twenty, an entry tear larger than ten. They settle on drugs, but over the years that false lumen becomes an aneurysm. For them, the twenty twenty-four guideline says TEVAR should be considered in the subacute phase, between fourteen and ninety days. By then the wall is less fragile, and it can still remodel.\n\n{{**Type B**\nUncomplicated | MEDICAL\nComplicated | TEVAR now (I, B)\nUncomplicated with high-risk features | consider TEVAR at 14–90 days (IIa, B)\nStent not possible | open surgery}}\n\n[[Uncomplicated type B is treated with drugs. Complicated type B gets TEVAR at once: a stent graft seals the entry tear and the false lumen thromboses. High-risk uncomplicated type B is considered for TEVAR at fourteen to ninety days.]]\n\nThe trap is the bald statement that the primary treatment of type B is TEVAR. Only when it's complicated, or high risk.\n\nSo a stent can seal a tear in the descending aorta. Why not in the ascending?"
+     }
+    },
+    {
+     "card": "CVS09|AD-22",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Why can't a stent fix type A? Because of what the ascending aorta has beside it.\n\nA stent graft needs a length of healthy vessel at each end to seal against, a landing zone. The ascending aorta is short. At one end is the aortic valve, with the coronary ostia just above it. At the other, the innominate artery takes off. Cover the coronaries and the heart infarcts. And the whole segment moves with every beat. So the card's answer is proximity to the aortic root and involvement of the coronary origins. Type A is open surgery, through a midline sternotomy, on cardiopulmonary bypass.\n\nWhat does the surgeon do? Resect the torn segment of the ascending aorta, entry tear included, and replace it with a synthetic graft. That removes the door, and it removes the part that ruptures into the pericardium.\n\nThen the valve. Your card says that if the valve is involved, if there's aortic regurgitation, or if the root is dilated beyond fifty-five millimetres, the valve is replaced at the same operation. Learn that line, and add the refinement from the current guidelines. In most type A dissections the leaflets are normal. The valve leaks only because the dissection has lifted its commissures off the wall. So the surgeon resuspends it, tacks it back up, and keeps it. Replacing the root with a valved conduit is for a root that is destroyed, or aneurysmal, or built weak, as in Marfan syndrome.\n\n[[Type A is repaired by open surgery through a midline sternotomy, because the root and the coronary ostia leave no landing zone for a stent. The ascending aorta is replaced with a graft, and the valve is resuspended unless the root is destroyed.]]\n\nSo the wrong statement is that aortic regurgitation in type A always means a new valve.\n\nThat closes the walk. Look at its shape. A weak media and an intimal tear. Blood driven along the wall by each steep upstroke. A name that depends on one question, whether the ascending aorta is involved. A patient who looks like an infarct and must not be treated as one. Then pain, rate and pressure, in that order. A surgeon for type A, drugs for type B, and a stent when type B turns complicated.\n\nAnd when all of that comes too late, the aorta ruptures into the pericardium, the heart can't fill, and the monitor shows a rhythm with no pulse under it. That's where the last packet begins: cardiac arrest. What you do in the first minute, which rhythms you shock, and how you hunt for a cause you can reverse while your hands are still on the chest."
+     }
+    }
+   ],
+   "spine": [
+    "Order: pain (opioid) → heart rate ≤60 → SBP <120 mmHg (ACC/AHA allows HR 60–80). Arterial line in the arm with the HIGHER pressure.",
+    "IV beta-blocker first (esmolol, labetalol, metoprolol); diltiazem if contraindicated; vasodilator ONLY after rate control. DocT keys esmolol then nicardipine.",
+    "Esmolol 500 mcg/kg over 1 min, then 50–300 mcg/kg/min. Nitroglycerin 5 mcg/min, +5 every 3–5 min. Nitroprusside 0.3, max 10 mcg/kg/min for ≤10 min.",
+    "Nitroprusside = 5 cyanides: cyanide early (lactate, high venous O₂), thiocyanate late or in renal failure; thiosulfate or hydroxocobalamin. Nitroglycerin = metHb, never cyanide.",
+    "Type A → surgery (medical ~50%, surgical 15–20%). Uncomplicated type B → medical (~15% vs ~30% with open surgery).",
+    "Complicated (rupture, intractable pain, malperfusion, tamponade, severe AR): type B → TEVAR now; high-risk uncomplicated → TEVAR at 14–90 days. Type A: sternotomy, graft, resuspend the valve."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's go back to Patient D.\n\nHis pain was sudden and tearing, his two arms disagreed, and his ECG looked like an inferior infarct. You now know why. The flap can run back into the right coronary artery. So before any clot-dissolving drug, you check both arms and you look at the aorta. A gated CT scan from neck to pelvis makes the diagnosis in a stable patient.\n\nThen you classify it. Stanford A involves the ascending aorta, and goes to surgery. Stanford B doesn't, and starts with drugs. And you treat the force before the pressure: a beta-blocker first, aiming for a heart rate of about sixty or less and a systolic below one hundred and twenty, then a vasodilator if the pressure is still high.\n\nNow the traps.\n\nOne. Type A dissection, heart rate one hundred and twelve, pressure one hundred and eighty-two. The tempting first drug is nitroprusside. [[A vasodilator alone causes a reflex tachycardia and makes the tear worse. Start with an intravenous beta-blocker, and add the vasodilator after.]]\n\nTwo. A patient who can't have a beta-blocker. The tempting substitute is nicardipine. It doesn't slow the heart. The substitute must be diltiazem or verapamil.\n\nThree. A stable patient with suspected dissection. The tempting test is the oesophageal echo. Current guidance makes the gated CT first line. The oesophageal echo is for the unstable patient.\n\nFour. Chest pain, high pressure, a negative troponin, and a pericardial effusion. The tempting step is to drain it. That's a type A dissection until proved otherwise. Drain it, and the rising pressure can tear the aorta further. The answer is imaging, then surgery.\n\nFive. A prolonged nitroprusside infusion, with confusion, acidosis and the smell of almonds. That's cyanide, from nitroprusside, not nitroglycerin.\n\nAnd six. Uncomplicated type B. The tempting answer is a stent. It starts with drugs. The stent is for the complicated, or the high-risk.\n\nThe check comes up on the next screen. Answer each in your head before you tap it open.\n\nAnd now the last packet. Everything you've learned so far has been about a heart that is failing. Next, the heart that has stopped."
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "Most common predisposing factor for aortic dissection? And the leading cause of death in Marfan syndrome?",
+   "a": "Hypertension. In Marfan: aortic dissection or rupture (mitral valve prolapse is commoner but rarely lethal) [Marrow]."
+  },
+  {
+   "q": "In which layer, and at what level, does the dissection plane run?",
+   "a": "Within the media, in its outer third (where the vasa vasorum run). Not between intima and media."
+  },
+  {
+   "q": "Which haemodynamic variable most influences propagation of a dissection?",
+   "a": "Heart rate (through dP/dt, shear stress), more than mean arterial pressure. So the heart is slowed first."
+  },
+  {
+   "q": "Type A on CT, HR 112, BP 182/93, AR murmur. Next best step?",
+   "a": "Start an esmolol infusion (62%), with surgery arranged at once. Not nitroprusside, not a TEE, not a cardiology consult [DocT GT]."
+  },
+  {
+   "q": "Descending dissection on echo: the most helpful feature of the TRUE lumen?",
+   "a": "Systolic expansion with forward colour flow in phase with the cardiac cycle (56%). The false lumen is usually LARGER, with slow or reversed flow, smoke, thrombus and cobwebs."
+  },
+  {
+   "q": "Which renal artery often arises from the false lumen?",
+   "a": "The left. Coeliac, SMA and right renal usually stay with the true lumen."
+  },
+  {
+   "q": "Dissection confined to the descending thoracic aorta: DeBakey type?",
+   "a": "IIIa (38%). IIIb extends below the diaphragm. Both are Stanford B."
+  },
+  {
+   "q": "Map DeBakey onto Stanford. What single feature decides the Stanford type?",
+   "a": "I and II = A; III = B. The deciding feature is whether the ASCENDING aorta is involved, wherever the tear began."
+  },
+  {
+   "q": "Which pairing is NOT correct: troponin rise + Stanford A; hemiplegia + DeBakey I; high lactate, INR and AKI + DeBakey II; new AR murmur + DeBakey III?",
+   "a": "DocT keys the DeBakey II pairing (ascending only cannot cause visceral malperfusion). AR with DeBakey III is also impossible; 12% right."
+  },
+  {
+   "q": "What do T, E and M stand for in the ESC 2024 classification, and what is non-A non-B?",
+   "a": "Type, Entry tear, Malperfusion. Non-A non-B: the arch is involved without the ascending aorta."
+  },
+  {
+   "q": "Dissection pain versus ACS pain: the one discriminator?",
+   "a": "Dissection pain is maximal at onset (abrupt in 85%); ischaemic pain builds over minutes. Only about half call it tearing."
+  },
+  {
+   "q": "Significant inter-arm BP difference? How often is there a pulse deficit?",
+   "a": ">20 mmHg. A pulse deficit is present in only about 15%, so its absence excludes nothing."
+  },
+  {
+   "q": "Hypotension in aortic dissection: early or late? What does it mean?",
+   "a": "Late and ominous: tamponade, rupture, severe AR or coronary occlusion."
+  },
+  {
+   "q": "Inferior STEMI with a 30 mmHg difference between the arms. Next step?",
+   "a": "Image the aorta (CT) before thrombolysis, heparin or the catheter lab. A type A flap usually takes the right coronary; dissection is an absolute contraindication to lysis."
+  },
+  {
+   "q": "Chest X-ray in dissection: how often is the mediastinum widened, how often is the film normal, and what is the calcium sign?",
+   "a": "Widened in about half to two thirds (card 50%, IRAD 62%); normal in about 1 in 8; calcium sign = intimal calcification displaced >5 mm inward [Marrow]."
+  },
+  {
+   "q": "Stable patient, tearing chest pain, BP 205/110, AR murmur, wide mediastinum. Preferred test?",
+   "a": "ECG-gated CT aortogram, neck to pelvis (ESC 2024, I C). DocT QBank keys TEE (40%): outdated. TEE is for the unstable patient and the theatre."
+  },
+  {
+   "q": "Where is the blind spot of TEE in the aorta, and why?",
+   "a": "Distal ascending aorta and proximal arch: the air-filled trachea lies between the oesophagus and the aorta."
+  },
+  {
+   "q": "Chest pain, BP 200/89, troponin negative, moderate pericardial effusion on POCUS. Next step?",
+   "a": "Contrast CT of the chest for type A dissection (24%). Not pericardiocentesis, not coronary angiography [DocT GT]."
+  },
+  {
+   "q": "Heart rate and systolic targets in acute dissection, and where does the arterial line go?",
+   "a": "HR ≤60 (ESC 2024; ACC/AHA 60–80), SBP <120 mmHg. Arterial line in the arm with the HIGHER pressure."
+  },
+  {
+   "q": "Type B, BP 210/115, HR 102. Initial drugs?",
+   "a": "Esmolol followed by nicardipine (59%, 83%). Never a vasodilator alone; labetalol alone is acceptable but DocT keys the pair."
+  },
+  {
+   "q": "Beta-blocker contraindicated in acute dissection. Which drug controls the rate?",
+   "a": "A non-dihydropyridine calcium channel blocker: diltiazem (0.25 mg/kg, then 5–15 mg/h) or verapamil. Nicardipine does not slow the heart."
+  },
+  {
+   "q": "Esmolol loading dose and infusion? Nitroglycerin starting dose?",
+   "a": "Esmolol 500 mcg/kg over 1 min, then 50–300 mcg/kg/min. Nitroglycerin 5 mcg/min, up by 5 mcg/min every 3–5 min [NEET 2024]."
+  },
+  {
+   "q": "Nitroglycerin infusion for 24 hours: which is LEAST likely: headache, tachyphylaxis, methaemoglobinaemia, cyanide toxicity?",
+   "a": "Cyanide toxicity (41%, 43%). Cyanide belongs to nitroprusside (5 cyanide ions per molecule)."
+  },
+  {
+   "q": "Nitroprusside for 32 hours in renal failure; confusion and acidosis. Treatment? And the confirmatory test?",
+   "a": "Stop it; sodium thiosulfate (39%) or hydroxocobalamin. Not thiocyanate (the toxin) or cyanocobalamin. Test: thiocyanate level (58%)."
+  },
+  {
+   "q": "Type A versus type B: preferred treatment and the mortality figures?",
+   "a": "A: surgery (medical ~50%, 1–2% per hour; surgical 15–20%). Uncomplicated B: medical (~15%; open surgery ~30%). Complicated B: TEVAR."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "Mitral valve prolapse (or heart failure) is the commonest cause of death in Marfan syndrome",
+   "truth": "MVP is the commonest lesion; aortic dissection or rupture is the leading cause of death.",
+   "cards": [
+    "CVS09|AD-02"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "The false lumen lies between the intima and the media",
+   "truth": "The plane is within the media, in its outer third.",
+   "cards": [
+    "CVS09|AD-04"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Type A, HR 112, BP 182/93: start nitroprusside, get a TEE, or consult cardiology",
+   "truth": "Esmolol infusion first; CT has made the diagnosis and a vasodilator alone raises dP/dt.",
+   "cards": [
+    "CVS09|AD-06",
+    "CVS09|AD-12"
+   ],
+   "asked": "DocT GT, 62%"
+  },
+  {
+   "trap": "MAP is the main driver of propagation",
+   "truth": "Heart rate (dP/dt) influences propagation more than MAP.",
+   "cards": [
+    "CVS09|AD-06"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "The false lumen is the smaller one, or it expands in systole",
+   "truth": "The false lumen is usually larger and is compressed in systole; the true lumen expands with in-phase systolic flow.",
+   "cards": [
+    "CVS09|AD-07",
+    "V12-031"
+   ],
+   "asked": "DocT GT, 56%"
+  },
+  {
+   "trap": "Cobwebs are seen in the true lumen",
+   "truth": "Cobwebs (residual media strands) mark the false lumen.",
+   "cards": [
+    "CVS09|AD-07",
+    "V12-031"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Dissection of the descending thoracic aorta is 'DeBakey III' or IIIb",
+   "truth": "Thoracic only (above the diaphragm) is IIIa; IIIb extends below the diaphragm.",
+   "cards": [
+    "CVS09|AD-09",
+    "V12-030"
+   ],
+   "asked": "DocT GT, 38%"
+  },
+  {
+   "trap": "DeBakey II with high lactate, INR and AKI is a valid pairing (only one option looks wrong)",
+   "truth": "DeBakey II is ascending only and cannot cause visceral malperfusion: DocT's key. AR with DeBakey III is also wrong.",
+   "cards": [
+    "CVS09|AD-09",
+    "CVS09|AD-10",
+    "V12-030"
+   ],
+   "asked": "DocT GT, 12%"
+  },
+  {
+   "trap": "Raised troponin cannot occur in Stanford A",
+   "truth": "It can: the flap can occlude a coronary ostium, usually the right.",
+   "cards": [
+    "CVS09|AD-10",
+    "V12-030",
+    "CVS09|AD-15"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "A tear in the descending aorta is always type B",
+   "truth": "If it extends retrogradely into the ascending aorta it is type A; involvement decides, not the entry.",
+   "cards": [
+    "CVS09|AD-10"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "No pulse deficit, so no dissection",
+   "truth": "A pulse deficit is present in only about 15%.",
+   "cards": [
+    "CVS09|AD-14"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Hypotension is an early sign of dissection",
+   "truth": "BP is usually high; hypotension is late (tamponade, rupture, severe AR, coronary occlusion).",
+   "cards": [
+    "CVS09|AD-14"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Normal troponin excludes dissection; raised troponin confirms ACS",
+   "truth": "Troponin does not separate them; dissection can raise it.",
+   "cards": [
+    "CVS09|AD-15"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Thrombolyse the inferior STEMI without checking both arms",
+   "truth": "Dissection is an absolute contraindication to fibrinolysis; a type A flap usually takes the right coronary. Image the aorta first.",
+   "cards": [
+    "CVS09|AD-15"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Mesenteric malperfusion causes early abdominal tenderness",
+   "truth": "Early: pain out of proportion to a soft abdomen with rising lactate; peritonism is late.",
+   "cards": [
+    "CVS09|AD-05"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "A normal chest X-ray excludes dissection",
+   "truth": "About 1 in 8 films are normal; only imaging of the aorta excludes it.",
+   "cards": [
+    "CVS09|AD-16"
+   ],
+   "asked": "Marrow (X-ray signs)"
+  },
+  {
+   "trap": "TEE is the preferred test in a STABLE patient with BP 205/110",
+   "truth": "DocT's key, now outdated: ESC 2024 makes ECG-gated CT (neck to pelvis) first line. TEE is for the unstable patient, CT contraindication and theatre.",
+   "cards": [
+    "CVS09|AD-17",
+    "CVS09|AD-14"
+   ],
+   "asked": "DocT QBank, 40% chose TEE"
+  },
+  {
+   "trap": "TEE sees the whole aorta",
+   "truth": "Blind spot: distal ascending aorta and proximal arch, behind the trachea.",
+   "cards": [
+    "CVS09|AD-17"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "A CT pulmonary angiogram is enough to exclude dissection",
+   "truth": "It times contrast for the pulmonary arteries; a suspected dissection needs an ECG-gated aortic protocol.",
+   "cards": [
+    "CVS09|AD-17"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Chest pain, BP 200/89, negative troponin, effusion: pericardiocentesis or coronary angiography",
+   "truth": "Type A dissection until proved otherwise: contrast CT, then surgery. Draining can restore pressure and speed the bleed.",
+   "cards": [
+    "V12-031",
+    "CVS09|AD-17"
+   ],
+   "asked": "DocT GT, 24%"
+  },
+  {
+   "trap": "Arterial line in the arm with the lower pressure",
+   "truth": "Use the arm with the higher reading; the lower one may be a compressed subclavian.",
+   "cards": [
+    "CVS09|AD-18"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "IV nitroprusside alone, or nicardipine alone, as initial therapy",
+   "truth": "Vasodilator monotherapy causes reflex tachycardia and raises dP/dt; only after or with a beta-blocker.",
+   "cards": [
+    "CVS09|AD-19"
+   ],
+   "asked": "DocT GT, 76–83%"
+  },
+  {
+   "trap": "Oral metoprolol to limit propagation",
+   "truth": "Right class, wrong route: targets must be reached within the hour, so IV.",
+   "cards": [
+    "CVS09|AD-19",
+    "CVS09|AD-20"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Labetalol alone when 'esmolol followed by nicardipine' is offered",
+   "truth": "Labetalol alone is acceptable (ESC 2024 first choice), but DocT keys esmolol then nicardipine.",
+   "cards": [
+    "CVS09|AD-19",
+    "CVS09|AD-18"
+   ],
+   "asked": "DocT GT4/GT5, 59% and 83%"
+  },
+  {
+   "trap": "Nicardipine as the substitute when a beta-blocker is contraindicated",
+   "truth": "The substitute must slow the heart: diltiazem or verapamil. Nicardipine only vasodilates.",
+   "cards": [
+    "CVS09|AD-19",
+    "CVS09|AD-21"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Cyanide toxicity is a side effect of prolonged nitroglycerin",
+   "truth": "Nitroglycerin: headache, tachycardia, tachyphylaxis, methaemoglobinaemia, platelet inhibition. Cyanide belongs to nitroprusside.",
+   "cards": [
+    "CVS09|AD-21",
+    "V12-032"
+   ],
+   "asked": "DocT GT ×2, 41% and 43%"
+  },
+  {
+   "trap": "Confusion, acidosis and almond breath after a high-dose infusion: nitroglycerin (GT key)",
+   "truth": "The key is wrong: that is cyanide from nitroprusside. Pick nitroprusside.",
+   "cards": [
+    "CVS09|AD-21",
+    "V12-032"
+   ],
+   "asked": "DocT GrandT1 (mis-keyed), 16%; repeated GT3, AIM2"
+  },
+  {
+   "trap": "Give thiocyanate or cyanocobalamin for nitroprusside toxicity",
+   "truth": "Thiocyanate is the toxic product; cyanocobalamin is what hydroxocobalamin becomes. Antidotes: sodium thiosulfate, hydroxocobalamin.",
+   "cards": [
+    "CVS09|AD-21",
+    "V12-032"
+   ],
+   "asked": "DocT GT, 39%"
+  },
+  {
+   "trap": "An ABG confirms nitroprusside toxicity",
+   "truth": "It shows acidosis, not its cause; the keyed confirmatory test is a thiocyanate level.",
+   "cards": [
+    "CVS09|AD-21",
+    "V12-032"
+   ],
+   "asked": "DocT QBank, 58%"
+  },
+  {
+   "trap": "Surgery improves survival in all dissections",
+   "truth": "Uncomplicated type B is medical first: ~10–15% mortality on drugs vs ~30% with open surgery (a figure inflated by selection of complicated cases). Complicated type B gets TEVAR.",
+   "cards": [
+    "CVS09|AD-12"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Hypertension alone makes a dissection complicated",
+   "truth": "Only hypertension refractory to full therapy counts.",
+   "cards": [
+    "CVS09|AD-13"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "The primary treatment of type B is TEVAR",
+   "truth": "Only when complicated (now) or high-risk (14–90 days); uncomplicated type B is medical.",
+   "cards": [
+    "CVS09|AD-27"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "AR in type A always means valve replacement",
+   "truth": "Usually commissural detachment with normal leaflets: resuspend. Root replacement for a destroyed or aneurysmal root or Marfan.",
+   "cards": [
+    "CVS09|AD-22"
+   ],
+   "asked": "pattern"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Marfan: commonest lesion vs commonest death",
+   "tell": "MVP is the commonest finding; the aorta (dissection or rupture) is what kills.",
+   "cards": [
+    "CVS09|AD-02"
+   ]
+  },
+  {
+   "pair": "Classic dissection vs intramural haematoma",
+   "tell": "Dissection has a flap with flow in two lumens; IMH is a crescent of thickened wall with no flap and no flow.",
+   "cards": [
+    "CVS09|AD-04",
+    "V12-031"
+   ]
+  },
+  {
+   "pair": "Dissection vs other hypertensive emergencies",
+   "tell": "Others: lower MAP by no more than ~25% in the first hour. Dissection: rate first, then SBP <120 within the hour.",
+   "cards": [
+    "CVS09|AD-06",
+    "CVS09|AD-18"
+   ]
+  },
+  {
+   "pair": "True vs false lumen",
+   "tell": "True: expands in systole with in-phase forward flow. False: larger, slow or reversed flow, smoke, thrombus, cobwebs.",
+   "cards": [
+    "CVS09|AD-07",
+    "V12-031"
+   ]
+  },
+  {
+   "pair": "DeBakey IIIa vs IIIb",
+   "tell": "IIIa stops above the diaphragm; IIIb extends below it.",
+   "cards": [
+    "CVS09|AD-09",
+    "V12-030"
+   ]
+  },
+  {
+   "pair": "DeBakey I vs II",
+   "tell": "Both start in the ascending aorta and are Stanford A; II stays there, I goes on beyond the arch.",
+   "cards": [
+    "CVS09|AD-09",
+    "CVS09|AD-10"
+   ]
+  },
+  {
+   "pair": "Non-A non-B vs type B",
+   "tell": "Non-A non-B involves the arch (without the ascending aorta); type B stays distal to the left subclavian.",
+   "cards": [
+    "CVS09|AD-11"
+   ]
+  },
+  {
+   "pair": "Dissection pain vs ACS pain",
+   "tell": "Dissection is maximal at onset; ischaemic pain builds over minutes.",
+   "cards": [
+    "CVS09|AD-14",
+    "CVS09|AD-15"
+   ]
+  },
+  {
+   "pair": "Inferior STEMI from plaque vs from type A dissection",
+   "tell": "Inter-arm pressure or pulse difference, AR murmur, wide mediastinum or effusion → image the aorta first.",
+   "cards": [
+    "CVS09|AD-15"
+   ]
+  },
+  {
+   "pair": "Coronary or cerebral vs visceral, renal or spinal malperfusion",
+   "tell": "The first needs the ascending aorta or arch; the second needs the descending or abdominal aorta.",
+   "cards": [
+    "CVS09|AD-05",
+    "V12-030"
+   ]
+  },
+  {
+   "pair": "Stable vs unstable suspected dissection",
+   "tell": "Stable → ECG-gated CT aortogram; too unstable to move → TEE (bedside TTE first).",
+   "cards": [
+    "CVS09|AD-17"
+   ]
+  },
+  {
+   "pair": "Effusion with low BP vs effusion with chest pain and high BP",
+   "tell": "Low BP: tamponade, drain. Chest pain with hypertension and negative troponin: type A dissection, CT and surgery, do not drain.",
+   "cards": [
+    "V12-031"
+   ]
+  },
+  {
+   "pair": "ESC vs ACC/AHA heart-rate target",
+   "tell": "ESC 2024: ≤60; ACC/AHA 2022: 60–80. Both: SBP <120.",
+   "cards": [
+    "CVS09|AD-18"
+   ]
+  },
+  {
+   "pair": "Diltiazem vs nicardipine",
+   "tell": "Diltiazem (non-DHP) slows the heart and can replace a beta-blocker; nicardipine (DHP) only dilates and must follow one.",
+   "cards": [
+    "CVS09|AD-19",
+    "CVS09|AD-21"
+   ]
+  },
+  {
+   "pair": "Esmolol vs labetalol",
+   "tell": "Esmolol: pure β1, half-life ~9 min, infusion. Labetalol: β plus α1, half-life hours.",
+   "cards": [
+    "CVS09|AD-20"
+   ]
+  },
+  {
+   "pair": "Cyanide vs thiocyanate toxicity (nitroprusside)",
+   "tell": "Cyanide: early, high dose, lactic acidosis, high venous O₂. Thiocyanate: late (48–72 h) or renal failure, neurotoxic.",
+   "cards": [
+    "CVS09|AD-21",
+    "V12-032"
+   ]
+  },
+  {
+   "pair": "Hydroxocobalamin vs cyanocobalamin",
+   "tell": "Hydroxocobalamin is the antidote; cyanocobalamin is the harmless product it becomes.",
+   "cards": [
+    "CVS09|AD-21",
+    "V12-032"
+   ]
+  },
+  {
+   "pair": "Complicated vs high-risk uncomplicated type B",
+   "tell": "Complicated (rupture, malperfusion, intractable pain) → TEVAR now; high-risk (aorta >40 mm, false lumen >20 mm, entry >10 mm) → TEVAR at 14–90 days.",
+   "cards": [
+    "CVS09|AD-13",
+    "CVS09|AD-27"
+   ]
+  },
+  {
+   "pair": "AR in type A: resuspend vs replace",
+   "tell": "Normal leaflets with detached commissures → resuspend; destroyed or aneurysmal root, Marfan → root replacement.",
+   "cards": [
+    "CVS09|AD-22"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-030",
+   "deck": "CVS09",
+   "topic": "Dissection: which type can cause which complication",
+   "tier": "S",
+   "q": "**Match the complication to the type of dissection:**\na The rule\nb What only an ascending (root or arch) dissection can cause\nc What only a descending or abdominal dissection can cause\nd DeBakey I, II and III: what each can and cannot do\ne The DeBakey III subdivision",
+   "a": [
+    "**A dissection can only harm what its segment supplies**",
+    "**Ascending / root:** coronary occlusion (**troponin rise**, usually right coronary), **new AR murmur**, **tamponade**; arch: **stroke, hemiplegia**",
+    "**Descending / abdominal:** **paraplegia** (intercostals), **gut and liver ischaemia** (lactate ↑, INR ↑), **AKI**, **leg ischaemia**",
+    "**DeBakey I** (ascending + beyond): **everything**",
+    "**DeBakey II** (ascending only): AR, tamponade, coronary; **NOT visceral, renal or spinal malperfusion**",
+    "**DeBakey III** (descending only): spinal, visceral, renal, limb; **NOT AR, tamponade or coronary** (unless it extends retrogradely)",
+    "**IIIa** = descending thoracic aorta only (above the diaphragm); **IIIb** = extends below the diaphragm; both Stanford B",
+    "Trap: 'raised troponin cannot occur in Stanford A'. It can (coronary ostium)"
+   ],
+   "why": "DocT GT: 'which complication-classification pairing is NOT correct?' (12% right; DocT keys visceral malperfusion with DeBakey II; AR with DeBakey III is also wrong) and DocT GT: dissection of the descending thoracic aorta = DeBakey IIIa (38%). AD-09 gives only I, II and III with no subdivision and no complication mapping."
+  },
+  {
+   "code": "V12-031",
+   "deck": "CVS09",
+   "topic": "Echo in suspected dissection: the signs, and the effusion trap",
+   "tier": "S",
+   "q": "**For echo in suspected aortic dissection, give:**\na The TEE signs of dissection\nb How echo tells the true lumen from the false\nc What a bedside TTE can show\nd Chest pain, high BP, negative troponin and a pericardial effusion: the diagnosis and next step\ne Why pericardiocentesis is avoided, and the one exception",
+   "a": [
+    "**TEE signs (all of them):** undulating **intimal flap** separating two lumens, **colour flow in both lumens**, entry and exit tears, false-lumen **stasis or thrombus**, **intramural haematoma** (crescentic wall thickening, no flap)",
+    "**True lumen:** expands in systole, forward systolic flow **in phase with the cardiac cycle**, usually smaller",
+    "**False lumen:** usually **LARGER**, compressed in systole, slow, delayed or reversed flow, spontaneous contrast, thrombus, **cobwebs**",
+    "**TTE:** dilated root, **AR**, **pericardial effusion**; may miss the dissection itself",
+    "Effusion + chest pain + hypertension + negative troponin = **type A dissection until proved otherwise** → **contrast CT of the aorta**, then surgery",
+    "**NOT pericardiocentesis** (the pericardial pressure is holding the leak; draining it lets the aorta bleed) and **NOT coronary angiography** (delay, heparin, antiplatelets)",
+    "Exception (ESC 2024): emergency pericardial puncture only as a **temporary life-saving bridge** before theatre in a patient about to arrest"
+   ],
+   "why": "DocT GT: chest pain, BP 200/89, troponin negative, moderate effusion on POCUS, next step = contrast CT chest (24% right; distractors pericardiocentesis and coronary angiography). DocT GT: most helpful echo feature of the true lumen (56%). Marrow: TEE signs of dissection (all of the above). AD-07 gives only lumen position and branches; AD-17 gives each test's role, not its findings."
+  },
+  {
+   "code": "V12-032",
+   "deck": "CVS09",
+   "topic": "Nitroprusside vs nitroglycerin: toxicity of prolonged infusion",
+   "tier": "S",
+   "q": "**For prolonged vasodilator infusions, give:**\na What nitroprusside releases, and how it is cleared\nb Cyanide toxicity: when, and the clues\nc Thiocyanate toxicity: when, and the clues\nd The treatment\ne The side effects of prolonged nitroglycerin, and the one it never causes",
+   "a": [
+    "**Nitroprusside releases 5 cyanide ions per molecule**; rhodanese + **thiosulfate** → **thiocyanate** → excreted by the kidney",
+    "**Cyanide: EARLY**, high dose (above ~2 mcg/kg/min) or low thiosulfate stores: **lactic acidosis, high venous O₂ saturation**, confusion, tachycardia, **bitter-almond breath**",
+    "**Thiocyanate: LATE** (48–72 h) or **renal failure**: confusion, psychosis, seizures; toxic above ~60 mg/L (confirm with a **thiocyanate level**)",
+    "**Stop the infusion; sodium thiosulfate or hydroxocobalamin** (hydroxocobalamin + cyanide → cyanocobalamin, the harmless product); older kit: sodium nitrite + thiosulfate; thiocyanate itself: haemodialysis",
+    "**Nitroglycerin:** headache, reflex tachycardia, **tachyphylaxis within 24 h**, **methaemoglobinaemia** (nitrite; treat with methylene blue), reduced platelet aggregation",
+    "**Nitroglycerin NEVER causes cyanide toxicity**",
+    "Traps: 'give thiocyanate' or 'cyanocobalamin'; almond breath keyed to nitroglycerin (GT key error: it is nitroprusside)"
+   ],
+   "why": "Six bank questions on AD-21: DocT GT x2 (least likely effect of prolonged nitroglycerin = cyanide toxicity, 41% and 43%), DocT GT (nitroprusside toxicity in renal failure: sodium thiosulfate, 39%), DocT QBank (confirmatory test: thiocyanate level, 58%), DocT GT (almond breath after high-dose infusion: nitroprusside, mis-keyed as nitroglycerin, 16%), DocT GT (monitor for cyanide toxicity, 95%). AD-21 says only 'cyanide toxicity, unsuitable for prolonged use'. Not placed as a step: P12-903 already has 8 steps; it is taught inside the AD-21 lesson."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "CVS09|AD-10",
+   "issue": "Defines Stanford A as 'proximal to the left subclavian origin' and B as 'distal'. Strictly, A = any involvement of the ASCENDING aorta (as the card's own last line says); an arch-only dissection is proximal to the subclavian but is non-A non-B (AD-11, ESC 2024). Suggest: 'A = ascending aorta involved, wherever the tear; B = ascending not involved (distal to the left subclavian)'. Lesson teaches the card's line as the usual exam wording and names the gap."
+  },
+  {
+   "card": "CVS09|AD-22",
+   "issue": "'Valve involved, AR, or dilated root >55 mm → simultaneous aortic valve replacement' overstates it. ESC 2024 (I, B) and ACC/AHA 2022: with normal leaflets the valve is RESUSPENDED; root replacement with a valved conduit is for extensive root destruction, root aneurysm or a genetic aortopathy (Marfan). Lesson teaches the card line plus the refinement."
+  },
+  {
+   "card": "CVS09|AD-16",
+   "issue": "'Widened mediastinum 50%': IRAD (Hagan 2000) found a widened mediastinum in ~62% and an abnormal aortic contour in ~50%; 12.4% of films were normal. Card also lacks the calcium sign (>5 mm, Marrow) and the double or irregular contour that Marrow asked. Lesson says 'half to two thirds'."
+  },
+  {
+   "card": "CVS09|AD-09",
+   "issue": "No IIIa/IIIb subdivision, which a DocT GT asked (38% right), and no mapping of complications to type (DocT GT, 12%). Covered by new card V12-030; consider adding 'IIIa above the diaphragm, IIIb below' to AD-09."
+  },
+  {
+   "card": "CVS09|AD-21",
+   "issue": "Says only 'cyanide toxicity, unsuitable for prolonged use' for nitroprusside and nothing on nitroglycerin's effects, though six bank questions test them (thiosulfate, thiocyanate level, methaemoglobinaemia). Covered by new card V12-032. Also: DocT GrandT1 keys nitroglycerin for the almond-breath vignette; the key is wrong (nitroprusside)."
+  },
+  {
+   "card": "CVS09|AD-17",
+   "issue": "Card is correct (CT definitive; ESC 2024 note). The DocT QBank key linked to it ('TEE preferred' in a stable patient, 40%) is outdated; lesson teaches both and advises CT when the patient is stable."
+  },
+  {
+   "card": "CVS09|AD-19",
+   "issue": "Not wrong. ESC 2024 names labetalol as the first-choice IV beta-blocker (I, B), while the DocT keys prefer esmolol (then nicardipine). Lesson teaches the keyed answer and notes labetalol alone is acceptable."
+  }
+ ]
+}

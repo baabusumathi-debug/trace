@@ -1,0 +1,2071 @@
+{
+ "packet": "Pericardium, myocarditis and endocarditis",
+ "gt_misses": {},
+ "questions": [
+  {
+   "q": "P12-701",
+   "text": "Pericarditis: the pain, the ECG and the drugs",
+   "steps": [
+    {
+     "card": "CVS01|CVS-03",
+     "q": "**For acute pericarditis, give:**\na Its rank among pericardial diseases\nb European incidence\nc % of hospital cardiovascular admissions\nd % of ER admissions for chest pain\ne In-hospital mortality",
+     "a": "- **Most common** pericardial disease\n- Incidence: **27.7 per 100,000 per year** in Europe\n- **0.2%** of all hospital cardiovascular admissions\n- **5%** of emergency room admissions for chest pain\n- In-hospital mortality about **1.1%**\n- The four pericardial syndromes: pericarditis, pericardial effusion, cardiac tamponade, constrictive pericarditis",
+     "section": "Epidemiology",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT GT: Pericarditis by time course: acute = fibrinous or effusive (serous, purulent, haemorrhagic); subacute = effusive-constrictive or constrictive; chronic (>3 months) = constrictive, adhesive or effusive. So 'fibrinous' is the acute form."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Epidemiology → Commonest pericardial disease",
+      "intro": "Step 1 places acute pericarditis among the four pericardial syndromes. It is common, usually benign and rarely fatal, which is why most patients are treated as outpatients (CVS-12). The one real question asked something the card does not show: how pericarditis is classified by its pathology over time.",
+      "why": [
+       [
+        "a",
+        "**The most common pericardial disease.** The four pericardial syndromes are pericarditis, effusion, tamponade and constriction; they overlap, and one can lead to another."
+       ],
+       [
+        "b",
+        "**27.7 per 100,000 per year in Europe.** This is an Italian urban population figure; many mild cases never reach hospital, so the true incidence is higher."
+       ],
+       [
+        "c",
+        "**0.2% of hospital cardiovascular admissions.** Most patients are low risk and do not need admission."
+       ],
+       [
+        "d",
+        "**5% of emergency-room admissions for chest pain.** That is why it must be separated from ACS on the ECG (CVS-08)."
+       ],
+       [
+        "e",
+        "**In-hospital mortality about 1.1%.** Death comes mainly from tamponade, a specific cause (bacterial, neoplastic) or associated myocarditis, not from idiopathic pericarditis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Acute pericarditis vs ACS in the chest-pain room",
+        "Pericarditis: young, pleuritic, positional pain with diffuse ST elevation; ACS: pressure-like pain with territorial ST changes (CVS-08)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Constrictive or effusive-constrictive pericarditis is an acute form”",
+        "Only 14% of the cohort got this right. By time course, acute pericarditis (under 6 weeks) is fibrinous or effusive; effusive-constrictive and constrictive are subacute (6 weeks to 6 months), and constrictive, adhesive or effusive are chronic (over 6 months in this pathological scheme)."
+       ]
+      ],
+      "decode": [
+       [
+        "Which is classified under acute pericarditis: fibrinous, effusive-constrictive, adhesive, constrictive? [DocT GT]",
+        "Fibrinous: acute pericarditis is fibrinous or effusive; constriction and adhesion take weeks to months."
+       ],
+       [
+        "Most common pericardial disease? [pattern]",
+        "Acute pericarditis."
+       ]
+      ],
+      "punch": "Acute pericarditis is the commonest pericardial syndrome and rarely kills. Pathologically the acute forms are fibrinous or effusive; constrictive and adhesive forms come later.",
+      "parts": [
+       {
+        "q": "How is pericarditis classified by pathology and time course?",
+        "a": "Acute (under 6 weeks): fibrinous or effusive (serous, purulent, haemorrhagic). Subacute (6 weeks to 6 months): effusive-constrictive or constrictive. Chronic (over 6 months): constrictive, adhesive or effusive. This older pathological scheme uses 6 months; the ESC clinical time definitions (CVS-02) call disease chronic after 3 months."
+       }
+      ],
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-04",
+     "q": "**Give the aetiology of pericarditis under:**\na Idiopathic\nb Infectious — all four classes\nc Malignancy, trauma and radiation\nd Cardiac causes\ne Drugs",
+     "a": "- **Idiopathic**: viral / autoimmune\n- **Viral**: Coxsackie, HHV-6, B19, EBV, HIV, HCV, COVID-19\n- **Bacterial**: TB, Staph, Strep, H. influenzae\n- **Fungal**: Histoplasma, Candida, Aspergillus\n- **Parasites**: spirochetes\n- **Malignancy**: neoplasms of lung, associated viscera\n- **Trauma**: blunt / penetrating • **Radiation** exposure\n- **Cardiac**: myocarditis, post-MI (**Dressler's syndrome**), ACS\n- **Drugs**: hydralazine, procainamide",
+     "section": "Aetiology",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Aetiology → Idiopathic, infectious, other",
+      "intro": "Step 1 asks what inflames the sac. In the developed world most cases are idiopathic, and idiopathic is presumed to be viral or immune; a specific cause matters because it changes treatment. The one question tested exactly this, in a patient whose background tempted people towards a specific cause.",
+      "why": [
+       [
+        "a",
+        "**Idiopathic: presumed viral or autoimmune.** No cause is found in most patients in developed countries; an extensive search is not recommended in low-risk cases because it rarely changes management."
+       ],
+       [
+        "b",
+        "**Viral: Coxsackie, HHV-6, parvovirus B19, EBV, HIV, HCV, COVID-19. Bacterial: TB, Staphylococcus, Streptococcus, H. influenzae. Fungal: Histoplasma, Candida, Aspergillus. Parasitic: spirochaetes (as the card lists).** TB is the commonest specific cause worldwide and dominates in Africa (CVS-14); purulent bacterial pericarditis is rare but carries a high risk of tamponade and constriction (20–30% for bacterial causes)."
+       ],
+       [
+        "c",
+        "**Malignancy (lung and nearby organs), blunt or penetrating trauma, radiation.** Lung and breast cancer and lymphoma are the usual malignant causes; a malignant effusion is often large and bloody (CVS-13)."
+       ],
+       [
+        "d",
+        "**Cardiac: myocarditis, post-MI (Dressler’s syndrome) and ACS.** Early post-infarction pericarditis appears within days over a transmural infarct; Dressler’s syndrome (a post-cardiac injury syndrome) appears weeks later and is immune-mediated."
+       ],
+       [
+        "e",
+        "**Drugs: hydralazine, procainamide.** Both cause drug-induced lupus; isoniazid does too."
+       ]
+      ],
+      "mimic": [
+       [
+        "Uraemic or dialysis pericarditis vs viral pericarditis",
+        "Uraemic pericarditis usually lacks the diffuse ST elevation, because the epicardium is not inflamed; fever with diffuse ST elevation points to viral or idiopathic disease even in ESRD."
+       ],
+       [
+        "Early post-infarction pericarditis vs Dressler’s",
+        "Days after a transmural MI, local; versus weeks later, immune, diffuse."
+       ]
+      ],
+      "traps": [
+       [
+        "“An ESRD patient with pericarditis must have uraemic pericarditis”",
+        "Only 23% chose correctly. Fever and diffuse ST elevation are the viral/idiopathic picture; uraemic pericarditis typically has no ST elevation. The key (viral) is the exam-day answer, though renal failure is a real cause in the right picture."
+       ],
+       [
+        "“Diffuse ST elevation in an elderly patient means MI”",
+        "Elevation in I, II, III, aVF and aVL together fits no single artery (CVS-08)."
+       ]
+      ],
+      "decode": [
+       [
+        "79-year-old with ESRD, fever, pleuritic pain, diffuse ST elevation — commonest cause? [DocT GT]",
+        "Viral infection: the ECG and fever make this ordinary viral/idiopathic pericarditis, not uraemic."
+       ],
+       [
+        "Drugs causing pericarditis? [pattern]",
+        "Hydralazine, procainamide (and isoniazid): drug-induced lupus."
+       ]
+      ],
+      "punch": "Idiopathic or viral pericarditis is the commonest cause in every background in the developed world. A specific cause is suggested by the setting, but diffuse ST elevation with fever still points to viral disease, even on dialysis.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-05",
+     "q": "**For chest pain in pericarditis, give:**\na Frequency\nb Its character\nc Its location\nd What aggravates it\ne What relieves it\nf Where it radiates",
+     "a": "- Present in **>90%** of cases\n- **Sharp, pleuritic** - different from ACS pain (which is stabbing type)\n- **Retro-sternal / precordial**\n- Aggravated by **inspiration and the supine position**\n- **Relieved by leaning forward**\n- Radiates to the **trapezius ridge**, or no radiation",
+     "section": "Chest pain",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Symptoms → Chest pain",
+      "intro": "Step 2 begins with the symptom present in almost every patient. Its character comes from where the pain fibres run: the parietal pericardium is supplied by the phrenic nerve, and only its lower part is pain-sensitive.",
+      "why": [
+       [
+        "a",
+        "**Present in more than 90% of cases.** ESC gives over 85–90%; it is the main criterion (CVS-10)."
+       ],
+       [
+        "b",
+        "**Sharp and pleuritic, different from ACS pain (which the card calls stabbing).** Pericardial pain is the sharp, stabbing one; ischaemic pain is usually pressure, tightness or heaviness, not affected by breathing or posture."
+       ],
+       [
+        "c",
+        "**Retrosternal or precordial.**"
+       ],
+       [
+        "d",
+        "**Made worse by inspiration and lying supine.** Both press the inflamed layers together."
+       ],
+       [
+        "e",
+        "**Relieved by sitting up and leaning forward.** The heart falls away from the posterior parietal pericardium."
+       ],
+       [
+        "f",
+        "**Radiates to the trapezius ridge, or not at all.** The phrenic nerve (C3–5) shares segments with the skin over the trapezius; trapezius-ridge pain is close to specific for pericarditis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Pericarditic vs ischaemic pain",
+        "Sharp, pleuritic, positional, to the trapezius ridge; versus pressure-like, exertional, to the arm or jaw, unaffected by breathing."
+       ]
+      ],
+      "traps": [
+       [
+        "“Pericarditis pain radiates to the left arm like angina”",
+        "The typical radiation is to the trapezius ridge."
+       ]
+      ],
+      "decode": [
+       [
+        "Pleuritic chest pain relieved by leaning forward, radiating to the trapezius ridge? [pattern]",
+        "Acute pericarditis."
+       ]
+      ],
+      "punch": "Pericarditic pain is sharp, worse with breathing and lying flat, eased by leaning forward and felt at the trapezius ridge, because the phrenic nerve carries it.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-07",
+     "q": "**For the ECG in pericarditis, give:**\na % of cases with the classic changes\nb The two classic changes, and the leads that are exceptions\nc What happens in aVR\nd Two other features",
+     "a": "- Up to **60%** of cases: widespread **concave ST elevation** and **PR depression**, **except in aVR and V1**, not corresponding to an artery\n- In aVR (± V1): **reciprocal ST depression and PR elevation**\n- **Sinus tachycardia** is also common\n- **Static** - no ST elevation and T inversion together",
+     "section": "ECG",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → ECG → Classic changes",
+      "intro": "Step 2 then shows how inflammation reaches the ECG. Inflamed epicardium injures the subepicardial myocardium all round the heart, so the injury current points towards the apex in most leads; inflamed atrial epicardium does the same to the PR segment.",
+      "why": [
+       [
+        "a",
+        "**Up to 60% show widespread concave ST elevation and PR depression, except in aVR and V1, not corresponding to any one artery.** Not every patient has the classic changes: normal or atypical tracings are common, so a normal ECG does not exclude pericarditis."
+       ],
+       [
+        "b",
+        "**The two changes are diffuse concave ST elevation and PR depression; aVR and V1 are the exceptions.** PR depression is an atrial injury current; diffuse PR depression with diffuse ST elevation is what separates pericarditis from STEMI, though PR depression alone can occur in other conditions."
+       ],
+       [
+        "c",
+        "**In aVR (± V1): reciprocal ST depression and PR elevation.** aVR looks at the cavity from above right, opposite to the diffuse vector, so it shows the mirror image."
+       ],
+       [
+        "d",
+        "**Sinus tachycardia is common; the changes are static: ST elevation and T inversion do not coexist.** In the classic sequence (stage 1 ST elevation with PR depression, 2 normalisation, 3 T inversion, 4 normal) T waves invert only after the ST segment has returned to baseline; T inversion with ST still elevated suggests ischaemia."
+       ]
+      ],
+      "mimic": [
+       [
+        "PR depression of pericarditis vs atrial infarction",
+        "Diffuse and with diffuse ST elevation; versus localised with territorial changes (rare)."
+       ]
+      ],
+      "traps": [
+       [
+        "“No ST elevation, so not pericarditis”",
+        "Classic changes appear in only up to 60%."
+       ]
+      ],
+      "decode": [
+       [
+        "ST depression with PR elevation in aVR and diffuse concave ST elevation elsewhere? [pattern]",
+        "Acute pericarditis."
+       ]
+      ],
+      "punch": "Diffuse inflammation gives a diffuse injury current: concave ST elevation and PR depression everywhere except aVR, which shows the mirror image. T waves invert only after the ST has settled.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-08",
+     "q": "**Separate pericarditis from ischaemia/infarction on:**\na ST elevation morphology\nb Reciprocal ST changes\nc PR segment\nd Evolution\ne Electrical alternans",
+     "a": "**Feature** | **Pericarditis** | **Ischaemia**\nST elevation | **Diffuse, concave** (not in a particular territory) | **Anatomical, convex**\nReciprocal ST changes | **Absent** (aVR) | **Present**\nPR segment | **Depression** | No depression\nEvolution | **Static** - changes over several weeks | **Dynamic**, with progression and development of Q\nElectrical alternans | Present with tamponade | Absent",
+     "section": "Pericarditis vs STEMI",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → ECG → Versus ischaemia and infarction",
+      "intro": "Step 2 continues with the discrimination that matters most in the chest-pain room: thrombolysing pericarditis risks haemopericardium, and missing a STEMI is worse.",
+      "why": [
+       [
+        "a",
+        "**Pericarditis: diffuse, concave, not in one territory; ischaemia: anatomical, convex.** Infarction follows a coronary artery; pericarditis follows the whole epicardium."
+       ],
+       [
+        "b",
+        "**Reciprocal ST depression absent in pericarditis (except aVR); present in ischaemia.** ST depression in leads facing away from an infarct (for example aVL in inferior STEMI) is the strongest pointer to STEMI."
+       ],
+       [
+        "c",
+        "**PR depression in pericarditis; none in ischaemia.**"
+       ],
+       [
+        "d",
+        "**Pericarditis is static, changing over several weeks; ischaemia is dynamic, progressing to Q waves.** In STEMI, change is over minutes to hours, Q waves form and T waves invert while the ST is still raised."
+       ],
+       [
+        "e",
+        "**Electrical alternans is present with tamponade in pericarditis; absent in ischaemia.** It reflects a heart swinging in a large effusion (CVS-22)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Inferior STEMI vs pericarditis",
+        "ST elevation III greater than II with reciprocal depression in aVL; versus II with I and V-leads, no reciprocal change outside aVR."
+       ]
+      ],
+      "traps": [
+       [
+        "“Concave ST elevation excludes STEMI”",
+        "Early STEMI can be concave; reciprocal changes and territory decide, not shape alone."
+       ]
+      ],
+      "decode": [
+       [
+        "Which ECG feature best separates STEMI from pericarditis? [pattern]",
+        "Reciprocal ST depression (and territorial distribution, Q waves)."
+       ]
+      ],
+      "punch": "Pericarditis is everywhere and static; ischaemia follows an artery, has reciprocal depression and evolves to Q waves. Reciprocal change is the single best discriminator.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-10",
+     "q": "**Per the 2015 ESC guidelines for acute pericarditis, give:**\na How many of the four criteria are needed\nb The four criteria\nc The two additional supporting criteria",
+     "a": "- Diagnosis requires **2 of the 4** following criteria:\n→ **Pericarditic chest pain**\n→ **Pericardial rubs**\n→ New widespread **ST elevation or PR depression** on ECG\n→ **Pericardial effusion** (new or worsening)\n- Additional criteria: **CRP, ESR, WBC**; evidence of pericardial inflammation on **CT or CMR**",
+     "section": "ESC criteria",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Diagnosis → ESC 2015 criteria",
+      "intro": "Step 3 is how the diagnosis is made. The ESC 2015 rule is two of four; ESC 2025 has restructured it around the presentation, and both versions turn up in questions.",
+      "why": [
+       [
+        "a",
+        "**Two of the four criteria are needed.** ESC 2025 now requires a compatible clinical presentation (typical pain) plus additional criteria; with one it is possible, with more it is definite."
+       ],
+       [
+        "b",
+        "**Pericarditic chest pain; pericardial rub; new widespread ST elevation or PR depression; new or worsening pericardial effusion.** Their frequencies explain why two are asked for: pain over 85%, ECG and effusion up to 60%, rub about a third."
+       ],
+       [
+        "c",
+        "**Supporting: raised CRP, ESR, WBC; pericardial inflammation on CT or CMR.** In ESC 2025 raised CRP and CMR oedema or late gadolinium enhancement have become criteria in their own right, not just support."
+       ]
+      ],
+      "mimic": [
+       [
+        "ESC 2015 vs ESC 2025 rule",
+        "Any 2 of 4; versus typical presentation plus additional criteria, with CRP and CMR promoted."
+       ]
+      ],
+      "traps": [
+       [
+        "“A raised troponin is a diagnostic criterion”",
+        "Troponin marks myocardial involvement (myopericarditis), not pericarditis (CVS-11)."
+       ]
+      ],
+      "decode": [
+       [
+        "Pleuritic pain and a new effusion, normal ECG, no rub — does this meet the ESC 2015 criteria? [pattern]",
+        "Yes, two of four."
+       ]
+      ],
+      "punch": "ESC 2015: two of pain, rub, ECG change and effusion. ESC 2025 starts from the typical presentation and counts CRP and CMR inflammation as criteria.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-15",
+     "q": "**For NSAIDs in pericarditis, give:**\na The aspirin dose\nb The ibuprofen dose\nc Duration for a first uncomplicated episode\nd Duration for recurrences\ne What guides tapering",
+     "a": "**Drug** | **Usual initial dose**\n**Aspirin** | 500-1000 mg every 6-8 h (1.5-4 g/day)\n**Ibuprofen** | 600 mg every 8 h (range 1200-2400 mg)\nIndomethacin | 25-50 mg every 8 h\nNaproxen | 500-1000 mg daily every 12 h\n- First uncomplicated episode: **1-2 weeks**\n- Recurrences: **2-4 weeks up to several months**\n- **CRP** should be used as a marker of disease activity to guide length of treatment\n- Taper gradually (every 1-2 weeks), **only if asymptomatic and CRP is normal**",
+     "section": "NSAIDs",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Treatment → Aspirin and NSAIDs",
+      "intro": "Step 4 treats the inflammation. NSAID or aspirin controls pain and inflammation; colchicine is added to prevent recurrence (CVS-16). The one real question tested exactly that first-line choice and the dose.",
+      "why": [
+       [
+        "a",
+        "**Aspirin 500–1000 mg every 6–8 h (1.5–4 g/day).** ESC 2015 and 2025 give 750–1000 mg every 8 h. Aspirin is preferred after MI or when antiplatelet treatment is needed anyway, because other NSAIDs can impair infarct healing."
+       ],
+       [
+        "b",
+        "**Ibuprofen 600 mg every 8 h (1200–2400 mg/day).** ESC 2025 gives 600–800 mg three times daily. Add gastric protection. Indomethacin 25–50 mg every 8 h works but reduces coronary flow, so it is avoided in coronary disease and the elderly."
+       ],
+       [
+        "c",
+        "**1–2 weeks for a first uncomplicated episode.**"
+       ],
+       [
+        "d",
+        "**2–4 weeks to several months for recurrences.**"
+       ],
+       [
+        "e",
+        "**CRP guides the length; taper every 1–2 weeks only when asymptomatic and CRP is normal.** Stopping while CRP is still raised is a common cause of early relapse."
+       ]
+      ],
+      "mimic": [
+       [
+        "Aspirin vs other NSAID",
+        "After MI or on antiplatelets; versus other patients."
+       ]
+      ],
+      "traps": [
+       [
+        "“Colchicine monotherapy is first-line”",
+        "43% missed this. Colchicine is added to aspirin or NSAID; on its own it does not control the acute inflammation."
+       ],
+       [
+        "“Prednisone 1–1.5 mg/kg”",
+        "High-dose steroid increases recurrence; steroids are second line at low dose (CVS-17)."
+       ]
+      ],
+      "decode": [
+       [
+        "Young man, positional pleuritic pain, rub, diffuse ST elevation — first-line treatment? [DocT GT]",
+        "Ibuprofen 600 mg three times daily (with colchicine)."
+       ],
+       [
+        "When can NSAID be tapered? [pattern]",
+        "Once asymptomatic and CRP has normalised."
+       ]
+      ],
+      "punch": "First line is aspirin or NSAID at full dose for 1–2 weeks, with colchicine. CRP, not the calendar, decides when to taper.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-16",
+     "q": "**For colchicine in pericarditis, give:**\na Its mechanism of action\nb The dose, and the weight adjustment\nc Duration after a first episode\nd Duration after a recurrent episode\ne The renal cut-off at which it is contraindicated",
+     "a": "→ **MOA:** concentrates in leucocytes → interferes with **chemotaxis and degranulation**\n- Dose: **0.5-0.6 mg twice daily**; **once daily if weight <70 kg**\n- Duration: **3 months** after a first episode\n- Duration: **6 months** after a recurrent episode\n→ Renal impairment: CrCl 35-49 → 0.5-0.6 mg once daily; CrCl 10-34 → 0.5-0.6 mg every 2-3 days; → **CrCl <10** → **contraindicated**\n- Avoid in severe hepatobiliary dysfunction",
+     "section": "Colchicine",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Treatment → Colchicine",
+      "intro": "Step 4 continues with the drug that halves recurrence. Recurrence affects 15–30% of patients after a first episode and about half after a recurrence without colchicine, so its job is to prevent the next episode, not to treat the pain.",
+      "why": [
+       [
+        "a",
+        "**It concentrates in leucocytes and interferes with chemotaxis and degranulation.** It binds tubulin and blocks microtubule assembly in neutrophils, and so also dampens the inflammasome that drives IL-1 release, the same pathway anakinra blocks (CVS-18)."
+       ],
+       [
+        "b",
+        "**0.5–0.6 mg twice daily; once daily if under 70 kg.** No loading dose, which only adds diarrhoea; ESC 2025 adds that the dose should be halved in some elderly patients and given once daily in severe renal impairment."
+       ],
+       [
+        "c",
+        "**3 months after a first episode.**"
+       ],
+       [
+        "d",
+        "**6 months after a recurrence.**"
+       ],
+       [
+        "e",
+        "**Contraindicated with CrCl under 10 (reduced doses at CrCl 35–49 and 10–34); avoid in severe hepatobiliary dysfunction.** It is cleared by the kidney and by CYP3A4 and P-glycoprotein, so clarithromycin, ciclosporin and similar drugs raise levels to toxic ones."
+       ]
+      ],
+      "mimic": [
+       [
+        "Colchicine vs NSAID",
+        "Prevents recurrence over months; versus controls acute pain and inflammation over weeks."
+       ]
+      ],
+      "traps": [
+       [
+        "“Colchicine alone is enough first-line”",
+        "It is added to aspirin or NSAID, not used instead of it."
+       ]
+      ],
+      "decode": [
+       [
+        "First-line treatment of acute pericarditis? [DocT GT]",
+        "Aspirin or NSAID plus colchicine."
+       ],
+       [
+        "Colchicine duration after a recurrence? [pattern]",
+        "At least 6 months."
+       ]
+      ],
+      "punch": "Colchicine halves recurrence: 0.5 mg twice daily (once if under 70 kg), 3 months after a first episode and 6 after a recurrence, with doses cut in renal impairment.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-702",
+   "text": "Tamponade: the squeeze from outside",
+   "steps": [
+    {
+     "card": "CVS01|CVS-19",
+     "q": "**For cardiac tamponade, give:**\na The definition\nb The three factors that determine symptoms\nc The pericardial reserve volume",
+     "a": "- The **haemodynamic de-compensation** that occurs when pressure within the pericardial cavity **compresses the heart**\n- A **medical emergency** needing emergency decompression\n- Symptoms depend on:\n→ **Volume** of fluid\n→ **Rate** of fluid accumulation\n→ **Compliance** characteristics of the pericardium\n- Pericardial reserve volume: **200-250 cc**",
+     "section": "Tamponade",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT Recall25: Penetrating chest wound + Beck's triad (hypotension, raised JVP, muffled sounds) + clear lungs = traumatic tamponade. Pericardiocentesis is the bedside life-saving step when offered; the definitive treatment in trauma is thoracotomy or sternotomy to repair the injury."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Definition → Determinants and reserve",
+      "intro": "Step 5 moves from inflammation to pressure. Tamponade is not a size of effusion; it is the point at which pericardial pressure exceeds the filling pressure of the heart. The one real question was the fastest version, a stab or gunshot wound.",
+      "why": [
+       [
+        "a",
+        "**Haemodynamic decompensation when pericardial pressure compresses the heart; a medical emergency needing emergency decompression.** The right atrium and ventricle fill at the lowest pressure, so they are squeezed first, and output falls as the chambers cannot fill."
+       ],
+       [
+        "b",
+        "**Volume of fluid, rate of accumulation and compliance of the pericardium.** Rate matters most: 100–200 mL of blood in minutes can kill, while 1–2 L of slowly gathering fluid may be tolerated (CVS-20)."
+       ],
+       [
+        "c",
+        "**Pericardial reserve volume: 200–250 mL.** The volume the sac takes before pressure climbs steeply; the same figure as the volume needed to enlarge the silhouette on X-ray (CVS-11), which is why acute tamponade often has a normal-sized heart on film."
+       ]
+      ],
+      "mimic": [
+       [
+        "Traumatic tamponade vs tension pneumothorax",
+        "Raised JVP and hypotension in both; equal air entry and a central trachea point to tamponade."
+       ]
+      ],
+      "traps": [
+       [
+        "“Pericardiocentesis is the definitive management of traumatic tamponade”",
+        "It is the bedside life-saving step offered in the recall, and the keyed answer; the definitive treatment is thoracotomy or sternotomy to repair the injury, and clotted blood often cannot be aspirated."
+       ],
+       [
+        "“Bilateral chest tubes” for penetrating trauma with muffled sounds and clear lungs",
+        "Clear lungs and Beck’s triad point to the pericardium, not the pleura."
+       ]
+      ],
+      "decode": [
+       [
+        "Gunshot to the left chest, BP 70/40, distended neck veins, muffled heart sounds, normal lungs — definitive management? [NEET 2025 recall]",
+        "Urgent pericardiocentesis as keyed; true definitive care is surgical."
+       ]
+      ],
+      "punch": "Tamponade is pressure, not volume: it depends on how fast the fluid arrives in a sac with only about 200 mL to spare. Traumatic tamponade gets a needle as a bridge and a surgeon as the cure.",
+      "step": 5
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-20",
+     "q": "**For tamponade pathophysiology, give:**\na The difference between the acute and chronic pressure-volume curves\nb The last drop effect\nc The chain of ventricular interdependence",
+     "a": "- **Acute:** a small pericardial reserve - a small volume rapidly exceeds the limit of pericardial stretch.\n- **Chronic:** the pericardium stretches, so a much larger volume is tolerated before tamponade\n- **Last drop effect:** the final increment of fluid produces critical cardiac compression, and the **first decrement during drainage produces the largest relative decompression**\n- Ventricular interdependence: ↓ RV output → ↓ LV preload. RV cannot accommodate venous return → pushes the IV septum **towards the LV** → ↓ LV volume → ↓ LV output → sudden drop in CO → **hypotension**",
+     "section": "Pathophysiology",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: Intubating a patient in tamponade can precipitate arrest: positive intrathoracic pressure cuts the venous return that keeps the compressed right heart filling, and induction removes compensating sympathetic tone. Drain first (pericardiocentesis under local anaesthesia, sitting up); if intubation is unavoidable keep spontaneous breathing, use ketamine, low PEEP and VT, with the needle ready."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Pathophysiology → Pressure-volume curve, last drop, interdependence",
+      "intro": "Step 5 continues with the mechanism that explains every sign. Both real questions tested it: why the blood pressure falls on inspiration, and why intubation can kill.",
+      "why": [
+       [
+        "a",
+        "**Acute: small reserve, so a small volume quickly exceeds pericardial stretch; chronic: the pericardium stretches and a much larger volume is tolerated.** The pressure-volume curve is flat, then very steep; slow accumulation shifts the steep part far to the right."
+       ],
+       [
+        "b",
+        "**Last drop effect: the final increment causes critical compression, and the first decrement during drainage gives the largest relative decompression.** On the steep part of the curve, small volume changes cause large pressure changes, so removing even 50 mL can sharply lower pericardial pressure and restore output."
+       ],
+       [
+        "c",
+        "**Less RV output, less LV preload; the RV cannot take venous return, pushes the septum towards the LV, LV volume and output fall, cardiac output drops and the patient becomes hypotensive.** Inspiration increases venous return to the right heart; inside a fixed sac the RV can only grow by pushing the septum left, so LV filling and stroke volume fall: this is pulsus paradoxus (CVS-22)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Pulsus paradoxus in tamponade vs in severe asthma",
+        "Septal shift in a fixed sac; versus large swings in intrathoracic pressure."
+       ]
+      ],
+      "traps": [
+       [
+        "“Inspiration pools blood in the lungs, reducing LV filling”",
+        "That happens normally and gives the small physiological fall; the exaggerated fall comes from septal shift."
+       ],
+       [
+        "“Enhanced adrenergic tone causes collapse after intubation”",
+        "The reverse: positive intrathoracic pressure cuts the venous return that keeps the right heart filling, and induction removes the compensating sympathetic tone."
+       ]
+      ],
+      "decode": [
+       [
+        "Large effusion, SBP falls 15 mmHg on inspiration — mechanism? [DocT GT]",
+        "Increased venous return to the right heart shifts the septum left and restricts LV filling."
+       ],
+       [
+        "Tamponade needing urgent airway — greatest risk of collapse after intubation? [DocT GT]",
+        "Positive intrathoracic pressure. Drain first under local anaesthesia, sitting up; if intubation cannot wait, keep spontaneous breathing, use ketamine, low PEEP and tidal volume, with the needle ready."
+       ]
+      ],
+      "punch": "The pressure-volume curve is flat then steep, so a little fluid kills and a little drained saves. In a fixed sac the right heart grows only at the left heart’s expense, which is why inspiration and positive pressure both cut output.",
+      "step": 5
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-21",
+     "q": "**Give the four clinical presentations of tamponade:**\na Acute\nb Subacute\nc Regional\nd Low pressure",
+     "a": "**Type** | **Features**\n**Acute** | Trauma, invasive diagnostic procedure → needs **emergent decompression**\n**Subacute** | Chronic, days to weeks. Presents with chest pain, dyspnoea, chest heaviness\n**Regional** | Localised effusion or haematoma\n**Low pressure** | **Hypovolaemia**",
+     "section": "Presentation",
+     "bank_questions": 3,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Presentation → Acute, subacute, regional, low pressure",
+      "intro": "Step 5 shows that tamponade wears four faces. The three real questions used the acute ones: a catheter-lab complication, a malignant effusion and blunt trauma.",
+      "why": [
+       [
+        "a",
+        "**Acute: trauma or an invasive procedure; needs emergent decompression.** Cardiac perforation in the catheter or electrophysiology lab (trans-septal puncture, pacing, ablation) is now a common cause; the volume is small and the onset fast."
+       ],
+       [
+        "b",
+        "**Subacute: days to weeks, with chest pain, dyspnoea and chest heaviness.** Malignant, uraemic or idiopathic effusions; the sac has stretched, so the effusion is large before tamponade appears."
+       ],
+       [
+        "c",
+        "**Regional: localised effusion or haematoma.** Typical after cardiac surgery; a posterior clot can compress the left atrium or ventricle alone, the classical signs may be absent, and transthoracic echo can miss it, so TOE is used."
+       ],
+       [
+        "d",
+        "**Low pressure: hypovolaemia.** Pericardial and filling pressures are both low (for example after haemorrhage or dialysis), so the JVP is not raised; filling may improve output briefly, and pericardiocentesis still helps."
+       ]
+      ],
+      "mimic": [
+       [
+        "Tamponade vs massive haemothorax or tension pneumothorax after blunt trauma",
+        "Equal air entry, raised JVP, hypotension unresponsive to fluid; versus absent breath sounds on one side."
+       ]
+      ],
+      "traps": [
+       [
+        "“Check for pulsus paradoxus to confirm tamponade”",
+        "Echo confirms it and guides drainage; pulsus is unreliable in AF and tachypnoea (18% chose otherwise)."
+       ],
+       [
+        "“Electrical alternans or pulsus paradoxus best confirms tamponade”",
+        "27% missed this: the catheter hallmark asked was equalisation of diastolic pressures (RA, RV diastolic, PA diastolic and wedge within a few mmHg); in practice the diagnosis is clinical plus echo."
+       ]
+      ],
+      "decode": [
+       [
+        "Hypotension, JVD and muffled sounds an hour after LARIAT with trans-septal puncture, in AF — next step to confirm? [DocT GT]",
+        "Echocardiogram."
+       ],
+       [
+        "Metastatic lung cancer, hypotension, JVD, RA collapse and plethoric IVC — which finding best confirms tamponade? [DocT GT]",
+        "Equalisation of diastolic pressures."
+       ],
+       [
+        "Blunt chest trauma, equal air entry, soft abdomen, hypotension despite fluids? [DocT GT; NEET 2024 recall]",
+        "Cardiac tamponade."
+       ]
+      ],
+      "punch": "Tamponade is acute after trauma or procedures, subacute with large malignant or inflammatory effusions, regional after cardiac surgery, and low-pressure in hypovolaemia. Echo confirms it, and equal diastolic pressures are its catheter signature.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-22",
+     "q": "**For the clinical signs of tamponade, give:**\na The three components of Beck's triad\nb Four other clinical features\nc What pulsus paradoxus means",
+     "a": "- **Beck's triad:** hypotension • elevated JVP • muffled heart sounds\n- Other features: breathlessness • tachycardia • **pulsus paradoxus** • **electrical alternans**\n- Pulsus paradoxus = **inspiratory drop in cardiac output and blood pressure**",
+     "section": "Clinical signs",
+     "bank_questions": 4,
+     "bank_lines": [
+      "Marrow: On an arterial line, tamponade's pulsus paradoxus shows as an inspiratory fall in systolic pressure (>10 mmHg) and pulse pressure while the diastolic barely changes — inspiration fills the RV, the septum shifts left and LV stroke volume falls."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Signs → Beck’s triad, pulsus paradoxus, alternans",
+      "intro": "Step 5 reaches the bedside, and this is the most-asked card in the deck (8 questions). Every sign is a direct reading of the physiology in CVS-20: low output, high venous pressure, fluid between heart and stethoscope, and septal shift with breathing.",
+      "why": [
+       [
+        "a",
+        "**Beck’s triad: hypotension, raised JVP, muffled heart sounds.** Low output, venous pressure backing up behind a heart that cannot fill, and fluid damping the sounds. It is a picture of acute surgical tamponade; in slow medical tamponade the full triad is often absent."
+       ],
+       [
+        "b",
+        "**Breathlessness, tachycardia, pulsus paradoxus, electrical alternans.** Tachycardia keeps output up when stroke volume is fixed. Electrical alternans (beat-to-beat change in QRS height) means a large effusion with the heart swinging in it; together with low voltage it is highly suggestive. The lungs are clear, because the left heart is underfilled, not failing; Kussmaul’s sign (JVP rising on inspiration) belongs to constriction, not tamponade."
+       ],
+       [
+        "c",
+        "**Pulsus paradoxus: an inspiratory fall in cardiac output and blood pressure.** Defined as an inspiratory fall in systolic pressure of more than 10 mmHg. On an arterial line, systolic and pulse pressure fall on inspiration while diastolic barely changes, because stroke volume is what falls. It can be absent despite tamponade with aortic regurgitation, atrial septal defect, a stiff or failing LV with high filling pressure, positive-pressure ventilation and regional tamponade, and it is hard to read in AF."
+       ]
+      ],
+      "mimic": [
+       [
+        "Tamponade vs left heart failure",
+        "Clear lungs; versus crackles and pulmonary oedema."
+       ],
+       [
+        "Tamponade vs constriction",
+        "Pulsus paradoxus prominent, Kussmaul absent, no pericardial knock; versus Kussmaul present, pulsus less common, knock."
+       ],
+       [
+        "Tamponade vs tension pneumothorax",
+        "Equal air entry; versus absent breath sounds and a deviated trachea."
+       ]
+      ],
+      "traps": [
+       [
+        "“Bibasilar crepitations support tamponade”",
+        "Tamponade has clear lungs; crackles point to LV failure."
+       ],
+       [
+        "“Loud S1 and opening snap”",
+        "That is mitral stenosis; tamponade muffles the sounds."
+       ],
+       [
+        "“Tension pneumothorax or massive haemothorax” after blunt trauma with equal air entry",
+        "Equal air entry removes both; fluid-resistant hypotension then means tamponade."
+       ],
+       [
+        "“Pulsus paradoxus means the diastolic pressure falls”",
+        "It is the systolic and pulse pressure that fall; diastolic hardly moves."
+       ]
+      ],
+      "decode": [
+       [
+        "Hypotension, tachycardia, high JVP, muffled sounds — which sign best supports tamponade? [DocT GT; Marrow]",
+        "Pulsus paradoxus over 10 mmHg."
+       ],
+       [
+        "Large effusion, SBP falls 15 mmHg on inspiration — mechanism? [DocT GT]",
+        "Inspiratory venous return to the RV shifts the septum left and restricts LV filling."
+       ],
+       [
+        "Post-viral pericarditis with electrical alternans; if untreated, what follows? [Marrow]",
+        "Beck’s triad: hypotension, raised JVP, muffled sounds."
+       ],
+       [
+        "Tamponade: arterial line change on inspiration? [Marrow]",
+        "Fall in systolic and pulse pressure."
+       ]
+      ],
+      "punch": "Beck’s triad, clear lungs and pulsus paradoxus are tamponade at the bedside: low output, high venous pressure, a muffled heart and an inspiratory fall in systolic pressure of more than 10 mmHg from septal shift.",
+      "table": {
+       "head": [
+        "Sign",
+        "What it reflects"
+       ],
+       "rows": [
+        [
+         "Hypotension",
+         "Low stroke volume from underfilling"
+        ],
+        [
+         "Raised JVP",
+         "Venous return cannot enter the compressed right heart"
+        ],
+        [
+         "Muffled sounds",
+         "Fluid between heart and chest wall"
+        ],
+        [
+         "Pulsus paradoxus",
+         "Inspiratory septal shift reduces LV filling"
+        ],
+        [
+         "Electrical alternans",
+         "Heart swinging in a large effusion"
+        ]
+       ]
+      },
+      "step": 5
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-24",
+     "q": "**Compare RA and RV collapse on echo:**\na When each collapse occurs in the cardiac cycle\nb The RA criterion, with its sensitivity and specificity\nc When RV collapse is most evident\nd Which is the more specific indicator, and its specificity\ne The sensitivity of IVC plethora, and its limitation",
+     "a": "**RA COLLAPSE** | **RV COLLAPSE**\nEarly systole / late diastole | **Early diastole**\nCollapse >1/3 of the cardiac cycle: **94% sensitive, 100% specific** for tamponade | Most evident in **expiration**\n | Significant reduction in cardiac output\n | **More specific** indicator; specificity **>90%**\n- IVC plethora: sensitivity **97%**, but **non-specific** - present in all conditions with elevated systemic venous pressure",
+     "section": "Chamber collapse",
+     "bank_questions": 2,
+     "bank_lines": [
+      "Marrow: RA collapse is the earliest and most sensitive echo sign of tamponade; LA collapse is late (and can occur with a loculated posterior effusion); electrical alternans means a large effusion with the heart swinging."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Echo → RA and RV collapse, IVC",
+      "intro": "Step 6 continues with the echo signs that show the pressure. A chamber collapses when pericardial pressure exceeds its own pressure at that moment, so each sign appears at the time in the cycle when that chamber is at its lowest pressure. Three real questions tested timing, specificity and the view.",
+      "why": [
+       [
+        "a",
+        "**RA collapse: late diastole and early systole; RV collapse: early diastole.** The RA is at its lowest pressure during atrial relaxation, the RV at the start of filling."
+       ],
+       [
+        "b",
+        "**RA collapse lasting more than 1/3 of the cardiac cycle: 94% sensitive, 100% specific for tamponade.** The figures are Gillam’s (Circulation 1983): any RA inversion was 100% sensitive but only 82% specific, and an inversion lasting over 0.34 of the cycle was 94% sensitive and 100% specific in that series. Brief RA inversion is common and non-specific; prolonged inversion is what counts. RA collapse is the earliest and most sensitive sign; LA collapse is late (or seen with a loculated posterior effusion)."
+       ],
+       [
+        "c",
+        "**RV collapse is most evident in expiration.** In expiration venous return to the right heart falls, so RV pressure is lowest and the wall gives way."
+       ],
+       [
+        "d",
+        "**RV collapse is the more specific indicator, over 90%, and goes with a significant fall in cardiac output.** RV wall is thicker, so it collapses only at higher pericardial pressure. It is absent when the RV is hypertrophied or under high pressure (pulmonary hypertension)."
+       ],
+       [
+        "e",
+        "**IVC plethora: 97% sensitive but non-specific, present in all states of high systemic venous pressure.** Its specificity is only about 40% (Himelman 1988; ESC 2025 quotes the same 97% and 40%). A normal, collapsing IVC makes tamponade very unlikely; a dilated one proves nothing on its own. It is best seen in the subcostal view, which also shows the effusion and the RA."
+       ]
+      ],
+      "mimic": [
+       [
+        "RA vs RV collapse",
+        "Earliest, most sensitive, late diastole; versus later, more specific, early diastole, worst in expiration."
+       ]
+      ],
+      "traps": [
+       [
+        "“RA collapse occurs late in tamponade”",
+        "False: RA collapse is the earliest sign; ‘late’ applies to its timing in the cycle (late diastole), not to the course of disease. LA collapse is the late one."
+       ],
+       [
+        "“Systolic RA collapse over 1/3 of the cycle is the most specific finding”",
+        "On the card’s own figure (100% specificity) this is defensible, but the DocT key and the exam convention name early diastolic RV collapse as the most specific single sign; choose RV collapse on exam day."
+       ],
+       [
+        "“Mitral E variation over 15% is diagnostic”",
+        "The cut-off is over 25% (CVS-25)."
+       ],
+       [
+        "“A dilated IVC confirms tamponade”",
+        "It is sensitive, not specific."
+       ]
+      ],
+      "decode": [
+       [
+        "Best view for IVC collapse and RA filling in suspected tamponade? [DocT QBank, 72%]",
+        "Subcostal (long-axis) view."
+       ],
+       [
+        "Large effusion, rising vasopressors — which echo finding is most specific? [DocT GT]",
+        "Early diastolic RV collapse."
+       ],
+       [
+        "False statement about echo in tamponade? [Marrow]",
+        "‘RA collapse occurs late’: it is the earliest sign."
+       ]
+      ],
+      "punch": "Each chamber collapses when it is at its lowest pressure: the RA in late diastole and earliest, the RV in early diastole, in expiration, and more specifically. A plethoric IVC is sensitive but proves little alone.",
+      "step": 6
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-26",
+     "q": "**For echocardiography in tamponade, give the sensitivity and specificity of:**\na Any collapse\nb RA collapse\nc RV collapse\nd Abnormal venous flow\ne Abnormal venous flow + 2 collapses",
+     "a": "**Finding** | **Sens.** | **Spec.**\nAny collapse | **90%** | 65%\nRA collapse | 68% | 66%\nRV collapse | 60% | **90%**\nRA + RV collapse | 45% | 92%\nAbnormal venous flow | 75% | 91%\nAbnormal venous flow + 1 collapse | 67% | 91%\nAbnormal venous flow + 2 collapses | 37% | **98%**",
+     "section": "Echo accuracy",
+     "bank_questions": 2,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Echo → Sensitivity and specificity",
+      "intro": "Step 6 then puts accuracy on the echo signs. The figures come from Mercé (1999), 110 patients with moderate or large effusions judged against clinical tamponade. The table is a lesson in trade-off: each extra sign you demand raises specificity and lowers sensitivity. Both real questions asked which test or sign confirms tamponade.",
+      "why": [
+       [
+        "a",
+        "**Any collapse: 90% sensitive, 65% specific.** Good for ruling out: no collapse at all makes tamponade unlikely."
+       ],
+       [
+        "b",
+        "**RA collapse: 68% sensitive, 66% specific.** Brief RA inversion is common without tamponade; prolonged inversion (over 1/3 of the cycle, CVS-24) is much more specific."
+       ],
+       [
+        "c",
+        "**RV collapse: 60% sensitive, 90% specific.** Specific, so it rules in."
+       ],
+       [
+        "d",
+        "**Abnormal venous flow: 75% sensitive, 91% specific.** Hepatic and caval flow with blunted or reversed diastolic forward flow."
+       ],
+       [
+        "e",
+        "**Abnormal venous flow plus two collapses: 37% sensitive, 98% specific.** Almost certain when present, but missed in most."
+       ]
+      ],
+      "mimic": [
+       [
+        "Rule-out vs rule-in signs",
+        "Any collapse or IVC plethora (sensitive); versus RV collapse or combinations (specific)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Pulsus paradoxus or MRI to confirm tamponade after a procedure”",
+        "Echo is the confirming test and guides drainage; MRI and catheterisation waste time."
+       ],
+       [
+        "“Systolic RA collapse is the most specific sign”",
+        "Exam convention keys early diastolic RV collapse; the card’s 100% figure for prolonged RA collapse comes from one series (CVS-24)."
+       ]
+      ],
+      "decode": [
+       [
+        "After LARIAT, hypotension, JVD, muffled sounds — next best step to confirm? [DocT GT]",
+        "Echocardiogram."
+       ],
+       [
+        "Most specific single echo finding for tamponade? [DocT GT]",
+        "Early diastolic RV collapse."
+       ]
+      ],
+      "punch": "The more signs you require, the more certain a positive becomes and the more cases you miss: any collapse rules out, RV collapse rules in, and venous flow plus two collapses is 98% specific.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-27",
+     "q": "**For pericardiocentesis, give:**\na The indication in unstable patients\nb The four indications in stable patients\nc The three puncture sites\nd The three absolute contraindications\ne The three relative contraindications",
+     "a": "- Haemodynamically **unstable**: **tamponade**\n- **Stable** patients: large effusion **>20 mm**; chronic effusion **>3 months**; symptomatic moderate-to-large effusion not responding to medical therapy; **small** effusion if TB, bacterial or neoplastic\n- Puncture sites: **subcostal, parasternal, apical**\n**ABSOLUTE C/I** | **RELATIVE C/I**\nAortic dissection | Platelets <50 K\nPost-MI free wall rupture | Coagulopathy\n— | Anticoagulant therapy; severe PAH (caution: RV may fail after drainage)",
+     "section": "Pericardiocentesis",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT: In arrest, an effusion seen on POCUS at the rhythm check is treated as tamponade and drained at once (subxiphoid, ultrasound-guided) during CPR, because compressions cannot fill a compressed heart. Thrombolysis (B) is for a dilated RV."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Tamponade → Treatment → Pericardiocentesis",
+      "intro": "Step 6 ends with the procedure. In the unstable patient there is only one indication; in the stable one the question is whether fluid will cause trouble or holds the diagnosis. Both real questions were cardiac arrest.",
+      "why": [
+       [
+        "a",
+        "**Unstable: tamponade.** Drain at once; in arrest, an effusion seen on POCUS at the rhythm check is treated as tamponade and drained during CPR, because compressions cannot fill a compressed heart."
+       ],
+       [
+        "b",
+        "**Stable: large effusion over 20 mm; chronic effusion over 3 months; symptomatic moderate-to-large effusion not responding to medical treatment; small effusion if TB, bacterial or neoplastic.** A large chronic idiopathic effusion can progress to tamponade without warning, and a small infected or malignant one holds the diagnosis."
+       ],
+       [
+        "c",
+        "**Subcostal, parasternal or apical.** Echo guidance chooses the site where fluid is deepest and closest; subcostal is the classic blind route and the one used during CPR; parasternal punctures stay close to the upper border of the rib and away from the internal thoracic artery."
+       ],
+       [
+        "d",
+        "**Absolute: aortic dissection; post-MI free-wall rupture.** Draining reduces the pressure that is holding the bleeding; both need surgery. ESC 2015 names only aortic dissection as the major contraindication and prefers surgery for free-wall rupture and traumatic haemopericardium."
+       ],
+       [
+        "e",
+        "**Relative: platelets under 50 × 10⁹/L, coagulopathy, anticoagulant therapy, severe pulmonary hypertension (the RV may fail after drainage).** ESC also lists small, posterior or loculated effusions. ESC 2025 advises removing under about 500 mL at a time; after drainage watch for pericardial decompression syndrome, paradoxical deterioration (pulmonary oedema or LV failure) after successful drainage."
+       ]
+      ],
+      "mimic": [
+       [
+        "Effusion vs dilated RV on POCUS in arrest",
+        "Fluid around the heart: drain; dilated RV without effusion: consider PE and thrombolysis."
+       ]
+      ],
+      "traps": [
+       [
+        "“Start thrombolytics” for an arrest with an effusion on POCUS",
+        "Half the cohort got this wrong. Thrombolysis is for a dilated RV; an effusion means drain, and resuscitative delivery still follows if there is no return of circulation by about 5 minutes with the fundus at or above the umbilicus."
+       ],
+       [
+        "“Pericardiocentesis for aortic dissection with haemopericardium”",
+        "Contraindicated; it can extend the bleed. Go to surgery."
+       ]
+      ],
+      "decode": [
+       [
+        "29 weeks pregnant, collapse, POCUS at rhythm check shows effusion — next step? [DocT QBank, 50%]",
+        "Pericardiocentesis."
+       ],
+       [
+        "Tamponade arrest with alternans and JVD — next step after CPR? [Marrow]",
+        "Emergency pericardiocentesis."
+       ]
+      ],
+      "punch": "Tamponade is drained at once, in arrest during CPR. Do not needle dissection or free-wall rupture: they need surgery, because the pericardial pressure is holding the bleed.",
+      "step": 6
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS01|CVS-18",
+     "q": "**Give the treatment for:**\na Recurrent pericarditis — all four lines\nb Tuberculous pericarditis — the ATT regimen\nc When pericardiectomy is indicated in TB pericarditis\nd The rate of constrictive pericarditis in TB, with and without ATT",
+     "a": "**Line** | **Recurrent pericarditis**\nFirst | Aspirin or NSAID + colchicine + exercise restriction\nSecond | Low-dose corticosteroids\nThird | **IV immunoglobulin, anakinra, or azathioprine**\nFourth | **Pericardiectomy**\n- TB pericarditis ATT: **2 months HRZE, then 4 months HR**\n- Pericardiectomy if not improving or deteriorating after **4-8 weeks** of ATT\n- Constrictive pericarditis occurs in **50%**; **ATT reduces it to 17%**",
+     "section": "Recurrent & TB",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: Chronic calcific constrictive pericarditis is cured only by pericardiectomy. Diuretics only palliate congestion, and anti-inflammatory therapy helps only transient (inflammatory, CMR late-gadolinium-positive) constriction. Calcification on CT after cardiac surgery or TB is the classic clue.",
+      "DocT GT: Constriction vs restrictive cardiomyopathy on echo: constriction shows >25% respiratory variation of mitral inflow, septal bounce, a preserved or high septal e' (annulus paradoxus/reversus: septal e' ≥ lateral) and a thick or calcified pericardium. Restriction (amyloid) has little respiratory variation, a low e' (<8 cm/s), thick myocardium and biatrial enlargement. TB is the classic cause of constriction in India.",
+      "DocT GT: At catheterisation the discriminator is DISCORDANT RV and LV systolic pressures with breathing in constriction (inspiration: RV up, LV down, from ventricular interdependence inside a fixed pericardium) vs CONCORDANT changes in restriction. Dip-and-plateau and equalised end-diastolic pressures occur in both, so they do not separate them; BNP is high in restriction and near-normal in constriction."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Pericarditis → Treatment → Recurrent and tuberculous",
+      "intro": "Step 4 ends with the hard cases: disease that keeps coming back, and TB, where the danger is constriction. Both real questions were about constriction, the late end of this story.",
+      "why": [
+       [
+        "a",
+        "**First: aspirin or NSAID + colchicine + exercise restriction; second: low-dose steroids; third: IV immunoglobulin, anakinra or azathioprine; fourth: pericardiectomy.** This is the 2015 ladder. ESC 2025 recommends IL-1 blockers (anakinra, rilonacept) for recurrent pericarditis with raised CRP that is corticosteroid-dependent and colchicine-resistant (reported as class I), and the ACC 2025 guidance uses them after failure of first-level therapy and/or steroids, especially with an inflammatory phenotype, so steroids need not come first; IVIG, azathioprine and hydroxychloroquine remain options for refractory, steroid-dependent disease. Recurrent pericarditis with a high CRP is an autoinflammatory, IL-1-driven disease, which is why these work."
+       ],
+       [
+        "b",
+        "**2 months of HRZE, then 4 months of HR.** Adjunctive steroids do not improve survival: in the IMPI trial (Mayosi, NEJM 2014, 1400 patients) prednisolone cut constriction (4.4% vs 7.8%) and hospitalisation but not the combined outcome of death, tamponade or constriction, and it raised HIV-associated cancers. ESC 2025 therefore suggests steroids only in HIV-negative patients."
+       ],
+       [
+        "c",
+        "**Pericardiectomy if not improving, or deteriorating, after 4–8 weeks of ATT.** By then fibrosis rather than active infection drives the constriction."
+       ],
+       [
+        "d",
+        "**Constriction in 50%; ATT reduces it to 17%.** The 50% is the rate without treatment; with ATT older series give 17–40%, so 17% is the best of that range. ESC 2025 says constriction affected up to 50% before effective TB therapy and 5–25% with contemporary treatment, and gives a 20–30% constriction risk for bacterial pericarditis overall, compared with under 1% for viral or idiopathic disease."
+       ]
+      ],
+      "mimic": [
+       [
+        "Constrictive pericarditis vs restrictive cardiomyopathy",
+        "Mitral inflow variation over 25%, septal bounce, septal e′ normal or high (annulus reversus), thick or calcified pericardium, near-normal BNP, discordant RV and LV pressures with breathing; versus little variation, low e′ (under 8 cm/s), thick myocardium, biatrial enlargement, high BNP, concordant pressures."
+       ],
+       [
+        "Chronic calcific vs transient constriction",
+        "Cured only by pericardiectomy; versus inflammatory, CMR late-enhancement positive, resolves with anti-inflammatory treatment."
+       ]
+      ],
+      "traps": [
+       [
+        "“High-dose diuretics are the definitive treatment of calcific constriction”",
+        "Diuretics only palliate congestion; pericardiectomy is the cure."
+       ],
+       [
+        "“Restrictive cardiomyopathy” for a TB patient with respiratory mitral variation",
+        "34% chose wrong: exaggerated respiratory variation of mitral inflow is the constrictive sign; restriction shows little."
+       ],
+       [
+        "“Dip-and-plateau and equal end-diastolic pressures separate constriction from restriction”",
+        "Both show them; discordant RV and LV systolic pressures with breathing are the discriminator."
+       ]
+      ],
+      "decode": [
+       [
+        "Prior cardiac surgery, ascites, hepatomegaly, oedema, pericardial calcification on CT — definitive treatment? [DocT GT]",
+        "Pericardiectomy."
+       ],
+       [
+        "Past TB, ascites, hepatomegaly, respiratory variation in mitral inflow, preserved EF — diagnosis? [DocT GT]",
+        "Constrictive pericarditis."
+       ],
+       [
+        "TB pericarditis worsening after 6 weeks of ATT? [pattern]",
+        "Pericardiectomy."
+       ]
+      ],
+      "punch": "Recurrence climbs the ladder from NSAID and colchicine to steroids or, now earlier, IL-1 blockers, then surgery. In TB the enemy is constriction: give ATT, and operate if there is no improvement after 4–8 weeks.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-703",
+   "text": "Myocarditis",
+   "steps": [
+    {
+     "card": "CVS02|CVS-32",
+     "q": "**Give the infectious aetiologies**\n**of myocarditis under:**\na Viral agents\nb Bacterial agents\nc Fungal agents\nd Parasitic agents\ne Protozoal agents",
+     "a": "**Viral:** adenoviruses, enteroviruses (coxsackievirus), herpes viruses (HHV-6, EBV), HCV, HIV, influenza\nA, **parvovirus B19**\n**Bacterial:** Borrelia, Mycobacterium, Mycoplasma pneumoniae, streptococcal species, Treponema\npallidum\n**Fungal:** Aspergillus, Candida, Coccidioides, Cryptococcus, Histoplasma\n**Parasitic:** larva migrans, schistosomiasis\n**Protozoal:** **Trypanosoma cruzi** (Chagas disease)",
+     "section": "Aetiology & Pathogenesis",
+     "bank_questions": 3,
+     "bank_lines": [
+      "DocT GT: Diphtheria (exotoxin myocarditis with conduction block, the leading cause of death in diphtheria) and Q fever (Coxiella burnetii) are also infective causes of myocarditis, alongside Coxsackie B (the commonest viral cause), so 'all of the above' is right."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Aetiology → Infectious causes",
+      "intro": "Step 2 opens with the causes. Viruses dominate, but bacteria, fungi, parasites and protozoa all inflame the myocardium, and the three real questions test the breadth of this list rather than the detail.",
+      "why": [
+       [
+        "a",
+        "**Viral: adenoviruses, enteroviruses (coxsackievirus), herpes viruses (HHV-6, EBV), HCV, HIV, influenza A, parvovirus B19.** Coxsackie B and adenovirus enter myocytes through the coxsackie-adenovirus receptor and lyse them directly; parvovirus B19 infects the endothelium of small vessels, so it injures the muscle indirectly. Influenza (and SARS-CoV-2) myocarditis can present with shock and a low ejection fraction in a patient whose lungs are clear (CVS-38)."
+       ],
+       [
+        "b",
+        "**Bacterial: Borrelia, Mycobacterium, Mycoplasma pneumoniae, streptococcal species, Treponema pallidum.** Borrelia (Lyme carditis) typically causes AV block. Diphtheria and Coxiella burnetii (Q fever) belong here too: diphtheria toxin causes myocarditis with conduction block and is the leading cause of death in diphtheria."
+       ],
+       [
+        "c",
+        "**Fungal: Aspergillus, Candida, Coccidioides, Cryptococcus, Histoplasma.** Mostly in the immunocompromised, as part of disseminated infection."
+       ],
+       [
+        "d",
+        "**Parasitic: larva migrans, schistosomiasis.** Helminths provoke an eosinophilic infiltrate."
+       ],
+       [
+        "e",
+        "**Protozoal: Trypanosoma cruzi (Chagas disease).** Chronic Chagas cardiomyopathy causes conduction disease (right bundle branch block, AV block), apical aneurysm and ventricular arrhythmia; Toxoplasma is another protozoal cause in the immunocompromised."
+       ]
+      ],
+      "mimic": [
+       [
+        "Influenza myocarditis vs ACS",
+        "Influenza myocarditis: febrile illness, troponin rise, global dysfunction, clean lungs and, if done, normal coronaries; ACS: risk factors, territorial ECG changes and wall-motion defect."
+       ],
+       [
+        "Viral myocarditis vs bacterial endocarditis",
+        "Endocarditis is a valve infection: persistent bacteraemia, a vegetation and a new regurgitant murmur; myocarditis has none of these."
+       ]
+      ],
+      "traps": [
+       [
+        "“Influenza with hypotension and a low EF — ACS” (31% missed the key)",
+        "With no infiltrates and a confirmed influenza infection, the troponin and global dysfunction are influenza myocarditis; ACS needs an ischaemic story and territorial changes."
+       ],
+       [
+        "“Diphtheria or Q fever do not cause myocarditis”",
+        "Both do; diphtheria toxin myocarditis with heart block is the commonest cause of death in diphtheria, so ‘all of the above’ was right."
+       ],
+       [
+        "“EBV is the most likely virus after a flu-like illness”",
+        "EBV is a recognised cause, but the classic textbook answer for the commonest viral cause is coxsackie B (CVS-34)."
+       ]
+      ],
+      "decode": [
+       [
+        "Confirmed influenza, hypotension, raised troponin, low EF, no infiltrates — diagnosis? [DocT GT, 69% right]",
+        "Influenza myocarditis: clean lungs exclude influenza pneumonia as the cause of shock; the heart is the failing organ."
+       ],
+       [
+        "Young man, flu-like illness, diffuse ST changes, raised troponin — most likely virus? [DocT GT, 85% right]",
+        "Coxsackie B."
+       ],
+       [
+        "Coxsackie, diphtheria, Q fever — which cause inflammatory myocarditis? [DocT GT, 89% right]",
+        "All of them."
+       ]
+      ],
+      "punch": "Almost any infection can inflame the heart: coxsackie B is the classic virus, influenza causes shock with clear lungs, diphtheria and Lyme cause heart block, and Chagas is the protozoal cause.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS02|CVS-38",
+     "q": "**For the life-threatening**\n**presentation of myocarditis,**\n**give:**\na The four components\nb What the asymptomatic form\nlooks like",
+     "a": "Life-threatening arrhythmias and **aborted sudden**\n**death**\n**Cardiogenic shock**\nSeverely impaired LV function\n**Asymptomatic:** Trop I elevated, **CAG normal**,\nECHO showing varying degrees of LV function",
+     "section": "Clinical Presentation",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Presentation → Life-threatening and asymptomatic",
+      "intro": "Step 3 ends at the two extremes: the patient who arrives in shock or arrest, and the one found by chance. The real question was the shock end, triggered by influenza.",
+      "why": [
+       [
+        "a",
+        "**Life-threatening arrhythmia and aborted sudden death; cardiogenic shock; severely impaired LV function.** This is fulminant myocarditis (ESC 2025: myocarditis with cardiogenic shock). Diffuse oedema stiffens and stuns the whole ventricle at once, so output falls within hours; the walls look thick and the LV is not dilated. An older series (McCarthy, NEJM 2000) found excellent long-term survival after fulminant lymphocytic myocarditis; newer cohorts (Ammirati, Circulation 2017 and 2019) show that fulminant disease carries more death and transplant than non-fulminant, but ventricular function often recovers in those who are supported through the acute phase, which is why mechanical support as a bridge is worth it (CVS-46)."
+       ],
+       [
+        "b",
+        "**Asymptomatic: troponin I raised, coronary angiogram normal, echo showing varying LV function.** Found during screening or after a viral illness; still needs CMR and follow-up because some progress."
+       ]
+      ],
+      "mimic": [
+       [
+        "Fulminant myocarditis vs septic cardiomyopathy",
+        "Septic cardiomyopathy: an infective source with vasodilatory shock and a dilated, recovering LV. Fulminant myocarditis: a viral prodrome, very high troponin, thick oedematous walls, low output and cold peripheries."
+       ],
+       [
+        "Fulminant myocarditis vs pulmonary embolism",
+        "PE: a dilated RV with a small LV, hypoxaemia and normal LV function. Myocarditis: global LV failure."
+       ]
+      ],
+      "traps": [
+       [
+        "“Influenza with hypotension and a low EF — ACS” (31% missed the key)",
+        "Influenza can cause fulminant myocarditis; global dysfunction after a viral illness with clean lungs is myocarditis, not plaque rupture."
+       ]
+      ],
+      "decode": [
+       [
+        "Confirmed influenza, hypotension, raised troponin, reduced EF, no pulmonary infiltrates — diagnosis? [DocT GT, 69% right]",
+        "Influenza myocarditis (life-threatening presentation)."
+       ]
+      ],
+      "punch": "Fulminant myocarditis is cardiogenic shock from a thick, oedematous, stunned ventricle; it is more dangerous than non-fulminant disease but can recover, so support it. Influenza is a classic trigger.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS02|CVS-40",
+     "q": "**For the ECG in myocarditis,**\n**give:**\na Its role\nb The most common finding\nc Four other findings\nd The three features indicating bad\nprognosis",
+     "a": "Role: a **screening tool**\n**Sinus tachycardia** - most common\n**ST-T changes without reciprocation**\nLV strain; QRS and QT prolongation; AV conduction blocks and ventricular arrhythmias\n**Bad prognosis:** QTc **>440 msec** • ventricular arrhythmia • prolonged QRS **>120 ms**",
+     "section": "Investigations",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: The ECG in myocarditis is INSENSITIVE and non-specific (sinus tachycardia, non-specific ST-T changes) — it screens but cannot exclude; troponin I is more specific than sensitive, so CMR or biopsy confirms."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Investigations → ECG",
+      "intro": "Step 4 continues with the ECG: cheap and almost always abnormal in some way, but not specific and not sensitive enough to rule myocarditis out. The one real question tested exactly that.",
+      "why": [
+       [
+        "a",
+        "**Role: a screening tool.** It is done in everyone, but its changes are non-specific and a normal ECG does not exclude myocarditis; it raises suspicion, it does not decide."
+       ],
+       [
+        "b",
+        "**Sinus tachycardia is the most common finding.** It reflects fever, pain and a falling stroke volume, and is the least specific finding of all."
+       ],
+       [
+        "c",
+        "**ST-T changes without reciprocation; LV strain; QRS and QT prolongation; AV conduction block and ventricular arrhythmias.** Inflammation is patchy and epicardial, so ST changes are diffuse without a reciprocal territory, as in pericarditis (CVS-08); fulminant disease may show low voltage from oedema. Block and VT suggest giant-cell myocarditis, sarcoid or Lyme (CVS-37)."
+       ],
+       [
+        "d",
+        "**Bad prognosis: QTc >440 ms, ventricular arrhythmia, QRS >120 ms.** A wide QRS means inflammation and fibrosis in the conducting tissue and was an independent predictor of death or transplant in biopsy-proven myocarditis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Myocarditis vs STEMI on the ECG",
+        "Myocarditis: diffuse ST change without reciprocity and often sinus tachycardia. STEMI: territorial elevation with reciprocal depression (CVS-08)."
+       ]
+      ],
+      "traps": [
+       [
+        "“The ECG is sensitive for myocarditis”",
+        "False: it is often abnormal but non-specifically, and a normal ECG does not exclude it. Troponin is also more specific than sensitive, so CMR or biopsy confirms."
+       ]
+      ],
+      "decode": [
+       [
+        "Myocarditis statements — which is false? [Marrow]",
+        "‘The ECG is sensitive’: it is non-specific and insensitive, a screening test only."
+       ],
+       [
+        "[pattern] ECG features of poor prognosis in myocarditis?",
+        "QRS >120 ms, QTc >440 ms, ventricular arrhythmia."
+       ]
+      ],
+      "punch": "The ECG in myocarditis is usually abnormal but non-specific: sinus tachycardia and diffuse ST-T changes without reciprocity. It screens, it cannot exclude, and a wide QRS predicts a bad outcome.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS02|CVS-42",
+     "q": "**For cardiac MRI in**\n**myocarditis, give:**\na When it should be performed\nb The three markers of tissue injury\nit evaluates\nc The characteristic enhancement\npattern",
+     "a": "Non-invasive assessment; should be performed in **symptomatic patients with clinical suspicion**\nof myocarditis\nThree markers of tissue injury:\n→ Intracellular and interstitial **oedema**\n→ **Hyperaemia** and capillary leakage\n→ **Necrosis and fibrosis**\n**Late gadolinium enhancement (LGE)** of myocardial pattern",
+     "section": "Investigations",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT GT: CMR yield in myocarditis is highest when done >~7 days after symptom onset (ideally within 2–3 weeks), when oedema, hyperaemia and LGE are all visible. CMR cannot tell viral from non-viral cause and does not replace endomyocardial biopsy when giant-cell or fulminant myocarditis is suspected."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Investigations → Cardiac MRI",
+      "intro": "Step 4 reaches the test that sees the tissue without a biopsy. The real question asked when CMR works best and what it can and cannot tell, and half the cohort got it wrong.",
+      "why": [
+       [
+        "a",
+        "**Performed in symptomatic patients with clinical suspicion of myocarditis.** ESC 2025 makes CMR the non-invasive cornerstone and accepts a compatible presentation with positive CMR as definite myocarditis. Yield is highest when it is done after about the first week (ideally within 2–3 weeks), when oedema, hyperaemia and LGE are all present; very early or late scans miss oedema."
+       ],
+       [
+        "b",
+        "**Three markers of tissue injury: intracellular and interstitial oedema, hyperaemia and capillary leakage, necrosis and fibrosis.** These are the 2009 Lake Louise markers (T2 oedema, early gadolinium enhancement, LGE), two of three positive; sensitivity 67%, specificity 91%. The 2018 update needs one T2-based criterion (oedema) and one T1-based criterion (native T1, extracellular volume or non-ischaemic LGE), drops early enhancement, and is more accurate (sensitivity about 88%, specificity about 96%)."
+       ],
+       [
+        "c",
+        "**Late gadolinium enhancement of myocardial pattern.** The pattern is non-ischaemic: patchy, subepicardial or mid-wall, typically inferolateral or septal, sparing the subendocardium. An infarct starts at the subendocardium and follows a territory, so the location separates the two; it does not name the virus or the type of myocarditis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Myocarditis LGE vs infarct LGE",
+        "Myocarditis: subepicardial or mid-wall, patchy, inferolateral or septal. Infarct: subendocardial or transmural, in a coronary territory."
+       ]
+      ],
+      "traps": [
+       [
+        "“The location of LGE confirms a viral aetiology”",
+        "CMR cannot tell viral from non-viral or name the histology; that needs biopsy with PCR."
+       ],
+       [
+        "“CMR replaces endomyocardial biopsy”",
+        "Not when giant-cell, eosinophilic or fulminant myocarditis is suspected, or before immunosuppression; histology and PCR decide treatment."
+       ],
+       [
+        "“LGE extent does not predict events; LVEF does” (DocT’s explanation for rejecting option C)",
+        "DocT’s key is ‘sensitivity highest after 7 days’ and its explanation names LVEF, not LGE, as the prognostic marker. That is dated: LGE presence and extent, especially mid-wall septal LGE, independently predict events (ITAMY; ESC 2025). In a DocT paper pick ‘after 7 days’; in a newer paper LGE extent is also correct."
+       ]
+      ],
+      "decode": [
+       [
+        "Suspected myocarditis, subepicardial inferolateral LGE — which statement on CMR is correct? [DocT GT, 50% right]",
+        "Key: sensitivity highest after about 7 days from onset. LGE extent predicting events is also true by current evidence; LGE location does not identify the virus, and CMR does not replace biopsy."
+       ],
+       [
+        "[pattern] 2018 Lake Louise criteria for myocarditis?",
+        "One T2-based (oedema) plus one T1-based (T1 mapping, ECV or non-ischaemic LGE) criterion."
+       ]
+      ],
+      "punch": "CMR shows oedema and patchy subepicardial or mid-wall LGE; the 2018 Lake Louise criteria need one T2 and one T1 marker, yield is best after the first week, and the extent of LGE carries prognosis, but it cannot name the cause.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS02|CVS-43",
+     "q": "**For endomyocardial biopsy,**\n**give:**\na Its diagnostic status\nb Its two clinical uses\nc The precondition before starting\nimmunosuppression\nd The aetiology suggested by each\nof the five histological patterns",
+     "a": "**Gold standard** for diagnosis of myocarditis\nIdentifies specific aetiology, allowing treatment to be tailored\nIt is the **basis for starting immunosuppressive**\n**treatment**\nImmunosuppression should be started **only after**\n**ruling out active infection on EMB by PCR**\n\n**EMB pattern** | **Aetiology**\n**Lymphocytic** | Viral / autoimmune\n**Neutrophilic** | Bacterial / fungal / early viral\n**Eosinophilic** | Hypersensitivity myocarditis / hypereosinophilic syndrome\n**Granulomatous** | Sarcoidosis\n**Giant cells** | Giant cell myocarditis",
+     "section": "Investigations",
+     "bank_questions": 1,
+     "bank_lines": [
+      "Marrow: AHA/Fink indications for endomyocardial biopsy: refractory HF or worsening EF despite therapy, new heart block or VT, HF with rash/fever/eosinophilia, connective-tissue disease, suspected amyloid/sarcoid/haemochromatosis, and suspected giant-cell myocarditis.",
+      "DocT GT: Giant cell myocarditis (giant cells + extensive myocyte necrosis on biopsy) is the one myocarditis where combined immunosuppression (steroid + cyclosporine ± azathioprine) is life-saving; refractory VT and shock are typical, so plan early mechanical support or transplant. Lymphocytic viral myocarditis gets supportive care."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Investigations → Endomyocardial biopsy",
+      "intro": "Step 4 ends with the gold standard. Biopsy is invasive and samples only a few millimetres, so the questions are when to do it and what each pattern means.",
+      "why": [
+       [
+        "a",
+        "**Gold standard for the diagnosis of myocarditis.** It is the only test that names the histological type and detects viral genome; its weakness is sampling error, because inflammation is patchy. Taking several samples from both ventricles, or guided by CMR or mapping, improves yield."
+       ],
+       [
+        "b",
+        "**It identifies the specific aetiology, so treatment can be tailored, and it is the basis for starting immunosuppression.** Giant-cell, eosinophilic and sarcoid myocarditis are treated with immunosuppression; lymphocytic viral myocarditis is not. ESC 2025 advises biopsy in acute heart failure or cardiogenic shock, malignant arrhythmia or conduction disease, LVEF <40%, extensive acute LGE, suspected giant-cell myocarditis or sarcoid, and failure to respond to treatment. The AHA (Cooper 2007) list is new unexplained heart failure under 2 weeks with haemodynamic compromise; 2 weeks to 3 months with a dilated LV and new ventricular arrhythmia, Mobitz II or complete block, or no response in 1–2 weeks; and heart failure with rash, fever or eosinophilia, connective-tissue disease, suspected infiltrative disease or suspected giant-cell myocarditis."
+       ],
+       [
+        "c",
+        "**Immunosuppression only after active infection has been ruled out by PCR on the biopsy.** Suppressing immunity while the virus replicates removes the defence that limits myocyte lysis (CVS-35)."
+       ],
+       [
+        "d",
+        "**Lymphocytic: viral or autoimmune; neutrophilic: bacterial, fungal or early viral; eosinophilic: hypersensitivity or hypereosinophilic syndrome; granulomatous: sarcoidosis; giant cells: giant-cell myocarditis.** Giant cells with extensive myocyte necrosis and no well-formed granulomas mean giant-cell myocarditis; non-caseating granulomas with less necrosis mean sarcoid."
+       ]
+      ],
+      "mimic": [
+       [
+        "Giant-cell myocarditis vs cardiac sarcoid",
+        "Both cause VT and heart block. Giant-cell: younger, faster, diffuse necrosis with giant cells and no granulomas, worse survival. Sarcoid: non-caseating granulomas, extracardiac disease, slower course."
+       ]
+      ],
+      "traps": [
+       [
+        "“Giant-cell myocarditis gets supportive care, as viral myocarditis does”",
+        "It is the one myocarditis where combined immunosuppression (steroid plus cyclosporine, with or without azathioprine) is life-saving; refractory VT and shock are typical, so plan early mechanical support or transplant."
+       ],
+       [
+        "“Failure of EF to improve after optimal heart failure therapy is not an indication for EMB” (Marrow’s key)",
+        "The key is disputed. Marrow’s source table lists worsening EF despite therapy but not failure to improve. The AHA/ACC/ESC 2007 statement itself makes failure to respond to usual care within 1–2 weeks a Class I indication (heart failure of 2 weeks to 3 months with a dilated LV), ESC (CVS-45) sends LV dysfunction persisting after 3 months of therapy to biopsy, and ESC 2025 lists failure to respond. In Marrow’s question pick its key; in any guideline-based question it is an indication."
+       ]
+      ],
+      "decode": [
+       [
+        "Cardiogenic shock with refractory VT; biopsy shows multinucleated giant cells and extensive necrosis — management priority? [DocT GT]",
+        "High-dose combined immunosuppression and early consideration of mechanical support or transplant."
+       ],
+       [
+        "Indications for endomyocardial biopsy — which is incorrect? [Marrow]",
+        "Marrow keys ‘no EF improvement after optimal HF therapy’; refractory HF, new block or VT, eosinophilia, CTD, infiltrative disease and suspected giant-cell are the classic indications. By AHA 2007 and ESC, failure to respond is also an indication, so the key is disputed."
+       ]
+      ],
+      "punch": "Biopsy names the type and the virus, and only a virus-negative biopsy licenses immunosuppression; giant cells with necrosis mean giant-cell myocarditis, the form that needs immediate combined immunosuppression and early mechanical support.",
+      "table": {
+       "title": "EMB pattern and what it changes",
+       "head": [
+        "Pattern",
+        "Usual cause",
+        "Treatment it points to"
+       ],
+       "rows": [
+        [
+         "Lymphocytic, PCR+",
+         "Viral",
+         "Supportive care; no immunosuppression"
+        ],
+        [
+         "Lymphocytic, PCR−",
+         "Autoimmune",
+         "Immunosuppression may be considered (CVS-47)"
+        ],
+        [
+         "Eosinophilic",
+         "Hypersensitivity, HES, EGPA",
+         "Stop the drug; steroids"
+        ],
+        [
+         "Granulomatous",
+         "Sarcoidosis",
+         "Steroids ± steroid-sparing agent"
+        ],
+        [
+         "Giant cells",
+         "Giant-cell myocarditis",
+         "Combined immunosuppression; early MCS or transplant"
+        ]
+       ]
+      },
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS02|CVS-46",
+     "q": "**For haemodynamically**\n**unstable myocarditis, give the**\n**treatment for:**\na Cardiogenic shock with normal\nBP\nb Cardiogenic shock with low BP\nc Increased filling pressures\nd Refractory shock\ne Failure to recover within 4 weeks",
+     "a": "**Situation** | **Treatment**\nClass IV shock, **normal BP** | **Vasodilators**\nClass IV shock, **low BP** | **Inotropes and vasopressors**\nIncreased filling pressures | **Diuretics**\nRefractory shock | **IABP, ECMO, VAD**\nNo recovery within **4 weeks** | **Cardiac transplantation**",
+     "section": "Diagnosis & Management",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Management → Haemodynamically unstable disease",
+      "intro": "Step 5 continues with the unstable patient, the ICU part of the deck. Both real questions are the same scenario: shock that keeps worsening on drugs.",
+      "why": [
+       [
+        "a",
+        "**Class IV shock with normal BP: vasodilators.** If pressure is preserved, lowering afterload (nitrates, nitroprusside) lets a weak ventricle eject more."
+       ],
+       [
+        "b",
+        "**Cardiogenic shock with low BP: inotropes and vasopressors.** Norepinephrine to hold perfusion pressure, dobutamine or milrinone for output; they buy time but raise myocardial oxygen demand and arrhythmia risk in an inflamed heart."
+       ],
+       [
+        "c",
+        "**Increased filling pressures: diuretics.** To relieve congestion once perfusion is secured."
+       ],
+       [
+        "d",
+        "**Refractory shock: IABP, ECMO, VAD.** Fulminant myocarditis can recover fully if the patient survives the acute weeks, so mechanical support is a bridge to recovery. VA-ECMO is the most used (SCAI D–E, biventricular failure); an IABP may be a first bridge in less severe shock; a microaxial LV pump (Impella) unloads the LV, alone or with ECMO; durable VADs are for no recovery."
+       ],
+       [
+        "e",
+        "**No recovery within 4 weeks: cardiac transplantation.** The guidelines give no fixed number of weeks: ESC 2013 says transplantation should be deferred in the acute phase because recovery may occur, and considered when the patient cannot be weaned from drug and mechanical support; ESC 2025 says refractory cases may need long-term MCS or transplant. The tension is the same: waiting too long on temporary support risks multiorgan failure and device complications, transplanting too early removes a heart that might have recovered. Giant-cell myocarditis rarely recovers, so it reaches transplant or durable support sooner (AHA 2020)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Fulminant myocarditis vs AMI shock on MCS",
+        "In myocarditis the injured muscle can recover, so MCS is a bridge to recovery; in AMI shock, scar is permanent and the route to durable support or transplant is commoner."
+       ]
+      ],
+      "traps": [
+       [
+        "“Switch dobutamine to milrinone and add vasopressin”",
+        "Changing drugs does not fix refractory shock (CI 1.8, lactate 5 on two agents); the next step is VA-ECMO."
+       ],
+       [
+        "“Pulse methylprednisolone for biopsy-proven viral myocarditis in shock”",
+        "Immunosuppression with virus present can worsen it; steroids are for virus-negative immune forms (CVS-47)."
+       ],
+       [
+        "“Repeat the biopsy to see if inflammation has resolved”",
+        "A deteriorating patient needs support now, not more histology."
+       ]
+      ],
+      "decode": [
+       [
+        "Biopsy-proven viral myocarditis, CI 1.8, lactate 5, on high-dose dobutamine and norepinephrine, worsening — next step? [DocT GT]",
+        "VA-ECMO: mechanical support for shock refractory to drugs."
+       ],
+       [
+        "Fulminant myocarditis, ventilated, shock despite maximal inotropes — next step? [Marrow]",
+        "Mechanical circulatory support as a bridge to recovery (Marrow keys LVAD). In practice the first device is temporary, usually VA-ECMO with or without a microaxial LV pump; a durable LVAD comes only if the heart does not recover."
+       ]
+      ],
+      "punch": "When fulminant myocarditis stays in shock on two vasoactive drugs, go to mechanical support, usually VA-ECMO, because the heart may recover; transplant or durable support is for the heart that cannot be weaned, the card’s ‘4 weeks’ being a rule of thumb rather than a guideline cut-off.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS02|CVS-47",
+     "q": "**For immunosuppression in**\n**myocarditis, give:**\na The Myocarditis Treatment Trial\npopulation\nb The four ESC situations where it\nmay be considered\nc The absolute precondition",
+     "a": "- **Myocarditis Treatment Trial** (NEJM 1995): **111** patients with myocarditis and **LVEF <45%**,\nrandomised to conventional therapy alone or combined with **24 weeks** of immunosuppressive\ntherapy\n- ESC position statement - immunosuppressant may be considered in:\n- → **Worsening heart failure despite standard Rx**\n- → **Giant cell / eosinophilic myocarditis,**\n**sarcoidosis**\n- → Myocarditis associated with **autoimmune**\n**diseases**\n- → Started **only after ruling out active infection**\n**on EMB by PCR**",
+     "section": "Diagnosis & Management",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Myocarditis → Management → Immunosuppression",
+      "intro": "Step 6 asks when to treat the immune response itself. The negative trial explains the caution; the ESC list says where it is still used.",
+      "why": [
+       [
+        "a",
+        "**Myocarditis Treatment Trial (NEJM 1995): 111 patients with myocarditis and LVEF <45%, randomised to conventional therapy alone or with 24 weeks of immunosuppression.** Prednisone with cyclosporine or azathioprine did not improve LVEF or survival; it included virus-positive and virus-negative patients alike, since PCR was not used. Later virus-negative trials (TIMIC: prednisone plus azathioprine for 6 months) did improve LVEF."
+       ],
+       [
+        "b",
+        "**Worsening heart failure despite standard treatment; giant-cell or eosinophilic myocarditis, sarcoidosis; myocarditis with autoimmune disease.** These are the virus-negative immune forms. ESC 2025 says immunosuppressants and corticosteroids should not be used as initial therapy; it reserves them for biopsy-proven or highly suspected immune forms (giant-cell, eosinophilic, sarcoid, autoimmune), fulminant non-infectious myocarditis (IIa C) and refractory ventricular dysfunction (IIb C)."
+       ],
+       [
+        "c",
+        "**Started only after active infection has been ruled out on EMB by PCR.** Suppressing immunity while a virus replicates removes the defence that limits myocyte lysis. Patient selection is the likely reason the unselected MTT was negative while the virus-negative TIMIC was positive (CVS-30, 43)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Myocarditis Treatment Trial vs TIMIC",
+        "MTT: unselected histological myocarditis, no benefit. TIMIC: virus-negative inflammatory cardiomyopathy, LVEF improved."
+       ]
+      ],
+      "traps": [
+       [
+        "“The Myocarditis Treatment Trial showed immunosuppression improves LVEF”",
+        "It did not; benefit appears only when patients are selected by a negative viral PCR."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] Absolute precondition before immunosuppression in myocarditis?",
+        "Active infection excluded by PCR on endomyocardial biopsy."
+       ]
+      ],
+      "punch": "Unselected immunosuppression failed in the Myocarditis Treatment Trial; it works only in virus-negative immune forms, above all giant-cell and eosinophilic myocarditis, so a negative PCR on biopsy comes first.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-704",
+   "text": "Infective endocarditis",
+   "steps": [
+    {
+     "card": "TU-IE|IE-01",
+     "q": "**IE organism by setting:** name the likely bug.",
+     "a": "**SETTING** | **ORGANISM**\nAcute (days, sepsis, new severe regurgitation, Janeway lesions) | **S. aureus**: commonest overall (~30%), also on rheumatic/damaged valves\nIVDU, right-sided (tricuspid) | **S. aureus**; less often Pseudomonas, Candida\nSubacute on damaged native valve, after dental work | **Viridans streptococci**\nElderly after GU/GI procedure | **Enterococci** (E. faecalis); S. gallolyticus (bovis) → colonoscopy\nEarly prosthetic valve (<12 months) | **CoNS**, S. aureus, Gram-negatives, Candida\nBlood culture-negative | Prior antibiotics (commonest); **HACEK**, Coxiella, Bartonella, Brucella, Tropheryma",
+     "section": "Recognition & Organisms",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Recognition → Organism by setting",
+      "intro": "Step 1 starts with the organism, because the setting predicts it before cultures return and the organism then sets the tempo, the complications and the regimen. The bank question behind this card gives a rheumatic valve with five days of fever and shock, and only a fifth of the cohort chose S. aureus.",
+      "why": [
+       [
+        "a",
+        "**Acute (days, sepsis, new severe regurgitation, Janeway lesions) → S. aureus: commonest overall (~30%), also on rheumatic or damaged valves.** S. aureus binds both normal and damaged endothelium through surface adhesins and destroys a leaflet within days. The tempo outweighs the substrate: a rheumatic valve does not make it streptococcal when the course is five days and the patient needs pressors."
+       ],
+       [
+        "b",
+        "**IVDU, right-sided (tricuspid) → S. aureus; less often Pseudomonas, Candida.** Skin flora is injected straight into the venous return to the tricuspid valve; contaminated water and diluents bring Pseudomonas and Candida."
+       ],
+       [
+        "c",
+        "**Subacute on a damaged native valve after dental work → viridans streptococci.** They need a ready-made fibrin–platelet nidus on an abnormal valve and are not destructive, so they cause weeks of low-grade fever, not shock."
+       ],
+       [
+        "d",
+        "**Elderly after a GU or GI procedure → enterococci (E. faecalis); S. gallolyticus (bovis) → colonoscopy.** S. gallolyticus bacteraemia is linked to colonic neoplasia, so the colon is examined even without bowel symptoms."
+       ],
+       [
+        "e",
+        "**Early prosthetic valve (<12 months) → CoNS, S. aureus, Gram-negatives, Candida.** These are acquired around the operation or in hospital and live in biofilm on the sewing ring. After 12 months the spectrum returns to that of native-valve IE."
+       ],
+       [
+        "f",
+        "**Blood culture-negative → prior antibiotics (commonest); HACEK, Coxiella, Bartonella, Brucella, Tropheryma.** These are fastidious or intracellular organisms that grow slowly or not at all in routine bottles, so they are found by serology, PCR or valve tissue (IE-15)."
+       ]
+      ],
+      "mimic": [
+       [
+        "S. aureus vs viridans streptococci",
+        "Days, shock and a newly destroyed valve vs weeks of low-grade fever on an already abnormal valve."
+       ],
+       [
+        "Early vs late PVE",
+        "Under 12 months: hospital organisms (CoNS, S. aureus, Gram-negatives, Candida); later: the native-valve spectrum."
+       ]
+      ],
+      "traps": [
+       [
+        "“Rheumatic valve, so viridans streptococcus” (DocT GT2o Q124: only 20% chose S. aureus)",
+        "The predisposition tells you where IE settles, not which organism. Five days of fever, Janeway lesions, a newly severe MR and rising pressors are the S. aureus tempo."
+       ],
+       [
+        "“CoNS in the blood after valve surgery is a contaminant”",
+        "On a prosthetic valve within a year it is a leading cause, and Duke-ISCVID counts CoNS as a typical organism when intracardiac prosthetic material is present."
+       ]
+      ],
+      "decode": [
+       [
+        "Rheumatic MS, 5 days of fever, plantar lesions, newly severe MR, rising pressors: most likely organism? [DocT GT2o Q124, 20%]",
+        "S. aureus: an acute, destructive course whatever the substrate."
+       ],
+       [
+        "Fever and positive cultures 3 weeks after valve replacement: likely organism? [pattern]",
+        "CoNS or S. aureus (early PVE)."
+       ]
+      ],
+      "punch": "The tempo names the organism: days and destruction mean S. aureus, weeks on a damaged valve mean viridans streptococci, and the first year after valve surgery means hospital organisms.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-03",
+     "q": "**Duke-ISCVID 2023 criteria:**\na Major\nb Minor\nc Definite vs possible",
+     "a": "a **Major**:\n- **Micro**: *typical* organism (S. aureus, S. lugdunensis, E. faecalis, streptococci except pneumoniae/pyogenes, HACEK, Gemella, Abiotrophia, Granulicatella) in **≥2 sets**; *non-typical* (e.g. E. coli) in **≥3 sets**; Coxiella phase I IgG **>1:800**; Bartonella IgG ≥1:800; positive PCR\n- **Imaging**: vegetation, abscess, perforation, pseudoaneurysm, fistula, new dehiscence on echo/**cardiac CT**; **PET-CT** uptake at a valve/graft/lead (>3 months after surgery); **new** regurgitation on echo\n- **Surgical**: IE seen at operation\nb **Minor**: predisposition (prosthesis, prior IE, RHD, IVDU, CIED, HCM, congenital), **fever >38 °C**, **vascular** (emboli, septic lung infarcts, cerebral/splenic abscess, mycotic aneurysm, ICH, Janeway), **immunological** (Osler, Roth, RF, immune-complex GN), **micro** not meeting major\nc **Definite** = 2 major, 1 major + 3 minor, or 5 minor. **Possible** = 1 major + 1 minor, or 3 minor.",
+     "section": "Diagnosis",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Diagnosis → Duke-ISCVID 2023 criteria",
+      "intro": "Step 2 is proof. The 2023 Duke-ISCVID criteria turn the bedside picture into ‘definite’, ‘possible’ or ‘rejected’; the bank questions test the thresholds (how many sets, which organism, how to count), not the list.",
+      "why": [
+       [
+        "a",
+        "**Major: typical organism in ≥2 sets, non-typical (e.g. E. coli) in ≥3; Coxiella phase I IgG >1:800; Bartonella IgG ≥1:800; positive PCR; imaging (vegetation, abscess, perforation, pseudoaneurysm, fistula, new dehiscence on echo or cardiac CT; PET-CT uptake >3 months after surgery; new regurgitation on echo); IE seen at operation.** The typical organisms are so specific for IE that two sets are enough; anything else needs three to exclude contamination or another source. With intracardiac prosthetic material, ISCVID also counts CoNS, Corynebacterium striatum/jeikeium, Serratia, Pseudomonas aeruginosa, Cutibacterium, M. chimaera and Candida as typical. PET-CT within 3 months of surgery is only minor, because healing tissue around the sewing ring takes up FDG too."
+       ],
+       [
+        "b",
+        "**Minor: predisposition (prosthesis, prior IE, RHD, IVDU, CIED, HCM, congenital), fever >38 °C, vascular, immunological, microbiology not meeting major.** ISCVID words the valve predisposition as ‘more than mild regurgitation or stenosis of any cause’, which is why rheumatic MS/MR counts. A culture that fails the major threshold is not discarded; it becomes a minor criterion (IE-04)."
+       ],
+       [
+        "c",
+        "**Definite = 2 major, 1 major + 3 minor, or 5 minor; possible = 1 major + 1 minor, or 3 minor.** Definite can also be pathological (organisms or active IE in a vegetation, valve or embolus). ‘Rejected’ needs a firm alternative diagnosis, resolution (or no IE at surgery or autopsy) after under 4 days of antibiotics, or failure to reach ‘possible’."
+       ]
+      ],
+      "mimic": [
+       [
+        "Duke-ISCVID 2023 vs modified Duke (2000)",
+        "2023 adds cardiac CT and PET-CT as major imaging, the surgical criterion, PCR, and CIED/HCM/IVDU predispositions; the arithmetic for definite and possible is unchanged."
+       ],
+       [
+        "PET-CT major vs minor",
+        "More than 3 months after implantation: major; within 3 months: minor."
+       ]
+      ],
+      "traps": [
+       [
+        "“Worsening of a known murmur is a major criterion”",
+        "Only new regurgitation on echo is major; worsening of existing regurgitation does not count, and a new murmur on auscultation is minor and only when echo is unavailable."
+       ],
+       [
+        "“Any organism in two sets is major”",
+        "Two sets only for typical organisms; E. coli and other rare causes need three."
+       ]
+      ],
+      "decode": [
+       [
+        "Count majors and minors and classify (definite, possible, rejected) [DocT GT6 Q3; worked in IE-04]",
+        "2 major, 1 major + 3 minor, or 5 minor = definite."
+       ],
+       [
+        "Which imaging became a major criterion in 2023? [pattern]",
+        "Cardiac CT, and [18F]FDG PET-CT more than 3 months after surgery."
+       ]
+      ],
+      "punch": "Two sets for a typical organism, three for a rare one; a culture that fails as major still counts as minor; definite is two major, one major plus three minor, or five minor.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-05",
+     "q": "**Embolic and immune complications of IE:**\na Where emboli go and what they look like\nb Embolic risk factors\nc Immune complications",
+     "a": "a **Brain** (~20–40%): stroke, **multiple ring-enhancing abscesses** at grey-white junction (IVDU + fever + hemiparesis), **mycotic aneurysm** → ICH/SAH. **Spleen**: infarct or abscess. **Lung**: septic emboli from right-sided IE. Limbs, kidney, mesentery, coronary.\nb **Vegetation >10 mm** (>30 mm very high), **mobile**, **mitral** (anterior leaflet), **S. aureus**, Candida, prior embolism; risk highest before and in the **first 2 weeks** of antibiotics.\nc **Immune-complex GN** (red-cell casts, low complement), Osler nodes, Roth spots, arthritis, positive RF.",
+     "section": "Complications",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Complications → Emboli and immune phenomena",
+      "intro": "Step 3: what the vegetation does once it is there. It throws fragments into the circulation and keeps releasing antigen into the blood; the bank questions give the embolic or immune picture and ask for the one diagnosis behind it.",
+      "why": [
+       [
+        "a",
+        "**Brain (~20–40%): stroke, multiple ring-enhancing abscesses at the grey–white junction, mycotic aneurysm → ICH/SAH; spleen: infarct or abscess; lung: septic emboli from right-sided IE; also limbs, kidney, mesentery, coronary.** Left-sided fragments go wherever arterial flow takes them, and the brain is the commonest symptomatic target; emboli lodge where arteries narrow, at the grey–white junction. An infected embolus in a distal artery weakens its wall and forms a mycotic aneurysm, which can bleed."
+       ],
+       [
+        "b",
+        "**Embolic risk: vegetation >10 mm (>30 mm very high), mobile, mitral (anterior leaflet), S. aureus, Candida, prior embolism; highest before and in the first 2 weeks of antibiotics.** Effective therapy sterilises and organises the vegetation, so risk falls steeply after two weeks; that is why surgery to prevent embolism is decided early (IE-08)."
+       ],
+       [
+        "c",
+        "**Immune complications: immune-complex GN (red-cell casts, low complement), Osler nodes, Roth spots, arthritis, positive RF.** Continuous antigen release forms circulating immune complexes that deposit in glomeruli (consuming complement), skin and retina."
+       ]
+      ],
+      "mimic": [
+       [
+        "Osler nodes vs Janeway lesions",
+        "Painful pulp nodules (immunological minor) vs painless palmar or plantar macules (vascular minor)."
+       ],
+       [
+        "IE vs systemic vasculitis",
+        "Fever, a murmur, positive cultures and emboli point to IE; vasculitis does not make vegetations."
+       ]
+      ],
+      "traps": [
+       [
+        "“Vasculitis” for IVDU + apical murmur + stroke + red-cell casts (Marrow QB25-Q28)",
+        "Septic emboli and immune-complex GN from left-sided (mitral) IE explain every finding."
+       ],
+       [
+        "“Tuberculoma or glioma” for multiple ring-enhancing lesions in a febrile heroin user (DocT Substance-Related (Part 1) Q18, 87%)",
+        "Multiple lesions with acute fever and hemiparesis are septic embolic abscesses; tuberculoma is subacute and usually single or few."
+       ]
+      ],
+      "decode": [
+       [
+        "IVDU, fever, apical murmur, stroke, red-cell casts: cause? [Marrow QB25-Q28]",
+        "Septic emboli from IE."
+       ],
+       [
+        "RHD, fever, arthralgia, confusion: suspect? [Marrow QB23-Q12]",
+        "Acute infective endocarditis."
+       ],
+       [
+        "IV heroin, fever, altered sensorium, hemiparesis, multiple ring-enhancing lesions [DocT Substance-Related (Part 1) Q18, 87%]",
+        "Brain abscesses from septic emboli of IE."
+       ]
+      ],
+      "punch": "A fever with emboli in several beds plus nephritis is one disease: the vegetation throws fragments and immune complexes, most dangerously in the first two weeks.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-06",
+     "q": "**Aortic-valve IE on day 3 of correct antibiotics develops new PR prolongation, then Mobitz II (or complete heart block), still febrile. Meaning and next step?**",
+     "a": "- New AV block = **perivalvular (aortic-root) abscess** eroding the conduction system near the AV node/His bundle\n- **TEE** to define abscess, fistula, pseudoaneurysm\n- **Urgent surgery** (within **3–5 days**): locally uncontrolled infection; antibiotics cannot sterilise an abscess\n- Temporary pacing as needed\n- Daily ECG in aortic IE to catch it early",
+     "section": "Complications",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Complications → New heart block = root abscess",
+      "intro": "Step 3 also covers spread beyond the leaflet. Two bank questions give new heart block in endocarditis and offer ‘continue antibiotics’ or ‘wait 6 weeks’. The parts follow the card’s bullets.",
+      "why": [
+       [
+        "a",
+        "**New AV block = perivalvular (aortic-root) abscess eroding the conduction system near the AV node/His bundle.** The His bundle runs under the membranous septum, beneath the commissure between the non-coronary and right coronary cusps, so infection spreading from the aortic annulus there blocks conduction. New block in aortic IE is a specific marker of abscess, though many abscesses never cause it."
+       ],
+       [
+        "b",
+        "**TEE to define abscess, fistula, pseudoaneurysm.** TTE misses about half of root abscesses; ESC 2023 asks for repeat imaging (TEE, or cardiac CT) whenever a new complication is suspected."
+       ],
+       [
+        "c",
+        "**Urgent surgery (within 3–5 days): locally uncontrolled infection; antibiotics cannot sterilise an abscess.** A pus cavity has no blood supply, so drugs do not reach it and fever persists. ESC 2023 makes this a Class I urgent indication, native or prosthetic."
+       ],
+       [
+        "d",
+        "**Temporary pacing as needed; daily ECG in aortic IE to catch it early.** Mobitz II and complete block are infranodal and unstable. ESC 2023 also advises epicardial pacing at surgery when complete block is present with a predictor that it will persist."
+       ]
+      ],
+      "mimic": [
+       [
+        "Root abscess vs drug-induced AV block",
+        "Abscess: aortic IE, still febrile, progressive block; drugs (beta-blocker, digoxin, calcium-channel blocker): no fever, no new echo lesion."
+       ]
+      ],
+      "traps": [
+       [
+        "“Continue antibiotics alone” or “delay surgery 6 weeks” (DocT CGT6 Q118; Marrow QB25-Q10)",
+        "Heart block with an abscess and persistent fever is uncontrolled infection: urgent surgery, Class I."
+       ]
+      ],
+      "decode": [
+       [
+        "Aortic IE, day 3 of correct antibiotics, new Mobitz II: next step? [Marrow QB25-Q10]",
+        "Surgical referral (root abscess)."
+       ],
+       [
+        "PVE, complete heart block, periannular abscess on TEE, still febrile: management? [DocT CGT6 Q118]",
+        "Urgent valve surgery."
+       ]
+      ],
+      "punch": "In aortic endocarditis, new AV block means the infection has burrowed into the root beside the His bundle; image it with TEE and send for urgent surgery, because no antibiotic reaches an abscess.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-08",
+     "q": "**ESC 2023 surgery indications in left-sided IE, by timing:**",
+     "a": "**TIMING** | **INDICATION**\n**Emergency (<24 h)** | **HF with cardiogenic shock or pulmonary oedema** from severe acute regurgitation, obstruction or fistula\n**Urgent (3–5 days)** | HF without shock; **locally uncontrolled infection** (abscess, pseudoaneurysm, fistula, enlarging vegetation, new AV block)\n**Urgent** | **Fungal** or multiresistant organism; **persistent bacteraemia** despite correct antibiotics and source control\n**Urgent** | **Vegetation ≥10 mm + ≥1 embolic event** on antibiotics (Class I)\n**Urgent (IIa)** | Vegetation ≥10 mm + severe valve disease and low risk; vegetation **≥30 mm**; S. aureus or non-HACEK Gram-negative PVE",
+     "section": "Surgery & Stroke",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Surgery → ESC 2023 indications by timing",
+      "intro": "Step 4: when antibiotics are not enough. ESC 2023 groups indications by reason (heart failure, uncontrolled infection, embolism) and timing (emergency <24 h, urgent 3–5 days, non-urgent during the same admission). The parts follow the table’s rows.",
+      "why": [
+       [
+        "a",
+        "**Emergency (<24 h): HF with cardiogenic shock or pulmonary oedema from severe acute regurgitation, obstruction or fistula.** This is a mechanical failure that no drug can fix, so the length of antibiotic treatment does not matter (IE-07)."
+       ],
+       [
+        "b",
+        "**Urgent (3–5 days): HF without shock; locally uncontrolled infection (abscess, pseudoaneurysm, fistula, enlarging vegetation, new AV block).** ESC 2023 defines ‘urgent’ as 3–5 days (2015 said only ‘within a few days’). Walled-off infection is not reached by antibiotics (IE-06)."
+       ],
+       [
+        "c",
+        "**Urgent: fungal or multiresistant organism; persistent bacteraemia despite correct antibiotics and source control.** Fungal and multiresistant IE are surgical because medical cure is rare (IE-15). ESC 2023 grades persistent positive cultures for more than a week, after metastatic foci are controlled, as ‘should be considered’ (IIa)."
+       ],
+       [
+        "d",
+        "**Urgent: vegetation ≥10 mm + ≥1 embolic event on antibiotics (Class I).** Also Class I: a vegetation ≥10 mm with any other surgical indication. Embolic risk is highest early (IE-05), so the decision cannot wait for the course to finish."
+       ],
+       [
+        "e",
+        "**Urgent (IIa): vegetation ≥10 mm + severe valve disease and low risk; vegetation ≥30 mm; S. aureus or non-HACEK Gram-negative PVE.** Only the last is still IIa in ESC 2023 (‘should be considered’, IIa C): these organisms rarely clear from prosthetic material. The vegetation rows are 2015 wording. In 2023 a vegetation ≥10 mm with any other surgical indication, which takes in severe valve disease, was upgraded to Class I; the separate 30 mm cut-off was dropped; and an isolated vegetation ≥10 mm without embolism or severe dysfunction, in a low-risk patient, ‘may be considered’ (IIb B; 2015 set this at >15 mm, IIb C)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Left- vs right-sided IE surgery",
+        "Tricuspid IE is usually medical; ESC 2023 operates for RV failure from acute severe TR, recurrent pulmonary emboli needing ventilation, residual vegetation >20 mm, or left-sided involvement."
+       ]
+      ],
+      "traps": [
+       [
+        "“Add a second antibiotic” for MRSA aortic IE with a splenic embolus on day 2 (Marrow QB25-Q24)",
+        "Embolism with a vegetation is a surgical question: cardiothoracic opinion now."
+       ],
+       [
+        "“Finish 6 weeks of antibiotics before operating”",
+        "Emergency and urgent timings run from the indication, not the course; operating on active infection is accepted."
+       ]
+      ],
+      "decode": [
+       [
+        "MRSA aortic IE, splenic lesion on day 2: next step? [Marrow QB25-Q24]",
+        "Cardiothoracic surgery consult for septic embolus."
+       ],
+       [
+        "Mechanical mitral valve, candidaemia, EF 35%: next step? [Marrow QB25-Q35]",
+        "Antifungal plus early surgery (IE-15)."
+       ],
+       [
+        "Which IE indication needs surgery within 24 h? [pattern]",
+        "Refractory pulmonary oedema or cardiogenic shock from valve failure."
+       ]
+      ],
+      "punch": "Operate within 24 hours for shock or oedema from a failed valve, within 3–5 days for heart failure, uncontrolled infection or a ≥10 mm vegetation that has embolised; antibiotics do not change those clocks.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-10",
+     "q": "**Empirical antibiotics for IE (ESC 2023), cultures pending:**",
+     "a": "**SETTING** | **REGIMEN**\nCommunity NVE or **late PVE (≥12 months)** | **Ampicillin + ceftriaxone**, or ampicillin + (flu)cloxacillin + gentamicin\nPenicillin allergy | Vancomycin + ceftriaxone\n**Early PVE (<12 months)** or healthcare-associated | **Vancomycin** (or daptomycin) + **gentamicin** + **rifampicin** (rifampicin only for PVE)\nCulture-negative early PVE (AHA) | Vancomycin + gentamicin + **cefepime** + rifampicin\nNarrow | Switch to organism-specific therapy once cultures return",
+     "section": "Antibiotics",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Antibiotics → Empirical regimens",
+      "intro": "Step 5 begins before the organism is known: the regimen follows the setting, the same split as IE-01. The parts follow the table’s rows.",
+      "why": [
+       [
+        "a",
+        "**Community NVE or late PVE (≥12 months): ampicillin + ceftriaxone, or ampicillin + (flu)cloxacillin + gentamicin.** This covers streptococci, enterococci (ampicillin + ceftriaxone act together, IE-13), HACEK (ceftriaxone) and, with cloxacillin, MSSA. ESC 2023 grades it IIa."
+       ],
+       [
+        "b",
+        "**Penicillin allergy: vancomycin + ceftriaxone.** The ESC 2023 table lists cefazolin or vancomycin with gentamicin (IIb) for this group; see FLAGS."
+       ],
+       [
+        "c",
+        "**Early PVE (<12 months) or healthcare-associated: vancomycin (or daptomycin) + gentamicin + rifampicin (rifampicin only for PVE).** Vancomycin covers MRSA and CoNS; rifampicin penetrates biofilm on prosthetic material but, given alone into a high inoculum, selects resistance, so ESC 2023 adds it after 3–5 days of effective therapy."
+       ],
+       [
+        "d",
+        "**Culture-negative early PVE (AHA): vancomycin + gentamicin + cefepime + rifampicin.** Cefepime adds the hospital Gram-negatives that the ESC early-PVE regimen leaves to gentamicin."
+       ],
+       [
+        "e",
+        "**Narrow to organism-specific therapy once cultures return.** In stable patients a later step-down to oral therapy is allowed: in POET (left-sided IE with streptococci, E. faecalis, S. aureus or CoNS, after ≥10 days IV) oral was non-inferior (composite 9.0% vs 12.1% at 6 months) and better at a median of 3.5 years. ESC 2023 asks for a TEE showing no progression before the switch."
+       ]
+      ],
+      "mimic": [
+       [
+        "Early vs late PVE regimen",
+        "Early: vancomycin-based with rifampicin and Gram-negative cover; late: the community native-valve regimen."
+       ]
+      ],
+      "traps": [
+       [
+        "“Vancomycin + ceftriaxone” 4 weeks after mechanical AVR with negative cultures (DocT CGT5 Q56)",
+        "Ceftriaxone misses Pseudomonas and many hospital Gram-negatives, and the pair has neither gentamicin nor rifampicin; early PVE needs MRSA, CoNS, biofilm and resistant Gram-negative cover: vancomycin, cefepime, gentamicin, rifampicin (AHA 2015)."
+       ],
+       [
+        "“Rifampicin from day 1”",
+        "Added after 3–5 days, once the bacteraemia is controlled, or resistance emerges."
+       ]
+      ],
+      "decode": [
+       [
+        "Fever and heart failure 4 weeks after mechanical AVR, cultures negative after antibiotics: broadest recommended empirical cover? [DocT CGT5 Q56]",
+        "Vancomycin, cefepime, gentamicin, rifampicin."
+       ],
+       [
+        "Which IE patients may step down to oral antibiotics? [pattern]",
+        "Stable left-sided IE after ≥10 days IV with no complication on TEE (POET)."
+       ]
+      ],
+      "punch": "Empirical cover follows the setting: ampicillin plus ceftriaxone for community and late prosthetic IE, vancomycin-based with gentamicin and later rifampicin for early prosthetic IE.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-12",
+     "q": "**S. aureus IE (not CRBSI) regimens, ESC 2023:**\na MSSA native valve\nb MRSA or true penicillin anaphylaxis\nc Prosthetic valve\nd Uncomplicated right-sided MSSA in IVDU",
+     "a": "a **(Flu)cloxacillin 12 g/day** in 4–6 doses (oxacillin/nafcillin) **or cefazolin 6 g/day** in 3 doses, **4–6 weeks**; **no gentamicin**\nb **Vancomycin** 30–60 mg/kg/day (AUC 400–600) **or daptomycin 10 mg/kg/day**, 4–6 weeks\nc Anti-staphylococcal agent + **rifampicin** (≥6 weeks) + **gentamicin 2 weeks**\nd **2 weeks** of (flu)cloxacillin can suffice",
+     "section": "Antibiotics",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Antibiotics → S. aureus regimens",
+      "intro": "Step 5 for the commonest and most lethal organism. The DocT question behind this card offers vancomycin because it ‘covers everything’; for MSSA that is the wrong reason.",
+      "why": [
+       [
+        "a",
+        "**MSSA native valve: (flu)cloxacillin 12 g/day in 4–6 doses (oxacillin/nafcillin) or cefazolin 6 g/day in 3 doses, 4–6 weeks; no gentamicin.** Beta-lactams kill MSSA faster than vancomycin, and MSSA treated with vancomycin fails and kills more often. ESC 2023 does not recommend aminoglycosides in staphylococcal native-valve IE: no benefit, more kidney injury."
+       ],
+       [
+        "b",
+        "**MRSA or true penicillin anaphylaxis: vancomycin 30–60 mg/kg/day (AUC 400–600) or daptomycin 10 mg/kg/day, 4–6 weeks.** ESC uses the high daptomycin dose (10 mg/kg) and advises a second agent with it (for example cloxacillin or fosfomycin) to prevent resistance. Daptomycin is inactivated by surfactant, so it fails in alveolar pneumonia; septic pulmonary emboli from right-sided IE are not a contraindication."
+       ],
+       [
+        "c",
+        "**Prosthetic valve: anti-staphylococcal agent + rifampicin (≥6 weeks) + gentamicin 2 weeks.** Rifampicin is the drug that acts in biofilm; it starts after 3–5 days of effective therapy to avoid resistance."
+       ],
+       [
+        "d",
+        "**Uncomplicated right-sided MSSA in IVDU: 2 weeks of (flu)cloxacillin can suffice.** ESC conditions: MSSA with a prompt clinical response, vegetation <20 mm, no metastatic infection, no left-sided or prosthetic involvement, no severe immunosuppression, and not with a glycopeptide."
+       ]
+      ],
+      "mimic": [
+       [
+        "Cefazolin vs ceftriaxone for MSSA",
+        "Cefazolin is an anti-staphylococcal first-choice drug; ceftriaxone is weaker against staphylococci."
+       ]
+      ],
+      "traps": [
+       [
+        "“Vancomycin” for MSSA mitral IE with septic emboli and HF (DocT Antimicrobials Q5, 61%)",
+        "Vancomycin kills MSSA slowly and penetrates vegetations poorly; oxacillin or nafcillin (or cefazolin) wins."
+       ],
+       [
+        "“Add gentamicin to MSSA native-valve IE”",
+        "No benefit and more AKI; gentamicin belongs only to the prosthetic-valve regimen."
+       ]
+      ],
+      "decode": [
+       [
+        "MSSA mitral IE, multiple septic emboli, worsening HF: most appropriate initial regimen? [DocT Antimicrobials Q5, 61%]",
+        "Oxacillin or nafcillin."
+       ],
+       [
+        "Right-sided MSSA IE in an IVDU, prompt response, vegetation 12 mm: duration? [pattern]",
+        "2 weeks of (flu)cloxacillin can suffice."
+       ]
+      ],
+      "punch": "MSSA is treated with an anti-staphylococcal beta-lactam, never vancomycin by choice; gentamicin and rifampicin belong only to prosthetic-valve S. aureus.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TU-IE|IE-13",
+     "q": "**Enterococcal IE:**\na E. faecalis, no HLAR, normal kidneys\nb HLAR or renal risk\nc Beta-lactam allergy\nd VRE faecium",
+     "a": "a **Ampicillin/amoxicillin + gentamicin**: **4 weeks** NVE, **6 weeks** PVE or symptoms >3 months (gentamicin may be limited to 2 weeks)\nb **Ampicillin + ceftriaxone 2 g 12-hourly × 6 weeks** (ESC 2023 Class I; avoids nephrotoxicity)\nc **Vancomycin + gentamicin × 6 weeks**\nd **High-dose daptomycin** (10–12 mg/kg) + ampicillin or fosfomycin; linezolid alternative",
+     "section": "Antibiotics",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Infective endocarditis → Antibiotics → Enterococci",
+      "intro": "Step 5: enterococci are slow to kill, so the question is always which partner to give with ampicillin, and for how long.",
+      "why": [
+       [
+        "a",
+        "**E. faecalis, no HLAR, normal kidneys: ampicillin/amoxicillin + gentamicin, 4 weeks NVE, 6 weeks PVE or symptoms >3 months (gentamicin may be limited to 2 weeks).** Ampicillin alone only inhibits enterococci; gentamicin, let in through the damaged wall, adds the killing."
+       ],
+       [
+        "b",
+        "**HLAR or renal risk: ampicillin + ceftriaxone 2 g 12-hourly × 6 weeks (ESC 2023 Class I; avoids nephrotoxicity).** Ceftriaxone saturates PBP2/3 while ampicillin binds PBP4/5, so together they kill without an aminoglycoside, and ESC accepts it for non-HLAR strains too."
+       ],
+       [
+        "c",
+        "**Beta-lactam allergy: vancomycin + gentamicin × 6 weeks.** It is the only combination left that kills, at the cost of two nephrotoxins."
+       ],
+       [
+        "d",
+        "**VRE faecium: high-dose daptomycin (10–12 mg/kg) + ampicillin or fosfomycin; linezolid alternative.** E. faecium is usually ampicillin-resistant and intrinsically ceftriaxone-resistant; daptomycin is bactericidal, and a partner prevents daptomycin resistance."
+       ]
+      ],
+      "mimic": [
+       [
+        "E. faecalis vs E. faecium",
+        "Faecalis: ampicillin-susceptible, ampicillin + ceftriaxone works; faecium: often ampicillin- and vancomycin-resistant, daptomycin-based."
+       ]
+      ],
+      "traps": [
+       [
+        "“Amoxicillin + ceftriaxone for 4 weeks” (DocT GrandT1 Q95, 41%)",
+        "The combination is right but the course is 6 weeks; with only 4 weeks offered, ampicillin + gentamicin for 6 weeks is the best available answer."
+       ],
+       [
+        "“Ampicillin” or “tigecycline” for VRE faecium bacteraemia in shock (DocT Antimicrobials Q14, 58%)",
+        "Faecium is usually ampicillin-resistant and tigecycline is bacteriostatic with low blood levels; daptomycin."
+       ]
+      ],
+      "decode": [
+       [
+        "E. faecalis IE, penicillin MIC 4 mg/L, no HLAR: initial regimen? [DocT GrandT1 Q95, 41%]",
+        "Ampicillin + gentamicin for 6 weeks."
+       ],
+       [
+        "VRE faecium bacteraemia, ventilated, on vasopressors: agent? [DocT Antimicrobials Q14, 58%]",
+        "Daptomycin."
+       ]
+      ],
+      "punch": "Enterococci need two drugs to die: ampicillin with gentamicin, or ampicillin with ceftriaxone for 6 weeks when the kidneys or HLAR forbid gentamicin; faecium needs daptomycin.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  }
+ ]
+}

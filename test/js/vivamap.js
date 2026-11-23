@@ -27,7 +27,7 @@ export const SECTIONS = {
   P8: { G1: 'Approach to poisoning', G2: 'Pesticides & phosphides', G3: 'Toxic alcohols & others', G4: 'Cardiotoxic drugs' },
   P10: { G1: 'Heat, cold & anaphylaxis', G2: 'Endocrine emergencies' },
   P11: { echo: 'Echo, IVC & eFAST' },
-  P12: { S1: 'Shock I: reading the failing heart', S2: 'Shock II: fixing it', A1: 'ACS I: diagnosis', A2: 'ACS II: treatment', RY: 'Rhythm', DR: 'Cardiac drugs & toxicology', RH: 'Right heart & pericardium', AO: 'Aorta & blood pressure', AR: 'Arrest' }
+  P12: { S1: 'Shock I: reading the failing heart', S2: 'Shock II: fixing it', A1: 'ACS I: diagnosis', A2: 'ACS II: treatment', RY: 'Rhythm', DR: 'Cardiac drugs & toxicology', RH: 'Pericardium, myocarditis & endocarditis', RV: 'Right heart & pulmonary hypertension', AO: 'Aorta: dissection', AR: 'Arrest' }
 };
 export const secName = (pkg, g) => (SECTIONS[pkg] || {})[g] || g;
 const SHORT = { P1: 'Haemodynamics', P2: 'Infection', P3: 'Neuro', P4: 'Ventilation', P5: 'Arrest, ACLS, PE', P6: 'Renal & metabolic', P7: 'Abdomen', P8: 'Toxicology', P11: 'Echo', P10: 'Blind zones', P12: 'NEET cardiology' };
