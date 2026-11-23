@@ -1,0 +1,628 @@
+{
+ "questions": [
+  {
+   "q": "P12-601",
+   "text": "Reversing the anticoagulants",
+   "steps": [
+    {
+     "card": "HY2|CAR-21",
+     "bridge": "Five keys, two ideas: bind the drug or replace the factors. Next, the same keys inside the skull, where the clock is shortest.",
+     "lesson": {
+      "v": 1,
+      "text": "The rhythm packet left you with a patient in atrial fibrillation on an anticoagulant, and the infarct packets left one on heparin. Now one of them bleeds. This is the most asked card in the cardiology decks, sixteen bank questions.\n\nEach drug blocks the cascade at a different point, so each needs its own key. But only two ideas run through all five. Either you bind the drug and take it away. Or you can't, and you put back the factors it removed.\n\n{{**Drug | Reversal**\nDabigatran | idarucizumab **5 g**\nApixaban, rivaroxaban | andexanet, or 4F-PCC **50 U/kg**\nWarfarin, major bleed | 4F-PCC **25–50 U/kg** + vitamin K **10 mg IV**\nUFH | protamine **1 mg per 100 U**\nEnoxaparin | protamine **1 mg per mg** under 8 h, **0.5** at 8–12 h}}\n\nFirst, dabigatran, the direct thrombin inhibitor. Its key is idarucizumab, an antibody fragment that holds dabigatran about three hundred and fifty times more tightly than thrombin does. The drug leaves thrombin for the antibody, and clotting returns within minutes. The dose is five grams intravenously, as two vials of two point five. The lost question asks the side effects: hypokalaemia, delirium, fever, constipation, pneumonia. [[Idarucizumab causes hypokalaemia. The option that is not seen is hyperkalaemia, and fewer than half pick it.]]\n\nSecond, apixaban and rivaroxaban, the factor Xa inhibitors. The specific key is andexanet alfa, a decoy: a factor Xa molecule with its enzyme action removed, so the drug binds the decoy and leaves the real factor alone. That's the exam answer. When it isn't offered, choose four-factor PCC at fifty units per kilogram; activated PCC has been keyed too. But in the ANNEXA-I trial andexanet controlled the haematoma more often and nearly doubled thrombosis, and US sales ended in December twenty twenty-five. So practice is moving to PCC; the exam still says andexanet. Two falses: the INR doesn't measure these drugs, and vitamin K does nothing for them. Ciraparantag is investigational.\n\nThird, warfarin. Nothing binds it, because warfarin isn't sitting on a clotting factor. It stopped the liver making four of them: two, seven, nine and ten. So you put them back. Four-factor PCC holds all four in a small volume and corrects the INR in minutes. FFP needs thawing, a large volume and hours, so it's only for when there's no PCC. The dose climbs with the INR: twenty-five units per kilogram for an INR of two to four, thirty-five for four to six, fifty above six. But those factors last hours and warfarin lasts days. So vitamin K, ten milligrams intravenously, goes in with it. It takes hours, not minutes, to act, and it stops the INR climbing back once the PCC has worn off. [[Warfarin with major bleeding: four-factor PCC for the minutes, plus intravenous vitamin K ten milligrams for the days. FFP only if there is no PCC.]]\n\nThree traps sit here. One: a Grand Test key says factor seven is not in PCC. That's the old three-factor product; the modern one contains it. Two: melaena with an INR of two point eight. Give PCC with vitamin K and don't delay the endoscopy. Three, the hardest: a high INR with no bleeding. There you don't reach for PCC at all. Between four and a half and ten, hold one or two doses and recheck, with a small oral dose of vitamin K only if the bleeding risk is high. Above ten, oral vitamin K, two and a half to five milligrams. DocT's stem was a mechanical mitral valve, INR eight point four, no bleeding, on aspirin with kidney disease: hold the warfarin and give about two milligrams by mouth. PCC or ten milligrams intravenously would over-correct and leave the valve unprotected.\n\nLast, the heparins. Protamine is a strongly basic protein and heparin a strong acid, so they pair off. For unfractionated heparin, one milligram for every hundred units given in the last two to three hours, fifty milligrams at most, and reversal is complete. Enoxaparin is different. Protamine grips long chains, and the short chains carrying most of the anti-Xa effect escape, so only about sixty per cent is reversed. One milligram per milligram if the dose was within eight hours, half that at eight to twelve, nothing after twelve. Protamine for enoxaparin given fourteen hours ago was a lost question.\n\nNow take the five keys where minutes matter most: inside the skull."
+     }
+    },
+    {
+     "card": "NEURO04|NEURO-92",
+     "bridge": "Reversal is one of three jobs in the first hour of a brain bleed. The other two: the blood pressure and the surgeon.",
+     "lesson": {
+      "v": 1,
+      "text": "Take the five keys to the place where minutes matter most. A bleed inside the skull grows over its first hours, and the bigger the haematoma, the worse the outcome. An anticoagulant keeps it growing. So in intracerebral haemorrhage you reverse at once. Nine bank questions sit on this card, most of them the keys you've just learned, asked in a head.\n\n{{**In ICH | Reversal**\nWarfarin | vitamin K **10 mg IV** + 4F-PCC (INR 1.3–1.9: **10–20 IU/kg**; INR 2 or more: **25–50 IU/kg**)\nDabigatran | idarucizumab; else PCC or aPCC; **dialysis**\nXa inhibitor | andexanet; else 4F-PCC or aPCC\nAny DOAC under 2 h | **charcoal**\nUFH | protamine 1 mg per 100 U}}\n\nThe keys haven't changed. What the brain adds is a lower threshold and three extra tools.\n\nThe lower threshold is for warfarin. Elsewhere an INR of one point five is hardly a problem. In the head it is still reversed. So the dose table grows a new first row: for an INR of one point three to one point nine, ten to twenty units per kilogram of four-factor PCC; for two or more, the familiar twenty-five to fifty. Stop the warfarin, and give vitamin K with it, ten milligrams intravenously over thirty minutes. FFP only if there is no PCC.\n\n[[In intracerebral haemorrhage on warfarin, reverse even a mildly raised INR: four-factor PCC, ten to twenty units per kilogram for an INR of one point three to one point nine, twenty-five to fifty for two or above, always with intravenous vitamin K.]]\n\nOne key disagrees, and you should know which. Marrow has a warfarin haemorrhage in a patient with a recent stroke and keys FFP with vitamin K, arguing that PCC is prothrombotic and that its trials excluded recent thrombosis. The American and European stroke guidelines still choose PCC with vitamin K for a life-threatening bleed. So choose PCC. Choose FFP only when the stem stresses a recent thrombotic event and asks for the safest agent.\n\nNow the three tools. The first is charcoal. Any DOAC swallowed within the last two hours is still partly in the gut, and activated charcoal stops it arriving.\n\nThe second is dialysis, and it is for dabigatran alone. Dabigatran is only loosely bound to plasma protein and leaves through the kidney, so a filter can remove it. Apixaban and rivaroxaban are tightly protein-bound, and dialysis does nothing for them. So when idarucizumab isn't available, the fallback for dabigatran is PCC or activated PCC, with dialysis behind it.\n\nThe third is a new heparin. Unfractionated heparin, one milligram of protamine per hundred units, as before. Enoxaparin, one milligram per milligram. And dalteparin, which is dosed in units: one milligram of protamine per hundred anti-Xa units.\n\nThen the question this card adds that isn't about an anticoagulant at all. The patient with the bleed is on aspirin or clopidogrel. Instinct says transfuse platelets. The PATCH trial tested exactly that, in haemorrhage on antiplatelet drugs, and the transfused patients did worse, with more death and dependence at three months.\n\n[[Antiplatelet drugs and an intracranial bleed: platelet transfusion is not routine, because PATCH showed harm. The keyed drug for platelet dysfunction before surgery is desmopressin, nought point four micrograms per kilogram.]]\n\nDesmopressin releases von Willebrand factor and factor eight from the endothelium, and that helps platelets stick again. The American guideline calls its benefit uncertain, but it is the keyed answer. The American guideline keeps platelets as an option only for the patient going to emergency neurosurgery, so if desmopressin isn't on the list and an operation is planned, that is where platelets fit. And in subarachnoid haemorrhage, aspirin stays off until the aneurysm is secured.\n\nReversal is one of three jobs in the first hour of a bleed. The other two are the pressure and the surgeon."
+     }
+    },
+    {
+     "card": "HY4|NEU-09",
+     "bridge": "Bleeding half done. Same logic, new target: the drug is no longer in the clotting cascade, it is sitting on the heart.",
+     "lesson": {
+      "v": 1,
+      "text": "The first hour of an intracerebral haemorrhage has three jobs: correct the clotting, control the pressure, and decide about surgery. You've done the first. This card adds the other two, and four bank questions have hit it.\n\nThe pressure first. A high pressure drives the haematoma to expand, so you lower it. But the brain around the clot, and the kidney, still need perfusion, so you don't lower it far. Two trials set the number. INTERACT two showed that aiming for a systolic below a hundred and forty was safe, with a signal of better function. ATACH two pushed lower, into the hundred and twenties, and gained nothing except more kidney injury.\n\n[[Spontaneous intracerebral haemorrhage: bring the systolic pressure to about a hundred and forty and hold it between a hundred and thirty and a hundred and fifty, early and smoothly. Below a hundred and thirty is harmful.]]\n\nThe wrong options sit either side of that. A target of a hundred and eighty is the old rule. A target of a hundred and ten sounds safer and isn't. And smoothly matters as much as the number: big swings and a large early drop go with worse outcomes, so use a titratable infusion.\n\nReversal you know, and the card repeats the two that are asked most. On warfarin: four-factor PCC with vitamin K, ten milligrams intravenously. On dabigatran: idarucizumab, five grams.\n\nThen the surgeon. Most deep bleeds above the tentorium are not helped by a routine craniotomy, and that is why the card names the exception. The posterior fossa is a small rigid box that holds the brainstem and the outflow of the fourth ventricle. A haematoma there has nowhere to go. So a cerebellar bleed more than three centimetres across, or one compressing the brainstem or causing hydrocephalus, goes for surgical evacuation. The current American guideline writes the same clot as a volume, fifteen millilitres or more. Hydrocephalus from a bleed above the tentorium, or from blood in the ventricles, is treated with an external ventricular drain.\n\n[[Cerebellar haematoma over three centimetres, brainstem compression or hydrocephalus means evacuation. A ventricular drain alone is not enough for a cerebellar bleed that is pressing on the brainstem.]]\n\nThat last sentence is the trap. A drain empties the ventricles above while the clot goes on pressing below. Evacuate, with or without the drain.\n\nThat ends the bleeding half of the packet. Keep its logic, because the second half runs on it. For every anticoagulant you asked one question: can I bind this drug, or must I replace what it took away? Now the drug isn't in the clotting cascade. It's sitting on the heart."
+     }
+    }
+   ],
+   "spine": [
+    "Two moves cover every drug: bind it (idarucizumab, andexanet, protamine) or replace what it removed (PCC + vitamin K for warfarin).",
+    "Dabigatran → idarucizumab 5 g (2 × 2.5 g). Adverse effects include hypoKALAEMIA; hyperkalaemia is the 'not seen' answer. Dialysable; Xa inhibitors are not.",
+    "Xa inhibitors → andexanet (exam key; ANNEXA-I: better haemostasis, more thrombosis; US sales ended Dec 2025) or 4F-PCC 50 U/kg. INR and vitamin K are irrelevant.",
+    "Warfarin + major bleed → 4F-PCC 25/35/50 U/kg by INR + vitamin K 10 mg IV; FFP only if no PCC. No bleeding: INR 4.5–10 hold doses; >10 oral vitamin K 2.5–5 mg.",
+    "UFH → protamine 1 mg per 100 U (last 2–3 h, max 50 mg). Enoxaparin → 1 mg/mg under 8 h, 0.5 mg/mg at 8–12 h, none after 12 h; only ~60% reversed.",
+    "ICH: reverse at once (INR 1.3–1.9 gets PCC 10–20 IU/kg); SBP ~140 (130–150); cerebellar clot >3 cm → evacuate; antiplatelets → desmopressin, not routine platelets."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Every packet so far has handed you a patient on a drug. The man with atrial fibrillation on an anticoagulant. The infarct patient on heparin, aspirin and a P2Y12 inhibitor. The heart failure patient on a beta-blocker and digoxin.\n\nThis packet is about what happens when those drugs turn on him. Two ways, and they make the two sections.\n\nFirst, he bleeds. Every anticoagulant blocks the clotting cascade at one point, so every one has its own reversal, and NEET loves to ask exactly which. That card carries sixteen bank questions, more than any other in the cardiology decks.\n\n[[To reverse an anticoagulant, first ask where it blocks the cascade. Warfarin stops the factors being made. The new oral agents block one factor directly. Heparin works through antithrombin.]]\n\nSecond, the heart itself is poisoned. Digoxin, beta-blockers, calcium-channel blockers, cocaine, and the drugs that block the sodium channel. Here the three numbers come back. A beta-blocker or a calcium-channel blocker can knock out the pump and the squeeze together, and the antidotes push on them from routes that bypass the blocked receptor.\n\nSix questions in this packet were grand-test misses, most of them about digoxin and the calcium-channel blockers. Listen for them.\n\nStart with the bleed. How do you reverse each anticoagulant?"
+   }
+  },
+  {
+   "q": "P12-602",
+   "text": "Hearts poisoned: digoxin, beta-blockers, calcium-channel blockers, cocaine and the sodium channel",
+   "open": {
+    "v": 1,
+    "text": "Section one was about blood that wouldn't clot. This one is about a heart that won't beat properly because a drug is sitting on it. The thinking carries over: bind the drug if you can, and if you can't, go around the step it blocked.\n\nSo the first question is always where the poison sits. On the sodium channel, and the QRS widens: tricyclics, cocaine, a massive propranolol overdose. On the sodium-potassium pump, and that's digoxin. On the beta receptor or the calcium channel, and the heart slows and weakens. Each site has its own answer.\n\n[[Wide QRS means the sodium channel, and bicarbonate. Slow and weak means a beta-blocker or calcium-channel blocker: calcium, high-dose insulin, glucagon. Digoxin has a true binder, Fab.]]\n\nSix Grand Test questions live in this section, so listen for them. The worst sign in acute digoxin poisoning. Fab during an arrest. Insulin for a calcium-channel blocker. The pressor for amlodipine. Cocaine with a wide QRS. And the muscle relaxant you must not give in cocaine rhabdomyolysis.\n\nBegin where you can see the poison: on the ECG."
+   },
+   "steps": [
+    {
+     "card": "TOX01|TOX-07",
+     "bridge": "Wide is sodium, long QT is potassium, slow is the nodes. Now the drug that is slow and fast at once: digoxin.",
+     "lesson": {
+      "v": 1,
+      "text": "In the rhythm packet you sorted a tachycardia with one question: is the QRS wide or narrow? In poisoning the same strip tells you which channel the drug is sitting on.\n\nThree channels, three pictures. The QRS is the time the impulse takes to cross the ventricles, and that speed belongs to the fast sodium channel. Block it and the QRS widens. The QT is repolarisation, which belongs to a potassium channel called hERG. Block it and the QT lengthens. And the sinus and AV nodes are slowed by drugs that act there, giving bradycardia or heart block.\n\n{{**ECG change | Channel | Think of**\nWide QRS, tall R in aVR | sodium | tricyclic, cocaine, carbamazepine, propranolol\nLong QT | potassium (hERG) | antipsychotics, citalopram, macrolides, azoles, sotalol\nBradycardia, AV block | the nodes | beta-blocker, CCB, digoxin}}\n\nTake the sodium channel first, because it kills quickly. Slow, uneven conduction through the ventricle is the ground for re-entry, so the danger is ventricular tachycardia. The classic drug is a tricyclic antidepressant. With the wide QRS come sinus tachycardia, right axis deviation and a tall terminal R wave in lead aVR, in a patient with dilated pupils, dry skin and a full bladder.\n\nHow bad is it? In nineteen eighty-five Boehnert and Lovejoy measured both the drug level and the QRS in tricyclic overdoses. The level didn't predict who got into trouble. The QRS did. At a hundred milliseconds or more, about a third had seizures. At a hundred and sixty or more, about half had ventricular arrhythmias.\n\n[[In tricyclic overdose the QRS duration grades the risk, not the dose and not the level. A hundred milliseconds predicts seizures; a hundred and sixty predicts ventricular arrhythmia.]]\n\nSo the normal QRS is under a hundred and twenty milliseconds, but in poisoning you act at a hundred. And that's why, in a drowsy tricyclic overdose with a GCS of eight, the keyed first step is the ECG. Not charcoal, because the airway is unprotected, and not a CT.\n\nThe treatment is sodium bicarbonate, one to two milliequivalents per kilogram as a bolus, repeated until the QRS narrows, aiming for a pH of seven point four five to seven point five five. It works twice over. The sodium load pushes more current through the channels still open, and the alkalosis loosens the drug's grip on the channel.\n\nNow the traps. There are four. One: a wide-complex tachycardia tempts you to procainamide or flecainide. Those are class one A and one C drugs, sodium-channel blockers themselves, and they deepen the block. Lidocaine, class one B, is second line after bicarbonate. Two: the anticholinergic signs tempt you to physostigmine. In tricyclic poisoning it can cause asystole. Three: the seizure tempts you to phenytoin, another sodium-channel blocker. Give a benzodiazepine. Four: it isn't only tricyclics. Propranolol in massive overdose blocks sodium channels too. So propranolol with a QRS of a hundred and eighty, still unstable after glucagon, gets bicarbonate, because glucagon, insulin and calcium don't touch a conduction defect. Cocaine does the same, and it comes back later with one of your missed questions.\n\n[[A wide QRS in any poisoning is sodium-channel block: give sodium bicarbonate, one to two milliequivalents per kilogram. Never a class one A or one C drug, never physostigmine, never phenytoin.]]\n\nThe long QT is a different problem with a different answer. The risk is torsades, and the treatment is to stop the drug and correct potassium and magnesium. The upper limit of the QTc is four hundred and forty milliseconds. Four facts have been asked. Among the SSRIs, citalopram and escitalopram are the ones that lengthen it. Among antipsychotics, typical and atypical drugs carry about the same arrhythmia risk, with thioridazine and ziprasidone lengthening the QT most. When several QT drugs run together, stop first the one that also inhibits CYP3A4, such as erythromycin or fluconazole, because it raises the levels of the rest. And the beta-blocker that causes torsades is sotalol.\n\nThat leaves the third picture, the slow one: beta-blockers, calcium-channel blockers and digoxin. Digoxin is the odd member, because it gives slow and fast rhythms together."
+     }
+    },
+    {
+     "card": "HY2|CAR-07",
+     "bridge": "You know when to give Fab. Next: how many vials, and the antidotes for the other poisons, which bypass rather than bind.",
+     "lesson": {
+      "v": 1,
+      "text": "Digoxin belongs to the slow picture, but it breaks the rule, and the way it breaks it is the whole card.\n\nOne mechanism explains everything. Digoxin blocks the sodium-potassium pump in the cell membrane. With the pump blocked, sodium builds up inside the cell, and the exchanger that uses the sodium gradient to push calcium out slows down, so calcium stays in. More calcium means a stronger beat, which is why the drug exists. But a cell overloaded with calcium also fires after-depolarisations, extra beats from any focus. At the same time digoxin raises vagal tone, which slows the sinus node and the AV node.\n\nSo you have irritable muscle on both sides of a sleepy node. [[Digoxin toxicity is ectopy plus block. Atrial tachycardia with block and bidirectional VT are its signature rhythms, and any bradycardia or AV block fits.]]\n\nSeparate two things on the ECG. The down-sloping ST segment, the reverse tick, in V four to V six, and the short QT, are digoxin effect. They appear at therapeutic levels and don't mean poisoning. Toxicity shows as rhythms.\n\nAnd one finding is not digoxin at all: a peaked T wave. Digoxin flattens or inverts the T. A peaked T is hyperkalaemia. That leads straight to the question you missed.\n\nIn acute poisoning, where does the potassium go? The pump that is blocked is the pump that carries potassium into cells. Block the pumps all over the body and potassium is left outside, in the serum. So the serum potassium is a read-out of how much pump is poisoned. In nineteen seventy-three, before any antidote existed, Bismuth in Paris reviewed ninety-one acute poisonings. Every patient with a potassium above five point five died. Every patient below five lived. Neither the ECG nor the drug level sorted them as cleanly.\n\nThat was Grand Test seven: the worst sign in acute digoxin poisoning. You chose bradycardia, and most people choose it or the heart block, because those look frightening. Only twenty-nine per cent get it. [[In acute digoxin poisoning the sign that predicts death is a potassium above five, not the bradycardia, the AV block or the digoxin level. It is also an indication for Fab.]] The level misleads because it is drawn before the drug has distributed.\n\nNow the antidote. Digoxin-specific Fab is the binding half of an antibody, and it holds digoxin more tightly than the pump does. The drug comes off, the pumps restart, and the rhythm and the potassium settle within thirty to sixty minutes. Give it for three things: a life-threatening arrhythmia, a potassium above five in acute poisoning, or end-organ damage.\n\nThe trap follows from that. Potassium five point eight on digoxin, a slow rhythm with ectopics, confusion. The options offer calcium gluconate, as for any hyperkalaemia. The answer is Fab, because it corrects the potassium and the rhythm together. Calcium is held back unless the potassium itself is about to kill. Atropine can bridge a bradycardia while the Fab is prepared.\n\nAnd the second miss, the repeat on Grand Test eight. In a cardiac arrest from digoxin, do you still give Fab? Yes. Give it as a bolus and keep resuscitating, because return of circulation has followed Fab even late in an arrest. For the binder it is never too late.\n\nOne reversal to finish. In chronic toxicity, the old patient on a diuretic, it is a low potassium that does the harm, because digoxin binds the pump more avidly when potassium is low. High potassium marks the acute overdose. Low potassium invites the chronic one.\n\nAnd one mimic. Bidirectional VT in a young person on no digoxin, who faints with exercise or emotion, is catecholaminergic polymorphic VT, a calcium leak inside the same cell. There beta-blockers are first line, with flecainide added, so the statement that beta-blockers are contraindicated is the false one.\n\nYou know when to give Fab. Next, how many vials, and the antidotes for the rest."
+     }
+    },
+    {
+     "card": "TOX01|TOX-14",
+     "bridge": "Bind or bypass. Now the arrests where adrenaline cannot work until the extra drug is given.",
+     "lesson": {
+      "v": 1,
+      "text": "Fab is a binder: it lifts the poison off its target. Most antidotes for a poisoned heart can't do that. They go around the blocked step. Keep those two words, bind or bypass, and the table sorts itself.\n\n{{**Toxin | Antidote**\nDigoxin | Fab: acute **10–20** vials, chronic **3–6**\nCCB | calcium, **high-dose insulin**\nBeta-blocker | atropine, **glucagon**, high-dose insulin\nTricyclic | **bicarbonate** 1–2 mEq/kg\nSulfonylurea | **octreotide** 50 µg SC 6-hourly + dextrose\nBenzodiazepine | flumazenil (rarely)\nLocal anaesthetic | **20% lipid**}}\n\nStart with the Fab arithmetic, because it was asked and only thirty-one per cent got it. Each vial binds half a milligram of digoxin. Tablets are about eighty per cent absorbed. So the vials are the milligrams swallowed, times nought point eight, divided by nought point five. Eight milligrams comes to about thirteen vials. DocT's options were two, four, eight and sixteen, and the key is sixteen, because the question ignored absorption. The trap is eight vials for eight milligrams.\n\n[[One vial of Fab binds half a milligram of digoxin, so the vials needed are close to double the milligrams, never equal to them. With no numbers to go on: ten to twenty vials for acute poisoning, three to six for chronic.]]\n\nWho gets it? A life-threatening rhythm, a potassium above five in acute poisoning, a level above ten nanograms per millilitre at six hours, or more than ten milligrams swallowed by an adult. Not nausea, not first-degree block.\n\nOne late complication has been asked. The complex of Fab and digoxin leaves through the kidney. In stage five kidney disease it lingers and slowly comes apart, releasing digoxin again. So a bradyarrhythmia returning four days after Fab in a renal patient is rebound free digoxin, not an allergy to the Fab.\n\nNow the bypasses. A beta-blocker shuts the receptor that makes cyclic AMP. Glucagon has its own receptor, coupled to the same enzyme, so it raises cyclic AMP by a side door.\n\nA calcium-channel blocker does something less obvious. A stressed heart switches its fuel from fatty acids to glucose. And the same drug blocks the calcium channels in the pancreas that release insulin. So the heart needs glucose and can't take it up. High-dose insulin opens that door. DocT asked why it raises contractility without raising oxygen demand, and the key is enhanced glucose utilisation. A catecholamine buys contraction with oxygen. Insulin supplies fuel.\n\nThat pancreatic effect also hands you the bedside discriminator. [[Bradycardia and hypotension with a clear mind and a high glucose point to a calcium-channel blocker. Bradycardia and hypotension with a clouded mind point to a beta-blocker.]]\n\nAnd calcium? It competes at the channel and lifts contractility and blood pressure. It does least for the heart rate, and that was the keyed answer in a verapamil overdose. The doses and the order come in two cards' time.\n\nThree quick rows. Tricyclics: bicarbonate, as you just heard, and for the seizures a benzodiazepine, never phenytoin. Benzodiazepine overdose: flumazenil only rarely, because it can provoke seizures.\n\nSulfonylureas deserve a minute, because under half get them right. The drug forces the pancreas to release insulin. Give dextrose alone and the glucose spike triggers still more insulin, so the hypoglycaemia returns. A patient on glyburide with a glucose of fifty-two an hour after a dextrose bolus needs another bolus plus octreotide, fifty micrograms under the skin every six hours, which switches the release off. Not more dextrose alone, and not just an infusion.\n\nThat leaves the last row, lipid for local anaesthetics, and a harder question: what changes when the poisoned heart actually stops?"
+     }
+    },
+    {
+     "card": "HY2|CAR-14",
+     "bridge": "One line here hides two Grand Test questions: calcium, insulin, pressors. The next card is new and spells it out.",
+     "lesson": {
+      "v": 1,
+      "text": "In some arrests the standard algorithm fails for a simple reason: adrenaline needs a pathway, and a drug is standing in it. This card names the extra drug for four of them. No bank question has hit the card itself, but two of its lines are previous-year questions, so take those and move on.\n\nFirst, the patient on a beta-blocker who goes into anaphylaxis, or into shock, and doesn't respond to adrenaline. Adrenaline works through the beta receptor, and that receptor is occupied. You met the way round on the last card: glucagon, through its own receptor, switches on the same enzyme and raises cyclic AMP. The dose is one to five milligrams intravenously, given slowly because it causes vomiting, along with fluids.\n\n[[Shock on a beta-blocker that does not respond to catecholamines: the keyed drug is glucagon, one to five milligrams intravenously. More adrenaline is the wrong option, because the receptor it needs is blocked.]]\n\nOnly thirty-seven per cent got that on the mini test. Two details from the card: in an arrest, adrenaline goes into a vein, not into muscle, and sugammadex alone does not treat anaphylaxis to rocuronium.\n\nSecond, local anaesthetic arrest. Seizures, then bradycardia and arrest, after a bupivacaine block. The drug of choice is twenty per cent lipid emulsion, one point five millilitres per kilogram. Not adrenaline and not bicarbonate. Its own card closes the packet.\n\nThird, opioids. In an opioid arrest the heart stopped because the breathing stopped. Naloxone can wake a patient who has a pulse. It cannot restart a heart. So compressions and ventilation come first, and naloxone never delays them.\n\nAdd a fifth in your head from two cards ago: digoxin arrest, and Fab even late.\n\nThe fourth line on the card, calcium-channel-blocker overdose, says calcium, high-dose insulin and vasopressors in one breath. Two Grand Test questions came from inside that line, and no card spells it out. So the next card is new."
+     }
+    },
+    {
+     "card": "V12-020",
+     "bridge": "Pump or squeeze decides the drug. One poison left that does both jobs at once, and holds two more Grand Test questions: cocaine.",
+     "lesson": {
+      "v": 1,
+      "text": "A patient has swallowed someone's heart tablets and arrives slow and hypotensive. You already hold the pieces: calcium, insulin, glucagon. This card puts them in order, with doses, because Grand Test seven asked from here twice.\n\nBegin with which drug and which tissue. The L-type calcium channel does two jobs. In the heart it fires the nodes and triggers contraction. In the arteries it holds tone. Verapamil and diltiazem act mostly on the heart, so the patient is slow, blocked and pumping weakly. The dihydropyridines, amlodipine above all, act mostly on the vessels, so the patient is vasodilated, with a low SVR and often a fast heart. A beta-blocker looks like verapamil: slow, with a weak pump. In a massive overdose that selectivity fades, but the picture still tells you which number is broken. It's the question from the shock packets: the pump, or the squeeze?\n\n{{**Beta-blocker / CCB poisoning**\n1 Calcium: 10% CaCl₂ **10–20 mL** (gluconate 30–60 mL)\n2 High-dose insulin: **1 U/kg bolus, then 1–10 U/kg/h** + dextrose\n3 Glucagon **3–10 mg** (beta-blocker)\n4 Norepinephrine if vasoplegic (amlodipine)\n5 Rescue: lipid **1.5 mL/kg**, VA-ECMO}}\n\nFirst, charcoal if the patient is early and the airway safe, and whole-bowel irrigation for sustained-release tablets, which go on absorbing for a day. Fluids. Atropine, which usually disappoints.\n\nSecond, calcium. Ten to twenty millilitres of ten per cent calcium chloride, or three times that volume of gluconate, repeated or run as an infusion. Raising the calcium outside the cell pushes more through the channels left open. Expect pressure and contractility to rise and the rate to stay where it was.\n\nThird, the centre of the card: high-dose insulin euglycaemic therapy. You heard the why: insulin feeds a heart starved of glucose. Now the dose, far above anything you use in ketoacidosis. A bolus of one unit per kilogram of regular insulin. Then one unit per kilogram per hour, titrated upwards, as high as ten. Dextrose goes with it: a bolus of twenty-five to fifty grams unless the glucose is already high, then an infusion to hold the glucose normal. That is the word euglycaemic.\n\n[[High-dose insulin for calcium-channel-blocker or beta-blocker shock: one unit per kilogram as a bolus, then one to ten units per kilogram per hour, with dextrose. Watch the glucose and the potassium.]]\n\nTwo practical points. It is slow, fifteen minutes to an hour, so start it early, beside the pressor, not after everything else has failed. And watch two numbers: glucose every fifteen to thirty minutes at first, and potassium, which moves into cells. That fall is a shift, not a loss, so replace it only below about three.\n\nThe options that tempt are the familiar ones: more atropine, a pacing wire, more catecholamine. In a calcium-channel-blocker overdose still in shock after calcium, the key is high-dose insulin.\n\nFourth, glucagon: three to ten milligrams slowly, then an infusion. It has the better claim in beta-blocker poisoning, where it bypasses the blocked receptor. If the stem is a beta-blocker, shock and failed catecholamines, glucagon is still the classic key, though current guidance ranks high-dose insulin above it.\n\nFifth, the pressor, and the second Grand Test question. Amlodipine overdose: warm, vasodilated, low SVR, pump working. What do you add? Go back to the three numbers. The squeeze is the broken one, so you give the drug that squeezes.\n\n[[Dihydropyridine poisoning, such as amlodipine, is vasoplegia: a low SVR with a preserved pump. The pressor is norepinephrine. Insulin and inotropes are for the failing pump of verapamil, diltiazem or a beta-blocker.]]\n\nIf the vasoplegia resists norepinephrine, methylene blue is the named rescue, though the American guideline calls its benefit uncertain.\n\nLast, the rescues. Twenty per cent lipid, one point five millilitres per kilogram, is the exam's answer once glucagon, insulin and pressors have failed. The American update of twenty twenty-three advises against it as routine, so it stays a last resort. Beyond the drugs is VA-ECMO, which carries the circulation while the liver clears the poison. Dialysis helps only for atenolol and sotalol.\n\nOne poison is left, and it attacks from two sides at once. It holds two more Grand Test questions: cocaine."
+     }
+    },
+    {
+     "card": "TOX04|REC-05",
+     "bridge": "Cocaine is a local anaesthetic taken on purpose. Last card: the local anaesthetic given by accident, and the lipid that rescues it.",
+     "lesson": {
+      "v": 1,
+      "text": "Cocaine is two drugs in one, and you've already met both halves.\n\nThe first half is a sympathetic storm. Cocaine blocks the reuptake of noradrenaline, dopamine and serotonin, so the transmitters stay in the synapse. The patient is agitated, hot, hypertensive and tachycardic, with intense vasoconstriction. The second half is a local anaesthetic. Cocaine is an ester local anaesthetic, and like the others it blocks the cardiac sodium channel.\n\nThe storm explains the complications. Coronary spasm, platelet activation and a high oxygen demand cause infarction, even in normal arteries. Surges of pressure tear the aorta and burst cerebral vessels. Agitation and heat break down muscle, so rhabdomyolysis and kidney injury follow. NEET twenty twenty-five asked which complication to worry about most, and the key was intracranial haemorrhage. Not bradycardia, respiratory depression or hypothermia.\n\nNow treatment, and the order has a reason. The storm starts in the brain. So the first drug is a benzodiazepine. It lowers central sympathetic outflow, and pulse, pressure, agitation and heat production fall together. Add active cooling, and generous fluids for the muscle.\n\n[[Cocaine toxicity: benzodiazepines first, because they treat the cause. Then nitrates, a calcium-channel blocker or phentolamine for pressure or spasm. Never a pure beta-blocker.]]\n\nWhy never? Cocaine drives alpha and beta receptors together. Beta two receptors dilate vessels and partly cancel the alpha squeeze. Block beta alone, with metoprolol or propranolol, and alpha is left unopposed: the coronaries clamp harder and the pressure climbs. Then the subtler trap. Labetalol blocks alpha as well, so it sounds safe. But given intravenously it is about seven parts beta-blocker to one part alpha-blocker. In a stem offering lorazepam, phentolamine, nitroglycerin and labetalol, the least appropriate is labetalol.\n\nFor cocaine chest pain the sequence is benzodiazepine, aspirin, nitrate, then phentolamine or a calcium-channel blocker if spasm or pressure persists. A cocaine STEMI goes to primary PCI, because spasm, dissection and thrombus are all common. Fibrinolysis is only the fallback.\n\nNow the second half, the sodium channel, and your two missed questions.\n\nThe patient develops a wide-complex tachycardia. You know what a wide QRS means in poisoning. The answer is sodium bicarbonate, exactly as for a tricyclic, with lidocaine if it fails. The option on that Grand Test question was verapamil, and see why it tempts. A calcium-channel blocker is on the approved list for cocaine, so the name looks right. But it's there for spasm and pressure. It does nothing for a sodium channel, and a vasodilating negative inotrope given into a wide-complex tachycardia can collapse the circulation.\n\n[[Cocaine with a wide QRS is sodium-channel block: give sodium bicarbonate, then lidocaine. Verapamil belongs to cocaine's spasm and hypertension, not to its arrhythmia.]]\n\nThe other question. Cocaine with rhabdomyolysis, and the patient needs paralysis. Which relaxant? A non-depolarising one, such as rocuronium. Never succinylcholine, for two reasons. Rhabdomyolysis has already raised the potassium, and succinylcholine raises it further, enough to arrest. And both drugs are broken down by the same plasma cholinesterase, so each prolongs the other.\n\nThree smaller facts have been asked. Haemoptysis, hypoxaemia and diffuse bilateral infiltrates within forty-eight hours of smoking or snorting cocaine mean diffuse alveolar haemorrhage, known as crack lung. A pneumothorax would give no diffuse infiltrates. Among drugs causing rhabdomyolysis, heroin counts, through hours of lying on a limb; synthetic cannabinoids are the least likely. And cocaine withdrawal is a crash, with depression, long sleep and craving, not an autonomic storm.\n\nCocaine is a local anaesthetic that people take on purpose. The last card is the local anaesthetic we give by accident."
+     }
+    },
+    {
+     "card": "TOX01|TOX-15",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "You've given this drug yourself, so start in your own theatre. A bupivacaine block, and the needle tip was in a vessel. First the tongue goes numb and the ears ring. Then a seizure. Then bradycardia, a widening QRS and arrest. And this arrest resists the usual algorithm, because bupivacaine is fat-soluble and holds the cardiac sodium channel tightly.\n\nThe answer came from the laboratory. In nineteen ninety-eight Guy Weinberg showed that rats given a lipid infusion survived doses of bupivacaine that killed the others. In two thousand and six the first patient was rescued the same way, after twenty minutes of failed resuscitation. The idea is a sink. Put a fat phase into the blood, and a fat-soluble drug moves into it and out of the heart.\n\n{{**20% lipid emulsion**\nBolus | **1.5 mL/kg** over 2–3 min (100 mL if over 70 kg)\nInfusion | **0.25 mL/kg/min**\nStill unstable | repeat bolus once or twice, double the rate\nCeiling | **12 mL/kg**\nObserve | 4–6 h after a cardiac event, 2 h after CNS only}}\n\nThe numbers are on the screen, and three are worth carrying.\n\n[[Twenty per cent lipid emulsion: bolus one point five millilitres per kilogram, infusion nought point two five millilitres per kilogram per minute, ceiling twelve millilitres per kilogram.]]\n\nIf the patient stays unstable, repeat the bolus once or twice and double the infusion. The ceiling exists because a larger load risks pancreatitis, fat overload and lung injury.\n\nThe resuscitation changes too, and each change has a reason. Adrenaline in small boluses, one microgram per kilogram or less, because large doses worsen the arrhythmia. No lidocaine, because it is another local anaesthetic. No vasopressin, calcium-channel blockers or beta-blockers, which burden a failing heart. Benzodiazepines for the seizures, and no large dose of propofol. Propofol is not a substitute for lipid: it's a cardiac depressant in a weak emulsion. Afterwards, watch for four to six hours after a cardiac event and two hours after a seizure alone, because as the lipid clears, the drug can return.\n\nIt is asked two ways. First, the drug of choice in an arrest after bupivacaine: lipid, not adrenaline, lidocaine or amiodarone. The mimic is the epidural that goes wrong with wheeze, flushing and hypotension. That is anaphylaxis, and the answer is intramuscular adrenaline.\n\nSecond, the same bolus as a rescue for other fat-soluble poisons. Massive propranolol, refractory after glucagon, insulin and bicarbonate: what is given as one point five millilitres per kilogram? Lipid. That is the exam's key, even though the American update of twenty twenty-three doubts lipid for beta-blockers. ECMO is the step after it, but ECMO isn't a bolus.\n\nThat closes the walk. Look back at its shape. Blood that wouldn't clot, then a heart that wouldn't beat, and in both the same two moves: bind the drug, or go around the step it blocked. Where neither is enough, carry the circulation until the poison clears.\n\nEvery heart in this packet was injured by a chemical. Next come hearts injured by their surroundings and by disease. A right ventricle failing against the lung. A pericardium that fills and squeezes. Muscle inflamed by myocarditis. A valve eaten by infection. Different causes, and you'll read every one with the same three numbers."
+     }
+    }
+   ],
+   "spine": [
+    "Read the ECG for the site: wide QRS = Na⁺ channel → bicarbonate 1–2 mEq/kg; long QT = K⁺ channel → stop the drug, Mg²⁺, K⁺; slow or blocked = the nodes.",
+    "TCA: QRS ≥100 ms seizures, ≥160 ms ventricular arrhythmia; never class Ia/Ic, physostigmine or phenytoin. Propranolol and cocaine widen the QRS too.",
+    "Digoxin = ectopy + block; peaked T is hyperkalaemia. Acute: K⁺ >5 predicts death → Fab (also in arrest). Vials = mg × 0.8 ÷ 0.5; acute 10–20, chronic 3–6.",
+    "β-blocker/CCB: calcium → high-dose insulin 1 U/kg then 1–10 U/kg/h + dextrose → glucagon (β-blocker) → norepinephrine for amlodipine vasoplegia → lipid, VA-ECMO.",
+    "Cocaine: benzodiazepines first; no pure β-blocker (labetalol least appropriate); wide QRS → bicarbonate, not verapamil; rhabdomyolysis → no succinylcholine.",
+    "LAST: 20% lipid 1.5 mL/kg, then 0.25 mL/kg/min, max 12 mL/kg; adrenaline ≤1 µg/kg; no lidocaine; observe 4–6 h."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's go back through the two ways a cardiac drug turns on the patient.\n\nWhen he bleeds, you ask where the drug blocks the cascade. Warfarin needs vitamin K and a four-factor prothrombin complex. Dabigatran has its own antibody, idarucizumab. The factor ten inhibitors have andexanet, or the prothrombin complex where andexanet isn't available. Heparin has protamine, and low molecular weight heparin only partly.\n\nWhen the heart is poisoned, you read the ECG and the three numbers. A wide QRS means the sodium channel is blocked, and bicarbonate is the antidote. A blocked beta-receptor or calcium channel means you push on the pump and the squeeze from another route.\n\nNow the traps. Several of them are yours.\n\nOne. Acute digoxin poisoning, and the question asks for the worst sign. The tempting answer is bradycardia. [[In acute digoxin poisoning, a potassium above five predicts death and is a reason to give the antibody fragments.]] You missed this one.\n\nTwo. Digoxin toxicity, and the patient has arrested. The tempting thought is that it's too late for Fab. Give it, and keep going. Spontaneous circulation can come back even late. A second miss.\n\nThree. Calcium-channel blocker shock. The tempting step is atropine or more catecholamine. [[High-dose insulin, with dextrose to keep the glucose up, is the key treatment in calcium-channel blocker and beta-blocker shock.]]\n\nFour. Amlodipine with a low resistance. That's vasoplegia. Noradrenaline for the squeeze.\n\nFive. Cocaine with a wide-complex tachycardia. The tempting drug is verapamil. The wide QRS is sodium-channel block, so the answer is sodium bicarbonate.\n\nAnd six. A cocaine patient with rhabdomyolysis who needs paralysing. Never succinylcholine. Use a non-depolarising blocker.\n\nThe check comes up on the next screen. Answer each in your head before you tap it open.\n\nAnd carry one picture forward. These hearts were injured by a chemical. Next come hearts injured by what surrounds them, or by disease. A pericardium that fills and squeezes from outside. Muscle inflamed by myocarditis. A valve eaten by infection."
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "Dabigatran with a life-threatening bleed: agent and dose?",
+   "a": "Idarucizumab 5 g IV (2 × 2.5 g). Fallback PCC or aPCC; dabigatran is also dialysable."
+  },
+  {
+   "q": "Which is NOT an adverse effect of idarucizumab: delirium, fever, constipation, hypokalaemia, hyperkalaemia?",
+   "a": "Hyperkalaemia. It causes hypoKALAEMIA (45% right)."
+  },
+  {
+   "q": "Rivaroxaban or apixaban, major bleed: specific reversal, and the alternative?",
+   "a": "Andexanet alfa (exam key). If not offered: 4F-PCC 50 U/kg (aPCC also keyed). Vitamin K does nothing; INR does not measure the drug."
+  },
+  {
+   "q": "Warfarin, intracranial or life-threatening bleed, INR 5: what do you give?",
+   "a": "4F-PCC 35 U/kg (25 for INR 2–4, 50 above 6) + vitamin K 10 mg IV. FFP only if no PCC."
+  },
+  {
+   "q": "Mechanical mitral valve, INR 8.4, no bleeding, CKD and aspirin?",
+   "a": "Hold 1–2 doses + low-dose ORAL vitamin K (about 2–2.5 mg). No PCC, no IV 10 mg: they over-correct."
+  },
+  {
+   "q": "INR above 10, no bleeding?",
+   "a": "Hold warfarin + oral vitamin K 2.5–5 mg."
+  },
+  {
+   "q": "Is factor VII in PCC?",
+   "a": "Yes in modern 4-factor PCC (II, VII, IX, X). Only old 3-factor PCC lacks VII (GT7 keyed the old answer)."
+  },
+  {
+   "q": "Protamine for UFH, and for enoxaparin at 6 h, 10 h and 14 h?",
+   "a": "UFH: 1 mg per 100 U given in the last 2–3 h (max 50 mg). Enoxaparin: 1 mg/mg under 8 h; 0.5 mg/mg at 8–12 h; none after 12 h (~60% reversal)."
+  },
+  {
+   "q": "ICH on warfarin with INR 1.6: reverse?",
+   "a": "Yes: 4F-PCC 10–20 IU/kg + vitamin K 10 mg IV (INR 2 or more: 25–50 IU/kg)."
+  },
+  {
+   "q": "ICH on aspirin, platelets dysfunctional, surgery planned: keyed drug? What did PATCH show?",
+   "a": "Desmopressin 0.4 µg/kg. PATCH: platelet transfusion worsened outcome, so it is not routine."
+  },
+  {
+   "q": "Spontaneous ICH: systolic target? When is surgery indicated?",
+   "a": "SBP about 140 (130–150), smoothly. Cerebellar haematoma >3 cm, brainstem compression or hydrocephalus → evacuation (EVD alone is not enough)."
+  },
+  {
+   "q": "Tricyclic overdose: what grades the risk, and at which numbers?",
+   "a": "QRS duration, not dose or level. ≥100 ms: seizures (about 1/3). ≥160 ms: ventricular arrhythmia (about 1/2)."
+  },
+  {
+   "q": "Wide QRS after a tricyclic: treatment, and three drugs to avoid?",
+   "a": "Sodium bicarbonate 1–2 mEq/kg to pH 7.45–7.55. Avoid class Ia/Ic anti-arrhythmics, physostigmine and phenytoin. Lidocaine is second line."
+  },
+  {
+   "q": "Massive propranolol, QRS 180 ms, refractory to glucagon: next drug?",
+   "a": "IV sodium bicarbonate (propranolol blocks Na⁺ channels). If still refractory: lipid 1.5 mL/kg (exam key; AHA 2023 doubts benefit), then VA-ECMO."
+  },
+  {
+   "q": "Acute digoxin poisoning: which finding predicts death? (GT7 Q99)",
+   "a": "Serum potassium above 5–5.5 mmol/L. Not bradycardia, AV block or the digoxin level. It is an indication for Fab."
+  },
+  {
+   "q": "Digoxin toxicity with K⁺ 5.8 and bradyarrhythmia: first step? And in digoxin arrest? (GT8 Q54)",
+   "a": "Digoxin-specific Fab, not calcium gluconate. In arrest give Fab too: ROSC can follow even late."
+  },
+  {
+   "q": "Which ECG finding is NOT digoxin: reverse-tick ST, short QT, bidirectional VT, peaked T?",
+   "a": "Peaked T waves: that is hyperkalaemia."
+  },
+  {
+   "q": "8 mg of digoxin swallowed: how many Fab vials?",
+   "a": "8 × 0.8 ÷ 0.5 ≈ 13; DocT keys 16 (options 2/4/8/16). Empirical: acute 10–20 vials, chronic 3–6."
+  },
+  {
+   "q": "Bradycardia and hypotension, alert, glucose high: which poison? And if drowsy?",
+   "a": "Alert + hyperglycaemia: calcium-channel blocker. Drowsy: beta-blocker."
+  },
+  {
+   "q": "High-dose insulin in CCB poisoning: dose, and why it helps? (GT7 Q94)",
+   "a": "1 U/kg bolus, then 1–10 U/kg/h with dextrose. Enhanced myocardial glucose utilisation: inotropy without extra O₂ demand. Monitor glucose and K⁺."
+  },
+  {
+   "q": "Amlodipine overdose, low SVR, preserved pump: which pressor? (GT7 Q96)",
+   "a": "Norepinephrine (vasoplegia). Methylene blue if refractory."
+  },
+  {
+   "q": "Shock on a beta-blocker, no response to catecholamines: classic drug of choice and dose?",
+   "a": "Glucagon (1–5 mg IV on the card; 3–10 mg in poisoning): raises cAMP through its own receptor."
+  },
+  {
+   "q": "Cocaine with wide-complex tachycardia: drug? (GT7 Q102)",
+   "a": "Sodium bicarbonate (Na⁺-channel block), then lidocaine. Not verapamil."
+  },
+  {
+   "q": "Cocaine with rhabdomyolysis needing paralysis: which relaxant? (GT7 Q103)",
+   "a": "A non-depolarising blocker (e.g. rocuronium). Never succinylcholine: hyperkalaemia, and shared plasma cholinesterase."
+  },
+  {
+   "q": "Cocaine, BP 223/150, ST depression: least appropriate of lorazepam, phentolamine, nitroglycerin, labetalol?",
+   "a": "Labetalol (mostly β-blockade IV: unopposed α). Benzodiazepines are first line."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "Hyperkalaemia is an adverse effect of idarucizumab",
+   "truth": "HypoKALAEMIA is (with delirium, fever, constipation, pneumonia). Hyperkalaemia is the 'not seen' answer.",
+   "cards": [
+    "HY2|CAR-21"
+   ],
+   "asked": "DocT, 45%"
+  },
+  {
+   "trap": "Factor VII is not in PCC",
+   "truth": "Modern 4-factor PCC contains II, VII, IX and X; only the old 3-factor product lacks VII. The GT key is outdated.",
+   "cards": [
+    "HY2|CAR-21"
+   ],
+   "asked": "GT7 key, 59%"
+  },
+  {
+   "trap": "PCC or IV vitamin K 10 mg for a high INR with no bleeding (mechanical valve, INR 8.4)",
+   "truth": "INR 4.5–10, no bleeding: hold 1–2 doses, low-dose oral vitamin K (1–2.5 mg) only if bleeding risk is high. INR >10: oral 2.5–5 mg. PCC/IV vitamin K over-correct.",
+   "cards": [
+    "HY2|CAR-21"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Delay endoscopy until the INR is normal, or give FFP, for melaena at INR 2.8",
+   "truth": "PCC with vitamin K, and do not delay endoscopy.",
+   "cards": [
+    "HY2|CAR-21"
+   ],
+   "asked": "AIM1, 53%"
+  },
+  {
+   "trap": "Protamine reverses enoxaparin given 14 h ago; or fully reverses LMWH",
+   "truth": "No protamine after 12 h; 1 mg/mg under 8 h, 0.5 mg/mg at 8–12 h; only about 60% of the anti-Xa effect is reversed.",
+   "cards": [
+    "HY2|CAR-21",
+    "NEURO04|NEURO-92"
+   ],
+   "asked": "INI-SS, 35%"
+  },
+  {
+   "trap": "Vitamin K or the INR for a rivaroxaban or apixaban bleed",
+   "truth": "Vitamin K does nothing for a DOAC and the INR does not measure it. Andexanet (exam key) or 4F-PCC 50 U/kg.",
+   "cards": [
+    "HY2|CAR-21"
+   ],
+   "asked": "DocT QBank / GT, 75–94%"
+  },
+  {
+   "trap": "FFP + vitamin K for warfarin ICH",
+   "truth": "Guidelines: 4F-PCC + IV vitamin K. Marrow keys FFP only where the stem stresses a recent thrombotic event and asks for the 'safest' agent.",
+   "cards": [
+    "NEURO04|NEURO-92",
+    "HY2|CAR-21"
+   ],
+   "asked": "Marrow key"
+  },
+  {
+   "trap": "Platelet transfusion for an intracranial bleed on aspirin or clopidogrel",
+   "truth": "Not routine (PATCH: worse outcome). Keyed: desmopressin 0.4 µg/kg; aspirin withheld until the aneurysm is secured.",
+   "cards": [
+    "NEURO04|NEURO-92"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Lower the systolic to 110 in ICH; or an EVD alone for a cerebellar bleed compressing the brainstem",
+   "truth": "SBP about 140 (130–150); below 130 is harmful. Cerebellar haematoma >3 cm or brainstem compression → evacuation, not a drain alone.",
+   "cards": [
+    "HY4|NEU-09"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Tricyclic overdose, GCS 8: charcoal or CT first; dose or level grades the risk",
+   "truth": "ECG first: the QRS duration grades the risk (≥100 ms seizures, ≥160 ms ventricular arrhythmia). Charcoal is unsafe with an unprotected airway.",
+   "cards": [
+    "TOX01|TOX-07"
+   ],
+   "asked": "DocT, 47%"
+  },
+  {
+   "trap": "Physostigmine for the anticholinergic signs of a tricyclic overdose with QRS 175",
+   "truth": "Physostigmine can cause asystole; give sodium bicarbonate.",
+   "cards": [
+    "TOX01|TOX-07"
+   ],
+   "asked": "DocT GT, 43%"
+  },
+  {
+   "trap": "Procainamide, flecainide or phenytoin for tricyclic wide-complex tachycardia or seizures",
+   "truth": "All are sodium-channel blockers. Bicarbonate first, lidocaine second line; benzodiazepines for seizures.",
+   "cards": [
+    "TOX01|TOX-07",
+    "TOX01|TOX-14"
+   ],
+   "asked": "DocT GT; Marrow"
+  },
+  {
+   "trap": "Calcium, glucagon or insulin will fix a propranolol wide QRS",
+   "truth": "Propranolol blocks Na⁺ channels: a wide QRS (act at 100 ms or more in poisoning) needs bicarbonate.",
+   "cards": [
+    "TOX01|TOX-07"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Typical antipsychotics carry more arrhythmia risk than atypicals",
+   "truth": "Pooled risk is similar; thioridazine and ziprasidone prolong QTc most. Citalopram/escitalopram are the QT-prolonging SSRIs.",
+   "cards": [
+    "TOX01|TOX-07"
+   ],
+   "asked": "DocT GT, 3%; Marrow"
+  },
+  {
+   "trap": "Worst sign in acute digoxin poisoning is bradycardia, high-degree AV block or the digoxin level",
+   "truth": "A potassium above 5–5.5 mmol/L predicts death (Bismuth 1973) and calls for Fab.",
+   "cards": [
+    "HY2|CAR-07"
+   ],
+   "asked": "GT7 Q99 (missed); DocT GT 29%"
+  },
+  {
+   "trap": "Fab is pointless once a digoxin-toxic patient has arrested",
+   "truth": "Give Fab in digoxin-toxic arrest and continue resuscitation: ROSC can follow even late.",
+   "cards": [
+    "HY2|CAR-07",
+    "HY2|CAR-14"
+   ],
+   "asked": "GT8 Q54 (missed, repeat of GT7 Q99)"
+  },
+  {
+   "trap": "Calcium gluconate first for K⁺ 5.8 on digoxin",
+   "truth": "Fab: it corrects the potassium and the arrhythmia together.",
+   "cards": [
+    "HY2|CAR-07"
+   ],
+   "asked": "DocT QBank, 71%"
+  },
+  {
+   "trap": "Beta-blockers are contraindicated in exercise-induced bidirectional VT",
+   "truth": "That is CPVT: beta-blockers (nadolol) are first line, flecainide added, ICD reserved.",
+   "cards": [
+    "HY2|CAR-07"
+   ],
+   "asked": "DocT GT, 42%"
+  },
+  {
+   "trap": "8 mg digoxin needs 8 vials of Fab",
+   "truth": "Each vial binds 0.5 mg: 8 × 0.8 ÷ 0.5 ≈ 13; DocT keys 16.",
+   "cards": [
+    "TOX01|TOX-14"
+   ],
+   "asked": "DocT, 31%"
+  },
+  {
+   "trap": "Recurrent bradyarrhythmia 4 days after Fab in CKD is Fab hypersensitivity",
+   "truth": "Rebound free digoxin as the retained Fab–digoxin complex dissociates.",
+   "cards": [
+    "TOX01|TOX-14"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "More D50 or a glucose infusion alone for sulfonylurea hypoglycaemia recurring after D50",
+   "truth": "D50 plus octreotide 50 µg SC 6-hourly: dextrose alone drives more insulin release.",
+   "cards": [
+    "TOX01|TOX-14"
+   ],
+   "asked": "DocT GT, 47%"
+  },
+  {
+   "trap": "IV calcium will correct the heart rate in verapamil overdose",
+   "truth": "Calcium raises contractility and BP; heart rate changes least.",
+   "cards": [
+    "TOX01|TOX-14",
+    "TOX01|V12-020"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "More adrenaline or noradrenaline for beta-blocker shock unresponsive to catecholamines",
+   "truth": "Glucagon: it raises cAMP through its own receptor, bypassing the blocked β-receptor.",
+   "cards": [
+    "HY2|CAR-14",
+    "TOX01|V12-020"
+   ],
+   "asked": "DocT GT PYQ; mini test 37%"
+  },
+  {
+   "trap": "Atropine, pacing or more catecholamine as the key step in calcium-channel-blocker shock",
+   "truth": "High-dose insulin euglycaemic therapy: 1 U/kg bolus, then 1–10 U/kg/h with dextrose, alongside calcium and vasopressors.",
+   "cards": [
+    "TOX01|V12-020",
+    "TOX01|TOX-14"
+   ],
+   "asked": "GT7 Q94"
+  },
+  {
+   "trap": "An inotrope or more insulin for amlodipine overdose with low SVR",
+   "truth": "Dihydropyridine poisoning is vasoplegia: norepinephrine for the low SVR.",
+   "cards": [
+    "TOX01|V12-020"
+   ],
+   "asked": "GT7 Q96"
+  },
+  {
+   "trap": "Verapamil for cocaine with a wide-complex tachycardia",
+   "truth": "Wide QRS = sodium-channel block: sodium bicarbonate, then lidocaine. CCBs are for cocaine's spasm and hypertension.",
+   "cards": [
+    "TOX04|REC-05",
+    "TOX01|TOX-07"
+   ],
+   "asked": "GT7 Q102"
+  },
+  {
+   "trap": "Succinylcholine to paralyse a cocaine patient with rhabdomyolysis",
+   "truth": "Non-depolarising blocker only: succinylcholine adds hyperkalaemia and shares plasma cholinesterase with cocaine.",
+   "cards": [
+    "TOX04|REC-05"
+   ],
+   "asked": "GT7 Q103"
+  },
+  {
+   "trap": "Metoprolol for cocaine chest pain; labetalol is safe because it also blocks α",
+   "truth": "Pure β-blockers leave α unopposed. IV labetalol is mostly β (about 7:1): the 'least appropriate' answer. Benzodiazepines, nitrates, CCB, phentolamine.",
+   "cards": [
+    "TOX04|REC-05"
+   ],
+   "asked": "DocT; DocT GT"
+  },
+  {
+   "trap": "Bradycardia or respiratory depression is the cocaine complication to fear; heroin does not cause rhabdomyolysis",
+   "truth": "Intracranial haemorrhage is the keyed worry. Heroin causes rhabdomyolysis by immobility; synthetic cannabinoids are least likely.",
+   "cards": [
+    "TOX04|REC-05"
+   ],
+   "asked": "NEET 2025; DocT"
+  },
+  {
+   "trap": "Standard 1 mg adrenaline, lidocaine or amiodarone as drug of choice in bupivacaine arrest",
+   "truth": "20% lipid emulsion 1.5 mL/kg; adrenaline ≤1 µg/kg; lidocaine is another local anaesthetic.",
+   "cards": [
+    "TOX01|TOX-15",
+    "HY2|CAR-14"
+   ],
+   "asked": "DocT GT PYQ; Marrow"
+  },
+  {
+   "trap": "ECMO is 'given as a 1.5 mL/kg bolus' for refractory propranolol poisoning",
+   "truth": "That bolus is 20% lipid emulsion; VA-ECMO is the step after it.",
+   "cards": [
+    "TOX01|TOX-15",
+    "TOX01|V12-020"
+   ],
+   "asked": "DocT GT"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Specific vs non-specific reversal",
+   "tell": "Specific agents bind the drug (idarucizumab, andexanet, protamine); PCC only replaces factors (warfarin; Xa inhibitors when andexanet is unavailable).",
+   "cards": [
+    "HY2|CAR-21"
+   ]
+  },
+  {
+   "pair": "UFH vs enoxaparin reversal with protamine",
+   "tell": "UFH is fully reversed; enoxaparin only about 60%, and not at all after 12 h.",
+   "cards": [
+    "HY2|CAR-21",
+    "NEURO04|NEURO-92"
+   ]
+  },
+  {
+   "pair": "Dabigatran vs Xa inhibitor, when the specific agent is unavailable",
+   "tell": "Dabigatran is dialysable (low protein binding); apixaban and rivaroxaban are not.",
+   "cards": [
+    "NEURO04|NEURO-92"
+   ]
+  },
+  {
+   "pair": "High INR with major bleeding vs without bleeding",
+   "tell": "Bleeding: 4F-PCC + IV vitamin K 10 mg. No bleeding: hold doses, at most low-dose oral vitamin K.",
+   "cards": [
+    "HY2|CAR-21"
+   ]
+  },
+  {
+   "pair": "Wide QRS vs long QT in poisoning",
+   "tell": "Wide QRS = Na⁺-channel block → bicarbonate. Long QT = K⁺-channel block → stop the drug, magnesium and potassium.",
+   "cards": [
+    "TOX01|TOX-07"
+   ]
+  },
+  {
+   "pair": "Digoxin effect vs digoxin toxicity",
+   "tell": "Reverse-tick ST and short QT are effect at therapeutic levels; toxicity shows as rhythms (ectopy plus block).",
+   "cards": [
+    "HY2|CAR-07"
+   ]
+  },
+  {
+   "pair": "Bidirectional VT: digoxin toxicity vs CPVT",
+   "tell": "CPVT: young, no digoxin, syncope on exercise or emotion; beta-blockers first line.",
+   "cards": [
+    "HY2|CAR-07"
+   ]
+  },
+  {
+   "pair": "Acute vs chronic digoxin toxicity",
+   "tell": "Acute: HYPERkalaemia marks severity. Chronic: HYPOkalaemia (diuretics) provokes it.",
+   "cards": [
+    "HY2|CAR-07"
+   ]
+  },
+  {
+   "pair": "Calcium-channel blocker vs beta-blocker poisoning",
+   "tell": "CCB: alert with hyperglycaemia. Beta-blocker: depressed consciousness (propranolol also widens the QRS).",
+   "cards": [
+    "TOX01|TOX-14",
+    "TOX01|V12-020"
+   ]
+  },
+  {
+   "pair": "Dihydropyridine (amlodipine) vs verapamil/diltiazem poisoning",
+   "tell": "Amlodipine: vasoplegia, low SVR, often tachycardia → norepinephrine. Verapamil/diltiazem: bradycardia, block and pump failure → calcium and high-dose insulin.",
+   "cards": [
+    "TOX01|V12-020"
+   ]
+  },
+  {
+   "pair": "Cocaine vs tricyclic with a wide QRS",
+   "tell": "Same bicarbonate. Cocaine: sympathetic storm, short-acting, sweating. Tricyclic: anticholinergic, dry skin, urinary retention.",
+   "cards": [
+    "TOX04|REC-05",
+    "TOX01|TOX-07"
+   ]
+  },
+  {
+   "pair": "Crack lung vs pneumothorax after cocaine",
+   "tell": "Haemoptysis with diffuse bilateral infiltrates = diffuse alveolar haemorrhage; a pneumothorax gives no diffuse infiltrates.",
+   "cards": [
+    "TOX04|REC-05"
+   ]
+  },
+  {
+   "pair": "LAST vs anaphylaxis after an epidural",
+   "tell": "Wheeze and flushing = anaphylaxis → IM adrenaline. Perioral numbness, seizures, arrhythmia = LAST → lipid.",
+   "cards": [
+    "TOX01|TOX-15"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-020",
+   "deck": "TOX01",
+   "topic": "Beta-blocker and calcium-channel-blocker poisoning",
+   "tier": "S",
+   "q": "**Beta-blocker or calcium-channel-blocker poisoning with bradycardia and shock:**\na First steps\nb Calcium: dose, and what it corrects least\nc High-dose insulin: dose, why it works, what to monitor\nd Glucagon\ne Which vasopressor for amlodipine?\nf Rescue",
+   "a": [
+    "Charcoal if early; **whole-bowel irrigation** for sustained-release tablets; fluids; atropine (often fails)",
+    "**Calcium:** 10% calcium chloride **10–20 mL** IV (or gluconate 30–60 mL), repeat or infuse. Raises contractility and BP; **least effect on heart rate**",
+    "**High-dose insulin euglycaemic therapy:** regular insulin **1 U/kg bolus, then 1 U/kg/h titrated up to 10 U/kg/h**, with dextrose (25–50 g bolus unless glucose is high, then infusion)",
+    "Why: the poisoned heart can use glucose again: **inotropy without extra O₂ demand**. Onset 15–60 min, so start early. Monitor **glucose** every 15–30 min and **K⁺** (shifts into cells; replace below about 3 mmol/L)",
+    "**Glucagon** 3–10 mg IV slowly, then infusion: raises cAMP past the blocked β-receptor; classic key for **β-blocker** shock; causes vomiting",
+    "**Vasopressor:** dihydropyridine (**amlodipine**) = vasoplegia, low SVR → **norepinephrine**. Pump failure (verapamil, diltiazem, β-blocker) → high-dose insulin ± epinephrine",
+    "**Rescue:** 20% lipid 1.5 mL/kg (exam key once the rest fails; AHA 2023 advises against routine use), methylene blue for refractory vasoplegia, **VA-ECMO**; dialysis only for atenolol or sotalol",
+    "Tell them apart: CCB = alert + **hyperglycaemia**; β-blocker = drowsy; propranolol also widens the QRS → bicarbonate"
+   ],
+   "why": "GT7 Q94 (CCB poisoning: high-dose insulin euglycaemic therapy is a key treatment) and GT7 Q96 (amlodipine vasoplegia: norepinephrine for the low SVR). TOX-14 and CAR-14 name the drugs but give no order, no calcium or glucagon dose, and nothing on the dihydropyridine/vasoplegia distinction."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "HY2|CAR-21",
+   "issue": "Andexanet alfa is listed first for Xa inhibitors with no caveat. AstraZeneca ended US sales of Andexxa on 22 Dec 2025 after an FDA safety communication on thromboembolic events (ANNEXA-I). Still the exam key and still licensed elsewhere; card could add 'withdrawn in the US Dec 2025: 4F-PCC in practice'. Lesson teaches the exam answer first, then the change."
+  },
+  {
+   "card": "NEURO04|NEURO-92",
+   "issue": "Same andexanet point as CAR-21. Also the enoxaparin row gives only '1 mg per 1 mg' with no time rule (CAR-21 has: 1 mg/mg under 8 h, 0.5 mg/mg at 8–12 h, none after 12 h)."
+  },
+  {
+   "card": "HY4|NEU-09",
+   "issue": "'Cerebellar haematoma above 3 cm' is the older (AHA 2015) criterion; AHA/ASA 2022 uses a volume of 15 mL or more, neurological deterioration, brainstem compression or hydrocephalus. Roughly the same clot; exams still key 3 cm. Lesson gives both."
+  },
+  {
+   "card": "TOX01|TOX-14",
+   "issue": "Card says high-dose insulin '1 U/kg bolus, then 1–10 U/kg/h' (correct, AHA 2023) but its stored explanation heading says '0.5–1 U/kg/h': the explanation should match the card. Beta-blocker row ranks glucagon before high-dose insulin; AHA 2023 makes high-dose insulin class 1 and glucagon 2a (exam still keys glucagon as the classic answer)."
+  },
+  {
+   "card": "HY2|CAR-14",
+   "issue": "Line b 'lipid emulsion if refractory' (and the TOX-15 bank line on lipid for propranolol/verapamil): AHA 2023 focused update recommends against routine lipid emulsion in beta-blocker and CCB poisoning (class 3, no benefit); VA-ECMO is 2a. DocT still keys lipid 1.5 mL/kg as the rescue. Lesson teaches the exam key and states the guideline position."
+  },
+  {
+   "card": "TOX01|TOX-15",
+   "issue": "Bank line keys lipid 1.5 mL/kg as the rescue for refractory propranolol; AHA 2023 says lipid is not likely beneficial in beta-blocker poisoning and routine use is not recommended in CCB poisoning (lipid is class 1 only for local anaesthetic toxicity). Lesson keeps the exam key and states the guideline."
+  }
+ ]
+}

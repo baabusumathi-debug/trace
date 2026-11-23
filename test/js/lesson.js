@@ -209,16 +209,23 @@ export async function makeKokoro(pkg, onStep, onlyQ) {
     let done = 0, failed = 0, lastErr = '', sec = 0;
     const saveIdx = async () => { await batch([{ op: 'writeFile', folderId: fid, name: deck + '.kidx.json', text: JSON.stringify(K), mime: 'application/json' }]); };
     onStep && onStep({ done, total: want.length, failed, sec });
+    // the model makes the next clip while earlier ones upload (up to four uploads at a time)
+    const inflight = new Set();
+    const upload = (p, a) => {
+      const pr = batch([{ op: 'writeFile', folderId: fid, name: deck + '__' + p.k + '.b64', text: a.b64, mime: 'text/plain' }], 120000)
+        .then(([w]) => { if (!w || !w.ok) throw new Error((w && w.error) || 'write failed'); K[p.k] = { id: w.data.id, h: p.h, sec: a.sec, voice: KVOICE }; done++; sec += a.sec; if (done % 20 === 0) return saveIdx(); })
+        .catch(e => { failed++; lastErr = e.message; })
+        .finally(() => { inflight.delete(pr); onStep && onStep({ done, total: want.length, failed, sec, error: lastErr }); });
+      inflight.add(pr);
+    };
     for (const p of want) {
-      try {
-        const a = await kSpeak(p.t);
-        const [w] = await batch([{ op: 'writeFile', folderId: fid, name: deck + '__' + p.k + '.b64', text: a.b64, mime: 'text/plain' }], 120000);
-        if (!w || !w.ok) throw new Error((w && w.error) || 'write failed');
-        K[p.k] = { id: w.data.id, h: p.h, sec: a.sec, voice: KVOICE }; done++; sec += a.sec;
-        if (done % 10 === 0) await saveIdx();
-      } catch (e) { failed++; lastErr = e.message; if (failed > 5 && !done) break; }
-      onStep && onStep({ done, total: want.length, failed, sec, error: lastErr });
+      if (failed > 5 && !done) break;
+      let a = null;
+      try { a = await kSpeak(p.t); } catch (e) { failed++; lastErr = e.message; continue; }
+      while (inflight.size >= 4) await Promise.race(inflight);
+      upload(p, a);
     }
+    await Promise.all(inflight);
     await saveIdx();
     await kIndex(deck, true);
     return { done, total: want.length, failed, sec, error: lastErr };

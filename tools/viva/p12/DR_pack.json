@@ -1,0 +1,718 @@
+{
+ "packet": "Cardiac drugs and the poisoned heart",
+ "gt_misses": {
+  "GT7 Q99 (missed)": "Acute digoxin poisoning, worst sign: K+ above 5 (chose bradycardia). K+ >5 predicts death and calls for Fab. Teach at CAR-07.",
+  "GT8 Q54 (missed, repeat of GT7 Q99)": "Digoxin Fab can give ROSC even late in arrest; give it in digoxin-toxic arrest. Teach at CAR-07 or CAR-14.",
+  "GT7 Q94": "Calcium-channel blocker poisoning: high-dose insulin euglycaemic therapy is a key treatment (insulin 1 U/kg bolus then 1–10 U/kg/h with dextrose; calcium, vasopressors). No card covers beta-blocker/CCB poisoning fully: add a new card V12-020 and place it after CAR-14.",
+  "GT7 Q96": "Dihydropyridine (amlodipine) poisoning with vasoplegia: norepinephrine for the low SVR. Teach on the new card.",
+  "GT7 Q102": "Cocaine with wide QRS: sodium bicarbonate (Na channel block), not verapamil. Teach at REC-05 and TOX-07.",
+  "GT7 Q103": "Cocaine + rhabdomyolysis needing paralysis: non-depolarising blocker, never succinylcholine. Teach at REC-05."
+ },
+ "questions": [
+  {
+   "q": "P12-601",
+   "text": "Reversing the anticoagulants",
+   "steps": [
+    {
+     "card": "HY2|CAR-21",
+     "q": "Anticoagulant reversal — agent and\ndose for each drug.",
+     "a": "**Each anticoagulant has its own key**\nDRUG | REVERSAL | NOTE\n**Dabigatran** | **Idarucizumab 5 g IV** | Specific, immediate. Side effects: delirium, fever, constipation, hypoKALAEMIA\n**Xa inhibitors (apixaban, rivaroxaban)** | **Andexanet alfa**; or 4F-PCC 50 U/kg | Ciraparantag = investigational\n**Warfarin + major bleed** | **4F-PCC** (25–50 U/kg by INR) + **vitamin K 10 mg IV** | FFP only if no PCC\n**Heparin (UFH)** | **Protamine 1 mg per 100 U** given in last 2–3 h (max 50 mg) | Full reversal\n**Enoxaparin** | **Protamine 1 mg per mg** if dose < 8 h ago; **0.5 mg/mg** if 8–12 h | Only ~60% reversal; none after 12 h",
+     "section": "ACS & cardiogenic shock",
+     "bank_questions": 16,
+     "bank_lines": [
+      "DocT GT: Warfarin with INR 4.5–10 and no bleeding: hold 1–2 doses and recheck; low-dose oral vitamin K (1–2.5 mg) only if bleeding risk is high. INR >10 without bleeding → oral vitamin K 2.5–5 mg. PCC and IV vitamin K 5–10 mg are only for major bleeding and would over-correct a mechanical valve."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → Anticoagulation → Reversal agents and doses",
+      "intro": "Bleeding on an anticoagulant is the most-asked single topic in the deck after shock profiles. Each drug has its own reversal because each works at a different point in the cascade.",
+      "why": [
+       [
+        "a",
+        "**Dabigatran → idarucizumab 5 g IV: specific, immediate. Side effects: delirium, fever, constipation, hypoKALAEMIA.** Idarucizumab is a humanised antibody fragment that binds dabigatran about 350 times more tightly than thrombin, reversing it within minutes (given as 2 × 2.5 g). Its listed adverse effects include hypokalaemia, delirium, constipation, pyrexia and pneumonia; hyperkalaemia is not one."
+       ],
+       [
+        "b",
+        "**Xa inhibitors (apixaban, rivaroxaban) → andexanet alfa; or 4F-PCC 50 U/kg. Ciraparantag = investigational.** Andexanet is a decoy factor Xa that binds the drug. In ANNEXA-I (2024, ICH) it gave better haemostatic efficacy than usual care (67.0% vs 53.1%) but more thrombotic events (10.3% vs 5.6%; ischaemic stroke 6.5% vs 1.5%), and US sales ended in December 2025 after an FDA safety warning on thrombosis; 4F-PCC is now the usual choice where andexanet is unavailable. INR does not measure Xa inhibitor effect, and vitamin K does nothing for a DOAC."
+       ],
+       [
+        "c",
+        "**Warfarin + major bleed → 4F-PCC (25–50 U/kg by INR) + vitamin K 10 mg IV. FFP only if no PCC.** PCC supplies factors II, VII, IX and X (plus proteins C and S) in a small volume and corrects the INR in minutes; FFP needs large volumes, thawing and hours. Typical PCC dosing is 25 U/kg for INR 2–4, 35 for 4–6 and 50 above 6. Vitamin K takes 6–12 hours but prevents the INR rebounding once PCC wears off. Without bleeding: INR 4.5–10, hold 1–2 doses (low-dose oral vitamin K only if bleeding risk is high); INR above 10, oral vitamin K 2.5–5 mg."
+       ],
+       [
+        "d",
+        "**Heparin (UFH) → protamine 1 mg per 100 U given in the last 2–3 h (max 50 mg): full reversal.** Protamine is a basic protein that binds acidic heparin; UFH’s half-life is about 60–90 minutes, so only recent units are counted."
+       ],
+       [
+        "e",
+        "**Enoxaparin → protamine 1 mg per mg if dose <8 h ago; 0.5 mg/mg if 8–12 h: only ~60% reversal; none after 12 h.** Protamine binds the long chains that carry anti-thrombin activity; LMWH’s short chains, which carry the anti-Xa activity, escape, so reversal is partial."
+       ]
+      ],
+      "mimic": [
+       [
+        "Specific vs non-specific reversal",
+        "Specific: idarucizumab (dabigatran), andexanet (Xa inhibitors), protamine (heparins). Non-specific: PCC (warfarin; Xa inhibitors where andexanet is unavailable)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Factor VII is not in PCC” (GT7 key, 59%)",
+        "Outdated: modern 4-factor PCC contains II, VII, IX and X; only the old 3-factor PCC lacks VII."
+       ],
+       [
+        "“FFP + vitamin K” for warfarin ICH (Marrow key, recent stroke)",
+        "Marrow argues PCC is prothrombotic and PCC trials excluded recent MI/stroke; AHA/ESO still prefer 4F-PCC + IV vitamin K for life-threatening bleeding. Pick FFP only if the stem stresses a recent thrombotic event and asks for the ‘safest’ agent."
+       ],
+       [
+        "“Delay endoscopy until the INR is normal” or “FFP” for melaena at INR 2.8 (AIM1, 53%)",
+        "PCC (with vitamin K) and do not delay endoscopy."
+       ],
+       [
+        "“Hyperkalaemia is an adverse effect of idarucizumab”",
+        "Hypokalaemia is; hyperkalaemia is the ‘not seen’ answer (45%)."
+       ],
+       [
+        "“Protamine after enoxaparin given 14 h ago”",
+        "None after 12 h; 1 mg/mg within 8 h, 0.5 mg/mg at 8–12 h (INI-SS lost, 35%)."
+       ]
+      ],
+      "decode": [
+       [
+        "Dabigatran, massive GI bleed or ICH — reversal? [DocT QBank / GT ×5, 86–87%]",
+        "Idarucizumab."
+       ],
+       [
+        "Rivaroxaban or apixaban bleed — specific reversal? [DocT QBank / GT, 75–94%]",
+        "Andexanet alfa; or 4F-PCC (aPCC also keyed)."
+       ],
+       [
+        "Warfarin, life-threatening bleed or ICH, INR 4–10 [DocT QBank / GT ×6]",
+        "4F-PCC + IV vitamin K."
+       ],
+       [
+        "Mechanical mitral valve, INR 8.4, no bleeding, CKD, aspirin [DocT GT]",
+        "Hold 1–2 doses + oral vitamin K 2–2.5 mg."
+       ]
+      ],
+      "punch": "Dabigatran: idarucizumab 5 g; Xa inhibitors: andexanet or 4F-PCC 50 U/kg; warfarin with major bleeding: 4F-PCC plus IV vitamin K 10 mg; heparin: protamine 1 mg per 100 U; enoxaparin: protamine, partial and none after 12 h.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "NEURO04|NEURO-92",
+     "q": "**Reversing anticoagulants in ICH:**",
+     "a": "**DRUG** | **REVERSAL**\n**Warfarin** | Stop; **vitamin K 10 mg IV** over 30 min + **4-factor PCC** (INR 1.3–1.9: 10–20 IU/kg; INR 2 or more: **25–50 IU/kg**); FFP only if PCC unavailable\n**Dabigatran** | **Idarucizumab**; else PCC or aPCC; haemodialysis\n**Xa inhibitors** | **Andexanet alfa**; else 4F-PCC or aPCC\n**Any DOAC under** **2 h** | **Activated charcoal**\n**Unfractionated** **heparin** | **Protamine 1 mg per 100 units** (dalteparin: 1 mg per 100 anti-Xa units)\n**Enoxaparin** | **Protamine 1 mg per 1 mg**",
+     "section": "Reversal",
+     "bank_questions": 9,
+     "bank_lines": [
+      "DocT GT: Antiplatelet-related platelet dysfunction in SAH/ICH needing surgery → desmopressin 0.4 µg/kg IV (releases vWF and factor VIII, restores adhesion). Platelet transfusion is not routine (PATCH: worse outcome in ICH on antiplatelets); aspirin is withheld until the aneurysm is secured."
+     ],
+     "explain": null,
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY4|NEU-09",
+     "q": "Spontaneous intracerebral haemorrhage:\na BP target\nb On warfarin\nc On dabigatran\nd When to operate",
+     "a": "**ICH: SBP ~140, reverse anticoagulation fast**\na Lower SBP to **~140** (130–150) early; avoid big drops.\nb **4F-PCC + vitamin K 10 mg IV**.\nc **Idarucizumab 5 g IV**.\nd **Cerebellar haematoma above 3 cm**, brainstem compression or hydrocephalus → evacuation; EVD for hydrocephalus.",
+     "section": "Stroke, ICH & SAH",
+     "bank_questions": 4,
+     "bank_lines": [],
+     "explain": null,
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-602",
+   "text": "Hearts poisoned: digoxin, beta-blockers, calcium-channel blockers, cocaine and the sodium channel",
+   "steps": [
+    {
+     "card": "TOX01|TOX-07",
+     "q": "**ECG in poisoning:**\n**a** Normal QRS and QTc\n**b** Drugs that widen the QRS, and the danger\n**c** Treatment\n**d** Which anti-arrhythmics are avoided?\n**e** Drugs causing bradycardia or AV block",
+     "a": "**a** QRS **<0.12 s** (in poisoning act at **0.10 s or more**: sodium-channel block, give bicarbonate); QTc **<440 ms**.\n**b** **Tricyclic antidepressants**, cocaine, carbamazepine (sodium-channel block): ventricular tachycardia.\n**c** **IV sodium bicarbonate**, 1–2 mEq/kg.\n**d** **Class Ia and Ic**.\n**e** Beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics.",
+     "section": "Toxidromes & Clues",
+     "bank_questions": 9,
+     "bank_lines": [
+      "DocT GT + Marrow: In TCA overdose QRS duration, not dose or level, grades the risk (Boehnert 1985): QRS >=100 ms predicts seizures (~1/3), >=160 ms ventricular arrhythmia (~1/2); treat QRS >100 ms with NaHCO3 1-2 mEq/kg to pH 7.45-7.55. Propranolol (also carvedilol, acebutolol) blocks Na channels too, so a massive overdose with QRS >120 ms and seizures gets bicarbonate like a TCA - glucagon, insulin and calcium do not fix the conduction defect.",
+      "DocT GT: With a long QT from several drugs at once, stop the highest torsades-risk drug first: hERG blockers that also inhibit CYP3A4 (erythromycin, fluconazole) raise the levels of the others, and amitriptyline blocks hERG and Na channels. Aripiprazole and carvedilol barely affect the QT, omeprazole only indirectly through low Mg; then correct K and Mg.",
+      "DocT GT + Marrow: Citalopram and escitalopram are the SSRIs that prolong QTc. Typical and atypical antipsychotics carry a similar ~2-fold arrhythmia risk (thioridazine and ziprasidone prolong QTc most); real danger comes from IV haloperidol >35 mg/day, low K or Mg, or other QT drugs."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Toxicology → Bedside clues → ECG in poisoning",
+      "intro": "The ECG is the quickest way to see whether a poison has reached the heart’s ion channels. The width of the QRS reflects how fast the sodium channels conduct the impulse through the ventricles; the length of the QT reflects how fast potassium channels repolarise them. Drugs that block those channels change the ECG long before the patient arrests.",
+      "why": [
+       [
+        "a",
+        "**QRS under 0.12 s (120 ms); QTc under 440 ms.** Ventricular depolarisation depends on fast sodium channels, and their speed is the QRS width. Repolarisation depends on potassium channels (hERG); block them and the QT lengthens. In a tricyclic overdose the QRS width, not the dose taken or the drug level, grades the risk: ≥100 ms predicts seizures, ≥160 ms ventricular arrhythmia. That is why the ECG is the first test in a drowsy tricyclic overdose."
+       ],
+       [
+        "b",
+        "**Tricyclic antidepressants, cocaine, carbamazepine — sodium-channel block — with ventricular tachycardia as the danger.** Slow, uneven conduction widens the QRS and sets up re-entry, which becomes VT. A tricyclic adds right axis deviation and a tall terminal R wave in aVR, usually with sinus tachycardia and anticholinergic signs. Massive propranolol overdose does the same (membrane-stabilising effect). Tricyclics are therefore avoided in patients with bundle branch block."
+       ],
+       [
+        "c",
+        "**IV sodium bicarbonate, 1–2 mEq/kg.** The sodium load helps push current through the partly blocked channels, and the alkalosis reduces how tightly the drug binds to them. Boluses are repeated until the QRS narrows, aiming for a blood pH of about 7.45–7.55; airway, fluids and benzodiazepines for seizures go alongside."
+       ],
+       [
+        "d",
+        "**Class Ia and Ic anti-arrhythmics are avoided.** Procainamide, flecainide and their relatives are sodium-channel blockers themselves and deepen the block. Lidocaine (class Ib) is only a second-line option after bicarbonate."
+       ],
+       [
+        "e",
+        "**Bradycardia or AV block: beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics.** These act on the sinus and AV nodes rather than on ventricular conduction."
+       ]
+      ],
+      "mimic": [
+       [
+        "Wide QRS vs long QT",
+        "A wide QRS is sodium-channel block and is treated with bicarbonate; a long QT is potassium-channel block, treated by stopping the drug and giving magnesium and potassium (TX1-QT)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Tricyclic overdose, GCS 8 — charcoal or a CT head first”",
+        "An unprotected airway rules out charcoal; the ECG (QRS width) grades the risk. Only 47% on DocT — in reality airway and oxygen come first."
+       ],
+       [
+        "“Tricyclic with QRS 175, seizures and a full bladder — physostigmine for the anticholinergic signs”",
+        "Physostigmine can cause asystole in tricyclic poisoning; give bicarbonate (43% on DocT GT)."
+       ],
+       [
+        "“Wide-complex tachycardia after a tricyclic — procainamide or flecainide”",
+        "They are sodium-channel blockers too; bicarbonate first, lidocaine only second-line."
+       ],
+       [
+        "“The dose or serum level best predicts a tricyclic’s danger”",
+        "Both correlate poorly; the QRS duration does."
+       ],
+       [
+        "“Calcium, glucagon or insulin will fix a propranolol wide QRS”",
+        "They do not reverse sodium-channel block; bicarbonate does."
+       ],
+       [
+        "“Typical antipsychotics carry more arrhythmia risk than atypicals”",
+        "The pooled risk is similar (only 3% chose this on DocT GT); the size of QTc prolongation varies by drug — thioridazine and ziprasidone most (TX1-QT)."
+       ]
+      ],
+      "decode": [
+       [
+        "Amitriptyline and diazepam, GCS 8, HR 140, dilated pupils — initial action among charcoal, CT, ECG, atenolol? [DocT]",
+        "ECG."
+       ],
+       [
+        "Seizures, pulseless wide-complex tachycardia, QRS 175, terminal R in aVR, suprapubic mass [DocT GT]",
+        "Sodium bicarbonate — not physostigmine, lidocaine or ammonium chloride."
+       ],
+       [
+        "Amitriptyline overdose 7 h ago — what best stratifies cardiac or neurological risk? [DocT GT]",
+        "QRS duration."
+       ],
+       [
+        "Massive propranolol, refractory despite glucagon, QRS 180 ms [DocT GT]",
+        "IV sodium bicarbonate."
+       ]
+      ],
+      "punch": "Sodium channels set the QRS width: block them and it widens toward VT. Bicarbonate pushes through the block, and class Ia and Ic drugs add to it — wide means sodium, slow means the nodes.",
+      "table": {
+       "title": "What the ECG change points to",
+       "head": [
+        "Change",
+        "Channel",
+        "Think of"
+       ],
+       "rows": [
+        [
+         "Wide QRS, R in aVR",
+         "Na⁺ block",
+         "tricyclic, cocaine, carbamazepine, propranolol"
+        ],
+        [
+         "Long QT",
+         "K⁺ (hERG) block",
+         "antipsychotics, citalopram, quinolones, macrolides, azoles, sotalol, ondansetron"
+        ],
+        [
+         "Bradycardia, AV block",
+         "nodes",
+         "β-blocker, CCB, digoxin"
+        ]
+       ]
+      },
+      "parts": [
+       {
+        "q": "Tricyclic: dose at which cardiovascular and neurological toxicity begins?",
+        "a": "Serious toxicity from about **10 mg/kg** (milder effects can start lower); but the **QRS width**, not the dose, grades the risk."
+       },
+       {
+        "q": "Which beta-blocker gives long QT and torsades?",
+        "a": "**Sotalol** (it also blocks potassium channels)."
+       }
+      ],
+      "before": "You skipped TOX-06, the odours card. In brief: bitter almonds mean cyanide, garlic means organophosphates or arsenic, rotten eggs mean hydrogen sulphide, and wintergreen means methyl salicylate."
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-07",
+     "q": "Digoxin toxicity:\na Classic ECG findings\nb Which ECG finding is NOT digoxin?\nc Antidote and when\nd What electrolyte marks severity?",
+     "a": "**Digoxin: reverse-tick ST, short QT —**\n**peaked T is NOT digoxin**\na Down-sloping 'reverse tick' ST in V4–V6, **short**\n**QT**, PAT with block, **bidirectional VT**, any\nbrady/AV block.\nb **Peaked T waves** — that is hyperkalaemia.\nc **Digoxin-specific Fab**: life-threatening\narrhythmia, K above 5–5.5 in acute toxicity,\nend-organ damage.\nd **Hyperkalaemia** (acute poisoning blocks Na-K\nATPase) — predicts death.",
+     "section": "Tachyarrhythmias",
+     "bank_questions": 4,
+     "bank_lines": [
+      "DocT GT: Bidirectional VT with exercise- or emotion-triggered syncope in a young person (no digoxin) = catecholaminergic polymorphic VT (RyR2/calsequestrin calcium leak, like digoxin toxicity). Beta-blockers (nadolol) are first-line, flecainide added; ICD is reserved because shocks trigger catecholamine storms. So 'beta-blockers contraindicated' is false."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → Tachyarrhythmias → Digoxin toxicity",
+      "intro": "Digoxin closes step 1 because it causes both fast and slow rhythms at once. The questions test the ECG, the antidote and the one laboratory value that predicts death.",
+      "why": [
+       [
+        "a",
+        "**Down-sloping ‘reverse tick’ ST in V4–V6, short QT, PAT with block, bidirectional VT, any brady/AV block.** The reverse tick and short QT are digoxin effect (at therapeutic levels too); toxicity shows as rhythms. Digoxin inhibits Na-K ATPase, raising intracellular sodium and so calcium (delayed after-depolarisations and ectopy), while raising vagal tone slows the SA and AV nodes; fast atria with a blocked node give atrial tachycardia with block, and alternating ventricular foci give bidirectional VT."
+       ],
+       [
+        "b",
+        "**Peaked T waves — that is hyperkalaemia.** Digoxin flattens or inverts T waves and shortens QT; a peaked T means the potassium is high, which itself is a marker of severe acute poisoning (part d)."
+       ],
+       [
+        "c",
+        "**Digoxin-specific Fab: life-threatening arrhythmia, K above 5–5.5 in acute toxicity, end-organ damage.** Fab fragments bind digoxin with higher affinity than Na-K ATPase, pulling it off the pump within 30–60 minutes; a typical empirical dose is about 10 vials in acute poisoning and fewer in chronic. Bradycardia can be bridged with atropine while Fab is given (Marrow); calcium is not needed for the hyperkalaemia because Fab corrects it, and it is avoided unless the potassium is immediately life-threatening."
+       ],
+       [
+        "d",
+        "**Hyperkalaemia (acute poisoning blocks Na-K ATPase) — predicts death.** With the pump blocked, potassium cannot enter cells, so serum K rises in proportion to the poisoning. In the pre-Fab era (Bismuth 1973) a K above 5.5 mmol/L carried a very high mortality, a stronger predictor than the ECG or the digoxin level. In chronic toxicity it is the reverse: HYPOkalaemia (diuretics) increases digoxin binding and toxicity."
+       ]
+      ],
+      "mimic": [
+       [
+        "Bidirectional VT: digoxin toxicity vs CPVT",
+        "Digoxin: older patient on digoxin, GI symptoms, hyperkalaemia. CPVT: young, exercise- or emotion-triggered syncope, RyR2 or calsequestrin mutation; β-blockers (nadolol) first line, flecainide added, ICD reserved."
+       ]
+      ],
+      "traps": [
+       [
+        "“High-degree AV block or a digoxin level >1 ng/mL portends a poor prognosis”",
+        "Potassium >5.5 does (only 29% got it). The level is drawn too early in acute poisoning to mean much."
+       ],
+       [
+        "“Calcium gluconate first for K 5.8 on digoxin”",
+        "Fab is the treatment (71% right); it corrects the potassium and the arrhythmia together."
+       ],
+       [
+        "“Beta-blockers are contraindicated” in exercise-induced bidirectional VT",
+        "That is CPVT, where β-blockers are first line; this was the ‘except’ answer (42%)."
+       ]
+      ],
+      "decode": [
+       [
+        "Digoxin, K 5.8, slow ventricular response with PVCs, confusion — initial step? [DocT QBank, 71%]",
+        "Digoxin-specific antibody fragments."
+       ],
+       [
+        "Acute digoxin overdose — which feature portends a poor prognosis? [DocT GT, 29%]",
+        "Serum potassium >5.5 mmol/L."
+       ],
+       [
+        "Young man, exercise syncope, bidirectional VT — all true EXCEPT [DocT GT, 42%]",
+        "‘β-blockers contraindicated’ (they are first line)."
+       ],
+       [
+        "Drug of choice for severe digoxin toxicity [DocT GT PYQ]",
+        "Digoxin immune Fab."
+       ]
+      ],
+      "punch": "Digoxin toxicity shows as ectopy plus block, bidirectional VT or atrial tachycardia with block; peaked T means hyperkalaemia, a K above 5.5 in acute poisoning predicts death, and Fab is the answer.",
+      "step": 1
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TOX01|TOX-14",
+     "q": "**Toxin to antidote (2):**",
+     "a": "**TOXIN** | **ANTIDOTE**\n**Digoxin** | **Digoxin Fab**: acute 10–20 vials, chronic 3–6\n**Calcium-channel blocker** | **High-dose insulin** 1 U/kg bolus, then 1–10 U/kg/h with dextrose; calcium; lipid emulsion only as a last resort\n**Beta-blocker** | Atropine; **glucagon** *(standard teaching, not in your notes)*; high-dose insulin\n**Tricyclic antidepressant** | **Sodium bicarbonate** 1–2 mEq/kg; lipid\n**Sulfonylurea** | **Octreotide** 50 µg SC 6-hourly + dextrose\n**Benzodiazepine** | Flumazenil (rarely: seizure risk)\n**Local anaesthetic** | **20% lipid emulsion**",
+     "section": "Antidotes",
+     "bank_questions": 11,
+     "bank_lines": [
+      "Marrow: TCA seizures → benzodiazepines first (phenobarbital/propofol if refractory); avoid phenytoin (sodium-channel blocker, worsens cardiotoxicity); sodium bicarbonate for QRS >100 ms or arrhythmia."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Toxicology → Antidotes → Toxin to antidote (2)",
+      "intro": "Cardiotoxic poisons shut down the heart’s channels, receptors or fuel supply. The antidotes on this card mostly do not reverse the poison itself; they go around the blocked step — feeding the heart another way, raising its second messengers through a different receptor, or binding the drug.",
+      "why": [
+       [
+        "a",
+        "**Digoxin — digoxin-specific Fab: 10–20 vials in acute poisoning, 3–6 in chronic.** Fab binds digoxin and the complex is excreted by the kidney. For a known ingested amount, vials = mg × 0.8 (bioavailability) ÷ 0.5 mg bound per vial. Give it for a life-threatening dysrhythmia (VT, VF, or bradycardia or block unresponsive to atropine), potassium >5.0 in acute poisoning, a level >10 ng/mL at 6 h or more, or an adult ingestion >10 mg — not for nausea, first-degree block or a therapeutic level. In severe renal failure the complex lingers and slowly dissociates, so free digoxin and toxicity can rebound days later."
+       ],
+       [
+        "b",
+        "**Calcium-channel blocker — high-dose insulin 0.5–1 U/kg/h with dextrose; lipid emulsion.** IV calcium, fluids and pressors come first, with charcoal or whole bowel irrigation for sustained-release tablets. The poisoned heart switches from fatty acids to glucose but cannot take it up, because the drug also blocks insulin release. High-dose insulin lets the myocardium use glucose, improving contractility without the rise in oxygen demand that catecholamines bring; dextrose prevents hypoglycaemia. Calcium raises contractility and blood pressure but does little for heart rate or AV conduction. Calcium-channel blockers keep the patient alert and raise glucose."
+       ],
+       [
+        "c",
+        "**Beta-blocker — atropine; glucagon; high-dose insulin.** Bradycardia is the commonest feature. Glucagon raises cAMP through its own receptor, bypassing the blocked β-receptor; it is the classic drug of choice, although many toxicologists now rank high-dose insulin above it (formal consensus exists for calcium-channel blockers). Beta-blocker poisoning more often depresses consciousness."
+       ],
+       [
+        "d",
+        "**Tricyclic antidepressant — sodium bicarbonate 1–2 mEq/kg; lipid.** Bicarbonate overcomes the sodium-channel block (TOX-07); lipid is a rescue for refractory cardiotoxicity."
+       ],
+       [
+        "e",
+        "**Sulfonylurea — octreotide 50 µg SC 6-hourly with dextrose.** Sulfonylureas force insulin release. Dextrose alone triggers more insulin and rebound hypoglycaemia; octreotide stops the release."
+       ],
+       [
+        "f",
+        "**Benzodiazepine — flumazenil, rarely, because of the seizure risk.** Reserved for iatrogenic over-sedation in a non-dependent patient (TOX-01)."
+       ],
+       [
+        "g",
+        "**Local anaesthetic — 20% lipid emulsion** (TOX-15)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Calcium-channel blocker vs beta-blocker poisoning",
+        "Both give bradycardia and hypotension. A normal mental state and hyperglycaemia suggest a calcium-channel blocker; beta-blockers depress consciousness and their effect on glucose varies. Propranolol also widens the QRS."
+       ]
+      ],
+      "traps": [
+       [
+        "“8 mg digoxin — 8 vials”",
+        "8 × 0.8 ÷ 0.5 ≈ 13 vials; DocT keys 16 (bioavailability ignored), the closest option (31%)."
+       ],
+       [
+        "“Glyburide, glucose 52 after D50 — more D50 or a glucose infusion”",
+        "D50 plus octreotide; dextrose alone drives more insulin release (47% on DocT GT)."
+       ],
+       [
+        "“Recurrent bradyarrhythmia 4 days after Fab in CKD — Fab hypersensitivity”",
+        "Rebound free digoxin as the complex dissociates."
+       ],
+       [
+        "“IV calcium will correct heart rate in verapamil overdose”",
+        "It improves contractility and blood pressure; heart rate (and AV conduction — a second defensible answer) changes least."
+       ]
+      ],
+      "decode": [
+       [
+        "8 mg digoxin, VT, no levels — vials to bind the ingestion (2/4/8/16)? [DocT]",
+        "16 (≈13 with bioavailability)."
+       ],
+       [
+        "Glyburide, sertraline, omeprazole; glucose 33, then 52 an hour after D50 [DocT GT]",
+        "D50 bolus and octreotide."
+       ],
+       [
+        "Massive verapamil on calcium, pacing, glucagon — why does high-dose insulin help without raising O₂ demand? [DocT GT]",
+        "Enhanced glucose utilisation."
+       ],
+       [
+        "Severe digoxin toxicity in stage 5 CKD, Fab given, bradyarrhythmia 4 days later [DocT GT]",
+        "Rebound free digoxin."
+       ]
+      ],
+      "punch": "When a drug shuts down the heart’s channels or fuel, the antidote goes around the blocked step: insulin refuels the myocardium, glucagon skips the β-receptor, and octreotide stops the insulin a sulfonylurea forces out.",
+      "table": {
+       "title": "How each antidote goes around the block",
+       "head": [
+        "Antidote",
+        "Mechanism"
+       ],
+       "rows": [
+        [
+         "Digoxin Fab",
+         "binds digoxin itself"
+        ],
+        [
+         "High-dose insulin",
+         "lets the poisoned heart use glucose"
+        ],
+        [
+         "Glucagon",
+         "raises cAMP through its own receptor, bypassing β"
+        ],
+        [
+         "Bicarbonate",
+         "Na⁺ load and alkalosis overcome Na⁺-channel block"
+        ],
+        [
+         "Octreotide",
+         "stops the pancreas releasing insulin"
+        ],
+        [
+         "Lipid emulsion",
+         "pulls lipophilic drug out of the heart"
+        ]
+       ]
+      }
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-14",
+     "q": "Special arrests — what is the extra drug?\na Anaphylaxis arrest in a patient on a β-blocker,\nnot responding to adrenaline\nb Calcium-channel-blocker overdose\nc Local anaesthetic toxicity\nd Opioid overdose",
+     "a": "**β-blocked anaphylaxis** → **glucagon**\na **Glucagon 1–5 mg IV** — plus fluids. Not IM\nadrenaline in arrest; not sugammadex as\nmonotherapy.\nb Calcium, **high-dose insulin**, vasopressors;\n**lipid emulsion** if refractory.\nc **20% lipid emulsion** 1.5 mL/kg bolus.\nd **Naloxone** — but never ahead of compressions.",
+     "section": "Arrest & post-ROSC",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: In local-anaesthetic arrest run standard ACLS first, then 20% lipid emulsion (1.5 mL/kg bolus, 0.25 mL/kg/min, max ~12 mL/kg); use smaller adrenaline doses (≤1 µg/kg); propofol is no substitute for lipid, and waiting for ECMO must not delay either."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → Arrest → Special circumstances: the extra drug",
+      "intro": "In some arrests the standard algorithm cannot work because a drug or toxin blocks the pathway that adrenaline uses. Each extra drug here bypasses or removes that block.",
+      "why": [
+       [
+        "a",
+        "**Glucagon 1–5 mg IV — plus fluids. Not IM adrenaline in arrest; not sugammadex as monotherapy.** Glucagon acts on its own G-protein receptor and switches on adenylate cyclase directly, raising cAMP even when β-receptors are blocked; it is given slowly (it causes vomiting) and can be followed by an infusion. In arrest, adrenaline is IV, not IM. Sugammadex does not treat rocuronium anaphylaxis by itself. In β-blocker poisoning glucagon is the classic drug of choice, but many toxicologists now put high-dose insulin first, as the calcium channel blocker consensus does (St-Onge, Crit Care Med 2017)."
+       ],
+       [
+        "b",
+        "**Calcium, high-dose insulin, vasopressors; lipid emulsion if refractory.** Calcium overcomes the channel block in part; high-dose insulin (1 U/kg bolus, then infusion, with glucose) restores myocardial carbohydrate use, which the poisoned heart depends on; lipid emulsion is reserved for refractory cases."
+       ],
+       [
+        "c",
+        "**20% lipid emulsion 1.5 mL/kg bolus.** Then 0.25 mL/kg/min, repeat the bolus for persistent instability, to a maximum of about 12 mL/kg. Lipid pulls lipophilic bupivacaine out of the heart and supplies fatty acids. Run standard ALS alongside, with smaller adrenaline doses (≤1 µg/kg); propofol is not a substitute."
+       ],
+       [
+        "d",
+        "**Naloxone — but never ahead of compressions.** In an opioid arrest the heart has stopped from hypoxia; naloxone may help a patient with a pulse but does not restart a heart, so CPR and ventilation come first."
+       ]
+      ],
+      "mimic": [
+       [
+        "Glucagon vs high-dose insulin in β-blocker or CCB poisoning",
+        "Glucagon bypasses the β-receptor; high-dose insulin is the stronger inotrope in both and is first line in the calcium channel blocker consensus."
+       ]
+      ],
+      "traps": [
+       [
+        "“More adrenaline or noradrenaline” for β-blocker shock unresponsive to catecholamines",
+        "Glucagon (37% right on the mini test); catecholamines need the receptor that is blocked."
+       ],
+       [
+        "“Epinephrine or bicarbonate” as drug of choice in bupivacaine arrest",
+        "Lipid emulsion."
+       ]
+      ],
+      "decode": [
+       [
+        "Chronic β-blocker, profound bradycardia and shock despite fluids and catecholamines — DOC? [DocT GT PYQ]",
+        "Glucagon."
+       ],
+       [
+        "Seizures then bradycardia and arrest after bupivacaine nerve block — DOC? [DocT GT PYQ]",
+        "Lipid emulsion."
+       ]
+      ],
+      "punch": "Glucagon bypasses β-blockade by activating adenylate cyclase directly; CCB poisoning needs calcium and high-dose insulin; local anaesthetic arrest needs 20% lipid 1.5 mL/kg; naloxone never comes before compressions.",
+      "step": 3
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TOX04|REC-05",
+     "q": "**Cocaine toxicity:**\na Class\nb Complications\nc First-line treatment\nd Beta-blockers?\ne Wide-complex arrhythmia",
+     "a": "a **Tropane alkaloid**; CNS stimulant.\nb Hyperthermia, seizures, **myocardial infarction, aortic dissection, stroke**, rhabdomyolysis and AKI.\nc **Benzodiazepines**; cooling; aggressive fluids for rhabdomyolysis.\nd **Avoid** pure beta-blockers: unopposed alpha stimulation. Use nitrates, calcium-channel blockers or phentolamine.\ne **Sodium bicarbonate**; lidocaine; lipid emulsion.",
+     "section": "Stimulants",
+     "bank_questions": 9,
+     "bank_lines": [
+      "DocT: Cocaine also injures the lung: within 48 h of smoking or snorting, haemoptysis, hypoxaemia and diffuse bilateral infiltrates mean diffuse alveolar haemorrhage (crack lung) from vasoconstrictive capillary injury, confirmed by a falling Hb and bloody BAL. Deep inhalation with Valsalva can cause pneumothorax instead, but that gives no diffuse infiltrates.",
+      "DocT GT: Cocaine chest pain: benzodiazepines first, then aspirin and nitrates; persistent hypertension or spasm gets phentolamine or a calcium-channel blocker, never a pure beta-blocker. Cocaine STEMI goes to primary PCI (spasm, dissection and thrombus are common); fibrinolysis is the fallback because of dissection, ICH and hypertension risk.",
+      "Marrow: Cocaine withdrawal is a crash phase - depression, hypersomnia and intense craving rather than autonomic storm; bromocriptine or amantadine are the agents described for craving."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Toxicology → Stimulants → Cocaine",
+      "intro": "Cocaine does two things at once. It blocks reuptake of noradrenaline, dopamine and serotonin, so the patient becomes hot, hypertensive and agitated; and it blocks cardiac sodium channels, as a local anaesthetic does. Most of its harm comes from intense vasoconstriction and that sympathetic storm — which is why calming the brain comes before treating the blood pressure.",
+      "why": [
+       [
+        "a",
+        "**Tropane alkaloid; CNS stimulant.** Cocaine is an ester local anaesthetic as well as a stimulant, and that sodium-channel block explains its wide-QRS arrhythmias."
+       ],
+       [
+        "b",
+        "**Hyperthermia, seizures, myocardial infarction, aortic dissection, stroke, rhabdomyolysis and AKI.** Coronary vasospasm, platelet aggregation and higher oxygen demand cause infarction even with normal arteries. Sudden pressure surges tear the aorta and rupture cerebral vessels — intracranial haemorrhage is the complication to fear, not bradycardia, respiratory depression or hypothermia. Agitation and muscle activity break down muscle; heroin causes rhabdomyolysis too, by a different route (immobility and compression after a long down-time), whereas synthetic cannabinoids injure the kidney mostly directly and are the least likely of these to cause it. Smoked or snorted cocaine can also cause diffuse alveolar haemorrhage within 48 hours."
+       ],
+       [
+        "c",
+        "**Benzodiazepines; cooling; aggressive fluids for rhabdomyolysis.** Benzodiazepines reduce central sympathetic outflow, so heart rate, blood pressure, agitation and heat production fall together — they treat the cause. Cooling is active because the set point is normal (TOX-12). Fluids keep urine flowing to clear myoglobin."
+       ],
+       [
+        "d",
+        "**Avoid pure beta-blockers: unopposed alpha stimulation. Use nitrates, calcium-channel blockers or phentolamine.** Cocaine stimulates α- and β-receptors; β₂ vasodilation partly offsets α vasoconstriction. Block β alone (metoprolol, propranolol) and the α effect is left unopposed, worsening coronary spasm and pressure. Nitroglycerin, nitroprusside and calcium-channel blockers (diltiazem, verapamil, nicardipine) dilate vessels without that problem, and phentolamine blocks α directly; aspirin is given as in any ACS."
+       ],
+       [
+        "e",
+        "**Sodium bicarbonate; lidocaine; lipid emulsion.** The wide QRS is sodium-channel block, so bicarbonate overcomes it as in a tricyclic overdose (TOX-07). Lidocaine (class Ib) leaves the channel quickly and is the acceptable anti-arrhythmic if bicarbonate fails; lipid emulsion is a last resort in refractory arrest."
+       ]
+      ],
+      "mimic": [
+       [
+        "Cocaine vs amphetamine",
+        "Same sympathomimetic picture and same blood-pressure rules; cocaine is short-acting and also widens the QRS, amphetamine lasts many hours (REC-06)."
+       ],
+       [
+        "Diffuse alveolar haemorrhage vs pneumothorax after cocaine",
+        "Haemoptysis, hypoxaemia and diffuse bilateral infiltrates = alveolar haemorrhage (‘crack lung’); deep inhalation with Valsalva can cause pneumothorax, but that gives no diffuse infiltrates."
+       ]
+      ],
+      "traps": [
+       [
+        "“Metoprolol for cocaine chest pain with hypertension and tachycardia”",
+        "Contraindicated — unopposed α. Diltiazem, aspirin and lorazepam are all appropriate (REC-14c)."
+       ],
+       [
+        "“Labetalol is safe in cocaine toxicity because it also blocks α”",
+        "Given IV it is mainly a β-blocker (α:β about 1:7). AHA guidance (2008 statement, 2012 update) calls it ‘may be reasonable’ in hypertensive cocaine ACS only after a vasodilator, and the 2014 guideline advises against β-blockers during acute intoxication; against lorazepam, phentolamine and nitroglycerin it is the exam’s ‘least appropriate’ answer."
+       ],
+       [
+        "“Heroin does not cause rhabdomyolysis”",
+        "It does, through immobilisation and compression; among cocaine, methamphetamine, heroin and synthetic cannabinoids, the last is least likely."
+       ]
+      ],
+      "decode": [
+       [
+        "Cocaine chest pain with ST elevation (or hypertension and tachycardia) — contraindicated drug [DocT]",
+        "Beta-blocker (metoprolol)."
+       ],
+       [
+        "Cocaine, BP 223/150, diaphoretic, ST depression — least appropriate: lorazepam, phentolamine, nitroglycerin, labetalol [DocT GT]",
+        "Labetalol."
+       ],
+       [
+        "Haemoptysis and diffuse bilateral infiltrates after snorting cocaine [DocT]",
+        "Diffuse alveolar haemorrhage."
+       ],
+       [
+        "Complication of cocaine abuse to worry about most [NEET 2025]",
+        "Intracranial haemorrhage."
+       ]
+      ],
+      "punch": "Cocaine is a catecholamine storm plus a sodium-channel blocker: calm the brain with benzodiazepines, open the vessels without blocking β alone, and treat the wide QRS with bicarbonate.",
+      "parts": [
+       {
+        "q": "Cocaine STEMI: reperfusion strategy?",
+        "a": "**Primary PCI** when available (spasm, dissection and thrombus are common), plus benzodiazepines, nitrates and aspirin; fibrinolysis is second-line because of dissection and haemorrhage risk."
+       },
+       {
+        "q": "Depression, hypersomnia and craving after stopping a stimulant?",
+        "a": "**Cocaine withdrawal** — a ‘crash’, not an autonomic storm."
+       }
+      ]
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "TOX01|TOX-15",
+     "q": "**Lipid emulsion for local anaesthetic toxicity:**\n**a** Bolus\n**b** Infusion\n**c** Maximum dose\n**d** Changes to resuscitation\n**e** Monitoring afterwards",
+     "a": "**a** 20% lipid **1.5 mL/kg** over 2–3 min (100 mL if over 70 kg).\n**b** **0.25 mL/kg/min** (200–250 mL over 15–20 min if over 70 kg). If unstable: repeat the bolus once or twice and double the rate.\n**c** **12 mL/kg**.\n**d** Adrenaline boluses **≤1 µg/kg**; **avoid vasopressin, calcium-channel blockers, beta-blockers, lidocaine**; benzodiazepines for seizures, avoid large doses of propofol.\n**e** **4–6 hours** after a cardiovascular event; 2 hours after a CNS event.",
+     "section": "Antidotes",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: The same 20% lipid regimen (1.5 mL/kg bolus, then 0.25 mL/kg/min) is a rescue for lipophilic cardiotoxins - propranolol, verapamil/diltiazem, TCAs - once glucagon, high-dose insulin, pressors and bicarbonate have failed; VA-ECMO is the step after that."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Toxicology → Antidotes → Lipid emulsion for local anaesthetic toxicity",
+      "intro": "Bupivacaine and other local anaesthetics are lipophilic and bind tightly to cardiac sodium channels; an accidental intravascular dose causes seizures, then bradycardia and cardiac arrest that resists standard resuscitation. A 20% lipid emulsion creates a fat phase in the blood into which the drug moves out of the heart. The doses are by weight, with a ceiling, and resuscitation itself is modified.",
+      "why": [
+       [
+        "a",
+        "**Bolus: 20% lipid 1.5 mL/kg over 2–3 minutes (100 mL if over 70 kg).** The bolus quickly builds a lipid sink in plasma. The same 1.5 mL/kg bolus is the rescue for other lipophilic cardiotoxins — propranolol, verapamil, tricyclics — once standard antidotes have failed."
+       ],
+       [
+        "b",
+        "**Infusion: 0.25 mL/kg/min (200–250 mL over 15–20 minutes if over 70 kg). If still unstable, repeat the bolus once or twice and double the rate.** The infusion keeps the lipid level up while the drug is redistributed and cleared."
+       ],
+       [
+        "c",
+        "**Maximum dose: 12 mL/kg.** Larger loads risk pancreatitis, fat overload and lung injury."
+       ],
+       [
+        "d",
+        "**Changes to resuscitation: adrenaline boluses ≤1 µg/kg; avoid vasopressin, calcium-channel blockers, beta-blockers and lidocaine; benzodiazepines for seizures, avoiding large doses of propofol.** Large adrenaline doses worsen arrhythmia; lidocaine is another local anaesthetic; the others depress a failing heart."
+       ],
+       [
+        "e",
+        "**Monitoring: 4–6 hours after a cardiovascular event; 2 hours after a CNS-only event.** As the lipid is cleared, the drug can return from fat to the heart."
+       ]
+      ],
+      "mimic": [
+       [
+        "LAST vs anaphylaxis after an epidural",
+        "Wheeze, flushing and hypotension point to anaphylaxis — IM adrenaline. LAST gives perioral numbness, seizures and arrhythmia — lipid."
+       ]
+      ],
+      "traps": [
+       [
+        "“Standard 1 mg adrenaline boluses”",
+        "Use small boluses, ≤1 µg/kg."
+       ],
+       [
+        "“Lidocaine or amiodarone is the drug of choice for the arrest”",
+        "Lipid emulsion is; lidocaine adds to the toxicity."
+       ],
+       [
+        "“Any reaction to an epidural local anaesthetic is LAST”",
+        "Wheeze and flushing mean anaphylaxis — adrenaline, not lipid."
+       ]
+      ],
+      "decode": [
+       [
+        "Seizures, then bradycardia and arrest after bupivacaine for a nerve block — drug of choice? [DocT GT]",
+        "Lipid emulsion."
+       ],
+       [
+        "Massive propranolol, refractory despite glucagon, insulin and bicarbonate — what is given as a 1.5 mL/kg bolus? [DocT GT]",
+        "IV lipid emulsion (ECMO is the next step, not a bolus)."
+       ],
+       [
+        "Epidural bupivacaine and morphine, then wheeze, hypotension, flushing [Marrow]",
+        "IM adrenaline — anaphylaxis, not LAST."
+       ]
+      ],
+      "punch": "Lipid soaks the fat-soluble drug out of the heart, so it is dosed by weight with a ceiling of 12 mL/kg — and resuscitation changes with it: small adrenaline doses and no extra local anaesthetic.",
+      "table": {
+       "title": "Lipid dosing",
+       "head": [
+        "Step",
+        "Dose"
+       ],
+       "rows": [
+        [
+         "Bolus",
+         "**1.5 mL/kg** over 2–3 min"
+        ],
+        [
+         "Infusion",
+         "**0.25 mL/kg/min**"
+        ],
+        [
+         "Still unstable",
+         "repeat bolus ×1–2, double rate"
+        ],
+        [
+         "Ceiling",
+         "**12 mL/kg**"
+        ]
+       ]
+      }
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  }
+ ]
+}

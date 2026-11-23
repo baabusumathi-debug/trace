@@ -1,0 +1,1039 @@
+{
+ "questions": [
+  {
+   "q": "P12-501",
+   "text": "Unstable or stable: the tachycardia algorithm and the shock",
+   "steps": [
+    {
+     "card": "CVS08B|ACLS-28",
+     "bridge": "Unstable means a shock. But this heart is still beating, so the shock has to be timed.",
+     "lesson": {
+      "v": 1,
+      "text": "Every fast rhythm you'll ever be shown starts with the same question, and it isn't what the rhythm is. It's whether the rhythm is hurting the patient.\n\nStart with why a fast heart fails at all. The heart fills in diastole, and the coronary arteries fill in diastole too. As the rate climbs, systole hardly shortens, so it's diastole that gets squeezed. The ventricle fills less, so output falls. The muscle is fed less, at the very moment it's working hardest. You met those in the shock packets as filling and pump. A tachycardia attacks both.\n\nSo the algorithm lists five signs that this has happened. Hypotension. Acutely altered mental status. Signs of shock. Ischaemic chest discomfort. Acute heart failure. Three of them are low output, one is the starved coronary, and one is pressure backing up into the lung.\n\n[[Unstable means hypotension, acutely altered mental status, signs of shock, ischaemic chest discomfort or acute heart failure, caused by the rhythm. Any one of them means synchronised cardioversion.]]\n\nIf any one is present, the answer is electricity: a synchronised cardioversion. Why not a drug? Because a shock works in a single beat and doesn't depress the heart, while a drug takes minutes and most of them lower the pressure further. There's one permitted alternative. If the rhythm is regular and narrow, adenosine may be considered, because that rhythm is probably a circuit through the AV node and adenosine breaks it in seconds.\n\nIf none of the five is present, you have time. Take a twelve-lead ECG, secure IV access, and then measure the QRS. Under zero point one two seconds is narrow, which means the ventricles are being activated down the normal His-Purkinje wiring, so the rhythm starts above them. Zero point one two seconds or more is wide, and a wide tachycardia is VT until proved otherwise.\n\nNow the way the bank asks it. The lowest score on this card, thirty per cent, was a man with recurrent palpitations, no chest pain, no breathlessness, and AF on the ECG. The tempting option was to sedate him and cardiovert at one hundred joules. He has symptoms, but none of the five signs. NEET's favourite wrong option here is the shock for a patient who is merely symptomatic. He's stable, and stable AF gets rate control with diltiazem or a beta-blocker.\n\nThe reverse error appears too. A pressure of seventy-five over forty, a rate of one hundred and eighty, a regular broad QRS: cardiovert. One Marrow key chose intubation for an unstable wide tachycardia, but only because cardioversion wasn't among the options. If it's offered, take it.\n\nAnd one paediatric line, asked directly. A child's SVT converts with adenosine, returns within seconds, and now the child is unstable. More adenosine buys another thirty seconds. The answer is synchronised cardioversion at half to one joule per kilogram, then two joules per kilogram. Never verapamil or diltiazem in an infant, because they cause cardiovascular collapse.\n\nSo the first fork is settled: unstable, shock. But what makes this shock different from the one you give in an arrest?"
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-25",
+     "bridge": "You know when the shock lands. Next, how much energy each rhythm needs under the current guideline.",
+     "lesson": {
+      "v": 1,
+      "text": "You've just chosen a shock for a heart that's still beating. That's the whole difference between cardioversion and defibrillation, and it comes down to timing.\n\nThink about what a beating ventricle is doing through one cycle. At the R wave the whole ventricle has just been depolarised and is refractory. A shock landing there finds nothing excitable to disturb except the circuit you're trying to break. On the upslope of the T wave it's different. Some of the muscle has recovered and some hasn't. Excitable tissue lying beside refractory tissue is exactly the ground re-entry needs, and a shock that lands there can start VF. That's the R on T phenomenon.\n\nSo the machine is told to watch for the R wave and fire on its peak. That's synchronisation.\n\n[[Cardioversion is synchronised to the peak of the R wave, so the shock can't fall on the T wave and cause VF. Defibrillation is unsynchronised, because VF and polymorphic VT have no reliable R wave to find.]]\n\nWhich rhythms get which follows from that. If there's an organised QRS, synchronise: VT with a pulse, AF, flutter. If there isn't, you can't. VF has no R wave at all, and polymorphic VT changes shape from beat to beat, so the machine may lock onto a T wave or never fire. Both are defibrillated.\n\nThe trap is simple: synchronised to the T wave, or to the P wave. It's the R wave. The T wave is precisely what you're avoiding.\n\nSo you know when the shock lands. Next, how big it should be."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-26",
+     "bridge": "Timing and energy are set. Now the bedside: who is shocked at once, and what must be ready.",
+     "lesson": {
+      "v": 1,
+      "text": "The timing is fixed. Now the size of the shock, and here the twenty twenty-five guideline changed the numbers. That matters, because two bank keys still carry the old ones.\n\nStart with why different rhythms need different energies. A shock ends an arrhythmia by depolarising enough muscle at once that the circuit has nowhere left to go. How much current that takes depends on how much tissue is involved. AF is many small wavelets wandering across both atria, so you have to capture a large mass of atrium in one go. Flutter is one large circuit in the atrium. A regular SVT is a small circuit through the node. Monomorphic VT is one organised ventricular circuit with a clean R wave.\n\nThe old teaching was to start low and climb. What changed is the evidence on starting low. Low-energy shocks failed more often, and worse, they sometimes provoked the next arrhythmia: VF when cardioverting AF, and AF when cardioverting flutter. A failed shock isn't free. It means another shock under sedation, more delay, and another chance of harm. Pooled biphasic trials found that two hundred joules gave over ninety per cent cumulative success, with no extra myocardial injury.\n\n{{**AHA 2025, synchronised, biphasic**\nAF | at least 200 J (class 2a)\nFlutter | 200 J (class 2b)\nNarrow regular SVT | 100 J\nMonomorphic VT with a pulse | 100 J\nPolymorphic VT | unsynchronised, defibrillation dose (class 1)}}\n\n[[From twenty twenty-five, AF starts at two hundred joules or more and flutter at two hundred. Narrow regular SVT and monomorphic VT with a pulse start at one hundred. Sustained polymorphic VT is defibrillated, unsynchronised.]]\n\nOne point of honesty about the hundred. The guideline text gives a figure only for AF and flutter. The hundred joules for SVT and monomorphic VT comes from the algorithm chart, and it's what the keys use.\n\nNow the traps. First, the old AF range. One grand test keys one hundred and twenty to two hundred joules for unstable AF, and a question bank item keys one hundred. In both, what's being tested is cardioversion over a drug, and that part is right. So pick cardioversion, and if two hundred or more is on the list, that's the current answer.\n\nSecond, polymorphic VT with a pulse. NEET's favourite wrong options are synchronised cardioversion at one hundred joules, and magnesium. The guideline treats every sustained polymorphic VT as unstable, whatever the QT, and gives an immediate unsynchronised shock. Magnesium belongs to one situation: torsades on a long QT that comes in runs and stops by itself. You'll meet it properly in the wide section.\n\nYou may see European numbers in a stem: maximum output for AF, seventy to one hundred and twenty joules for flutter and SVT, one hundred and twenty to one hundred and fifty for VT with a pulse. The bank keys follow the American numbers, so learn the box.\n\nYou've got the timing and the dose. What's left is the bedside: who gets shocked at once, and what you need around you."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-27",
+     "bridge": "Now the whole section in one patient: fast AF, low pressure, wet lungs, duration unknown.",
+     "lesson": {
+      "v": 1,
+      "text": "Timing, energy, and now the doing of it. Four things on this card, and the questions come from three of them.\n\nFirst, when to prepare to shock at once. The algorithm's number is a ventricular rate above one hundred and fifty. Why a rate? Because a reasonably healthy heart tolerates anything slower. If a patient is hypotensive at a rate of one hundred and twenty, the rhythm is very unlikely to be the cause. Something else is, sepsis or bleeding or hypoxia, and the heart is racing to compensate. Shocking a compensatory sinus tachycardia does nothing at all. So below about one hundred and fifty, look for the cause and treat that.\n\nSecond, what's at the bedside: a saturation monitor, suction, an IV line and intubation equipment. Each one answers a specific risk. Sedation can stop breathing or cause aspiration, and the shock itself can leave a bradycardia or VF.\n\nThird, the prerequisites: consent, sedation and analgesia, and ruling out a left atrial clot. Take sedation first, because it was asked. The current guidance is that sedation is advisable in the awake patient, judged against how stable he is, and it must never dangerously delay the shock. The trap options are mandatory intubation, or an arterial line, before cardioversion. Neither is required, and both delay it.\n\nNow the clot, which is the part asked most. In AF the atria don't contract, blood stagnates in the left atrial appendage, and after about forty-eight hours you must assume a clot has formed. Restore sinus rhythm and the atrium may throw it into the brain. So for AF of more than forty-eight hours, or of unknown duration, in a stable patient, you anticoagulate for three weeks first, or you look with a transoesophageal echo and cardiovert if the appendage is clear. Then comes the half people forget. After sinus rhythm returns on the ECG, the atrium is stunned and contracts poorly for weeks. New clot can still form.\n\n[[Before elective cardioversion of AF beyond forty-eight hours: three weeks of anticoagulation, or a transoesophageal echo. After it: at least four weeks, whatever the stroke score, because the atrium stays stunned.]]\n\nNEET's favourite wrong option is two or three weeks after. Three is the number before. Four is the number after, and seventy-eight per cent got it. Only then does the stroke score decide the long term.\n\nAnd none of that applies to the unstable patient. Shock first, heparin alongside. The next card is exactly that patient.\n\nFourth, two procedural notes. Resynchronise after each shock, because many machines drop back to unsynchronised mode once they've fired. And if the machine can't find an R wave and the patient is crashing, don't wait: give an unsynchronised shock.\n\nNow put the whole section into one patient."
+     }
+    },
+    {
+     "card": "HY2|CAR-01",
+     "bridge": "The unstable limb is done. From here the patient is stable, and the first rhythm is narrow and regular.",
+     "lesson": {
+      "v": 1,
+      "text": "Here's the section in a single stem. AF at one hundred and sixty. Pressure eighty-four over fifty. Basal crackles, saturation eighty-eight per cent. Duration unknown, not anticoagulated. Next step?\n\nRun it the way you've just learned. Is the rhythm causing harm? At one hundred and sixty the ventricle has too little diastole to fill, and in AF the atrial kick that tops it up has gone. Output falls: that's the hypotension. Left atrial pressure rises behind a ventricle that can't fill, and that's the crackles and the falling saturation. Two of the five signs, and a rate above one hundred and fifty. He's unstable, and the rhythm is the reason.\n\nSo the answer is immediate synchronised cardioversion. The examiner has put three distractors in front of you, and each is something you'd rightly do for a different patient.\n\nThe first is rate control: IV diltiazem or metoprolol. Both are negative inotropes, and diltiazem dilates vessels as well. In a patient who's already hypotensive and wet, they can cause an arrest. On the mini test only forty-eight per cent chose the shock.\n\nThe second is the clot rule: heparin and delayed cardioversion, or a transoesophageal echo first. Duration unknown, not anticoagulated: it looks like the three-week patient from the last card. But those rules protect a stable patient from an elective procedure. In shock, waiting is the greater risk.\n\n[[Unstable AF: shock now, with heparin started alongside. The three weeks and the transoesophageal echo are for the stable patient. They never delay an emergency cardioversion.]]\n\nThe third is amiodarone. A grand test gave new AF at one hundred and sixty-seven, five minutes after a thoracotomy, with a pressure of seventy-three over thirty-four, and offered a hundred and fifty milligrams of amiodarone. Still cardioversion, and eighty-seven per cent got it. Amiodarone is the stable patient's drug.\n\nOne harder version: the septic patient on the unit whose pressure falls to ninety over sixty as new AF begins at one hundred and fifty-five. In sepsis, AF is often a consequence and not the cause. But where the pressure drops with the onset of the rhythm, the keyed answer is cardioversion. And NEET twenty twenty-five asked it plainly: narrow, irregular, one hundred and forty, pressure eighty over fifty. Synchronised cardioversion. Diltiazem and metoprolol are for the stable patient, and digoxin is too slow.\n\nThe energy: two hundred joules or more for AF, synchronised. If the only cardioversion option says one hundred, take it anyway, because the decision is what's being marked.\n\nThat's the unstable limb finished. Everything from here is the stable patient, where you have time to ask which rhythm it is. Start with the tidiest one: narrow and regular."
+     }
+    }
+   ],
+   "spine": [
+    "First question in any tachycardia: is the rhythm causing harm? Five signs: hypotension, altered mentation, shock, ischaemic chest discomfort, acute heart failure.",
+    "Unstable → synchronised cardioversion (adenosine only if regular and narrow). Stable → 12-lead, IV access, then QRS: <0.12 s narrow, ≥0.12 s wide.",
+    "Synchronise on the R wave to avoid R-on-T. VF and polymorphic VT have no reliable R wave → unsynchronised shock.",
+    "AHA 2025: AF ≥200 J, flutter 200 J, narrow SVT 100 J, monomorphic VT 100 J. Older keys give 100 J or 120–200 J for AF.",
+    "Rate >150 before blaming the rhythm. Sedate the awake patient where stability allows; resynchronise after each shock.",
+    "Stable AF >48 h: 3 weeks of anticoagulation (or TOE) before, ≥4 weeks after. Unstable: shock now with heparin, no TOE."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Patient C went home from the last packet with a scar on his heart. Two weeks later his monitor shows a heart rate of one hundred and eighty, and somebody asks you what to do.\n\nHere's the thing NEET understands and most people forget. Before you name the rhythm, you ask a different question. Is this rhythm hurting him? A fast heart fails because diastole shortens first. The ventricles have less time to fill, and the coronary arteries have less time to fill too. So a fast rhythm can push a heart into the same failure you met in the Shock packets, filling and pump both falling at once.\n\n[[Every fast or slow rhythm starts with one question: is it causing instability? If yes, electricity. If no, you have time to read it.]]\n\nThat gives the packet its shape. First, the decision itself: what counts as unstable, when to shock, and how much energy, with the twenty twenty-five numbers that NEET is starting to use. Then, once you have time, you read the complex. Narrow and regular: the supraventricular tachycardias, and adenosine. Irregular: atrial fibrillation and flutter. Wide: ventricular tachycardia, pre-excitation, and the inherited syndromes, including the Brugada question you missed in your grand test. And last, the slow rhythms: the blocks, atropine, and pacing.\n\nListen, all the way through, for the drugs that are banned in a particular rhythm. That's where NEET sets most of its traps.\n\nStart with the question that comes before every rhythm. Is he stable?"
+   }
+  },
+  {
+   "q": "P12-502",
+   "text": "Narrow and regular: SVT, adenosine and the AV node",
+   "open": {
+    "v": 1,
+    "text": "The patient in front of you now is stable. That changes the question. You no longer ask how fast you can get rid of the rhythm. You ask where it's coming from, and the QRS has already told you half: narrow means it starts above the ventricles.\n\nTake the tidiest case, narrow and regular. Almost everything in it hangs on one small piece of tissue. The AV node is the only electrical road from atria to ventricles, and it's slow by design. A regular narrow tachycardia at one hundred and eighty is nearly always a circuit that runs through that node. So block the node for a few seconds, and the circuit breaks.\n\n[[A stable, regular, narrow tachycardia is usually a circuit through the AV node. Break it at the node, in order: vagal manoeuvre, adenosine, a longer-acting nodal blocker, and a shock only if all of that fails.]]\n\nThat's the ladder, and the cards climb it: the route, the drug, the patient, the fine print, and a quick sweep.\n\nListen for the trap on the first rung. Half the cohort went straight to adenosine. In a stable patient the vagal manoeuvre comes first.\n\nBegin with the route."
+   },
+   "steps": [
+    {
+     "card": "CVS08B|ACLS-29",
+     "bridge": "The second rung carries most of the weight. What is adenosine, and why push it so fast?",
+     "lesson": {
+      "v": 1,
+      "text": "Here's the route for the stable narrow tachycardia, and it forks once, on regularity.\n\nTake regular first. A circuit that uses the AV node depends on the node conducting every single lap. Slow the node enough for one lap to fail, and the circuit dies. So each rung of the ladder is a stronger nodal block than the one before. First a vagal manoeuvre, because a surge of vagal tone slows the node and costs nothing. If that fails, adenosine, which blocks the node completely for a few seconds. If the rhythm survives or returns, a longer-acting blocker: a beta-blocker, or a calcium channel blocker such as diltiazem or verapamil. And the current guideline states the top rung clearly: synchronised cardioversion for the unstable patient, and also for the stable one whose rhythm persists despite manoeuvres and drugs, or in whom they're contraindicated.\n\nNow the other fork. If a narrow tachycardia is irregular, it isn't a nodal circuit. The two nodal circuits, AVNRT and AVRT, are always regular, because one loop goes round at one speed. Irregular means the atria are the source: AF, flutter with variable block, atrial tachycardia with variable block, or multifocal atrial tachycardia. The node isn't part of that circuit. It's only the gate the impulses pass through. So adenosine can't cure it, and the aim becomes rate control with a beta-blocker or a calcium channel blocker. That's the next section.\n\n[[AVNRT and AVRT are always regular. An irregular narrow tachycardia is atrial, so adenosine has no therapeutic role and the treatment is rate control.]]\n\nNEET's trap here is AVRT offered as a cause of an irregular narrow tachycardia. It never is.\n\nWhich regular rhythm is it? The commonest paroxysmal SVT is AVNRT, about sixty per cent, and women have it twice as often as men. So a young woman with no structural heart disease and a stable narrow tachycardia at one hundred and seventy has AVNRT, and sixty-seven per cent got that. If you're asked to rank all supraventricular tachycardias by frequency, it runs sinus tachycardia, then AF and flutter, then AVNRT, AVRT, atrial tachycardia and junctional.\n\nMarrow sorts them by the P wave, and it's worth one pass.\n\n{{**Narrow QRS, by the P wave**\nMore P than QRS | flutter or atrial tachycardia\n1:1, RP <70 ms | typical AVNRT\n1:1, short RP >70 ms | orthodromic AVRT\nLong RP (RP > PR) | atypical AVNRT, PJRT, atrial tachycardia}}\n\nThe logic is distance. In AVNRT the circuit is inside the node, so atria and ventricles fire almost together and the P is buried. In AVRT the impulse has to travel down through the ventricle and back up a separate pathway, so the P arrives later.\n\nAnd the order questions. Stable, narrow, one hundred and eighty: Valsalva, and only fifty per cent chose it. Vagal manoeuvre failed: adenosine, not cardioversion and not amiodarone.\n\nSo the second rung carries most of the weight. What is adenosine, and why is it given the way it is?"
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-31",
+     "bridge": "Now put the ladder into one patient, and then change a single detail: asthma.",
+     "lesson": {
+      "v": 1,
+      "text": "The second rung of the ladder is a drug that lasts less time than this sentence.\n\nAdenosine binds the A one receptor on the cells of the AV node and opens potassium channels. Potassium leaves, the cell hyperpolarises, and the node stops conducting. Then the drug is gone, because red cells and endothelium take it up so fast that its half-life is under ten seconds.\n\nEverything on the card follows from that. It has to arrive at the heart as a bolus, so it's given as a rapid push into a large proximal vein, chased at once by a saline flush. Six milligrams first. If that fails, twelve.\n\n[[Adenosine: six milligrams as a rapid push with a saline flush, then twelve. Its half-life is under ten seconds, so a slow injection is a wasted one.]]\n\nWhat it converts is anything that needs the node for its circuit: AVNRT, AVRT, and many atrial tachycardias.\n\nIts second use is diagnostic, and that's the version asked. If the node is only a bystander, blocking it doesn't stop the atria. The ventricles pause for a few seconds, and on the bare baseline you see what the atria were doing all along. A grand test gave six milligrams, a slowing of the rate, and saw-tooth waves at three hundred a minute: atrial flutter with two to one conduction. So the rule is this. If adenosine stops it, the node was in the circuit. If adenosine only slows it and it comes back, the rhythm is atrial.\n\nFlutter at two to one is the one to suspect in advance. The atria run at about three hundred, every second beat gets through, and the ventricular rate sits at almost exactly one hundred and fifty.\n\nThe adverse effect on the card is severe bronchospasm in asthma. Adenosine receptors on mast cells and airway smooth muscle narrow an airway that's already twitchy. And most patients feel something: a flush, chest tightness, and a few seconds of dread. Warn them.\n\nOne limit, which you've met. When the tachycardia stops and then returns in seconds, giving more buys another half minute. In the unstable child, the answer was cardioversion.\n\nNow put the ladder into a patient, and change one detail."
+     }
+    },
+    {
+     "card": "HY2|CAR-02",
+     "bridge": "Vagal manoeuvre and adenosine each hide fine print that the bank has asked.",
+     "lesson": {
+      "v": 1,
+      "text": "Regular, narrow, one hundred and eighty, no visible P waves, stable. You already know the first two answers, so say them quickly: a vagal manoeuvre, then adenosine six and twelve, and the card allows the twelve to be repeated once.\n\nNow the detail that changes the answer. The patient is asthmatic.\n\nAdenosine can trigger bronchospasm, so you reach the next rung by another route. Verapamil, or diltiazem, blocks the L-type calcium channel, and the AV node depends on calcium current for its upstroke, where the rest of the heart uses sodium. So the node is blocked just as surely, and the airway isn't touched.\n\n[[SVT in an asthmatic: IV verapamil or diltiazem in place of adenosine. That is safe only with a normal ventricle and no pre-excitation.]]\n\nThis is the lowest score in the whole packet. On the mini test seven per cent chose verapamil. Adenosine is the reflex, and the reflex is wrong here. NEET's favourite wrong option is the default applied to the exception.\n\nAnd hold on to the two conditions in that takeaway, because the next two sections are built on them. Verapamil weakens the ventricle, so it's wrong when the ejection fraction is low. And it blocks the node, which is dangerous when a second pathway exists beside it. You'll meet both.\n\nNow the mechanism of the commonest cause. In some people the AV node has two ways through it: a fast pathway that recovers slowly, and a slow pathway that recovers quickly. Normally the fast one carries every beat. Then an early atrial beat arrives while the fast pathway is still refractory. It goes down the slow one, and by the time it reaches the bottom the fast pathway has recovered, so it climbs back up. Down the slow, up the fast, round and round. That's typical AVNRT.\n\nBecause the loop is inside the node, the impulse reaches atria and ventricles at nearly the same moment. So the retrograde P wave is hidden in the QRS, or shows at its tail: a small false S wave in the inferior leads, a small false r prime in V1. Where you can see it, it's inverted in leads two, three and aVF, because the atria are being activated from below.\n\nThat last line caught most people. A grand test showed a regular tachycardia at one hundred and eighty with inverted P waves in the inferior leads, and asked for the mechanism. Only forty-two per cent chose re-entry within the AV node. The wrong option was re-entry through an accessory pathway. That's AVRT, where the P sits clearly apart in the ST segment, and, if the pathway conducts forwards in sinus rhythm, a delta wave shows between attacks. The third mimic, atrial tachycardia, has a distinct P before each QRS and carries on regardless of the node.\n\nThe two steps you said quickly at the start each hide fine print that has been asked. That's the next card."
+     }
+    },
+    {
+     "card": "V12-016",
+     "bridge": "One quick true-or-false sweep, and the narrow regular rhythm is done.",
+     "lesson": {
+      "v": 1,
+      "text": "You said vagal manoeuvre and adenosine in one breath. The bank has asked what's inside each.\n\nStart with the manoeuvre, and why it works. Strain against a closed airway and the pressure in the chest rises, venous return falls, and the blood pressure drops. Let go, and blood surges back into the heart. The pressure overshoots, the baroreceptors fire, and the vagus slows the node. The surge on release is the useful part. So the modified Valsalva makes the surge bigger: strain at forty millimetres of mercury for fifteen seconds, sitting semi-recumbent, then be laid flat at once with the legs lifted to forty-five degrees. In the REVERT trial that converted forty-three per cent, against seventeen per cent for the standard manoeuvre.\n\nMarrow asked it as a false statement: take a deep breath before straining. It's a sustained strain, not a breath in.\n\nThe alternative is carotid sinus massage, which presses on the baroreceptor directly. The rules are all about safety. Supine, on a continuous ECG, one side only, right side first, for five to ten seconds. Never both sides. And never where there's a carotid bruit, or a previous TIA or stroke, because your fingers can dislodge plaque.\n\n[[Carotid sinus massage is contraindicated with a carotid bruit or a previous TIA or stroke. It is done on one side only, for five to ten seconds, on a monitor.]]\n\nNow adenosine's fine print: when six milligrams is too much. Three situations. Through a central line, the bolus reaches the heart undiluted. After a heart transplant, the denervated heart is supersensitive to it. And with dipyridamole, which blocks the uptake that clears adenosine, or with carbamazepine, the effect is magnified. Marrow's key in each is three milligrams, and that's the exam answer: the only access is an internal jugular line, so the dose is three. The current American guideline goes further and says one milligram may be adequate through a central line or after a transplant. If an option says one and none says three, that's where it comes from.\n\n[[Reduce the first dose of adenosine, to three milligrams on the exam, through a central line, after a heart transplant, or with dipyridamole or carbamazepine. Theophylline and caffeine block its receptor, so more may be needed.]]\n\nIn that other direction, theophylline and caffeine are adenosine receptor antagonists. The patient on either may need a larger dose.\n\nOne quick sweep, and the narrow regular rhythm is done."
+     }
+    },
+    {
+     "card": "HY2|CAR-27",
+     "bridge": "Two of those exceptions live in the irregular rhythm. Atrial fibrillation is next.",
+     "lesson": {
+      "v": 1,
+      "text": "This card is a sweep of nine true-or-false statements across the whole cardiology deck. Four belong to this packet, so take those and leave the rest for their own packets.\n\nAdenosine is first-line for SVT in an asthmatic. False. Verapamil, as you've just seen.\n\nVerapamil is fine for rate control in AF with an ejection fraction of thirty per cent. False. It weakens a weak ventricle. That's the next section.\n\nDabigatran is acceptable in rheumatic mitral stenosis with AF. False. Warfarin. Also the next section.\n\nThe maximum dose of atropine is three milligrams. True, at one milligram every three to five minutes, and you'll see why in the slow section.\n\nThe other five you'll answer when you get there. Peaked T waves are hyperkalaemia, not digoxin. After no shock advised, you resume compressions without a pulse check. Angiography two to twenty-four hours after successful lysis, which you did in the last packet. Resuscitation on ECMO is veno-arterial. And a normotensive pulmonary embolism is anticoagulated, not lysed.\n\nLook at the pattern in the four, though. Every wrong statement takes a correct default and applies it to the exception.\n\n[[Being stable lets you use a drug. The airway, the ventricle and the accessory pathway still decide which one: no adenosine in asthma, no verapamil with a low ejection fraction, no nodal blocker in pre-excited AF.]]\n\nTwo of those exceptions live in the irregular rhythm. That's where we go now."
+     }
+    }
+   ],
+   "spine": [
+    "Stable regular narrow tachycardia = a circuit through the AV node. Ladder: vagal manoeuvre → adenosine → β-blocker or CCB → cardioversion if all fail.",
+    "AVNRT (~60% of PSVT, women 2:1): slow–fast loop inside the node, P hidden in the QRS or pseudo-r′ in V1. AVRT: P in the ST segment, RP >70 ms.",
+    "Adenosine 6 then 12 mg, rapid push + flush (t½ <10 s). Stops nodal circuits; unmasks flutter (saw-tooth ~300/min, ventricles ~150).",
+    "Reduce adenosine (Marrow 3 mg; AHA 2025 1 mg) via central line, after transplant, with dipyridamole or carbamazepine. Theophylline, caffeine blunt it.",
+    "Asthma → verapamil or diltiazem (normal LV, no pre-excitation). Carotid massage: one side, 5–10 s, never with a bruit or prior TIA/stroke.",
+    "Irregular narrow = AF, flutter or atrial tachycardia with variable block, MAT. Never AVNRT or AVRT; adenosine has no role."
+   ]
+  },
+  {
+   "q": "P12-503",
+   "text": "Irregular: atrial fibrillation and flutter",
+   "open": {
+    "v": 1,
+    "text": "Narrow and regular was a circuit through the node, and you broke it at the node. Narrow and irregular is a different problem. The atria themselves are the source, firing chaotically at the same AV node.\n\nSo the node's role has changed. It's no longer part of the circuit. It's the filter that protects the ventricles. Slowing it doesn't cure anything, but it brings the ventricular rate down, and that's rate control. Two questions follow. Which drug slows the node in which patient? And since AF kills mostly through stroke, who gets which anticoagulant, and when is it safe to cardiovert?\n\n[[In AF the node is the filter, not the circuit. Slow it with a beta-blocker or diltiazem, unless the ventricle is failing, the pressure is labile, or an accessory pathway bypasses the node.]]\n\nThree exceptions, then. Listen hardest for the failing ventricle. There's a disputed key in this section: a patient with a low ejection fraction, AF and worsening breathlessness, keyed as beta-blocker, with thirty-nine per cent agreement. I'll show you what to mark.\n\nStart with the card the bank asks most."
+   },
+   "steps": [
+    {
+     "card": "CVS08B|ACLS-33",
+     "bridge": "The second exception in full: fast AF in a ventricle with an ejection fraction of thirty.",
+     "lesson": {
+      "v": 1,
+      "text": "This is the most-asked card in the packet, and it's one rule with three exceptions.\n\nThe rule first. In AF with a fast ventricular rate, too many atrial impulses are getting through the node. So you slow the node, with an IV beta-blocker or a non-dihydropyridine calcium channel blocker. Diltiazem is a quarter of a milligram per kilogram over two minutes. Both also weaken contraction, and diltiazem dilates vessels too. The three exceptions are the patients in whom that matters.\n\n{{**AF with a fast rate: the setting decides**\nStable, normal LV | IV β-blocker or diltiazem\nLabile BP, post-op, septic | esmolol or IV amiodarone; not diltiazem\nDecompensated low EF | amiodarone or digoxin; no IV β-blocker, no diltiazem or verapamil\nPre-excited | procainamide or ibutilide, shock if unstable; NO nodal blocker}}\n\nException one, the labile pressure: the patient on the unit, septic or just out of theatre. Before any drug, correct what's driving the AF: potassium, magnesium, volume, the catecholamine dose. Then, if you need rate control, choose a drug you can switch off. Esmolol works in two to three minutes and has a half-life of about nine, because esterases in red cells break it down. A grand test asked for the fastest-onset titratable drug in post-operative AF with a labile pressure: esmolol. Diltiazem is the wrong choice here, because its vasodilation and negative inotropy add to a hypotension that's already there. The other good option is IV amiodarone, which slows the node with little fall in pressure or contractility. So for septic shock with new AF at one hundred and forty and a pressure of one hundred and two over sixty-five, the key is an IV beta-blocker, IV amiodarone is equally defensible, and the wrong options are diltiazem, and oral amiodarone, which is far too slow.\n\nException two, the failing ventricle. With LV systolic dysfunction and decompensated heart failure, the card says avoid the calcium channel blockers and avoid IV beta-blockers. Both are class three, harm. Use amiodarone or digoxin. The next card is this patient. One version to bank now: septic shock, severe LV dysfunction, AF at one hundred and seventy, least suitable drug? Verapamil.\n\nException three is the dangerous one. In pre-excited AF there's an accessory pathway beside the node, and it has no brake. Block the node and the atrial impulses take the pathway, at up to three hundred a minute, and the ventricle can fibrillate. So the card bans four: digoxin, beta-blockers, the non-dihydropyridine calcium channel blockers, and IV amiodarone.\n\n[[Pre-excited AF: no digoxin, no beta-blocker, no verapamil or diltiazem, no IV amiodarone, and no adenosine. Shock it if unstable; procainamide or ibutilide if stable.]]\n\nHow do you recognise it? Irregular, wide, very fast, with QRS shapes that vary from beat to beat. A grand test gave an irregular wide rhythm at two hundred and eighty with varying complexes: AF with WPW.\n\nOne interaction, from Marrow. Never give IV verapamil or diltiazem soon after a beta-blocker. The nodal block and the negative inotropy add, and the result can be asystole. So diltiazem is contraindicated in all three: a low ejection fraction, after a beta-blocker, and pre-excited AF. And of the beta-blockers, carvedilol has no IV form.\n\nLast line of the card. Converting AF or flutter beyond forty-eight hours without anticoagulation risks an embolus. If the AF is under forty-eight hours and you want sinus rhythm with a drug, the bank's drug is ibutilide: one milligram over ten minutes, repeated once. It converts flutter better than AF, roughly sixty to seventy-five per cent against thirty to fifty. It prolongs the QT and can cause torsades, so correct potassium and magnesium and monitor for at least four hours. Flecainide is only for a heart without structural disease; amiodarone where there is.\n\nBut notice the trap. One Marrow item keys ibutilide for stable symptomatic AF. The algorithm's answer for a stable irregular rhythm is rate control. Pick rate control if it's offered, and ibutilide only when the stem asks you to restore sinus rhythm.\n\nNow the second exception in full: the weak ventricle."
+     }
+    },
+    {
+     "card": "HY2|CAR-04",
+     "bridge": "The rate is controlled. But in AF it's the clot, not the rate, that kills.",
+     "lesson": {
+      "v": 1,
+      "text": "AF with a fast rate again, but this time the ejection fraction is thirty per cent and the patient is in NYHA class four.\n\nGo back to the pump from the shock packets. With an ejection fraction of thirty, output depends on whatever contractility is left. So the drug that slows the rate must not also weaken the muscle.\n\nThat rules out verapamil and diltiazem. They block the L-type calcium channel in the node, which you want, and in the working myocardium, which you don't. The European guidance advises against them once the ejection fraction is below forty. On the mini test only twenty-four per cent knew verapamil was wrong here.\n\nWhat's safe? Three drugs, and the card puts a condition on the first. A beta-blocker, if the patient isn't decompensated. Digoxin. Amiodarone.\n\nHere's why the condition matters. Over months, a beta-blocker is among the best drugs this patient will ever take. But given into a vein, into a ventricle that's wet and struggling today, its negative inotropy can tip him into cardiogenic shock. Digoxin slows the node by raising vagal tone, and it doesn't weaken contraction at all. Amiodarone slows the node with very little effect on contractility. So when the patient is congested, those two are the acute choice, with a diuretic for the congestion.\n\n[[Low ejection fraction with fast AF: never verapamil or diltiazem. If decompensated, digoxin or amiodarone. A beta-blocker once the patient is compensated.]]\n\nNow the disputed key. A patient with heart failure and a reduced ejection fraction is admitted with AF at one hundred and thirty and worsening breathlessness, pressure one hundred and ten over seventy. The key says beta-blocker, and only thirty-nine per cent agreed. Worsening breathlessness is decompensation, and by the card an IV beta-blocker is avoided today. So how do you mark it? Read the options. If amiodarone or digoxin is offered for a patient who's clearly wet, that's the defensible answer. If the choice is only between a beta-blocker and a calcium channel blocker, the beta-blocker is what the examiner wants.\n\nThe drug that's contraindicated outright is dronedarone. It looks like a safer amiodarone, and it isn't. Two trials were stopped early for harm: ANDROMEDA, in recently decompensated severe heart failure, and PALLAS, in permanent AF. So no dronedarone in NYHA class four, after recent decompensation, or in permanent AF. Twelve per cent got that.\n\nAnd a Marrow line worth a mark. Dobutamine speeds conduction through the AV node. Start it in a patient with AF and a low ejection fraction, and the ventricular rate can run away. What would have prevented it? Digoxin, given first.\n\nYou've controlled the rate. But the rate isn't what kills in AF."
+     }
+    },
+    {
+     "card": "HY2|CAR-05",
+     "bridge": "Outside the valvular group a score decides, and Marrow has asked what's in it.",
+     "lesson": {
+      "v": 1,
+      "text": "AF kills mostly through stroke. Three decisions on this card: which anticoagulant, when it's safe to cardiovert, and whether chasing sinus rhythm changes anything.\n\nFirst the anticoagulant, and one group where the choice is fixed. In moderate or severe rheumatic mitral stenosis, blood stagnates in a large left atrium. A mechanical valve adds a foreign surface. Those two are what's meant by valvular AF, and the drug is warfarin: an INR of two to three, or two point five to three point five for a mechanical mitral valve. The direct oral anticoagulants are contraindicated. That isn't caution. It was tested. In mechanical valves, dabigatran caused more clots and more bleeding than warfarin, in the RE-ALIGN trial. In rheumatic heart disease with AF, rivaroxaban did worse than a vitamin K antagonist, in the INVICTUS trial. And aspirin is inadequate.\n\n[[AF with moderate or severe rheumatic mitral stenosis, or with a mechanical valve: warfarin, never a direct oral anticoagulant.]]\n\nOnly thirty-six per cent chose warfarin on the mini test. Keep the boundary sharp, though. A bioprosthetic valve, or other native valve disease, can have a direct oral anticoagulant.\n\nSecond, cardioversion in the stable patient with AF beyond forty-eight hours or of unknown duration. You have it already: three weeks of anticoagulation or a transoesophageal echo before, and four weeks after. One update. The twenty twenty-four European guideline has moved the line to twenty-four hours. The exam number, and the American one, is still forty-eight.\n\nThird, rate against rhythm. It seems obvious that restoring sinus rhythm should prevent strokes. AFFIRM and RACE tested it, and it didn't. There was no difference in mortality, stroke or quality of life. Rate control's one advantage was fewer readmissions, because the rhythm-control patients kept coming back for cardioversions and drug toxicity.\n\nWhy didn't sinus rhythm protect them? Because most of the strokes happened in patients whose anticoagulation had been stopped or had fallen below range. They looked cured, and they weren't.\n\n[[AFFIRM and RACE: rate control and rhythm control gave the same mortality and the same stroke rate, with fewer rehospitalisations on rate control. Anticoagulation decides stroke risk, not the rhythm.]]\n\nTwenty-four per cent got that right. NEET's favourite wrong option is that rhythm control reduces stroke. For completeness, a later trial, EAST-AFNET four in twenty twenty, found that rhythm control started early, within a year of diagnosis, lowered cardiovascular events, which is why guidelines now offer it sooner. The exam answer remains AFFIRM.\n\nSo outside the valvular group, who gets anticoagulated? That's a score, and Marrow has asked what's in it."
+     }
+    },
+    {
+     "card": "V12-015",
+     "bridge": "The narrow rhythms are done. Now the QRS widens, and a wrong drug can kill.",
+     "lesson": {
+      "v": 1,
+      "text": "Outside the valvular group, the decision to anticoagulate is a count of what makes a left atrial clot likely. The score is CHA2DS2-VASc, and the name is the list.\n\n{{**CHA₂DS₂-VASc**\nCongestive heart failure 1 | Hypertension 1\nAge ≥75 **2** | Diabetes 1\nStroke, TIA or thromboembolism **2** | Vascular disease 1\nAge 65–74 1 | Sex category, female 1}}\n\nDon't recite it. Notice the two things that score double: an age of seventy-five or more, and a previous stroke, TIA or embolism. Those are the strongest predictors, which is why each carries a two in the name. Everything else is one point, and the maximum is nine.\n\nThe thresholds: anticoagulate at two or more in men and three or more in women, and consider it one point below that.\n\nWhy different numbers for men and women? Because the female point isn't an independent risk. A woman with no other factor is at low risk. Being female only magnifies the risk once another factor is there. So the threshold for women sits one higher, which cancels the point.\n\n[[CHA2DS2-VASc: two points each for age seventy-five or more and for prior stroke or TIA, one for each of the rest. Female sex scores one, male sex scores nothing. Anticoagulate at two or more in men, three or more in women.]]\n\nMarrow asked which factor the score doesn't include. Male sex. That's the trap, and it's an easy mark.\n\nSince the sex point only ever cancelled out, the twenty twenty-four European guideline dropped it. Their score is CHA2DS2-VA: anticoagulate at two or more, consider at one, the same for everyone. Know that it exists. Answer with the older score unless the stem names the new one.\n\nThat's the irregular narrow rhythm: slow the node, respect the three exceptions, protect the brain. Now the QRS widens, and the stakes go up."
+     }
+    }
+   ],
+   "spine": [
+    "AF: the node is the filter, not the circuit → rate control with an IV β-blocker or diltiazem (0.25 mg/kg over 2 min).",
+    "Labile BP (septic, post-op): esmolol (onset 2–3 min, t½ ~9 min) or IV amiodarone; not diltiazem. Never IV verapamil/diltiazem soon after a β-blocker.",
+    "Low EF: no verapamil/diltiazem; decompensated → digoxin or amiodarone, no IV β-blocker; no dronedarone in NYHA IV. Digoxin before dobutamine.",
+    "Pre-excited AF: no nodal blocker at all (digoxin, β-blocker, CCB, IV amiodarone, adenosine) → procainamide or ibutilide, or shock.",
+    "Rheumatic MS or mechanical valve → warfarin, never a DOAC. Others: CHA₂DS₂-VASc ≥2 in men, ≥3 in women; male sex scores 0.",
+    "Stable AF >48 h: 3 weeks before or TOE, 4 weeks after. AFFIRM/RACE: rate = rhythm for death and stroke; rate control → fewer readmissions."
+   ]
+  },
+  {
+   "q": "P12-504",
+   "text": "Wide: VT, pre-excitation and the inherited syndromes",
+   "open": {
+    "v": 1,
+    "text": "So far every rhythm began above the ventricles. Now the QRS is wide, zero point one two seconds or more.\n\nA wide QRS means the ventricles aren't being activated down the normal fast wiring. Either the impulse starts in the ventricle, which is VT, or it comes from above by an abnormal route: a blocked bundle branch or an accessory pathway. You can't always tell, so you decide by risk. In a patient with heart disease a regular wide tachycardia is VT about eight times in ten, and after an infarct more than nine. That's the scar from the last packet doing what you were warned it would do.\n\n[[A wide-complex tachycardia is VT until proved otherwise. Treat it as VT: never verapamil or diltiazem.]]\n\nThe cards run from the stable wide route and its three drugs, to the accessory pathway, where the rules about the node turn upside down, to the inherited channel diseases. That card holds the question you missed in grand test seven, the survivor of a Brugada arrest.\n\nListen for one trap throughout: the right drug for an ordinary rhythm, given to the one patient it kills.\n\nStart with the route."
+   },
+   "steps": [
+    {
+     "card": "CVS08B|ACLS-30",
+     "bridge": "The drug is chosen. Now its dose, and the signs that tell you to stop.",
+     "lesson": {
+      "v": 1,
+      "text": "Stable, wide, and you're treating it as VT. The card has five lines, and two of them are prohibitions, which tells you where the danger is.\n\nStart with the drugs you may use: procainamide, amiodarone or sotalol. What they share is that they act on ventricular muscle. Procainamide blocks sodium channels and slows conduction round the circuit. Amiodarone and sotalol block potassium channels and lengthen the refractory period, so the returning wavefront meets tissue that can't yet fire.\n\nWhich one? The ventricle decides. Procainamide and sotalol both weaken contraction and drop the pressure. So in heart failure or poor LV function the answer is amiodarone, and the bank has asked that twice: decompensated heart failure, stable monomorphic VT at one hundred and sixty, IV amiodarone. With a preserved ventricle, procainamide is the better drug. That comes from PROCAMIO, a small open-label trial of seventy-four patients with a stable regular wide tachycardia. Procainamide stopped sixty-seven per cent within forty minutes, against thirty-eight per cent for amiodarone, with major cardiac adverse events in nine per cent against forty-one.\n\n[[Stable monomorphic VT: amiodarone when the ventricle is weak or failing, procainamide when LV function is preserved. Never verapamil or diltiazem.]]\n\nNow the prohibitions. Verapamil and diltiazem must not be given for a wide tachycardia. If it's VT, they do nothing to the ventricular circuit. They just weaken the muscle and dilate the vessels, and the patient collapses. A grand test gave stable monomorphic VT in a heart failure patient already on metoprolol, and the wrong options were adenosine, verapamil and cardioversion. The answer was amiodarone, and about three in four got it. Verapamil is harm, adenosine doesn't treat VT, and cardioversion is for instability.\n\nAdenosine has one narrow permission: when the wide rhythm is regular and monomorphic, as a treatment or as a test. The reasoning is that it might be SVT conducted with a bundle branch block. If so, adenosine ends it or shows you the atrial rhythm. If it's VT, a few seconds of nodal block usually does no harm.\n\nAnd adenosine is forbidden in three settings: unstable, irregularly irregular, or polymorphic. Unstable needs a shock. Polymorphic can degenerate. And irregularly irregular with a wide QRS may be pre-excited AF, where blocking the node is the lethal move.\n\nWhere does electricity come in? For the unstable patient, at once. For the stable patient, when the drugs fail or can't be given. The trap is immediate cardioversion or defibrillation for a stable regular wide tachycardia. The keyed next step is an antiarrhythmic infusion.\n\nOne thing the bank assumes you can do is call it VT from the strip. Ischaemic heart disease, chest pain, wide QRS, no P waves, one hundred and fifty: VT, and over eighty per cent got that. The features that favour VT over SVT with aberrant conduction are AV dissociation, fusion and capture beats, a QRS wider than one hundred and sixty milliseconds, an extreme north-west axis, and concordance across the chest leads. AV dissociation is the one to understand: the atria carry on at their own slower rate, which proves the ventricle is driving itself.\n\nYou've chosen the drug. Now the dose, and when to stop."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-32",
+     "bridge": "Every wide rhythm so far was regular. Now make it irregular and very fast.",
+     "lesson": {
+      "v": 1,
+      "text": "Three drugs, three doses, and each stopping rule or bar is the drug's own toxicity showing itself. Learn them that way and you won't have to memorise them separately.\n\nProcainamide first. It's a class one A sodium channel blocker. You infuse it at twenty to fifty milligrams a minute, and you stop at whichever of four things comes first. The arrhythmia is suppressed: you've won. Hypotension appears: that's its vasodilating and negative inotropic effect. The QRS widens by more than half: that's the sodium block slowing conduction too far. Or you reach seventeen milligrams per kilogram. Maintenance is one to four milligrams a minute. Avoid it with a prolonged QT, because the drug and its metabolite lengthen repolarisation, and avoid it in heart failure.\n\nAmiodarone. One hundred and fifty milligrams over ten minutes, repeated if the VT returns, then one milligram a minute for the first six hours. After that it's half a milligram a minute for the next eighteen. It blocks potassium, sodium and calcium channels and beta receptors, with little negative inotropy at these doses. That's why it's the drug for the poor ventricle.\n\nSotalol. One hundred milligrams, or one and a half milligrams per kilogram, over five minutes. Avoid it with a prolonged QT.\n\n{{**Stable wide-QRS tachycardia, IV**\nProcainamide | 20–50 mg/min; stop at suppression, hypotension, QRS +50% or 17 mg/kg; then 1–4 mg/min\nAmiodarone | 150 mg over 10 min; then 1 mg/min for 6 h\nSotalol | 100 mg (1.5 mg/kg) over 5 min}}\n\nSotalol is the one that's been asked, in NEET twenty twenty-four: its adverse effect is due to what? It's a beta-blocker, so the tempting answers are bradycardia and hypotension. They happen. But sotalol is also a class three drug. It blocks the potassium channel that repolarises the ventricle, so the action potential lengthens and the QT with it, and a long QT is the ground torsades grows from.\n\n[[Sotalol's serious adverse effect is QT prolongation and torsades, from potassium channel block. Procainamide and sotalol are both barred by a long QT.]]\n\nSo far every wide rhythm has been regular. Now make it irregular, and very fast."
+     }
+    },
+    {
+     "card": "HY2|CAR-03",
+     "bridge": "That was an extra wire. Next, normal wiring with a faulty channel, and your GT miss.",
+     "lesson": {
+      "v": 1,
+      "text": "The AV node has been your tool for two sections. Now see what it's for. It's a brake. It conducts slowly, and the faster it's driven the slower it conducts, which is called decremental conduction. That's what stands between an atrium fibrillating at four hundred or more and a ventricle that can't survive a fraction of that.\n\nIn Wolff-Parkinson-White there's a second connection between atrium and ventricle, a strand of ordinary muscle that bypasses the node. It has no brake.\n\nIn sinus rhythm you can see it on the ECG. The impulse goes down both routes. The pathway doesn't delay, so part of the ventricle is activated early: a short PR, under one hundred and twenty milliseconds. That early activation spreads slowly, through muscle and not through the fast wiring, so the upstroke of the QRS is slurred. That's the delta wave. Then the normal impulse arrives through the node and completes the job, so the QRS is a fusion of the two, and wide.\n\nA grand test asked what lies behind a delta wave and a short PR, and only thirty-nine per cent chose an accessory AV pathway. The wrong option was a dual AV nodal pathway. That's AVNRT from the narrow section, and it leaves a normal ECG between attacks.\n\nNow give this patient AF. Each atrial impulse has two routes. While the node is conducting, the beats it lets through also enter the pathway from its ventricular end and leave it refractory part of the time. Block the node, and that protection ends. The pathway carries the atrial impulses alone, at up to three hundred a minute, and that degenerates into VF.\n\n[[In pre-excited AF, block the pathway, never the node. Unstable: cardioversion. Stable: procainamide or ibutilide.]]\n\nSo the banned list is every nodal blocker: adenosine, verapamil, diltiazem, beta-blockers and digoxin. Verapamil and digoxin are doubly bad, because they also shorten the pathway's refractory period. And add one that isn't on this card: IV amiodarone. Its early effect in the vein is mostly on the node, and the American guidelines of twenty twenty-three and twenty twenty-five class it as harm.\n\nThe treatment acts on the pathway itself. Procainamide or ibutilide slows it or lengthens its refractory period. If unstable, cardiovert. The cure is catheter ablation.\n\nHere's a keying problem you should know about. Twice a grand test has asked which drug is contraindicated in WPW with fast AF, with verapamil as the key, while the other options included adenosine, esmolol and IV amiodarone. All of them are harmful. Agreement was forty-five to fifty-four per cent, because people who knew more hesitated. Mark verapamil. It's the classic answer.\n\nTwo discriminators. Pre-excited AF against VT: both are wide, but VT is regular with uniform complexes, and pre-excited AF is irregularly irregular with complexes that change width from beat to beat. And inside WPW itself, don't over-apply the ban. The common tachycardia in WPW is orthodromic AVRT: down the node, up the pathway, regular and narrow. The node is in that circuit, so vagal manoeuvres and adenosine are allowed. The ban is for the irregular, wide one.\n\nLast, flecainide, the card's drug of choice from the mini test. It's a class one C sodium channel blocker, it slows conduction in the pathway, and it prevents AVRT. Two facts get asked. It's contraindicated in structural or ischaemic heart disease, because in the CAST trial it caused excess deaths after infarction. And its commonest dose-related non-cardiac effect is blurred vision. Marrow: blurred vision during treatment of paroxysmal SVT, which drug? Flecainide.\n\nThat was a heart with an extra wire. Next, hearts with normal wiring and a faulty channel."
+     }
+    },
+    {
+     "card": "HY2|CAR-06",
+     "bridge": "An ICD is for the arrhythmia with no removable cause. The next card sorts every indication.",
+     "lesson": {
+      "v": 1,
+      "text": "Two diseases on this card, and in both the heart looks normal on echo. The fault is in a channel. One is a disease of repolarisation, and one is a disease of the sodium channel.\n\nTake torsades first. When the QT is long, the plateau of the action potential is prolonged. During a long plateau the L-type calcium channels have time to recover and reopen, and that produces a second small depolarisation before the cell has finished repolarising: an early after-depolarisation. If it reaches threshold it fires, and the result is a polymorphic VT whose axis twists round the baseline.\n\nMagnesium suppresses those after-depolarisations, and it works even when the serum magnesium is normal. So the drug is magnesium sulphate, two grams IV. The American guideline grades it only as may be considered, yet it stays the exam answer. If the torsades keeps recurring, speed the heart up, by overdrive pacing at ninety to one hundred and ten or with isoprenaline. A faster rate shortens the QT and abolishes the pauses that set each run off. Keep the potassium high-normal. And if the patient is pulseless, defibrillate.\n\nNow look at what you must not give: amiodarone, procainamide, sotalol. They're the three drugs from two cards ago, the right answer for ordinary VT. Every one of them prolongs repolarisation. Here they feed the arrhythmia.\n\n[[Torsades on a long QT: magnesium two grams, a faster heart rate, and stop the QT-prolonging drug. Amiodarone, procainamide and sotalol make it worse.]]\n\nA grand test made that the stem: a patient on IV amiodarone for AF has sudden syncope and torsades. IV magnesium, and ninety-one per cent got it. The mimic is polymorphic VT with a normal QT. That's usually ischaemia, magnesium doesn't help, and it's treated with amiodarone or a beta-blocker and urgent angiography.\n\nNow Brugada, and slow down, because this is the question you missed.\n\nThe gene is SCN5A, a loss of function in the sodium channel. With less inward sodium current, the outward current that follows it dominates in the epicardium of the right ventricular outflow tract. The action potential there loses its dome, while the layers beneath keep theirs. That difference across the wall draws the ECG: in V1 and V2, a coved ST elevation of two millimetres or more, running down into a negative T wave.\n\nFifty-seven per cent knew the T wave is negative. The saddle-back shape with a positive T isn't diagnostic. The pattern can be hidden, and brought out by fever or by a sodium channel blocker such as ajmaline, flecainide or procainamide.\n\nWhen does it kill? Whenever the sodium current falls further: at rest, in sleep when vagal tone is high, and with fever. So you treat fever aggressively. Its opposite is catecholaminergic polymorphic VT, a ryanodine receptor disease that kills on exertion, with a normal resting ECG.\n\nNow the miss. Grand test seven, question one hundred and thirty: a patient with Brugada syndrome has survived a cardiac arrest. The tempting answer is a drug, and quinidine is the one usually offered. Reason it through. This patient has already shown that his substrate produces VF. The channel defect is permanent, so there's no cause you can remove. No drug has been shown to prevent death here. The only thing that reliably ends VF is a shock, so he needs to carry one.\n\n[[Brugada syndrome with a survived cardiac arrest: ICD, class one. Quinidine is the adjunct, for a patient who refuses the device or keeps getting shocks. It is never the answer to what most reduces sudden death.]]\n\nMarrow extends the ICD to arrhythmic syncope: Brugada with recurrent syncope, best therapy, ICD. Quinidine works by blocking that outward current, and isoprenaline is used acutely in an electrical storm. And the opposite case: polymorphic VT on levofloxacin and dofetilide. The cause is reversible, so stop the levofloxacin, hold the dofetilide until the QT normalises, and no ICD.\n\nSo an ICD is for the arrhythmia with no cause you can remove. That idea reaches well beyond Brugada."
+     }
+    },
+    {
+     "card": "HY2|CAR-10",
+     "bridge": "The fast side is finished. Now the monitor alarms for the opposite reason.",
+     "lesson": {
+      "v": 1,
+      "text": "You've just met one reason for an ICD. This card sorts all of them, and adds the other device. The trick is to keep two questions apart.\n\nThe first question is whether this patient has already had the event. If someone has survived a VF or VT arrest and there's no reversible cause, no acute infarct, no electrolyte or drug explanation, the substrate is still there and it will fire again. That's secondary prevention, and it's an ICD whatever the ejection fraction. Three trials, AVID, CIDS and CASH, compared the ICD with amiodarone. AVID showed a clear fall in mortality, the other two pointed the same way, and pooled together the ICD won. The Brugada survivor was this rule in a normal heart.\n\nThe bank's version: resuscitated out-of-hospital arrest, no infarct, ejection fraction thirty per cent, next step to reduce long-term mortality. Refer for an ICD, seventy-one per cent. NEET's favourite wrong option is amiodarone. Assessing the coronaries is part of the work-up, but it mustn't delay the decision.\n\nThe second question is for the patient who's had no event yet. That's primary prevention, and here the criteria are a list.\n\n{{**Primary-prevention ICD**\nLVEF ≤35%\nNYHA II–III\nOn guideline therapy ≥3 months\nMore than 40 days after MI (90 after revascularisation)}}\n\nEvery item is a reason to wait or to exclude. Three months of therapy, because the ejection fraction often recovers on treatment and the patient no longer qualifies. Forty days after infarction, because two trials of early implantation, DINAMIT and IRIS, showed no fall in mortality: the early deaths are often not arrhythmic. And not NYHA class four, because those patients die of pump failure, unless they're also candidates for resynchronisation.\n\n[[ICD: survivors of VF or VT arrest with no reversible cause get one whatever the ejection fraction. Primary prevention needs an ejection fraction of thirty-five or less, three months of therapy, and more than forty days after infarction.]]\n\nNow the other device. Cardiac resynchronisation therapy treats a different fault. In left bundle branch block the septum contracts first and the lateral wall late, so the ventricle wastes work pushing blood from one wall to the other. Pace both ventricles together and they contract in step.\n\nSo what selects the patient? You'd think the echo would: look for the walls moving out of time. It was tried, and it failed. In PROSPECT the echo measures weren't reproducible, and in EchoCRT, patients with echo dyssynchrony but a narrow QRS got no benefit and possibly harm. The selector is the ECG.\n\n[[CRT is selected by QRS width: left bundle branch block with a QRS of one hundred and fifty milliseconds or more, plus an ejection fraction of thirty-five or less. Not by echo dyssynchrony.]]\n\nTwenty-six per cent got that. Between one hundred and thirty and one hundred and forty-nine milliseconds the benefit is weaker, and below one hundred and thirty there's none.\n\nThat's the fast side of the monitor complete. Turn to the patient whose alarm is ringing for the opposite reason."
+     }
+    }
+   ],
+   "spine": [
+    "Wide-complex tachycardia = VT until proved otherwise (~80% with heart disease, >90% after MI). Never verapamil or diltiazem.",
+    "Stable VT: amiodarone if the LV is poor or failing; procainamide if preserved (PROCAMIO). Adenosine only if regular and monomorphic.",
+    "Procainamide 20–50 mg/min to suppression, hypotension, QRS +50% or 17 mg/kg. Amiodarone 150 mg/10 min then 1 mg/min. Sotalol 100 mg/5 min: QT, torsades.",
+    "WPW: short PR, delta wave. Pre-excited AF (irregular, wide, up to 300/min): no nodal blocker, no IV amiodarone → procainamide or ibutilide, or shock.",
+    "Torsades: Mg 2 g, pace or isoprenaline, stop QT drugs. Brugada: SCN5A, coved ST + negative T in V1–V2, dies at rest, sleep, fever → ICD after arrest (class I) or arrhythmic syncope.",
+    "ICD: arrest survivor with no reversible cause, any EF. Primary: EF ≤35%, 3 months of therapy, >40 days post-MI. CRT: LBBB with QRS ≥150 ms, not echo."
+   ]
+  },
+  {
+   "q": "P12-505",
+   "text": "Slow: sinus and junctional, the blocks, and pacing",
+   "open": {
+    "v": 1,
+    "text": "Now the heart is too slow, and the thinking is simpler, because a slow rhythm is always one of two failures. Either the pacemaker isn't firing, or it's firing and the impulse isn't getting through.\n\nThe sinus node fires, the impulse crosses the atria, passes the AV node, runs down the bundle of His and out through the Purkinje fibres. A fault at the top is sinus node trouble. A fault in the middle or below is AV block. And for AV block one question decides everything: is the block in the node, or below it?\n\n[[In a slow rhythm, find the level. A block in the AV node is vagal, usually benign, and answers to atropine. A block below the node is unstable, ignores atropine, and needs pacing.]]\n\nThe reason is anatomy. The vagus supplies the sinus node and the AV node, and almost nothing beneath them. Atropine only removes the vagus.\n\nThe cards run from the top down: the rhythms, the blocks, the algorithm, and two patients.\n\nThe trap to listen for is atropine given to an infranodal block. The scores there fell to twenty-two and forty-three per cent, and one key is wrong.\n\nStart at the top."
+   },
+   "steps": [
+    {
+     "card": "CVS08B|ACLS-35",
+     "bridge": "That was failure at the top. Now the impulse has to cross from atrium to ventricle.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with the pacemaker itself. Bradycardia is a rate below sixty, and it may be perfectly normal.\n\nIn sinus bradycardia the node is firing slowly, and nothing else is wrong. Every P wave is a sinus P, each one conducts, and the PR interval is normal. An athlete or a sleeping patient has it from vagal tone. Drugs cause it. And the card lists the pathological causes: hypoxia, infarction, raised intracranial pressure and hypothyroidism. Each has a reason. Inferior infarction, because the right coronary usually feeds the node, and the inferior wall triggers a vagal reflex. Raised intracranial pressure, through the Cushing reflex. You treat it only when it causes symptoms. The bank's version is easy: elderly, syncope, a regular rhythm at forty with normal P and QRS. Sinus bradycardia, ninety-two per cent.\n\nNow suppose the sinus node fails altogether, or its impulse can't get out. The heart has a reserve. The AV junction will fire by itself at forty to sixty a minute. That's a junctional escape rhythm, and you recognise it from two things. The impulse spreads down the normal wiring, so the QRS is narrow. And it spreads backwards into the atria, so the P wave is inverted in the inferior leads, and depending on timing it comes just before the QRS, hides inside it, or follows it.\n\n[[A normal P before every QRS with a normal PR is sinus bradycardia. An inverted, absent or late P with a narrow QRS is a junctional rhythm, which means the sinus node has failed above it.]]\n\nThe card's causes for a junctional rhythm are hyperkalaemia, sino-atrial exit block and severe sinus bradycardia. Treat the cause if there are symptoms.\n\nThat middle one has been asked, and no card explains it, so here it is. In sino-atrial exit block the node fires on time, but the impulse fails to leave the node and reach the atrium. You can't see the node fire on a surface ECG. You only see the missing P wave. So how do you tell it from a node that simply paused?\n\nBy arithmetic. If the node kept its rhythm and one impulse was blocked, the gap is exactly two of the normal P to P intervals. That's type two exit block: a constant P to P interval, then a sudden pause that's an exact multiple of it. A sinus pause or arrest has no fixed relation to the cycle, because the node itself stopped. And type one is the Wenckebach version: the P to P intervals shorten progressively, then a pause that's less than two cycles.\n\n[[Sino-atrial exit block type two: a constant P to P interval, then a pause that is an exact multiple of it, usually double. A sinus pause bears no fixed relation to the P to P interval.]]\n\nNEET's wrong option for the constant rhythm with a pause of exactly two cycles is sinus arrest. It's exit block, type two, and seventy-five per cent got it.\n\nSo that's failure at the top. Now the impulse leaves the atrium and has to cross to the ventricle."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-36",
+     "bridge": "You can read the slow rhythm and find its level. Now treat it.",
+     "lesson": {
+      "v": 1,
+      "text": "The impulse has left the atria. Between it and the ventricles lie the AV node, then the bundle of His and its branches. The four blocks on this card are really two diseases: a tired node, and broken wiring below it.\n\nFirst degree is hardly a block at all. Every P conducts, one to one, just slowly: a PR above two hundred milliseconds. It can be normal, or come from drugs, an inferior infarct or myocarditis. It usually needs no treatment. One item gave an asymptomatic patient with first-degree block, and only thirty-nine per cent chose discharge. Don't admit a long PR.\n\nSecond degree means some P waves don't get through, and there are two kinds.\n\nMobitz one, or Wenckebach, is the AV node tiring. The node conducts decrementally, so each beat finds it a little less recovered, and the PR lengthens beat by beat until one P fails. The node rests, and the cycle begins again. Progressive PR lengthening, then a dropped QRS: NEET twenty twenty-five asked exactly that. Because the fault is in the node, the QRS is usually narrow, and the node listens to the vagus.\n\nMobitz two is the wiring below. The His-Purkinje system doesn't tire gradually. It conducts fully or not at all. So the PR is fixed, and then without warning a QRS is missing. The QRS is often wide, because the bundle branches are diseased, and the next step can be complete block with nothing reliable underneath. So Mobitz two necessitates treatment: a cardiologist and transvenous pacing.\n\nNow the test that separates them, which Marrow and the grand tests both ask. Atropine and exercise speed up conduction in the node. So they improve Mobitz one. In Mobitz two they can't help the diseased wiring, but they do speed up the sinus rate, so more impulses arrive at a system that can only pass so many, and the block gets worse. Carotid massage does the reverse on both.\n\n{{**Nodal vs infranodal block**\nFeature | Nodal (Mobitz I) | Infranodal (Mobitz II)\nQRS | narrow | often wide\nAtropine, exercise | improve | worsen or no effect\nCarotid massage | worsens | may improve\nInfarct | inferior | anterior\nCourse | benign | progresses; pace}}\n\n[[Atropine and exercise improve a nodal block and worsen an infranodal one. Mobitz one is nodal, narrow and usually benign. Mobitz two is infranodal, often wide, and needs pacing.]]\n\nMarrow's form: which feature is not seen in type one block? Worsening with atropine.\n\nComplete heart block is no relationship between P and QRS: the P to P interval is constant, the R to R interval is constant, and they're independent. Look at the escape rhythm to find the level. Narrow, at forty to sixty, is a junctional pacemaker beneath a nodal block. Wide and slow, at twenty to forty, is ventricular and unreliable. Asymptomatic: pacer pads on, monitor, admit. Symptomatic: pace.\n\nAnd the card's last line: some blocks can't be classified. In two to one block every second P is dropped, so there are never two conducted beats in a row to compare, and you can't say whether the PR was lengthening. Use the company it keeps. A narrow QRS in a vagal setting means the node. The stem was a sleeping athlete with two to one block, and only forty-two per cent chose the AV node; the wrong options were the His bundle and the bundle branches. A wide QRS, or an anterior infarct, means below the node.\n\nNow the wrong key I promised. One item gives an anterior infarct with second-degree block and keys it as Mobitz one, benign, give atropine. That's wrong. The left anterior descending artery supplies the His-Purkinje system, so block after an anterior infarct is infranodal and needs transvenous pacing. The inferior infarct is the one with the benign nodal block. On the day, choose the option that puts the block in the His bundle or Purkinje fibres, and paces.\n\nYou can read the slow rhythm. Now treat it."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-37",
+     "bridge": "Two infusions sat on the second rung. Their units are a trap.",
+     "lesson": {
+      "v": 1,
+      "text": "The bradycardia algorithm opens with the same question as the tachycardia one. Is the rhythm causing harm? And it uses the same five signs: hypotension, acutely altered mental status, signs of shock, ischaemic chest discomfort, acute heart failure. The current guideline adds that the rate is typically below fifty before the rhythm can be blamed.\n\nIf none is present, monitor and observe, and look for the cause.\n\nIf one is, atropine. It blocks the muscarinic receptor, which takes the vagus off the sinus node and the AV node. One milligram as a bolus, repeated every three to five minutes, to a maximum of three milligrams. Why three? Because that's complete vagal blockade. Beyond it there's no vagus left to block.\n\n[[Symptomatic bradycardia: atropine one milligram every three to five minutes, maximum three. If it fails: transcutaneous pacing, or dopamine, or adrenaline. If those fail: transvenous pacing.]]\n\nIf atropine fails, the algorithm offers three things as equals: transcutaneous pacing, a dopamine infusion, or an adrenaline infusion. Pacing goes round the conduction problem altogether. The two infusions stimulate the beta one receptor, so the rate rises whatever the vagus is doing. And if those fail, transvenous pacing and an expert, which the current guideline calls reasonable for unstable bradycardia that's refractory to drugs.\n\nThat's the route. Now the four places the bank bends it.\n\nOne, the dose. A Marrow key says atropine nought point five milligrams. That was the American dose before twenty twenty, and it's still the European dose, so it isn't wrong. The current American dose is one milligram. If one is offered, pick one.\n\nTwo, the second-line drug. NEET twenty twenty-five asked what follows when pacing fails, and keyed dopamine. A grand test gave pericarditis after bypass surgery, a rate of thirty-three, three milligrams of atropine already given, and pacing on its way. The wrong options were more atropine, norepinephrine and isoproterenol. The answer was dopamine, and thirty-five per cent got it. More atropine is pointless after three milligrams, and norepinephrine adds afterload with little effect on rate. So for the exam: dopamine if it's offered, adrenaline if it isn't. The European algorithm uses isoprenaline or adrenaline, which is why isoprenaline appears as a distractor.\n\nThree, and this is the big one: atropine in an infranodal block. You know from the last card that atropine does nothing below the node and can worsen the block. So in unstable Mobitz two, or complete heart block with a wide escape, pacing mustn't wait for atropine to fail. A grand test gave a septic patient, pressure seventy-five over forty, Mobitz two: transcutaneous pacing, and forty-three per cent chose it. Another gave a rate of twenty-eight, confusion, wide-complex Mobitz two, atropine already failed: transcutaneous pacing.\n\nBut be ready for the key that goes the other way. A septic patient, rate thirty-four, complete heart block, pressure eighty over fifty, with atropine keyed as the first step and only twenty-two per cent agreeing. The algorithm does begin with atropine, and that's the letter of it; you'd still prepare the pacer at once. The tempting wrong answer there was a permanent pacemaker, which comes after stabilisation. So: atropine as the first step where the stem doesn't tell you the level, pacing where it tells you the block is infranodal.\n\nFour, the easy ones. A rate of forty-two after an acute coronary syndrome and a stent, first drug: atropine. Mobitz one with a pressure of eighty over sixty: atropine one milligram. Unstable sinus bradycardia with pauses: atropine, and arrange temporary pacing.\n\nThe two infusions have doses, and their units are a trap."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-38",
+     "bridge": "The third option on that rung was electricity through the chest wall.",
+     "lesson": {
+      "v": 1,
+      "text": "Two infusions, and the only thing to learn is that their units differ.\n\nDopamine is dosed by weight: five to twenty micrograms per kilogram per minute. At that dose it drives the beta one receptor, raising rate and contractility, and towards the top of the range it adds alpha vasoconstriction. Titrate to the response, and taper it slowly, because stopping it suddenly can drop the pressure.\n\nAdrenaline is a flat adult rate: two to ten micrograms per minute. No kilograms.\n\n[[Bradycardia infusions: dopamine five to twenty micrograms per kilogram per minute. Adrenaline two to ten micrograms per minute, with no per kilogram.]]\n\nThe trap is adrenaline at two to ten micrograms per kilogram per minute. In a seventy-kilogram adult that's seventy times the dose. On the mini test only thirty-four per cent picked the right units.\n\nThe third option at that rung was electricity through the chest wall."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-39",
+     "bridge": "While the pads go on, ask why the heart slowed in the first place.",
+     "lesson": {
+      "v": 1,
+      "text": "Transcutaneous pacing drives the heart through the chest wall, and it's a bridge: to a transvenous wire, or to the cause being fixed. Its indication is the haemodynamically unstable bradycardia.\n\nFour practical points, each with a reason. Give sedation and analgesia, with an opioid or a benzodiazepine, and obtain consent, because the current contracts the chest wall muscles and it hurts. Place the pads as the device shows. Set the rate at sixty to eighty: enough to restore output without loading a heart that may be ischaemic. And for the current, turn it up until every spike captures, then set it two milliamps above that, because the threshold drifts and you want a margin.\n\nNow the point that matters more than the numbers. Capture on the monitor is electrical: a wide QRS and a broad T wave after each spike. That tells you the muscle depolarised. It doesn't tell you it pumped. You confirm mechanical capture with a pulse, and you feel for it at the femoral artery or read it off an arterial line, because at the neck the twitching muscles can fool your fingers.\n\n[[Transcutaneous pacing: sixty to eighty a minute, current two milliamps above the capture threshold, with sedation. Capture is confirmed by a femoral pulse or an arterial trace, not by the monitor.]]\n\nAnd one line from the grand tests. Pacing is for bradycardia with a pulse. The current guideline states that routine pacing isn't recommended in established cardiac arrest, asystole or pulseless electrical activity, whatever the timing, because it doesn't improve return of circulation or survival.\n\nWhile the pads go on, ask why the heart slowed in the first place."
+     }
+    },
+    {
+     "card": "CVS08B|ACLS-40",
+     "bridge": "Two patients to close. The first: slow sinus rhythm, low pressure.",
+     "lesson": {
+      "v": 1,
+      "text": "While you give atropine and set up the pacer, you look for the cause, at the same time and not afterwards, because all four of the card's categories are reversible.\n\nIschaemia or infarction. You know the two patterns now: the inferior infarct with a vagal, nodal bradycardia, and the anterior infarct with block below the node.\n\nDrugs and toxins: calcium channel blockers, beta-blockers and digoxin. All three slow the node, and their effects add. Marrow asked it neatly: a patient on metoprolol for AF develops symptomatic bradycardia, and which other drug is the synergistic culprit? Digoxin. It slows the node through the vagus, on top of the beta-blocker.\n\n[[Bradycardia has four reversible causes to look for at once: ischaemia, drugs such as calcium channel blockers, beta-blockers and digoxin, hypoxia, and electrolytes, above all hyperkalaemia.]]\n\nHypoxia. It's a late and ominous cause, and in a child it's the usual one. Hold that thought for two cards.\n\nAnd electrolytes, chiefly hyperkalaemia, which depolarises cells and slows conduction at every level. Calcium protects the membrane while you bring the potassium down.\n\nEach of the poisonings has its own antidote, and atropine isn't it. That's the whole of the next packet, so I'll leave it there.\n\nNow two patients to close the section. The first has a slow sinus rhythm and a low pressure."
+     }
+    },
+    {
+     "card": "HY2|CAR-08",
+     "bridge": "The last card: the block atropine can't reach, and a child who isn't a small adult.",
+     "lesson": {
+      "v": 1,
+      "text": "A rate of thirty-six, pressure seventy-six over forty, confused. The strip shows sinus bradycardia with no high-grade block.\n\nYou can answer this in one line now. Atropine one milligram, every three to five minutes, to three milligrams. Then dopamine at five to twenty micrograms per kilogram per minute, or adrenaline at two to ten micrograms per minute, or transcutaneous pacing. And while the pacer's being set up, start an infusion.\n\nSo use this card for the question underneath: why is atropine first at all? Only because most symptomatic bradycardia is vagal and sits at or above the node. Atropine is a bet on that. When it fails, it has told you something: the problem isn't vagal, so the next step either drives the beta receptor directly or bypasses conduction.\n\nOne detail on the dose. Less than half a milligram can slow the heart further, a paradoxical effect, which is one reason the dose isn't given timidly.\n\nThe card ends by asking when the bet is lost before you place it. Two situations.\n\nThe first you know: block below the node. Mobitz two, or complete heart block with a wide escape. The His-Purkinje system has almost no vagal supply.\n\nThe second is the transplanted heart. The surgeon cuts the nerves, and a denervated heart has no vagal tone to remove. So atropine does nothing, and neither does glycopyrrolate. Ephedrine fails too, because it works largely by releasing noradrenaline from nerve endings that are no longer there. Atropine can even provoke high-grade block in these patients. What works is a drug that acts directly on the receptor, isoprenaline or adrenaline, or pacing.\n\n[[Atropine is useless in infranodal block and in the transplanted, denervated heart. After a transplant use a direct-acting drug, isoprenaline or adrenaline, or pace.]]\n\nMarrow: heart transplant three years ago, bradycardia during an operation, best drug? Isoprenaline. Notice the symmetry with the narrow section. The same denervated heart that ignores atropine is supersensitive to adenosine.\n\nOne more transplant fact, from both banks. Up to half of patients have sinus node dysfunction early after an orthotopic transplant, mainly from surgical trauma or ischaemia to the donor's node. It usually resolves within weeks to three months. You support the rate at ninety to one hundred and ten, with atrial pacing through the epicardial wires or with isoprenaline, and a permanent pacemaker is only for those in whom it persists.\n\nThe second patient has the block that atropine can't reach."
+     }
+    },
+    {
+     "card": "HY2|CAR-09",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Three pacing decisions to finish, and the first two are the level of the block again.\n\nMobitz two with syncope and no reversible cause. It's disease of the His-Purkinje system, it progresses without warning to complete block, and what's left underneath is a slow, unreliable ventricular escape. Once you've excluded drugs, ischaemia and hyperkalaemia: a permanent pacemaker.\n\nComplete heart block with shock. Pace. But in what order? Transcutaneous now, transvenous next, with a chronotrope as a bridge. This is the forty-three per cent question again: a septic patient with syncope, Mobitz two on the strip, pressure seventy-five over forty, initial intervention. NEET's favourite wrong option is the transvenous pacemaker, which is the better pacemaker and takes time to place. The pads take a minute. Atropine works on the node, not below it. And dobutamine isn't the rescue.\n\n[[Unstable infranodal block: transcutaneous pacing first, as the bridge to a transvenous wire. Symptomatic Mobitz two with no reversible cause ends in a permanent pacemaker.]]\n\nThe third decision is a child, and the adult algorithm doesn't apply. A rate of forty-six, poor perfusion, and oxygenation and ventilation are already good.\n\nIn an adult, bradycardia is usually a conduction problem. In a child it's usually the last stage of hypoxia: the heart slowing because it's running out of oxygen, on its way to stopping. So the first move is always to oxygenate and ventilate. This stem tells you that's been done, and the rate is still below sixty with poor perfusion. A child's output depends heavily on rate. So this is treated as an arrest that's about to happen.\n\n[[A child with a heart rate below sixty and poor perfusion despite good oxygenation and ventilation: start CPR and give adrenaline, nought point nought one milligrams per kilogram.]]\n\nThat's nought point one millilitres per kilogram of the nought point one milligram per millilitre solution, by vein or into bone, to a maximum of one milligram. Only twenty-two per cent got this. The wrong options are atropine and dopamine, the adult reflexes. Atropine, at nought point nought two milligrams per kilogram, is kept for raised vagal tone or a primary AV block.\n\nThat's the rhythm packet. Fast or slow, you asked the same thing first: is the rhythm causing harm? If it was, electricity. If it wasn't, you found the level, the atrium, the node, a pathway or the ventricle, and chose the drug that acts there.\n\nBut look back at how often the cause was something the patient had been given. Digoxin with a beta-blocker behind a bradycardia. Verapamil for the wrong rhythm. A long QT from two prescriptions. And in this last section you met hearts that atropine can't fix. Every drug in this packet treats a rhythm at one dose and causes one at another. So that's next: the cardiac drugs themselves, and what you do for the heart that's been poisoned by them."
+     }
+    }
+   ],
+   "spine": [
+    "A slow rhythm is one of two failures: the pacemaker isn't firing (sinus node) or the impulse isn't conducted (AV block). Find the level.",
+    "Sinus bradycardia: normal P and PR. Junctional escape: narrow QRS, P inverted, absent or after the QRS. SA exit block type II: pause = exact multiple of PP.",
+    "Nodal block (Mobitz I, inferior MI, narrow QRS): atropine and exercise improve it. Infranodal (Mobitz II, anterior MI, wide QRS): they worsen it → pace.",
+    "Algorithm: atropine 1 mg every 3–5 min, max 3 mg → TCP or dopamine 5–20 mcg/kg/min or adrenaline 2–10 mcg/min → transvenous pacing.",
+    "TCP: 60–80/min, 2 mA above capture, confirm with a femoral pulse. No routine pacing in established arrest.",
+    "Atropine fails in infranodal block and the transplanted heart (isoprenaline). Child HR <60 + poor perfusion despite O₂ and ventilation → CPR + adrenaline 0.01 mg/kg."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's walk back through it, rhythm by rhythm.\n\nYou began by asking whether the rhythm was hurting him. If it was, you shocked, synchronised, with the right energy. If it wasn't, you read the complex. Narrow and regular sent you to vagal manoeuvres, then adenosine. Irregular sent you to rate or rhythm, and to anticoagulation. Wide sent you to ventricular tachycardia until proven otherwise, and to the drugs you must never give. And slow sent you to atropine, then to pacing while you looked for the cause.\n\nNow the traps.\n\nOne. Unstable atrial fibrillation. The tempting energy is one hundred joules. Twenty twenty-five starts atrial fibrillation at two hundred joules or more. One hundred is for the narrow regular rhythms.\n\nTwo. A stable narrow tachycardia at one hundred and eighty. The tempting first step is adenosine. It's the vagal manoeuvre first, the modified Valsalva, and adenosine when that fails.\n\nThree. Atrial fibrillation in Wolff–Parkinson–White. The tempting answer is that only verapamil is banned. [[In pre-excited atrial fibrillation, every AV nodal blocker is harmful: adenosine, beta-blockers, calcium-channel blockers, digoxin, and intravenous amiodarone.]] Cardiovert, or use procainamide.\n\nFour. A survivor of a Brugada arrest. The tempting answer is quinidine. [[After a survived arrest in Brugada syndrome, the answer is an ICD, class one.]] You missed this one.\n\nFive. Torsades. The tempting drug is amiodarone, because it treats ventricular tachycardia. But amiodarone prolongs the QT. Magnesium is the answer, and you stop the drug that caused it.\n\nAnd six. Unstable Mobitz two. The tempting first step is atropine. The block sits below the node, so atropine won't help much. Pace, transcutaneously, as the bridge.\n\nThe check comes up on the next screen. Answer each in your head before you tap it open.\n\nAnd notice how many of those traps were drugs. The same drug that treats a rhythm at one dose causes one at another. So next, the drugs themselves, and the heart that's been poisoned by them."
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "Name the five signs that make a tachycardia (or a bradycardia) unstable.",
+   "a": "Hypotension, acutely altered mental status, signs of shock, ischaemic chest discomfort, acute heart failure. Any one, caused by the rhythm → electricity (tachycardia) or atropine/pacing (bradycardia)."
+  },
+  {
+   "q": "Recurrent palpitations, normal BP, no chest pain or breathlessness, AF on ECG. Next step?",
+   "a": "Rate control (diltiazem or a β-blocker). Symptomatic is not unstable; only 30% avoided the shock (DocT)."
+  },
+  {
+   "q": "AHA 2025 synchronised cardioversion energies: AF, flutter, narrow SVT, monomorphic VT, polymorphic VT?",
+   "a": "AF ≥200 J, flutter 200 J, SVT 100 J, monomorphic VT 100 J; polymorphic VT = unsynchronised shock. Older keys give 100 J or 120–200 J for AF."
+  },
+  {
+   "q": "AF 160/min, BP 84/50, crackles, duration unknown, not anticoagulated. Next step?",
+   "a": "Immediate synchronised cardioversion with heparin alongside. No TOE, no 3-week wait, no diltiazem or metoprolol."
+  },
+  {
+   "q": "Stable AF >48 h: anticoagulation before and after cardioversion?",
+   "a": "3 weeks before (or TOE to exclude LA clot), at least 4 weeks after whatever the stroke score (atrial stunning). ESC 2024 moves the line to 24 h."
+  },
+  {
+   "q": "Stable regular narrow tachycardia 180/min: the order of treatment?",
+   "a": "Vagal manoeuvre (modified Valsalva) → adenosine 6 mg then 12 mg → β-blocker or CCB → synchronised cardioversion if all fail."
+  },
+  {
+   "q": "Adenosine 6 mg slows the rate and shows saw-tooth waves at 300/min. Diagnosis?",
+   "a": "Atrial flutter with 2:1 conduction. Adenosine stops nodal circuits (AVNRT, AVRT) and only unmasks atrial rhythms."
+  },
+  {
+   "q": "SVT in an asthmatic; and adenosine when the only access is an IJ line?",
+   "a": "Asthma: IV verapamil or diltiazem (7% right). Central line, transplant, dipyridamole, carbamazepine: 3 mg (Marrow); AHA 2025 says 1 mg may be adequate."
+  },
+  {
+   "q": "Regular 180/min, inverted P in II, III, aVF hidden at the end of the QRS. Mechanism?",
+   "a": "Re-entry within the AV node (typical slow–fast AVNRT), not an accessory pathway (42% right). Commonest PSVT, young women."
+  },
+  {
+   "q": "Carotid sinus massage: technique and contraindication?",
+   "a": "Supine, on ECG, one side only (right first), 5–10 s. Contraindicated with a carotid bruit or prior TIA/stroke. Modified Valsalva converts 43% vs 17% (REVERT)."
+  },
+  {
+   "q": "Which narrow-complex tachycardias are irregular, and does adenosine help?",
+   "a": "AF, flutter or atrial tachycardia with variable block, MAT. AVNRT and AVRT are always regular. Adenosine has no therapeutic role; give rate control."
+  },
+  {
+   "q": "New AF with labile BP after surgery or in sepsis: which rate-control drug, and which to avoid?",
+   "a": "Esmolol (onset 2–3 min, t½ ~9 min) or IV amiodarone, after correcting K, Mg and volume. Avoid diltiazem and verapamil."
+  },
+  {
+   "q": "AF with EF 30%, decompensated: what is avoided, what is banned, what is used?",
+   "a": "Avoid verapamil, diltiazem and IV β-blockers; dronedarone is contraindicated (ANDROMEDA, PALLAS). Use digoxin or amiodarone. Digoxin before dobutamine."
+  },
+  {
+   "q": "Irregular wide tachycardia at 280/min with varying QRS shapes: diagnosis, banned drugs, treatment?",
+   "a": "Pre-excited AF (WPW). No adenosine, verapamil, diltiazem, β-blocker, digoxin or IV amiodarone. Procainamide or ibutilide; cardiovert if unstable."
+  },
+  {
+   "q": "AF with rheumatic mitral stenosis or a mechanical valve: anticoagulant? And what did AFFIRM/RACE show?",
+   "a": "Warfarin, never a DOAC. Rate vs rhythm: no difference in mortality or stroke; rate control gave fewer rehospitalisations."
+  },
+  {
+   "q": "CHA₂DS₂-VASc: which items score 2, and which factor is NOT in the score?",
+   "a": "Age ≥75 and prior stroke/TIA/thromboembolism score 2. Male sex scores 0 (female 1). Anticoagulate at ≥2 in men, ≥3 in women."
+  },
+  {
+   "q": "Stable monomorphic VT in decompensated heart failure: drug? And two drugs never given for a wide tachycardia?",
+   "a": "IV amiodarone 150 mg over 10 min (procainamide if LV preserved: PROCAMIO). Never verapamil or diltiazem."
+  },
+  {
+   "q": "The serious adverse effect of sotalol is due to what? When do you stop a procainamide infusion?",
+   "a": "QT prolongation and torsades from K⁺-channel (class III) block (NEET 2024). Procainamide: arrhythmia suppressed, hypotension, QRS +50%, or 17 mg/kg."
+  },
+  {
+   "q": "Torsades on IV amiodarone: treatment, and what must not be given?",
+   "a": "Magnesium 2 g IV, overdrive pacing or isoprenaline if recurrent, stop the QT drug. Not amiodarone, procainamide or sotalol."
+  },
+  {
+   "q": "Brugada: gene, ECG, when it kills, and the therapy after a survived arrest?",
+   "a": "SCN5A loss of function; coved ST ≥2 mm with a NEGATIVE T in V1–V2; rest, sleep, fever. ICD (class I); after arrhythmic syncope ICD is IIa; quinidine is only an adjunct (GT7 Q130)."
+  },
+  {
+   "q": "Primary-prevention ICD criteria, and what selects for CRT?",
+   "a": "EF ≤35%, NYHA II–III, ≥3 months of therapy, >40 days after MI. Arrest survivors with no reversible cause: ICD at any EF. CRT: LBBB with QRS ≥150 ms, not echo dyssynchrony."
+  },
+  {
+   "q": "Mobitz I vs Mobitz II: the effect of atropine and exercise, and the infarct each goes with?",
+   "a": "Mobitz I (nodal, narrow, inferior MI): improves. Mobitz II (infranodal, wide, anterior MI): worsens or unchanged → pace."
+  },
+  {
+   "q": "Bradycardia algorithm: atropine dose and maximum, then the infusion doses?",
+   "a": "Atropine 1 mg every 3–5 min, max 3 mg. Then TCP, or dopamine 5–20 mcg/kg/min, or adrenaline 2–10 mcg/min (not per kg). Then transvenous pacing."
+  },
+  {
+   "q": "Unstable Mobitz II, BP 75/40: initial intervention? And bradycardia in a transplanted heart?",
+   "a": "Transcutaneous pacing first (43% right), then transvenous. Transplant: atropine fails; isoprenaline or adrenaline, or pace."
+  },
+  {
+   "q": "Child, HR 46, poor perfusion despite good oxygenation and ventilation. Next step?",
+   "a": "Start CPR and give adrenaline 0.01 mg/kg IV/IO (22% right). Atropine 0.02 mg/kg only for vagal tone or primary AV block."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "Stable AF with palpitations only: sedate and cardiovert at 100 J",
+   "truth": "None of the five instability signs, so rate control (diltiazem or a β-blocker).",
+   "cards": [
+    "CVS08B|ACLS-28"
+   ],
+   "asked": "DocT QBank, 30%"
+  },
+  {
+   "trap": "Unstable wide-complex tachycardia: intubate first",
+   "truth": "Synchronised cardioversion. Marrow keyed the airway only because cardioversion was not offered.",
+   "cards": [
+    "CVS08B|ACLS-28"
+   ],
+   "asked": "Marrow; DocT QBank 81%"
+  },
+  {
+   "trap": "Child's SVT recurs seconds after adenosine and is now unstable: more adenosine, diltiazem or amiodarone",
+   "truth": "Synchronised cardioversion 0.5–1 J/kg, then 2 J/kg. Verapamil and diltiazem cause collapse in infants.",
+   "cards": [
+    "CVS08B|ACLS-28",
+    "CVS08B|ACLS-31"
+   ],
+   "asked": "DocT QBank, 90%"
+  },
+  {
+   "trap": "Cardioversion is synchronised to the T wave (or P wave)",
+   "truth": "To the peak of the R wave; the T wave is what synchronisation avoids (R-on-T → VF).",
+   "cards": [
+    "CVS08B|ACLS-25"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Unstable AF: start at 100 J, or at 120–200 J",
+   "truth": "Cardioversion is the right choice, but AHA 2025 starts AF at ≥200 J (flutter 200 J). 100 J is for narrow SVT and monomorphic VT.",
+   "cards": [
+    "CVS08B|ACLS-26",
+    "HY2|CAR-01"
+   ],
+   "asked": "DocT QBank key (100 J), DocT CGT4 key (120–200 J)"
+  },
+  {
+   "trap": "Polymorphic VT with a pulse: synchronised 100 J, or magnesium",
+   "truth": "Immediate unsynchronised shock for sustained polymorphic VT (class 1). Magnesium is for recurrent torsades on a long QT.",
+   "cards": [
+    "CVS08B|ACLS-26",
+    "HY2|CAR-06"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Mandatory intubation or an arterial line before cardioversion",
+   "truth": "Sedate the awake patient where stability allows; nothing that delays the shock.",
+   "cards": [
+    "CVS08B|ACLS-27"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Anticoagulate for 2 or 3 weeks after cardioverting AF",
+   "truth": "3 weeks before (or TOE); at least 4 weeks after, whatever the CHA₂DS₂-VASc.",
+   "cards": [
+    "CVS08B|ACLS-27",
+    "HY2|CAR-05"
+   ],
+   "asked": "DocT GT, 78%"
+  },
+  {
+   "trap": "Unstable AF of unknown duration: diltiazem or metoprolol first, or heparin and delayed cardioversion, or TOE first",
+   "truth": "Shock now with heparin alongside. Clot rules protect the stable patient from an elective procedure.",
+   "cards": [
+    "HY2|CAR-01"
+   ],
+   "asked": "Mini test 48%; DocT QBank 80%; NEET 2025"
+  },
+  {
+   "trap": "Amiodarone 150 mg for new post-operative AF with BP 73/34",
+   "truth": "Synchronised cardioversion; amiodarone is the stable patient's drug.",
+   "cards": [
+    "HY2|CAR-01",
+    "CVS08B|ACLS-27"
+   ],
+   "asked": "DocT GT, 87%"
+  },
+  {
+   "trap": "Stable SVT at 180/min: adenosine first",
+   "truth": "Vagal manoeuvre (modified Valsalva) first; adenosine when it fails.",
+   "cards": [
+    "CVS08B|ACLS-29",
+    "HY2|CAR-02"
+   ],
+   "asked": "DocT QBank 50%; DocT GT 93–98%"
+  },
+  {
+   "trap": "AVRT is a cause of an irregular narrow-complex tachycardia",
+   "truth": "AVNRT and AVRT are always regular. Irregular = AF, flutter or atrial tachycardia with variable block, MAT.",
+   "cards": [
+    "CVS08B|ACLS-29"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Adenosine via an internal jugular line: still 6 mg",
+   "truth": "3 mg (Marrow key) via a central line, after transplant, with dipyridamole or carbamazepine. AHA 2025: 1 mg may be adequate.",
+   "cards": [
+    "HY2|V12-016",
+    "CVS08B|ACLS-31"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Asthmatic with SVT: adenosine",
+   "truth": "IV verapamil or diltiazem; adenosine can cause severe bronchospasm.",
+   "cards": [
+    "HY2|CAR-02",
+    "HY2|CAR-27"
+   ],
+   "asked": "Mini test, 7%"
+  },
+  {
+   "trap": "Inverted P in II, III, aVF at 180/min: re-entry via an accessory pathway",
+   "truth": "Typical AVNRT: re-entry within the AV node, P buried in or just after the QRS.",
+   "cards": [
+    "HY2|CAR-02"
+   ],
+   "asked": "DocT GT AIM1, 42%"
+  },
+  {
+   "trap": "Modified Valsalva: take a deep breath before straining",
+   "truth": "A sustained strain at 40 mmHg for 15 s, then supine with legs raised.",
+   "cards": [
+    "HY2|V12-016"
+   ],
+   "asked": "Marrow (false statement)"
+  },
+  {
+   "trap": "HFrEF with AF 130/min and worsening dyspnoea: β-blocker",
+   "truth": "Disputed key. Decompensated HF: IV β-blockers and non-DHP CCBs are harm; amiodarone or digoxin plus a diuretic. Mark the β-blocker only if neither is offered.",
+   "cards": [
+    "CVS08B|ACLS-33",
+    "HY2|CAR-04"
+   ],
+   "asked": "DocT QBank key, 39%"
+  },
+  {
+   "trap": "Septic shock, new AF 140/min, BP 102/65: diltiazem or oral amiodarone",
+   "truth": "IV β-blocker (esmolol) is keyed; IV amiodarone is equally defensible. Diltiazem worsens hypotension; oral amiodarone is too slow.",
+   "cards": [
+    "CVS08B|ACLS-33"
+   ],
+   "asked": "DocT GT, 42–56%"
+  },
+  {
+   "trap": "Stable symptomatic AF: IV ibutilide",
+   "truth": "The stable irregular pathway is rate control. Ibutilide only when the stem asks to restore sinus rhythm in AF <48 h.",
+   "cards": [
+    "CVS08B|ACLS-33"
+   ],
+   "asked": "Marrow key"
+  },
+  {
+   "trap": "Verapamil is acceptable rate control with EF 30%; dronedarone is fine in severe HF",
+   "truth": "No verapamil or diltiazem below EF 40%. Dronedarone raises mortality in NYHA IV, recent decompensation and permanent AF.",
+   "cards": [
+    "HY2|CAR-04",
+    "HY2|CAR-27"
+   ],
+   "asked": "Mini test, 24% and 12%"
+  },
+  {
+   "trap": "Dabigatran is acceptable in rheumatic mitral stenosis with AF",
+   "truth": "Warfarin; DOACs are contraindicated in moderate–severe rheumatic MS and with mechanical valves.",
+   "cards": [
+    "HY2|CAR-05",
+    "HY2|CAR-27"
+   ],
+   "asked": "Mini test, 36%"
+  },
+  {
+   "trap": "Rhythm control reduces stroke compared with rate control",
+   "truth": "AFFIRM/RACE: no difference in mortality, stroke or quality of life; rate control → fewer rehospitalisations.",
+   "cards": [
+    "HY2|CAR-05"
+   ],
+   "asked": "Mini test, 24%"
+  },
+  {
+   "trap": "Male sex scores a point in CHA₂DS₂-VASc",
+   "truth": "Female sex scores 1, male 0. Two points: age ≥75 and prior stroke/TIA.",
+   "cards": [
+    "HY2|V12-015"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Stable monomorphic VT in a heart-failure patient: adenosine, verapamil or immediate cardioversion",
+   "truth": "IV amiodarone. Verapamil is harm, adenosine does not treat VT, electricity is for instability or drug failure.",
+   "cards": [
+    "CVS08B|ACLS-30"
+   ],
+   "asked": "DocT GT ×2, 76–78%"
+  },
+  {
+   "trap": "Sotalol's main adverse effect is bradycardia or hypotension",
+   "truth": "QT prolongation and torsades from potassium-channel (class III) block.",
+   "cards": [
+    "CVS08B|ACLS-32"
+   ],
+   "asked": "NEET 2024"
+  },
+  {
+   "trap": "WPW with AF: only verapamil is contraindicated",
+   "truth": "Every nodal blocker is harmful (adenosine, esmolol, digoxin, IV amiodarone too). Verapamil is the classic answer to mark.",
+   "cards": [
+    "HY2|CAR-03",
+    "CVS08B|ACLS-33"
+   ],
+   "asked": "DocT GT AIM1 Q36 / GT4 Q56, 45–54%"
+  },
+  {
+   "trap": "Delta wave and short PR: dual AV nodal pathway",
+   "truth": "An accessory AV pathway. Dual nodal pathways cause AVNRT with a normal ECG between attacks.",
+   "cards": [
+    "HY2|CAR-03"
+   ],
+   "asked": "DocT GT4, 39%"
+  },
+  {
+   "trap": "Brugada arrest survivor: quinidine (a drug) gives the greatest reduction in sudden death",
+   "truth": "ICD, class I, after a survived arrest (IIa after arrhythmic syncope). Quinidine is the adjunct if the ICD is refused or for recurrent shocks.",
+   "cards": [
+    "HY2|CAR-06",
+    "HY2|CAR-10"
+   ],
+   "asked": "GT7 Q130 (missed); DocT GT; Marrow"
+  },
+  {
+   "trap": "Positive T wave in V1–V2 as a Brugada feature",
+   "truth": "Type 1 is coved ST ≥2 mm with a NEGATIVE T. Saddle-back with a positive T is not diagnostic.",
+   "cards": [
+    "HY2|CAR-06"
+   ],
+   "asked": "Mini test, 57%"
+  },
+  {
+   "trap": "ICD for drug-induced polymorphic VT; amiodarone for torsades",
+   "truth": "Reversible cause: stop the drug, no ICD. Torsades: magnesium; amiodarone, procainamide and sotalol prolong the QT further.",
+   "cards": [
+    "HY2|CAR-06"
+   ],
+   "asked": "Marrow; DocT GT 91%"
+  },
+  {
+   "trap": "Amiodarone for secondary prevention after a resuscitated arrest with EF 30%",
+   "truth": "ICD: beat amiodarone on mortality (AVID significant; CIDS and CASH concordant trends; pooled benefit), regardless of EF.",
+   "cards": [
+    "HY2|CAR-10"
+   ],
+   "asked": "DocT GT3, 71%"
+  },
+  {
+   "trap": "Echo mechanical dyssynchrony selects patients for CRT",
+   "truth": "QRS width does: LBBB with QRS ≥150 ms plus EF ≤35%.",
+   "cards": [
+    "HY2|CAR-10"
+   ],
+   "asked": "Mini test, 26%"
+  },
+  {
+   "trap": "Constant PP with a pause equal to two PP intervals: sinus arrest",
+   "truth": "SA exit block type II (pause is an exact multiple of the PP). A sinus pause has no fixed relation.",
+   "cards": [
+    "CVS08B|ACLS-35"
+   ],
+   "asked": "DocT GT, 75%"
+  },
+  {
+   "trap": "Anterior MI with second-degree block: Mobitz I, benign, give atropine",
+   "truth": "Wrong key. Anterior MI block is infranodal (LAD supplies His–Purkinje): no response to atropine, transvenous pacing.",
+   "cards": [
+    "CVS08B|ACLS-36"
+   ],
+   "asked": "DocT key (disputed)"
+  },
+  {
+   "trap": "Sleeping athlete with 2:1 block: His bundle or bundle branch",
+   "truth": "Vagal setting with a narrow QRS: AV node.",
+   "cards": [
+    "CVS08B|ACLS-36"
+   ],
+   "asked": "DocT GT, 42%"
+  },
+  {
+   "trap": "Asymptomatic first-degree AV block: admit or observe",
+   "truth": "Discharge; it needs no treatment.",
+   "cards": [
+    "CVS08B|ACLS-36"
+   ],
+   "asked": "DocT, 39%"
+  },
+  {
+   "trap": "Unstable Mobitz II: atropine first, or transvenous pacing as the initial step",
+   "truth": "Transcutaneous pacing at once as the bridge; atropine acts on the node and must not delay pacing.",
+   "cards": [
+    "CVS08B|ACLS-37",
+    "HY2|CAR-09"
+   ],
+   "asked": "DocT GT4, 43%"
+  },
+  {
+   "trap": "After 3 mg of atropine, waiting for pacing: more atropine, norepinephrine or isoproterenol",
+   "truth": "Dopamine infusion (adrenaline if dopamine is not offered). 3 mg is full vagal blockade.",
+   "cards": [
+    "CVS08B|ACLS-37",
+    "HY2|CAR-08"
+   ],
+   "asked": "DocT GT2o, 35%; NEET 2025"
+  },
+  {
+   "trap": "Atropine 0.5 mg as the adult dose",
+   "truth": "Pre-2020 AHA and current ERC dose. AHA 2020/2025: 1 mg every 3–5 min, max 3 mg. Pick 1 mg if offered.",
+   "cards": [
+    "CVS08B|ACLS-37"
+   ],
+   "asked": "Marrow key"
+  },
+  {
+   "trap": "Septic, HR 34, complete heart block, BP 80/50: permanent pacemaker",
+   "truth": "Atropine is keyed first (prepare TCP at once); a permanent pacemaker comes after stabilisation.",
+   "cards": [
+    "CVS08B|ACLS-37",
+    "CVS08B|ACLS-36"
+   ],
+   "asked": "DocT, 22%"
+  },
+  {
+   "trap": "Adrenaline 2–10 mcg/kg/min for bradycardia",
+   "truth": "2–10 mcg/min (not per kg). Dopamine is the one dosed per kg: 5–20 mcg/kg/min.",
+   "cards": [
+    "CVS08B|ACLS-38",
+    "HY2|CAR-08"
+   ],
+   "asked": "Mini test, 34%"
+  },
+  {
+   "trap": "Electrical capture on the monitor confirms effective pacing; pace an asystolic arrest",
+   "truth": "Confirm mechanical capture with a femoral pulse or arterial trace. Routine pacing in established arrest is not recommended.",
+   "cards": [
+    "CVS08B|ACLS-39"
+   ],
+   "asked": "DocT GT (pacing in arrest); pattern"
+  },
+  {
+   "trap": "Bradycardia on metoprolol and digoxin: the β-blocker alone explains it",
+   "truth": "Digoxin is the synergistic culprit; both slow the AV node.",
+   "cards": [
+    "CVS08B|ACLS-40"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Atropine for bradycardia in a transplanted heart",
+   "truth": "Denervated: atropine, glycopyrrolate and ephedrine fail. Isoprenaline or adrenaline, or pacing.",
+   "cards": [
+    "HY2|CAR-08"
+   ],
+   "asked": "Marrow; DocT GT"
+  },
+  {
+   "trap": "Child with HR 46 and poor perfusion despite oxygenation and ventilation: atropine or dopamine",
+   "truth": "Start CPR and give adrenaline 0.01 mg/kg IV/IO.",
+   "cards": [
+    "HY2|CAR-09"
+   ],
+   "asked": "Mini test, 22%"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Symptomatic but stable vs unstable tachycardia",
+   "tell": "Palpitations with a normal BP and mentation is stable; any of the five signs (hypotension, confusion, shock, chest pain, pulmonary oedema) is unstable.",
+   "cards": [
+    "CVS08B|ACLS-28"
+   ]
+  },
+  {
+   "pair": "Cardioversion vs defibrillation",
+   "tell": "An organised QRS to lock onto → synchronise on the R wave; VF or polymorphic VT → unsynchronised.",
+   "cards": [
+    "CVS08B|ACLS-25",
+    "CVS08B|ACLS-26"
+   ]
+  },
+  {
+   "pair": "Compensatory sinus tachycardia vs primary tachyarrhythmia",
+   "tell": "Rate under about 150 with sepsis, bleeding or fever: treat the cause; a shock does nothing.",
+   "cards": [
+    "CVS08B|ACLS-27"
+   ]
+  },
+  {
+   "pair": "Unstable AF vs stable AF of unknown duration",
+   "tell": "Unstable: shock now with heparin. Stable: 3 weeks of anticoagulation or TOE first.",
+   "cards": [
+    "HY2|CAR-01",
+    "HY2|CAR-05"
+   ]
+  },
+  {
+   "pair": "AVNRT vs orthodromic AVRT",
+   "tell": "AVNRT: P buried in the QRS (RP <70 ms), normal ECG between attacks. AVRT: P in the ST segment (RP >70 ms), delta wave between attacks if the pathway is manifest.",
+   "cards": [
+    "HY2|CAR-02",
+    "CVS08B|ACLS-29"
+   ]
+  },
+  {
+   "pair": "Flutter 2:1 vs AVNRT",
+   "tell": "Flutter: ventricular rate ~150; adenosine slows it and shows saw-tooth waves, then it returns. AVNRT terminates.",
+   "cards": [
+    "CVS08B|ACLS-31",
+    "CVS08B|ACLS-29"
+   ]
+  },
+  {
+   "pair": "Regular vs irregular narrow tachycardia",
+   "tell": "Regular: nodal circuit, adenosine. Irregular: atrial source (AF, variable block, MAT), rate control.",
+   "cards": [
+    "CVS08B|ACLS-29"
+   ]
+  },
+  {
+   "pair": "Compensated vs decompensated HFrEF with fast AF",
+   "tell": "Compensated: β-blocker. Wet or hypotensive: digoxin or amiodarone plus a diuretic; no IV β-blocker.",
+   "cards": [
+    "HY2|CAR-04",
+    "CVS08B|ACLS-33"
+   ]
+  },
+  {
+   "pair": "Valvular vs non-valvular AF",
+   "tell": "Moderate–severe rheumatic MS or a mechanical valve: warfarin only. Bioprosthetic or other native valve disease: DOAC allowed.",
+   "cards": [
+    "HY2|CAR-05"
+   ]
+  },
+  {
+   "pair": "VT vs SVT with aberrancy",
+   "tell": "AV dissociation (with fusion and capture beats) means VT; also QRS >160 ms, north-west axis, precordial concordance.",
+   "cards": [
+    "CVS08B|ACLS-30"
+   ]
+  },
+  {
+   "pair": "Pre-excited AF vs VT (and vs polymorphic VT)",
+   "tell": "Pre-excited AF is irregularly irregular with QRS width varying beat to beat, up to 300/min, no twisting; monomorphic VT is regular and uniform.",
+   "cards": [
+    "HY2|CAR-03",
+    "CVS08B|ACLS-33"
+   ]
+  },
+  {
+   "pair": "Orthodromic AVRT vs pre-excited AF in WPW",
+   "tell": "Regular and narrow: the node is in the circuit, adenosine allowed. Irregular and wide: no nodal blocker.",
+   "cards": [
+    "HY2|CAR-03"
+   ]
+  },
+  {
+   "pair": "Procainamide vs amiodarone for stable VT",
+   "tell": "Preserved LV: procainamide (PROCAMIO). Poor LV or heart failure: amiodarone.",
+   "cards": [
+    "CVS08B|ACLS-30",
+    "CVS08B|ACLS-32"
+   ]
+  },
+  {
+   "pair": "Torsades (long QT) vs polymorphic VT with a normal QT",
+   "tell": "Long QT: magnesium, pacing, stop QT drugs. Normal QT: ischaemia; amiodarone or β-blocker and angiography.",
+   "cards": [
+    "HY2|CAR-06"
+   ]
+  },
+  {
+   "pair": "Brugada vs CPVT",
+   "tell": "Brugada: sodium channel, coved ST in V1–V2, dies at rest, in sleep or with fever. CPVT: RyR2, normal resting ECG, dies on exertion or emotion.",
+   "cards": [
+    "HY2|CAR-06"
+   ]
+  },
+  {
+   "pair": "Primary vs secondary prevention ICD",
+   "tell": "Secondary: survived VF/VT with no reversible cause, any EF. Primary: no event, EF ≤35% on 3 months of therapy, >40 days after MI.",
+   "cards": [
+    "HY2|CAR-10"
+   ]
+  },
+  {
+   "pair": "Sinus bradycardia vs junctional rhythm",
+   "tell": "Upright P before each QRS with a normal PR vs P inverted, absent or after a narrow QRS.",
+   "cards": [
+    "CVS08B|ACLS-35"
+   ]
+  },
+  {
+   "pair": "SA exit block type II vs sinus pause",
+   "tell": "Exit block: the pause is an exact multiple of the PP interval. Sinus pause: no fixed relation.",
+   "cards": [
+    "CVS08B|ACLS-35"
+   ]
+  },
+  {
+   "pair": "Mobitz I vs Mobitz II",
+   "tell": "Atropine or exercise improves Mobitz I (nodal) and worsens Mobitz II (infranodal).",
+   "cards": [
+    "CVS08B|ACLS-36"
+   ]
+  },
+  {
+   "pair": "Mobitz II vs blocked premature atrial beats",
+   "tell": "Blocked PACs come early and deform the T wave; in Mobitz II the non-conducted P is on time.",
+   "cards": [
+    "CVS08B|ACLS-36"
+   ]
+  },
+  {
+   "pair": "Inferior-MI block vs anterior-MI block",
+   "tell": "Inferior (RCA): nodal, narrow escape, atropine-responsive. Anterior (LAD): infranodal, wide escape, pace.",
+   "cards": [
+    "CVS08B|ACLS-36",
+    "CVS08B|ACLS-40"
+   ]
+  },
+  {
+   "pair": "Dopamine vs adrenaline infusion units in bradycardia",
+   "tell": "Dopamine per kilogram (5–20 mcg/kg/min); adrenaline per minute (2–10 mcg/min).",
+   "cards": [
+    "CVS08B|ACLS-38"
+   ]
+  },
+  {
+   "pair": "Pacing in bradycardia with a pulse vs in arrest",
+   "tell": "A pulse: pacing helps. Established asystole or PEA: routine pacing gives no benefit.",
+   "cards": [
+    "CVS08B|ACLS-39"
+   ]
+  },
+  {
+   "pair": "Adult vs child bradycardia with poor perfusion",
+   "tell": "Adult: atropine, chronotrope, pacing. Child (hypoxic): oxygenate and ventilate; if HR still <60, CPR and adrenaline.",
+   "cards": [
+    "HY2|CAR-09"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-015",
+   "deck": "HY2",
+   "topic": "AF stroke risk: CHA₂DS₂-VASc",
+   "tier": "S",
+   "q": "**CHA₂DS₂-VASc in non-valvular AF:**\na The items and their points\nb The two items that score 2\nc The threshold for anticoagulation\nd What the score does NOT include\ne The 2024 ESC change",
+   "a": [
+    "**C**HF 1 · **H**ypertension 1 · **A**ge ≥75 = **2** · **D**iabetes 1 · **S**troke/TIA/thromboembolism = **2** · **V**ascular disease 1 · **A**ge 65–74 = 1 · **S**ex category (female) 1",
+    "Two points: **age ≥75** and **prior stroke/TIA/thromboembolism**; maximum 9",
+    "**Anticoagulate at ≥2 in men, ≥3 in women**; consider at 1 (men) or 2 (women)",
+    "**Male sex scores 0.** Female sex is a risk modifier: it adds risk only with another factor",
+    "**ESC 2024: CHA₂DS₂-VA** (sex removed): anticoagulate at ≥2, consider at 1",
+    "Not used for valvular AF (moderate–severe rheumatic MS, mechanical valve): warfarin regardless of score",
+    "Trap: 'male sex' offered as a component of the score"
+   ],
+   "why": "Marrow: 'AF stroke-risk score does NOT include which factor?' (male sex), and the item list with the ≥2 men / ≥3 women threshold. CAR-05 gives the anticoagulant and the cardioversion rule but not the score."
+  },
+  {
+   "code": "V12-016",
+   "deck": "HY2",
+   "topic": "Vagal manoeuvres and adenosine: the fine print",
+   "tier": "S",
+   "q": "**Breaking the AV node: give the fine print for:**\na The modified Valsalva: how, and its result (REVERT)\nb Carotid sinus massage: how\nc Its contraindications\nd When to reduce the first dose of adenosine\ne What blunts adenosine",
+   "a": [
+    "**Modified Valsalva:** strain at **40 mmHg for 15 s** semi-recumbent, then **lie flat with legs raised 45° for 15 s**; converts **43% vs 17%** for the standard manoeuvre (REVERT)",
+    "It is a sustained strain, **not** a deep breath in",
+    "**Carotid sinus massage:** supine, continuous ECG, **ONE side only** (right first), **5–10 s**; never bilateral",
+    "**Contraindicated:** **carotid bruit**, prior TIA or stroke (plaque embolism)",
+    "**Reduce adenosine to 3 mg** (Marrow key): **central line**, **heart transplant** (denervated, supersensitive), **dipyridamole**, **carbamazepine**. AHA 2025: 1 mg may be adequate via a central line or after transplant",
+    "**Blunted by theophylline and caffeine** (adenosine-receptor antagonists): larger doses may be needed",
+    "Trap: 'still 6 mg' through an internal jugular line"
+   ],
+   "why": "Marrow (adenosine via an IJ line = 3 mg; potentiators and antagonists; 'deep breath before straining' as the false statement), DocT GT (carotid bruit as the contraindication to carotid sinus massage), DocT GT + Marrow (REVERT technique). ACLS-31 and CAR-02 give only 6 mg then 12 mg and 'vagal manoeuvres'."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "HY2|CAR-03",
+   "issue": "Part b's banned list for pre-excited AF (adenosine, verapamil, diltiazem, β-blockers, digoxin) omits IV amiodarone, which ACC/AHA 2023 and AHA 2025 class as harm (COR 3) and which ACLS-33 already lists. Suggest adding it."
+  },
+  {
+   "card": "HY2|CAR-06",
+   "issue": "Part d says 'ICD for survivors'. Suggest making it explicit: ICD is class I after a survived arrest (GT7 Q130, missed) and is also indicated after arrhythmic syncope (Marrow); quinidine only if the ICD is refused or for recurrent shocks. Part a calls magnesium the drug of choice; AHA 2025 grades it COR 2b (may be considered) for recurrent torsades. The NEET answer is unchanged."
+  },
+  {
+   "card": "HY2|CAR-05",
+   "issue": "Part b uses the 48-hour line (exam answer; ACC/AHA 2023). ESC 2024 moved it to 24 hours and replaced CHA₂DS₂-VASc with CHA₂DS₂-VA. Card is not wrong for NEET; consider a one-line note. The score itself was on no card (now V12-015)."
+  },
+  {
+   "card": "CVS08B|ACLS-26",
+   "issue": "The card lists 100 J for narrow-complex tachycardia and monomorphic VT as '2025 energies'. The AHA 2025 guideline text gives a figure only for AF (≥200 J, 2a) and flutter (200 J, 2b); the 100 J values come from the algorithm chart. Consider wording 'AF ≥200 J' (the card says 200 J)."
+  },
+  {
+   "card": "CVS08B|ACLS-31",
+   "issue": "Card has no reduced-dose line. The pack's two explanations disagree: ACLS-31 says 3 mg via a central line or after transplant (Marrow key); CAR-02 says AHA 2025 '1 mg may be adequate'. Both are true (checked against the AHA 2025 Part 9 text); taught as 3 mg for the exam, 1 mg per AHA 2025. Covered by new card V12-016."
+  },
+  {
+   "card": "CVS08B|ACLS-38",
+   "issue": "Withdrawn by the checker. The pack's 'post-ROSC adrenaline 0.1–0.5 mcg/kg/min' matches the AHA 2015/2020 post-cardiac-arrest algorithm (epinephrine 0.1–0.5 mcg/kg/min, norepinephrine 0.1–0.5 mcg/kg/min), so it is not an error. Leaving it out of the lesson is still right: the bradycardia dose is 2–10 mcg/min."
+  },
+  {
+   "card": "CVS08B|ACLS-35",
+   "issue": "SA exit block (type I vs type II vs sinus pause) was asked in a DocT GT (75%) and is on no card. Section P12-505 is already at 8 steps, so I taught it inside this lesson with its own takeaway and did not add a card. Suggest a V12 card or an added line if the section limit allows."
+  }
+ ]
+}
