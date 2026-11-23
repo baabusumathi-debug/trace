@@ -2,7 +2,7 @@
  "package": "P12",
  "title": "NEET cardiology",
  "kind": "neet",
- "version": "P12.20261123.5",
+ "version": "P12.20261123.6",
  "cards": {
   "V12-001": {
    "deck": "CVS03",
@@ -159,6 +159,22 @@
     "**BNP** near normal in constriction, high in restriction; **CT**: pericardial thickening or **calcification** (thickness can be normal in a minority)",
     "**Bedside:** constriction = **Kussmaul's sign**, pericardial knock, prominent x and y descents. Tamponade = pulsus paradoxus, absent y descent, no Kussmaul",
     "**Cause and cure:** TB (classic in India), cardiac surgery, radiation. Chronic calcific constriction → **pericardiectomy**; diuretics only palliate; anti-inflammatory drugs help only transient (inflammatory, CMR-positive) constriction"
+   ]
+  },
+  "V12-040": {
+   "deck": "HY2",
+   "topic": "Pulmonary embolism: Wells score",
+   "type": "qa",
+   "tier": "S",
+   "q": "**Wells score for pulmonary embolism:**\na The two items worth 3 points\nb The three items worth 1.5 points\nc The two items worth 1 point\nd The cut-offs\ne What each result leads to",
+   "a": [
+    "**3 points each:** clinical signs of **DVT** (leg swelling, pain on deep-vein palpation) · **PE the most likely diagnosis** (alternative less likely)",
+    "**1.5 points each:** **heart rate >100** · **immobilisation ≥3 days or surgery within 4 weeks** · **previous DVT or PE**",
+    "**1 point each:** **haemoptysis** · **active cancer**; maximum 12.5",
+    "Two-level: **>4 = PE likely**, ≤4 = unlikely. Three-level: <2 low · 2–6 moderate · >6 high",
+    "**PE likely → CTPA directly, no D-dimer.** PE unlikely → D-dimer (age × 10 µg/L above 50 years); CTPA only if raised",
+    "Worked example: DVT signs 3 + PE most likely 3 + HR >100 1.5 + recent surgery 1.5 = **9**",
+    "Trap: forgetting the 1.5-point items, or that clinical judgement itself scores 3"
    ]
   },
   "V12-030": {
@@ -3414,6 +3430,439 @@
     }
    ],
    "packet": "Pericardium, myocarditis and endocarditis"
+  },
+  {
+   "q": "P12-801",
+   "text": "The right ventricle is different",
+   "steps": [
+    {
+     "card": "CVS06A|RVF-01",
+     "bridge": "Failure defined. Why does this ventricle fail so differently from the left? Look at how it's built.",
+     "lesson": {
+      "v": 1,
+      "text": "Begin with what the word failure means, because that's the one thing the bank has asked from this card.\n\nThree things get confused. The first is RV dysfunction: an RV that looks dilated or contracts poorly on echo. The second is a high CVP. The third is RV failure. They aren't the same, and the definition ties them together. The RV's job is to accept the venous return at a low pressure and pass it on to the left heart. A failing RV can't do that. It fills only if the venous pressure behind it is pushed high, and even then it doesn't deliver enough stroke volume to fill the LV. So failure has two halves: a dysfunctional RV, and limited filling, which you see as a high CVP with congestion behind and a low output in front.\n\n[[RV failure is RV dysfunction plus limited RV filling: the RV fills only at a high CVP and still can't deliver enough to the LV.]]\n\nNow take each half away. A poorly contracting RV with a normal CVP and an adequate output is dysfunction, not failure. A high CVP with an RV that contracts normally is volume, not failure; diurese that patient and the CVP falls. The question was a septic patient with a CVP of sixteen, a low cardiac output and a dilated, poorly contracting RV, and it asked what best defines true RV failure. Sixty-nine per cent chose RV dysfunction with limited RV filling. NEET's favourite wrong options here are a raised CVP with normal RV function, and increased RV filling without a fall in output. The first is volume. The second is an RV that's coping.\n\nThen the size of the problem, and you need less than the card gives. As the main reason for an acute heart failure admission, the RV is uncommon: the card says two to nine per cent, and the paper it comes from says three to nine. In-hospital mortality is five to seventeen per cent, so up to about one in six. Why so high? Because the RV rarely fails alone. Something serious is behind it, and the usual tools, fluid, vasodilators and positive pressure ventilation, can each make it worse.\n\nIn the ICU you meet it in five settings: ARDS, myocardial infarction, pulmonary embolism, decompensated chronic lung disease, and after cardiac surgery. Notice the pattern, because the packet is built on it. Either the load on the RV has suddenly gone up, as in embolism, ARDS and a hypoxic, acidotic lung, or the muscle has been knocked out, as in an RV infarct or stunning after bypass.\n\nSo why does this ventricle fail so differently from the left? Look at how it's built."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-04",
+     "bridge": "A thin, compliant wall has two consequences, and they're opposite. Volume first.",
+     "lesson": {
+      "v": 1,
+      "text": "The RV and the LV pump exactly the same volume, beat for beat. They have to, because they're in series. What differs is the pressure each works against. The LV ejects against a mean pressure of about ninety millimetres of mercury. The RV ejects against about fifteen. Work is volume multiplied by pressure, so with the same volume and a fraction of the pressure, the RV does a fraction of the work.\n\n[[RV stroke work is about a quarter of the LV's: the same stroke volume against a far lower pressure. So the RV is built thin, as a volume pump and not a pressure pump.]]\n\nOne quarter is the number on the card, and it's all NEET would ask from here. If you do the arithmetic on ninety and fifteen you get nearer a sixth, and sources quote anything from a quarter to a sixth. Mark a quarter. The trap is the option that says the work is equal because the stroke volume is equal.\n\nThe RV gets away with so little because the pulmonary circulation is highly compliant and low in resistance. Pulmonary vascular resistance is roughly a tenth of systemic. And the healthy lung can recruit and distend vessels, so flow can double on exercise with barely a rise in pressure.\n\nA pump with that easy a job doesn't need much muscle, and the RV free wall is only a few millimetres thick. It also squeezes differently. The LV thickens and twists. The RV contracts like a wave: the longitudinal fibres shorten and the free wall moves in, starting at the inflow tract and sweeping towards the outflow tract. Peristaltic is the card's word. Remember that the main movement is lengthwise, base towards apex, because that's exactly what TAPSE measures when we reach echo.\n\nTwo last comparisons from the card. Peak systolic pressure is lower than the LV's, about twenty-five against one hundred and twenty. And the RV sits at a slightly higher resting volume than the LV.\n\nA thin, compliant wall has two consequences, and they're opposite. Take volume first."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-09",
+     "bridge": "The last step of that cascade deserves its own card. How does a full right ventricle empty the left?",
+     "lesson": {
+      "v": 1,
+      "text": "Give a thin, compliant chamber more volume and it stretches. The pressure inside hardly rises. That's what the card means when it calls the RV tolerant of preload, and it's why an atrial septal defect or tricuspid regurgitation, both pure volume loads, can be carried for decades.\n\nBut the card adds three words: up to a point. Keep distending the RV and three things go wrong together. First, wall stress rises with the radius, by Laplace, so oxygen demand climbs with no extra output. Second, the tricuspid annulus, which has little fibrous support, stretches with the ventricle. The leaflets stop meeting, and you get functional tricuspid regurgitation. That sends blood backwards, raises right atrial pressure, and adds yet more volume to the RV on the next beat. Third, the RV runs out of room inside the pericardium, and the only direction left to expand is inwards, against the LV.\n\nSo the cascade on the card runs: excessive RV dilatation, a dilated tricuspid annulus, tricuspid regurgitation, a higher right atrial pressure, and finally impaired LV filling and function.\n\n[[The RV tolerates volume only up to a point. Past it, more fluid dilates the annulus, causes TR, raises venous pressure and lowers LV filling, so cardiac output falls.]]\n\nThis is the whole reason a fluid bolus can drop the blood pressure in RV failure. The trap is the half-truth: the RV tolerates preload, so keep filling. It does, until it doesn't, and you stop the moment the CVP climbs without the output following.\n\nThat last step, the RV harming the LV, deserves its own card. How does a full right ventricle empty the left?"
+     }
+    },
+    {
+     "card": "CVS06A|RVF-10",
+     "bridge": "That's the volume side and its limit. Now set it beside the other load, pressure, in one table.",
+     "lesson": {
+      "v": 1,
+      "text": "The two ventricles share a wall, the septum, and a bag, the pericardium. Acutely the pericardium can't stretch. You used exactly this in the last packet: in tamponade, fluid took up the space. Here the right ventricle takes it.\n\nFollow it through. RV filling pressure rises, and that pressure pushes on the septum. Normally the LV has the higher pressure, the septum bulges towards the right, and the LV is round in short axis. As RV pressure climbs, the septum flattens and then shifts left, and the LV becomes D-shaped. One detail is worth keeping: flattening only in diastole means volume overload, and flattening that persists into systole means pressure overload.\n\nNow the LV has less room. Its distensibility falls, its preload falls, and its diastolic filling suffers. So LV end-diastolic volume is low. But the pressure inside that squeezed chamber is high, and so the left atrial pressure and the wedge pressure are high too.\n\n[[A distended RV inside a fixed pericardium shifts the septum left. The LV becomes small but high-pressure: a high wedge with a low LV end-diastolic volume. The LV is compressed, not overfilled.]]\n\nThat's the Marrow question. It described a high left atrial pressure with a low LV end-diastolic volume and asked which is not a cause. Pulmonary hypertension, high PEEP and severe acute hypoxaemic respiratory failure all do it through the septum. Aortic regurgitation doesn't. It overfills the LV, so the end-diastolic volume is high. That was the answer.\n\nThe clinical lesson is the same fact in other words. In RV failure a raised wedge pressure doesn't mean the LV is full, and reading that number as left heart failure is the mistake.\n\nThe septal shift does a second harm, to the RV itself. The septum normally helps the RV eject, because LV contraction pulls it. Flatten it and the RV loses that help.\n\nAnd the callback. Pulsus paradoxus is the same mechanism. Inspiration draws blood into the RV, the septum bows left, the LV fills less, and the systolic pressure falls. A fall of fifteen millimetres of mercury on inspiration with a large effusion was the DocT question, and the wrong option was blood pooling in the lungs. Pooling adds little. The septum is the answer.\n\nSo you have the volume side and its limit. Now set it beside the other load, pressure, in one table."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-12",
+     "bridge": "So what happens, step by step, when the pressure load arrives? It's a loop, and it closes on itself.",
+     "lesson": {
+      "v": 1,
+      "text": "One anatomical fact, low muscle mass, gives two opposite behaviours. You've just seen the first: a thin wall is compliant, so the RV dilates to take volume. Here's the second. A thin wall can't generate pressure. The RV has almost no contractile reserve, so when the resistance in front of it rises, it can't push harder. Its stroke volume simply falls.\n\n{{ | **Preload** | **Afterload**\n**RV** | Tolerant | Intolerant\n**Why** | Thin, compliant: dilates | Thin: can't generate pressure\n**Tolerates better** | RV: volume overload | LV: pressure overload}}\n\nThe LV is the mirror image. Its thick wall keeps wall stress down at high pressure, so it carries aortic stenosis or hypertension for years. Laplace again: stress falls as the wall thickens.\n\nThe card describes two curves, and the picture is worth having. Plot stroke volume against the pressure each ventricle ejects into. The LV line is nearly flat: raise aortic pressure from one hundred to one hundred and forty and stroke volume barely moves. The RV line falls steeply as mean PA pressure rises from zero to thirty. So a modest rise in pulmonary artery pressure, the kind you get from ARDS, from high PEEP or from a moderate embolus, cuts RV output sharply.\n\n[[The RV is preload tolerant and afterload intolerant. Its stroke volume falls steeply as mean PA pressure rises towards thirty millimetres of mercury, so treating RV failure is mostly lowering its afterload.]]\n\nThe trap sounds logical: the RV already works against a low resistance, so it must cope well with afterload. It's the reverse. Working against a low resistance is why it has no reserve.\n\nAnd this returns you to the first card. Failure is the point where filling rises, the CVP climbs, and stroke volume no longer follows.\n\nSo what actually happens, step by step, when the pressure load arrives? It's a loop, and it closes on itself."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-15",
+     "bridge": "Thin, generous with volume, helpless against pressure. So what raises the pressure?",
+     "lesson": {
+      "v": 1,
+      "text": "Put pressure on the RV and two things happen at once: wall tension rises and the chamber dilates. Follow each.\n\nHigher wall tension means higher oxygen demand. At the same moment supply falls, and here's why. The normal RV, at its low pressure, is perfused through the whole cardiac cycle, systole as well as diastole, unlike the LV. When RV pressure climbs, the systolic share is squeezed away. And if the systemic pressure is falling too, the driving pressure in the aorta goes with it. Demand up, supply down: the RV becomes ischaemic. That's why troponin rises in a large pulmonary embolism with normal coronaries. Ischaemia, injury and arrhythmia then weaken contraction.\n\nA weaker RV does two things. It sends less blood through the lungs, and it dilates further, pushing the septum into the LV. Both reduce LV preload. Cardiac output falls, the blood pressure falls, and the fall in aortic pressure takes away still more coronary flow from the RV. That's the loop closed.\n\n[[A pressure-loaded RV dilates, needs more oxygen, gets less, weakens and underfills the LV, and the falling aortic pressure starves it further. Break the loop by restoring aortic pressure and lowering RV afterload.]]\n\nA second limb runs alongside. The dilated annulus leaks, tricuspid regurgitation adds a volume load, right atrial pressure and CVP rise, and the liver, gut and kidneys congest. So the organs are hit twice, with low flow in front and high venous pressure behind. Both limbs end at organ failure.\n\nEvery treatment in the last section aims at one link. Noradrenaline restores the aortic pressure and with it the coronary gradient. Oxygen, carbon dioxide control and inhaled vasodilators lower the afterload. Avoiding overfilling protects the septum. And the trap this loop exposes is fluids first and vasopressors later for a hypotensive patient with a failing RV. Hypotension is what's starving the RV. Pressure comes early.\n\nThat's the right ventricle: thin, compliant, generous with volume and helpless against pressure. So the next question writes itself. What raises the pressure?"
+     }
+    }
+   ],
+   "spine": [
+    "RV failure = RV dysfunction + limited filling: it fills only at a high CVP and still underfills the LV. High CVP with a normal RV is volume, not failure.",
+    "Same stroke volume as the LV against a far lower pressure → RV stroke work ≈ ¼ of LV. Thin wall; peristaltic, lengthwise contraction from inflow to outflow.",
+    "Preload tolerant, up to a point: over-distension → annular dilatation → TR → ↑RA pressure → ↓LV filling. This is why a fluid bolus can lower output.",
+    "Fixed pericardium: RV distension shifts the septum left → D-shaped, small, high-pressure LV (high wedge, low LVEDV). AR is NOT a cause: it raises LVEDV.",
+    "Afterload intolerant: RV stroke volume falls steeply as mPAP rises 0→30 mmHg; the LV barely notices 100→140. Treat the afterload.",
+    "Spiral: ↑wall tension → ↑O₂ demand + ↓coronary flow → ischaemia → ↓output → hypotension → less coronary flow. Break it: aortic pressure up, PVR down."
+   ],
+   "open": {
+    "v": 1,
+    "text": "In the last packet you watched tamponade squeeze the right side of the heart first. That's no accident. The right ventricle is a different kind of chamber, and this packet is about why.\n\nThe left ventricle is a thick muscular cone, built to push blood into a high-pressure system. The right ventricle is a thin crescent wrapped around it, built to push the same volume into the lungs, where the pressure is a fraction of that. So it handles extra volume well. What it can't handle is a sudden rise in the pressure it pumps against.\n\n[[The right ventricle tolerates volume and fails against pressure. A sudden rise in the pressure in the lungs is what breaks it.]]\n\nAnd when it fails, it fails in a spiral. It dilates, its wall tension rises, its own blood supply falls, and because it shares a septum and a pericardium with the left ventricle, it pushes the septum across and starves the left side of filling. You met that septum in Shock One, as the D-shaped ventricle on echo. Here you'll learn what it means.\n\nThe packet runs in four parts. First, why the right ventricle is different, in shape, in physiology and in blood supply. Second, pulmonary hypertension, the new twenty twenty-two numbers and the five groups, because NEET asks the threshold directly. Third, how you recognise a failing right ventricle, with the echo reminder and the pulmonary embolism that so often causes it. And fourth, how you treat it, which is mostly about what not to do.\n\nTwo grand-test misses sit in this packet, both about pulmonary embolism. Listen for them.\n\nStart with the chamber itself."
+   },
+   "tier": "S",
+   "gen": "RV",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-802",
+   "text": "Pulmonary hypertension and what pushes the RV",
+   "open": {
+    "v": 1,
+    "text": "The RV can't push against pressure. So where does the pressure come from?\n\nSometimes it arrives in minutes, as an embolus or a ventilator setting. Sometimes it builds over years, and the RV thickens and copes for a long while before it fails. The chronic form is pulmonary hypertension, and its five groups are asked more than anything else in this packet.\n\nOne measurement sorts the groups. Where is the resistance: in front of the pulmonary capillaries, or behind them, in the left heart? The wedge pressure answers that.\n\n[[Pulmonary hypertension is a mean PA pressure above twenty millimetres of mercury. A wedge of fifteen or less puts the problem before the capillaries; a wedge above fifteen puts it in the left heart.]]\n\nListen for two traps. The first is the number itself: your card and some keys still say twenty-five. The second is the young woman with Raynaud's and a loud second sound, where on one test nearly half the cohort chose the wrong group.\n\nStart with the number."
+   },
+   "steps": [
+    {
+     "card": "CVS06A|RVF-20",
+     "bridge": "A normal wedge means pre-capillary, and that covers more than group one. The other three groups.",
+     "lesson": {
+      "v": 1,
+      "text": "Pulmonary hypertension is defined at right heart catheterisation, by the mean pulmonary artery pressure at rest. Your card says above twenty-five millimetres of mercury. That was the definition for decades. The European guideline of twenty twenty-two defines it as a mean PA pressure above twenty.\n\nWhy did it drop? Because the normal mean is about fourteen, and twenty is roughly where normal ends. Twenty-five was a convention, not a measurement of normality. So the line moved to the upper limit of normal.\n\nPressure alone doesn't tell you where the problem is, so two more numbers are added. Think of the lung circulation as a pipe with the capillaries in the middle. If the left heart is the problem, pressure backs up from behind, and the wedge pressure is high, above fifteen. That's post-capillary. If the disease is in the pulmonary arteries themselves, the wedge is normal, fifteen or less, and the resistance across the lung is high: a PVR above two Wood units. That's pre-capillary.\n\n{{**ESC/ERS 2022, right heart catheter at rest**\nPH | mPAP >20 mmHg\nPre-capillary | PAWP ≤15, PVR >2 WU\nIsolated post-capillary | PAWP >15, PVR ≤2 WU\nCombined | PAWP >15, PVR >2 WU}}\n\n[[PH is a mean PA pressure above twenty. Pre-capillary is a wedge of fifteen or less with a PVR above two Wood units. A wedge above fifteen means left heart disease, group two, and excludes PAH.]]\n\nNow the exam. DocT asked for the true statement about the catheter findings in pulmonary arterial hypertension. The options were a mean PA pressure above twenty-five, a wedge above twenty-five, an LV end-diastolic pressure above fifteen, and a PVR below three. The key was the mean PA pressure above twenty-five, and the reasoning still works: a high wedge or a high LV end-diastolic pressure means left heart disease, and PAH needs a high resistance, not a low one. So if above twenty is offered, take it. If only above twenty-five is there, take that.\n\nGroup one is pulmonary arterial hypertension, PAH: disease of the small pulmonary arteries themselves. The wall proliferates and the lumen narrows. The list is idiopathic; heritable, where the gene to remember is BMPR2; drug and toxin induced; and PAH associated with connective tissue disease, HIV, portal hypertension, congenital heart disease and schistosomiasis. Then the form with venous and capillary involvement, the old veno-occlusive disease, and persistent pulmonary hypertension of the newborn. One correction: the card keeps chronic haemolytic anaemia here, and it now sits in group five.\n\nThe patient NEET's banks have given four times is a woman of about forty with Raynaud's phenomenon, breathlessness on exertion, a raised JVP, oedema and a loud P2. Raynaud's is the clue. It points to systemic sclerosis, the classic connective tissue cause of group one PAH. There's no orthopnoea and there are no crackles, so it isn't left heart failure and it isn't interstitial lung disease, and nothing in the stem suggests clots. On one test only fifty-four per cent got there.\n\nGroup two is pulmonary hypertension due to left heart disease, and it's the commonest cause of all: LV systolic dysfunction, LV diastolic dysfunction, valve disease, and inflow or outflow obstruction. Pressure backs up from the left atrium, so the wedge is high.\n\nOne Marrow twist. A normal wedge makes it pre-capillary. It doesn't make it group one. A patient with antiphospholipid syndrome, a raised JVP, a mean PA pressure of twenty-eight and a wedge of eleven has recurrent pulmonary emboli.\n\nLast, the symptom. The commonest is exertional dyspnoea, because the RV can't raise its output on demand. Seventy-six per cent chose it. Fatigue, exertional chest pain and exertional syncope follow, and oedema comes late. Syncope is the ominous one, not the common one.\n\nSo pre-capillary covers more than group one. The other three groups come next."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-21",
+     "bridge": "That's the pressure classified. But pressure isn't the only way to wear out a right ventricle.",
+     "lesson": {
+      "v": 1,
+      "text": "Three groups are left, and the questions all land on one of them.\n\nGroup three is lung disease and hypoxia: COPD, interstitial lung disease, sleep-disordered breathing, hypoventilation, and long residence at high altitude. The mechanism is the one the lung uses everywhere. Hypoxic vessels constrict, and destroyed lung takes its vessels with it. The pulmonary hypertension is usually mild. When it's severe, which the current guideline defines as a PVR above five Wood units, it's out of proportion to the lung disease and is referred to a specialist centre.\n\nGroup four is where the marks are: chronic thromboembolic pulmonary hypertension, CTEPH. In most patients a pulmonary embolus dissolves over weeks. In about three in a hundred survivors it doesn't. The clot organises into fibrous material that lines and narrows the arteries. Then the vessels that stayed open take all the flow at high pressure, and they remodel too. So resistance rises in both.\n\nWhich kind of embolism does this? DocT asked, and only fifty-one per cent were right. It's multiple small recurrent emboli, often silent. It isn't the single massive saddle embolus, which either kills or lyses. And it isn't air or fat, which are acute events.\n\n[[CTEPH is group four: unresolved, usually small recurrent emboli. A normal ventilation-perfusion scan excludes it. Pulmonary endarterectomy is the only potentially curative treatment.]]\n\nHow do you find it? The patient is still breathless after three months of proper anticoagulation. The screening test is the ventilation-perfusion scan, looking for mismatched perfusion defects, and a normal scan rules CTEPH out. Then CT or catheter angiography and a right heart catheter confirm it. The second DocT question gave a clot a long time ago, a few months of treatment, a dilated right heart, a thrombus in the pulmonary artery and severe pulmonary hypertension, and asked the group. Four. Only fifty-six per cent said so, and the tempting wrong answer is one.\n\nTreatment is a ladder, and the order is the question. Lifelong anticoagulation for everyone, with warfarin if the cause is antiphospholipid syndrome. Then pulmonary endarterectomy if the disease is operable, because it's the only step that can cure. If it's inoperable, balloon pulmonary angioplasty. And the first-line drug, for inoperable disease or for pulmonary hypertension that persists after surgery, is riociguat.\n\nHere you need both the key and the truth. Marrow twice gave a hypoxaemic, anticoagulated CTEPH patient with a mean PA pressure of forty, and keyed IV epoprostenol as the next step. The guideline's ladder for CTEPH doesn't include epoprostenol at all; at most it's a rescue for the critically ill. So if endarterectomy is offered and the disease is operable, choose it. If it's inoperable, choose riociguat. Take epoprostenol only when neither is there.\n\nGroup five is the mixed bag, unclear or multifactorial. Haematological disease, meaning the chronic haemolytic anaemias and the myeloproliferative disorders. Systemic disease: sarcoidosis, Langerhans cell histiocytosis, neurofibromatosis. Metabolic: glycogen storage disease. And chronic renal failure, with or without dialysis. You don't need the full list. You need to recognise sarcoid, sickle cell disease and dialysis as group five. The card also lists splenectomy, vasculitis, thyroid disease and congenital heart disease here, and the current classification has moved all four out.\n\nThat's the pressure classified. But pressure isn't the only way to wear out a right ventricle."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-17",
+     "bridge": "Those are the slow causes. In the ICU the commonest load on the RV arrives with the ventilator.",
+     "lesson": {
+      "v": 1,
+      "text": "Step back from pressure for one card. A ventricle can be worn down in three ways: the muscle is weak, the volume is too much, or the pressure is too high. The card sorts every chronic cause of RV failure by those three.\n\nPressure is the long column, and you know most of it: pulmonary arterial hypertension, CTEPH, pulmonary stenosis, left-sided valve disease, restrictive cardiomyopathy and pericardial disease. Left heart disease in general is the commonest chronic cause of all, and the card places it across pressure and volume, because the backed-up pressure usually comes with functional tricuspid regurgitation.\n\nVolume is the regurgitant valves, tricuspid and pulmonary. Ebstein anomaly straddles two columns. The tricuspid leaflets are displaced down into the ventricle, so the valve leaks, which is volume, and part of the RV ends up above the valve, in the atrium, which leaves less working muscle.\n\nThat leaves the muscle itself, and one name to know: ARVC, arrhythmogenic right ventricular cardiomyopathy. It's a disease of the desmosome, the junction that rivets heart muscle cells together. The commonest gene is plakophilin-2. The RV free wall is progressively replaced by fat and fibrous tissue. So the patient is young and presents with ventricular tachycardia, syncope or sudden death. And because the tachycardia arises in the RV, it has a left bundle branch block shape.\n\nDesmosomes also hold skin and hair together, and that gives Marrow its question. ARVC with woolly hair and thickened palms and soles is Naxos disease. The same hair and skin with a dilated left ventricle is Carvajal syndrome.\n\n[[ARVC: a desmosomal mutation, commonly plakophilin-2, with fibrofatty replacement of the RV. Add woolly hair and palmoplantar keratoderma: Naxos if the RV is affected, Carvajal if the LV is dilated.]]\n\nThe trap is simply swapping the two. A teenager with ARVC and sustained VT: the associated syndrome is Naxos.\n\nOne discriminator, since both give a VT of left bundle shape. In ARVC the RV is structurally abnormal, with T inversion in V1 to V3 and sometimes an epsilon wave. In RV outflow tract tachycardia the heart is normal and the course benign.\n\nOne more Marrow stem lives on this card. Syncope, RV hypertrophy, a tricuspid regurgitation murmur, a raised troponin and chronic kidney disease. The key was to start a heparin infusion. The reasoning: this looks like thromboembolic disease straining the RV, contrast CT is awkward with those kidneys, so you treat on suspicion and image with a ventilation-perfusion scan.\n\nThose are the slow causes. In the ICU the commonest load on the RV arrives with the ventilator."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-18",
+     "bridge": "One chronic cause is left: the load that grows until the blood changes direction.",
+     "lesson": {
+      "v": 1,
+      "text": "ARDS attacks the RV's one weakness from several directions. Hypoxia constricts pulmonary vessels. So do hypercapnia and acidosis. And then the ventilator adds its share: high PEEP and a high plateau pressure overdistend alveoli, and overdistended alveoli compress the capillaries running in their walls. All of it raises PVR.\n\nSo RV dysfunction is common. The card says twenty-two to fifty-five per cent of ARDS. The lower figure is the strict one, acute cor pulmonale on echo in patients who were ventilated protectively. The card says survival is much higher without it, and that's the answer to mark. The detail behind it: in the largest echo series, of seven hundred and fifty-two patients, hospital mortality wasn't significantly different with acute cor pulmonale as a whole. The excess deaths sat in the severe form.\n\nThe DocT question tested whether you can see this at the bedside. Severe ARDS with a P to F ratio of eighty-five. PEEP is raised from five to ten, and the mean arterial pressure falls from sixty-five to forty-five. In which setting is more PEEP least likely to help? The answer was RV dysfunction. The distractors were the patients who usually do recruit, severe ARDS and obesity, and LV dysfunction, where PEEP lowers the ventricle's afterload and may help. For the RV, more PEEP is more afterload.\n\n[[RV-protective ventilation: limit plateau and driving pressure, correct oxygen and carbon dioxide to lower PVR, and prone the patient to unload the RV.]]\n\nThose are the three components on the card. Prone positioning deserves the emphasis, because the trap is to call it only an oxygenation manoeuvre. It recruits the dorsal lung at lower pressures and improves both oxygen and carbon dioxide, so PVR falls and the RV gets smaller.\n\nHow do you tell a fall in pressure after PEEP that comes from the RV from one that's simple low preload? On echo. If the RV dilates and the septum flattens, it's afterload. If both ventricles are small and empty, it's preload, and fluid fixes it.\n\nYou don't need the risk score for acute cor pulmonale, but its four items are a fair summary of who's in danger: pneumonia as the cause of the ARDS, a driving pressure of eighteen or more, a P to F ratio under one hundred and fifty, and an arterial carbon dioxide of forty-eight or more.\n\nOne chronic cause is left, and it's the one where the pressure load grows until the blood changes direction."
+     }
+    },
+    {
+     "card": "CVS06A|RVF-22",
+     "bridge": "Causes done. Next: recognise the failing RV at the bedside, and find its commonest sudden cause.",
+     "lesson": {
+      "v": 1,
+      "text": "Congenital heart disease loads the RV in both ways. Volume first. An atrial septal defect sends left atrial blood across to the right side on every beat, so the RV handles extra volume for years, and tolerates it, as you'd now predict. A ventricular septal defect or a patent duct loads the lungs and the left heart more, and reaches the RV later, as pressure. The pure pressure causes on the card are pulmonary stenosis and the repaired tetralogy of Fallot with residual outflow obstruction. In fairness, the commonest late problem after tetralogy repair is pulmonary regurgitation, which is a volume load.\n\nNow the sequence that matters. A large left-to-right shunt floods the pulmonary arteries with flow and pressure. Over years the small arteries remodel: the walls thicken and the lumens close. PVR climbs. When pulmonary resistance exceeds systemic, the shunt reverses and runs right to left. The patient becomes cyanosed, with a high haematocrit. That's Eisenmenger syndrome.\n\n[[Eisenmenger: a large left-to-right shunt remodels the pulmonary vessels until PVR exceeds SVR and the shunt reverses. Treat with bosentan. Never close the defect, and never give a calcium channel blocker.]]\n\nBoth of those nevers come from one idea. Once the shunt has reversed, the defect is the RV's pressure vent. Close it, and the RV faces the full pulmonary resistance with no way out. And anything that lowers systemic resistance pulls more desaturated blood across from right to left. A calcium channel blocker does exactly that.\n\nSo the DocT question, the most appropriate treatment for Eisenmenger syndrome, has one answer among its options: bosentan, an endothelin receptor antagonist. Seventy-five per cent chose it. It's the drug with the trial, BREATHE-5, which showed better exercise capacity and haemodynamics without worsening the oxygen saturation, and it carries the guideline's class one recommendation for symptomatic patients. A phosphodiesterase-5 inhibitor is the alternative. Beta-blockers and digoxin don't treat pulmonary arterial hypertension at all.\n\nAnd where does Eisenmenger sit in the five groups? Group one: PAH associated with congenital heart disease.\n\nThat completes the causes, the ones that load the RV slowly and the ones that load it in the ICU. Next you have to recognise the ventricle when it's failing in front of you, and find the commonest sudden cause of all."
+     }
+    }
+   ],
+   "spine": [
+    "PH = mPAP >20 mmHg at right heart catheter (card and older keys: >25). Pre-capillary: PAWP ≤15 + PVR >2 WU. PAWP >15 = left heart, group 2, the commonest.",
+    "Group 1 PAH: idiopathic, heritable (BMPR2), drugs, CTD (Raynaud's + loud P2 = systemic sclerosis), HIV, portal HTN, CHD. Commonest symptom: exertional dyspnoea.",
+    "Group 3 lung/hypoxia (usually mild). Group 4 CTEPH: small recurrent emboli; normal V/Q excludes it; anticoagulate → PEA → BPA → riociguat. Group 5: mixed.",
+    "Chronic RV failure by mechanism: pressure (most), volume (TR, PR), muscle (ARVC: plakophilin-2). Naxos = ARVC + woolly hair + keratoderma; Carvajal = LV.",
+    "ARDS: RV dysfunction in 22–55%. More PEEP is more RV afterload. Protect the RV: low plateau and driving pressure, correct O₂ and CO₂, prone.",
+    "Eisenmenger: PVR > SVR, the shunt reverses. Bosentan (BREATHE-5). No closure, no calcium channel blocker."
+   ],
+   "tier": "S",
+   "gen": "RV",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-803",
+   "text": "Recognising the failing RV, and the PE that causes it",
+   "open": {
+    "v": 1,
+    "text": "You know why the RV fails and what loads it. Now it's in front of you, and the task changes to recognition.\n\nThe difficulty is that a failing RV looks like other things. A raised JVP with hypotension and clear lungs could be tamponade. A dilated RV on echo could be an embolus from an hour ago, or pulmonary hypertension of many years. So this section keeps asking two questions. Is it the RV? And is it acute or chronic?\n\n[[A thin-walled dilated RV is an acute load. A thick wall, ascites or anasarca means the load has been there for months. Time is the discriminator.]]\n\nWe'll go in the order you'd work at the bedside: the signs, the chest film, the ECG, the catheter, and then echo, with the model. Then the commonest sudden cause, pulmonary embolism: who gets thrombolysis, and how you score the suspicion.\n\nTwo traps here are yours personally. On one grand test you thrombolysed a patient with a strained RV and a systolic pressure of ninety-six. On another you added the Wells score to six when it was nine. Both get fixed in this section.\n\nBegin with what the hands and eyes find."
+   },
+   "steps": [
+    {
+     "card": "CVS06B|RVF-23",
+     "bridge": "Signs raise the suspicion. The next two tests are the cheap ones. First, the chest film.",
+     "lesson": {
+      "v": 1,
+      "text": "The failing RV shows itself in the systemic veins, not in the lungs. Hold that first. Blood dams up behind the RV, so the signs are in the neck, the liver, the abdomen and the legs, while the lung fields stay clear unless the left heart is failing too.\n\nThe card sorts the signs into four groups. One respiratory sign: hypoxaemia. It comes from ventilation-perfusion mismatch, from a low mixed venous saturation when output is low, and sometimes from a foramen ovale that opens right to left once right atrial pressure exceeds left.\n\nSystemic congestion: a distended jugular vein, hepatojugular reflux, peripheral oedema, a congested enlarged liver and spleen, ascites, a pericardial effusion, and anasarca.\n\nSigns of the RV itself: a third heart sound, right-sided and louder on inspiration; the systolic murmur of tricuspid regurgitation; a hepatic pulse; and pulsus paradoxus. The hepatic pulse is the regurgitant wave reaching the liver, which is why the card files it under RV dysfunction and not under congestion. And pulsus paradoxus is the septum again.\n\nThen the low output state: hypotension, tachycardia, cool extremities, confusion and oliguria. Put together, it's cardiogenic shock with a high CVP and clear lungs.\n\nNow the point that decides the question. Oedema, ascites and anasarca take days to weeks of salt and water retention to form. A pulmonary embolus that landed this morning can't produce them.\n\n[[Ascites and anasarca need time. With a dilated RV and a high CVP they mean chronic or acute-on-chronic RV failure, usually from pulmonary hypertension, and not a fresh massive PE.]]\n\nThe DocT question: acute breathlessness, hypotension, a dilated RV, a CVP of twenty and a distended abdomen. One in three chose massive PE. The key was RV failure due to pulmonary hypertension, and the distended abdomen is the only thing in the stem that gets you there. The stem is ambiguous, honestly. But that's the line the examiner drew, so learn the line.\n\nThe other mimic is tamponade. The same raised JVP, the same hypotension, the same pulsus paradoxus. One look with the probe separates them: in RV failure the right-sided chambers are large, and in tamponade they're small and collapsing.\n\nThe next two tests are the cheap ones. First, the chest film."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-25",
+     "bridge": "A big pulmonary artery and clear lungs. Now the other cheap test, the ECG.",
+     "lesson": {
+      "v": 1,
+      "text": "The chest X-ray in RV failure is defined as much by what's missing. The lungs are clear. Pulmonary oedema needs a high left atrial pressure, so if you see it, the left heart is driving the picture: group two.\n\nWhat you do see is in the vessels. A high pulmonary artery pressure enlarges the main pulmonary artery and its central branches. Beyond them the vessels are sparse: pruned in chronic pulmonary hypertension, or missing from one region beyond an embolus, which is the Westermark sign. So the card's two findings are an enlarged main pulmonary artery and regional oligaemia.\n\nThe question that was actually asked is about CT, and only fifty-five per cent got it. How wide must the main pulmonary artery be, measured before its bifurcation, to suggest a raised pulmonary pressure?\n\n[[On CT a main pulmonary artery wider than about three centimetres, or wider than the ascending aorta beside it, suggests pulmonary hypertension. Echo then estimates the probability and right heart catheter confirms it.]]\n\nThree centimetres. The wrong options were two, which is normal, and four or five, which is aneurysm territory. The second form of the same idea is a ratio: a pulmonary artery wider than the aorta, a ratio above one. That ratio also predicts exacerbations and death in COPD. The guideline's own figures are thirty millimetres and a ratio above zero point nine, but three centimetres and a ratio of one are what the exam wants.\n\nThe second half of the card is BNP. The peptide is released by stretched ventricular muscle, right as well as left. So it rises as the RV is loaded and falls as the RV is offloaded. That makes it a prognostic marker and a way to judge whether treatment is enough. In pulmonary arterial hypertension the current risk table calls an NT-proBNP below three hundred low risk and above eleven hundred high risk, and treatment is stepped up until the patient reaches the low group. You don't need to carry those numbers. You need the idea: BNP grades the load and tracks the response.\n\nNow the other cheap test, the ECG."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-26",
+     "bridge": "Signs, film and ECG raise the suspicion. To put numbers on it, you can go inside.",
+     "lesson": {
+      "v": 1,
+      "text": "The ECG has two jobs here, and they pull apart. It has to recognise an RV whose muscle has infarcted, and an RV that's straining against a sudden load. Different leads, different patterns.\n\nFirst the general signs of a large or loaded right heart: right axis deviation, right bundle branch block, and P pulmonale, the tall peaked P wave of a big right atrium, two and a half millimetres or more in lead II.\n\nNow infarction. The RV is supplied by the right coronary artery, so an RV infarct almost always rides on an inferior STEMI from a proximal right coronary occlusion. You met the right-sided leads in the infarct packets. ST elevation of one millimetre or more in V4R is the sign, and it fades fast, within about half a day in around half of patients, so record it early. Marrow asked it from the standard leads instead: an inferior STEMI with hypotension, a raised JVP and clear lungs. Which finding points to the RV? ST elevation in lead III greater than in lead II. Lead III looks at the heart from the right and lead II from the left, so III greater than II means the right coronary and the RV. ST elevation in V1 says the same.\n\n[[RV infarction: an inferior STEMI with ST elevation in V4R, in III more than II, and in V1. RV strain: T inversion in V1 to V4, S1 Q3 T3 and a new right bundle branch block.]]\n\nThe trap is the reversed option, II greater than III. That points to the circumflex.\n\nThen strain. A sudden pressure load makes the RV ischaemic, and it shows in the leads that sit over the RV: T wave inversion in V1 to V4. After sinus tachycardia that's the commonest abnormality in pulmonary embolism. S1 Q3 T3, a deep S wave in lead I with a Q wave and an inverted T in lead III, is the famous one. But it's present in a minority, and you don't need it to make the diagnosis. The second trap is calling S1 Q3 T3 the infarct pattern. It's the strain pattern.\n\nThe card also lists Q waves in V1 to V3 for RV infarction. They're non-specific, and an anterior infarct gives them too.\n\nSigns, film and ECG raise the suspicion. To put numbers on it, you can go inside."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-28",
+     "bridge": "Most of the time you won't float a catheter. You'll pick up the probe.",
+     "lesson": {
+      "v": 1,
+      "text": "The pulmonary artery catheter, which you used in the first shock packet to sort the profiles, does two things for the RV. It confirms the diagnosis, and it guides the treatment.\n\nIts real gift is cardiac output. With output you can calculate the PVR: the mean PA pressure minus the wedge, divided by the cardiac output, in Wood units. That number is the RV's afterload. And it divides RV failure into two kinds that are treated in opposite ways. A high PVR is embolism or pulmonary hypertension, where you offload. A normal PVR is RV infarction, where you fill.\n\nIt's also the only test that confirms pulmonary hypertension. Marrow asked it directly: a young woman with features of pulmonary hypertension on echo and chest X-ray, next step? Right heart catheterisation. Echo estimates a probability. The catheter gives the mean pressure, the wedge and the resistance, and it comes before any search for the cause.\n\nNow the four findings on the card that suggest acute RV dysfunction. A CVP higher than the wedge pressure. A low cardiac index. A low stroke volume index. And a mixed venous saturation below fifty-five per cent. The first is the one to understand. Normally the left-sided filling pressure is the higher of the two. When the CVP overtakes the wedge, the right side is failing first.\n\nThere's one index the card lacks and Marrow asked. The pulmonary artery pulsatility index, PAPi.\n\n[[PAPi is PA systolic pressure minus PA diastolic pressure, divided by right atrial pressure. Below zero point nine in acute inferior MI it predicts RV failure and in-hospital death.]]\n\nSee why it works. The top line, the PA pulse pressure, is what the RV manages to generate. The bottom line, right atrial pressure, is how congested it is. A weak RV makes a small pulse at a high filling pressure, so the ratio falls. The question gave an RV infarct in persistent shock with a list of catheter values, and asked which carried the greatest mortality. It was the PAPi of zero point four. The trap was the lowest cardiac index.\n\nYou don't need the second cut-off for NEET, but for completeness: below one point eight five predicts RV failure after an LVAD.\n\nMost of the time, though, you won't float a catheter. You'll pick up the probe."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-29",
+     "bridge": "A dilated RV, then. But is it an embolus or an infarct? One named sign claims to tell you.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** apical four-chamber. Probe at the apex, marker to the left shoulder. The RV is dilated, as large as the LV beside it. The M-mode line runs through the lateral tricuspid annulus (TAPSE).}}\n\nA short reminder of the view. In the apical four-chamber the two ventricles lie side by side. Normally the RV is the smaller, about two thirds of the LV, and the LV forms the apex. On the model the RV is as large as the LV. That's the first sign, and it's the quickest thing you'll ever read on an echo.\n\nThe card lists seven signs of RV overload with their cut-offs. Sort them by what they tell you: size, squeeze, pressure, and time.\n\nSize. An RV cavity equal to or larger than the LV. Turn to the short axis and the same overload flattens the septum, the D-shaped LV from the first section.\n\nSqueeze. The RV contracts mostly lengthwise, so you measure how far the tricuspid annulus travels towards the apex: TAPSE. Below seventeen millimetres is abnormal. Fractional area change, the proportion by which the RV area shrinks in systole, is abnormal below thirty-five per cent. And free wall longitudinal strain is abnormal when it's smaller in size than twenty per cent.\n\nPressure. The peak velocity of the tricuspid regurgitation jet gives the pressure difference between RV and right atrium: four times the velocity squared. A velocity above two point eight metres per second makes pulmonary hypertension more likely. And upstream, an IVC that's distended and collapses by less than half means a right atrial pressure of about fifteen, as you learned in the first packet.\n\n{{**RV overload on echo**\nRV ≥ LV | TAPSE <17 mm | FAC <35%\nFree-wall strain <20% | TR velocity >2.8 m/s\nIVC distended, <50% collapse\n**RV wall thickened (>5 mm) = chronic**}}\n\nThen time, and this is the sign that answers questions. Everything so far says the RV is overloaded. None of it says for how long. Wall thickness does. A free wall thicker than five millimetres means the RV has had weeks or months to hypertrophy.\n\n[[Six of the seven echo signs say the RV is overloaded. Only wall thickness says for how long: a free wall over five millimetres is chronic, and a thin dilated RV is acute.]]\n\nSo go back to the patient with the dilated RV, the CVP of twenty and the swollen abdomen. Ascites needs time, and so does a thick wall. That's chronic pulmonary hypertension, not massive PE. A fresh embolus dilates a thin RV within minutes, and a thin RV can't generate a high pressure, so its tricuspid jet is only modest. A very fast jet is itself a clue to chronic disease.\n\nNEET twenty twenty-four asked the plain version: the echo finding in pulmonary embolism. RV dilatation.\n\nA dilated RV, then. But is it an embolus or an infarct? One named sign claims to tell you."
+     },
+     "model": {
+      "view": "A4C",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "rv-dilated",
+      "phase": "play",
+      "mmode": "TAPSE",
+      "highlight": [
+       "RV",
+       "LV",
+       "septum"
+      ]
+     }
+    },
+    {
+     "card": "CVS06B|RVF-30",
+     "bridge": "Echo says acute pressure load; the story says embolus. Now the real decision: who gets thrombolysis?",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** apical four-chamber again, RV dilated, beating. Compare the RV free wall with the RV apex. The model shows the dilated RV; McConnell's pattern itself is described in the lesson.}}\n\nStay in the same view and watch how the RV wall moves. In a large pulmonary embolism you may see a pattern that McConnell described in nineteen ninety-six. The free wall of the RV, from the base to the middle, hardly moves. The apex still contracts well. Free wall hypokinesia with apical sparing: that's McConnell's sign.\n\nWhy would the apex be spared? Probably because it's tethered to the LV apex, which is contracting hard, while the rest of the thin free wall is overstretched and ischaemic under the sudden load.\n\nNEET twenty twenty-five gave it as a stem. A patient after stenting, sudden breathlessness, RV hypokinesia with preserved apical contractility. Diagnosis: pulmonary embolism. That's the first level, sign to disease, and you mustn't miss it.\n\nThe grand test went one level up, and that's the level to prepare for. The sign was first reported as ninety-four per cent specific for embolism. That hasn't held. RV infarction produces the same picture, a hypokinetic free wall with a moving apex. So McConnell's sign tells you the RV free wall is in trouble. It doesn't reliably tell you why.\n\nWhat separates the two is afterload. An embolus raises pulmonary resistance, and an infarct doesn't. Doppler can see that. Against a high resistance, flow into the pulmonary artery reaches its peak abnormally early: the acceleration time is short, below sixty milliseconds. And because the RV is thin and unprepared, it can't generate much pressure, so the tricuspid regurgitation gradient stays below sixty millimetres of mercury. A short acceleration time with a modest gradient is the sixty-sixty sign.\n\n[[McConnell's sign, free wall hypokinesia with apical sparing, points to PE but is also seen in RV infarction. The sixty-sixty sign is more specific for acute PE.]]\n\nSo: a dilated RV after a long flight, and the question asks which finding is most specific for PE as against RV infarction. The sixty-sixty sign, not McConnell's. And when a question simply asks which echo finding most suggests acute PE, the keyed answer is right atrial and RV dilatation.\n\nTwo distractors to throw out. A D-shaped LV or a low TAPSE means RV overload from any cause. And a pericardial effusion with RV collapse is tamponade: in embolism the right chambers are big, not collapsing.\n\nOne mimic in a line. Takotsubo is ballooning of the left ventricular apex with a vigorous base. McConnell's is in the right ventricle, and there the apex is the part that still moves.\n\nSo the echo says acute pressure load, and the story says embolus. Now the decision most PE questions are really about: who gets thrombolysis?"
+     },
+     "model": {
+      "view": "A4C",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "rv-dilated",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "RV"
+      ]
+     }
+    },
+    {
+     "card": "HY2|CAR-23",
+     "bridge": "That's what you do once the embolus is proven. One stage back: how do you decide whom to scan?",
+     "lesson": {
+      "v": 1,
+      "text": "Why do patients die of pulmonary embolism? Mostly not from hypoxia. They die of the loop from the first section: a pressure-loaded RV that fails, underfills the LV and drops the blood pressure. So the risk classes are built around one question. Has the RV already failed, or is it only straining?\n\nHigh risk is failure that has declared itself. The European guideline of twenty nineteen gives three forms: cardiac arrest; obstructive shock, meaning a systolic pressure below ninety or vasopressors needed to hold it there, with signs of poor organ perfusion; or persistent hypotension, meaning a systolic pressure below ninety, or a fall of forty or more, lasting longer than fifteen minutes. Here the patient is dying of the clot, so the bleeding risk of dissolving it is worth taking. Systemic thrombolysis: alteplase, one hundred milligrams over two hours. There's also an accelerated regimen, zero point six milligrams per kilogram over fifteen minutes, to a maximum of fifty, for when time is short, as in arrest. If lysis is contraindicated or fails, surgical or catheter embolectomy.\n\nIntermediate-high is the trap class. The blood pressure is normal, but both markers of RV injury are present: RV dysfunction on echo or CT, and a raised troponin. It's tempting to lyse. The PEITHO trial tested exactly that, with tenecteplase. Fewer patients decompensated, one point six against five per cent. But mortality didn't change, and haemorrhagic stroke rose from zero point two to two per cent. Ten times the brain bleeds, and no lives saved.\n\n[[In PE, hypotension decides thrombolysis. Not RV strain, and not troponin. Intermediate-high risk is anticoagulated and monitored, with rescue lysis only if the patient decompensates.]]\n\nThis is the one you got wrong. The stem gave RV strain, a raised troponin and a blood pressure of ninety-six over fifty-eight, and you chose thrombolysis. Ninety-six is not below ninety. That patient is intermediate-high: heparin, a monitored bed, and lysis held in reserve. INI-SS asked the same thing and wanted the same answer. Read the systolic pressure before anything else in a PE stem.\n\nThe lower classes are quick. Intermediate-low: one or neither of the two markers, with a raised severity score; anticoagulate on the ward. Low: a simplified PESI of zero; early discharge on a DOAC.\n\n{{**ESC 2019** | **Defined by** | **Do**\n**High** | Arrest, shock, SBP <90 | Alteplase 100 mg over 2 h\n**Intermediate-high** | Normal BP + RV dysfunction + troponin | Anticoagulate, monitor\n**Intermediate-low** | One or neither | Anticoagulate\n**Low** | sPESI 0 | Early discharge, DOAC}}\n\nMarrow's version of the positive case: antiphospholipid syndrome, a saddle embolus, hypotensive with RV hypokinesis despite heparin. That's high risk. Alteplase.\n\nA word on what's new, so it doesn't surprise you. The first American guideline, from twenty twenty-six, relabels these as clinical categories A to E, running from the subclinical embolus at A up to cardiopulmonary failure at E. Advanced treatment, lysis included, is still kept for the sickest categories, and the bank keys the European classes.\n\nThat's what you do once the embolus is proven. Step back one stage: how do you decide whom to scan?"
+     }
+    },
+    {
+     "card": "HY2|CAR-24",
+     "bridge": "You can recognise the failing RV, date it, and find its embolus. What's left is the hardest part: supporting it.",
+     "lesson": {
+      "v": 1,
+      "text": "Suspicion of PE is turned into a number before any test, and the usual way is the Wells score. This is the score you added up wrongly, so we'll go slowly. Your card doesn't carry it, so a new card has been added for it.\n\nSeven items, in three sizes. Two items carry three points each: clinical signs of a DVT, meaning a swollen leg with pain on palpating the deep veins; and PE judged the most likely diagnosis. Three items carry one and a half each: a heart rate above one hundred; immobilisation for three days or more, or surgery in the previous four weeks; and a previous DVT or PE. Two items carry one each: haemoptysis, and active cancer.\n\n{{**Wells score for PE**\nSigns of DVT 3 | PE the most likely diagnosis 3\nHR >100 1.5 | Immobilised ≥3 d or surgery ≤4 wk 1.5 | Previous DVT/PE 1.5\nHaemoptysis 1 | Cancer 1\n**>4 = PE likely.** Three levels: <2 low, 2–6 moderate, >6 high}}\n\nA way to hold it. The two threes are the two things about this patient today: the leg, and your own judgement. The three one-and-a-halves are the pulse and the two histories, recent immobility and past clot. The two ones are blood and cancer.\n\nNow the question you missed. Signs of DVT, three. PE the most likely diagnosis, three. Heart rate above one hundred, one and a half. Recent surgery, one and a half. Total, nine. You chose six. Six is exactly the two threes, so the two smaller items, the pulse and the surgery, probably got dropped. When you score Wells, go down all seven lines every time.\n\n[[Wells: signs of DVT three, PE most likely three; heart rate over one hundred, immobility or recent surgery, and previous clot one and a half each; haemoptysis and cancer one each. Above four, PE is likely.]]\n\nWhat you do with it. Above four, PE is likely: go straight to CT pulmonary angiography without a D-dimer, because a normal D-dimer isn't safe enough to exclude PE at that probability. Four or less: measure the D-dimer, and scan only if it's raised.\n\nAnd the D-dimer has its own adjustment. It rises with age, so the fixed cut-off of five hundred micrograms per litre excludes very few older patients. Above fifty years, use the age multiplied by ten. A seventy-year-old's cut-off is seven hundred. That's the age-adjusted D-dimer.\n\nTwo smaller facts share the card. First, the tiny clot. An isolated subsegmental embolus, with no proximal DVT on leg ultrasound and a low risk of recurrence: the CHEST guideline suggests clinical surveillance with repeat leg scans, not anticoagulation. Only seventeen per cent knew that. The trap is anticoagulating every embolus the scan reports.\n\nSecond, the Daniel score, which grades RV strain on the ECG. Heart rate above one hundred, two points. Incomplete right bundle branch block two, complete three. T inversion in all of V1 to V4, four. A complete S1 Q3 T3, two. A total of ten or more suggests severe pulmonary hypertension. Keep the two tachycardias apart: two points in Daniel, one and a half in Wells.\n\nSo you can recognise the failing RV, date it, and find and grade the embolus behind it. What's left is the hardest part: supporting a ventricle that almost every routine ICU manoeuvre makes worse."
+     }
+    }
+   ],
+   "spine": [
+    "RV failure congests the systemic veins and leaves the lungs clear. Ascites/anasarca need time: chronic or acute-on-chronic, not a fresh PE.",
+    "CT: main PA >3 cm or PA:aorta >1 suggests PH. Echo estimates, right heart catheter confirms. BNP grades the load and tracks treatment.",
+    "ECG: RV infarct = inferior STEMI + STE in V4R, III > II, V1. RV strain = T inversion V1–V4, S1Q3T3, RBBB.",
+    "Catheter: CVP > PCWP, low CI, low SVI, SvO₂ <55%. PAPi = (PASP − PADP)/RAP; <0.9 in inferior MI predicts RV failure and death.",
+    "Echo: RV ≥ LV, TAPSE <17 mm, FAC <35%, TR velocity >2.8 m/s. Wall >5 mm = chronic. McConnell also occurs in RV infarct; 60/60 sign is more specific for PE.",
+    "PE: hypotension decides lysis (alteplase 100 mg/2 h). Wells: 3, 3, 1.5, 1.5, 1.5, 1, 1; >4 likely. D-dimer cut-off = age × 10 above 50."
+   ],
+   "tier": "S",
+   "gen": "RV",
+   "kind": "direct"
+  },
+  {
+   "q": "P12-804",
+   "text": "Treating the failing RV",
+   "open": {
+    "v": 1,
+    "text": "This is the section the rest was for. You have a patient whose RV is failing, and the reflexes you'd use for any other shocked patient are the ones that harm this one. A fluid bolus overdistends it. More PEEP raises its afterload. A vasodilator drops the pressure its coronaries depend on.\n\nSo work from the loop, not from habit: a pressure-loaded RV dilates, becomes ischaemic and underfills the LV, and the falling pressure starves it further. Each treatment cuts one link. Keep the rhythm. Get the filling right, which usually means less, not more. Hold up the aortic pressure. Lower the pulmonary resistance. Failing all that, a machine.\n\n[[In RV failure with a high CVP, don't fill and don't raise PEEP. Support the aortic pressure with noradrenaline and lower the pulmonary resistance.]]\n\nThe trap to listen for is fluid. In one situation fluid is right, and the bank asks it. In the others it's wrong, and the bank asks that too. The difference is the afterload.\n\nFirst the whole plan on one card, then each pillar in turn."
+   },
+   "steps": [
+    {
+     "card": "CVS06B|RVF-36",
+     "bridge": "Now each pillar in detail, starting with the one that causes the arguments: fluid.",
+     "lesson": {
+      "v": 1,
+      "text": "Five pillars. Take them as five links of the loop.\n\nOne, rate and rhythm. A dilated RV has a small, fixed stroke volume, so its output depends on rate. A faster heart rate is better than a slow one, and bradycardia is badly tolerated. A stiff RV also depends on the atrial kick to fill, so aim for sinus rhythm. New atrial fibrillation, or any instability, means cardioversion, with amiodarone as the drug.\n\nTwo, preload, and this splits in two. If the RV is under-filled, give small boluses, fifty to one hundred millilitres, watching the CVP. If it's over-filled, which is the usual case when afterload is high, take volume off with a loop diuretic, and with haemofiltration if the kidneys don't answer.\n\nThree, contractility and perfusion. Vasopressors, noradrenaline or vasopressin, to restore the aortic pressure and the RV's coronary flow. Vasopressin has a useful property here: it raises systemic resistance with little effect on pulmonary resistance. Then the inodilators, dobutamine or milrinone.\n\nFour, afterload. Before any drug, remove what constricts the pulmonary vessels: hypoxia, hypercapnia and acidosis. Keep PEEP and airway pressures as low as you can. And avoid atelectasis, because collapsed lung constricts its own vessels. So the lung wants a middle volume, neither collapsed nor overdistended. Then inhaled pulmonary vasodilators, and IV ones.\n\nFive, mechanical support.\n\n{{**Acute RV failure: five pillars**\nRate, rhythm | higher rate, sinus, cardiovert\nPreload | 50–100 mL boluses OR loop diuretic, CVVH\nPerfusion | noradrenaline, vasopressin; dobutamine, milrinone\nAfterload | fix O₂, CO₂, pH; low PEEP; inhaled vasodilator\nMCS | IABP, ECMO, VAD}}\n\nNow the questions. The grand tests asked this one twice. Three hours after mitral valve repair: hypotension and hypoxia, a dilated hypokinetic RV, a preserved LV and a high CVP. Next step? Start inhaled nitric oxide. About two thirds got it. Check the wrong options against the pillars. Aggressive fluid: the RV is already over-filled. More PEEP: more afterload. High-dose furosemide as the first move: it drops preload in a shocked patient before the afterload has been treated.\n\n[[Dilated hypokinetic RV with a high CVP, hypotension and hypoxia after cardiac surgery: start inhaled nitric oxide. Not fluid, and not more PEEP.]]\n\nThe other question needs care. A patient with idiopathic PAH on IV epoprostenol is admitted in RV failure. What you actually do: never interrupt the epoprostenol. Its half-life is a few minutes, and stopping it causes a rebound pulmonary hypertensive crisis. Decongest steadily with a loop diuretic, without aggressive diuresis. Keep the systemic pressure up. And don't try a calcium channel blocker, because vasoreactivity testing is for stable outpatients.\n\nThe question asked for the most appropriate additional therapy, and the key was lifelong anticoagulation. Sixty-four per cent chose it. That rests on older practice. The current guideline doesn't recommend routine anticoagulation in PAH and leaves it to individual judgement. But against digoxin, rapid diuresis and a calcium channel blocker trial, it's the least wrong option, so it's what you mark. If continuing the epoprostenol is among the options, mark that.\n\nNow each pillar in detail, starting with the one that causes the arguments: fluid."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-39",
+     "bridge": "Far more often, the RV in front of you has too much volume, not too little.",
+     "lesson": {
+      "v": 1,
+      "text": "When is fluid right for a failing RV? When the afterload is normal. That's the whole card.\n\nPicture an infarcted RV. The muscle is stunned, but the lungs in front of it are healthy and their resistance is low. An RV like that works as a passive conduit. Blood crosses the lungs driven by the right atrial pressure behind it. So raising that pressure with fluid pushes more blood through to the LV, and the output rises. This is why the hypotensive inferior infarct is filled.\n\nMarrow asked it twice. Inferior STEMI, hypotension, clear lungs, normal LV function: next step? A normal saline bolus. And an inferior MI from a proximal right coronary thrombus: first treatment of the hypotension? IV fluids. The wrong options are nitrates and diuretics, and they're wrong for the same reason that fluid is right. They take away the preload this ventricle lives on.\n\n[[Fluid helps the RV only when its afterload is normal, as in RV infarction. With a high afterload, in PE, pulmonary hypertension or ARDS, the RV is already distended and fluid lowers output.]]\n\nNow the doses, because there are three figures to sort. The card's volume loading is saline or Ringer's lactate, more than two hundred millilitres over fifteen to thirty minutes. That's a single measured challenge, for the patient with decompensated RV failure, a low arterial pressure and a normal CVP. The normal CVP is the licence: it says there's room. The fifty to one hundred millilitre boluses from the last card are the cautious steps for an RV facing a high afterload. And for pulmonary embolism, the European guideline caps the challenge at five hundred millilitres.\n\nThen the caveat, in three parts: fluid can overdistend the ventricles, worsen interdependence, and reduce cardiac output. So give it, reassess, and stop the moment the CVP rises without the pressure or the output following. That's the flat part of the curve.\n\nOne discriminator settles most of these stems. RV infarct: normal PVR, fluid helps, and the real treatment is opening the artery. PE or pulmonary hypertension: high PVR, fluid harms, so offload.\n\nFar more often, though, the RV in front of you has too much volume, not too little."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-40",
+     "bridge": "Volume is now right. The pressure and the pump are next.",
+     "lesson": {
+      "v": 1,
+      "text": "The over-filled RV is the common one: a high CVP, a distended ventricle, the septum pushed left. Take volume off and the RV shrinks, the septum moves back, and the LV fills better. So diuresis here can raise the cardiac output, which feels backwards until you remember the septum.\n\nThe doses are the standard heart failure ones. A patient who isn't on a diuretic at home gets furosemide twenty to forty milligrams IV. A patient on chronic diuretics gets an IV dose at least equal to the daily oral dose, and the European heart failure guideline says one to two times. Two reasons. Oral furosemide is only about half absorbed, and the chronic user's kidney has become resistant.\n\n[[IV furosemide: twenty to forty milligrams if the patient is diuretic-naive; at least the home oral dose, and up to twice, if on chronic therapy.]]\n\nThe trap is the option that gives a lower IV dose than the home oral dose. A patient on eighty milligrams by mouth gets at least eighty IV.\n\nThe rest is brief. IV loop diuretics are for every patient admitted with signs or symptoms of fluid overload, and the IV route matters because a congested gut absorbs poorly. Boluses or a continuous infusion: the DOSE trial found no clear difference. If the response is poor, add a thiazide-type diuretic or spironolactone, which blocks sodium reabsorption further down the nephron, where the tubule has adapted to the loop diuretic. And the two caveats are worsening renal function and hypokalaemia. The potassium matters more than usual here, because the arrhythmia it invites is one this ventricle can't afford.\n\nVolume is now right. The pressure and the pump are next."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-41",
+     "bridge": "All three reach the systemic vessels as well as the pulmonary ones. One route avoids that.",
+     "lesson": {
+      "v": 1,
+      "text": "Three drugs, and each one buys something and costs something.\n\nNoradrenaline first, and first for a reason. You met it in the second shock packet as the vasopressor. For the RV it does three useful things. It raises systemic pressure, which restores the coronary perfusion gradient to an ischaemic RV. It adds some inotropy through its beta-one effect. And by raising LV pressure it pushes the septum back towards the right, which is what the card means by promoting positive ventricular interactions. The dose is zero point two to one microgram per kilogram per minute. The cost: too much vasoconstriction worsens tissue perfusion.\n\nDobutamine is the inotrope, at two to twenty micrograms per kilogram per minute. It increases RV contractility and lowers filling pressures, especially when the left heart is failing too. Its cost comes from its beta-two vasodilation. Used alone it can worsen hypotension, so it goes with a vasopressor. And it can trigger arrhythmias.\n\n[[Noradrenaline restores the RV's coronary perfusion gradient. Dobutamine adds inotropy but can drop the pressure if used alone. Levosimendan adds pulmonary vasodilation to inotropy.]]\n\nLevosimendan is the interesting one. It sensitises troponin C to calcium, so the muscle contracts harder without extra calcium, and it opens potassium channels in vessel walls, so the pulmonary arteries dilate. Inotropy and a lower afterload together. The card's phrase is that it favourably affects RV-arterial uncoupling, meaning the ventricle and the artery it pumps into are better matched. The infusion is zero point one to zero point two micrograms per kilogram per minute. The cost is the same vasodilation on the systemic side: hypotension, and arrhythmias too.\n\nOne number is worth keeping for a trap. The loading bolus, six to twelve micrograms per kilogram over ten minutes, is optional, and it isn't recommended when the systolic pressure is below ninety.\n\nSo the pattern answer: the drug that combines RV inotropy with pulmonary vasodilation is levosimendan. But no guideline makes it the first drug. Pressure comes first, with noradrenaline.\n\nAll three reach the pulmonary vessels through the blood, and so they reach the systemic vessels too. One route avoids that."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-42",
+     "bridge": "And when rhythm, volume, pressors and inhaled vasodilators have all been used, and the RV still fails?",
+     "lesson": {
+      "v": 1,
+      "text": "Deliver a vasodilator by inhalation and it reaches only the alveoli that are ventilated, so it dilates only the vessels beside them. Two benefits follow from that single fact.\n\nFirst, pulmonary resistance falls, so RV afterload falls and the RV ejects better. Second, blood is drawn towards ventilated lung and away from unventilated lung, so ventilation-perfusion matching improves and oxygenation rises. Compare an IV pulmonary vasodilator. It dilates every pulmonary vessel, including those in unventilated lung, which undoes hypoxic vasoconstriction and worsens oxygenation. And it dilates the systemic bed, so the pressure falls.\n\nInhaled nitric oxide is the purest example. It diffuses into the vessel wall, raises cyclic GMP and relaxes the muscle. Then, the moment it reaches the blood, haemoglobin binds and inactivates it. So it never arrives in the systemic circulation, and there's no hypotension.\n\n[[Inhaled nitric oxide lowers PVR only in ventilated lung: it unloads the RV and improves oxygenation without systemic hypotension. Never stop it abruptly; wean it.]]\n\nThe card's table says it reduces PVR only in well-ventilated zones, and improves ventilation-perfusion matching and RV ejection fraction. The dose: start at five parts per million, with a working range of twenty to forty. Most of the benefit is reached by about twenty.\n\nInhaled prostaglandins, such as inhaled epoprostenol or iloprost, work through cyclic AMP. They last longer, so a little spills over into the systemic circulation. The card lists a fall in systemic resistance, with hypotension and hypoxia as adverse effects. Be clear about those: they belong mainly to IV prostacyclin. Inhaled, the drug is nearly as selective as nitric oxide.\n\nThree questions. You've had the first, twice: RV failure after mitral repair, start inhaled nitric oxide. The second: severe RV failure after PE, nitric oxide started, what's the primary goal? To reduce pulmonary vascular resistance. Ninety-five per cent got it. The wrong options were raising the systemic pressure and improving surfactant. Any rise in blood pressure is a consequence, not the aim.\n\nThe third is Marrow's. Nitric oxide is switched off, and the patient becomes hypoxic with a climbing PA pressure. Why? While the gas was supplied from outside, the body's own nitric oxide synthase was suppressed. Take the gas away suddenly and there's nothing behind it. The answer is to restart it and wean slowly, stepping down to about one part per million before stopping. The trap is one hundred per cent oxygen and wait.\n\nIts other harms, for completeness: methaemoglobinaemia, nitrogen dioxide formation, and pulmonary oedema if the LV filling pressure is already high, because you've just increased the flow into a left heart that can't take it.\n\nAnd when rhythm, volume, pressors and inhaled vasodilators have all been used, and the RV still fails?"
+     }
+    },
+    {
+     "card": "CVS06B|RVF-43",
+     "bridge": "Three machines. Which patients earn one? The last card.",
+     "lesson": {
+      "v": 1,
+      "text": "Then a machine does the RV's work while the cause is treated. There are three kinds, and they differ in speed, in duration and in whether they add oxygen.\n\nECMO, or extracorporeal life support, is the fast one. It can be started at the bedside, and it supports the circulation and gas exchange together, because the oxygenator is part of the circuit. Its limit is time. Bleeding, clotting, limb ischaemia and infection accumulate, and the card puts the mark at more than five to ten days.\n\nPercutaneous micro-axial pumps are mounted on a catheter and passed through a vein. The right-sided one draws blood from the venous side and delivers it into the pulmonary artery. Their limit is capacity: about four litres a minute, and no gas exchange. So in severe cardiogenic shock, or when a high flow is needed, ECMO is preferred.\n\nParacorporeal RVADs are the surgical option: a pump outside the body, taking blood from the right atrium or ventricle to the pulmonary artery. They're for the longer run, weeks or months, as a bridge to recovery or to transplant, and an oxygenator can be added to the circuit if the lungs need support too.\n\n[[ECMO is fast, short-term and oxygenates. Micro-axial pumps give limited flow and no gas exchange. Surgical RVADs run for weeks to months.]]\n\nThe only trap worth naming: a micro-axial pump doesn't oxygenate. So a refractory RV with severe hypoxaemia needs veno-arterial ECMO, or an RVAD with an oxygenator.\n\nWhich patients earn one of these? The last card."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-46",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Mechanical support is a bridge, so it's offered when there's another side to reach. The card's five indications are all acute RV failures that can recover: primary graft failure after heart transplantation, RV failure after an LVAD, inferior myocardial infarction, post-cardiotomy cardiogenic shock, and pulmonary embolus. And its three contraindications describe the absence of another side: advanced age, multiple comorbidities, and irreversible organ injury.\n\nTwo of those indications deserve their mechanism. After an LVAD, the left ventricle is suddenly emptied. Venous return to the right heart rises, and the septum is pulled leftwards, away from the RV, which loses its help. An RV that was just coping now fails. After a transplant, the new heart has a normal thin RV that has never met a high pressure. It has just been through hours of ischaemia. And it's now connected to the recipient's lungs, which often carry years of pulmonary hypertension from the old failing heart.\n\nThat sets up the question the cohort found hardest in this packet. Only twenty-three per cent were right. A patient is in shock within hours of a heart transplant. The ischaemic time was four hours, the CVP is eighteen, and inhaled nitric oxide is running. Which cause is least likely?\n\nThink in time. Within hours, three things are common. Primary graft dysfunction, from ischaemia and reperfusion, which by definition appears within the first twenty-four hours. RV failure against the recipient's pulmonary hypertension. And tamponade from mediastinal bleeding. One kind of rejection can strike that early: hyperacute rejection, from preformed antibody, within minutes to hours, and rare now with crossmatching. Acute cellular rejection is different. T lymphocytes have to meet the graft, activate and multiply. That takes days to weeks.\n\n[[Shock in the first hours after heart transplant: primary graft dysfunction, RV failure against the recipient's pulmonary hypertension, or tamponade. Acute cellular rejection takes days to weeks.]]\n\n{{**Shock early after heart transplant**\nPrimary graft dysfunction | hours\nRV failure against recipient PH | hours\nTamponade (bleeding) | hours\nHyperacute rejection | minutes to hours, rare\n**Acute cellular (T-cell) rejection** | **days to weeks**}}\n\nSo the least likely was T-lymphocyte-mediated rejection. Most people threw out acute-on-chronic pulmonary hypertension or tamponade, which are two of the commonest.\n\nThat closes the right heart. Hold it as one idea: a thin ventricle that takes volume and can't take pressure, so you protect its filling, its coronary pressure and, above all, its afterload.\n\nNow turn to the other great artery. The pulmonary artery lives at a mean pressure of about fifteen. The aorta takes the full force of the left ventricle, every beat, for a lifetime. Sometimes its wall gives way from the inside, and blood splits it along its length. The patient arrives with sudden chest pain and can look like an infarct or an embolus. But this is the one chest pain in which the treatments you've just learned, anticoagulation and thrombolysis, can kill. Next: the aorta, and dissection."
+     }
+    }
+   ],
+   "spine": [
+    "Five pillars: keep rate and sinus rhythm; right-size preload; restore aortic pressure; lower PVR (O₂, CO₂, pH, low PEEP, inhaled vasodilator); MCS.",
+    "Fluid only when afterload is normal (RV infarct: saline bolus; no nitrates or diuretics). High afterload + high CVP: diurese. Furosemide IV ≥ home oral dose.",
+    "Noradrenaline 0.2–1.0 µg/kg/min restores the coronary gradient. Dobutamine needs a pressor beside it. Levosimendan: no bolus if SBP <90.",
+    "iNO 5 → 20–40 ppm: lowers PVR in ventilated lung only, improves V/Q, no hypotension. Abrupt stop → rebound PH: restart and wean to 1 ppm.",
+    "RV failure after cardiac surgery (dilated RV, high CVP) → iNO. IPAH on epoprostenol: never interrupt the infusion.",
+    "MCS: ECMO fast, oxygenates, days; micro-axial pump limited flow, no gas exchange; RVAD weeks–months. Shock hours after transplant is not T-cell rejection."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's walk back through the right ventricle.\n\nYou learned that it's a thin chamber built for volume and broken by pressure. Pulmonary hypertension is now defined by a mean pressure above twenty, pre-capillary disease adds a resistance above two Wood units, and the five groups tell you what pushes the pressure up. When the right ventricle fails, it dilates, flattens the septum, and starves the left side. And the treatment is mostly about taking away what's pushing against it, while keeping its pressure and its blood supply up.\n\nNow the traps.\n\nOne. Pulmonary hypertension, and the tempting threshold is a mean of twenty-five. [[Since twenty twenty-two, pulmonary hypertension is a mean pulmonary artery pressure above twenty millimetres of mercury.]] Choose twenty-five only if twenty isn't offered.\n\nTwo. Pulmonary embolism with a strained right ventricle and a raised troponin, and a pressure of ninety-six over fifty-eight. The tempting answer is to lyse. He isn't hypotensive. That's intermediate-high risk: anticoagulate and watch closely. Lysis is for shock or arrest. You missed this one.\n\nThree. The Wells score. Signs of a deep vein thrombosis score three. Pulmonary embolism as the most likely diagnosis scores three. A heart rate above one hundred, and recent surgery, score one and a half each. That's nine. Another miss.\n\nFour. An inferior infarct with low pressure and clear lungs. The tempting drugs are nitrates or diuretics. It's a right ventricular infarct, and it depends on filling. Give fluid.\n\nFive. McConnell's sign. The tempting answer is that it's the most specific sign of pulmonary embolism. A right ventricular infarct can copy it.\n\nAnd six. A dilated right ventricle and a high CVP. The tempting answer is more fluid, or more PEEP. That makes it worse. Lower the resistance it's pumping against, with inhaled nitric oxide.\n\nThe check comes up on the next screen. Answer each in your head before you tap it open.\n\nAnd now leave the heart for its great vessel. The aorta carries the whole output under the highest pressure in the body. What happens when its wall tears?"
+   },
+   "tier": "S",
+   "gen": "RV",
+   "kind": "direct",
+   "drill": [
+    {
+     "q": "Define true RV failure (septic shock, CVP 16, low CO, dilated hypokinetic RV).",
+     "a": "RV dysfunction with limited RV filling: the RV fills only at a high CVP and still underfills the LV. High CVP + normal RV = volume; dysfunction + normal CVP = dysfunction only (DocT GT, 69%)."
+    },
+    {
+     "q": "RV stroke work compared with the LV?",
+     "a": "About one quarter: same stroke volume, far lower ejection pressure."
+    },
+    {
+     "q": "High LA pressure with a LOW LVEDV: which is NOT a cause: PH, high PEEP, severe AHRF, aortic regurgitation?",
+     "a": "Aortic regurgitation (it raises LVEDV). The other three compress the LV through septal shift (Marrow)."
+    },
+    {
+     "q": "Haemodynamic definition of PH and of pre-capillary PH (ESC/ERS 2022)?",
+     "a": "mPAP >20 mmHg at rest on right heart catheter. Pre-capillary: PAWP ≤15 mmHg and PVR >2 WU. The card and older keys say mPAP >25."
+    },
+    {
+     "q": "Woman of 42: Raynaud's, exertional dyspnoea, JVD, oedema, loud P2, no orthopnoea or crackles. Diagnosis?",
+     "a": "Group 1 PAH from connective-tissue disease (systemic sclerosis). Asked four times on DocT GTs (54–91%)."
+    },
+    {
+     "q": "Commonest symptom of pulmonary hypertension?",
+     "a": "Exertional dyspnoea (76%). Syncope is late and high-risk, not the commonest."
+    },
+    {
+     "q": "Which form of PE most often causes chronic PH, and which WHO group is it?",
+     "a": "Multiple small recurrent emboli (51%), not a saddle embolus. Group 4 (CTEPH)."
+    },
+    {
+     "q": "CTEPH: screening test, and the treatment ladder?",
+     "a": "V/Q scan (a normal scan excludes it). Lifelong anticoagulation → pulmonary endarterectomy if operable (only potentially curative) → balloon angioplasty → riociguat. Marrow keyed IV epoprostenol; choose it only if PEA and riociguat are absent."
+    },
+    {
+     "q": "ARVC with woolly hair and palmoplantar keratoderma: name? And with a dilated LV instead?",
+     "a": "Naxos disease (RV-dominant ARVC). Carvajal syndrome (LV-dominant). ARVC gene: plakophilin-2 (desmosome)."
+    },
+    {
+     "q": "Severe ARDS, PEEP 5→10, MAP falls 65→45. More PEEP is least likely to help in which setting?",
+     "a": "RV dysfunction: PEEP raises PVR. RV-protective ventilation = low plateau/driving pressure, correct PaO₂ and PaCO₂, prone."
+    },
+    {
+     "q": "Eisenmenger syndrome: treatment, and the two things you never do?",
+     "a": "Bosentan (BREATHE-5; PDE-5 inhibitor as alternative). Never close the defect; never a calcium channel blocker (↓SVR → more right-to-left shunt)."
+    },
+    {
+     "q": "Dilated RV, CVP 20, hypotension, distended abdomen. Massive PE or chronic RV failure from PH?",
+     "a": "Chronic RV failure from PH: ascites needs time (one in three chose massive PE). An RV free wall >5 mm would confirm chronicity."
+    },
+    {
+     "q": "CT main pulmonary artery diameter that suggests pulmonary hypertension?",
+     "a": ">3 cm before the bifurcation, or PA:aorta ratio >1 (55% right). Confirm with echo, then right heart catheter."
+    },
+    {
+     "q": "Inferior STEMI, hypotension, raised JVP, clear lungs: which ECG finding means RV involvement, and what do you give?",
+     "a": "ST elevation III > II (also V1, and ≥1 mm in V4R). Normal saline bolus; avoid nitrates and diuretics."
+    },
+    {
+     "q": "PAPi: formula and the cut-off in inferior MI?",
+     "a": "(PA systolic − PA diastolic) / RA pressure. <0.9 predicts RV failure and in-hospital death (Marrow: PAPi 0.4 carried the greatest mortality)."
+    },
+    {
+     "q": "Echo cut-offs for RV overload: TAPSE, FAC, TR velocity?",
+     "a": "TAPSE <17 mm, FAC <35%, TR velocity >2.8 m/s; RV ≥ LV; IVC distended with <50% collapse. Thick wall = chronic."
+    },
+    {
+     "q": "McConnell's sign: what is it, and which sign is more specific for PE versus RV infarction?",
+     "a": "RV free-wall hypokinesia with apical sparing (NEET 2025). The 60/60 sign: PA acceleration time <60 ms with TR gradient <60 mmHg (DocT GT)."
+    },
+    {
+     "q": "PE with RV strain, raised troponin, BP 96/58. Thrombolyse?",
+     "a": "No. Intermediate-high risk: anticoagulate and monitor, rescue lysis only if decompensation. Hypotension (SBP <90) decides lysis: alteplase 100 mg over 2 h (GT4 Q26; INI-SS)."
+    },
+    {
+     "q": "Wells score: signs of DVT + PE most likely + HR 110 + surgery 2 weeks ago = ?",
+     "a": "3 + 3 + 1.5 + 1.5 = 9 (GT8 Q10). >4 = PE likely → CTPA without D-dimer."
+    },
+    {
+     "q": "Wells items worth 1.5 points, and those worth 1?",
+     "a": "1.5: HR >100; immobilisation ≥3 days or surgery within 4 weeks; previous DVT/PE. 1: haemoptysis; cancer."
+    },
+    {
+     "q": "D-dimer cut-off for a 70-year-old? Isolated subsegmental PE, no proximal DVT, low recurrence risk?",
+     "a": "700 µg/L (age × 10 above 50 years). Clinical surveillance with repeat leg ultrasound, no anticoagulation (CHEST 2021; 17% right)."
+    },
+    {
+     "q": "3 h after mitral repair: hypotension, hypoxia, dilated hypokinetic RV, preserved LV, high CVP. Next step?",
+     "a": "Start inhaled nitric oxide (67–71%). Not fluids, not more PEEP, not high-dose furosemide."
+    },
+    {
+     "q": "Inhaled NO: primary goal, dose, and what to do for rebound hypoxia after stopping it?",
+     "a": "Reduce PVR (in ventilated lung only). Start 5 ppm, range 20–40 ppm. Restart and wean slowly to about 1 ppm before stopping (Marrow)."
+    },
+    {
+     "q": "IPAH on IV epoprostenol admitted with RV failure: the one rule, and the keyed 'additional therapy'?",
+     "a": "Never interrupt epoprostenol (rebound PH crisis). DocT keyed lifelong anticoagulation (64%); ESC/ERS 2022 individualises it."
+    },
+    {
+     "q": "Shock within hours of heart transplant: least likely cause?",
+     "a": "Acute cellular (T-cell) rejection: days to weeks. Likely: primary graft dysfunction, RV failure against recipient PH, tamponade (only 23% right)."
+    }
+   ],
+   "packet": "The right heart and pulmonary hypertension"
   },
   {
    "q": "P12-901",

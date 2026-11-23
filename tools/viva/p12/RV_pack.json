@@ -1,0 +1,1697 @@
+{
+ "packet": "The right heart and pulmonary hypertension",
+ "gt_misses": {
+  "GT8 Q10 (missed)": "Wells score 9 for PE: clinical signs of DVT 3 + PE the most likely diagnosis 3 + HR >100 1.5 + recent surgery 1.5 (chose 6). Teach the Wells items and points at CAR-24 (add them if the card lacks them)."
+ },
+ "questions": [
+  {
+   "q": "P12-801",
+   "text": "The right ventricle is different",
+   "steps": [
+    {
+     "card": "CVS06A|RVF-01",
+     "q": "**For acute right ventricular**\n**failure, give:**\na The % of acute heart failure\nadmissions it accounts for\nb The in-hospital mortality\nc The five ICU presentations in\nwhich acute RV dysfunction and\nfailure occur",
+     "a": "- **2-9%** of acute heart failure admissions to hospital\n- **In-hospital mortality 5-17%**\n- Presents as: **ARDS • MI • pulmonary embolism •**\n**decompensated chronic lung disease •**\n**following cardiac surgery**\n- Worsening RV function **directly affects ICU**\n**mortality** and carries a poorer prognosis",
+     "section": "Introduction",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT GT: RV FAILURE = RV dysfunction PLUS limited RV filling: the RV cannot fill without a high CVP (venous congestion) and cannot deliver enough stroke volume to the LV. RV dysfunction with a normal CVP is dysfunction, not failure; a high CVP with normal RV function is volume, not failure."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Introduction → Epidemiology, mortality and ICU settings",
+      "intro": "Step 1 sets the size of the problem and what ‘failure’ means. The RV is uncommon as the primary cause of an acute heart failure admission but common as a complication in the ICU, and the one real question asked how true RV failure differs from mere RV dysfunction or a high CVP.",
+      "why": [
+       [
+        "a",
+        "**2–9% of acute heart failure admissions to hospital.** Most acute heart failure is left-sided; isolated acute RV failure is a minority. The figure varies with how strictly RV failure is defined (RVF-02 gives 3–9%, which the card attributes to AHEAD)."
+       ],
+       [
+        "b",
+        "**In-hospital mortality 5–17%.** This is higher than for many acute LV presentations because RV failure is usually driven by something else serious (massive PE, ARDS, RV infarct) and because a failing RV cannot be supported easily: fluid, vasodilators and positive pressure can each make it worse."
+       ],
+       [
+        "c",
+        "**ARDS, MI, pulmonary embolism, decompensated chronic lung disease, after cardiac surgery; worsening RV function directly affects ICU mortality.** Each of these either raises RV afterload suddenly (PE, ARDS, hypoxic and hypercapnic lung disease) or removes RV contractility (RV infarct, bypass stunning). The definition that decides questions: RV failure is RV dysfunction with limited RV filling, so the RV can only fill and deliver an adequate stroke volume to the LV at the cost of a high CVP and venous congestion."
+       ]
+      ],
+      "mimic": [
+       [
+        "RV failure vs RV dysfunction",
+        "Dysfunction is an abnormal RV on imaging with normal filling pressures; failure is dysfunction plus a high CVP and inadequate forward flow."
+       ],
+       [
+        "RV failure vs hypervolaemia",
+        "A high CVP with a normally contracting RV is volume, not failure; it falls with diuresis without improving output problems."
+       ]
+      ],
+      "traps": [
+       [
+        "“True RV failure is an elevated CVP with normal RV function”",
+        "That is volume loading. Failure needs the RV itself to be dysfunctional and unable to fill without a high CVP (69% chose correctly on DocT GT)."
+       ],
+       [
+        "“Increased RV filling without decreased output defines failure”",
+        "If output is maintained, the RV is coping; failure is the point where more filling no longer buys more stroke volume."
+       ]
+      ],
+      "decode": [
+       [
+        "Septic shock, CVP 16, low CO, dilated poorly contracting RV — which best defines true RV failure? [DocT GT]",
+        "RV dysfunction with limited RV filling (69%)."
+       ],
+       [
+        "Proportion of acute heart failure admissions due to acute RV failure / its in-hospital mortality [pattern]",
+        "2–9% (card’s AHEAD figure 3–9%); 5–17%."
+       ]
+      ],
+      "punch": "RV failure is not a high CVP and not a weak RV on echo alone: it is a dysfunctional RV that can fill only at a high venous pressure and still cannot deliver enough to the LV, and it carries an in-hospital mortality up to about one in six.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-04",
+     "q": "**For right ventricular**\n**physiology, give:**\na RV stroke work relative to LV\nb The nature of the pulmonic\ncirculation\nc The nature of RV contraction, and\nthe direction it travels\nd How peak systolic pressure and\nsteady-state volume compare\nwith the LV",
+     "a": "- RV stroke work is **1/4th of the LV**\n- **Highly compliant, LOW-RESISTANCE** pulmonic\ncirculation\n- **PERISTALTIC** nature of RV contraction\n- Ejection follows reduction in **free wall surface area**\nand **shortening of longitudinal fibres**, beginning\nat the **inflow tract** and moving peristaltically\ntowards the **RV outflow tract**\n- **LOWER peak systolic pressure** than LV\n- Exists at a **HIGHER steady-state volume** than the\nLV",
+     "section": "RV physiology",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Physiology → Stroke work, circuit, peristalsis",
+      "intro": "Step 2 continued: how the thin pump works against its low-pressure circuit. Not asked directly.",
+      "why": [
+       [
+        "a",
+        "**RV stroke work is one quarter of the LV.** Both ventricles eject the same stroke volume, but the RV does it against a mean pressure of about 15 mmHg instead of about 90, so it does a fraction of the work with a fraction of the muscle."
+       ],
+       [
+        "b",
+        "**Highly compliant, low-resistance pulmonary circulation.** PVR is about a tenth of SVR, and the pulmonary bed can recruit and distend vessels, so flow can double with little rise in pressure in a healthy lung."
+       ],
+       [
+        "c",
+        "**Peristaltic contraction: free-wall area falls and longitudinal fibres shorten, starting at the inflow tract and moving towards the outflow tract.** Contraction sweeps from the inlet to the infundibulum with a delay of a few tens of milliseconds, squeezing blood forward like a peristaltic wave rather than a radial squeeze."
+       ],
+       [
+        "d",
+        "**Lower peak systolic pressure than the LV; exists at a higher steady-state volume.** RV systolic pressure is about 25 mmHg, and RV end-diastolic volume is normally a little larger than the LV’s, so the RV works on a flatter, high-volume portion of its pressure–volume relationship."
+       ]
+      ],
+      "mimic": [
+       [
+        "RV vs LV contraction",
+        "RV peristaltic, inflow to outflow, longitudinal; LV radial thickening with twisting."
+       ]
+      ],
+      "traps": [
+       [
+        "“The RV does about the same stroke work as the LV because it ejects the same stroke volume”",
+        "Stroke work is stroke volume × the pressure developed; with the same volume but a far lower ejection pressure, RV stroke work is about a quarter of the LV’s (some sources give a quarter to a sixth)."
+       ]
+      ],
+      "decode": [
+       [
+        "RV stroke work relative to LV [pattern]",
+        "About one quarter."
+       ]
+      ],
+      "punch": "The RV moves the same volume as the LV against a sixth of the pressure, with a peristaltic inflow-to-outflow contraction, which is why it is a volume pump and not a pressure pump.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-09",
+     "q": "**For RV preload, give:**\na How the RV is described with\nrespect to preload\nb Why low muscular mass allows\nthis\nc What happens with ongoing\ndistension\nd The five-step cascade from\nexcessive RV dilatation to\nimpaired LV function",
+     "a": "- The RV is **TOLERANT of preload**\n- **Low muscular mass** means the comparatively\n**compliant RV can DILATE (up to a point)** in the\nface of excessive volume\n- With **ongoing distension**, **decompensation**\n**occurs and failure ensues**\n- **Excessive RV dilatation** → **dilatation of the**\n**TRICUSPID VALVE ANNULUS** → **tricuspid**\n**regurgitation (TR)** → ↑ **RA pressure** →\n**IMPAIRED LV FILLING AND FUNCTION**",
+     "section": "Preload tolerance",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Mechanics → Preload tolerance and its limit",
+      "intro": "Step 3 is the central asymmetry: the RV takes volume well and pressure badly. This card is the volume side and its limit. Not asked directly, but it is the reason a fluid bolus can harm a failing RV.",
+      "why": [
+       [
+        "a",
+        "**The RV is tolerant of preload.** A compliant chamber accepts extra volume with little rise in pressure, as in an ASD or tricuspid regurgitation, which can be tolerated for decades."
+       ],
+       [
+        "b",
+        "**Low muscle mass lets the compliant RV dilate (up to a point) in the face of excess volume.** Thin muscle offers little resistance to stretch, so the chamber enlarges rather than its pressure rising."
+       ],
+       [
+        "c",
+        "**With ongoing distension, decompensation occurs and failure ensues.** Past a point, stretch increases wall stress (Laplace) and oxygen demand without more output, and the chamber meets the limit of the pericardium."
+       ],
+       [
+        "d",
+        "**Excess RV dilatation → tricuspid annulus dilates → TR → RA pressure rises → LV filling and function impaired.** The tricuspid annulus has little fibrous support, so it stretches with the RV; regurgitation adds more volume to the RV and raises venous pressure. Meanwhile the dilated RV pushes the septum into the LV (RVF-10), so LV preload and output fall. This is why fluid given to a dilated, failing RV can lower cardiac output."
+       ]
+      ],
+      "mimic": [
+       [
+        "Preload-responsive RV vs over-distended RV",
+        "The first increases output with fluid (e.g. early RV infarct); the second dilates, develops TR and compresses the LV, so output falls."
+       ]
+      ],
+      "traps": [
+       [
+        "“The RV tolerates preload, so keep giving fluid in RV failure”",
+        "Only up to a point; beyond it, TR and septal shift lower LV filling. Volume is given cautiously and stopped when CVP rises without output."
+       ]
+      ],
+      "decode": [
+       [
+        "Why can a fluid bolus worsen hypotension in RV failure? [pattern]",
+        "Annular dilatation and TR, plus septal shift reducing LV filling."
+       ]
+      ],
+      "punch": "The RV takes extra volume by dilating, but only up to a point: once the annulus stretches and the septum bows, more fluid raises venous pressure and lowers LV filling and output.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-10",
+     "q": "**For ventricular**\n**interdependence, give:**\na What pathological increases in\nRV filling pressure are transmitted\nto\nb What constrains the RV, and the\nresulting septal movement\nc The three ways this reduces\ncardiac output\nd How the same shift affects the RV\nitself",
+     "a": "- Pathological increases in **RV filling pressures** are\n**transmitted to the INTERVENTRICULAR**\n**SEPTUM**\n- As the RV is **constrained by the PERICARDIUM**,\nthese forces cause **LEFTWARD SHIFT of the**\n**septum**, altering LV geometry (**D-shaped LV**)\n- Reduces cardiac output by ↓ **LV distensibility**, ↓\n**preload** and ↓ **ventricular elastance** → adversely\naffects **LV DIASTOLIC filling**\n- The leftward shift **also impairs RV CONTRACTILE**\n**function** by distorting the normal geometric\nventricular relationship",
+     "section": "Ventricular interdependence",
+     "bank_questions": 1,
+     "bank_lines": [
+      "Marrow: Septal shift explains a high LA pressure with a LOW LV end-diastolic volume in pulmonary hypertension, high PEEP and severe acute hypoxaemic respiratory failure — the LV is compressed, not overfilled; aortic regurgitation, by contrast, raises LVEDV."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Mechanics → Ventricular interdependence",
+      "intro": "Step 4 is where RV trouble becomes LV trouble. The two ventricles share a septum inside a pericardium that cannot stretch acutely, so a distended RV steals space from the LV. Both linked questions test this: pulsus paradoxus in tamponade, and a high left atrial pressure with a small LV.",
+      "why": [
+       [
+        "a",
+        "**Pathological rises in RV filling pressure are transmitted to the interventricular septum.** The septum is a shared wall; its position is set by the pressure difference across it at each moment of the cycle."
+       ],
+       [
+        "b",
+        "**The RV is constrained by the pericardium, so the septum shifts leftwards and the LV becomes D-shaped.** With a fixed outer envelope, the only way the RV can enlarge is inwards, against the LV. A D-shaped LV in diastole means RV volume overload; persisting into systole means pressure overload."
+       ],
+       [
+        "c",
+        "**Cardiac output falls through lower LV distensibility, lower preload and lower ventricular elastance, impairing LV diastolic filling.** The LV now has less room and a stiffer apparent compliance, so its end-diastolic volume is low even though its diastolic pressure (and the left atrial and wedge pressures) is high. This is the trap: a raised wedge pressure here does not mean the LV is full."
+       ],
+       [
+        "d",
+        "**The same shift impairs RV contraction by distorting normal ventricular geometry.** The septum normally contributes to RV ejection (LV contraction pulls it); once it is flattened or bowed leftward, that contribution is lost."
+       ]
+      ],
+      "mimic": [
+       [
+        "Septal shift vs LV diastolic failure",
+        "Both give a high LA pressure; septal shift gives a small LV (low LVEDV), primary LV disease or aortic regurgitation a normal or large one."
+       ],
+       [
+        "Pulsus paradoxus in tamponade vs constriction",
+        "Tamponade: inspiration fills the RV, the septum bows left, LV output falls; constriction shows discordant RV/LV pressures but pulsus paradoxus is less common."
+       ]
+      ],
+      "traps": [
+       [
+        "“Inspiratory fall in BP in tamponade is from blood pooling in the lungs”",
+        "Pooling contributes little; the key is inspiratory RV filling pushing the septum into the LV inside a fixed pericardium."
+       ],
+       [
+        "“Aortic regurgitation causes a high LA pressure with a low LVEDV”",
+        "AR raises LVEDV. High LAP with a small LV comes from pulmonary hypertension, high PEEP or severe hypoxaemic respiratory failure through septal shift (Marrow ‘NOT a cause’ key)."
+       ]
+      ],
+      "decode": [
+       [
+        "Large effusion, SBP falls 15 mmHg on inspiration — mechanism? [DocT GT]",
+        "Inspiration raises RV filling, the septum shifts left, LV filling falls."
+       ],
+       [
+        "High LAP + low LVEDV ‘diastolic dysfunction’ — which is NOT a cause: PH, high PEEP, severe AHRF, AR? [Marrow]",
+        "Aortic regurgitation."
+       ]
+      ],
+      "punch": "A fixed pericardium turns RV distension into LV compression: the septum shifts left, the LV becomes small but high-pressure, and output falls, which is why the wedge pressure misleads in RV failure and why inspiration drops the pulse in tamponade.",
+      "step": 4
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-12",
+     "q": "**State, with the mechanism:**\na The RV's relationship to preload,\nand why\nb The RV's relationship to afterload,\nand why\nc Which overload each ventricle\ntolerates better\nd What the\nstroke-volume-versus-pressure\ncurves show for each ventricle",
+     "a": " | PRELOAD | AFTERLOAD\n**RV** | **TOLERANT** | **INTOLERANT**\n**Mechanism** | Low muscular mass → **compliant** → dilates to accommodate volume | Low muscular mass → **cannot generate pressure** against a rising load\n**Better tolerated** | **RV: volume overload** | **LV: pressure overload**\n- On the curves, RV stroke volume **falls steeply** as\nmean PA pressure rises from 0-30 mmHg, while LV\nstroke volume **declines only gently** across\n100-140 mmHg",
+     "section": "Preload vs afterload",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Mechanics → Preload tolerant, afterload intolerant",
+      "intro": "Step 3 in one table: the same anatomical fact, low muscle mass, gives opposite responses to the two kinds of load. The one linked question applies this to the definition of RV failure in septic shock.",
+      "why": [
+       [
+        "a",
+        "**RV is preload tolerant: low muscle mass → compliant → dilates to accommodate volume.** Extra volume is absorbed by stretch with little pressure rise, up to the limit described in RVF-09."
+       ],
+       [
+        "b",
+        "**RV is afterload intolerant: low muscle mass → cannot generate pressure against a rising load.** Its contractile reserve is small, so stroke volume falls as soon as impedance rises (RVF-11)."
+       ],
+       [
+        "c",
+        "**RV tolerates volume overload better; LV tolerates pressure overload better.** The LV’s thick wall keeps wall stress down at high pressure (Laplace: stress falls with thickness), so aortic stenosis or hypertension is tolerated for years; the thin RV has no such protection, but its compliance lets it absorb volume."
+       ],
+       [
+        "d",
+        "**On the curves, RV stroke volume falls steeply as mean PA pressure rises from 0 to 30 mmHg, while LV stroke volume declines only gently across 100–140 mmHg.** A modest PA rise, as in ARDS, high PEEP or a moderate PE, can halve RV output; the LV can absorb a 40 mmHg rise in aortic pressure with little loss. This is why lowering RV afterload (oxygen, correcting CO₂ and pH, lower plateau pressure, pulmonary vasodilators) improves output more than pushing preload."
+       ]
+      ],
+      "mimic": [
+       [
+        "RV failure vs a full but functioning RV",
+        "Failure: stroke volume does not rise with filling, CVP climbs; a functioning RV converts extra filling into output."
+       ]
+      ],
+      "traps": [
+       [
+        "“RV failure is increased RV filling without decreased output”",
+        "That is adaptation; failure is when filling rises (high CVP) and output does not (DocT GT, 69%)."
+       ],
+       [
+        "“The RV is afterload tolerant because it already works against a low resistance”",
+        "Working at low resistance is exactly why it has little reserve when resistance rises."
+       ]
+      ],
+      "decode": [
+       [
+        "Septic shock, CVP 16, low CO, dilated hypokinetic RV — true RV failure? [DocT GT]",
+        "RV dysfunction with limited RV filling."
+       ],
+       [
+        "Stroke volume vs afterload curves: which ventricle falls steeply? [pattern]",
+        "The RV, over a mean PA pressure of 0–30 mmHg."
+       ]
+      ],
+      "punch": "Low muscle mass makes the RV stretch easily and push weakly: it absorbs volume but its stroke volume collapses with even a modest rise in PA pressure, so treating RV failure is mostly treating its afterload.",
+      "step": 3
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-15",
+     "q": "**Trace the RV pressure-overload**\n**spiral:**\na The two immediate consequences of\nRV pressure overload\nb What increased wall tension leads to,\nvia two steps\nc What RV dilatation does to\ncontractility, and what feeds back\ninto it\nd The two consequences of reduced\ncontractility\ne The final common endpoint",
+     "a": "- **RV pressure overload → ↑RV WALL TENSION**\nand **RV DILATATION**\n- ↑ **wall tension** → ↑ **OXYGEN DEMAND**;\nmeanwhile ↓ **coronary perfusion** → **arrhythmia,**\n**RV ischaemia, injury, inflammation** → feeds back\ninto ↓ **contractility**\n- ↓ **contractility / RV dysfunction** → ↓ **RV output**\nAND **altered systolic or diastolic ventricular**\n**interdependence**\n- Both → ↓ **LV PRELOAD** → ↓ **cardiac output,**\n**hypotension, SHOCK** → further ↓ coronary\nperfusion (**the vicious cycle**)\n- Separately: **TR / PR → RV VOLUME overload → ↑**\n**RA and CVP → SYSTEMIC CONGESTION**\n- Both limbs converge on **ORGAN DYSFUNCTION**\n**OR FAILURE**",
+     "section": "Pressure-overload spiral",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Pathophysiology → The pressure-overload spiral",
+      "intro": "Step 4 joins the pieces: wall stress, ischaemia, interdependence and shock form a loop that closes through coronary perfusion. Not asked directly, but every management step for acute RV failure aims at a link in this chain.",
+      "why": [
+       [
+        "a",
+        "**RV pressure overload → raised RV wall tension and RV dilatation.** Higher pressure and a larger radius both raise wall stress (Laplace)."
+       ],
+       [
+        "b",
+        "**Raised wall tension → raised oxygen demand; meanwhile coronary perfusion falls → arrhythmia, RV ischaemia, injury, inflammation → lower contractility.** Demand rises as supply falls: high intramural pressure removes systolic coronary flow (RVF-05) and systemic hypotension lowers the driving pressure. Troponin rises in PE for this reason."
+       ],
+       [
+        "c",
+        "**Lower contractility / RV dysfunction → lower RV output and altered systolic and diastolic interdependence.** The RV delivers less to the lungs and its dilatation pushes the septum into the LV (RVF-10)."
+       ],
+       [
+        "d",
+        "**Both → lower LV preload → low cardiac output, hypotension, shock → further fall in coronary perfusion (the vicious circle); separately, TR/PR → RV volume overload → raised RA pressure and CVP → systemic congestion.** Forward failure and backward congestion run together: the gut, liver and kidneys get low flow and high venous pressure at once."
+       ],
+       [
+        "e",
+        "**Both limbs converge on organ dysfunction or failure.** Breaking the loop means raising aortic pressure (noradrenaline) to restore the coronary gradient, lowering RV afterload, avoiding over-filling, and supporting contractility."
+       ]
+      ],
+      "mimic": [
+       [
+        "Forward limb vs backward limb",
+        "Forward: low LV preload, low output, hypotension; backward: TR, high CVP, venous congestion of liver, kidney and gut."
+       ]
+      ],
+      "traps": [
+       [
+        "“In RV failure with hypotension, fluids first and vasopressors later”",
+        "Hypotension removes RV coronary perfusion; restoring aortic pressure early is part of breaking the spiral, and fluid can worsen dilatation."
+       ]
+      ],
+      "decode": [
+       [
+        "Why does systemic hypotension accelerate RV failure in massive PE? [pattern]",
+        "It lowers RV coronary perfusion while wall stress and oxygen demand are high."
+       ]
+      ],
+      "punch": "A pressure-loaded RV dilates, needs more oxygen, gets less, weakens, shrinks the LV and lowers aortic pressure, which starves it further; the loop is broken by restoring coronary perfusion pressure and lowering afterload.",
+      "step": 4
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-802",
+   "text": "Pulmonary hypertension and what pushes the RV",
+   "steps": [
+    {
+     "card": "CVS06A|RVF-20",
+     "q": "**For pulmonary hypertension,**\n**give:**\na The defining mean pressure\nb Group 1, its name and its seven\ncategories\nc Group 2, its name and its five\ncauses",
+     "a": "- **Pulmonary hypertension: MAP >25 mmHg**\nGroup | Content\n**1. Pulmonary arterial hypertension** | **Idiopathic • heritable (BMPR2, ALK-1, endoglin, unknown)** • drug and toxin induced • associated with PAH: **connective tissue diseases**, HIV, portal HTN, congenital heart disease, schistosomiasis, chronic haemolytic anaemia • 1° pulmonary veno-occlusive disease / capillary haemangiomatosis • **1° persistent pulmonary HTN of the newborn (PPHN)**\n**2. PH due to LEFT HEART disease** (post-capillary) | LV systolic dysfunction • LV diastolic dysfunction • valvular disease • congenital / acquired left heart inflow or outflow tract obstruction • congenital cardiomyopathy",
+     "section": "PH groups 1 and 2",
+     "bank_questions": 6,
+     "bank_lines": [
+      "DocT GT + Marrow: Pulmonary hypertension is now mPAP >20 mmHg at right heart catheter (ESC 2022; this card's >25 is the old cut-off); PAWP ≤15 = pre-capillary and excludes left heart disease (Group 2), PVR >2 WU. Exertional dyspnoea, right heart failure and a loud P2 in a young woman with Raynaud's = Group 1 PAH from connective-tissue disease (systemic sclerosis).",
+      "DocT GT: The commonest symptom of pulmonary hypertension is exertional dyspnoea (the RV cannot raise output); then fatigue, exertional angina (RV ischaemia), exertional syncope or near-syncope (fixed output) and late peripheral oedema."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Pulmonary hypertension → Definition, group 1 and group 2",
+      "intro": "Step 6 classifies the commonest chronic cause of RV pressure load. This is the most-asked card in the deck (seven questions): the haemodynamic definition, how a normal wedge pressure separates pre-capillary from post-capillary disease, and the young woman with Raynaud’s and right heart failure.",
+      "why": [
+       [
+        "a",
+        "**Pulmonary hypertension: MAP >25 mmHg (mean PA pressure).** ESC/ERS 2022 now defines PH as mPAP over 20 mmHg at rest on right heart catheterisation; 25 was the pre-2018 cut-off. The definition then splits on wedge pressure and PVR: pre-capillary PH (PAH, groups 1, 3, 4, some 5) = mPAP over 20, PAWP 15 or less, PVR over 2 WU; isolated post-capillary PH = PAWP over 15, PVR 2 WU or less; combined post- and pre-capillary PH = PAWP over 15 and PVR over 2. Exercise PH is an mPAP/cardiac output slope over 3 mmHg/L/min."
+       ],
+       [
+        "b",
+        "**Group 1, pulmonary arterial hypertension: idiopathic; heritable (BMPR2, ALK-1, endoglin, unknown); drug and toxin induced; associated with connective tissue disease, HIV, portal hypertension, congenital heart disease, schistosomiasis, chronic haemolytic anaemia; pulmonary veno-occlusive disease / capillary haemangiomatosis; persistent PH of the newborn.** Group 1 is disease of the small pulmonary arteries themselves (intimal and medial proliferation, plexiform lesions), so the wedge is normal and PVR high. Systemic sclerosis is the classic associated disease: a young woman with Raynaud’s, exertional dyspnoea, a raised JVP, oedema and a loud P2 without orthopnoea or crackles has CTD-associated PAH. The 2022 list splits idiopathic PAH into vasoreactivity non-responders and acute responders, names methamphetamines and dasatinib as definite drug causes, renames PVOD/PCH ‘PAH with features of venous/capillary involvement’, and places chronic haemolytic anaemia in group 5. Exertional dyspnoea is the commonest symptom (the RV cannot raise output); fatigue, exertional angina and exertional syncope follow, with oedema late."
+       ],
+       [
+        "c",
+        "**Group 2, PH due to left heart disease (post-capillary): LV systolic dysfunction, LV diastolic dysfunction, valvular disease, congenital/acquired left heart inflow or outflow obstruction, congenital cardiomyopathy.** A high left atrial pressure is transmitted backwards, so the wedge is over 15 mmHg. It is the commonest cause of PH overall. In 2022 wording: heart failure with preserved, mildly reduced or reduced EF, valvular disease, and congenital or acquired conditions causing post-capillary PH. A raised PCWP or LVEDP therefore excludes PAH."
+       ]
+      ],
+      "mimic": [
+       [
+        "PAH (group 1) vs PH of left heart disease (group 2)",
+        "PAWP 15 or less vs over 15; left heart disease gives orthopnoea, crackles and LA enlargement."
+       ],
+       [
+        "CTD-associated PAH vs ILD-associated PH (group 3)",
+        "Both in systemic sclerosis; ILD gives crackles, restriction and fibrosis on CT; PAH has clear lungs and an isolated low DLCO."
+       ],
+       [
+        "PAH vs CTEPH",
+        "CTEPH needs a thromboembolic history or risk (APS), mismatched perfusion defects on V/Q, and a normal wedge too."
+       ]
+      ],
+      "traps": [
+       [
+        "“Young woman, Raynaud’s, JVD, oedema, loud P2 — left heart failure, ILD or CTEPH”",
+        "Raynaud’s points to systemic sclerosis and group 1 PAH; no orthopnoea or crackles argues against left heart failure and ILD, and nothing suggests VTE (only 54% and 68% on two DocT GTs)."
+       ],
+       [
+        "“The RHC criterion for PAH is mPAP >25 mmHg” (DocT GT key)",
+        "That is the pre-2022 threshold. ESC/ERS 2022: mPAP over 20, PAWP 15 or less, PVR over 2 WU. If over 20 is offered, choose it; if only over 25 appears alongside a PCWP over 25 or LVEDP over 15, choose over 25, because a high wedge or LVEDP means group 2."
+       ],
+       [
+        "“PVR under 3 WU fits PAH”",
+        "PAH needs a raised PVR, now over 2 WU."
+       ],
+       [
+        "“A raised mPAP with a normal wedge means group 1 PAH”",
+        "A normal wedge only makes it pre-capillary (groups 1, 3, 4 or 5); with antiphospholipid syndrome the likely cause is recurrent PE (CTEPH, group 4) (Marrow)."
+       ],
+       [
+        "“Syncope is the commonest symptom of PH”",
+        "Exertional dyspnoea is; syncope is a late, high-risk sign."
+       ]
+      ],
+      "decode": [
+       [
+        "Raynaud’s, exertional dyspnoea, JVD, oedema, loud P2 in a 42-year-old woman — diagnosis? [DocT GT ×4]",
+        "Pulmonary arterial hypertension (54–91%)."
+       ],
+       [
+        "True statement on RHC in PAH: mPAP >25 / PCWP >25 / LVEDP >15 / PVR <3 [DocT GT]",
+        "mPAP >25 (76%); today mPAP >20."
+       ],
+       [
+        "Most common symptom of PH [DocT GT]",
+        "Exertional dyspnoea (76%)."
+       ],
+       [
+        "APS, JVD, oedema, mPAP 28, PCWP 11 — likely cause? [Marrow]",
+        "Recurrent pulmonary embolism."
+       ]
+      ],
+      "punch": "PH is now mPAP over 20 mmHg; a wedge of 15 or less with a PVR over 2 WU makes it pre-capillary, and in a young woman with Raynaud’s and right heart failure that means group 1 PAH from systemic sclerosis, while a high wedge means left heart disease, group 2.",
+      "table": {
+       "title": "ESC/ERS 2022 haemodynamic definitions (right heart catheter, at rest)",
+       "head": [
+        "Category",
+        "mPAP",
+        "PAWP",
+        "PVR"
+       ],
+       "rows": [
+        [
+         "Pulmonary hypertension",
+         "Over 20 mmHg",
+         "—",
+         "—"
+        ],
+        [
+         "Pre-capillary PH",
+         "Over 20",
+         "15 or less",
+         "Over 2 WU"
+        ],
+        [
+         "Isolated post-capillary PH",
+         "Over 20",
+         "Over 15",
+         "2 WU or less"
+        ],
+        [
+         "Combined post- and pre-capillary PH",
+         "Over 20",
+         "Over 15",
+         "Over 2 WU"
+        ]
+       ]
+      },
+      "parts": [
+       {
+        "q": "How is Eisenmenger syndrome treated? [DocT GT]",
+        "a": "With PAH-targeted therapy: bosentan has the trial evidence (BREATHE-5: better exercise capacity and haemodynamics without worse saturation) and ESC/ERS 2022 recommends it for symptomatic patients to improve exercise capacity (class I, level B), with combination therapy if there is no response; PDE-5 inhibitors are the alternative. Calcium-channel blockers lower SVR and increase the right-to-left shunt; beta-blockers and digoxin do not treat PAH (RVF-22)."
+       }
+      ],
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-21",
+     "q": "**Give the name and the**\n**contents of:**\na Group 3 - six categories\nb Group 4 - its four features\nc Group 5 - its five categories",
+     "a": "Group | Content\n**3. Lung disease and/or hypoxia** | **COPD, ILD** • obstructive and restrictive lung diseases • **sleep-disordered breathing •** alveolar hypoventilation disorders • **chronic exposure to high altitude •** developmental lung diseases\n**4. Chronic thromboembolic PH** | **Complication of pulmonary embolism •** large or proximal vessel disorders • high blood pressure, blood clots • **reduced compliance and luminal narrowing**\n**5. Unclear and/or multi-factorial** | **Haematological** (myeloproliferative disorders, splenectomy) • **systemic** (vasculitis, sarcoidosis, pulmonary LCH, NF) • **metabolic** (glycogen storage disease, thyroid disorders) • congenital heart disease • **cancer-related, renal failure on dialysis**\n- **LCH** = Langerhans cell histiocytosis • **NF** =\nneurofibromatosis",
+     "section": "PH groups 3, 4 and 5",
+     "bank_questions": 2,
+     "bank_lines": [
+      "Marrow: CTEPH ladder: lifelong anticoagulation for all → pulmonary endarterectomy if operable (the only potentially curative step) → balloon pulmonary angioplasty if inoperable → riociguat is the first-line drug for inoperable or residual PH; IV epoprostenol only for the critically ill."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Pulmonary hypertension → Groups 3, 4 and 5",
+      "intro": "Step 6 continued. Four questions hit this card, all on group 4: which kind of embolism causes chronic PH, which group a patient with old PE belongs to, and how CTEPH is treated.",
+      "why": [
+       [
+        "a",
+        "**Group 3, lung disease and/or hypoxia: COPD, ILD, obstructive and restrictive lung disease, sleep-disordered breathing, alveolar hypoventilation, chronic high-altitude exposure, developmental lung disease.** Hypoxic vasoconstriction and loss of the vascular bed raise PVR. PH is usually mild. ESC/ERS 2022 defines severe PH in lung disease by PVR over 5 WU (replacing the older pressure-based definition); it carries a worse prognosis and is referred to a PH centre. ESC 2022 groups sleep-disordered breathing with alveolar hypoventilation as ‘hypoventilation syndromes’."
+       ],
+       [
+        "b",
+        "**Group 4, chronic thromboembolic PH: a complication of PE, large or proximal vessel disease, high pressure and clots, reduced compliance and luminal narrowing.** Emboli that fail to resolve organise into fibrotic material lining the pulmonary arteries; the unaffected vessels then remodel under high flow, so PVR rises in both. The classic source is multiple small, recurrent, often silent emboli, not one massive saddle embolus (which kills or lyses). CTEPH follows about 3% of PE survivors. ESC 2022 names group 4 ‘PH associated with pulmonary artery obstructions’: CTEPH plus other obstructions (sarcoma, other tumours, arteritis, congenital stenoses, hydatid). Diagnosis: symptoms after at least 3 months of anticoagulation, mismatched perfusion defects on V/Q (a normal V/Q excludes it), confirmed by CT/pulmonary angiography and RHC. Treatment: lifelong anticoagulation (VKA if APS); pulmonary endarterectomy if operable, the only potentially curative step; balloon pulmonary angioplasty if inoperable or residual; riociguat for inoperable or persistent PH."
+       ],
+       [
+        "c",
+        "**Group 5, unclear and/or multifactorial: haematological (myeloproliferative disorders, splenectomy), systemic (vasculitis, sarcoidosis, PLCH, NF), metabolic (glycogen storage disease, thyroid disorders), congenital heart disease, cancer-related, renal failure on dialysis.** ESC 2022 group 5: haematological (chronic haemolytic anaemias, myeloproliferative disorders), systemic (sarcoidosis, PLCH, NF1), metabolic (glycogen storage, Gaucher), chronic renal failure with or without dialysis, pulmonary tumour thrombotic microangiopathy and fibrosing mediastinitis. Splenectomy is now a CTEPH risk factor, and vasculitis and thyroid disorders have left group 5. Congenital heart disease (‘complex CHD’ in group 5 in 2018) is no longer in group 5: ESC 2022 places it in group 1 (PAH associated with CHD, including Eisenmenger) and group 2 (congenital or acquired post-capillary conditions)."
+       ]
+      ],
+      "mimic": [
+       [
+        "CTEPH (group 4) vs PAH (group 1)",
+        "Both pre-capillary; CTEPH has a VTE history and mismatched V/Q defects and is treated by surgery first."
+       ],
+       [
+        "Group 3 PH vs PAH with incidental lung disease",
+        "Group 3: usually mild PH matching the lung disease; severe PH (PVR over 5 WU) or PH out of keeping with the lung disease needs a PH centre."
+       ]
+      ],
+      "traps": [
+       [
+        "“Massive (saddle) PE is the commonest embolic cause of chronic PH”",
+        "It is multiple small recurrent emboli; air and fat emboli are acute events without chronic PH (51% on DocT QBank)."
+       ],
+       [
+        "“Clot ‘a long time ago’, large PA thrombus, severe PH — group 1”",
+        "Chronic thromboembolism is group 4 (56%)."
+       ],
+       [
+        "“CTEPH, hypoxaemic, mPAP 40, anticoagulated — IV epoprostenol” (Marrow key)",
+        "Disputed: the ESC 2022 ladder is anticoagulation → endarterectomy if operable → balloon angioplasty if not → riociguat as the first drug; epoprostenol is only for a critically ill patient. Choose endarterectomy if it is offered and the disease is operable; choose riociguat if it is inoperable."
+       ]
+      ],
+      "decode": [
+       [
+        "Which form of PE is the commonest cause of secondary PH? [DocT QBank]",
+        "Multiple small recurrent emboli (51%)."
+       ],
+       [
+        "Old PE treated for a few months, dilated right heart, severe TR, PA thrombus, severe PH — WHO group? [DocT GT]",
+        "Group 4 (56%)."
+       ],
+       [
+        "CTEPH, hypoxaemic, mPAP 40, anticoagulated — next best step? [Marrow ×2]",
+        "Keyed IV epoprostenol; guideline answer PEA if operable, otherwise BPA/riociguat."
+       ]
+      ],
+      "punch": "Group 3 is lung and hypoxia, group 4 is obstructed pulmonary arteries, mostly CTEPH from small recurrent emboli and treated by endarterectomy first, and group 5 is the miscellaneous rest; a normal V/Q scan excludes CTEPH.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-17",
+     "q": "**Sort the CHRONIC causes of**\n**RV failure by mechanism:**\na The two acting by decreased\ncontractility alone\nb The one spanning contractility\nand volume overload\nc The two spanning volume and\npressure overload\nd The three acting by volume\noverload alone\ne The six acting by pressure\noverload alone",
+     "a": "Chronic cause | Mechanism\n**RV cardiomyopathy • ARVC** | ↓Contractility\n**Ebstein anomaly** | ↓**Contractility + Volume overload**\n**LH disease • Single ventricle** | **Volume + Pressure overload**\n**PR • TGA • TR** | Volume overload\n**Pericardial disease • PAH** | Pressure overload\n**Chronic thromboembolic PH • PS** | Pressure overload\n**Left-sided valvular heart disease** | Pressure overload\n**Restrictive cardiomyopathy** | Pressure overload",
+     "section": "Chronic causes",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: ARVC = desmosomal gene mutation (commonly plakophilin-2) with fibrofatty replacement of the RV; Naxos disease = ARVC + woolly hair + palmoplantar keratoderma; Carvajal syndrome = the same skin/hair with a dilated LV."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Causes → Chronic, by mechanism",
+      "intro": "Step 5, the chronic list. The two linked Marrow questions take two rows further: ARVC and its syndromes, and a patient with chronic RV strain who needs anticoagulation.",
+      "why": [
+       [
+        "a",
+        "**RV cardiomyopathy and ARVC act by reduced contractility.** ARVC is a desmosomal disease (plakophilin-2 is the commonest gene) with fibrofatty replacement of the RV free wall, presenting in young people with ventricular arrhythmia of LBBB morphology, syncope or sudden death. Naxos disease is ARVC with woolly hair and palmoplantar keratoderma (recessive, plakoglobin); Carvajal syndrome has the same skin and hair with a dilated, LV-dominant cardiomyopathy (desmoplakin)."
+       ],
+       [
+        "b",
+        "**Ebstein anomaly spans reduced contractility and volume overload.** The tricuspid leaflets are displaced apically, so part of the RV is ‘atrialised’ (less functional muscle) and the valve regurgitates (volume)."
+       ],
+       [
+        "c",
+        "**Left heart disease and single ventricle span volume and pressure overload.** Left heart disease raises pulmonary venous pressure (post-capillary PH, pressure load) and is often accompanied by functional TR (volume); it is the commonest cause of chronic RV failure."
+       ],
+       [
+        "d",
+        "**PR, TGA and TR act by volume overload.** Regurgitant valves return blood to the RV each beat. In d-TGA after an atrial switch, and in congenitally corrected TGA, the RV is the systemic ventricle and its load is mainly pressure."
+       ],
+       [
+        "e",
+        "**Pericardial disease, PAH, CTEPH, pulmonary stenosis, left-sided valve disease and restrictive cardiomyopathy act by pressure overload.** PAH and CTEPH raise PVR; PS obstructs outflow; left valve disease and restrictive cardiomyopathy raise left atrial pressure, which the RV must pump against. CTEPH is suspected when dyspnoea persists over 3 months after PE; the V/Q scan is the screening test."
+       ]
+      ],
+      "mimic": [
+       [
+        "Naxos vs Carvajal",
+        "Both woolly hair and palmoplantar keratoderma; Naxos is RV-dominant ARVC, Carvajal LV-dominant dilated cardiomyopathy."
+       ],
+       [
+        "ARVC vs RVOT tachycardia",
+        "Both LBBB-morphology VT; ARVC has a structurally abnormal RV, epsilon waves and T inversion V1–V3; RVOT VT has a normal heart and a benign course."
+       ]
+      ],
+      "traps": [
+       [
+        "“The ARVC syndrome with woolly hair and keratoderma is Carvajal”",
+        "Carvajal (desmoplakin) gives the same hair and skin signs with a dilated, LV-dominant cardiomyopathy; the RV-dominant ARVC syndrome is Naxos (plakoglobin), Marrow’s key."
+       ],
+       [
+        "“Syncope, RV hypertrophy, TR murmur, raised troponin and CKD — wait for imaging”",
+        "Marrow keys a heparin infusion: treat suspected thromboembolism while the work-up (V/Q rather than contrast CT in CKD) proceeds."
+       ]
+      ],
+      "decode": [
+       [
+        "ARVC with sustained VT in a teenager: associated syndrome? [Marrow]",
+        "Naxos syndrome."
+       ],
+       [
+        "Syncope, RVH, TR murmur, raised troponin, CKD: next step? [Marrow]",
+        "Heparin infusion."
+       ]
+      ],
+      "punch": "Chronic RV failure is mostly pressure: left heart disease first, then PAH, CTEPH, stenoses and restrictive disease; the contractility causes are ARVC and RV cardiomyopathy, and the volume causes are regurgitant valves and shunts.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-18",
+     "q": "**For ARDS and RV**\n**dysfunction, give:**\na The incidence of RV dysfunction\nin ARDS\nb How survival compares\nc The five predisposing factors\nd The three components of\nRV-protective ventilation",
+     "a": "- RV dysfunction occurs in **22-55%** of ARDS\n- **Survival is much HIGHER in ARDS WITHOUT RV**\n**dysfunction**\n- **Predisposing:** hypoxia • hypercarbia • respiratory\nacidosis • **high PEEP • PPV → ↑PVR**\n- **RV-protective ventilation:**\n- → **Minimise plateau and driving pressures**\n- → **Lower PVR by improving PaO2 and PaCO2**\n- → **PRONE POSITIONING to unload the RV**",
+     "section": "ARDS and RV dysfunction",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → ICU settings → ARDS and RV-protective ventilation",
+      "intro": "Step 5 in the commonest ICU setting. ARDS raises PVR, and the ventilator can add to it; the one linked question shows PEEP dropping the blood pressure because the RV could not cope.",
+      "why": [
+       [
+        "a",
+        "**RV dysfunction occurs in 22–55% of ARDS.** The lower figure is acute cor pulmonale (dilated RV with septal dyskinesia) on TOE under protective ventilation (Mekontso Dessap 2016: 22%); wider definitions of RV dysfunction give higher figures."
+       ],
+       [
+        "b",
+        "**Survival is much higher in ARDS without RV dysfunction.** In the largest TOE cohort the excess mortality was concentrated in severe acute cor pulmonale (57% vs 42%); milder RV dysfunction carried less clear risk. RV dysfunction is a marker of a bad trajectory and a target, not only a bystander."
+       ],
+       [
+        "c",
+        "**Predisposing: hypoxia, hypercarbia, respiratory acidosis, high PEEP, positive-pressure ventilation raising PVR.** Hypoxia and acidosis constrict pulmonary vessels; high PEEP and plateau pressure over-distend alveoli and compress the capillaries around them. The validated risk score uses pneumonia as the cause, driving pressure ≥18 cmH₂O, P/F under 150 and PaCO₂ ≥48 mmHg."
+       ],
+       [
+        "d",
+        "**RV-protective ventilation: minimise plateau and driving pressures; lower PVR by improving PaO₂ and PaCO₂; prone positioning to unload the RV.** Prone positioning recruits dorsal lung at lower pressures, improves oxygenation and CO₂ clearance and reduces RV size; in severe ARDS with acute cor pulmonale it is used for the RV as much as for oxygenation. PEEP is titrated to recruit without over-distending: on echo, a rising RV/LV ratio or falling output after a PEEP increase means too much."
+       ]
+      ],
+      "mimic": [
+       [
+        "PEEP-induced hypotension from RV afterload vs from low preload",
+        "Afterload: RV dilates, septum flattens, CVP rises; preload: small, underfilled ventricles, falls with fluid."
+       ]
+      ],
+      "traps": [
+       [
+        "“Raising PEEP is least likely to help in severe ARDS or obesity”",
+        "Those are the patients who usually recruit, and in LV dysfunction PEEP lowers LV afterload and preload and may help; with RV dysfunction the extra PEEP raises PVR and drops output (DocT GT keys RV dysfunction)."
+       ],
+       [
+        "“Prone positioning is only an oxygenation manoeuvre”",
+        "It also unloads the RV by lowering PVR and plateau pressure."
+       ]
+      ],
+      "decode": [
+       [
+        "Severe ARDS, P/F 85, PEEP 5→10, MAP falls 65→45 — setting where more PEEP is least likely to help? [DocT GT]",
+        "Right ventricular dysfunction."
+       ],
+       [
+        "Components of RV-protective ventilation [pattern]",
+        "Limit plateau and driving pressure, correct PaO₂ and PaCO₂, prone positioning."
+       ]
+      ],
+      "punch": "ARDS loads the RV through hypoxia, hypercapnia, acidosis and high airway pressures; RV-protective ventilation limits plateau and driving pressure, corrects the gases and uses prone positioning, and a fall in pressure after more PEEP signals an RV that cannot take it.",
+      "step": 5
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06A|RVF-22",
+     "q": "**For congenital heart disease**\n**as a cause of RV failure, give:**\na The two volume-overload\ncategories\nb The five-step sequence from\nleft-to-right shunt to Eisenmenger\nsyndrome\nc The two pressure-overload\ncauses",
+     "a": "VOLUME overload | PRESSURE overload\n**Septal defects: ASD, VSD** | **Pulmonary stenosis**\n**Left → right shunts** | **Post-TOF correction**\n- **RA and RV → ↑ pulmonary vascular resistance**\n→ **pulmonary vascular REMODELLING → PVR >**\n**SVR → becomes a RIGHT-TO-LEFT shunt →**\n**EISENMENGER SYNDROME**",
+     "section": "Congenital heart disease",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT GT: Eisenmenger syndrome is treated with PAH-targeted therapy — first-line evidence for bosentan (BREATHE-5: better exercise capacity and haemodynamics without worsening saturation), PDE-5 inhibitors as the alternative. Calcium-channel blockers lower SVR and increase the right-to-left shunt."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "RV failure → Causes → Congenital heart disease and Eisenmenger",
+      "intro": "Step 5’s congenital causes, with the sequence that ends in Eisenmenger syndrome. The linked question asks how Eisenmenger is treated.",
+      "why": [
+       [
+        "a",
+        "**Volume overload: septal defects (ASD, VSD) and left-to-right shunts.** An ASD loads the RV with volume directly; a VSD or PDA mainly loads the pulmonary circulation and LV, and then the RV with pressure as PVR rises."
+       ],
+       [
+        "b",
+        "**RA and RV → raised PVR → pulmonary vascular remodelling → PVR exceeds SVR → the shunt becomes right-to-left → Eisenmenger syndrome.** High flow and pressure damage the pulmonary arterioles (intimal proliferation, plexiform lesions), so PVR climbs until it exceeds SVR; the shunt reverses and the patient becomes cyanosed with secondary erythrocytosis. At that point closing the defect is contraindicated, because the shunt is now the RV’s pressure vent."
+       ],
+       [
+        "c",
+        "**Two pressure-overload causes: pulmonary stenosis and post-TOF correction.** Pulmonary stenosis loads the RV directly; the repaired outflow tract in TOF can leave residual RVOT or branch PA obstruction. The commonest late lesion after tetralogy repair, though, is pulmonary regurgitation, which is volume overload."
+       ]
+      ],
+      "mimic": [
+       [
+        "Eisenmenger vs PH from a small defect",
+        "Eisenmenger follows a large unrestricted shunt; PH with a small defect is coincidental PAH, managed like group 1."
+       ]
+      ],
+      "traps": [
+       [
+        "“Eisenmenger syndrome: start a calcium-channel blocker, beta-blocker or digoxin”",
+        "CCBs lower SVR and increase the right-to-left shunt; beta-blockers and digoxin do not treat PAH. Bosentan has the evidence (BREATHE-5) and the ESC 2022 class I recommendation for symptomatic patients (75% right on DocT GT)."
+       ],
+       [
+        "“Close the defect once Eisenmenger develops”",
+        "Closure removes the RV’s outlet and is contraindicated once PVR exceeds SVR."
+       ]
+      ],
+      "decode": [
+       [
+        "PAH from CHD, now Eisenmenger syndrome — most appropriate treatment? [DocT GT]",
+        "Bosentan (75%)."
+       ]
+      ],
+      "punch": "A large left-to-right shunt remodels the pulmonary vessels until PVR exceeds SVR and the shunt reverses; Eisenmenger is then treated with bosentan, never with calcium-channel blockers or closure.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-803",
+   "text": "Recognising the failing RV, and the PE that causes it",
+   "steps": [
+    {
+     "card": "CVS06B|RVF-23",
+     "q": "**Give the clinical signs of RV failure under:**\na The single respiratory sign\nb Signs of systemic congestion - seven\nc Signs of RV dysfunction - five\nd Signs of a low cardiac output state - five",
+     "a": "**Group** | **Signs**\n**Respiratory** | **Hypoxaemia**\n**Systemic congestion** | **Jugular venous distension** • **hepatojugular reflux** • peripheral oedema • pericardial effusion • congestive hepato/splenomegaly • ascites • **anasarca** (particularly in acute decompensation of CHRONIC RV failure)\n**RV dysfunction** | **Third heart sound** • **systolic murmur of tricuspid regurgitation** • **hepatic pulse** • signs of concomitant LV dysfunction • **paradoxical pulse**\n**Low cardiac output state** | Hypotension • tachycardia • **cool extremities** • **CNS abnormalities** • oliguria",
+     "section": "Clinical signs",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Clinical signs",
+      "intro": "Step 2 begins at the bedside: RV failure shows itself first in the systemic veins, not in the lungs. The one real question puts a dilated RV with a distended abdomen in front of you and asks you to decide between chronic RV failure and massive PE.",
+      "why": [
+       [
+        "a",
+        "**Hypoxaemia.** It comes from ventilation–perfusion mismatch (PE, lung disease), low mixed venous saturation from a low output, and right-to-left shunting through a patent foramen ovale when RA pressure exceeds LA pressure. There is no pulmonary oedema unless the left heart is also failing."
+       ],
+       [
+        "b",
+        "**Jugular venous distension, hepatojugular reflux, peripheral oedema, pericardial effusion, congestive hepato/splenomegaly, ascites, anasarca (particularly in acute decompensation of chronic RV failure).** A high RA pressure is transmitted back into every systemic vein: neck, liver, gut, legs and pericardium. Oedema, ascites and anasarca need days to weeks of salt and water retention to build up, so their presence tells you the process is chronic or acute-on-chronic, not a fresh PE."
+       ],
+       [
+        "c",
+        "**Third heart sound, systolic murmur of tricuspid regurgitation, hepatic pulse, signs of concomitant LV dysfunction, paradoxical pulse.** The right-sided S3 (louder on inspiration) is rapid filling of a stiff, dilated RV. A dilated annulus causes functional TR; the regurgitant systolic wave reaches the liver as a pulsatile liver (hepatic pulse). Pulsus paradoxus appears because a distended RV in a closed pericardium steals space from the LV on inspiration (interdependence)."
+       ],
+       [
+        "d",
+        "**Hypotension, tachycardia, cool extremities, CNS abnormalities, oliguria.** A failing RV delivers less blood to the LV, and the shifted septum lowers LV filling further, so the picture is that of cardiogenic shock with a high CVP and clear lungs."
+       ]
+      ],
+      "mimic": [
+       [
+        "Chronic RV failure from PH vs massive PE",
+        "Both: dilated RV, high CVP, hypotension. Ascites, anasarca, hepatomegaly and RV wall >5 mm mean months of disease (PH); a sudden onset with McConnell’s or the 60/60 sign and a thin-walled RV means PE (RVF-29, RVF-30)."
+       ],
+       [
+        "RV failure vs tamponade",
+        "Both: raised JVP, hypotension, pulsus paradoxus. In RV failure the right chambers are large; in tamponade they are small and collapse in diastole."
+       ]
+      ],
+      "traps": [
+       [
+        "“Acute dyspnoea + hypotension + dilated RV = massive PE” (one in three chose it; 67% right)",
+        "The distended abdomen (ascites) and CVP 20 point to a chronically congested patient, so the key is RV failure from pulmonary hypertension. The key is defensible but the stem is ambiguous; the abdominal sign is what decides it."
+       ],
+       [
+        "“A hepatic pulse is a congestion sign”",
+        "On this card it sits under RV dysfunction: it is the TR wave transmitted to the liver."
+       ]
+      ],
+      "decode": [
+       [
+        "Dilated RV, CVP 20, hypotension, swollen abdomen — diagnosis? [DocT QBank]",
+        "RV failure due to pulmonary hypertension (chronic congestion), not massive PE or tamponade."
+       ],
+       [
+        "[pattern] Which sign of RV failure suggests acute-on-chronic rather than acute disease?",
+        "Anasarca (and ascites)."
+       ]
+      ],
+      "punch": "RV failure congests the systemic veins and leaves the lungs clear; ascites and anasarca take time to form, so they mark chronic or acute-on-chronic disease, not a fresh PE.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-25",
+     "q": "**For RV failure, give:**\na The two CXR findings\nb The sequence linking prognosis, therapy and BNP",
+     "a": "a **CXR:** **enlarged main PA** and **regional oligaemia** → pulmonary oedema; **clear lung fields**\nb **Prognosis** → **tailoring of therapy** → **BNP** → **assess the appropriate grade of treatment**",
+     "section": "CXR and prognostication",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT GT: On CT a main pulmonary artery diameter >3 cm (≥29 mm, measured before the bifurcation) or a PA:aorta ratio >1 suggests pulmonary hypertension; the PA:A ratio >1 also predicts COPD exacerbations and mortality. Confirm with echo (TR velocity >2.8 m/s) and right-heart catheter."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → CXR and prognosis",
+      "intro": "Step 2 continues with the chest film and with BNP as a guide to how hard to treat. The one real question asks for the pulmonary artery diameter that suggests pulmonary hypertension, and only 55% got it.",
+      "why": [
+       [
+        "a",
+        "**CXR: enlarged main PA and regional oligaemia → pulmonary oedema; clear lung fields.** Raised pulmonary pressure enlarges the main and central pulmonary arteries, while pruned peripheral vessels or a regional oligaemia (Westermark sign in PE) show reduced flow beyond. Pulmonary oedema appears only when the left heart is the cause (group 2 PH); in isolated RV failure the lung fields are clear. On CT, a main PA diameter of about 29–30 mm or more (measured before the bifurcation), or a PA wider than the ascending aorta, suggests pulmonary hypertension; ESC/ERS 2022 quotes a PA:aorta ratio >0.9 and lists PA ≥30 mm (with RVOT wall ≥6 mm and septal deviation) as highly predictive, while a ratio >1 is the figure most often quoted. On echo the threshold is a PA diameter >25 mm."
+       ],
+       [
+        "b",
+        "**Prognosis → tailoring of therapy → BNP → assess the appropriate grade of treatment.** BNP or NT-proBNP rises with RV stretch and falls when the RV is offloaded, so it carries prognosis and tells you whether treatment is enough. In PAH, ESC/ERS 2022 uses it in risk stratification: BNP <50 ng/L or NT-proBNP <300 ng/L is low risk, BNP >800 or NT-proBNP >1100 ng/L is high risk (the older 2015 cut-offs were 300 and 1400); therapy is escalated until the patient reaches low risk."
+       ]
+      ],
+      "mimic": [
+       [
+        "Big PA with clear lungs vs big PA with oedema",
+        "Clear lungs: pre-capillary PH or isolated RV failure. Oedema and upper-lobe diversion: left heart disease is driving the PH."
+       ]
+      ],
+      "traps": [
+       [
+        "“A PA above 2 cm (or 4–5 cm) is abnormal” (45% chose a wrong figure)",
+        "The CT threshold is about 3 cm (≥29 mm); 2 cm is normal and 4–5 cm is aneurysmal territory."
+       ]
+      ],
+      "decode": [
+       [
+        "Central PA calibre proximal to the bifurcation above ___ cm suggests raised pulmonary pressure. [DocT GT]",
+        "3 cm."
+       ],
+       [
+        "[pattern] What does BNP add in RV failure?",
+        "Prognosis and a target for escalating therapy."
+       ]
+      ],
+      "punch": "RV failure on the film is a big pulmonary artery with clear lungs; a main PA of about 3 cm on CT, or bigger than the aorta, suggests pulmonary hypertension, and BNP tells you whether treatment is enough.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-26",
+     "q": "**Give the ECG findings in RV failure under:**\na The three general findings\nb The changes of RV myocardial infarction\nc The changes of RV strain",
+     "a": "**Pattern** | **ECG findings**\n**General** | **Right axis deviation** • **RBBB** • **P pulmonale**\n**RV MI** | **ST ELEVATION in V3R, V4R**; **Q wave in V1-V3**\n**RV STRAIN** | **T wave INVERSION in V1-V4**; **S1Q3T3**",
+     "section": "ECG findings",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: In inferior STEMI, ST elevation in III > II and ST elevation in V1 point to RV involvement (proximal RCA), alongside ST elevation ≥1 mm in V3R/V4R."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → ECG",
+      "intro": "Step 3 starts with the ECG, which must tell two different RV problems apart: infarction of the RV muscle and strain from a sudden pressure load. The one real question is an inferior STEMI with shock and clear lungs.",
+      "why": [
+       [
+        "a",
+        "**General: right axis deviation, RBBB, P pulmonale.** A larger RV shifts the mean QRS vector to the right; a stretched RV and its conduction tissue give a right bundle branch block; a dilated, high-pressure RA gives tall P waves (≥2.5 mm in II)."
+       ],
+       [
+        "b",
+        "**RV MI: ST elevation in V3R, V4R; Q wave in V1–V3.** RV infarction comes from proximal RCA occlusion, so it rides on an inferior STEMI. ST elevation ≥1 mm in V4R is the key sign and is transient (it has gone within about 12 hours in roughly half of patients), so record right-sided leads early. ST elevation in III greater than in II, and ST elevation in V1, also point to RV involvement, because lead III and V1 face the right side. Q waves in V1–V3 are non-specific; they can also come from an anterior infarct."
+       ],
+       [
+        "c",
+        "**RV strain: T inversion in V1–V4; S1Q3T3.** Acute pressure load (PE) causes subendocardial RV ischaemia seen in the right precordial leads (T inversion V1–V4 is the commonest abnormality apart from sinus tachycardia). S1Q3T3 is specific but insensitive and is not needed for the diagnosis."
+       ]
+      ],
+      "mimic": [
+       [
+        "RV infarction vs RV strain",
+        "Infarction: ST elevation in V4R with an inferior STEMI, III > II. Strain: T inversion V1–V4, S1Q3T3, sinus tachycardia, often new RBBB."
+       ]
+      ],
+      "traps": [
+       [
+        "“ST elevation in II greater than III means RV involvement”",
+        "It is the opposite: III > II points to the RCA and the RV; II > III points to the circumflex."
+       ],
+       [
+        "“S1Q3T3 is the RV infarct pattern”",
+        "It is the strain (PE) pattern."
+       ]
+      ],
+      "decode": [
+       [
+        "Inferior STEMI, hypotension, raised JVP, clear lungs — which ECG finding points to RV involvement? [Marrow]",
+        "ST elevation in III > II (also ST elevation in V1 and ≥1 mm in V3R/V4R)."
+       ],
+       [
+        "[pattern] Which ECG pattern is RV strain in acute PE?",
+        "T inversion V1–V4, S1Q3T3, RBBB, sinus tachycardia."
+       ]
+      ],
+      "punch": "Right-sided ST elevation (V4R, III > II, V1) on an inferior STEMI means RV infarction; anterior T inversion with S1Q3T3 means RV strain.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-28",
+     "q": "**For the pulmonary artery catheter in RV failure, give:**\na Its two roles\nb What it measures accurately, and what that allows\nc The four haemodynamic findings suggesting ACUTE RV dysfunction",
+     "a": "a **Diagnosis of RV failure** and **guiding appropriate management**\nb Allows accurate measurement of **CO**, which allows calculation of **PVR as a surrogate marker for afterload**\nc **Acute RV dysfunction is suggested by:**\n→ **CVP > PCWP**\n→ **Low cardiac index (CI)**\n→ **Low stroke volume index (SVI)**\n→ **Mixed venous oxygen saturation <55%**",
+     "section": "PAC criteria",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: Pulmonary artery pulsatility index PAPi = (PASP − PADP) / RAP; <0.9 in acute inferior MI predicts RV failure and in-hospital death (<1.85 is the post-LVAD cut-off).",
+      "Marrow: Right heart catheterisation is the gold standard to confirm pulmonary hypertension (mPAP, PAWP, PVR) before the aetiological work-up; echo only estimates probability."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Pulmonary artery catheter",
+      "intro": "Step 3 ends with the catheter, which turns the bedside impression into numbers. Two real questions ask the index that predicts death in RV infarction and the test that confirms pulmonary hypertension.",
+      "why": [
+       [
+        "a",
+        "**Diagnosis of RV failure and guiding management.** Right heart catheterisation is the gold standard to confirm pulmonary hypertension: ESC/ERS 2022 defines PH as mPAP >20 mmHg, and pre-capillary PH adds PAWP ≤15 mmHg and PVR >2 WU. Echo only estimates the probability (RVF-29), so RHC comes before the aetiological work-up."
+       ],
+       [
+        "b",
+        "**Accurate measurement of CO, which allows calculation of PVR as a surrogate marker for afterload.** PVR = (mPAP − PAWP) / CO, in Wood units. It tells you whether the RV faces a high afterload (PH, PE) or a normal one (RV infarction), which decides whether to give fluid or to offload."
+       ],
+       [
+        "c",
+        "**Acute RV dysfunction: CVP > PCWP, low cardiac index, low stroke volume index, SvO₂ <55%.** Normally left filling pressure exceeds right; when CVP rises above PCWP the right side is failing first (before LVAD implantation, a CVP/PCWP ratio >0.63 predicts RV failure afterwards). The PA pulsatility index, PAPi = (PA systolic − PA diastolic) / RA pressure, combines how much pulse pressure the RV generates with how much it is congested: PAPi <0.9 in acute inferior MI predicts RV failure and in-hospital death; <1.85 predicts RV failure after LVAD implantation."
+       ]
+      ],
+      "mimic": [
+       [
+        "Isolated RV failure vs biventricular failure",
+        "Isolated: CVP > PCWP, clear lungs. Biventricular: both high, PCWP usually higher."
+       ]
+      ],
+      "traps": [
+       [
+        "“The lowest cardiac index best predicts death in RV infarct shock”",
+        "PAPi (here 0.4) is the index that predicts mortality; it captures RV pulse generation against congestion."
+       ],
+       [
+        "“Echo confirms PH”",
+        "Echo gives a probability; RHC confirms (mPAP >20 mmHg)."
+       ]
+      ],
+      "decode": [
+       [
+        "RV infarct, persistent shock, RHC — which value carries the greatest mortality? [Marrow]",
+        "PAPi 0.4 (<0.9 is high risk)."
+       ],
+       [
+        "Young woman with PH features on echo and CXR — next step? [Marrow]",
+        "Right heart catheterisation."
+       ]
+      ],
+      "punch": "The catheter confirms PH (mPAP >20, PAWP ≤15, PVR >2 WU) and shows RV failure as CVP above PCWP; a PAPi below 0.9 in RV infarction predicts death.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-29",
+     "q": "**Give the seven echocardiographic signs of RV overload, with cut-offs.**",
+     "a": "- **RV wall thickness increased** - a CHRONIC overload state\n- **Distended IVC with <50% IVC collapse**\n- **TR V >2.8 m/sec** max\n- **TAPSE <17 mm**\n- **RV cavity size ≥ size of LV**\n- **FAC <35%**\n- **Longitudinal strain of RV free wall <20%**",
+     "section": "Signs of RV overload",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT: Dilated RV + CVP 20 + abdominal distension (ascites) = CHRONIC RV failure from pulmonary hypertension, not massive PE: PE dilates the RV abruptly (McConnell, 60/60 sign) with no time for ascites to build or the wall to thicken; tamponade gives small, collapsed right chambers."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Echo signs of RV overload",
+      "intro": "Step 4 brings in echo, which measures the RV against fixed cut-offs. Two real questions use these signs to tell chronic pulmonary hypertension from acute PE.",
+      "why": [
+       [
+        "a",
+        "**RV wall thickness increased: a chronic overload state.** Free wall >5 mm (subcostal view) means the RV has had weeks to months to hypertrophy; an acutely loaded RV dilates with a thin wall. This is the sign that dates the process."
+       ],
+       [
+        "b",
+        "**Distended IVC with <50% collapse.** An IVC >21 mm that collapses less than 50% on sniff estimates RA pressure at about 15 mmHg."
+       ],
+       [
+        "c",
+        "**TR V >2.8 m/s.** Peak TR velocity gives the RV–RA gradient (4V²); above 2.8 m/s (gradient about 31 mmHg) is the ESC/ERS 2022 threshold for echo probability of PH. A thin acute RV in PE often cannot generate a high velocity (60/60 sign, RVF-30)."
+       ],
+       [
+        "d",
+        "**TAPSE <17 mm.** Longitudinal shortening is the main RV contraction (ASE 2015; ESC 2019 PE uses <16 mm prognostically)."
+       ],
+       [
+        "e",
+        "**RV cavity size ≥ size of LV.** An RV/LV ratio ≥1 in the apical four-chamber view (or on CT) is dilatation; with septal flattening it gives a D-shaped LV in short axis."
+       ],
+       [
+        "f",
+        "**FAC <35%.** Fractional area change = (end-diastolic − end-systolic area) / end-diastolic area, in the RV-focused view."
+       ],
+       [
+        "g",
+        "**Longitudinal strain of RV free wall <20%.** That is, less negative than −20%; normal is about −29%."
+       ]
+      ],
+      "mimic": [
+       [
+        "Chronic PH vs acute PE on echo",
+        "PH: thick RV wall (>5 mm), high TR velocity, often pericardial effusion. PE: thin dilated RV, modest TR velocity, McConnell’s sign, 60/60 sign, sometimes thrombus in transit."
+       ]
+      ],
+      "traps": [
+       [
+        "“Massive PE” for a dilated RV with CVP 20 and ascites (one in three chose it)",
+        "Ascites and a thick RV need time; this is chronic RV failure from PH (cardlayer line)."
+       ]
+      ],
+      "decode": [
+       [
+        "Dilated RV, CVP 20, distended abdomen — chronic PH or massive PE? [DocT QBank]",
+        "Chronic RV failure from PH; a free wall >5 mm would confirm chronicity."
+       ],
+       [
+        "Echo finding in PE? [NEET 2024]",
+        "RV dilatation; McConnell’s sign."
+       ]
+      ],
+      "punch": "Every sign on this list says the RV is overloaded, but only wall thickness says for how long: a thick wall means chronic PH, a thin dilated one means an acute load.",
+      "step": 4
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-30",
+     "q": "**For McConnell's sign, give:**\na The condition in which it is seen\nb Its two components",
+     "a": "a Seen in **PULMONARY EMBOLISM**\nb **LATERAL WALL HYPOKINESIA + APEX SPARING**",
+     "section": "McConnell's sign",
+     "bank_questions": 2,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → McConnell’s sign",
+      "intro": "Still step 4: a regional pattern of RV wall motion that points to PE. It was asked four times, including NEET 2025, and the Grand Test twist is that it is not the most specific sign.",
+      "why": [
+       [
+        "a",
+        "**Seen in pulmonary embolism.** A sudden rise in PA pressure overstretches and makes ischaemic the free wall of a thin RV; the apex is tethered to a contracting LV and keeps moving."
+       ],
+       [
+        "b",
+        "**Lateral wall hypokinesia + apex sparing.** The RV free wall from base to mid is hypokinetic while the apex contracts normally. Its original specificity for PE (about 94%) has not held up: the same pattern occurs in RV infarction, because the RV apex is partly supplied by the LAD and is tethered to the LV. The sign that best separates PE from RV infarction is the 60/60 sign: PA acceleration time <60 ms (a stiff, high-resistance pulmonary bed) with a TR gradient <60 mmHg (a thin RV that cannot generate high pressure). RV infarction has a normal PVR, so the acceleration time stays normal."
+       ]
+      ],
+      "mimic": [
+       [
+        "McConnell’s sign vs Takotsubo",
+        "McConnell: RV free wall hypokinetic, RV apex spared. Takotsubo: LV apex ballooned, base hyperkinetic, the reverse distribution in the other ventricle."
+       ],
+       [
+        "McConnell vs 60/60",
+        "McConnell: regional wall motion, also in RV infarction. 60/60: Doppler signs of acute pressure load, more specific for PE."
+       ]
+      ],
+      "traps": [
+       [
+        "“McConnell’s sign is the most specific sign of PE versus RV infarction”",
+        "It also occurs in RV infarction; the 60/60 sign is more specific."
+       ],
+       [
+        "“A D-shaped LV or TAPSE <15 mm points to PE”",
+        "Both mean RV pressure overload or dysfunction from any cause."
+       ],
+       [
+        "“Pericardial effusion with RV collapse suggests PE”",
+        "That is tamponade; in PE the RA and RV are dilated."
+       ]
+      ],
+      "decode": [
+       [
+        "Post-stenting patient, acute dyspnoea, RV hypokinesia with preserved apical contractility — diagnosis? [NEET 2025]",
+        "Pulmonary embolism."
+       ],
+       [
+        "Dilated RV after a long flight — which finding is most specific for PE rather than RV infarction? [DocT GT]",
+        "The 60/60 sign."
+       ],
+       [
+        "Which echo finding most suggests acute PE? [DocT GT; NEET 2024]",
+        "RA/RV dilatation (McConnell’s sign as the classic named sign)."
+       ]
+      ],
+      "punch": "McConnell’s sign is a hypokinetic RV free wall with a moving apex and points to PE, but RV infarction can copy it; the 60/60 sign is the more specific test.",
+      "step": 4
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-23",
+     "q": "Pulmonary embolism risk classes (ESC)\n— what defines each, and what do you\ndo?",
+     "a": "**Hypotension decides lysis — not RV strain, not troponin**\nCLASS | DEFINED BY | TREATMENT\n**High** | SBP below 90 (or fall ≥ 40, or pressors) / arrest | **Systemic thrombolysis** (alteplase 100 mg over 2 h)\n**Intermediate-high** | Normotensive + RV dysfunction AND troponin | **Anticoagulate, monitor;** rescue lysis if decompensates\n**Intermediate-low** | One or neither of RV / troponin; PESI III–V | Anticoagulate on ward\n**Low** | sPESI 0 | Early discharge, DOAC",
+     "section": "Pulmonary embolism & profiles",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → Pulmonary embolism → ESC risk classes and treatment",
+      "intro": "Step 5 opens with the decision that most PE questions test: who gets lysis. The ESC classes are built around one fact — death in PE comes from RV failure, and only established haemodynamic failure justifies the bleeding risk of systemic lysis.",
+      "why": [
+       [
+        "a",
+        "**High: SBP below 90 (or fall ≥40, or pressors) / arrest → systemic thrombolysis (alteplase 100 mg over 2 h).** ESC 2019 defines high risk as cardiac arrest, obstructive shock (SBP <90 or vasopressors with end-organ hypoperfusion) or persistent hypotension (SBP <90 or a fall ≥40 mmHg for more than 15 minutes, not from another cause). The RV is already failing, so dissolving the clot is worth the bleeding risk; an accelerated 0.6 mg/kg over 15 min (max 50 mg) is the alternative, used in arrest. Surgical or catheter embolectomy if lysis is contraindicated or fails."
+       ],
+       [
+        "b",
+        "**Intermediate-high: normotensive + RV dysfunction AND troponin → anticoagulate, monitor; rescue lysis if decompensates.** In PEITHO, tenecteplase in this group reduced decompensation (1.6% vs 5.0%) but did not change mortality (1.2% vs 1.8%) and caused haemorrhagic stroke in 2.0% vs 0.2% and major bleeding in 11.5% vs 2.4%. So these patients are anticoagulated (usually LMWH) in a monitored bed and lysed only if they become hypotensive."
+       ],
+       [
+        "c",
+        "**Intermediate-low: one or neither of RV / troponin; PESI III–V → anticoagulate on ward.**"
+       ],
+       [
+        "d",
+        "**Low: sPESI 0 → early discharge, DOAC.** The AHA/ACC 2026 PE guideline renames these groups as categories A–E (C1–C3 by RV and troponin, D incipient failure, E hypotension or arrest); systemic lysis is harmful up to C2, unclear in C3 and reasonable in E. The rule is the same: hypotension, not imaging or biomarkers, earns lysis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Intermediate-high vs high risk",
+        "Both have a strained RV and raised troponin; only high risk has hypotension or shock. BP 96/58 is still intermediate-high."
+       ]
+      ],
+      "traps": [
+       [
+        "“RV strain + troponin with BP 96/58 → lysis”",
+        "Anticoagulate and monitor (INI-SS correct; GT4 Q26 you chose lysis)."
+       ]
+      ],
+      "decode": [
+       [
+        "APS, saddle PE, hypotensive, RV hypokinesis despite heparin [Marrow]",
+        "rtPA (alteplase 100 mg over 2 h)."
+       ]
+      ],
+      "punch": "In PE hypotension decides lysis: high risk (shock, SBP <90 or arrest) gets alteplase 100 mg over 2 hours; intermediate-high (RV strain plus troponin, normotensive) gets anticoagulation and monitoring, with rescue lysis only if it decompensates.",
+      "step": 5
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-24",
+     "q": "PE diagnosis:\na Age-adjusted D-dimer cut-off\nb Isolated subsegmental PE, no proximal DVT, low\nrecurrence risk (CHEST 2021)\nc Severe PE on ECG — the Daniel score items",
+     "a": "**D-dimer cut-off = age × 10 above 50 ·**\n**subsegmental** → **surveillance**\na Age × 10 µg/L (FEU) if above 50 years.\nb **Clinical surveillance**, no anticoagulation\n(repeat leg ultrasound).\nc Add the points in the table below.\nDANIEL ECG SCORE ITEM | POINTS\n**Heart rate above 100** | 2\n**Incomplete RBBB** | 2\n**Complete RBBB** | 3\n**T inversion in all of V1–V4** | 4\n**S1 Q3 T3 (complete)** | 2\n**Score ≥ 10** | Severe\npulmonary\nhypertension",
+     "section": "Pulmonary embolism & profiles",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → Pulmonary embolism → D-dimer, subsegmental PE, Daniel score",
+      "intro": "Three diagnostic points around PE severity: how to read a D-dimer in older patients, what to do with a tiny clot, and how the ECG scores RV strain.",
+      "why": [
+       [
+        "a",
+        "**Age × 10 µg/L (FEU) if above 50 years.** D-dimer rises with age, so a fixed 500 µg/L cut-off excludes few older patients; ADJUST-PE showed the age-adjusted cut-off safely rules out PE in more of them (only in low or intermediate clinical probability)."
+       ],
+       [
+        "b",
+        "**Clinical surveillance, no anticoagulation (repeat leg ultrasound).** CHEST 2021 suggests surveillance over anticoagulation for isolated subsegmental PE with no proximal DVT and low recurrence risk; anticoagulate if cancer, immobility, poor reserve or a positive leg scan."
+       ],
+       [
+        "c",
+        "**Daniel ECG score: HR >100 = 2; incomplete RBBB = 2; complete RBBB = 3; T inversion in all of V1–V4 = 4; S1Q3T3 (complete) = 2; score ≥10 = severe pulmonary hypertension.** Each item reflects RV pressure overload; the full score also adds points for the depth of T inversion in each of V1–V3 and for each part of S1Q3T3, to a maximum of 21. A score ≥10 suggests systolic PA pressure above about 50 mmHg."
+       ]
+      ],
+      "mimic": [],
+      "traps": [
+       [
+        "“Anticoagulate every subsegmental PE”",
+        "Isolated, no DVT, low risk: surveillance (only 17% right)."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] HR 118, incomplete RBBB, T inversion V1–V4 — Daniel score?",
+        "2 + 2 + 4 = 8."
+       ],
+       [
+        "[pattern] 70-year-old, low pretest probability — D-dimer cut-off?",
+        "700 µg/L (age × 10)."
+       ]
+      ],
+      "punch": "Use an age × 10 µg/L D-dimer cut-off above 50, watch isolated low-risk subsegmental PE with repeat leg scans, and add the Daniel ECG points (tachycardia 2, RBBB 2 or 3, T inversion V1–V4 4) to grade RV strain.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-804",
+   "text": "Treating the failing RV",
+   "steps": [
+    {
+     "card": "CVS06B|RVF-36",
+     "q": "**Give the five pillars of acute RV failure management, with their contents:**\na Maintain rate and rhythm\nb Optimise preload\nc Improve contractility and maintain perfusion\nd Reduce afterload\ne Mechanical circulatory support",
+     "a": "**Pillar** | **Contents**\n**Maintain rate and rhythm** | **HIGHER heart rate**; aim to maintain **sinus rhythm**; **cardioversion if new onset or instability**; **amiodarone ± DCCV**\n**Optimise preload** | **UNDER-filled:** small fluid boluses **(50-100 mL)**, close attention to CVP; **OVER-filled:** diuresis with **loop diuretics**; **CVVH may be required**\n**Improve contractility** | **Inodilators** (dobutamine, milrinone); **Vasopressors** (noradrenaline, vasopressin)\n**Reduce afterload** | **Prevent hypoxia, hypercapnia, acidosis**; **reduce PEEP and airway pressures**; **avoid atelectasis**; inhaled pulmonary vasodilators; IV pulmonary vasodilators\n**Mechanical support** | **IABP** • **ECMO** • **VAD**",
+     "section": "Acute RVF management",
+     "bank_questions": 3,
+     "bank_lines": [
+      "DocT GT: In IPAH with acute RV failure on IV epoprostenol: never interrupt the prostacyclin (rebound PH crisis), optimise preload cautiously (loop diuretic, no aggressive diuresis), keep systemic BP up; CCB vasoreactivity trials are for stable outpatients only."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Five pillars of acute management",
+      "intro": "Step 5 turns to treatment. Three Grand Test questions test it: a patient with IPAH on epoprostenol, and a patient with acute RV failure after mitral surgery.",
+      "why": [
+       [
+        "a",
+        "**Maintain rate and rhythm: a higher heart rate; aim for sinus rhythm; cardioversion if new onset or unstable; amiodarone ± DCCV.** A dilated RV cannot raise its stroke volume, so output depends on rate; loss of the atrial kick in AF or block drops filling of a stiff RV sharply. Bradycardia and AF are both poorly tolerated."
+       ],
+       [
+        "b",
+        "**Optimise preload: under-filled, small boluses (50–100 mL) with close attention to CVP; over-filled, loop diuretics, CVVH if needed.** Most RV failure from raised afterload is over-filled; extra volume only dilates the RV and shifts the septum. In IPAH, decongest steadily, not by rapid aggressive diuresis that drops preload too far."
+       ],
+       [
+        "c",
+        "**Improve contractility and perfusion: inodilators (dobutamine, milrinone); vasopressors (noradrenaline, vasopressin).** Restore arterial pressure first so the RV coronary perfusion gradient returns (RVF-38). Vasopressin raises SVR with little effect on PVR."
+       ],
+       [
+        "d",
+        "**Reduce afterload: prevent hypoxia, hypercapnia, acidosis; reduce PEEP and airway pressures; avoid atelectasis; inhaled and IV pulmonary vasodilators.** Hypoxia, hypercapnia and acidosis all constrict pulmonary arterioles; high PEEP and plateau pressure compress alveolar vessels; atelectasis triggers hypoxic vasoconstriction. In a patient on IV epoprostenol, never interrupt the infusion: its half-life is minutes and stopping it causes a rebound PH crisis."
+       ],
+       [
+        "e",
+        "**Mechanical support: IABP, ECMO, VAD.** For refractory cases (RVF-43 to RVF-46)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Acute RV failure after mitral surgery vs LV failure",
+        "RV: dilated, hypokinetic RV, high CVP, preserved LV, hypoxia. LV: high PCWP, pulmonary oedema."
+       ]
+      ],
+      "traps": [
+       [
+        "“Aggressive fluids for hypotension with a dilated RV and high CVP”",
+        "The RV is already over-filled; fluid worsens interdependence. Start iNO (67–71% right)."
+       ],
+       [
+        "“Increase PEEP to improve oxygenation”",
+        "Higher PEEP raises PVR and RV afterload."
+       ],
+       [
+        "“High-dose furosemide” as first step for hypotension",
+        "It drops preload in a shocked patient; treat the afterload first."
+       ],
+       [
+        "“Lifelong anticoagulation” as the right add-on in IPAH on epoprostenol (key; 64% right)",
+        "The key rests on older practice. ESC/ERS 2022 individualises anticoagulation in PAH (e.g. catheter-related thrombosis risk on IV epoprostenol). It is the least-wrong option here because digoxin is not routine, rapid diuresis harms and a CCB trial is only for stable outpatients; if ‘continue epoprostenol’ appears, choose that."
+       ]
+      ],
+      "decode": [
+       [
+        "IPAH on IV epoprostenol admitted with RV failure — most appropriate additional therapy? [DocT GT]",
+        "Keyed lifelong anticoagulation; disputed under ESC/ERS 2022."
+       ],
+       [
+        "Hypotension and hypoxia 3 h after mitral repair; dilated hypokinetic RV, preserved LV, high CVP — next step? [DocT GT, twice]",
+        "Start inhaled nitric oxide."
+       ]
+      ],
+      "punch": "Keep the rate up and the rhythm sinus, fill only an under-filled RV and in small steps, raise arterial pressure first, and lower afterload with oxygen, CO₂ control, low PEEP and inhaled vasodilators.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-39",
+     "q": "**For RV preload, give:**\na The three principles of optimising RV preload\nb The situation in which fluid boluses are carefully titrated\nc The volume loading strategy, fluid and rate\nd Whom volume loading is considered in\ne Its three-part caveat",
+     "a": "**Maintain adequate RV preload** • **carefully titrated fluid boluses** (in **RVMI, when afterload is NORMAL**) • **AVOID OVERDISTENSION**\n\n | **Volume loading**\n**Strategy** | **Saline or Ringer lactate, >200 mL / 15-30 min**\n**Use** | Decompensated RV failure with **NORMAL central venous pressure** and **LOW arterial pressure**\n**Caveat** | Can **OVERDISTEND the ventricles**, **worsen ventricular interdependence**, and **REDUCE cardiac output**",
+     "section": "Preload and volume loading",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Preload and volume loading",
+      "intro": "Step 5 again: the fluid question, which turns on whether the RV afterload is normal. Two Marrow questions test the case where fluid is right: RV infarction.",
+      "why": [
+       [
+        "a",
+        "**Maintain adequate RV preload, carefully titrated fluid boluses (in RV MI with normal afterload), avoid overdistension.** An infarcted RV facing a normal PVR behaves as a passive conduit: forward flow depends on RA pressure, so a fluid bolus raises output."
+       ],
+       [
+        "b",
+        "**Carefully titrated boluses in RV MI when afterload is normal.** With raised afterload (PH, PE, ARDS) the RV is already distended and fluid worsens it."
+       ],
+       [
+        "c",
+        "**Saline or Ringer’s lactate, >200 mL over 15–30 min.** This is a single, measured challenge with reassessment; RVF-36’s 50–100 mL boluses are the cautious steps for the RV with raised afterload."
+       ],
+       [
+        "d",
+        "**Decompensated RV failure with normal CVP and low arterial pressure.** A normal CVP in a hypotensive patient is the sign there is room to fill."
+       ],
+       [
+        "e",
+        "**It can overdistend the ventricles, worsen interdependence and reduce cardiac output.** Once CVP rises without a rise in output, stop: the RV is on the flat part of its curve. Nitrates and diuretics are avoided in RV infarction because they drop preload."
+       ]
+      ],
+      "mimic": [
+       [
+        "RV infarction vs pulmonary hypertension",
+        "RV infarction: normal PVR, fluid helps (with PCI). PH or PE: high PVR, fluid usually harms; offload instead."
+       ]
+      ],
+      "traps": [
+       [
+        "“Nitrates or diuretics for inferior STEMI with hypotension and clear lungs”",
+        "These drop preload; give a fluid bolus."
+       ]
+      ],
+      "decode": [
+       [
+        "Inferior STEMI, hypotension, clear lungs, normal LV — next step? [Marrow]",
+        "Normal saline bolus."
+       ],
+       [
+        "Inferior MI, proximal RCA thrombus — first treatment of hypotension? [Marrow]",
+        "IV fluids."
+       ]
+      ],
+      "punch": "Fluid helps the RV only when afterload and CVP are normal, as in RV infarction; give a measured bolus and stop when CVP rises without a rise in output.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-40",
+     "q": "**For diuretics in RV failure, give:**\na The initial IV dose in patients NOT on oral diuretics\nb The initial furosemide dose in those on chronic diuretic therapy\nc Who IV loop diuretics are recommended for\nd The two modes of administration\ne What to add for resistant oedema\nf The two caveats",
+     "a": "a **Not on oral diuretics: initial dose 20-40 mg IV**\nb **On chronic diuretic therapy: initial furosemide dose AT LEAST EQUIVALENT to the oral dose**\nc **IV loop diuretics recommended for ALL patients admitted with signs/symptoms of fluid overload**\nd Given as **intermittent boli OR continuous infusion**\ne **Resistant oedema or insufficient response:** combine loop diuretic with a **thiazide-type diuretic or spironolactone**\nf **Caveats: worsening renal function** and **HYPOKALAEMIA**",
+     "section": "Diuretics",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Diuretics",
+      "intro": "Step 5 continues with the commoner situation, the over-filled RV, where removing volume lets the septum move back.",
+      "why": [
+       [
+        "a",
+        "**Not on oral diuretics: 20–40 mg IV.** The furosemide starting dose of ESC heart failure guidelines."
+       ],
+       [
+        "b",
+        "**On chronic diuretics: initial furosemide dose at least equivalent to the oral dose.** ESC 2021 HF specifies 1–2 times the daily oral dose, because oral absorption of furosemide is about half and chronic users are diuretic-resistant."
+       ],
+       [
+        "c",
+        "**IV loop diuretics for all patients admitted with signs or symptoms of fluid overload.** Gut oedema slows oral absorption, so the IV route is used."
+       ],
+       [
+        "d",
+        "**Intermittent boluses or continuous infusion.** DOSE showed no clear difference between them."
+       ],
+       [
+        "e",
+        "**For resistant oedema: add a thiazide-type diuretic or spironolactone.** Sequential nephron blockade; distal tubules hypertrophy under chronic loop diuretics."
+       ],
+       [
+        "f",
+        "**Caveats: worsening renal function and hypokalaemia.** Hypokalaemia raises arrhythmia risk, which the RV tolerates poorly."
+       ]
+      ],
+      "mimic": [
+       [
+        "Over-filled vs under-filled RV",
+        "Over-filled (high CVP, distended RV, septal shift): diuretics or CVVH. Under-filled (low CVP, RV infarction): fluid."
+       ]
+      ],
+      "traps": [
+       [
+        "“The IV dose should be lower than the home oral dose”",
+        "It should be at least equal to it (ESC 2021: 1–2 times)."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] Patient on furosemide 80 mg orally, admitted with congestion — initial IV dose?",
+        "At least 80 mg IV (up to 160 mg)."
+       ]
+      ],
+      "punch": "Give IV furosemide 20–40 mg if naive or at least the home oral dose if not, by bolus or infusion, add a thiazide or spironolactone for resistance, and watch creatinine and potassium.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-41",
+     "q": "**For each agent give the dose, its properties, and its caveat:**\na Noradrenaline\nb Dobutamine\nc Levosimendan",
+     "a": "**Agent** | **Properties and use** | **Caveats**\n**Noradrenaline 0.2-1.0 mcg/kg/min** | ↑ **RV inotropy**, systemic BP; promotes **positive ventricular interactions**; **restores the CORONARY PERFUSION GRADIENT** | Excessive vasoconstriction may **worsen tissue perfusion**\n**Dobutamine 2-20 mcg/kg/min** | ↑ **RV inotropy**, **LOWERS filling pressures** especially if **left heart failure** is present | May **aggravate arterial hypotension if used ALONE** without a vasopressor; may **trigger arrhythmias**\n**Levosimendan 0.1-0.2 mcg/kg/min** | Combines **RV inotropy AND pulmonary vasodilation**; favourably affects **RV-arterial UNCOUPLING** | May aggravate arterial hypotension; may trigger arrhythmias\n**Levosimendan bolus 6-12 mcg/kg over 10 min is OPTIONAL and NOT recommended if SBP <90 mmHg**; infusion may be decreased to 0.05 or increased to 0.2 mcg/kg/min",
+     "section": "Vasoactive drugs",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Vasoactive drugs",
+      "intro": "Step 5 needs the three drugs used to support pressure and contractility, each with its own downside.",
+      "why": [
+       [
+        "a",
+        "**Noradrenaline 0.2–1.0 µg/kg/min: raises RV inotropy and systemic BP, promotes positive ventricular interaction, restores the coronary perfusion gradient; excess vasoconstriction may worsen tissue perfusion.** α₁ effects raise aortic pressure more than PVR at usual doses and β₁ effects help contractility. A higher LV pressure pushes the septum back towards the RV."
+       ],
+       [
+        "b",
+        "**Dobutamine 2–20 µg/kg/min: raises RV inotropy and lowers filling pressures, especially with left heart failure; can worsen hypotension if used alone; can trigger arrhythmias.** β₂ vasodilation lowers SVR, so pair it with a vasopressor."
+       ],
+       [
+        "c",
+        "**Levosimendan 0.1–0.2 µg/kg/min: RV inotropy plus pulmonary vasodilation, improving RV–arterial coupling; may worsen hypotension and trigger arrhythmias. Bolus 6–12 µg/kg over 10 min is optional and not recommended if SBP <90 mmHg; infusion can go down to 0.05 or up to 0.2 µg/kg/min.** It sensitises troponin C to calcium and opens K-ATP channels in vascular muscle, which is why it lowers PVR and also SVR. No guideline names it the drug of choice; it is one option at step 5 after pressure is secured."
+       ]
+      ],
+      "mimic": [
+       [
+        "Dobutamine vs levosimendan",
+        "Dobutamine: β-agonist, short half-life, tachycardia. Levosimendan: calcium sensitiser with an active metabolite lasting days, more pulmonary vasodilation, more hypotension."
+       ]
+      ],
+      "traps": [
+       [
+        "“Levosimendan bolus in a patient with SBP 85”",
+        "Not recommended below SBP 90 mmHg."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] Which drug combines RV inotropy with pulmonary vasodilation?",
+        "Levosimendan."
+       ]
+      ],
+      "punch": "Noradrenaline restores the coronary perfusion gradient, dobutamine adds contractility but needs a vasopressor beside it, and levosimendan adds pulmonary vasodilation at the cost of hypotension.",
+      "step": 5
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-42",
+     "q": "**Compare inhaled prostaglandins and inhaled nitric oxide on:**\na What each reduces\nb Where the effect occurs\nc Effects on V/Q matching and RVEF\nd Adverse effects\ne Dosing",
+     "a": " | **Inhaled prostaglandins** | **Inhaled nitric oxide**\n**Reduces** | **PVR, hypoxic pulmonary vasoconstriction**, and **SYSTEMIC vascular resistance** | **PVR ONLY at WELL-VENTILATED lung zones**\n**Effects** | — | **Improves V/Q matching** and **RV EJECTION FRACTION**\n**Adverse** | **Hypotension and HYPOXIA** | —\n**Dose** | — | **Start 5 ppm; overall 20-40 ppm**",
+     "section": "Inhaled vasodilators",
+     "bank_questions": 3,
+     "bank_lines": [
+      "Marrow: Abrupt withdrawal of inhaled NO causes rebound pulmonary hypertension and hypoxaemia (endogenous NO synthase is suppressed): restart it and wean slowly, stepping down to 1 ppm before stopping."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Inhaled vasodilators",
+      "intro": "Step 5 ends with offloading the RV through the airway. Four real questions test inhaled NO: when to start it, what it does, and what happens if it is stopped suddenly.",
+      "why": [
+       [
+        "a",
+        "**Inhaled prostaglandins reduce PVR, hypoxic pulmonary vasoconstriction and systemic vascular resistance; iNO reduces PVR only in well-ventilated lung zones.** NO diffuses into the vessel wall, raises cGMP and is inactivated by haemoglobin within seconds, so it never reaches the systemic circulation. Prostacyclin raises cAMP and has a longer half-life, so some spills over into the systemic circulation."
+       ],
+       [
+        "b",
+        "**iNO acts only where ventilation reaches.** Blood is redirected to ventilated alveoli, so shunt falls and oxygenation improves."
+       ],
+       [
+        "c",
+        "**iNO improves V/Q matching and RV ejection fraction.** Lower PVR is lower RV afterload, so the RV empties better, and the improved V/Q matching raises PaO₂."
+       ],
+       [
+        "d",
+        "**Prostaglandins: hypotension and hypoxia.** These are mainly effects of IV prostacyclin, which dilates the whole pulmonary bed (including unventilated units, releasing hypoxic vasoconstriction) and the systemic bed. Inhaled prostacyclin is much more selective and usually improves oxygenation like iNO, with mild hypotension at most. iNO has its own harms: rebound PH and hypoxaemia if stopped suddenly (endogenous NO synthase is suppressed), methaemoglobinaemia, NO₂ formation, and pulmonary oedema if LV filling pressure is high."
+       ],
+       [
+        "e",
+        "**iNO: start at 5 ppm, overall 20–40 ppm.** Benefit plateaus around 20 ppm. To stop, wean in steps down to about 1 ppm before switching off; if rebound occurs, restart and wean more slowly."
+       ]
+      ],
+      "mimic": [
+       [
+        "Inhaled vs IV pulmonary vasodilators",
+        "Inhaled: selective for ventilated lung, oxygenation improves, little hypotension. IV: dilate everything, so hypotension and worse V/Q."
+       ]
+      ],
+      "traps": [
+       [
+        "“Increase IV fluids” or “increase PEEP” for RV failure after mitral repair (one in three chose wrong)",
+        "The RV is dilated and the CVP high; start iNO to lower PVR."
+       ],
+       [
+        "“iNO raises systemic blood pressure” or “improves surfactant”",
+        "Its goal is to reduce PVR (95% right); any rise in BP is indirect."
+       ],
+       [
+        "“Hypoxia after stopping iNO — give 100% oxygen and wait”",
+        "Restart iNO and wean slowly."
+       ]
+      ],
+      "decode": [
+       [
+        "Hypotension and hypoxia 3 h after mitral repair; dilated RV, preserved LV, high CVP — next step? [DocT GT, twice]",
+        "Inhaled nitric oxide."
+       ],
+       [
+        "Severe RV failure after PE, iNO started — primary goal? [DocT GT]",
+        "Reduce PVR."
+       ],
+       [
+        "Rebound hypoxia and PH after stopping iNO — management? [Marrow]",
+        "Restart iNO and wean slowly."
+       ]
+      ],
+      "punch": "iNO lowers PVR only where the lung is ventilated, so it unloads the RV and improves oxygenation without hypotension; stop it slowly, because sudden withdrawal causes rebound PH and hypoxaemia.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-43",
+     "q": "**For mechanical circulatory support in RV failure, give the properties and caveats of:**\na ECMO / ECLS\nb Percutaneous catheter-mounted micro-axial pumps\nc Paracorporeal RVADs",
+     "a": "**Strategy** | **Properties and use** | **Caveats**\n**ECMO / ECLS** | **SHORT-TERM support, RAPID**; **oxygenator can be added** | Complications with use over longer periods **(>5-10 days)**\n**Percutaneous micro-axial pumps** | **Limited pump capacity**; **ECLS preferred in severe cardiogenic shock** or where **high pump flow** is required | —\n**Paracorporeal RVADs** | **LONGER-term use** (weeks or months); can be **combined with oxygenators** when pulmonary support is also needed | —",
+     "section": "MCS options",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Mechanical support options",
+      "intro": "Step 6 is mechanical support when drugs have failed. The options differ in how long they can run and whether they oxygenate.",
+      "why": [
+       [
+        "a",
+        "**ECMO/ECLS: short-term, rapid; an oxygenator is part of it; complications rise beyond 5–10 days.** It can be placed at the bedside and supports both circulation and gas exchange; bleeding, thrombosis, limb ischaemia and infection accumulate with time."
+       ],
+       [
+        "b",
+        "**Percutaneous micro-axial pumps: limited pump capacity; ECLS preferred in severe cardiogenic shock or when high flow is needed.** They give about 4 L/min and no gas exchange."
+       ],
+       [
+        "c",
+        "**Paracorporeal RVADs: longer-term (weeks or months); can be combined with oxygenators.** Surgically placed, usually RA or RV to PA, for bridge to recovery or transplant."
+       ]
+      ],
+      "mimic": [
+       [
+        "ECMO vs RVAD",
+        "ECMO: fast, oxygenates, days. RVAD: surgical, weeks to months, needs an added oxygenator for gas exchange."
+       ]
+      ],
+      "traps": [
+       [
+        "“A micro-axial pump also oxygenates”",
+        "Only ECMO, or an RVAD with an oxygenator, supports gas exchange."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] Refractory RV failure with severe hypoxaemia — which support?",
+        "VA ECMO (or an RVAD with an oxygenator)."
+       ]
+      ],
+      "punch": "ECMO is the fast, short-term option that also oxygenates, micro-axial pumps give limited flow without gas exchange, and surgical RVADs run for weeks to months.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS06B|RVF-46",
+     "q": "**For mechanical circulatory support, give:**\na The five indications\nb The three contraindications",
+     "a": "**Indications** | **Contraindications**\n**Primary graft failure following heart transplantation** | **Advanced age**\n**RV failure following LVAD** | **Multiple co-morbidities**\n**INFERIOR myocardial infarction** | **Irreversible organ injuries**\n**Post-cardiotomy cardiogenic shock** | \n**Pulmonary embolus** | ",
+     "section": "MCS indications",
+     "bank_questions": 1,
+     "bank_lines": [
+      "DocT GT: Shock within hours of heart transplant = primary graft dysfunction (long ischaemic time), RV failure against the recipient's pulmonary hypertension, or tamponade from mediastinal bleeding. Acute cellular rejection takes days to weeks; only hyperacute antibody-mediated rejection strikes within minutes to hours."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → RV failure → Indications for mechanical support",
+      "intro": "The deck ends with who should get mechanical support. The one real question, a shocked patient hours after heart transplant, was got right by only 23%.",
+      "why": [
+       [
+        "a",
+        "**Indications: primary graft failure after heart transplant, RV failure after LVAD, inferior MI, post-cardiotomy shock, pulmonary embolus.** All are acute RV failures that may recover. After transplant the new RV, not used to pulmonary hypertension and injured by ischaemia–reperfusion, meets the recipient’s raised PVR. After an LVAD, increased venous return and a septum pulled leftwards overload the RV. Inferior MI comes from the RCA, which supplies the RV."
+       ],
+       [
+        "b",
+        "**Contraindications: advanced age, multiple co-morbidities, irreversible organ injury.** Support is a bridge; without a way out (recovery, transplant or durable device) it only prolongs dying."
+       ]
+      ],
+      "mimic": [
+       [
+        "Primary graft dysfunction vs rejection",
+        "Primary graft dysfunction: within 24 hours, ischaemia–reperfusion injury. Acute cellular rejection: T-cell mediated, after days to weeks."
+       ]
+      ],
+      "traps": [
+       [
+        "“Acute on chronic PH” or “tamponade” as least likely early after transplant (77% chose wrong)",
+        "Both are common early causes; T-cell rejection is the least likely because it takes days to weeks."
+       ]
+      ],
+      "decode": [
+       [
+        "Shock hours after heart transplant, ischaemic time 4 h, CVP 18, on iNO — least likely cause? [DocT GT]",
+        "T-lymphocyte-mediated (acute cellular) rejection."
+       ]
+      ],
+      "punch": "Mechanical support is for reversible acute RV failure: graft failure, RV failure after LVAD, RV infarction, post-cardiotomy shock and PE; in the first hours after transplant, think graft dysfunction, PH and tamponade, not T-cell rejection.",
+      "table": {
+       "title": "Shock in the first hours after heart transplant",
+       "head": [
+        "Cause",
+        "Timing",
+        "Clue"
+       ],
+       "rows": [
+        [
+         "Primary graft dysfunction",
+         "hours",
+         "long ischaemic time, poor biventricular function"
+        ],
+        [
+         "RV failure against recipient PH",
+         "hours",
+         "high CVP, dilated RV; needs iNO, inotropes"
+        ],
+        [
+         "Tamponade from mediastinal bleeding",
+         "hours",
+         "falling output, rising CVP, drain output"
+        ],
+        [
+         "Hyperacute (antibody) rejection",
+         "minutes to hours",
+         "rare with crossmatching"
+        ],
+        [
+         "**Acute cellular (T-cell) rejection**",
+         "**days to weeks**",
+         "**least likely in the first hours**"
+        ]
+       ]
+      },
+      "step": 6
+     },
+     "in_viva": true,
+     "earlier_viva_lessons": []
+    }
+   ]
+  }
+ ]
+}

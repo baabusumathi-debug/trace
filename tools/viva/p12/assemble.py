@@ -2,7 +2,7 @@ import json,sys
 # assemble a NEET packet draft into the Trace package P12 (all packets so far, in order)
 OUT='/home/claude/trace/test/data/viva/P12.json'
 parts=sys.argv[1:]  # e.g. S1
-P={'package':'P12','title':'NEET cardiology','kind':'neet','version':'P12.20261123.5','cards':{},'lines':{},'questions':[],'explain':{},'fixes':[]}
+P={'package':'P12','title':'NEET cardiology','kind':'neet','version':'P12.20261123.6','cards':{},'lines':{},'questions':[],'explain':{},'fixes':[]}
 for g in parts:
     d=json.load(open(f'/home/claude/p12/{g}_draft.json'))
     for c in d.get('new_cards',[]):
