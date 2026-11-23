@@ -20,8 +20,8 @@ import { recordStudy } from './sync.js';
 import { initEcho, stepModel, echoSlotHtml, mountEcho, hideEcho } from './echo.js';
 import { renderVivaMap, migrateViva, noteDone, noteMark, vlistInfo, walkList } from './vivamap.js';
 import * as DESK from './desk.js';
-import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, lessonDeck, estMin as lessonMin } from './lesson.js';
-import { voiceOn, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
+import { lessonOf, lessonHtml, mountLesson, hasLessons, allLessonParts, makeLessons, makingLessons, makeKokoro, makingKokoro, lessonDeck, estMin as lessonMin } from './lesson.js';
+import { voiceOn, kIdxNow as vKidx, lvoice as vLvoice, setLvoice as vSetLvoice, partsOf, deckIndex, hasClip, makingDeck, makeDeck, play as vPlay, stop as vStop, nowPlaying as vNow, speed as vSpeed, setSpeed as vSetSpeed, pos as vPos, total as vTotal, seek as vSeek, skip as vSkip, pause as vPause, resume as vResume, isPaused as vPaused } from './voice.js';
 import { V, loadVisuals, syncVisuals, linkCard, hasVisual, drawPanel, panelKey, releaseUrls } from './visuals.js';
 
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -795,7 +795,7 @@ async function renderViva(pkg) {
         <p class="mono small vp-tally"><span class="vm-fluent">${tally.fluent} fluent</span> · <span class="vm-patchy">${tally.patchy} patchy</span> · <span class="vm-blank">${tally.blank} blank</span> · ${tally.none} not marked</p>
         ${(() => { const v = vivaPlanToday(pkg); return v ? `<div class="chips"><button class="chip on" data-vplanwalk>${ICON.walkS} Today’s plan · Q${qIdN(pkg, v.todayQs[0])}–Q${qIdN(pkg, v.todayQs[v.todayQs.length - 1])} · ${v.doneToday}/${v.todayQs.length} done</button></div>` : `<div class="chips"><button class="chip dash" data-vplanadd>+ Plan this package</button></div>`; })()}
         <div class="chips"><a class="chip dash" href="#/vmap">▦ Viva Map</a><button class="chip dash" data-vmosaic>▦ Show in the Mosaic</button>${tally.patchy + tally.blank ? `<button class="chip" data-vweak>Walk patchy + blank (${tally.patchy + tally.blank})</button>` : ''}</div>
-        ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
+        ${hasLessons(pkg) ? `<div class="vp-ls" id="vpls"><p class="mono small"><b>LESSONS</b> · <span class="vpls-s">checking…</span></p><div class="chips">${autoChipPage()}${voiceChipPage()}<button class="chip" data-lmake1 hidden></button><button class="chip" data-lmake hidden></button></div></div>` : ''}
         ${missDecks.length ? `<p class="warn small">${missing.length} card${missing.length === 1 ? '' : 's'} sit on deck${missDecks.length === 1 ? '' : 's'} not on this device (${missDecks.map(esc).join(', ')}); the walk leaves them out.</p>` : ''}
       </section>
       ${gens.map(g => `<section class="vp-gen"><h3 class="mono">${esc(g.g)}</h3>${g.qs.map(q => { const mk = vivaLast(m, pkg, q.q); return `<button class="vp-q" data-vq="${esc(q.q)}"><span class="vp-n mono">${P2.questions.indexOf(q) + 1}</span><span class="vp-t">${esc(q.text)}<small class="mono">${esc(q.q)} · ${q.steps.length} card${q.steps.length === 1 ? '' : 's'}</small></span><span class="vt vt-${esc(q.tier)} mono">${esc(q.tier)}</span><span class="vm vm-${mk || 'none'} mono">${mk ? MARKN[mk] : '–'}</span></button>`; }).join('')}</section>`).join('')}
@@ -816,24 +816,29 @@ async function renderViva(pkg) {
   };
   app.querySelectorAll('[data-vq]').forEach(b => b.onclick = () => walkViva(pkg, b.dataset.vq));
 }
+// T-183: which voice the lessons play in (Kokoro Michael, free; or Gemini Iapetus); each falls back to the other where it has no clip
+function voiceChipPage() { const k = vLvoice() === 'kokoro'; return `<button class="chip" data-lvoice>${k ? 'Voice: Michael' : 'Voice: Iapetus'}</button>`; }
 function autoChipPage() { const on = vAuto(); return `<button class="chip${on ? ' on' : ''}" data-vautop>${on ? 'Autoplay on' : 'Tap to play'}</button>`; }
 // the Viva page's lessons line: how much is made, and Make voice (one question first, then all) — only when Naven presses it
 async function lessonBox(pkg, P2) {
   const box = app.querySelector('#vpls'); if (!box) return;
   const ap = box.querySelector('[data-vautop]'); ap.onclick = () => { setVAuto(!vAuto()); ap.classList.toggle('on', vAuto()); ap.textContent = vAuto() ? 'Autoplay on' : 'Tap to play'; };
+  const lv = box.querySelector('[data-lvoice]'); if (lv) lv.onclick = () => { vSetLvoice(vLvoice() === 'kokoro' ? 'gemini' : 'kokoro'); lv.textContent = vLvoice() === 'kokoro' ? 'Voice: Michael' : 'Voice: Iapetus'; draw(false); };
   const deck = lessonDeck(pkg), s = box.querySelector('.vpls-s'), b1 = box.querySelector('[data-lmake1]'), b = box.querySelector('[data-lmake]');
   const firstQ = P2.questions.find(q => q.open || q.close || q.steps.some(x => x.lesson));
   const draw = async fresh => {
     const all = allLessonParts(pkg); await deckIndex(deck, fresh);
-    const miss = all.filter(p => !hasClip(deck, p)), m1 = miss.filter(p => p.k.startsWith('L-' + firstQ.q + '-'));
+    const K = vLvoice() === 'kokoro' ? vKidx(deck) : null;
+    const miss = all.filter(p => K ? !(K[p.k] && K[p.k].h === p.h) : !hasClip(deck, p)), m1 = miss.filter(p => p.k.startsWith('L-' + firstQ.q + '-'));
     const nq = P2.questions.filter(q => q.open || q.close || q.steps.some(x => x.lesson)).length;
     s.textContent = `${nq} question${nq === 1 ? '' : 's'} · about ${lessonMin(all)} min · ${all.length - miss.length} of ${all.length} pieces made`;
-    b1.hidden = !m1.length || makingLessons(); b1.textContent = `Make voice · ${firstQ.q} only (${lessonMin(m1)} min)`;
-    b.hidden = !miss.length || makingLessons(); b.textContent = `Make voice · all (${lessonMin(miss)} min)`;
+    b1.hidden = !m1.length || makingLessons() || makingKokoro(); b1.textContent = `Make voice · ${firstQ.q} only (${lessonMin(m1)} min)`;
+    b.hidden = !miss.length || makingLessons() || makingKokoro(); b.textContent = `Make voice · all (${lessonMin(miss)} min)`;
   };
   const run = async onlyQ => {
     b.hidden = b1.hidden = true;
-    const r = await makeLessons(pkg, st => { if (box.isConnected) s.textContent = `making… ${st.done} of ${st.total}${st.failed ? ` · ${st.failed} failed` : ''}`; }, onlyQ);
+    const mk = vLvoice() === 'kokoro' ? makeKokoro : makeLessons;   // Kokoro: free, made in this browser (needs WebGPU to be quick)
+    const r = await mk(pkg, st => { if (box.isConnected) s.textContent = `making… ${st.done} of ${st.total}${st.failed ? ` · ${st.failed} failed` : ''}`; }, onlyQ);
     if (r.error) toast('Lesson voice: ' + r.error);
     if (box.isConnected) draw(true);
   };

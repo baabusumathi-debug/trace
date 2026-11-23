@@ -5,7 +5,7 @@
 import { db } from './db.js';
 import { call, batch } from './api.js';
 import { pkgOf, qOf } from './viva.js';
-import { VOICE, hash, speakable, deckIndex, hasClip, play, stop, nowPart, clipTime, clipDur, seekPart, pause, resume, isPaused, skip, pos, total, seek, speed, setSpeed, nowPlaying } from './voice.js';
+import { VOICE, KVOICE, usesK, kIndex, kIdxNow, kFolderId, hash, speakable, deckIndex, hasClip, play, stop, nowPart, clipTime, clipDur, seekPart, pause, resume, isPaused, skip, pos, total, seek, speed, setSpeed, nowPlaying } from './voice.js';
 
 const LV = 'L2';                      // bump when the lesson style notes change, so lesson clips are made again (L2: natural pace, 7 Nov)
 // L1 ("unhurried, measured, enunciate every word") came out word by word at about half normal speed; Naven, 7 Nov
@@ -57,6 +57,7 @@ const spokenLen = paras => partsOfLesson(paras).reduce((s, p) => s + p.t.length,
 const norm = s => String(s).toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]/g, '');
 const tim = {};
 async function whisperWords(deck, p) {
+  if (usesK(deck, p)) return null;   // Kokoro clips have no word timings: the read-along spreads the words over the clip
   const e = ((await deckIndex(deck)) || {})[p.k]; if (!e || !e.tid) return null;
   if (tim[e.tid]) return tim[e.tid];
   let t = await db.kv.get('vtim:' + e.tid);
@@ -157,6 +158,71 @@ export async function makeLessons(pkg, onStep, onlyQ, redo) {
     await deckIndex(deck, true);
     return { done, total: want.length, failed, error: lastErr };
   } finally { making = ''; }
+}
+
+/* ---------- T-183: making a package's lessons in the Kokoro voice (free; run it in a browser with WebGPU, e.g. the Mac) ---------- */
+let kmaking = '';
+export const makingKokoro = () => kmaking;
+const KJS = 'https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/+esm', LAME = 'https://cdn.jsdelivr.net/npm/@breezystack/lamejs/+esm';
+let ktts = null, klame = null;
+async function kEngine() {
+  if (!ktts) {
+    const m = await import(/* @vite-ignore */ KJS);
+    const gpu = !!(navigator.gpu && await navigator.gpu.requestAdapter().catch(() => null));
+    ktts = await m.KokoroTTS.from_pretrained('onnx-community/Kokoro-82M-v1.0-ONNX', { dtype: gpu ? 'fp32' : 'q8', device: gpu ? 'webgpu' : 'wasm' });
+  }
+  if (!klame) klame = await import(/* @vite-ignore */ LAME);
+  return { tts: ktts, lame: klame };
+}
+// sentences grouped into chunks the model can say in one go
+function kChunks(t) {
+  const ss = String(t).match(/[^.!?;:]+[.!?;:]+["')\]]*\s*|[^.!?;:]+$/g) || [t], out = [];
+  let cur = '';
+  for (const x of ss) { if ((cur + x).length > 320 && cur) { out.push(cur.trim()); cur = ''; } cur += x; }
+  if (cur.trim()) out.push(cur.trim());
+  return out;
+}
+async function kSpeak(text) {
+  const { tts, lame } = await kEngine();
+  const parts = [];
+  let sr = 24000;
+  for (const c of kChunks(text)) { const a = await tts.generate(c, { voice: 'am_michael' }); sr = a.sampling_rate; parts.push(a.audio); parts.push(new Float32Array(Math.round(sr * 0.18))); }
+  const n = parts.reduce((s, a) => s + a.length, 0), pcm = new Float32Array(n);
+  let o = 0; for (const a of parts) { pcm.set(a, o); o += a.length; }
+  const enc = new lame.Mp3Encoder(1, sr, 48), s16 = new Int16Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) { const v = Math.max(-1, Math.min(1, pcm[i])); s16[i] = v < 0 ? v * 0x8000 : v * 0x7fff; }
+  const bufs = []; for (let i = 0; i < s16.length; i += 1152) { const b = enc.encodeBuffer(s16.subarray(i, i + 1152)); if (b.length) bufs.push(b); }
+  const f = enc.flush(); if (f.length) bufs.push(f);
+  const u8 = new Uint8Array(bufs.reduce((s, b) => s + b.length, 0)); let q = 0; for (const b of bufs) { u8.set(b, q); q += b.length; }
+  let bin = ''; for (let i = 0; i < u8.length; i += 0x8000) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+  return { b64: btoa(bin), sec: Math.round(pcm.length / sr * 10) / 10 };
+}
+export async function makeKokoro(pkg, onStep, onlyQ) {
+  if (kmaking) return { error: 'already making ' + kmaking };
+  kmaking = pkg;
+  const deck = lessonDeck(pkg);
+  try {
+    const fid = await kFolderId(); if (!fid) return { error: 'no voice-k folder in Drive › Trace' };
+    const K = { ...(await kIndex(deck, true)) };
+    let want = allLessonParts(pkg).filter(p => !(K[p.k] && K[p.k].h === p.h));
+    if (onlyQ) want = want.filter(p => p.k.startsWith('L-' + onlyQ + '-'));
+    let done = 0, failed = 0, lastErr = '', sec = 0;
+    const saveIdx = async () => { await batch([{ op: 'writeFile', folderId: fid, name: deck + '.kidx.json', text: JSON.stringify(K), mime: 'application/json' }]); };
+    onStep && onStep({ done, total: want.length, failed, sec });
+    for (const p of want) {
+      try {
+        const a = await kSpeak(p.t);
+        const [w] = await batch([{ op: 'writeFile', folderId: fid, name: deck + '__' + p.k + '.b64', text: a.b64, mime: 'text/plain' }], 120000);
+        if (!w || !w.ok) throw new Error((w && w.error) || 'write failed');
+        K[p.k] = { id: w.data.id, h: p.h, sec: a.sec, voice: KVOICE }; done++; sec += a.sec;
+        if (done % 10 === 0) await saveIdx();
+      } catch (e) { failed++; lastErr = e.message; if (failed > 5 && !done) break; }
+      onStep && onStep({ done, total: want.length, failed, sec, error: lastErr });
+    }
+    await saveIdx();
+    await kIndex(deck, true);
+    return { done, total: want.length, failed, sec, error: lastErr };
+  } finally { kmaking = ''; }
 }
 
 /* ---------- the read-along ---------- */

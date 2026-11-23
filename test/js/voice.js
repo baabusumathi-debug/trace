@@ -2,7 +2,7 @@
 // device. The app splits a card into points, turns each into speakable text (pronunciation list below), asks the bridge
 // to make what is missing, and plays the clips at the chosen speed. Clips are kept on the device after the first play.
 import { db } from './db.js';
-import { IS_HT } from './config.js';
+import { IS_HT, CONFIG } from './config.js';
 import { call, batch } from './api.js';
 import { splitQ, plain } from './md.js';
 
@@ -36,6 +36,8 @@ export function speakable(t) {
     .replace(/\*\*|__|`/g, '').replace(/(^|\s)\*([^*\n]+)\*/g, '$1$2')     // markdown
     .replace(/^\s*[-•]\s+/gm, '').replace(/^\s*\(?([a-h])\)?\s+/gm, '')     // list marks and part letters
     .replace(/\(standard teaching, not in your notes\)/g, '');
+  // T-183: "VT" is ventricular tachycardia in cardiac text and tidal volume in ventilation text
+  if (/\bVT\b/.test(s) && /\b(VF\b|pVT\b|pulseless|ventricular|tachycardi|ICD\b|amiodarone|lidocaine|procainamide|cardiover|defibrillat|QRS\b|arrhythmi|torsade|infarct|STEMI\b|MI\b)/i.test(s)) s = s.replace(/\bVT\b/g, 'V T');
   for (const [re, w] of SAY) s = s.replace(re, w);
   return s.replace(/[ \t]+/g, ' ').replace(/\s+([,.;:])/g, '$1').replace(/([^.:;?!])\n+(?=[a-z(])/g, '$1 ').replace(/\n+/g, '. ').replace(/([:?!.;])\s*\./g, '$1').replace(/\s{2,}/g, ' ').trim();
 }
@@ -69,6 +71,45 @@ export function partsOf(c, extra) {
 export const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33 + s.charCodeAt(i)) >>> 0; return h.toString(36); };
 export const hOf = p => p.h || hash(PV + '|' + VOICE + '|' + p.t);   // lesson parts carry their own h
 
+/* ---------- T-183: Kokoro (free, local) lesson voice ----------
+   Clips are made in a browser with WebGPU (the Mac) by makeKokoro in lesson.js and kept in Drive › Trace › voice-k as
+   base64 text files "<deck>__<key>.b64", with one index "<deck>.kidx.json" ({key: {id, h, sec}}). Same part keys as the
+   Gemini clips, so a lesson can mix them: the chosen voice first, the other one where the chosen one has no clip. */
+export const KVOICE = 'kokoro-am_michael';
+export const lvoice = () => { try { return localStorage.getItem('trace.lvoice') || 'kokoro'; } catch (e) { return 'kokoro'; } };
+export function setLvoice(v) { try { localStorage.setItem('trace.lvoice', v); } catch (e) { /* */ } }
+const kidx = {}, kAsked = {};
+let kFolder = null;
+export async function kFolderId() {
+  if (kFolder) return kFolder;
+  const root = await call({ op: 'listFolder', id: CONFIG.traceFolderId });
+  const f = root.find(x => x.kind === 'folder' && x.name === 'voice-k');
+  return (kFolder = f ? f.id : null);
+}
+export async function kIndex(deck, fresh) {
+  if (!kidx[deck]) kidx[deck] = (await db.kv.get('kidx:' + deck)) || {};
+  if (fresh || !kAsked[deck]) {
+    kAsked[deck] = 1;
+    try {
+      const fid = await kFolderId();
+      if (fid) {
+        const ls = await call({ op: 'listFolder', id: fid });
+        const f = ls.find(x => x.kind === 'file' && x.name === deck + '.kidx.json');
+        if (f) { const r = await call({ op: 'readFile', id: f.id }); kidx[deck] = JSON.parse(r.text) || {}; await db.kv.set('kidx:' + deck, kidx[deck]); }
+      }
+    } catch (e) { /* offline: keep the stored index */ }
+  }
+  return kidx[deck];
+}
+export const kIdxNow = deck => kidx[deck] || {};
+// is this part played from a Kokoro clip? (the chosen voice is Kokoro and a clip exists, or Gemini has none)
+export function usesK(deck, p) {
+  const k = kidx[deck] && kidx[deck][p.k]; const okK = !!(k && k.h === p.h);
+  if (!okK) return false;
+  if (lvoice() === 'kokoro') return true;
+  const e = idx[deck] && idx[deck][p.k]; return !(e && e.h === hOf(p));
+}
+
 /* ---------- index of made clips, per deck ---------- */
 const idx = {}, idxAsked = {};
 export async function deckIndex(deck, fresh) {
@@ -77,11 +118,12 @@ export async function deckIndex(deck, fresh) {
     idxAsked[deck] = 1;
     try { const r = await call({ op: 'voiceIndex', deck }); if (r && typeof r === 'object') { idx[deck] = r; await db.kv.set('vidx:' + deck, r); } } catch (e) { /* offline: keep the stored index */ }
   }
+  if (/^VIVA-/.test(deck)) await kIndex(deck, fresh);
   return idx[deck];
 }
 // a clip counts when its text matches and it is in the main voice, or in an OpenAI stand-in voice ("oa-…", used when the
 // Google voice limit is reached; remake those with redo keys later to bring them back to the main voice)
-export const hasClip = (deck, p) => { const e = idx[deck] && idx[deck][p.k]; return !!(e && e.h === hOf(p) && (e.voice === VOICE || /^oa-/.test(e.voice || ''))); };
+export const hasClip = (deck, p) => { if (usesK(deck, p)) return true; const e = idx[deck] && idx[deck][p.k]; return !!(e && e.h === hOf(p) && (e.voice === VOICE || /^oa-/.test(e.voice || ''))); };
 
 /* ---------- making a deck's audio (bridge, in small batches) ---------- */
 let making = '';
@@ -116,6 +158,18 @@ let queue = [], qi = -1, onState = null, playing = '', deckNow = '', urls = [], 
 export const speed = () => { try { return Math.min(2, Math.max(0.8, +localStorage.getItem('trace.vspeed') || 1.2)); } catch (e) { return 1.2; } };
 export function setSpeed(v) { try { localStorage.setItem('trace.vspeed', String(v)); } catch (e) { /* */ } if (audio) audio.playbackRate = v; }
 async function blobOf(deck, p) {
+  if (usesK(deck, p)) {
+    const k = kidx[deck][p.k];
+    let blob = await db.kv.get('kclip:' + k.id);
+    if (!blob) {
+      const r = await call({ op: 'readFile', id: k.id });
+      const bin = atob(String(r.text).trim()), u = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+      blob = new Blob([u], { type: 'audio/mpeg' });
+      db.kv.set('kclip:' + k.id, blob).catch(() => {});
+    }
+    return blob;
+  }
   const e = idx[deck] && idx[deck][p.k]; if (!e) return null;
   let blob = await db.kv.get('vclip:' + e.id);
   if (!blob) {
@@ -137,7 +191,7 @@ async function urlAt(i, g) {
   return urls[i];
 }
 // clip length: the real one once known, else the bridge's estimate
-const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut - (queue[i].from || 0) : durs[i] != null ? durs[i] - ((queue[i] && queue[i].from) || 0) : (((idx[deckNow] || {})[queue[i].k] || {}).sec || 5);
+const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut - (queue[i].from || 0) : durs[i] != null ? durs[i] - ((queue[i] && queue[i].from) || 0) : ((usesK(deckNow, queue[i]) ? (kidx[deckNow] || {})[queue[i].k] : (idx[deckNow] || {})[queue[i].k]) || {}).sec || 5);
 export const total = () => queue.reduce((s, _, i) => s + est(i), 0);
 export function pos() { if (qi < 0) return 0; let s = 0; for (let i = 0; i < qi; i++) s += est(i); return s + Math.max(0, ((audio && audio.currentTime) || 0) - ((queue[qi] && queue[qi].from) || 0)); }
 export const isPaused = () => paused;

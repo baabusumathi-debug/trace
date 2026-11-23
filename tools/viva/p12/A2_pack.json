@@ -1,0 +1,2680 @@
+{
+ "packet": "ACS II — treating the infarct",
+ "gt_misses": {
+  "GT7 Q104 (missed)": "NSTEMI, anatomy unknown: defer P2Y12 to PCI (chose prasugrel pretreatment). ESC 2023: routine pretreatment in NSTE-ACS when early invasive is planned is not recommended (class III). Card MI-50.",
+  "GT7 Q109 (missed)": "NSTE-ACS with CrCl 24: enoxaparin 1 mg/kg once daily, not contraindicated (chose contraindicated). No card covers this: add a new card.",
+  "GT7 Q116": "Stop eptifibatide 2–4 h before CABG. Card MI-55; teach it there.",
+  "GT8 Q26 (missed)": "Long-term ACE inhibitor after MI with EF 32% (secondary prevention). Card MI-57; teach it there.",
+  "GT8 Q82 / GT7 Q87": "Already taught in Shock II (levosimendan on a β-blocker). CAR-18 part d asks the same: call back, do not re-teach."
+ },
+ "questions": [
+  {
+   "q": "P12-401",
+   "text": "The first hour: work-up, oxygen, nitrates and first drugs",
+   "steps": [
+    {
+     "card": "CVS10C|MI-36",
+     "q": "**For the initial work-up of ACS, give:**\na The ECG requirement\nb The monitoring requirement, and why\nc The six blood tests sent with IV access",
+     "a": "- 12-lead ECG **interpreted within 10 min**\n- **Continuous ECG monitoring with a defibrillator available** - risk of VT / VF\n**Bloods**\n- Cardiac biomarkers | - Haemogram\n- Electrolytes | - Lipid profile\n- Renal and liver function | - HbA1c (if diabetic)",
+     "section": "Initial work-up",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: Most early STEMI deaths (within 24 h, mostly in the first hour) are from VF — hence continuous monitoring and defibrillator-capable transport from first medical contact."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Initial work-up",
+      "intro": "Step 1 starts at first medical contact. The ECG decides which pathway the patient enters, and the monitor is there because the first hour is when he is most likely to die. The one real question asks what kills STEMI patients before they reach hospital.",
+      "why": [
+       [
+        "a",
+        "**12-lead ECG interpreted within 10 minutes.** ESC 2023 makes this Class I (B) at the point of first medical contact, and both ESC and ACC/AHA use the same 10-minute target. The ECG is what separates STEMI (go to reperfusion, MI-40) from NSTE-ACS (risk-stratify, MI-43); troponin is never awaited for a STEMI decision."
+       ],
+       [
+        "b",
+        "**Continuous ECG monitoring with a defibrillator available, because of the risk of VT/VF.** Acute ischaemia makes the border zone electrically unstable (re-entry around dying tissue, raised automaticity, potassium leak). Most early STEMI deaths, within the first 24 hours and mostly in the first hour, are from ventricular fibrillation, often before the patient reaches hospital. That is why transport from first contact must be defibrillator-capable."
+       ],
+       [
+        "c",
+        "**Cardiac biomarkers, haemogram, electrolytes, lipid profile, renal and liver function, HbA1c if diabetic.** Troponin (high-sensitivity, on the 0/1 h or 0/2 h algorithm) makes the NSTEMI diagnosis; the haemoglobin and platelets set bleeding risk before antithrombotics; potassium and magnesium matter for arrhythmia; creatinine sets drug doses and contrast risk; the lipid profile is most accurate when drawn early."
+       ]
+      ],
+      "mimic": [
+       [
+        "Early death in STEMI vs later death",
+        "First hours: VF (electrical). Days later: pump failure and mechanical complications (free wall rupture, VSD, papillary muscle rupture)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Most prehospital STEMI deaths are from cardiogenic shock or rupture”",
+        "They are from VF, mostly in the first hour; shock and rupture kill later."
+       ]
+      ],
+      "decode": [
+       [
+        "Commonest cause of prehospital death in STEMI? [Marrow]",
+        "Ventricular fibrillation."
+       ],
+       [
+        "Within what time must the first ECG be read after first medical contact? [pattern]",
+        "10 minutes."
+       ]
+      ],
+      "punch": "Read the ECG within 10 minutes, because it chooses the pathway, and keep a defibrillator beside the patient, because the first hour of STEMI kills by VF.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-37",
+     "q": "**For hypoxaemia and symptom relief in ACS (ESC), give:**\na When oxygen is indicated, and its class\nb When routine oxygen is NOT recommended, and its class\nc Opioids - dose in the notes, and class\nd The anxiolytic, and class",
+     "a": "- SaO₂ **<90%** or PaO₂ **<60 mmHg** - **I, C**\n- SaO₂ **≥90%** - **III, A** (no benefit)\n- IV morphine **5-10 mg** - titrated IV opioids **IIa, C**; cut sympathetic drive and O₂ consumption\n- Mild tranquilliser (usually a **benzodiazepine**) in very anxious patients - **IIa, C**",
+     "section": "Oxygen and symptom relief",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Oxygen and symptom relief",
+      "intro": "Still in step 1: treating symptoms without harming the patient. One real question tests the oxygen threshold, which one in three got wrong by reflexively giving oxygen to a patient who was not hypoxaemic.",
+      "why": [
+       [
+        "a",
+        "**Oxygen if SaO₂ <90% or PaO₂ <60 mmHg: Class I, C.** Below 90% the oxyhaemoglobin curve is on its steep part, so oxygen delivery to ischaemic myocardium falls quickly and correcting it helps."
+       ],
+       [
+        "b",
+        "**SaO₂ ≥90%: routine oxygen not recommended, Class III, A (no benefit).** Hyperoxia constricts coronary arteries and raises reactive oxygen species. DETO2X-AMI (about 6,600 patients with SpO₂ ≥90%) found no difference in 1-year death (5.0% vs 5.1%), and AVOID suggested larger infarcts with oxygen. The ESC text says SaO₂ >90%; the card’s ≥90% is the same rule in practice."
+       ],
+       [
+        "c",
+        "**IV morphine 5–10 mg, titrated IV opioids Class IIa, C; they cut sympathetic drive and oxygen consumption.** Pain drives catecholamines, heart rate and myocardial oxygen demand. The catch: opioids slow gastric emptying, so oral P2Y12 inhibitors are absorbed later and platelet inhibition is delayed (shown with ticagrelor in IMPRESSION). That is why opioids are only IIa and should be titrated, not given routinely."
+       ],
+       [
+        "d",
+        "**A mild tranquilliser, usually a benzodiazepine, in very anxious patients: Class IIa, C.** The aim is the same as with opioids: lower sympathetic tone."
+       ]
+      ],
+      "mimic": [
+       [
+        "SaO₂ <90% vs ≥90%",
+        "The same number flips the class: below it oxygen is Class I, at or above it oxygen is Class III."
+       ]
+      ],
+      "traps": [
+       [
+        "“Low-flow nasal oxygen at 2 L/min is harmless at SaO₂ 95%”",
+        "Any routine oxygen without hypoxaemia is Class III; the DocT key is to withhold it (66% right)."
+       ],
+       [
+        "“Morphine is a Class I part of the ACS bundle”",
+        "It is IIa and delays oral P2Y12 absorption."
+       ]
+      ],
+      "decode": [
+       [
+        "ACS patient, SaO₂ 95% — which oxygen strategy? [DocT GT]",
+        "Withhold oxygen."
+       ],
+       [
+        "Below what saturation is oxygen indicated in ACS? [pattern]",
+        "SaO₂ <90% (PaO₂ <60 mmHg)."
+       ]
+      ],
+      "punch": "Oxygen only below 90%; above that it adds nothing and may harm. Opioids and benzodiazepines are IIa, and opioids slow the oral P2Y12 load.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-38",
+     "q": "**For sublingual nitroglycerin in ACS, give:**\na The dose and repeat schedule\nb The four contraindications\nc What relief of pain proves",
+     "a": "- **0.4 mg** (0.3-0.6 mg) SL, every **5 min**, up to **3 doses**\n- **Hypotension** • **tachycardia** • **right ventricular MI** • **recent phosphodiesterase-inhibitor use**\n- **NOTHING** - does not confirm or exclude MI; biomarkers are needed",
+     "section": "Nitrates",
+     "bank_questions": 2,
+     "bank_lines": [
+      "Marrow: Riociguat (soluble guanylate cyclase stimulator) is a nitrate contraindication alongside PDE-5 inhibitors: both amplify the NO–cGMP pathway, so a nitrate causes profound hypotension."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Nitrates",
+      "intro": "Step 1 again: nitrates relieve ischaemic pain but can collapse the circulation in the wrong patient, and their effect proves nothing about the diagnosis. Five real questions test exactly these two points, and both DocT questions were got right by fewer than half.",
+      "why": [
+       [
+        "a",
+        "**0.4 mg (0.3–0.6 mg) sublingual, every 5 minutes, up to 3 doses.** Glyceryl trinitrate releases nitric oxide, raising cGMP in vascular smooth muscle; at low doses it is mainly a venodilator, so it lowers preload and wall tension (less oxygen demand), and it also dilates epicardial coronaries and collaterals. The notes’ ‘5 mg’ is a source error (card watch line)."
+       ],
+       [
+        "b",
+        "**Hypotension, tachycardia, right ventricular MI, recent phosphodiesterase-inhibitor use.** Each of these turns preload reduction into shock. An RV infarct is preload-dependent: the failing RV needs a high filling pressure to push blood through the lungs, so venodilation drops LV filling and the pressure falls (give fluid instead). PDE-5 inhibitors (sildenafil, vardenafil within 24 h; tadalafil within 48 h) block cGMP breakdown, so a nitrate causes profound hypotension; riociguat, a soluble guanylate cyclase stimulator, acts on the same pathway and is also a contraindication. ESC adds marked bradycardia, and ACC/AHA use SBP <90 mmHg (or ≥30 below baseline) and HR <50 or >100."
+       ],
+       [
+        "c",
+        "**Nothing: relief does not confirm or exclude MI; biomarkers are needed.** Nitrates relax all smooth muscle, so oesophageal spasm also eases, and an MI may improve partly. The diagnosis comes from the ECG and serial high-sensitivity troponin."
+       ]
+      ],
+      "mimic": [
+       [
+        "Nitrate in hypertensive acute heart failure vs nitrate in RV infarct",
+        "Lowering preload rescues the congested LV in hypertensive AHF; it collapses the preload-dependent RV infarct."
+       ],
+       [
+        "Unstable angina vs oesophageal spasm with a normal ECG and negative troponin",
+        "Until serial hs-troponin and risk stratification rule out ACS, unstable angina is the working diagnosis; spasm is a diagnosis of exclusion."
+       ]
+      ],
+      "traps": [
+       [
+        "“Hypotension 10 minutes after nitroglycerin in inferior STEMI is a medication reaction”",
+        "46% chose this. The nitrate unmasked a preload-dependent RV infarct: it is cardiogenic shock (key B). Check right-sided leads (V4R) before nitrates in inferior STEMI."
+       ],
+       [
+        "“Chest pain relieved by nitroglycerin, normal ECG, negative troponin → oesophageal spasm”",
+        "DocT keys spasm (33% right), but the key is debatable: nitrate relief proves nothing, and with a single negative troponin unstable angina is the classic answer. If the stem says serial troponins are negative and ACS is ruled out, pick spasm; otherwise pick unstable angina."
+       ],
+       [
+        "“Hypotension after a nitrate is only a PDE-5 inhibitor problem”",
+        "Riociguat (sGC stimulator) does the same; Marrow keys it."
+       ]
+      ],
+      "decode": [
+       [
+        "Inferior STEMI, aspirin + nitroglycerin + morphine, BP falls to 60/30 in 10 min — why? [DocT QBank]",
+        "Cardiogenic shock from an RV infarct unmasked by preload reduction."
+       ],
+       [
+        "Inferior STEMI, hypotension, clear lungs, normal LV — next step? [Marrow]",
+        "Normal saline bolus; no nitrates."
+       ],
+       [
+        "Hypotension after SL nitrate — which drug interacted? [Marrow]",
+        "Riociguat."
+       ],
+       [
+        "Chest pain relieved by nitroglycerin, normal ECG, negative troponin — most likely? [DocT QBank]",
+        "Keyed oesophageal spasm; the defensible answer is unstable angina until serial troponins rule out ACS."
+       ]
+      ],
+      "punch": "A nitrate lowers preload, so it is dangerous wherever preload is holding the pressure up: hypotension, RV infarct, and any drug that already floods the NO–cGMP pathway. Whether it relieves the pain tells you nothing.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-39",
+     "q": "**For early drug therapy in ACS, give:**\na Aspirin loading dose\nb The second antiplatelet\nc The statin and dose\nd IV beta-blocker - indication, agent, contraindications",
+     "a": "- **300 mg** on arrival\n- **P2Y12 inhibitor** loading dose - prasugrel, ticagrelor or clopidogrel\n- **High-dose statin** - atorvastatin **80 mg** →\n- Tachycardia + SBP **>120 mmHg** **IV metoprolol** (limits infarct size); avoid in **heart failure** and **hypotension**",
+     "section": "Early drugs",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: IV β-blocker contraindications in ACS: signs of HF or low output, LVEF ≤40% with shock risk, PR >240 ms or 2nd/3rd-degree block, hypotension (SBP <120 with risk factors), active asthma/bronchospasm, and age >70 with tachycardia >110 (COMMIT: more cardiogenic shock)."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Early drugs",
+      "intro": "The last part of step 1 is the drugs given on arrival, before the reperfusion decision. The one real question tests the contraindications to an IV beta-blocker, which are wider than the card lists.",
+      "why": [
+       [
+        "a",
+        "**Aspirin 300 mg on arrival.** Aspirin acetylates platelet COX-1 irreversibly, so thromboxane A2 production stops for the life of the platelet; a loading dose works within minutes, faster still when chewed. ESC 2023 gives 150–300 mg oral (75–250 mg IV); ACC/AHA use 162–325 mg chewed. Both are right in their own system."
+       ],
+       [
+        "b",
+        "**A P2Y12 inhibitor loading dose: prasugrel, ticagrelor or clopidogrel.** Aspirin blocks only one platelet activation pathway; ADP acting on P2Y12 is the other main amplifier, so the two together (DAPT) are needed. Timing of this load is a separate question (MI-50: routine pretreatment is not recommended in NSTE-ACS)."
+       ],
+       [
+        "c",
+        "**High-dose statin: atorvastatin 80 mg.** High-intensity statin is started early regardless of cholesterol (Class I); the benefit is plaque stabilisation and LDL lowering, and early starting improves long-term adherence."
+       ],
+       [
+        "d",
+        "**Tachycardia with SBP >120 mmHg: IV metoprolol (limits infarct size); avoid in heart failure and hypotension.** Slowing the heart lowers oxygen demand and lengthens diastole, so less myocardium dies (METOCARD-CNIC, before primary PCI); ESC 2023 gives it IIa A in PPCI patients without acute heart failure and with SBP >120. The danger is a patient whose output depends on his heart rate: in COMMIT early IV metoprolol caused excess cardiogenic shock, mostly in the first day and in those with heart failure, low pressure or tachycardia. Contraindications therefore go beyond the card: signs of HF or low output, risk of shock (age >70, HR >110, SBP <120), PR >240 ms or second/third-degree block, and active asthma or bronchospasm."
+       ]
+      ],
+      "mimic": [
+       [
+        "Tachycardia from ischaemia and pain vs compensatory tachycardia of low output",
+        "The first is a target for a beta-blocker; the second is what keeps a failing heart’s output up, and blocking it causes shock (COMMIT)."
+       ]
+      ],
+      "traps": [
+       [
+        "“The only contraindications to an IV beta-blocker in STEMI are heart failure and hypotension”",
+        "Heart block (PR >240 ms, second/third degree), bronchospasm and high shock risk are also contraindications; Marrow’s ‘all except’ question keys ‘none of the above’."
+       ]
+      ],
+      "decode": [
+       [
+        "Contraindications to a beta-blocker in STEMI — all of the following except? [Marrow]",
+        "None of the above: HF/low LVEF, heart block, hypotension and asthma all count."
+       ],
+       [
+        "Aspirin loading dose in ACS (ESC)? [pattern]",
+        "150–300 mg oral; ACC/AHA 162–325 mg chewed."
+       ]
+      ],
+      "punch": "Aspirin, a P2Y12 load and a high-dose statin go in early for everyone; an IV beta-blocker only for a tachycardic, normotensive patient with no failure, no block and no bronchospasm.",
+      "step": 1
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-402",
+   "text": "The clock: primary PCI or lysis",
+   "steps": [
+    {
+     "card": "CVS10C|MI-40",
+     "q": "**Give the ESC time targets for STEMI:**\na FMC to ECG and diagnosis\nb Diagnosis to wire: the cut-off for choosing primary PCI\nc Diagnosis to wire: presenting at a PCI centre\nd Diagnosis to wire: transferred patients\ne Diagnosis to lytic bolus\nf Lysis to evaluation of efficacy\ng Lysis to angiography",
+     "a": "**Interval** | **Target**\nFMC → ECG and diagnosis | **≤10 min**\nDiagnosis → wire: choose PPCI over lysis if achievable | **≤120 min**\nDiagnosis → wire, at a PCI centre | **≤60 min**\nDiagnosis → wire, transferred | **≤90 min**\nDiagnosis → lytic bolus | **≤10 min**\nLysis → evaluate efficacy | **60-90 min**\nLysis → angiography | **2-24 h**",
+     "section": "STEMI time targets",
+     "bank_questions": 3,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → STEMI time targets",
+      "intro": "Step 2 is the clock that decides reperfusion. Myocardium is lost with every minute of occlusion, and three real questions turn on one number: whether the wire can cross within 120 minutes of diagnosis.",
+      "why": [
+       [
+        "a",
+        "**FMC → ECG and diagnosis: ≤10 minutes.** The clock for reperfusion starts at diagnosis, so delay here pushes everything else."
+       ],
+       [
+        "b",
+        "**Diagnosis → wire: choose PPCI over lysis if achievable within ≤120 minutes.** Primary PCI opens about 90% of arteries and has less intracranial bleeding than lysis, but its advantage is lost if it comes too late; 120 minutes is the delay at which lysis given now is roughly as good. This is a decision threshold (Class I, A), not a target."
+       ],
+       [
+        "c",
+        "**Diagnosis → wire at a PCI centre: ≤60 minutes.**"
+       ],
+       [
+        "d",
+        "**Diagnosis → wire, transferred: ≤90 minutes.** Transfer adds time, so the target is looser; the targets are what a system should achieve, not cut-offs for choosing."
+       ],
+       [
+        "e",
+        "**Diagnosis → lytic bolus: ≤10 minutes.** If lysis is chosen, its benefit falls steeply with time, so it must not wait (ideally pre-hospital, MI-52). In the American system the 2025 ACC/AHA ACS guideline sets FMC-to-device ≤90 minutes (≤120 minutes with transfer) and lysis when PCI will take more than 120 minutes; its door-to-needle goal of ≤30 minutes comes from the 2013 ACCF/AHA STEMI guideline and the AHA ACS algorithm."
+       ],
+       [
+        "f",
+        "**Lysis → evaluation of efficacy: 60–90 minutes.** By then a successful lysis has resolved ST elevation by ≥50%."
+       ],
+       [
+        "g",
+        "**Lysis → angiography: 2–24 hours.** This is the routine angiography after successful lysis (MI-42)."
+       ]
+      ],
+      "mimic": [
+       [
+        "120 min vs 90 min",
+        "120 is the decision threshold between PPCI and lysis; 90 is the target for transferred patients."
+       ]
+      ],
+      "traps": [
+       [
+        "“Transfer for PCI regardless of delay” with an expected 160-minute delay",
+        "Beyond 120 minutes lyse first (77% right); PCI follows anyway."
+       ],
+       [
+        "“Thrombolysis” in a STEMI at a PCI-capable centre",
+        "When PCI is available within 120 minutes it beats lysis; the 95%-right question keys primary PCI."
+       ]
+      ],
+      "decode": [
+       [
+        "Anterior STEMI, door-to-balloon expected 160 min — best initial management? [DocT QBank]",
+        "Immediate thrombolysis before transfer."
+       ],
+       [
+        "Inferior or anterior STEMI, troponin up, no delay mentioned — treatment? [DocT QBank]",
+        "Immediate primary PCI."
+       ]
+      ],
+      "punch": "Ask one question at diagnosis: can the wire cross within 120 minutes? If yes, primary PCI (aim 60 or 90 minutes); if no, lytic bolus within 10 minutes.",
+      "table": {
+       "title": "Which number answers which question",
+       "head": [
+        "Number",
+        "Meaning"
+       ],
+       "rows": [
+        [
+         "10 min",
+         "FMC → ECG; diagnosis → lytic bolus"
+        ],
+        [
+         "**120 min**",
+         "**the choice**: PPCI if the wire can cross by then, otherwise lyse"
+        ],
+        [
+         "60 min",
+         "target at a PCI centre"
+        ],
+        [
+         "90 min",
+         "target if transferred"
+        ],
+        [
+         "60–90 min",
+         "judge lysis"
+        ],
+        [
+         "2–24 h",
+         "angiography after successful lysis"
+        ]
+       ]
+      },
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-41",
+     "q": "**Route the STEMI strategy clock:**\na The first decision after diagnosis\nb The ≤120 min path\nc The >120 min path, and its first time point\nd When reperfusion is judged, and the \"no\" branch\ne The \"yes\" branch, and its window",
+     "a": "- **Time to PCI?**\n- **Primary PCI** - alert and transfer to a PCI centre; wire crossing by 90 min\n- **Fibrinolysis** - bolus within **10 min**, then transfer to a PCI centre →\n- At **60-90 min**: reperfusion criteria met? **No** → **RESCUE PCI**\n- **Yes** → **routine PCI strategy at 2-24 h**",
+     "section": "Strategy clock",
+     "bank_questions": 9,
+     "bank_lines": [
+      "DocT Recall25: Stent thrombosis presenting with ST elevation is a STEMI: load DAPT (aspirin + P2Y12) with anticoagulation and send for immediate primary PCI. Lysis works poorly on platelet-rich stent thrombus; heparin alone or beta-blockers are not reperfusion."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Strategy clock",
+      "intro": "Step 2 as a flow chart. This is the most asked card in the deck (ten real questions): almost all are the same decision, PPCI if timely and lysis if not, plus two on stent thrombosis, which is a STEMI and goes to the lab.",
+      "why": [
+       [
+        "a",
+        "**Time to PCI?** The first and only decision after a STEMI diagnosis is whether the wire can cross within 120 minutes (MI-40). Distance, transport and lab availability all feed into it."
+       ],
+       [
+        "b",
+        "**Primary PCI: alert and transfer to a PCI centre; wire crossing by 90 minutes.** Bypassing the emergency department and taking the patient straight to the lab saves time; at a PCI centre the aim is 60 minutes."
+       ],
+       [
+        "c",
+        "**Fibrinolysis: bolus within 10 minutes, then transfer to a PCI centre.** Lysis is a bridge, not the end of treatment: every lysed patient is moved to a PCI centre immediately (ESC Class I, A), because a third or more fail to reperfuse and some re-occlude."
+       ],
+       [
+        "d",
+        "**At 60–90 minutes: reperfusion criteria met? No → rescue PCI.** Failure means less than 50% ST resolution, ongoing pain, or haemodynamic or electrical instability (MI-42). A second dose of lytic does not help."
+       ],
+       [
+        "e",
+        "**Yes → routine PCI strategy at 2–24 hours.** The lysed artery still sits on a ruptured plaque with residual stenosis; angiography within 2–24 hours lowers re-infarction without the bleeding of immediate PCI on a fully lytic state."
+       ]
+      ],
+      "mimic": [
+       [
+        "Stent thrombosis vs post-PCI pain without new ST change",
+        "New ST elevation in the stented territory is stent thrombosis, a STEMI: back to the lab. Pain with an unchanged ECG gives time for other causes."
+       ],
+       [
+        "Rescue PCI vs routine PCI after lysis",
+        "Rescue: lysis failed, go now. Routine: lysis worked, go at 2–24 hours."
+       ]
+      ],
+      "traps": [
+       [
+        "“Immediate transfer for primary PCI” when the PCI centre is 150 km or 4 hours away",
+        "The delay is well over 120 minutes: lyse, then transfer (NEET 2025, Marrow)."
+       ],
+       [
+        "“Intravenous nitroglycerin, observation or echo first” for new ST elevation after a stent",
+        "Only 48% chose repeat angiography. Acute stent thrombosis is a STEMI; anything else delays reperfusion."
+       ],
+       [
+        "“Thrombolysis” for stent thrombosis",
+        "Platelet-rich stent thrombus responds poorly to lysis; load DAPT, anticoagulate and do urgent PCI (NEET 2025)."
+       ],
+       [
+        "Marrow’s ‘PCI at 3–24 h’ after lysis",
+        "Its explanation says 3–24 h; ESC says 2–24 h. The answer, lysis then transfer, is unaffected."
+       ]
+      ],
+      "decode": [
+       [
+        "STEMI, PCI centre 150 km away (or 4 h, or door-to-balloon 160 min) — next step? [NEET 2025] [Marrow] [DocT GT]",
+        "Thrombolysis, then transfer to a PCI centre."
+       ],
+       [
+        "STEMI with PCI available — most appropriate treatment? [DocT QBank]",
+        "Primary PCI."
+       ],
+       [
+        "DES 2 months ago, sudden anterior ST elevation — immediate management? [NEET 2025]",
+        "DAPT with urgent PCI."
+       ],
+       [
+        "New chest pain and ST elevation hours after a successful circumflex stent — next step? [DocT GT]",
+        "Urgent repeat coronary angiography."
+       ]
+      ],
+      "punch": "One decision: PCI within 120 minutes, or lyse within 10 and transfer. After lysis, failure means rescue PCI now and success means angiography at 2–24 hours; stent thrombosis is a STEMI and goes straight back to the lab.",
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-17",
+     "q": "STEMI at a hospital without PCI.\na When do you choose lysis over transfer?\nb After successful lysis — angiography when?\nc Lysis failed — what defines failure, and what\nnext?",
+     "a": "**Pharmaco-invasive: angiography 2–24 h**\n**after successful lysis**\na If PCI cannot happen within **120 min** of\ndiagnosis → lyse (within 10 min of diagnosis;\ndoor-to-needle ≤ 30 min).\nb **Transfer for angiography 2–24 h** after lysis\n(mini test: 3–24 h). Not before 2–3 h (bleeding\npeak).\nc **Below 50% ST resolution at 60–90 min**,\nongoing pain or instability → **immediate rescue**\n**PCI**.",
+     "section": "ACS & cardiogenic shock",
+     "bank_questions": 2,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → STEMI without on-site PCI: pharmaco-invasive strategy",
+      "intro": "Step 4 begins with the commonest ACS decision outside a PCI centre. Primary PCI is better than lysis only if it can be done quickly; the card gives the time limit and what follows lysis.",
+      "why": [
+       [
+        "a",
+        "**If PCI cannot happen within 120 min of diagnosis → lyse (within 10 min of diagnosis; door-to-needle ≤30 min).** Beyond about 120 minutes of delay the advantage of PCI over lysis is lost to the extra myocardium that dies waiting (ESC 2023). Lysis works best early, when the thrombus is fresh and fibrin-poor, and is given within 12 hours of symptom onset. ESC targets the bolus within 10 minutes of the diagnostic ECG; the AHA target is door-to-needle within 30 minutes."
+       ],
+       [
+        "b",
+        "**Transfer for angiography 2–24 h after lysis (mini test: 3–24 h). Not before 2–3 h (bleeding peak).** Lysis opens the artery in about half to two thirds of patients but leaves the ruptured plaque, so routine early angiography prevents re-occlusion; within the first hours the lytic state makes arterial puncture and PCI more likely to bleed and gave no benefit (facilitated PCI)."
+       ],
+       [
+        "c",
+        "**Below 50% ST resolution at 60–90 min, ongoing pain or instability → immediate rescue PCI.** ST resolution is the bedside marker of tissue reperfusion; failure to resolve by half means the artery is probably still closed. Repeat lysis is not effective."
+       ]
+      ],
+      "mimic": [
+       [
+        "Rescue PCI vs pharmaco-invasive PCI",
+        "Rescue: lysis failed, go now. Pharmaco-invasive: lysis worked, angiography in 2–24 h."
+       ]
+      ],
+      "traps": [
+       [
+        "“Transfer for PCI regardless of delay” when door-to-balloon is 160 min",
+        "Lyse first (77% right); ‘regardless of delay’ applies to cardiogenic shock (CAR-18a)."
+       ],
+       [
+        "“1 h” or “48 h” for angiography after successful lysis",
+        "2–24 h; the mini test answer was 12 h (34% right)."
+       ]
+      ],
+      "decode": [
+       [
+        "Anterior STEMI, door-to-balloon expected 160 min — best initial management? [DocT QBank, 77%]",
+        "Immediate thrombolysis before transfer."
+       ],
+       [
+        "Anterior STEMI 1 h, nearest PCI centre 150 km away [NEET 2025 recall]",
+        "Thrombolysis."
+       ]
+      ],
+      "punch": "If PCI cannot happen within 120 minutes of diagnosis, lyse within 10 minutes, then transfer for angiography at 2–24 h, or go for rescue PCI at once if ST elevation has not fallen by half at 60–90 minutes.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-54",
+     "q": "**For the timing of fibrinolysis, give:**\na When benefit is maximal\nb What is preferred after 3 hours\nc The latest symptom duration for lysis\nd The target from diagnosis to bolus\ne What the \"2-24 h\" window in the notes really refers to",
+     "a": "- Within **2 hours** of symptom onset\n- **PCI** preferred over fibrinolysis\n- Up to **12 hours** - still effective, reduced benefit\n- **≤10 min**\n- The window for **angiography after SUCCESSFUL lysis** (MI-42)",
+     "section": "Lysis time windows",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Lysis time windows",
+      "intro": "Step 3: when lysis still works. No real question is linked; the card also corrects a mix-up in the notes between the lysis window and the post-lysis angiography window.",
+      "why": [
+       [
+        "a",
+        "**Within 2 hours of symptom onset.** A fresh thrombus is fibrin-rich and loose; over hours it becomes organised and cross-linked, so lytics dissolve it less well, while the myocardium at risk is already dying. Lives saved per 1,000 treated fall steeply after the first 2–3 hours."
+       ],
+       [
+        "b",
+        "**PCI preferred over fibrinolysis after 3 hours.** As lysis loses effect with time, the mechanical approach keeps its patency rate, so PCI wins when it can be done within the 120-minute window."
+       ],
+       [
+        "c",
+        "**Up to 12 hours: still effective, reduced benefit.** ESC: lysis within 12 hours of symptoms if PPCI cannot be done in time (I, A). Beyond 12 hours the risk outweighs the benefit; late STEMI (12–48 h) goes to PCI (IIa, B)."
+       ],
+       [
+        "d",
+        "**≤10 minutes from diagnosis to bolus.**"
+       ],
+       [
+        "e",
+        "**The window for angiography after SUCCESSFUL lysis (MI-42).** 2–24 hours is not a window for giving lysis."
+       ]
+      ],
+      "mimic": [
+       [
+        "Lysis window vs post-lysis angiography window",
+        "Lysis: up to 12 hours of symptoms. Angiography after successful lysis: 2–24 hours after the lytic."
+       ]
+      ],
+      "traps": [
+       [
+        "“Lysis is effective within 2–24 hours”",
+        "A notes error; lysis is for symptoms ≤12 hours."
+       ]
+      ],
+      "decode": [
+       [
+        "STEMI with 14 h of symptoms, no PCI nearby, pain settling — lyse? [pattern]",
+        "No; beyond 12 hours lysis is not indicated, transfer for PCI."
+       ]
+      ],
+      "punch": "Lysis works best in the first 2 hours and not at all usefully after 12; 2–24 hours is the angiography window after lysis, not a window for giving it.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-52",
+     "q": "**When fibrinolysis is the reperfusion strategy, give:**\na When and where to start it\nb The type of agent\nc The adjustment for age ≥75\nd The antiplatelet regimen\ne Anticoagulation afterwards",
+     "a": "- **As soon as possible** after diagnosis, preferably **pre-hospital** - I, A\n- **Fibrin-specific** (tenecteplase, alteplase, reteplase) - I, B\n- **Half-dose tenecteplase** - IIa, B\n- **Aspirin + clopidogrel 300 mg**\n- Continue **until revascularisation**",
+     "section": "Fibrinolysis recommendations",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Fibrinolysis recommendations",
+      "intro": "Step 3: how lysis is given. No real question is linked; the likely test is that the P2Y12 partner for lysis is clopidogrel.",
+      "why": [
+       [
+        "a",
+        "**As soon as possible after diagnosis, preferably pre-hospital: Class I, A.** The benefit of lysis falls fastest in the first hours (MI-54); giving it in the ambulance saves the most myocardium."
+       ],
+       [
+        "b",
+        "**Fibrin-specific agent (tenecteplase, alteplase, reteplase): Class I, B.** They act mainly on fibrin-bound plasminogen, giving better patency than streptokinase."
+       ],
+       [
+        "c",
+        "**Half-dose tenecteplase: IIa, B.** Intracranial haemorrhage rises with age (MI-51)."
+       ],
+       [
+        "d",
+        "**Aspirin + clopidogrel 300 mg.** ESC 2023 Class I, A. Clopidogrel is the P2Y12 inhibitor tested at the time of lysis (CLARITY, COMMIT); prasugrel has not been tested with lysis, and ticagrelor only when started a median of about 11 hours afterwards in patients under 75 (TREAT: no more major bleeding than clopidogrel). More potent platelet inhibition given with the lytic risks intracranial bleeding. Over 75 years, clopidogrel 75 mg without the 300 mg load."
+       ],
+       [
+        "e",
+        "**Continue anticoagulation until revascularisation.** ESC: until revascularisation, or for the hospital stay up to 8 days, Class I, A. Enoxaparin (IV bolus then subcutaneous) was better than UFH with lysis in ExTRACT-TIMI 25."
+       ]
+      ],
+      "mimic": [
+       [
+        "P2Y12 with lysis vs with PCI",
+        "Lysis: clopidogrel. PCI: prasugrel or ticagrelor."
+       ]
+      ],
+      "traps": [
+       [
+        "“Ticagrelor or prasugrel with tenecteplase”",
+        "Clopidogrel is the partner for lysis."
+       ]
+      ],
+      "decode": [
+       [
+        "STEMI being lysed: which P2Y12 inhibitor and dose? [pattern]",
+        "Clopidogrel 300 mg (75 mg if >75 years) with aspirin."
+       ]
+      ],
+      "punch": "Lyse early, ideally pre-hospital, with a fibrin-specific drug (half-dose tenecteplase if old), add aspirin and clopidogrel, and anticoagulate until revascularisation.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-51",
+     "q": "**Give the dose of each fibrinolytic:**\na Streptokinase\nb Alteplase\nc Reteplase\nd Tenecteplase, and the elderly adjustment",
+     "a": "**Drug** | **Dose**\n**Streptokinase** | **1.5 million units** IV over **30-60 min** →\n**Alteplase** | **15 mg** bolus → **0.75 mg/kg** over 30 min (max 50 mg) → **0.5 mg/kg** over 60 min (max 35 mg)\n**Reteplase** | **10 U + 10 U** boluses **30 min apart**\n**Tenecteplase** | Single weight-based bolus: **30 mg** <60 kg, 35 mg 60-69, 40 mg 70-79, 45 mg 80-89, **50 mg** ≥90 kg; **HALF-dose if ≥75 y**",
+     "section": "Fibrinolytic doses",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Fibrinolytic doses",
+      "intro": "Step 3 turns to lysis itself. No real question is linked; doses are asked as recall, and the tenecteplase bands and its half dose in the elderly are the usual targets.",
+      "why": [
+       [
+        "a",
+        "**Streptokinase 1.5 million units IV over 30–60 minutes.** Not fibrin-specific: it activates circulating plasminogen as well as clot-bound, so it causes systemic fibrinolysis and hypotension, and it is antigenic: antibodies form within days and persist, so it is not repeated (ACC/AHA: not within 6 months)."
+       ],
+       [
+        "b",
+        "**Alteplase: 15 mg bolus → 0.75 mg/kg over 30 minutes (max 50 mg) → 0.5 mg/kg over 60 minutes (max 35 mg).** The accelerated 90-minute regimen; the maximum total is 100 mg, which a patient of 67 kg or more receives as fixed 15 + 50 + 35 mg. Its short half-life is why it needs an infusion."
+       ],
+       [
+        "c",
+        "**Reteplase 10 U + 10 U boluses 30 minutes apart.** A longer half-life allows two boluses."
+       ],
+       [
+        "d",
+        "**Tenecteplase: single weight-based bolus, 30 mg <60 kg, 35 mg 60–69, 40 mg 70–79, 45 mg 80–89, 50 mg ≥90 kg; half-dose if ≥75 years.** Tenecteplase is the most fibrin-specific and longest-acting, so one bolus suffices, which makes it the pre-hospital agent. In STREAM, intracranial bleeding in the elderly was 3 of 42 before the protocol halved their dose and none of 93 after it (non-randomised, hypothesis-generating); ESC gives half-dose IIa, B."
+       ]
+      ],
+      "mimic": [
+       [
+        "Streptokinase vs fibrin-specific agents",
+        "Streptokinase: systemic lysis, hypotension, allergy, cheap. Fibrin-specific agents: clot-bound plasminogen, bolus dosing, preferred (I, B)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Full-dose tenecteplase for an 80-year-old”",
+        "Half dose from 75 years (ESC ≥75). Do not confuse it with the clopidogrel rule after lysis, which drops the 300 mg load only above 75."
+       ]
+      ],
+      "decode": [
+       [
+        "Tenecteplase dose for a 72 kg patient aged 60? [pattern]",
+        "40 mg single bolus."
+       ]
+      ],
+      "punch": "Tenecteplase is one weight-based bolus of 30–50 mg, halved from 75 years; alteplase is the 90-minute three-step infusion; streptokinase is 1.5 million units and not fibrin-specific.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-53",
+     "q": "**Sort the contraindications to fibrinolysis:**\na Absolute (eight)\nb Relative (eight)",
+     "a": "**Absolute** | **Relative**\nPrior ICH or stroke of unknown origin - **any time** | **TIA** in preceding **6 months**\n**Ischaemic stroke** in preceding **6 months** | Oral anticoagulant therapy\nCNS damage, neoplasm or AVM | Pregnancy or within 1 week post-partum\nMajor trauma / surgery / head injury within **1 month** | Refractory hypertension (SBP >180 and/or DBP >110)\nGI bleeding within **1 month** | Advanced liver disease\nKnown bleeding disorder (excluding menses) | Infective endocarditis\n**Aortic dissection** | Active peptic ulcer\nNon-compressible puncture in 24 h (liver biopsy, LP) | Prolonged or traumatic resuscitation",
+     "section": "Lysis contraindications",
+     "bank_questions": 3,
+     "bank_lines": [
+      "Marrow: Active diabetic haemorrhagic retinopathy is a relative contraindication to fibrinolysis; a previous MI is not a contraindication; CPR counts only if prolonged (>10 min) or traumatic."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Lysis contraindications",
+      "intro": "Step 3: who must not be lysed. Five real questions test this list, often in PE or rural STEMI stems; the hidden difficulty is that different guidelines draw the stroke and surgery windows differently.",
+      "why": [
+       [
+        "a",
+        "**Absolute: prior ICH or stroke of unknown origin at any time; ischaemic stroke in the preceding 6 months; CNS damage, neoplasm or AVM; major trauma, surgery or head injury within 1 month; GI bleeding within 1 month; known bleeding disorder (excluding menses); aortic dissection; non-compressible puncture in 24 h (liver biopsy, LP).** The common thread is a site that would bleed catastrophically (brain, aorta, a fresh wound) once fibrin is dissolved everywhere. Aortic dissection matters because it can mimic STEMI (inferior ST elevation when the flap involves the right coronary)."
+       ],
+       [
+        "b",
+        "**Relative: TIA in the preceding 6 months; oral anticoagulant therapy; pregnancy or within 1 week post-partum; refractory hypertension (SBP >180 and/or DBP >110); advanced liver disease; infective endocarditis; active peptic ulcer; prolonged or traumatic resuscitation.** Here the risk is weighed against the benefit. Marrow adds active diabetic haemorrhagic retinopathy as relative; a previous MI is not a contraindication; CPR counts only if prolonged (over 10 minutes) or traumatic."
+       ]
+      ],
+      "mimic": [
+       [
+        "Ischaemic stroke vs TIA within 6 months",
+        "Same window, different class: stroke absolute, TIA relative."
+       ]
+      ],
+      "traps": [
+       [
+        "“Prior ischaemic stroke 5 months ago” or “surgery 2 weeks ago” offered beside a known AVM",
+        "Under the ESC list (this card) both are absolute too; the GT key is AVM (75% right) because it is absolute in every guideline. When several look absolute, pick the one no list disputes."
+       ],
+       [
+        "“SBP >180 mmHg” or “warfarin and aspirin” as absolute",
+        "Both are relative; previous haemorrhagic stroke is absolute (68% right)."
+       ],
+       [
+        "“Only contraindicated if on anticoagulation” for massive PE with ischaemic stroke 2 months ago",
+        "Ischaemic stroke within 6 months is absolute in ESC PE and STEMI rules (71% right); stroke-lysis rules use 3 months."
+       ]
+      ],
+      "decode": [
+       [
+        "Absolute contraindication to thrombolysis in STEMI? [DocT QBank]",
+        "Previous haemorrhagic stroke."
+       ],
+       [
+        "Rural anterior STEMI, transfer 3 h — which is an absolute contraindication? [DocT GT]",
+        "Known arteriovenous malformation."
+       ],
+       [
+        "Massive PE with shock, ischaemic stroke 2 months ago — eligibility? [DocT GT]",
+        "Absolute contraindication."
+       ],
+       [
+        "Post-op day 2 MI with hypotension — what is NOT recommended? [Marrow]",
+        "Thrombolytic therapy (surgery within 1 month)."
+       ]
+      ],
+      "punch": "Lysis dissolves fibrin everywhere, so anything that would bleed into the brain, aorta or a fresh wound rules it out; brain lesions and prior ICH are absolute in every list, and stroke within 6 months is absolute but TIA is only relative.",
+      "table": {
+       "title": "Same patient, different list",
+       "head": [
+        "Item",
+        "ESC (STEMI and PE)",
+        "ACC/AHA (STEMI)"
+       ],
+       "rows": [
+        [
+         "Ischaemic stroke",
+         "**absolute <6 months**",
+         "absolute <3 months"
+        ],
+        [
+         "Major surgery or trauma",
+         "**absolute <1 month** (ESC PE 2019: <3 weeks)",
+         "relative <3 weeks"
+        ],
+        [
+         "Head trauma / intracranial surgery",
+         "absolute <1 month",
+         "absolute <3 months / <2 months"
+        ],
+        [
+         "SBP >180 / DBP >110",
+         "relative",
+         "relative (absolute if unresponsive)"
+        ],
+        [
+         "AVM, prior ICH",
+         "**absolute in every list**",
+         "**absolute in every list**"
+        ]
+       ]
+      },
+      "parts": [
+       {
+        "q": "Contraindication to fibrinolysis in acute MI among the options? [Marrow]",
+        "a": "Active diabetic haemorrhagic retinopathy (relative); previous MI is not a contraindication."
+       }
+      ],
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-42",
+     "q": "**After fibrinolysis, give the action and class for:**\na Heart failure / shock\nb Failed lysis - definition and action\nc Successful lysis\nd Recurrent ischaemia or re-occlusion\ne What watchful waiting alone does",
+     "a": "**Situation** | **Action** | **Class**\n**HF / shock** | **Emergency** angiography ± PCI | I, A\n**Failed lysis** | **RESCUE PCI** immediately - <50% ST resolution at 60-90 min, or instability, or worsening ischaemia | I, A\n**Successful lysis** | Angiography ± PCI of IRA at **2-24 h** | I, A\n**Re-occlusion** | **Emergency** angiography ± PCI | I, B\n- Lysis + watchful waiting ↑ **re-infarction**; routine PCI after lysis reduces it",
+     "section": "After fibrinolysis",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → After fibrinolysis",
+      "intro": "Step 3 follows the lysed patient. Lysis never ends the treatment; what happens next depends on how the patient looks at 60–90 minutes. No real question is linked, but the branches are the same ones MI-41 tests.",
+      "why": [
+       [
+        "a",
+        "**HF or shock: emergency angiography ± PCI, Class I, A.** Shock after lysis means a large area is still ischaemic or a mechanical complication is present; only opening the artery or fixing the defect helps."
+       ],
+       [
+        "b",
+        "**Failed lysis: rescue PCI immediately — <50% ST resolution at 60–90 minutes, or instability, or worsening ischaemia; Class I, A.** ST resolution is a bedside marker of tissue reperfusion; under 50% means the artery is probably still shut."
+       ],
+       [
+        "c",
+        "**Successful lysis: angiography ± PCI of the infarct-related artery at 2–24 hours, Class I, A.** The plaque and residual stenosis are still there."
+       ],
+       [
+        "d",
+        "**Recurrent ischaemia or re-occlusion: emergency angiography ± PCI, Class I, B.**"
+       ],
+       [
+        "e",
+        "**Watchful waiting after lysis raises re-infarction; routine PCI after lysis reduces it.** Trials of early routine angiography after lysis against an ischaemia-guided approach (such as CARESS-in-AMI and TRANSFER-AMI) found less re-infarction and recurrent ischaemia, without more bleeding."
+       ]
+      ],
+      "mimic": [
+       [
+        "Rescue PCI vs facilitated PCI",
+        "Rescue is for failed lysis. Immediate PCI on top of successful lysis (facilitated PCI) is not recommended: more bleeding, no benefit."
+       ]
+      ],
+      "traps": [
+       [
+        "“Successful lysis needs no angiography”",
+        "Watchful waiting raises re-infarction; angiography at 2–24 hours is Class I."
+       ]
+      ],
+      "decode": [
+       [
+        "Lysed anterior STEMI, ST resolution 30% at 90 min — next step? [pattern]",
+        "Immediate rescue PCI."
+       ],
+       [
+        "Lysed STEMI, ST resolved, pain-free — when angiography? [pattern]",
+        "Within 2–24 hours."
+       ]
+      ],
+      "punch": "After lysis, failure or shock means the lab now, success means the lab in 2–24 hours; nobody is simply watched.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-403",
+   "text": "Antithrombotics: what blocks what, and when",
+   "steps": [
+    {
+     "card": "CVS10C|MI-48",
+     "q": "**Map each drug group to its target:**\na Aspirin\nb Clopidogrel, prasugrel, ticagrelor, cangrelor\nc Eptifibatide, tirofiban\nd Rivaroxaban, apixaban, edoxaban, fondaparinux\ne UFH, enoxaparin\nf Dabigatran, bivalirudin",
+     "a": "**Drug** | **Target**\n**Aspirin** | **Thromboxane A2** (COX)\n**Clopidogrel, prasugrel, ticagrelor, cangrelor** | **P2Y12** ADP receptor\n**Eptifibatide, tirofiban** | **GP IIb/IIIa**\n**Rivaroxaban, apixaban, edoxaban, fondaparinux** | **Factor Xa**\n**UFH, enoxaparin** | **Xa and thrombin**\n**Dabigatran, bivalirudin** | **Thrombin** (direct)\n- GP IIb/IIIa: **bailout** only (no-reflow / thrombotic complication) - IIa, C\n- Cangrelor: P2Y12-naive patients - IIb, A",
+     "section": "Antithrombotic targets",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: Cangrelor is the only IV P2Y12 inhibitor — reversible, t½ 3–6 min, platelet function back within 30–60 min — so it bridges a recent-stent patient whose oral P2Y12 must stop for urgent surgery (BRIDGE). Eptifibatide and tirofiban block GP IIb/IIIa, not P2Y12.",
+      "Marrow + DocT GT: Eptifibatide inhibits platelets within ~15 min, t½ ~2.5 h, function recovers in ~4–8 h; renal dosing differs by drug: eptifibatide halved when CrCl <50 (contraindicated on dialysis), tirofiban halved when CrCl <30, abciximab none. Today GP IIb/IIIa inhibitors are bail-out drugs for no-reflow or thrombotic complications during PCI.",
+      "DocT GT: Aspirin IRREVERSIBLY acetylates platelet COX-1, so thromboxane A2 production stops for the platelet's life (7–10 days); absent aggregation to arachidonic acid confirms it. Recovery needs new platelets (~10%/day), so platelet transfusion reverses it for urgent bleeding. NSAIDs block COX-1 reversibly; P2Y12 blockers abolish the ADP response."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Antithrombotic targets",
+      "intro": "Step 6 maps every antithrombotic to the step of clotting it blocks; that map answers the reversal and bridging questions. Three real questions test it, and the card layer adds aspirin’s irreversibility and the GP IIb/IIIa timings.",
+      "why": [
+       [
+        "a",
+        "**Aspirin: thromboxane A2 (COX).** Aspirin acetylates platelet COX-1 irreversibly, and platelets have no nucleus to make more, so thromboxane A2 production stops for the platelet’s life (7–10 days). An absent aggregation response to arachidonic acid confirms the effect. Recovery needs new platelets (about 10% a day), so urgent bleeding needs platelet transfusion. NSAIDs block COX-1 reversibly."
+       ],
+       [
+        "b",
+        "**Clopidogrel, prasugrel, ticagrelor, cangrelor: P2Y12 ADP receptor.** Cangrelor is the only IV P2Y12 inhibitor: reversible, half-life 3–6 minutes, platelet function back within about an hour. That makes it the bridge when a recent-stent patient must stop oral P2Y12 for urgent surgery (BRIDGE), and an option in P2Y12-naive patients during PCI (IIb, A)."
+       ],
+       [
+        "c",
+        "**Eptifibatide, tirofiban: GP IIb/IIIa.** GP IIb/IIIa is the final common pathway, the fibrinogen receptor that links platelets, so blocking it stops aggregation whatever the trigger. Eptifibatide inhibits platelets within about 15 minutes, half-life about 2.5 hours, function back in 4–8 hours. Renal dosing differs: eptifibatide infusion halved when CrCl <50 mL/min and contraindicated on dialysis; tirofiban halved when CrCl <30; abciximab needed none. Today they are bail-out drugs for no-reflow or thrombotic complications during PCI (IIa, C)."
+       ],
+       [
+        "d",
+        "**Rivaroxaban, apixaban, edoxaban, fondaparinux: factor Xa.** The oral agents block Xa directly; fondaparinux does so indirectly through antithrombin."
+       ],
+       [
+        "e",
+        "**UFH, enoxaparin: Xa and thrombin.** Both work through antithrombin. UFH chains are long enough to bridge antithrombin and thrombin, so anti-Xa and anti-IIa activity are about equal; enoxaparin’s shorter chains act mainly on Xa (ratio about 3–4 to 1). Protamine fully reverses UFH, only partly enoxaparin."
+       ],
+       [
+        "f",
+        "**Dabigatran, bivalirudin: thrombin (direct).** They bind thrombin without antithrombin, so they also inhibit clot-bound thrombin and do not interact with platelet factor 4 (hence bivalirudin in HIT, MI-49)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Cangrelor vs eptifibatide/tirofiban as an IV bridge",
+        "Cangrelor replaces the oral P2Y12 blocker; GP IIb/IIIa inhibitors act on a different receptor and are bail-out drugs, not bridges."
+       ]
+      ],
+      "traps": [
+       [
+        "“Tirofiban or eptifibatide” as the IV bridge for a patient on clopidogrel needing surgery",
+        "They block GP IIb/IIIa, not P2Y12; cangrelor is the answer (80% right)."
+       ],
+       [
+        "“Aspirin inhibits COX-1 reversibly”",
+        "Irreversibly; that is why its effect lasts the platelet’s life and transfusion is needed."
+       ],
+       [
+        "Abciximab",
+        "No longer marketed in most countries; it bound irreversibly. Eptifibatide and tirofiban remain."
+       ]
+      ],
+      "decode": [
+       [
+        "Recent stent, on aspirin + clopidogrel, needs urgent surgery — IV bridging agent? [DocT GT]",
+        "Cangrelor infusion."
+       ],
+       [
+        "On aspirin 81 mg, GI bleed, absent response to arachidonic acid — mechanism? [DocT GT]",
+        "Irreversible COX-1 inhibition."
+       ],
+       [
+        "Eptifibatide bolus + infusion — time to platelet inhibition? [Marrow]",
+        "About 15 minutes."
+       ]
+      ],
+      "punch": "Aspirin hits thromboxane for the platelet’s life, the P2Y12 drugs hit ADP (cangrelor is the IV, reversible one), the GP IIb/IIIa drugs hit the final common pathway, and the anticoagulants hit Xa, thrombin or both.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-47",
+     "q": "**For the P2Y12 inhibitors, give:**\na Which are thienopyridines\nb Which are preferred, and over what\nc The prasugrel contraindication and age caution\nd The ticagrelor caution",
+     "a": "- **Clopidogrel** and **prasugrel**. Ticagrelor is **NOT** - a reversible, direct-acting agent (cyclopentyl-triazolopyrimidine)\n- **Prasugrel or ticagrelor** over clopidogrel (superior efficacy); clopidogrel if unavailable / contraindicated\n- **Prior stroke or TIA**; avoid in older patients\n- Prior **haemorrhagic stroke**; liver disease",
+     "section": "P2Y12 inhibitors",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: Ticagrelor causes dose-related dyspnoea in up to ~14% (PLATO) — sudden air hunger with normal SpO2, examination, ECG and CT — from adenosine accumulation (it blocks ENT1 reuptake); usually mild and self-limiting, not a reason to stop unless intolerable. The same adenosine effect causes ventricular pauses."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → P2Y12 inhibitors",
+      "intro": "Step 6 begins with the second antiplatelet. Two real questions test the drugs’ side effects and contraindications, and both were got right by less than half: ticagrelor dyspnoea (30%) and prasugrel after TIA (49%).",
+      "why": [
+       [
+        "a",
+        "**Clopidogrel and prasugrel; ticagrelor is NOT — a reversible, direct-acting agent (cyclopentyl-triazolopyrimidine).** Thienopyridines are prodrugs whose active metabolite binds P2Y12 irreversibly, so their effect lasts the platelet’s life. Clopidogrel needs two CYP steps (CYP2C19), so its effect is slow and variable; prasugrel needs one, so it is faster and stronger. Ticagrelor is active itself and binds reversibly, so its effect wears off in 3–5 days."
+       ],
+       [
+        "b",
+        "**Prasugrel or ticagrelor over clopidogrel (superior efficacy); clopidogrel if unavailable or contraindicated.** TRITON-TIMI 38 and PLATO showed fewer ischaemic events (PLATO also lower mortality), at the cost of more bleeding. Clopidogrel remains the drug with lysis (MI-52) and with oral anticoagulants."
+       ],
+       [
+        "c",
+        "**Prior stroke or TIA; avoid in older patients.** In TRITON-TIMI 38 patients with prior stroke or TIA had net harm, with more intracranial bleeding. At 75 years or more, or under 60 kg, prasugrel is generally not recommended; if used, the maintenance dose is 5 mg."
+       ],
+       [
+        "d",
+        "**Prior haemorrhagic stroke; liver disease.** Ticagrelor is contraindicated after any intracranial haemorrhage; it is cleared by hepatic CYP3A4, so the label contraindicates severe hepatic impairment and ESC advises against it (and prasugrel) in moderate-to-severe liver disease. Its other effects come from blocking adenosine reuptake (ENT1): dyspnoea in about 14% in PLATO (vs about 8% with clopidogrel), with normal saturation, examination, ECG and CT, usually mild and self-limiting; and ventricular pauses."
+       ]
+      ],
+      "mimic": [
+       [
+        "Ticagrelor dyspnoea vs pulmonary embolism or heart failure after MI",
+        "Ticagrelor dyspnoea has normal SpO₂, examination, ECG and imaging, and follows the drug; PE and HF do not."
+       ]
+      ],
+      "traps": [
+       [
+        "“Aspirin or metoprolol causes the dyspnoea” 12 hours after PCI with normal SpO₂, exam, ECG and CT",
+        "Only 30% chose ticagrelor; the adenosine effect is the cause."
+       ],
+       [
+        "“Clopidogrel, ticagrelor or cangrelor is contraindicated after a TIA”",
+        "Only prasugrel is (49% right)."
+       ],
+       [
+        "“Ticagrelor is a thienopyridine”",
+        "It is a reversible, direct-acting cyclopentyl-triazolopyrimidine."
+       ]
+      ],
+      "decode": [
+       [
+        "Post-PCI patient on aspirin, ticagrelor, metoprolol, atorvastatin: breathless with normal SpO₂, ECG and CT — culprit? [DocT GT]",
+        "Ticagrelor."
+       ],
+       [
+        "ACS with a recent TIA, planned for PCI — which P2Y12 inhibitor is contraindicated? [DocT GT]",
+        "Prasugrel."
+       ]
+      ],
+      "punch": "Prasugrel and ticagrelor beat clopidogrel; prasugrel is out after any stroke or TIA and in the old, ticagrelor is reversible and causes dyspnoea and pauses through adenosine.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-49",
+     "q": "**For anticoagulation during primary PCI, give the dose / class of:**\na UFH\nb Enoxaparin\nc Bivalirudin (routine, and in HIT)\nd Fondaparinux\ne Anticoagulation after the procedure",
+     "a": "**Agent** | **Dose / use** | **Class**\n**UFH** | Bolus **70-100 U/kg** - preferred, routine | I, C\n**Enoxaparin** | IV **0.5 mg/kg** | IIa, A\n**Bivalirudin** | Routine | IIa, A\n**Bivalirudin** | **HIT** | I, C\n**Fondaparinux** | **NOT** recommended - possible harm | III, B\n- **Generally not** - limited to the periprocedural period",
+     "section": "Anticoagulation in PPCI",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Anticoagulation in PPCI",
+      "intro": "Step 6 again: the anticoagulant during primary PCI. No real question is linked; the classic test is that fondaparinux is harmful here although it is Class I in conservatively managed NSTE-ACS (MI-50).",
+      "why": [
+       [
+        "a",
+        "**UFH bolus 70–100 U/kg: preferred, routine, Class I, C.** It is cheap, its effect can be measured in the lab (ACT) and protamine reverses it. With a GP IIb/IIIa inhibitor the dose is lower (50–70 U/kg)."
+       ],
+       [
+        "b",
+        "**Enoxaparin IV 0.5 mg/kg: IIa, A.** ATOLL compared it with UFH in primary PCI: the primary composite narrowly missed significance (28% vs 34%, p = 0.07), but death, recurrent MI or urgent revascularisation fell (6.7% vs 11.3%) with similar major bleeding."
+       ],
+       [
+        "c",
+        "**Bivalirudin: routine IIa, A; in HIT I, C.** A direct thrombin inhibitor with a short half-life and less bleeding; ESC 2023 makes it an alternative to UFH with a full-dose infusion continued after PCI (that removed the excess early stent thrombosis seen in older trials). It does not interact with platelet factor 4, so it is the agent of choice in heparin-induced thrombocytopenia."
+       ],
+       [
+        "d",
+        "**Fondaparinux: NOT recommended, possible harm, Class III, B.** In OASIS-6, primary PCI with fondaparinux alone caused catheter thrombosis, because it does not inhibit thrombin directly and the contact system in catheters generates thrombin."
+       ],
+       [
+        "e",
+        "**Generally not; limited to the periprocedural period.** Once the artery is stented and the patient is on DAPT, continued anticoagulation adds bleeding without benefit, unless there is another indication (LV thrombus, AF, mechanical valve)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Fondaparinux in PPCI vs in NSTE-ACS with delayed angiography",
+        "Class III in PPCI (catheter thrombosis); Class I in NSTE-ACS when angiography is >24 h away, with a UFH bolus given if PCI follows."
+       ]
+      ],
+      "traps": [
+       [
+        "“Fondaparinux is a good anticoagulant for primary PCI”",
+        "Class III, B."
+       ]
+      ],
+      "decode": [
+       [
+        "Anticoagulant of choice for primary PCI in a patient with HIT? [pattern]",
+        "Bivalirudin (I, C)."
+       ],
+       [
+        "Which anticoagulant is not recommended in primary PCI? [pattern]",
+        "Fondaparinux (III, B)."
+       ]
+      ],
+      "punch": "UFH 70–100 U/kg is the default in primary PCI, enoxaparin and bivalirudin are IIa alternatives (bivalirudin is I in HIT), fondaparinux is harmful, and the anticoagulant stops when the procedure ends.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-50",
+     "q": "**For the ESC 2023 ACS antithrombotic algorithm, give:**\na NSTE-ACS anticoagulant: angiography <24 h\nb NSTE-ACS anticoagulant: angiography >24 h\nc Routine pretreatment: aspirin, P2Y12 before PPCI, P2Y12 in NSTE-ACS\nd P2Y12 choice when proceeding to PCI\ne Default DAPT, and after 12 months",
+     "a": "- **UFH** (I); enoxaparin (IIa)\n- **FONDAPARINUX** (I)\n- Aspirin **I** • P2Y12 before PPCI **IIb** • routine P2Y12 pretreatment in NSTE-ACS **III**\n- **Prasugrel > ticagrelor** (IIa) →\n- Aspirin + P2Y12 for **12 months** (I) → **aspirin alone** (I)",
+     "section": "ESC 2023 antithrombotic map",
+     "bank_questions": 2,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → ESC 2023 antithrombotic map",
+      "intro": "Step 6 as one map. Two real questions test it: whether to pre-treat with a P2Y12 inhibitor before angiography, and which anticoagulant to use before angiography in NSTEMI.",
+      "why": [
+       [
+        "a",
+        "**NSTE-ACS, angiography <24 hours: UFH (I); enoxaparin (IIa).** UFH is easily reversed and is what the lab will use anyway; enoxaparin is an alternative (IIa, B)."
+       ],
+       [
+        "b",
+        "**NSTE-ACS, angiography >24 hours: fondaparinux (I).** In OASIS-5 fondaparinux 2.5 mg daily matched enoxaparin for efficacy at 9 days with about half the major bleeding (about 2.2% vs 4.1%), and lower 30-day mortality, which followed the bleeding difference. If PCI follows, a full UFH bolus is added because of catheter thrombosis (MI-49)."
+       ],
+       [
+        "c",
+        "**Aspirin I; P2Y12 before PPCI IIb; routine P2Y12 pretreatment in NSTE-ACS III.** In NSTE-ACS the anatomy is unknown until angiography, and some patients turn out to need CABG (where the P2Y12 blocker adds bleeding) or have no coronary cause. ACCOAST gave prasugrel before angiography and found no fewer ischaemic events but more bleeding; ISAR-REACT 5 used prasugrel without pretreatment in NSTE-ACS and still beat ticagrelor. If angiography is expected after 24 hours, pretreatment may be considered (IIb, C)."
+       ],
+       [
+        "d",
+        "**Prasugrel over ticagrelor (IIa) when proceeding to PCI.** ISAR-REACT 5: death, MI or stroke at 1 year 6.9% vs 9.3%, without more bleeding."
+       ],
+       [
+        "e",
+        "**Aspirin + P2Y12 for 12 months (I), then aspirin alone (I).** Shortening is allowed by bleeding risk (ESC: 1-month DAPT in high bleeding risk IIb; 3–6 months IIa). ACC/AHA 2025 add that patients who tolerated ticagrelor-based DAPT can switch to ticagrelor monotherapy from 1 month after PCI (Class 1); see MI-72."
+       ]
+      ],
+      "mimic": [
+       [
+        "Fondaparinux: Class I vs Class III",
+        "Class I as the anticoagulant in NSTE-ACS with angiography >24 h; Class III as the sole anticoagulant in primary PCI."
+       ]
+      ],
+      "traps": [
+       [
+        "“Pre-treatment with a P2Y12 inhibitor is mandatory in NSTEMI”",
+        "Routine pretreatment in NSTE-ACS going for early angiography is Class III; withhold until the anatomy is known (ACCOAST, ISAR-REACT 5)."
+       ],
+       [
+        "“UFH is superior to enoxaparin” or “enoxaparin is contraindicated for invasive strategy”",
+        "Neither is true. DocT keys fondaparinux’s safety advantage over enoxaparin as the only true statement; note that with angiography within 24 hours ESC 2023 prefers UFH, and fondaparinux is the choice when angiography is beyond 24 hours."
+       ]
+      ],
+      "decode": [
+       [
+        "NSTEMI for urgent invasive strategy — pre-treat with a P2Y12 inhibitor? [DocT GT]",
+        "Generally withhold (especially prasugrel) until the anatomy is known."
+       ],
+       [
+        "Stable NSTEMI awaiting angiography — which anticoagulant statement is true? [DocT GT]",
+        "Fondaparinux has less major bleeding than enoxaparin (OASIS-5)."
+       ]
+      ],
+      "punch": "Aspirin for all, P2Y12 at the time of PCI rather than before, prasugrel preferred, UFH if angiography is within 24 hours and fondaparinux if later, then 12 months of DAPT unless bleeding risk shortens it.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10E|MI-72",
+     "q": "**For antiplatelet therapy in the 2025 ACC/AHA ACS guideline, give:**\na The default DAPT duration\nb The de-escalation option after PCI, and when\nc The preferred P2Y12 inhibitors\nd When upstream P2Y12 pretreatment may be considered",
+     "a": "- Aspirin + oral P2Y12 for **at least 12 months** - default\n- Tolerating DAPT → switch to **TICAGRELOR MONOTHERAPY** **≥1 month** after PCI (to reduce bleeding)\n- **Ticagrelor or prasugrel**; clopidogrel if these cannot be used\n- NSTE-ACS with angiography **delayed >24 h** - clopidogrel or ticagrelor",
+     "section": "Antiplatelet changes",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → ACC/AHA 2025 antiplatelet changes",
+      "intro": "Step 4: the antiplatelet rules after PCI. No real question is linked; the testable change is which drug is dropped early, and that ESC and ACC/AHA drop different ones.",
+      "why": [
+       [
+        "a",
+        "**Aspirin + oral P2Y12 for at least 12 months — default.** ACC/AHA 2025 gives DAPT for at least 1 year (1, A) in patients not at high bleeding risk, because stent thrombosis and new plaque events cluster in the first year."
+       ],
+       [
+        "b",
+        "**Tolerating DAPT → switch to TICAGRELOR MONOTHERAPY ≥1 month after PCI (to reduce bleeding).** Class 1, A. Once the stent is covered, aspirin adds bleeding more than protection on top of a potent P2Y12 inhibitor; ticagrelor-alone trials (TWILIGHT, ULTIMATE-DAPT) cut bleeding without more ischaemic events. Lesser options are 2b: switching ticagrelor or prasugrel to clopidogrel after 1 month, or single antiplatelet therapy after 1 month if bleeding risk is high."
+       ],
+       [
+        "c",
+        "**Ticagrelor or prasugrel; clopidogrel if these cannot be used.** Class 1 for PCI in STEMI and NSTE-ACS, for fewer MACE and stent thromboses; ACC/AHA names no preference between the two, whereas ESC 2023 prefers prasugrel for patients going to PCI (IIa, B; ISAR-REACT 5). Clopidogrel is for those who cannot take them (prior stroke for prasugrel, oral anticoagulation, high bleeding risk)."
+       ],
+       [
+        "d",
+        "**NSTE-ACS with angiography delayed >24 h → clopidogrel or ticagrelor.** It is 2b (‘may be considered’). Routine pretreatment before early angiography is not advised: the anatomy may send the patient to CABG, and prasugrel is not used before the anatomy is known. ESC 2023 also gives pretreatment beyond 24 hours IIb."
+       ]
+      ],
+      "mimic": [
+       [
+        "ESC 2023 vs ACC/AHA 2025 at the end of DAPT",
+        "ESC: 12 months of DAPT, then usually aspirin alone; single antiplatelet therapy, preferably a P2Y12 inhibitor, after 3–6 months ‘should be considered’ (IIa) if event-free and not high ischaemic risk, and aspirin or P2Y12 monotherapy after 1 month ‘may be considered’ (IIb) only in high bleeding risk; de-escalation in the first 30 days is not recommended. ACC/AHA: can drop aspirin at 1 month and continue ticagrelor alone."
+       ]
+      ],
+      "traps": [
+       [
+        "“After 1 month of DAPT, continue aspirin alone” as the ACC/AHA bleeding-reduction option",
+        "The Class 1 option keeps ticagrelor and drops aspirin (watch line)."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] ACS, PCI, tolerating ticagrelor-based DAPT, worried about bleeding — ACC/AHA 2025 option at 1 month?",
+        "Stop aspirin, continue ticagrelor alone (1, A)."
+       ],
+       [
+        "[pattern] NSTE-ACS, angiography planned at 48 h — P2Y12 before the lab?",
+        "Clopidogrel or ticagrelor may be considered (2b); not prasugrel."
+       ]
+      ],
+      "punch": "Default DAPT is 12 months with prasugrel or ticagrelor; ACC/AHA 2025 lets the patient drop aspirin and stay on ticagrelor alone from 1 month, whereas ESC keeps aspirin at the end.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-20",
+     "q": "ACS antithrombotics:\na STEMI not reperfused (declined) — best\nanticoagulant\nb IV P2Y12 inhibitor (vomiting, morphine)\nc Chest pain after sildenafil or tadalafil\nd Troponin in CKD stage 4",
+     "a": "**No reperfusion** → **fondaparinux · IV P2Y12**\n→ **cangrelor**\na **Fondaparinux** (OASIS-6) — less death/re-MI,\nno extra major bleeding. Not alone during primary\nPCI (catheter thrombosis).\nb **Cangrelor** — onset seconds, offset ~1 h.\nc **No nitrates** within 24 h (sildenafil) / 48 h\n(tadalafil) — profound hypotension.\nd Chronically raised; diagnose MI by a **rise**\n**and/or fall** (dynamic change), not a single value.",
+     "section": "ACS & cardiogenic shock",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Antithrombotics, nitrates and troponin",
+      "intro": "Four separate ACS decisions sit on this card, each tested by a different trap: the anticoagulant when nobody is reperfused, the IV P2Y12 inhibitor, the nitrate ban, and troponin in kidney disease.",
+      "why": [
+       [
+        "a",
+        "**Fondaparinux (OASIS-6) — less death/re-MI, no extra major bleeding. Not alone during primary PCI (catheter thrombosis).** Fondaparinux is an indirect factor Xa inhibitor given once daily; in STEMI patients without primary PCI it lowered death or re-infarction without more bleeding. It does not inhibit thrombin at the catheter tip, so if the patient goes to PCI a bolus of UFH is added. ESC 2023 recommends fondaparinux (class I) in NSTE-ACS when early angiography is not planned, advises against it during primary PCI (class III) and gives it IIa alongside streptokinase; it has no separate class for unreperfused STEMI, so the card’s answer rests on OASIS-6."
+       ],
+       [
+        "b",
+        "**Cangrelor — onset seconds, offset ~1 h.** Cangrelor is the only IV P2Y12 inhibitor: reversible, half-life 3–6 minutes, platelet function back within about an hour. Morphine and vomiting delay gut absorption of oral P2Y12 inhibitors, and IV cangrelor bypasses the gut. It is also the bridge when DAPT must stop for urgent surgery after a recent stent (BRIDGE)."
+       ],
+       [
+        "c",
+        "**No nitrates within 24 h (sildenafil) / 48 h (tadalafil) — profound hypotension.** Both nitrates and PDE5 inhibitors raise cGMP in vascular smooth muscle; together they cause severe vasodilation."
+       ],
+       [
+        "d",
+        "**Chronically raised; diagnose MI by a rise and/or fall (dynamic change), not a single value.** Chronic kidney disease and chronic myocardial injury raise baseline troponin; the Fourth Universal Definition requires a rise and/or fall with at least one value above the 99th percentile, plus clinical evidence of ischaemia."
+       ]
+      ],
+      "mimic": [
+       [
+        "Cangrelor vs GP IIb/IIIa inhibitors",
+        "Cangrelor blocks P2Y12, reversible, offset about an hour. Eptifibatide and tirofiban block GP IIb/IIIa; abciximab binds platelets for days."
+       ]
+      ],
+      "traps": [
+       [
+        "“Enoxaparin or UFH” as the best anticoagulant when no reperfusion is given",
+        "Fondaparinux (23% right)."
+       ],
+       [
+        "“Tirofiban or eptifibatide” as IV P2Y12 bridging",
+        "Cangrelor (35% right on the mini test; 80% in GT2)."
+       ],
+       [
+        "“A single troponin above the 99th percentile in CKD 4 = MI”",
+        "A dynamic rise and/or fall is needed (GT3 lost)."
+       ]
+      ],
+      "decode": [
+       [
+        "Recent stent, on DAPT, septic shock needing urgent surgery — IV antiplatelet bridge? [DocT GT, 80%]",
+        "Cangrelor infusion."
+       ]
+      ],
+      "punch": "No reperfusion: fondaparinux; IV P2Y12: cangrelor (also the surgical bridge); no nitrates within 24 h of sildenafil or 48 h of tadalafil; in CKD diagnose MI by a troponin rise and/or fall.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-404",
+   "text": "NSTE-ACS, risk scores and the invasive path",
+   "steps": [
+    {
+     "card": "CVS10C|MI-43",
+     "q": "**Sort NSTE-ACS by risk and give the invasive strategy for each:**\na Very high-risk features (six)\nb High-risk features (four)\nc Strategy for very high risk\nd Strategy for high risk\ne Strategy for non-high risk",
+     "a": "**Very high risk** | **High risk**\n- Haemodynamic instability / cardiogenic shock | - Confirmed NSTEMI (ESC algorithms)\n- Recurrent / refractory chest pain | - GRACE >140\n- Acute HF from ongoing ischaemia | - Transient ST elevation\n- Life-threatening arrhythmia / arrest after presentation | - Dynamic ST / T changes\n- Mechanical complications |\n- Recurrent dynamic ECG changes |\n- Very high → **IMMEDIATE** transfer and invasive strategy (<2 h)\n- High → **early (<24 h)** invasive strategy - **IIa**\n- Non-high → **selective** / inpatient invasive strategy - I",
+     "section": "NSTE-ACS risk groups",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → NSTE-ACS risk groups",
+      "intro": "Step 4 changes the question: without ST elevation the artery is usually not fully closed, so the decision is how fast to do angiography, and risk sets the speed. No real question is linked; the class change in ESC 2023 is the likely target.",
+      "why": [
+       [
+        "a",
+        "**Very high risk: haemodynamic instability or cardiogenic shock, recurrent or refractory chest pain, acute HF from ongoing ischaemia, life-threatening arrhythmia or arrest after presentation, mechanical complications, recurrent dynamic ECG changes.** Each means myocardium is dying now or the patient may not survive the wait, so these behave like a STEMI."
+       ],
+       [
+        "b",
+        "**High risk: confirmed NSTEMI (ESC algorithms), GRACE >140, transient ST elevation, dynamic ST/T changes.** A rising troponin or a changing ECG marks an active thrombus."
+       ],
+       [
+        "c",
+        "**Very high risk: immediate transfer and invasive strategy (<2 hours).** Class I, C."
+       ],
+       [
+        "d",
+        "**High risk: early (<24 hours) invasive strategy, IIa.** ESC 2023 downgraded this from I (2020) to IIa, A, because trials of early versus delayed angiography showed no mortality benefit overall (benefit only in subgroups such as GRACE >140)."
+       ],
+       [
+        "e",
+        "**Non-high risk: selective or inpatient invasive strategy, Class I.** The Class I recommendation is to do angiography during the admission (or selectively after non-invasive testing), not within 24 hours. ACC/AHA 2025 similarly recommend an invasive approach during the admission for intermediate- and high-risk patients."
+       ]
+      ],
+      "mimic": [
+       [
+        "Very high-risk NSTE-ACS vs STEMI",
+        "Both go to the lab within 2 hours; but lysis is never used in NSTE-ACS, because the artery is not occluded and lysis adds bleeding without benefit."
+       ]
+      ],
+      "traps": [
+       [
+        "“Early invasive strategy within 24 hours is Class I in high-risk NSTE-ACS”",
+        "It is IIa in ESC 2023; the Class I is for an invasive strategy during the admission."
+       ]
+      ],
+      "decode": [
+       [
+        "NSTEMI with refractory pain and hypotension despite treatment — timing of angiography? [pattern]",
+        "Immediate, within 2 hours."
+       ],
+       [
+        "Stable NSTEMI with rising troponin, GRACE 150 — timing? [pattern]",
+        "Early, within 24 hours (IIa)."
+       ]
+      ],
+      "punch": "In NSTE-ACS, risk sets the clock: very high risk under 2 hours (I), high risk under 24 hours (only IIa now), everyone else during the admission or selectively.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-67",
+     "q": "**For the GRACE score, give:**\na The nine variables\nb What the nomogram predicts\nc The cut-off used in ESC algorithms",
+     "a": "**Background** | **Admission / stay**\n- Age | - Heart rate\n- History of heart failure | - Systolic BP\n- History of AMI | - ST depression\n| - Serum creatinine\n| - Elevated cardiac enzymes\n| - No in-hospital PCI\n- **6-month mortality** after ACS\n- **GRACE >140** = high risk (early invasive, MI-43; discharge threshold, MI-32)",
+     "section": "GRACE score",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → GRACE score",
+      "intro": "Step 6 starts with grading the risk. No real question is linked; GRACE is tested through its cut-off of 140 and through the contrast with TIMI (MI-69).",
+      "why": [
+       [
+        "a",
+        "**Background: age, history of heart failure, history of AMI. Admission / stay: heart rate, systolic BP, ST depression, serum creatinine, elevated cardiac enzymes, no in-hospital PCI.** These are the nine variables of the post-discharge (6-month) nomogram. The original in-hospital GRACE model uses eight: age, heart rate, systolic BP, creatinine, Killip class, cardiac arrest at admission, ST deviation and raised enzymes. Each variable is weighted, so age and haemodynamics count far more than any single item."
+       ],
+       [
+        "b",
+        "**6-month mortality after ACS.** The current calculator (GRACE 2.0) also gives in-hospital and 1-year figures."
+       ],
+       [
+        "c",
+        "**GRACE >140 = high risk (early invasive, MI-43; discharge threshold, MI-32).** In NSTE-ACS, GRACE >140 is one of the high-risk features that call for angiography within 24 hours; below 140, with a negative rule-out and no pain, early discharge is acceptable."
+       ]
+      ],
+      "mimic": [
+       [
+        "GRACE vs Killip",
+        "Killip is a bedside HF class (one of GRACE’s in-hospital inputs); GRACE combines many variables into a mortality estimate."
+       ]
+      ],
+      "traps": [
+       [
+        "“GRACE predicts 14-day events”",
+        "That is TIMI; GRACE predicts death, here at 6 months."
+       ]
+      ],
+      "decode": [
+       [
+        "NSTEMI, GRACE 160, stable — timing of angiography? [pattern]",
+        "Early invasive, within 24 hours."
+       ]
+      ],
+      "punch": "GRACE weights nine variables into the risk of death at 6 months; above 140 the patient is high risk and goes for angiography within 24 hours.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-68",
+     "q": "**For the TIMI UA / NSTEMI score, give:**\na The seven one-point variables\nb The outcome it predicts, and when\nc Event rates at 0-1 and 6-7 points",
+     "a": "**1 point each** |\n- Age ≥65 | - ≥2 rest-angina episodes in 24 h\n- ≥3 CAD risk factors | - ST deviation\n- Known CAD (stenosis ≥50%) | - Elevated cardiac markers\n- Aspirin in last 7 days |\n- Death, new / recurrent MI, or urgent revascularisation **through 14 days**\n- **0-1** → **4.7%** • 2 → 8.3% • 3 → 13.2% • 4 → 19.9% • 5 → 26.2% • **6-7** → **40.9%**",
+     "section": "TIMI score",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → TIMI score",
+      "intro": "Step 6 with the simpler tool. No real question is linked; the test is usually the variables, especially aspirin use, which surprises people.",
+      "why": [
+       [
+        "a",
+        "**Age ≥65, ≥3 CAD risk factors, known CAD (stenosis ≥50%), aspirin in the last 7 days, ≥2 rest-angina episodes in 24 h, ST deviation, elevated cardiac markers.** Aspirin use counts because an ACS that breaks through aspirin marks a more aggressive, more thrombotic disease."
+       ],
+       [
+        "b",
+        "**Death, new / recurrent MI, or urgent revascularisation through 14 days.** A short-term composite, not mortality at 6 months."
+       ],
+       [
+        "c",
+        "**0–1 → 4.7%; 2 → 8.3%; 3 → 13.2%; 4 → 19.9%; 5 → 26.2%; 6–7 → 40.9%.** The risk climbs steeply with each point, which is why higher scores were linked to greater benefit from enoxaparin and an early invasive approach."
+       ]
+      ],
+      "mimic": [
+       [
+        "TIMI UA/NSTEMI score vs TIMI STEMI score",
+        "The STEMI score is a different, weighted tool for 30-day mortality; the seven one-point items are the UA/NSTEMI score."
+       ]
+      ],
+      "traps": [
+       [
+        "“Aspirin use lowers the TIMI score”",
+        "It adds a point."
+       ]
+      ],
+      "decode": [
+       [
+        "Which is a TIMI UA/NSTEMI variable — aspirin in the last 7 days, heart rate, creatinine? [pattern]",
+        "Aspirin in the last 7 days."
+       ]
+      ],
+      "punch": "TIMI gives one point for each of seven items, aspirin use included, and predicts death, MI or urgent revascularisation at 14 days, from 4.7% at 0–1 points to 40.9% at 6–7.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-45",
+     "q": "**For radial vs femoral access, give:**\na What radial access lowers\nb The trial behind the transfusion benefit\nc The trials behind the cost and mortality benefit\nd When femoral is used",
+     "a": "- **Bleeding**, **vascular complications** (pseudoaneurysm), need for **transfusion**; better overall survival\n- **MATRIX**\n- **RIVAL** and **RIFLE-STEACS**\n- Only when radial is **not feasible** - higher complication risk",
+     "section": "Radial vs femoral",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Radial vs femoral",
+      "intro": "Still in step 5: where the catheter goes in. No real question is linked, but the femoral bleeding questions on MI-46 are the other side of this card.",
+      "why": [
+       [
+        "a",
+        "**Bleeding, vascular complications (pseudoaneurysm), need for transfusion; better overall survival.** The radial artery is superficial and compressible over bone, and a bleed there cannot track into the retroperitoneum; in ACS patients loaded with antithrombotics, access-site bleeding is the main avoidable bleed, and bleeding itself raises mortality. ESC 2023: radial access is the standard, Class I, A."
+       ],
+       [
+        "b",
+        "**MATRIX.** MATRIX (about 8,400 ACS patients) found fewer major bleeds and transfusions with radial access, and also lower all-cause mortality."
+       ],
+       [
+        "c",
+        "**RIVAL and RIFLE-STEACS.** RIVAL’s overall primary outcome was neutral, with fewer vascular complications and a benefit in the STEMI subgroup; RIFLE-STEACS (STEMI) found lower cardiac mortality (about 5% vs 9%), less bleeding and a shorter hospital stay, which is the cost benefit."
+       ],
+       [
+        "d",
+        "**Only when radial is not feasible; higher complication risk.** Examples are a poor radial pulse, need for large-bore devices or mechanical support, or a failed radial attempt."
+       ]
+      ],
+      "mimic": [
+       [
+        "Radial complication vs femoral complication",
+        "Radial: artery occlusion, spasm, small haematoma. Femoral: retroperitoneal bleed, pseudoaneurysm, AV fistula."
+       ]
+      ],
+      "traps": [
+       [
+        "“Radial access only reduces bleeding, not death”",
+        "MATRIX and RIFLE-STEACS both showed lower mortality."
+       ]
+      ],
+      "decode": [
+       [
+        "Preferred access for PCI in ACS, and the trial behind it? [pattern]",
+        "Radial (I, A); MATRIX."
+       ]
+      ],
+      "punch": "Radial access is the standard because ACS patients are fully anticoagulated and a compressible artery cannot bleed into the retroperitoneum; femoral is for when radial cannot be done.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-46",
+     "q": "**Sort the complications of PCI:**\na Local\nb Coronary\nc Contrast-related\nd Others",
+     "a": "**Group** | **Complications**\n**Local** | Bleeding, haematoma, infection, pseudoaneurysm, compartment syndrome\n**Coronary** | Dissection, embolism, spasm\n**Contrast** | Contrast nephropathy, allergic reaction, CHF\n**Others** | Access-vessel dissection, stroke, death",
+     "section": "PCI complications",
+     "bank_questions": 0,
+     "bank_lines": [
+      "Marrow: Retroperitoneal haematoma after PCI follows a femoral puncture ABOVE the inguinal ligament: back/flank pain and hypotension with little groin swelling — diagnose by non-contrast CT; radial access avoids it.",
+      "DocT GT: Hypotension hours after an uncomplicated RADIAL PCI with no new ECG change → urgent bedside echo for tamponade from coronary or wire perforation (or a new mechanical complication); retroperitoneal bleeding belongs to femoral access, stent thrombosis to new ST elevation."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → PCI complications",
+      "intro": "Step 5 ends with what goes wrong after PCI. The one real question is the retroperitoneal bleed, and the card layer adds how to tell it from tamponade and stent thrombosis.",
+      "why": [
+       [
+        "a",
+        "**Local: bleeding, haematoma, infection, pseudoaneurysm, compartment syndrome.** A femoral puncture above the inguinal ligament cannot be compressed against the femoral head, so blood tracks into the retroperitoneum: back or flank pain and hypotension with little groin swelling. Diagnose with non-contrast CT; radial access avoids it."
+       ],
+       [
+        "b",
+        "**Coronary: dissection, embolism, spasm.** A wire or balloon can dissect or perforate the coronary; a perforation fills the pericardium and causes tamponade, sometimes hours later."
+       ],
+       [
+        "c",
+        "**Contrast: contrast nephropathy, allergic reaction, CHF.** Contrast is a volume and osmotic load (heart failure) and damages the renal medulla; hydration and limiting volume are the prevention."
+       ],
+       [
+        "d",
+        "**Others: access-vessel dissection, stroke, death.** Catheters crossing the aortic arch can dislodge atheroma or thrombus to the brain."
+       ]
+      ],
+      "mimic": [
+       [
+        "Retroperitoneal haematoma vs groin haematoma",
+        "A groin haematoma is visible and compressible; a retroperitoneal bleed shows only as pain and shock."
+       ]
+      ],
+      "traps": [
+       [
+        "“Retroperitoneal bleed” after a radial PCI",
+        "It belongs to femoral access; after a radial case think tamponade."
+       ]
+      ],
+      "decode": [
+       [
+        "2 h after femoral catheterisation: hypotension and back pain — diagnosis? [Marrow]",
+        "Retroperitoneal bleeding."
+       ],
+       [
+        "Hypotension hours after an uncomplicated radial PCI, ECG unchanged — first test? [pattern]",
+        "Bedside echo for tamponade."
+       ]
+      ],
+      "punch": "Shock after PCI has three main answers: retroperitoneal bleed if femoral, tamponade if a coronary was perforated, stent thrombosis if the ST segments rise again.",
+      "table": {
+       "title": "Hypotension after PCI: reading the stem",
+       "head": [
+        "Clue",
+        "Diagnosis",
+        "First test"
+       ],
+       "rows": [
+        [
+         "Femoral access, back/flank pain, little groin swelling",
+         "**retroperitoneal haematoma**",
+         "non-contrast CT"
+        ],
+        [
+         "Radial access, no new ECG change",
+         "**tamponade** from coronary or wire perforation",
+         "bedside echo"
+        ],
+        [
+         "New ST elevation in the stented territory",
+         "**stent thrombosis**",
+         "repeat angiography"
+        ]
+       ]
+      },
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10C|MI-55",
+     "q": "**For CABG in ACS, give:**\na The three indications\nb The problem with early CABG\nc The optimal timing\nd When CABG is done emergently\ne Antiplatelet management afterwards",
+     "a": "- Anatomy **unsuitable for PCI** • **failed PCI** • **mechanical complications** (coronary dissection, VSD, papillary muscle rupture)\n- **Higher mortality** (non-randomised data)\n- After **3-7 days**\n- **Refractory ischaemia**, **cardiogenic shock**\n- A **second antiplatelet** is typically given after the procedure",
+     "section": "CABG in ACS",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: Before URGENT CABG stop clopidogrel or ticagrelor ≥24 h (ACC/AHA class I) to cut bleeding; for elective CABG ≥3 days ticagrelor, ≥5 days clopidogrel, ≥7 days prasugrel. Aspirin is continued; the irreversible/long-acting P2Y12 blocker is the drug to stop first.",
+      "DocT GT: The short-acting GP IIb/IIIa inhibitors eptifibatide and tirofiban (reversible, renally cleared) need stopping only 2–4 h before urgent CABG because platelet function recovers within hours; abciximab binds irreversibly and needs ≥12 h."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → CABG in ACS",
+      "intro": "The deck ends with surgery, where the antiplatelet drugs become the problem. Both real questions ask how long before urgent CABG each drug must be stopped.",
+      "why": [
+       [
+        "a",
+        "**Anatomy unsuitable for PCI, failed PCI, mechanical complications (coronary dissection, VSD, papillary muscle rupture).** Left main or complex multivessel disease is the commonest anatomical reason."
+       ],
+       [
+        "b",
+        "**Higher mortality (non-randomised data).** Operating in the first days means bypass on freshly infarcted, reperfusion-injured myocardium, in a patient loaded with antiplatelets."
+       ],
+       [
+        "c",
+        "**After 3–7 days.** For a stable patient, waiting lets the infarct settle and the P2Y12 blocker wear off."
+       ],
+       [
+        "d",
+        "**Refractory ischaemia, cardiogenic shock.** ESC: emergency CABG for ACS-related shock when PCI of the infarct artery is not feasible or has failed (I, B)."
+       ],
+       [
+        "e",
+        "**A second antiplatelet is typically given after the procedure.** ESC 2023: resume DAPT after CABG for at least 12 months (I, C), because the ACS risk is still there."
+       ]
+      ],
+      "mimic": [
+       [
+        "Short-acting GP IIb/IIIa inhibitors vs oral P2Y12 blockers before surgery",
+        "Eptifibatide and tirofiban are reversible and renally cleared, so platelets recover within hours; oral P2Y12 blockers need a day to a week."
+       ]
+      ],
+      "traps": [
+       [
+        "“Continue ticagrelor until surgery” or “stop 2–4 hours before”",
+        "Stop at least 24 hours before urgent on-pump CABG."
+       ],
+       [
+        "“Stop eptifibatide 24 hours before”",
+        "Only 2–4 hours are needed."
+       ]
+      ],
+      "decode": [
+       [
+        "NSTEMI on aspirin + ticagrelor, left main disease, urgent CABG — ticagrelor? [DocT GT]",
+        "Stop 24 hours before."
+       ],
+       [
+        "STEMI on eptifibatide, urgent CABG — minimum stop time? [DocT GT]",
+        "2–4 hours."
+       ]
+      ],
+      "punch": "CABG in ACS is for anatomy PCI cannot fix, failed PCI, mechanical complications or shock. Before urgent surgery keep aspirin, stop clopidogrel or ticagrelor 24 hours and eptifibatide or tirofiban 2–4 hours, and restart DAPT afterwards.",
+      "table": {
+       "title": "Stopping antiplatelets before CABG",
+       "head": [
+        "Drug",
+        "Urgent CABG",
+        "Elective CABG"
+       ],
+       "rows": [
+        [
+         "Aspirin",
+         "**continue**",
+         "continue"
+        ],
+        [
+         "Clopidogrel, ticagrelor",
+         "**stop ≥24 h** (ACC/AHA I)",
+         "ticagrelor ≥3 days, clopidogrel ≥5 days"
+        ],
+        [
+         "Prasugrel",
+         "most potent and irreversible: delay surgery if possible",
+         "≥7 days"
+        ],
+        [
+         "Eptifibatide, tirofiban",
+         "**stop 2–4 h**",
+         "—"
+        ],
+        [
+         "Abciximab (historical)",
+         "≥12 h",
+         "—"
+        ]
+       ]
+      },
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10E|MI-74",
+     "q": "**For the 2025 ACC/AHA guideline, give the position on:**\na Complete revascularisation in STEMI and NSTE-ACS\nb Intravascular imaging (IVUS / OCT)\nc Access site\nd Microaxial flow pump in AMI shock\ne Routine IABP or VA-ECMO in shock\nf Where shock patients should be treated",
+     "a": "- **Recommended (I)** - index or staged; not in cardiogenic shock (culprit-only, CS-36)\n- **Class 1** to guide PCI\n- **Radial** preferred\n- **Reasonable (IIa)** in selected patients - DANGER-SHOCK (MI-63)\n- **Not recommended (III)**\n- Transfer to **shock centres** (Class 1)",
+     "section": "Revascularisation and shock",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Revascularisation, imaging, access and shock (ACC/AHA 2025)",
+      "intro": "Step 5 is what is done to the arteries. No real question is linked; the testable point is that complete revascularisation reverses in shock, and that devices help only in a narrow group.",
+      "why": [
+       [
+        "a",
+        "**Recommended (I), index or staged; not in cardiogenic shock (culprit-only, CS-36).** Non-culprit lesions in a stable patient cause later MI, so treating them cuts MACE (COMPLETE): Class 1 in selected stable STEMI and in NSTE-ACS without left main disease or a plan for CABG. In shock routine non-culprit PCI at the index procedure is 3: Harm in both, because the extra contrast and time raised death or renal replacement in CULPRIT-SHOCK."
+       ],
+       [
+        "b",
+        "**Class 1 to guide PCI.** 1, A for stenting the left main or complex lesions: IVUS or OCT shows stent under-expansion and malapposition that angiography misses, the causes of stent thrombosis and restenosis."
+       ],
+       [
+        "c",
+        "**Radial preferred.** 1, A: fewer bleeds, fewer vascular complications and lower death than femoral, because the radial artery is superficial and compressible (the femoral retroperitoneal bleed is the Top-up)."
+       ],
+       [
+        "d",
+        "**Reasonable (IIa) in selected patients — DANGER-SHOCK (MI-63).** 2a, B-R in STEMI with severe or refractory LV-dominant shock: DanGer Shock cut 180-day death (45.8% vs 58.5%) but with more bleeding, limb ischaemia and renal failure, and it excluded comatose cardiac-arrest survivors and RV shock."
+       ],
+       [
+        "e",
+        "**Not recommended (III).** Routine IABP or VA-ECMO is 3: No benefit (IABP-SHOCK II, ECLS-SHOCK: no survival gain). VA-ECMO raises afterload on a failing LV; it is a rescue tool, not routine."
+       ],
+       [
+        "f",
+        "**Transfer to shock centres (Class 1).** Shock outcomes are better where the team, round-the-clock PCI, mechanical support and cardiac surgery are all available, so the sickest patients are moved to such a hub early. Some guideline summaries (Cleveland Clinic) report this as a Class 1 recommendation, but the classed shock statements in the ACC/AHA 2025 text are about revascularisation and devices; the hub-and-spoke model with early transfer of refractory shock to a Level 1 shock centre comes from the ACC 2025 concise clinical guidance on cardiogenic shock, which carries no class (see FLAGS). The exam answer is still a centre with shock expertise."
+       ]
+      ],
+      "mimic": [
+       [
+        "Stable multivessel ACS vs multivessel ACS in shock",
+        "Stable: treat all significant lesions, at the index procedure or staged. Shock: culprit only at the index procedure."
+       ],
+       [
+        "ACC/AHA 2025 vs ESC 2023 classes",
+        "ESC 2023: complete revascularisation is recommended (I) in stable STEMI, at the index PCI or within 45 days, but only ‘should be considered’ (IIa) in NSTE-ACS; intravascular imaging ‘should be considered’ (IIa). ACC/AHA 2025 makes both Class 1."
+       ]
+      ],
+      "traps": [
+       [
+        "“Complete revascularisation at the index procedure in cardiogenic shock”",
+        "3: Harm (CULPRIT-SHOCK); the notes’ shock table is outdated here (watch line)."
+       ],
+       [
+        "“Impella for every AMI shock”",
+        "Only selected STEMI LV shock (DanGer criteria), at the price of more complications."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] STEMI in shock, three-vessel disease — what to stent at the index procedure?",
+        "The culprit only."
+       ],
+       [
+        "[pattern] AMI shock — routine IABP?",
+        "No (3: No benefit, IABP-SHOCK II)."
+       ]
+      ],
+      "punch": "Treat all significant lesions in the stable patient but only the culprit in shock, image complex lesions, go radial, and reserve a microaxial pump for selected STEMI shock; routine IABP and VA-ECMO bring no survival benefit.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-405",
+   "text": "When the infarct is complicated: rhythm, failure and shock",
+   "steps": [
+    {
+     "card": "CVS10D|MI-58",
+     "q": "**For ventricular arrhythmias after MI, give:**\na The reperfusion arrhythmia, its cause and treatment\nb VT - management if unstable\nc VT - management if stable\nd NSVT - management",
+     "a": "- **Accelerated idioventricular rhythm** - reperfusion + enhanced automaticity of ventricular pacemaker cells; **BENIGN**, usually no treatment\n- **Immediate cardioversion** + correct **K+ and Mg2+**\n- Correct electrolytes; **beta-blocker or amiodarone**\n- Correct electrolytes; **beta-blocker**",
+     "section": "Ventricular arrhythmias",
+     "bank_questions": 4,
+     "bank_lines": [
+      "DocT GT: Ventricular arrhythmias 24–72 h after a large MI (PVCs, NSVT, VT) arise mainly from ABNORMAL AUTOMATICITY in partially depolarised ischaemic myocytes and Purkinje fibres, driven by catecholamines and low K/Mg; AIVR at reperfusion is enhanced normal automaticity; LATE sustained monomorphic VT (weeks–years) is scar re-entry. Afterdepolarisations belong to long QT (early) and digoxin/Ca overload (delayed)."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Ventricular arrhythmias after MI",
+      "intro": "Step 2 sorts ventricular arrhythmias by when they appear, because timing tells you the mechanism and the treatment. All four real questions ask the mechanism of VT at 48 hours, which the card does not state: the answer is abnormal automaticity.",
+      "why": [
+       [
+        "a",
+        "**Accelerated idioventricular rhythm — reperfusion + enhanced automaticity of ventricular pacemaker cells; BENIGN, usually no treatment.** Washout of the opened artery speeds normal Purkinje pacemakers until they outrun the sinus node: a regular wide-complex rhythm only a little faster than sinus, which gives way when the sinus rate rises. It is a marker that reperfusion worked; suppressing it with an antiarrhythmic can leave no rhythm at all."
+       ],
+       [
+        "b",
+        "**VT unstable: immediate cardioversion + correct K⁺ and Mg²⁺.** Pulseless VT is treated as VF on the arrest algorithm. Potassium is kept at 4 mmol/L or above and magnesium in the high-normal range, because low levels lower the threshold for every mechanism."
+       ],
+       [
+        "c",
+        "**VT stable: correct electrolytes; beta-blocker or amiodarone.** Catecholamines drive early post-MI VT, so a beta-blocker treats the cause; amiodarone suppresses recurrence. Recurrent VT means ongoing ischaemia until angiography proves otherwise (MI-59)."
+       ],
+       [
+        "d",
+        "**NSVT: correct electrolytes; beta-blocker.** Runs of NSVT in the first 48 hours are common and do not predict late sudden death; they need no antiarrhythmic and no ICD decision."
+       ]
+      ],
+      "mimic": [
+       [
+        "AIVR vs slow VT",
+        "AIVR runs near the sinus rate, starts and stops with sinus slowing and is harmless; VT is faster and sustained."
+       ],
+       [
+        "Enhanced normal vs abnormal automaticity",
+        "Normal automaticity is a pacemaker cell firing faster (AIVR); abnormal automaticity is a working myocyte, partly depolarised by ischaemia, that starts firing on its own (VT at 24–72 h)."
+       ]
+      ],
+      "traps": [
+       [
+        "“Re-entry” for VT 48 hours after MI",
+        "61–67% got the NSVT version right. Re-entry is the mechanism of very early VF and of late scar VT; at 24–72 hours abnormal automaticity is the best answer. Re-entry is still the main mechanism of sustained post-MI VT overall, so choose it only when the stem is weeks to years after MI."
+       ],
+       [
+        "“Enhanced normal automaticity” for VT at 48 hours",
+        "That is AIVR at reperfusion; VT at 48 hours comes from non-pacemaker cells, which is abnormal automaticity."
+       ],
+       [
+        "“Early or delayed afterdepolarisations”",
+        "EADs belong to long QT and torsades; DADs to digoxin and calcium overload. Neither is the post-MI answer."
+       ],
+       [
+        "Treating AIVR with amiodarone or lidocaine",
+        "It is benign and a sign of reperfusion; suppressing it can unmask asystole."
+       ]
+      ],
+      "decode": [
+       [
+        "VT 48 hours after a large anterior MI — mechanism? [DocT GT ×2]",
+        "Abnormal automaticity (83–87% right)."
+       ],
+       [
+        "Stable NSVT 48 hours after MI — mechanism? [DocT GT ×2]",
+        "Abnormal automaticity, not re-entry (61–67% right)."
+       ],
+       [
+        "Wide regular rhythm at 80/min just after the artery is opened — action? [pattern]",
+        "AIVR: none."
+       ]
+      ],
+      "punch": "Read the clock: VF in the first hours is ischaemic re-entry, AIVR at reperfusion is harmless enhanced automaticity, VT at 24–72 hours is abnormal automaticity, and VT weeks later is scar re-entry. Early arrhythmias need electrolytes, a beta-blocker and an open artery, not prophylactic drugs.",
+      "table": {
+       "title": "Mechanism by time after MI",
+       "head": [
+        "Window",
+        "Rhythm",
+        "Mechanism"
+       ],
+       "rows": [
+        [
+         "Minutes–hours (acute ischaemia)",
+         "VF, polymorphic VT",
+         "re-entry in ischaemic tissue"
+        ],
+        [
+         "At reperfusion",
+         "AIVR",
+         "**enhanced normal automaticity** (Purkinje pacemakers)"
+        ],
+        [
+         "24–72 h",
+         "PVCs, NSVT, VT",
+         "**abnormal automaticity** in partly depolarised ischaemic myocytes and Purkinje fibres (± triggered activity)"
+        ],
+        [
+         "Weeks–years",
+         "sustained monomorphic VT",
+         "**re-entry around scar**"
+        ],
+        [
+         "Any time, other causes",
+         "torsades / digoxin VT",
+         "EADs (long QT) / DADs (Ca²⁺ overload)"
+        ]
+       ]
+      },
+      "parts": [
+       {
+        "q": "Mechanism of ventricular arrhythmia 24–72 h after MI? [DocT GT ×4]",
+        "a": "Abnormal automaticity of partly depolarised ischaemic myocytes and Purkinje fibres, driven by catecholamines and low K⁺/Mg²⁺; AIVR is enhanced normal automaticity; late monomorphic VT is scar re-entry."
+       }
+      ],
+      "step": 2
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-60",
+     "q": "**For AV block after MI, give:**\na Proximal block - types, artery, course, pacing\nb Distal block - type, artery, course, pacing\nc Bradycardia / high-grade block with haemodynamic intolerance - the three steps (ESC)",
+     "a": "| **Proximal** | **Distal**\n**Type** | 1st degree, **Mobitz I** | **3rd degree**\n**Artery** | **RCA** (inferior MI) | **LAD** (anterior MI)\n**Course** | Usually **transient**, resolves with reperfusion | Life-threatening\n**Pacemaker** | Not typically needed | Often **required**\n- **IV positive chronotropes** (epinephrine, vasopressin and/or atropine) - I, C\n- **Temporary pacing** if they fail - I, C\n- **Urgent angiography** if no prior reperfusion - I, C\nBradycardia drugs and doses: ACLS-35 to ACLS-40.",
+     "section": "AV block after MI",
+     "bank_questions": 2,
+     "bank_lines": [
+      "DocT GT: AV block complicates 10–25% of acute MIs and is usually transient, mostly first-degree or Mobitz I. Inferior MI gives AV-nodal block with a narrow escape that usually resolves; anterior MI gives infranodal block with a wide escape that needs pacing."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → AV block after MI",
+      "intro": "Step 3: the level of the block follows the artery. Both real questions are about the inferior–anterior split; one has a wrong key and the other has two true options.",
+      "why": [
+       [
+        "a",
+        "**Proximal block: 1st degree, Mobitz I; RCA (inferior MI); usually transient, resolves with reperfusion; pacemaker not typically needed.** The RCA supplies the AV node in most people, and inferior MI adds vagal (Bezold–Jarisch) tone and adenosine release at the node. Nodal block has a narrow junctional escape at 40–60/min that keeps the patient perfused, responds to atropine and usually recovers within days. Inferior MI can also cause complete heart block at the node; it behaves the same way and still usually resolves."
+       ],
+       [
+        "b",
+        "**Distal block: 3rd degree; LAD (anterior MI); life-threatening; pacemaker often required.** Septal branches of the LAD supply the His bundle and bundle branches, so block here means a large septal infarct. Mobitz II or new bifascicular block warns of it; the escape is wide and slow (under 40/min) and unreliable. Atropine works on the node only and may worsen infranodal block by speeding the atrial rate."
+       ],
+       [
+        "c",
+        "**Bradycardia / high-grade block with haemodynamic intolerance: IV positive chronotropes (epinephrine, vasopressin and/or atropine) — I, C; temporary pacing if they fail — I, C; urgent angiography if no prior reperfusion — I, C.** Drugs buy minutes, the pacing wire gives a dependable rate, and reopening the artery treats the cause. AHA 2025 ACLS doses: atropine 1 mg every 3–5 minutes to 3 mg, then epinephrine infusion or pacing. ESC 2023 adds that a permanent pacemaker is recommended only if high-degree block persists at least 5 days after MI (I, C), and pacing is not recommended once the block has resolved (III, B), because most post-MI block recovers."
+       ]
+      ],
+      "mimic": [
+       [
+        "Mobitz I vs Mobitz II after MI",
+        "Mobitz I (progressive PR lengthening) is nodal, inferior and benign; Mobitz II (fixed PR, sudden dropped beat) is infranodal, anterior and needs pacing."
+       ],
+       [
+        "Narrow vs wide escape in complete block",
+        "Narrow escape at 40–60/min means a junctional pacemaker above the block (inferior); wide at under 40/min means a ventricular pacemaker below it (anterior)."
+       ]
+      ],
+      "traps": [
+       [
+        "DocT GT keys “Mobitz I, benign, resolves with atropine” for block after an ANTERIOR MI",
+        "The key contradicts its own explanation. Block after anterior MI is infranodal (LAD, His–Purkinje), does not respond to atropine and needs pacing: choose the His–Purkinje/transvenous pacing option."
+       ],
+       [
+        "“Anterior MI most commonly produces 2nd and 3rd degree block”",
+        "Only 15% got this question right. Inferior MI causes more AV block of every degree, including complete block; anterior block is rarer but far more dangerous."
+       ],
+       [
+        "Two true options: “AV block transiently develops in 10–25%” and “inferior MI most commonly produces 1st and 2nd degree block”",
+        "Both are true; the key is the transient-block statement, so pick it when both appear."
+       ],
+       [
+        "“Anterior MI gives a narrow-complex escape”",
+        "Anterior block is below the His bundle, so the escape is wide."
+       ]
+      ],
+      "decode": [
+       [
+        "Anterior MI with this ECG (block) — level and management? [DocT GT]",
+        "His–Purkinje; transvenous pacing (key says Mobitz I/atropine, which is wrong)."
+       ],
+       [
+        "True statement about AV block in acute MI? [DocT GT]",
+        "Transient AV block occurs in 10–25% (keyed); the inferior-MI statement is also true."
+       ],
+       [
+        "Inferior MI, complete heart block, narrow escape at 50/min, BP 70 — sequence? [pattern]",
+        "Atropine/epinephrine, then temporary pacing; reperfuse if not already done."
+       ]
+      ],
+      "punch": "Inferior MI blocks the AV node: narrow escape, atropine works, it recovers. Anterior MI blocks the His–Purkinje system: wide escape, atropine fails, pace. If haemodynamics fail, chronotropes then a pacing wire then the cath lab, all Class I.",
+      "step": 3
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-61",
+     "q": "**For acute heart failure complicating ACS, give:**\na The standard therapy\nb Haemodynamic support - the two drug classes and examples\nc The prognostic consequences\nd The two clinical syndromes",
+     "a": "- **Diuretics**, **vasodilators**, **NIV**\n- **Vasopressor** for hypotension (norepinephrine); **inotrope** for output (dobutamine)\n- Longer stay, more **mechanical ventilation**, more **RRT**\n- **Pulmonary congestion**; **cardiogenic shock / low output / hypotension**",
+     "section": "Acute HF in ACS",
+     "bank_questions": 3,
+     "bank_lines": [
+      "Marrow: Killip class: I no heart failure; II S3 and/or rales in <50% of lung fields; III frank pulmonary oedema (rales >50%); IV cardiogenic shock — mortality rises steeply with each class.",
+      "DocT GT: Hypertensive acute pulmonary oedema (SCAPE): high-dose IV nitroglycerin (titratable preload and afterload reduction) plus NIV/CPAP first; most patients are redistributed, not overloaded, so 'loop diuretic and wait' is too slow. Hydralazine is unpredictable with reflex tachycardia, labetalol's β-blockade depresses a failing LV, oral ACEi is too slow; intubate only for NIV failure or falling GCS."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Acute heart failure in ACS",
+      "intro": "Step 4 starts with the pump. Lost myocardium gives either congestion with a blood pressure, or low output with hypotension; the three real questions test the first-line move in each.",
+      "why": [
+       [
+        "a",
+        "**Diuretics, vasodilators, NIV.** In pulmonary oedema with a good or high blood pressure the problem is often redistribution into the lungs under high afterload, not excess total water. IV nitroglycerin reduces preload at low dose and afterload at high dose, works in minutes and is titratable; CPAP/NIV recruits flooded alveoli and lowers LV afterload. Loop diuretics help the overloaded but act more slowly."
+       ],
+       [
+        "b",
+        "**Vasopressor for hypotension (norepinephrine); inotrope for output (dobutamine).** Norepinephrine raises perfusion pressure with less tachycardia and arrhythmia than dopamine (SOAP II, worse in the cardiogenic subgroup) and less refractory shock than epinephrine after MI (OptimaCC). Dobutamine is added when output stays low once pressure is restored. ESC grades both only IIb, because no inotrope or pressor has been shown to improve survival."
+       ],
+       [
+        "c",
+        "**Longer stay, more mechanical ventilation, more RRT.** ESC 2023 links acute HF in ACS with renal failure, respiratory failure, pneumonia and death; Killip class rises with each step (I no HF; II S3 or rales <50% of the fields; III frank pulmonary oedema; IV shock), and so does mortality."
+       ],
+       [
+        "d",
+        "**Pulmonary congestion; cardiogenic shock / low output / hypotension.** The first is ‘wet and warm’, the second ‘wet and cold’. Both need emergency echo and angiography (ESC 2023), because a mechanical complication or an occluded artery may be the cause."
+       ]
+      ],
+      "mimic": [
+       [
+        "Hypertensive pulmonary oedema (SCAPE) vs cardiogenic shock",
+        "High BP: nitrates and NIV, avoid pressors. Low BP and cold periphery: norepinephrine, then inotrope, revascularise; nitrates are contraindicated."
+       ]
+      ],
+      "traps": [
+       [
+        "“Loop diuretic and wait” in BP 180/100 pulmonary oedema",
+        "Too slow and aims at the wrong problem; 65% chose nitrates with NIV."
+       ],
+       [
+        "“Intubate now” in an alert patient with SpO₂ 88%",
+        "Try NIV first; intubate for NIV failure, exhaustion or a falling GCS."
+       ],
+       [
+        "IV hydralazine or labetalol for hypertensive pulmonary oedema",
+        "Hydralazine is unpredictable and causes reflex tachycardia; labetalol’s beta-blockade depresses a failing LV (94% chose nitroglycerin)."
+       ],
+       [
+        "“Dopamine” as the first vasopressor in post-MI shock",
+        "76% chose norepinephrine. Dopamine causes more arrhythmia and was associated with higher mortality in cardiogenic shock."
+       ]
+      ],
+      "decode": [
+       [
+        "Pink frothy sputum, BP 180/100, SpO₂ 88%, alert — next step? [DocT GT]",
+        "Nitrates and NIV."
+       ],
+       [
+        "Hypertensive pulmonary oedema, BP 210/120 — initial drug? [DocT GT]",
+        "IV nitroglycerin."
+       ],
+       [
+        "Post-MI cardiogenic shock — first-line vasopressor? [DocT GT]",
+        "Norepinephrine."
+       ]
+      ],
+      "punch": "Congestion with a pressure gets nitrates and NIV (diuretic if overloaded); low output and hypotension gets norepinephrine first and dobutamine for output, then the artery opened. Each Killip class up raises mortality.",
+      "parts": [
+       {
+        "q": "Killip class III vs IV? [Marrow line]",
+        "a": "III is frank pulmonary oedema (rales over more than half the lung fields); IV is cardiogenic shock."
+       }
+      ],
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-62",
+     "q": "**For cardiogenic shock in STEMI, give the class of:**\na Immediate PCI (or CABG)\nb Arterial line, immediate echo, early repair of mechanical complications\nc Fibrinolysis when PCI is unavailable within 120 min\nd IABP for mechanical complications\ne PA catheter, ultrafiltration, inotropes / vasopressors, short-term MCS\nf Routine IABP",
+     "a": "**Recommendation** | **Class**\n**Immediate PCI**; emergency CABG if unsuitable / PCI fails | I, B\nArterial line • immediate Doppler echo • early heart-team repair of mechanical complications • O2 / ventilation by gases | I, C\nFibrinolysis if PPCI not possible <120 min (mechanical cause excluded) | IIa, C\nIABP - shock from **mechanical complications** | IIa, C\nPA catheter (IIb, B) • ultrafiltration (IIb, B) • inotropes / vasopressors (IIb, C) • short-term MCS (IIb, C) | IIb\n**Routine IABP** | **III, B**",
+     "section": "Shock in STEMI (ESC)",
+     "bank_questions": 1,
+     "bank_lines": [
+      "Marrow: AMI cardiogenic-shock risk: older age, anterior MI, multivessel disease, prior MI, diabetes, prior HF (a first posterior infarct with shock → look for a mechanical complication or RV involvement). Lactate >2 mmol/L (the higher the worse) and admission glucose independently predict death; transaminases rise from hypoperfusion; cystatin C/NGAL add little over creatinine."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Cardiogenic shock in STEMI (ESC)",
+      "intro": "Step 4 in classes. All three real questions ask the one thing that saves life in post-MI shock: opening the artery, by PCI even when the patient looks too sick.",
+      "why": [
+       [
+        "a",
+        "**Immediate PCI; emergency CABG if unsuitable / PCI fails: I, B.** Shock is a large ischaemic territory failing; only reperfusion stops it. In the SHOCK trial early revascularisation did not reach significance at 30 days but saved about 13 lives per 100 at 6 months. CULPRIT-SHOCK then showed that PCI of the culprit artery only, with any other lesions staged later, beat immediate multivessel PCI (ESC 2023: culprit-only at the index procedure, Class I)."
+       ],
+       [
+        "b",
+        "**Arterial line, immediate Doppler echo, early heart-team repair of mechanical complications, O₂ / ventilation by gases: I, C.** The echo separates LV failure from RV infarction, tamponade, VSR and acute MR, each of which changes treatment."
+       ],
+       [
+        "c",
+        "**Fibrinolysis if PPCI not possible <120 min (mechanical cause excluded): IIa, C.** Lysis works poorly at low perfusion pressure, but is better than no reperfusion when the lab is far."
+       ],
+       [
+        "d",
+        "**IABP for shock from mechanical complications: IIa, C.** Deflating just before systole lowers afterload, which reduces the regurgitant or shunt fraction and improves forward flow while awaiting surgery."
+       ],
+       [
+        "e",
+        "**PA catheter (IIb, B), ultrafiltration (IIb, B), inotropes / vasopressors (IIb, C), short-term MCS (IIb, C).** Each can be used but none has shown a survival benefit; ESC 2023 keeps short-term MCS at IIb, C, while ACC/AHA 2025 makes a microaxial flow pump IIa in selected STEMI shock (MI-63)."
+       ],
+       [
+        "f",
+        "**Routine IABP: III, B.** IABP-SHOCK II (n 600) found no mortality benefit at 30 days, 1 year or 6 years."
+       ]
+      ],
+      "mimic": [
+       [
+        "Shock from LV pump failure vs from a mechanical complication",
+        "Pump failure: PCI ± MCS, no routine IABP. Mechanical complication (new murmur, tamponade): IABP is IIa as a bridge to surgery."
+       ],
+       [
+        "Inferior STEMI shock with clear lungs",
+        "Think RV infarction: fluids, avoid nitrates, reperfuse."
+       ]
+      ],
+      "traps": [
+       [
+        "“Immediate fibrinolysis” when PCI is available in 75 minutes",
+        "Within 120 minutes primary PCI wins, and in shock even more so."
+       ],
+       [
+        "“Routine IABP” in STEMI shock",
+        "Class III since IABP-SHOCK II; only for mechanical complications."
+       ],
+       [
+        "“Multivessel PCI at the index procedure” in shock (the notes call it IIa)",
+        "CULPRIT-SHOCK: culprit-only first; stage the rest."
+       ]
+      ],
+      "decode": [
+       [
+        "STEMI with cardiogenic shock, door-to-balloon 75 min — reperfusion strategy? [DocT GT]",
+        "Primary PCI."
+       ],
+       [
+        "Treatment of choice: STEMI with cardiogenic shock? [Marrow]",
+        "Revascularisation with PCI (I, B); routine IABP III."
+       ],
+       [
+        "Inferior STEMI with shock — next step? [Marrow]",
+        "Primary PCI."
+       ]
+      ],
+      "punch": "In STEMI shock open the culprit artery now (PCI, or CABG if not feasible), echo immediately and fix any mechanical lesion; routine IABP is Class III, and drugs, PA catheters and MCS are only IIb.",
+      "parts": [
+       {
+        "q": "Who gets shock after MI, and what predicts death? [Marrow line]",
+        "a": "Older age, anterior MI, multivessel disease, prior MI, diabetes, prior HF; a first posterior or inferior infarct with shock suggests a mechanical complication or RV infarction. Lactate >2 mmol/L and admission glucose independently predict death."
+       }
+      ],
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-18",
+     "q": "Anterior STEMI with cold, wet cardiogenic\nshock.\na Nearest PCI centre is 3.5 h away — lyse or\ntransfer?\nb Vasoactive drug if SBP is 96\nc If SBP is below 90\nd Already on a β-blocker (carvedilol)?\ne IABP?",
+     "a": "**Shock + STEMI** → **transfer for**\n**revascularisation regardless of delay**\na **Immediate transfer** for PCI/CABG, whatever\nthe delay. Culprit-only PCI (CULPRIT-SHOCK).\nb **Dobutamine** — low output without frank\nhypotension.\nc **Noradrenaline first**, then add the inotrope.\nd **Milrinone** — PDE3 works downstream of the\nblocked β-receptor.\ne Not routinely (IABP-SHOCK II: no mortality\nbenefit).",
+     "section": "ACS & cardiogenic shock",
+     "bank_questions": 6,
+     "bank_lines": [
+      "DocT GT: Levosimendan also keeps working under β-blockade: it sensitises troponin C to calcium (and opens K-ATP channels), bypassing the β-receptor/cAMP pathway, so ESC prefers it (or milrinone) over dobutamine in β-blocked patients. Dopamine, adrenaline and dopexamine all act through β-receptors and lose effect."
+     ],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → STEMI with cardiogenic shock",
+      "intro": "Shock changes the reperfusion rule of CAR-17: lysis needs a perfusion pressure to reach the clot, so the priority becomes mechanical revascularisation. The card then chooses the vasoactive drug by the blood pressure and by any β-blockade.",
+      "why": [
+       [
+        "a",
+        "**Immediate transfer for PCI/CABG, whatever the delay. Culprit-only PCI (CULPRIT-SHOCK).** In the SHOCK trial early revascularisation improved long-term survival; lytics work poorly at low perfusion pressure. CULPRIT-SHOCK found culprit-only PCI better than immediate multivessel PCI (death or renal replacement at 30 days 45.9% vs 55.4%). ESC 2023 adds that fibrinolysis should be considered (IIa) if primary PCI is not possible within 120 minutes and mechanical complications are excluded; lysing and transferring are not exclusive."
+       ],
+       [
+        "b",
+        "**Dobutamine — low output without frank hypotension.** Dobutamine is a β₁ inotrope with β₂ vasodilation, so it raises output but can drop the blood pressure; it needs a pressure to start from. ESC also places an inotrope first in wet-cold patients with borderline pressure."
+       ],
+       [
+        "c",
+        "**Noradrenaline first, then add the inotrope.** Below SBP 90 (MAP <65) coronary and organ perfusion depend on pressure; noradrenaline raises it with less tachycardia and fewer arrhythmias than dopamine (SOAP II, worse outcome with dopamine in its cardiogenic subgroup) or adrenaline (OptimaCC: more refractory shock)."
+       ],
+       [
+        "d",
+        "**Milrinone — PDE3 works downstream of the blocked β-receptor.** Milrinone inhibits phosphodiesterase III, so cAMP rises without needing the β-receptor; it also increases calcium reuptake into the sarcoplasmic reticulum (lusitropy) and dilates veins and arteries, so it lowers the BP. Levosimendan also keeps working under β-blockade, by sensitising troponin C to calcium and opening K-ATP channels."
+       ],
+       [
+        "e",
+        "**Not routinely (IABP-SHOCK II: no mortality benefit).** 30-day mortality 39.7% vs 41.3%, with no difference at 6 years. Of the devices, only the Impella CP has improved survival in STEMI shock (DanGer Shock: 180-day death 45.8% vs 58.5%), at the cost of more moderate or severe bleeding (21.8% vs 11.9%), limb ischaemia (5.6% vs 1.1%) and renal replacement (41.9% vs 26.7%) (CAR-26)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Milrinone vs levosimendan vs dobutamine",
+        "Dobutamine: β₁ agonist, blunted by β-blockers. Milrinone: PDE3, raises cAMP beyond the receptor. Levosimendan: calcium sensitiser, no cAMP. Both of the latter work in β-blocked patients and both vasodilate."
+       ]
+      ],
+      "traps": [
+       [
+        "“Lyse because the PCI centre is 3.5 h away”",
+        "With shock, transfer for revascularisation (only 9% right); ESC allows lysis as a bridge if PCI is beyond 120 min."
+       ],
+       [
+        "“Dopamine” as the inotrope for BP 80/50 in ADHF (DocT QBank key, 38%)",
+        "Outdated: dopamine caused more arrhythmias and deaths in cardiogenic shock (SOAP II). Noradrenaline for the pressure, dobutamine for the output."
+       ],
+       [
+        "“Start a vasopressor such as noradrenaline” for HFrEF at SBP 85 (DocT QBank keys dobutamine, 58%)",
+        "DocT follows ESC (inotrope first with borderline SBP); this card follows AHA/SCAI (noradrenaline below SBP 90). Low output with borderline SBP: dobutamine. Shock with MAP <65: noradrenaline first."
+       ],
+       [
+        "“Selective β₁ stimulation” or “troponin C sensitisation” for the drug that improves CO, venodilates and enhances SR calcium reuptake (GT2, 50%)",
+        "PDE3 inhibition, raising cAMP: milrinone."
+       ]
+      ],
+      "decode": [
+       [
+        "Large anterior STEMI, BP 72/40, rising lactate — intervention with the strongest survival impact? [DocT GT]",
+        "Early coronary reperfusion."
+       ],
+       [
+        "On dobutamine, BP keeps falling (85/55) [DocT QBank, 90%]",
+        "Add a vasopressor such as noradrenaline."
+       ],
+       [
+        "ADHF on chronic β-blocker, CO low despite high-dose dobutamine [DocT GT]",
+        "Levosimendan."
+       ],
+       [
+        "STEMI with shock, PCI centre door-to-balloon 75 min [DocT GT]",
+        "Primary PCI."
+       ]
+      ],
+      "punch": "STEMI with shock goes for revascularisation of the culprit whatever the delay; dobutamine if the pressure holds, noradrenaline first if it does not, milrinone or levosimendan if β-blocked, and no routine IABP.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "HY2|CAR-19",
+     "q": "Inferior STEMI, BP 80/50, clear lungs,\nraised JVP.\na Diagnosis and confirming lead\nb First treatment\nc Drugs to avoid\nd If fluids fail",
+     "a": "**RV infarction: preload-dependent — give**\n**fluid, no nitrates**\na **RV infarction**; ST elevation in **V4R**.\nb Cautious **crystalloid bolus** while arranging\nprimary PCI.\nc **Nitrates, diuretics, morphine, β-blockers** —\nall drop preload.\nd **Dobutamine**; keep AV synchrony (pace if heart\nblock).",
+     "section": "ACS & cardiogenic shock",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Right ventricular infarction",
+      "intro": "Not every infarct shock is a failing left ventricle. In an inferior STEMI with clear lungs and a high JVP, the right ventricle has stopped pushing, and the treatment is nearly the opposite of LV failure.",
+      "why": [
+       [
+        "a",
+        "**RV infarction; ST elevation in V4R.** The right coronary artery usually supplies the RV; a proximal occlusion causes inferior STEMI with RV involvement. ST elevation ≥1 mm in V4R is the most sensitive ECG sign and fades within hours; echo shows a dilated, hypokinetic RV."
+       ],
+       [
+        "b",
+        "**Cautious crystalloid bolus while arranging primary PCI.** A stunned RV moves blood through the lungs only if it is filled at a higher pressure; without that the LV is underfilled and output falls. Fluid is given in small boluses, because an over-distended RV bulges the septum into the LV and lowers output again."
+       ],
+       [
+        "c",
+        "**Nitrates, diuretics, morphine, β-blockers — all drop preload.** Venodilation or diuresis removes the filling pressure the RV depends on; a sudden collapse after sublingual nitrate is the classic presentation."
+       ],
+       [
+        "d",
+        "**Dobutamine; keep AV synchrony (pace if heart block).** Inferior infarcts often cause AV block; losing atrial contraction removes a large part of RV filling, so sequential pacing helps more than ventricular pacing alone."
+       ]
+      ],
+      "mimic": [
+       [
+        "RV infarct vs LV cardiogenic shock",
+        "RV: clear lungs, high JVP, Kussmaul sign, preload-dependent, give fluid. LV: crackles, high PAWP, avoid fluid."
+       ]
+      ],
+      "traps": [
+       [
+        "“Medication-related adverse reaction” for collapse to 60/30 after nitrate in inferior STEMI",
+        "The nitrate unmasked a preload-dependent RV infarct: cardiogenic shock (46% right; the distractor also drew about 46%)."
+       ]
+      ],
+      "decode": [
+       [
+        "Inferior STEMI given aspirin, nitrate and morphine; BP falls from 160/90 to 60/30 [DocT QBank, 46%]",
+        "Cardiogenic shock (RV infarction)."
+       ]
+      ],
+      "punch": "Inferior STEMI with hypotension, clear lungs and a high JVP is RV infarction: confirm with V4R, give cautious fluid, avoid nitrates, diuretics and morphine, use dobutamine and keep AV synchrony while PCI is arranged.",
+      "step": 4
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  },
+  {
+   "q": "P12-406",
+   "text": "Ruptures, aneurysm and the long road after",
+   "steps": [
+    {
+     "card": "CVS10D|MI-64",
+     "q": "**For free wall, septal and papillary muscle rupture, give:**\na Presentation\nb Key finding\nc Management\nd Surgical mortality",
+     "a": "| **Free wall** | **VSR** | **Papillary**\n**Presents** | Sudden pain + **collapse**, EMD | Rapid AHF / shock, **days 1-7** | Sudden pulmonary oedema ± shock\n**Finding** | **Haemopericardium**, tamponade | **New loud systolic murmur** | Murmur (not always obvious); **posteromedial** muscle\n**Manage** | Pericardiocentesis (bridge) → wall repair + patch | IABP bridge → surgery; percutaneous closure | Diuretic, vasodilator / inotrope ± IABP → MVR / repair\n**Mortality** | **75-80%** | Early surgery **20-40%** | **20-25%**\n- Free wall rupture: **<1%**; risk - older age, no reperfusion, **late lysis**",
+     "section": "The three ruptures",
+     "bank_questions": 6,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → The three ruptures",
+      "intro": "Step 5 is the most asked card in the deck (seven real questions). Necrotic muscle is softest before collagen is laid down, so the wall, septum or papillary muscle can tear in the first days to a week; the presentation and the echo tell you which, and the stem’s wording (‘next’ vs ‘definitive’) decides between a bridge and surgery.",
+      "why": [
+       [
+        "a",
+        "**Presents: free wall — sudden pain + collapse, EMD; VSR — rapid AHF / shock, days 1–7; papillary — sudden pulmonary oedema ± shock.** Free wall rupture fills the pericardium in minutes, so the rhythm continues without output (PEA). VSR shunts left to right, flooding the lungs and starving the systemic circulation. Papillary rupture flails a mitral leaflet and the LV empties into a small, non-compliant left atrium."
+       ],
+       [
+        "b",
+        "**Finding: haemopericardium, tamponade; new loud systolic murmur (VSR); murmur not always obvious, posteromedial muscle (papillary).** The posteromedial muscle depends on one artery (the PDA, usually from the RCA), so it ruptures after inferior or posterior MI; the anterolateral has a dual supply. In acute MR the LA pressure rises so fast that the murmur may be short and soft, so a quiet heart with flash pulmonary oedema still means echo. Echo also shows the VSR jet, and a step-up in oxygen saturation from right atrium to pulmonary artery confirms the shunt."
+       ],
+       [
+        "c",
+        "**Manage: free wall — pericardiocentesis (bridge) → wall repair + patch; VSR — IABP bridge → surgery, percutaneous closure; papillary — diuretic, vasodilator / inotrope ± IABP → MVR / repair.** The IABP lowers afterload, which cuts the regurgitant and shunt fraction and raises forward flow without the extra afterload a vasopressor adds. Surgery is the definitive treatment for all three (ESC 2023: surgery preferred, IABP IIa, C while awaiting it; ACC/AHA 2025: short-term MCS as a bridge, 2a)."
+       ],
+       [
+        "d",
+        "**Mortality: free wall 75–80%; VSR early surgery 20–40%; papillary 20–25%.** **Free wall rupture <1%; risk — older age, no reperfusion, late lysis.** For VSR the card’s figure is optimistic: registry operative mortality is about 54% when repair is within 7 days (MI-65). ESC 2023 puts all mechanical complications at 0.27% of STEMI with 42.4% in-hospital mortality; late lysis can turn an ischaemic infarct haemorrhagic and weaken it further."
+       ]
+      ],
+      "mimic": [
+       [
+        "VSR vs papillary muscle rupture",
+        "Both give a new systolic murmur and shock. VSR is loud with a thrill at the left sternal edge and an O₂ step-up; papillary MR is apical, often soft, with severe pulmonary oedema. Echo decides."
+       ],
+       [
+        "Free wall rupture vs post-MI pericarditis effusion",
+        "Rupture gives sudden tamponade and PEA; pericarditis gives a small effusion and pleuritic pain."
+       ]
+      ],
+      "traps": [
+       [
+        "“Norepinephrine” for inferior STEMI with a systolic murmur, pulmonary oedema and shock",
+        "Only 38% chose IABP. A pressor raises afterload and worsens the regurgitant flow; the IABP lowers afterload and supports coronary perfusion, and is IIa for mechanical complications."
+       ],
+       [
+        "“Valve replacement” as the ‘next’ step for papillary rupture with pulmonary oedema",
+        "Only 44% chose IABP. When IABP is offered and the stem says ‘next’, stabilise first; surgery is definitive."
+       ],
+       [
+        "“Diuretics and observe” or “vasodilator and reassess in 48 hours” for partial papillary rupture with hypotension",
+        "62% chose urgent mitral surgery. Without an IABP option, the answer is urgent surgery; medical therapy alone is fatal."
+       ],
+       [
+        "“Pulmonary embolism” or “LV systolic dysfunction” for dyspnoea with a new apical holosystolic murmur after posterior MI",
+        "69% chose acute MR; a new apical murmur with crackles and a preserved BP is papillary dysfunction until echo says otherwise."
+       ]
+      ],
+      "decode": [
+       [
+        "PEA / sudden hypotension days after a large STEMI, echo shows tamponade or haemopericardium — cause? [DocT GT ×2]",
+        "LV free wall rupture."
+       ],
+       [
+        "Post-MI flash pulmonary oedema, papillary muscle rupture on echo — next step? [DocT GT] [Marrow]",
+        "IABP if offered as the next step; otherwise urgent mitral repair/replacement."
+       ],
+       [
+        "Posterior MI with new apical holosystolic murmur and crackles — mechanism of dyspnoea? [DocT GT]",
+        "Acute mitral regurgitation."
+       ],
+       [
+        "Inferior STEMI, murmur, pulmonary oedema, cold and hypotensive — intervention? [DocT GT]",
+        "Intra-aortic balloon pump."
+       ]
+      ],
+      "punch": "Sudden PEA with tamponade is free wall rupture; a new murmur with shock is VSR or papillary rupture, sorted by echo. Lower afterload with an IABP as the next step and send for surgery as the definitive one; avoid pressors that raise afterload.",
+      "table": {
+       "title": "Reading the stem",
+       "head": [
+        "Clue",
+        "Diagnosis",
+        "Next step"
+       ],
+       "rows": [
+        [
+         "PEA or sudden hypotension, pericardial effusion with tamponade",
+         "**free wall rupture**",
+         "pericardiocentesis as bridge, immediate surgery"
+        ],
+        [
+         "New loud holosystolic murmur, thrill, shock, O₂ step-up RA→PA",
+         "**VSR**",
+         "IABP/MCS, surgery or closure"
+        ],
+        [
+         "Flash pulmonary oedema, soft or new apical murmur, inferior/posterior MI",
+         "**papillary muscle rupture (acute MR)**",
+         "IABP (next), mitral surgery (definitive)"
+        ]
+       ]
+      },
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-65",
+     "q": "**For ventricular septal rupture, give:**\na The infarcts it follows\nb The early-surgery trade-off and indication\nc The late-surgery trade-off and indication\nd The newer option",
+     "a": "- **Anterior** or **posterolateral** MI (per notes)\n- High mortality (**20-40%**) - for **refractory** symptoms\n- Risk of **rupture extension and death** while waiting - if **responding** to therapy\n- **Percutaneous closure**",
+     "section": "VSR surgery timing",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → VSR surgery timing",
+      "intro": "Step 5 narrowed to the septum. No real question is linked; the testable point is the timing trade-off — early surgery sews into friable necrotic muscle, late surgery risks death while waiting.",
+      "why": [
+       [
+        "a",
+        "**Anterior or posterolateral MI (per notes).** Anterior MI (LAD) tears the apical septum, usually a simple defect; inferior MI (RCA/PDA) tears the basal inferior septum, a more complex defect often with RV infarction and a worse outcome. The usual pairing in guidelines and reviews is anterior and inferior."
+       ],
+       [
+        "b",
+        "**Early surgery: high mortality (20–40%) — for refractory symptoms.** The necrotic edges hold sutures poorly before scar forms, so early repair carries higher mortality and residual leaks; a patient in refractory shock has no other option. The card’s figure is low: in the STS registry operative mortality was 54% when repair was within 7 days of MI and 18% after that, partly because the sickest are operated on first."
+       ],
+       [
+        "c",
+        "**Late surgery: risk of rupture extension and death while waiting — if responding to therapy.** Delaying lets the edges fibrose and improves repair, but the defect can enlarge; this route is only for those stable on IABP or MCS and drugs."
+       ],
+       [
+        "d",
+        "**Percutaneous closure.** A septal occluder device, used in selected anatomy, as a bridge or for residual defects after surgery."
+       ]
+      ],
+      "mimic": [
+       [
+        "Apical (anterior MI) vs basal (inferior MI) VSR",
+        "Apical is simpler to repair; basal is complex and carries a worse prognosis."
+       ]
+      ],
+      "traps": [
+       [
+        "“Wait 4–6 weeks for every VSR”",
+        "Only if the patient is stable; in refractory shock operate now despite the risk."
+       ]
+      ],
+      "decode": [
+       [
+        "Post-MI VSR in refractory shock despite IABP — timing of surgery? [pattern]",
+        "Emergency surgery."
+       ],
+       [
+        "Post-MI VSR stable on support — strategy? [pattern]",
+        "Delayed surgery (or percutaneous closure) once the edges have scarred."
+       ]
+      ],
+      "punch": "Early VSR repair is a dangerous operation on soft tissue and is reserved for those who cannot wait; delayed repair is safer for the stable, provided the defect does not extend.",
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-66",
+     "q": "**For post-MI LV aneurysm, give:**\na Incidence and usual site\nb The two ECG features\nc The main complication and its treatment\nd Indications for surgery",
+     "a": "- **<5%** of AMI; **anteroseptal / apical** LV\n- **Persistent ST elevation**; **Q waves**\n- **LV thrombus** (apex) → systemic embolism → **long-term oral anticoagulation**\n- Large aneurysm, **recurrent thromboembolism**, mural / apical thrombus",
+     "section": "LV aneurysm",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → LV aneurysm",
+      "intro": "Step 5 at the slow end. Instead of tearing, a transmural scar can thin and bulge, and it shows on the ECG as an ST elevation that never settles. The one real question (46% right) tests the Q wave, the permanent part of the scar.",
+      "why": [
+       [
+        "a",
+        "**<5% of AMI; anteroseptal / apical LV.** Large anterior transmural infarcts without timely reperfusion; with prompt PCI aneurysm has become uncommon."
+       ],
+       [
+        "b",
+        "**Persistent ST elevation; Q waves.** The akinetic scar keeps the ST segment raised for weeks after the event, and the dead myocardium leaves Q waves. With no new pain and no new troponin rise, this is a fixed scar, not a new infarct (MI-27)."
+       ],
+       [
+        "c",
+        "**LV thrombus (apex) → systemic embolism → long-term oral anticoagulation.** Stasis in the akinetic apex forms thrombus (over 9% after anterior STEMI). ESC 2023 says OAC (warfarin or a NOAC) ‘should be considered for 3–6 months’, guided by repeat echo or CMR, rather than indefinitely."
+       ],
+       [
+        "d",
+        "**Large aneurysm, recurrent thromboembolism, mural / apical thrombus.** Aneurysmectomy is also considered for refractory heart failure or ventricular arrhythmias arising from the aneurysm."
+       ]
+      ],
+      "mimic": [
+       [
+        "True aneurysm vs pseudoaneurysm",
+        "A true aneurysm is a wide-necked bulge of scar that rarely ruptures; a pseudoaneurysm is a contained free wall rupture with a narrow neck, walled by pericardium, and needs surgery because it ruptures."
+       ],
+       [
+        "Old MI vs acute MI on ECG",
+        "Q waves without ST elevation mean an old, healed infarct; ST elevation with symptoms or rising troponin is acute; persistent ST elevation with Q waves weeks later is aneurysm."
+       ]
+      ],
+      "traps": [
+       [
+        "“Acute coronary syndrome” for Q waves in I, aVL and V5 with exertional dyspnoea",
+        "Only 46% chose old MI. Q waves are permanent scar; acute ischaemia needs ST or T changes and a matching story."
+       ],
+       [
+        "“Re-infarction — reperfuse” for ST elevation weeks after an anterior MI",
+        "Persistent ST elevation with deep Q waves and no new troponin rise is aneurysm."
+       ]
+      ],
+      "decode": [
+       [
+        "Known CAD, fatigue, ECG with Q waves in I, aVL, V5 — diagnosis? [DocT QBank]",
+        "Old (lateral) myocardial infarction."
+       ],
+       [
+        "ST elevation still present 6 weeks after an anterior MI — cause? [pattern]",
+        "LV aneurysm."
+       ]
+      ],
+      "punch": "Persistent ST elevation with Q waves weeks after an anterior MI is an aneurysm, not a new infarct; its danger is apical thrombus and embolism, treated with oral anticoagulation (ESC: 3–6 months), and surgery is for the large or embolising aneurysm.",
+      "parts": [
+       {
+        "q": "What makes a Q wave pathological? [DocT QBank]",
+        "a": "The classic definition is at least 40 ms wide or deeper than 25% of the following R wave, in two or more contiguous leads. The Fourth Universal Definition uses a lower bar: Q ≥30 ms and ≥1 mm deep (in V2–V3, any Q over 20 ms or a QS complex) in two contiguous leads."
+       }
+      ],
+      "step": 5
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10D|MI-57",
+     "q": "**For long-term drugs after MI (ESC strategy figures), give the class by LVEF:**\na Oral beta-blocker\nb ACE inhibitor\nc MRA\nd Statin\ne DAPT",
+     "a": "**Drug** | **LVEF **≤**40% or HF** | **LVEF >40%**\n**Oral β-blocker** | **I, A** | IIa, B (figure)\n**ACE inhibitor** | **I, A** | IIa, A (no HF)\n**MRA** | **I, B** - LVEF ≤40% AND HF | -\n**High-dose statin** | **I, A** - all | **I, A** - all\n**DAPT** | **12 months** - all | **12 months** - all",
+     "section": "Secondary prevention drugs",
+     "bank_questions": 1,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Secondary prevention drugs",
+      "intro": "Step 6: what the patient takes for life. The one real question (47% right) asks which drug improves prognosis in post-MI HFrEF; the card sorts every drug by LVEF so the answer drops out.",
+      "why": [
+       [
+        "a",
+        "**Oral beta-blocker: I, A if LVEF ≤40% or HF; IIa, B if LVEF >40%.** Blocking catecholamines lowers oxygen demand, raises the VF threshold and lets the remodelling ventricle recover; with low LVEF the old trials cut death by over 20%. Above 40% the evidence is now split: REDUCE-AMI (LVEF ≥50%) and REBOOT (LVEF >40%) showed no overall benefit, BETAMI-DANBLOCK (LVEF ≥40%) showed fewer events (HR 0.85, mainly fewer reinfarctions, with no difference in death), and a pooled analysis of LVEF 40–49% (n 1,885) cut death, MI or HF from 14.4% to 10.7% (HR 0.75). So the case is strong at ≤49% and weak at ≥50% (MI-73)."
+       ],
+       [
+        "b",
+        "**ACE inhibitor: I, A if LVEF ≤40% or HF (also diabetes, hypertension, CKD); IIa, A in all others.** ACE inhibition limits angiotensin-driven dilatation and fibrosis of the infarcted ventricle; an ARB (valsartan, VALIANT) is the alternative if intolerant."
+       ],
+       [
+        "c",
+        "**MRA: I, B — LVEF ≤40% AND HF (or diabetes).** ESC 2023 now grades this I, A (LVEF ≤40% with HF or diabetes). Aldosterone drives fibrosis and potassium loss despite an ACE inhibitor; eplerenone in EPHESUS cut death and CV admissions in exactly this group. Check potassium and creatinine first."
+       ],
+       [
+        "d",
+        "**High-dose statin: I, A — all.** Given regardless of LVEF or baseline cholesterol, as early as possible; ESC targets LDL-C <1.4 mmol/L (55 mg/dL) and a 50% fall, adding ezetimibe then a PCSK9 inhibitor if needed."
+       ],
+       [
+        "e",
+        "**DAPT: 12 months — all.** Aspirin plus a P2Y12 inhibitor (prasugrel or ticagrelor preferred) by default for 12 months, shortened for high bleeding risk (CVS10C)."
+       ]
+      ],
+      "mimic": [
+       [
+        "Prognostic drugs vs symptomatic drugs in post-MI HFrEF",
+        "Beta-blocker, ACE inhibitor/ARNI, MRA and SGLT2 inhibitor prolong life; nitrates, digoxin and diuretics relieve symptoms only."
+       ]
+      ],
+      "traps": [
+       [
+        "“Intravenous milrinone” for an EF of 25% with dyspnoea",
+        "Only 47% chose the beta-blocker. Inotropes raise oxygen demand and arrhythmias and increase long-term mortality; they are a bridge in shock, not prognostic therapy."
+       ],
+       [
+        "“Digoxin” or “nitrates” to improve prognosis",
+        "Digoxin reduced HF admissions but not death (DIG); nitrates treat angina only."
+       ],
+       [
+        "“Beta-blocker is Class I for every post-MI patient”",
+        "Only for LVEF ≤40%; above that ESC gives IIa and the newest trials disagree."
+       ]
+      ],
+      "decode": [
+       [
+        "Post-MI, EF 25%, stable but breathless — which therapy improves long-term prognosis? [DocT QBank]",
+        "Oral beta-blocker (the only prognostic option offered)."
+       ],
+       [
+        "Post-MI, LVEF 35% with HF on ACE inhibitor and beta-blocker — what to add? [pattern]",
+        "An MRA (eplerenone/spironolactone)."
+       ]
+      ],
+      "punch": "Everyone gets a high-dose statin and 12 months of DAPT; LVEF ≤40% adds a beta-blocker and ACE inhibitor as Class I, and an MRA if there is HF. Inotropes, digoxin and nitrates never improve prognosis.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10E|MI-73",
+     "q": "**Trace the evidence on beta-blockers after MI without reduced EF:**\na REDUCE-AMI - population and result\nb REBOOT - population and result\nc BETAMI-DANBLOCK - population and result\nd The 2025 meta-analysis - population and result",
+     "a": "- **REDUCE-AMI:** LVEF ≥50% → no benefit\n- **REBOOT** (~8,000): LVEF >40%, no HF → no benefit overall; signal at 40-49%\n- **BETAMI-DANBLOCK** (~5,500): LVEF ≥40% → **fewer events** (14.2% vs 16.3%)\n- LVEF **40-49%** (4 trials) → **25% relative reduction** in death / MI / HF (10.7% vs 14.4%)",
+     "section": "Beta-blocker evidence",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Beta-blockers after MI without reduced EF",
+      "intro": "Step 6 starts with the drug whose old rule (everyone after MI) came from the pre-reperfusion era. No real question is linked; four recent trials answer whether reperfused patients with good LVEF still need it.",
+      "why": [
+       [
+        "a",
+        "**REDUCE-AMI: LVEF ≥50% → no benefit.** 5,020 patients with obstructive CAD, 95% treated by PCI: death or MI 7.9% vs 8.3% (HR 0.96) over a median 3.5 years. With a small infarct and a normal ventricle there is little arrhythmic or remodelling substrate for the drug to act on."
+       ],
+       [
+        "b",
+        "**REBOOT (~8,000): LVEF >40%, no HF → no benefit overall; signal at 40–49%.** 8,505 patients: death, reinfarction or HF admission HR 1.04 (0.89–1.22). A prespecified sex analysis suggested more events with beta-blockers in women, mainly those with preserved EF, and none in men; it is hypothesis-generating, not a reason to withhold the drug when LVEF is reduced."
+       ],
+       [
+        "c",
+        "**BETAMI-DANBLOCK (~5,500): LVEF ≥40% → fewer events (14.2% vs 16.3%).** 5,574 patients, HR 0.85 (0.75–0.98), median follow-up about 3.5 years. Unlike REDUCE-AMI it included patients with mildly reduced EF (40–49%), where the benefit is concentrated; like the other trials it was open-label."
+       ],
+       [
+        "d",
+        "**LVEF 40–49% (4 trials) → 25% relative reduction in death / MI / HF (10.7% vs 14.4%).** The pooled analysis of 1,885 patients with mildly reduced EF from REBOOT, BETAMI, DANBLOCK and CAPITAL-RCT gave HR 0.75 (0.58–0.97). The benefit lies where the ventricle is damaged; it fades as LVEF normalises."
+       ]
+      ],
+      "mimic": [
+       [
+        "Starting vs stopping",
+        "REDUCE-AMI and REBOOT ask whether to start after a reperfused MI with good LVEF; ABYSS asks whether to stop years later: interruption (LVEF ≥40%, MI a median 2.9 years before) failed non-inferiority (23.8% vs 21.1%), mostly CV admissions, with no quality-of-life gain."
+       ]
+      ],
+      "traps": [
+       [
+        "“A long-term beta-blocker improves outcome in every post-MI patient”",
+        "Proven long-term benefit is for LVEF ≤40% (I, A in both guidelines) and, from the 2025 pooled data, 40–49%; at LVEF ≥50% REDUCE-AMI and REBOOT show none. The guidelines predate REBOOT: ESC 2023 gives routine beta-blockers regardless of LVEF IIa, and ACC/AHA 2025 still advises starting an oral beta-blocker within 24 hours in all ACS without contraindications (1, A), mainly against reinfarction and arrhythmia, leaving the duration in preserved EF open."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] Reperfused STEMI, LVEF 58%, no HF — does a long-term beta-blocker improve outcome?",
+        "No clear benefit (REDUCE-AMI, REBOOT)."
+       ],
+       [
+        "[pattern] Post-MI LVEF 45% — beta-blocker?",
+        "Yes: mildly reduced EF benefits (pooled analysis, HR 0.75)."
+       ]
+      ],
+      "punch": "After a reperfused MI the beta-blocker earns its place when LVEF is below 50% and has no proven benefit when LVEF is preserved; stopping one years later has not been shown to be safe (ABYSS).",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    },
+    {
+     "card": "CVS10E|MI-76",
+     "q": "**For secondary prevention in the 2025 ACC/AHA guideline, give:**\na The statin\nb LDL-C on maximal statin that mandates a non-statin agent\nc LDL-C range where adding one is reasonable\nd When to recheck lipids\ne Cardiac rehabilitation\nf The haemoglobin target in anaemia without active bleeding",
+     "a": "- **High-intensity statin** for all\n- LDL-C ≥**70 mg/dL** → add ezetimibe / PCSK9 inhibitor / inclisiran / bempedoic acid (I)\n- LDL-C **55-69 mg/dL** (IIa)\n- Fasting panel at **4-8 weeks** after starting or changing therapy\n- Refer **before discharge** (I) - home-based if centre unavailable\n- Transfusion to maintain Hb **10 g/dL** may be reasonable",
+     "section": "Lipids, rehab, anaemia",
+     "bank_questions": 0,
+     "bank_lines": [],
+     "explain": {
+      "v": 2,
+      "sub": "Cardiology → ACS → Lipids, rehabilitation and anaemia (ACC/AHA 2025)",
+      "intro": "Step 6 ends with the long-term prescriptions. No real question is linked; the testable points are the two LDL thresholds with different classes and the haemoglobin of 10.",
+      "why": [
+       [
+        "a",
+        "**High-intensity statin for all.** 1, A, regardless of baseline LDL-C (atorvastatin 40–80 mg or rosuvastatin 20–40 mg), because the benefit tracks the absolute LDL-C reduction and ACS patients are at the highest risk."
+       ],
+       [
+        "b",
+        "**LDL-C ≥70 mg/dL → add ezetimibe / PCSK9 inhibitor / inclisiran / bempedoic acid (I).** 1, A on a maximally tolerated statin; each further fall in LDL-C lowers events (IMPROVE-IT, FOURIER, ODYSSEY OUTCOMES)."
+       ],
+       [
+        "c",
+        "**LDL-C 55–69 mg/dL (IIa).** 2a, B-R. 55 mg/dL (1.4 mmol/L) is the ESC goal, so the American guideline has moved towards it without making it a mandate. The ESC 2025 focused update keeps the goals and adds earlier combination: intensify during the index admission if already treated (I, C); start statin plus ezetimibe in hospital if the goal looks unreachable with statin alone (IIa, B)."
+       ],
+       [
+        "d",
+        "**Fasting panel at 4–8 weeks after starting or changing therapy.** 1, C-LD: by then the statin effect is complete, so the result decides whether to add a non-statin agent."
+       ],
+       [
+        "e",
+        "**Refer before discharge (I); home-based if centre unavailable.** Referral before discharge is 1, A, because patients referred later often never attend; home-based rehabilitation is a reasonable alternative (2a)."
+       ],
+       [
+        "f",
+        "**Transfusion to maintain Hb 10 g/dL may be reasonable.** 2b, B-R in ACS with anaemia and no active bleeding. Anaemia lowers oxygen delivery to an ischaemic myocardium; in MINT, a liberal target (≥10 g/dL) gave fewer 30-day deaths or MIs than restrictive (7–8 g/dL), 14.5% vs 16.9% (RR 1.15 for restrictive, P 0.07), so the difference fell short of significance and the class is only 2b. This is an exception to the general ICU threshold of 7 g/dL, which was never tested in acute MI."
+       ]
+      ],
+      "mimic": [
+       [
+        "Hb threshold: ACS vs general ICU",
+        "ACS with anaemia: aiming for 10 g/dL may be reasonable (MINT). General ICU: transfuse below 7 g/dL (TRICC)."
+       ]
+      ],
+      "traps": [
+       [
+        "“LDL-C 60 mg/dL on maximal statin: adding ezetimibe is Class 1”",
+        "55–69 mg/dL is 2a (reasonable); Class 1 begins at ≥70 mg/dL (watch line)."
+       ],
+       [
+        "“Restrictive transfusion (Hb 7) in acute MI with anaemia”",
+        "ACS is the exception: Hb 10 g/dL may be reasonable."
+       ]
+      ],
+      "decode": [
+       [
+        "[pattern] Post-ACS on atorvastatin 80 mg, LDL-C 82 mg/dL — next step?",
+        "Add a non-statin agent (1, A)."
+       ],
+       [
+        "[pattern] NSTEMI, Hb 8.2 g/dL, no bleeding — transfusion target?",
+        "Hb 10 g/dL may be reasonable (2b, MINT)."
+       ]
+      ],
+      "punch": "High-intensity statin for all, add a non-statin agent at LDL-C ≥70 (Class 1) and consider one at 55–69 (2a), recheck at 4–8 weeks, refer to rehab before discharge, and in ACS anaemia aim for Hb 10, not 7.",
+      "step": 6
+     },
+     "in_viva": false,
+     "earlier_viva_lessons": []
+    }
+   ]
+  }
+ ]
+}

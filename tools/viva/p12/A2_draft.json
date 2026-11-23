@@ -1,0 +1,1285 @@
+{
+ "questions": [
+  {
+   "q": "P12-401",
+   "text": "The first hour: work-up, oxygen, nitrates and first drugs",
+   "steps": [
+    {
+     "card": "CVS10C|MI-36",
+     "bridge": "He's wired, monitored and in pain, and someone is reaching for the oxygen mask. Should they?",
+     "lesson": {
+      "v": 1,
+      "text": "The diagnosis is suspected. Three things now happen at once, in the first ten minutes, and each has a reason.\n\nFirst, a twelve-lead ECG, read within ten minutes of first medical contact. Why so fast? Because the ECG chooses the road. ST elevation sends the patient to reperfusion. No ST elevation sends him to risk stratification. And you never wait for a troponin before you act on a STEMI.\n\nSecond, a monitor, with a defibrillator beside it. Acutely ischaemic muscle is electrically unstable, and the first hour is when it's most unstable.\n\n[[Most early deaths in STEMI, within the first twenty-four hours and mostly in the first hour, are from ventricular fibrillation, often before the patient reaches hospital.]]\n\nPump failure and rupture kill later, over days. So when Marrow asks what kills before the hospital, the answer is electrical. The wrong option waiting for you is cardiogenic shock.\n\nThird, the bloods that go with the cannula. Six of them: cardiac biomarkers, a haemogram, electrolytes, renal and liver function, a lipid profile, and HbA1c in a diabetic. Haemoglobin and platelets set the bleeding risk before you load antithrombotics. Creatinine sets drug doses, and it comes back later in this packet, in a question you missed.\n\nSo the patient is wired and monitored. He's in pain, and someone is reaching for the oxygen mask. Should they?"
+     }
+    },
+    {
+     "card": "CVS10C|MI-37",
+     "bridge": "Oxygen only below 90%. The next pain drug is the nitrate, and that one can collapse the circulation.",
+     "lesson": {
+      "v": 1,
+      "text": "Oxygen feels harmless. It isn't free.\n\nThink about what it can add. At a saturation of ninety-five per cent the haemoglobin is already nearly full, so extra oxygen adds almost nothing to delivery. What it does add is a high oxygen tension, and that constricts coronary arteries and generates reactive oxygen species. You'd be narrowing the vessel you are trying to open.\n\nThe trials agree. DETO2X-AMI took about six thousand six hundred patients with a saturation of ninety or more. Mortality at one year was five point zero per cent with oxygen and five point one without. No difference. And the AVOID trial suggested larger infarcts in those given oxygen.\n\n[[Oxygen in ACS only when the saturation is below ninety per cent, or the PaO2 below sixty millimetres of mercury. At ninety or above, routine oxygen is class three: no benefit.]]\n\nNotice that one number flips the class, from one to three. DocT tested exactly that. Saturation ninety-five per cent, and the tempting option is low-flow nasal oxygen at two litres a minute, because it sounds gentle. One candidate in three took it. The key is to withhold oxygen.\n\nNow the pain itself. Pain drives catecholamines, the heart rate and the oxygen demand, so treating it is treating the heart. Intravenous morphine, five to ten milligrams, titrated.\n\nBut morphine is only class two a, not class one. Why? Opioids slow gastric emptying. The oral P2Y12 inhibitor you've just given sits in the stomach, it's absorbed late, and platelet inhibition is delayed. Hold on to that. It returns in the antithrombotic section, where an intravenous drug solves the problem.\n\nAnd for the very anxious patient, a mild tranquilliser, usually a benzodiazepine, also class two a. The aim is the same: less sympathetic drive.\n\nThere's one more drug for pain, and it's the first in this packet that can hurt."
+     }
+    },
+    {
+     "card": "CVS10C|MI-38",
+     "bridge": "Pain is handled, and a nitrate's relief proved nothing. Now the drugs that change the outcome.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with what nitroglycerin does. It releases nitric oxide, which raises cyclic GMP in vascular smooth muscle, and the muscle relaxes. At the dose you put under the tongue it is mainly a venodilator. Veins open, blood pools, preload falls. A smaller ventricle has less wall tension and needs less oxygen. It also opens the epicardial coronaries and the collaterals a little. That's the benefit.\n\nNow turn it round. If the drug works by lowering preload, it's dangerous wherever preload is the thing holding the pressure up. That one sentence gives you all four contraindications on the card: hypotension, tachycardia, right ventricular infarction, and recent use of a phosphodiesterase inhibitor.\n\nTake the right ventricle first, because that's the one they ask. An infarcted right ventricle can't generate pressure. It moves blood through the lungs only if it's filled from behind at a high pressure. Take that filling away with a venodilator and the left ventricle is starved, and the pressure collapses.\n\nOne DocT stem gives an inferior STEMI treated with aspirin, nitroglycerin and morphine, and ten minutes later the pressure is sixty over thirty. Nearly half the candidates called it a medication reaction. The key is cardiogenic shock: the nitrate unmasked a right ventricular infarct. Marrow asks the next step. Inferior STEMI, hypotension, clear lungs: normal saline, and no nitrates.\n\n[[In an inferior STEMI, look at the right-sided leads before you give a nitrate. A fall in pressure after nitroglycerin in an inferior infarct is a right ventricular infarct until proved otherwise, and the treatment is fluid.]]\n\nThen the phosphodiesterase five inhibitors. They block the breakdown of cyclic GMP, so a nitrate on top floods the same pathway. No nitrate within twenty-four hours of sildenafil or vardenafil, or forty-eight hours of tadalafil. And one more drug sits on that pathway, which Marrow keyed: riociguat, the soluble guanylate cyclase stimulator used in pulmonary hypertension. NEET's trap is to make you think only of sildenafil.\n\nThe dose is small.\n\n{{**Sublingual nitroglycerin**\n0.4 mg (0.3–0.6), every 5 min, up to 3 doses\n**Not if:** hypotension (SBP <90) · tachycardia · RV infarct · PDE-5 inhibitor (sildenafil, vardenafil 24 h; tadalafil 48 h) · riociguat}}\n\nZero point four milligrams under the tongue, every five minutes, up to three doses.\n\nLast, a trap of logic. What does relief of the pain prove? Nothing. Nitrates relax all smooth muscle, so oesophageal spasm eases too, and an infarct may ease partly. The diagnosis comes from the ECG and serial troponin.\n\nOne DocT question gives pain relieved by nitroglycerin, a normal ECG and a negative troponin, and keys oesophageal spasm. Only a third agreed, and the key is debatable. Here's how to play it. If the stem says serial troponins are negative and ACS is excluded, choose spasm. If it gives a single troponin, unstable angina is the safer, classic answer.\n\nPain is handled. Now the drugs that change the outcome."
+     }
+    },
+    {
+     "card": "CVS10C|MI-39",
+     "bridge": "The first hour is done. The ECG said STEMI, so one question now decides everything: how soon can a wire cross?",
+     "lesson": {
+      "v": 1,
+      "text": "Three drugs go into almost everyone on arrival, and a fourth goes into a chosen few.\n\nAspirin first. Three hundred milligrams, chewed, so it's absorbed in minutes. The European guideline says one hundred and fifty to three hundred; the American one says one hundred and sixty-two to three hundred and twenty-five. Both are right in their own system.\n\nSecond, a P2Y12 inhibitor, because aspirin blocks only one route of platelet activation. Which one, and exactly when, is a question you missed in a grand test, so it gets its own lesson later.\n\nThird, a high-dose statin. Atorvastatin eighty milligrams, started early, whatever the cholesterol.\n\nThe fourth is the intravenous beta-blocker, and this is where the question lives. The logic for it is good. Slow the heart, and oxygen demand falls and diastole lengthens, so less muscle dies. In the METOCARD-CNIC trial, intravenous metoprolol before primary PCI reduced infarct size. So the card gives it to the patient who is tachycardic with a systolic pressure above one hundred and twenty.\n\nBut ask why a patient is tachycardic. If it's pain and ischaemia, the rate is a target. If the heart is failing, the rate is what's keeping the output up, and blocking it produces shock. That's what happened in the COMMIT trial: early intravenous metoprolol caused an excess of cardiogenic shock.\n\nSo the contraindications are wider than the card's two.\n\n[[No intravenous beta-blocker in ACS with heart failure or low output, hypotension, a PR interval above two hundred and forty milliseconds or higher-degree block, active asthma, or a high risk of shock: age over seventy, rate over one hundred and ten, systolic under one hundred and twenty.]]\n\nMarrow asked it as an all-of-the-following-except, listed heart failure, heart block, hypotension and asthma, and the key was none of the above. They all count.\n\nThat's the first hour. The ECG has said STEMI. One question now decides everything else."
+     }
+    }
+   ],
+   "spine": [
+    "ECG read within 10 min (it chooses the pathway); monitor + defibrillator because early STEMI deaths are VF, mostly in the first hour.",
+    "Oxygen only if SaO₂ <90% or PaO₂ <60 mmHg (I); at ≥90% routine oxygen is class III (DETO2X-AMI).",
+    "Morphine is IIa and delays oral P2Y12 absorption; benzodiazepine IIa for the very anxious.",
+    "Nitrate lowers preload: avoid in hypotension, tachycardia, RV infarct, PDE-5 inhibitor (24 h; tadalafil 48 h) and riociguat. Pain relief proves nothing.",
+    "Aspirin 300 mg + P2Y12 inhibitor + atorvastatin 80 mg for all.",
+    "IV metoprolol only if tachycardic with SBP >120 and no HF, block, bronchospasm or shock risk (COMMIT)."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Patient C is fifty-eight. Crushing chest pain for forty minutes, sweating, and an ECG with ST elevation across the front of the chest. In the last packet you learned to recognise exactly this. Now the clock has started, and everything in this packet is about what you do with the time.\n\nHere's the idea that holds it together. An infarct is muscle dying from the inside out, starting under the endocardium and spreading outward over hours. Every minute the artery stays shut, more of the wall is lost for good. So almost every decision you'll meet is a decision about time. How fast to read the ECG. Whether to send him for a stent or give a drug to dissolve the clot. Which antiplatelet to give, and when not to give it yet.\n\n[[Time is muscle. Every decision in treating an infarct is a choice about how to open the artery fastest, and how to keep it open without making him bleed.]]\n\nThe packet runs in the order the patient lives it. First, the opening minutes: the ECG, oxygen, nitrates and the first drugs, each with a reason and a trap. Then the clock itself, primary PCI or lysis, where one number decides almost every question NEET sets. Then the antithrombotics, what blocks what, and two of your grand-test misses sit right there. Then the patient without ST elevation, and the scores that sort him. Then what goes wrong: rhythm, failure and shock, where you'll meet the Shock packets again. And last, the ruptures, the aneurysm, and the drugs he takes home.\n\nFive questions in this packet were grand-test misses. Listen for them.\n\nStart where it starts. The first ten minutes."
+   }
+  },
+  {
+   "q": "P12-402",
+   "text": "The clock: primary PCI or lysis",
+   "open": {
+    "v": 1,
+    "text": "Everything in the first hour was preparation. This section is the treatment itself: opening the artery.\n\nThere are two ways to do it. A wire and a balloon, or a drug that dissolves the clot. The wire is better, but only if it arrives in time. So the whole section hangs on one question, asked at the moment of diagnosis.\n\n[[At the diagnosis of STEMI ask one thing: can the wire cross within one hundred and twenty minutes? If yes, primary PCI. If no, lyse within ten minutes and transfer.]]\n\nThis is the most asked ground in the packet. One card here carries nine bank questions, and nearly all are that single decision in different clothes. So listen for the disguise. The stem won't say one hundred and twenty minutes. It will say the centre is a hundred and fifty kilometres away, or four hours by road. Translate each into the one number.\n\nAnd keep one exception in your pocket for later: shock changes the rule.\n\nThe cards run in order. The numbers, the flow chart, then lysis itself: when, with what, how much, who must never get it, and what you do afterwards. Start with the numbers."
+   },
+   "steps": [
+    {
+     "card": "CVS10C|MI-40",
+     "bridge": "Six numbers, one of them a decision. Now lay them out as a flow chart, the most asked card in the deck.",
+     "lesson": {
+      "v": 1,
+      "text": "Why is there a clock at all? Because an occluded artery kills muscle by the minute, from the inside of the wall outward. Whatever opens it must open it early.\n\nPrimary PCI is the better opener. It restores flow in about nine arteries out of ten, and it causes less intracranial bleeding than a lytic. But it takes time to reach, and while you travel, muscle dies. So there's a point where the delay cancels the advantage. The guideline puts that point at one hundred and twenty minutes from diagnosis to the wire crossing. Beyond it, a lytic given now does about as well as a balloon given late.\n\nSo one hundred and twenty is not a target. It's a decision threshold. Don't confuse it with the targets, which are what a good system should actually achieve: sixty minutes if the patient presents at a PCI centre, ninety if he has to be transferred.\n\n[[One hundred and twenty minutes is the choice between PCI and lysis. Sixty and ninety are targets once PCI is chosen: sixty at a PCI centre, ninety if transferred.]]\n\nNEET's easiest swap is ninety for one hundred and twenty. A stem that says the transfer will take a hundred minutes is still a primary PCI stem.\n\nThen the number ten, which appears twice. First medical contact to ECG and diagnosis: ten minutes. And if you choose lysis, diagnosis to the bolus: ten minutes, because a lytic loses value faster than anything else in this section.\n\nAnd two numbers for after the lytic. At sixty to ninety minutes you judge whether it worked. At two to twenty-four hours, if it did work, the patient has an angiogram.\n\n{{**Number** | **What it answers**\n10 min | first contact → ECG; diagnosis → lytic bolus\n**120 min** | **the choice**: PCI if the wire can cross by then\n60 min | target at a PCI centre\n90 min | target if transferred\n60–90 min | judge the lysis\n2–24 h | angiogram after successful lysis}}\n\nThe bank asks it both ways. An anterior STEMI with an expected door-to-balloon time of a hundred and sixty minutes: immediate thrombolysis, then transfer. Three in four got that. The tempting wrong option was transfer for PCI regardless of delay. And a STEMI with no delay mentioned: primary PCI. Don't lyse a patient who is standing in a PCI centre.\n\nOne note on the American numbers, in case an option uses them. First contact to device within ninety minutes, or one hundred and twenty with a transfer, and door to needle within thirty. The decision is the same.\n\nThose are the numbers. Now lay them out as a flow chart."
+     }
+    },
+    {
+     "card": "CVS10C|MI-41",
+     "bridge": "That was the chart from above. The same decision now from inside a hospital with no cath lab.",
+     "lesson": {
+      "v": 1,
+      "text": "This is the most asked card in the whole ACS deck, and it's only the last lesson drawn as a flow chart. Walk it once.\n\nAfter the diagnosis there is one decision: time to PCI. If the wire can cross within one hundred and twenty minutes, you alert the lab and move the patient straight there, past the emergency department. If it can't, you give the lytic within ten minutes.\n\nNow the part that candidates forget. Lysis is a bridge, not the end of treatment. Every lysed patient is transferred to a PCI centre straight away, without waiting to see whether the drug worked. Why? Because in a third or more the artery doesn't open, and in some it opens and closes again. You want the patient already in the building when you find out.\n\nAt sixty to ninety minutes you ask whether reperfusion happened. Has the ST elevation fallen by at least half? Is the pain gone? Is the patient stable? If no, that's a failed lysis, and the answer is rescue PCI, immediately. Not a second dose of the lytic. It doesn't help.\n\nIf yes, the artery is open, but it still sits on a ruptured plaque with a tight residual narrowing. So the patient has an angiogram at two to twenty-four hours. Not earlier, because the blood is still in a lytic state. Not later, because the artery re-occludes.\n\n[[After lysis: transfer at once. Failed at sixty to ninety minutes means rescue PCI now. Successful means angiography at two to twenty-four hours.]]\n\nNow hear how the bank dresses it. NEET in twenty twenty-five: an anterior STEMI, one hour old, and the nearest PCI centre is a hundred and fifty kilometres away. Thrombolysis, then transfer. Marrow puts the centre four hours away. A DocT grand test gives a door-to-balloon time of a hundred and sixty minutes. Three stems, one answer. The wrong option each time is immediate transfer for primary PCI, and it tempts because PCI is the better treatment. It is, if it's in time.\n\nOne small thing. Marrow's explanation says angiography at three to twenty-four hours. The European guideline says two to twenty-four. If the options offer only one of them, take it. The answer doesn't change.\n\nThere's a second family of questions on this card, and it catches people. Stent thrombosis.\n\nA patient had a drug-eluting stent two months ago and now has sudden anterior ST elevation. Or a patient is back on the ward hours after a successful circumflex stent, with new chest pain and new ST elevation. What is it? It's a STEMI. The stent has clotted, and the treatment is the cath lab. NEET twenty twenty-five keyed dual antiplatelet therapy with urgent PCI. The grand test keyed urgent repeat angiography, and fewer than half chose it. The others chose intravenous nitroglycerin, observation, or an echo first. All of those are delay.\n\nAnd don't lyse it. Stent thrombus is rich in platelets and responds poorly to a lytic.\n\n[[New ST elevation in a stented territory is stent thrombosis, and that is a STEMI: load antiplatelets, anticoagulate, and go straight back to the lab. Do not lyse and do not wait.]]\n\nThe discriminator is the ECG. Pain after PCI with an unchanged ECG gives you time to think. New ST elevation gives you none.\n\nThat was the chart from above. Now look at the same decision from inside a hospital that has no cath lab."
+     }
+    },
+    {
+     "card": "HY2|CAR-17",
+     "bridge": "You know when to transfer and when to lyse. Next: for how many hours of symptoms is lysis still worth giving?",
+     "lesson": {
+      "v": 1,
+      "text": "You're in a hospital without PCI and a STEMI walks in. This card is the last one seen from your own chair, so take it quickly and collect only what's new.\n\nThe plan has a name: the pharmaco-invasive strategy. Drug first, then the invasive step. If PCI can't happen within one hundred and twenty minutes of diagnosis, you lyse, within ten minutes of the diagnostic ECG, and then you transfer.\n\nWhat's new is the reason for the lower edge of the angiography window. Why two hours, and not at once? Because in the first hours after a lytic the bleeding risk is at its peak, and puncturing an artery then bleeds more. The trials of immediate PCI after full lysis, called facilitated PCI, showed more bleeding and no benefit. So the window opens at two hours and closes at twenty-four.\n\n[[After successful lysis, angiography is at two to twenty-four hours: not before two, because of bleeding in the lytic state, and not after twenty-four, because the artery re-occludes.]]\n\nA mini test asked exactly this, with one hour, twelve hours and forty-eight hours among the options. The answer was twelve hours, the only one inside the window, and only a third found it.\n\nTwo pairs of words to keep apart. Rescue PCI is for a lysis that failed, and it's done now. Pharmaco-invasive PCI is for a lysis that worked, and it's done at two to twenty-four hours.\n\nAnd remember the option that says transfer for PCI regardless of delay. In an ordinary STEMI that's wrong beyond one hundred and twenty minutes. There is one patient for whom it's right, the patient in cardiogenic shock, and you'll meet him two sections from now.\n\nSo you've decided to lyse. Is it ever too late?"
+     }
+    },
+    {
+     "card": "CVS10C|MI-54",
+     "bridge": "Lysis within 12 hours, best within 2. Now how to give it: where, which agent, and with which antiplatelet.",
+     "lesson": {
+      "v": 1,
+      "text": "A lytic has its own clock, separate from the PCI clock, and it runs from the onset of symptoms.\n\nHere's why. A fresh clot is loose, and its fibrin isn't yet cross-linked, so a lytic dissolves it easily. Over hours the clot organises and hardens. Meanwhile the muscle it was starving is dying anyway. So the drug works less well, on a problem that's shrinking.\n\nThat gives three numbers. The benefit is greatest within two hours of symptom onset. After about three hours PCI is clearly preferred, because the balloon keeps its success rate while the drug loses its own. And twelve hours is the limit.\n\n[[Fibrinolysis is for symptoms of up to twelve hours, and works best in the first two. Beyond twelve hours it is not indicated; the patient goes for PCI.]]\n\nSo a STEMI at fourteen hours with no PCI nearby is not lysed. He's transferred.\n\nAnd one trap that comes from old notes. Two to twenty-four hours is not a window for giving a lytic. It's the window for the angiogram after a lytic has worked. If an option says lysis is effective from two to twenty-four hours, it has mixed the two.\n\nSo lysis it is, and early. How do you give it?"
+     }
+    },
+    {
+     "card": "CVS10C|MI-52",
+     "bridge": "Fibrin-specific, pre-hospital, with clopidogrel. Next the doses, and you need only one of them by heart.",
+     "lesson": {
+      "v": 1,
+      "text": "Five choices go with the decision to lyse.\n\nWhere and when. As soon as possible, and preferably before hospital, in the ambulance. That follows from the last card: the first two hours are worth the most.\n\nWhich kind of drug. A fibrin-specific one: tenecteplase, alteplase or reteplase. These act mainly on plasminogen that's bound to the clot, so they open more arteries than streptokinase does.\n\nThe older patient. At seventy-five or above, tenecteplase is given at half dose, because intracranial bleeding climbs with age.\n\nThe antiplatelet. Aspirin, plus clopidogrel three hundred milligrams. And here's the trap. In the next section you'll learn that prasugrel and ticagrelor are stronger and preferred. Not with a lytic. Clopidogrel is the drug that was tested alongside lysis. Add a stronger antiplatelet to a patient whose clotting is already dissolved and the worry is the brain.\n\n[[With fibrinolysis the P2Y12 inhibitor is clopidogrel: three hundred milligrams, or seventy-five without a loading dose in patients over seventy-five. With primary PCI it is prasugrel or ticagrelor.]]\n\nLast, the anticoagulant. It continues until revascularisation, or for the hospital stay up to eight days. Enoxaparin did better than unfractionated heparin with lysis in the ExTRACT-TIMI twenty-five trial.\n\nNow the doses."
+     }
+    },
+    {
+     "card": "CVS10C|MI-51",
+     "bridge": "You know how to give it. The more dangerous question is who must never get it.",
+     "lesson": {
+      "v": 1,
+      "text": "Four lytics, and you need only one dose by heart.\n\nStreptokinase, the old one: one point five million units over thirty to sixty minutes. It isn't fibrin-specific, so it drops the blood pressure. And it's a bacterial protein, so the patient makes antibodies and you don't give it twice.\n\nAlteplase has a short half-life, so after a fifteen milligram bolus it needs a ninety-minute infusion. Don't learn the arithmetic. Know that the total never exceeds one hundred milligrams.\n\nReteplase: two boluses of ten units, thirty minutes apart.\n\nTenecteplase is the one to know. It's the most fibrin-specific and the longest acting, so a single bolus is enough, and that makes it the ambulance drug.\n\n{{**Lytic** | **Dose**\nStreptokinase | 1.5 million U over 30–60 min\nAlteplase | 15 mg → 0.75 mg/kg in 30 min (max 50) → 0.5 mg/kg in 60 min (max 35)\nReteplase | 10 U + 10 U, 30 min apart\n**Tenecteplase** | <60 kg 30 mg · 60–69 35 · 70–79 40 · 80–89 45 · ≥90 kg **50 mg**; **half if ≥75 y**}}\n\n[[Tenecteplase is a single weight-based bolus: thirty milligrams below sixty kilograms, rising by five milligrams for every ten kilograms, to fifty at ninety kilograms and above. Half the dose at seventy-five years or older.]]\n\nSo a seventy-two kilogram man of sixty gets forty milligrams. The same man at eighty gets twenty. NEET's wrong option is the full dose in the eighty-year-old.\n\nKeep two age rules apart. Tenecteplase is halved from seventy-five. The clopidogrel loading dose is dropped above seventy-five.\n\nThat's how you give it. Now the more dangerous question: who must never get it."
+     }
+    },
+    {
+     "card": "CVS10C|MI-53",
+     "bridge": "The lytic is in. Four things can happen in the next hours, and each has its own action.",
+     "lesson": {
+      "v": 1,
+      "text": "A lytic doesn't know where the clot is. It dissolves fibrin everywhere. So the contraindications are simply the places where a dissolved clot would be a catastrophe: the brain, the aorta, a fresh wound.\n\nSort them the way the card does, absolute and relative, and keep your attention on the pairs that look alike.\n\nThe brain first. Any previous intracranial haemorrhage, or a stroke of unknown type, at any time in life, is absolute. An ischaemic stroke in the last six months is absolute. But a TIA in the last six months is only relative. Same window, different class.\n\nThen structural lesions: a tumour of the nervous system, an arteriovenous malformation. Absolute.\n\nThen fresh wounds. Major trauma, major surgery or head injury within one month. Gastrointestinal bleeding within one month. A known bleeding disorder. A puncture you can't compress in the last twenty-four hours, such as a liver biopsy or a lumbar puncture. All absolute.\n\nAnd aortic dissection, which earns its place twice, because it can imitate a STEMI. If the flap shears off the right coronary you'll see inferior ST elevation.\n\n{{**Absolute** | **Relative**\nPrior ICH / unknown stroke: any time | TIA <6 months\nIschaemic stroke <6 months | Oral anticoagulant\nCNS tumour, AVM | Pregnancy, 1st week post-partum\nTrauma, surgery, GI bleed <1 month | SBP >180 or DBP >110\nBleeding disorder | Advanced liver disease\nAortic dissection | Endocarditis, active ulcer\nNon-compressible puncture <24 h | Prolonged CPR}}\n\nThe relative list is where the distractors come from. Refractory hypertension above one hundred and eighty systolic or one hundred and ten diastolic. Oral anticoagulants. Pregnancy and the first week after delivery. Advanced liver disease, infective endocarditis, an active peptic ulcer, and prolonged or traumatic resuscitation. Marrow adds three details: active diabetic haemorrhagic retinopathy is relative, a previous infarct is no contraindication at all, and CPR counts only if it was longer than ten minutes or traumatic.\n\n[[Blood pressure above one hundred and eighty and warfarin are relative contraindications to lysis. A previous haemorrhagic stroke is absolute, for life.]]\n\nThat was a DocT question, and a third of candidates chose the blood pressure or the warfarin.\n\nNow a harder one, from a grand test. A rural anterior STEMI, transfer three hours away, and the options include an ischaemic stroke five months ago, surgery two weeks ago, and a known arteriovenous malformation. On this card all three are absolute. The key was the malformation. Why? Because the American list uses three months for stroke, so five months is arguable there, while the malformation is absolute on every list. When several options look absolute, choose the one that no guideline disputes.\n\nThe same list reaches beyond the heart. Massive pulmonary embolism with shock, and an ischaemic stroke two months ago: still an absolute contraindication. And Marrow's patient with an infarct and hypotension on the second day after an operation: the thing not recommended is thrombolysis.\n\nThe lytic is in. What happens next?"
+     }
+    },
+    {
+     "card": "CVS10C|MI-42",
+     "bridge": "The artery is open. A clot is platelets and thrombin, so the next section is the drugs that stop each one.",
+     "lesson": {
+      "v": 1,
+      "text": "After a lytic the patient can go one of four ways. You've met two already, so this card completes the set.\n\nOne. He goes into heart failure or shock. A large territory is still ischaemic, or something has torn. Emergency angiography.\n\nTwo. The lysis fails: less than half the ST elevation has resolved at sixty to ninety minutes, or he's unstable, or the ischaemia is worsening. Rescue PCI, immediately.\n\nThree. The lysis works. Angiography of the infarct artery at two to twenty-four hours.\n\nFour. It works, and then the pain and the ST elevation return. That's re-occlusion. Emergency angiography again.\n\nSo every road after a lytic ends in the cath lab. Only the speed varies.\n\n[[After fibrinolysis every patient gets an angiogram: at once for shock, failed lysis or re-occlusion, and at two to twenty-four hours after success. Watchful waiting raises re-infarction.]]\n\nThat last line is the one a question can be built on. A patient lysed with complete resolution and no pain looks finished. He isn't. In trials such as TRANSFER-AMI, and in their pooled analysis, waiting for ischaemia to declare itself meant more recurrent ischaemia and re-infarction than routine early angiography.\n\nThat closes the clock. The artery is open, by a wire or by a drug. But a clot is platelets held together by fibrin, and fibrin is made by thrombin. Unless you block both, it forms again."
+     }
+    }
+   ],
+   "spine": [
+    "One decision at diagnosis: can the wire cross within 120 min? Yes → primary PCI (target 60 min at a PCI centre, 90 if transferred). No → lytic bolus within 10 min.",
+    "Lysis is a bridge: transfer at once. <50% ST resolution at 60–90 min → rescue PCI. Success → angiography at 2–24 h. Watchful waiting ↑ re-infarction.",
+    "Stent thrombosis with ST elevation is a STEMI: DAPT, anticoagulate, urgent PCI. Do not lyse.",
+    "Lysis window: symptoms ≤12 h, best ≤2 h. Fibrin-specific agent, pre-hospital, with aspirin + clopidogrel (not prasugrel/ticagrelor).",
+    "Tenecteplase: single weight-based bolus 30–50 mg; half dose at ≥75 y.",
+    "Absolute: any prior ICH, ischaemic stroke <6 months, AVM/tumour, surgery/trauma/GI bleed <1 month, dissection. Relative: TIA, SBP >180, anticoagulant, prolonged CPR."
+   ]
+  },
+  {
+   "q": "P12-403",
+   "text": "Antithrombotics: what blocks what, and when",
+   "open": {
+    "v": 1,
+    "text": "The artery is open, or about to be. This section is about keeping it open.\n\nGo back to what blocked it. A plaque ruptured, platelets stuck to it and called in more platelets, and thrombin laid fibrin through the pile. So there are two enemies, and every drug in this section hits one of them at a named step.\n\n[[Two enemies, the platelet and thrombin. Antiplatelets block thromboxane, the P2Y12 receptor or glycoprotein two b three a. Anticoagulants block factor ten a, thrombin, or both.]]\n\nThe cards go from the map of targets, to the choice of P2Y12 inhibitor, to the anticoagulant, and then to timing.\n\nTwo of your own grand-test misses live here, so listen for them. The first is timing: you gave prasugrel to an NSTEMI before anyone had seen the coronary anatomy. The second is the kidney: you called enoxaparin contraindicated at a creatinine clearance of twenty-four, and it isn't.\n\nAnd watch one drug in particular, fondaparinux. It's class one in one setting and class three in another, and the examiners know it.\n\nStart with the map."
+   },
+   "steps": [
+    {
+     "card": "CVS10C|MI-48",
+     "bridge": "That's the map. Four drugs share the P2Y12 receptor, and the questions are about how they differ.",
+     "lesson": {
+      "v": 1,
+      "text": "Build the clot in your head, one step at a time, and put a drug at each step.\n\nA platelet lands on the ruptured plaque and is activated. It then does two things to recruit its neighbours. It makes thromboxane A2, using the enzyme COX-1. And it releases ADP, which acts on the next platelet's P2Y12 receptor. Both signals end in the same place: the platelet puts glycoprotein two b three a on its surface. That's the receptor for fibrinogen, and fibrinogen is the rope that ties one platelet to the next. It's the final common pathway.\n\nSo, three antiplatelet targets. Aspirin blocks thromboxane. Clopidogrel, prasugrel, ticagrelor and cangrelor block P2Y12. Eptifibatide and tirofiban block glycoprotein two b three a.\n\nNow the clotting side. Factor ten a makes thrombin, and thrombin makes fibrin. Rivaroxaban, apixaban and edoxaban block ten a directly; fondaparinux blocks it indirectly, through antithrombin. Dabigatran and bivalirudin block thrombin directly. And the heparins do both through antithrombin: unfractionated heparin hits ten a and thrombin about equally, while enoxaparin's shorter chains hit mainly ten a.\n\n{{**Drug** | **Target**\nAspirin | COX-1 → thromboxane A2\nClopidogrel, prasugrel, ticagrelor, cangrelor | P2Y12\nEptifibatide, tirofiban | GP IIb/IIIa\nRivaroxaban, apixaban, edoxaban, fondaparinux | factor Xa\nUFH, enoxaparin | Xa + thrombin (via antithrombin)\nDabigatran, bivalirudin | thrombin, direct}}\n\nThat's the map. Now the three places the bank has dug.\n\nFirst, aspirin. It acetylates COX-1, and the word that matters is irreversibly. A platelet has no nucleus, so it can't make new enzyme. Its thromboxane is gone for its whole life, seven to ten days. A grand test gave a patient on aspirin eighty-one milligrams with a gastrointestinal bleed and platelets that didn't aggregate to arachidonic acid, and asked for the mechanism. Irreversible COX-1 inhibition. Recovery needs new platelets, about a tenth of the pool each day, so if the bleeding is urgent you transfuse platelets. Ordinary NSAIDs block the same enzyme reversibly.\n\nSecond, cangrelor. It's the only intravenous P2Y12 inhibitor. It's reversible, its half-life is three to six minutes, and platelet function is back within about an hour of stopping. So picture a patient with a recent stent, on aspirin and clopidogrel, who needs urgent surgery. You must stop the oral drug, but the stent will clot without cover. You bridge with a cangrelor infusion and switch it off just before the knife.\n\n[[Cangrelor is the only intravenous P2Y12 inhibitor: reversible, half-life three to six minutes, platelets recover within an hour. It is the bridge when a recent-stent patient must stop the oral drug for surgery.]]\n\nNEET's favourite wrong option there is tirofiban or eptifibatide. They are intravenous and short-acting, so they sound right. But they block a different receptor. They don't replace the drug you stopped.\n\nThird, the glycoprotein two b three a inhibitors themselves. Eptifibatide inhibits platelets within about fifteen minutes, which Marrow asked. Its half-life is about two and a half hours, and function returns in four to eight. Both drugs are cleared by the kidney: halve the eptifibatide infusion below a creatinine clearance of fifty and don't use it on dialysis; halve tirofiban at a clearance of sixty or below. And know their place today. They're bail-out drugs, for no-reflow or a thrombotic complication during PCI. Not routine.\n\nOne last property to carry forward. Bivalirudin binds thrombin directly, without antithrombin and without touching platelet factor four. That's why it's the answer in heparin-induced thrombocytopenia.\n\nFour drugs share the P2Y12 receptor. How do they differ?"
+     }
+    },
+    {
+     "card": "CVS10C|MI-47",
+     "bridge": "You can choose the antiplatelet. Now the anticoagulant, starting in the cath lab during primary PCI.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with chemistry, because one question is nothing but that.\n\nClopidogrel and prasugrel are thienopyridines. Both are prodrugs: the liver must convert them, and the active product binds the receptor irreversibly, for the life of the platelet. Clopidogrel needs two conversion steps, through CYP2C19, so it's slow and varies from patient to patient. Prasugrel needs one, so it's faster and stronger.\n\nTicagrelor is not a thienopyridine. It's active as swallowed, and it binds reversibly, so its effect wears off in three to five days. If an option calls ticagrelor a thienopyridine, that option is wrong.\n\nWhich do you prefer? Prasugrel or ticagrelor, over clopidogrel. TRITON-TIMI thirty-eight for prasugrel and PLATO for ticagrelor both showed fewer ischaemic events, and PLATO showed lower mortality too, at the price of more bleeding. Clopidogrel keeps two jobs: alongside a lytic, and alongside an oral anticoagulant.\n\nNow the cautions, and each is a question.\n\nPrasugrel. In TRITON, patients with a previous stroke or TIA were harmed overall, with more intracranial bleeding. So prior stroke or TIA is a contraindication to prasugrel. A grand test gave an ACS patient with a recent TIA going for PCI and asked which P2Y12 inhibitor is contraindicated. Half got it. The others chose clopidogrel, ticagrelor or cangrelor.\n\n[[Of the P2Y12 inhibitors only prasugrel is contraindicated after a stroke or TIA. It is also generally avoided at seventy-five years or older and below sixty kilograms.]]\n\nIf it's used in those two groups, the maintenance dose is five milligrams rather than ten.\n\nTicagrelor. It's contraindicated after an intracranial haemorrhage and in significant liver disease, since the liver clears it. But the question is about a side effect.\n\nTicagrelor blocks the reuptake of adenosine, so adenosine lingers. And adenosine makes people breathless. In PLATO about fourteen per cent on ticagrelor reported dyspnoea, against about eight per cent on clopidogrel. It's a sense of air hunger, often within the first day, with everything else normal.\n\nHere's the grand-test stem. Twelve hours after PCI a patient on aspirin, ticagrelor, metoprolol and atorvastatin becomes breathless. Saturation normal, chest clear, ECG unchanged, CT normal. Which drug? Only three in ten chose ticagrelor. The rest blamed aspirin or metoprolol.\n\n[[Breathlessness after PCI with a normal saturation, examination, ECG and imaging is ticagrelor, through adenosine. It is usually mild and self-limiting, and not a reason to stop the drug unless it is intolerable.]]\n\nThe discriminator is that normality. Pulmonary embolism and heart failure leave marks. Ticagrelor leaves none. The same adenosine effect explains the ventricular pauses the drug can cause.\n\nThat's the antiplatelet side chosen. Now the anticoagulant."
+     }
+    },
+    {
+     "card": "CVS10C|MI-49",
+     "bridge": "That was the STEMI lab. Without ST elevation the anticoagulant, and the P2Y12 timing, follow a different algorithm.",
+     "lesson": {
+      "v": 1,
+      "text": "Take the anticoagulant in one specific place first: the cath lab, during primary PCI. This card hasn't been asked, so collect two facts and move on.\n\nThe routine drug is unfractionated heparin, a bolus of seventy to one hundred units per kilogram. It's cheap, you can measure it at the table, and protamine reverses it. Enoxaparin and bivalirudin are the alternatives, both class two a.\n\nFact one. In heparin-induced thrombocytopenia, bivalirudin is class one. You know why from the map: it doesn't touch platelet factor four.\n\nFact two. Fondaparinux is class three here. In the OASIS six trial, patients who had primary PCI on fondaparinux alone formed clot on the catheters. The reason is the target. A catheter surface generates thrombin directly, and fondaparinux blocks only factor ten a.\n\n[[In primary PCI: unfractionated heparin is routine, bivalirudin is the choice in heparin-induced thrombocytopenia, and fondaparinux is class three because of catheter thrombosis.]]\n\nAnd afterwards? Stop. Once the stent is in and the patient is on two antiplatelets, more anticoagulant buys only bleeding, unless there's a separate reason such as atrial fibrillation or a thrombus in the ventricle.\n\nHold on to fondaparinux as class three. In the next card the same drug is class one."
+     }
+    },
+    {
+     "card": "CVS10C|MI-50",
+     "bridge": "Two choices set by the angiogram's timing. A third thing changes the anticoagulant: the kidney.",
+     "lesson": {
+      "v": 1,
+      "text": "Now the patient without ST elevation. His artery is narrowed, not blocked, so there's no race to the lab. And that changes two decisions: which anticoagulant, and when to give the P2Y12 inhibitor. Both turn on the same thing, the time until the angiogram.\n\nThe anticoagulant first. If the angiogram is within twenty-four hours, give unfractionated heparin. It's what the lab will use anyway, and it reverses. Enoxaparin is the alternative, class two a.\n\nIf the angiogram is more than twenty-four hours away, give fondaparinux, class one. This is the OASIS five trial. Fondaparinux two point five milligrams once a day matched enoxaparin for ischaemic events and caused about half the major bleeding, roughly two per cent against four, and fewer of those patients were dead at thirty days. Less bleeding, fewer deaths. If he then goes for PCI, you add a full bolus of heparin, for the catheter reason you've just learned.\n\n[[Fondaparinux is class one in NSTE-ACS when angiography is more than twenty-four hours away, and class three as the only anticoagulant in primary PCI.]]\n\nA grand test asked which statement is true for a stable NSTEMI awaiting angiography. The key was that fondaparinux causes less major bleeding than enoxaparin. The false options were that heparin is superior to enoxaparin, and that enoxaparin is contraindicated before an invasive strategy.\n\nNow the P2Y12 inhibitor, and your miss.\n\nThe stem was an NSTEMI going for an invasive strategy, anatomy not yet known. You chose to pretreat with prasugrel. The key was to defer the P2Y12 inhibitor until PCI. Here's the reasoning, so it doesn't happen again.\n\nBefore the angiogram you don't know what this patient has. Some will have disease that needs bypass surgery, and a P2Y12 inhibitor on board means bleeding or a delay. Some will have no coronary cause at all. So giving the drug blind helps only if it prevents events while you wait. Does it? The ACCOAST trial gave prasugrel before angiography. No fewer ischaemic events. More bleeding. Then ISAR-REACT five, which in NSTE-ACS gave prasugrel only at PCI, once the anatomy was known, beat a ticagrelor strategy: death, infarction or stroke in six point nine per cent against nine point three, with no extra bleeding.\n\n[[In NSTE-ACS with early angiography planned, routine P2Y12 pretreatment before the anatomy is known is class three. Give aspirin, and hold the P2Y12 inhibitor until the angiogram. In NSTE-ACS, prasugrel is never given before the anatomy is known.]]\n\nSet the three classes side by side. Aspirin before the lab: class one. A P2Y12 inhibitor before primary PCI in STEMI: class two b. Routine P2Y12 pretreatment in NSTE-ACS: class three. The only softening is when the angiogram is more than a day away. Then pretreatment may be considered, and not with prasugrel.\n\nAnd once he's on the table for PCI, which one? The European guideline prefers prasugrel over ticagrelor, from that same trial. Then aspirin plus the P2Y12 inhibitor for twelve months, and aspirin alone after that.\n\nTwo choices, both set by the clock. One more thing changes the anticoagulant, and you missed it too."
+     }
+    },
+    {
+     "card": "V12-010",
+     "bridge": "The kidney changes the dose, not the drug. Now what the 2025 American guideline changed about antiplatelets.",
+     "lesson": {
+      "v": 1,
+      "text": "This is a new card, written for a question you missed. NSTE-ACS, creatinine clearance twenty-four millilitres a minute. You answered that enoxaparin is contraindicated. The key was enoxaparin, one milligram per kilogram, once daily.\n\nWhy once daily? Enoxaparin is made of short heparin chains, and short chains leave by the kidney. When the clearance falls below thirty the drug accumulates, the anti-ten-a effect builds up dose after dose, and the patient bleeds. The answer isn't to abandon the drug. It's to give the same dose half as often.\n\n[[Enoxaparin in NSTE-ACS is one milligram per kilogram twice daily. Below a creatinine clearance of thirty it is one milligram per kilogram once daily. Reduced, not contraindicated.]]\n\nThe European table adds a floor: below fifteen, enoxaparin isn't recommended at all.\n\nNow place the other anticoagulants around it, because the examiner can swap the drug.\n\nUnfractionated heparin isn't cleared by the kidney. It needs no adjustment at any level of renal function. So when the kidneys have truly failed, heparin is the fallback.\n\nFondaparinux is cleared almost entirely by the kidney. The European guideline says not below a filtration rate of twenty; the product label says not below thirty. So in your stem, at twenty-four, fondaparinux was the doubtful drug and enoxaparin the adjustable one. That's what made the question hard.\n\nBivalirudin needs a lower infusion rate below thirty.\n\n{{**Drug** | **Kidney rule**\nUFH | no change\n**Enoxaparin** | CrCl <30: **1 mg/kg once daily**; <15: avoid\nFondaparinux | avoid if eGFR <20 (label <30)\nBivalirudin | CrCl <30: reduce infusion\nEptifibatide | CrCl <50: halve infusion; dialysis: no\nTirofiban | CrCl ≤60: halve infusion}}\n\nYou've already met the last two lines. Eptifibatide is halved below fifty, tirofiban at sixty or below.\n\nAnd one age rule sits beside the kidney rule, for enoxaparin given with a lytic. At seventy-five or older there's no intravenous bolus, and the dose falls to zero point seven five milligrams per kilogram.\n\nSo the kidney changes the dose, not the drug. Now back to the antiplatelets, and what the newest guideline changed."
+     }
+    },
+    {
+     "card": "CVS10E|MI-72",
+     "bridge": "Four loose ends remain, and each one has been asked.",
+     "lesson": {
+      "v": 1,
+      "text": "The American guideline of twenty twenty-five mostly agrees with what you've learned. It differs in two places, and those are what an examiner would use. This card hasn't been asked yet, so keep it short.\n\nThe default is the same. Aspirin and an oral P2Y12 inhibitor for at least twelve months.\n\nThe first difference is how you leave that default early to save bleeding. Once a stent has healed over, most of the protection comes from the P2Y12 inhibitor, and aspirin on top adds mainly bleeding. So the American advice is to drop the aspirin and keep the stronger drug.\n\n[[American guideline, twenty twenty-five: a patient who has tolerated ticagrelor-based dual therapy can switch to ticagrelor alone from one month after PCI, to reduce bleeding. That is class one. The drug you stop is aspirin.]]\n\nThe trap writes itself: after one month, continue aspirin alone. That's the wrong way round. The European default is still twelve months of both. It also allows a single antiplatelet, preferably the P2Y12 inhibitor, after three to six months in a patient who is event-free and not at high ischaemic risk, class two a.\n\nThe second difference is the choice of drug. The Americans say ticagrelor or prasugrel, with no preference. The Europeans prefer prasugrel at PCI.\n\nOn pretreatment the two agree. If angiography in NSTE-ACS will be delayed beyond twenty-four hours, an upstream P2Y12 inhibitor may be considered, and the Americans name clopidogrel or ticagrelor. Not prasugrel. That's your missed question again, from the other side.\n\nFour loose ends remain in this section, and every one has been asked."
+     }
+    },
+    {
+     "card": "HY2|CAR-20",
+     "bridge": "The drugs are sorted. Next the patient without ST elevation: no 120-minute clock, so how soon does he go to the lab?",
+     "lesson": {
+      "v": 1,
+      "text": "Four short situations, each answered by something you already know. Let me give you the stem and you supply the reason.\n\nOne. A STEMI patient who gets no reperfusion at all, say he declined it. Which anticoagulant is best? Fondaparinux. This comes from the OASIS six trial, the same one that warned you off fondaparinux in the cath lab. In the patients who had no primary PCI, it lowered death and re-infarction without more major bleeding. Fewer than a quarter got this right; most chose enoxaparin or heparin.\n\nSo fondaparinux now has three positions. Class one in NSTE-ACS when angiography is delayed. The keyed answer in STEMI without reperfusion. Class three as the only anticoagulant during primary PCI.\n\nTwo. A patient who is vomiting, or has had morphine, and needs P2Y12 inhibition now. You heard the problem in the first hour: opioids stall the stomach, and the oral drug isn't absorbed. Which drug goes by vein? Cangrelor. Onset within about two minutes, gone in about an hour. On a mini test only a third chose it. The rest chose tirofiban or eptifibatide, which are intravenous but act on a different receptor.\n\nThree. Chest pain after sildenafil or tadalafil. No nitrates, for twenty-four hours after sildenafil and forty-eight after tadalafil. You know why.\n\nFour. Troponin in a patient with stage four chronic kidney disease. His troponin is raised every day of his life. So one high value tells you nothing.\n\n[[In chronic kidney disease troponin is chronically raised. Diagnose infarction by a rise or fall between samples, with at least one value above the ninety-ninth percentile, together with evidence of ischaemia.]]\n\nThat is the Fourth Universal Definition, which ACS I covered: it's the change that makes it acute. A grand-test question on this was lost by reading a single raised value as an infarct.\n\nThat's the pharmacy. You know what each drug blocks, which one to choose, and when to hold it back.\n\nNext, the patient these drugs were mostly for: the one without ST elevation. He has no one-hundred-and-twenty-minute clock. So how soon does he go to the lab?"
+     }
+    }
+   ],
+   "spine": [
+    "Clot = platelets + thrombin. Aspirin → COX-1/TXA2 (irreversible, 7–10 days); P2Y12: clopidogrel, prasugrel, ticagrelor, cangrelor; GP IIb/IIIa: eptifibatide, tirofiban (bail-out).",
+    "Cangrelor: only IV P2Y12 inhibitor, t½ 3–6 min; the bridge to surgery and the answer when the gut won't absorb.",
+    "Prasugrel: contraindicated after stroke/TIA. Ticagrelor: not a thienopyridine; dyspnoea with everything normal (adenosine).",
+    "NSTE-ACS anticoagulant: angiography <24 h → UFH; >24 h → fondaparinux (OASIS-5). Fondaparinux alone in primary PCI is class III. Bivalirudin in HIT.",
+    "NSTE-ACS, early angiography: routine P2Y12 pretreatment is class III; defer to PCI, then prasugrel > ticagrelor (ESC). DAPT 12 months.",
+    "CrCl <30: enoxaparin 1 mg/kg ONCE daily (not contraindicated). ACC/AHA 2025: ticagrelor alone from 1 month after PCI."
+   ]
+  },
+  {
+   "q": "P12-404",
+   "text": "NSTE-ACS, risk scores and the invasive path",
+   "open": {
+    "v": 1,
+    "text": "Until now the patient had ST elevation, and a clock decided everything. This section is about the patient who doesn't.\n\nIn NSTE-ACS the artery is narrowed by clot but not closed. So there's no one-hundred-and-twenty-minute decision, and there is never a lytic, because with nothing occluded a lytic adds only bleeding. The question changes. It's no longer wire or drug. It's how soon to the lab, and risk decides.\n\n[[NSTE-ACS is never lysed. The only question is how soon the angiogram: within two hours for very high risk, within twenty-four for high risk, and during the admission for the rest.]]\n\nSo first you'll sort patients into risk groups. Then the two scores that put numbers on risk, GRACE and TIMI, which are easy to confuse. Then the procedure: which artery you enter through, what can go wrong, and when the surgeon takes over.\n\nMost cards here are brisk. Slow down in two places. One is a class: the twenty-four-hour strategy isn't class one any more. The other is surgery, where a grand test asked how long before bypass you stop eptifibatide.\n\nStart with the sorting."
+   },
+   "steps": [
+    {
+     "card": "CVS10C|MI-43",
+     "bridge": "GRACE above 140 was one of the high-risk features. What goes into that number?",
+     "lesson": {
+      "v": 1,
+      "text": "Three groups, three speeds. The logic is how much muscle is in danger right now.\n\nThe very high-risk patient is losing muscle, or his life, as you watch: shock, pain that won't settle, heart failure from the ischaemia, a life-threatening arrhythmia, a mechanical complication, or ECG changes that keep recurring. Each says the same thing: this is behaving like a STEMI. So he's treated like one, with an immediate invasive strategy, within two hours.\n\nThe high-risk patient has an active clot but is holding steady: a confirmed NSTEMI, a GRACE score above one hundred and forty, transient ST elevation, or dynamic ST and T wave changes. He gets an early invasive strategy, within twenty-four hours.\n\nEveryone else gets a selective strategy: angiography during the admission, or after a non-invasive test.\n\n{{**Very high risk → <2 h** | **High risk → <24 h**\nShock / instability | Confirmed NSTEMI\nRefractory or recurrent pain | GRACE >140\nAcute HF from ischaemia | Transient ST elevation\nLife-threatening arrhythmia / arrest | Dynamic ST–T changes\nMechanical complication |\nRecurrent dynamic ECG changes |}}\n\nNow the class, which is the examinable change. The twenty-four-hour strategy used to be class one. The twenty twenty-three guideline lowered it to two a, because trials of early against delayed angiography showed no fall in mortality overall.\n\n[[European guideline, twenty twenty-three: immediate angiography within two hours for very high-risk NSTE-ACS is class one. Early angiography within twenty-four hours for high risk is now class two a.]]\n\nOne of those high-risk features was a score. What's in it?"
+     }
+    },
+    {
+     "card": "CVS10D|MI-67",
+     "bridge": "GRACE predicts death. The other score is simpler, and it predicts something different.",
+     "lesson": {
+      "v": 1,
+      "text": "GRACE is a weighted score that turns a handful of bedside facts into a probability of death. You'll never be asked to calculate it. You'll be asked what's in it, what it predicts, and the cut-off.\n\nThe card lists nine variables, and they fall into two sets. Three from the history: age, previous heart failure, previous infarction. Six from the admission: heart rate, systolic pressure, ST depression, creatinine, raised cardiac enzymes, and no PCI during the stay.\n\nThey aren't equal. Age and the haemodynamics carry far more weight than any single yes-or-no item. That makes sense: an old patient who's tachycardic and hypotensive is the one who dies.\n\nWhat does it predict? The nomogram on this card predicts mortality at six months. The original in-hospital version uses eight variables, including Killip class and cardiac arrest at admission. If an option lists Killip class as a GRACE variable, it's true for that version.\n\n[[GRACE predicts death after ACS. A score above one hundred and forty marks high risk and an early invasive strategy.]]\n\nThe one trap is to give GRACE the outcome that belongs to the other score. GRACE doesn't predict events at fourteen days. That's TIMI."
+     }
+    },
+    {
+     "card": "CVS10D|MI-68",
+     "bridge": "The patient is sorted and scored, and he's going to the lab. Through which artery?",
+     "lesson": {
+      "v": 1,
+      "text": "The TIMI score for unstable angina and NSTEMI is the opposite design. Seven items, one point each, no weighting. You can do it at the bedside.\n\nHere are the seven. Age sixty-five or more. Three or more risk factors for coronary disease. Known coronary disease, meaning a stenosis of fifty per cent or more. Aspirin use in the last seven days. Two or more episodes of angina at rest in twenty-four hours. ST deviation. And raised cardiac markers.\n\nOne of those looks out of place. Why would taking aspirin add a point? Because an acute coronary syndrome that breaks through aspirin is a more aggressive, more thrombotic disease. The trap is the option that says aspirin lowers the score.\n\nWhat does it predict? A composite: death, new or recurrent infarction, or urgent revascularisation, through fourteen days.\n\n[[TIMI: seven one-point items, predicting death, infarction or urgent revascularisation at fourteen days. GRACE: weighted variables, predicting death. Heart rate and creatinine belong to GRACE, aspirin use to TIMI.]]\n\nYou need only the two ends of the scale. A score of zero or one carries about five per cent. A score of six or seven carries about forty-one per cent."
+     }
+    },
+    {
+     "card": "CVS10C|MI-45",
+     "bridge": "Radial is safer, but no access is free. What can a PCI do to the patient?",
+     "lesson": {
+      "v": 1,
+      "text": "The wrist, and here's why.\n\nA patient with ACS goes to the lab full of antithrombotics: aspirin, a second antiplatelet, an anticoagulant. The bleed you can most easily prevent is the one at the puncture site. The radial artery is superficial and lies on bone, so you can press on it, and a bleed there has nowhere to hide. The femoral artery is deep, and a bleed from it can track up behind the peritoneum unseen.\n\nSo radial access lowers bleeding, vascular complications such as pseudoaneurysm, and the need for transfusion. And because bleeding itself kills ACS patients, it lowers mortality.\n\n[[Radial access is the standard for PCI in ACS, class one: less bleeding, fewer vascular complications and lower mortality. Femoral is for when radial is not feasible.]]\n\nThree trial names go with it. MATRIX, in about eight thousand four hundred ACS patients, showed fewer major bleeds and transfusions and lower all-cause mortality. RIVAL was neutral overall, with fewer vascular complications and a benefit in the STEMI subgroup. RIFLE-STEACS, in STEMI, showed lower cardiac mortality and a shorter hospital stay.\n\nThe trap is the option that says radial access reduces bleeding but not death. Two of those trials say otherwise."
+     }
+    },
+    {
+     "card": "CVS10C|MI-46",
+     "bridge": "PCI isn't always the answer. When does the surgeon take over, and which drugs must stop first?",
+     "lesson": {
+      "v": 1,
+      "text": "The card sorts the complications of PCI into four groups. Don't memorise the list. Know the two that have been turned into stems, and notice that the access site tells them apart.\n\nThe four groups first. Local, at the puncture: bleeding, haematoma, infection, pseudoaneurysm, compartment syndrome. Coronary: dissection, embolism, spasm. Contrast: kidney injury, allergy, and heart failure from the volume load. And others: dissection of the access vessel, stroke, death.\n\nNow the two stems.\n\nMarrow's. Two hours after a femoral catheterisation the patient is hypotensive with back pain. The groin looks fine. That's a retroperitoneal haematoma. It happens when the puncture is above the inguinal ligament, where the artery can't be compressed against the femoral head, so blood tracks backwards and upwards. Back or flank pain, a falling pressure, little to see. The test is a CT without contrast.\n\nThe grand test's. Hours after an uncomplicated radial PCI the patient becomes hypotensive, and the ECG hasn't changed. It can't be a retroperitoneal bleed; nobody went near the groin. It isn't stent thrombosis; that would raise the ST segments. So think of what the wire may have done inside the chest. A small coronary perforation leaks slowly into the pericardium and causes tamponade hours later. The first test is a bedside echo.\n\n[[Hypotension after PCI: after femoral access with back pain, think retroperitoneal bleed and get a non-contrast CT. After radial access with an unchanged ECG, think tamponade and get a bedside echo. New ST elevation is stent thrombosis.]]\n\nThree causes of a falling pressure after PCI, and one clue separates each."
+     }
+    },
+    {
+     "card": "CVS10C|MI-55",
+     "bridge": "That's the European path to the lab and theatre. Last, where the 2025 American guideline stands.",
+     "lesson": {
+      "v": 1,
+      "text": "Sometimes the angiogram shows disease a stent can't fix, and the answer is bypass surgery.\n\nThere are three indications. Anatomy unsuitable for PCI, most often left main or complex multivessel disease. A failed PCI. And a mechanical complication that needs a surgeon anyway, such as a coronary dissection, a septal rupture or a ruptured papillary muscle.\n\nThen timing, which is a trade. Operate in the first days and you put a heart with a fresh infarct on bypass, in a patient full of antiplatelets. Mortality is higher. So for a stable patient the best time is after three to seven days. You operate as an emergency only when waiting is worse: refractory ischaemia, or cardiogenic shock when PCI isn't possible or has failed.\n\nAnd afterwards the second antiplatelet goes back on, because the grafts don't cure the disease that caused the event.\n\nNow the part the grand tests asked twice: what do you stop before surgery, and how long before? One principle answers all of it. A drug that binds reversibly and is cleared in hours needs hours. A drug that binds for the life of the platelet needs days, until new platelets are made.\n\nStart with the question from your grand test seven. A STEMI patient on an eptifibatide infusion needs urgent bypass. What's the minimum time to stop it? Eptifibatide and tirofiban are reversible and leave by the kidney, so platelet function is back within hours.\n\n[[Before urgent CABG stop eptifibatide or tirofiban two to four hours ahead. Stop clopidogrel or ticagrelor at least twenty-four hours ahead. Aspirin continues.]]\n\nThe wrong option there is twenty-four hours for eptifibatide. That's the oral drugs' number. Abciximab, which binds for much longer, needs at least twelve hours, though it's rarely used now.\n\nThen the other stem. An NSTEMI on aspirin and ticagrelor has left main disease and needs urgent surgery. Stop the ticagrelor twenty-four hours before. The wrong options are to continue it until surgery, or to stop it two to four hours before, which is eptifibatide's number put on the wrong drug.\n\nAnd when surgery can wait, the oral drugs get their full washout.\n\n{{**Stop before CABG** | **Urgent** | **Elective**\nEptifibatide, tirofiban | **2–4 h** | \nAbciximab | ≥12 h | \nTicagrelor | ≥24 h | ≥3 days\nClopidogrel | ≥24 h | ≥5 days\nPrasugrel | | ≥7 days\nAspirin | continue | continue}}\n\nThree days for ticagrelor, five for clopidogrel, seven for prasugrel. Three, five, seven, in order of how hard they hold the platelet."
+     }
+    },
+    {
+     "card": "CVS10E|MI-74",
+     "bridge": "That's the uncomplicated infarct. Now the ones that go wrong: the rhythm, the pump, the circulation.",
+     "lesson": {
+      "v": 1,
+      "text": "The American guideline of twenty twenty-five takes a position on six things. You know the reasoning for most of them, some from this packet and some from Shock II. So this is a checklist. It hasn't been asked yet.\n\nOne. Complete revascularisation. A stable patient with other significant narrowings does better if they're treated too, at the first procedure or staged, because those plaques cause the next infarct. That was the COMPLETE trial, and it's class one. The exception is cardiogenic shock: there, the culprit only. You met CULPRIT-SHOCK in Shock II.\n\n[[Multivessel disease in a stable infarct: complete revascularisation, at the index procedure or staged. In cardiogenic shock: the culprit artery only.]]\n\nTwo. Intravascular imaging to guide the stent: class one in left main and complex lesions.\n\nThree. Radial access preferred.\n\nFour, five and six are the shock positions, and they should sound familiar. A microaxial flow pump is reasonable, class two a, in selected STEMI with severe shock. Routine balloon pump or VA-ECMO is class three. And shock patients belong in a centre with shock expertise. The card calls that last one class one; the guideline's text doesn't clearly grade it, so learn the idea and not the grade.\n\nEurope differs only in strength: complete revascularisation in NSTE-ACS and intravascular imaging are both class two a there.\n\nThat completes the uncomplicated infarct: recognised, opened, protected. Now the infarcts that don't go quietly."
+     }
+    }
+   ],
+   "spine": [
+    "NSTE-ACS is never lysed. The question is how soon to the lab, decided by risk.",
+    "Very high risk (shock, refractory pain, acute HF, arrhythmia, mechanical complication) → <2 h (I). High risk (NSTEMI, GRACE >140, dynamic ST–T) → <24 h, now IIa. Others: selective (I).",
+    "GRACE: weighted, predicts death; >140 = high risk. TIMI: 7 one-point items incl. aspirin in last 7 days; death/MI/urgent revascularisation at 14 days (4.7% → 40.9%).",
+    "Radial access is class I (MATRIX): less bleeding and lower mortality. Femoral + back pain + hypotension = retroperitoneal bleed; radial + unchanged ECG = tamponade.",
+    "CABG: unsuitable anatomy, failed PCI, mechanical complication; best after 3–7 days. Stop eptifibatide 2–4 h, ticagrelor/clopidogrel ≥24 h before urgent CABG (elective 3/5/7 days).",
+    "ACC/AHA 2025: complete revascularisation and imaging-guided PCI class 1; culprit-only in shock; microaxial pump 2a; routine IABP/VA-ECMO class 3."
+   ]
+  },
+  {
+   "q": "P12-405",
+   "text": "When the infarct is complicated: rhythm, failure and shock",
+   "open": {
+    "v": 1,
+    "text": "So far the infarct has behaved. You recognised it, opened the artery and covered it with the right drugs. This section is about the infarcts that don't behave.\n\nAn infarct can complicate in three ways. The rhythm can go, fast or slow. The pump can fail, into pulmonary oedema or shock. And the muscle itself can tear. This section takes the first two; the tears come last.\n\nYou aren't starting from nothing. Shock I taught you to read a failing heart, and Shock II taught you every drug and device that pushes on it. I won't teach them again. Here you'll learn only what the infarct adds.\n\n[[Complications by mechanism: electrical, pump and mechanical. Each is asked by its timing after the infarct and by the territory it follows.]]\n\nListen for three traps. The mechanism of ventricular tachycardia depends on the day: at forty-eight hours it is not re-entry. Heart block depends on the territory, and one bank key gets it wrong. And shock overrides the one-hundred-and-twenty-minute rule. Levosimendan, which you missed twice, appears once more.\n\nStart with the rhythm you should leave alone."
+   },
+   "steps": [
+    {
+     "card": "CVS10D|MI-58",
+     "bridge": "That's what to do. The bank asked something else four times: the mechanism, and it changes with the day.",
+     "lesson": {
+      "v": 1,
+      "text": "Picture the moment the artery opens. The monitor, which showed sinus rhythm, suddenly shows a wide, regular rhythm at about eighty a minute. The nurse calls it ventricular tachycardia. It isn't.\n\nIt's an accelerated idioventricular rhythm. When blood washes back into the territory, the normal pacemaker cells of the Purkinje system speed up, just enough to outrun the sinus node. So you see a wide rhythm only a little faster than sinus, which starts when the sinus slows and stops when it speeds up. It's a sign that reperfusion worked.\n\n[[A wide regular rhythm near the sinus rate just after the artery opens is an accelerated idioventricular rhythm. It is benign and marks reperfusion. Do not treat it.]]\n\nAnd there's a reason not to treat it beyond its being harmless. Suppress it with amiodarone or lidocaine, and if the sinus node is slow you may be left with no rhythm at all.\n\nHow do you tell it from true ventricular tachycardia? By the rate and the behaviour. The idioventricular rhythm runs near the sinus rate and comes and goes with it. Ventricular tachycardia is faster and sustained.\n\nNow the real ones, and the management is a short ladder.\n\nFor all of them, correct the electrolytes first. Potassium at four or above, magnesium in the high-normal range. Low levels lower the threshold for every ventricular arrhythmia.\n\nUnstable ventricular tachycardia: immediate cardioversion. If there's no pulse, it's the arrest algorithm.\n\nStable ventricular tachycardia: a beta-blocker or amiodarone. The beta-blocker comes first in the logic, because early after an infarct the drive is catecholamines. And if it keeps recurring, assume ongoing ischaemia until an angiogram says otherwise.\n\nNon-sustained runs: electrolytes and a beta-blocker, nothing more. They're common in the first forty-eight hours and don't predict later sudden death.\n\nThat's what you do. But the bank didn't ask what you do. Four times it asked why."
+     }
+    },
+    {
+     "card": "V12-011",
+     "bridge": "That's the fast rhythms. The slow ones follow a simpler rule: tell me the artery and I'll tell you the block.",
+     "lesson": {
+      "v": 1,
+      "text": "This is a new card, because four grand-test questions asked a thing no card states: the mechanism of a ventricular arrhythmia after an infarct. The answer changes with the clock, so build a timeline.\n\nThe first minutes to hours. Acutely ischaemic muscle conducts slowly and unevenly, and an impulse can circle back on itself. That's re-entry, and it produces the early ventricular fibrillation that kills before hospital.\n\nThe moment of reperfusion. Normal Purkinje pacemakers speed up. That's enhanced normal automaticity, and it's the idioventricular rhythm you've just met.\n\nTwenty-four to seventy-two hours. This is the one they ask. Purkinje fibres and muscle cells at the edge of the infarct have survived, but they're injured and sit partly depolarised. A cell in that state, which is not a pacemaker, starts to fire on its own, pushed by catecholamines and by low potassium and magnesium. That's abnormal automaticity. It gives the ectopics, the non-sustained runs and the ventricular tachycardia of the second and third day.\n\nWeeks to years. The infarct is now a scar with strands of surviving muscle running through it. That's a fixed circuit, and it produces sustained monomorphic ventricular tachycardia by re-entry.\n\n{{**When** | **Rhythm** | **Mechanism**\nMinutes–hours | VF | re-entry in ischaemic muscle\nAt reperfusion | AIVR | enhanced **normal** automaticity\n**24–72 h** | PVCs, NSVT, VT | **abnormal automaticity**\nWeeks–years | monomorphic VT | **scar re-entry**}}\n\n[[Ventricular tachycardia or non-sustained runs twenty-four to seventy-two hours after an infarct: abnormal automaticity. Sustained monomorphic ventricular tachycardia weeks to years later: re-entry around the scar.]]\n\nNow see why the question is hard. Re-entry is the commonest mechanism of ventricular tachycardia after infarction overall, so it's the reflex answer. With sustained tachycardia at forty-eight hours most candidates found abnormal automaticity. With non-sustained runs at forty-eight hours a third went back to re-entry. Read the timing. If the stem says hours to three days, it's abnormal automaticity. If it says weeks, months or years, it's re-entry.\n\nTwo words separate the automaticities. Normal automaticity is a pacemaker cell firing faster. Abnormal automaticity is a working cell that has no business firing at all.\n\nAnd the remaining options are there to be crossed out. Early afterdepolarisations belong to a long QT and torsades. Delayed afterdepolarisations belong to digoxin toxicity and calcium overload. Neither is the answer after an infarct.\n\nThat's the fast rhythms. Now the slow ones."
+     }
+    },
+    {
+     "card": "CVS10D|MI-60",
+     "bridge": "Rhythm is done. Now the pump: when the infarct is big enough to flood the lungs.",
+     "lesson": {
+      "v": 1,
+      "text": "Heart block after an infarct follows the anatomy. So start with the blood supply.\n\nThe AV node is fed by the right coronary artery in most people. Below it, the bundle of His and the bundle branches run in the septum and are fed by the septal branches of the LAD. So an inferior infarct injures the node, and an anterior infarct injures the wiring below the node. Everything else follows from which level is hit.\n\nBlock at the node, with an inferior infarct. Part of it isn't even damage: an inferior infarct raises vagal tone, and the ischaemic node is bathed in adenosine. So you see first-degree block and Mobitz one. If it does go to complete block, there's a junctional pacemaker just below, which gives a narrow escape at forty to sixty a minute. It responds to atropine, and it usually recovers within days, especially once the artery is open.\n\nBlock below the node, with an anterior infarct. To reach the bundles the infarct must have destroyed a large part of the septum. The warning signs are Mobitz two or a new bifascicular block, and then complete block. The only pacemaker left is in the ventricle: a wide escape, slower than forty, and unreliable. Atropine doesn't reach it, and by speeding the atria it can make the block worse. This patient needs a pacing wire.\n\n{{ | **Inferior MI** | **Anterior MI**\nArtery | RCA | LAD (septals)\nLevel | AV node | His–Purkinje\nBlock | 1st degree, Mobitz I | Mobitz II, complete\nEscape | narrow, 40–60 | wide, <40\nAtropine | works | does not\nPacing | rarely | often}}\n\n[[Inferior infarct: block at the AV node, narrow escape, responds to atropine, usually transient. Anterior infarct: block below the node, wide escape, no response to atropine, needs pacing.]]\n\nNow the bank, and be careful, because one key is wrong.\n\nA grand test showed block after an anterior infarct and keyed Mobitz one, benign, resolving with atropine. Its own explanation says the opposite. If you meet it again, choose the His-Purkinje level and transvenous pacing.\n\nA second question asked for the true statement, and only fifteen per cent got it. The keyed answer: AV block develops transiently in ten to twenty-five per cent of acute infarcts. The trap was the statement that anterior infarction most commonly produces second and third-degree block. It doesn't. Inferior infarction causes more block of every degree, complete block included. Anterior block is rarer and far more dangerous. Rarer, but worse.\n\nLast, the patient who can't tolerate the slow rate. The European steps are three. Intravenous chronotropes: atropine, one milligram, repeated to three, or epinephrine. The guideline's list also names vasopressin. Then temporary pacing if the drugs fail. And urgent angiography if he hasn't been reperfused, because opening the artery treats the cause.\n\nAnd a permanent pacemaker? Only if high-degree block persists beyond about five days. Most of these blocks recover, so you wait.\n\nThat's the rhythm. Now the pump."
+     }
+    },
+    {
+     "card": "CVS10D|MI-61",
+     "bridge": "Wet and warm is treated. When pressure and perfusion go too, it's cardiogenic shock, and the classes matter.",
+     "lesson": {
+      "v": 1,
+      "text": "When enough muscle stops contracting, pressure backs up into the lungs. That's heart failure complicating the infarct, and it comes as two syndromes. Pulmonary congestion, wet and warm. And low output with hypotension, wet and cold, which is shock.\n\nThe bedside grading of this is the one new thing on the card. It's the Killip class, and Marrow asked it.\n\n{{**Killip** | **Finding**\nI | no heart failure\nII | S3 and/or crackles in <50% of the lung fields\nIII | frank pulmonary oedema (crackles >50%)\nIV | cardiogenic shock}}\n\n[[Killip class: one, no failure. Two, a third heart sound or crackles over less than half the lung fields. Three, frank pulmonary oedema. Four, cardiogenic shock. Mortality climbs with each class.]]\n\nClass two and class three are separated by half the lung fields. That's the number a question will move.\n\nThe treatment you already know from Shock II, so I'll only remind you of the order.\n\nFor the congested patient with a good or high pressure: a vasodilator, non-invasive ventilation, and a diuretic. And remember why the diuretic isn't first when the pressure is high. In hypertensive pulmonary oedema the fluid has been redistributed into the lungs, not gained. High-dose intravenous nitroglycerin and CPAP work in minutes on the real problem. The grand tests asked it twice. Pink frothy sputum, pressure one hundred and eighty over one hundred, saturation eighty-eight per cent, alert: nitrates and non-invasive ventilation. Not a loop diuretic and wait. Not intubation in an alert patient. And at two hundred and ten over one hundred and twenty the first drug is nitroglycerin, not hydralazine and not labetalol.\n\nFor the hypotensive patient it reverses. Nitrates are out. A vasopressor for the pressure, and that's norepinephrine. An inotrope for the output, and that's dobutamine. The grand test asked the first-line vasopressor in shock after infarction. Three in four chose norepinephrine, and the lure for the rest was dopamine. You know from Shock II why it lost.\n\nBe honest about the evidence. The European guideline grades these drugs only class two b, because none has ever improved survival. They buy time for the thing that does.\n\nTwo more lines from the card. Heart failure in ACS means a longer stay, more mechanical ventilation and more renal replacement. And both syndromes need an emergency echo and an angiogram, because behind the failure there may be a closed artery or a torn structure.\n\nNow follow the cold, wet patient further down."
+     }
+    },
+    {
+     "card": "CVS10D|MI-62",
+     "bridge": "Those are the classes. Now one shocked patient, and five decisions in a row.",
+     "lesson": {
+      "v": 1,
+      "text": "Cardiogenic shock in a STEMI means a large territory is ischaemic and failing. Shock II took you through the trials. This card asks only for the guideline's classes, so put them in three tiers by how good the evidence is.\n\nClass one: open the artery. Immediate PCI, or emergency bypass if PCI isn't suitable or fails. This is the SHOCK trial, where early revascularisation saved about thirteen lives in every hundred at six months. And only the culprit artery at that first procedure. Alongside it, also class one: an arterial line, an immediate echo, and early repair of any mechanical complication.\n\nWhy the echo so early? Because it separates left ventricular failure from a right ventricular infarct, tamponade, a septal rupture and acute mitral regurgitation. Each changes what you do next.\n\nClass two a: two things. Fibrinolysis, if primary PCI can't be reached within one hundred and twenty minutes and a mechanical cause has been excluded. And the balloon pump, but only for shock caused by a mechanical complication, as a bridge to the surgeon.\n\nClass two b: the things we do every day without proof. A pulmonary artery catheter, inotropes and vasopressors, short-term mechanical support.\n\nClass three: the routine balloon pump. IABP-SHOCK two, six hundred patients, no difference in mortality at thirty days, one year or six years.\n\n{{**STEMI shock (ESC)** | **Class**\nImmediate PCI; CABG if PCI fails | **I**\nArterial line, echo, early repair of mechanical cause | I\nLysis if PCI >120 min away, mechanical cause excluded | IIa\nIABP for a **mechanical complication** | IIa\nPA catheter, inotropes/pressors, short-term MCS | IIb\n**Routine IABP** | **III**}}\n\n[[The balloon pump has two classes in STEMI shock. Routine use is class three. For a mechanical complication, as a bridge to surgery, it is class two a.]]\n\nThat split comes back in the next section, so hold it. One update: the American guideline of twenty twenty-five lifts a microaxial pump to class two a in selected patients.\n\nThe stems are plain. STEMI with shock, door-to-balloon seventy-five minutes: primary PCI, not lysis. Treatment of choice in STEMI with shock: revascularisation.\n\nMarrow added who gets shock and who dies of it. The risk rises with older age, an anterior infarct, multivessel disease, a previous infarct, diabetes and previous heart failure. So if a first, small, posterior infarct presents in shock, something else is going on: look for a mechanical complication or right ventricular involvement. And two blood tests on arrival predict death independently: lactate above two millimoles per litre, and the admission glucose.\n\nThose are the classes. Now run one shocked patient through five decisions."
+     }
+    },
+    {
+     "card": "HY2|CAR-18",
+     "bridge": "That was shock from the left ventricle. One inferior infarct produces shock with dry lungs, and the rules flip.",
+     "lesson": {
+      "v": 1,
+      "text": "An anterior STEMI, cold and wet, in shock. Six bank questions sit on this card, and the first is the hardest in the packet.\n\nThe nearest PCI centre is three and a half hours away. Do you lyse or transfer? Two sections ago you learned that beyond one hundred and twenty minutes you lyse. Nine candidates in ten applied that rule here, and they were wrong.\n\nWhy does shock change it? Two reasons. A lytic has to be carried into the clot by blood flow, and at a shocked perfusion pressure it works poorly. And revascularisation is the treatment with the strongest proof that it saves lives in shock.\n\n[[STEMI with cardiogenic shock: transfer for revascularisation whatever the delay. The one-hundred-and-twenty-minute rule belongs to the patient without shock.]]\n\nThe European guideline does allow a lytic on the way, class two a, if PCI is more than one hundred and twenty minutes off and nothing has torn. So lysing and transferring aren't opposites. But when the options are lyse or transfer, the key is transfer. And when a grand test asks which intervention has the strongest effect on survival in a large anterior STEMI with a pressure of seventy-two over forty: early coronary reperfusion.\n\nNow the drugs, quickly, because Shock II taught them and this card only asks you to pick.\n\nThe systolic pressure is ninety-six. Output is low but there's a pressure to work with: dobutamine.\n\nThe systolic is below ninety. Now perfusion depends on pressure: norepinephrine first, then add the inotrope. If he's already on dobutamine and the pressure keeps falling to eighty-five over fifty-five, add norepinephrine. Nine in ten got that.\n\nOne wrinkle. A DocT question gives chronic heart failure with a systolic of eighty-five and keys dobutamine, where this card would say norepinephrine. The two keys come from different guidelines. Use this rule. Low output with a borderline pressure: dobutamine. Frank shock with a mean pressure under sixty-five: norepinephrine first. And not dopamine as the first choice, whatever an old key says.\n\nThen the patient on carvedilol. The card answers milrinone, because it works downstream of the blocked receptor. That's true. But you know from Shock II what the grand tests keyed, twice, and what you chose instead. When levosimendan is offered, it's levosimendan. Milrinone only if levosimendan isn't there.\n\nOne mechanism question belongs here. A drug that raises cardiac output, dilates veins and speeds calcium reuptake into the sarcoplasmic reticulum. Half the candidates chose selective beta-one stimulation or troponin C sensitisation. It's phosphodiesterase three inhibition: milrinone. The reuptake is the clue. That's cyclic AMP at work, and levosimendan doesn't raise it.\n\nAnd the balloon pump. Not routinely. You have the class from the last card.\n\nSo far the shock has come from the left ventricle. There's one infarct where it comes from the right, and there almost everything you'd reach for is wrong."
+     }
+    },
+    {
+     "card": "HY2|CAR-19",
+     "bridge": "Rhythm, failure and shock are done. The third family is structural: the infarct tears.",
+     "lesson": {
+      "v": 1,
+      "text": "An inferior STEMI. Pressure eighty over fifty. The lungs are clear and the neck veins are full. Hypotension with dry lungs and a high venous pressure: the left ventricle isn't the problem. It's the right.\n\nThe right coronary artery supplies the right ventricle, and when it's blocked near its origin the right ventricle infarcts along with the inferior wall. You confirm it with a right-sided ECG: ST elevation of one millimetre or more in V4R. Record it early, because that sign fades within hours.\n\nYou met the physiology in the first hour, with the nitrate. A stunned right ventricle is a passive conduit. It moves blood to the left side only if it's filled at a high pressure. So the treatment is the reverse of left-sided shock.\n\nFirst, fluid. A cautious crystalloid bolus while primary PCI is arranged. Cautious, because the two ventricles share a septum and a pericardium. Overfill the right, and the septum bulges into the left and the output falls again.\n\nSecond, avoid everything that lowers preload.\n\n[[Right ventricular infarct: clear lungs, raised JVP, hypotension, ST elevation in V4R. Give fluid. Avoid nitrates, diuretics, morphine and beta-blockers.]]\n\nThird, if fluid fails, dobutamine. And protect the atrial kick. Inferior infarcts cause AV block, as you've just learned, and a right ventricle that depends on filling loses a great deal when the atria stop contributing. So if you pace, pace both chambers in sequence.\n\nThe bank stem is the one from the first hour, and it's worth hearing again now that you have the whole picture. Inferior STEMI, given aspirin, nitrate and morphine. The pressure falls from one hundred and sixty over ninety to sixty over thirty. Half called it a drug reaction. It's cardiogenic shock from a right ventricular infarct, and two of those three drugs caused the fall.\n\nThe discriminator is the lungs. Shock with crackles is the left ventricle: no fluid. Shock with clear lungs and full neck veins after an inferior infarct is the right ventricle: fluid.\n\nThat's the rhythm and the pump. One family of complications is left, and it's the one where minutes matter most."
+     }
+    }
+   ],
+   "spine": [
+    "AIVR at reperfusion: wide, regular, near sinus rate; benign, no treatment. VT: electrolytes (K ≥4, Mg), cardiovert if unstable, β-blocker or amiodarone if stable.",
+    "Mechanism by timing: early VF re-entry; AIVR enhanced normal automaticity; 24–72 h VT/NSVT ABNORMAL automaticity; weeks–years scar re-entry.",
+    "AV block: inferior MI → nodal, narrow escape, atropine works, transient. Anterior MI → infranodal, wide escape, needs pacing. Inferior MI causes more block of every degree.",
+    "Killip I–IV: none; S3/crackles <50%; pulmonary oedema; shock. High BP oedema → nitrate + NIV. Low BP → norepinephrine, then dobutamine.",
+    "STEMI shock: immediate culprit-only PCI (I), transfer whatever the delay. Routine IABP class III; IABP for a mechanical complication IIa.",
+    "RV infarct: inferior STEMI, clear lungs, raised JVP, V4R. Fluid; no nitrates, diuretics, morphine, β-blockers; keep AV synchrony."
+   ]
+  },
+  {
+   "q": "P12-406",
+   "text": "Ruptures, aneurysm and the long road after",
+   "open": {
+    "v": 1,
+    "text": "The last section begins with the worst days and ends with the rest of the patient's life.\n\nDead muscle is soft. For the first week, before scar forms, it can tear, and where it tears decides what you see. The bank has asked six questions on that.\n\n[[Three ruptures in the first week: free wall gives tamponade, septum gives a shunt with a loud murmur, papillary muscle gives acute mitral regurgitation. All three end in surgery.]]\n\nIf the wall holds but never recovers, it thins and bulges, and that's the aneurysm. Then come the drugs every survivor takes home, which is where your other missed question sits: the ACE inhibitor after an infarct with an ejection fraction of thirty-two per cent.\n\nListen for one trap above the others. In the rupture questions the examiner asks for the next step, and offers norepinephrine, a balloon pump and surgery side by side. The balloon pump that is class three in routine shock is the right answer here, because a mechanical complication is the exception.\n\nStart with the three tears, side by side."
+   },
+   "steps": [
+    {
+     "card": "CVS10D|MI-64",
+     "bridge": "Of the three, the septal rupture forces the hardest decision: operate now or wait.",
+     "lesson": {
+      "v": 1,
+      "text": "Take each rupture from its mechanism, and the presentation follows.\n\nThe free wall. The ventricle opens into the pericardium, and the sac fills in moments. The heart keeps its electrical rhythm but can't fill, so there's no output. Sudden chest pain, collapse, a rhythm on the monitor and no pulse. The finding is blood in the pericardium with tamponade. Two grand-test stems gave sudden hypotension or pulseless electrical activity days after a large STEMI with tamponade on echo. The answer both times: free wall rupture. It's rare, under one per cent, and the risks are older age, no reperfusion and late lysis.\n\nThe septum. Now the hole is between the ventricles, and blood takes the easy path, left to right. The lungs are flooded and the body is starved, so you get rapid heart failure and shock, in the first week. The sign is a new, loud systolic murmur, often with a thrill at the left sternal edge. And if you sample the blood, the oxygen saturation steps up between the right atrium and the pulmonary artery.\n\nThe papillary muscle. The mitral leaflet loses its anchor and flails, and the ventricle empties backwards into a small left atrium that has had no time to stretch. Sudden pulmonary oedema, with or without shock. Which muscle? The posteromedial one, because it has a single blood supply, from the posterior descending artery. The anterolateral muscle has two. So this follows an inferior or posterior infarct, often a small one.\n\nAnd here's the catch. The murmur may be soft or short, because the left atrial pressure rises so fast that the gradient disappears. A quiet heart with flash pulmonary oedema still needs an echo.\n\n{{ | **Free wall** | **Septum** | **Papillary muscle**\nPresents | collapse, PEA | failure / shock, days 1–7 | flash pulmonary oedema\nFinding | tamponade | loud murmur, O₂ step-up | soft murmur, flail leaflet\nBridge | pericardiocentesis | IABP | IABP, vasodilator\nThen | surgical repair | surgery / device closure | mitral surgery}}\n\n[[Septal rupture: loud murmur at the left sternal edge with an oxygen step-up. Papillary muscle rupture: apical murmur, often soft, with flash pulmonary oedema, after an inferior infarct.]]\n\nNow the management, where four of the six questions sit.\n\nAll three end in surgery. The question is what you do in the minutes before. For the free wall, pericardiocentesis buys time. For the other two, think about where the blood is going. It has two exits: forward into the aorta, or the wrong way, through the hole or the valve. How much goes each way depends on the resistance of each exit. Lower the resistance in the aorta, and more goes forward.\n\nThat's what the balloon pump does. It deflates just before systole and drops the afterload, and it raises the diastolic pressure that feeds the coronaries. A vasopressor does the opposite. It raises the afterload and drives more blood the wrong way.\n\n[[For shock from papillary muscle or septal rupture, the bridge to surgery is the balloon pump, which lowers afterload. Norepinephrine raises afterload and worsens the leak.]]\n\nHere's how the bank played it. An inferior STEMI with a murmur, pulmonary oedema, cold and hypotensive: which intervention? Only thirty-eight per cent chose the balloon pump; most chose norepinephrine. Papillary rupture on echo with flash pulmonary oedema: next step? The balloon pump again, and fewer than half chose it, because valve replacement was sitting beside it. When the stem says next and the balloon is offered, stabilise first. But in a third stem, partial rupture with hypotension, there was no balloon option, and the choices were diuretics and observe, a vasodilator and reassess in forty-eight hours, or urgent mitral surgery. Then it's surgery.\n\nOne more, simpler. A posterior infarct, then breathlessness with a new apical holosystolic murmur and crackles. The mechanism is acute mitral regurgitation. Not pulmonary embolism, and not pump failure.\n\nLast, the mortality figures on the card. Free wall rupture, seventy-five to eighty per cent. Papillary muscle, twenty to twenty-five per cent with surgery. For the septum the card says twenty to forty per cent with early surgery. That's optimistic, and the next card tells you why."
+     }
+    },
+    {
+     "card": "CVS10D|MI-65",
+     "bridge": "The wall that tears kills quickly. The wall that holds but never recovers causes a slower problem.",
+     "lesson": {
+      "v": 1,
+      "text": "The septal rupture gets a card of its own because of one decision: when to operate. It hasn't been asked, so take the logic and two corrections.\n\nFirst, where it happens. An anterior infarct tears the septum near the apex, usually a simple hole. An inferior infarct tears it at the base, a more complex defect that does worse. The card says anterior or posterolateral, following its notes. The usual pairing is anterior and inferior, and that's the one to learn.\n\nNow the timing, which is a real dilemma. Operate early, and the surgeon is sewing a patch into dead muscle that holds stitches badly. Wait a few weeks, and the edges turn to scar and the repair holds. But while you wait the hole can enlarge, and the patient can die.\n\nSo the patient decides.\n\n[[Septal rupture: refractory shock means surgery now, despite the risk. A patient who stabilises on support can have delayed repair once the edges have scarred.]]\n\nThe trap is the blanket rule: wait four to six weeks for every septal rupture. Only for the stable.\n\nThe second correction is the number. The card gives twenty to forty per cent mortality for early surgery. In the large surgical registry it was about fifty-four per cent for repair within seven days, and eighteen per cent after that.\n\nAnd the newer option: percutaneous closure with a device, in selected anatomy."
+     }
+    },
+    {
+     "card": "CVS10D|MI-66",
+     "bridge": "The structure is dealt with. What remains is the prescription for life, and one of your misses is in it.",
+     "lesson": {
+      "v": 1,
+      "text": "Suppose the wall doesn't tear. A large infarct that goes right through the wall and isn't reperfused in time heals as a thin sheet of scar, and with every beat that sheet bulges outward. That's a left ventricular aneurysm. It follows fewer than five in a hundred infarcts, fewer still since primary PCI, and it sits where the big anterior infarcts are: the anteroseptal wall and the apex.\n\nThe ECG has two features, and together they're the question. Q waves, because the muscle is dead. And ST elevation that never comes down.\n\n[[ST elevation that persists for weeks after an anterior infarct, with Q waves, no new pain and no rise in troponin, is a left ventricular aneurysm, not a new infarct.]]\n\nThe trap is to call it re-infarction and send the patient for reperfusion.\n\nThat fits into a simple three-way reading of an ECG, which a DocT question tested. Q waves with no ST elevation: an old, healed infarct. ST elevation with symptoms or a rising troponin: an acute one. Q waves with persistent ST elevation weeks later: an aneurysm. The stem gave a patient with known coronary disease, fatigue, and Q waves in leads one, aVL and V5. Fewer than half said old lateral infarction. The rest said acute coronary syndrome. But Q waves are permanent. Acute ischaemia needs ST or T wave change and a story to match.\n\nThe main complication comes from stasis. Blood sits still in a pouch that doesn't contract, a thrombus forms at the apex, and pieces travel to the brain and the limbs. The card says long-term oral anticoagulation, and that's the classic exam answer. The current European guideline is more modest: anticoagulation should be considered for three to six months, guided by repeat imaging.\n\nSurgery is for a large aneurysm, recurrent embolism, or one causing refractory heart failure or ventricular arrhythmias.\n\nAnd one mimic that matters. A true aneurysm has a wide neck, its wall is scar, and it rarely ruptures. A pseudoaneurysm is a free wall rupture that the pericardium has sealed off. Its neck is narrow, its wall isn't myocardium at all, and it does rupture. So it goes to the surgeon."
+     }
+    },
+    {
+     "card": "CVS10D|MI-57",
+     "bridge": "The beta-blocker row has a soft cell: LVEF above 40%. Four recent trials tested exactly that.",
+     "lesson": {
+      "v": 1,
+      "text": "The patient is going home. Which drugs go with him, and which of them actually lengthen his life? This card is a grid, and the column that matters is the ejection fraction.\n\nStart with the damaged ventricle: an ejection fraction of forty per cent or less, or heart failure.\n\nAfter a large infarct the surviving muscle is overloaded. The body's answer is to switch on angiotensin and catecholamines, and over months they make the ventricle dilate and scar. That's remodelling, and it's what kills later. So the drugs that prolong life are the ones that block those signals.\n\nThe ACE inhibitor blocks angiotensin and limits the dilatation. Class one.\n\nThat's the grand-test question you missed. An infarct, an ejection fraction of thirty-two per cent, and the question was which drug to continue long term for secondary prevention. The key was the ACE inhibitor. It isn't there for the blood pressure. It's there for the ventricle.\n\n[[After an infarct with an LVEF of forty per cent or less, an ACE inhibitor and a beta-blocker are both class one, long term. Add a mineralocorticoid antagonist if there is also heart failure or diabetes.]]\n\nThe beta-blocker blocks the catecholamines. It lowers oxygen demand, raises the threshold for ventricular fibrillation, and in the older trials cut deaths by more than a fifth. Class one.\n\nThe mineralocorticoid antagonist is the third. Aldosterone keeps driving fibrosis even on an ACE inhibitor. In the EPHESUS trial eplerenone reduced deaths in exactly this group: an ejection fraction of forty or less with heart failure or diabetes. Check the potassium and creatinine first. The card grades it one B; the twenty twenty-three guideline has it at one A.\n\nNow the other column, an ejection fraction above forty. The ACE inhibitor drops to class two a, unless there is diabetes, hypertension or kidney disease, which keep it at class one. So does the beta-blocker, and the next card is about how soft that has become.\n\nTwo rows don't change with the ejection fraction. A high-dose statin for everyone, class one. And dual antiplatelet therapy for twelve months.\n\n{{**Drug** | **LVEF ≤40% or HF** | **LVEF >40%**\nβ-blocker | **I** | IIa\nACE inhibitor | **I** | IIa (I if DM, HTN, CKD)\nMRA | **I** (with HF or diabetes) | –\nHigh-dose statin | I | I\nDAPT | 12 months | 12 months}}\n\nA DocT question shows the trap. After an infarct, an ejection fraction of twenty-five per cent, stable but breathless: which therapy improves long-term prognosis? The options were a beta-blocker, intravenous milrinone, digoxin and nitrates. Fewer than half chose the beta-blocker. Sort them by one question: does it prolong life, or only ease symptoms? Milrinone raises oxygen demand and arrhythmias and worsens long-term survival; it's a bridge in shock. Digoxin reduced admissions but not deaths. Nitrates treat angina.\n\n[[Drugs that prolong life after an infarct with a low ejection fraction: beta-blocker, ACE inhibitor, mineralocorticoid antagonist, statin. Inotropes, digoxin, nitrates and diuretics treat symptoms only.]]"
+     }
+    },
+    {
+     "card": "CVS10E|MI-73",
+     "bridge": "One card left: the 2025 American targets for lipids, rehabilitation and haemoglobin.",
+     "lesson": {
+      "v": 1,
+      "text": "The beta-blocker earned its place before stents, when infarcts were large and ventricles were left damaged. Does it still help a patient whose artery was opened within the hour and whose ventricle is normal? Recent trials asked, and the answer depends on the ejection fraction. This hasn't been asked in the bank, but it's new enough to appear.\n\nREDUCE-AMI. Ejection fraction fifty per cent or more. No benefit.\n\nREBOOT. Ejection fraction above forty, no heart failure. No benefit overall.\n\nBETAMI-DANBLOCK. Ejection fraction forty or more. Fewer events, fourteen point two per cent against sixteen point three, mainly fewer new infarctions.\n\nWhy the disagreement? The signal sat in the patients with a mildly reduced ejection fraction, between forty and forty-nine. Pooled across the trials, nearly nineteen hundred of them, death, infarction or heart failure fell from fourteen point four per cent to ten point seven. A quarter fewer.\n\n[[Beta-blocker after infarction: clear benefit with an LVEF of forty or below, benefit in the pooled data at forty to forty-nine, and no demonstrated benefit at fifty or above.]]\n\nThe mechanism explains it. The drug protects a damaged ventricle from arrhythmia and remodelling. Where there's little damage, there's little to protect.\n\nOne caution. Both guidelines were written before most of these trials reported, and both still support a beta-blocker after an infarct. So for the exam it is not a wrong answer. What's wrong is the statement that it improves outcome in every patient."
+     }
+    },
+    {
+     "card": "CVS10E|MI-76",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "The last card is the discharge checklist from the American guideline of twenty twenty-five. None of it has been asked yet, so learn the numbers and one exception.\n\nA high-intensity statin for everyone, whatever the starting cholesterol. Then the LDL on that statin decides whether you add a second agent, such as ezetimibe or a PCSK9 inhibitor.\n\n[[American guideline, twenty twenty-five: on a maximal statin, an LDL of seventy milligrams per decilitre or more means add a non-statin agent, class one. Between fifty-five and sixty-nine, adding one is reasonable, class two a.]]\n\nThe trap is an LDL of sixty with ezetimibe called class one. Recheck a fasting lipid panel four to eight weeks after any change. And refer for cardiac rehabilitation before discharge, class one, because patients referred later often never go.\n\nNow the exception, and for an intensivist it's the most interesting line in the packet. You transfuse at a haemoglobin of seven. That threshold was never tested in acute infarction, where the muscle beyond a narrowed artery depends on every gram. The MINT trial tested it, and a liberal target of ten gave fewer deaths or infarctions than a restrictive one, narrowly missing significance.\n\n[[In acute coronary syndrome with anaemia and no active bleeding, transfusing to keep the haemoglobin at ten grams per decilitre may be reasonable. That is class two b, and an exception to the general threshold of seven.]]\n\nThat's the infarct, start to finish. You recognised it, opened the artery, covered it with the right drugs, managed what went wrong, and sent the patient home.\n\nBut look at what he takes with him. A scar, and around it muscle that was ischaemic. You saw in this packet what those do: the scar is a circuit for re-entry, and injured cells fire when they shouldn't. Nearly every arrhythmia you'll meet on the unit begins in one of those two places. So that's next: a monitor, a rhythm that's too fast or too slow, and how to read it."
+     }
+    }
+   ],
+   "spine": [
+    "Days 1–7, necrotic muscle tears. Free wall → haemopericardium, tamponade, PEA. Septum → loud murmur, O₂ step-up, shock. Papillary (posteromedial, inferior MI) → flash pulmonary oedema, soft murmur.",
+    "All three need surgery. Bridge for septal/papillary rupture = IABP (lowers afterload, IIa); norepinephrine worsens the leak. No IABP option → urgent surgery.",
+    "VSR: refractory shock → operate now; stable on support → delayed repair. Registry mortality ~54% within 7 days.",
+    "Aneurysm: persistent ST elevation + Q waves weeks later, no troponin rise; apical thrombus → anticoagulate (ESC 3–6 months). Pseudoaneurysm: narrow neck, ruptures, surgery.",
+    "LVEF ≤40%: β-blocker, ACE inhibitor (class I), MRA if HF/diabetes; statin and 12-month DAPT for all. Inotropes, digoxin, nitrates do not prolong life.",
+    "β-blocker with LVEF ≥50%: no proven benefit (REDUCE-AMI, REBOOT). LDL ≥70 on statin → add non-statin (1). Hb 10 in ACS anaemia may be reasonable (MINT)."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's walk back through Patient C, from the door to discharge.\n\nYou read his ECG in ten minutes, put him on a monitor, and held the oxygen because his saturation was fine. You chose the road by the clock. You covered the artery with drugs that stop platelets and drugs that stop thrombin, and you learned which of them to hold, and when. You watched for the rhythms and the failing pump that follow an infarct. And you sent him home on the drugs that keep the scar from growing.\n\nNow the traps. These are the ones you've actually met.\n\nOne. The PCI centre is far away. The tempting cut-off is ninety minutes. [[The choice between primary PCI and lysis is made at one hundred and twenty minutes, from diagnosis to wire. Beyond that, lyse within ten minutes, then transfer.]]\n\nTwo. An NSTEMI, anatomy not yet known. The tempting move is to load prasugrel now. Don't. If he's going for early angiography, the P2Y12 inhibitor waits for the anatomy, because he may need bypass surgery instead. You missed this one.\n\nThree. Creatinine clearance of twenty-four. The tempting answer is that enoxaparin is contraindicated. [[Below a clearance of thirty, enoxaparin is not stopped. It's given once a day instead of twice.]] Another grand-test miss.\n\nFour. Urgent bypass surgery, and he's on eptifibatide. The short-acting glycoprotein inhibitors are stopped only two to four hours before. Clopidogrel and ticagrelor need at least a day.\n\nFive. Discharge, and his ejection fraction is thirty-two percent. The ACE inhibitor is a class one drug at forty percent or below, together with a beta-blocker. That was a miss too.\n\nAnd six. Saturation ninety-five, and someone puts him on two litres of oxygen. Routine oxygen above ninety percent is class three. It doesn't help, and it may harm.\n\nThe check comes up on the next screen. Answer each in your head before you tap it open.\n\nAnd carry one picture into the next packet. Patient C goes home with a scar, and around it, muscle that was starved. Those are the places where rhythms go wrong. So next, the monitor shows you a rhythm that's too fast, or too slow. How do you read it?"
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "STEMI, nearest PCI centre 150 km (or 4 h) away. Next step?",
+   "a": "Thrombolysis within 10 min, then transfer. PCI is chosen only if the wire can cross within 120 min of diagnosis (NEET 2025, Marrow, DocT)."
+  },
+  {
+   "q": "What do 120, 60 and 90 minutes each mean in STEMI?",
+   "a": "120: choose PCI over lysis. 60: target at a PCI centre. 90: target if transferred."
+  },
+  {
+   "q": "After lysis: when is it judged, what defines failure, and what follows success?",
+   "a": "At 60-90 min. Failure = <50% ST resolution, ongoing pain or instability → rescue PCI now. Success → angiography at 2-24 h."
+  },
+  {
+   "q": "DES 2 months ago, sudden anterior ST elevation. Management?",
+   "a": "Stent thrombosis = STEMI: DAPT, anticoagulation, urgent PCI. Not lysis, nitrates, echo or observation (NEET 2025; DocT GT 48%)."
+  },
+  {
+   "q": "STEMI in cardiogenic shock, PCI centre 3.5 h away: lyse or transfer?",
+   "a": "Transfer for revascularisation whatever the delay; culprit-only PCI (9% right)."
+  },
+  {
+   "q": "SaO₂ 95% in ACS: oxygen?",
+   "a": "Withhold. Oxygen only if SaO₂ <90% or PaO₂ <60 mmHg; routine oxygen above that is class III (DETO2X-AMI)."
+  },
+  {
+   "q": "Inferior STEMI: BP falls to 60/30 ten minutes after nitroglycerin. Diagnosis and treatment?",
+   "a": "RV infarct (cardiogenic shock), not a drug reaction. Fluid bolus, V4R, no nitrates, diuretics or morphine."
+  },
+  {
+   "q": "Absolute contraindication to lysis: SBP >180, warfarin, TIA 3 months ago, or previous haemorrhagic stroke?",
+   "a": "Previous haemorrhagic stroke (absolute, for life). The rest are relative. Ischaemic stroke <6 months is absolute; a known AVM is absolute on every list."
+  },
+  {
+   "q": "Tenecteplase: dose for 72 kg aged 60, and aged 80? Which P2Y12 inhibitor with it?",
+   "a": "40 mg single bolus; 20 mg (half dose at ≥75 y). Clopidogrel 300 mg (75 mg, no load, if >75 y)."
+  },
+  {
+   "q": "Recent stent on aspirin + clopidogrel, needs urgent surgery. IV bridge?",
+   "a": "Cangrelor: the only IV P2Y12 inhibitor, t½ 3-6 min. Not tirofiban or eptifibatide (GP IIb/IIIa)."
+  },
+  {
+   "q": "Breathless 12 h after PCI; SpO₂, examination, ECG and CT normal. Culprit drug and mechanism?",
+   "a": "Ticagrelor: adenosine accumulation. Usually mild and self-limiting (30% right)."
+  },
+  {
+   "q": "ACS with a recent TIA going for PCI: which P2Y12 inhibitor is contraindicated?",
+   "a": "Prasugrel (prior stroke or TIA)."
+  },
+  {
+   "q": "NSTEMI for early angiography, anatomy unknown: give a P2Y12 inhibitor now?",
+   "a": "No. Routine pretreatment is class III; defer to PCI (GT7 Q104). Aspirin yes."
+  },
+  {
+   "q": "NSTE-ACS anticoagulant: angiography <24 h vs >24 h?",
+   "a": "<24 h: UFH (enoxaparin IIa). >24 h: fondaparinux (OASIS-5: half the major bleeding of enoxaparin). Fondaparinux alone in primary PCI: class III."
+  },
+  {
+   "q": "NSTE-ACS, CrCl 24 mL/min: enoxaparin?",
+   "a": "1 mg/kg ONCE daily. Reduced, not contraindicated (GT7 Q109)."
+  },
+  {
+   "q": "Urgent CABG: how long before do you stop eptifibatide? Ticagrelor?",
+   "a": "Eptifibatide/tirofiban 2-4 h (GT7 Q116). Ticagrelor or clopidogrel ≥24 h. Elective: ticagrelor 3, clopidogrel 5, prasugrel 7 days."
+  },
+  {
+   "q": "NSTE-ACS angiography timing: very high risk, high risk?",
+   "a": "Very high risk (shock, refractory pain, acute HF, arrhythmia): <2 h, class I. High risk (NSTEMI, GRACE >140, dynamic ST-T): <24 h, now IIa."
+  },
+  {
+   "q": "GRACE vs TIMI: what does each predict, and which counts aspirin use?",
+   "a": "GRACE: death (>140 high risk). TIMI: death/MI/urgent revascularisation at 14 days; aspirin in the last 7 days adds a point."
+  },
+  {
+   "q": "VT or NSVT 48 h after a large MI: mechanism? And sustained VT 2 years later?",
+   "a": "Abnormal automaticity at 24-72 h. Scar re-entry weeks to years later. AIVR = enhanced normal automaticity, benign."
+  },
+  {
+   "q": "Complete heart block after anterior MI: level, escape, treatment?",
+   "a": "Infranodal (His-Purkinje), wide escape <40/min, atropine-resistant: transvenous pacing. Inferior MI: nodal, narrow escape, usually transient."
+  },
+  {
+   "q": "Killip classes?",
+   "a": "I no HF; II S3 or crackles <50% of lung fields; III frank pulmonary oedema; IV cardiogenic shock."
+  },
+  {
+   "q": "Inferior STEMI, new murmur, pulmonary oedema, cold and hypotensive: which intervention next?",
+   "a": "IABP (IIa for mechanical complications; lowers afterload), then surgery. Not norepinephrine (38% right). Routine IABP in shock is class III."
+  },
+  {
+   "q": "Sudden PEA with tamponade days after a large STEMI?",
+   "a": "LV free wall rupture."
+  },
+  {
+   "q": "ST elevation still present 6 weeks after anterior MI, Q waves, no troponin rise?",
+   "a": "LV aneurysm. Risk: apical thrombus → anticoagulate."
+  },
+  {
+   "q": "After MI with EF 32%: which long-term drugs are class I?",
+   "a": "ACE inhibitor (GT8 Q26) and β-blocker; MRA if HF or diabetes; statin and 12-month DAPT for all. Not milrinone, digoxin or nitrates."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "Most pre-hospital STEMI deaths are from cardiogenic shock or rupture",
+   "truth": "They are from VF, mostly in the first hour. Pump failure and rupture kill over the following days.",
+   "cards": [
+    "CVS10C|MI-36"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Low-flow nasal oxygen at 2 L/min is harmless at SaO₂ 95%",
+   "truth": "Routine oxygen at SaO₂ ≥90% is class III. Withhold it; oxygen only below 90% (PaO₂ <60 mmHg).",
+   "cards": [
+    "CVS10C|MI-37"
+   ],
+   "asked": "DocT GT, 66% right"
+  },
+  {
+   "trap": "Morphine is a class I part of the ACS bundle",
+   "truth": "IIa only: it delays absorption of oral P2Y12 inhibitors.",
+   "cards": [
+    "CVS10C|MI-37"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Hypotension 10 min after nitroglycerin in inferior STEMI = medication reaction",
+   "truth": "The nitrate unmasked a preload-dependent RV infarct: cardiogenic shock. Check V4R before nitrates; treat with fluid.",
+   "cards": [
+    "CVS10C|MI-38",
+    "HY2|CAR-19"
+   ],
+   "asked": "DocT QBank, 46% right; Marrow (saline bolus)"
+  },
+  {
+   "trap": "Only PDE-5 inhibitors interact with nitrates",
+   "truth": "Riociguat (sGC stimulator) acts on the same NO-cGMP pathway and is also a contraindication.",
+   "cards": [
+    "CVS10C|MI-38",
+    "HY2|CAR-20"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Pain relieved by nitroglycerin + normal ECG + one negative troponin = oesophageal spasm",
+   "truth": "Nitrate relief proves nothing. DocT keys spasm; pick spasm only if serial troponins have excluded ACS, otherwise unstable angina.",
+   "cards": [
+    "CVS10C|MI-38"
+   ],
+   "asked": "DocT QBank, 33% right (debatable key)"
+  },
+  {
+   "trap": "The only contraindications to an IV β-blocker in STEMI are heart failure and hypotension",
+   "truth": "Also PR >240 ms or 2nd/3rd-degree block, active asthma, and shock risk (age >70, HR >110, SBP <120). The 'all except' key is 'none of the above'.",
+   "cards": [
+    "CVS10C|MI-39"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Transfer for primary PCI when the centre is 150 km / 4 h away, or door-to-balloon is 160 min",
+   "truth": "Beyond 120 min from diagnosis to wire: lyse within 10 min, then transfer.",
+   "cards": [
+    "CVS10C|MI-41",
+    "CVS10C|MI-40",
+    "HY2|CAR-17"
+   ],
+   "asked": "NEET 2025 recall; Marrow; DocT QBank 77%"
+  },
+  {
+   "trap": "90 minutes is the cut-off for choosing PCI over lysis",
+   "truth": "120 min is the choice. 60 min (PCI centre) and 90 min (transferred) are targets once PCI is chosen.",
+   "cards": [
+    "CVS10C|MI-40"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "IV nitroglycerin, observation or echo first for new ST elevation after a stent",
+   "truth": "Acute stent thrombosis is a STEMI: urgent repeat angiography / PCI.",
+   "cards": [
+    "CVS10C|MI-41"
+   ],
+   "asked": "DocT GT, 48% right"
+  },
+  {
+   "trap": "Thrombolysis for stent thrombosis",
+   "truth": "Platelet-rich stent thrombus responds poorly to lysis: DAPT, anticoagulation and urgent PCI.",
+   "cards": [
+    "CVS10C|MI-41"
+   ],
+   "asked": "NEET 2025 recall"
+  },
+  {
+   "trap": "Angiography 1 h or 48 h after successful lysis",
+   "truth": "2-24 h (Marrow says 3-24 h). The mini-test answer was 12 h.",
+   "cards": [
+    "HY2|CAR-17",
+    "CVS10C|MI-42"
+   ],
+   "asked": "Mini test, 34% right"
+  },
+  {
+   "trap": "Lysis is effective from 2 to 24 hours",
+   "truth": "Lysis is for symptoms ≤12 h (best ≤2 h). 2-24 h is the angiography window after successful lysis.",
+   "cards": [
+    "CVS10C|MI-54"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Ticagrelor or prasugrel with tenecteplase; full-dose tenecteplase at 80 years",
+   "truth": "Clopidogrel is the P2Y12 inhibitor with lysis (300 mg; 75 mg if >75 y). Tenecteplase is halved at ≥75 y.",
+   "cards": [
+    "CVS10C|MI-52",
+    "CVS10C|MI-51"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "SBP >180 mmHg, or warfarin with aspirin, as an absolute contraindication to lysis",
+   "truth": "Both are relative. Previous haemorrhagic stroke is absolute, at any time.",
+   "cards": [
+    "CVS10C|MI-53"
+   ],
+   "asked": "DocT QBank, 68% right"
+  },
+  {
+   "trap": "Choosing 'ischaemic stroke 5 months ago' or 'surgery 2 weeks ago' over a known AVM",
+   "truth": "All are absolute on the ESC list, but the key is AVM: absolute in every guideline (ACC/AHA uses 3 months for stroke).",
+   "cards": [
+    "CVS10C|MI-53"
+   ],
+   "asked": "DocT GT, 75% right"
+  },
+  {
+   "trap": "Massive PE, ischaemic stroke 2 months ago: lysis contraindicated only if anticoagulated",
+   "truth": "Ischaemic stroke within 6 months is an absolute contraindication (ESC).",
+   "cards": [
+    "CVS10C|MI-53"
+   ],
+   "asked": "DocT GT, 71% right"
+  },
+  {
+   "trap": "Tirofiban or eptifibatide as the IV bridge for a stented patient who must stop clopidogrel",
+   "truth": "They block GP IIb/IIIa, not P2Y12. Cangrelor is the only IV P2Y12 inhibitor (BRIDGE).",
+   "cards": [
+    "CVS10C|MI-48",
+    "HY2|CAR-20"
+   ],
+   "asked": "DocT GT 80%; mini test 35%"
+  },
+  {
+   "trap": "Aspirin inhibits COX-1 reversibly",
+   "truth": "Irreversible acetylation: the effect lasts the platelet's life (7-10 days); urgent reversal needs platelet transfusion.",
+   "cards": [
+    "CVS10C|MI-48"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Aspirin or metoprolol blamed for dyspnoea 12 h after PCI with normal SpO₂, exam, ECG and CT",
+   "truth": "Ticagrelor (adenosine reuptake block); usually mild and self-limiting.",
+   "cards": [
+    "CVS10C|MI-47"
+   ],
+   "asked": "DocT GT, 30% right"
+  },
+  {
+   "trap": "Clopidogrel, ticagrelor or cangrelor is the P2Y12 inhibitor contraindicated after a TIA",
+   "truth": "Only prasugrel is contraindicated after stroke or TIA (TRITON-TIMI 38).",
+   "cards": [
+    "CVS10C|MI-47"
+   ],
+   "asked": "DocT GT, 49% right"
+  },
+  {
+   "trap": "Pretreat an NSTEMI with prasugrel before the coronary anatomy is known",
+   "truth": "Routine P2Y12 pretreatment in NSTE-ACS with early angiography planned is class III (ESC 2023; ACCOAST, ISAR-REACT 5). Defer to PCI.",
+   "cards": [
+    "CVS10C|MI-50",
+    "CVS10E|MI-72"
+   ],
+   "asked": "GT7 Q104 (missed)"
+  },
+  {
+   "trap": "Enoxaparin is contraindicated in NSTE-ACS with CrCl 24 mL/min",
+   "truth": "Reduce it: 1 mg/kg once daily when CrCl <30. UFH needs no adjustment; fondaparinux is the drug to avoid at low eGFR.",
+   "cards": [
+    "CVS10C|V12-010"
+   ],
+   "asked": "GT7 Q109 (missed)"
+  },
+  {
+   "trap": "UFH is superior to enoxaparin / enoxaparin is contraindicated before an invasive strategy",
+   "truth": "Neither. The true statement is that fondaparinux causes less major bleeding than enoxaparin (OASIS-5).",
+   "cards": [
+    "CVS10C|MI-50"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Fondaparinux is a good sole anticoagulant for primary PCI",
+   "truth": "Class III (catheter thrombosis, OASIS-6). It is class I in NSTE-ACS with angiography >24 h away.",
+   "cards": [
+    "CVS10C|MI-49",
+    "CVS10C|MI-50"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Enoxaparin or UFH as the best anticoagulant in STEMI with no reperfusion",
+   "truth": "Fondaparinux (OASIS-6).",
+   "cards": [
+    "HY2|CAR-20"
+   ],
+   "asked": "DocT, 23% right"
+  },
+  {
+   "trap": "A single troponin above the 99th percentile in CKD stage 4 = MI",
+   "truth": "Troponin is chronically raised; a rise and/or fall is required (Fourth Universal Definition).",
+   "cards": [
+    "HY2|CAR-20"
+   ],
+   "asked": "GT3 (lost)"
+  },
+  {
+   "trap": "ACC/AHA 2025: after 1 month of DAPT, continue aspirin alone",
+   "truth": "The class 1 option drops aspirin and continues ticagrelor monotherapy from ≥1 month after PCI.",
+   "cards": [
+    "CVS10E|MI-72"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Early invasive strategy within 24 h is class I in high-risk NSTE-ACS",
+   "truth": "ESC 2023 downgraded it to IIa. Class I: <2 h for very high risk, and an invasive strategy during the admission.",
+   "cards": [
+    "CVS10C|MI-43"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "GRACE predicts 14-day events / aspirin use lowers the TIMI score",
+   "truth": "GRACE predicts death (>140 = high risk). TIMI predicts death, MI or urgent revascularisation at 14 days, and aspirin in the last 7 days ADDS a point.",
+   "cards": [
+    "CVS10D|MI-67",
+    "CVS10D|MI-68"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Retroperitoneal bleed after a radial PCI",
+   "truth": "That belongs to femoral access (back pain, hypotension, non-contrast CT). After radial PCI with an unchanged ECG, think tamponade: bedside echo.",
+   "cards": [
+    "CVS10C|MI-46"
+   ],
+   "asked": "Marrow; DocT GT"
+  },
+  {
+   "trap": "Stop eptifibatide 24 h before urgent CABG",
+   "truth": "Eptifibatide and tirofiban: 2-4 h. Abciximab ≥12 h.",
+   "cards": [
+    "CVS10C|MI-55"
+   ],
+   "asked": "GT7 Q116"
+  },
+  {
+   "trap": "Continue ticagrelor until surgery, or stop it 2-4 h before urgent CABG",
+   "truth": "Stop ticagrelor or clopidogrel ≥24 h before urgent CABG (elective: ticagrelor 3, clopidogrel 5, prasugrel 7 days). Aspirin continues.",
+   "cards": [
+    "CVS10C|MI-55"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "Complete revascularisation at the index procedure in cardiogenic shock",
+   "truth": "Culprit-only (CULPRIT-SHOCK); complete revascularisation is for the stable patient.",
+   "cards": [
+    "CVS10E|MI-74",
+    "CVS10D|MI-62"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Re-entry (or enhanced normal automaticity, or afterdepolarisations) for VT / NSVT 48 h after MI",
+   "truth": "Abnormal automaticity at 24-72 h. Re-entry is for early VF and for scar VT weeks to years later; enhanced normal automaticity is AIVR.",
+   "cards": [
+    "CVS10D|V12-011",
+    "CVS10D|MI-58"
+   ],
+   "asked": "DocT GT ×4 (VT 83-87% right; NSVT 61-67% right)"
+  },
+  {
+   "trap": "Treat AIVR with amiodarone or lidocaine",
+   "truth": "Benign reperfusion rhythm; suppressing it can leave asystole.",
+   "cards": [
+    "CVS10D|MI-58"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Anterior MI most commonly produces 2nd- and 3rd-degree AV block",
+   "truth": "Inferior MI causes more block of every degree. Keyed true statement: AV block develops transiently in 10-25% of acute MIs.",
+   "cards": [
+    "CVS10D|MI-60"
+   ],
+   "asked": "DocT GT, 15% right"
+  },
+  {
+   "trap": "DocT key: block after ANTERIOR MI is Mobitz I, benign, resolves with atropine",
+   "truth": "Wrong key. Anterior MI block is infranodal (His-Purkinje), wide escape, atropine-resistant: transvenous pacing.",
+   "cards": [
+    "CVS10D|MI-60"
+   ],
+   "asked": "DocT GT (key contradicts its explanation)"
+  },
+  {
+   "trap": "Loop diuretic and wait, intubation, hydralazine or labetalol for hypertensive pulmonary oedema",
+   "truth": "High-dose IV nitroglycerin + NIV first (taught in Shock II).",
+   "cards": [
+    "CVS10D|MI-61"
+   ],
+   "asked": "DocT GT ×2 (65%, 94%)"
+  },
+  {
+   "trap": "Dopamine as the first vasopressor in post-MI cardiogenic shock",
+   "truth": "Norepinephrine (SOAP II). An older DocT QBank key still says dopamine.",
+   "cards": [
+    "CVS10D|MI-61",
+    "HY2|CAR-18"
+   ],
+   "asked": "DocT GT, 76% right; DocT QBank old key 38%"
+  },
+  {
+   "trap": "Routine IABP in STEMI cardiogenic shock; lysis when PCI is 75 min away",
+   "truth": "Routine IABP is class III (IABP-SHOCK II); IIa only for mechanical complications. Within 120 min, primary PCI.",
+   "cards": [
+    "CVS10D|MI-62",
+    "HY2|CAR-18"
+   ],
+   "asked": "DocT GT; Marrow"
+  },
+  {
+   "trap": "Lyse a STEMI in cardiogenic shock because the PCI centre is 3.5 h away",
+   "truth": "Shock: transfer for revascularisation whatever the delay (ESC allows lysis as a bridge, IIa, if >120 min and no mechanical complication).",
+   "cards": [
+    "HY2|CAR-18"
+   ],
+   "asked": "DocT, 9% right"
+  },
+  {
+   "trap": "Milrinone, dobutamine or epinephrine for low output on a chronic β-blocker when levosimendan is offered",
+   "truth": "Levosimendan is the exam key; milrinone if levosimendan is not offered (taught in Shock II).",
+   "cards": [
+    "HY2|CAR-18"
+   ],
+   "asked": "GT7 Q87 and GT8 Q82 (missed)"
+  },
+  {
+   "trap": "β1 stimulation or troponin C sensitisation for the drug that raises CO, venodilates and speeds SR calcium reuptake",
+   "truth": "PDE-3 inhibition (milrinone): cAMP rises below the receptor.",
+   "cards": [
+    "HY2|CAR-18"
+   ],
+   "asked": "GT2, 50% right"
+  },
+  {
+   "trap": "Norepinephrine for shock with a new murmur and pulmonary oedema after inferior STEMI",
+   "truth": "IABP: lowers afterload and the regurgitant/shunt fraction as a bridge to surgery (IIa). A pressor worsens the leak.",
+   "cards": [
+    "CVS10D|MI-64",
+    "CVS10D|MI-62"
+   ],
+   "asked": "DocT GT, 38% right"
+  },
+  {
+   "trap": "Valve replacement as the NEXT step for papillary rupture when IABP is offered; or diuretics/vasodilator and wait when it is not",
+   "truth": "'Next' with IABP offered: IABP (44% right). No IABP option: urgent mitral surgery (62% right). Never medical therapy alone.",
+   "cards": [
+    "CVS10D|MI-64"
+   ],
+   "asked": "DocT GT; Marrow"
+  },
+  {
+   "trap": "PE or LV systolic dysfunction for dyspnoea with a new apical holosystolic murmur after posterior MI",
+   "truth": "Acute mitral regurgitation from papillary muscle dysfunction/rupture.",
+   "cards": [
+    "CVS10D|MI-64"
+   ],
+   "asked": "DocT GT, 69% right"
+  },
+  {
+   "trap": "Acute coronary syndrome for Q waves in I, aVL, V5 without ST change; re-infarction for ST elevation persisting weeks after anterior MI",
+   "truth": "Q waves alone = old MI. Persistent ST elevation + Q waves, no troponin rise = LV aneurysm.",
+   "cards": [
+    "CVS10D|MI-66"
+   ],
+   "asked": "DocT QBank, 46% right"
+  },
+  {
+   "trap": "Missing the ACE inhibitor as long-term therapy after MI with EF 32%",
+   "truth": "ACE inhibitor is class I at LVEF ≤40% (anti-remodelling), with a β-blocker, and an MRA if HF or diabetes.",
+   "cards": [
+    "CVS10D|MI-57"
+   ],
+   "asked": "GT8 Q26 (missed)"
+  },
+  {
+   "trap": "IV milrinone, digoxin or nitrates to improve prognosis after MI with EF 25%",
+   "truth": "Oral β-blocker (prognostic). Inotropes worsen long-term survival; digoxin and nitrates treat symptoms.",
+   "cards": [
+    "CVS10D|MI-57"
+   ],
+   "asked": "DocT QBank, 47% right"
+  },
+  {
+   "trap": "A long-term β-blocker improves outcome in every post-MI patient",
+   "truth": "Proven at LVEF ≤40%, pooled benefit at 40-49%, none shown at ≥50% (REDUCE-AMI, REBOOT).",
+   "cards": [
+    "CVS10E|MI-73",
+    "CVS10D|MI-57"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "LDL-C 60 mg/dL on maximal statin: adding ezetimibe is class 1; restrictive transfusion (Hb 7) in acute MI",
+   "truth": "Class 1 starts at LDL-C ≥70 (55-69 is 2a). In ACS with anaemia, Hb 10 may be reasonable (2b, MINT).",
+   "cards": [
+    "CVS10E|MI-76"
+   ],
+   "asked": "pattern"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Early death vs later death in STEMI",
+   "tell": "First hour: VF (electrical). Days later: pump failure and rupture (mechanical).",
+   "cards": [
+    "CVS10C|MI-36"
+   ]
+  },
+  {
+   "pair": "Nitrate in hypertensive pulmonary oedema vs in RV infarct",
+   "tell": "Lowering preload rescues the congested LV and collapses the preload-dependent RV.",
+   "cards": [
+    "CVS10C|MI-38",
+    "HY2|CAR-19"
+   ]
+  },
+  {
+   "pair": "Tachycardia of pain vs tachycardia of low output",
+   "tell": "The first is a β-blocker target; the second is holding the output up, and blocking it causes shock (COMMIT).",
+   "cards": [
+    "CVS10C|MI-39"
+   ]
+  },
+  {
+   "pair": "120 min vs 90 min",
+   "tell": "120 is the decision threshold between PCI and lysis; 90 is the target for a transferred patient.",
+   "cards": [
+    "CVS10C|MI-40"
+   ]
+  },
+  {
+   "pair": "Rescue PCI vs routine (pharmaco-invasive) PCI vs facilitated PCI",
+   "tell": "Rescue: lysis failed, go now. Routine: lysis worked, 2-24 h. Facilitated (immediate PCI after full lysis): not recommended.",
+   "cards": [
+    "CVS10C|MI-41",
+    "HY2|CAR-17",
+    "CVS10C|MI-42"
+   ]
+  },
+  {
+   "pair": "Stent thrombosis vs post-PCI chest pain",
+   "tell": "New ST elevation in the stented territory = stent thrombosis, back to the lab. Unchanged ECG gives time.",
+   "cards": [
+    "CVS10C|MI-41"
+   ]
+  },
+  {
+   "pair": "Lysis window vs post-lysis angiography window",
+   "tell": "Lysis: symptoms ≤12 h. Angiography: 2-24 h after a successful lytic.",
+   "cards": [
+    "CVS10C|MI-54"
+   ]
+  },
+  {
+   "pair": "P2Y12 inhibitor with lysis vs with PCI",
+   "tell": "Lysis: clopidogrel. PCI: prasugrel or ticagrelor.",
+   "cards": [
+    "CVS10C|MI-52",
+    "CVS10C|MI-47"
+   ]
+  },
+  {
+   "pair": "Ischaemic stroke vs TIA within 6 months (lysis)",
+   "tell": "Same window, different class: stroke absolute, TIA relative.",
+   "cards": [
+    "CVS10C|MI-53"
+   ]
+  },
+  {
+   "pair": "Cangrelor vs eptifibatide/tirofiban",
+   "tell": "Cangrelor blocks P2Y12 and replaces the oral drug; the others block GP IIb/IIIa and are bail-out drugs.",
+   "cards": [
+    "CVS10C|MI-48",
+    "HY2|CAR-20"
+   ]
+  },
+  {
+   "pair": "Thienopyridines vs ticagrelor",
+   "tell": "Clopidogrel and prasugrel are irreversible prodrugs; ticagrelor is direct-acting and reversible (and causes adenosine dyspnoea).",
+   "cards": [
+    "CVS10C|MI-47"
+   ]
+  },
+  {
+   "pair": "Ticagrelor dyspnoea vs PE or heart failure after PCI",
+   "tell": "Ticagrelor: SpO₂, examination, ECG and CT all normal.",
+   "cards": [
+    "CVS10C|MI-47"
+   ]
+  },
+  {
+   "pair": "Fondaparinux class I vs class III",
+   "tell": "Class I in NSTE-ACS with angiography >24 h away; class III as the sole anticoagulant in primary PCI (catheter thrombosis).",
+   "cards": [
+    "CVS10C|MI-50",
+    "CVS10C|MI-49"
+   ]
+  },
+  {
+   "pair": "Enoxaparin vs fondaparinux vs UFH in renal failure",
+   "tell": "Enoxaparin: once daily below CrCl 30. Fondaparinux: avoid at low eGFR. UFH: no change.",
+   "cards": [
+    "CVS10C|V12-010"
+   ]
+  },
+  {
+   "pair": "ESC 2023 vs ACC/AHA 2025 at the end of DAPT",
+   "tell": "ESC: 12 months by default (IIa: single antiplatelet, preferably the P2Y12 inhibitor, after 3–6 months if event-free and not high ischaemic risk). ACC/AHA: can drop aspirin at 1 month and continue ticagrelor alone.",
+   "cards": [
+    "CVS10E|MI-72",
+    "CVS10C|MI-50"
+   ]
+  },
+  {
+   "pair": "Very high-risk NSTE-ACS vs STEMI",
+   "tell": "Both reach the lab within 2 h, but NSTE-ACS is never lysed.",
+   "cards": [
+    "CVS10C|MI-43"
+   ]
+  },
+  {
+   "pair": "GRACE vs TIMI (UA/NSTEMI)",
+   "tell": "GRACE: weighted, predicts death. TIMI: seven one-point items, 14-day composite; only TIMI counts aspirin use.",
+   "cards": [
+    "CVS10D|MI-67",
+    "CVS10D|MI-68"
+   ]
+  },
+  {
+   "pair": "Hypotension after femoral PCI vs after radial PCI",
+   "tell": "Femoral + back pain: retroperitoneal bleed (CT). Radial + unchanged ECG: tamponade (echo).",
+   "cards": [
+    "CVS10C|MI-46"
+   ]
+  },
+  {
+   "pair": "GP IIb/IIIa inhibitor vs oral P2Y12 inhibitor before CABG",
+   "tell": "Eptifibatide/tirofiban: hours (2-4). Oral P2Y12 inhibitors: a day to a week.",
+   "cards": [
+    "CVS10C|MI-55"
+   ]
+  },
+  {
+   "pair": "Stable multivessel ACS vs multivessel ACS in shock",
+   "tell": "Stable: complete revascularisation, index or staged. Shock: culprit only.",
+   "cards": [
+    "CVS10E|MI-74"
+   ]
+  },
+  {
+   "pair": "AIVR vs VT",
+   "tell": "AIVR runs near the sinus rate and comes and goes with it; VT is faster and sustained.",
+   "cards": [
+    "CVS10D|MI-58"
+   ]
+  },
+  {
+   "pair": "Enhanced normal vs abnormal automaticity",
+   "tell": "Normal: a pacemaker cell firing faster (AIVR). Abnormal: an injured non-pacemaker cell firing on its own (VT at 24-72 h).",
+   "cards": [
+    "CVS10D|V12-011"
+   ]
+  },
+  {
+   "pair": "AV block after inferior vs anterior MI",
+   "tell": "Inferior: nodal, narrow escape 40-60, atropine works, transient. Anterior: infranodal, wide escape <40, needs pacing.",
+   "cards": [
+    "CVS10D|MI-60"
+   ]
+  },
+  {
+   "pair": "Mobitz I vs Mobitz II after MI",
+   "tell": "Mobitz I (PR lengthens) is nodal and benign; Mobitz II (fixed PR, sudden dropped beat) is infranodal and needs pacing.",
+   "cards": [
+    "CVS10D|MI-60"
+   ]
+  },
+  {
+   "pair": "Shock from pump failure vs from a mechanical complication",
+   "tell": "Pump failure: PCI, no routine IABP. New murmur or tamponade: IABP is IIa as a bridge to surgery.",
+   "cards": [
+    "CVS10D|MI-62",
+    "CVS10D|MI-64"
+   ]
+  },
+  {
+   "pair": "RV infarct vs LV cardiogenic shock",
+   "tell": "RV: clear lungs, raised JVP, give fluid. LV: crackles, avoid fluid.",
+   "cards": [
+    "HY2|CAR-19"
+   ]
+  },
+  {
+   "pair": "VSR vs papillary muscle rupture",
+   "tell": "VSR: loud murmur with thrill at the left sternal edge, O₂ step-up. Papillary: apical, often soft murmur, flash pulmonary oedema.",
+   "cards": [
+    "CVS10D|MI-64"
+   ]
+  },
+  {
+   "pair": "Apical vs basal VSR",
+   "tell": "Apical follows anterior MI and is simpler; basal follows inferior MI, is complex and does worse.",
+   "cards": [
+    "CVS10D|MI-65"
+   ]
+  },
+  {
+   "pair": "True aneurysm vs pseudoaneurysm",
+   "tell": "True: wide neck, scar wall, rarely ruptures. Pseudo: narrow neck, contained rupture walled by pericardium, needs surgery.",
+   "cards": [
+    "CVS10D|MI-66"
+   ]
+  },
+  {
+   "pair": "Old MI vs acute MI vs aneurysm on ECG",
+   "tell": "Q waves alone: old. ST elevation with symptoms/troponin: acute. Q waves with ST elevation persisting for weeks: aneurysm.",
+   "cards": [
+    "CVS10D|MI-66"
+   ]
+  },
+  {
+   "pair": "Hb threshold: ACS vs general ICU",
+   "tell": "ACS with anaemia: Hb 10 may be reasonable (MINT). General ICU: 7.",
+   "cards": [
+    "CVS10E|MI-76"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-010",
+   "deck": "CVS10C",
+   "topic": "Anticoagulants in ACS: renal dosing",
+   "tier": "S",
+   "q": "**For anticoagulants in ACS with renal impairment, give:**\na Enoxaparin: the usual NSTE-ACS dose\nb Enoxaparin when CrCl is <30 mL/min, and the floor\nc Why it accumulates\nd Fondaparinux\ne UFH and bivalirudin\nf The age rule for enoxaparin with fibrinolysis",
+   "a": [
+    "Enoxaparin **1 mg/kg SC every 12 h**",
+    "CrCl **<30 mL/min → 1 mg/kg ONCE daily** (reduced, **not contraindicated**); ESC: not recommended if eGFR <15",
+    "Short heparin chains are **renally cleared** → anti-Xa effect accumulates → bleeding",
+    "Fondaparinux 2.5 mg daily: **avoid if eGFR <20** (ESC; product label: CrCl <30)",
+    "**UFH: no renal adjustment** (the fallback in severe renal failure); bivalirudin: reduce the infusion if CrCl <30",
+    "With fibrinolysis at **≥75 y**: no IV bolus, **0.75 mg/kg** every 12 h",
+    "Trap: 'enoxaparin is contraindicated' at CrCl 24. The key is 1 mg/kg once daily"
+   ],
+   "why": "GT7 Q109 (missed: chose 'contraindicated', key enoxaparin 1 mg/kg once daily at CrCl 24). No card in the pack gives renal dosing of the anticoagulants."
+  },
+  {
+   "code": "V12-011",
+   "deck": "CVS10D",
+   "topic": "Post-MI ventricular arrhythmias: mechanism by timing",
+   "tier": "S",
+   "q": "**Give the mechanism of ventricular arrhythmia after MI by its timing:**\na First minutes to hours (early VF)\nb At reperfusion (AIVR)\nc 24-72 h (PVCs, NSVT, VT)\nd Weeks to years (sustained monomorphic VT)\ne Where afterdepolarisations belong",
+   "a": [
+    "Minutes-hours: **re-entry** in acutely ischaemic myocardium → early VF",
+    "Reperfusion: **enhanced NORMAL automaticity** of Purkinje pacemaker cells → AIVR (benign)",
+    "**24-72 h: ABNORMAL automaticity** in partially depolarised surviving Purkinje fibres and myocytes; driven by catecholamines, low K⁺ / Mg²⁺",
+    "Weeks-years: **scar re-entry** → sustained monomorphic VT",
+    "Early afterdepolarisations: long QT / torsades. Delayed afterdepolarisations: digoxin, Ca²⁺ overload. Neither is the post-MI answer",
+    "Trap: 're-entry' for VT or NSVT at 48 h. Choose re-entry only when the stem is weeks to years after the MI"
+   ],
+   "why": "DocT GT ×4 (VT 48 h after a large anterior MI ×2, 83-87% right; stable NSVT 48 h after MI ×2, 61-67% right): key abnormal automaticity. MI-58 gives only the AIVR mechanism and the management."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "CVS10C|MI-39",
+   "issue": "Part d lists only heart failure and hypotension as IV β-blocker contraindications. Marrow's 'all except' question also counts PR >240 ms or 2nd/3rd-degree block, active asthma/bronchospasm and high shock risk (age >70, HR >110, SBP <120; COMMIT). Suggest adding them."
+  },
+  {
+   "card": "CVS10C|MI-38",
+   "issue": "Contraindication list omits riociguat (sGC stimulator), which Marrow keyed, and the PDE-5 windows (sildenafil/vardenafil 24 h, tadalafil 48 h; these are on CAR-20). Suggest one added line."
+  },
+  {
+   "card": "CVS10C|MI-47",
+   "issue": "Ticagrelor dyspnoea (adenosine, ~14% in PLATO, normal SpO₂/exam/ECG/CT) is not on the card but was a DocT GT question with 30% correct. Suggest adding to part d."
+  },
+  {
+   "card": "CVS10C|MI-55",
+   "issue": "Card has no pre-CABG stop times, asked twice in DocT GT (GT7 Q116: eptifibatide/tirofiban 2-4 h; ticagrelor/clopidogrel ≥24 h before urgent CABG; elective 3/5/7 days for ticagrelor/clopidogrel/prasugrel). Taught in the lesson; suggest adding a line."
+  },
+  {
+   "card": "CVS10D|MI-58",
+   "issue": "Card gives only the AIVR mechanism; the 24-72 h 'abnormal automaticity' answer (DocT GT ×4) is absent. Covered by new card V12-011."
+  },
+  {
+   "card": "CVS10D|MI-60",
+   "issue": "Table implies 3rd-degree block is only 'distal/LAD'. Inferior MI also causes complete block (nodal, narrow escape, usually transient) and causes more block of every degree than anterior MI. Mobitz II is missing from the distal column. Also the DocT GT key 'Mobitz I, benign, atropine' for block after ANTERIOR MI contradicts its own explanation."
+  },
+  {
+   "card": "CVS10D|MI-61",
+   "issue": "Killip classification (Marrow question) is not on the card; taught in the lesson."
+  },
+  {
+   "card": "HY2|CAR-18",
+   "issue": "Part d answers milrinone for the patient on carvedilol; DocT GT keys levosimendan (GT7 Q87, GT8 Q82, both missed). Suggest 'levosimendan (exam key) or milrinone', matching V12-003. Part a 'whatever the delay': ESC 2023 also allows lysis (IIa, C) if PPCI >120 min away and no mechanical complication."
+  },
+  {
+   "card": "CVS10D|MI-64",
+   "issue": "VSR 'early surgery 20-40%' mortality is optimistic: STS registry operative mortality about 54% when repaired within 7 days of MI, 18% after 7 days. Free wall and papillary figures left as on the card."
+  },
+  {
+   "card": "CVS10D|MI-65",
+   "issue": "Part a says 'anterior or posterolateral MI (per notes)'; the standard pairing is anterior (apical defect) and inferior (basal defect, worse prognosis). Part b mortality 20-40% is low, as for MI-64."
+  },
+  {
+   "card": "CVS10D|MI-66",
+   "issue": "'Long-term oral anticoagulation' for LV thrombus: ESC 2023 says OAC should be considered for 3-6 months, guided by repeat imaging (IIa, C). The lesson teaches the card's wording as the classic key and the guideline as current."
+  },
+  {
+   "card": "CVS10D|MI-57",
+   "issue": "MRA is graded I, B on the card; ESC 2023 gives I, A (LVEF ≤40% with HF or diabetes). The card says 'LVEF ≤40% AND HF' and omits diabetes."
+  },
+  {
+   "card": "CVS10E|MI-74",
+   "issue": "Part f calls transfer to shock centres 'Class 1'. I could not confirm a classed recommendation for this in the 2025 ACC/AHA ACS guideline text (the pack's own explanation says the same); the hub-and-spoke statement appears in the ACC 2025 concise guidance on cardiogenic shock, which carries no class. Lesson teaches the idea without the grade."
+  },
+  {
+   "card": "HY2|CAR-17",
+   "issue": "'Door-to-needle ≤30 min' is the older ACCF/AHA 2013 figure beside the ESC ≤10 min from diagnosis; 'mini test: 3-24 h' vs ESC 2-24 h. Both are flagged in the lesson; no change needed if the card keeps both."
+  }
+ ]
+}

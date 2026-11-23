@@ -1,0 +1,1126 @@
+{
+ "questions": [
+  {
+   "q": "P12-201",
+   "text": "Who pushes on what: receptors, messengers and the inotropes",
+   "steps": [
+    {
+     "card": "CVS03|CS-29",
+     "bridge": "Three of these four drugs work through cyclic AMP. Your grand tests asked what it does inside the cell. Open the cell.",
+     "lesson": {
+      "v": 1,
+      "text": "Begin with the pump, the number that failed in Patient A. Four drugs on this card push on it, and it carries more bank questions than any other card in the packet. One idea holds all four.\n\nA heart muscle cell contracts when calcium meets its filaments. So there are only two ways to make it contract harder. Give the filaments more calcium, or make them more sensitive to the calcium they have. Three of these drugs take the first road, through one messenger, cyclic AMP. The fourth takes the second.\n\nDobutamine. It stimulates the beta-one receptor, cyclic AMP rises, and with it the contractility and the heart rate. It also stimulates beta-two receptors on the arterioles, which dilate. More pump, less squeeze: the card calls it inodilation. Two things follow, and both are asked. The tachycardia isn't a reflex. It's the direct beta-one effect, it climbs with the dose, and it's the toxic effect the banks key. And because dobutamine dilates, the pressure can fall on it.\n\nEpinephrine. Beta-one again, and at higher doses alpha-one, so the vessels constrict. It also raises the lactate, through beta-two receptors driving glycolysis. That lactate isn't hypoperfusion, so it can mislead you. In infarct shock, the small OptimaCC trial found more refractory shock with epinephrine than with norepinephrine.\n\nMilrinone works one step further in. Cyclic AMP is broken down by phosphodiesterase three. Block that enzyme, and cyclic AMP builds up with no receptor touched. In the heart, more contraction. In the vessels, dilation, most of all in the pulmonary vessels. Its main unwanted effect is hypotension, which is vasodilation and not toxicity. And the kidney clears it, so in renal failure you lower the rate and leave out the loading dose.\n\nLevosimendan takes the other road. It binds troponin C and makes it more sensitive to calcium. No extra calcium enters the cell, so in theory it costs less oxygen and provokes fewer arrhythmias. It also opens potassium channels in the vessel wall, so the afterload falls. And an active metabolite keeps it working for days.\n\n{{**Drug** | **Acts at** | **Net**\nDobutamine | β1 + β2 | inodilator; direct tachycardia\nEpinephrine | β1; α1 at high dose | lactate ↑ (β2)\nMilrinone | PDE-3 block → cAMP ↑ | pulmonary dilation; renal clearance\nLevosimendan | troponin C + K-ATP | no Ca²⁺ rise; lasts days}}\n\nNow see what all four share. [[Every inotrope on this card also dilates vessels. So when the pressure falls on an inotrope, the answer is to add norepinephrine, not to cut the inotrope and not to change to milrinone.]]\n\nThat's where the trap forms. A patient on dobutamine, heart rate one hundred and thirty, still hypotensive. One bank key says decrease the dobutamine. That key is disputed, because less dobutamine does nothing for the pressure. So read the stem. If it stresses the low pressure, add norepinephrine. If it stresses a tachyarrhythmia with an adequate pressure, reduce the dose. And if the patient is on high-dose norepinephrine with a low output, add dobutamine.\n\nOne newer name, asked by two banks. Omecamtiv mecarbil is a cardiac myosin activator. It lengthens ejection, so the stroke volume rises with no rise in cyclic AMP, calcium or oxygen use. The distractor beside it is serelaxin, a vasodilator and not an inotrope.\n\n[[Dobutamine and epinephrine raise cyclic AMP at the receptor. Milrinone raises it by blocking its breakdown. Levosimendan raises the sensitivity to calcium instead.]]\n\nBut what does cyclic AMP do inside the cell? Your grand tests asked exactly that, three times."
+     }
+    },
+    {
+     "card": "V12-002",
+     "bridge": "α1 has brought you from the pump to the squeeze. When the squeeze fails, which drug comes first, and in what order?",
+     "lesson": {
+      "v": 1,
+      "text": "Three of your grand test questions sit inside one heart cell, and you missed two of them. They're the same pathway, asked at three points. Walk it once, slowly.\n\nThe beta-one receptor is coupled to a G protein called Gs, s for stimulatory. When dobutamine binds, Gs switches on adenylate cyclase, which makes cyclic AMP. Cyclic AMP switches on one enzyme, protein kinase A. Everything after that is protein kinase A adding a phosphate to a target. There are four targets, and they do two jobs.\n\nThe first job is to contract harder. Protein kinase A phosphorylates the L-type calcium channel in the membrane, so more calcium enters with each beat. And it phosphorylates the ryanodine receptor, the release channel of the sarcoplasmic reticulum, so more of the store is released. More calcium in systole. That's inotropy.\n\nThe second job is to relax faster. After each beat, calcium is pumped back into the store by a pump called SERCA, which works with a brake on it, a small protein called phospholamban. Protein kinase A phosphorylates phospholamban, the brake comes off, and calcium is cleared faster. It also phosphorylates troponin I, so the filaments let go of calcium sooner. That's lusitropy.\n\n[[Protein kinase A phosphorylates the L-type channel and the ryanodine receptor for contraction, and phospholamban for relaxation. All of it lies downstream of beta-one, Gs and cyclic AMP.]]\n\n{{**β1** → Gs → adenylate cyclase → cAMP → **PKA**\nInotropy: L-type Ca²⁺ channel, **ryanodine receptor**\nLusitropy: **phospholamban** (frees SERCA2a), troponin I\n**α1** → Gq → **phospholipase C** → IP3 (Ca²⁺ release) + DAG (PKC)}}\n\nNow the two you got wrong. How does beta-one stimulation improve relaxation? You chose myosin ATPase. The key is phosphorylation of phospholamban. How does dobutamine improve contraction? You chose inhibition of myosin kinase. The key is phosphorylation of the ryanodine receptor. Both wrong options put the action on myosin. In the heart cell, the answers are about handling calcium. Inhibition of myosin light chain kinase is real, but it belongs to smooth muscle. It's how beta-two relaxes a vessel.\n\nNow cross to that vessel. The alpha-one receptor is coupled to a different G protein, Gq. Gq switches on phospholipase C, which splits a membrane lipid into two messengers. Inositol trisphosphate, IP three, releases calcium from the store. Diacylglycerol activates protein kinase C. Calcium rises, and the vessel constricts. So when a stem asks how norepinephrine raises the pressure, the key is phospholipase C. The wrong option is cyclic AMP, the beta arm.\n\n[[Beta receptors use Gs and cyclic AMP. Alpha-one uses Gq and phospholipase C, giving IP three and diacylglycerol.]]\n\nOne drug closes the cell. Isoproterenol, or isoprenaline, is pure beta, with no alpha. Beta-one drives the rate and contractility up, so the oxygen demand rises. Beta-two opens the vessels, so the diastolic pressure falls, and the coronaries fill in diastole. Demand up, supply down. The harm the exam keys is myocardial ischaemia, which is why in shock it's used mainly as a bridge to pacing in bradycardia.\n\nAnd alpha-one has just carried you across to the squeeze."
+     }
+    },
+    {
+     "card": "SEP01C|SEP-27",
+     "bridge": "In sepsis the ladder says no to levosimendan. Yet twice your grand tests wanted it. The patient was on a β-blocker.",
+     "lesson": {
+      "v": 1,
+      "text": "Now the squeeze. Go back to Patient B, warm, her vessels wide open. Her failed number is the SVR, and this card is the order in which you restore it. You met this ladder in your viva package. Here it is for the MCQ, with eleven bank questions on it.\n\nFirst line is norepinephrine, the only drug on the ladder with a strong recommendation to give it. You can now say how it works. Alpha-one, through Gq, restores the squeeze, and a modest beta-one effect holds the output up.\n\nWhy not dopamine? One trial, SOAP two. One thousand six hundred and seventy-nine patients in shock, dopamine against norepinephrine. NEET's favourite wrong option is that norepinephrine improved survival. It didn't.\n\n[[SOAP two: dopamine and norepinephrine had the same mortality at twenty-eight days, but dopamine gave twice the arrhythmias, twenty-four percent against twelve, and more deaths in the cardiogenic subgroup.]]\n\nSo dopamine is left for highly selected patients, with a low risk of tachyarrhythmia or with bradycardia. And low-dose dopamine to protect the kidney is recommended against.\n\nThe second rung. When the norepinephrine dose is climbing, add vasopressin. Added, not swapped. It works through its own receptor, V one, which acidosis and a flood of catecholamines haven't worn down. And septic shock brings a relative lack of vasopressin.\n\nThe third rung. If the mean pressure is still inadequate, add epinephrine.\n\nThen the branch back to the pump. Filling adequate, pressure adequate, and the patient still hypoperfused. That's a heart weakened by sepsis. Add dobutamine to the norepinephrine, or use epinephrine alone. The banks make this a false-statement question, and the false statement is to avoid dobutamine.\n\nThe discouraged list: terlipressin, levosimendan, and low-dose dopamine for the kidney.\n\n{{**Septic shock ladder**\n1 Norepinephrine (**strong**)\n2 + Vasopressin on escalating dose\n3 + Epinephrine\nCardiac dysfunction: + dobutamine, or epinephrine alone\nAgainst: terlipressin, levosimendan, renal-dose dopamine\nWean: norepinephrine first, vasopressin last}}\n\nOne more question is about coming down. The pressure holds, the lactate is falling, and the patient is on norepinephrine and vasopressin. Which do you taper first? Norepinephrine. In retrospective studies, stopping vasopressin first caused more hypotension. In the same stem, the antibiotics are narrowed by the cultures, not run for a fixed fourteen days.\n\n[[Up the ladder: norepinephrine, then add vasopressin, then add epinephrine, with dobutamine when the heart is the problem. Down the ladder: norepinephrine comes off first.]]\n\nWhy is a sepsis card in a cardiology packet? Because the same rung comes first in cardiogenic shock. When Patient A needs a pressor, it's norepinephrine.\n\nNow notice one word on the discouraged list. Levosimendan."
+     }
+    },
+    {
+     "card": "V12-003",
+     "bridge": "One card left on the squeeze: what to do when norepinephrine causes harm, or when it simply isn't enough.",
+     "lesson": {
+      "v": 1,
+      "text": "In sepsis the guideline suggests against levosimendan. Yet in two different grand tests the key was levosimendan, and you chose epinephrine. What changed? The stem said the patient was on a chronic beta-blocker.\n\nGo back into the cell. The pathway begins at the beta-one receptor, and a beta-blocker sits on it. So any drug that starts there, dobutamine or epinephrine, has to compete, and its effect is blunted.\n\nEpinephrine has a second problem. Its beta effects are blocked, but its alpha-one effect isn't. So you get vasoconstriction without inotropy, and the afterload rises on a failing ventricle. That makes it the wrong option, not merely the weaker one.\n\nSo go past the receptor. Milrinone blocks phosphodiesterase three, so cyclic AMP rises with no receptor involved. Levosimendan doesn't need cyclic AMP at all. It acts on troponin C, at the filament.\n\n[[In a patient on a chronic beta-blocker, beta-agonists are blunted. Choose a drug that acts beyond the receptor: levosimendan, or milrinone.]]\n\nWhich of the two? Your grand tests keyed levosimendan both times, so choose it when it's offered. If only milrinone is offered, choose milrinone. NEET in twenty twenty-four asked about milrinone from the other side, and the fact it turned on was that milrinone works downstream of the beta receptor. The European heart failure guideline says the same: levosimendan or a phosphodiesterase three inhibitor may be considered to reverse the effect of a beta-blocker.\n\nBoth dilate, so keep norepinephrine ready.\n\nSo one drug is discouraged in one stem and keyed in another. In sepsis, with nothing on the receptor, it adds nothing. On a beta-blocker, it's the drug that still works."
+     }
+    },
+    {
+     "card": "HY2|CAR-22",
+     "bridge": "You know what each drug pushes on. Now the order: what you give first, and to which patient.",
+     "lesson": {
+      "v": 1,
+      "text": "Back to the squeeze, for the edges of the ladder. Three situations, each answered by the receptor or pathway the drug uses.\n\nFirst. A patient in septic shock on norepinephrine develops a tachyarrhythmia. That's its beta-one effect. You still need the squeeze, so you want alpha-one with nothing else: phenylephrine. It holds the tone without stimulating the heart. Its price is on the pump, because it raises the afterload with no inotropy, so it's a drug for this situation and not first line. The bank asked it as a stroke patient with a low mean pressure and fast atrial fibrillation, and fewer than a third chose it.\n\nSecond, a number. Vasopressin is added when norepinephrine reaches zero point two five to zero point five micrograms per kilogram per minute.\n\nThird. High-dose norepinephrine after a liver transplant or bypass, and the vessels still won't constrict. That's vasoplegia, and it runs on another messenger. Nitric oxide switches on soluble guanylate cyclase, which makes cyclic GMP, which relaxes smooth muscle. Methylene blue blocks that chain twice.\n\n[[Methylene blue raises vascular tone by inhibiting nitric oxide synthase and soluble guanylate cyclase. It has no action on adrenergic receptors.]]\n\nOnly seven percent of candidates picked that statement.\n\nThere are four rescue agents for vasoplegia. Vasopressin. Angiotensin two, from the ATHOS three trial. Methylene blue. And hydroxocobalamin, which mops up nitric oxide. The trap is a fifth name. Angiotensin one is an inactive precursor that needs converting enzyme in the lung. It's the least likely to raise the pressure, and only one in six got that right.\n\n{{**Tachyarrhythmia on norepinephrine** → phenylephrine (pure α1)\n**Add vasopressin** at norepinephrine 0.25–0.5 µg/kg/min\n**Vasoplegia rescue:** vasopressin, angiotensin II, methylene blue, hydroxocobalamin\n**Not a drug:** angiotensin I}}\n\nThat's the pharmacy. Beta-one and what lies beyond it for the pump. Alpha-one, V one and nitric oxide for the squeeze. Next comes the harder skill, which is order."
+     }
+    }
+   ],
+   "spine": [
+    "Contract harder = more calcium at the filament, or more sensitivity to it. Dobutamine, epinephrine and milrinone raise cAMP; levosimendan sensitises troponin C.",
+    "β1 → Gs → adenylate cyclase → cAMP → PKA: L-type channel + ryanodine receptor (inotropy), phospholamban + troponin I (lusitropy).",
+    "α1 → Gq → phospholipase C → IP3 + DAG → vasoconstriction. Isoproterenol (pure β): rate up, diastolic pressure down → myocardial ischaemia.",
+    "Every inotrope also vasodilates: if the pressure falls on an inotrope, add norepinephrine. Squeeze ladder: norepinephrine → + vasopressin → + epinephrine.",
+    "Chronic β-blocker: β-agonists are blunted. Go past the receptor: levosimendan (keyed) or milrinone.",
+    "Tachyarrhythmia on norepinephrine → phenylephrine. Vasoplegia rescue: vasopressin, angiotensin II, methylene blue (blocks NOS and sGC), hydroxocobalamin."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Go back to Patient A. Anterior infarct, cold and wet, a pressure of eighty-two over fifty. In Shock One you learned to read him. His pump has failed, his squeeze has clamped down to hold the pressure up, and his filling is backing up into his lungs.\n\nNow you have to do something. And here's the uncomfortable truth about every drug you're about to meet. Each one pushes on one of the three numbers, and each push sends the injured heart a bill, paid in oxygen.\n\nPush the pump with an inotrope, and the heart beats harder and faster, and needs more oxygen to do it. Push the squeeze with a vasopressor, and the pressure rises, but the ventricle now pumps against a higher wall. Take away filling with a diuretic, and the lungs clear, but only if the heart was over-filled to begin with.\n\n[[Every drug and every device pushes on one of the three numbers. The best treatment pushes where the failure is, and sends the heart the smallest bill.]]\n\nSo the packet runs in the order you'd think at the bedside. First, the drugs, and the receptors they act through, because NEET asks the receptors directly. Then the ladder: what you do first, second and third. Then the special cases, where a valve or a hole in the septum changes the rules. Then the treatment with the strongest proof of saving lives, opening the artery. And last, the machines, for when drugs are not enough.\n\nFive of the questions in this packet were misses in your grand tests, and one of them you missed twice. Listen for them.\n\nStart with the pump. How does a drug make a heart muscle cell contract harder?"
+   }
+  },
+  {
+   "q": "P12-202",
+   "text": "The ladder of treatment: offload first, then push",
+   "steps": [
+    {
+     "card": "CVS03|CS-24",
+     "bridge": "The right place, the right team. Now what that team aims at: five targets, which are your three numbers again.",
+     "lesson": {
+      "v": 1,
+      "text": "Before any drug, a place. This card hasn't been asked directly, so take it quickly.\n\nThree things earn an intensive care bed: pulmonary oedema, cardiogenic shock, and heart failure appearing for the first time. When chronic heart failure suddenly decompensates, look for the trigger: an infection, anaemia or renal dysfunction.\n\nOne line could become an MCQ. [[The European guideline holds that a cardiac intensive care unit is better than a general one. The American heart association advocates neither.]]\n\nAnd volume matters. Centres treating more than about a hundred cases a year have a lower in-hospital mortality. So the patient bypasses the nearest hospital and goes straight to a hub with a shock team."
+     }
+    },
+    {
+     "card": "CVS03|CS-25",
+     "bridge": "Five targets on paper. At the bedside you choose among them with two questions: warm or cold, wet or dry.",
+     "lesson": {
+      "v": 1,
+      "text": "What does that team aim at? Five targets: your three numbers, with rate and rhythm added.\n\nRate and rhythm first, and the aim is normal sinus rhythm. Too fast and the ventricle can't fill. Too slow and the output falls.\n\nPreload. In the wet patient you lower it, with diuretics, or renal replacement if they fail. Won't that drop the output? Hardly. The failing ventricle sits on the flat part of its curve, the one you used in Shock One. There, less filling relieves the lungs and costs almost no stroke volume.\n\nAfterload. You lower it with a vasodilator such as nitroglycerin. A failing ventricle is very sensitive to afterload, so a small fall in resistance gives a large rise in stroke volume.\n\nAnd contraction: the inotropes, with norepinephrine alongside, because the pressure can fall on them.\n\n[[A vasodilator and an inotrope both raise the stroke volume. The vasodilator does it without raising oxygen demand. The inotrope does it at the cost of more demand and more arrhythmia.]]\n\nThat's the reason for the order."
+     }
+    },
+    {
+     "card": "CVS03|CS-26",
+     "bridge": "Offloading has three tools. Start with the one that isn't a drug at all: positive pressure.",
+     "lesson": {
+      "v": 1,
+      "text": "You met the four boxes in Shock One: warm or cold for the pump, wet or dry for the filling. You met this algorithm in your viva package. Now each box gets its treatment. Nine bank questions sit here, and three of the bank keys need care. First the logic, then the stems.\n\nA sense of proportion. Ninety-five percent of patients with acute heart failure are wet, and five percent are dry. So the real decision is about perfusion.\n\nWet and warm: congested but perfusing. Offloading is all he needs. If a high blood pressure dominates, the vascular type, the fluid hasn't been gained. It's been pushed into the lungs by a sudden rise in afterload, so the vasodilator leads. If congestion dominates, the cardiac type, fluid has been gained over days, so the diuretic leads, with ultrafiltration if it fails.\n\nWet and cold is the danger, and the card cuts it at a systolic of ninety. Below ninety, perfusion comes first: an inotrope, a vasopressor if refractory, mechanical support if drugs fail, and the diuretic only once perfusion is corrected. Why wait? A diuretic lowers the filling of a heart that's already failing to deliver flow. At ninety or above you can offload, with vasodilators and diuretics.\n\nDry and warm is compensated: adjust the oral drugs. Dry and cold is hypoperfused and empty: a fluid challenge, then an inotrope if needed.\n\n[[Wet with a pressure gets a diuretic and a vasodilator. Wet and cold below ninety gets perfusion first and the diuretic later. Dry and cold gets fluid.]]\n\nNow the stems.\n\nCongestion with a pressure of ninety-five over sixty. The tempting answer is norepinephrine. But ninety-five is above ninety, and perfusion isn't failing. That's wet and warm: intravenous furosemide.\n\nReduced ejection fraction, eighty-five over fifty, heart rate one hundred and twenty. One bank keys dobutamine, following this European algorithm. The American statements start norepinephrine at that pressure. So use the wording. If the stem says low output and asks for an inotrope, choose dobutamine. If it says shock with a mean pressure under sixty-five and offers norepinephrine, choose norepinephrine.\n\nA patient who was one hundred and twenty over eighty becomes hypotensive after diuresis. One key says dopamine, and it's outdated. This is over-diuresis. Hold the diuretic and reassess the volume. Milrinone would only dilate him further.\n\n{{**Stem** | **Exam answer**\nWet, SBP ≥90 (even 95/60) | IV loop diuretic\nWet, hypertensive (SBP 180+) | Nitroglycerin, NIV, then furosemide\nLow output, SBP 85, asks for an inotrope | Dobutamine\nShock, MAP <65, norepinephrine offered | Norepinephrine, then dobutamine\nHypotension after diuresis | Stop the diuretic, reassess volume}}\n\nHypertensive pulmonary oedema, first-line reducer of preload: nitroglycerin. Nitroprusside needs an arterial line and carries cyanide, so it's kept for refractory hypertension and acute valve regurgitation.\n\nOne mimic. Flash pulmonary oedema that keeps returning, with resistant hypertension and a rising creatinine, is bilateral renal artery stenosis, Pickering syndrome. Renal angiography with stenting prevents it. Renal denervation doesn't.\n\n[[Dopamine is no longer the first choice in cardiogenic shock. And hypotension that appears after diuresis is over-diuresis: stop the diuretic before reaching for any drug.]]\n\nSo most patients are wet with a pressure, and for them the treatment is offloading."
+     }
+    },
+    {
+     "card": "CVS03|CS-27",
+     "bridge": "Positive pressure offloads in seconds. Two drugs do the same job, and the stem's blood pressure tells you which leads.",
+     "lesson": {
+      "v": 1,
+      "text": "One line on this card is a treatment in its own right, and it's the line the examiners test. Positive pressure ventilation has a positive effect on left ventricular function. Why should a ventilator help a heart?\n\nThink about what the ventricle pushes against. Its wall has to generate the difference between the pressure inside the cavity and the pressure around the heart. That's the transmural pressure. Raise the pressure in the chest, and for the same aortic pressure the wall has less to generate. That's a fall in afterload, with no drug given. The raised pressure also reduces venous return, so the preload falls too.\n\nThe right ventricle sees it differently, and NEET asked this in twenty twenty-four.\n\n[[Positive end-expiratory pressure lowers right ventricular preload, raises right ventricular afterload, and lowers left ventricular afterload.]]\n\nThe trap: the statement that CPAP mainly reduces preload is keyed false, because it lowers afterload as well. And it does so by raising intrathoracic pressure, not by lowering alveolar pressure and not through renin.\n\nRun it backwards. Remove the positive pressure at a spontaneous breathing trial, and preload and afterload return at once. That's weaning-induced pulmonary oedema.\n\nSo for the alert patient with a systolic of one hundred and eighty and pink frothy sputum, the answer is nitrates with non-invasive ventilation, not a diuretic alone and not immediate intubation.\n\nIf you must intubate, the card prefers etomidate, which disturbs the circulation least. Its price is the adrenal gland. One grand test gave a patient on phenytoin and ketoconazole who received etomidate and developed shock that answered to hydrocortisone. Which drug was responsible? All of them. Fewer than half chose that.\n\nThree numbers. Ventilate at six millilitres per kilogram of predicted body weight. About twenty percent of patients in cardiogenic shock need continuous renal replacement. And it's considered from KDIGO stage two."
+     }
+    },
+    {
+     "card": "CVS03|CS-28",
+     "bridge": "When offloading is not enough, the pump itself must be pushed. That needs an algorithm, and it has one branch.",
+     "lesson": {
+      "v": 1,
+      "text": "Now the offloading drugs, and the bank asks about one patient: the one whose lungs flood in minutes with a very high pressure.\n\nThe loop diuretic lowers the circulating volume, but that takes hours. The card adds that it's a mild venodilator, and that effect comes within minutes. Nitroglycerin dilates veins and arteries. At low doses the veins dominate and the preload falls. At high doses the arteries open too, and the afterload falls. Non-invasive ventilation lowers left ventricular wall stress. And dialysis removes volume and corrects electrolytes.\n\nNow the patient. A surge of sympathetic tone clamps the vessels, the afterload jumps, and the left ventricle can't eject against it. Blood backs up into the lungs. He hasn't gained fluid. It has been redistributed. This is sympathetic crashing acute pulmonary oedema, SCAPE. So a diuretic alone is too slow, and it does nothing for the afterload.\n\n[[In hypertensive acute pulmonary oedema, high-dose intravenous nitrate with non-invasive ventilation comes first. Furosemide comes second. Morphine is no longer routine.]]\n\nNEET asked it two years running. In twenty twenty-five, pulmonary oedema with a pressure of one hundred and eighty over one hundred: nitroglycerin with furosemide. In twenty twenty-four, the same after bypass surgery: nitroglycerin.\n\nThe discriminator is the history. Days of weight gain with a normal pressure means fluid gained, and the diuretic leads. Sudden onset with a high pressure means fluid moved, and the nitrate leads.\n\nAnd know when not to give a nitrate: hypotension, a recent phosphodiesterase five inhibitor, a right ventricular infarct, and severe aortic stenosis.\n\nOne odd stem to recognise. Pulmonary oedema after esmolol, given for an amphetamine tachycardia, still needs nitrates and diuretics.\n\nThat's offloading. Now the push."
+     }
+    },
+    {
+     "card": "CVS03|CS-30",
+     "bridge": "That ladder assumed an ordinary failing left ventricle. Some hearts break its rules: a valve, a hole, a rhythm.",
+     "lesson": {
+      "v": 1,
+      "text": "Offloading is done, or the pressure is too low to allow it. Now you push the pump, and this card is the decision tree. Nine bank questions. One entry, one branch, one ending.\n\nThe entry is a low pressure with proof of a weak pump: a mean arterial pressure below sixty-five, with an ejection fraction below forty percent or a cardiac index below one point eight.\n\nThe branch is one question. Is the right ventricle failing, or is the pulmonary vascular resistance high?\n\nIf no, begin dobutamine. If the mean pressure stays below sixty-five, add norepinephrine, and then vasopressin.\n\nIf yes, begin milrinone or levosimendan, with norepinephrine from the start. If the mean pressure stays below sixty-five, add vasopressin.\n\nWhy those drugs for the right side? Milrinone and levosimendan dilate the pulmonary vessels, and the pulmonary resistance is the afterload of the right ventricle. So they unload it while they strengthen it. But they dilate the systemic vessels too, which is why norepinephrine starts alongside. And vasopressin raises the SVR with a neutral effect on pulmonary resistance.\n\nBoth arms end in the same place. If vasopressin fails, consider a mechanical support device.\n\n{{**Entry:** MAP <65 AND (LVEF <40% or CI <1.8)\n**RV dysfunction or high PVR?**\n**No:** dobutamine → + norepinephrine → + vasopressin\n**Yes:** milrinone or levosimendan WITH norepinephrine → + vasopressin\n**Both:** then consider a device}}\n\n[[Dobutamine for the failing left ventricle. Milrinone or levosimendan with norepinephrine when the right ventricle or the pulmonary resistance is the problem. Norepinephrine whenever the mean pressure stays below sixty-five.]]\n\nNow the traps. Two bank keys here are out of date.\n\nA pressure of eighty over fifty after fluids: which drug improves the output? One bank keys dopamine. You know from SOAP two why that's outdated. Modern practice is norepinephrine for the pressure and dobutamine for the output. Choose dopamine only if it's the sole vasoactive drug offered. Today it survives mainly in the bradycardia algorithm.\n\nStill hypotensive on dobutamine. One key says decrease it. The card says add norepinephrine, and two more stems with a falling pressure on dobutamine key exactly that. The tempting wrong option is a switch to milrinone, which dilates more.\n\nAnd one from toxicology. A calcium channel blocker overdose, after calcium and high-dose insulin. Choose by the number that has failed. A low cardiac index needs an inotrope. A low SVR needs norepinephrine.\n\nSo that's the ladder. Offload, push, and call for a machine when the drugs run out."
+     }
+    }
+   ],
+   "open": {
+    "v": 1,
+    "text": "You now know the pharmacy: which receptor, which messenger, and which of the three numbers each drug pushes on. This section is about order. Faced with Patient A, cold and wet, what do you do first?\n\nThe principle is in the title. Offload first, then push. Why that way round? Because of the price. An inotrope makes an injured heart work harder, and it pays in oxygen. Taking load off costs it nothing.\n\n[[Offload first, then push. Lowering preload and afterload raises the output at no cost in oxygen. An inotrope raises it at a price.]]\n\nThe cards run in that order: the place, the targets, the bedside algorithm, the offloading tools, and last the inotrope algorithm.\n\nListen for two traps. The first is the blood pressure in the stem. A systolic of ninety is the line, and ninety-five is on the safe side of it. The second is dopamine. Two bank keys still choose it, and it's no longer the modern answer.\n\nStart with where this patient should be."
+   },
+   "spine": [
+    "Offload first, then push: lowering preload and afterload raises output at no oxygen cost; an inotrope raises it at a price.",
+    "ESC profiles: wet + warm → diuretic and vasodilator. Wet + cold: SBP <90 perfusion first, diuretic later; SBP ≥90 vasodilator + diuretic. Dry + cold → fluid.",
+    "Positive pressure lowers LV afterload (transmural pressure) and preload. PEEP: RV preload ↓, RV afterload ↑, LV afterload ↓.",
+    "Hypertensive pulmonary oedema (SCAPE): fluid is redistributed, not gained. High-dose nitrate + NIV first; furosemide second; no routine morphine.",
+    "Inotrope algorithm: MAP <65 with LVEF <40% or CI <1.8. No RV/PVR problem → dobutamine → norepinephrine → vasopressin. RV/PVR → milrinone or levosimendan WITH norepinephrine.",
+    "Dopamine is no longer the first choice in cardiogenic shock (SOAP II); it survives for bradycardia and, on the card, AR. Drugs fail → mechanical support."
+   ]
+  },
+  {
+   "q": "P12-203",
+   "text": "Shock by subtype: valves, holes and rhythms",
+   "steps": [
+    {
+     "card": "CVS03|CS-31",
+     "bridge": "That was the muscle, by profile. Now the valves, where one rule in each lesion is reversed.",
+     "lesson": {
+      "v": 1,
+      "text": "You've met this card in the viva package. It gives each profile of shock its drug.\n\nClassic shock is cold and wet, with a low cardiac index and a high SVR. Norepinephrine comes first, and an inotrope once the patient is stable and after revascularisation. But didn't the bedside algorithm put the inotrope first? It did. That was written for acute heart failure. This was written for shock, where the coronary arteries need a pressure before the muscle is asked to work.\n\nCold and dry: the same, with small fluid boluses. Warm and wet is cardiogenic shock with a low SVR, often with an inflammatory response after the infarct, or after an arrest. Give norepinephrine, and look for sepsis. And normotensive shock, hypoperfused with a systolic above ninety and a high SVR, may reasonably start with an inotrope.\n\nRight ventricular shock is the one to know. That ventricle needs filling, a low afterload, and a systemic pressure high enough to perfuse it. So give fluid boluses, a pressor, inotropes and inhaled pulmonary vasodilators. The pressor to remember is vasopressin, which raises the SVR with a neutral effect on pulmonary resistance.\n\n[[In right ventricular infarction with hypotension, diuretics and nitrates are the trap. They take the preload from a ventricle that depends on it. Give fluid, then norepinephrine or vasopressin.]]\n\nThe discriminator: right ventricular shock has clear lungs and a high venous pressure."
+     }
+    },
+    {
+     "card": "CVS03|CS-32",
+     "bridge": "Valves were four. Four more causes remain where standard treatment harms: a hole, an obstruction, a slow rate, a tight sac.",
+     "lesson": {
+      "v": 1,
+      "text": "Four valve lesions, five bank questions. Sort them by what the heart depends on. The two stenoses need pressure and time. The two regurgitant lesions need unloading.\n\nAortic stenosis. The valve is fixed, so it sets the flow. Dilate the vessels and the pressure falls, but no more blood can cross the valve to restore it. And the thick ventricle depends on the aortic diastolic pressure for its coronary flow. The card calls it afterload-dependent. So hold the squeeze with a drug that adds no rate: phenylephrine or vasopressin. Inotropy may not help if the ejection fraction is preserved, because the muscle isn't the problem.\n\nYou've met this ventricle. In Shock One, a patient with aortic stenosis collapsed the moment he went into atrial fibrillation, because that stiff ventricle fills on its atrial kick. Same heart. It needs its pressure, its rhythm and its filling time.\n\nThe bank asks it as a low-flow case, three times. An elderly patient in failure, a weak carotid upstroke, a valve area of zero point seven square centimetres, and a low gradient. The low gradient is the trap. It's low because the stroke volume is low.\n\n[[A valve area below one square centimetre with a low gradient is still severe aortic stenosis. It needs urgent valve replacement. Balloon valvuloplasty is only a bridge.]]\n\nAortic regurgitation. The valve leaks in diastole, so the longer diastole lasts, the more falls back. Keep the heart fast. The card gives dopamine and pacing, for the hypotensive patient. Now the stem only one in five answered. An aortic vegetation, severe regurgitation, pulmonary oedema, and a pressure of one hundred and twenty over seventy. The tempting answers are norepinephrine, epinephrine and furosemide. But with a normal pressure this heart needs unloading: nitroprusside, as a bridge to urgent surgery. Two things are forbidden. A balloon pump, which raises the diastolic pressure and drives more blood back. And a beta-blocker, which lengthens diastole.\n\nMitral stenosis. Blood needs time to cross a narrow valve, so slow the heart, with esmolol or amiodarone. Avoid chronotropes, and keep the atrial contraction. Hold the pressure with phenylephrine or vasopressin.\n\nMitral regurgitation. Every rise in afterload sends more blood backwards. So lower the afterload, and here the balloon pump earns its place: it reduces the regurgitant fraction. The stem is an inferior infarct, a new systolic murmur, flash pulmonary oedema, and a pressure of ninety over fifty. That's rupture of the posteromedial papillary muscle, which has a single blood supply. Norepinephrine would raise the regurgitation, and milrinone would drop the pressure. The answer is the balloon pump, as a bridge to surgery. Fewer than four in ten chose it.\n\n{{**Lesion** | **Depends on** | **Give** | **Avoid**\nAS | pressure | phenylephrine, vasopressin | vasodilators\nAR | short diastole | fast rate; nitroprusside if BP normal | IABP, β-blocker\nMS | long diastole | esmolol, amiodarone; phenylephrine | chronotropes\nMR | low afterload | IABP, inotrope | pure pressor}}\n\n[[The balloon pump helps acute mitral regurgitation and is contraindicated in aortic regurgitation. Raise the heart rate in aortic regurgitation. Slow it in mitral stenosis.]]"
+     }
+    },
+    {
+     "card": "CVS03|CS-33",
+     "bridge": "Those are the exceptions. For most patients in cardiogenic shock the cause is simpler: a blocked coronary artery.",
+     "lesson": {
+      "v": 1,
+      "text": "Four more causes where habit does harm. You met this card beside tamponade in the viva package.\n\nA ventricular septal defect after an infarct. The left ventricle now has two exits, the aorta and the hole. Lower the systemic afterload, and more blood goes forwards and less across the septum. So the balloon pump reduces the shunt, as a bridge to surgical or percutaneous closure.\n\nDynamic left ventricular outflow tract obstruction. This is the one place in the packet where an inotrope is contraindicated. A small, vigorous ventricle draws the mitral leaflet into its own outflow. So anything that makes the ventricle bigger, slower and gentler relieves it. The stem is Takotsubo cardiomyopathy with hypotension and outflow obstruction, and the best vasopressor is phenylephrine.\n\n[[Dynamic outflow tract obstruction is the exception to the whole ladder. Fill it, constrict it with phenylephrine, slow it, and never give an inotrope or a vasodilator.]]\n\nOn echo it's told from pump failure by a small, hyperdynamic ventricle that worsens on dobutamine.\n\nBradycardia. Treat the cause, and support the rate with pacing or a chronotrope: atropine, isoprenaline, dopamine, dobutamine or adrenaline.\n\nAnd tamponade, which you know from Shock One by its equal diastolic pressures. Fluid and norepinephrine only buy time. The treatment is drainage."
+     }
+    }
+   ],
+   "open": {
+    "v": 1,
+    "text": "You have a ladder now. Offload, then push, then a machine. It was built for one kind of heart: a left ventricle whose muscle has failed.\n\nThis section is about the hearts that break it. A narrow valve. A leaking valve. A hole in the septum. An outflow tract that closes when the ventricle squeezes harder. In each, one rule of the ladder is reversed, and a drug that helped Patient A will harm.\n\nSo don't learn tables. Ask one question of each lesion. What does this heart depend on? Pressure, time, or unloading?\n\n[[Stenoses need pressure and time. Regurgitation needs unloading. And every valve in shock needs the valve fixed.]]\n\nThe traps here are the most punishing in the packet. Listen for the pressor given to a leaking valve, the balloon pump behind a leaking aortic valve, and the inotrope given to an obstructed outflow.\n\nBegin with the muscle itself, sorted by profile."
+   },
+   "spine": [
+    "Ask what this heart depends on: pressure, time or unloading. The standard ladder can harm a valve, a hole or an obstructed outflow.",
+    "Classic cold + wet: norepinephrine first, inotrope once stable and after revascularisation. RV shock: fluid, low PVR, vasopressin (SVR ↑, PVR neutral); no nitrates or diuretics.",
+    "Stenoses need pressure and time: AS → phenylephrine or vasopressin, urgent valve replacement; MS → slow the rate (esmolol, amiodarone).",
+    "Regurgitation needs unloading: acute AR with normal BP → nitroprusside, never IABP, never slow the rate; acute MR (papillary rupture) → IABP bridge to surgery.",
+    "Post-infarct VSD: IABP lowers the shunt. Dynamic LVOT obstruction: fill, phenylephrine, slow; NO inotropes, NO vasodilators.",
+    "Tamponade: fluid and norepinephrine only buy time; drain it."
+   ]
+  },
+  {
+   "q": "P12-204",
+   "text": "Open the artery: revascularisation and the trials",
+   "steps": [
+    {
+     "card": "CVS03|CS-34",
+     "bridge": "Open the culprit artery. That rests on one trial, which missed its own primary end point.",
+     "lesson": {
+      "v": 1,
+      "text": "Why does one infarct cause shock when another doesn't? Look at the anatomy. Among patients with infarct shock, fifteen percent have a left main lesion and more than half have triple-vessel disease. So when the culprit closes, the other vessels can't cover for it.\n\nThe culprit vessel sets the risk. Left main, a mortality of seventy-eight point six percent. A saphenous vein graft, sixty-nine point seven. The circumflex and the left anterior descending are in effect equal, at about forty-two. The right coronary is lowest, at thirty-seven point four. The logic is how much left ventricle each one feeds.\n\n{{**Culprit vessel** | **Mortality**\nLeft main | 78.6%\nSaphenous vein graft | 69.7%\nCircumflex | 42.4%\nLAD | 42.3%\nRCA | 37.4%\n15% have left main disease; >50% triple-vessel}}\n\nYou don't need the decimals. You need the order: left main worst, vein graft second, right coronary best.\n\nThe card sets revascularisation among the other parts of stabilisation: fluids, oxygenation and ventilation, and antithrombotic drugs. The default is primary angioplasty. Rarely it's bypass surgery, or even emergency transplantation. Fibrinolysis is for when angioplasty can't be done in time.\n\nTwo stems. A large anterior infarct, a pressure of seventy-two over forty, a rising lactate: what most improves survival? Early coronary reperfusion. Not high-dose dopamine, epinephrine or a balloon pump.\n\nAnd the harder one. A raised troponin, recurrent ventricular tachycardia, and an ejection fraction of twelve percent in both ventricles. The tempting answer is an assist device. But a device fixes nothing. Barely a third chose the key.\n\n[[When a shocked heart is probably ischaemic, urgent angiography with a view to revascularisation comes before any device.]]"
+     }
+    },
+    {
+     "card": "CVS03|CS-35",
+     "bridge": "Early revascularisation is settled. On the table, the next question: the culprit alone, or every lesion?",
+     "lesson": {
+      "v": 1,
+      "text": "The SHOCK trial of nineteen ninety-nine is why infarct shock goes to the cath lab. It gave Shock One its definition. Here is its result.\n\nThree hundred and two patients with an infarct and cardiogenic shock, randomised to early revascularisation or to medical stabilisation. At thirty days, the primary end point, mortality was similar. Stop there and you'd call the trial negative. That's the trap.\n\n[[SHOCK: no significant difference at thirty days, but a significant fall in mortality with early revascularisation at six months, fifty point three against sixty-three point one percent, and the benefit held at one year.]]\n\nOne more line shows what the benefit depends on. With successful angioplasty the mortality was about thirty-five percent. With unsuccessful, about eighty. Your card rounds those; the original paper gives thirty-eight and seventy-nine percent at thirty days. Either way, what decides survival is an open artery."
+     }
+    },
+    {
+     "card": "CVS03|CS-36",
+     "bridge": "Culprit only. One question left from the old habit: does a balloon pump help while you do it?",
+     "lesson": {
+      "v": 1,
+      "text": "The artery is open. But most of these patients have other narrowings. Do you fix them all now?\n\nFor years the practice was yes. CULPRIT-SHOCK, in twenty seventeen, tested it in seven hundred and six patients with infarct shock and an identifiable culprit. The end point was death or renal failure needing dialysis at thirty days. Culprit-only angioplasty won, with an absolute risk reduction of nine point five percent. That contradicted widespread practice.\n\nSo where did the belief in complete revascularisation come from? From patients who weren't in shock. Three trial names carry it: PRAMI, CvLPRIT and DANAMI three PRIMULTI.\n\n[[In cardiogenic shock, open the culprit artery only. Complete revascularisation is for the stable infarct patient.]]\n\nOne discriminator. SHOCK asked whether to revascularise early. CULPRIT-SHOCK asked how much."
+     }
+    },
+    {
+     "card": "CVS04|CS-44",
+     "bridge": "The balloon lost its routine place. To see what it can still do, and what replaced it, look at each machine in turn.",
+     "lesson": {
+      "v": 1,
+      "text": "One more trial, and it's the hinge into the machines. For decades the reflex in infarct shock was a balloon pump. You heard this trial in your viva package.\n\nIABP-SHOCK two, twenty twelve. Six hundred patients with infarct shock, a balloon pump or none. Mortality at thirty days was thirty-nine point seven percent against forty-one point three. No difference, then or at one year or at six.\n\n[[IABP-SHOCK two: no difference in thirty-day mortality with or without the balloon pump. Routine use is class three. Its limitation is that only mild to moderate shock was studied.]]\n\nThe balloon keeps a place for the mechanical complications of an infarct, the ruptured papillary muscle and the septal defect.\n\nNow the question actually asked. The trial produced a risk score of six variables, and the stem says all except. Age above seventy-three. A prior stroke. Glucose above one hundred and ninety-one. Creatinine above one point five. Flow below TIMI three after angioplasty. Lactate above five. The planted distractor is a prior myocardial infarction. It isn't in the score. A prior stroke is.\n\n{{**IABP-SHOCK II risk score**\nAge >73 years\nPrior **stroke** (not prior MI)\nGlucose >191 mg/dL\nCreatinine >1.5 mg/dL\nTIMI flow <3 after PCI\nLactate >5 mmol/L}}\n\nSo the balloon lost its routine place. To see why, look at what each machine does to the ventricle."
+     }
+    }
+   ],
+   "open": {
+    "v": 1,
+    "text": "Every drug so far has pushed on a number. None has touched the cause. And the commonest cause of cardiogenic shock is an infarct: a coronary artery has closed, and a large part of the left ventricle has stopped contracting.\n\nSo this section asks what actually saves this patient's life. The answer is short. Open the artery.\n\n[[In infarct shock, early reperfusion is the treatment with the strongest proof that it saves lives. Drugs and devices are support.]]\n\nFour cards. First the anatomy. Then three trials, each answering one question. Should you revascularise early? That's SHOCK. Do you open only the blocked artery, or every narrowing? That's CULPRIT-SHOCK. Does a balloon pump help meanwhile? That's IABP-SHOCK two.\n\nThe trap is that the names sound alike, and the banks swap them. And one of these trials missed its primary end point, yet changed practice.\n\nBegin with the artery."
+   },
+   "spine": [
+    "In infarct shock early reperfusion has the strongest survival evidence; drugs and devices keep the patient alive until the artery is open.",
+    "Anatomy: 15% left main, >50% triple-vessel. Culprit mortality: left main 78.6% > vein graft 69.7% > circumflex 42.4% ≈ LAD 42.3% > RCA 37.4%.",
+    "SHOCK (1999, n 302): 30-day mortality similar (46.7% vs 56.0%); 6 months 50.3% vs 63.1%, significant; benefit held at 1 year. An open artery decides survival.",
+    "CULPRIT-SHOCK (2017, n 706): culprit-only PCI cut 30-day death or dialysis by 9.5%. Complete revascularisation is for stable patients (PRAMI, CvLPRIT, DANAMI-3-PRIMULTI).",
+    "IABP-SHOCK II (2012, n 600): 39.7% vs 41.3%, no difference at 30 days, 1 year or 6 years. Routine IABP class III; score has prior stroke, not prior MI."
+   ]
+  },
+  {
+   "q": "P12-205",
+   "text": "Devices I: the balloon and the pumps",
+   "steps": [
+    {
+     "card": "CVS04|CS-40",
+     "bridge": "Three loops, three machines. Start with the one that nudges the loop least, and is asked the most: the balloon.",
+     "lesson": {
+      "v": 1,
+      "text": "This card is a sketch of three pressure-volume loops. It hasn't been asked, so derive each from where the machine puts the blood.\n\nThe balloon deflates as the ventricle ejects, so the ventricle meets a lower pressure. The loop sits slightly lower and wider. The change is small.\n\nAn Impella or a TandemHeart takes blood out of the left heart. The ventricle holds less, so the loop shrinks and moves left. That's unloading.\n\nPeripheral VA-ECMO returns blood into the aorta, backwards towards the heart. The aortic pressure rises, a weak ventricle ejects less, and it stays full. The loop moves right and up, and narrows. That's loading. The dashed line, arterial elastance, is the afterload drawn as a slope, and it steepens.\n\n[[The balloon pump nudges the loop lower and wider. A percutaneous assist device shrinks it and shifts it left. Peripheral VA-ECMO shifts it right and up.]]"
+     }
+    },
+    {
+     "card": "CVS04|CS-42",
+     "bridge": "The balloon assists a heart that still pumps. The next machine does the pumping itself, from inside the ventricle.",
+     "lesson": {
+      "v": 1,
+      "text": "The balloon pump has lost its routine place, but not its place in the exam. Three grand test questions came from this card.\n\nThe word is counterpulsation: the balloon does the opposite of the heart. It holds thirty to fifty millilitres of helium and lies in the descending aorta, its tip just beyond the left subclavian artery and its lower end above the renal arteries.\n\nIn diastole it inflates, as the aortic valve closes, at the dicrotic notch. It displaces blood and raises the aortic diastolic pressure. The left ventricle is perfused mainly in diastole, so coronary flow improves. That's supply.\n\nIn systole it deflates rapidly, just before the valve opens, leaving a space. The ventricle ejects against a lower pressure, so the afterload falls and the stroke volume rises. That's demand. So this push lowers the oxygen bill. It's just small, about half a litre a minute.\n\n[[The balloon inflates in diastole to raise coronary flow, and deflates just before systole to lower left ventricular afterload. It is synchronised with the ECG.]]\n\nTake that last line seriously, because one of your grand test misses hangs on it. The console must know where diastole is. It triggers from the R wave or from the arterial waveform, so it times well only on a regular rhythm. In fast atrial fibrillation the intervals keep changing, the timing slips, and the support fades. So when a stem gives refractory shock with rapid atrial fibrillation and asks which device needs no cardiac synchrony, it's asking you to leave the balloon. The key was Impella. You'll hear the full answer at the end of the packet.\n\nThe practical facts. A femoral sheath of seven to eight French. A femoral artery at least four millimetres wide, or the leg becomes ischaemic. Support for days; beyond one to two weeks, limb ischaemia, infection and low platelets rise. NEET's favourite wrong option is a sheath of thirteen to fourteen French, which is the size for an Impella or ECMO.\n\nThe contraindications follow from the mechanism: aortic regurgitation of moderate or greater severity, because inflation in diastole drives blood back into the ventricle, then aortic dissection, and severe aorto-iliac disease. The trap is severe left ventricular dysfunction or coronary disease offered as contraindications. Those are indications.\n\nTiming errors. Inflate too early, before the valve closes, and the balloon fills against an ejecting ventricle, so its work rises. Deflate too late, and the balloon is still up when the next ejection begins. That's the most harmful.\n\n{{**Timing error** | **Effect**\nEarly inflation | LV ejects against the balloon: afterload and LV work ↑\nLate inflation | diastolic augmentation lost\nEarly deflation | augmentation lost; no afterload benefit\nLate deflation | most harmful: LV ejects against an inflated balloon}}\n\nAnd one emergency. Blood in the gas line means the balloon has ruptured. Stop pumping, clamp the line, and remove it at once. A still balloon also collects clot, so it's never left switched off inside the patient."
+     }
+    },
+    {
+     "card": "CVS04|CS-45",
+     "bridge": "A pump across the aortic valve. From that one position come its effects, its contraindications and its signature harm.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** parasternal long axis, a poorly contracting LV. Highlighted: the LV cavity, the outflow tract and the aortic root. The Impella lies along that line: inlet in the LV, outlet in the root. The model shows the heart, not the catheter.}}\n\nThe Impella doesn't assist the pump. It is a pump. Ask the three questions.\n\nWhere does it take blood from? The left ventricle. It's a catheter carrying a tiny axial pump, lying across the aortic valve with its tip in the ventricle. In the long axis view from Shock One, picture it along the outflow tract, inlet in the cavity, outlet just above the valve.\n\nWhere does it return blood? Into the ascending aorta, flowing forwards, as the heart's own does. So it empties the ventricle.\n\nYour card's numbers, a nine French catheter and a peak flow of four point three litres a minute, belong to the Impella CP. And here's the trap. The shaft is nine French, but the pump head is fourteen, so the sheath is fourteen.\n\n[[The Impella is an axial pump across the aortic valve. It draws blood from the left ventricle and delivers it forwards into the ascending aorta.]]"
+     }
+    },
+    {
+     "card": "CVS04|CS-46",
+     "bridge": "Impella empties the LV directly. A second pump empties it from one chamber upstream, and needs a needle through the septum.",
+     "lesson": {
+      "v": 1,
+      "text": "Three consequences of sitting across the aortic valve, and two have been asked.\n\nFirst, the effect. The cardiac output rises significantly, whether or not the ventricle ejects. And because the pump drains the cavity, the end-diastolic pressure, the wall stress and the myocardial oxygen consumption all fall. More output for less oxygen, where the inotrope gave more output for more. That's unloading.\n\nIt's also the one device with a trial in its favour. In DanGer Shock, in twenty twenty-four, the Impella CP lowered mortality at one hundred and eighty days in ST elevation infarct shock, from fifty-eight point five percent to forty-five point eight, at the price of more bleeding, limb ischaemia and renal replacement. So the American guideline of twenty twenty-five calls it reasonable in selected patients.\n\nSecond, the contraindication. The catheter must lie across the valve, so a mechanical aortic valve bars it, and so does a very tight aortic stenosis. One grand test gave shock with severe aortic stenosis, and nearly everyone found it. The distractors, post-cardiotomy failure and acute myocarditis, are indications.\n\nThird, the characteristic risk, which most candidates missed. Haemolysis. A rotor at very high speed shears red cells. The stem asks for the unique complication, and offers pseudoaneurysm and septicaemia. Those follow any large femoral sheath. Only haemolysis belongs to the rotor.\n\n[[Impella raises the output while lowering left ventricular end-diastolic pressure, wall stress and oxygen consumption. It can't cross a mechanical or tightly stenosed aortic valve. Its signature complication is haemolysis.]]"
+     }
+    },
+    {
+     "card": "CVS04|CS-47",
+     "bridge": "All three machines so far need lungs that work and a right heart that fills. The last machine needs neither.",
+     "lesson": {
+      "v": 1,
+      "text": "The TandemHeart reaches the same end by another route. Three questions again.\n\nWhere does it take blood from? The left atrium. A long cannula goes up the femoral vein into the right atrium and is pushed through the atrial septum. So it's the one device that needs a transseptal puncture.\n\nWhere does it return blood? Into the femoral artery, from a pump strapped to the patient's leg. The card's word is paracorporeal, beside the body.\n\nThe effect? Oxygenated blood goes from the left atrium to the arteries, bypassing the left ventricle. The output rises, and the ventricle's end-diastolic pressure, wall stress, stroke work and oxygen consumption fall.\n\nNow derive the contraindications, which is what the grand test asked. A ventricular septal defect: empty the left side, and the shunt reverses, sending venous blood to the left, so the patient becomes hypoxaemic. Isolated right ventricular failure: the left atrium is filled by the right heart, so there's nothing to drain. Then severe peripheral vascular disease, a left atrial thrombus, and significant aortic regurgitation.\n\n[[TandemHeart drains the left atrium through a transseptal puncture and returns the blood to the femoral artery. It needs a working right heart, an intact ventricular septum and good femoral vessels.]]\n\nThe stem asked which is not a contraindication, and the answer was left ventricular failure, the indication.\n\nOne discriminator from the next machine. The TandemHeart drains blood the lungs have already oxygenated, so it needs no oxygenator."
+     }
+    }
+   ],
+   "open": {
+    "v": 1,
+    "text": "The drugs have run out. Both arms of the inotrope algorithm ended on the same line: consider a mechanical support device.\n\nKeep the frame you've used all along. A device is a push on the pump. And ask of it what you asked of every drug. What does it cost the heart? An inotrope raised the output and charged for it in oxygen. A good device raises the output and lowers the heart's work. Some do. One does the opposite, and it's the most powerful of them.\n\n[[For every device ask where it takes blood from, where it returns it, and what that does to the load on the left ventricle.]]\n\nAnswer those, and you can derive its effects, its contraindications and its complications.\n\nThis section takes the balloon and the two percutaneous pumps. The traps are practical: a sheath size borrowed from the wrong device, an indication offered as a contraindication, and a complication of every femoral device offered as the signature of one.\n\nBegin with one picture that holds all the machines."
+   },
+   "spine": [
+    "Ask of every device: where it takes blood from, where it returns it, and what that does to LV load.",
+    "PV loops: IABP slightly lower and wider; pLVAD smaller and shifted left; peripheral VA ECMO narrower, higher and shifted right.",
+    "IABP: inflates in diastole (coronary flow ↑), deflates before systole (afterload ↓). 7–8 Fr, femoral artery ≥4 mm, needs a regular rhythm. Never in AR or dissection.",
+    "Timing: early inflation raises LV work; late deflation is the most harmful. Blood in the gas line = rupture: stop, clamp, remove.",
+    "Impella: axial pump across the aortic valve, LV → ascending aorta; 9 Fr catheter, 14 Fr pump; unloads. Bars: mechanical aortic valve, severe AS. Signature: haemolysis.",
+    "TandemHeart: LA → femoral artery by transseptal puncture. Bars: VSD (shunt reverses → hypoxaemia), RV failure, PVD, LA thrombus, AR."
+   ]
+  },
+  {
+   "q": "P12-206",
+   "text": "Devices II: ECMO and the ladder of support",
+   "steps": [
+    {
+     "card": "CVS04|CS-48",
+     "bridge": "ECMO comes in two forms. One question separates them: does the heart need support, or only the lung?",
+     "lesson": {
+      "v": 1,
+      "text": "You met this circuit in your viva package, so take it briefly.\n\nWhere does it take blood from? The venous system, usually by a femoral cannula reaching the right atrium. Where does it return it? To the femoral artery, after a pump and a membrane oxygenator.\n\n[[VA-ECMO draws venous blood, oxygenates it, and pumps it into the arterial circulation. It is the only device in this packet that supports gas exchange as well as flow.]]\n\nSo it suits the arrest, the failure of both ventricles, and the patient who is hypoxaemic as well as shocked.\n\nBut don't reach for it by reflex. In ECLS-SHOCK, in twenty twenty-three, early routine VA-ECMO in infarct shock didn't change thirty-day mortality and caused more bleeding. In the American guideline of twenty twenty-five, routine use is class three, like the balloon."
+     }
+    },
+    {
+     "card": "CVS08E|ACLS-81",
+     "bridge": "VA replaces the heart. Yet it's the one machine that makes the left ventricle's work harder. That's the paradox.",
+     "lesson": {
+      "v": 1,
+      "text": "ECMO has two forms, and the names tell you where the blood goes back. Venoarterial returns it to an artery. Venovenous returns it to a vein.\n\nTake venoarterial. Blood leaves a vein and re-enters an artery, so it has gone around both the lungs and the heart. The circuit does the gas exchange and the pumping. Peripherally that's femoral vein to femoral artery, quick at the bedside. Centrally, after cardiac surgery, it's right atrium to aorta. One grand test showed a picture of the cannulas, and the answer was peripheral, femoral vein to femoral artery.\n\nNow venovenous. Blood leaves a vein, is oxygenated, and returns to a vein. It still has to cross the lungs and be pumped by the patient's own heart. So the circuit does gas exchange only. Cannulation is femoral to jugular, or one double-lumen cannula in the right internal jugular.\n\nSo the choice is one question. Does the heart need support, or only the lung? Respiratory failure with an adequate output takes venovenous. Add shock, and it becomes venoarterial.\n\n{{ | **VA** | **VV**\nSupports | gas exchange + circulation | gas exchange only\nCannulas | femoral vein → femoral artery | femoro-jugular, or dual-lumen jugular\nNative heart | bypassed | does all the pumping\nFor | cardiogenic shock, arrest | isolated respiratory failure}}\n\nNow the question that was set. A patient on venovenous ECMO for ARDS becomes hyperkalaemic and goes into asystole. The tempting answer is urgent conversion to venoarterial. But think what the circuit does. It puts oxygen into venous blood and moves nothing forwards. With the heart stopped, that blood goes nowhere.\n\n[[Venovenous ECMO gives no circulatory support. A cardiac arrest on it is treated with standard ACLS, starting with chest compressions.]]\n\nTwo more wrong options sit there. Defibrillating asystole, when shocks are only for shockable rhythms. And withholding compressions because of the cannulas."
+     }
+    },
+    {
+     "card": "CVS04|CS-52",
+     "bridge": "Blood running backwards up the aorta, against the heart. Three complications follow, and NEET asks all three.",
+     "lesson": {
+      "v": 1,
+      "text": "Put the strongest machine beside the Impella, and the paradox is one table.\n\nOn flow, ECMO wins: more than five litres a minute, against two and a half to five. It can replace the whole cardiac output.\n\nOn the left ventricle, it loses. Remember the loop that moved right and up. The card says it plainly: ECMO fails to unload. Stroke work is increased, oxygen consumption is unchanged or rising, and arterial elastance is increased. The Impella is the mirror image.\n\n{{ | **VA ECMO** | **Impella**\nFlow | >5 L/min | 2.5–5 L/min\nLV unloading | fails to unload | unloads\nStroke work | increased | much reduced\nMVO2 | unchanged or ↑ | reduced\nAfterload | +++ | none\nGas exchange | +++ (only device) | none}}\n\n[[The device with the highest flow doesn't best protect the ischaemic heart. VA-ECMO perfuses the body but raises left ventricular afterload and oxygen demand. Impella gives less flow and truly unloads.]]\n\nAnd on gas exchange ECMO stands alone, as the only device with an oxygenator.\n\nSo sooner or later, someone puts both into the same patient."
+     }
+    },
+    {
+     "card": "CVS08E|ACLS-84",
+     "bridge": "You've met every machine and every price. Now set them on one ladder, bottom to top.",
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** parasternal long axis, a poorly contracting LV. Highlighted: LV, left atrium and aortic root. On peripheral VA ECMO, picture this ventricle distending and the aortic valve no longer opening.}}\n\nOne fact, three complications. The blood from peripheral VA-ECMO runs backwards up the aorta. Follow it.\n\nStart at the top of the stream. Oxygenated ECMO blood travels up from the groin. The heart's own output comes down from the aortic root. The two meet somewhere in the aorta. While the heart barely ejects, the meeting point lies near the heart, and the whole body gets ECMO blood.\n\nNow the heart recovers, but the lungs are still failing. The ventricle ejects more, and what it ejects hasn't been oxygenated. The meeting point is pushed down the aorta. So the coronaries, the brain and the right arm get dark blood from the heart, while the lower body gets bright blood from the circuit. That's differential hypoxaemia, the Harlequin or north-south syndrome.\n\nWhere do you look? The right hand, because its artery comes from the first branch of the arch. The stem gives a saturation of eighty-four percent on the right hand and ninety-nine on the left foot.\n\nThe fix? Three tempting options, all wrong. Raise the oxygen on the circuit: that blood is already saturated. Raise the pump flow: that pushes harder against the ventricle. Convert to venovenous: the patient still needs the flow. The answer is to add a return cannula in the internal jugular vein. Oxygenated blood then enters the right heart, crosses the failing lungs, and is ejected already oxygenated. That's VAV.\n\n[[Harlequin syndrome: the right hand is hypoxaemic while the foot is well oxygenated. Monitor the right hand. The fix is a venous return cannula, converting to VAV.]]\n\nSecond, stay at the heart. That backwards stream is afterload. A ventricle that can't eject against it still fills, so it distends. The aortic valve stops opening, the arterial trace goes flat, the pulmonary pressures rise, and the lungs flood. On the long axis view you'd see a swollen, still ventricle behind a closed valve. Vent it, with a balloon pump, an Impella or an atrial septostomy. An Impella added to ECMO is called ECPELLA.\n\nThird, the groin. The arterial cannula fills most of the femoral artery, so the leg beyond it starves. Prevent it with a distal perfusion cannula. And if the foot turns cold and pulseless, the answer is an antegrade perfusion cannula at once, not heparin, elevation or thrombectomy.\n\n[[Peripheral VA-ECMO runs blood backwards up the aorta. So put a sensor on the right hand, a vent on the left ventricle, and a perfusion cannula into the leg.]]"
+     }
+    },
+    {
+     "card": "CVS08E|ACLS-85",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "Now put the machines on one ladder, from the least support to the most.\n\nThe bottom rung is the balloon pump. Counterpulsation, adding roughly half a litre a minute. It modestly lowers the afterload, but it needs a native rhythm and some native output.\n\nThe middle rung is the Impella. A microaxial pump from left ventricle to aorta, adding two and a half to five litres a minute. It directly unloads the ventricle, and it's the only one of the three for which that's the primary action.\n\nThe top rung is VA-ECMO. Full support of heart and lungs, four to six litres a minute or more. And it increases left ventricular afterload and may need a vent.\n\n{{**Device** | **Flow added** | **LV load** | **Needs rhythm?**\nIABP | ~0.5 L/min | afterload slightly ↓ | **yes**\nImpella | 2.5–5 L/min | **unloads** | no\nVA ECMO | 4–6+ L/min | afterload **↑** | no}}\n\n[[Flow rises from the balloon pump to Impella to VA-ECMO. Only Impella unloads the ventricle as its main action. ECMO gives the most flow and the least unloading.]]\n\nThat trade-off is why an Impella is sometimes added to ECMO: one machine for the flow, the other for the ventricle.\n\nNow the question you missed. Refractory shock with rapid atrial fibrillation: which device needs no cardiac synchrony? The key was Impella CP. Here's the honest version. The Impella, the TandemHeart and VA-ECMO are all continuous pumps. None times itself to the heartbeat, and ECMO will support a patient in ventricular fibrillation. Only the balloon needs the rhythm. So the question is really asking you to rule the balloon out.\n\n[[Only the balloon pump needs a regular native rhythm. Impella, TandemHeart and VA-ECMO all run in atrial fibrillation. If the stem asks which device needs no synchrony, the keyed answer is Impella.]]\n\nThe evidence sits on the same ladder. The balloon in IABP-SHOCK two: no benefit. VA-ECMO in ECLS-SHOCK: no benefit, more bleeding. Impella in DanGer Shock: lower mortality in selected patients. Of the three, only the machine that unloads has improved survival in a trial.\n\nThat returns you to where the packet began. Filling, pump and squeeze. Every drug and every machine pushes on one of them, and the best push without sending the heart a bill for oxygen."
+     }
+    }
+   ],
+   "open": {
+    "v": 1,
+    "text": "Three machines so far, and each supports the left ventricle. Each assumes that the right ventricle can still deliver blood to the left side, and that the lungs can still oxygenate it.\n\nWhat if neither is true? The cardiac arrest. Both ventricles failing. Shock with hypoxaemia. Then you need a machine that replaces the heart and the lungs at once. That's venoarterial ECMO, at the top of the ladder.\n\nAnd here is the central paradox of the packet. The machine that gives the most flow does the least for the left ventricle. For the first time, the support itself raises the afterload.\n\n[[VA-ECMO gives the most flow and the least unloading, because its blood runs backwards up the aorta against the left ventricle.]]\n\nListen for that one fact in every card. Peripheral VA-ECMO returns blood into the femoral artery, and it runs backwards up the aorta. The three complications NEET asks all come from it.\n\nBegin with the circuit."
+   },
+   "spine": [
+    "VA ECMO: venous blood → oxygenator → artery. Supports both ventricles and the lungs; the only device with gas exchange.",
+    "VV supports gas exchange only and needs the native heart: arrest on VV ECMO = standard ACLS, compressions at once.",
+    "The paradox: most flow (>5 L/min), least unloading. Retrograde aortic flow raises LV afterload, stroke work and MVO2.",
+    "Three complications of backwards flow: Harlequin (right hand low, foot high → VAV), LV distension (vent: IABP, Impella, septostomy), limb ischaemia (distal perfusion cannula).",
+    "Ladder: IABP ~0.5 L/min < Impella 2.5–5 < VA ECMO 4–6+. Only Impella unloads as its primary action; only the IABP needs a regular rhythm.",
+    "Evidence: IABP-SHOCK II and ECLS-SHOCK neutral (routine use class 3); DanGer Shock positive for Impella CP in selected STEMI shock (2a)."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's walk back through it, the way you'll need it in the exam.\n\nYou began with Patient A, cold and wet, and one question from Shock One. What do you push with? The answer turned out to be a set of choices, each with a price.\n\nThe drugs push through receptors. Beta-one makes the pump stronger and faster. Alpha-one makes the squeeze tighter. And two drugs go around the receptor altogether. The ladder told you the order. Offload a wet heart first, support the pressure next, and push the pump only when the output is truly low. The special cases bent the rules, because a stiff valve or a hole in the septum changes which number you can safely move. Opening the artery is the step that saves lives. And the machines take over when the drugs run out, each one unloading or loading the heart in its own way.\n\nNow the traps. These are the ones you've actually met.\n\nOne. A patient on a chronic beta-blocker needs an inotrope. The tempting answer is adrenaline or dobutamine. [[On a chronic beta-blocker, beta-agonists are blunted. Levosimendan or milrinone work beyond the receptor.]] You missed this one twice. Not a third time.\n\nTwo. The messengers. [[Beta-one works through cyclic AMP and protein kinase A, which phosphorylates the ryanodine receptor for contraction and phospholamban for relaxation. Alpha-one works through phospholipase C.]] Myosin and its kinases are the wrong answer every time.\n\nThree. A wet patient with a pressure of ninety-five and good perfusion. The tempting answer is a vasopressor. He's wet and warm. He needs a diuretic, and on the flat part of his curve, taking fluid off costs him almost no output.\n\nFour. Shock with disease in several arteries. The tempting answer is to open them all at once. In shock, you open the culprit only. That's CULPRIT-SHOCK.\n\nFive. Venoarterial ECMO gives the most flow, so it must rest the left ventricle. It doesn't. It pumps blood back up the aorta against the ventricle, and the ventricle may distend and need a vent.\n\nAnd six. A patient in fast atrial fibrillation needs a device. The tempting answer is the balloon pump. The balloon times itself to the heartbeat, so it's the one device that needs a regular rhythm. The pumps and ECMO don't.\n\nThe check comes up on the next screen. Answer each one in your head before you tap it open.\n\nAnd carry one thought into the next packet. Almost every patient in this packet had an infarct, and almost every trial was about it. So the next packet steps back to the start. Before the shock, there's the infarct. How do you recognise it?"
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "β1 stimulation speeds relaxation (lusitropy). Which protein is phosphorylated?",
+   "a": "Phospholamban (by PKA), which frees SERCA2a. Not myosin ATPase (GT7 Q83)."
+  },
+  {
+   "q": "Dobutamine raises contractility. Which intracellular step is keyed?",
+   "a": "Ryanodine receptor phosphorylation (with the L-type Ca²⁺ channel), via Gs → cAMP → PKA. Not myosin kinase inhibition (GT7 Q84)."
+  },
+  {
+   "q": "Norepinephrine's α1 effect: which G protein and which enzyme?",
+   "a": "Gq → phospholipase C → IP3 + DAG. cAMP is the β arm (GT7 Q85)."
+  },
+  {
+   "q": "Low output in a patient on a chronic β-blocker: which inotrope?",
+   "a": "Levosimendan (troponin C sensitiser); milrinone if levosimendan is not offered. Epinephrine and dobutamine are blunted (GT7 Q87, GT8 Q82)."
+  },
+  {
+   "q": "Main harm of isoproterenol?",
+   "a": "Myocardial ischaemia: rate and O₂ demand up, diastolic (coronary perfusion) pressure down."
+  },
+  {
+   "q": "On dobutamine, BP still falling. Next step?",
+   "a": "Add norepinephrine. Not 'switch to milrinone' (dilates more), not 'reduce dobutamine' unless the stem is about a tachyarrhythmia with adequate BP."
+  },
+  {
+   "q": "Which inotrope accumulates in renal failure, and what do you change?",
+   "a": "Milrinone (renally excreted): reduce the infusion rate and skip the loading dose."
+  },
+  {
+   "q": "Omecamtiv mecarbil vs serelaxin?",
+   "a": "Omecamtiv: cardiac myosin activator, more stroke volume without raising cAMP, Ca²⁺ or MVO₂. Serelaxin: relaxin-2 vasodilator, not an inotrope."
+  },
+  {
+   "q": "SOAP II: what differed between dopamine and norepinephrine?",
+   "a": "28-day mortality was the same; dopamine gave twice the arrhythmias (24% vs 12%) and more deaths in the cardiogenic subgroup."
+  },
+  {
+   "q": "Septic shock on norepinephrine + vasopressin, now improving. Which is weaned first?",
+   "a": "Norepinephrine. Stopping vasopressin first causes more hypotension."
+  },
+  {
+   "q": "Septic shock on norepinephrine develops AF with fast rate. Which pressor? And when is vasopressin added?",
+   "a": "Phenylephrine (pure α1). Vasopressin at norepinephrine 0.25–0.5 µg/kg/min."
+  },
+  {
+   "q": "How does methylene blue raise vascular tone? Which 'pressor' on the list is not a drug?",
+   "a": "Inhibits NO synthase and soluble guanylate cyclase (less cGMP). Angiotensin I is an inactive precursor."
+  },
+  {
+   "q": "Congested, BP 95/60, no hypoperfusion described. Treatment?",
+   "a": "IV loop diuretic: wet and warm (SBP ≥90). Not norepinephrine."
+  },
+  {
+   "q": "Hypotension appearing after diuresis in a patient who was 120/80?",
+   "a": "Over-diuresis: stop the diuretic and reassess volume. Not dopamine, not milrinone."
+  },
+  {
+   "q": "Sudden pulmonary oedema, BP 180/100, alert. First line?",
+   "a": "High-dose IV nitroglycerin + NIV; furosemide second; no routine morphine (NEET 2024, 2025)."
+  },
+  {
+   "q": "Haemodynamic effects of PEEP on RV preload, RV afterload and LV afterload?",
+   "a": "RV preload ↓, RV afterload ↑, LV afterload ↓ (lower LV transmural pressure). NEET 2024."
+  },
+  {
+   "q": "Inotrope algorithm: entry criteria, and the drug for each branch?",
+   "a": "MAP <65 with LVEF <40% or CI <1.8. No RV/PVR problem: dobutamine → norepinephrine → vasopressin. RV dysfunction or high PVR: milrinone or levosimendan WITH norepinephrine → vasopressin."
+  },
+  {
+   "q": "Acute severe AR, pulmonary oedema, BP 120/70. Drug, and two things to avoid?",
+   "a": "Nitroprusside as a bridge to surgery. Avoid IABP and β-blockers (only 20% right)."
+  },
+  {
+   "q": "Inferior STEMI, new systolic murmur, flash pulmonary oedema, BP 90/50. Diagnosis and bridge?",
+   "a": "Posteromedial papillary muscle rupture with acute MR. IABP as a bridge to surgery; not norepinephrine or milrinone."
+  },
+  {
+   "q": "Elderly, AVA 0.7 cm², low gradient, in failure. Management?",
+   "a": "Low-flow low-gradient severe AS: urgent valve replacement (TAVI). Balloon valvuloplasty is only a bridge."
+  },
+  {
+   "q": "Takotsubo with LVOT obstruction and hypotension. Best vasopressor, and what to avoid?",
+   "a": "Phenylephrine, with fluid and rate slowing. Avoid inotropes and vasodilators."
+  },
+  {
+   "q": "SHOCK, CULPRIT-SHOCK, IABP-SHOCK II: one line each.",
+   "a": "SHOCK: early revascularisation, benefit at 6 months (50.3 vs 63.1%) not 30 days. CULPRIT-SHOCK: culprit-only PCI, 9.5% ARR in death or dialysis. IABP-SHOCK II: no mortality difference (39.7 vs 41.3%)."
+  },
+  {
+   "q": "IABP: sheath size, minimum femoral artery, absolute contraindications?",
+   "a": "7–8 Fr; artery ≥4 mm. Moderate–severe AR, aortic dissection, severe aorto-iliac disease. (13–14 Fr is Impella/ECMO.)"
+  },
+  {
+   "q": "Unique complication of Impella, and its two keyed contraindications?",
+   "a": "Haemolysis. Mechanical aortic valve and severe aortic stenosis."
+  },
+  {
+   "q": "Femoral VA ECMO: right hand SpO₂ 84%, left foot 99%. Name and fix? And arrest on VV ECMO?",
+   "a": "Harlequin (differential hypoxaemia): add a jugular venous return cannula (VAV). Arrest on VV: standard ACLS, compressions at once."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "β1 improves relaxation by acting on myosin ATPase",
+   "truth": "PKA phosphorylates phospholamban, releasing SERCA2a, so Ca²⁺ is cleared faster (lusitropy).",
+   "cards": [
+    "CVS03|V12-002",
+    "CVS03|CS-29"
+   ],
+   "asked": "GT7 Q83 (missed)"
+  },
+  {
+   "trap": "Dobutamine raises contractility by inhibiting myosin kinase",
+   "truth": "PKA phosphorylates the ryanodine receptor and the L-type Ca²⁺ channel. Myosin light chain kinase inhibition is how cAMP relaxes vascular smooth muscle.",
+   "cards": [
+    "CVS03|V12-002",
+    "CVS03|CS-29"
+   ],
+   "asked": "GT7 Q84 (missed)"
+  },
+  {
+   "trap": "Norepinephrine constricts vessels through cAMP",
+   "truth": "α1 → Gq → phospholipase C → IP3 + DAG. cAMP is the β (Gs) arm.",
+   "cards": [
+    "CVS03|V12-002"
+   ],
+   "asked": "GT7 Q85"
+  },
+  {
+   "trap": "Epinephrine (or dobutamine) for low output in a patient on a chronic β-blocker",
+   "truth": "β-agonists are blunted, and epinephrine leaves unopposed α1 vasoconstriction. Levosimendan (keyed) or milrinone works past the receptor.",
+   "cards": [
+    "CVS03|V12-003",
+    "CVS03|CS-29"
+   ],
+   "asked": "GT7 Q87 and GT8 Q82 (missed twice)"
+  },
+  {
+   "trap": "Isoproterenol's main harm is hypertension or bronchospasm",
+   "truth": "Myocardial ischaemia: rate and O₂ demand rise while diastolic pressure falls.",
+   "cards": [
+    "CVS03|V12-002"
+   ],
+   "asked": "GT7 Q89"
+  },
+  {
+   "trap": "On dobutamine, HR 130 and still hypotensive: decrease dobutamine",
+   "truth": "Disputed DocT key (33% chose it). Reducing dobutamine does not raise pressure: add norepinephrine. Reduce the dose only when the stem is a tachyarrhythmia with adequate BP.",
+   "cards": [
+    "CVS03|CS-29",
+    "CVS03|CS-30"
+   ],
+   "asked": "DocT GT, 33% chose the key; 77% right on the tachyarrhythmia version"
+  },
+  {
+   "trap": "Tachycardia on dobutamine is a reflex",
+   "truth": "It is dose-related direct β1 chronotropy, the 'toxic effect'.",
+   "cards": [
+    "CVS03|CS-29"
+   ],
+   "asked": "DocT, 66% right"
+  },
+  {
+   "trap": "Milrinone hypotension is toxicity or bradycardia",
+   "truth": "It is milrinone-induced vasodilation. It also accumulates in renal failure: lower the rate, no loading dose.",
+   "cards": [
+    "CVS03|CS-29"
+   ],
+   "asked": "DocT 88% right; Marrow; NEET 2024"
+  },
+  {
+   "trap": "Serelaxin is an inotrope",
+   "truth": "It is a relaxin-2 vasodilator. Omecamtiv mecarbil is the myosin activator (no rise in cAMP, Ca²⁺ or MVO₂).",
+   "cards": [
+    "CVS03|CS-29"
+   ],
+   "asked": "DocT GT + Marrow"
+  },
+  {
+   "trap": "A raised lactate on epinephrine means worsening hypoperfusion",
+   "truth": "Epinephrine raises lactate through β2-driven glycolysis; it can mislead.",
+   "cards": [
+    "CVS03|CS-29"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "SOAP II showed norepinephrine improves overall survival over dopamine",
+   "truth": "28-day mortality was the same; dopamine doubled arrhythmias (24% vs 12%) and had more deaths only in the cardiogenic subgroup.",
+   "cards": [
+    "SEP01C|SEP-27",
+    "CVS03|CS-30"
+   ],
+   "asked": "DocT"
+  },
+  {
+   "trap": "In septic shock with cardiac dysfunction, avoid dobutamine",
+   "truth": "That is the false statement: add dobutamine to norepinephrine (or epinephrine alone). Dopamine is only for highly selected patients.",
+   "cards": [
+    "SEP01C|SEP-27"
+   ],
+   "asked": "DocT"
+  },
+  {
+   "trap": "Weaning norepinephrine + vasopressin: stop vasopressin first",
+   "truth": "Taper norepinephrine first; stopping vasopressin first causes more hypotension.",
+   "cards": [
+    "SEP01C|SEP-27"
+   ],
+   "asked": "DocT"
+  },
+  {
+   "trap": "Norepinephrine for septic shock or stroke with AF and fast ventricular rate",
+   "truth": "Phenylephrine (pure α1) avoids β-stimulation.",
+   "cards": [
+    "HY2|CAR-22"
+   ],
+   "asked": "DocT GT / INI-SS, 31% right"
+  },
+  {
+   "trap": "Methylene blue raises NO synthase activity or acts on adrenergic receptors",
+   "truth": "It inhibits NO synthase and soluble guanylate cyclase.",
+   "cards": [
+    "HY2|CAR-22"
+   ],
+   "asked": "DocT GT, 7% right"
+  },
+  {
+   "trap": "Angiotensin I raises MAP in vasoplegia",
+   "truth": "It is an inactive precursor needing pulmonary ACE; angiotensin II is the drug (ATHOS-3).",
+   "cards": [
+    "HY2|CAR-22"
+   ],
+   "asked": "DocT GT, 17% right"
+  },
+  {
+   "trap": "The AHA recommends the cardiac ICU over the general ICU",
+   "truth": "ESC prefers the CICU; the AHA does not advocate either.",
+   "cards": [
+    "CVS03|CS-24"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Diuretics drop the output of the wet failing heart",
+   "truth": "On the flat part of the Starling curve, lowering preload relieves congestion with little loss of stroke volume.",
+   "cards": [
+    "CVS03|CS-25"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Congestion with SBP 95/60: start norepinephrine",
+   "truth": "95 is above 90 and perfusion is intact: wet and warm, IV furosemide.",
+   "cards": [
+    "CVS03|CS-26"
+   ],
+   "asked": "DocT QBank, 73% right"
+  },
+  {
+   "trap": "HFrEF, BP 85/50, HR 120: norepinephrine (or dobutamine) without reading the stem",
+   "truth": "DocT keys dobutamine (ESC algorithm, 58%); AHA/SCAI start norepinephrine. Low output asking for an inotrope → dobutamine; shock with MAP <65 and norepinephrine offered → norepinephrine.",
+   "cards": [
+    "CVS03|CS-26",
+    "CVS03|CS-31"
+   ],
+   "asked": "DocT QBank, 58% and 75%"
+  },
+  {
+   "trap": "Hypotension after diuresis: dopamine",
+   "truth": "Outdated DocT key (42% chose it). Over-diuresis: hold the diuretic, reassess volume; norepinephrine if a drug is needed. Milrinone would vasodilate further.",
+   "cards": [
+    "CVS03|CS-26"
+   ],
+   "asked": "DocT, 42% chose the keyed dopamine"
+  },
+  {
+   "trap": "Hypertensive pulmonary oedema: nitroprusside or morphine as first-line preload reducer",
+   "truth": "Nitroglycerin. Nitroprusside is kept for refractory hypertension or acute valve regurgitation; morphine is no longer routine.",
+   "cards": [
+    "CVS03|CS-26",
+    "CVS03|CS-28"
+   ],
+   "asked": "DocT QBank, 59% right"
+  },
+  {
+   "trap": "Renal denervation for recurrent flash pulmonary oedema with resistant hypertension",
+   "truth": "Pickering syndrome (bilateral renal artery stenosis): renal angiography and stenting.",
+   "cards": [
+    "CVS03|CS-26"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "CPAP mainly reduces preload",
+   "truth": "Keyed false: it lowers LV afterload as well, by raising intrathoracic pressure and lowering LV transmural pressure (not via alveolar pressure or RAAS).",
+   "cards": [
+    "CVS03|CS-27"
+   ],
+   "asked": "Marrow; DocT GT; NEET 2024 (PEEP)"
+  },
+  {
+   "trap": "Only etomidate caused the adrenal crisis",
+   "truth": "Etomidate, ketoconazole and phenytoin all contribute: 'all of the above'.",
+   "cards": [
+    "CVS03|CS-27"
+   ],
+   "asked": "DocT GT, 44% right"
+  },
+  {
+   "trap": "Hypertensive pulmonary oedema: furosemide alone, or intubate now",
+   "truth": "Fluid is redistributed, not gained: high-dose nitrates + NIV first, furosemide second.",
+   "cards": [
+    "CVS03|CS-28",
+    "CVS03|CS-27"
+   ],
+   "asked": "NEET 2025, NEET 2024, DocT GT 65%"
+  },
+  {
+   "trap": "BP 80/50 after fluids, which drug improves output: dopamine",
+   "truth": "Outdated DocT key (38% chose it). Norepinephrine for pressure, dobutamine for output; dopamine only if it is the sole vasoactive option.",
+   "cards": [
+    "CVS03|CS-30"
+   ],
+   "asked": "DocT QBank, 38% chose the keyed dopamine"
+  },
+  {
+   "trap": "Hypotension on dobutamine: switch to milrinone",
+   "truth": "Milrinone vasodilates more; add norepinephrine.",
+   "cards": [
+    "CVS03|CS-30"
+   ],
+   "asked": "DocT QBank, 62% and 90% right"
+  },
+  {
+   "trap": "Diuretics and nitrates for RV infarction with hypotension",
+   "truth": "The RV is preload-dependent: fluid, then norepinephrine or vasopressin (SVR up, PVR neutral).",
+   "cards": [
+    "CVS03|CS-31"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Acute AR with pulmonary oedema, BP 120/70: norepinephrine, adrenaline or furosemide",
+   "truth": "Nitroprusside as a bridge to surgery. IABP and β-blockers are contraindicated.",
+   "cards": [
+    "CVS03|CS-32"
+   ],
+   "asked": "DocT GT, 20% right"
+  },
+  {
+   "trap": "Inferior STEMI, new systolic murmur, oedema, BP 90/50: norepinephrine or milrinone",
+   "truth": "Papillary muscle rupture: IABP lowers the regurgitant fraction and bridges to surgery.",
+   "cards": [
+    "CVS03|CS-32"
+   ],
+   "asked": "DocT GT, 38% right"
+  },
+  {
+   "trap": "Low-flow, low-gradient AS: the low gradient means mild disease; treat with valvuloplasty, diuresis or fluids",
+   "truth": "The gradient is low because the stroke volume is low. Urgent valve replacement (TAVI); valvuloplasty is only a bridge.",
+   "cards": [
+    "CVS03|CS-32"
+   ],
+   "asked": "DocT GT ×3, 59–71% right"
+  },
+  {
+   "trap": "AS patient collapses in new AF: coronary thrombosis",
+   "truth": "Loss of the atrial kick in a stiff, hypertrophied ventricle (taught in Shock I).",
+   "cards": [
+    "CVS03|CS-32"
+   ],
+   "asked": "GT8 Q16 (missed)"
+  },
+  {
+   "trap": "Takotsubo with hypotension: dobutamine or norepinephrine",
+   "truth": "With LVOT obstruction give phenylephrine, fluid and rate control; inotropes and vasodilators worsen the gradient.",
+   "cards": [
+    "CVS03|CS-33"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "EF 12% biventricular, VT, raised troponin: insert an LVAD or IABP first",
+   "truth": "Likely ischaemic: urgent coronary angiography with intent to revascularise.",
+   "cards": [
+    "CVS03|CS-34"
+   ],
+   "asked": "DocT GT, 37% right"
+  },
+  {
+   "trap": "High-dose dopamine, adrenaline or IABP improves survival in STEMI shock",
+   "truth": "Early reperfusion is the proven life-saver here; IABP and high-dose catecholamines do not improve survival (only Impella CP in selected STEMI shock, DanGer Shock, has shown a device benefit).",
+   "cards": [
+    "CVS03|CS-34"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "SHOCK was negative, so early revascularisation is unproven",
+   "truth": "30-day mortality was similar (46.7 vs 56.0%, P 0.11), but 6-month mortality (50.3 vs 63.1%) and 1-year survival were significantly better with early revascularisation.",
+   "cards": [
+    "CVS03|CS-35"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Complete revascularisation at the index PCI is preferred in shock",
+   "truth": "Culprit-only (CULPRIT-SHOCK, 9.5% ARR). Complete revascularisation is for non-shock STEMI (PRAMI, CvLPRIT, DANAMI-3-PRIMULTI).",
+   "cards": [
+    "CVS03|CS-36"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Prior MI is part of the IABP-SHOCK II risk score",
+   "truth": "Prior stroke is. The six: age >73, prior stroke, glucose >191, creatinine >1.5, TIMI <3 after PCI, lactate >5.",
+   "cards": [
+    "CVS04|CS-44"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "VA ECMO unloads the left ventricle because it gives the most flow",
+   "truth": "Retrograde aortic flow raises afterload: the PV loop moves right and up; the LV may distend and need a vent.",
+   "cards": [
+    "CVS04|CS-40",
+    "CVS04|CS-52",
+    "CVS08E|ACLS-85"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "IABP: usual sheath 13–14 Fr; safe beyond 2 weeks; needs an unstable rhythm",
+   "truth": "7–8 Fr sheath, femoral artery ≥4 mm, days of support, regular rhythm. 13–14 Fr is Impella/ECMO.",
+   "cards": [
+    "CVS04|CS-42"
+   ],
+   "asked": "DocT GT, 46% right"
+  },
+  {
+   "trap": "Severe LV dysfunction or CAD contraindicates the IABP",
+   "truth": "Those are indications. Contraindications: moderate–severe AR, aortic dissection, severe aorto-iliac disease.",
+   "cards": [
+    "CVS04|CS-42"
+   ],
+   "asked": "DocT GT, 79% right"
+  },
+  {
+   "trap": "Early IABP inflation is harmless (only augmentation is lost)",
+   "truth": "Inflation before aortic valve closure raises afterload and LV work; late deflation is the most harmful error.",
+   "cards": [
+    "CVS04|CS-42"
+   ],
+   "asked": "Marrow + DocT GT"
+  },
+  {
+   "trap": "Device for refractory shock in rapid AF: IABP (or 'only Impella works')",
+   "truth": "Only the IABP needs synchrony. Key is Impella CP; strictly TandemHeart and VA ECMO are also rhythm-independent.",
+   "cards": [
+    "CVS04|CS-42",
+    "CVS08E|ACLS-85"
+   ],
+   "asked": "GT7 Q95 (missed; key disputed)"
+  },
+  {
+   "trap": "The Impella's 9 Fr catheter means a 9 Fr sheath",
+   "truth": "The CP pump head is 14 Fr, so the sheath is 14 Fr.",
+   "cards": [
+    "CVS04|CS-45"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Pseudoaneurysm or septicaemia is the unique Impella complication",
+   "truth": "Both follow any femoral device; haemolysis is tied to the rotor.",
+   "cards": [
+    "CVS04|CS-46"
+   ],
+   "asked": "DocT GT, 39% right"
+  },
+  {
+   "trap": "Post-cardiotomy failure or acute myocarditis contraindicates Impella",
+   "truth": "Those are indications; a mechanical aortic valve and severe aortic stenosis are the bars.",
+   "cards": [
+    "CVS04|CS-46"
+   ],
+   "asked": "DocT GT, 92% right"
+  },
+  {
+   "trap": "TandemHeart is fine with a VSD, or helps isolated RV failure",
+   "truth": "VSD: the shunt reverses right-to-left (hypoxaemia). RV failure: the LA cannot fill. LV failure is the indication.",
+   "cards": [
+    "CVS04|CS-47"
+   ],
+   "asked": "DocT GT, 100% right"
+  },
+  {
+   "trap": "Arrest on VV ECMO: urgent conversion to VA, or withhold compressions",
+   "truth": "VV gives no circulatory support: standard ACLS with compressions at once; shock only VF/pVT; treat the cause.",
+   "cards": [
+    "CVS08E|ACLS-81"
+   ],
+   "asked": "DocT GT, 69% right"
+  },
+  {
+   "trap": "Harlequin syndrome: raise sweep FiO₂, raise pump flow, or convert to VV",
+   "truth": "Circuit blood is already saturated and the patient still needs flow: add a jugular venous return cannula (VAV).",
+   "cards": [
+    "CVS08E|ACLS-84"
+   ],
+   "asked": "DocT GT ×2"
+  },
+  {
+   "trap": "Cold pulseless leg on femoral VA ECMO: more heparin, elevation or thrombectomy",
+   "truth": "Immediate antegrade distal perfusion cannula into the superficial femoral artery.",
+   "cards": [
+    "CVS08E|ACLS-84"
+   ],
+   "asked": "DocT GT"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Milrinone vs levosimendan",
+   "tell": "Milrinone raises cAMP (PDE-3 block) and so calcium; levosimendan sensitises troponin C with no rise in calcium.",
+   "cards": [
+    "CVS03|CS-29"
+   ]
+  },
+  {
+   "pair": "Isoprenaline vs dobutamine",
+   "tell": "Isoprenaline is pure β1 + β2: a big rate rise and a diastolic fall, so ischaemia limits it; in shock it is mainly a bridge to pacing.",
+   "cards": [
+    "CVS03|CS-29",
+    "CVS03|V12-002"
+   ]
+  },
+  {
+   "pair": "β1 (Gs) vs α1 (Gq)",
+   "tell": "Gs → cAMP → PKA; Gq → phospholipase C → IP3 + DAG.",
+   "cards": [
+    "CVS03|V12-002"
+   ]
+  },
+  {
+   "pair": "Inotropy target vs lusitropy target",
+   "tell": "Ryanodine receptor (and L-type channel) for contraction; phospholamban for relaxation.",
+   "cards": [
+    "CVS03|V12-002"
+   ]
+  },
+  {
+   "pair": "Levosimendan in sepsis vs on a β-blocker",
+   "tell": "Suggested against in septic shock; the keyed inotrope when a chronic β-blocker blunts β-agonists.",
+   "cards": [
+    "SEP01C|SEP-27",
+    "CVS03|V12-003"
+   ]
+  },
+  {
+   "pair": "Phenylephrine vs norepinephrine",
+   "tell": "Phenylephrine is pure α1 with no β1 chronotropy: the choice when norepinephrine drives a tachyarrhythmia.",
+   "cards": [
+    "HY2|CAR-22"
+   ]
+  },
+  {
+   "pair": "Angiotensin II vs angiotensin I",
+   "tell": "Angiotensin II is the vasopressor drug (ATHOS-3); angiotensin I is the inactive precursor.",
+   "cards": [
+    "HY2|CAR-22"
+   ]
+  },
+  {
+   "pair": "Afterload reduction vs inotropy",
+   "tell": "Both raise stroke volume; only the vasodilator does it without raising oxygen demand.",
+   "cards": [
+    "CVS03|CS-25"
+   ]
+  },
+  {
+   "pair": "Wet and cold, SBP <90 vs ≥90",
+   "tell": "Below 90: perfusion first, diuretic later. At or above 90: vasodilator and diuretic.",
+   "cards": [
+    "CVS03|CS-26"
+   ]
+  },
+  {
+   "pair": "Wet-warm vascular type vs cardiac type",
+   "tell": "Hypertension dominant (fluid redistributed): vasodilator leads. Congestion dominant (fluid gained): diuretic leads.",
+   "cards": [
+    "CVS03|CS-26",
+    "CVS03|CS-28"
+   ]
+  },
+  {
+   "pair": "SCAPE vs volume-overloaded decompensated HF",
+   "tell": "Sudden and hypertensive → nitrates first; days of weight gain with normal BP → diuretic first.",
+   "cards": [
+    "CVS03|CS-28"
+   ]
+  },
+  {
+   "pair": "Positive pressure in cardiogenic vs hypovolaemic shock",
+   "tell": "Lower preload and afterload help the failing LV; in hypovolaemia the lost venous return drops output.",
+   "cards": [
+    "CVS03|CS-27"
+   ]
+  },
+  {
+   "pair": "Dobutamine first vs milrinone/levosimendan first",
+   "tell": "RV dysfunction or high PVR (or a β-blocker) sends you to milrinone or levosimendan, with norepinephrine.",
+   "cards": [
+    "CVS03|CS-30"
+   ]
+  },
+  {
+   "pair": "RV shock vs LV shock",
+   "tell": "RV: clear lungs and a high venous pressure, needs fluid and a low PVR. LV: congested lungs, needs offloading.",
+   "cards": [
+    "CVS03|CS-31"
+   ]
+  },
+  {
+   "pair": "Acute AR vs acute MR",
+   "tell": "Both need afterload reduction; the IABP helps MR and is contraindicated in AR.",
+   "cards": [
+    "CVS03|CS-32"
+   ]
+  },
+  {
+   "pair": "Heart rate in AR vs MS",
+   "tell": "Keep it fast in AR (shorter diastole, less regurgitation); slow it in MS (longer filling).",
+   "cards": [
+    "CVS03|CS-32"
+   ]
+  },
+  {
+   "pair": "LVOT obstruction vs LV pump failure",
+   "tell": "LVOTO has a small hyperdynamic LV with a gradient and worsens on dobutamine.",
+   "cards": [
+    "CVS03|CS-33"
+   ]
+  },
+  {
+   "pair": "SHOCK vs CULPRIT-SHOCK vs IABP-SHOCK II",
+   "tell": "Whether to revascularise early; how much to revascularise (culprit only); whether the balloon helps (no).",
+   "cards": [
+    "CVS03|CS-35",
+    "CVS03|CS-36",
+    "CVS04|CS-44"
+   ]
+  },
+  {
+   "pair": "Shock vs stable STEMI with multivessel disease",
+   "tell": "Shock: culprit only. Stable: complete revascularisation.",
+   "cards": [
+    "CVS03|CS-36"
+   ]
+  },
+  {
+   "pair": "IABP vs pLVAD vs VA ECMO on the PV loop",
+   "tell": "IABP: slightly lower and wider. pLVAD: smaller, shifted left. ECMO: narrower, shifted right and up.",
+   "cards": [
+    "CVS04|CS-40"
+   ]
+  },
+  {
+   "pair": "IABP vs Impella insertion",
+   "tell": "IABP 7–8 Fr sheath; Impella CP 14 Fr.",
+   "cards": [
+    "CVS04|CS-42",
+    "CVS04|CS-45"
+   ]
+  },
+  {
+   "pair": "Device-specific vs access-site complication",
+   "tell": "Haemolysis is the Impella rotor; bleeding, pseudoaneurysm and limb ischaemia follow any large femoral sheath.",
+   "cards": [
+    "CVS04|CS-46"
+   ]
+  },
+  {
+   "pair": "Impella vs TandemHeart",
+   "tell": "Impella drains the LV across the aortic valve; TandemHeart drains the LA through the septum.",
+   "cards": [
+    "CVS04|CS-45",
+    "CVS04|CS-47"
+   ]
+  },
+  {
+   "pair": "TandemHeart vs VA ECMO",
+   "tell": "TandemHeart takes already-oxygenated LA blood (no oxygenator); ECMO takes venous blood and oxygenates it.",
+   "cards": [
+    "CVS04|CS-47",
+    "CVS04|CS-48"
+   ]
+  },
+  {
+   "pair": "VA vs VV ECMO",
+   "tell": "VA returns to an artery and supports the circulation; VV returns to a vein and supports gas exchange only.",
+   "cards": [
+    "CVS08E|ACLS-81"
+   ]
+  },
+  {
+   "pair": "Harlequin vs global hypoxaemia on ECMO",
+   "tell": "Harlequin: right hand low, foot high. Both low: an oxygenator or circuit problem.",
+   "cards": [
+    "CVS08E|ACLS-84"
+   ]
+  },
+  {
+   "pair": "LV distension vs LV recovery on VA ECMO",
+   "tell": "Distension: flat arterial trace, closed aortic valve, rising PA pressures. Recovery: returning pulse pressure.",
+   "cards": [
+    "CVS08E|ACLS-84",
+    "CVS04|CS-52"
+   ]
+  },
+  {
+   "pair": "IABP vs continuous-flow devices in AF",
+   "tell": "Only the IABP needs a regular native rhythm and native output.",
+   "cards": [
+    "CVS08E|ACLS-85",
+    "CVS04|CS-42"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-002",
+   "deck": "CVS03",
+   "topic": "Receptor messengers: β1 vs α1",
+   "tier": "S",
+   "q": "**Give the second-messenger pathway and its end effect for:**\na β1 stimulation (dobutamine): the common pathway\nb The targets that give inotropy\nc The targets that give lusitropy\nd α1 stimulation (norepinephrine)\ne The main harm of isoproterenol, and why",
+   "a": [
+    "**β1 → Gs → adenylate cyclase → cAMP → protein kinase A (PKA)**",
+    "Inotropy: PKA phosphorylates the **L-type Ca²⁺ channel** and the **ryanodine receptor** → more systolic Ca²⁺ release",
+    "Lusitropy: PKA phosphorylates **phospholamban** → SERCA2a freed → faster Ca²⁺ reuptake; also **troponin I** → faster Ca²⁺ release from troponin C",
+    "**α1 → Gq → phospholipase C → IP3** (Ca²⁺ release) **+ DAG** (protein kinase C) → vasoconstriction",
+    "Isoproterenol (pure β1 + β2): rate and O₂ demand up, diastolic pressure down → **myocardial ischaemia**; in shock, mainly a bridge to pacing in bradycardia",
+    "Traps: 'myosin ATPase' or 'myosin kinase inhibition' for the heart (the keys are phospholamban and the ryanodine receptor); 'cAMP' for α1 (that is the β arm)"
+   ],
+   "why": "GT7 Q83 (missed: chose myosin ATPase, key phospholamban), GT7 Q84 (missed: chose myosin kinase inhibition, key ryanodine receptor), GT7 Q85 (α1 messenger = phospholipase C), GT7 Q89 (isoproterenol harm = myocardial ischaemia). CS-29 names the receptors but not the messengers."
+  },
+  {
+   "code": "V12-003",
+   "deck": "CVS03",
+   "topic": "The patient on a chronic β-blocker",
+   "tier": "S",
+   "q": "**A patient on a chronic β-blocker has low output and needs an inotrope. Give:**\na Why dobutamine and epinephrine disappoint\nb The extra harm of epinephrine\nc The two drugs that work past the receptor, and how\nd Which one the exam keys",
+   "a": [
+    "The β1 receptor is occupied: **β-agonists (dobutamine, epinephrine) are blunted** and need much higher doses",
+    "Epinephrine's β effects are blocked but its **α1 effect is unopposed** → vasoconstriction and afterload without inotropy",
+    "**Levosimendan:** sensitises troponin C to Ca²⁺ (no cAMP needed) and opens vascular K-ATP channels",
+    "**Milrinone:** PDE-3 inhibition raises cAMP below the receptor",
+    "Exam key when both are offered: **levosimendan**; if only milrinone is offered, milrinone (ESC HF guideline 2016, IIb C: levosimendan or a PDE-3 inhibitor may be considered to reverse β-blockade)",
+    "Both vasodilate: have **norepinephrine** ready for the pressure"
+   ],
+   "why": "GT7 Q87 and GT8 Q82 (missed twice: chose epinephrine, key levosimendan). No card states the β-blocker rule; CS-29 gives only the mechanisms."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "CVS03|CS-26",
+   "issue": "Card is the ESC 2016 bedside-profile algorithm (wet and cold with SBP <90: inotrope first, vasopressor if refractory). AHA 2017/SCAI and ACC/AHA 2025 practice starts norepinephrine first in hypotensive cardiogenic shock (as CS-31 on this deck says), and ESC 2021 reorganised acute HF into four presentations. Lesson teaches the card, reconciles it with CS-31 and gives a stem rule."
+  },
+  {
+   "card": "CVS03|CS-35",
+   "issue": "Two unlabelled or rounded figures. '50.3% vs 63.1%' is the 6-month mortality (30-day was 46.7% vs 56.0%, p 0.11) but the card does not say so. 'Successful vs unsuccessful PCI 35% vs 80%' is rounded: the original SHOCK report (Hochman 1999) gives 38% vs 79%; the later PCI analysis (Webb 2003) gives 39% vs 85% at one year. Lesson teaches the card figure and names the original."
+  },
+  {
+   "card": "CVS04|CS-45",
+   "issue": "'Catheter diameter 9 Fr, peak flow up to 4.3 L/min' are Impella CP figures and the card does not name the model. The pump head is 14 Fr, so the sheath is 14 Fr; a reader can take 9 Fr as the sheath size, which contradicts the IABP (7–8 Fr) vs Impella (13–14 Fr) question on CS-42."
+  },
+  {
+   "card": "CVS08E|ACLS-85",
+   "issue": "'IABP needs a native rhythm' is the basis of GT7 Q95 (device in AF, key Impella CP). The key is narrower than the truth: TandemHeart and VA ECMO are also rhythm-independent. Card could say 'only the IABP needs a regular rhythm; Impella, TandemHeart and VA ECMO do not'."
+  },
+  {
+   "card": "CVS03|CS-31",
+   "issue": "RV shock row still lists dopamine among the pressors (AHA 2017 table) although the classic row on the same card explains why dopamine is no longer an equal choice (SOAP II). Minor inconsistency; lesson names norepinephrine or vasopressin."
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+# Shock II addendum (read after P12_BRIEF.md)
+
+- Your input is `/home/claude/p12/S2_pack.json`; your output is `/home/claude/p12/S2_draft.json`. Everywhere the brief says S1, read S2.
+- The packet before this one is Shock I (already written: `/home/claude/p12/S1_draft.json`). Read its last section and close so you know exactly what Naven has just heard. Shock I ended: "You can now read which of the three numbers has failed. Next comes the harder question. What do you push with?" Shock II answers it: each drug and device pushes on one of the three numbers (filling, pump, squeeze), and each push has a price in myocardial oxygen.
+- **Section openings: write them this time.** Every section gets an `open` lesson of about 45–75 seconds (600–1,100 spoken characters): where we are in the arc, what this section answers, which trap to listen for, and a hand-off into its first card. EXCEPT the first section (P12-201): Claude writes the packet's opening there, so leave P12-201 without `open`. Do not write any `close`; Claude writes the packet's close on P12-206.
+- **Length target: about 60 minutes in total** (about 50,000 spoken characters for all step lessons plus your section openings). Shock I came to 80 minutes, which is the ceiling. Fact cards with no bank questions (`bank_questions` 0) get 30–60 seconds; spend the time on CS-29, SEP-27, CS-26, CS-30 and CS-32, which carry most of the bank questions.
+- **GT misses** are in `gt_misses` in the pack. They are what Naven actually got wrong. Each must be taught clearly where it belongs:
+  - In P12-201 add **two new cards** as steps: V12-002 "Receptor messengers: β1 vs α1" (β1 → Gs → cAMP → PKA, which phosphorylates the L-type channel and the ryanodine receptor for inotropy and phospholamban for lusitropy; α1 → Gq → phospholipase C → IP3 and DAG; isoproterenol's harm), and V12-003 "The patient on a chronic β-blocker" (β-agonists blunted; levosimendan or milrinone work past the receptor). Put V12-002 right after CS-29 and V12-003 right after SEP-27, so section 1 has 5 steps. Card shape per the brief; deck CVS03.
+  - The device-in-AF fact (GT7 Q95) goes into the CS-42 (IABP) and ACLS-85 lessons and the traps; no new card.
+  - GT8 Q16 (aortic stenosis, atrial kick) is a callback at CS-32 only.
+- Echo: Naven learned echo basics in Shock I. Here use the model only where it helps (e.g. a VA-ECMO distended LV, or an Impella position), and then only a reminder line, not a re-teach. If you add a `model`, use the vocabulary in the brief.
+- Drill: 15–25 items for this packet.

@@ -1,0 +1,1152 @@
+{
+ "questions": [
+  {
+   "q": "P12-301",
+   "text": "What is an infarct? Injury, infarction and the types",
+   "steps": [
+    {
+     "card": "CVS10A|MI-01",
+     "bridge": "Troponin is the injury; ischaemia makes it an infarct. Next: the definition sorts infarcts by mechanism into five types.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with the word, because the whole packet stands on it. What does a raised troponin actually tell you?\n\nIt tells you that heart muscle cells have been damaged, and nothing more. Troponin reaches the blood when the cell membrane fails, and the assay can't see why it failed. A blocked artery does it. So does a septic heart, or a pulmonary embolus straining the right ventricle.\n\nSo the definition has two halves. The first is myocardial injury: a troponin above the ninety-ninth centile, and acute if it rises or falls between samples. The second is the cause. If that acute injury came from ischaemia, and you can show the ischaemia, it's an infarct. There are five accepted proofs, and you need only one: ischaemic symptoms, new ischaemic ECG changes, new pathological Q waves, imaging that shows new loss of viable myocardium or a new wall motion abnormality, or a coronary thrombus.\n\n{{**MI = acute injury + acute ischaemia**\n**Injury:** cTn > 99th centile; acute if it rises or falls\n**Ischaemia, any one of:** symptoms; new ischaemic ECG change; new Q waves; new RWMA or loss of viable myocardium; coronary thrombus}}\n\n[[Troponin defines injury. Infarction is acute injury, a rise or fall with at least one value above the ninety-ninth centile, together with evidence of acute ischaemia.]]\n\nThe pathologist's definition is the end state: myocardial cell death from prolonged ischaemia.\n\nThe trap forms right here. A septic patient has a raised troponin, and the option reads NSTEMI. With no ischaemic symptoms, no ECG change and no new wall motion abnormality, that's injury. It isn't an infarct.\n\nHold on to the two halves. The pain, the ECG and the echo are the evidence of ischaemia. The troponin is the injury. And once it is an infarct, the definition asks a second question. Which kind?"
+     }
+    },
+    {
+     "card": "CVS10A|MI-05",
+     "bridge": "Five types, two bedside cuts. Now the pair that matters most in an ICU: the plaque against the stressor.",
+     "lesson": {
+      "v": 1,
+      "text": "An infarct, then, is acute injury caused by ischaemia. The Fourth Universal Definition, from twenty eighteen, goes on to sort infarcts by mechanism into five types. This is the wording NEET and your grand tests still use, so learn it first. You'll hear the newer wording four cards from now.\n\nTake the types as a story about how the ischaemia arose. Type one: a plaque ruptures or erodes, and a thrombus forms on it. The artery itself is the problem. This is the classic heart attack, and it can present with ST elevation or without. Type two: no plaque event at all. Something outside the artery lowers the oxygen supply or raises the demand, beyond what the coronaries can deliver. Type three: the patient dies, with a picture of ischaemia, before a troponin could be drawn. Types four and five are caused by our own treatment. Four is PCI. Five is bypass surgery.\n\n{{**UDMI 2018**\n**1** Plaque rupture or erosion + thrombus\n**2** Supply–demand mismatch, no plaque event\n**3** Cardiac death before biomarkers\n**4** PCI: 4a procedure, 4b stent thrombosis, 4c restenosis\n**5** CABG}}\n\n[[Type one is the plaque. Type two is supply and demand. Type three is death before a troponin. Type four is PCI, and type five is bypass surgery.]]\n\nNow, at the bedside nobody says type one. You use a second set of labels, and they run across the first. These are the labels the banks actually test, so slow down here.\n\nTwo tests make two cuts. The ECG makes the first. Persistent ST elevation is STEMI. It means an artery is occluded and needs opening now. Everything else is a non-ST-elevation acute coronary syndrome. Then troponin makes the second cut. Within that non-ST-elevation group, a troponin above the ninety-ninth centile with a rise or fall is NSTEMI. A troponin that stays normal is unstable angina.\n\n[[The ECG separates STEMI from the non-ST-elevation syndromes. Troponin separates NSTEMI from unstable angina. Unstable angina, by definition, has no troponin rise.]]\n\nBoth bank questions are that second cut. A woman with risk factors, chest pain, T wave inversion in the lateral leads and a raised troponin. Seven in ten got it. A smoker with forty minutes of crushing pain, no ST elevation, and a troponin raised on the repeat sample. The answer to both is NSTEMI. NEET's favourite wrong option is unstable angina, chosen because the ECG looks mild. The ECG doesn't decide that. The troponin does. And T wave inversion never makes a STEMI, however deep it is.\n\nOne consequence of the modern assays. High-sensitivity troponin now detects the small infarcts that used to be called unstable angina, so true unstable angina is becoming uncommon.\n\nTypes three, four and five each get a card. First comes the pair that matters most in an ICU, and the one you missed. Type one against type two."
+     }
+    },
+    {
+     "card": "CVS10A|MI-07",
+     "bridge": "Type 2 has a stressor you can find and fix. The next type had no time for a troponin at all.",
+     "lesson": {
+      "v": 1,
+      "text": "Type one against type two is the commonest classification problem you'll meet in an ICU, and it cost you a mark in grand test seven. So build it from the supply and demand you already know from the shock packets.\n\nThe myocardium extracts most of the oxygen it's offered, even at rest. It can't extract much more when it works harder. It can only ask for more flow. So ischaemia has two routes. In type one, a plaque ruptures, a thrombus forms, and flow is cut off at the artery. In type two, the artery has had no acute event. It may be normal, or it may carry an old fixed narrowing. What has changed is the rest of the patient. Either supply has dropped: anaemia, hypoxaemia, hypotension, a very slow heart rate. Or demand has climbed: a sustained tachycardia, a hypertensive surge. Often both at once.\n\nThe card's example is an acute GI bleed. Haemoglobin falls, so each millilitre of blood carries less oxygen. The heart speeds up to compensate, so demand rises, and diastole, when the left ventricle is perfused, shortens. Troponin rises and the ST segments sag. That's a type two infarct. And look at what treating it as type one would do. You'd anticoagulate a bleeding patient.\n\n[[Type one is the plaque, and it gets antithrombotics and the cath lab. Type two is the stressor, and you treat the stressor. Coronary thrombus is what decides between them.]]\n\nThat's the formal separator on the card. Type one lists a coronary thrombus among its criteria. Type two requires that there is none, on angiography, on intracoronary imaging or at autopsy.\n\nNow your question. Haemoglobin six point two. Atrial fibrillation with a rapid ventricular rate. Hypotension. A troponin rise, and no culprit lesion. You chose myocarditis. Read the stem again as supply and demand. Anaemia: less oxygen carried. Hypotension: less pressure to drive coronary flow. Fast atrial fibrillation: more demand and less diastole. Three stressors and a clean artery. The key is type two MI. Myocarditis needs a story of its own: often a young patient, a recent viral illness, and no stressor that explains the troponin. When the stem hands you the stressors, it's asking for type two.\n\n[[Anaemia, a fast rhythm or hypotension, with a troponin rise and no culprit lesion, is type two MI. Myocarditis is the wrong option when the stem supplies the stressor.]]\n\nA second mimic sits just below type two. Type two is still an infarct, so it still needs evidence of ischaemia. A septic patient with a troponin rise and nothing else has injury, not type two.\n\nThe bank asks this card once more, from another angle. Blood pressure one eighty over one ten, chest pain, a normal ECG, a troponin slightly raised. About two thirds got it. The key is NSTEMI. The tempting option is unstable angina, because the ECG is normal and the rise is small. But any value above the ninety-ninth centile with a rise or fall, together with ischaemic pain, is an infarct. By mechanism it's probably type two, from the hypertensive surge. And before you give an antithrombotic to a hypertensive patient with chest pain, check the pressure in both arms for a dissection. But the answer the exam wants is NSTEMI.\n\nSo a type two patient is alive, with a stressor you can find. The next type had no time for any of that."
+     }
+    },
+    {
+     "card": "CVS10A|MI-08",
+     "bridge": "From the infarct nobody could treat to the infarcts that treatment causes: types 4 and 5.",
+     "lesson": {
+      "v": 1,
+      "text": "Type three is the patient who never gets a troponin. You missed this one in grand test eight, and it's a pure definition, so take it slowly once.\n\nRemember the two halves: injury on the troponin, and evidence of ischaemia. Now picture a man with twenty minutes of crushing chest pain who collapses in ventricular fibrillation and can't be resuscitated. The second half is there. The first half is impossible, because either no blood was taken, or it was taken before the troponin had time to rise. Without a rule, that death would vanish from every registry and every trial. Type three is the rule.\n\nThe definition has three parts. A cardiac death. Symptoms suggesting myocardial ischaemia, with presumed new ischaemic ECG changes or ventricular fibrillation. And death before blood could be drawn, or before the biomarkers could rise. If an autopsy then shows a fresh thrombus in the infarct artery, the death is reclassified as type one.\n\n[[Type three MI is cardiac death with ischaemic symptoms and new ischaemic ECG changes or ventricular fibrillation, before biomarkers could be drawn or could rise.]]\n\nTwo confusions to clear. NEET's wrong option is the silent infarct, found later as Q waves or a scar. That patient is alive. Type three is always a death. And if a troponin was drawn and was rising before the patient died, it isn't type three. It's type one or type two with a fatal outcome.\n\nOne line about the future, which the next cards explain. The twenty twenty-six definition retires type three as a separate type and files a fatal infarct by its cause. Your exam still asks for the number.\n\nFrom the infarct that nobody could treat, move to the infarcts that treatment causes."
+     }
+    },
+    {
+     "card": "CVS10A|MI-09",
+     "bridge": "Those are the 2018 numbers the exam asks. In 2026 the numbers were retired: three categories replace them.",
+     "lesson": {
+      "v": 1,
+      "text": "Types four and five are infarcts caused by the treatment. This is among the most asked cards of its deck, and on its hardest question fewer than one candidate in four was right. The reason is that the definition has two halves again, and people remember only the number.\n\nStart with why a special rule is needed. Every angioplasty injures a little myocardium. A side branch is pinched, and debris showers downstream. Every bypass operation injures more: the heart is handled, cannulated and arrested with cardioplegia. So some troponin leaks after every procedure. If any rise counted, every patient would have an infarct. The definition therefore does two things. It sets the troponin bar high. And it demands a second, independent sign that a real infarct happened.\n\nThe bars first. After PCI, which is type four A, the troponin must exceed five times the ninety-ninth centile. After bypass surgery, type five, it must exceed ten times, because surgery releases more. Both within forty-eight hours of the procedure. If the baseline was already raised, as it is when you stent a patient in the middle of an infarct, it must be stable or falling beforehand. Then it must rise by more than twenty percent and still clear the five or ten times bar.\n\n{{ | **Type 4a (PCI)** | **Type 5 (CABG)**\nNormal baseline | > 5 × 99th centile | > 10 × 99th centile\nRaised, stable baseline | rise > 20%, still > 5× | rise > 20%, still > 10×\nWindow | ≤ 48 h | ≤ 48 h\n**Plus** | ECG, Q waves, imaging or angiographic complication | Q waves, new occlusion or imaging}}\n\nNow the second half. After PCI you need one of these: new ischaemic ECG changes, new pathological Q waves, imaging that shows new loss of viable myocardium or a new wall motion abnormality, or an angiographic complication that limits flow, such as a dissection, an occluded side branch, a thrombus or distal embolisation. After bypass surgery the list is shorter: new Q waves, a new occlusion of a graft or a native vessel on angiography, or the imaging finding. ST and T changes alone don't count after surgery, because they're so common once the pericardium has been opened.\n\n[[After PCI, more than five times the ninety-ninth centile. After bypass surgery, more than ten times. Both within forty-eight hours, and both need new evidence of ischaemia. Troponin alone is procedural myocardial injury.]]\n\nHere is the question that three quarters got wrong. Elective PCI, with a normal troponin before it. Afterwards the high-sensitivity troponin is six times the upper limit. The patient has no symptoms, the ECG is unchanged and the echo is normal. Most people saw six, remembered five, and chose type four A. But the second half is missing. The key is myocardial injury without infarction. NEET's favourite wrong option on this card is always the one that satisfies the number and ignores the evidence.\n\nTwo more letters complete type four. Four B is stent thrombosis, proven at angiography or autopsy. Four C is restenosis inside the stent. Marrow asks four B directly, as an infarct caused by stent thrombosis. And it asks type five as a bypass patient with a new inferior infarct and a troponin above ten times the limit.\n\n[[Type four A is the PCI itself, four B is stent thrombosis and four C is restenosis.]]\n\nThose are the five types as your exam words them. But in August twenty twenty-six the numbers were retired, and you need to know what replaced them."
+     }
+    },
+    {
+     "card": "CVS10A|MI-11",
+     "bridge": "Primary is the artery. Next: secondary, procedure-related, and what MINOCA now means.",
+     "lesson": {
+      "v": 1,
+      "text": "In August twenty twenty-six, at the European congress, the Fifth Universal Definition replaced the numbered types. Your question banks and your grand tests were written on the fourth, so in the exam the numbers are still the safer answer. But your cards carry the new wording, a recall question could use it, and it's simpler than what it replaces. There are three categories: primary, secondary and procedure-related.\n\nFirst, what did not change. An infarct is still acute myocardial injury with symptoms or other evidence of acute ischaemia. The two halves stand.\n\nOne thing changed inside the first half. The troponin is now read against a sex-specific ninety-ninth centile. Women have a lower normal troponin than men. A single shared cut-off sits close to the male value, so a woman's abnormal result could hide beneath it. The twenty eighteen definition recommended sex-specific limits. Twenty twenty-six requires them.\n\nNow the category on this card. Primary MI is the heir of type one, but wider. The test is where the pathology begins. If it begins within the coronary circulation itself, the infarct is primary. That covers atherothrombosis, by rupture or by erosion. It also covers spontaneous coronary artery dissection, coronary embolism and vasospasm. And it covers stent thrombosis, restenosis or graft failure more than thirty days after the procedure, which are treated as new coronary disease.\n\n[[Primary MI in the twenty twenty-six definition is any acute pathology that begins in the coronary artery itself: atherothrombosis, dissection, embolism, spasm, and stent or graft failure after thirty days.]]\n\nHere's where the two editions collide, and where a trap forms. In twenty eighteen, dissection, embolism and spasm were not type one, because there was no plaque. They were type two, on the supply side. In twenty twenty-six they're primary, because the artery is the site. So for a young woman with a coronary dissection, the old answer is type two and the new answer is primary MI. Read which edition the stem names. If it names none and offers numbered types, answer by twenty eighteen.\n\n{{**2018 → 2026**\nType 1 → **Primary** (now with SCAD, embolism, spasm, which were type 2)\nType 2 → **Secondary**\nType 3 → retired; filed by cause\nTypes 4, 5 → **Procedure-related** (≤ 30 days)\nStent or graft failure > 30 days → Primary}}\n\nOne thing the new categories leave alone is the bedside. The grand test stem linked to this card is the smoker with forty minutes of crushing pain, no ST elevation and a troponin raised on repeat. It's still an NSTEMI. STEMI and NSTEMI decide treatment, and they haven't moved.\n\nPrimary is the artery. The other two categories, and the remaining changes, are on the next card."
+     }
+    },
+    {
+     "card": "CVS10A|MI-14",
+     "bridge": "The new map is drawn. Put it to work on six patients.",
+     "lesson": {
+      "v": 1,
+      "text": "Primary MI is the artery. Finish the map with the other two categories, and then take the smaller changes on this card. One of them is your third miss.\n\nSecondary MI is the heir of type two. An acute condition outside the coronary artery upsets supply and demand: a bleed, sepsis, a fast rhythm. But the new definition asks for proof that ischaemia really followed. Either obstructive coronary disease without an acute coronary lesion, or a new regional wall motion abnormality or loss of viable myocardium. Without one of those, the troponin rise is called myocardial injury. So a good many infarcts that were type two under the old rule become injury under the new one.\n\nProcedure-related MI is the heir of types four and five. It's a coronary complication within thirty days of PCI or cardiac surgery, with the same criteria for both, and it no longer rests on a troponin multiple. The five times and ten times thresholds you just learned belong to twenty eighteen, and they're what the banks ask. And type three is gone. A fatal infarct is filed as primary, secondary or procedure-related.\n\n[[Secondary MI needs an outside stressor together with obstructive coronary disease or a new wall motion abnormality. Without that proof of ischaemia, a troponin rise is myocardial injury.]]\n\nNow the card. Its first change you've met: the sex-specific ninety-ninth centile.\n\nIts second is MINOCA. Picture the patient. Chest pain, a troponin that rises, perhaps ST changes. You go to the cath lab expecting a culprit, and the coronaries show no stenosis of fifty percent or more. That was named myocardial infarction with non-obstructive coronary arteries. The trouble is the word infarction. When these patients are studied with cardiac MRI, many turn out to have myocarditis, Takotsubo syndrome or another cardiomyopathy, and in some the cause was a pulmonary embolus. They never had an infarct. So twenty twenty-six changes the middle word. The I now stands for injury.\n\nIts third point is the one you were asked in grand test eight. MINOCA is a working diagnosis, not a final one. The label says: find the cause. The angiogram is reviewed, imaging inside the artery looks for a hidden plaque rupture or a dissection, and cardiac MRI sorts infarct from myocarditis from Takotsubo. Only then does the patient have a real diagnosis.\n\n[[MINOCA is a working diagnosis: a troponin rise with no coronary stenosis of fifty percent or more. It demands a search for the cause, and cardiac MRI is the key test.]]\n\nNEET's wrong options here are the ones that close the case: label it an infarct and discharge on dual antiplatelets, or call the open coronaries reassuring. You'll meet the full work-up at the end of this packet, on a card of its own.\n\nThe last line of the card separates acute from chronic injury. Acute injury is dynamic: the troponin rises or falls between samples. Chronic injury is a troponin that sits above the limit and stays there, as in chronic kidney disease, heart failure or a hypertrophied ventricle. That's why one sample is never enough, and it's the idea every fast algorithm in section five depends on.\n\nNow put the new map to work on six patients."
+     }
+    },
+    {
+     "card": "CVS10E|MI-71",
+     "bridge": "You can define an infarct. But the patient arrives with pain, not a label.",
+     "lesson": {
+      "v": 1,
+      "text": "Six cases, six labels. Classifying is where the new definition gets tested, and two real questions hide inside this card, one of them from NEET twenty twenty-five. Take the cases in pairs.\n\nThe first pair is stent thrombosis, and the clock files it. Stent thrombosis ten days after PCI, with ischaemia, is a procedure-related MI, because it falls within thirty days. Stent thrombosis at six months is a primary MI, because after thirty days a failing stent or graft is treated as new coronary disease. In the old numbers both would have been type four B.\n\nBut here's what the questions actually ask, and it has nothing to do with the label. A patient has new chest pain and new ST elevation in the stented territory a few hours after PCI. What do you do next? Fewer than half chose correctly. The options that pulled people away were intravenous nitroglycerin, observation, and an echo first. New ST elevation in the territory of a fresh stent is acute stent thrombosis. That's a STEMI, and it kills like one. The answer is urgent repeat angiography and PCI.\n\nNEET twenty twenty-five asked the same thing later on the clock. A drug-eluting stent two months ago, and now anterior ST elevation. Immediate management: dual antiplatelet therapy and urgent PCI. The wrong option is thrombolysis. A stent thrombus is rich in platelets and responds poorly to lysis. Heparin alone, or a beta-blocker, isn't reperfusion either.\n\n[[New ST elevation in a stented territory is stent thrombosis and is treated as a STEMI: dual antiplatelets and urgent repeat angiography. Not nitrates, not an echo first, not thrombolysis.]]\n\nThe second pair is the artery against the stressor. A spontaneous coronary artery dissection with chest pain and a rising troponin is a primary MI, because the pathology starts in the artery. The trap is the twenty eighteen habit of calling it type two. Marrow asks about the patient rather than the label. She is young or middle-aged, with few risk factors, and sometimes pregnant or recently delivered. Most have fibromuscular dysplasia when it's looked for, up to about eighty percent. So a renal bruit or resistant hypertension is the clue, and you image the renal, iliac and cerebral arteries. Unless flow is lost, a dissection is usually managed conservatively, because the wall tends to heal and a wire can extend the tear.\n\nAgainst that, set a GI bleed in a patient with known obstructive coronary disease, a new wall motion abnormality and a troponin rise. The stressor is outside the artery, and the proof of ischaemia is there. That's a secondary MI. You treat the bleed and the haemoglobin, not the coronary.\n\nThe third pair is the two that are not infarcts, or not yet. Sepsis with a troponin rise and no ischaemic evidence is myocardial injury. The wrong option is secondary MI. It can't be, without obstructive disease or a new wall motion abnormality. And a troponin rise with non-obstructive coronaries and no cause found is MINOCA, the working diagnosis, with cardiac MRI next.\n\n{{Stent thrombosis ≤ 30 days | **Procedure-related MI**\nStent thrombosis > 30 days | **Primary MI**\nSCAD | **Primary MI**\nBleed + CAD + new RWMA | **Secondary MI**\nSepsis, no ischaemia | **Injury**, not MI\nNon-obstructive, cause unknown | **MINOCA**}}\n\n[[The clock only files a stent thrombosis. Within thirty days it's procedure-related MI, after thirty days it's primary MI, and the treatment is the same.]]\n\nThat's the definition, in both editions. You know what an infarct is. Now go to the patient, who arrives with pain and not with a label."
+     }
+    }
+   ],
+   "spine": [
+    "MI = acute myocardial injury (cTn rise or fall, one value >99th centile) + evidence of acute ischaemia. Troponin alone = injury.",
+    "UDMI 2018: 1 plaque + thrombus; 2 supply–demand, no thrombus; 3 death before biomarkers; 4 PCI (4a, 4b, 4c); 5 CABG.",
+    "The ECG cuts STEMI from NSTE-ACS; troponin cuts NSTEMI from unstable angina (no troponin rise).",
+    "Procedural MI (2018): PCI >5×, CABG >10× the 99th centile within 48 h, PLUS new ischaemic evidence. Troponin alone = procedural injury.",
+    "UDMI 2026: primary (any acute coronary pathology, incl. SCAD, embolism, spasm); secondary (stressor + obstructive CAD or new RWMA); procedure-related (≤30 days). Type 3 retired.",
+    "MINOCA (<50% stenosis) is a working diagnosis: find the cause, CMR. Stent thrombosis with ST elevation = STEMI: DAPT + urgent PCI, not lysis."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Three patients in the same evening, and each has a raised troponin.\n\nThe first is a man of sixty with crushing central chest pain and ST elevation across the front of his chest. The second is a woman with a bleeding ulcer, a haemoglobin of six, and a heart rate of one hundred and forty. The third is a young man in septic shock on two vasopressors, with no chest pain at all.\n\nAll three have heart muscle cells dying. But only the first has a clot in a coronary artery. The second has a heart starved of oxygen by everything around it. And the third may not have an infarct at all.\n\nThat's the whole problem of this packet. Troponin tells you that muscle is being damaged. It doesn't tell you why. And NEET builds its questions in exactly that gap.\n\n[[A raised troponin means myocardial injury. It becomes an infarct only when there is also evidence of ischaemia, and the type depends on what caused it.]]\n\nShock Two ended with a question: before the shock, there's the infarct, so how do you recognise it? Here's the order you'll learn it in.\n\nFirst, the words themselves. Injury against infarction, and the five types, including the two you missed in your grand tests. Then the patient: the pain, what makes it cardiac, and what the bedside tells you. Then the ECG, in two sections. How to read ST elevation properly, with exact thresholds and the territory each lead group points to. And then the infarcts the ECG tries to hide: posterior, right ventricular, the left bundle branch block, the left main. Then troponin, how it rises and falls, and the fast algorithms that rule an infarct in or out within an hour. And last, the raised troponins that are not infarcts, and the imaging that tells them apart.\n\nThere are three grand-test misses in this packet. Type two, type three, and MINOCA. Listen for them.\n\nStart with the word. What does a raised troponin actually tell you?"
+   }
+  },
+  {
+   "q": "P12-302",
+   "text": "The pain and the bedside",
+   "open": {
+    "v": 1,
+    "text": "You can now define an infarct: acute injury on the troponin, and evidence of ischaemia. But no patient walks in with a troponin result. They walk in with chest pain, and in the first ten minutes all you have is a history, your hands and a stethoscope.\n\nSo this section asks two questions. First, does this pain sound like ischaemia? Some features push the probability of an infarct up and some push it down, and the banks ask exactly which. Second, if it isn't an infarct, what is it, and what would your treatment do to that patient?\n\n[[The history and examination change the probability of an infarct. They never exclude it. Only an ECG and a troponin do that.]]\n\nFour cards: the pain that is ischaemic, the pain that isn't, the three dangerous mimics, and the examination.\n\nListen for two traps. One is the direction of radiation, where the right arm counts for more than the left. The other is the tender chest wall, where one bank key rewards a habit that would be unsafe on the ward.\n\nStart with why cardiac pain feels the way it does."
+   },
+   "steps": [
+    {
+     "card": "CVS10A|MI-16",
+     "bridge": "Those features raise the probability of an infarct. Now the six that lower it.",
+     "lesson": {
+      "v": 1,
+      "text": "Why can't a patient with an infarct put a finger on the pain? The answer explains this whole card.\n\nThe heart's pain fibres are visceral. They travel with the sympathetic nerves and enter the spinal cord at the upper thoracic segments, roughly the first to the fourth. There they converge on the same neurons as somatic fibres from the chest wall, the inner arm, the neck and the jaw. The brain can't tell which source is firing. So it reports a vague pressure across the front of the chest, and it reports the arm and the jaw as well. Visceral pain is diffuse, it's heavy rather than sharp, and it's referred.\n\nEvery line of the card follows from that. The character: pressure, squeezing, tightness. Many patients deny pain altogether and call it a weight. The location: diffuse and retrosternal. The patient who can't point with one finger, who lays a whole hand or a fist on the sternum, is more likely to have an infarct. The radiation: left arm, jaw, shoulders, upper back. The triggers: exertion or emotional stress, because both raise the heart rate and the blood pressure, and so the oxygen demand.\n\nThen there's the autonomic company the pain keeps: sweating, nausea and vomiting, light-headedness, syncope.\n\nNow the numbers behind it, because one question turns on them. When these features were tested against the final diagnosis, radiation to the right arm, or to both arms, raised the likelihood of an infarct about four to five times. Radiation to the left arm alone raised it only about two times. Sweating and vomiting each about doubled it. So the right arm is the stronger sign. NEET's trap is the option saying that right arm radiation argues against a cardiac cause. It's the reverse.\n\n[[Pressure, radiation to either arm and especially the right or both, sweating and vomiting all raise the likelihood of an infarct. Sharp pain lowers it.]]\n\nThat's grand test six. Which feature does not raise the likelihood of MI: nausea, pressure, right arm radiation, or pain described as sharp? Sharp. Three quarters got it.\n\nNext, the patient who has an infarct with no pain at all. Diabetics, through autonomic neuropathy, and the elderly have blunted visceral sensation. Their infarct presents as breathlessness, fatigue or a collapse. Dyspnoea is the chest pain equivalent, and it's why silent infarcts cluster in these two groups. Women, too, present more often with the accompanying symptoms.\n\nLast, the question with the doubtful key. A young man has exertional chest pain relieved by rest, tenderness at the left sternal edge, and a father who died of an infarct. Next step? The bank keys ibuprofen and reassurance, and fewer than half agreed. On the ward that key isn't safe. Pain that comes with effort and goes with rest is anginal in character, and a tender chest wall is found in a minority of real infarcts. So hold two things. If an option offers an ECG and a troponin, take it. And if this exact stem appears with no such option, know that the bank chose reassurance.\n\n[[Exertional pain relieved by rest is anginal even when the chest wall is tender. Tenderness lowers the probability and doesn't exclude an infarct.]]\n\nThose are the features that raise the probability. The next card is the list that lowers it."
+     }
+    },
+    {
+     "card": "CVS10A|MI-17",
+     "bridge": "If it is not the coronary, what is it? Three mimics matter, because the treatment harms them.",
+     "lesson": {
+      "v": 1,
+      "text": "Now turn the card over. If visceral pain is diffuse, heavy and referred, then pain that's the opposite of each is less likely to come from the heart. There are six features, and one idea runs through all of them. Each is somatic or pleural rather than visceral.\n\nPleuritic pain first. It's sharp or knife-like, and worse with a breath or a cough. The parietal pleura and the parietal pericardium have somatic nerves, so pain that moves with breathing points to them: pleurisy, a pulmonary embolus, pericarditis. It cuts the likelihood of an infarct to about a fifth.\n\nSecond, pain that can be localised with one finger. Third, pain reproduced by movement or by pressing on the chest. Both are the chest wall speaking. Fourth, fleeting pain, lasting seconds or less. Ischaemia builds and lasts for minutes. Fifth, pain whose main site is the middle or lower abdomen. And sixth, radiation outside the heart's segments: to the lower limbs, or above the mandible. The jaw, yes. Above the jaw, no. And pain running into the legs should make you think of the aorta.\n\n{{**Less likely cardiac**\nPleuritic, sharp, knife-like\nLocalised with one finger\nReproduced by movement or palpation\nFleeting: seconds or less\nMainly mid or lower abdomen\nRadiates to the legs or above the mandible}}\n\n[[Pleuritic, one-finger, reproducible, fleeting or oddly placed pain lowers the probability of an infarct. None of these features excludes one without an ECG and a troponin.]]\n\nThat second sentence is what both bank questions test, and they're the same two you just met, seen from this side. Sharp is the feature that doesn't raise the likelihood. And the tender sternal edge is what tempted the bank into ibuprofen and reassurance. NEET's wrong belief here is that chest wall tenderness rules out an acute coronary syndrome. It lowers the odds. It rules out nothing.\n\nOne mimic to separate while you're here. Three conditions give sharp pleuritic pain. If it's positional and eases on sitting forward, think pericarditis. If it comes with tachycardia and hypoxaemia, think pulmonary embolism. An infarct is unlikely with pain like that, and still not excluded.\n\nSo if it isn't the coronary, what is it? Two of those names were just mentioned. They belong to a short and dangerous list."
+     }
+    },
+    {
+     "card": "CVS10A|MI-18",
+     "bridge": "Two of the three mimics can be suspected with your hands alone. So examine.",
+     "lesson": {
+      "v": 1,
+      "text": "Pericarditis and pulmonary embolism have just come up. Add aortic dissection, and you have the three mimics this card exists for. It hasn't been asked directly, so take it quickly.\n\nThe card sorts acute chest pain into four groups: cardiac, pulmonary, chest trauma, and non-cardiac, meaning gut and muscle. You don't need the groups. You need the three mimics, and the reason they're singled out. Each can produce ST changes or a troponin rise, so each can pass for an infarct. And each is harmed by the treatment of an infarct.\n\nDissection is the lethal one. A tear in the ascending aorta can shear off the origin of the right coronary artery and produce a true inferior STEMI. Antiplatelets, heparin or a thrombolytic then go into a patient with a torn aorta. Pericarditis lifts the ST segments everywhere rather than in one territory, and anticoagulation risks bleeding into the pericardium. Pulmonary embolism strains the right ventricle, raises the troponin and inverts the anterior T waves. There the harm is the missed diagnosis.\n\n[[Before treating chest pain as an infarct, exclude the three mimics the treatment would harm: aortic dissection, pericarditis and pulmonary embolism.]]\n\nNEET's wrong belief is that ST elevation always means an acute coronary syndrome.\n\nTwo of those three can be suspected with nothing but your hands. That's the examination."
+     }
+    },
+    {
+     "card": "CVS10A|MI-19",
+     "bridge": "History and hands set the suspicion. Only one bedside test can show a closed artery.",
+     "lesson": {
+      "v": 1,
+      "text": "In an uncomplicated infarct the examination is often normal. You examine to find a mimic or a complication, and each finding on this card points to one of them.\n\nA difference in blood pressure between the arms means aortic dissection, and it stops the antithrombotics until the aorta is imaged. Crackles or a raised JVP mean heart failure. A pericardial rub means pericarditis.\n\nA new systolic murmur after an infarct is a mechanical complication until an echo says otherwise. The card names three: papillary muscle rupture with acute mitral regurgitation, a ruptured septum, and free wall rupture. Be careful with the third. A ruptured free wall usually declares itself as tamponade and pulseless electrical activity, not as a murmur.\n\n{{BP difference between arms | **Aortic dissection**\nCrackles, raised JVP | **Heart failure**\nNew systolic murmur | **Papillary muscle rupture, VSD** (free wall rupture: tamponade)\nRub | **Pericarditis**\nCommonest peri-infarct arrhythmia | **Non-sustained VT**}}\n\n[[A new systolic murmur after an infarct is a mechanical complication until an echo proves otherwise: papillary muscle rupture or a ventricular septal defect.]]\n\nThe last line is an arrhythmia. Freshly ischaemic and reperfused muscle is electrically unstable. The card's answer for the most common peri-infarct arrhythmia is non-sustained VT. Counted strictly, isolated ventricular premature beats are commoner still. So choose premature beats if they're offered, and non-sustained VT if they aren't. The wrong option is ventricular fibrillation. That's the commonest cause of early death, not the commonest arrhythmia.\n\nHistory and hands have set your suspicion. Neither can show you an occluded artery. One test can, and you have ten minutes to get it."
+     }
+    }
+   ],
+   "spine": [
+    "Cardiac pain is visceral (upper thoracic convergence): diffuse, pressure-like, referred. The patient cannot point with one finger.",
+    "Raise MI likelihood: pressure, radiation to the right or both arms (LR 4–5; left arm ~2), sweating, vomiting. Sharp pain lowers it.",
+    "Diabetics and the elderly: dyspnoea is the chest-pain equivalent; silent MI.",
+    "Pleuritic, one-finger, palpation-reproduced, fleeting, abdominal, or radiating to legs/above mandible: less likely cardiac, never excluded.",
+    "Three mimics the ACS treatment harms: aortic dissection, pericarditis, PE.",
+    "Examination finds mimics and complications: arm BP gap = dissection; new systolic murmur = papillary rupture or VSD; commonest arrhythmia NSVT (VPBs if offered)."
+   ]
+  },
+  {
+   "q": "P12-303",
+   "text": "Reading ST elevation: thresholds, shapes and territories",
+   "open": {
+    "v": 1,
+    "text": "The history gave you a probability. The ECG gives you a decision. In a suspected infarct it's the one bedside test that can show an artery is closed right now, and when it does, the patient goes for reperfusion without waiting for anything else.\n\nThis section answers three questions about ST elevation. How much counts? The thresholds differ by lead, by age and by sex. Is it really an occlusion? Healthy young men, an inflamed pericardium and a stunned ventricle all lift the ST segment. And which artery? The leads tell you the wall, and the wall tells you the vessel.\n\n[[STEMI is an ECG diagnosis: ST elevation at the J point in two contiguous leads. It's treated on the ECG, never on the troponin.]]\n\nFive cards: the clock, the thresholds, the shapes, the impostors, and the map of territories. That last card has more bank questions than any other in the packet, so most of the time goes there.\n\nThe trap to listen for is the Q wave. A Q wave without ST elevation is an old scar, and more than half the cohort got that question wrong.\n\nFirst, the clock."
+   },
+   "steps": [
+    {
+     "card": "CVS10B|MI-20",
+     "bridge": "The ECG is in your hand at ten minutes. How much ST elevation counts?",
+     "lesson": {
+      "v": 1,
+      "text": "The first card of the ECG section is a set of timings from the European guideline of twenty twenty-three. It hasn't been asked yet, but each number is a clean MCQ, and each has the same reason. A closed artery loses muscle by the minute, and the patient may fibrillate before you've done anything.\n\nSo: a twelve-lead ECG, recorded and interpreted within ten minutes of first medical contact. That clock starts with the ambulance crew, not on the ward. A monitor with a defibrillator for every patient with suspected STEMI. Extra leads, V three R and V four R on the right and V seven to V nine round the back, in an inferior STEMI or when the standard leads are inconclusive. And a high-sensitivity troponin drawn at once, with the result back within sixty minutes of sampling.\n\n{{**ESC 2023, from first medical contact**\nECG recorded and read: **≤ 10 min**\nDefibrillator monitoring: all suspected STEMI\nV3R, V4R, V7–V9: inferior STEMI, or inconclusive standard leads\nhs-cTn result: **≤ 60 min** of sampling\nFrank ST elevation: **do not wait** for troponin}}\n\nThen the line that matters most. If the ECG shows frank ST elevation, you don't wait for the troponin. In the first hour of an occlusion it may still be normal. NEET's wrong option is the careful-sounding one: confirm with a troponin before activating the cath lab.\n\n[[ECG within ten minutes of first medical contact, troponin result within sixty minutes, and a STEMI never waits for the troponin.]]\n\nSo the ECG is in your hand at ten minutes. How much ST elevation counts?"
+     }
+    },
+    {
+     "card": "CVS10B|MI-21",
+     "bridge": "The number says there is elevation. The shape says whether to believe it.",
+     "lesson": {
+      "v": 1,
+      "text": "How much ST elevation counts? That depends on where you measure, in which lead, and in whom.\n\nWhere, first. You measure at the J point, the junction where the QRS ends and the ST segment begins. Why there? Because it's the one fixed landmark. After it the ST segment slopes up into the T wave, so the later you measure, the more elevation you'll find. And you measure against the isoelectric baseline, usually the PR segment.\n\nHow many leads? Two contiguous leads, meaning two leads that face the same wall. One lead can be noise or a misplaced electrode. Two neighbours that agree mean a current of injury from one arterial territory.\n\nNow the threshold, and here's the reasoning that makes the numbers stick. In most leads a healthy heart shows almost no elevation at the J point, so the bar is one millimetre. But V two and V three sit closest to the heart, and healthy people do show some J point elevation there. Young men show the most, older men less, and women the least. The thresholds are simply set above what's normal for each group.\n\n{{**J-point elevation in two contiguous leads**\nV2–V3, men < 40 y | **2.5 mm**\nV2–V3, men ≥ 40 y | **2.0 mm**\nV2–V3, women | **1.5 mm**\nAll other leads | **1 mm**\nNot valid in LBBB or LVH}}\n\nSo in V two and V three: two point five millimetres for men under forty, two millimetres for men of forty and over, and one point five millimetres for women at any age. One millimetre in every other lead.\n\n[[ST elevation is measured at the J point in two contiguous leads. One millimetre in most leads. In V two and V three, two point five for men under forty, two for men forty and over, one point five for women.]]\n\nTwo exclusions. The rule doesn't apply in left bundle branch block or in left ventricular hypertrophy, because both distort repolarisation and lift the ST segment on their own. Left bundle has its own criteria, in section four. And the elevation must be new, or presumed new.\n\nThe traps are at the edges. A man aged exactly forty uses two millimetres, not two point five. And an option that measures eighty milliseconds after the J point isn't the Universal Definition, which measures at the J point itself.\n\nThe bank question on this card is the plain pattern: chest pain, ST elevation from V one to V four, troponin raised. Anterior STEMI, and nearly everyone gets it. The mark is lost on the numbers, or on the next problem. A young man can have two millimetres in V three and a perfectly healthy heart. What separates him from an infarct is the shape."
+     }
+    },
+    {
+     "card": "CVS10B|MI-26",
+     "bridge": "Three everyday impostors. The full list is longer, and one name on it imitates STEMI best.",
+     "lesson": {
+      "v": 1,
+      "text": "The number tells you there's elevation. The shape tells you whether to believe it. Four patterns lift the ST segment, and you separate them by the curve of the segment and by the company it keeps.\n\nStart with the real one. In a STEMI the injury is transmural, and the ST segment is pulled up into the T wave so that the two fuse into a single dome. The curve is convex upward, like a frown. It's confined to one arterial territory. And the leads facing the opposite wall show reciprocal ST depression. As it evolves, Q waves form, and the T wave may invert while the segment is still up.\n\nEarly repolarisation is the healthy impostor. Part of the epicardium repolarises early, most often in young men and athletes. The segment is concave upward, like a smile, and it lifts off from a J point that's notched or slurred. There's no reciprocal depression, and it doesn't change from hour to hour.\n\nPericarditis is concave as well. But the inflammation covers the whole surface of the heart, so the elevation is widespread and respects no territory. And it involves the atria, which gives the finding that names the diagnosis: PR depression, with PR elevation in aVR.\n\nLeft bundle branch block is the fourth. There the ST segment simply points away from the main QRS deflection. That's called discordance, and it's the expected result of abnormal depolarisation, not an injury.\n\n{{**STEMI** | convex, one territory, reciprocal depression\n**Early repolarisation** | concave, notched or slurred J point\n**Pericarditis** | concave, widespread, **PR depression**; ST/T > 0.25 in V6\n**LBBB** | discordant: ST opposite the QRS}}\n\n[[Convex, in one territory, with reciprocal depression is STEMI. Concave with a notched J point is early repolarisation. Concave, widespread, with PR depression is pericarditis.]]\n\nOne mimic within the mimics. Early repolarisation and pericarditis are both concave. The single discriminator is in V six. If the ST elevation there is more than a quarter of the height of the T wave, it favours pericarditis.\n\nNow the grand test question. A twenty-nine-year-old athlete with no symptoms. J point elevation of zero point one five millivolts, which is one and a half millimetres, from V three to V five. Concave, with no reciprocal change. That's early repolarisation. The tempting options are myocarditis and Brugada. Myocarditis comes with symptoms and a troponin rise. Brugada is a coved elevation confined to V one and V two. An athlete without symptoms, with concave elevation and no reciprocal change, has a normal heart.\n\nThose are the three everyday impostors. The full list is longer, and one name on it imitates a STEMI better than any other."
+     }
+    },
+    {
+     "card": "CVS10B|MI-27",
+     "bridge": "Real ST elevation told from false. Now the most examined question: which artery?",
+     "lesson": {
+      "v": 1,
+      "text": "Why do so many conditions disturb the ST segment and the T wave without any coronary event? Two mechanisms cover nearly all of them. Either depolarisation is abnormal, so repolarisation has to follow it abnormally: bundle branch block, pacing, a hypertrophied ventricle. Or the muscle or the pericardium is injured or inflamed while the arteries stay open.\n\nYou don't need to recite the three columns of this card. Read the box once, and carry the handful that have a signature.\n\n{{**ST elevation:** pericarditis, myocarditis, RV strain, PE, LV aneurysm, HCM, hypothermia, Brugada, LVH, LBBB, paced rhythm, early repolarisation, **Takotsubo**\n**ST depression:** hypokalaemia, digoxin, LVH, LBBB, paced rhythm\n**T inversion:** juvenile pattern, post-tachycardia, post-pacing, intracranial pathology, pericarditis}}\n\nFor ST elevation: a left ventricular aneurysm gives elevation that persists for weeks after an anterior infarct, with Q waves beneath it. Hypothermia gives a J wave, the Osborn wave. Brugada gives a coved elevation in V one and V two. For ST depression: digoxin gives a scooped, sagging segment. Hypokalaemia gives depression with a U wave. Hypertrophy gives the strain pattern in the lateral leads. For T inversion: deep, wide T waves with a long QT after a subarachnoid haemorrhage, and inverted T waves that linger after a tachycardia or after pacing.\n\nNow the two that Marrow asks, and the first corrects the card. The card puts stress cardiomyopathy only in the ST depression column. In fact Takotsubo imitates an anterior STEMI. It presents with ST elevation and a troponin rise, and deep T wave inversion follows. The Marrow question shows the ventriculogram and asks for the false statement, and the false statement is that the ECG never shows ST elevation.\n\nSo how do you tell it from an infarct? In Takotsubo the wall motion abnormality extends beyond the territory of any one coronary artery, and the coronaries are unobstructed. That's the single discriminator, and it's made in the cath lab.\n\n[[Takotsubo mimics STEMI with ST elevation and troponin. The wall motion abnormality crosses coronary territories, and the coronaries are unobstructed.]]\n\nHere's the rest of what's asked. The typical form is apical ballooning. The variants are mid-ventricular, basal or reverse, focal, and right ventricular. The reverse form, a still base with a vigorous apex, is the one seen after surgery or a catecholamine surge. Histology shows contraction band necrosis. Function recovers within weeks. Men are the minority, and they do worse.\n\nThe second is apical hypertrophic cardiomyopathy, the Yamaguchi form. Its ECG shows giant T wave inversion across the chest leads, more than ten millimetres deep. Its ventricle has a spade-shaped cavity. And its risk of sudden death is lower than in the septal form.\n\n[[Giant precordial T wave inversion with a spade-shaped left ventricle is apical hypertrophic cardiomyopathy.]]\n\nYou can now tell real ST elevation from false. So return to the real thing and ask the question the exam asks most. Which artery?"
+     }
+    },
+    {
+     "card": "CVS10B|MI-28",
+     "bridge": "The map has two blind spots: the back of the heart and the right ventricle.",
+     "lesson": {
+      "v": 1,
+      "text": "This is the most examined card in the packet. Six bank questions sit on it, and none asks for the table alone. They ask what follows from it. So build the map once, and then use it.\n\nEach lead looks at the heart from one direction, and it records ST elevation when the wall facing it is injured. Leads two, three and aVF look up from the feet at the inferior wall. Leads one and aVL, with V five and V six, look from the left at the lateral wall. V one to V four look from the front at the septum and the anterior wall.\n\nNow lay the arteries over the walls. The left anterior descending artery runs down the front, so V one to V four are the LAD. The circumflex runs round the left side, so the lateral leads are the circumflex, or a diagonal branch of the LAD for the high lateral leads, one and aVL. The inferior wall belongs to whichever artery gives the posterior descending branch. In eight or nine people out of ten that's the right coronary. In the rest it's the circumflex.\n\n{{**I, aVL, V5–V6** | Lateral | **LCx** or diagonal of LAD\n**II, III, aVF** | Inferior | **RCA** (III > II) or LCx (II ≥ III)\n**V1–V4** | Anterior, septal | **LAD**\nV1 elevation + new RBBB | **Proximal LAD**\nQ waves, no ST elevation | **Old infarct**}}\n\nFirst use: is an inferior STEMI the right coronary or the circumflex? Think about where lead three points. It faces down and to the right, towards the right coronary's territory. Lead two faces down and to the left. So if the elevation is greater in lead three than in lead two, with reciprocal depression in aVL and lead one, the culprit is the right coronary. If lead two equals or exceeds lead three, and there's elevation in the lateral leads as well, it's the circumflex.\n\n[[Inferior STEMI with more elevation in lead three than in lead two, and reciprocal depression in aVL, is the right coronary. Lead two equal or greater, with lateral elevation, is the circumflex.]]\n\nSecond use: what the right coronary takes with it. It supplies the AV node in about nine people in ten, which is why an inferior infarct brings bradycardia and AV block. And its proximal part supplies the right ventricle. So the stem that reads shock, a central venous pressure of fourteen, and ST elevation in leads two, three and aVF is an acute inferior infarct with the right ventricle involved. Nine in ten got that. The distractor is pulmonary embolism, because of the high venous pressure.\n\nThird use: how high up the LAD. The first septal branch of the LAD supplies the right bundle. So ST elevation in V one together with a new right bundle branch block means the occlusion is proximal, above that branch. Marrow has asked this twice. A distal lesion gives elevation in V three and V four with no bundle branch block. A proximal one means a large infarct and a high risk of shock.\n\nFourth use, and the one most people lost. A breathless man with known coronary disease has Q waves in lead one, aVL and V five, and no ST elevation. Fewer than half answered correctly. The tempting option is acute coronary syndrome. But a Q wave is electrical silence over dead muscle. It's a scar, and it's permanent. ST elevation is the mark of acute injury, and there is none. This is an old lateral infarct. What makes a Q wave pathological? The teaching answer is a width of forty milliseconds or more, or a depth of more than a quarter of the R wave that follows, in two contiguous leads. The Universal Definition sets a lower bar: thirty milliseconds wide and one millimetre deep in two contiguous leads, or any Q wave wider than twenty milliseconds in V two and V three.\n\n[[ST elevation in V one with a new right bundle branch block is a proximal LAD occlusion. Pathological Q waves without ST elevation are an old, healed infarct.]]\n\nFifth use, briefly, because the next packet owns it. ST elevation in lead one and aVL with chest pain: next step? Primary PCI. About a quarter chose otherwise, and thrombolysis is the usual lure. Lysis is for when PCI can't be delivered within a hundred and twenty minutes of the diagnosis.\n\nNow look at what the map left out. Nothing faces the back of the heart, and nothing faces the right ventricle. An infarct there can hide on a twelve-lead ECG that looks almost normal. That's the next section."
+     }
+    }
+   ],
+   "spine": [
+    "ECG read ≤10 min from first medical contact; hs-cTn result ≤60 min; frank ST elevation never waits for troponin.",
+    "Measure at the J point in 2 contiguous leads: 1 mm; in V2–V3 2.5 mm men <40, 2.0 mm men ≥40, 1.5 mm women. Not valid in LBBB or LVH.",
+    "Convex + one territory + reciprocal depression = STEMI. Concave + notched J = early repolarisation. Concave + widespread + PR depression = pericarditis.",
+    "Takotsubo mimics STEMI: RWMA beyond one territory, unobstructed coronaries. Apical HCM: giant T inversion, spade-shaped LV.",
+    "II, III, aVF = inferior (RCA if III > II; LCx if II ≥ III + lateral). I, aVL, V5–V6 = lateral (LCx or diagonal). V1–V4 = LAD.",
+    "V1 elevation + new RBBB = proximal LAD. Q waves without ST elevation = old infarct."
+   ]
+  },
+  {
+   "q": "P12-304",
+   "text": "When the ECG hides the infarct: posterior, RV, LBBB and left main",
+   "open": {
+    "v": 1,
+    "text": "The last section assumed the infarct would announce itself: ST elevation, in two leads that face the injured wall. This section is about the four times it doesn't.\n\nTwice, the leads are in the wrong place. The standard twelve don't face the posterior wall or the right ventricle. Once, the QRS is in the way. In left bundle branch block the ST segment is already displaced, and the ordinary rule can't be read. And once, the ischaemia is everywhere at the same time. A left main or three-vessel problem doesn't raise the ST segment over one wall. It depresses it across the whole ECG.\n\n[[ST depression isn't always the lesser diagnosis. In V one to V three it can be a posterior occlusion. In many leads, with elevation in aVR, it can be the left main.]]\n\nFour cards: posterior and right ventricular infarction, the Sgarbossa criteria, the pathway for left bundle with chest pain, and the left main pattern.\n\nThe trap to listen for is anatomical. Right ventricular infarction needs a proximal occlusion of the right coronary, and the exam offers you distal.\n\nStart behind the heart."
+   },
+   "steps": [
+    {
+     "card": "CVS10B|MI-22",
+     "bridge": "Two walls hid because no lead faced them. The next infarct hides behind the QRS itself.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with the wall that no lead faces. The posterior wall of the left ventricle lies against the back, and every chest lead sits in front. So how could you see an injury there?\n\nIn a mirror. V one to V three look at the anterior wall, directly opposite. Whatever the posterior wall does electrically, they record upside down. Posterior ST elevation appears in V one to V three as ST depression. The posterior Q wave appears as a tall R wave, with the R equal to or larger than the S in V one and V two. And the posterior T inversion appears as an upright T. So the clue on the card is ST depression in V one to V three with a positive terminal T wave. In a patient with ongoing pain, horizontal ST depression that's deepest in V one to V three is a posterior STEMI until you've proved otherwise.\n\nYou prove it by walking the electrodes round the back, at the same level as V six. V seven at the posterior axillary line. V eight at the mid-scapular line. V nine beside the spine. The threshold there is only half a millimetre, because those leads are far from the heart and record small voltages. The usual culprit is the left circumflex, and circumflex occlusions are the ones most often missed on a standard ECG.\n\n{{**Posterior MI:** ST depression V1–V3, tall R, upright T\nV7 posterior axillary | V8 mid-scapular | V9 paraspinal\nST elevation **≥ 0.5 mm**; usually **LCx**\n**RV MI:** V4R, right mid-clavicular line, 5th space\nST elevation **≥ 1 mm**; **proximal RCA**}}\n\n[[Posterior infarction shows as ST depression with a tall R and an upright T in V one to V three. Confirm with half a millimetre of elevation in V seven to V nine. The usual artery is the circumflex.]]\n\nNEET's wrong option is anterior ischaemia, because that's where the changes are. Marrow asks it as a matching question: posterior MI goes with the tall R and ST depression in V one and V two.\n\nThe posterior wall has one more consequence, and a grand test asked it. The mitral valve hangs on two papillary muscles. The anterolateral one has a double blood supply. The posteromedial one has a single supply, from the posterior descending artery. So an inferior or posterior infarct can knock out that muscle alone. The stem: chest pressure, posterior changes, a new holosystolic murmur at the apex, crackles, and a preserved blood pressure. Why is the patient breathless? Not from systolic failure of the ventricle. From acute ischaemic mitral regurgitation.\n\nNow the right ventricle. The lead for it is V four R, the mirror of V four: the right mid-clavicular line in the fifth intercostal space. One millimetre of ST elevation there strongly suggests right ventricular infarction. The Universal Definition accepts half a millimetre, or one millimetre in men under thirty. The elevation is transient, so record V four R early in every inferior STEMI.\n\nThink about the anatomy and the trap disappears. The branches to the right ventricle leave the right coronary artery high up. So the right ventricle infarcts only when the occlusion is proximal, above those branches. A distal occlusion spares it. Marrow asked for the incorrect statement about shock from right ventricular infarction, and the incorrect statement was that it's due to distal occlusion of the right coronary.\n\nYou met this patient in the shock packets. The right ventricle fails, so the right atrial pressure is high and the neck veins are full. But little blood reaches the lungs, so they're clear. The left ventricle is often only mildly impaired. The patient depends on preload. So you give volume to a right atrial pressure of about ten to fifteen millimetres of mercury, then an inotrope, and you keep the atria and ventricles in sequence. Nitrates and diuretics take away the preload that's keeping this patient alive.\n\n[[Right ventricular infarction means a proximal right coronary occlusion: high right atrial pressure, clear lungs, preload dependent. Give volume, and avoid nitrates and diuretics.]]\n\nTwo walls were hidden because no lead faced them. The next infarct hides although every lead is looking straight at it."
+     }
+    },
+    {
+     "card": "CVS10B|MI-23",
+     "bridge": "Sgarbossa gives you a score. Now the pathway: what to do with LBBB and chest pain.",
+     "lesson": {
+      "v": 1,
+      "text": "In left bundle branch block every lead faces the heart, and you still can't read the ST segment. Here's why.\n\nWith the left bundle blocked, the left ventricle is activated late, from the right side. Depolarisation is abnormal, so repolarisation is too, and the ST segment points away from the main QRS deflection. Where the QRS is negative, as in V one to V three, the ST is elevated every day of the patient's life. That's appropriate discordance, and it makes the one millimetre rule useless.\n\nSgarbossa's idea was to look for what left bundle can't do. Concordant ST elevation of one millimetre or more, in a lead where the QRS is positive: five points. Concordant ST depression of one millimetre or more in V one to V three, where the ST ought to be up: three points. And discordant ST elevation of five millimetres or more. That's the right direction, but too much of it. It's only an exaggeration of normal, so it scores two.\n\n{{**Sgarbossa**\nConcordant ST elevation ≥ 1 mm, QRS positive | **5**\nConcordant ST depression ≥ 1 mm in V1–V3 | **3**\nDiscordant ST elevation ≥ 5 mm, QRS negative | **2**\n**≥ 3** = MI, specificity > 90%}}\n\nA score of three or more diagnoses infarction with a specificity above ninety percent. So either concordant criterion is enough alone, and the five millimetre criterion alone is not.\n\n[[Sgarbossa: concordant ST elevation scores five, concordant ST depression in V one to V three scores three, discordant elevation of five millimetres scores two. Three or more rules infarction in.]]\n\nThe trap runs the other way. Sensitivity is poor, between a fifth and a third, so a score of zero excludes nothing.\n\nTwo last lines. A ventricular paced rhythm behaves like left bundle, so the criteria apply, with less specificity. And a new left bundle branch block, taken alone, is no longer a STEMI equivalent. It warrants investigation. With ongoing ischaemic pain it's a different matter, and that's the next card."
+     }
+    },
+    {
+     "card": "CVS10B|MI-24",
+     "bridge": "Three hiding places done. In the fourth, the ischaemia is everywhere at once.",
+     "lesson": {
+      "v": 1,
+      "text": "So a patient arrives with chest pain and left bundle branch block. The pathway on this card asks three questions in order, and a yes to any one of them means reperfusion: primary PCI, or fibrinolysis if PCI isn't available.\n\nThe first question isn't about the ECG at all. Is the patient haemodynamically unstable, or in acute heart failure? If so, you stop there and reperfuse. Someone in shock or pulmonary oedema with ischaemic pain has too much to lose while you hunt for criteria.\n\nThe second question is Sgarbossa. A score of three or more, reperfuse.\n\nThe third question is the refinement that Smith added. Sgarbossa's weakest criterion used a fixed five millimetres, and that ignores the size of the complex. A huge S wave will drag up a large ST segment innocently, and a small one won't. So Smith measured the ST elevation as a proportion of the S wave before it. If the ST elevation is a quarter or more of the depth of the S wave, the discordance is excessive. On the card that's written as a ratio of ST to S of minus zero point two five or beyond, and the minus sign is there only because the two point in opposite directions. Scaling it this way makes the test far more sensitive.\n\n{{**Chest pain + LBBB**\n1 Unstable or acute HF? → reperfuse\n2 Sgarbossa ≥ 3? → reperfuse\n3 ST/S ≤ −0.25? → reperfuse\nAll no → serial ECG, serial troponin, bedside echo\nAbnormal → angiography | Normal → non-invasive testing}}\n\nAnd if all three answers are no? Most left bundle with chest pain is not an occlusion. So you let time work: serial ECGs, serial troponins, and a bedside echo for a regional wall motion abnormality. If those are abnormal, coronary angiography. If normal, a non-invasive evaluation.\n\n[[Left bundle branch block with chest pain: instability, Sgarbossa of three or more, or an ST to S ratio of a quarter or more each mean reperfusion. If none, serial ECG, troponin and echo.]]\n\nThe grand test asked the first branch. Chest pain, new left bundle branch block, hypotension, cardiogenic shock. Next step? Treat as a STEMI equivalent. Nine in ten were right. The wrong options are the patient ones: repeat the ECG in fifteen minutes, or trend the troponin. The European guideline says the same thing more simply. Bundle branch block or a paced rhythm, with a strong suspicion of ongoing ischaemia, is managed like a STEMI.\n\nThree hiding places are done. In the fourth the ischaemia doesn't hide in a corner. It's everywhere at once."
+     }
+    },
+    {
+     "card": "CVS10B|MI-25",
+     "bridge": "Without ST elevation the diagnosis rests on one blood test. Time to understand troponin.",
+     "lesson": {
+      "v": 1,
+      "text": "What would the ECG show if the whole left ventricle became ischaemic at once? That's the left main, or disease of all three vessels.\n\nIschaemia starts in the subendocardium, the inner layer, furthest from the epicardial arteries and squeezed hardest in systole. When it's circumferential, the ST vector points towards the cavity and away from the surface leads. Nearly every lead looks at the heart from outside, so nearly every lead records ST depression. One lead looks into the cavity from the right shoulder. That's aVR, and it records ST elevation.\n\nSo the pattern is ST depression of one millimetre or more in many leads, with ST elevation in aVR, in V one, or in both. It means left main disease, a left main equivalent, or severe three-vessel ischaemia. How many leads? The card says eight, which was the figure in the older European STEMI guideline. The Universal Definition and the European guideline of twenty twenty-three say six or more. If the stem says eight, don't argue. If it says six, that's the current number.\n\n[[ST depression of at least one millimetre in six or more leads, eight on the card, with ST elevation in aVR or V one, means left main or severe three-vessel ischaemia.]]\n\nBe clear about what this is. It's diffuse ischaemia, not the occlusion of one territory. So it's a very high-risk pattern, and it calls for urgent angiography.\n\nNow the ordinary ECG of the non-ST-elevation syndromes. Two changes count. ST depression of half a millimetre or more that's horizontal or downsloping, in two contiguous leads. Upsloping depression is what any tachycardia produces. And T wave inversion, deeper than one millimetre, in leads with a prominent R wave or an R to S ratio above one.\n\n{{**Left main / 3-vessel:** ST depression ≥ 1 mm in ≥ 6 leads (card: 8) + ST elevation in aVR and/or V1\n**NSTE-ACS:** ST depression ≥ 0.5 mm, horizontal or downsloping\nT inversion > 1 mm, in leads with R/S > 1\n**Normal ECG + troponin rise = still NSTEMI**}}\n\nAnd the third possibility is the one the banks test: nothing at all. A completely normal ECG doesn't exclude an infarct. You've met both questions already. Chest pain, blood pressure one eighty over one ten, no ECG changes, troponin slightly raised: NSTEMI. Chest pain, lateral T inversion, troponin raised, stable: NSTEMI. In each the wrong option is unstable angina, and in each the troponin decides.\n\n[[NSTEMI is a troponin diagnosis. The ECG may show ST depression, T inversion or nothing, and a normal ECG with a troponin rise is still NSTEMI.]]\n\nMarrow adds one about likelihood. Which finding does not indicate a high likelihood of an acute coronary syndrome? The high likelihood list is known coronary disease or documented angina, a transient mitral regurgitation murmur or hypotension during the pain, new ST deviation of a millimetre or more, or T inversion in several chest leads. The odd one out is T wave flattening, or inversion of less than a millimetre, in leads with a dominant R wave. That's a low likelihood finding.\n\nThe ECG has now told you everything it can. For every patient without ST elevation, the diagnosis rests on one blood test. So it's time to understand that test."
+     }
+    }
+   ],
+   "spine": [
+    "Posterior MI: ST depression + tall R + upright T in V1–V3; confirm with V7–V9 ≥0.5 mm; usually LCx.",
+    "Posteromedial papillary muscle has a single supply (PDA): inferior or posterior MI → acute MR.",
+    "RV MI: V4R ≥1 mm; proximal RCA; high RAP, clear lungs; volume, no nitrates or diuretics.",
+    "LBBB: Sgarbossa concordant STE 5, concordant STD V1–V3 3, discordant STE ≥5 mm 2; ≥3 rules in (specificity >90%); a low score does not rule out.",
+    "LBBB + chest pain: unstable, Sgarbossa ≥3 or ST/S ≤ −0.25 → reperfuse; otherwise serial ECG, troponin, echo.",
+    "ST depression in ≥6 leads (card: 8) + ST elevation in aVR/V1 = left main or 3-vessel. Normal ECG + troponin rise = NSTEMI."
+   ]
+  },
+  {
+   "q": "P12-305",
+   "text": "Troponin: kinetics, high sensitivity and the fast algorithms",
+   "open": {
+    "v": 1,
+    "text": "Go back to the two halves of the definition. For three sections you've gathered evidence of ischaemia: the pain, the examination, the ECG. This section is the other half. The injury, measured by troponin.\n\nOnly a minority of infarcts show ST elevation. For the others the diagnosis rests on a blood test, and on how that test changes over an hour or two. So you need to know the molecule: what it is, when it rises, how long it stays, and how the high-sensitivity assays turned a twelve hour wait into one hour.\n\n[[One troponin value tells you there is injury. The change between two values tells you the injury is acute. Every fast algorithm is built on that.]]\n\nSix cards: the molecule, the kinetics of each marker, the high-sensitivity assay, and then three on the algorithms.\n\nTwo traps. The first card has two of its rows the wrong way round, and I'll correct them as we go. And for re-infarction, old teaching says CK-MB, while the current answer is troponin.\n\nStart inside the sarcomere."
+   },
+   "steps": [
+    {
+     "card": "CVS10B|MI-29",
+     "bridge": "One fast pool, one slow pool. That is the whole shape of the troponin curve.",
+     "lesson": {
+      "v": 1,
+      "text": "Why troponin? Because of where it sits and how specific it is.\n\nTroponin is the switch on the thin filament, a complex of three subunits, and the letters tell you the jobs. Troponin C binds calcium. Troponin I is inhibitory: it blocks the interaction of actin and myosin. Troponin T binds tropomyosin. You met troponin C in the last packet, as the target of levosimendan.\n\n[[Troponin T binds tropomyosin, troponin I inhibits the actin and myosin interaction, and troponin C binds calcium.]]\n\nNow a warning. The card has two rows reversed. It gives T as the inhibitor and I as the binder of tropomyosin. Answer by the biochemistry. It also gives troponin T the multiple reference levels. In fact high-sensitivity troponin T comes from a single manufacturer and has one ninety-ninth centile, fourteen nanograms per litre. It's troponin I that has many assays, each with its own limit.\n\n{{ | **Troponin T** | **Troponin I**\nRole | binds **tropomyosin** | **inhibits** actin–myosin\nCardiac specificity | lower | **higher**\nReference level | **single** (14 ng/L) | multiple, by assay\nCytoplasmic pool | 6% | 3%\nCard rows 1 and 3 are reversed}}\n\nOne row to reason out. Cardiac troponin I is the more specific, because diseased skeletal muscle can express cardiac troponin T again. So in a myopathy, troponin T may be raised with a healthy heart.\n\nThe last row sets up the next card. Most troponin is bound into the filament. A small fraction floats free in the cytoplasm, classically six percent of troponin T and three percent of troponin I. When the membrane fails, the free pool leaks first, and the bound pool follows slowly. One fast pool and one slow pool. That's the whole shape of the troponin curve."
+     }
+    },
+    {
+     "card": "CVS10B|MI-30",
+     "bridge": "Three to twelve hours was a long wait. The high-sensitivity assay ended it.",
+     "lesson": {
+      "v": 1,
+      "text": "Two pools, one fast and one slow. Now watch every marker follow from where it sits in the cell and how it leaves the blood.\n\nMyoglobin is small and lies free in the cytoplasm, and the kidney clears it quickly. So it's first in and first out. It rises in two to four hours, peaks at eight to twelve, and is gone within twenty-four. But it's in every muscle of the body, so it's the least specific.\n\nCK-MB is an enzyme of the cytoplasm, and a larger molecule. It rises at four to six hours, peaks at about twenty-four, and is normal again by forty-eight to seventy-two hours. Skeletal muscle holds a little of it too.\n\nTroponin has the two pools. The free pool gives the early rise, at three to twelve hours on the older assays. The bound pool keeps leaking for days as the dead filaments are dismantled. So troponin I peaks at about twenty-four hours and takes around ten days to return to normal. Troponin T, with its larger pool and slower release, peaks at twelve to forty-eight hours and stays up for as long as fourteen days.\n\n{{**Marker** | **Rises** | **Peaks** | **Normal by**\nMyoglobin | 2–4 h | 8–12 h | 24 h\nCK-MB | 4–6 h | 24 h | 48–72 h\nTroponin I | 3–12 h | 24 h | 7–10 days\nTroponin T | 3–12 h | 12–48 h | 14 days}}\n\nSo the order of disappearance is the thing to hold. Myoglobin is gone in a day, CK-MB in two to three days, troponin I in about ten days and troponin T in about fourteen.\n\nThe first bank question hands you a profile and asks for the marker. It rises at three to six hours, peaks at twelve to twenty-four, and is back to baseline in seven to ten days. That's troponin I. About a third went wrong, and CK-MB is the lure, because its rise and its peak look alike. The discriminator is the tail. CK-MB is gone in three days. Only troponin lasts a week or more.\n\nThe second question is about re-infarction, and the card carries the old teaching. A patient has new chest pain on day three. The first infarct's troponin is still high, so the old answer was CK-MB, which would have returned to normal and could rise again. That logic is sound. But the Universal Definition and the guidelines now use troponin for this as well. You take a sample at the onset of the new symptoms and another three to six hours later. If the first is stable or falling, a rise of more than twenty percent in the second is a re-infarction. Marrow keys troponin. CK-MB is for where troponin isn't available.\n\n[[Re-infarction is diagnosed with troponin: a rise of more than twenty percent between a sample at symptom onset and one three to six hours later. CK-MB only if troponin is unavailable.]]\n\nThe third question came from a grand test, and only a little over half got it. Which biomarker is released faster than troponin and improves early rule-in and rule-out when it's added? Cardiac myosin-binding protein C. It's restricted to the heart, it's more abundant than troponin, and it's released faster. The other early add-on is copeptin, a fragment of the vasopressin precursor and a marker of acute stress. It's most useful where only a conventional troponin is available. The distractors are ischaemia-modified albumin, BNP and a micro RNA. None of them is used to diagnose an infarct. And myoglobin isn't the modern answer, because high-sensitivity troponin has overtaken it.\n\n[[The early markers added to high-sensitivity troponin are cardiac myosin-binding protein C and copeptin. Not myoglobin, BNP or ischaemia-modified albumin.]]\n\nNotice the phrase that kept recurring: on the older assays. Three to twelve hours was a long time to wait with a patient in the corridor. The next card is the assay that ended the wait."
+     }
+    },
+    {
+     "card": "CVS10B|MI-31",
+     "bridge": "A very low value rules out; a change rules in. Turn that into a flowchart: first the older one.",
+     "lesson": {
+      "v": 1,
+      "text": "A conventional assay couldn't see troponin in a healthy person. So the card lists three limitations of the first-generation assays: low sensitivity and specificity, a poor negative predictive value, and poor performance when the injury was early or small. An early normal result excluded nothing, and patients waited six to twelve hours for a repeat.\n\nA high-sensitivity assay can measure troponin in most healthy people, and that changes two things. A very low value now means something: the myocardium is quiet. And a small rise becomes measurable within an hour. On the card, one sample has a negative predictive value of about ninety-five percent, and a repeat at one or two hours takes it to nearly a hundred.\n\nTwo numbers for troponin T. Fourteen nanograms per litre is the ninety-ninth centile, the line that defines injury. The card's three to five is the very low zone, near the limit of detection, and the European pathway uses a value under five as its single-sample rule-out.\n\n{{**hs-cTnT**\n99th centile, defines injury: **14 ng/L**\nVery low, single-sample rule-out: **< 5 ng/L**, if pain began > 3 h ago\nNPV: one sample ~95%; with a 1–2 h repeat ~100%}}\n\n[[For high-sensitivity troponin T, fourteen nanograms per litre is the ninety-ninth centile and defines injury. Below five is the very low value that can rule out on one sample.]]\n\nTwo short lines. The assay performs better in chronic kidney disease than the conventional ones did. But kidney disease raises the baseline, so there the change matters more than the level. And a higher troponin predicts a worse outcome in acute coronary syndromes, heart failure and stable coronary disease.\n\nA very low value rules out, and a change rules in. Turn those two ideas into a flowchart and you have the algorithms. The older one first."
+     }
+    },
+    {
+     "card": "CVS10B|MI-32",
+     "bridge": "The 0 h/3 h pathway is now the fallback. The current first choice takes one hour.",
+     "lesson": {
+      "v": 1,
+      "text": "The zero and three hour pathway is the one in your notes. Know its logic, and then its present standing, because that's the trap.\n\nIt uses one cut-off, the upper limit of normal, which is the ninety-ninth centile. And it uses one clinical fact: an infarct more than six hours old must already have raised the troponin.\n\nSo if the first troponin is below the limit and the pain began more than six hours ago, one sample is enough. A pain-free patient with a GRACE score below one hundred and forty, and the differentials excluded, can go home or to stress testing. If the pain began less than six hours ago, retest at three hours. A change between the samples, with one value above the limit, means invasive management. A value more than five times the limit with a typical picture goes straight there. And a raised value that doesn't change is chronic injury, so look for another cause.\n\n{{**0 h / 3 h (older ESC)**\n< ULN, pain > 6 h → discharge if pain-free, GRACE < 140, differentials excluded\n< ULN, pain < 6 h → retest at 3 h\nChange + one value > ULN → invasive\n> 5 × ULN + typical picture → invasive\n> ULN, no change → look for another cause}}\n\n[[Zero and three hour pathway: below the limit with pain for over six hours, one sample is enough. Under six hours, retest at three. A change with one value above the limit means invasive management.]]\n\nNow its standing. The European guideline of twenty twenty-three puts the one hour or two hour algorithm first, and keeps this one only where those aren't available. NEET's wrong option is that zero and three hours is the current European first choice.\n\nSo what does the first choice look like?"
+     }
+    },
+    {
+     "card": "CVS10B|MI-33",
+     "bridge": "Three sources, three intervals. One short card sorts out which the stem wants.",
+     "lesson": {
+      "v": 1,
+      "text": "The one hour algorithm uses both ideas at once. Very low values rule out. Changes rule in. Its cut-offs sit well below the ninety-ninth centile and are specific to each assay.\n\nIt's for patients with suspected NSTEMI who don't already need the cath lab. With ST elevation, shock, refractory pain or a dangerous arrhythmia, you don't run an algorithm. You go.\n\nEveryone else is sorted into three groups. Rule-out: a very low first value, or a low first value with no rise at one hour. Rule-in: a high first value, or a rise at one hour. And everyone in between is observed, with a further troponin at three hours and usually an echo.\n\n{{**ESC 0 h / 1 h, hs-cTnT (ng/L)**\n**Rule out:** 0 h < 5 (pain > 3 h), or 0 h < 12 and Δ1 h < 3\n**Rule in:** 0 h ≥ 52, or Δ1 h ≥ 5\n**Observe:** everything else → 3 h troponin, echo}}\n\nThe numbers in the box are for high-sensitivity troponin T. You don't need them for any other assay. Try two. Troponin T of eight, then nine at one hour, pain-free, with a normal ECG: low and no rise, so rule out. Thirty, then thirty-one: that's above the ninety-ninth centile, so there is injury. But it's below the rule-in value and it hasn't moved. That's the observe zone, and it may well be chronic injury.\n\n[[Zero and one hour algorithm: very low, or low with no rise, rules out. High, or a rise, rules in. Everyone else is observed. It's only for patients who don't already need the cath lab.]]\n\nThe trap is the first door. A single very low value rules out only if the pain began more than three hours ago. One hour into the pain, a troponin of three has excluded nothing.\n\nThree sources, three intervals. One short card sorts out which the stem wants."
+     }
+    },
+    {
+     "card": "CVS10E|MI-75",
+     "bridge": "The algorithm rules a troponin rise in. It cannot tell you the cause. What else could it be?",
+     "lesson": {
+      "v": 1,
+      "text": "You have two pathways, and a third source appears in exams. This card lines them up, so you can answer by the source the stem names.\n\nThe European guideline of twenty twenty-three repeats at one hour, which is preferred, or at two. Your notes, following older European guidance, use three hours. The American life support algorithm of twenty twenty-five rechecks at one hour or at three.\n\n{{**Repeat troponin**\nESC 2023 | **0 h / 1 h** (preferred) or 0 h / 2 h; I, B\nNotes (older ESC) | 0 h / 3 h\nAHA 2025 ACLS | 1 h or 3 h\nConventional assay | 3–6 h}}\n\n[[The European guideline repeats high-sensitivity troponin at one hour, or two. The three hour schedule is the fallback. A conventional assay needs three to six hours.]]\n\nOne discriminator covers every version. Ask which assay. High-sensitivity means one to three hours. Conventional means three to six.\n\nThe algorithm has ruled a troponin rise in. But a rise is injury, and the algorithm can't tell you the cause. The last section is about what else it could be."
+     }
+    }
+   ],
+   "spine": [
+    "Troponin T binds tropomyosin, I inhibits actin–myosin, C binds calcium (card rows reversed). cTnI is more cardiac-specific; hs-cTnT has the single 99th centile, 14 ng/L.",
+    "Myoglobin rises 2–4 h, gone by 24 h; CK-MB 4–6 h, gone by 48–72 h; troponin 3–12 h, I lasts ~10 days, T ~14 days.",
+    "Re-infarction: troponin rise >20% (onset and 3–6 h later), not CK-MB. Early add-ons: cMyC and copeptin.",
+    "hs-cTn: a very low value rules out, a 1–2 h change rules in; >99th centile = injury, not necessarily MI.",
+    "ESC 0 h/1 h (hs-cTnT): rule out <5 (pain >3 h) or <12 with Δ<3; rule in ≥52 or Δ≥5; the rest observe.",
+    "ESC 2023: 0 h/1 h or 0 h/2 h (I, B); 0 h/3 h is the fallback. Conventional assay: 3–6 h."
+   ]
+  },
+  {
+   "q": "P12-306",
+   "text": "A raised troponin that is not an infarct, and the imaging that tells",
+   "open": {
+    "v": 1,
+    "text": "The troponin is up, and it's changing. The algorithm says rule in. Have you found an infarct?\n\nNot yet. You've found acute myocardial injury. That was the first lesson of this packet, and this last section returns to it. The one hour algorithm rules in with a positive predictive value of about seventy percent. So roughly three in every ten of those patients have something else.\n\nTwo questions, then. What else raises a troponin? There's an ischaemic list that isn't a plaque, and a longer list that isn't ischaemia at all. And which picture settles it? Echo, CT and cardiac MRI each answer a different question.\n\n[[A raised troponin starts a differential diagnosis. Treat the cause, not the number.]]\n\nFive cards: the ischaemic causes, the non-ischaemic causes, the imaging tests, then MINOCA, which is your third miss and has a new card of its own, and last the echo map of the coronary territories.\n\nThe trap to listen for is treatment by reflex. Dual antiplatelets for a troponin rise after a stroke can harm the patient.\n\nBegin with the causes that are still ischaemia."
+   },
+   "steps": [
+    {
+     "card": "CVS10A|MI-03",
+     "bridge": "All of that is still ischaemia. The longer list has no ischaemia in it at all.",
+     "lesson": {
+      "v": 1,
+      "text": "Sort every troponin rise by one question. Was the muscle starved of oxygen, or damaged some other way? This card is the ischaemic branch, and you've met its logic already in type one against type two.\n\nOne cause is the plaque: rupture or erosion with a thrombus. Everything else is an imbalance of supply and demand. Reduced perfusion has seven causes, in three kinds. Less flow down the artery: spasm or microvascular dysfunction, embolism, dissection. Less pressure or time to drive that flow: sustained bradyarrhythmia, hypotension or shock. Less oxygen in the blood: respiratory failure, severe anaemia. Increased demand has two causes: a sustained tachyarrhythmia, and severe hypertension with or without hypertrophy.\n\n{{**Plaque:** rupture or erosion + thrombus\n**Supply ↓:** spasm, microvascular dysfunction, embolism, dissection, bradyarrhythmia, hypotension or shock, respiratory failure, severe anaemia\n**Demand ↑:** tachyarrhythmia, severe hypertension ± LVH}}\n\n[[One ischaemic cause is the plaque. Everything else that starves or overworks the myocardium is supply and demand imbalance.]]\n\nThe trap is where the editions collide. Spasm, embolism and dissection are coronary, so they feel like type one. Under twenty eighteen, which this card follows, they're type two. Under twenty twenty-six they're primary MI.\n\nAll of that is still ischaemia. The longer list has none in it at all."
+     }
+    },
+    {
+     "card": "CVS10A|MI-04",
+     "bridge": "A long differential. Lists don't settle it; pictures do.",
+     "lesson": {
+      "v": 1,
+      "text": "Now the troponin rises that have nothing to do with oxygen supply. The card gives nine cardiac causes and eight systemic ones. Don't count them. Learn the mechanisms, and the lists rebuild themselves.\n\nAmong the cardiac causes there are four ways to damage a myocyte while the coronaries stay open. Stretch and wall stress: heart failure and the cardiomyopathies. Inflammation: myocarditis. Catecholamine toxicity: Takotsubo. And direct physical injury: revascularisation and other cardiac procedures, catheter ablation, defibrillator shocks, cardiac contusion.\n\nThe systemic causes work through the same routes at one remove. Sepsis injures through cytokines and hypotension. A pulmonary embolus strains the right ventricle. Stroke and subarachnoid haemorrhage release a surge of catecholamines. Amyloid and sarcoid infiltrate. Chemotherapy poisons. Strenuous exercise and critical illness stress the heart. And chronic kidney disease gives a troponin that's raised and stable, so in that patient the change matters more than the value.\n\n{{**Cardiac:** heart failure, myocarditis, cardiomyopathy, Takotsubo, revascularisation, other procedures, ablation, defibrillator shocks, contusion\n**Systemic:** sepsis, CKD, stroke or SAH, PE, infiltrative disease, chemotherapy, critical illness, strenuous exercise}}\n\nTwo of these are examined, and in both the wrong answer is to treat the troponin as an acute coronary syndrome.\n\nThe first is a previous year question, repeated in a grand test. A woman has chest pain after the death of her son. The ECG shows ST elevation. The angiogram shows no obstructive lesion. The answer is Takotsubo cardiomyopathy. You met its discriminator in section three: a wall motion abnormality that crosses coronary territories, with unobstructed arteries. One point on treatment, because it reverses instinct. If the vigorous base of the heart obstructs the outflow tract and the patient is shocked, an inotrope makes it worse. You give fluid, a pure vasoconstrictor such as phenylephrine, and a beta-blocker.\n\nThe second is from Marrow. A patient with an acute stroke is thrombolysed with alteplase, and the troponin comes back raised. What is it, and what do you do? It's myocardial injury related to the stroke, from the catecholamine surge, classically when the insula is involved. It isn't an NSTEMI. So no dual antiplatelets and no anticoagulation for an acute coronary syndrome. And after alteplase, antiplatelets are held for twenty-four hours in any case.\n\n[[A troponin rise after an acute stroke is usually neurogenic myocardial injury, not NSTEMI. No antithrombotics for an acute coronary syndrome, and no antiplatelet for twenty-four hours after alteplase.]]\n\nA caution on that Marrow item, since its key is disputed. Twenty-one days of dual antiplatelets is the treatment for a minor stroke or a high-risk TIA that was not thrombolysed. It isn't started straight after alteplase. Answer by that rule.\n\nSo the troponin has a long differential. Lists don't settle it. Pictures do."
+     }
+    },
+    {
+     "card": "CVS10B|MI-34",
+     "bridge": "One patient is left: a rising troponin and open coronaries. Your third miss, on its own card.",
+     "lesson": {
+      "v": 1,
+      "text": "Each imaging test answers one question that the ECG and the troponin can't.\n\nEcho: is a wall not moving? Ischaemic muscle stops contracting within seconds, before the ECG changes. Echo also finds the mechanical complications. One rule on the card is absolute: it must not delay the transfer of a patient with STEMI.\n\nCT: is it a mimic? A pulmonary angiogram for embolism, an aortogram for dissection.\n\nCoronary CT angiography: are the coronaries clean? Its strength is the negative result. So it's for the patient whose ECG and troponin are normal or inconclusive, a class two A recommendation in Europe. NEET's wrong option gives it to a confirmed NSTEMI, who needs an invasive angiogram.\n\nCardiac MRI: what is the tissue? Gadolinium lingers where the space outside the cells is expanded, by scar or by inflammation, and the position of that late enhancement names the disease. An infarct starts at the subendocardium, the layer furthest from the supply, and stays within one coronary territory. Myocarditis enhances the middle of the wall or the subepicardium, and ignores territories. Takotsubo shows oedema with little or no scar.\n\n{{**TTE** | wall motion, complications; never delays STEMI transfer\n**CTPA / CT aortogram** | PE, aortic dissection\n**CCTA** | excludes ACS when ECG and troponin are normal or inconclusive (IIa)\n**CMR** | LGE subendocardial = infarct; mid-wall or subepicardial = myocarditis}}\n\n[[Late gadolinium enhancement that is subendocardial and follows a coronary territory is an infarct. Mid-wall or subepicardial enhancement is myocarditis.]]\n\nThat leaves the patient whom the angiogram doesn't explain. A rising troponin and open arteries. That's the question you missed, and it has a card of its own."
+     }
+    },
+    {
+     "card": "V12-004",
+     "bridge": "Last, the test in your own hand: which wall has stopped moving, and whose artery is it?",
+     "lesson": {
+      "v": 1,
+      "text": "Here is the patient. Chest pain, a troponin that rises and falls, perhaps ST changes. By the definition, that's an infarct. You go to the cath lab expecting a culprit, and there isn't one.\n\nThat's MINOCA, and it has three criteria. First, an acute myocardial infarction by the universal definition: the two halves, injury and ischaemia. Second, non-obstructive coronaries on angiography, meaning no stenosis of fifty percent or more in any major epicardial artery. Normal arteries count, and so do mild irregularities. Third, no obvious alternative cause for the presentation, such as sepsis or a pulmonary embolus.\n\nIt isn't rare. Somewhere between one in twenty and one in ten infarcts turn out this way. The patients are younger, they're more often women, and they present more often without ST elevation.\n\nNow the point you were asked in grand test eight. MINOCA is a working diagnosis. It's the name you give the problem on the day of the angiogram, and it obliges you to find the cause. Think of the causes in two groups.\n\nIn the first group the artery was the culprit after all, and the angiogram couldn't show it. A plaque that ruptured or eroded without narrowing the lumen. Spasm that has since relaxed. A spontaneous dissection. An embolus or thrombus that has dissolved. Or disease of the microvessels, which are too small to see.\n\nIn the second group it was never an infarct. Myocarditis. Takotsubo. Another cardiomyopathy. These are the mimics, and they're the reason the twenty twenty-six definition changed the I from infarction to injury.\n\n{{**MINOCA** = MI criteria + no stenosis ≥ 50% + no overt alternative cause\n**Coronary:** plaque rupture or erosion, spasm, SCAD, embolism, microvascular\n**Mimics:** myocarditis, Takotsubo, cardiomyopathy\n**Work-up:** review angiogram → **CMR** → OCT or IVUS → spasm testing}}\n\nThe work-up follows from the two groups. Look again at the angiogram for a missed dissection or a small occluded branch. Then cardiac MRI, which the European guideline recommends for MINOCA patients without an obvious cause. You've just learned why it works. Subendocardial enhancement in a coronary territory says true infarct. Mid-wall or subepicardial enhancement says myocarditis. Oedema with ballooning and no scar says Takotsubo. For the first group, imaging from inside the artery, with optical coherence tomography or intravascular ultrasound, finds the hidden plaque or dissection. And a provocation test can unmask spasm.\n\n[[MINOCA is an infarct by the definition with no coronary stenosis of fifty percent or more and no obvious alternative cause. It's a working diagnosis, and cardiac MRI is the key next test.]]\n\nSo in an MCQ, when the angiogram of an infarct shows less than fifty percent stenosis, the label is MINOCA, and the next step is to look for the cause with cardiac MRI. NEET's wrong options close the case. Open coronaries, so reassure and discharge. Or call it an infarct and send every patient home on dual antiplatelets. Treatment follows the cause that's found.\n\n[[Less than fifty percent stenosis doesn't mean a healthy heart. It means the cause hasn't been found yet.]]\n\nOne test remains, and it's the one you'll hold in your own hand at the bedside. Which wall has stopped moving, and whose artery is that?"
+     }
+    },
+    {
+     "card": "CVS10B|MI-35",
+     "bridge": null,
+     "model": {
+      "view": "PSAX-PM",
+      "turn": 0,
+      "tilt": 0,
+      "camera": "probe",
+      "show": [
+       "chest",
+       "labels"
+      ],
+      "path": "normal",
+      "phase": "play",
+      "mmode": "none",
+      "highlight": [
+       "LV",
+       "septum"
+      ]
+     },
+     "lesson": {
+      "v": 1,
+      "text": "{{**Model:** parasternal short axis at the papillary muscles. The left ventricle is cut as a circle; the LV walls and the septum are highlighted. Front of the circle LAD, side LCx, bottom RCA.}}\n\nYou learned the echo views in Shock One, so here's only a reminder. From the parasternal long axis, rotate the probe ninety degrees clockwise and the left ventricle becomes a circle. Now use that circle the way you used the ECG leads. Each wall has an artery.\n\nThe principle is the one from the imaging card. Muscle that loses its supply stops thickening within seconds. So a wall that doesn't thicken and move inward points to the artery that feeds it.\n\nLook at the model. At the level of the papillary muscles, the short axis cuts through all three coronary territories at once. The front of the circle, the anterior wall and the front of the septum, belongs to the LAD. The side, the lateral wall, belongs to the circumflex. The bottom, the inferior wall and the lower septum, belongs to the right coronary.\n\n[[The mid short axis view shows all three coronary territories in one image: anterior LAD, lateral circumflex, inferior right coronary. That's why it's the view for regional wall motion.]]\n\nThat is the bank question. The probe is rotated ninety degrees clockwise from the long axis, and the left ventricle appears circular. What's the main advantage of this view? Evaluating regional wall motion of the left ventricle. About six in ten got it. The wrong options were measurements made with Doppler from the apex: the outflow tract gradient and the stroke volume.\n\nThe apical views complete the map. In the four-chamber view, the septum and the apex are LAD, and the lateral wall is circumflex, occasionally right coronary. In the two-chamber view, the inferior wall is right coronary, and the anterior wall opposite it is LAD.\n\n{{**A4C** | septum, apex: **LAD** | lateral: **LCx**\n**A2C** | inferior: **RCA** | anterior: LAD\n**PSAX** | anterior: **LAD** | lateral: **LCx** | inferior: **RCA**}}\n\nAnd one discriminator ties off the section. A regional abnormality within one territory is coronary. Global hypokinesis is cardiomyopathy, sepsis or myocarditis. An abnormality that crosses territories is Takotsubo.\n\nNow look at what you can do. Define an infarct and name its type. Hear it in the history. Read it on the ECG, even where it hides. Time it with troponin, and tell it from the injuries that only resemble it. You've recognised the infarct. And from the moment you recognise it, a clock starts, and every minute on it is muscle. What you do against that clock is the next packet."
+     }
+    }
+   ],
+   "spine": [
+    "A troponin rise is injury. Ischaemic causes: the plaque (type 1) or supply–demand (spasm, embolism, dissection, brady- or tachyarrhythmia, shock, hypoxaemia, anaemia, hypertension).",
+    "Non-ischaemic: heart failure, myocarditis, Takotsubo, procedures, sepsis, CKD, stroke/SAH, PE. Treat the cause, not the number.",
+    "Stroke + troponin rise = neurogenic injury: no ACS antithrombotics; no antiplatelet for 24 h after alteplase.",
+    "TTE: wall motion, never delays STEMI. CT: PE, dissection. CCTA: excludes ACS when tests are equivocal. CMR: subendocardial LGE = infarct; mid-wall/subepicardial = myocarditis.",
+    "MINOCA: MI + no stenosis ≥50% + no other cause; a working diagnosis; CMR next.",
+    "PSAX at mid-papillary level shows all three territories: anterior LAD, lateral LCx, inferior RCA. RWMA crossing territories = Takotsubo."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's go back to the three patients from the beginning, and name each one properly.\n\nThe man with chest pain and ST elevation has a type one infarct. Plaque, clot, an artery shut. His ECG made the diagnosis before any troponin came back, and you read the territory from the leads.\n\nThe woman with the bleeding ulcer has a type two infarct. Her arteries may be fine. Her heart is starved because there's too little blood carrying too little oxygen, too fast. And her treatment is blood and an endoscope, not heparin.\n\nThe young man in septic shock has a raised troponin. Without symptoms, ECG changes or a new wall-motion abnormality, that's myocardial injury, not an infarct at all.\n\nNow the traps. These are the ones NEET sets, and three of them you've already met in your grand tests.\n\nOne. A raised troponin in a septic patient. The tempting answer is NSTEMI. It's myocardial injury, until ischaemia is shown.\n\nTwo. Anaemia, fast atrial fibrillation, low pressure, a troponin rise and no culprit lesion. The tempting answer is myocarditis. [[A troponin rise driven by a supply and demand mismatch, with no clot in the artery, is a type two infarct.]] You missed this one.\n\nThree. Type three. The tempting answer is the silent infarct found later on an ECG. [[Type three is cardiac death with ischaemic features, before blood could be taken for troponin, or before it could rise.]] Another miss.\n\nFour. An infarct with arteries that are open on the angiogram. The tempting answer is that open arteries are reassuring. MINOCA, with less than fifty percent stenosis, is a working diagnosis that demands a cause. A third miss.\n\nFive. ST depression in V one to V three. The tempting answer is anterior ischaemia. With tall R waves and upright T waves, it's a posterior infarct seen in the mirror. Put on leads V seven to V nine.\n\nAnd six. A new left bundle branch block in a patient who is in shock. The tempting move is to repeat the ECG and wait for troponin. Instability is the first branch of the algorithm. Treat it as a STEMI now.\n\nThe check comes up on the next screen. Answer each one in your head before you tap it open.\n\nAnd now the clock starts. You've recognised the infarct. The next packet is about what you do with the minutes."
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "Chest pain, lateral T inversion (or a normal ECG), troponin raised. NSTEMI or unstable angina?",
+   "a": "NSTEMI. Unstable angina has no troponin rise; the ECG does not decide (DocT 71%, 68%; GT AIM1 85%)."
+  },
+  {
+   "q": "Hb 6.2, AF with rapid ventricular rate, hypotension, troponin rise, no culprit lesion. Diagnosis?",
+   "a": "Type 2 MI (supply–demand), not myocarditis (GT7 Q98, missed). Treat the stressor."
+  },
+  {
+   "q": "Chest pain, then VF and death before any blood could be drawn. MI type (UDMI 2018)?",
+   "a": "Type 3 (GT8 Q21, missed). Always a death; a silent MI found later is not type 3."
+  },
+  {
+   "q": "Elective PCI, normal baseline, hs-cTn 6× URL afterwards; no symptoms, ECG and echo unchanged. Classify.",
+   "a": "Procedural myocardial injury, not type 4a MI: >5× needs new ischaemic evidence as well (DocT GT2, 23%)."
+  },
+  {
+   "q": "Troponin thresholds and window for type 4a and type 5 MI (UDMI 2018)?",
+   "a": "PCI >5×, CABG >10× the 99th centile, within 48 h, plus new ischaemic evidence. Raised stable baseline: rise >20% and still above the multiple."
+  },
+  {
+   "q": "MI from stent thrombosis: UDMI 2018 type? And under UDMI 2026?",
+   "a": "Type 4b (4c = restenosis). 2026: procedure-related MI if ≤30 days, primary MI if >30 days."
+  },
+  {
+   "q": "New chest pain and ST elevation in the stented territory hours (or 2 months) after PCI. Next step?",
+   "a": "Acute stent thrombosis = STEMI: DAPT and urgent repeat angiography/PCI. Not nitrates, echo first or thrombolysis (DocT GT 48%; NEET 2025)."
+  },
+  {
+   "q": "MI on troponin and symptoms, angiogram shows <50% stenosis. Label and next test?",
+   "a": "MINOCA: a working diagnosis that demands a cause. Cardiac MRI next (GT8 Q22, missed)."
+  },
+  {
+   "q": "SCAD causing MI: 2018 type, 2026 category, and the associated arteriopathy?",
+   "a": "2018: type 2 (supply side). 2026: primary MI. Fibromuscular dysplasia (up to ~80%): screen renal, iliac and cerebral arteries."
+  },
+  {
+   "q": "Which chest pain feature does NOT raise the likelihood of MI: nausea, pressure, right-arm radiation, sharp?",
+   "a": "Sharp (DocT GT6, 76%). Right-arm or bilateral radiation raises it most (LR 4–5)."
+  },
+  {
+   "q": "ST-elevation thresholds in V2–V3, and in all other leads?",
+   "a": "V2–V3: 2.5 mm men <40, 2.0 mm men ≥40, 1.5 mm women. Elsewhere 1 mm. At the J point, two contiguous leads; not valid in LBBB or LVH."
+  },
+  {
+   "q": "Asymptomatic 29-year-old athlete, concave J-point elevation V3–V5, no reciprocal change. Diagnosis?",
+   "a": "Early repolarisation (DocT GT). Pericarditis would add PR depression and widespread leads; STEMI is convex with reciprocal depression."
+  },
+  {
+   "q": "Inferior STEMI: which pattern says RCA and which says LCx?",
+   "a": "RCA: ST elevation III > II with reciprocal depression in aVL/I. LCx: II ≥ III with ST elevation in I, aVL or V5–V6."
+  },
+  {
+   "q": "ST elevation in V1 with a new RBBB. Culprit?",
+   "a": "Proximal LAD: the first septal perforator supplies the right bundle (Marrow ×2)."
+  },
+  {
+   "q": "Breathless known-CAD patient, Q waves in I, aVL, V5, no ST elevation. Diagnosis?",
+   "a": "Old (healed) lateral MI, not ACS (DocT 46%). Q waves are scar; ST elevation is acute injury."
+  },
+  {
+   "q": "ST depression with tall R and upright T in V1–V3 during chest pain. What is it, how do you confirm it, which artery?",
+   "a": "Posterior MI. V7–V9 ST elevation ≥0.5 mm. Usually the left circumflex."
+  },
+  {
+   "q": "Shock from RV infarction: where is the occlusion, and what do you avoid?",
+   "a": "Proximal RCA, above the RV marginal branches (Marrow: 'distal' is the false statement). V4R ≥1 mm. Give volume; avoid nitrates and diuretics."
+  },
+  {
+   "q": "Posterior/inferior MI, new apical holosystolic murmur, crackles, preserved BP. Mechanism of the dyspnoea?",
+   "a": "Acute ischaemic MR: the posteromedial papillary muscle has a single supply (PDA) (DocT GT)."
+  },
+  {
+   "q": "Sgarbossa criteria and points; what does a score of 0 mean?",
+   "a": "Concordant STE ≥1 mm = 5; concordant STD V1–V3 = 3; discordant STE ≥5 mm = 2. ≥3 rules in (specificity >90%). 0 does not rule out (low sensitivity)."
+  },
+  {
+   "q": "Chest pain, new LBBB, hypotension and cardiogenic shock. Next step?",
+   "a": "Treat as a STEMI equivalent: reperfusion (DocT GT, 91%). Instability is the first branch, before Sgarbossa or ST/S ≤ −0.25."
+  },
+  {
+   "q": "Marker that rises at 3–6 h, peaks at 12–24 h and is back to baseline in 7–10 days?",
+   "a": "Troponin I (DocT 69%). CK-MB is normal by 48–72 h; myoglobin by 24 h; troponin T lasts ~14 days."
+  },
+  {
+   "q": "Best biomarker for re-infarction on day 3? And the early add-on to hs-troponin?",
+   "a": "Troponin: >20% rise between onset and 3–6 h (Marrow), not CK-MB. Early add-on: cMyC (DocT GT 57%); copeptin is the other."
+  },
+  {
+   "q": "ESC 0 h/1 h with hs-cTnT: rule-out and rule-in values? Preferred ESC 2023 repeat interval?",
+   "a": "Rule out: <5 ng/L (pain >3 h) or <12 with Δ<3. Rule in: ≥52 or Δ≥5. Rest: observe. Repeat at 1 h (or 2 h), I B; 0 h/3 h is the fallback."
+  },
+  {
+   "q": "Troponin raised after alteplase for acute stroke. Cause and antiplatelet plan?",
+   "a": "Stroke-related (neurogenic) myocardial injury, not NSTEMI. No ACS antithrombotics; no antiplatelet for 24 h after alteplase (Marrow)."
+  },
+  {
+   "q": "Probe rotated 90° clockwise from PLAX, circular LV. Main advantage of this view?",
+   "a": "Regional wall motion: PSAX at mid-papillary level shows LAD (anterior), LCx (lateral) and RCA (inferior) territories at once (DocT 61%)."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "Raised troponin in a septic patient = NSTEMI",
+   "truth": "Troponin alone is myocardial injury. MI needs acute injury plus evidence of ischaemia (symptoms, ECG, Q waves, imaging or thrombus).",
+   "cards": [
+    "CVS10A|MI-01",
+    "CVS10B|MI-31"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "T inversion or a normal ECG with raised troponin = unstable angina",
+   "truth": "Unstable angina has no troponin rise. Troponin >99th centile with a rise/fall and ischaemic symptoms is NSTEMI whatever the ECG shows.",
+   "cards": [
+    "CVS10A|MI-05",
+    "CVS10B|MI-25",
+    "CVS10A|MI-11"
+   ],
+   "asked": "DocT QBank 71%; DocT QBank 68%; DocT GT AIM1 85%"
+  },
+  {
+   "trap": "T-wave inversion means STEMI",
+   "truth": "Only persistent ST elevation (or an equivalent) is STEMI.",
+   "cards": [
+    "CVS10A|MI-05"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Anaemia + fast AF + hypotension + troponin rise with no culprit lesion = myocarditis",
+   "truth": "Type 2 MI: supply–demand mismatch with no coronary thrombus. The stem supplies the stressors.",
+   "cards": [
+    "CVS10A|MI-07"
+   ],
+   "asked": "GT7 Q98 (missed)"
+  },
+  {
+   "trap": "BP 180/110, chest pain, normal ECG, small troponin rise = unstable angina (or aortic dissection)",
+   "truth": "NSTEMI is the key (probably type 2 from the hypertensive surge). Exclude dissection (both-arm BP) before antithrombotics, but the stem gives nothing specific for it.",
+   "cards": [
+    "CVS10A|MI-07",
+    "CVS10B|MI-25"
+   ],
+   "asked": "DocT QBank 68%"
+  },
+  {
+   "trap": "Treating a type 2 MI from a GI bleed with anticoagulation",
+   "truth": "Type 2 is the stressor: transfuse and stop the bleed. Antithrombotics are for type 1.",
+   "cards": [
+    "CVS10A|MI-07",
+    "CVS10E|MI-71"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Type 3 MI is the silent MI found later on ECG or imaging",
+   "truth": "Type 3 is cardiac death with ischaemic symptoms and new ECG change or VF, before biomarkers could be drawn or could rise.",
+   "cards": [
+    "CVS10A|MI-08"
+   ],
+   "asked": "GT8 Q21 (missed)"
+  },
+  {
+   "trap": "hs-cTn 6× URL after elective PCI with no symptoms, ECG or echo change = type 4a MI",
+   "truth": "The >5× bar is met but there is no new ischaemic evidence: procedural myocardial injury without infarction.",
+   "cards": [
+    "CVS10A|MI-09"
+   ],
+   "asked": "DocT GT2 23%"
+  },
+  {
+   "trap": "Any troponin above the 99th centile after PCI is periprocedural MI; or the CABG bar is 5×",
+   "truth": "PCI >5×, CABG >10×, within 48 h, plus evidence. Stent thrombosis = 4b; restenosis = 4c.",
+   "cards": [
+    "CVS10A|MI-09"
+   ],
+   "asked": "Marrow (type 4b; type 5)"
+  },
+  {
+   "trap": "SCAD, coronary embolism and spasm are type 1 because they are coronary (2018), or secondary MI (2026)",
+   "truth": "UDMI 2018: type 2 supply-side causes. UDMI 2026: primary MI. Answer by the edition the stem names; numbered options mean 2018.",
+   "cards": [
+    "CVS10A|MI-11",
+    "CVS10A|MI-03",
+    "CVS10E|MI-71"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Sepsis with a troponin rise is a secondary MI",
+   "truth": "UDMI 2026 secondary MI needs obstructive CAD or a new RWMA. Without that it is myocardial injury.",
+   "cards": [
+    "CVS10A|MI-14",
+    "CVS10E|MI-71"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "MINOCA is a final diagnosis; open coronaries are reassuring",
+   "truth": "MINOCA (<50% stenosis) is a working diagnosis that demands a cause: review the angiogram, CMR, intracoronary imaging. UDMI 2026: the I is 'injury'.",
+   "cards": [
+    "CVS10A|MI-14",
+    "CVS10A|V12-004",
+    "CVS10E|MI-71"
+   ],
+   "asked": "GT8 Q22 (missed)"
+  },
+  {
+   "trap": "IV nitroglycerin, observation or an echo first for new ST elevation after PCI",
+   "truth": "Acute stent thrombosis is a STEMI: urgent repeat angiography and PCI.",
+   "cards": [
+    "CVS10E|MI-71"
+   ],
+   "asked": "DocT GT 48%"
+  },
+  {
+   "trap": "Thrombolysis (or heparin alone) for stent thrombosis with ST elevation",
+   "truth": "Platelet-rich thrombus responds poorly to lysis: DAPT and urgent PCI.",
+   "cards": [
+    "CVS10E|MI-71"
+   ],
+   "asked": "NEET 2025"
+  },
+  {
+   "trap": "Radiation to the right arm argues against MI; sharp pain raises its likelihood",
+   "truth": "Right-arm or bilateral radiation raises the likelihood most (LR 4–5). Sharp or pleuritic pain lowers it.",
+   "cards": [
+    "CVS10A|MI-16",
+    "CVS10A|MI-17"
+   ],
+   "asked": "DocT GT6 76%"
+  },
+  {
+   "trap": "Chest-wall tenderness rules out ACS: ibuprofen and reassure",
+   "truth": "DocT keys ibuprofen and reassurance for exertional pain with sternal tenderness and a family history, but tenderness does not exclude ACS and exertional pain relieved by rest is anginal. Pick ECG + troponin if offered.",
+   "cards": [
+    "CVS10A|MI-16",
+    "CVS10A|MI-17"
+   ],
+   "asked": "DocT QBank 45% (disputed key)"
+  },
+  {
+   "trap": "ST elevation always means ACS",
+   "truth": "Aortic dissection (RCA involvement) and pericarditis elevate ST and are harmed by antithrombotics; PE raises troponin.",
+   "cards": [
+    "CVS10A|MI-18"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "The commonest arrhythmia after MI is VF; a new murmur after MI can wait",
+   "truth": "VF is the commonest cause of early death. Commonest arrhythmia: NSVT on the card (VPBs if offered). A new systolic murmur is a mechanical complication until echo.",
+   "cards": [
+    "CVS10A|MI-19"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Confirm the STEMI with a troponin before activating the cath lab",
+   "truth": "STEMI is an ECG diagnosis; troponin may be normal early. ECG ≤10 min from first medical contact.",
+   "cards": [
+    "CVS10B|MI-20"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "A 40-year-old man needs 2.5 mm in V2–V3; measure 80 ms after the J point",
+   "truth": "Under 40: 2.5 mm; 40 and over: 2.0 mm; women 1.5 mm. Measured at the J point.",
+   "cards": [
+    "CVS10B|MI-21"
+   ],
+   "asked": "pattern (DocT QBank 97% for the plain anterior STEMI)"
+  },
+  {
+   "trap": "Concave ST elevation in an asymptomatic athlete is myocarditis or Brugada",
+   "truth": "Early repolarisation: concave, notched J point, no reciprocal change. Brugada is coved, V1–V2 only.",
+   "cards": [
+    "CVS10B|MI-26"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "The ECG in Takotsubo never shows ST elevation",
+   "truth": "Takotsubo mimics STEMI with ST elevation and troponin, then deep T inversion; RWMA beyond one territory, unobstructed coronaries.",
+   "cards": [
+    "CVS10B|MI-27",
+    "CVS10A|MI-04"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Q waves in I, aVL, V5 in a breathless patient with CAD = acute coronary syndrome",
+   "truth": "Q waves without ST elevation are an old, healed (lateral) infarct.",
+   "cards": [
+    "CVS10B|MI-28"
+   ],
+   "asked": "DocT QBank 46%"
+  },
+  {
+   "trap": "Inferior STEMI with CVP 14 and shock = pulmonary embolism",
+   "truth": "Acute inferior MI with RV involvement.",
+   "cards": [
+    "CVS10B|MI-28",
+    "CVS10B|MI-22"
+   ],
+   "asked": "DocT QBank 91%"
+  },
+  {
+   "trap": "STEMI: give thrombolysis",
+   "truth": "Primary PCI when it can be delivered within 120 minutes of diagnosis; lysis only when it cannot.",
+   "cards": [
+    "CVS10B|MI-28"
+   ],
+   "asked": "DocT QBank 73%"
+  },
+  {
+   "trap": "ST elevation in V1 with RBBB = distal LAD or RCA",
+   "truth": "Proximal LAD: the septal perforators supply the right bundle.",
+   "cards": [
+    "CVS10B|MI-28"
+   ],
+   "asked": "Marrow ×2"
+  },
+  {
+   "trap": "ST depression in V1–V3 = anterior ischaemia (NSTE-ACS)",
+   "truth": "With a tall R and upright T it is a posterior STEMI in mirror image; confirm with V7–V9 (≥0.5 mm).",
+   "cards": [
+    "CVS10B|MI-22"
+   ],
+   "asked": "Marrow (match leads to location)"
+  },
+  {
+   "trap": "Shock from RV infarction is due to distal RCA occlusion",
+   "truth": "Proximal RCA, above the RV marginal branches. Volume to RAP 10–15 mmHg, then inotrope; no nitrates or diuretics.",
+   "cards": [
+    "CVS10B|MI-22"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Dyspnoea after posterior MI with a new apical murmur is LV systolic dysfunction",
+   "truth": "Acute ischaemic MR: the posteromedial papillary muscle has a single blood supply (PDA).",
+   "cards": [
+    "CVS10B|MI-22"
+   ],
+   "asked": "DocT GT 69%"
+  },
+  {
+   "trap": "A Sgarbossa score of 0 excludes MI",
+   "truth": "Specificity >90% at ≥3, but sensitivity only 20–35%: serial ECG, troponin, echo.",
+   "cards": [
+    "CVS10B|MI-23"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "New LBBB in shock: repeat the ECG in 15 minutes or trend troponins",
+   "truth": "Instability is the first branch: treat as a STEMI equivalent now.",
+   "cards": [
+    "CVS10B|MI-24"
+   ],
+   "asked": "DocT GT 91%"
+  },
+  {
+   "trap": "T flattening or inversion <1 mm in R-dominant leads indicates a high likelihood of ACS",
+   "truth": "That is a low-likelihood finding. High: known CAD, transient MR murmur or hypotension with pain, new ST deviation ≥1 mm, T inversion in multiple precordial leads.",
+   "cards": [
+    "CVS10B|MI-25"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "Troponin I binds tropomyosin (as the card says)",
+   "truth": "Troponin T binds tropomyosin; troponin I inhibits actin–myosin; C binds calcium. hs-cTnT has the single reference level.",
+   "cards": [
+    "CVS10B|MI-29"
+   ],
+   "asked": "pattern (card error)"
+  },
+  {
+   "trap": "Rises 3–6 h, peaks 12–24 h, baseline in 7–10 days = CK-MB",
+   "truth": "Troponin I. CK-MB is back to normal in 48–72 h.",
+   "cards": [
+    "CVS10B|MI-30"
+   ],
+   "asked": "DocT QBank 69%"
+  },
+  {
+   "trap": "Myoglobin, BNP or IMA is the early add-on to hs-troponin",
+   "truth": "Cardiac myosin-binding protein C (cMyC); copeptin is the other. IMA, BNP and microRNA-208b are not used to diagnose MI.",
+   "cards": [
+    "CVS10B|MI-30"
+   ],
+   "asked": "DocT GT 57%"
+  },
+  {
+   "trap": "CK-MB is the best marker for re-infarction on day 3",
+   "truth": "Troponin: a >20% rise from a stable or falling value (onset and 3–6 h later). CK-MB only where troponin is unavailable.",
+   "cards": [
+    "CVS10B|MI-30"
+   ],
+   "asked": "Marrow"
+  },
+  {
+   "trap": "0 h/3 h is the current ESC first-choice pathway",
+   "truth": "ESC 2023: 0 h/1 h or 0 h/2 h (I, B); 0 h/3 h is the fallback. Conventional assays: 3–6 h.",
+   "cards": [
+    "CVS10B|MI-32",
+    "CVS10E|MI-75"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "Rule out on one very low hs-cTn even if pain started an hour ago",
+   "truth": "The single-sample rule-out (<5 ng/L hs-cTnT) is valid only if pain began >3 h earlier.",
+   "cards": [
+    "CVS10B|MI-33",
+    "CVS10B|MI-31"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "ST elevation after an emotional shock with no obstructive lesion = MI; treat the shock with inotropes",
+   "truth": "Takotsubo. With LVOT obstruction: fluid, phenylephrine and a beta-blocker, not inotropes.",
+   "cards": [
+    "CVS10A|MI-04",
+    "CVS10B|MI-27"
+   ],
+   "asked": "DocT GT; PYQ"
+  },
+  {
+   "trap": "Troponin up after alteplase for stroke: start DAPT for NSTEMI",
+   "truth": "Neurogenic myocardial injury. No antiplatelet for 24 h after alteplase. (Marrow's 21-day DAPT key applies to a non-lysed minor stroke or high-risk TIA.)",
+   "cards": [
+    "CVS10A|MI-04"
+   ],
+   "asked": "Marrow (disputed key)"
+  },
+  {
+   "trap": "CCTA for the patient with confirmed NSTEMI; echo before transfer in STEMI",
+   "truth": "CCTA is for normal or inconclusive ECG and troponin (IIa). Echo must not delay STEMI reperfusion.",
+   "cards": [
+    "CVS10B|MI-34"
+   ],
+   "asked": "pattern"
+  },
+  {
+   "trap": "The short-axis view is for the LVOT gradient or stroke volume",
+   "truth": "PSAX is for regional wall motion; the Doppler measurements come from apical views.",
+   "cards": [
+    "CVS10B|MI-35"
+   ],
+   "asked": "DocT QBank 61%"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Acute MI vs acute non-ischaemic myocardial injury",
+   "tell": "Both have a dynamic troponin; only MI has evidence of ischaemia (symptoms, ECG, imaging or thrombus).",
+   "cards": [
+    "CVS10A|MI-01"
+   ]
+  },
+  {
+   "pair": "NSTEMI vs unstable angina",
+   "tell": "Troponin above the 99th centile with a rise/fall. The ECG can be identical.",
+   "cards": [
+    "CVS10A|MI-05",
+    "CVS10B|MI-25"
+   ]
+  },
+  {
+   "pair": "STEMI vs NSTE-ACS",
+   "tell": "Persistent ST elevation on the ECG; troponin plays no part in that cut.",
+   "cards": [
+    "CVS10A|MI-05",
+    "CVS10B|MI-20"
+   ]
+  },
+  {
+   "pair": "Type 1 vs type 2 MI",
+   "tell": "Coronary thrombus: a criterion for type 1, required absent for type 2 (which has a stressor).",
+   "cards": [
+    "CVS10A|MI-07",
+    "CVS10A|MI-03"
+   ]
+  },
+  {
+   "pair": "Type 2 MI vs myocarditis",
+   "tell": "A stressor in the stem that explains the troponin (anaemia, tachyarrhythmia, hypotension) means type 2.",
+   "cards": [
+    "CVS10A|MI-07"
+   ]
+  },
+  {
+   "pair": "Type 2 (secondary) MI vs myocardial injury",
+   "tell": "Evidence of ischaemia; in UDMI 2026 specifically obstructive CAD or a new RWMA.",
+   "cards": [
+    "CVS10A|MI-07",
+    "CVS10A|MI-14",
+    "CVS10E|MI-71"
+   ]
+  },
+  {
+   "pair": "Type 3 MI vs silent MI",
+   "tell": "Type 3 is a death before biomarkers; a silent MI is found later in a living patient.",
+   "cards": [
+    "CVS10A|MI-08"
+   ]
+  },
+  {
+   "pair": "Type 4a MI vs procedural myocardial injury",
+   "tell": "Both can exceed 5×; only 4a has new ECG, Q-wave, imaging or angiographic evidence.",
+   "cards": [
+    "CVS10A|MI-09"
+   ]
+  },
+  {
+   "pair": "Primary vs secondary MI (UDMI 2026)",
+   "tell": "Where the pathology begins: in the coronary artery (primary) or in an outside stressor (secondary).",
+   "cards": [
+    "CVS10A|MI-11",
+    "CVS10A|MI-14"
+   ]
+  },
+  {
+   "pair": "Stent thrombosis ≤30 days vs >30 days (UDMI 2026)",
+   "tell": "The 30-day clock: procedure-related before, primary after. Treatment identical.",
+   "cards": [
+    "CVS10E|MI-71"
+   ]
+  },
+  {
+   "pair": "SCAD vs atherothrombotic MI",
+   "tell": "Young or peripartum woman with few risk factors and fibromuscular dysplasia; usually managed conservatively.",
+   "cards": [
+    "CVS10E|MI-71"
+   ]
+  },
+  {
+   "pair": "Acute vs chronic myocardial injury",
+   "tell": "A significant rise or fall between samples; a chronic elevation (CKD, heart failure) is stable.",
+   "cards": [
+    "CVS10A|MI-14",
+    "CVS10B|MI-32"
+   ]
+  },
+  {
+   "pair": "Ischaemic vs chest-wall pain",
+   "tell": "Diffuse pressure that cannot be pointed to with one finger; tenderness lowers but never excludes MI.",
+   "cards": [
+    "CVS10A|MI-16",
+    "CVS10A|MI-17"
+   ]
+  },
+  {
+   "pair": "Pleuritic pain: pericarditis vs PE",
+   "tell": "Positional, eased by sitting forward = pericarditis; tachycardia and hypoxaemia = PE.",
+   "cards": [
+    "CVS10A|MI-17"
+   ]
+  },
+  {
+   "pair": "Inferior STEMI vs type A dissection involving the RCA",
+   "tell": "Arm BP difference or pulse deficit (with tearing pain, wide mediastinum, AR).",
+   "cards": [
+    "CVS10A|MI-18",
+    "CVS10A|MI-19"
+   ]
+  },
+  {
+   "pair": "Acute MR vs VSD after MI",
+   "tell": "Echo: flail leaflet (MR) vs septal shunt with an oxygen step-up (VSD).",
+   "cards": [
+    "CVS10A|MI-19"
+   ]
+  },
+  {
+   "pair": "STEMI vs early repolarisation",
+   "tell": "Convex with reciprocal depression vs concave with a notched J point and no reciprocal change.",
+   "cards": [
+    "CVS10B|MI-26",
+    "CVS10B|MI-21"
+   ]
+  },
+  {
+   "pair": "Early repolarisation vs pericarditis",
+   "tell": "PR depression (and ST/T ratio >0.25 in V6) = pericarditis.",
+   "cards": [
+    "CVS10B|MI-26"
+   ]
+  },
+  {
+   "pair": "Takotsubo vs anterior STEMI",
+   "tell": "Wall-motion abnormality extending beyond one coronary territory with unobstructed coronaries.",
+   "cards": [
+    "CVS10B|MI-27",
+    "CVS10A|MI-04"
+   ]
+  },
+  {
+   "pair": "RCA vs LCx inferior MI",
+   "tell": "ST elevation III > II with reciprocal aVL depression = RCA; II ≥ III with lateral elevation = LCx.",
+   "cards": [
+    "CVS10B|MI-28"
+   ]
+  },
+  {
+   "pair": "Old vs acute infarct",
+   "tell": "Q waves without ST elevation = old scar; ST elevation = acute injury.",
+   "cards": [
+    "CVS10B|MI-28"
+   ]
+  },
+  {
+   "pair": "Proximal vs distal LAD occlusion",
+   "tell": "ST elevation in V1 with new RBBB = proximal.",
+   "cards": [
+    "CVS10B|MI-28"
+   ]
+  },
+  {
+   "pair": "Posterior STEMI vs anterior NSTE-ACS (both ST depression V1–V3)",
+   "tell": "Tall R and upright T in V1–V3, and ST elevation in V7–V9.",
+   "cards": [
+    "CVS10B|MI-22"
+   ]
+  },
+  {
+   "pair": "RV-infarct shock vs LV cardiogenic shock",
+   "tell": "Clear lungs with a high right atrial pressure = RV; pulmonary oedema with a high wedge = LV.",
+   "cards": [
+    "CVS10B|MI-22"
+   ]
+  },
+  {
+   "pair": "LBBB with MI vs uncomplicated LBBB",
+   "tell": "Concordant ST change (or discordance ≥25% of the S wave).",
+   "cards": [
+    "CVS10B|MI-23",
+    "CVS10B|MI-24"
+   ]
+  },
+  {
+   "pair": "Left main pattern vs territorial STEMI",
+   "tell": "ST elevation only in aVR (± V1) with widespread ST depression = diffuse ischaemia.",
+   "cards": [
+    "CVS10B|MI-25"
+   ]
+  },
+  {
+   "pair": "Troponin T vs troponin I in myopathy",
+   "tell": "cTnT can be re-expressed by diseased skeletal muscle; cTnI is cardiac-specific.",
+   "cards": [
+    "CVS10B|MI-29"
+   ]
+  },
+  {
+   "pair": "Troponin I vs CK-MB kinetics",
+   "tell": "The tail: CK-MB normal by 48–72 h, troponin I 7–10 days.",
+   "cards": [
+    "CVS10B|MI-30"
+   ]
+  },
+  {
+   "pair": "0 h/1 h vs 0 h/3 h algorithm",
+   "tell": "0 h/1 h uses very low assay-specific cut-offs and absolute deltas; 0 h/3 h uses the ULN and a 6 h symptom rule.",
+   "cards": [
+    "CVS10B|MI-33",
+    "CVS10B|MI-32",
+    "CVS10E|MI-75"
+   ]
+  },
+  {
+   "pair": "Stroke-related troponin rise vs NSTEMI",
+   "tell": "Follows the stroke with no ischaemic symptoms; neurogenic catecholamine injury.",
+   "cards": [
+    "CVS10A|MI-04"
+   ]
+  },
+  {
+   "pair": "Infarct vs myocarditis on CMR",
+   "tell": "LGE subendocardial in a coronary territory = infarct; mid-wall or subepicardial = myocarditis.",
+   "cards": [
+    "CVS10B|MI-34",
+    "CVS10A|V12-004"
+   ]
+  },
+  {
+   "pair": "Regional vs global vs cross-territory wall motion abnormality",
+   "tell": "One territory = coronary; global = cardiomyopathy, sepsis or myocarditis; crossing territories = Takotsubo.",
+   "cards": [
+    "CVS10B|MI-35"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-004",
+   "deck": "CVS10A",
+   "topic": "MINOCA: definition, causes and work-up",
+   "tier": "S",
+   "q": "**For MINOCA, give:**\na The three defining criteria\nb The status of the label, and the 2026 change\nc The coronary causes\nd The diagnoses that mimic it\ne The work-up and its key test\nf Who gets it",
+   "a": [
+    "**Acute MI by the universal definition** + **no stenosis ≥50%** in any major epicardial artery on angiography + **no overt alternative cause** at presentation (e.g. sepsis, PE)",
+    "A **WORKING diagnosis**, not a final one - find the cause; UDMI 2026 renames the I **\"injury\"** (was \"infarction\")",
+    "Coronary: **plaque rupture / erosion**, **spasm**, **SCAD**, **coronary embolism / thrombosis**, **microvascular dysfunction**",
+    "Mimics: **myocarditis**, **Takotsubo**, other cardiomyopathy; non-cardiac: **PE**",
+    "Review the angiogram → **CMR** (ESC 2023 I, B: subendocardial LGE = infarct, mid-wall / subepicardial = myocarditis) → intracoronary imaging (**OCT / IVUS**) → provocation testing for spasm",
+    "About **5-10%** of MIs; younger, more often **women**, more often NSTEMI",
+    "Traps: \"normal coronaries, reassure and discharge\"; \"final diagnosis of infarction, DAPT for all\" - treatment follows the cause found"
+   ],
+   "why": "GT8 Q22 (missed): MI with <50% stenosis on angiography is MINOCA, a working diagnosis that demands a cause (CMR). MI-14 and MI-71 give only the 2026 renaming and the 'working diagnosis' line; no card gives the <50% criterion, the causes or the work-up."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "CVS10B|MI-29",
+   "issue": "Rows 1 and 3 are reversed. Troponin T binds tropomyosin and troponin I is the inhibitory subunit (card has them swapped). hs-cTnT (single manufacturer) has the single reference level, 14 ng/L; cTnI has multiple assay-dependent levels (card has them swapped). Lesson teaches the biochemistry and says the card is reversed."
+  },
+  {
+   "card": "CVS10B|MI-30",
+   "issue": "'CK-MB used for re-infarction' is older teaching. UDMI 2018 and the Marrow key use troponin: a >20% rise from a stable or falling value (symptom onset and 3-6 h later); CK-MB only where troponin is unavailable. The card does not mention cMyC or copeptin (DocT GT, 57%)."
+  },
+  {
+   "card": "CVS10B|MI-25",
+   "issue": "'ST depression ≥1 mm in 8 leads' is the ESC 2017 STEMI guideline wording. UDMI 2018 and ESC 2023 (and ESC 2020 NSTE-ACS) say ≥6 surface leads with ST elevation in aVR and/or V1. Lesson teaches both (6 current, 8 on the card). Verified against the UDMI 2018 and ESC 2023 full texts by the checker."
+  },
+  {
+   "card": "CVS10B|MI-27",
+   "issue": "Stress (Takotsubo) cardiomyopathy appears only in the ST depression column; it classically presents with ST elevation mimicking STEMI (the Marrow false statement is 'ECG never shows ST elevation'). The ST depression column also repeats LVH and LBBB."
+  },
+  {
+   "card": "CVS10A|MI-19",
+   "issue": "Free wall rupture is listed under 'new systolic murmur'; it usually presents as tamponade/PEA, not a murmur. 'Most common peri-infarct arrhythmia: NSVT' follows the notes; counted strictly, ventricular premature beats are commoner. Lesson gives a stem rule (VPBs if offered, otherwise NSVT)."
+  },
+  {
+   "card": "CVS10A|MI-09",
+   "issue": "Card is UDMI 2018 and correct for it, but the shared 'evidence of new ischaemia' line overstates type 5: for CABG the 2018 list is new Q waves, new graft or native-vessel occlusion, or imaging (new ST-T change alone does not count). Under the Fifth UDMI (2026) procedure-related MI (any cardiac procedure, within 30 days) has unified criteria for PCI and surgery and fixed troponin multiples are no longer diagnostic; definitive diagnosis needs an angiographic coronary complication and/or a new RWMA or loss of viable myocardium (both if during the procedure or for acute MI). Checked against secondary reports (TCTMD, EMJ Reviews Oct 2026), not the full JACC/EHJ text."
+  },
+  {
+   "card": "CVS10A|MI-05",
+   "issue": "Type 2 'usually without significant CAD' is loose: many type 2 patients have fixed CAD; the defining feature is no acute plaque disruption or thrombus. Types 1-5 were replaced by primary/secondary/procedure-related in the Fifth UDMI (ESC, August 2026); bank keys still use the numbers. Fifth UDMI confirmed (ACC, ESC, Healio, TCTMD; published 28 Aug 2026, JACC and EHJ)."
+  },
+  {
+   "card": "CVS10A|MI-08",
+   "issue": "Type 3 is retired in the Fifth UDMI (2026): cardiac death before testing is classified by setting or post-mortem findings as primary, secondary or procedure-related (TCTMD; EMJ Reviews). GT8 Q21 still keys type 3. The 2026 section on MI after sudden death was not read in full text, so the lesson does not state its criteria."
+  },
+  {
+   "card": "CVS10B|MI-22",
+   "issue": "Thresholds differ slightly from UDMI 2018: V7-V9 ≥0.5 mm (≥1 mm in men <40); V3R/V4R ≥0.5 mm (≥1 mm in men <30). The card's 1 mm in V4R is the classic, more specific cut. Lesson gives both."
+  },
+  {
+   "card": "CVS10B|MI-32",
+   "issue": "The 0 h/3 h pathway (ESC 2015; IIa in 2020) is only a fallback in ESC 2023, which recommends 0 h/1 h or 0 h/2 h (I, B). Lesson teaches the card's logic and its current standing."
+  },
+  {
+   "card": "CVS10A|MI-16",
+   "issue": "Not a card error: the linked DocT QBank key (ibuprofen and reassurance for exertional pain with sternal tenderness and a family history, 45% right) is unsafe practice. Lesson teaches the safe answer (ECG + troponin if offered) and names the bank's key."
+  }
+ ]
+}
