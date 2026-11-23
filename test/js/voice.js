@@ -191,7 +191,7 @@ async function urlAt(i, g) {
   return urls[i];
 }
 // clip length: the real one once known, else the bridge's estimate
-const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut - (queue[i].from || 0) : durs[i] != null ? durs[i] - ((queue[i] && queue[i].from) || 0) : ((usesK(deckNow, queue[i]) ? (kidx[deckNow] || {})[queue[i].k] : (idx[deckNow] || {})[queue[i].k]) || {}).sec || 5);
+const est = i => queue[i] && queue[i].cut && (durs[i] == null || queue[i].cut < durs[i]) ? queue[i].cut - (queue[i].from || 0) : durs[i] != null ? durs[i] - ((queue[i] && queue[i].from) || 0) : (((usesK(deckNow, queue[i]) ? (kidx[deckNow] || {})[queue[i].k] : (idx[deckNow] || {})[queue[i].k]) || {}).sec || 5);
 export const total = () => queue.reduce((s, _, i) => s + est(i), 0);
 export function pos() { if (qi < 0) return 0; let s = 0; for (let i = 0; i < qi; i++) s += est(i); return s + Math.max(0, ((audio && audio.currentTime) || 0) - ((queue[qi] && queue[qi].from) || 0)); }
 export const isPaused = () => paused;
