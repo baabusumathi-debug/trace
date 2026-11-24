@@ -245,6 +245,7 @@ class Surface {
         g.save(); g.strokeStyle = '#2a7fff'; g.lineWidth = 1.4;
         g.beginPath(); g.moveTo(hs.rot[0], hs.rot[1] + (hs.rotBelow ? -9 : 9)); g.lineTo(hs.rot[0], hs.rotBelow ? b[3] : b[1]); g.stroke();
         for (const c of hs.corners) { g.fillStyle = '#fff'; g.fillRect(c[0] - 6, c[1] - 6, 12, 12); g.strokeRect(c[0] - 6, c[1] - 6, 12, 12); }
+        hs.edges.forEach((c, i) => { const w = i % 2 ? 7 : 18, h2 = i % 2 ? 18 : 7; g.fillStyle = '#fff'; g.fillRect(c[0] - w / 2, c[1] - h2 / 2, w, h2); g.strokeRect(c[0] - w / 2, c[1] - h2 / 2, w, h2); });
         g.beginPath(); g.arc(hs.rot[0], hs.rot[1], 9, 0, Math.PI * 2); g.fillStyle = '#2a7fff'; g.fill();
         g.strokeStyle = '#fff'; g.lineWidth = 1.6; g.beginPath(); g.arc(hs.rot[0], hs.rot[1], 4.5, -Math.PI * 0.9, Math.PI * 0.55); g.stroke();
         g.restore();
@@ -479,8 +480,23 @@ const penSignal = () => lastPen.at ? `buttons ${lastPen.buttons} · button ${las
 // side (barrel) button or the eraser end: any pen button beyond plain contact
 const sideButton = e => (e.pointerType === 'pen' && ((e.buttons & ~1) !== 0 || e.button === 2 || e.button === 5 || e.button === 1)) || (e.pointerType === 'mouse' && (e.buttons & 2));
 function selHandles(b, H) {
-  const rotBelow = b[1] < 34 && b[3] + 34 < H;
-  return { corners: [[b[0], b[1]], [b[2], b[1]], [b[2], b[3]], [b[0], b[3]]], rot: [(b[0] + b[2]) / 2, rotBelow ? b[3] + 28 : b[1] - 28], rotBelow };
+  const rotBelow = b[1] < 34 && b[3] + 34 < H, mx = (b[0] + b[2]) / 2, my = (b[1] + b[3]) / 2;
+  return {
+    corners: [[b[0], b[1]], [b[2], b[1]], [b[2], b[3]], [b[0], b[3]]],   // square: the same both ways
+    edges: [[mx, b[1]], [b[2], my], [mx, b[3]], [b[0], my]],             // bar: stretches one way only
+    rot: [mx, rotBelow ? b[3] + 28 : b[1] - 28], rotBelow
+  };
+}
+// stretch an object about (ax, ay) by kx across and ky down (the stroke keeps an even weight)
+function stretchAbout(o, ax, ay, kx, ky) {
+  const f = q => q.length > 2 ? [ax + (q[0] - ax) * kx, ay + (q[1] - ay) * ky, q[2]] : [ax + (q[0] - ax) * kx, ay + (q[1] - ay) * ky];
+  o.pts = o.pts.map(f);
+  if (o.rects) o.rects = o.rects.map(r => [ax + (r[0] - ax) * kx, ay + (r[1] - ay) * ky, ax + (r[2] - ax) * kx, r[3] * ky]);
+  const g = Math.sqrt(Math.abs(kx * ky)) || 1;
+  if (o.s) o.s *= (o.type === 'text' ? ky : g);
+  if (o.h) o.h *= ky;
+  if (o.r) o.r *= g;
+  delete o.tr;
 }
 // scale an object about (ax, ay) by k (strokes, highlights and text grow with it)
 function scaleAbout(o, ax, ay, k) {
@@ -602,6 +618,17 @@ export function attachPointer(surface, opts) {
           const c = [(sel.box[0] + sel.box[2]) / 2 / m.k, (sel.box[1] + sel.box[3]) / 2 / m.k];
           act = { rotate: true, c, a0: Math.atan2(p[1] - c[1], p[0] - c[0]), orig: sel.ids.map(i => JSON.parse(JSON.stringify(surface.objs[i]))) }; return;
         }
+        const ei = hs.edges.findIndex(c => near(c, 16));
+        if (ei >= 0) {
+          surface.snapshot();
+          const b = sel.box, axis = ei % 2 ? 'x' : 'y';
+          const anchor = ei === 0 ? [(b[0] + b[2]) / 2 / m.k, b[3] / m.k]
+                       : ei === 1 ? [b[0] / m.k, (b[1] + b[3]) / 2 / m.k]
+                       : ei === 2 ? [(b[0] + b[2]) / 2 / m.k, b[1] / m.k]
+                       :            [b[2] / m.k, (b[1] + b[3]) / 2 / m.k];
+          const d0 = Math.max(1, axis === 'x' ? Math.abs(p[0] - anchor[0]) : Math.abs(p[1] - anchor[1]));
+          act = { stretch: true, axis, anchor, d0, orig: ids.map(i => JSON.parse(JSON.stringify(surface.objs[i]))), ids }; return;
+        }
         const ci = hs.corners.findIndex(c => near(c, 20));
         if (ci >= 0) {
           surface.snapshot();
@@ -640,6 +667,12 @@ export function attachPointer(surface, opts) {
     if (act.erase) { let ch = false; for (const ev of evs) ch = eraseAt(units(ev), act.r) || ch; const lp = units(e); surface.cursor = [lp[0], lp[1], act.r]; surface.request(); return; }
     if (act.tsel) { if (opts.textSel) opts.textSel(act, e, 'move'); return; }
     if (act.lasso) { surface.lasso.push(units(e)); surface.request(); return; }
+    if (act.stretch) {
+      const p = units(e), d = act.axis === 'x' ? Math.abs(p[0] - act.anchor[0]) : Math.abs(p[1] - act.anchor[1]);
+      const k = Math.max(0.1, Math.min(10, d / act.d0));
+      act.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); stretchAbout(o, act.anchor[0], act.anchor[1], act.axis === 'x' ? k : 1, act.axis === 'y' ? k : 1); surface.objs[i] = o; });
+      act.moved = true; surface.request(); return;
+    }
     if (act.scale) { const p = units(e), k = Math.max(0.1, Math.min(10, dist(act.anchor, p) / act.d0)); act.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); scaleAbout(o, act.anchor[0], act.anchor[1], k); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
     if (act.rotate) { const p = units(e); let a = Math.atan2(p[1] - act.c[1], p[0] - act.c[0]) - act.a0; const snap = Math.round(a / (Math.PI / 12)) * (Math.PI / 12); if (Math.abs(a - snap) < 0.05) a = snap; surface.sel.ids.forEach((i, j) => { const o = JSON.parse(JSON.stringify(act.orig[j])); rotateAbout(o, act.c[0], act.c[1], a); surface.objs[i] = o; }); act.moved = true; surface.request(); return; }
     if (act.move) { const p = units(e), dx = p[0] - act.last[0], dy = p[1] - act.last[1]; act.last = p; act.moved = true; for (const i of surface.sel.ids) shiftObj(surface.objs[i], dx, dy); surface.request(); return; }
@@ -711,7 +744,7 @@ export function attachPointer(surface, opts) {
       const ok = o.type === 'text' || o.type === 'pen' || (o.type === 'hl' && o.snap ? (o.rects ? o.rects.some(r => Math.abs(r[2] - r[0]) > 2) : Math.abs(o.pts[1][0] - o.pts[0][0]) > 2) : o.pts.length > 1) || (o.type === 'shape' && dist(o.pts[0], o.pts[o.pts.length - 1]) >= 2) || (o.type === 'shape' && o.kind !== 'line' && o.kind !== 'arrow');
       if (ok) surface.objs.push(o); surface.render(); opts.changed(o);
     } else if (act.move && act.moved && e && opts.dropOut && opts.dropOut(e)) { /* moved to another area */ }
-    else if (act.erase || ((act.move || act.scale || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
+    else if (act.erase || ((act.move || act.scale || act.stretch || act.rotate) && act.moved)) { surface.render(); opts.changed(); }
     else if (act.rotate) { surface.render(); opts.changed(); }
     act = null;
   };
