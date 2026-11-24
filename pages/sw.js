@@ -1,10 +1,11 @@
 // Study pages: network first, so an updated page arrives on its own; the cache is the offline copy.
-const V = 'pages-v1';
+const V = 'pages-v2';
 const FILES = ['./', 'index.html', 'shock1.html', 'gi.html', 'endo.html', 'obs.html',
                'manifest.webmanifest', 'shock1.webmanifest', 'gi.webmanifest', 'endo.webmanifest', 'obs.webmanifest',
                'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
                'icons/shock1-192.png', 'icons/gi-192.png', 'icons/endo-192.png', 'icons/obs-192.png',
-               'icons/shock1-512.png', 'icons/gi-512.png', 'icons/endo-512.png', 'icons/obs-512.png'];
+               'icons/shock1-512.png', 'icons/gi-512.png', 'icons/endo-512.png', 'icons/obs-512.png',
+               'css/ink.css', 'js/pen.js', 'js/ink.js', 'js/db.js'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V)
     .then(c => Promise.allSettled(FILES.map(u => c.add(new Request(u, { cache: 'reload' })))))
