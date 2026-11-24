@@ -269,13 +269,17 @@ function findCard(ref) {
 function linkedCardHtml(ref) {
   const c = findCard(ref);
   if (!c) return `<p class="gt-muted">${esc(ref.replace('|', ' · '))}: this card's deck isn't on this device yet. Open the deck once from the Shelf and it appears here.</p>`;
-  const head = String(c.q || '').split('\n')[0], rest = String(c.q || '').split('\n').slice(1).join('\n');
-  return `<div class="gt-lc"><div class="mono gt-xk">${esc(c.deck)} · ${esc(c.code)}${c.section ? ' · ' + esc(String(c.section).toUpperCase()) : ''}</div>
-    <h3>${inline(plain(head).replace(/:$/, ''))}</h3>${rest ? `<div class="gt-lcq">${render(rest)}</div>` : ''}
-    <div class="gt-lca">${render(c.a || '')}</div>
+  const lines = String(c.q || '').split('\n'), head = lines[0], rest = lines.slice(1).join('\n');
+  // the answer side as Flow draws it (title, question parts, answer, why, watch), so the card looks as it did when studied
+  return `<div class="c-head mono gt-lch"><span>${esc(c.deck)} · ${esc(c.code)}${c.section ? ' · ' + esc(String(c.section).toUpperCase()) : ''}</span></div>
+    <div class="c-a gt-lca"><div class="zw">
+    <h2 class="c-title">${esc(plain(head).replace(/:$/, ''))}</h2>
+    ${rest ? `<details class="qrecap" open><summary>Question parts</summary><div class="qr small">${render(rest)}</div></details>` : ''}
+    <div class="ans">${render(c.a || '')}</div>
+    ${c.fixed ? `<p class="qsrc-card mono">Corrected ${esc(c.fixed.date)} · ${esc(c.fixed.src)}</p>` : ''}
     ${c.why ? `<div class="box why"><span class="mono">WHY</span><div class="bx">${render(c.why)}</div></div>` : ''}
     ${c.watch ? `<div class="box watch"><span class="mono">WATCH</span><div class="bx">${render(c.watch)}</div></div>` : ''}
-    <a class="gt-open" href="#/deck/${encodeURIComponent(c.deck)}">Open ${esc(c.deck)} ›</a></div>`;
+    <a class="gt-open" href="#/deck/${encodeURIComponent(c.deck)}">Open ${esc(c.deck)} ›</a></div></div>`;
 }
 const WK = { mode: () => lsGet('mode', 'read') };
 function walkScreen(app, ctx, P, n) {
@@ -308,7 +312,7 @@ function walkScreen(app, ctx, P, n) {
     const tabs = [['exp', 'Explanation']].concat((c && c.links || []).map((l, i) => ['L' + i, l.split('|')[1] || l]), reps.map((r, i) => ['B' + i, r.paper.replace('GT', 'GT ') + ' · Q' + r.n]), [['doct', 'DocT’s text']]);
     if (!tabs.find(t => t[0] === st.tab)) st.tab = 'exp';
     let pane;
-    if (st.tab === 'exp') pane = !shown ? '<p class="gt-muted">The explanation opens once you answer.</p>' : c ? `${mdBlock(c.explain)}${c.options ? `<div class="mono gt-xk">THE OPTIONS</div><div class="gt-optx">${Object.entries(c.options).map(([L, t]) => `<b>${esc(L)}${L === q.key ? ' ✓' : ''}</b><div>${inline(persp(t))}</div>`).join('')}</div>` : ''}${c.links && c.links.length ? `<p class="gt-muted small">Linked cards are in the tabs above.</p>` : `<p class="gt-muted small">No regular card teaches this yet, so this GT card carries it.</p>`}` : `<div class="gt-doct">${esc(q.doct)}</div>`;
+    if (st.tab === 'exp') pane = !shown ? '<p class="gt-muted">The explanation opens once you answer.</p>' : c ? `<div class="ans">${mdBlock(c.explain)}</div>${c.options ? `<div class="mono gt-xk">THE OPTIONS</div><div class="gt-optx">${Object.entries(c.options).map(([L, t]) => `<b>${esc(L)}${L === q.key ? ' ✓' : ''}</b><div>${inline(persp(t))}</div>`).join('')}</div>` : ''}${c.links && c.links.length ? `<p class="gt-muted small">Linked cards are in the tabs above.</p>` : `<p class="gt-muted small">No regular card teaches this yet, so this GT card carries it.</p>`}` : `<div class="gt-doct">${esc(q.doct)}</div>`;
     else if (st.tab === 'doct') pane = `<div class="mono gt-xk">DOCT’S EXPLANATION · AS CAPTURED</div><div class="gt-doct">${esc(q.doct)}</div>${q.refs ? `<p class="gt-muted small">${esc(q.refs)}</p>` : ''}`;
     else if (st.tab[0] === 'L') pane = linkedCardHtml(c.links[+st.tab.slice(1)]);
     else { const r = reps[+st.tab.slice(1)], Q = paper(r.paper), qq = qOf(Q, r.n), cc = cardOf(Q, r.n); pane = `<div class="mono gt-xk">${esc(Q.title.toUpperCase())} · Q${r.n} · MISSED BEFORE</div><p>${inline(qq.stem)}</p><div class="gt-optx">${qq.options.map((t, i) => `<b>${letters[i]}${letters[i] === qq.key ? ' ✓' : ''}${pickOf(Q, ME, r.n) === letters[i] ? ' · you' : ''}</b><div>${inline(t)}</div>`).join('')}</div>${cc ? `<div class="gt-back">${row('WHY', cc.why)}${row('WATCH', cc.watch)}${row('HOOK', cc.hook)}</div>` : `<div class="gt-doct">${esc(qq.doct)}</div>`}<a class="gt-open" href="#/gt/${r.paper}/q/${r.n}" data-gtjump>Open it as its own card ›</a>`; }
@@ -320,7 +324,7 @@ function walkScreen(app, ctx, P, n) {
         <span class="gt-seg dark" role="group" aria-label="Walk mode"><button data-gtm="try" class="${read ? '' : 'on'}">Try</button><button data-gtm="read" class="${read ? 'on' : ''}">Read</button></span>
         <a class="gt-nav${prev ? '' : ' off'}" href="${prev ? '#/gt/' + P.id + '/q/' + prev : '#'}" aria-label="Previous">‹ Prev</a><a class="gt-nav gold${next ? '' : ' off'}" href="${next ? '#/gt/' + P.id + '/q/' + next : '#'}" aria-label="Next">Next ›</a></header>
       <div class="gt-wbody">
-        <article class="gt-qcard">
+        <article class="gt-qcard card">
           <div class="gt-qh"><span class="mono">${esc(P.id.replace('GT', 'GT '))} · Q${n} · ${esc(shortSys(sysOf(P, n)).toUpperCase())}${topicOf(P, n) ? ' · ' + esc(topicOf(P, n).toUpperCase()) : ''}</span>
             ${reps.map((r, i) => `<button class="gt-rep" data-gttab="B${i}"><b>×2</b> Missed before: ${esc(r.paper.replace('GT', 'GT '))} Q${r.n} ›</button>`).join('')}</div>
           <div class="gt-who mono"><span>You: ${esc(who(myR, guessOf(P, ME, n)))}</span>${person(P, OTHER) ? `<span class="oth">${OTHER_NAME}: ${esc(who(otR, guessOf(P, OTHER, n)))}</span>` : ''}</div>
@@ -328,7 +332,7 @@ function walkScreen(app, ctx, P, n) {
           <div class="gt-opts">${opts}</div>
           <div class="gt-backw">${back}</div>
         </article>
-        <section class="gt-xp" aria-label="Explain pane"><div class="gt-tabs" role="tablist">${tabs.map(([k, l]) => `<button role="tab" aria-selected="${st.tab === k}" class="${st.tab === k ? 'on' : ''}" data-gttab="${k}">${esc(l)}</button>`).join('')}</div>
+        <section class="gt-xp card" aria-label="Explain pane"><div class="gt-tabs" role="tablist">${tabs.map(([k, l]) => `<button role="tab" aria-selected="${st.tab === k}" class="${st.tab === k ? 'on' : ''}" data-gttab="${k}">${esc(l)}</button>`).join('')}</div>
           <div class="gt-pane">${pane}</div></section>
       </div></div>`;
     if (st.tab === 'exp' && scrollY) { /* new question or new mode: start at the top */ }

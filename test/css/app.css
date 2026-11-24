@@ -2105,7 +2105,6 @@ p.sub.tlab{margin-bottom:6px}
 .gt-back{display:grid;grid-template-columns:78px 1fr;gap:6px 12px}
 .gt-back>b{font-size:11px;letter-spacing:.12em;padding-top:4px}
 .gt-back p{margin:0}
-.gt-backw .box{color:var(--ink)}
 .gt-xp{flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column}
 .gt-tabs{display:flex;gap:2px;padding:8px 10px 0;border-bottom:1px solid var(--line);overflow-x:auto;flex-shrink:0}
 .gt-tabs button{height:42px;padding:0 14px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);font-size:14px;white-space:nowrap}
@@ -2125,3 +2124,20 @@ p.sub.tlab{margin-bottom:6px}
   .gt-walkbtn{margin-left:0}
   .gt-tr{grid-template-columns:56px 1fr 96px} .gt-srow{grid-template-columns:52px 40px 1fr} .gt-srow .gt-sn{grid-column:1/-1}
 }
+
+/* T-195: the walk's question and Explain pane are paper cards, like the cards he studied */
+.gt-qcard.card,.gt-xp.card{flex:initial;perspective:none}
+.gt-qcard.card{flex:0 1 620px}
+.gt-xp.card{flex:1;min-width:0;border:0;color:var(--pink)}
+.gt-xp.card .gt-tabs{border-bottom:1px solid rgba(186,169,125,.55);padding:12px 18px 0;position:relative}
+.gt-xp.card .gt-tabs button{color:#756034}
+.gt-xp.card .gt-tabs button.on{color:#1f2121;border-bottom-color:#756034}
+.gt-xp.card .gt-pane{color:var(--pink);position:relative}
+.gt-xp.card .gt-xk{color:#756034}
+.gt-xp.card .gt-doct{color:#3d3a33}
+.gt-xp.card .gt-muted{color:#64593f}
+.gt-xp.card a{color:#2f6f66}
+.gt-xp.card .gt-optx b{color:#1f2121}
+.gt-lch{padding:2px 0 6px}
+.gt-lca{padding:0;overflow:visible}
+@media (max-width:820px){ .gt-qcard.card,.gt-xp.card{flex:none;overflow:visible} }
