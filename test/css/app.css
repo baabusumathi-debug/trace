@@ -2128,7 +2128,7 @@ p.sub.tlab{margin-bottom:6px}
 /* T-195: the walk's question and Explain pane are paper cards, like the cards he studied */
 .gt-qcard.card,.gt-xp.card{flex:initial;perspective:none}
 .gt-qcard.card{flex:0 1 620px}
-.gt-xp.card{flex:1;min-width:0;border:0;color:var(--pink)}
+.gt-xp.card{flex:1;min-width:0;border:0;background:var(--paper);color:var(--pink)}
 .gt-xp.card .gt-tabs{border-bottom:1px solid rgba(186,169,125,.55);padding:12px 18px 0;position:relative}
 .gt-xp.card .gt-tabs button{color:#756034}
 .gt-xp.card .gt-tabs button.on{color:#1f2121;border-bottom-color:#756034}
