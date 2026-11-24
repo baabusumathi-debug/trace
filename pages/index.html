@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCM Study Pages</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1c3461">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef1f6;color:#1d1d1f;font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+header{background:#1c3461;color:#fff;padding:14px 16px}
+header h1{margin:0;font-size:17px;font-weight:700}
+header p{margin:3px 0 0;font-size:13px;color:#c3d1e8}
+main{max-width:760px;margin:0 auto;padding:14px}
+a.card{display:block;background:#fff;border:1px solid #d9dfea;border-left:5px solid #1c3461;border-radius:13px;padding:13px 15px;margin:0 0 10px;text-decoration:none;color:inherit}
+a.card b{display:block;font-size:17.5px;line-height:1.3}
+a.card span{display:block;font-size:13.5px;color:#5a6472;margin-top:3px;line-height:1.45}
+a.card em{display:block;font-size:11.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#5a6472;font-style:normal}
+.note{background:#fff;border:1px solid #d9dfea;border-radius:13px;padding:12px 15px;font-size:14px;color:#3c4350;margin-top:14px}
+.note b{color:#1c3461}
+.note ul{margin:6px 0 0;padding-left:20px}
+.note li{margin:4px 0}
+#install{display:none;width:100%;margin:0 0 12px;background:#1c3461;color:#fff;border:0;border-radius:11px;padding:13px;font:700 16px/1 inherit;cursor:pointer}
+</style></head><body>
+<header><h1>CCM Study Pages</h1><p>NEET-SS Critical Care · visual study pages</p></header>
+<main>
+<button id="install">Add to home screen</button>
+<a class="card" href="shock1.html"><em>Cardiology · P12</em><b>Shock I — reading the failing heart</b><span>25 cards in 5 sections, the visual structure behind the voiced lessons. Walk the packet, or open one card.</span></a>
+<a class="card" href="gi.html"><em>GI</em><b>Pancreatitis, gut, mesenteric ischaemia, abdominal pressure</b><span>14 concepts in 4 groups, with disease maps, pattern drills and the Mimics, Traps, Cards and Asked tabs.</span></a>
+<a class="card" href="endo.html"><em>Endocrine</em><b>Thyroid — labs, storm, myxoedema coma</b><span>3 concepts with the axis map and the pattern drill. The other endocrine groups are still to come.</span></a>
+<a class="card" href="obs.html"><em>Obstetrics</em><b>Obstetric critical care</b><span>Concepts grouped by deck, with mimic pairs, traps by percentage right, and past questions.</span></a>
+<div class="note"><b>Keeping it on the tablet.</b>
+<ul>
+<li>Tap <b>Add to home screen</b> above, or use Chrome&rsquo;s menu.</li>
+<li>Each page is updated here, so opening it with internet picks up the newest version by itself.</li>
+<li>Pages you have opened once work offline.</li>
+<li>Your ticks and miss lists are kept on this tablet, in this browser.</li>
+</ul></div>
+</main>
+<script>
+var dp=null,btn=document.getElementById('install');
+addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;btn.style.display='block'});
+btn.addEventListener('click',function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(){dp=null;btn.style.display='none'})});
+addEventListener('appinstalled',function(){btn.style.display='none'});
+if('serviceWorker' in navigator&&location.protocol!=='file:'){addEventListener('load',function(){
+  navigator.serviceWorker.register('sw.js',{scope:'./'}).then(function(r){
+    r.addEventListener('updatefound',function(){var n=r.installing;n&&n.addEventListener('statechange',function(){
+      if(n.state==='installed'&&navigator.serviceWorker.controller)location.reload()})})}).catch(function(){})})}
+</script></body></html>
