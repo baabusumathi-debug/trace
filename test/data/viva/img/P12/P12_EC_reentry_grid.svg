@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="880.704pt" height="470.88pt" viewBox="0 0 880.704 470.88" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-24T15:43:24.837311</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 470.88 
+L 880.704 470.88 
+L 880.704 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 10.8 460.08 
+L 407.088 460.08 
+L 407.088 63.792 
+L 10.8 63.792 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 246.695502 240.14016 
+C 244.312653 236.012944 241.269034 232.304283 237.685992 229.16204 
+C 234.10295 226.019796 230.028745 223.486293 225.625814 221.662539 
+C 221.222882 219.838785 216.550527 218.749345 211.795032 218.437653 
+C 207.039537 218.125962 202.264954 218.596217 197.661643 219.82967 
+C 193.058332 221.063124 188.688294 223.043162 184.72576 225.690843 
+C 180.763227 228.338523 177.261568 231.618184 174.360395 235.399067 
+C 171.459222 239.179949 169.197608 243.41113 167.665725 247.923914 
+C 166.133841 252.436697 165.35232 257.170301 165.35232 261.936 
+C 165.35232 266.701699 166.133841 271.435303 167.665725 275.948086 
+C 169.197608 280.46087 171.459222 284.692051 174.360395 288.472933 
+C 177.261568 292.253816 180.763227 295.533477 184.72576 298.181157 
+C 188.688294 300.828838 193.058332 302.808876 197.661643 304.04233 
+C 202.264954 305.275783 207.039537 305.746038 211.795032 305.434347 
+C 216.550527 305.122655 221.222882 304.033215 225.625814 302.209461 
+C 230.028745 300.385707 234.10295 297.852204 237.685992 294.70996 
+C 241.269034 291.567717 244.312653 287.859056 246.695502 283.73184 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #0072b2; stroke-width: 2.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_1">
+    <path d="M 208.944 91.53216 
+L 208.944 143.0496 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #111111; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 208.944 380.8224 
+L 208.944 432.33984 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #111111; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 208.944 143.0496 
+L 129.6864 190.60416 
+L 129.6864 333.26784 
+L 208.944 380.8224 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #111111; stroke-width: 4.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 208.944 143.0496 
+L 288.2016 190.60416 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #111111; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 288.2016 190.60416 
+L 283.988672 193.466976 
+L 282.217481 194.898384 
+L 280.8248 196.329793 
+L 280.151297 197.284065 
+L 279.704772 198.238337 
+L 279.497817 199.192609 
+L 279.536267 200.146881 
+L 279.819037 201.101153 
+L 280.338154 202.055425 
+L 281.078982 203.009697 
+L 282.558673 204.441106 
+L 284.395292 205.872514 
+L 287.926835 208.258194 
+L 292.17188 211.12101 
+L 293.982926 212.552418 
+L 295.42829 213.983827 
+L 296.142423 214.938099 
+L 296.632664 215.892371 
+L 296.88519 216.846643 
+L 296.89288 217.800915 
+L 296.655519 218.755187 
+L 296.179799 219.709459 
+L 295.479132 220.663731 
+L 294.051172 222.09514 
+L 292.253213 223.526548 
+L 289.47943 225.435092 
+L 283.829217 229.25218 
+L 282.085577 230.683588 
+L 280.72879 232.114997 
+L 280.082747 233.069269 
+L 279.665616 234.023541 
+L 279.489159 234.977813 
+L 279.55835 235.932085 
+L 279.871238 236.886357 
+L 280.419003 237.840629 
+L 281.186199 238.794901 
+L 282.699563 240.22631 
+L 284.560945 241.657718 
+L 288.109998 244.043398 
+L 292.334099 246.906214 
+L 294.118772 248.337622 
+L 295.52917 249.769031 
+L 296.216293 250.723303 
+L 296.677441 251.677575 
+L 296.899612 252.631847 
+L 296.87654 253.586119 
+L 296.608878 254.540391 
+L 296.104171 255.494663 
+L 295.37665 256.448935 
+L 293.914042 257.880344 
+L 292.090108 259.311752 
+L 288.567906 261.697432 
+L 284.313092 264.560248 
+L 282.489158 265.991656 
+L 281.02655 267.423065 
+L 280.299029 268.377337 
+L 279.794322 269.331609 
+L 279.52666 270.285881 
+L 279.503588 271.240153 
+L 279.725759 272.194425 
+L 280.186907 273.148697 
+L 280.87403 274.102969 
+L 282.284428 275.534378 
+L 284.069101 276.965786 
+L 286.833228 278.87433 
+L 292.494493 282.691418 
+L 294.252005 284.122826 
+L 295.626815 285.554235 
+L 296.286625 286.508507 
+L 296.718476 287.462779 
+L 296.910193 288.417051 
+L 296.85637 289.371323 
+L 296.558524 290.325595 
+L 296.025054 291.279867 
+L 295.271 292.234139 
+L 293.77439 293.665548 
+L 291.925287 295.096956 
+L 288.384794 297.482636 
+L 284.149987 300.345452 
+L 282.352028 301.77686 
+L 280.924068 303.208269 
+L 280.223401 304.162541 
+L 279.747681 305.116813 
+L 279.51032 306.071085 
+L 279.51801 307.025357 
+L 279.770536 307.979629 
+L 280.260777 308.933901 
+L 280.97491 309.888173 
+L 282.420274 311.319582 
+L 284.23132 312.75099 
+L 287.743793 315.13667 
+L 292.007908 317.999486 
+L 293.844527 319.430894 
+L 295.324218 320.862303 
+L 296.065046 321.816575 
+L 296.584163 322.770847 
+L 296.866933 323.725119 
+L 296.905383 324.679391 
+L 296.698428 325.633663 
+L 296.251903 326.587935 
+L 295.5784 327.542207 
+L 294.185719 328.973616 
+L 292.414528 330.405024 
+L 289.660363 332.313568 
+L 288.2016 333.26784 
+L 288.2016 333.26784 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #111111; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 288.2016 333.26784 
+L 208.944 380.8224 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #111111; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 141.57504 196.54848 
+L 177.24096 148.99392 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #e69f00; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b6b6b" x="218.8512" y="90.427132" transform="rotate(-0 218.8512 90.427132)">atrium / input</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b6b6b" x="218.8512" y="439.160572" transform="rotate(-0 218.8512 439.160572)">output (ventricle)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(58.786755 251.590844)">FAST path</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(25.363942 264.793852)">fast conduction,</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(32.290505 277.996859)">long refractory</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(333.77472 251.590844)">SLOW path</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(333.77472 264.793852)">slow conduction,</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(333.77472 277.996859)">short refractory</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 181.905882 81.515632 
+Q 190.120546 103.421403 197.471561 123.024109 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #e69f00; stroke-width: 2.2; stroke-linecap: round"/>
+    <path d="M 198.220624 115.908007 
+L 197.471561 123.024109 
+L 192.228117 118.155197 
+z
+" clip-path="url(#p2b2181d99e)" style="fill: #e69f00; stroke: #e69f00; stroke-width: 2.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #e69f00" x="177.24096" y="76.557052" transform="rotate(-0 177.24096 76.557052)">1 premature beat</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #e69f00" transform="translate(31.114834 143.268828)">blocked here</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #e69f00" transform="translate(16.349052 156.471835)">(still refractory)</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 311.97888 208.456954 
+Q 311.97888 261.937421 311.97888 312.734608 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #0072b2; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 315.57888 305.534608 
+L 311.97888 312.734608 
+L 308.37888 305.534608 
+z
+" clip-path="url(#p2b2181d99e)" style="fill: #0072b2; stroke: #0072b2; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0072b2" x="317.9232" y="191.480572" transform="rotate(-0 317.9232 191.480572)">2 down the slow path</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 153.46368 323.340806 
+Q 153.46368 269.860339 153.46368 219.063152 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #0072b2; stroke-width: 2.4; stroke-linecap: round"/>
+    <path d="M 149.86368 226.263152 
+L 153.46368 219.063152 
+L 157.06368 226.263152 
+z
+" clip-path="url(#p2b2181d99e)" style="fill: #0072b2; stroke-dasharray: 8.88,3.84; stroke-dashoffset: 0; stroke: #0072b2; stroke-width: 2.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #0072b2" transform="translate(167.33376 337.449948)">3 up the fast path</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #0072b2" transform="translate(167.33376 350.652955)">(now recovered)</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 240.871135 232.778724 
+Q 244.563905 238.357892 246.899091 241.885972 
+" clip-path="url(#p2b2181d99e)" style="fill: none; stroke: #0072b2; stroke-width: 2.2; stroke-linecap: round"/>
+    <path d="M 245.927133 233.895021 
+L 246.899091 241.885972 
+L 239.923156 237.868967 
+z
+" clip-path="url(#p2b2181d99e)" style="fill: #0072b2; stroke: #0072b2; stroke-width: 2.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #0072b2" transform="translate(192.877125 258.192348)">circus</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #0072b2" transform="translate(197.193766 271.395355)">loop</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_8">
+    <path d="M 468.144 450.864 
+L 869.904 450.864 
+L 869.904 73.008 
+L 468.144 73.008 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="line2d_8">
+    <path d="M 544.4784 435.74976 
+L 544.4784 110.7936 
+" clip-path="url(#p1904a0518d)" style="fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 707.1912 435.74976 
+L 707.1912 110.7936 
+" clip-path="url(#p1904a0518d)" style="fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 869.904 435.74976 
+L 869.904 110.7936 
+" clip-path="url(#p1904a0518d)" style="fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 544.4784 435.74976 
+L 869.904 435.74976 
+" clip-path="url(#p1904a0518d)" style="fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 544.4784 265.71456 
+L 869.904 265.71456 
+" clip-path="url(#p1904a0518d)" style="fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 544.4784 110.7936 
+L 869.904 110.7936 
+" clip-path="url(#p1904a0518d)" style="fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #111111" x="625.8348" y="97.167541" transform="rotate(-0 625.8348 97.167541)">Regular</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #111111" x="788.5476" y="97.167541" transform="rotate(-0 788.5476 97.167541)">Irregular</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(480.630536 176.498709)">Narrow</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(491.684247 191.50115)">QRS</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(477.582684 206.503592)">&lt; 0.12 s</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(488.562177 338.977277)">Wide</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(491.684247 353.979719)">QRS</text>
+    <text style="font-weight: 700; font-size: 12.5px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(477.582684 368.98216)">≥ 0.12 s</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(572.549175 157.96533)">Sinus tachycardia</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(606.123862 175.828455)">AVNRT</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(571.065112 192.72783)">Orthodromic AVRT</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(569.763862 208.915642)">Flutter, fixed block</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(572.926987 225.16533)">Atrial tachycardia</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(780.992287 175.828455)">AF</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(722.916975 192.115642)">Flutter, variable block</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(776.0676 209.428455)">MAT</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(577.7598 328.84341)">VT (until proven</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(594.118237 346.099972)">otherwise)</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(593.065425 363.499972)">SVT + BBB</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(576.1548 380.40591)">Antidromic AVRT</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(745.529475 330.00591)">Pre-excited AF</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(759.801038 346.706535)">AF + BBB</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(738.090412 362.44341)">Polymorphic VT /</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(762.628537 380.40591)">torsades</text>
+   </g>
+  </g>
+  <g id="text_18">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start" x="14.544" y="22.9575" transform="rotate(-0 14.544 22.9575)">Re-entry, and the four-box sort for any tachycardia</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2b2181d99e">
+   <rect x="10.8" y="63.792" width="396.288" height="396.288"/>
+  </clipPath>
+  <clipPath id="p1904a0518d">
+   <rect x="468.144" y="73.008" width="401.76" height="377.856"/>
+  </clipPath>
+ </defs>
+</svg>

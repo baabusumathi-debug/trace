@@ -1,0 +1,1202 @@
+{
+ "questions": [
+  {
+   "q": "P12-1101",
+   "text": "The wiring: a relay built from two kinds of cell",
+   "steps": [
+    {
+     "card": "V12-045",
+     "bridge": "A slow door and fast cables. The reason is that they are made of two different kinds of cell.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with the heart's problem. Billions of muscle cells must squeeze in a fixed order: atria first, then a pause, then both ventricles together. No nerve tells each cell when to go. The heart does it with a relay, each cell passing the signal to the next. Follow one beat down it, because every block you'll meet later is a fault at a named point on this road.\n\nThe beat is born in the SA node, a small strip of cells high in the right atrium, where the superior vena cava enters. From there the signal spreads across the atrial muscle like a ripple across a pond. A band of fibres called the Bachmann bundle carries it quickly to the left atrium, and the internodal pathways carry it down to the floor of the right atrium.\n\nNow the ripple meets a wall. Between the atria and the ventricles lies a ring of fibrous tissue that doesn't conduct electricity at all. [[There is exactly one electrical door through that ring, and it is the AV node, low in the wall between the two atria.]] Here the signal slows to a crawl, on purpose, for about a tenth of a second. Why would a heart want a delay? It gives the atria time to finish squeezing, so the last top-up of blood, the atrial kick, reaches the ventricles before they contract. And the door is a guard. If the atria ever race at three or four hundred a minute, the slow door lets only some of those signals through.\n\nPast the door, everything is built for speed. The bundle of His pierces the fibrous ring and runs into the septum between the ventricles. There it splits into a right bundle branch and a left bundle branch. The left one divides again into a thin anterior fascicle and a broad posterior fascicle. So picture three cables below the His bundle. They end in the Purkinje fibres, a fine net under the inner lining of both ventricles. The net delivers the signal to the whole inner surface almost at once, and the muscle passes it outwards, from the inner lining, the endocardium, to the outer surface, the epicardium.\n\nOne detail matters later. The first piece of ventricle to fire is the septum, and it fires from its left side to its right, because the left bundle gives off its first twigs there. Septum first, left to right: in the camera section that explains the small r wave in V1.\n\nNow the speeds. The AV node is slowest, at about zero point zero five metres a second. The Purkinje fibres are fastest, at two to four metres a second. Ordinary muscle sits in between, at about a third of a metre to one metre a second. Guyton gives zero point three to zero point five, and Ganong gives one.\n\nNext, the back-up system. Every level of the relay can make its own beat, but each lower level is slower. The SA node fires at sixty to one hundred a minute, the AV junction at forty to sixty, and the ventricles at only twenty to forty. Normally the lower ones are silent, because each beat from above resets them before they can fire. That is overdrive suppression: the fastest pacemaker wins. When the top fails, or the door is blocked, the next one down takes over, and its rate tells you where it lives. That's an escape rhythm.\n\n{{**The relay:** SA node → atria → **AV node (slow door)** → His → right bundle + left bundle (anterior and posterior fascicles) → Purkinje → muscle, endocardium to epicardium\n**Back-up rates:** SA 60–100 | AV junction 40–60 | ventricle 20–40\n**Speeds:** AV node ≈ 0.05 m/s | muscle ≈ 0.3–1 m/s (Guyton 0.3–0.5; Ganong 1) | Purkinje 2–4 m/s}}\n\nLast, the blood supply, because it predicts which infarct breaks which part. The SA node's artery comes off the right coronary in about sixty per cent of people and off the circumflex in about forty. The AV node's artery comes off the right coronary in about ninety per cent. So an inferior infarct starves the node itself. The cables below run in the septum, fed mainly by the left anterior descending, so an anterior infarct damages the wiring below the node. NEET likes to offer the left anterior descending as the AV node's artery.\n\n[[SA node sixty to one hundred, AV junction forty to sixty, ventricle twenty to forty: the fastest pacemaker wins. The AV node's artery comes from the right coronary in about nine people in ten.]]\n\nSo the relay has a slow door in the middle and fast cables beyond it. Why is one part slow and the other fast? Because they are built from two different kinds of cell.",
+      "pic": "P12_EC_relay.svg",
+      "cap": "The relay: SA node → atria → AV node (the delay gate) → His → bundles → Purkinje. Back-up rates fall with each level: 60–100, 40–60, 20–40."
+     }
+    },
+    {
+     "card": "V12-046",
+     "bridge": "The nerves speak to the calcium cells. Next: how vagus and sympathetic act, and where atropine can and cannot work.",
+     "lesson": {
+      "v": 1,
+      "text": "Here is the idea that the whole of the ECG stands on. The heart's electrical system is built from two kinds of cell, and they differ in one thing: which ion fires them.\n\nEvery heart cell fires by opening gates in its wall and letting positive ions rush in. That inward rush is the upstroke. In most of the heart the gates are sodium gates. In the two nodes they are calcium gates.\n\nTake the sodium cell first. Atrial muscle, the His bundle, the bundle branches, the Purkinje fibres and ventricular muscle: everything except the two nodes. At rest a sodium cell sits at a steady minus ninety millivolts. When the signal arrives, thousands of sodium gates slam open together and the voltage leaps up within a millisecond or two. A steep, tall upstroke is a strong shove to the next cell, so the signal travels fast. And it is all or none. A sodium cell either fires fully and passes the signal on at full speed, or it fails completely. There is no half measure, and no warning. Picture a light switch. It works every time, until the day it doesn't.\n\nNow the calcium cell: the SA node and the AV node. It has almost no working sodium gates. Its upstroke is carried by L-type calcium gates, which open slowly and carry a smaller current. So the upstroke is a gentle slope, the shove to the next cell is weak, and the signal creeps. That is why the AV node is the slow door. It also has no steady resting level: its voltage drifts upwards between beats, which the next section uses to explain the pacemaker.\n\nThe calcium cell has one more property, and it's the important one. After it fires, it needs time to recover, and that recovery runs on a clock. A sodium cell is ready again almost as soon as its voltage has come back down. A calcium cell stays sluggish for a while after its voltage has fully recovered. So if the next signal arrives a little early, the node is only partly recovered, and it conducts that signal more slowly. Drive it faster and it conducts more slowly still, until one signal fails to get through. Then the node gets a full rest and the cycle starts again. This is called decremental conduction. Picture a worker who needs a breather between jobs. Hand him the jobs too close together and each one takes a little longer, until he misses one, catches his breath, and starts fresh.\n\nYou have just heard the two kinds of heart block, before we've named them. A tired node that takes longer and longer and then drops a beat is a calcium cell. A cable below the node that drops a beat suddenly, with no lengthening before it, is a sodium cell: all or none. The second ECG packet builds Mobitz one and Mobitz two on exactly that.\n\n[[The node is calcium and the wiring below it is sodium. Calcium cells conduct slowly and tire gradually, so they fail with a warning. Sodium cells conduct fast and all or none, so they fail without one.]]\n\nThe same split tells you what acts where. The calcium cells are the ones the nerves and the node drugs speak to. The vagus slows them. So does adenosine. So do beta-blockers, verapamil and diltiazem. So does digoxin, which acts on the node largely through the vagus. All of them slow the sinus rate or slow the door, and at ordinary doses none of them widens the QRS complex. The sodium cells answer to different things: the sodium channel blockers, such as flecainide, lidocaine and an overdose of tricyclic antidepressants; a high potassium; and ischaemia. These slow conduction through the cables and the muscle, and they widen the QRS.\n\n{{**Calcium cells (SA node, AV node)** | **Sodium cells (atria, His, bundles, Purkinje, ventricle)**\nSlow, decremental, fail gradually | Fast, all or none, fail suddenly\nVagus, adenosine, beta-blockers, verapamil, diltiazem, digoxin | Sodium-channel blockers, high K⁺, ischaemia\nSlow rate, long PR | Wide QRS}}\n\nNEET's favourite confusion treats all conduction as one tissue: lidocaine offered to slow the AV node, or a wide QRS offered for verapamil. Ask one question. Is this a calcium cell or a sodium cell?\n\nWe've now said twice that the nerves act on the nodes, without saying how. How does the vagus slow a node, and why does atropine work in some slow hearts and fail in others?",
+      "pic": "P12_EC_two_cells.svg",
+      "cap": "Two kinds of cell. Node = calcium: slow, tires gradually. Below the node = sodium: fast, all-or-none."
+     }
+    },
+    {
+     "card": "V12-047",
+     "bridge": "Both nerves work on the drift between beats. Next section: that drift, phase four, and the other phases that draw the waves.",
+     "lesson": {
+      "v": 1,
+      "text": "Two sets of nerves have their hands on the relay, and both hold it mainly at the calcium cells. That tells you where atropine works, where it can't, and why a strain and a drug stop the same tachycardia.\n\nStart with the vagus, the brake. Its endings release acetylcholine onto a receptor called M2, on the cells of the SA node and the AV node. M2 does two things. It opens potassium channels, so positive charge leaks out and the cell is pulled more negative, further from firing. And it lowers the cell's cyclic AMP, which makes the upward drift between beats shallower. The SA node slows, and the AV node conducts more slowly. The geography matters more than the chemistry. Vagal fibres are dense around the two nodes and the atria, and sparse in the His bundle, the bundle branches and the ventricles. The vagus has almost no grip below the node.\n\nThe sympathetic nerves are the accelerator. Noradrenaline and adrenaline act on the beta one receptor, which is coupled to a G protein called Gs. Gs switches on the enzyme adenylate cyclase, which makes cyclic AMP. Cyclic AMP steepens the drift in the SA node, so the rate rises, and it opens more calcium gates, so the AV node conducts faster and the muscle contracts harder. A grand test asked you for the second messenger of adrenaline's beta effect. It is cyclic AMP, made by adenylate cyclase. The tempting wrong option was phospholipase C, which belongs to the alpha one receptor, through Gq, in the blood vessels.\n\n[[Beta receptors work through Gs, adenylate cyclase and cyclic AMP. Phospholipase C belongs to alpha one and Gq.]]\n\nAt rest the brake wins. A heart with no nerves beats at about one hundred a minute, so a resting seventy is the vagus holding it down.\n\nNow atropine. It blocks the M2 receptor: it takes the foot off the brake, and that is all it does. So it works where the slowness is vagal and in a node: sinus bradycardia, and a block inside the AV node. It can't help a block below the node, because there was no vagal brake there to remove. And it fails in a transplanted heart, because the nerves were cut at the operation. Those patients need pacing or a direct beta stimulant, and the Arrest packet gives you the order.\n\n[[Atropine only removes vagal tone, so it speeds the sinus node and the AV node. It does nothing for a block below the node, and nothing for a denervated transplanted heart.]]\n\nTurn the same lever the other way. If a tachycardia is a circuit running through the AV node, shutting the door for a few seconds breaks it. A vagal manoeuvre does it through the patient's own reflex: the baroreceptors fire, the brainstem answers down the vagus, and the node stalls. Adenosine does it chemically. Its receptor on the nodal cell opens the very same potassium channels as acetylcholine. So adenosine is a vagal manoeuvre in a syringe, which is why the two sit side by side in the algorithm.\n\nA grand test asked the manoeuvres as statements, and you lost that mark. Here are the true versions. The Valsalva is a sustained strain against a closed airway, not a deep breath in. The modified Valsalva is a strain at forty millimetres of mercury for fifteen seconds, semi-recumbent, then the patient is laid flat at once with the legs raised, so the rush of returning blood enlarges the reflex. In the REVERT trial it restored sinus rhythm in forty-three per cent, against seventeen per cent with the standard strain. Carotid sinus massage is done lying down, on a monitor, on one side only, for five to ten seconds, and never when there's a carotid bruit or a previous stroke or TIA. And because all of these act on the node, they end rhythms that use the node, only slow the ventricles briefly in atrial flutter or fibrillation, and don't stop ventricular tachycardia.\n\nAdenosine's doses and fine print come in the Rhythm packet. What you need now is the picture underneath both nerves: that upward drift between beats."
+     }
+    }
+   ],
+   "spine": [
+    "One beat runs SA node, atria, AV node, His bundle, three cables (right bundle, left anterior and posterior fascicles), Purkinje net, then muscle from inside out.",
+    "The AV node is the only door through the fibrous ring and is slow on purpose: it lets the atrial kick finish and shields the ventricles from fast atria.",
+    "Back-up pacemakers get slower going down: SA 60–100, AV junction 40–60, ventricle 20–40. The fastest wins (overdrive suppression).",
+    "Two kinds of cell: the nodes fire on calcium (slow, decremental, fail gradually); everything else fires on sodium (fast, all or none, fails suddenly).",
+    "Vagus (M2, potassium channels, less cAMP) and sympathetic (beta-1, Gs, adenylate cyclase, cAMP) both act mainly on the nodes.",
+    "So atropine, vagal manoeuvres and adenosine work at the node, and not on a block below it or (atropine) on a transplanted heart."
+   ],
+   "open": {
+    "v": 1,
+    "text": "Shock Two ended on a promise. Before the shock, there's the infarct. And the first thing you'll ever see of an infarct is a line on paper. So before the infarct, one step further back: the paper itself.\n\nYou've read ECG before, in bits and pieces. Most of us have. And when the bottom layer goes, everything built on top of it starts to look frightening. Mobitz one and Mobitz two. The R wave that should be small in V1. A long QT. Four classes of antiarrhythmic drug. Each one feels like a separate thing to memorise.\n\nThey aren't separate. [[Every wave on the ECG is one moment in the life of a heart cell, seen by a camera from one side of the chest.]] Learn the cell, learn the cameras, and most ECG questions become questions you can work out instead of remember.\n\nSo this packet builds from the ground. First, the wiring: the relay that carries each beat from the top of the heart to the bottom, and the two very different kinds of cell it's built from. That one difference, a slow calcium cell against a fast sodium cell, is going to explain every heart block in the next packet. Then the two action potentials, phase by phase, and the wave each phase draws. Then the twelve leads as twelve cameras, with one rule that gives you the axis, the R wave across the chest, and hypertrophy. And last, the cameras turned on ischaemia. Why an injured wall lifts the ST segment, which leads watch which artery, the infarcts the standard leads hide, and the changes that look like an infarct but aren't.\n\nListen for one idea that keeps coming back. Sodium, calcium, potassium. Each phase of the cell belongs to one ion, and every drug and every electrolyte that changes the ECG is pressing on one of them.\n\nStart at the top of the heart, with the cell that fires first."
+   }
+  },
+  {
+   "q": "P12-1102",
+   "text": "Two action potentials become the waves",
+   "open": {
+    "v": 1,
+    "text": "The P wave and the QRS complex are the same event. Each is a sheet of sodium cells firing, one sheet in the atria and one in the ventricles, and each is drawn by the same phase of the same action potential. See that, and the ECG stops being shapes to memorise. It becomes the life of a cell, written out sideways.\n\nYou've met the two kinds of cell. Now we open each one up. A cell's voltage over one beat is its action potential, and its parts are numbered as phases. In the calcium cell the part that matters is the slow drift between beats, because that drift sets the heart rate. The sodium cell has five phases, and each draws one piece of the ECG.\n\nThen the pay-off. If each phase is one current, anything that disturbs a current changes a predictable piece of the trace. That map carries you through electrolytes, poisons and the antiarrhythmic classes.\n\nListen for one trap. The ECG doesn't show voltage. It shows current flowing between cells that disagree. That is why the line can be flat while a great deal is happening.\n\nBegin with the cell that starts every beat."
+   },
+   "steps": [
+    {
+     "card": "V12-048",
+     "bridge": "The node keeps time and draws nothing. Next: the muscle cell, whose five phases draw the QRS, the ST segment and the T wave.",
+     "lesson": {
+      "v": 1,
+      "text": "You know the SA node fires on its own, sixty to a hundred times a minute. The question is how a cell that nobody commands keeps time.\n\nPicture a cistern that fills from a tap and empties itself every time the water reaches a line. Nobody operates it. Its rhythm depends on three things only: how fast the tap runs, how high the line is, and how empty the cistern is when it starts. The SA node cell is that cistern, and its voltage is the water level.\n\nFollow one cycle. Just after a beat the cell is at its most negative, about minus sixty millivolts. That lowest point is called the maximum diastolic potential. A muscle cell would sit still there. The node cell can't, because of the HCN channel, which carries the funny current. It's funny because it behaves backwards. Almost every other channel in the heart opens when the cell becomes more positive. This one opens when the cell becomes negative. So the moment the cell reaches its lowest voltage, the funny channel opens, sodium trickles in, and the voltage begins to climb. [[That slow climb is phase four, the pacemaker potential, and its steepness sets the heart rate.]] Near the top of the climb a short-lived calcium channel, the T type, helps with the last few millivolts.\n\nAt about minus forty millivolts the cell reaches threshold. Now the L-type calcium gates open and the cell fires. This is phase zero, and remember it's a calcium upstroke, so it's a slope and not a spike. Then potassium channels open, positive charge leaves, and the voltage falls back towards minus sixty. That's phase three. And as it gets there, the funny channel opens again. The cycle restarts itself.\n\nNotice which numbers are missing. The node cell has no phase one and no phase two. Those belong to the sodium cell, in the next step.\n\nSo there are three ways to change the rate, the three things about the cistern. The slope of the climb: the tap. The starting level, the maximum diastolic potential: start lower and the climb takes longer. And the threshold, the line: raise it and the climb takes longer.\n\nPut the nerves from the last step onto this picture. The sympathetic nerves raise cyclic AMP, and cyclic AMP binds directly to the funny channel and opens it more readily. The tap runs faster, the slope steepens, the rate rises. Fever and an overactive thyroid steepen it too. The vagus does two things at once. It lowers cyclic AMP, which turns the tap down, and it opens potassium channels, which starts the cistern from a lower level. Adenosine uses those same potassium channels. Beta-blockers turn the tap down by blocking the sympathetic drive. Verapamil and diltiazem block the L-type calcium gates and weaken the upstroke, which shows most at the AV node. Cold and an underactive thyroid flatten the slope.\n\nOne drug acts on the funny channel and nothing else: ivabradine. It turns the tap down and touches no other current. So the sinus rate falls, with no change in contractility and no fall in blood pressure. That's the fact NEET asks. And because it acts only on the sinus node's own pacemaker current, it does nothing for the rate in atrial fibrillation, where the sinus node isn't in charge.\n\n{{**Nodal action potential:** phase 4 = If (HCN, \"funny\"), then T-type Ca²⁺ → threshold ≈ −40 mV → phase 0 = L-type Ca²⁺ → phase 3 = K⁺ out → back to ≈ −60 mV. No phase 1 or 2.\n**Rate changes by:** slope of phase 4 | threshold | maximum diastolic potential}}\n\nLast, something that surprises people. When the SA node fires, the ECG shows nothing. The node is a tiny cluster of cells, far too small a current to move the pen. The first thing you see, the P wave, is the atrial muscle answering. You infer the sinus node from a P wave of the right shape before every QRS: upright in lead two and upside down in aVR. The camera section shows why.\n\n[[Ivabradine blocks only the funny current, so it slows the sinus rate without changing contractility or blood pressure. The SA node's own firing is invisible on the ECG; the P wave is the atria answering.]]\n\nSo the calcium cell keeps time. Now the cell that does the work, and draws nearly everything on the paper.",
+      "pic": "P12_EC_pacemaker_rate.svg",
+      "cap": "Phase 4 sets the rate. Flatter slope, a more negative starting point or a higher threshold = slower firing."
+     }
+    },
+    {
+     "card": "V12-049",
+     "bridge": "Shapes need a ruler. Next: what one small square means, and the normal PR, QRS and QT.",
+     "lesson": {
+      "v": 1,
+      "text": "The ECG does not record voltage. It records current flowing between cells that are at different voltages. If every cell in the ventricle is at the same voltage, whatever that voltage is, the line is flat. Hold that, and the five phases of the muscle cell draw the ECG for you.\n\nPhase four is rest. The cell sits at minus ninety millivolts, held there by a potassium channel that is open at rest and by the sodium potassium pump. There's no drift. This cell waits to be told.\n\nPhase zero is the upstroke. The signal arrives, the sodium gates slam open, and the voltage leaps from minus ninety to about plus twenty in a millisecond or two. Then those gates snap shut and lock. Now think of the whole ventricle. For a moment some cells have fired and some haven't. They disagree, current flows between them, and that boundary sweeps through the muscle. The ECG draws the sweep as the QRS. In the atria the same phase zero draws the P wave.\n\nPhase one is a small notch: a brief potassium current, the transient outward current, lets a little charge out. It is larger in the outer layer of the wall, the epicardium, and largest in the epicardium of the right ventricle. Park that. It is the seed of the J wave of hypothermia and of the Brugada pattern, both in the second packet.\n\nPhase two is the plateau. Calcium flows in through L-type gates while potassium flows out, and the two balance, so the voltage hovers near zero for about a quarter of a second. The calcium coming in is the trigger for contraction. And on the ECG? Every ventricular cell is now on its plateau, at about the same voltage. No disagreement, no current, a flat line. That flat line is the ST segment, flat for the same reason as the baseline between beats: all the cells agree. An injured region that can't hold its plateau will disagree with its neighbours, and that is how ischaemia shifts the ST segment.\n\nPhase three is repolarisation. The calcium gates close, and potassium currents carry positive charge out until the cell is back at minus ninety. The cells don't all finish together, so again there is disagreement, and the ECG draws the T wave. It is rounder than the QRS because each cell recovers in its own time, not along the fast wiring.\n\n[[Phase zero, sodium in, draws the QRS. Phase two, calcium in balanced by potassium out, is the flat ST segment. Phase three, potassium out, draws the T wave. The QT interval, from the start of the QRS to the end of the T wave, is the whole action potential.]]\n\n{{**Phase 4** rest, −90 mV (IK1, Na⁺/K⁺ pump) | baseline\n**Phase 0** Na⁺ in | **QRS** (P wave in atria)\n**Phase 1** K⁺ out, brief (Ito) | J point\n**Phase 2** Ca²⁺ in = K⁺ out | **ST segment**\n**Phase 3** K⁺ out (IKr, IKs) | **T wave**\n**Phase 0 to end of 3** | **QT**}}\n\nNow a puzzle. Repolarisation is the electrical opposite of depolarisation, so why is the T wave upright where the QRS is upright? Because it also runs in the opposite direction. The epicardial cells fire last, but their action potentials are shorter, so they recover first. Depolarisation travels from the inside of the wall outwards; repolarisation travels from the outside inwards. An opposite charge moving in the opposite direction gives the same deflection. The atria repolarise too, but that small wave is buried under the QRS.\n\nNext, the locked gates. From phase zero until about the middle of phase three the sodium gates are locked, and no stimulus can fire the cell: the absolute refractory period. In late phase three some gates have reset and some haven't, so a strong stimulus can fire the cell but the response spreads unevenly: the relative refractory period. On the ECG that is the T wave, and the dangerous moment is near its peak. A premature beat landing there, the R on T, can start ventricular fibrillation. That is why a cardioversion shock is synchronised to the R wave.\n\nLast, the U wave: a small bump after the T wave, best seen in V2 and V3, thought to be late repolarisation of the Purkinje fibres. A big one means slow repolarisation, classically low potassium.\n\nYou now have the shapes. Before using them, you need the ruler.",
+      "pic": "P12_EC_anchor_ap_ecg.svg",
+      "cap": "Each phase draws one wave: phase 0 (sodium) = QRS, phase 2 plateau (calcium) = flat ST, phase 3 (potassium) = T. The whole action potential = QT."
+     }
+    },
+    {
+     "card": "V12-050",
+     "bridge": "Now disturb one current at a time, and watch which number on the paper changes.",
+     "lesson": {
+      "v": 1,
+      "text": "Everything so far has been a shape. The paper turns shapes into numbers, and it has only two scales.\n\nSideways is time. The paper runs at twenty-five millimetres a second. So one small square, one millimetre, is zero point zero four seconds, and one large square, five small ones, is zero point two seconds. Five large squares make one second. Upwards is voltage. Ten millimetres, two large squares, is one millivolt, and the rectangular calibration mark at the start of the strip proves the machine is set that way. Check it before you call anything big or small.\n\nRate comes straight from the time scale. Three hundred large squares pass in a minute. So count the large squares between two R waves and divide three hundred by that number. One square apart is three hundred a minute, two is one hundred and fifty, three is one hundred, four is seventy-five, five is sixty, six is fifty. For a finer answer, divide fifteen hundred by the number of small squares. Both methods assume a regular rhythm. When it's irregular, as in atrial fibrillation, they give a different answer for every pair of beats. Then count the QRS complexes on the full ten-second strip and multiply by six. NEET's trap is a single R to R interval offered on an irregular strip.\n\nNow hang the normal numbers on the relay, because each interval is one stretch of that road.\n\nThe P wave is the atria firing. It lasts less than zero point one two seconds, which is three small squares, and it stands less than two and a half millimetres tall in lead two.\n\nThe PR interval runs from the start of the P wave to the start of the QRS. It is the time from the atria firing to the ventricles firing, and most of it is the wait at the slow door, the AV node. Normal is zero point one two to zero point two zero seconds: three to five small squares. Longer than one large square means the door is slow. Shorter than three small squares means something got round the door.\n\nThe QRS is the ventricles firing. Because the Purkinje net delivers the signal everywhere almost at once, it's over in less than zero point one two seconds, and usually in zero point zero six to zero point one. That's why a narrow QRS tells you the beat came down the normal wiring. Between zero point one and zero point one two is a partial delay. Zero point one two or more is wide: the signal has had to cross muscle, cell to cell, the slow way.\n\nThe J point is the corner where the QRS ends and the ST segment begins. ST elevation and depression are measured there.\n\nThe QT interval, you'll recall, is the whole action potential. It shortens as the heart speeds up, so it is corrected for rate and written QTc. The upper limits to carry are about four hundred and fifty milliseconds in men and four hundred and sixty in women. A quick bedside check: at ordinary rates the QT should be less than half the R to R interval. The second packet shows you how to measure and correct it.\n\n{{**Paper:** 25 mm/s, 10 mm/mV | small square 0.04 s | large square 0.2 s\n**Rate:** 300 ÷ large squares, or 1500 ÷ small squares; irregular: QRS in 10 s × 6\n**P** < 0.12 s, < 2.5 mm (lead II) | **PR** 0.12–0.20 s | **QRS** < 0.12 s (0.10–0.12 incomplete) | **QTc** ≤ 450 ms men, ≤ 460 ms women}}\n\n[[One small square is zero point zero four seconds and one large square is zero point two. PR is three to five small squares. QRS is under three small squares. Rate is three hundred divided by the large squares between R waves.]]\n\nWith the ruler in your hand, go back to the phases and ask what happens to these numbers when one current is disturbed.",
+      "pic": "P12_EC_paper.svg",
+      "cap": "25 mm/s: small square 0.04 s, large square 0.2 s. PR 0.12–0.20 s, QRS < 0.12 s. ST is measured at the J point against the TP baseline."
+     }
+    },
+    {
+     "card": "V12-051",
+     "bridge": "You know what each wave means. Next section: why the same wave is upright in one lead and inverted in another.",
+     "lesson": {
+      "v": 1,
+      "text": "This is the step the rest of the series hangs on. Each phase of the muscle cell is one current, and each current draws one piece of the ECG. Know which current is disturbed, and you can predict the ECG without memorising it.\n\nTake the phases in order.\n\nPhase zero is sodium, and it draws the QRS. Block the sodium gates and each cell's upstroke becomes slower and weaker. A weaker shove to the next cell means slower conduction through the muscle, so the ventricle takes longer to activate, and the QRS widens. What blocks sodium? The class one antiarrhythmics, such as flecainide and procainamide. Tricyclic antidepressants in overdose. Cocaine. And a high potassium, by a different route: it makes the resting voltage less negative, and sodium gates that never get back to minus ninety stay locked. Different causes, the same wide QRS, because it is the same current.\n\nPhase two is the plateau, calcium, and it is the ST segment. Here the thing that changes is length. A low calcium makes the plateau last longer. So the ST segment stretches, like a longer piece of flat track between the QRS and the T wave. The T wave itself is normal, only pushed later, and the QT is long. A high calcium does the reverse. The plateau is cut short, the ST segment almost disappears, the T wave starts almost straight off the QRS, and the QT is short.\n\nPhase three is potassium, and it draws the T wave. Here there's a fact that sounds backwards, so take it slowly. The potassium channels of phase three work better when there is more potassium outside the cell. So a high potassium speeds phase three. Repolarisation is brisk, and the T wave becomes tall, narrow and peaked, like a tent. A low potassium slows those channels. Phase three drags, the T wave flattens and spreads, and a U wave appears behind it. The interval from the Q wave to the end of that U wave looks long.\n\nThe same channel has a drug story. The main phase three current runs through a channel called hERG, and a great many drugs block it: the class three antiarrhythmics such as sotalol and amiodarone, macrolide antibiotics, haloperidol, ondansetron, and a long list besides. Block it and phase three is slow, so the QT lengthens. A cell that lingers near its plateau can let its calcium gates reopen and fire a small extra upstroke, an early afterdepolarisation. That is the spark for torsades de pointes, which gets its own section in the second packet.\n\n[[QRS is sodium. The ST segment is calcium. The T wave is potassium. The QT is the whole cell. Ask which current is disturbed, and the ECG follows.]]\n\nOne group is left: the things that act on the calcium cells of the nodes, and not on the muscle. Beta-blockers, verapamil and diltiazem, digoxin, adenosine, the vagus. They slow the sinus rate and lengthen the PR interval. They leave the QRS narrow, because the QRS belongs to sodium cells. So a slow rate and a long PR with a narrow QRS says node. A wide QRS says sodium, whatever the poison.\n\n{{**Phase 0, Na⁺ blocked** (class I, TCA, cocaine, high K⁺) | wide QRS\n**Phase 2:** low Ca²⁺ | long ST, long QT, normal T\n**Phase 2:** high Ca²⁺ | short ST, short QT\n**Phase 3:** high K⁺ | tall, narrow, peaked T\n**Phase 3:** low K⁺ | flat T, U wave, long QU\n**Phase 3:** IKr block (class III, macrolides, haloperidol, ondansetron) | long QT, torsades\n**Nodal drugs** | slow rate, long PR, narrow QRS}}\n\nNow the trap, and NEET sets it often. Two different things make the QT long, and they look different. [[A low calcium lengthens the ST segment and leaves the T wave normal. A low potassium, or a drug that blocks the potassium channel, changes the T wave itself. And a high calcium shortens the QT, so an option saying hypercalcaemia prolongs the QT is false.]] One more pair confuses people: a high potassium gives a tall T wave, but so do the first minutes of a blocked coronary artery. The potassium T wave is narrow and pointed, with a short QT. The ischaemia section shows you the other one, which is broad.\n\nYou can now say what each wave means. What you can't yet say is why the same wave is upright in one lead and upside down in another. For that you need the cameras.",
+      "pic": "P12_EC_four_handles.svg",
+      "cap": "QRS is sodium, ST is calcium, T is potassium, QT is the whole cell."
+     }
+    }
+   ],
+   "spine": [
+    "The node cell climbs by the funny current in phase 4 to about −40 mV, fires on L-type calcium, repolarises on potassium. Phase 4 slope sets the rate.",
+    "The SA node's firing is invisible; the P wave is atrial muscle answering.",
+    "The ECG records current between cells that disagree: phase 0 (sodium) draws the QRS, the phase 2 plateau is the flat ST, phase 3 (potassium) draws the T.",
+    "The T is upright because epicardium repolarises first: opposite charge moving in the opposite direction.",
+    "Paper: small square 0.04 s, large square 0.2 s; PR 0.12–0.20 s, QRS under 0.12 s, QTc up to about 450 ms (men) and 460 ms (women).",
+    "QRS is sodium, ST is calcium, T is potassium, QT is the whole cell; nodal drugs change rate and PR, not the QRS."
+   ]
+  },
+  {
+   "q": "P12-1103",
+   "text": "Leads as cameras: one rule explains axis, R waves and hypertrophy",
+   "open": {
+    "v": 1,
+    "text": "Axis deviation, R wave progression, bundle branch patterns, Q waves and reciprocal changes are not five topics. They are one rule, used from different viewpoints. A wave of depolarisation coming towards a lead writes upwards. Going away, it writes downwards.\n\nThink of the twelve leads as twelve cameras fixed around one heart. A wave of firing starts at the top right, crosses the atria, waits at the door, and sweeps through the ventricles in a fixed order. Twelve cameras film that one event from twelve positions, and that is the only reason the traces differ.\n\nSo this section first puts the cameras in their places. Then it uses the rule three times: to find the axis, which is the average direction of the sweep; to explain why V1 shows a small r and a deep S while V6 shows the opposite; and to see what a bigger chamber does. It ends with healthy hearts that break the picture, and a signal too weak to film.\n\nThe trap to listen for is a technical one: two swapped arm electrodes can imitate a heart on the wrong side of the chest.\n\nFirst, the rule, and where each camera stands."
+   },
+   "steps": [
+    {
+     "card": "V12-052",
+     "bridge": "Twelve views of one sweep. Next: average the sweep into one arrow, the axis, and see the three reasons it swings.",
+     "lesson": {
+      "v": 1,
+      "text": "One rule. When the wave of depolarisation travels towards a lead, the trace goes up. When it travels away, the trace goes down. When it travels straight across the lead's line of sight, neither towards nor away, the trace goes up and down by equal amounts, and that complex is called equiphasic. The size of the deflection depends on how squarely the wave heads at the camera, and on how much muscle carries it.\n\nNow place the cameras. There are two sets of six.\n\nThe first six are the limb leads, and they look at the heart in the frontal plane, as if the chest were a clock face seen from the front. Each is named by an angle. Lead one looks from the left side, at zero degrees. Go downwards from there. Lead two looks from the left hip, at plus sixty degrees. aVF looks from the feet, at plus ninety. Lead three looks from the right hip, at plus one hundred and twenty. Now go upwards from lead one. aVL looks from the left shoulder, at minus thirty. And aVR looks from the right shoulder, at minus one hundred and fifty, on its own on the far side.\n\nRun the normal beat past them. The wave starts at the SA node, top right, and the bulk of the ventricular wave heads down and to the left, towards the left hip. Lead two stands almost exactly there, so it sees everything coming straight at it. That's why lead two has a clear upright P wave and a tall R wave, and why it is the rhythm strip. aVR stands at the right shoulder, behind the starting point, looking into the cavity of the heart. Everything runs away from it. So in a normal ECG the P wave, the QRS and the T wave are all negative in aVR. If aVR is upright, something is wrong with the heart or with the electrodes.\n\nThe second six are the chest leads, and they look in the horizontal plane, a ring around the chest at the level of the heart. V1 sits just to the right of the breastbone and V2 just to the left, both in the fourth space, in front of the right ventricle and the septum. V4 is in the fifth space in the midclavicular line, over the apex, and V3 lies between V2 and V4. V5 is level with V4 in the anterior axillary line, and V6 in the mid-axillary line, looking at the side wall of the left ventricle.\n\n{{**Limb leads (frontal):** aVL −30° | lead I 0° | lead II +60° | aVF +90° | lead III +120° | aVR −150°\n**Chest leads (horizontal):** V1–V2 right ventricle and septum | V3–V4 anterior | V5–V6 lateral\n**Territories:** inferior II, III, aVF | lateral I, aVL, V5, V6 | septal V1, V2 | anterior V3, V4}}\n\nBecause each camera stands nearest one wall, the leads group into territories, and you'll use these in every infarct.\n\n[[Lead two, three and aVF look up from below: the inferior wall. Lead one, aVL, V5 and V6 look from the left: the lateral wall. V1 and V2 face the septum. V3 and V4 face the anterior wall.]]\n\nThe rule gives you one more idea for free. If one camera sees something coming towards it, the camera on the opposite side sees the same thing going away. It records the mirror image. That is a reciprocal change. aVL, up at the left shoulder, is roughly opposite lead three, so an event that lifts the trace in the inferior leads pushes it down in aVL. And notice that no standard camera stands behind the heart. The back wall of the left ventricle is filmed only from the front, by V1 to V3, in mirror image. The ischaemia section uses that to find the posterior infarct.\n\nLast, the trap from the section opening. Suppose the right arm and left arm electrodes are swapped. Lead one is recorded between the two arms, so it flips completely: an upside down P wave, QRS and T wave in lead one. aVR and aVL change places, so aVR now looks upright. It looks like a heart lying on the right side of the chest. But the chest electrodes haven't moved. With swapped arm electrodes the R wave still grows normally from V1 to V6. In true dextrocardia the heart really is on the right, so the R waves shrink from V1 to V6. One look at the chest leads separates them.\n\n[[An inverted lead one with an upright aVR means either swapped arm electrodes or dextrocardia. Normal R wave growth across the chest leads means the electrodes were swapped.]]\n\nTwelve cameras, one sweep. Now average the sweep into a single arrow.",
+      "pic": "P12_EC_lead_wheel.svg",
+      "cap": "One rule: towards the lead = upright, away = downward, perpendicular = equiphasic."
+     }
+    },
+    {
+     "card": "V12-053",
+     "bridge": "The limb leads gave one arrow. Now the chest leads: why V1 writes a small r and a deep S, and V6 the opposite.",
+     "lesson": {
+      "v": 1,
+      "text": "Add up every part of the ventricular wave during the QRS and you get one arrow: the average direction in which the ventricles depolarise, seen in the frontal plane. That arrow is the axis. It is the camera rule run backwards: where must the wave be going, for the cameras to see this?\n\nNormally the arrow points down and to the left, towards the left hip, because the left ventricle is the big muscle and it lies down and to the left. Normal runs from minus thirty degrees to plus ninety degrees. More negative than minus thirty is left axis deviation: the arrow has swung up towards the left shoulder. Beyond plus ninety is right axis deviation: the arrow has swung towards the right hip.\n\nYou find it with two cameras at right angles: lead one, looking from the left, and aVF, looking from the feet. If the QRS is mainly upright in both, the wave is heading left and down. Normal. If lead one is upright but aVF is negative, the wave is heading left and up. That may or may not be abnormal, because normal extends up to minus thirty. So check lead two. [[With lead one upright and aVF negative, lead two decides: if lead two is still upright the axis is normal, and if lead two is negative it is true left axis deviation.]] Why lead two? Because lead two sits at plus sixty, and the line at right angles to plus sixty is minus thirty. Exactly at minus thirty, lead two would be equiphasic: the perpendicular rule at work.\n\nIf lead one is negative and aVF is upright, the wave is heading right and down: right axis deviation. If both are negative, it is heading up towards the right shoulder, the one direction a normal heart never takes. That is the extreme axis, also called the north-west axis. Think of ventricular tachycardia, severe hyperkalaemia or misplaced electrodes.\n\nFor a precise answer, find the limb lead where the QRS is most nearly equiphasic. The axis is at right angles to that lead, and the upright leads tell you which of the two directions.\n\n{{**Lead I up, aVF up** | normal\n**Lead I up, aVF down** | look at lead II: up = normal, down = **left axis deviation**\n**Lead I down, aVF up** | **right axis deviation**\n**Lead I down, aVF down** | extreme (north-west) axis\nNormal axis −30° to +90°}}\n\nNow the part that makes the cause lists unnecessary.\n\n[[The axis swings for only three reasons: towards extra muscle, away from dead muscle, and towards the region that is activated late.]]\n\nFirst, towards extra muscle, because more muscle is more current. A thick right ventricle pulls the arrow to the right. A thick left ventricle pulls it a little further left.\n\nSecond, away from dead muscle. Dead tissue produces no current, so the opposite wall is unopposed. An inferior infarct removes the downward forces and the arrow tips up and to the left. A lateral infarct removes the leftward forces and the arrow tips to the right.\n\nThird, towards the part that is activated late. If one cable is blocked, the muscle it served is reached late, by the slow route, after everything else has finished. That late, unopposed activity drags the arrow towards itself. Block the left anterior fascicle, which serves the upper front of the left ventricle, and the last activity is up and to the left: left axis deviation. Block the left posterior fascicle and it is down and to the right: right axis deviation.\n\nSo sort the lists by those three. Left axis deviation: left anterior fascicular block, the commonest cause; inferior infarction; left ventricular hypertrophy, where the shift is mild; and the exam extras, an ostium primum atrial septal defect and pacing from the right ventricular apex. Right axis deviation: right ventricular hypertrophy; acute right ventricular strain, as in pulmonary embolism; chronic lung disease; lateral infarction; left posterior fascicular block; and the normal child or tall thin adult. A sodium channel blocker shifts only the last part of the QRS to the right, which the poisons section shows you in aVR.\n\n{{**Left axis:** LAFB (commonest), inferior MI, LVH (mild), RV apical pacing, ostium primum ASD, WPW (some), hyperkalaemia, pregnancy (mild)\n**Right axis:** RVH, acute PE or RV strain, COPD, lateral MI, LPFB, dextrocardia, arm-lead reversal, children and tall thin adults, sodium-channel blocker toxicity (terminal)}}\n\nNEET's favourite wrong step is to call left axis deviation the moment aVF is negative. Check lead two first.\n\nThe axis collapses the limb cameras into one arrow. The chest cameras tell their own story, and it starts with the septum.",
+      "pic": "P12_EC_axis.svg",
+      "cap": "Lead I and aVF both up = normal. I up, aVF down: check lead II — up = normal, down = left axis. I down, aVF up = right axis."
+     }
+    },
+    {
+     "card": "V12-054",
+     "bridge": "More muscle means bigger waves. Next: the voltage rules for a thick ventricle, and the two shapes of a big atrium.",
+     "lesson": {
+      "v": 1,
+      "text": "Recall the order: the septum first, from left to right, then the two ventricles together. Now stand at two cameras, V1 beside the breastbone and V6 at the left side of the chest, and watch that order go by.\n\nFirst the septum. Its wave runs from left to right, and slightly forwards. V1 is on the right and in front, so the wave comes towards it: a small upward blip, a small r. V6 is on the left, so the same wave moves away from it: a small downward blip, a small q. That is called the septal q, and you'll see it in the left-sided cameras: V5, V6, lead one and aVL. It is small, narrow and normal. If the left bundle is blocked, the septum has to fire from right to left, and the septal q vanishes: a sign of left bundle branch block.\n\nThen the ventricles. Both fire at once, the right sending its wave to the right, the left sending its wave to the left and backwards. But the left ventricle has about three times the muscle. The waves add, the left wins, and the net wave runs to the left and back. From V1 that is going away: a deep downward S. From V6 it is coming towards: a tall R. So V1 writes a small r and a deep S. V6 writes a small q and a tall R. Same beat, opposite pictures, one rule.\n\n[[V1 shows a small r and a deep S because the septum fires towards it and then the large left ventricle fires away from it. V6 shows the mirror: a small q and a tall R.]]\n\nWalk the cameras round from V1 to V6. Each stands a little further to the left, so the R wave grows and the S wave shrinks. Where they are equal is the transition zone, normally at V3 or V4. The steady growth is called R wave progression.\n\nNow the number NEET asks. In V1 the R to S ratio is normally less than one. An R taller than the S in V1 of an adult, a dominant R wave, is abnormal until explained. Derive the explanations from the rule: what could send more of the wave towards V1?\n\nMore muscle on the right: right ventricular hypertrophy. The right ventricle now out-votes the left.\n\nLate activation on the right: right bundle branch block. The right ventricle fires late and unopposed, after the left has finished, so V1 shows a second R wave after the S, and the QRS is wide.\n\nLoss of muscle at the back: posterior infarction. V1 is the mirror for the back wall. A Q wave at the back appears as a tall, broad R wave at the front. ST elevation at the back appears as ST depression at the front, and the T wave is upright. NEET's trap is to call ST depression with tall R waves in V1 to V3 anterior ischaemia.\n\nEarly activation at the back: Wolff-Parkinson-White with a left-sided pathway. The extra connection fires the back of the left ventricle early, and that wave travels forwards, towards V1. The PR interval is short.\n\nA heart on the other side: dextrocardia. Rarer causes are hypertrophic cardiomyopathy, where a thick septum exaggerates the first blip; Duchenne muscular dystrophy, which scars the back wall; misplaced chest electrodes; and the normal young child.\n\n{{**Dominant R in V1 (R/S > 1):** RVH | posterior MI (ST depression, upright T in V1–V3) | RBBB (rSR′, wide QRS) | WPW, left-sided pathway (short PR, delta) | dextrocardia | HCM | Duchenne | lead misplacement | normal child\n**Poor R progression:** anterior MI | LVH | LBBB | COPD | cardiomyopathy | leads placed too high}}\n\nThe opposite problem is poor R wave progression: the R wave fails to grow from V1 to V3 or V4. Again the rule gives the causes. Dead muscle at the front, an old anterior infarct, so nothing comes towards those cameras. A thick left ventricle or a left bundle branch block, where the forces running back and left swamp the early forward ones. Chronic lung disease, where overinflated lungs push the heart down and turn it. And electrodes placed too high. So poor R wave progression alone never proves an old infarct.\n\nClockwise and counterclockwise rotation are only names for where the transition falls. Late, at V5 or V6, is clockwise. Early, at V2, is counterclockwise.\n\n[[A dominant R wave in V1 means right ventricular hypertrophy, posterior infarction, right bundle branch block, a left-sided accessory pathway or dextrocardia.]]\n\nA dominant R wave from extra muscle brings us to what a bigger chamber does to all the cameras.",
+      "pic": "P12_EC_r_progression.svg",
+      "cap": "Septum fires left to right first (small r in V1, small q in V6); then the big LV pulls away from V1. Transition at V3–V4."
+     }
+    },
+    {
+     "card": "V12-055",
+     "bridge": "Not every odd ECG is disease. Next: the child, the pregnant woman, the athlete and the mirror-image heart.",
+     "lesson": {
+      "v": 1,
+      "text": "The camera rule has a second half that we've only touched. The size of a deflection depends on how much muscle is producing it. A thicker ventricle makes taller waves in the cameras that face it and deeper waves in the cameras opposite. That is all the hypertrophy criteria are. The numbers are only where people drew the line.\n\nThe left ventricle first. A thick left ventricle sends a bigger wave to the left and back. V5 and V6 face it, so their R waves grow. V1 is opposite, so its S wave deepens. [[The oldest rule, the Sokolow-Lyon criterion, simply adds the two: the S wave in V1 plus the taller R wave of V5 or V6, thirty-five millimetres or more.]] The Cornell criterion uses one camera from each plane: the R wave in aVL plus the S wave in V3, more than twenty-eight millimetres in men and more than twenty in women. An R wave in aVL of more than eleven millimetres also counts on its own.\n\nVoltage is not the whole story. A thick wall takes longer to activate, and its recovery then runs in the wrong direction. You see the result in the lateral leads, V5, V6, lead one and aVL: the ST segment slopes downwards into an inverted, lopsided T wave, with a slow descent and a quicker return. That is the strain pattern. It is called a secondary change, because it follows from the abnormal QRS and not from a diseased artery. Add a mild leftward axis and signs of a big left atrium, and the picture is complete.\n\nOne warning. The voltage rules are specific but not sensitive, and they mislead in the young and the thin, whose cameras sit close to the heart. Tall voltage alone in a fit twenty-year-old isn't hypertrophy. Echo decides, as you saw in the Shock packets.\n\nNow the right ventricle. Normally it is out-voted, so a thick right ventricle has to overturn the normal picture before it shows. The axis swings to the right. V1 gets a dominant R wave, seven millimetres or more, and taller than its S wave. V5 and V6 get deep S waves, because the wave is now leaving them. And a right-sided strain pattern appears where the right ventricle faces the cameras: ST depression and T inversion in V1 to V3, and often in the inferior leads.\n\nThen the atria. The P wave is two atria, one after the other. The SA node is in the right atrium, so the right atrium fires first and makes the first half of the P wave. The left atrium is reached later and makes the second half. That one fact explains both abnormal P waves.\n\nEnlarge the right atrium and the first half gets bigger. But it still finishes before the left atrium has finished, so the P wave is no longer than before. It is taller: a peaked P wave of more than two and a half millimetres in lead two, three and aVF. That is P pulmonale, and the name gives you the cause: lung disease and pulmonary hypertension.\n\nEnlarge the left atrium and the second half gets bigger and later. Now the P wave is longer: more than zero point one two seconds in lead two, with two humps, like the letter M. And because the left atrium lies at the back of the heart, its wave travels away from V1. So in V1 the P wave ends in a deep, wide downward dip. That is P mitrale, and its classic cause is mitral stenosis.\n\n[[A big right atrium makes the P wave tall and peaked, over two and a half millimetres: P pulmonale. A big left atrium makes it wide and notched, over zero point one two seconds, with a deep negative end in V1: P mitrale.]]\n\n{{**LVH:** S V1 + R V5 or V6 ≥ 35 mm (Sokolow-Lyon) | R aVL + S V3 > 28 mm men, > 20 mm women (Cornell) | R aVL > 11 mm | strain in V5, V6, I, aVL\n**RVH:** right axis | R in V1 ≥ 7 mm, R/S > 1 | deep S in V5, V6 | strain V1–V3\n**P pulmonale:** > 2.5 mm, peaked, II, III, aVF | **P mitrale:** > 0.12 s, notched; deep terminal negative P in V1}}\n\nPut several together and you have the ECG of chronic obstructive lung disease: P pulmonale, a rightward axis, low voltage because air lies between the heart and the cameras, poor R wave progression, and sometimes multifocal atrial tachycardia.\n\nKeep the strain pattern in mind: ST depression and T inversion from thick muscle, not from a narrowed artery, are the first of the ischaemia mimics. Before that, a few hearts that are healthy and still break these rules.",
+      "pic": "P12_EC_hypertrophy.svg",
+      "cap": "LVH: S V1 + R V5/6 ≥ 35 mm, lateral strain. RVH: dominant R V1, right axis. P pulmonale tall (> 2.5 mm); P mitrale wide and notched (> 0.12 s)."
+     }
+    },
+    {
+     "card": "V12-056",
+     "bridge": "Tall or oddly aimed waves can be normal. Last in this section: waves that are too small, and a QRS that alternates.",
+     "lesson": {
+      "v": 1,
+      "text": "Every rule so far described an adult with a heart in the usual place. Four kinds of healthy person don't fit, and you can already explain each.\n\nThe child. Before birth the right ventricle does at least as much work as the left, pumping to the body through the duct. So a newborn has a thick right ventricle, and the ECG shows what a thick right ventricle always shows: a rightward axis, anywhere up to about plus one hundred and eighty degrees, and a dominant R wave in V1. Over the first years the left ventricle takes over. The heart is also small and fast. A newborn's rate is about one hundred and ten to one hundred and sixty, and the PR interval and the QRS are shorter than an adult's, because the road is shorter. The rate rising and falling with breathing, sinus arrhythmia, is normal.\n\nThe T waves need care. For the first few days of life the T wave in V1 is upright. After the first week it turns negative, and the T waves in V1 to V3 stay inverted through childhood, until adolescence. That is the juvenile T wave pattern. NEET's trap is the reverse. An upright T wave in V1, in a child between one week of age and adolescence, suggests right ventricular hypertrophy.\n\n[[T wave inversion in V1 to V3 is normal from the first week of life until adolescence. In that age range it is the upright T wave in V1 that is abnormal, and it suggests right ventricular hypertrophy.]]\n\nPregnancy. The growing uterus pushes the diaphragm up, and the heart is tilted upwards and to the left. Tilt the heart and you tilt the arrow: a mild leftward shift of the axis. Lead three now looks at the heart from a slightly different angle, so it can show a small Q wave and an inverted T wave, and these change with breathing as the diaphragm moves. The heart rate rises by ten to twenty a minute. Minor ST and T wave changes and extra beats are common, and none of this is disease.\n\nThe athlete. Training enlarges the heart and raises resting vagal tone. Remember where the vagus has its grip: the two nodes. So the athlete shows vagal findings at the nodes: sinus bradycardia, a long PR interval, and even Mobitz one block at rest, all of which disappear with exercise. The larger ventricle gives tall QRS voltage on its own, without strain. And early repolarisation, a lifted J point with an upward curving ST segment, is common. All of these are normal in an athlete.\n\nWhat training does not cause is the important half. T wave inversion beyond V2. Pathological Q waves. Left bundle branch block. The Brugada pattern. And the epsilon wave, a small notch just after the QRS in V1 that points to a right ventricular cardiomyopathy. Those need investigation. There is one accepted exception: a lifted J point and a domed ST segment, followed by T inversion in V1 to V4. The International Criteria of twenty seventeen call it the Black athlete's repolarisation variant. The twenty twenty-six revision keeps it as a normal finding and renames it the anterior early repolarisation pattern, without a label of race. T inversion in V1 to V3 is also accepted in an athlete younger than sixteen.\n\n[[In an athlete, sinus bradycardia, first degree block, Mobitz one at rest, early repolarisation and tall voltage alone are normal. T inversion beyond V2, Q waves, left bundle branch block, epsilon waves and the Brugada pattern are not.]]\n\nDextrocardia. The heart is a mirror image, lying in the right chest, so every camera on the left is looking at it from the wrong side. Lead one is upside down throughout: P wave, QRS and T wave. aVR is upright. And across the chest the R wave gets smaller from V1 to V6, because the cameras are walking away from the heart. Swapped arm leads look the same; the chest leads decide. Shrinking R waves mean the heart really is on the right, and if you move the chest electrodes to the right side of the chest, the normal progression reappears.\n\n{{**Child:** right axis, dominant R in V1, T inverted V1–V3 until adolescence, rate 110–160 in the newborn\n**Pregnancy:** mild left axis shift, rate up 10–20, small Q and inverted T in lead III\n**Athlete, normal:** sinus bradycardia, first-degree block, Mobitz I at rest, early repolarisation, voltage alone\n**Dextrocardia:** lead I inverted, aVR upright, R shrinks V1 to V6}}\n\nSo waves that are tall, or pointing an unusual way, can be normal. The last step is the opposite: waves that are too small."
+     }
+    },
+    {
+     "card": "V12-057",
+     "bridge": "The normal machine is built. Next: a blocked artery, and what injured muscle does to the flat ST segment.",
+     "lesson": {
+      "v": 1,
+      "text": "A camera can only film what reaches it. The QRS you measure on the skin is the heart's current after it has crossed the pericardium, the lung and the chest wall. So a small QRS has only two possible explanations. Something is lying between the heart and the cameras, or the heart is producing less current.\n\nFirst the definition. Low voltage means the whole QRS, from top to bottom, is less than five millimetres in every limb lead, or less than ten millimetres in every chest lead. Either one is enough.\n\nTake the first mechanism: something in the way. Fluid, air and fat all damp the signal. Fluid is a pericardial or pleural effusion, or severe generalised oedema. Air is the overinflated chest of chronic obstructive lung disease, or a pneumothorax. Fat is obesity.\n\nThe second mechanism: less current from the muscle, because muscle has been replaced by something that doesn't fire. The classic is amyloid, where protein is laid down between the muscle cells. And here is a pairing the examiners love. On echo, the walls of an amyloid heart are thick. On the ECG, the voltage is low. A truly thick muscle gives high voltage, as the hypertrophy step showed. Thick walls with low voltage means the thickness isn't muscle. The other causes on this side are a heart that has lost a great deal of muscle to infarction, and severe hypothyroidism.\n\nHypothyroidism deserves its own picture, because it uses both mechanisms. A low thyroid level flattens the pacemaker slope, so there is sinus bradycardia. It often causes a pericardial effusion, so there is low voltage. And repolarisation is slowed, so the T waves are flat or inverted and the QT is long. A slow, small, flat ECG in a cold, drowsy patient is myxoedema.\n\n[[Low voltage is a QRS under five millimetres in every limb lead or under ten in every chest lead. Either something lies between the heart and the leads, such as fluid, air or fat, or the muscle has been replaced, as in amyloid.]]\n\n{{**Low voltage:** QRS < 5 mm in all limb leads or < 10 mm in all chest leads\n**Something in the way:** pericardial effusion, pleural effusion, COPD, pneumothorax, obesity, anasarca\n**Less muscle current:** amyloid (thick walls on echo), myxoedema, extensive infarction, constriction\n**Tamponade on ECG:** sinus tachycardia + low voltage + electrical alternans}}\n\nNow the sign that belongs to a large pericardial effusion. When the sac holds a lot of fluid, the heart is no longer held in place. It swings like a weight hanging in water, forwards on one beat and back on the next. So on one beat it is nearer the chest cameras, and on the next it is further away. The QRS comes out taller, then shorter, then taller, alternating beat by beat, and its axis can shift with it. That is electrical alternans. Nothing is wrong with conduction. The heart is simply moving in front of the cameras.\n\nPut three findings together: sinus tachycardia, low voltage and electrical alternans. That is tamponade on the ECG. Alternans is specific but insensitive: it means a great deal when present, but most patients with tamponade don't show it. When the P wave alternates as well as the QRS, which is called total alternans, tamponade is close to certain. The pressures, the pulsus paradoxus and the drainage come in the Pericardium packet. The picture to carry there is a heart swinging in fluid.\n\nOne name to keep apart. T wave alternans is a different thing. There the QRS is steady, and the T wave changes its size or direction from one beat to the next. It has nothing to do with fluid. It means repolarisation is unstable, it is seen in the long QT syndromes, and it scores in the Schwartz criteria that the second packet teaches. An alternating QRS is a swinging heart. An alternating T wave is an unstable cell.\n\n[[Electrical alternans is the QRS height alternating beat to beat because the heart swings in a large effusion. With sinus tachycardia and low voltage it means tamponade. T wave alternans is different: unstable repolarisation in long QT.]]\n\nYou now have the whole normal machine: the relay, the two kinds of cell, the phases and the cameras. Everything from here is that machine under attack. The first attack is a blocked artery, and the question is what injured muscle does to that flat ST segment.",
+      "pic": "P12_EC_low_voltage_alternans.svg",
+      "cap": "Low voltage: < 5 mm in limb leads, < 10 mm in chest leads. Alternans + sinus tachycardia + low voltage = think tamponade."
+     }
+    }
+   ],
+   "spine": [
+    "One rule: a wave coming towards a lead writes up, going away writes down, crossing at right angles is equiphasic. Twelve leads are twelve cameras on one sweep.",
+    "Axis is the average direction (normal −30° to +90°): lead I and aVF first, lead II settles a negative aVF. It swings towards muscle, away from infarct, towards late activation.",
+    "Septum fires left to right, then the big left ventricle: V1 small r, deep S; V6 small q, tall R; transition at V3–V4.",
+    "Dominant R in V1: RVH, posterior MI (mirror), RBBB, left-sided WPW, dextrocardia. More muscle means more voltage: Sokolow-Lyon 35 mm, Cornell 28/20 mm.",
+    "P pulmonale is tall (over 2.5 mm); P mitrale is wide and notched (over 0.12 s). Children, pregnancy and athletes have their own normal.",
+    "Low voltage: something between heart and leads, or muscle replaced. Alternating QRS with sinus tachycardia and low voltage is a heart swinging in tamponade."
+   ]
+  },
+  {
+   "q": "P12-1104",
+   "text": "Ischaemia through the cameras: injury current, territories and the hidden infarcts",
+   "open": {
+    "v": 1,
+    "text": "ST elevation and ST depression are not two different diseases. They are one current, seen by cameras standing on opposite sides of it.\n\nYou've built the wiring, turned two action potentials into the waves, and placed twelve cameras around the heart with one rule: towards the camera is up, away from it is down. Until now the heart in front of those cameras was healthy. Now a coronary artery closes, and you watch what each camera records.\n\nFour questions, in order. Why does injured muscle move the ST segment at all, when the plateau should keep it flat? How much movement counts? Whose artery is it? And then the infarcts that the standard twelve leads can't see, or show in disguise: the back wall, the right ventricle, the left main, and a closing artery that announces itself with nothing but a T wave.\n\nListen for two traps. One is a pain-free patient with a normal troponin whose T waves say the big anterior artery is about to shut. The other is an inferior infarct in which a nitrate drops the pressure through the floor.\n\nBegin with the current itself."
+   },
+   "steps": [
+    {
+     "card": "V12-058",
+     "bridge": "The ST segment shifts towards injured muscle. Where exactly do you measure the shift, and how much counts?",
+     "lesson": {
+      "v": 1,
+      "text": "Go back to phase two, the plateau. During it every ventricular cell sits at about the same voltage. No difference between cells means no current, and the pen rests on the baseline. That is the flat ST segment. Phase four is the same: every cell rests at minus ninety millivolts, so the line between the T wave and the next P wave is flat too.\n\nNow starve one patch of muscle. Holding minus ninety at rest, and holding a full plateau, both cost ATP. A cell without oxygen runs short, and two things follow. Potassium leaks out, so the cell can't get back down to minus ninety and rests nearer minus seventy. And potassium channels that ATP normally holds shut swing open, so its plateau is lower and shorter.\n\nSo the injured patch now differs from its healthy neighbours twice in every beat, at rest and during the plateau. Wherever neighbouring regions sit at different voltages, a current flows across the border. This is the injury current. During the plateau it pushes the ST segment towards the injured patch. At rest it drags the baseline the other way, which the machine, redrawing the baseline as zero, also shows as an ST shift towards the patch.\n\n[[Injured muscle can't hold its resting potential or its plateau, so a current flows across its border with healthy muscle. On the ECG the ST segment shifts towards the injured region.]]\n\nNow apply the one rule of the cameras. If the injury runs through the full thickness of the wall, it reaches the outer surface, directly under the camera. The shift points at that camera: ST elevation. The camera on the opposite side of the heart sees the same shift pointing away, and records ST depression. That is the reciprocal view you've met. It is not a second problem. It is the same injury seen from behind.\n\nIf the injury is confined to the inner layer, the subendocardium, the picture turns over. The inner layer is the last to be fed and the hardest squeezed, so it suffers first when an artery is narrowed but not closed. Now the injured zone lies on the far side of healthy muscle from every camera on the chest. The shift points inward, at the cavity, away from all of them: ST depression. Only aVR, looking into the cavity from the right shoulder, sees it coming and records elevation. So ST elevation tells you which wall. This kind of ST depression does not. It gathers in the lateral leads whichever artery is narrowed, and NEET's wrong option is to name the artery from it.\n\nNext, time. An occlusion writes a sequence. Within minutes the T wave over the patch grows tall and broad: the hyperacute T wave. Leaked potassium pools around those cells, and you know that high potassium makes a tall T. Unlike true hyperkalaemia it is broad at the base and confined to one territory. Then the ST segment rises, over minutes to hours. Over hours, Q waves appear. Dead muscle makes no electricity, so it acts as a window. The camera looks straight through it and records the far wall depolarising away from it: a downward wave at the very start of the QRS. Then the T wave inverts, and over days to about two weeks the ST segment settles to the baseline. The Q wave stays for life.\n\n{{**After an occlusion**\nMinutes | hyperacute T: tall, broad\nMinutes to hours | ST elevation\nHours | Q waves\nHours to days | T inversion\nDays to 2 weeks | ST back to baseline; Q stays\nST still up at weeks | LV aneurysm\n**Pathological Q:** ≥ 0.04 s or > 25% of R; in V2–V3 any Q > 0.02 s; UDMI elsewhere: ≥ 0.03 s and ≥ 1 mm deep}}\n\nOne number, last. In the classic teaching a Q wave is pathological when it is at least zero point zero four seconds wide, or deeper than a quarter of the R wave after it. In V2 and V3 the Universal Definition counts any Q wave wider than zero point zero two seconds. In the other leads its cut is zero point zero three seconds wide and at least one millimetre deep, in two neighbouring leads. So if an option says zero point zero three, that is the Universal Definition, and zero point zero four is the older textbook answer. The small lateral q waves are the septum, and normal.\n\n[[The infarct evolves in order: hyperacute T, ST elevation, Q waves, T inversion, then the ST settles. Q waves are permanent. ST elevation that persists for weeks is an aneurysm.]]\n\nWhere on the tracing you measure the shift, and how much counts, comes next.",
+      "pic": "P12_EC_injury_evolution.svg",
+      "cap": "Transmural injury lifts the ST in the leads that face it; subendocardial injury depresses it. Order: hyperacute T, ST elevation, Q, T inversion; the Q stays."
+     }
+    },
+    {
+     "card": "CVS10B|MI-21",
+     "bridge": "The elevation is real and big enough to count. Now the most examined question: whose territory?",
+     "lesson": {
+      "v": 1,
+      "text": "Every ST shift is measured at the J point. You met it on the paper: the corner where the QRS ends and the ST segment begins. Why there, and not a little later? Because it is the one fixed landmark. From the J point onward the segment climbs into the T wave, so the later you measure, the more elevation you find.\n\nMeasured against what? Against a stretch where the heart is electrically silent. The truest one is the TP segment, the flat line between the end of the T wave and the next P wave. At fast rates that line disappears, so in practice, and on your card, you use the level of the PR segment where the QRS takes off. Keep one exception for the next section: in pericarditis the PR segment is itself pushed down, and then only the TP segment is honest.\n\nHow many leads? Two contiguous leads, meaning two neighbouring cameras that look at the same wall: lead two and aVF, or V3 and V4. One lead on its own can be a loose electrode. Two neighbours that agree are an injury current in one territory.\n\nNow the threshold, reason first. In most leads a healthy heart shows almost nothing at the J point, so the bar is low: one millimetre. V2 and V3 are different. They sit closest to the heart, and you remember the notch at the start of the plateau, deeper in the outer layer of muscle than in the inner. For that moment the two layers differ in voltage, and a small upward step appears at the J point in a perfectly healthy heart. It shows best in V2 and V3. It is largest in young men, smaller in older men, and smallest in women. The thresholds are simply set above what is normal for each group.\n\n{{**J-point elevation, two contiguous leads**\nV2–V3, men under 40 | **2.5 mm**\nV2–V3, men 40 and over | **2.0 mm**\nV2–V3, women | **1.5 mm**\nAll other leads | **1 mm**\nNot valid in LBBB or LVH}}\n\nSo in V2 and V3: two point five millimetres for men under forty, two millimetres for men of forty and over, one point five millimetres for women of any age. One millimetre everywhere else.\n\n[[ST elevation is measured at the J point in two contiguous leads. One millimetre in most leads. In V2 and V3: two point five for men under forty, two for men forty and over, one point five for women.]]\n\nTwo exclusions. The rule is not valid in left bundle branch block or in left ventricular hypertrophy. You saw why with the strain pattern: when depolarisation is abnormal, repolarisation follows it abnormally, and the ST segment is displaced with no injury at all. The bundle has its own criteria, and you'll build them in the next packet.\n\nNEET sets its traps at the edges. A man aged exactly forty uses two millimetres, not two point five. And an option that measures eighty milliseconds after the J point is describing an exercise test, not the Universal Definition.\n\nSo an injury current is there, and it is big enough to count. Whose territory is it?",
+      "pic": "P12_EC_jpoint.svg",
+      "cap": "Measure ST at the J point against the TP baseline. V2–V3: 2 mm men ≥ 40, 2.5 mm men < 40, 1.5 mm women; 1 mm elsewhere, two contiguous leads."
+     }
+    },
+    {
+     "card": "CVS10B|MI-28",
+     "bridge": "The map has two blind spots: the back of the heart and the right ventricle.",
+     "lesson": {
+      "v": 1,
+      "text": "You already own this map. You just haven't laid the arteries on it. You grouped the leads by the wall each one faces. Lead two, three and aVF look up from the feet at the inferior wall. Lead one and aVL, with V5 and V6, look from the left at the lateral wall. V1 and V2 sit over the septum, V3 and V4 over the anterior wall.\n\nNow the arteries. The left anterior descending artery, the LAD, runs down the front of the heart in the groove over the septum, sending branches into the septum and across the anterior wall. So V1 to V4 are the LAD. The circumflex runs round the left side, so the lateral leads are the circumflex, with one refinement: the high lateral pair, lead one and aVL, is often a diagonal branch of the LAD. The inferior wall belongs to whichever artery turns the corner at the back and gives the posterior descending branch. In eight or nine people out of ten that is the right coronary. In the rest it is the circumflex.\n\n{{**II, III, aVF** | inferior | **RCA** (III > II) or LCx (II ≥ III)\n**I, aVL, V5–V6** | lateral | **LCx**, or diagonal of LAD\n**V1–V4** | septal, anterior | **LAD**\nV1 elevation + new RBBB | **proximal LAD**\nQ waves, flat ST | **old infarct**}}\n\nThat raises NEET's first question: an inferior infarct, right coronary or circumflex? Use the angles you learned. Lead three sits at plus one hundred and twenty degrees, so it looks at the inferior wall from the right. Lead two sits at plus sixty, and looks from the left. The right coronary's territory lies to the right, so its injury current points more at lead three. And aVL, at minus thirty degrees, stands almost directly opposite lead three, so it records the mirror image: reciprocal ST depression. More elevation in lead three than in lead two, with depression in aVL, is the right coronary. If lead two matches or beats lead three, and the lateral leads rise as well, it is the circumflex. The wrong option reverses the two leads.\n\n[[Inferior infarct with more ST elevation in lead three than lead two, and reciprocal depression in aVL, is the right coronary. Lead two equal or greater, with lateral elevation, is the circumflex.]]\n\nAnd from that mirror: ST depression in aVL can be the first visible sign of an inferior infarct. Don't file it as a lateral problem.\n\nSecond, what the right coronary carries with it. Go back to the wiring. It feeds the sinus node in about six people in ten and the AV node in about nine in ten. So an inferior infarct brings a slow sinus rate and block at the AV node. Because that block sits in the node itself, among the slow calcium cells, the back-up pacemaker just below it takes over with a narrow QRS at a tolerable rate, and it usually recovers. Hold that thought, because it is half of the next packet. The proximal right coronary also feeds the right ventricle, which is the next card.\n\nThird, how high up the LAD. Its first septal branch supplies the right bundle branch. So ST elevation in V1 together with a new right bundle branch block means the artery is shut near its origin, above that branch. Marrow has asked this twice. It means a large infarct and a high risk of shock.\n\nFourth, the question most people lost. A breathless man with known coronary disease has Q waves in lead one, aVL and V5, and a flat ST segment. Fewer than half answered it. The tempting option is acute coronary syndrome. But you know the sequence now. The Q wave is the window through dead muscle, and it is permanent. The acute stage is written in the ST segment, and here the ST segment is silent. This is an old lateral infarct.\n\n[[ST elevation in V1 with a new right bundle branch block is a proximal LAD occlusion. Pathological Q waves with a flat ST segment are an old infarct, not an acute one.]]\n\nWhat you do about a fresh occlusion, primary PCI and its clock, belongs to the ACS packets.\n\nNow look at what the map leaves out. No camera stands behind the heart, and none faces the right ventricle. Two infarcts can hide there.",
+      "pic": "P12_EC_territories.svg",
+      "cap": "Inferior II, III, aVF (RCA); lateral I, aVL, V5–V6 (LCx); septal and anterior V1–V4 (LAD). Reciprocal pairs: inferior ↔ aVL; posterior ↔ V1–V3."
+     }
+    },
+    {
+     "card": "CVS10B|MI-22",
+     "bridge": "Two walls hid because no camera faced them. Next, ischaemia that is everywhere at once.",
+     "lesson": {
+      "v": 1,
+      "text": "Start with the wall that no camera faces. The posterior wall of the left ventricle lies against the back, and all six chest leads sit in front. So how do you see an injury there?\n\nIn the mirror. V1, V2 and V3 look at the front of the heart, directly opposite the back wall, so whatever the back wall does they record upside down. Run the sequence of an infarct through that mirror. Posterior ST elevation appears in V1 to V3 as ST depression. The posterior Q wave appears as a tall R wave. And the posterior T inversion appears as an upright T. You've met that tall R before: posterior infarction was on your list of causes of a dominant R wave in V1. Here is why it was there.\n\nSo with ongoing pain, flat ST depression deepest in V1 to V3, ending in an upright T wave, is a posterior occlusion until shown otherwise.\n\nYou prove it by putting cameras where they were missing. Carry the electrodes round the back at the same level as V6. V7 on the posterior axillary line. V8 in line with the tip of the shoulder blade. V9 beside the spine. The threshold there is only half a millimetre, because those leads are far from the heart, behind lung and muscle, and record small voltages. The usual artery is the circumflex, and circumflex occlusions are the ones a standard ECG misses most.\n\n{{**Posterior MI:** V1–V3 ST depression, tall R, upright T\nV7 posterior axillary | V8 mid-scapular | V9 paraspinal\nST elevation **≥ 0.5 mm** (men under 40: 1 mm); usually **LCx**\n**RV MI:** V4R = right mid-clavicular line, 5th space\nST elevation **≥ 1 mm** (UDMI accepts 0.5); **proximal RCA**}}\n\n[[Posterior infarction shows in V1 to V3 as ST depression with a tall R and an upright T. Confirm it with half a millimetre of ST elevation in V7 to V9. The usual artery is the circumflex.]]\n\nNEET's wrong option calls it anterior ischaemia, because that is where the changes are, and a closed artery is left to wait.\n\nNow the right ventricle. No standard lead faces its free wall, so you make one. V4R is the mirror of V4: the right mid-clavicular line in the fifth intercostal space. One millimetre of ST elevation there strongly suggests right ventricular infarction. The Universal Definition accepts half a millimetre, or one millimetre in men under thirty. The elevation is brief, gone in about half of patients within ten to twelve hours, so record V4R early in every inferior infarct. Two hints in the standard leads say the same: more elevation in lead three than lead two, and elevation in V1, which sits over the right ventricle.\n\nThe branches to the right ventricle leave the right coronary high up, so the right ventricle infarcts only when the occlusion is proximal. Marrow's incorrect statement was that the shock is due to a distal occlusion.\n\nNow the physiology, because this is where you left a question blank. The right ventricle is a thin-walled pump that passes blood through the lungs to the left side. Infarcted, it becomes a passive pipe. Blood crosses the lungs only if the venous filling pressure behind it pushes it across. So three things appear together: low blood pressure, because the left ventricle is underfilled; a raised jugular pressure, because blood is dammed back; and clear lungs, because little reaches them. Everything now depends on preload, a reasonable heart rate, and the atrium contracting in step.\n\nThe grand test stem: a man of fifty-eight, ninety minutes of chest pain, ST elevation in lead two, three, aVF and V4R, pulse fifty-four, blood pressure eighty-two over fifty-six, clear lungs, raised jugular pressure. The answer was a cautious crystalloid bolus while primary PCI is arranged. Each wrong option removes something this patient is living on. Nitroglycerin dilates the veins and takes away the filling pressure. Furosemide does the same more slowly. Metoprolol slows a heart that is already slow and depresses an AV node that the same artery supplies.\n\n[[Inferior infarct with ST elevation in V4R, low pressure and clear lungs is a right ventricular infarct from a proximal right coronary occlusion. Give cautious fluid and reperfuse. Avoid nitrates, diuretics and beta-blockers.]]\n\nThose two walls hid because no camera faced them. Next, every camera is looking, and the injury is everywhere at once.",
+      "pic": "P12_EC_posterior_rv.svg",
+      "cap": "Posterior MI shows in the mirror: tall R + ST depression + upright T in V1–V3. Confirm in V7–V9 (≥ 0.5 mm). RV infarct: ST elevation in V4R."
+     }
+    },
+    {
+     "card": "CVS10B|MI-25",
+     "bridge": "Deep T inversion in the chest leads of a pain-free patient has a name, and it cost you a mark.",
+     "lesson": {
+      "v": 1,
+      "text": "Return to the second half of the injury current. When only the inner layer of the wall is injured, the ST shift points into the cavity, the outside cameras record depression, and aVR records elevation. Now ask what happens when the inner layer of the whole left ventricle is short of blood at the same moment. That is a tight left main stem, or severe disease in all three arteries.\n\nThe answer is the same picture, spread across the whole tracing. ST depression of one millimetre or more in many leads, usually deepest in the lateral and inferior leads, with ST elevation in aVR, in V1, or in both. How many leads? The European guideline of twenty twenty-three and the Universal Definition say six or more. Older keys say eight. If a stem says eight, don't argue with it. Six is the current number.\n\n[[ST depression of at least one millimetre in six or more leads, with ST elevation in aVR or V1, is ischaemia of the whole inner layer: left main or severe three-vessel disease.]]\n\nBe exact about what this pattern is. It is not one wall shut off. It is global ischaemia of the inner layer, and that is why the elevation sits only in the one lead that looks into the cavity. With pain or a falling blood pressure it sends the patient for angiography urgently. And because it is a pattern of supply against demand, a ventricle with fixed narrowings can draw it whenever demand outruns supply: a very fast rhythm, severe anaemia, profound hypoxia, the minutes after a cardiac arrest. In the ICU, read it together with the story.\n\nNow the everyday ECG of a narrowed artery that hasn't closed, the non-ST-elevation syndromes. Two changes count. The first is ST depression of half a millimetre or more, in two contiguous leads, that runs flat or slopes downward. The shape matters. At fast heart rates the J point dips and the segment climbs steeply back up, and that upsloping depression is usually innocent. Usually. One upsloping pattern is the dangerous exception, and it is the very next card.\n\nThe second change is T wave inversion, deeper than one millimetre, in leads with a tall R wave. Why would ischaemia turn the T wave over? You learned that the normal T wave is upright because the outer layer repolarises first, so repolarisation runs the opposite way to depolarisation. An ischaemic region repolarises late. The order changes, and the T wave points away from that region.\n\n{{**Left main or three-vessel:** ST depression ≥ 1 mm in ≥ 6 leads (older keys: 8) + ST elevation in aVR and/or V1\n**NSTE-ACS:** ST depression ≥ 0.5 mm, horizontal or downsloping\nT inversion > 1 mm in leads with R/S > 1\nA normal ECG does not exclude infarction}}\n\nAnd there is a third possibility, the one the banks test most: nothing at all. A narrowed artery may leave the tracing completely normal. Chest pain, a normal ECG and a troponin that rises is still an infarct, and the wrong option in each of those questions is unstable angina. How troponin decides that is the business of the first ACS packet. Here you need only the principle.\n\n[[Without ST elevation the ECG may show flat or downsloping ST depression, T inversion, or nothing. A normal ECG never excludes an infarct.]]\n\nOne fine point from Marrow. T wave flattening, or inversion of less than a millimetre, in leads with a dominant R wave is a weak sign and counts for little. New ST shift of a millimetre, or T inversion across several chest leads, counts for a lot.\n\nDeep T inversion across the chest leads, in a patient whose pain has gone. Hold that picture, because it has a name.",
+      "pic": "P12_EC_avr_diffuse.svg",
+      "cap": "ST depression ≥ 1 mm in ≥ 6 leads + ST elevation in aVR and/or V1 = left main or three-vessel ischaemia."
+     }
+    },
+    {
+     "card": "V12-059",
+     "bridge": "Infarcts that hide, done. Now the reverse: ST elevation where no artery is closed.",
+     "lesson": {
+      "v": 1,
+      "text": "Two famous patterns turn out to be one artery caught at two moments. Both are the LAD near its origin. In de Winter's pattern it is shut. In Wellens' pattern it has shut, and reopened by itself, for now.\n\nTake Wellens first, because it cost you a mark. Picture the sequence. A plaque high in the LAD ruptures and a clot closes the artery. The patient has chest pain. Then the body's own clot-dissolving system opens it again. The pain goes. No muscle has died, so the R waves are intact, there are no Q waves, and the troponin is normal or only slightly raised. What remains on the ECG is the footprint of reperfusion. You saw it in the sequence of an infarct: after the injury, the T wave inverts.\n\nSo the Wellens pattern is deep, symmetric T wave inversion in V2 and V3, sometimes spreading from V1 out to V6, recorded while the patient is free of pain, with little or no ST elevation. That deep symmetric form is the common one, about three quarters of cases. In the other quarter the T wave is biphasic, up first and then down.\n\nThe danger is what it predicts. The plaque is still there, the narrowing is critical, and the artery will close again. In the original series, three in four of the patients treated with drugs alone went on to a large anterior infarct within weeks. So the answer is admission and early coronary angiography, in practice within about a day. The European guideline of twenty twenty-three lists the Wellens sign under the non-ST-elevation syndromes, as prominent negative T waves from a severe proximal LAD stenosis.\n\nThe grand test stem was exactly this: pain-free, deep symmetric T inversion in V2 and V3, normal troponin. NEET's wrong options are the reassuring ones. Discharge, because the troponin is normal. Or an exercise test to see whether it's really the heart. A stress test is contraindicated here: you would be raising demand through an artery that is one clot away from closing.\n\n[[Pain-free patient, recent angina, deep symmetric or biphasic T waves in V2 and V3, troponin normal or nearly so: Wellens. It is a critical proximal LAD stenosis. Admit for early angiography. Never a stress test.]]\n\nOne more behaviour. If the pain returns and the inverted T waves suddenly stand upright again, that is not recovery. The artery has closed again, and ST elevation follows.\n\nNow de Winter. Same artery, but this time it is shut and staying shut, and the patient is in pain. You would expect ST elevation across the chest leads. In about two in every hundred LAD occlusions it doesn't come. The J point is depressed by one to three millimetres in the chest leads, and from that low start the ST segment climbs steeply into a tall, symmetric T wave. There is often a millimetre or two of ST elevation in aVR. So it is upsloping ST depression with tall T waves, and it persists until the artery is opened.\n\nUpsloping depression is usually innocent, which is exactly why de Winter is missed. What gives it away is the tall, symmetric T wave it runs into, and a patient with ongoing chest pain. This is treated as a STEMI: immediate angiography and primary PCI, without waiting for a troponin. The European guideline of twenty twenty-three includes it among the ECG patterns that should send a patient for immediate reperfusion.\n\n{{**Wellens** | pain-free | deep symmetric (about 75%) or biphasic T in V2–V3; no Q, R preserved; troponin normal or slightly up | critical LAD stenosis | **early angiography, no stress test**\n**de Winter** | in pain | upsloping ST depression 1–3 mm + tall symmetric T in V1–V6; aVR up 1–2 mm | **LAD occluded** | **immediate PCI**}}\n\n[[de Winter: ongoing pain, upsloping ST depression running into tall symmetric T waves in the chest leads. It is an occluded LAD without ST elevation. Reperfuse immediately.]]\n\nOne discriminator separates the two. Wellens is the pain-free, reopened artery. De Winter is the painful, closed one.\n\nYou've now seen infarcts that hide. Finish this section with the reverse: ST elevation where no artery is closed at all.",
+      "pic": "P12_EC_wellens_dewinter.svg",
+      "cap": "Wellens (pain-free, T biphasic or deeply inverted in V2–V3) = critical LAD, angiography. de Winter (in pain, upsloping ST depression + tall T) = occluded LAD, reperfuse now."
+     }
+    },
+    {
+     "card": "CVS10B|MI-26",
+     "bridge": "If the ST segment only reports a voltage difference between neighbours, what else can create one?",
+     "lesson": {
+      "v": 1,
+      "text": "The number tells you the ST segment is up. The shape, and the company it keeps, tell you whether to believe it. Four patterns lift the ST segment, and you can now derive each one.\n\nBegin with the real one. In a STEMI the injury goes through the wall, and the ST segment is pulled up into the T wave until the two form a single dome. The curve is convex upward, like a frown. Three things travel with it, and you've built all three. It is confined to one arterial territory. The camera opposite shows reciprocal depression. And it evolves over hours, growing Q waves and inverting its T wave while the segment is still raised.\n\nEarly repolarisation is the healthy impostor. Go back to the notch at the start of the plateau, deeper in the outer layer of the wall than in the inner. In some people, mostly young men and athletes, that difference is pronounced, and it draws a small notch or slur at the J point with the segment lifting off it in a curve that is concave upward, like a smile. In V4 the notch gives the J point a fish-hook look. Nothing is injured. So there is no territory, no reciprocal depression, and no change from hour to hour or year to year.\n\nPericarditis is concave as well, but the inflammation wraps the whole heart, so the elevation is widespread and respects no artery. And it has one feature the others lack, a depressed PR segment. Why an inflamed sac should move the ST segment at all is the first question of the next section.\n\nLeft bundle branch block is the fourth. There the ST segment simply points away from the main QRS deflection, which is called discordance. It is the expected result of abnormal depolarisation and not an injury. You'll see how an infarct is found through that disguise when you reach the bundle branches.\n\n{{**STEMI** | convex, one territory, reciprocal depression, evolves\n**Early repolarisation** | concave, notched or slurred J point, stable\n**Pericarditis** | concave, widespread, **PR depression**\n**LBBB** | discordant: ST opposite the QRS}}\n\n[[Convex, in one territory, with reciprocal depression is STEMI. Concave with a notched J point in a well young man is early repolarisation. Concave, widespread, with PR depression is pericarditis.]]\n\nA caution about the word concave, because it becomes a trap. An infarct in its first minutes can still be concave. So a concave shape does not exclude an occlusion. Territory and the mirror decide. If the opposite cameras show reciprocal depression, treat it as an infarct whatever the curve looks like.\n\nNow the grand test question. An athlete of twenty-nine with no symptoms. J point elevation of zero point one five millivolts, which is one and a half millimetres, from V3 to V5. Concave, with no reciprocal change. That is early repolarisation. The tempting options are myocarditis and Brugada. Myocarditis brings symptoms and a troponin rise. Brugada is a coved, downsloping elevation confined to V1 and V2. An athlete without symptoms, with concave elevation and nothing in the mirror, has a normal heart.\n\nThat closes the section on the blocked artery. You know why the ST segment moves, how much counts, whose territory it is, and where an infarct hides. The next section turns the question round. If the ST segment only reports a difference in voltage between neighbours, what else, apart from a closed artery, can create one?",
+      "pic": "P12_EC_st_shapes.svg",
+      "cap": "STEMI: convex, territorial, reciprocal. Early repolarisation: notched J, concave. Pericarditis: diffuse concave + PR depression. Aneurysm: ST elevation persisting over Q waves."
+     }
+    }
+   ],
+   "spine": [
+    "Injured muscle cannot hold its resting potential or plateau: an injury current flows and the ST segment shifts towards the injured zone.",
+    "Full-thickness injury: ST elevation in the facing leads, reciprocal depression opposite. Inner-layer injury: ST depression that does not localise, aVR up.",
+    "Sequence: hyperacute T, ST elevation, Q waves (permanent), T inversion, ST settles by about 2 weeks. Measure at the J point: 1 mm; V2–V3 2.5 / 2.0 / 1.5 mm.",
+    "II, III, aVF = RCA (III > II, aVL down) or LCx; I, aVL, V5–V6 = LCx or diagonal; V1–V4 = LAD; V1 elevation + new RBBB = proximal LAD.",
+    "Hidden: posterior (V1–V3 ST depression, tall R; V7–V9 ≥0.5 mm), RV (V4R ≥1 mm: fluid, no nitrates), left main (≥6 leads down, aVR up).",
+    "Wellens = pain-free, reopened LAD (T inversion V2–V3): early angiography, no stress test. de Winter = painful, occluded LAD: immediate PCI."
+   ]
+  },
+  {
+   "q": "P12-1105",
+   "text": "ST and T changes that are not a blocked artery: pericardium, lungs, brain and the scar",
+   "open": {
+    "v": 1,
+    "text": "The ST segment knows nothing about arteries. It reports one thing only: whether neighbouring patches of muscle are sitting at the same voltage. A closed artery is the commonest reason for them to differ. It is not the only one.\n\nSo ST elevation and coronary occlusion are not the same statement. An inflamed pericardium, a right ventricle stretched by a clot in the lung, a surge of catecholamines from an injured brain, an old scar that bulges: each of them can shift the ST segment or flip the T wave, with every coronary artery wide open.\n\nThis section is a set of impostors, and of each you'll ask three questions. Does the change follow one artery's territory? Is there a mirror image in the opposite cameras? Does it evolve over hours? An infarct answers yes three times. Each impostor fails at least one.\n\nListen for three traps. Clot-dissolving drugs given to pericarditis or a brain bleed. The famous sign of pulmonary embolism that is present in only a minority. And a syndrome said never to raise the ST segment, which in fact does it often.\n\nBegin with the inflamed sac."
+   },
+   "steps": [
+    {
+     "card": "CVS01|CVS-07",
+     "bridge": "Pericarditis is concave and widespread. Two other diagnoses lift the ST segment in the same concave way.",
+     "lesson": {
+      "v": 1,
+      "text": "Here is a puzzle. The pericardium is a sheet of fibrous tissue. It has no action potential and makes no electricity. So how can inflaming it change the ECG?\n\nIt can't, on its own. What changes the ECG is the thin outer skin of heart muscle lying directly under the inflamed sac. Inflammation spreads into it, those cells can no longer hold their voltage, and you have an injury current again. The difference from an infarct is the shape of the injured zone. An infarct injures one wall, through its full thickness, in one artery's territory. Pericarditis injures a shallow layer over the whole surface of the heart.\n\nNow use the cameras. The injured layer is on the outside, facing every camera on the chest and limbs, so they all record ST elevation at once: limb leads and chest leads together, fitting no single artery. The muscle underneath is alive, so the segment keeps its natural concave curve and no Q wave ever forms. And where is the mirror? The only camera standing opposite the whole surface is the one that looks into the cavity from the right shoulder. So aVR, and often V1, show ST depression. Outside those two leads there is no reciprocal change.\n\nThe second sign is the one that names the diagnosis. The atria are wrapped in the same sac. Their outer layer is injured too, and an atrial injury current shifts the segment that follows the P wave: the PR segment. It is pushed down in most leads, and lifted in aVR, the mirror again. This is why the baseline matters. In pericarditis, measure the ST segment against the TP segment, because the PR segment has moved.\n\n[[Pericarditis: widespread concave ST elevation with PR depression, in limb and chest leads together. aVR shows the mirror image, ST depression with PR elevation. No Q waves, no reciprocal depression elsewhere.]]\n\nThen the time course, which is slow, and its order is itself a test. Stage one, over the first hours to days, is the ST elevation with PR depression. In stage two the ST segment returns to the baseline. Only then, in stage three, do the T waves invert. In stage four, weeks later, everything is normal again. Compare the infarct, where the T wave inverts while the ST segment is still raised. So ST elevation and T inversion together, in the same leads, point away from pericarditis and towards ischaemia.\n\n{{**Pericarditis, four stages**\n1 | diffuse concave ST elevation + PR depression (aVR: opposite)\n2 | ST returns to baseline\n3 | T waves invert\n4 | normal\nClassic changes in up to **60%** only; sinus tachycardia common}}\n\nTwo last facts. Sinus tachycardia is common, from pain and fever. And the classic picture appears in only up to sixty per cent of cases, so a normal tracing does not exclude pericarditis. The wrong option reads: no ST elevation, so not pericarditis.\n\nWhat you do about it, the diagnostic criteria and the drugs, belongs to the pericardium packet. Here, stay with the tracing, because this patient is sitting in the chest pain room and two other diagnoses lift the ST segment in the same concave way.",
+      "pic": "P12_EC_pericarditis_stages.svg",
+      "cap": "Pericarditis: 1 diffuse ST elevation + PR depression (aVR opposite), 2 ST settles, 3 T inverts, 4 normal. Classic changes in only about 60%."
+     }
+    },
+    {
+     "card": "CVS01|CVS-09",
+     "bridge": "Each impostor so far was a living heart. The next is a dead patch of one.",
+     "lesson": {
+      "v": 1,
+      "text": "Concave ST elevation has three common owners: pericarditis, early repolarisation, and the first minutes of an infarct. Separate them one pair at a time.\n\nFirst, pericarditis against early repolarisation. You know where early repolarisation comes from: the notch at the start of the plateau, more marked in the outer layer, drawing a small hook at the J point in a healthy young man. Nothing is inflamed. So the differences follow. Early repolarisation lives mainly in the chest leads; pericarditis spreads to the limb leads as well. Early repolarisation leaves the PR segment alone; pericarditis depresses it. Early repolarisation has the fish-hook J point in V4 and tall, prominent T waves. And it is the same next week and next year, while pericarditis moves through its stages.\n\nWhen the two still look alike, there is one measurement, in V6. Take the height of the ST elevation and divide it by the height of the T wave. Early repolarisation has a small ST step under a tall T wave, so the ratio is low. In pericarditis the ST segment is raised out of proportion to the T wave. The cut is one quarter.\n\n[[In V6, ST elevation more than a quarter of the height of the T wave favours pericarditis. Less than a quarter favours early repolarisation.]]\n\n{{**In V6: ST height ÷ T height**\nEarly repolarisation | **< 0.25**\nAcute pericarditis | **> 0.25**\nEarly repolarisation: chest leads, no PR depression, fish-hook J point in V4, tall T, young men, no treatment}}\n\nEarly repolarisation is seen in young men, and it needs no treatment. The exam version is the athlete without symptoms, and the wrong options are myocarditis and pericarditis, both of which need a patient who is unwell.\n\nSecond, pericarditis against the infarct. This is the pair where a mistake does harm in either direction. Give a clot-dissolving drug to pericarditis and you can bleed into the sac. Miss an occlusion and muscle dies. Everything that separates them is the one difference you've already built: an infarct follows an artery, and pericarditis follows the whole surface.\n\nSo in pericarditis the elevation is diffuse; in an infarct it stays inside one territory. Pericarditis depresses the PR segment; an infarct does not. Pericarditis changes over days and weeks and never forms a Q wave; an infarct changes over hours and does. In the inferior leads there is a fine point from the angles: an inferior infarct from the right coronary raises lead three more than lead two, while pericarditis, whose shift points towards the apex, raises lead two more than lead three.\n\nBut one feature outweighs the rest, and it is the mirror. An infarct has cameras facing away from it, and they show reciprocal depression: aVL in an inferior infarct, the inferior leads in a high lateral one. Pericarditis has no opposite camera except aVR.\n\n[[Reciprocal ST depression in any lead other than aVR and V1 means infarction until proved otherwise. It is the best single feature separating a STEMI from pericarditis.]]\n\nNEET's trap is to rely on shape. Concave ST elevation does not exclude a STEMI, as you heard. Territory and reciprocal change decide.\n\nYour card for this pair has one more row, electrical alternans. You met it when the cameras lost the signal: the heart swinging in a large effusion. It means the sac has filled, and it belongs to tamponade.\n\nSo far each impostor was a living heart. The next is a dead patch of one.",
+      "pic": "P12_EC_ber_vs_pericarditis.svg",
+      "cap": "V6 ST/T ratio: ≥ 0.25 favours pericarditis, < 0.25 early repolarisation. PR depression and diffuse spread also favour pericarditis."
+     }
+    },
+    {
+     "card": "CVS10D|MI-66",
+     "bridge": "Leave the left ventricle. The next impostor writes on the front chest leads from the lungs.",
+     "lesson": {
+      "v": 1,
+      "text": "Go back to the last stage of the infarct. The ST segment settles within about two weeks, and the Q wave stays. Sometimes the ST segment never settles. Weeks later it is still raised over deep Q waves. What has happened?\n\nA large infarct through the full thickness of the wall, not reopened in time, heals as a thin sheet of scar. With every beat, while the living muscle contracts, that sheet bulges outward. This is a left ventricular aneurysm. It follows fewer than five in a hundred infarcts, fewer still since primary PCI, and it sits where the big anterior infarcts are: the anteroseptal wall and the apex. So the persisting elevation is usually in the front chest leads. Exactly why a scar keeps the ST segment up is debated. The likeliest source is the living muscle at its rim, stretched with every beat. You don't need the mechanism. You need the pattern.\n\n[[ST elevation that persists more than two weeks after an infarct, over Q waves, with no new pain and no new rise in troponin, is a left ventricular aneurysm, not a new infarct.]]\n\nNEET's wrong option is re-infarction and a second trip for reperfusion. Run the three questions and you won't take it. Does it evolve over hours? No, it is the same on every tracing. Is there a mirror image? No. And the old ECG, if you can find it, shows the same thing.\n\nThat gives you a three-way reading, and you've now built every part of it. Q waves with a flat ST segment: an old, healed infarct. ST elevation with symptoms or a rising troponin: an acute one. Q waves with ST elevation that has been there for weeks: an aneurysm.\n\nThe rest of the card is the aneurysm's consequences. Blood stagnates in the pouch, a clot forms at the apex and can travel. How long to anticoagulate, and when a surgeon is needed, is taught with the complications of infarction in the second ACS packet.\n\nNow leave the left ventricle altogether. The next impostor draws its changes in the front chest leads, and the problem is in the lungs."
+     }
+    },
+    {
+     "card": "CVS06B|RVF-26",
+     "bridge": "One more organ writes on the front chest leads, and it is not in the chest at all.",
+     "lesson": {
+      "v": 1,
+      "text": "A clot lodges in the pulmonary artery. Nothing has happened to a coronary artery, and yet the ECG changes. Why?\n\nBecause the right ventricle has just been handed a load it wasn't built for. You'll recall it is a thin-walled pump made for low pressure. Suddenly it must push against a blocked outflow. It stretches, its wall tension soars, and its inner layer becomes short of blood. This is called right ventricular strain. Every ECG sign of pulmonary embolism is that strained ventricle, seen by the cameras that sit over it.\n\nTake them in order of how often they appear. The commonest finding is plain sinus tachycardia. Next comes T wave inversion in V1 to V4, the chest leads that lie over the right ventricle, often with inversion in lead three and aVF as well. That is the ischaemic, strained right ventricle repolarising late, just as you learned for the left. Then the stretched ventricle delays its own wiring. The right bundle branch runs just under its inner surface, so a new right bundle branch block appears, complete or incomplete. The axis swings to the right, towards the overloaded chamber. The right atrium, stretched behind it, may add a tall peaked P wave or tip into atrial fibrillation.\n\nAnd then the famous one. S1 Q3 T3: a deep S wave in lead one, with a Q wave and an inverted T wave in lead three. It is the same rightward swing, seen in two limb leads. But it is present in only one or two patients in ten, and it appears in other causes of sudden right heart strain too. NEET's trap is to offer it as the commonest or the diagnostic sign. It is neither. Nor does a normal ECG exclude an embolus.\n\n[[Pulmonary embolism on the ECG is right ventricular strain. Sinus tachycardia is commonest, then T inversion in V1 to V4. S1 Q3 T3 is seen in a minority and is not diagnostic.]]\n\nNow two confusions to settle.\n\nFirst, strain against infarction of the right ventricle. They are different pictures. Infarction is ST elevation, in the right-sided lead V4R, riding on an inferior infarct. Strain is T wave inversion, in the front chest leads, with S1 Q3 T3. One is a closed right coronary. The other is a blocked pulmonary artery.\n\nSecond, and this is the mimic that matters here: T inversion across the front chest leads is also Wellens. How do you tell a clot in the lung from a critical LAD? Look at where the inversion is deepest and what else is inverted. In pulmonary embolism it is deepest in V1 and V2, and lead three is inverted as well. In Wellens it is deepest in V2 and V3, and the inferior leads are spared. T inversion in both V1 and lead three, in a breathless patient with a fast pulse, is an embolus until proved otherwise.\n\nLast, a score you skipped in the September paper. The Daniel score grades how much strain the ECG shows, out of twenty-one points. You need only the big items.\n\n{{**Daniel ECG score (max 21)**\nHeart rate > 100 | **2**\nIncomplete RBBB | **2**\nComplete RBBB | **3**\nT inversion in all of V1–V4 | **4**\nComplete S1Q3T3 | **2**\nScore **≥ 10**: severe pulmonary hypertension (systolic PA pressure > 50 mmHg)}}\n\nA heart rate above one hundred scores two. Incomplete right bundle branch block scores two, complete scores three. T inversion in all of V1 to V4 scores four. A complete S1 Q3 T3 scores two. The remaining points come from grading how deep the T inversion is in each lead. The stem gave a heart rate of one hundred and eighteen, incomplete right bundle branch block and T inversion from V1 to V4. Two, two and four: eight, and eight was the keyed answer. Know the catch, though. In the full score an inverted T wave in V2 and in V3 adds at least one more point each, even when it is shallow. So if a stem gives the depth of the T waves, add those points. If it gives none, count the three big items as the examiner did. A total of ten or more points to severe pulmonary hypertension, a systolic pulmonary artery pressure above fifty millimetres of mercury. It is very specific and not at all sensitive, so a low score reassures nobody.\n\nHow the embolus is risk-classed and treated belongs to the right heart packet. One more organ can write on the front chest leads, and it isn't in the chest at all.",
+      "pic": "P12_EC_pe.svg",
+      "cap": "PE: sinus tachycardia commonest; T inversion V1–V4 (RV strain); RBBB; right axis. S1Q3T3 is uncommon and non-specific."
+     }
+    },
+    {
+     "card": "NEURO03|NEURO-80",
+     "bridge": "Take the same catecholamine surge, remove the head injury, and it has a name of its own.",
+     "lesson": {
+      "v": 1,
+      "text": "An aneurysm bursts at the base of the brain. Within hours the ECG is abnormal in the great majority of these patients, and there is nothing wrong with their coronary arteries. This is the brain writing on the heart.\n\nThe route is the sympathetic system, and you know its hand on the wiring. A sudden rise in pressure inside the skull, or blood around the hypothalamus, releases a storm of catecholamines. Not only from the adrenal glands into the blood, but straight out of the sympathetic nerve endings inside the heart muscle. The cells are flooded with calcium. Repolarisation becomes slow and uneven, and some cells are stunned or killed outright.\n\nNow read that on the ECG. Slow, uneven repolarisation is phase three, so it shows in the T wave and the QT interval. The classic picture is the cerebral T wave: deep, wide, symmetric inversion across the chest leads, far broader than an ischaemic T wave, sitting on a long QT interval. Prominent U waves may follow. The ST segment may be raised or depressed. And because a long QT invites early beats to fall on the T wave, there are arrhythmias, up to torsades de pointes. That is why you correct potassium and magnesium early in these patients, both of which run low after a subarachnoid bleed.\n\n[[After a subarachnoid haemorrhage, deep wide T inversion with a long QT is the cerebral T wave. It comes from a catecholamine surge, not from a blocked coronary artery.]]\n\nWhen the surge is severe the muscle itself is stunned. This is neurogenic stunned myocardium, the most serious cardiac complication on your card. The troponin rises, in about one patient in five. The echo shows segments that have stopped moving. And those segments do not match the territory of any one coronary artery, because nerve endings, not an artery, did the damage. It recovers over days to weeks. The same surge, acting on the lung vessels, gives neurogenic pulmonary oedema.\n\n{{**Subarachnoid haemorrhage and the heart**\nECG abnormal in most\nCerebral T waves: deep, wide, inverted; **long QT**; U waves; ST up or down\nTroponin rise about 20%\nStunned myocardium: wall motion loss fits **no coronary territory**, reversible\nCorrect K and Mg: torsades risk}}\n\nNEET's trap here is the dangerous one. Sudden severe headache, a collapse, then ST change and a raised troponin, and the option reads: acute coronary syndrome, give antiplatelets and heparin, or thrombolyse. In a patient with a fresh bleed in the head that is a catastrophe. The story decides. A thunderclap headache or a fall in consciousness before the ECG changes means the brain comes first, and the scan comes before any drug that affects clotting.\n\nApply the three questions and the impostor is exposed. Territory? No, the changes are widespread. Mirror image? No. And the T waves are too wide and the QT too long for ordinary ischaemia. That also separates it from Wellens, where the QT is close to normal and the patient gives a history of angina.\n\nOne more sign from the same patient, in the opposite direction. When pressure inside the skull rises far enough to squeeze the brainstem, blood pressure climbs and the heart slows. That is the Cushing reflex. So sinus bradycardia with hypertension in a patient with a head injury is the brain again, working through the vagus.\n\nThe rest of that card, the sodium and the glucose, belongs to the neurology packets.\n\nNow take the same catecholamine surge and remove the head injury. It has a name of its own.",
+      "pic": "P12_EC_cerebral_t.svg",
+      "cap": "SAH or raised ICP: giant, wide inverted T waves and a long QT, often with troponin rise — neurogenic, not coronary."
+     }
+    },
+    {
+     "card": "V12-060",
+     "bridge": "Every major impostor met one by one. The last card gathers them into a single list.",
+     "lesson": {
+      "v": 1,
+      "text": "You've just seen a catecholamine surge stun the heart after a brain bleed. Takotsubo syndrome is the same injury with a different trigger. And myocarditis, its neighbour on this card, is the muscle layer of what pericarditis did to the surface. In both, the muscle is injured and no artery is closed.\n\nTakotsubo first. The typical patient is a woman after the menopause: about nine in ten are women. The trigger is a surge of stress. It may be emotional. In the ICU it is more often physical: sepsis, a subarachnoid bleed, major surgery, respiratory failure, a catecholamine infusion. The surge stuns the left ventricle. In the classic form the apex stops and balloons while the base contracts hard, so the ventricle in systole looks like a round pot with a narrow neck. A Japanese octopus trap of that shape gave it the name.\n\nWhat do the cameras see? In the first hours, an injury current. Nearly half of patients present with ST elevation, most often across the front chest leads, with a troponin rise. So at the door it is an anterior STEMI. Then over one to three days comes the second phase: deep, widespread T wave inversion with a long QT interval, the same repolarisation picture as the cerebral T wave, and for the same reason. With it comes a risk of torsades de pointes.\n\nCan the ECG tell it from an LAD occlusion? It can hint. The stunned area is centred on the apex and wraps round it, crossing the territories of more than one artery. So the elevation spreads widely through the chest leads but tends to spare V1. The inferior leads rarely show reciprocal depression. And aVR, which looks away from the apex, shows ST depression. But a hint does not exclude a closed artery. The patient goes for an angiogram, and the diagnosis is made there.\n\n[[Takotsubo mimics an anterior STEMI: ST elevation and troponin first, then deep T inversion with a long QT. The wall motion abnormality crosses coronary territories and the arteries are open. It needs an angiogram to prove it.]]\n\nA further clue is proportion: the troponin rise is modest for so large an area of still muscle. NEET's trap is a false statement, asked by Marrow: that the ECG in Takotsubo never shows ST elevation. It often does. There is a scoring system, the InterTAK score, which you need only by name. The variants, and the work-up when the arteries are open, come in the first ACS packet.\n\nNow myocarditis. Inflammation is scattered through the muscle in patches, mostly under the outer surface, and it follows no artery. So the commonest ECG finding is simply sinus tachycardia. Next, ST elevation and T wave changes without reciprocal depression, for the reason you learned in pericarditis. The sac is often inflamed with it, and then the PR segment is depressed as well. A young patient with chest pain after a viral illness, ST elevation and a raised troponin can copy a STEMI closely enough to need an angiogram.\n\nWhat myocarditis adds, and pericarditis never does, comes from the depth of the inflammation. It reaches the wiring. So you see AV block, bundle branch block, a wide QRS and ventricular arrhythmias, and the voltage may be low because the wall is swollen with fluid. A wide QRS, a long QT and ventricular arrhythmia mark a poor outlook. And heart block or ventricular tachycardia in myocarditis should bring three names to mind: giant cell myocarditis, sarcoid, and Lyme disease.\n\n{{**Takotsubo** | postmenopausal women, stress trigger | ST elevation (often V2–V5, V1 spared, aVR down), then deep T inversion + long QT | open coronaries\n**Myocarditis** | sinus tachycardia commonest | ST-T change without reciprocal depression; AV block, wide QRS, VT, low voltage | AV block or VT: giant cell, sarcoid, Lyme}}\n\nKeep one caution about the ECG in myocarditis. It is a screening test, neither sensitive nor specific, and a normal tracing excludes nothing. The pericardium packet takes it from there.\n\nThat is every major impostor, one by one. The last card gathers them into a single list, and you'll find you can explain almost every line of it."
+     }
+    },
+    {
+     "card": "CVS10B|MI-27",
+     "bridge": null,
+     "lesson": {
+      "v": 1,
+      "text": "This card lists every cause of ST elevation, ST depression and T inversion that is not an acute coronary syndrome. Don't memorise three columns. Sort them by the two mechanisms you already own, and nearly every name falls into place.\n\nThe first mechanism is secondary change. Repolarisation follows depolarisation. If the ventricle is depolarised by an abnormal route or through an abnormal mass of muscle, the plateau and phase three unfold in an abnormal order, and the ST segment and T wave are displaced, usually opposite to the main QRS deflection. Nothing is injured. That covers left bundle branch block, a paced rhythm, right bundle branch block, and the strain pattern of a hypertrophied ventricle, including hypertrophic cardiomyopathy.\n\nThe second mechanism is primary change. The QRS is normal, but something has altered the cells themselves, their resting potential, their plateau or their phase three. This group you've just walked through, and each member carries a signature. Pericarditis: widespread, concave, with PR depression. Myocarditis: no mirror image, and the wiring involved. Right ventricular strain from an embolus: T inversion in V1 to V4 with lead three. A left ventricular aneurysm: elevation that persists for weeks over Q waves. Takotsubo: front chest leads, then deep T waves and a long QT. Early repolarisation: the notched J point of a healthy young man.\n\n{{**ST elevation:** pericarditis, myocarditis, early repolarisation, LV aneurysm, **Takotsubo**, PE and RV strain, Brugada, hypothermia, LBBB, LVH, paced rhythm\n**ST depression:** digoxin, hypokalaemia, LVH strain, LBBB, paced rhythm\n**T inversion:** juvenile pattern, after tachycardia or pacing, intracranial bleed, pericarditis (late), apical HCM}}\n\nA few more primary causes are on the card, and each is built properly in the next packet, so here you need only its signature. Brugada: a coved ST elevation in V1 and V2. It grows from the same notch as early repolarisation, exaggerated over the right ventricle. Hypothermia: an extra hump at the J point, the Osborn wave. Digoxin: a scooped, sagging ST depression. Low potassium: ST depression, a flattened T wave and a U wave, which is phase three slowed, as you learned from the four handles.\n\nThen the T wave column. The juvenile pattern you've met: inverted T waves in V1 to V3 that persist from childhood. Intracranial disease is the cerebral T wave. Two entries share an odd mechanism: T inversion after a run of tachycardia, and after a period of ventricular pacing. When the ventricle has been activated abnormally for a while and then returns to normal, the T wave stays inverted for hours to days, pointing where the abnormal QRS used to point. This is called cardiac memory, and it is harmless. And one that Marrow asks: giant T inversion across the chest leads, more than ten millimetres deep, with a spade-shaped left ventricle on imaging, is apical hypertrophic cardiomyopathy.\n\n[[ST and T changes without an occlusion are either secondary to an abnormal QRS, as in bundle branch block, pacing and hypertrophy, or primary, from inflamed, stretched, stunned, scarred or drugged muscle.]]\n\nOne correction to carry. Older notes list stress cardiomyopathy only under ST depression. As you've just learned, Takotsubo commonly raises the ST segment, and that is exactly why it is mistaken for an infarct.\n\n[[A STEMI is ST elevation in one arterial territory, with reciprocal depression opposite, evolving over hours. An impostor fails at least one of the three.]]\n\nThat completes the first ECG packet. From a relay of two kinds of cell you built the waves, and with twelve cameras and one rule you found the axis, the size of the chambers, the injured wall and its artery. Through all of it the wiring behaved itself: every impulse that left the sinus node arrived. In the next packet it stops behaving. The impulse is delayed, or dropped, or takes a short circuit, and the first question will be the one you've been set up to answer since the first card: is the fault in the node, or below it?"
+     }
+    }
+   ],
+   "spine": [
+    "The ST segment reports a voltage difference between neighbouring muscle, not an artery. Ask three things: one territory? a mirror image? evolution over hours?",
+    "Pericarditis: shallow injury over the whole surface: diffuse concave ST elevation + PR depression, aVR opposite, no Q; T inverts only after ST settles.",
+    "Early repolarisation: notched J point, chest leads, no PR depression, ST/T in V6 <0.25. Reciprocal depression outside aVR/V1 = infarct.",
+    "ST elevation persisting >2 weeks over Q waves = LV aneurysm. PE = RV strain: sinus tachycardia, T inversion V1–V4 + III; S1Q3T3 only 10–20%.",
+    "Catecholamine injury: SAH (cerebral T, long QT, stunning in no coronary territory) and Takotsubo (ST elevation, then deep T + long QT, open arteries).",
+    "Non-ACS ST-T change is secondary (LBBB, pacing, LVH) or primary (inflamed, stretched, stunned, scarred, drugged muscle)."
+   ],
+   "close": {
+    "v": 1,
+    "text": "So let's walk back down through the building, from the basement up.\n\nYou started with the wiring. A relay from the sinus node to the muscle, built from two kinds of cell. The node is calcium: slow, tired easily, and listens to the vagus. Everything below it is sodium: fast, all or nothing, and deaf to the vagus. Keep that sentence. The next packet hangs every heart block on it.\n\nThen the cell drew the waves. Phase zero, the sodium rush, is the QRS. The calcium plateau is the flat ST. Potassium leaving is the T. And the whole life of the cell is the QT. [[QRS is sodium, ST is calcium, T is potassium, and QT is the whole cell.]] So a sodium blocker widens the QRS, low calcium stretches the ST, high potassium peaks the T, and a potassium-channel blocker lengthens the QT.\n\nThen the cameras. A wave coming towards a lead is upright, going away is downward. From that one rule came the axis, the small r and big S in V1, the R wave that grows across the chest, and the five reasons for a tall R in V1. And when the cameras turned to ischaemia, the injured wall lifted the ST in the leads that face it and dropped it in the leads opposite.\n\nNow the traps.\n\nOne. Lead one positive and aVF negative. The tempting answer is left axis deviation. Check lead two first. If lead two is positive, the axis is still normal.\n\nTwo. Tall R waves with ST depression in V1 to V3. The tempting answer is anterior ischaemia. It's the posterior wall seen in a mirror. Put on the back leads, and reperfuse.\n\nThree. Inferior STEMI, hypotension, clear lungs, ST elevation in V4R. The tempting drugs are nitrate, furosemide or a beta-blocker. The right ventricle has infarcted and lives on preload. Give cautious fluid and open the artery.\n\nFour. A patient now free of pain, with deep symmetric T inversion in V2 and V3 and a normal troponin. The tempting answer is discharge, or a stress test. That's Wellens: a critical LAD that has reopened and will close again. You missed this one. Admit him for early angiography.\n\nFive. S1 Q3 T3 called the commonest sign of pulmonary embolism. It's sinus tachycardia, then T inversion across V1 to V4. S1 Q3 T3 appears in a minority and proves nothing on its own.\n\nAnd six. Low calcium blamed for a T-wave change. Calcium lives in the plateau. It moves the ST segment and so the QT. The T wave, and the U wave after it, belong to potassium.\n\nThe check comes up on the next screen. Answer each in your head before you tap it open.\n\nAnd carry one question into the next packet. Everything here assumed the impulse got through. What happens when it doesn't? When the calcium gate tires, or the sodium wiring below it breaks? That's where heart block comes from, and why one kind is harmless and the other kills."
+   }
+  }
+ ],
+ "drill": [
+  {
+   "q": "Intrinsic rates of the SA node, AV junction and ventricle?",
+   "a": "60–100, 40–60 and 20–40 per minute. The fastest pacemaker suppresses the others (overdrive suppression)."
+  },
+  {
+   "q": "Which artery supplies the AV node, and what follows?",
+   "a": "The right coronary in about 90%, so an inferior MI gives block in the node. The cables below are fed by LAD septal branches, so an anterior MI blocks below the node."
+  },
+  {
+   "q": "Which cells fire on calcium, and how do they fail?",
+   "a": "The SA and AV nodes. They conduct slowly and decrementally, so they fail gradually (the seed of Mobitz I). Sodium cells are all or none and fail suddenly."
+  },
+  {
+   "q": "Second messenger of adrenaline's beta effect?",
+   "a": "Gs → adenylate cyclase → cAMP. Phospholipase C is the alpha-1/Gq pathway."
+  },
+  {
+   "q": "Where does atropine fail, and why?",
+   "a": "Block below the AV node and the transplanted heart: atropine only removes vagal tone, and there is none there to remove."
+  },
+  {
+   "q": "Modified Valsalva: the technique and the REVERT result?",
+   "a": "Sustained strain at 40 mmHg for 15 s, then supine with legs raised: 43% conversion vs 17%. It is not a deep breath in."
+  },
+  {
+   "q": "Which current drives phase 4 in the SA node, and which drug blocks only that?",
+   "a": "The funny current If (HCN channels). Ivabradine: slower sinus rate, contractility and BP unchanged."
+  },
+  {
+   "q": "Which phase and ion draw the QRS, the ST segment and the T wave?",
+   "a": "Phase 0 sodium = QRS; phase 2 calcium plateau = flat ST; phase 3 potassium = T. QT = the whole action potential."
+  },
+  {
+   "q": "Why is the T wave upright where the QRS is upright?",
+   "a": "The epicardium has the shorter action potential and repolarises first, so repolarisation runs opposite to depolarisation: opposite charge, opposite direction."
+  },
+  {
+   "q": "One small square, one large square, normal PR and QRS?",
+   "a": "0.04 s and 0.2 s. PR 0.12–0.20 s; QRS under 0.12 s. Rate = 300 ÷ large squares between R waves."
+  },
+  {
+   "q": "Long QT in hypocalcaemia vs hypokalaemia: what differs?",
+   "a": "Low calcium stretches the ST segment with a normal T. Low potassium flattens the T and adds a U wave (long QU). High calcium shortens the QT."
+  },
+  {
+   "q": "Lead I positive, aVF negative: what next?",
+   "a": "Look at lead II. Positive = normal (no further than −30°). Negative = left axis deviation."
+  },
+  {
+   "q": "Which way does the ST segment shift in ischaemic injury, and why does subendocardial ischaemia give depression?",
+   "a": "Towards the injured zone. Inner-layer injury points the shift into the cavity, away from the chest leads (ST depression, non-localising) and towards aVR (elevation)."
+  },
+  {
+   "q": "Order of ECG changes after a coronary occlusion?",
+   "a": "Hyperacute T → ST elevation → Q waves (hours, permanent) → T inversion → ST back to baseline by about 2 weeks. ST still up at weeks = LV aneurysm."
+  },
+  {
+   "q": "STEMI thresholds at the J point in V2–V3, and elsewhere?",
+   "a": "V2–V3: 2.5 mm men <40, 2.0 mm men ≥40, 1.5 mm women. All other leads 1 mm. Two contiguous leads; not valid in LBBB or LVH."
+  },
+  {
+   "q": "Inferior STEMI: which features say RCA rather than circumflex?",
+   "a": "ST elevation III > II with reciprocal depression in aVL (and I); V4R or V1 elevation adds RV involvement. II ≥ III with lateral elevation = LCx."
+  },
+  {
+   "q": "ST elevation in V1 with a new RBBB: where is the lesion?",
+   "a": "Proximal LAD, above the first septal perforator that supplies the right bundle (Marrow ×2)."
+  },
+  {
+   "q": "Known CAD, breathless, Q waves in I, aVL, V5, flat ST. Diagnosis?",
+   "a": "Old lateral MI. Q waves are permanent scar; acute injury is written in the ST segment (DocT, 46% right)."
+  },
+  {
+   "q": "Chest pain with horizontal ST depression, tall R and upright T in V1–V3. What is it and how do you confirm?",
+   "a": "Posterior STEMI (usually LCx). V7–V9: ST elevation ≥0.5 mm (≥1 mm in men <40)."
+  },
+  {
+   "q": "Inferior STEMI + ST elevation in V4R, BP 82/56, pulse 54, clear lungs, raised JVP. Immediate step, and three drugs to avoid?",
+   "a": "Cautious IV crystalloid bolus while arranging primary PCI (RV infarct, proximal RCA). Avoid nitrates, diuretics and beta-blockers (INI GT4 Q1)."
+  },
+  {
+   "q": "ST depression ≥1 mm in how many leads, with elevation where, suggests left main or three-vessel ischaemia?",
+   "a": "≥6 leads (ESC 2023, UDMI; older keys 8) with ST elevation in aVR and/or V1."
+  },
+  {
+   "q": "Pain-free after angina, deep symmetric T inversion V2–V3, normal troponin. Diagnosis and next step?",
+   "a": "Wellens: critical proximal LAD stenosis. Admit for early angiography; stress test contraindicated (GT1 Q51)."
+  },
+  {
+   "q": "Ongoing chest pain, upsloping ST depression into tall symmetric T waves V1–V6, slight aVR elevation. What is it?",
+   "a": "de Winter pattern: acute proximal LAD occlusion, a STEMI equivalent → immediate primary PCI."
+  },
+  {
+   "q": "Best single ECG feature separating STEMI from pericarditis? And pericarditis from early repolarisation?",
+   "a": "Reciprocal ST depression outside aVR/V1 = STEMI. ST/T ratio in V6 >0.25 (plus PR depression) = pericarditis; <0.25 = early repolarisation."
+  },
+  {
+   "q": "PE: commonest ECG finding, how often S1Q3T3, and the Daniel score for HR 118 + incomplete RBBB + T inversion V1–V4?",
+   "a": "Sinus tachycardia; S1Q3T3 in only about 10–20%; Daniel 2 + 2 + 4 = 8 as keyed (≥10 suggests systolic PA pressure >50 mmHg). If the stem gives T-wave depths, add the depth points for V1–V3 (V2 and V3 score at least 1 each)."
+  }
+ ],
+ "traps": [
+  {
+   "trap": "Adrenaline's beta effect works through phospholipase C.",
+   "truth": "Beta receptors couple to Gs → adenylate cyclase → cAMP. Phospholipase C (IP3, DAG) is the alpha-1/Gq pathway.",
+   "cards": [
+    "V12-047"
+   ],
+   "asked": "INI GT4 Q10 (wrong: chose phospholipase C)"
+  },
+  {
+   "trap": "Vagal manoeuvre statements: 'take a deep breath before straining'; bilateral carotid massage; massage despite a bruit.",
+   "truth": "Valsalva is a sustained strain (modified: 40 mmHg for 15 s, then supine with legs raised; 43% vs 17% in REVERT). Carotid massage is one side only, 5–10 s, monitored, never with a bruit or prior stroke/TIA.",
+   "cards": [
+    "V12-047",
+    "V12-016"
+   ],
+   "asked": "GT1 Q84 (missed); Marrow, DocT GT"
+  },
+  {
+   "trap": "Atropine for any bradycardia or AV block.",
+   "truth": "Atropine only removes vagal tone at the SA and AV nodes. It does not help a block below the node (wide escape, Mobitz II) or a denervated transplanted heart; these go to pacing or a beta agonist.",
+   "cards": [
+    "V12-047",
+    "V12-046"
+   ],
+   "asked": "Foundation for the Arrest and blocks cards"
+  },
+  {
+   "trap": "The AV node is supplied by the LAD.",
+   "truth": "AV nodal artery from the RCA in about 90% (SA nodal artery RCA about 60%, circumflex about 40%). Inferior MI gives nodal block; anterior MI gives block below the node.",
+   "cards": [
+    "V12-045"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "A nodal drug (verapamil, beta-blocker, adenosine, digoxin) widens the QRS; lidocaine slows the AV node.",
+   "truth": "Nodes are calcium cells: nodal drugs slow the rate and lengthen PR with a narrow QRS. Sodium-channel blockers act on the His-Purkinje system and muscle and widen the QRS.",
+   "cards": [
+    "V12-046",
+    "V12-051"
+   ],
+   "asked": "Foundation for the antiarrhythmic and poison cards"
+  },
+  {
+   "trap": "Ivabradine lowers blood pressure or contractility, or controls the rate in AF.",
+   "truth": "Ivabradine blocks only If in the sinus node: slower sinus rate with no change in contractility or BP, and no effect when the sinus node is not driving (AF).",
+   "cards": [
+    "V12-048"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "Hypercalcaemia prolongs the QT; hypocalcaemia changes the T wave.",
+   "truth": "Low calcium lengthens the ST segment (long QT, normal T). High calcium shortens the ST and the QT. T-wave changes with U waves belong to potassium and IKr-blocking drugs.",
+   "cards": [
+    "V12-051"
+   ],
+   "asked": "Standard MCQ; foundation for the electrolyte section"
+  },
+  {
+   "trap": "Using 300 ÷ one R-R interval on an irregular rhythm.",
+   "truth": "For an irregular rhythm count the QRS complexes in a 10-second strip and multiply by 6.",
+   "cards": [
+    "V12-050"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "Lead I positive with aVF negative is left axis deviation.",
+   "truth": "Not until lead II is negative. With lead II positive the axis lies between 0° and −30°, which is normal.",
+   "cards": [
+    "V12-053"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "Tall R waves with ST depression in V1–V3 called anterior ischaemia.",
+   "truth": "That is the mirror image of a posterior infarct (tall broad R, ST depression, upright T). A dominant R in V1 also means RVH, RBBB, left-sided WPW or dextrocardia.",
+   "cards": [
+    "V12-054"
+   ],
+   "asked": "Foundation for the posterior MI card"
+  },
+  {
+   "trap": "Inverted lead I with an upright aVR is always dextrocardia.",
+   "truth": "Swapped arm electrodes give the same limb leads. Normal R-wave progression in the chest leads = lead reversal; R shrinking V1 to V6 = dextrocardia.",
+   "cards": [
+    "V12-052",
+    "V12-056"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "T inversion in V1–V3 in a child is ischaemia; Mobitz I in an athlete needs a pacemaker.",
+   "truth": "The juvenile T pattern is normal from the first week until adolescence (an upright T in V1 then suggests RVH). Sinus bradycardia, first-degree block and Mobitz I at rest are normal vagal findings in athletes.",
+   "cards": [
+    "V12-056"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "Thick ventricular walls on echo with low ECG voltage read as hypertrophy.",
+   "truth": "True hypertrophy raises voltage. Thick walls with low voltage means infiltration, classically amyloid.",
+   "cards": [
+    "V12-057",
+    "V12-055"
+   ],
+   "asked": "Standard MCQ"
+  },
+  {
+   "trap": "Electrical alternans and T-wave alternans treated as the same sign.",
+   "truth": "Electrical alternans is an alternating QRS from a heart swinging in a large effusion (tamponade when with sinus tachycardia and low voltage). T-wave alternans is unstable repolarisation in long QT.",
+   "cards": [
+    "V12-057"
+   ],
+   "asked": "Foundation for the Pericardium packet and the Schwartz score"
+  },
+  {
+   "trap": "Pain-free patient, deep symmetric T inversion in V2–V3, normal troponin: discharge, or do a stress test",
+   "truth": "Wellens pattern = critical proximal LAD stenosis that has reperfused and will re-occlude. Admit for early angiography; stress testing is contraindicated.",
+   "cards": [
+    "V12-059"
+   ],
+   "asked": "GT1 Q51 (missed)"
+  },
+  {
+   "trap": "Inferior STEMI with V4R elevation and hypotension: give nitroglycerin, furosemide or metoprolol",
+   "truth": "RV infarction (proximal RCA) is preload-dependent: cautious crystalloid bolus while arranging primary PCI; nitrates, diuretics and beta-blockers are avoided.",
+   "cards": [
+    "CVS10B|MI-22"
+   ],
+   "asked": "INI GT4 Q1 (skipped); Marrow"
+  },
+  {
+   "trap": "Shock from RV infarction is due to distal RCA occlusion",
+   "truth": "It needs a proximal RCA occlusion, above the RV marginal branches.",
+   "cards": [
+    "CVS10B|MI-22"
+   ],
+   "asked": "Marrow (incorrect statement)"
+  },
+  {
+   "trap": "Q waves in I, aVL, V5 in a breathless man with known CAD = acute coronary syndrome",
+   "truth": "Q waves with a flat ST segment are an old healed infarct; acute injury shows in the ST segment.",
+   "cards": [
+    "CVS10B|MI-28",
+    "V12-058",
+    "CVS10D|MI-66"
+   ],
+   "asked": "DocT QBank, 46%"
+  },
+  {
+   "trap": "ST depression with tall R in V1–V3 during pain = anterior ischaemia (NSTE-ACS), wait for troponin",
+   "truth": "It is a posterior occlusion seen in the mirror; confirm with V7–V9 (≥0.5 mm) and reperfuse.",
+   "cards": [
+    "CVS10B|MI-22"
+   ],
+   "asked": "Marrow (match MI location to leads)"
+  },
+  {
+   "trap": "ST elevation in II greater than III points to the RCA and RV involvement",
+   "truth": "Reversed: III > II with aVL depression is the RCA (and RV); II ≥ III with lateral elevation is the circumflex.",
+   "cards": [
+    "CVS10B|MI-28",
+    "CVS06B|RVF-26"
+   ],
+   "asked": "DocT QBank 77%; Marrow"
+  },
+  {
+   "trap": "A 40-year-old man needs 2.5 mm in V2–V3; or measure ST 80 ms after the J point",
+   "truth": "The cut is at 40: under 40 is 2.5 mm, 40 and over 2.0 mm, women 1.5 mm. Measured at the J point itself (J + 80 ms is an exercise-test convention).",
+   "cards": [
+    "CVS10B|MI-21"
+   ],
+   "asked": "Pattern (threshold edges)"
+  },
+  {
+   "trap": "Upsloping ST depression in the chest leads is always benign",
+   "truth": "With tall symmetric T waves and ongoing pain it is de Winter: an occluded proximal LAD, treated as STEMI.",
+   "cards": [
+    "V12-059",
+    "CVS10B|MI-25"
+   ],
+   "asked": "Pattern (ESC 2023 STEMI-equivalent patterns)"
+  },
+  {
+   "trap": "Normal ECG with chest pain and a troponin rise = unstable angina",
+   "truth": "A normal ECG never excludes infarction; a troponin rise with ischaemic symptoms is NSTEMI.",
+   "cards": [
+    "CVS10B|MI-25"
+   ],
+   "asked": "DocT QBank 68% and 71%"
+  },
+  {
+   "trap": "Concave ST elevation excludes STEMI",
+   "truth": "Early infarcts can be concave. Territory and reciprocal depression decide, not shape.",
+   "cards": [
+    "CVS10B|MI-26",
+    "CVS01|CVS-09"
+   ],
+   "asked": "Pattern"
+  },
+  {
+   "trap": "Asymptomatic young athlete with concave J-point elevation V3–V5 = myocarditis or Brugada",
+   "truth": "Early repolarisation: no symptoms, notched J point, no reciprocal change. Brugada is coved elevation in V1–V2 only; myocarditis has symptoms and troponin.",
+   "cards": [
+    "CVS10B|MI-26",
+    "CVS01|CVS-09"
+   ],
+   "asked": "DocT GT"
+  },
+  {
+   "trap": "ST elevation weeks after an anterior MI = re-infarction, reperfuse",
+   "truth": "Persistent ST elevation over Q waves with no new pain or troponin rise is an LV aneurysm.",
+   "cards": [
+    "CVS10D|MI-66",
+    "V12-058"
+   ],
+   "asked": "Pattern"
+  },
+  {
+   "trap": "S1Q3T3 is the commonest (or diagnostic) ECG sign of PE; or S1Q3T3 is the RV infarct pattern",
+   "truth": "Sinus tachycardia is commonest, then T inversion V1–V4. S1Q3T3 is present in about 10–20%, non-specific, and is a strain pattern, not infarction.",
+   "cards": [
+    "CVS06B|RVF-26"
+   ],
+   "asked": "Pattern; Marrow"
+  },
+  {
+   "trap": "Daniel score miscounted (HR 118 + incomplete RBBB + T inversion V1–V4)",
+   "truth": "2 + 2 + 4 = 8 (the key). The full score also adds depth points for T inversion in V1–V3 (V2 and V3 at least 1 each): add them only when the stem gives depths. Complete RBBB 3, complete S1Q3T3 2; ≥10 suggests severe pulmonary hypertension (sPAP >50 mmHg).",
+   "cards": [
+    "CVS06B|RVF-26",
+    "HY2|CAR-24"
+   ],
+   "asked": "INI Sep-4 PYT Q76 (skipped, cohort 50%)"
+  },
+  {
+   "trap": "ST change and raised troponin after a thunderclap headache = ACS: antiplatelets, heparin or thrombolysis",
+   "truth": "Cerebral T waves and neurogenic stunning from SAH; the brain is imaged first and antithrombotics are withheld.",
+   "cards": [
+    "NEURO03|NEURO-80"
+   ],
+   "asked": "DocT GT (post-SAH ECG)"
+  },
+  {
+   "trap": "The ECG in Takotsubo never shows ST elevation",
+   "truth": "False: it commonly presents with ST elevation and troponin, then deep T inversion with long QT.",
+   "cards": [
+    "V12-060",
+    "CVS10B|MI-27"
+   ],
+   "asked": "Marrow (false statement)"
+  },
+  {
+   "trap": "No ST elevation, so not pericarditis",
+   "truth": "The classic changes appear in only up to 60%; a normal ECG does not exclude pericarditis.",
+   "cards": [
+    "CVS01|CVS-07"
+   ],
+   "asked": "Pattern"
+  }
+ ],
+ "mimics": [
+  {
+   "pair": "Block in the AV node vs block below the node",
+   "tell": "Nodal (calcium) cells fail gradually, with PR lengthening first; cables below (sodium cells) fail all or none, with no warning.",
+   "cards": [
+    "V12-046"
+   ]
+  },
+  {
+   "pair": "Arm-lead reversal vs dextrocardia",
+   "tell": "R-wave progression in the chest leads: normal in lead reversal, shrinking from V1 to V6 in dextrocardia.",
+   "cards": [
+    "V12-052",
+    "V12-056"
+   ]
+  },
+  {
+   "pair": "Long QT of hypocalcaemia vs hypokalaemia or QT drugs",
+   "tell": "Hypocalcaemia stretches the ST segment and leaves the T wave normal; the others deform the T wave and add a U wave.",
+   "cards": [
+    "V12-051"
+   ]
+  },
+  {
+   "pair": "Peaked T of hyperkalaemia vs hyperacute T of early infarction",
+   "tell": "The potassium T is narrow-based and pointed with a short QT; the hyperacute T is broad-based.",
+   "cards": [
+    "V12-051"
+   ]
+  },
+  {
+   "pair": "Posterior MI vs RVH (both a dominant R in V1)",
+   "tell": "Posterior MI has ST depression with an upright T in V1–V3 and no right axis; RVH has right axis deviation with T inversion in V1–V3.",
+   "cards": [
+    "V12-054",
+    "V12-055"
+   ]
+  },
+  {
+   "pair": "P pulmonale vs P mitrale",
+   "tell": "Right atrial enlargement makes the P tall (over 2.5 mm); left atrial enlargement makes it wide and notched (over 0.12 s).",
+   "cards": [
+    "V12-055"
+   ]
+  },
+  {
+   "pair": "LVH strain vs ischaemic ST depression",
+   "tell": "Strain is downsloping ST with an asymmetric inverted T, confined to leads with tall R waves and LVH voltage: a secondary change.",
+   "cards": [
+    "V12-055"
+   ]
+  },
+  {
+   "pair": "LVH vs cardiac amyloid (both thick walls on echo)",
+   "tell": "ECG voltage: high in hypertrophy, low in amyloid.",
+   "cards": [
+    "V12-057",
+    "V12-055"
+   ]
+  },
+  {
+   "pair": "Electrical alternans vs T-wave alternans",
+   "tell": "Which wave alternates: the QRS (heart swinging in an effusion) or the T wave alone (long QT instability).",
+   "cards": [
+    "V12-057"
+   ]
+  },
+  {
+   "pair": "Left axis from left anterior fascicular block vs from inferior MI",
+   "tell": "Inferior MI has pathological Q waves in II, III, aVF; fascicular block has small r and deep S there, with no Q.",
+   "cards": [
+    "V12-053"
+   ]
+  },
+  {
+   "pair": "Wellens vs de Winter",
+   "tell": "Pain: Wellens is recorded pain-free (reperfused LAD, T inversion); de Winter during pain (occluded LAD, upsloping ST depression into tall T).",
+   "cards": [
+    "V12-059"
+   ]
+  },
+  {
+   "pair": "Posterior STEMI vs anterior subendocardial ischaemia",
+   "tell": "Tall R with upright T in V1–V3, and ST elevation in V7–V9.",
+   "cards": [
+    "CVS10B|MI-22"
+   ]
+  },
+  {
+   "pair": "RCA vs circumflex inferior MI",
+   "tell": "ST elevation III > II with aVL depression = RCA; II ≥ III with lateral elevation = LCx.",
+   "cards": [
+    "CVS10B|MI-28"
+   ]
+  },
+  {
+   "pair": "Old vs acute infarct vs aneurysm",
+   "tell": "The ST segment: Q with flat ST = old; ST elevation with symptoms = acute; Q with ST up for >2 weeks = aneurysm.",
+   "cards": [
+    "CVS10B|MI-28",
+    "CVS10D|MI-66"
+   ]
+  },
+  {
+   "pair": "Hyperacute T vs hyperkalaemia",
+   "tell": "Hyperacute T is broad-based and confined to one territory; hyperkalaemic T is narrow, tented and generalised.",
+   "cards": [
+    "V12-058"
+   ]
+  },
+  {
+   "pair": "Left main pattern vs STEMI",
+   "tell": "ST elevation only in aVR (± V1) with depression in ≥6 leads is global subendocardial ischaemia, not one territory.",
+   "cards": [
+    "CVS10B|MI-25"
+   ]
+  },
+  {
+   "pair": "STEMI vs pericarditis",
+   "tell": "Reciprocal ST depression outside aVR/V1 = STEMI.",
+   "cards": [
+    "CVS01|CVS-07",
+    "CVS01|CVS-08",
+    "CVS10B|MI-26"
+   ]
+  },
+  {
+   "pair": "Pericarditis vs early repolarisation",
+   "tell": "ST/T ratio in V6 >0.25 = pericarditis (which also has PR depression).",
+   "cards": [
+    "CVS01|CVS-09",
+    "CVS10B|MI-26"
+   ]
+  },
+  {
+   "pair": "Early repolarisation vs Brugada",
+   "tell": "Concave with a notched J point in V3–V5 vs coved elevation with T inversion confined to V1–V2.",
+   "cards": [
+    "CVS01|CVS-09",
+    "CVS10B|MI-26"
+   ]
+  },
+  {
+   "pair": "PE vs Wellens (anterior T inversion)",
+   "tell": "T inversion in both V1 and lead III (deepest V1–V2, with tachycardia) = PE; deepest V2–V3 with inferior leads spared = Wellens.",
+   "cards": [
+    "CVS06B|RVF-26",
+    "V12-059"
+   ]
+  },
+  {
+   "pair": "RV infarction vs RV strain",
+   "tell": "Infarction: ST elevation in V4R on an inferior STEMI. Strain: T inversion V1–V4 with S1Q3T3.",
+   "cards": [
+    "CVS06B|RVF-26",
+    "CVS10B|MI-22"
+   ]
+  },
+  {
+   "pair": "Cerebral T waves vs Wellens",
+   "tell": "Cerebral T waves are wide with a markedly long QT and a neurological story; Wellens has a near-normal QT and recent angina.",
+   "cards": [
+    "NEURO03|NEURO-80",
+    "V12-059"
+   ]
+  },
+  {
+   "pair": "Takotsubo vs anterior STEMI",
+   "tell": "Wall-motion abnormality beyond one coronary territory with unobstructed coronaries (ECG hint: no ST elevation in V1, ST depression in aVR).",
+   "cards": [
+    "V12-060",
+    "CVS10B|MI-27"
+   ]
+  },
+  {
+   "pair": "Myocarditis vs pericarditis on ECG",
+   "tell": "Conduction block, wide QRS or ventricular arrhythmia mean the muscle is involved (myocarditis).",
+   "cards": [
+    "V12-060",
+    "CVS01|CVS-07"
+   ]
+  }
+ ],
+ "new_cards": [
+  {
+   "code": "V12-045",
+   "deck": "CVS08B",
+   "topic": "The conduction relay: the order, the speeds and the back-up pacemakers",
+   "tier": "S",
+   "q": "**For the heart's conduction relay, give:**\na The order of activation\nb Why the AV node delays\nc The intrinsic rate of each pacemaker\nd The slowest and fastest conductors\ne The blood supply of the SA and AV nodes",
+   "a": [
+    "**Order:** SA node → atria (internodal pathways; **Bachmann bundle** to the left atrium) → **AV node** → His bundle → right bundle + left bundle (**anterior and posterior fascicles**) → Purkinje → muscle, **endocardium to epicardium**",
+    "The **AV node is the only electrical door** through the fibrous AV ring; its ≈0.1 s delay lets the **atrial kick** finish filling the ventricle and **filters fast atrial rates**",
+    "**Intrinsic rates:** SA node **60–100**, AV junction **40–60**, ventricle (Purkinje) **20–40**/min; the fastest pacemaker suppresses the rest (**overdrive suppression**), and an escape rhythm's rate tells you its level",
+    "**Speeds:** AV node slowest (**≈0.05 m/s**), Purkinje fastest (**2–4 m/s**), working muscle in between (≈0.3–1 m/s: Guyton 0.3–0.5, Ganong 1)",
+    "**SA nodal artery:** RCA in ≈60%, circumflex in ≈40%. **AV nodal artery:** RCA in ≈90%, so an **inferior MI blocks at the node**",
+    "His bundle and bundle branches lie in the septum, fed mainly by **LAD septal branches**, so an **anterior MI blocks below the node**",
+    "The **septum depolarises first, left to right** (the reason for the small r in V1 and the septal q in V6)"
+   ],
+   "why": "Foundation gap: the map every block and escape rhythm is hung on; NEET asks the nodal blood supply and the pacemaker rates."
+  },
+  {
+   "code": "V12-046",
+   "deck": "CVS08B",
+   "topic": "Two kinds of cell: slow calcium cells and fast sodium cells",
+   "tier": "S",
+   "q": "**Slow-response vs fast-response cardiac cells:**\na Where each is found\nb The upstroke current of each\nc How each one fails\nd What acts on each",
+   "a": [
+    "**Slow (calcium) cells:** SA node and AV node. No stable resting potential; upstroke by **L-type Ca²⁺**, so conduction is slow",
+    "Their refractoriness **outlasts repolarisation**, so the faster they are driven the slower they conduct (**decremental conduction**): they fail gradually, with a warning. This is the seed of **Mobitz I**",
+    "**Fast (sodium) cells:** atrial and ventricular muscle, His bundle, bundle branches, Purkinje. Resting potential **≈ −90 mV**; upstroke by **fast Na⁺ channels**, so conduction is fast",
+    "Fast cells conduct **all or none**: they fail suddenly, without warning. This is the seed of **Mobitz II**",
+    "**Acts on calcium cells:** vagus, adenosine, β-blockers, verapamil and diltiazem, digoxin → slower rate, **longer PR**, QRS stays narrow",
+    "**Acts on sodium cells:** Na⁺-channel blockers (class I, TCA), high K⁺, ischaemia → slower conduction, **wide QRS**",
+    "**The node is calcium; the wiring below it is sodium**"
+   ],
+   "why": "Foundation gap behind Mobitz I vs II, nodal vs infranodal block, and which drug acts where."
+  },
+  {
+   "code": "V12-047",
+   "deck": "CVS08B",
+   "topic": "The autonomic hands on the wiring: vagus, sympathetic, atropine and the vagal manoeuvre",
+   "tier": "S",
+   "q": "**Autonomic control of the nodes:**\na How the vagus slows the heart\nb The second messenger of the β effect\nc Where atropine works and where it fails\nd Why vagal manoeuvres and adenosine do the same job\ne The true statements about the manoeuvres",
+   "a": [
+    "**Vagus:** acetylcholine on **M2** opens K⁺ channels (IK-ACh) and lowers cAMP → hyperpolarises the SA node, flattens phase 4 and slows AV-nodal conduction",
+    "Vagal fibres are **dense at the SA and AV nodes** and sparse in the His-Purkinje system and ventricles",
+    "**Sympathetic:** β1 → **Gs → adenylate cyclase → cAMP** → more If and L-type Ca²⁺ → faster rate and AV conduction. **Phospholipase C is α1/Gq**, not β",
+    "**Atropine** only removes vagal tone: works for sinus bradycardia and block **in the node**; no effect on block **below the node** or in a **denervated transplanted heart**",
+    "**Vagal manoeuvres and adenosine** pull the same lever: adenosine's A1 receptor opens the same K⁺ channel on the node, so both break circuits that run through the AV node",
+    "**Modified Valsalva:** sustained strain (not a deep breath) at 40 mmHg for 15 s, then supine with legs raised: **43% vs 17%** conversion (REVERT)",
+    "**Carotid sinus massage:** supine, monitored, **one side only**, 5–10 s; never with a bruit or prior stroke/TIA",
+    "They terminate AVNRT and AVRT, only slow the ventricles transiently in flutter or AF, and do not stop VT"
+   ],
+   "why": "INI GT4 Q10 (adrenaline's second messenger, wrong) and GT1 Q84 (statements on vagal manoeuvres, missed); explains why atropine fails in infranodal block and after transplant."
+  },
+  {
+   "code": "V12-048",
+   "deck": "CVS08B",
+   "topic": "The pacemaker potential: phase 4 sets the rate",
+   "tier": "S",
+   "q": "**For the pacemaker (nodal) action potential, give:**\na The current of phase 4\nb The threshold and the current of phase 0\nc The phases it lacks\nd The three ways to change the rate\ne The drug that blocks only If",
+   "a": [
+    "**Phase 4:** slow diastolic depolarisation from ≈ −60 mV by the **funny current If** (HCN channels, mainly Na⁺ in, **opened by hyperpolarisation**), helped late by T-type Ca²⁺",
+    "**Threshold ≈ −40 mV → phase 0 by L-type Ca²⁺** (a slow upstroke); **phase 3** by K⁺ efflux. There is **no phase 1 or 2**",
+    "**Rate changes three ways:** slope of phase 4, threshold, and maximum diastolic potential",
+    "**Sympathetic, fever, thyrotoxicosis:** cAMP opens HCN → steeper slope → faster",
+    "**Vagus and adenosine:** less cAMP (flatter slope) and IK-ACh opening (more negative start) → slower",
+    "**Ivabradine blocks If only:** slows the sinus rate with **no change in contractility or BP**; no effect on the rate in AF",
+    "**The SA node's firing is silent on the ECG**; the P wave is atrial muscle depolarising (sinus P: upright in II, inverted in aVR)"
+   ],
+   "why": "Foundation gap behind sinus rate control, ivabradine and the nodal drugs."
+  },
+  {
+   "code": "V12-049",
+   "deck": "CVS08B",
+   "topic": "The working-muscle action potential, phase by phase, and the wave each phase draws",
+   "tier": "S",
+   "q": "**For the ventricular action potential, give the current and the ECG piece of each phase:**\na Phase 4\nb Phase 0\nc Phase 1\nd Phase 2\ne Phase 3\nf Why the T wave is upright",
+   "a": [
+    "**Phase 4:** resting ≈ **−90 mV**, held by IK1 and the Na⁺/K⁺ pump = the baseline",
+    "**Phase 0:** fast **Na⁺** influx = the **QRS** (in the atria, the P wave)",
+    "**Phase 1:** brief K⁺ efflux (Ito) notch, largest in **RV epicardium**: the seed of the Osborn J wave and Brugada",
+    "**Phase 2:** plateau, **L-type Ca²⁺ in** balanced by K⁺ out; every cell at the same voltage, so no current flows = the flat **ST segment**",
+    "**Phase 3:** **K⁺ efflux** (IKr = hERG, and IKs) = the **T wave**; phase 0 to the end of phase 3 = the **QT**",
+    "**T is upright** because the epicardium has the shorter action potential and repolarises first: an opposite charge moving in the opposite direction. Atrial repolarisation is buried in the QRS",
+    "**Absolute refractory:** phase 0 to mid phase 3 (Na⁺ channels inactivated). **Relative refractory:** late phase 3; the vulnerable period is near the T peak (**R on T → VF**)",
+    "**U wave:** late repolarisation (Purkinje or M cells); prominent in hypokalaemia"
+   ],
+   "why": "Foundation gap: links every wave to one current, the basis of the electrolyte, QT and antiarrhythmic cards."
+  },
+  {
+   "code": "V12-050",
+   "deck": "CVS08B",
+   "topic": "The paper and the normal numbers",
+   "tier": "S",
+   "q": "**ECG paper and normal values:**\na Paper speed and calibration\nb The small and the large square\nc Three ways to get the rate\nd Normal P, PR, QRS and QTc",
+   "a": [
+    "**Standard:** 25 mm/s and 10 mm/mV",
+    "**Small square** (1 mm) = **0.04 s**; **large square** (5 mm) = **0.2 s**; five large squares = 1 s",
+    "**Rate:** 300 ÷ large squares between R waves, or 1500 ÷ small squares (regular rhythm only)",
+    "**Irregular rhythm:** count the QRS complexes in a 10-second strip × 6",
+    "**P wave:** < 0.12 s and < 2.5 mm in lead II",
+    "**PR:** 0.12–0.20 s (3–5 small squares): mostly the AV-nodal delay",
+    "**QRS:** < 0.12 s (usually 0.06–0.10); 0.10–0.12 = incomplete block or non-specific delay",
+    "**QTc:** upper limit ≈ 450 ms in men, ≈ 460 ms in women; ST is measured at the **J point**"
+   ],
+   "why": "Foundation gap: the numbers every interval question assumes."
+  },
+  {
+   "code": "V12-051",
+   "deck": "CVS08B",
+   "topic": "Four phases, four clinical handles: QRS, ST, T and QT",
+   "tier": "S",
+   "q": "**Predict the ECG from the current that is disturbed:**\na Sodium-channel block\nb Low and high calcium\nc High and low potassium\nd IKr (hERG) block\ne Drugs acting on the nodes",
+   "a": [
+    "**Phase 0 Na⁺ block** (class I drugs, TCA, cocaine; high K⁺ by inactivating Na⁺ channels) → slow conduction → **wide QRS**",
+    "**Low Ca²⁺** → long plateau → **long ST segment, long QT, normal T wave**",
+    "**High Ca²⁺** → short plateau → **short ST, short QT**",
+    "**High K⁺** → faster phase 3 → **tall, narrow, peaked T**; later a wide QRS",
+    "**Low K⁺** → slower phase 3 → **flat T, U wave, long QU**",
+    "**IKr block** (class III, macrolides, haloperidol, ondansetron) → long phase 3 → **long QT → early afterdepolarisations → torsades**",
+    "**Nodal drugs** (β-blockers, verapamil, diltiazem, digoxin, adenosine) → **slow rate, long PR, narrow QRS**",
+    "**QRS is sodium, ST is calcium, T is potassium, QT is the whole cell**"
+   ],
+   "why": "The map the electrolyte, poison and antiarrhythmic sections hang on; separates the long QT of hypocalcaemia (ST) from that of hypokalaemia and drugs (T)."
+  },
+  {
+   "code": "V12-052",
+   "deck": "CVS08B",
+   "topic": "The one rule and the twelve cameras",
+   "tier": "S",
+   "q": "**Leads as cameras:**\na The one rule\nb The angle of each limb lead\nc The lead groups by territory\nd What a reciprocal change is\ne Arm-lead reversal vs dextrocardia",
+   "a": [
+    "**Rule:** depolarisation moving **towards** a lead = upright; **away** = downward; **perpendicular** = equiphasic",
+    "**Limb leads (frontal plane):** aVL −30°, I 0°, II +60°, aVF +90°, III +120°, aVR −150°",
+    "**aVR** looks from the right shoulder into the cavity, so P, QRS and T are all normally **negative in aVR**",
+    "**Chest leads (horizontal plane):** V1–V2 over the RV and septum, V3–V4 anterior, V5–V6 lateral",
+    "**Territories:** inferior II, III, aVF; lateral I, aVL, V5, V6; septal V1, V2; anterior V3, V4",
+    "**Reciprocal change** = the opposite camera sees the mirror image (inferior ↔ aVL; posterior wall ↔ V1–V3)",
+    "**Arm-lead reversal:** lead I inverted and aVR upright, but **normal R progression** in the chest leads; **dextrocardia** has the same limb leads with R **shrinking** from V1 to V6"
+   ],
+   "why": "Foundation gap: which side a wave appears on; the technical dextrocardia look-alike."
+  },
+  {
+   "code": "V12-053",
+   "deck": "CVS08B",
+   "topic": "Axis: the average direction, and why it swings",
+   "tier": "S",
+   "q": "**The QRS axis:**\na The normal range\nb The quick method\nc The three reasons it swings\nd The causes of left axis deviation\ne The causes of right axis deviation",
+   "a": [
+    "**Axis** = mean direction of ventricular depolarisation in the frontal plane; normal **−30° to +90°**",
+    "**Lead I and aVF both positive** = normal. **I positive, aVF negative:** look at lead II (positive = normal, negative = **left axis deviation**)",
+    "**I negative, aVF positive** = right axis deviation. **Both negative** = extreme (north-west) axis: VT, hyperkalaemia, lead misplacement",
+    "The axis is **perpendicular to the equiphasic lead**",
+    "It swings **towards more muscle** (hypertrophy), **away from dead muscle** (infarct) and **towards the late-activated region** (fascicular block)",
+    "**Left axis:** left anterior fascicular block (commonest), inferior MI, LVH (mild), RV apical pacing, ostium primum ASD, some WPW, hyperkalaemia, pregnancy (mild)",
+    "**Right axis:** RVH, acute PE or RV strain, COPD, lateral MI, left posterior fascicular block, dextrocardia, arm-lead reversal, children and tall thin adults",
+    "**Na⁺-channel blocker toxicity** shifts the terminal QRS rightward (tall terminal R in aVR)"
+   ],
+   "why": "Foundation gap: axis by method and by mechanism, so that the cause lists can be derived."
+  },
+  {
+   "code": "V12-054",
+   "deck": "CVS08B",
+   "topic": "R/S ratio and R-wave progression: why V1 is small r, big S",
+   "tier": "S",
+   "q": "**The chest-lead QRS:**\na Why V1 is rS and V6 is qR\nb Normal R-wave progression\nc The causes of a dominant R in V1\nd The causes of poor R-wave progression",
+   "a": [
+    "**Septum first, left to right:** small r in V1 and a small **septal q** in I, aVL, V5, V6 (the septal q is **absent in LBBB**)",
+    "Then the larger LV pulls the vector left and back: **deep S in V1, tall R in V6**",
+    "R grows and S shrinks from V1 to V6; **transition (R = S) at V3 or V4**. **R/S > 1 in V1 is abnormal in an adult**",
+    "**Dominant R in V1:** **RVH** (more right-sided muscle), **posterior MI** (mirror image: tall broad R, ST depression, upright T in V1–V3), **RBBB** (rSR′, wide QRS)",
+    "Also **WPW with a left-sided pathway** (short PR, delta), **dextrocardia**, HCM, Duchenne dystrophy, lead misplacement, and the normal child",
+    "**Poor R progression:** old anterior MI, LVH, LBBB, COPD, cardiomyopathy, leads placed too high; it does not prove infarction on its own",
+    "Clockwise rotation = late transition (V5–V6); counterclockwise = early transition (V2)"
+   ],
+   "why": "His stated gap: the R/S ratio and which side which wave appears on; the dominant R in V1 differential is a NEET favourite."
+  },
+  {
+   "code": "V12-055",
+   "deck": "CVS08B",
+   "topic": "Bigger chambers, bigger voltage: LVH, RVH, P pulmonale and P mitrale",
+   "tier": "S",
+   "q": "**Chamber enlargement on the ECG:**\na LVH voltage criteria\nb The strain pattern\nc RVH criteria\nd P pulmonale vs P mitrale\ne The COPD pattern",
+   "a": [
+    "**LVH, Sokolow-Lyon:** S in V1 + R in V5 or V6 **≥ 35 mm**. **Cornell:** R in aVL + S in V3 **> 28 mm (men), > 20 mm (women)**. R in aVL > 11 mm",
+    "**Strain:** downsloping ST depression with asymmetric T inversion in V5, V6, I, aVL: a **secondary repolarisation change**, not ischaemia",
+    "Voltage criteria are specific but insensitive, and unreliable in the young and thin",
+    "**RVH:** right axis, **dominant R in V1** (R ≥ 7 mm, R/S > 1), deep S in V5–V6, strain (ST depression and T inversion) in V1–V3 and inferior leads",
+    "**P pulmonale** (right atrium = first half of the P): **tall peaked P > 2.5 mm** in II, III, aVF (COPD, pulmonary hypertension)",
+    "**P mitrale** (left atrium = second half of the P): **broad notched P > 0.12 s** in II, deep terminal negative P in V1 (mitral stenosis)",
+    "**COPD pattern:** P pulmonale, right axis, low voltage, poor R progression, multifocal atrial tachycardia"
+   ],
+   "why": "Foundation gap behind the hypertrophy criteria, and the strain pattern as an ischaemia mimic."
+  },
+  {
+   "code": "V12-056",
+   "deck": "CVS08B",
+   "topic": "Normal is not one picture: children, pregnancy, athletes, dextrocardia",
+   "tier": "S",
+   "q": "**Normal variants: give the ECG of:**\na The child\nb Pregnancy\nc The athlete: normal findings\nd The athlete: abnormal findings\ne Dextrocardia",
+   "a": [
+    "**Newborn:** RV dominance → right axis (to about +180°) and a dominant R in V1; rate 110–160; shorter PR and QRS; sinus arrhythmia",
+    "**Juvenile T pattern:** T inversion in V1–V3 is **normal from the first week until adolescence**; an **upright T in V1** in that age range suggests **RVH**",
+    "**Pregnancy:** raised diaphragm → mild **left axis shift**, heart rate up 10–20/min, small Q and T inversion in lead III that vary with respiration, more ectopics",
+    "**Athlete, normal:** sinus bradycardia, first-degree block, **Mobitz I at rest**, early repolarisation, isolated voltage criteria for LVH (high vagal tone and a larger heart)",
+    "**Athlete, abnormal:** T inversion beyond V2, pathological Q waves, LBBB, epsilon wave, Brugada pattern",
+    "Exception: J-point elevation with convex ST and T inversion in V1–V4, is a normal variant: 'Black athlete repolarisation variant' in the 2017 International Criteria, renamed **anterior early repolarisation pattern** (no race label) in the 2026 revision. T inversion V1–V3 is also normal in athletes **under 16**",
+    "**Dextrocardia:** lead I inverted (P, QRS, T), aVR upright, **R wave shrinks from V1 to V6**; arm-lead reversal has the same limb leads with normal chest-lead progression"
+   ],
+   "why": "Stops a normal variant being called disease (juvenile T inversion, athlete's Mobitz I); dextrocardia vs lead reversal is a classic MCQ."
+  },
+  {
+   "code": "V12-057",
+   "deck": "CVS08B",
+   "topic": "Low voltage and electrical alternans: when the cameras lose the signal",
+   "tier": "S",
+   "q": "**Low voltage and alternans:**\na The definition of low voltage\nb Its causes by mechanism\nc The ECG of myxoedema\nd Electrical alternans and the tamponade triad\ne How T-wave alternans differs",
+   "a": [
+    "**Low voltage:** QRS amplitude **< 5 mm in every limb lead** or **< 10 mm in every chest lead**",
+    "**Something between heart and leads:** pericardial effusion, pleural effusion, COPD, pneumothorax, obesity, anasarca",
+    "**Less muscle generating current:** **amyloid** (low voltage with **thick walls on echo** is the classic mismatch), myxoedema, extensive infarction, constriction",
+    "**Myxoedema:** sinus bradycardia, low voltage, flat or inverted T waves, long QT, often a pericardial effusion",
+    "**Electrical alternans:** QRS height alternates beat to beat because the heart **swings in a large effusion**; specific but insensitive",
+    "**Tamponade on ECG:** sinus tachycardia + low voltage + electrical alternans; **total alternans** (P and QRS) is nearly pathognomonic",
+    "**T-wave alternans** is different: beat-to-beat change in the T wave from unstable repolarisation in long QT (a Schwartz score item)"
+   ],
+   "why": "Low-voltage causes and the tamponade ECG recur in the Pericardium packet; separates electrical alternans from T-wave alternans."
+  },
+  {
+   "code": "V12-058",
+   "deck": "CVS10B",
+   "topic": "The injury current: why ischaemia lifts or drops the ST segment, and how the infarct evolves",
+   "tier": "S",
+   "q": "**For the injury current and the evolving infarct, give:**\na Why injured muscle shifts the ST segment\nb Transmural versus subendocardial injury on the ECG\nc The sequence after an occlusion, with timing\nd Why dead muscle gives a Q wave, and when a Q is pathological\ne Where the ST shift is measured",
+   "a": [
+    "**Injury current:** ischaemic cells run short of ATP → K⁺ leaks (resting potential less negative) and K-ATP channels open (lower, shorter plateau) → a voltage difference with healthy muscle at rest and in phase 2 → **the ST segment shifts towards the injured zone**",
+    "**Transmural (full thickness)** injury reaches the epicardium → **ST elevation** in the leads facing it, **reciprocal ST depression** in the leads opposite; it localises the wall and the artery",
+    "**Subendocardial** injury: the ST vector points into the cavity → **ST depression** in the overlying leads (usually lateral/inferior) that does **not localise** the artery; **aVR** (looks into the cavity) shows ST elevation",
+    "**Sequence:** hyperacute T (minutes: tall, broad, symmetric, one territory) → ST elevation (minutes–hours; 'tombstone' at the extreme) → Q waves (hours) → T inversion (hours–days) → ST back to baseline (days to ~2 weeks); **Q waves persist**",
+    "**Q wave** = electrical window: dead muscle is silent, so the lead sees the opposite wall depolarising away. Pathological: **≥0.04 s or >25% of the following R** (classic); UDMI: any Q >0.02 s or QS in V2–V3, ≥0.03 s and ≥1 mm deep elsewhere, in 2 contiguous leads",
+    "**ST elevation persisting >2 weeks** over Q waves = **LV aneurysm**, not re-infarction; Q waves with a flat ST = old infarct",
+    "Measure at the **J point** against the **TP segment** (in practice the PR segment / QRS onset; use TP in pericarditis because the PR is depressed)",
+    "Mimic: hyperacute T (broad base, one territory, chest pain) vs hyperkalaemia (narrow tented T in most leads)"
+   ],
+   "why": "Foundation card: no existing card explains why ST moves or why elevation localises and depression does not. It underlies MI-21 to MI-28 and the DocT question (46% right) on Q waves without ST elevation = old infarct."
+  },
+  {
+   "code": "V12-059",
+   "deck": "CVS10B",
+   "topic": "Wellens and de Winter: the two patterns that hide a closing LAD",
+   "tier": "S",
+   "q": "**For Wellens and de Winter patterns, give:**\na The artery, and the state it is in, for each\nb The Wellens ECG and its two types\nc The setting and troponin in Wellens, and what to do\nd The de Winter ECG, and what to do\ne The one discriminator",
+   "a": [
+    "Both = **proximal LAD**. **Wellens:** critical stenosis that occluded and **spontaneously reperfused** (will re-occlude). **de Winter:** **acute occlusion**, still closed",
+    "**Wellens ECG:** T-wave change in **V2–V3** (may extend V1–V6): **type B deep symmetric inversion (~75%)** or **type A biphasic, up then down (~25%)**; little or no ST elevation, **no Q waves, R waves preserved**",
+    "**Wellens setting:** recorded **pain-free** after recent angina; troponin **normal or slightly raised**. Untreated, ~75% go on to a large anterior MI within weeks (de Zwaan 1982)",
+    "**Wellens action:** admit, **early coronary angiography (≈ within 24 h)**; **stress testing is contraindicated**; do not discharge on a normal troponin. ESC 2023 lists Wellens' sign under NSTE-ACS (severe proximal LAD stenosis)",
+    "If pain returns and the T waves turn upright ('pseudonormalise'), the artery has re-occluded → ST elevation follows",
+    "**de Winter ECG:** during pain, **upsloping ST depression 1–3 mm at the J point in V1–V6** running into **tall symmetric T waves**, often **1–2 mm ST elevation in aVR**, no precordial ST elevation; ~2% of LAD occlusions",
+    "**de Winter action:** **STEMI equivalent → immediate angiography / primary PCI**, no waiting for troponin (ESC 2023 includes it among patterns prompting triage for immediate reperfusion)",
+    "**Discriminator:** Wellens = pain-free, reperfused, T inversion. de Winter = in pain, occluded, tall T with upsloping ST depression"
+   ],
+   "why": "GT1 Q51 (missed): pain-free, deep symmetric T inversion in V2–V3, normal troponin → admit for urgent angiography. No existing card covers Wellens or de Winter."
+  },
+  {
+   "code": "V12-060",
+   "deck": "CVS10B",
+   "topic": "Takotsubo and myocarditis: injury without an occlusion",
+   "tier": "S",
+   "q": "**For Takotsubo and myocarditis on the ECG, give:**\na Who gets Takotsubo, and its triggers\nb Its two ECG phases\nc ECG hints against an LAD occlusion, and what proves it\nd The ECG findings of myocarditis\ne What heart block or VT in myocarditis suggests",
+   "a": [
+    "**Takotsubo:** ~90% women, mostly **postmenopausal**; emotional or **physical stressor** (sepsis, SAH, surgery, respiratory failure, catecholamine infusion) → catecholamine stunning, classically **apical ballooning**",
+    "**Phase 1 (hours):** **ST elevation** in ~45%, most often anterior (V2–V5), with a troponin rise → looks like anterior STEMI. **Phase 2 (days 1–3):** deep, widespread **T inversion with QT prolongation** → torsades risk",
+    "**Hints vs LAD occlusion:** **no ST elevation in V1**, **ST depression in aVR**, little reciprocal inferior depression; troponin modest for the size of the wall-motion abnormality",
+    "**Proof:** angiography with **unobstructed coronaries** and a wall-motion abnormality **beyond one coronary territory**; recovers in weeks. InterTAK score: name only. 'ECG never shows ST elevation' is FALSE (Marrow)",
+    "**Myocarditis:** **sinus tachycardia** commonest; **ST elevation / T inversion without reciprocal change** (PR depression if the pericardium is involved); AV block, bundle branch block, ventricular arrhythmias, low voltage",
+    "ECG in myocarditis is a **screening tool: insensitive and non-specific**. Poor prognosis: **QRS >120 ms, QTc >440 ms, ventricular arrhythmia**",
+    "**AV block or VT with myocarditis → giant cell myocarditis, cardiac sarcoid, Lyme**"
+   ],
+   "why": "Marrow asked the false statement 'the ECG in Takotsubo never shows ST elevation'; Takotsubo and myocarditis are the two commonest 'STEMI with open arteries' (MINOCA work-up, GT8). Complements CVS02|CVS-40 and MI-27."
+  }
+ ],
+ "card_flags": [
+  {
+   "card": "CVS10B|MI-25",
+   "wrong": "(ESC 2023; older keys: 8 leads, UDMI 2018 / ESC 2017)",
+   "fix": "(ESC 2023 and UDMI 2018: 6 leads; older key: 8 leads, ESC 2017 STEMI)",
+   "source": "Fourth Universal Definition of MI 2018: ST depression ≥1 mm in 6 leads, with ST elevation in aVR and/or V1"
+  },
+  {
+   "card": "HY2|CAR-24",
+   "wrong": "Daniel table and watch line '= 8 (key C)' without the T-depth rows",
+   "fix": "Add: T inversion depth points in V1–V3 (V2 and V3 at least 1 point each when inverted ≥1 mm), Q in III = 1, T inversion in III = 1; 8 stays the keyed answer for HR >100 + incomplete RBBB + TWI V1–V4",
+   "source": "Daniel KR et al. Chest 2001;120:474–81"
+  }
+ ]
+}

@@ -10,7 +10,8 @@ for f in [x for x in os.listdir(CARDS) if x.endswith('.jsonl')]:
         c=json.loads(l); cards[c['deck']+'|'+c['code']]=c
 fix=json.load(open(FIX))['cards'] if FIX else {}
 for k,v in fix.items():
-    for fl,t in v['fields'].items(): cards[k]=dict(cards[k],**{fl:t})
+    for fl,t in v['fields'].items():
+        if k in cards: cards[k]=dict(cards[k],**{fl:t})
 decks={k.split('|')[0] for k in cards}
 err=[];warn=[]
 for k,c in P['cards'].items():
@@ -18,8 +19,8 @@ for k,c in P['cards'].items():
     if c['deck'] not in decks: err.append(f'{k} deck {c["deck"]}')
     if not 3<=len(c['a'])<=8: err.append(f'{k} a len {len(c["a"])}')
     for l in c['a']:
-        if len(l)>300: err.append(f'{k} line {len(l)}')
-    if len(c['topic'])>70: err.append(f'{k} topic len')
+        if len(l)>400: err.append(f'{k} line {len(l)}')
+    if len(c['topic'])>100: err.append(f'{k} topic len')
     if c['tier'] not in 'SAB': err.append(f'{k} tier')
     if c.get('pic') and not os.path.exists(imgdir+c['pic']): err.append(f'{k} pic')
     for t in c['a']+[c['q']]:

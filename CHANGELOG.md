@@ -4,7 +4,7 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-193)
+## State (as of entry T-194)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-194 — 2026-11-24 — Claude — test — 1.3.167
+- **ECG foundation packets in P12** (written by a separate writer chat from Naven's prompt; review `tools/viva/p12/EC_review.md`): **EC1** ECG I: the wiring, the waves and the cameras (P12-1101–1105, 27 steps, ~126 min) and **EC2** ECG II: blocks, short circuits, drugs and what changes the waves (P12-1201–1207, 43 steps, ~159 min), placed after Shock II and before ACS I. 32 new cards V12-045–076, 58 drill items, 46 pictures (`data/viva/img/P12/P12_EC_*.svg`). P12 is now 12 packets, 60 sections (P12.20261124.1).
+- Links: Shock II's close now leads into the ECG; ACS I opens from it; Rhythm and Cardiac drugs open with one line back to it.
+- cardfix +6 from the ECG writer's checks: CVS10B|MI-25 (6 leads, UDMI 2018), ELEC03B|MGP-07 (Mg ladder in mEq/L), TOX01|TOX-07 (sex-specific QTc), HY2|CAR-07 (Fab: K >5, cardiac arrest), HY2|CAR-02 (single 12 mg adenosine). HY2|CAR-24 (Daniel T-depth rows) left for a later edit.
+- check_viva: cardfix top-up keys skipped; topic ≤100 and line ≤400 characters.
+- Voice: the new sections (and the four changed openings/closes) are not voiced yet.
 
 ## T-193 — 2026-11-24 — Claude — live — 1.4.55
 - Promoted test 1.3.166 to live (Naven, 24 Nov 4:34 AM: "put it to test and check… if it works, put it to live also"). Same copy rules as T-082.
