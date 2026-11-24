@@ -1,0 +1,8 @@
+{
+ "HEMO04|FR-12": {
+  "field": "a",
+  "old": "a Start **semi-recumbent (trunk at 45°)**, not supine — this also\nrecruits blood from the splanchnic circulation, not just the legs.\nUse the bed to tilt; do not touch the patient (pain or arousal\nconfounds).\nb About 300 mL of the patient's own blood (your notes give a range\nstarting at 250 mL); effect within about 60–90 s; fully reversed on\nreturning to baseline.\nc **Cardiac output or stroke volume in real time** (pulse contour,\necho VTI, oesophageal Doppler) — not blood pressure. A rise of\n**10% or more** is positive; with end-tidal CO2, a rise of 5% or\nmore. Re-measure after returning to baseline.\nd Spontaneous breathing, arrhythmias, low tidal volume.",
+  "new": "a Start **semi-recumbent (trunk at 45°)**, not supine — this also\nrecruits blood from the splanchnic circulation, not just the legs.\nUse the bed to tilt; do not touch the patient (pain or arousal\nconfounds).\nb About 300 mL of the patient's own blood (your notes give a range\nstarting at 250 mL); effect begins within seconds and is **maximal at about 30–90 s**, then drifts back; fully reversed on\nreturning to baseline.\nc **Cardiac output or stroke volume in real time** (pulse contour,\necho VTI, oesophageal Doppler) — not blood pressure. A rise of\n**10% or more** is positive; with end-tidal CO2, a rise of 5% or\nmore. Re-measure after returning to baseline.\nd Spontaneous breathing, arrhythmias, low tidal volume.",
+  "why": "Maximal PLR effect is at 30-90 s, not 60-90 s - the exact number GT8 Q88 tests. Source: LITFL Passive Leg Raise (https://litfl.com/passive-leg-raise) and Oh's ICM 9e p744."
+ }
+}

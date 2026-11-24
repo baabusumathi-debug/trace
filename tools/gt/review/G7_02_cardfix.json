@@ -1,0 +1,8 @@
+{
+ "CCM08|CNS-27": {
+  "field": "a",
+  "old": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); WHO: **HR for 10 months**. Z only in the 2-month intensive phase\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
+  "new": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); ICMR adult-TBM STW: **HRZ**, ethambutol dropped; WHO: **HR for 10 months**\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
+  "why": "Earlier override duplicated the dexamethasone phrase and wrongly said Z is used only in the intensive phase; ICMR adult-TBM STW continuation is RHZ (E omitted), NTEP STW is RHE >=10 months. Sources: icmr.gov.in STW adult TBM 2022 and NTEP STW 2022."
+ }
+}

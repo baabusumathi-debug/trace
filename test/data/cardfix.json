@@ -1,6 +1,6 @@
 {
  "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged). 22 Nov 2026: endocrine/HY5 table layouts repaired (layout only). 23 Nov 2026: 171 card corrections from the cardiology, endocrine and NEET-packet flags, decided by Claude on Naven's instruction and independently fact-checked (tools/flagfix/VERIFY.md); updated guideline answers carry an \"Older keys\" line.",
- "version": "b6a5ec8152",
+ "version": "d65a20d393",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -1301,10 +1301,10 @@
   },
   "CCM02|CLABSI-22": {
    "fields": {
-    "a": "**Organism** | **Regimen**\nCONS | May **retain** CVC + systemic Abx 7d + antibiotic lock 10-14d\nS. aureus | Remove CVC, systemic Abx 14d if TOE-neg. Salvage possible: systemic + lock 14d if TOE-neg\nGram-negative bacilli | Remove CVC, treat 10-14d. Salvage: systemic + antimicrobial lock 14d\nCandida | Remove CVC + antifungal 14d after first negative culture"
+    "a": "**Organism** | **Regimen**\nCONS | May **retain** CVC + systemic Abx 10-14d + antibiotic lock 10-14d\nS. aureus | Remove CVC, systemic Abx 14d if TOE-neg. Salvage possible: systemic + lock 14d if TOE-neg\nGram-negative bacilli | Remove CVC, treat 10-14d. Salvage: systemic + antimicrobial lock 14d\nCandida | Remove CVC + antifungal 14d after first negative culture"
    },
-   "src": "Mermel LA et al., IDSA CRBSI guideline, Clin Infect Dis 2009;49:1; Pappas PG et al., IDSA candidiasis guideline, Clin Infect Dis 2016;62:e1; Cornely OA et al., Lancet Infect Dis 2025;25:e280",
-   "date": "13 Nov 2026"
+   "src": "GT 7/8 card check, 24 Nov: IDSA 2009 CRBSI (Mermel, CID 2009;49:1, rec 75 and Fig 3): CoNS with catheter retained = systemic antibiotics 10–14 days with antibiotic lock therapy, not 7 day",
+   "date": "2026-11-24"
   },
   "D05B|IC-36": {
    "fields": {

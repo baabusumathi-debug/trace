@@ -4,7 +4,7 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-191)
+## State (as of entry T-192)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
@@ -21,6 +21,12 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-192 — 2026-11-24 — Claude — test — 1.3.166
+- GT cards complete: all 208 (GT 7: 111, GT 8: 97), every batch independently fact-checked (logs in `tools/gt/review/`). Keys taught as current where the bank lags: GT7-142 (VA, not VP, ECMO for massive PE), GT8-21 (MI types replaced by the 2026 Fifth Universal Definition), GT8-98 (esmolol for theophylline dysrhythmia); each card names the bank's answer too.
+- In HT's profile the GT cards' "you / your pick" lines are turned round so "you" is HT and Naven is named.
+- cardfix +1: CCM02|CLABSI-22 (CoNS with the catheter kept: systemic antibiotics 10–14 days).
+- Writer brief, check brief and assembly script kept in `tools/gt/`.
 
 ## T-191 — 2026-11-24 — Claude — test — 1.3.165
 - **GTs** (new home button beside Viva, `#/gt`), built to Naven's design (voice + mockup, 23–24 Nov):

@@ -236,6 +236,16 @@ function allScreen(app, ctx) {
 }
 
 /* ---------------- walk ---------------- */
+// GT cards are written to Naven ("you", "your pick") and name HT; in HT's profile the two are swapped
+function persp(t) {
+  if (!IS_HT || !t) return t;
+  const A = '\u0001', B = '\u0002', C = '\u0003', D = '\u0004';
+  return String(t)
+    .replace(/\bHT's\b/g, A).replace(/\bHT\b/g, B)
+    .replace(/\byours\b/gi, "Naven's").replace(/\bYour\b/g, "Naven's").replace(/\byour\b/g, "Naven's").replace(/\bYou\b/g, C).replace(/\byou\b/g, D)
+    .split(A).join('your').split(B).join('you').split(C).join('Naven').split(D).join('Naven')
+    .replace(/(^|[.!?]\s+)your/g, (m, a) => a + 'Your').replace(/(^|[.!?]\s+)you/g, (m, a) => a + 'You');
+}
 function mdBlock(md) {
   const out = []; let list = null;
   const flush = () => { if (list) { out.push('<ul>' + list.map(l => `<li>${inline(l)}</li>`).join('') + '</ul>'); list = null; } };
@@ -292,13 +302,13 @@ function walkScreen(app, ctx, P, n) {
     const keyText = q.options[letters.indexOf(q.key)] || '';
     const row = (k, v) => v ? `<b class="mono">${k}</b><div>${render(v)}</div>` : '';
     const back = !shown ? `<p class="gt-muted">Tap an option. The answer and the explanation open by themselves; nothing you tap here is recorded.</p>`
-      : c ? `<div class="gt-back">${row('ANSWER', c.answer || (q.key + '. ' + keyText))}${row('WHY', c.why)}${row('WATCH', c.watch)}${row('HOOK', c.hook)}${row('TEMPTED', c.picks_note)}</div>
+      : c ? `<div class="gt-back">${row('ANSWER', c.answer || (q.key + '. ' + keyText))}${row('WHY', c.why)}${row('WATCH', persp(c.watch))}${row('HOOK', c.hook)}${row('TEMPTED', persp(c.picks_note))}</div>
           ${c.key && c.key.status && c.key.status !== 'agree' ? `<div class="box watch"><span class="mono">KEY ${esc(c.key.status.toUpperCase())}</span><div class="bx">${render(c.key.note || '')}</div></div>` : c.key && c.key.note ? `<p class="gt-muted small">${inline(c.key.note)}</p>` : ''}`
       : `<div class="gt-back">${row('ANSWER', q.key + '. ' + keyText)}</div><p class="gt-muted small">${needs(P, ME, n) || needs(P, OTHER, n) ? 'The GT card for this question is still being written; DocT’s explanation is in the pane.' : 'You got this right and were sure, so it shows DocT’s own explanation.'}</p>`;
     const tabs = [['exp', 'Explanation']].concat((c && c.links || []).map((l, i) => ['L' + i, l.split('|')[1] || l]), reps.map((r, i) => ['B' + i, r.paper.replace('GT', 'GT ') + ' · Q' + r.n]), [['doct', 'DocT’s text']]);
     if (!tabs.find(t => t[0] === st.tab)) st.tab = 'exp';
     let pane;
-    if (st.tab === 'exp') pane = !shown ? '<p class="gt-muted">The explanation opens once you answer.</p>' : c ? `${mdBlock(c.explain)}${c.options ? `<div class="mono gt-xk">THE OPTIONS</div><div class="gt-optx">${Object.entries(c.options).map(([L, t]) => `<b>${esc(L)}${L === q.key ? ' ✓' : ''}</b><div>${inline(t)}</div>`).join('')}</div>` : ''}${c.links && c.links.length ? `<p class="gt-muted small">Linked cards are in the tabs above.</p>` : `<p class="gt-muted small">No regular card teaches this yet, so this GT card carries it.</p>`}` : `<div class="gt-doct">${esc(q.doct)}</div>`;
+    if (st.tab === 'exp') pane = !shown ? '<p class="gt-muted">The explanation opens once you answer.</p>' : c ? `${mdBlock(c.explain)}${c.options ? `<div class="mono gt-xk">THE OPTIONS</div><div class="gt-optx">${Object.entries(c.options).map(([L, t]) => `<b>${esc(L)}${L === q.key ? ' ✓' : ''}</b><div>${inline(persp(t))}</div>`).join('')}</div>` : ''}${c.links && c.links.length ? `<p class="gt-muted small">Linked cards are in the tabs above.</p>` : `<p class="gt-muted small">No regular card teaches this yet, so this GT card carries it.</p>`}` : `<div class="gt-doct">${esc(q.doct)}</div>`;
     else if (st.tab === 'doct') pane = `<div class="mono gt-xk">DOCT’S EXPLANATION · AS CAPTURED</div><div class="gt-doct">${esc(q.doct)}</div>${q.refs ? `<p class="gt-muted small">${esc(q.refs)}</p>` : ''}`;
     else if (st.tab[0] === 'L') pane = linkedCardHtml(c.links[+st.tab.slice(1)]);
     else { const r = reps[+st.tab.slice(1)], Q = paper(r.paper), qq = qOf(Q, r.n), cc = cardOf(Q, r.n); pane = `<div class="mono gt-xk">${esc(Q.title.toUpperCase())} · Q${r.n} · MISSED BEFORE</div><p>${inline(qq.stem)}</p><div class="gt-optx">${qq.options.map((t, i) => `<b>${letters[i]}${letters[i] === qq.key ? ' ✓' : ''}${pickOf(Q, ME, r.n) === letters[i] ? ' · you' : ''}</b><div>${inline(t)}</div>`).join('')}</div>${cc ? `<div class="gt-back">${row('WHY', cc.why)}${row('WATCH', cc.watch)}${row('HOOK', cc.hook)}</div>` : `<div class="gt-doct">${esc(qq.doct)}</div>`}<a class="gt-open" href="#/gt/${r.paper}/q/${r.n}" data-gtjump>Open it as its own card ›</a>`; }

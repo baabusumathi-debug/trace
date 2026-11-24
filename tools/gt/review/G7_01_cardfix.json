@@ -1,0 +1,8 @@
+{
+ "CCM02|CLABSI-22": {
+  "field": "a",
+  "old": "**Organism** | **Regimen**\nCONS | May **retain** CVC + systemic Abx 7d + antibiotic lock 10-14d\nS. aureus | Remove CVC, systemic Abx 14d if TOE-neg. Salvage possible: systemic + lock 14d if TOE-neg\nGram-negative bacilli | Remove CVC, treat 10-14d. Salvage: systemic + antimicrobial lock 14d\nCandida | Remove CVC + antifungal 14d after first negative culture",
+  "new": "**Organism** | **Regimen**\nCONS | May **retain** CVC + systemic Abx 10-14d + antibiotic lock 10-14d\nS. aureus | Remove CVC, systemic Abx 14d if TOE-neg. Salvage possible: systemic + lock 14d if TOE-neg\nGram-negative bacilli | Remove CVC, treat 10-14d. Salvage: systemic + antimicrobial lock 14d\nCandida | Remove CVC + antifungal 14d after first negative culture",
+  "why": "IDSA 2009 CRBSI (Mermel, CID 2009;49:1, rec 75 and Fig 3): CoNS with catheter retained = systemic antibiotics 10–14 days with antibiotic lock therapy, not 7 days."
+ }
+}

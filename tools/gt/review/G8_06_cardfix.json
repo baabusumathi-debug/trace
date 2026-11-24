@@ -1,0 +1,8 @@
+{
+ "OBS02A|OBS-17": {
+  "field": "watch",
+  "old": "Risk factors: diabetes, chronic hypertension, BMI over 30, existing\ncardiovascular disease. Prevention: calcium, low-dose aspirin; vitamins C\nand E are listed in your notes.",
+  "new": "Risk factors: diabetes, chronic hypertension, BMI over 30, existing\ncardiovascular disease. Prevention: **low-dose aspirin** (150 mg at night, started before 16 weeks) and **calcium** if dietary intake is low. Vitamins C and E (listed in your notes) do **not** prevent pre-eclampsia and are not recommended.",
+  "why": "Vitamins C and E are not recommended for pre-eclampsia prevention (WHO, NICE, FIGO); source: https://www.who.int/tools/elena/interventions/vitaminsec-pregnancy ; https://www.glowm.com/article/id/416343"
+ }
+}

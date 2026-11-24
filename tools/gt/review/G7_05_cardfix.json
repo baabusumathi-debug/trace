@@ -1,0 +1,8 @@
+{
+ "HAEM01|HMT-08": {
+  "field": "a",
+  "old": "**ISTH SCORE** | **0** | **1** | **2** | **3**\n**Platelets (×10⁹/L)** | Over 100 | 50–100 | Under 50 |\n**D-dimer or FDP** | No rise |  | Moderate | Strong\n**PT prolonged (s)** | Under 3 | 3–6 | Over 6 |\n**Fibrinogen (g/L)** | Over 1 | Under 1 |  | \nOvert DIC: ISTH **5 or more**; the Japanese (JMHW) score uses **4 or more**.\n**Hyperfibrinolytic** (bleeding): APL. **Hypofibrinolytic** (thrombosis): ALL treated with **asparaginase**.\nFibrinogen over **1.5 g/L**; platelets over 20 if actively bleeding; treat the cause (ATRA). Asparaginase: lower platelet threshold (20–30), anticoagulate by platelet count, dexamethasone.",
+  "new": "**ISTH SCORE** | **0** | **1** | **2** | **3**\n**Platelets (×10⁹/L)** | Over 100 | 50–100 | Under 50 |\n**D-dimer or FDP** | No rise |  | Moderate (over **3×** upper normal) | Strong (over **7×** upper normal)\n**PT prolonged (s)** | Under 3 | 3–6 | Over 6 |\n**Fibrinogen (g/L)** | Over 1 | Under 1 |  | \nOvert DIC: ISTH **5 or more**; the Japanese (JMHW) score uses **4 or more**.\n**Hyperfibrinolytic** (bleeding): APL. **Hypofibrinolytic** (thrombosis): ALL treated with **asparaginase**.\nFibrinogen over **1.5 g/L**; platelets over **50** if actively bleeding (APL: keep over 30–50); treat the cause (ATRA). Asparaginase: lower platelet threshold (20–30), anticoagulate by platelet count, dexamethasone.",
+  "why": "Bleeding DIC needs platelets kept over 50 (ISTH 2013 harmonised guidance; ELN 2019 APL: 30-50), not 20; and the 2025 ISTH update fixed D-dimer bands at >3x ULN (2 points) and >7x ULN (3 points). Sources: Iba et al. JTH 2025;23:2356 (practical-haemostasis.com ISTH 2025 calculator); Wada et al. JTH 2013;11:761."
+ }
+}
