@@ -1,6 +1,6 @@
 {
  "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged). 22 Nov 2026: endocrine/HY5 table layouts repaired (layout only). 23 Nov 2026: 171 card corrections from the cardiology, endocrine and NEET-packet flags, decided by Claude on Naven's instruction and independently fact-checked (tools/flagfix/VERIFY.md); updated guideline answers carry an \"Older keys\" line.",
- "version": "ff2750be10",
+ "version": "b6a5ec8152",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -573,11 +573,11 @@
   },
   "CCM08|CNS-27": {
    "fields": {
-    "a": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); WHO: **HR for 10 months**. Z only in the 2-month intensive phase\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
+    "a": "- CSF: **ADA levels >9** • cell count **<500 with lymphocytic predominance** • **high protein**\n- Confirmatory: **AFB stain, GeneXpert**; TB-PCR\n**Phase** | **Regimen**\nIntensive | **HRZE / HRZS for 2 months**\nContinuation | **HRE for at least 10 months** (NTEP); ICMR adult-TBM STW: **HRZ**, ethambutol dropped; WHO: **HR for 10 months**\n- Dexamethasone **0.4 mg/kg/day** in 3-4 divided doses during hospital stay; taper gradually over **8-12 weeks** in total (ICMR/NTEP); WHO and Thwaites: **6-8 weeks**\n- Monthly follow-up; regular **LFT** monitoring",
     "watch": "TB meningitis dexamethasone (0.4 mg/kg/day, tapered over 8-12 weeks by ICMR, 6-8 by WHO) is a completely different regimen from bacterial meningitis dexamethasone (0.15 mg/kg 6-hourly for 4 days)."
    },
-   "src": "ICMR Standard Treatment Workflow, NTEP TB meningitis (adult), 2022; WHO 2HRZE/10HR regimen (WHO 2010 rapid advice, carried into Module 4, 2022) · ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025 (maintained); Thwaites GE et al., NEJM 2004;351:1741 · ICMR Standard Treatment Workflow, NTEP TB meningitis, 2022; WHO consolidated guidelines on tuberculosis, Module 4, 2025; de Gans J, van de Beek D, NEJM 2002;347:1549",
-   "date": "13 Nov 2026"
+   "src": "GT 7/8 card check, 24 Nov: Earlier override duplicated the dexamethasone phrase and wrongly said Z is used only in the intensive phase; ICMR adult-TBM STW continuation is RHZ (E omitted),",
+   "date": "2026-11-24"
   },
   "CCM08|CNS-19": {
    "fields": {
@@ -2854,6 +2854,27 @@
     "a": "**PE in pregnancy with normal CXR → V/Q scan**\na **V/Q (lung scintigraphy)**. Abnormal CXR → CTPA. D-dimer unreliable.\nb Pregnancy of unknown location → **repeat hCG + transvaginal US in 48 h** — don't treat on one value.\nc **Anti-D 50 µg** (fetal Rh antigen present from ~6 weeks) - the traditional and exam answer. Now contested: NICE NG126 gives it only after SURGICAL management (none for medical management); ACOG 2024 may forgo it before 12 weeks.\nd **Amoxicillin or cephalexin 3–7 days** (nitrofurantoin avoided in 1st trimester; no fluoroquinolones)."
    },
    "src": "NICE NG126 1.18; ACOG CPU 2024 (PubMed 39255498) (hy5_review 22 Nov 2026); ACOG PB 181 traditional"
+  },
+  "HAEM01|HMT-08": {
+   "fields": {
+    "a": "**ISTH SCORE** | **0** | **1** | **2** | **3**\n**Platelets (×10⁹/L)** | Over 100 | 50–100 | Under 50 |\n**D-dimer or FDP** | No rise |  | Moderate (over **3×** upper normal) | Strong (over **7×** upper normal)\n**PT prolonged (s)** | Under 3 | 3–6 | Over 6 |\n**Fibrinogen (g/L)** | Over 1 | Under 1 |  | \nOvert DIC: ISTH **5 or more**; the Japanese (JMHW) score uses **4 or more**.\n**Hyperfibrinolytic** (bleeding): APL. **Hypofibrinolytic** (thrombosis): ALL treated with **asparaginase**.\nFibrinogen over **1.5 g/L**; platelets over **50** if actively bleeding (APL: keep over 30–50); treat the cause (ATRA). Asparaginase: lower platelet threshold (20–30), anticoagulate by platelet count, dexamethasone."
+   },
+   "src": "GT 7/8 card check, 24 Nov: Bleeding DIC needs platelets kept over 50 (ISTH 2013 harmonised guidance; ELN 2019 APL: 30-50), not 20; and the 2025 ISTH update fixed D-dimer bands at >3x ULN ",
+   "date": "2026-11-24"
+  },
+  "HEMO04|FR-12": {
+   "fields": {
+    "a": "a Start **semi-recumbent (trunk at 45°)**, not supine — this also\nrecruits blood from the splanchnic circulation, not just the legs.\nUse the bed to tilt; do not touch the patient (pain or arousal\nconfounds).\nb About 300 mL of the patient's own blood (your notes give a range\nstarting at 250 mL); effect begins within seconds and is **maximal at about 30–90 s**, then drifts back; fully reversed on\nreturning to baseline.\nc **Cardiac output or stroke volume in real time** (pulse contour,\necho VTI, oesophageal Doppler) — not blood pressure. A rise of\n**10% or more** is positive; with end-tidal CO2, a rise of 5% or\nmore. Re-measure after returning to baseline.\nd Spontaneous breathing, arrhythmias, low tidal volume."
+   },
+   "src": "GT 7/8 card check, 24 Nov: Maximal PLR effect is at 30-90 s, not 60-90 s - the exact number GT8 Q88 tests. Source: LITFL Passive Leg Raise (https://litfl.com/passive-leg-raise) and Oh's I",
+   "date": "2026-11-24"
+  },
+  "OBS02A|OBS-17": {
+   "fields": {
+    "watch": "Risk factors: diabetes, chronic hypertension, BMI over 30, existing\ncardiovascular disease. Prevention: **low-dose aspirin** (150 mg at night, started before 16 weeks) and **calcium** if dietary intake is low. Vitamins C and E (listed in your notes) do **not** prevent pre-eclampsia and are not recommended."
+   },
+   "src": "GT 7/8 card check, 24 Nov: Vitamins C and E are not recommended for pre-eclampsia prevention (WHO, NICE, FIGO); source: https://www.who.int/tools/elena/interventions/vitaminsec-pregnancy ",
+   "date": "2026-11-24"
   }
  }
 }

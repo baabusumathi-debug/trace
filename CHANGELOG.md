@@ -4,7 +4,7 @@ Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for read
 
 In progress: none
 
-## State (as of entry T-189)
+## State (as of entry T-191)
 
 This summary helps you orient. It **does not prove** that content is unchanged; only a verified commit or content fingerprint does (`AGENTS.md` §12).
 
@@ -21,6 +21,17 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-191 — 2026-11-24 — Claude — test — 1.3.165
+- **GTs** (new home button beside Viva, `#/gt`), built to Naven's design (voice + mockup, 23–24 Nov):
+  - Papers list; each paper opens as an answer sheet of 150 tiles in sections A–C. Right = white, wrong = black, guessed = pencil stripes, blank = dashed; a folded corner = the other person also wrong; a second sheet behind + ×2 = missed in an earlier GT too. No ✓/✗ on tiles.
+  - Filters Wrong · Guessed · Blank · Repeats · Shared; Walk N. Paper order / By system (same tile size). The papers rail folds to a thin strip.
+  - "Where the marks went" and every system heading open a single-system page: tiles, trend (one row per GT, lost k of n, other person under), topics inside the system.
+  - All GTs: score trend (right/wrong/blank bar per paper, both people) and each system across papers.
+  - Walk: Try (answer hidden, tap reveals; nothing stored) or Read; options carry ✓ Key, You ✗, other ✗; card back = Answer · Why · Watch · Hook · Tempted; Explain pane tabs = Explanation | linked cards | the earlier GT question | DocT's text. Right-and-sure questions show DocT's own explanation. ←/→ keys.
+  - Each profile sees its own sheet (Naven's in his, HT's in hers); walked questions are kept on the device.
+- Data `data/gt/` (always fresh, kept offline in the app): GT 7 and GT 8, both people's results from recorder v2.9 re-captures, picks, guesses; systems/topics for all 300 questions; GT cards for every wrong/guessed/blank question of either person (208), written to Naven's rules and independently fact-checked (decisions taken without flags, per Naven). Question images in `data/gt/img/`.
+- cardfix +4 (found by the GT card checkers): CCM08|CNS-27, HAEM01|HMT-08, HEMO04|FR-12, OBS02A|OBS-17.
 
 ## T-190 — 2026-11-24 — Claude — recorder — v2.9
 - Recorder source now kept in the repo: `tools/recorder/` (v2.8 as installed, v2.9). No secrets in it; the connection stays in Tampermonkey storage.
