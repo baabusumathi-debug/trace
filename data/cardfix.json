@@ -1,6 +1,6 @@
 {
  "note": "Card text corrections (7–13 Nov 2026), checked against primary sources (claude/Trace_Correction_Check_7Nov.md; viva P1, P2, P3, P5, P6, P7, P8 and P10 fixes, claude/viva/P1.json, P3.json, P6.json, P7.json). Each entry replaces whole fields of the card as shown in Trace; the Drive cards.jsonl originals are unchanged. In-app edits still win over these. 19 Nov 2026: cardiology table layouts repaired (layout only, characters unchanged). 20 Nov 2026: GI table layouts repaired (layout only, characters unchanged). 22 Nov 2026: endocrine/HY5 table layouts repaired (layout only). 23 Nov 2026: 171 card corrections from the cardiology, endocrine and NEET-packet flags, decided by Claude on Naven's instruction and independently fact-checked (tools/flagfix/VERIFY.md); updated guideline answers carry an \"Older keys\" line.",
- "version": "d65a20d393",
+ "version": "2d56e9960f",
  "cards": {
   "HY1|ABE-09": {
    "fields": {
@@ -735,10 +735,10 @@
   },
   "ELEC03B|MGP-07": {
    "fields": {
-    "a": "**SERUM MAGNESIUM (MMOL/L)** | **SIGN**\n**Over 4** | **Hyporeflexia** (knee jerk lost near **10**)\n**Over 5** | **First-degree AV block**\n**Over 10** | **Complete heart block**\n**Over 13** | **Cardiac arrest**"
+    "a": "**SERUM MAGNESIUM (mEq/L)** | **SIGN**\n**Over 4** | **Hyporeflexia** (knee jerk lost near **10 mg/dL**, about 4 mmol/L)\n**Over 5** | **First-degree AV block**\n**Over 10** | **Complete heart block**\n**Over 13** | **Cardiac arrest**"
    },
-   "src": "Magnesium sulfate injection, US prescribing information (Pfizer), Overdosage section; Lu JF, Nightingale CH. Clin Pharmacokinet 2000;38:305 (toxicity table in mmol/L: patellar reflex lost 3.5–5, respiratory paralysis 5–6.5, conduction change >7.5, arrest >12.5); 1 mmol/L = 2 mEq/L",
-   "date": "13 Nov 2026"
+   "src": "ECG packet check, 24 Nov: obstetric figure carries its unit",
+   "date": "2026-11-24"
   },
   "RENAL01|AKI-06": {
    "fields": {
@@ -1762,10 +1762,10 @@
   },
   "TOX01|TOX-07": {
    "fields": {
-    "a": "**a** QRS **<0.12 s** (in poisoning act at **0.10 s or more**: sodium-channel block, give bicarbonate); QTc **<440 ms**.\n**b** **Tricyclic antidepressants**, cocaine, carbamazepine (sodium-channel block): ventricular tachycardia.\n**c** **IV sodium bicarbonate**, 1–2 mEq/kg.\n**d** **Class Ia and Ic**.\n**e** Beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics."
+    "a": "**a** QRS **<0.12 s** (in poisoning act at **0.10 s or more**: sodium-channel block, give bicarbonate); QTc **<440 ms** (current upper limits: about 450 ms men, 460 ms women).\n**b** **Tricyclic antidepressants**, cocaine, carbamazepine (sodium-channel block): ventricular tachycardia.\n**c** **IV sodium bicarbonate**, 1–2 mEq/kg.\n**d** **Class Ia and Ic**.\n**e** Beta-blockers, calcium-channel blockers, digoxin, cholinergics, opioids, lithium, magnesium, sedative-hypnotics."
    },
-   "src": "Boehnert MT, Lovejoy FH. N Engl J Med 1985;313:474-479; Lavonas EJ et al. 2023 AHA focused update on cardiac arrest or life-threatening toxicity due to poisoning. Circulation 2023;148:e149-e184",
-   "date": "13 Nov 2026"
+   "src": "ECG packet check, 24 Nov: ESC 2022 sex-specific QTc limits",
+   "date": "2026-11-24"
   },
   "HY3|EMS-15": {
    "fields": {
@@ -2490,9 +2490,10 @@
   },
   "CVS10B|MI-25": {
    "fields": {
-    "a": "- **ST depression ≥1 mm in ≥6 leads** (ESC 2023; older keys: 8 leads, UDMI 2018 / ESC 2017) + **ST elevation in aVR and/or V1** → left main, left main equivalent, or severe three-vessel ischaemia\n- **0.5 mm**, **horizontal or downsloping**\n- In leads with a prominent R wave or **R/S ratio >1**"
+    "a": "- **ST depression ≥1 mm in ≥6 leads** (ESC 2023 and UDMI 2018: 6 leads; older key: 8 leads, ESC 2017 STEMI) + **ST elevation in aVR and/or V1** → left main, left main equivalent, or severe three-vessel ischaemia\n- **0.5 mm**, **horizontal or downsloping**\n- In leads with a prominent R wave or **R/S ratio >1**"
    },
-   "src": "ESC 2023 ACS guideline (≥6 leads); UDMI 2018 and ESC 2017 (≥8 leads); checked 23 Nov 2026"
+   "src": "ECG packet check, 24 Nov: Fourth Universal Definition of MI 2018: ST depression in 6 leads with ST elevation in aVR and/or V1",
+   "date": "2026-11-24"
   },
   "CVS10B|MI-27": {
    "fields": {
@@ -2874,6 +2875,20 @@
     "watch": "Risk factors: diabetes, chronic hypertension, BMI over 30, existing\ncardiovascular disease. Prevention: **low-dose aspirin** (150 mg at night, started before 16 weeks) and **calcium** if dietary intake is low. Vitamins C and E (listed in your notes) do **not** prevent pre-eclampsia and are not recommended."
    },
    "src": "GT 7/8 card check, 24 Nov: Vitamins C and E are not recommended for pre-eclampsia prevention (WHO, NICE, FIGO); source: https://www.who.int/tools/elena/interventions/vitaminsec-pregnancy ",
+   "date": "2026-11-24"
+  },
+  "HY2|CAR-07": {
+   "fields": {
+    "a": "**Digoxin: reverse-tick ST, short QT —**\n**peaked T is NOT digoxin**\na Down-sloping 'reverse tick' ST in V4–V6, **short**\n**QT**, PAT with block, **bidirectional VT**, any\nbrady/AV block.\nb **Peaked T waves** — that is hyperkalaemia.\nc **Digoxin-specific Fab**: life-threatening\narrhythmia, K above 5 in acute toxicity, cardiac arrest,\nend-organ damage.\nd **Hyperkalaemia** (acute poisoning blocks Na-K\nATPase) — predicts death."
+   },
+   "src": "ECG packet check, 24 Nov: Fab indications: life-threatening arrhythmia, cardiac arrest, K >5.0 (AHA 2023; Aust Prescr 2016)",
+   "date": "2026-11-24"
+  },
+  "HY2|CAR-02": {
+   "fields": {
+    "a": "**Vagal** → **adenosine 6 then 12 mg —**\n**asthma? verapamil**\na **Vagal manoeuvres** (modified Valsalva).\nb **Adenosine 6 mg** rapid push + flush; then **12**\n**mg**, given once (AHA 2020–2025; older ACLS repeated 12 mg; ESC 2019 allows up to 18 mg).\nc **IV verapamil** (or diltiazem) — adenosine can\ntrigger bronchospasm.\nd **AVNRT** — re-entry within the AV node (slow +\nfast pathways); P hidden in the QRS."
+   },
+   "src": "ECG packet check, 24 Nov: AHA adult tachycardia algorithm gives a single 12 mg second dose",
    "date": "2026-11-24"
   }
  }
