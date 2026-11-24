@@ -85,7 +85,7 @@ async function boot() {
   if (demo && !S.library) {
     status.state = 'syncing';
   }
-  S.listeners.add(() => { if (!flow) { if (/^#\/desk/.test(location.hash) && document.querySelector('.screen.pdk')) return; route(); } else updateFlowChrome(); });   // T-144: a sync never redraws the Desk (it flickered)
+  S.listeners.add(() => { if (!flow) { if (/^#\/desk/.test(location.hash) && document.querySelector('.screen.pdk')) return; if (/^#\/gt/.test(location.hash) && document.querySelector('.gt-screen, .gt-walk')) return; route(); } else updateFlowChrome(); });   // T-144: a sync never redraws the Desk (it flickered); T-195: nor the GT screens
   window.addEventListener('hashchange', async () => {
     if (/#setup=/.test(location.hash) && !isDemo()) { if (await trySetup(location.href)) { await countPending(); startAutoSync(); } }
     route();

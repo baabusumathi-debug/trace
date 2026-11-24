@@ -286,10 +286,12 @@ function walkScreen(app, ctx, P, n) {
   let W = ssGet('walk', null);
   if (!W || W.paper !== P.id || !W.list.includes(n)) { W = { paper: P.id, list: walkList(P, P.q.map(q => q.n), {}).includes(n) ? walkList(P, P.q.map(q => q.n), {}) : [n], back: '#/gt/' + P.id }; ssSet('walk', W); }
   const idx = W.list.indexOf(n), q = qOf(P, n), c = cardOf(P, n);
-  const st = { mode: WK.mode(), now: null, tab: 'exp' };
+  const stKey = 'wst.' + P.id + '.' + n, saved = ssGet(stKey, {});
+  const st = { mode: WK.mode(), now: null, tab: saved.tab || 'exp' };   // T-195: the open tab survives a redraw
   markWalked(P.id, n);
   const prev = W.list[idx - 1], next = W.list[idx + 1];
   const draw = () => {
+    ssSet(stKey, { tab: st.tab });
     const read = st.mode === 'read', shown = read || !!st.now;
     const myR = resOf(P, ME, n), myP = pickOf(P, ME, n), otR = resOf(P, OTHER, n), otP = pickOf(P, OTHER, n);
     const reps = repeatsOf(P, n);
