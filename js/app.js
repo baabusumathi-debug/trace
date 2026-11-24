@@ -1,4 +1,5 @@
 import { CONFIG, CHANNEL, PROFILE, IS_HT, setProfile } from './config.js';
+import { renderGT, loadGT, gtCount } from './gt.js';
 import { db, useDemoDb, useDbName, peekDb } from './db.js';
 import { renderPalace, renderMeditation, stopMeditation, lastMeditation, TRACKS } from './palace.js';
 import { initApi, hasBackend, isDemo, setBackend, call, batch } from './api.js';
@@ -144,9 +145,10 @@ function routeInner() {
   if (page === 'meditation') return renderMeditation(app, { nav: nav(''), back: '#/loft', P });
   if (page === 'pilot') return startPilot();
   if (page === 'viva') return renderViva(arg ? decodeURIComponent(arg) : '');
+  if (page === 'gt') return renderGT(app, { ICON, nav }, h.split('/').slice(1));
   if (page === 'vmap') return renderVivaMap({ app, ICON, nav, startFlow, toast, P, setMark: vivaSetMark });
   renderPalace(app, { nav: nav('palace'), top: topBar(true) });
-  vivaTile();
+  vivaTile(); gtTile();
   bindGo(); bindGoingOut();
 }
 const go = h => { location.hash = h; };
@@ -744,6 +746,13 @@ function vivaTile() {
   // T-125: one Viva button; the packages are listed in order inside it
   const nq = ps.reduce((n, p) => n + p.questions.length, 0);
   sc.insertAdjacentHTML('beforeend', `<div class="viva-tiles"><a class="viva-tile mono" href="#/viva"><b>VIVA</b><span>${ps.length} package${ps.length === 1 ? '' : 's'} · ${nq} Qs</span></a></div>`);
+}
+// T-191: GTs tile beside Viva
+function gtTile() {
+  const sc = app.querySelector('.palace-screen'); if (!sc) return;
+  const n = gtCount(); if (!n) { loadGT().then(() => { if (gtCount() && /^#?\/?$/.test(location.hash.replace('#', '')) && !document.querySelector('.gt-tile')) gtTile(); }); return; }
+  let box = sc.querySelector('.viva-tiles'); if (!box) { sc.insertAdjacentHTML('beforeend', '<div class="viva-tiles"></div>'); box = sc.querySelector('.viva-tiles'); }
+  box.insertAdjacentHTML('beforeend', `<a class="viva-tile gt-tile mono" href="#/gt"><b>GTs</b><span>${n} paper${n === 1 ? '' : 's'}</span></a>`);
 }
 // T-102: lessons autoplay (per session) — open → each card's lesson → close → spine run on their own
 const vAuto = () => { try { return sessionStorage.getItem('trace.vauto') === '1'; } catch (e) { return false; } };
