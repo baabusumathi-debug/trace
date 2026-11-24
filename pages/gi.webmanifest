@@ -1,0 +1,29 @@
+{
+  "id": "./gi.html",
+  "name": "GI \u2014 CCM",
+  "short_name": "GI",
+  "description": "GI \u00b7 pancreas, gut, pressure",
+  "start_url": "./gi.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f6",
+  "theme_color": "#00707d",
+  "icons": [
+    {
+      "src": "icons/gi-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/gi-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/gi-mask-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
