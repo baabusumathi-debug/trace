@@ -1,5 +1,5 @@
 // Study pages: network first, so an updated page arrives on its own; the cache is the offline copy.
-const V = 'pages-v5';
+const V = 'pages-v6';
 const FILES = ['./', 'index.html', 'shock1.html', 'shock2.html', 'gi.html', 'endo.html', 'obs.html',
                'manifest.webmanifest', 'shock1.webmanifest', 'shock2.webmanifest', 'gi.webmanifest', 'endo.webmanifest', 'obs.webmanifest',
                'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',

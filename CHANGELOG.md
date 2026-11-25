@@ -22,6 +22,9 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-200 — 2026-11-25 — Claude — live — pages (sw pages-v6)
+- Fix (Naven: "sometimes the pen doesn't write" after changing page or card): a writing layer created while the pen was already on started switched off, so strokes did nothing until the pen was toggled. That happened on every new notebook card, on each new notebook page and on a study screen opened for the first time. `pages/js/ink-mount.js` now creates each layer in the pen's current state. Reproduced in all three cases in headless Chrome, then fixed and verified; the desk walk is unchanged.
+
 ## T-199 — 2026-11-25 — Claude — live — pages (sw pages-v5)
 - New study page **Shock II · fixing it** (`pages/shock2.html`, icon S2, own manifest, in the library): P12-201…206 from the live packet, 28 cards in 6 sections, the closing lesson, 6 traps and 25 closing questions. New drawings: the β1/α1 cell pathways (and where each inotrope acts; on a β-blocker), transmural pressure, PV loops for the three machines, the balloon pump's position and trace, Impella / TandemHeart / VA ECMO circuits, Harlequin, and trial bar charts.
 - Shared engine: `pages/src/packet.py` now builds every packet page; `shock1/build.py` and `shock2/build.py` are short configs over it. Shock I rebuilt through it is identical apart from the arrowhead fix below.

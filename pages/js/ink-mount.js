@@ -47,7 +47,7 @@ export const onWriting = fn => { watchers.add(fn); fn(writing); };
 
 export function mountInk(el, opts) {
   const cv = document.createElement('canvas');
-  cv.className = 'ink-ov';
+  cv.className = 'ink-ov' + (writing ? ' on' : '');   // a layer made while the pen is on must start armed
   if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
   el.appendChild(cv);
   const map = () => ({ X: p => p[0], Y: p => p[1], k: 1 });
