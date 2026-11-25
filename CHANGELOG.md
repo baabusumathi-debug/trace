@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: Claude — Shock II study page, `pages/` only — claimed 2026-11-25 16:30 IST
 
 ## State (as of entry T-197)
 
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-198 — 2026-11-25 — Claude — live — pages (sw pages-v4)
+- Study pages site (`pages/`, separate from the app; Naven: "make it live"). App code, `js/ink.js` and `js/db.js` untouched.
+- Desk: backup state shown as a symbol (✓ ↑ ▢ ✕ ⊘, tap to read); notebook pages stack and scroll freely with an "End of <card> · n pages" break; pull past the end and hold to add a page; pinch/slider zoom around the fingers, settled on lift; ⇔ Fit per side; Cut/Copy/Paste through Trace's own clipboard (`trace.ink.clips`); new cards start in the last-used style, "This page" no longer changes new pages; study-side ink backed up to Drive as `studyink-<page>.json`; note when writing exists in the other orientation; Delete asks, then Undo, plus Deleted pages in ⚙; ← Pages in the strip.
+- Shock I diagrams corrected: parasternal window to the LEFT sternal edge; subcostal view with the right heart nearest the liver; IVC measured 1–2 cm from the RA; labels off lines, pins and edges.
+- New `pages/src/diagcheck.py` (measured label checks, run by `check.py`) and `pages/src/DIAGRAMS.md` (anatomy checklist). `shock1/build.py` now builds from the repo alone and reproduced the previous live page byte for byte.
+- Checked in headless Chrome: 27 desk checks pass (the 28th is the root favicon 404); all four pages at 390, 800×1280 and 1280×860; Shock I walk 32 screens, 0 errors, 0 overflow, 0 diagram issues.
 
 ## T-197 — 2026-11-25 — Claude — live — 1.4.56 (data)
 - Naven: "promote". Live `data/viva/P12.json` = test P12.20261124.1: the ECG foundation packets EC1 and EC2 (12 sections) between Shock II and ACS I; P12 is now 12 packets, 60 sections on live too. Data only (fetched fresh by the app), so no version bump. Michael voice and word timings already complete for every clip (3,912 with `tid`).
