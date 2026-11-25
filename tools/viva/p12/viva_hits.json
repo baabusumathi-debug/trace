@@ -1,0 +1,1974 @@
+[
+ {
+  "p": "P1",
+  "q": "P1-141",
+  "text": "How do you approach undifferentiated shock with POCUS?",
+  "n": 6,
+  "cards": [
+   "V1-005",
+   "CVS05B|ECHO-36",
+   "CVS01|CVS-24",
+   "CVS06B|RVF-29",
+   "CVS06B|RVF-30",
+   "CVS05B|ECHO-20"
+  ],
+  "open": "Let me give you a patient with no label.\n\nPatient H is on the ward, and has suddenly become shocked. A MAP of fifty-five. Cold, clammy and breathless.",
+  "close": "So let's bring it together.\n\nPOCUS in undifferentiated shock is a rapid, structured scan to name the shock type. I use pump, tank and pipes.\n\nThe pump",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "CVS05B|ECHO-36",
+    "len": 1142,
+    "t": "A structured, focused heart scan is FATE, focus-assessed transthoracic echocardiography, described by Jensen and colleagues in two thousand and four. ",
+    "voiced": 7
+   },
+   {
+    "i": 2,
+    "card": "CVS01|CVS-24",
+    "len": 2105,
+    "t": "Start with the physics. The pericardium is a tough, fixed sac. When fluid fills it, the pressure inside the sac rises. And that pressure squeezes whic",
+    "voiced": 11
+   },
+   {
+    "i": 3,
+    "card": "CVS06B|RVF-29",
+    "len": 1376,
+    "t": "There are seven echo signs of right ventricular overload. Learn them in three groups: size, function and pressure.\n\nSize. The right ventricular cavity",
+    "voiced": 8
+   },
+   {
+    "i": 4,
+    "card": "CVS06B|RVF-30",
+    "len": 620,
+    "t": "There is. McConnell's sign.\n\n[[McConnell's sign is hypokinesia of the right ventricular free wall with sparing of the apex. It points to acute pulmona",
+    "voiced": 5
+   },
+   {
+    "i": 5,
+    "card": "CVS05B|ECHO-20",
+    "len": 1544,
+    "t": "The IVC is the first thing most residents look at in shock, and the thing they trust most. It deserves less trust than it gets.\n\nYou check two things.",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-030",
+  "text": "How do you assess fluid responsiveness?",
+  "n": 7,
+  "cards": [
+   "HEMO04|FR-01",
+   "HEMO04|FR-03",
+   "HEMO04|FR-04",
+   "HEMO04|FR-09",
+   "HEMO04|FR-12",
+   "HEMO04|FR-15",
+   "HEMO04|FR-18"
+  ],
+  "open": "Let me start with a patient. Patient A, sixty years old, septic, on a ventilator. His pressure is soft, his lactate is up, and the nurse has a bag of ",
+  "close": "So let's bring it together.\n\n[[A patient is fluid responsive if his stroke volume or cardiac output rises by ten to fifteen percent or more after flui",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "HEMO04|FR-03",
+    "len": 2231,
+    "t": "There are three families of tests, and each asks the heart a different question.\n\nThe first family is static. A single pressure or a single size, take",
+    "voiced": 11
+   },
+   {
+    "i": 4,
+    "card": "HEMO04|FR-12",
+    "len": 2167,
+    "t": "The passive leg raise is a fluid challenge with no fluid. You borrow the patient's own blood, measure what it does, and then give it back.\n\nHere's how",
+    "voiced": 12
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-031",
+  "text": "Explain passive leg raising.",
+  "n": 3,
+  "cards": [
+   "HEMO04|FR-12",
+   "HEMO04|FR-13",
+   "HEMO04|FR-20"
+  ],
+  "open": "Let me start with a patient. Patient C, breathing on his own, in atrial fibrillation, with a soft pressure. Pulse pressure variation is useless in him",
+  "close": "So, the passive leg raise.\n\n[[It's a reversible self-fluid-challenge. Tilting from semi-recumbent to legs up shifts about three hundred millilitres of",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "HEMO04|FR-12",
+    "len": 512,
+    "t": "You met this test in the last lesson. Start semi-recumbent, trunk at forty-five degrees, and tilt with the bed, without touching the patient. About th",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-032",
+  "text": "How do you assess fluid responsiveness in a patient on low tidal volume ventilation?",
+  "n": 5,
+  "cards": [
+   "HEMO04|FR-09",
+   "HEMO04|FR-10",
+   "HEMO04|FR-15",
+   "HEMO04|FR-12",
+   "HEMO04|FR-18"
+  ],
+  "open": "Here's a paradox. Patient D has ARDS. You've done everything right. Six millilitres per kilo, a plateau under thirty, a low driving pressure. But his ",
+  "close": "So let's bring it together.\n\n[[At a lung-protective tidal volume of six millilitres per kilo, the breath is too small to swing preload. So pulse press",
+  "first": null,
+  "steps": [
+   {
+    "i": 3,
+    "card": "HEMO04|FR-12",
+    "len": 409,
+    "t": "And the leg raise. It doesn't use the ventilator at all, so the tidal volume doesn't matter. Tilt from semi-recumbent, borrow about three hundred mill",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-155",
+  "text": "How does IVC ultrasound help and what are its limitations?",
+  "n": 5,
+  "cards": [
+   "CVS05B|ECHO-18",
+   "CVS05B|ECHO-19",
+   "HEMO04|FR-11",
+   "CVS05B|ECHO-20",
+   "V1-006"
+  ],
+  "open": "Let me start with a picture every resident knows. You put the probe under the xiphisternum, and there's the IVC, a dark band running up into the right",
+  "close": "So let's bring it together.\n\n[[IVC size and its change with breathing estimate the right atrial pressure. Up to two point one centimetres, with more t",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "CVS05B|ECHO-19",
+    "len": 1630,
+    "t": "Now, what do size and collapse tell you? They estimate the right atrial pressure.\n\nThe IVC is a soft, compliant vein, sitting just below the right atr",
+    "voiced": 7
+   },
+   {
+    "i": 3,
+    "card": "CVS05B|ECHO-20",
+    "len": 523,
+    "t": "You met this rule with the shock scan. An IVC above two centimetres that collapses by less than half makes a patient less likely to respond. An IVC be",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-034",
+  "text": "What is VExUS?",
+  "n": 4,
+  "cards": [
+   "V1-008",
+   "CVS05B|ECHO-19",
+   "CVS06A|RVF-15",
+   "CVS06B|RVF-35"
+  ],
+  "open": "Here's a puzzle. Patient F, after cardiac surgery. His MAP is a comfortable seventy. His cardiac output is fine. And yet his urine output is falling, ",
+  "close": "So let's bring it together.\n\n[[VExUS is a bedside ultrasound grade of venous congestion, from grade zero to grade three.]]\n\nHow do you do it? If the I",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "CVS05B|ECHO-19",
+    "len": 514,
+    "t": "You met this table with the IVC. Small and collapsing means a low right atrial pressure. Big and fixed, above two point one centimetres with less than",
+    "voiced": 3
+   },
+   {
+    "i": 2,
+    "card": "CVS06A|RVF-15",
+    "len": 1742,
+    "t": "Trace the spiral of right ventricular pressure overload. It's a loop, and once you see where it closes, you see why it kills.\n\nIt starts with a rise i",
+    "voiced": 11
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-044",
+  "text": "Liver POCUS \u2014 what can hepatic vein Doppler tell you?",
+  "n": 2,
+  "cards": [
+   "CVS05B|ECHO-19",
+   "V1-009"
+  ],
+  "open": "The examiner turns the ultrasound screen towards you. A Doppler trace from a vein in the liver, a row of waves above and below the line. He asks just ",
+  "close": "So let's bring it together.\n\n[[Doppler of a hepatic vein shows how the right atrial pressure is transmitted back into the liver.]]\n\nNormal is a systol",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS05B|ECHO-19",
+    "len": 404,
+    "t": "Remember the secondary signs of a high right atrial pressure, from the IVC lesson. Alongside a large right atrium and a hypertrophied right ventricle,",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-041",
+  "text": "Describe arterial waveform patterns.",
+  "n": 7,
+  "cards": [
+   "HEMO01B|HDM-17",
+   "HEMO01B|HDM-18",
+   "HEMO01B|HDM-13",
+   "HEMO01B|HDM-14",
+   "HEMO01B|HDM-21",
+   "V1-011",
+   "HEMO04|FR-07"
+  ],
+  "open": "You've looked at an arterial trace thousands of times. In theatre, it's the line you trust most. But when did you last really read it?\n\nIn the viva, t",
+  "close": "So let's bring it together.\n\n[[A normal trace has a sharp upstroke, a peak, a dicrotic notch at aortic valve closure, and a diastolic run-off.]]\n\nThe ",
+  "first": null,
+  "steps": [
+   {
+    "i": 2,
+    "card": "HEMO01B|HDM-13",
+    "len": 1324,
+    "t": "That's the fast flush test. It checks the dynamic response of the whole system, the catheter, the tubing and the transducer. It tells you two things, ",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-046",
+  "text": "Is noradrenaline an inotrope or a vasopressor?",
+  "n": 5,
+  "cards": [
+   "SEP01C|SEP-27",
+   "SEP01C|SEP-30",
+   "CVS06B|RVF-41",
+   "HEMO04|FR-01",
+   "V1-017"
+  ],
+  "open": "Let me start with a paradox.\n\nA patient in early septic shock. You start noradrenaline. You expect the mean pressure to rise, and it does. But you als",
+  "close": "So let's bring it together.\n\n[[Noradrenaline is mainly a vasopressor. It's alpha-one dominant, with a smaller beta-one inotropic effect.]]\n\nWhy does t",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "SEP01C|SEP-27",
+    "len": 1349,
+    "t": "Here is the vasopressor ladder in septic shock. You climb it one rung at a time, and each rung has its own grade.\n\nFirst line: noradrenaline. A strong",
+    "voiced": 9
+   },
+   {
+    "i": 2,
+    "card": "CVS06B|RVF-41",
+    "len": 2442,
+    "t": "Now three drugs for the failing right ventricle. Each one does something useful, and each one has a catch.\n\nNoradrenaline, at about zero point two to ",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-047",
+  "text": "Inotropes in septic shock \u2014 what does SSC say?",
+  "n": 7,
+  "cards": [
+   "SEP01C|SEP-27",
+   "SEP01C|SEP-30",
+   "SOD01A|SOD-09",
+   "SOD01A|SOD-08",
+   "SEP01C|SEP-31",
+   "SEP01C|SEP-28",
+   "V1-020"
+  ],
+  "open": "Let me start with a patient.\n\nA man with septic shock from pneumonia. He's on noradrenaline, and his MAP is sixty-six. He's had his fluid, and his leg",
+  "close": "So let's bring it together.\n\nAn inotrope is for persistent hypoperfusion with cardiac dysfunction, despite adequate fluid and vasopressor.\n\n[[The guid",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "SEP01C|SEP-27",
+    "len": 434,
+    "t": "You met the vasopressor ladder with noradrenaline. Noradrenaline first, strongly. Then vasopressin, then adrenaline. And the inotrope enters at one sp",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-063",
+  "text": "Procalcitonin and NT-proBNP \u2014 how do you use them?",
+  "n": 4,
+  "cards": [
+   "SEP01B|SEP-24",
+   "SEP01A|SEP-12",
+   "CVS03|CS-22",
+   "V1-025"
+  ],
+  "open": "Let me start with two laboratory results.\n\nPatient A is in the ICU with a fever and a new shadow on his chest film. His procalcitonin comes back low. ",
+  "close": "So let's bring it together.\n\nProcalcitonin is a marker of bacterial infection. NT-proBNP is a marker of myocardial wall stress.\n\n[[I don't use procalc",
+  "first": null,
+  "steps": [
+   {
+    "i": 2,
+    "card": "CVS03|CS-22",
+    "len": 2122,
+    "t": "Now the other marker. And to understand NT-proBNP, start where it is most at home: cardiogenic shock.\n\nWhen the ventricular wall is stretched, its mus",
+    "voiced": 12
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-043",
+  "text": "Echo views, TAPSE and MAPSE.",
+  "n": 8,
+  "cards": [
+   "CVS05B|ECHO-34",
+   "CVS05B|ECHO-22",
+   "CVS05B|ECHO-27",
+   "CVS05B|ECHO-39",
+   "CVS06B|RVF-29",
+   "CVS06B|RVF-33",
+   "CVS06A|RVF-18",
+   "V1-027"
+  ],
+  "open": "Let me start where the last lesson left us, with a probe in your hand.\n\nYour patient is on the second day of septic shock. Ventilated, on noradrenalin",
+  "close": "So let's bring it together.\n\nThe core views are the subcostal, the apical four-chamber, the parasternal long and short axis, and pleural scanning. Tha",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "CVS05B|ECHO-22",
+    "len": 1790,
+    "t": "The parasternal long axis. You place the probe at the left sternal edge, in the second to fourth intercostal space, with the marker dot pointing to th",
+    "voiced": 8
+   },
+   {
+    "i": 2,
+    "card": "CVS05B|ECHO-27",
+    "len": 1595,
+    "t": "The apical four-chamber view. The probe sits over the apex of the heart, and the marker dot points to the left shoulder.\n\nNow you're looking up the he",
+    "voiced": 11
+   },
+   {
+    "i": 4,
+    "card": "CVS06B|RVF-29",
+    "len": 611,
+    "t": "You met these seven signs in the lesson on ultrasound in undifferentiated shock. Size, function and pressure. A right ventricle as big as the left. A ",
+    "voiced": 5
+   },
+   {
+    "i": 6,
+    "card": "CVS06A|RVF-18",
+    "len": 2186,
+    "t": "In ARDS, right ventricular dysfunction is common. It's found in twenty-two to fifty-five percent of patients, depending on how it's defined and looked",
+    "voiced": 12
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-060",
+  "text": "Cardiogenic shock \u2014 types, SCAI staging, treatment. Which phenotype gets diuretics, which gets vasopressors?",
+  "n": 7,
+  "cards": [
+   "CVS03|CS-08",
+   "CVS03|CS-18",
+   "CVS03|CS-26",
+   "CVS03|CS-31",
+   "CVS04|CS-55",
+   "CVS04|CS-44",
+   "V1-028"
+  ],
+  "open": "Let me start with two patients, both with cardiogenic shock after a heart attack.\n\nPatient A is cold to the knees and grey. His blood pressure is eigh",
+  "close": "So let's bring it together.\n\nCardiogenic shock is low output with hypoperfusion. SCAI stages it from A, at risk, to E, extremis. [[Stage C is hypoperf",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS03|CS-08",
+    "len": 1918,
+    "t": "Start with severity. Cardiogenic shock isn't one thing. It's a spectrum, from a patient who might crash to one who is crashing. In twenty nineteen, th",
+    "voiced": 14
+   },
+   {
+    "i": 1,
+    "card": "CVS03|CS-18",
+    "len": 2061,
+    "t": "In the nineteen seventies, James Forrester and his colleagues, using the new pulmonary artery catheter in patients after myocardial infarction, sorted",
+    "voiced": 10
+   },
+   {
+    "i": 2,
+    "card": "CVS03|CS-26",
+    "len": 2385,
+    "t": "This card is the ESC bedside algorithm for acute heart failure. It uses the same two questions, warm or cold, wet or dry, and gives a treatment for ea",
+    "voiced": 15
+   },
+   {
+    "i": 3,
+    "card": "CVS03|CS-31",
+    "len": 2964,
+    "t": "This card matches a vasoactive drug to each subtype of shock. And it carries a correction worth knowing.\n\nClassic, cold and wet. The cardiac index is ",
+    "voiced": 16
+   },
+   {
+    "i": 5,
+    "card": "CVS04|CS-44",
+    "len": 1033,
+    "t": "The intra-aortic balloon pump inflates in diastole, to push blood back into the coronary arteries, and deflates just before systole, to lower the afte",
+    "voiced": 7
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-152",
+  "text": "VA-ECMO - what are the indications and complications?",
+  "n": 7,
+  "cards": [
+   "CVS04|CS-48",
+   "CVS06B|RVF-45",
+   "CVS06B|RVF-46",
+   "SOD01A|SOD-10",
+   "CVS04|CS-41",
+   "TRIALS01B|TRL-19",
+   "V1-029"
+  ],
+  "open": "Let me start in the cardiac theatre.\n\nThe valve is in. The surgeon tries to come off bypass, and the heart won't take over. The pressure sags, the ven",
+  "close": "So let's bring it together.\n\nVA-ECMO drains venous blood, oxygenates it and pumps it back into the arteries. [[It's the only device that gives full bi",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS04|CS-48",
+    "len": 600,
+    "t": "The circuit is simple to say. [[Blood is drawn from the venous system, oxygenated, and pumped into the arterial circulation.]]\n\nSo it gives two things",
+    "voiced": 4
+   },
+   {
+    "i": 2,
+    "card": "CVS06B|RVF-46",
+    "len": 1259,
+    "t": "This card gives the indications for mechanical support from the right ventricular chapter, and they're worth learning as a group.\n\nFive indications. P",
+    "voiced": 11
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-062",
+  "text": "What is peripartum cardiomyopathy?",
+  "n": 3,
+  "cards": [
+   "CVS03|CS-11",
+   "OBS02B|OBS-38",
+   "V1-030"
+  ],
+  "open": "Let me start with the woman from the end of the last lesson.\n\nShe's twenty-eight. Three weeks ago she had her first baby, and it went well. Now she ca",
+  "close": "So let's bring it together.\n\n[[Peripartum cardiomyopathy is heart failure with an ejection fraction under forty-five percent, from late pregnancy to f",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS03|CS-11",
+    "len": 1162,
+    "t": "Start by placing it. This card lists the myocardial causes of cardiogenic shock, the causes where the muscle itself fails.\n\nAcute decompensated heart ",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-045",
+  "text": "Diagnose cardiac tamponade at the bedside.",
+  "n": 8,
+  "cards": [
+   "CVS01|CVS-19",
+   "CVS01|CVS-20",
+   "CVS01|CVS-22",
+   "CVS01|CVS-24",
+   "CVS01|CVS-25",
+   "V1-031",
+   "CVS03|CS-33",
+   "CVS01|CVS-27"
+  ],
+  "open": "Let me start with two patients and two effusions.\n\nPatient A has had a pericardial effusion from a cancer for weeks. On the echo it's huge, more than ",
+  "close": "So let's bring it together.\n\n[[Tamponade is haemodynamic collapse from pericardial pressure compressing the heart. The rate of filling matters more th",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS01|CVS-19",
+    "len": 1186,
+    "t": "Start with the definition. [[Tamponade is the haemodynamic decompensation that occurs when the pressure in the pericardial cavity compresses the heart",
+    "voiced": 8
+   },
+   {
+    "i": 1,
+    "card": "CVS01|CVS-20",
+    "len": 1761,
+    "t": "The pericardium is a tough, fibrous sac. It stretches, but slowly. So what matters is whether it has time.\n\n{{pic}}\n\nLook at the red curve. That's an ",
+    "voiced": 13
+   },
+   {
+    "i": 2,
+    "card": "CVS01|CVS-22",
+    "len": 2010,
+    "t": "The classic signs come in a triad, described by the surgeon Claude Beck in the nineteen thirties. [[Beck's triad is hypotension, a raised JVP and muff",
+    "voiced": 10
+   },
+   {
+    "i": 3,
+    "card": "CVS01|CVS-24",
+    "len": 564,
+    "t": "You met this card in the lesson on echo in shock. The pericardial pressure squeezes whichever chamber has the lowest pressure at that moment, so the r",
+    "voiced": 3
+   },
+   {
+    "i": 6,
+    "card": "CVS03|CS-33",
+    "len": 1844,
+    "t": "This card covers the mechanical and electrical causes of cardiogenic shock, and the drugs for each. Tamponade is the last row, but the others are wort",
+    "voiced": 9
+   },
+   {
+    "i": 7,
+    "card": "CVS01|CVS-27",
+    "len": 2252,
+    "t": "Pericardiocentesis. Start with who needs it.\n\nIn an unstable patient, the indication is one word. Tamponade. Drain now.\n\nIn a stable patient, there ar",
+    "voiced": 11
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-156",
+  "text": "Spotter - echo clip showing pericardial effusion. What is it and what next?",
+  "n": 5,
+  "cards": [
+   "CVS05B|ECHO-22",
+   "CVS05B|ECHO-21",
+   "V1-032",
+   "CVS01|CVS-23",
+   "CVS01|CVS-27"
+  ],
+  "open": "Let me start with the clip.\n\nThe examiner presses play. A parasternal long axis view. The heart is beating, and behind it, at the bottom of the screen",
+  "close": "So let's bring it together.\n\nIt's an echo-free space around the heart. On the long axis view, I find the descending aorta behind the left atrium.\n\n[[P",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS05B|ECHO-22",
+    "len": 471,
+    "t": "You met this view at the start of the block. The parasternal long axis, with the probe at the left sternal edge and the marker to the right shoulder, ",
+    "voiced": 3
+   },
+   {
+    "i": 4,
+    "card": "CVS01|CVS-27",
+    "len": 518,
+    "t": "You learned the indications for drainage in the tamponade lesson. If unstable with tamponade, drain. If stable, drain for a large effusion over twenty",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P1",
+  "q": "P1-129",
+  "text": "Spotter: CT \u2014 aortic dissection.",
+  "n": 7,
+  "cards": [
+   "CVS09|AD-04",
+   "CVS09|AD-17",
+   "CVS09|AD-10",
+   "CVS09|AD-12",
+   "CVS09|AD-13",
+   "CVS09|AD-18",
+   "CVS09|AD-19"
+  ],
+  "open": "The panel puts a CT on the screen. A slice through the chest. And in the aorta, where you'd expect a round white circle of contrast, there's a thin li",
+  "close": "So let's bring it together.\n\nWhat you see on the CT is an intimal flap, splitting the aorta into a true and a false lumen. A double-barrelled aorta. A",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS09|AD-04",
+    "len": 1359,
+    "t": "The aortic wall has three layers. The intima on the inside, a thin lining. The media in the middle, thick, muscular and elastic. And the adventitia ou",
+    "voiced": 7
+   },
+   {
+    "i": 1,
+    "card": "CVS09|AD-17",
+    "len": 1105,
+    "t": "Which scan proves it? Four candidates, each with a role and a limit.\n\nTransthoracic echo may show severe aortic regurgitation, or blood around the hea",
+    "voiced": 6
+   },
+   {
+    "i": 2,
+    "card": "CVS09|AD-10",
+    "len": 1066,
+    "t": "Now classify what you see. The Stanford system is the one that decides management, and it rests on a single question.\n\n[[Is the ascending aorta involv",
+    "voiced": 5
+   },
+   {
+    "i": 3,
+    "card": "CVS09|AD-12",
+    "len": 904,
+    "t": "And that single question decides the treatment, because the numbers invert.\n\n[[Type A goes to surgery. Type B is managed medically.]]\n\nIn type A, medi",
+    "voiced": 5
+   },
+   {
+    "i": 4,
+    "card": "CVS09|AD-13",
+    "len": 740,
+    "t": "A dissection becomes complicated when it starts to do damage. The card lists five features. Rupture, or impending rupture. Pain you can't control. Mal",
+    "voiced": 6
+   },
+   {
+    "i": 5,
+    "card": "CVS09|AD-18",
+    "len": 1511,
+    "t": "Every patient with an acute dissection needs the same first hour, whatever the type. And the whole of it follows from one idea.\n\nWhat tears the aorta ",
+    "voiced": 10
+   },
+   {
+    "i": 6,
+    "card": "CVS09|AD-19",
+    "len": 1438,
+    "t": "The order is the whole answer.\n\n[[First line is an intravenous beta-blocker.]] It lowers the heart rate and the force of each beat together, which is ",
+    "voiced": 9
+   }
+  ]
+ },
+ {
+  "p": "P3",
+  "q": "P3-188",
+  "text": "How do you manage tetanus in the ICU?",
+  "n": 5,
+  "cards": [
+   "V3-028",
+   "V3-029",
+   "V3-031",
+   "V3-030",
+   "ELEC03B|MGP-07"
+  ],
+  "open": "Let me start with a patient.\n\nPatient C is a farmer of fifty. Two weeks ago he cut his foot in the field and thought nothing of it. Now his jaw is so ",
+  "close": "So let's bring it all together, slowly.\n\nTetanospasmin climbs up the motor nerve and stops the inhibitory interneurons releasing GABA and glycine. Wit",
+  "first": null,
+  "steps": [
+   {
+    "i": 4,
+    "card": "ELEC03B|MGP-07",
+    "len": 1562,
+    "t": "By the knee jerk. That's the cheapest monitor in the ICU.\n\n{{pic}}\n\nClimb the ladder, in millimoles per litre. Normal serum magnesium is about zero po",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P6",
+  "q": "P6-242",
+  "text": "How do you manage hypercalcaemia?",
+  "n": 6,
+  "cards": [
+   "ELEC03A|CAL-09",
+   "ELEC03A|CAL-10",
+   "ELEC03A|CAL-11",
+   "HY1|ABE-22",
+   "ELEC03A|CAL-13",
+   "V6-015"
+  ],
+  "open": "A woman of sixty-two with breast cancer is admitted confused and drowsy. Her family say she's been constipated for a week, vomiting for three days, an",
+  "close": "So let's bring it together, slowly.\n\nWhat it is. A total calcium above about ten and a half milligrams per decilitre, severe above fourteen. In an inp",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "ELEC03A|CAL-10",
+    "len": 1383,
+    "t": "Four systems on the card, and the kidney is the one that drives the disease.\n\nStart there. Calcium acts on the kidney in two ways. In the loop of Henl",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P8",
+  "q": "P8-118",
+  "text": "General approach to the poisoned patient.",
+  "n": 8,
+  "cards": [
+   "TOX01|TOX-02",
+   "TOX01|TOX-01",
+   "TOX01|TOX-03",
+   "TOX01|TOX-04",
+   "TOX01|TOX-07",
+   "TOX01|TOX-09",
+   "TOX01|TOX-11",
+   "TOX01|TOX-13"
+  ],
+  "open": "Let me start with a patient.\n\nA woman of twenty-four is carried into your emergency room at two in the morning. She is drowsy and mumbling. Her brothe",
+  "close": "So let's bring it together, slowly. Six moves, in order.\n\nOne. Resuscitate before you identify. Airway, breathing, circulation. Then the glucose, the ",
+  "first": null,
+  "steps": [
+   {
+    "i": 4,
+    "card": "TOX01|TOX-07",
+    "len": 2867,
+    "t": "The ECG in poisoning is not read for ischaemia. It is read for two intervals. The QRS and the QT.\n\nStart with the normal values, because the panel wil",
+    "voiced": 11
+   }
+  ]
+ },
+ {
+  "p": "P8",
+  "q": "P8-264",
+  "text": "How do you manage tricyclic antidepressant overdose?",
+  "n": 5,
+  "cards": [
+   "TOX01|TOX-03",
+   "TOX01|TOX-07",
+   "V8-014",
+   "V8-015",
+   "TOX01|TOX-12"
+  ],
+  "open": "Let me start with a patient.\n\nPicture a woman of twenty-eight, brought in about an hour after swallowing her mother's amitriptyline tablets. She's dro",
+  "close": "So let's bring it together, slowly, the way you'd say it to the panel.\n\nTricyclics kill by sodium-channel block. A wide QRS, ventricular tachycardia, ",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "TOX01|TOX-07",
+    "len": 609,
+    "t": "You met this card too in the first lesson, the ECG in poisoning. Here's what matters for the tricyclic.\n\nThe card gives the textbook normal: a QRS und",
+    "voiced": 5
+   }
+  ]
+ },
+ {
+  "p": "P8",
+  "q": "P8-266",
+  "text": "How do you manage calcium channel or beta-blocker overdose?",
+  "n": 6,
+  "cards": [
+   "TOX01|TOX-07",
+   "V8-016",
+   "TOX01|TOX-14",
+   "V8-017",
+   "V8-018",
+   "HY2|CAR-14"
+  ],
+  "open": "Let me start with a patient who doesn't behave.\n\nPicture a man of fifty-five, brought in two hours after swallowing a large number of his own sustaine",
+  "close": "So let's bring it together, slowly.\n\nHow does he present? Bradycardia, AV block and shock. The calcium-channel blocker gives a high glucose and vasodi",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "TOX01|TOX-07",
+    "len": 546,
+    "t": "You met this card in the first lesson of this package, the ECG in poisoning, and again a moment ago with the tricyclic. This time read its last line, ",
+    "voiced": 4
+   },
+   {
+    "i": 2,
+    "card": "TOX01|TOX-14",
+    "len": 1487,
+    "t": "This is the second antidote table, seven poisons and seven answers. It's a fact card, so let's go through it once, cleanly, and fix one line on the wa",
+    "voiced": 7
+   },
+   {
+    "i": 5,
+    "card": "HY2|CAR-14",
+    "len": 1660,
+    "t": "This card asks one thing about four special cardiac arrests. What is the extra drug? Take them in turn.\n\nFirst, anaphylaxis in a patient who is on a b",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P8",
+  "q": "P8-267",
+  "text": "What is lipid emulsion therapy and when do you use it?",
+  "n": 4,
+  "cards": [
+   "V8-019",
+   "TOX01|TOX-15",
+   "V8-020",
+   "TOX01|TOX-14"
+  ],
+  "open": "Let me start in a place you know better than any toxicologist does. The block room.\n\nPicture a man of sixty, seventy kilos, having a nerve block with ",
+  "close": "So let's bring it together, slowly.\n\nWhat is it? Twenty percent intravenous lipid emulsion, the fat of parenteral nutrition, given as a bolus and an i",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "TOX01|TOX-15",
+    "len": 2558,
+    "t": "This is the card you should be able to recite half asleep, because when you need it there is no time to look it up.\n\nThe bolus. Twenty percent lipid, ",
+    "voiced": 15
+   },
+   {
+    "i": 3,
+    "card": "TOX01|TOX-14",
+    "len": 612,
+    "t": "You met this antidote table in the last lesson, where we corrected the insulin dose. Read it now with lipid in mind, because the word lipid appears on",
+    "voiced": 4
+   }
+  ]
+ },
+ {
+  "p": "P8",
+  "q": "P8-273",
+  "text": "How do you manage digoxin toxicity?",
+  "n": 4,
+  "cards": [
+   "HY2|CAR-07",
+   "V8-021",
+   "TOX01|TOX-14",
+   "V8-022"
+  ],
+  "open": "Let me give you two patients with the same poison and opposite blood results.\n\nPatient A is a girl of nineteen, brought in three hours after swallowin",
+  "close": "So let's bring it together, slowly.\n\nWhat is it? Block of the sodium-potassium pump. More calcium in the cell gives ectopy, and more vagal tone gives ",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "HY2|CAR-07",
+    "len": 2550,
+    "t": "Let's follow the blocked pump into the heart cell, because every ECG finding on this card comes out of it.\n\nThe pump normally pushes sodium out of the",
+    "voiced": 13
+   },
+   {
+    "i": 2,
+    "card": "TOX01|TOX-14",
+    "len": 583,
+    "t": "You met this antidote table in the calcium-channel blocker lesson. This time read only the top row. Digoxin: digoxin Fab, acute ten to twenty vials, c",
+    "voiced": 2
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-131",
+  "text": "Take us through BLS.",
+  "n": 7,
+  "cards": [
+   "CVS08E|ACLS-71",
+   "CVS08A|ACLS-03",
+   "CVS08A|ACLS-04",
+   "CVS08E|ACLS-72",
+   "CVS08E|ACLS-73",
+   "CVS08A|ACLS-11",
+   "CVS08A|ACLS-06"
+  ],
+  "open": "Let me start with a puzzle.\n\nA man of fifty-eight is standing in the hospital canteen. He stops talking, and he falls. His heart is in ventricular fib",
+  "close": "So let's bring it together, slowly. This is what you say to the panel.\n\nRecognise. The scene is safe, I check for a response, I shout for help and sen",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS08E|ACLS-71",
+    "len": 1780,
+    "t": "So our man is on the canteen floor. What do you do, in order?\n\nFirst, check that the scene is safe. Then check for a response. Tap his shoulders and s",
+    "voiced": 12
+   },
+   {
+    "i": 4,
+    "card": "CVS08E|ACLS-73",
+    "len": 1738,
+    "t": "Here is what the pressure does when you stop.\n\n{{pic}}\n\nCoronary perfusion pressure doesn't appear with the first compression. It builds, push after p",
+    "voiced": 10
+   },
+   {
+    "i": 6,
+    "card": "CVS08A|ACLS-06",
+    "len": 1369,
+    "t": "A woman at the next table stands up, with her hands at her throat. This is foreign body airway obstruction, and the adult sequence changed in twenty t",
+    "voiced": 10
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-088",
+  "text": "Run the ACLS algorithm for cardiac arrest.",
+  "n": 7,
+  "cards": [
+   "CVS08A|ACLS-09",
+   "CVS08A|ACLS-10",
+   "CVS08C|ACLS-45",
+   "CVS08C|ACLS-46",
+   "CVS08A|ACLS-12",
+   "CVS08D|ACLS-60",
+   "V5-001"
+  ],
+  "open": "Let me start with two patients, in two beds of your ICU, on the same night.\n\nPatient A is sixty-two, two days after a heart attack. His monitor alarms",
+  "close": "So let's bring it all together, slowly, as you'd say it.\n\nI confirm the arrest, call the team, and start high-quality CPR at thirty to two. I attach t",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS08A|ACLS-09",
+    "len": 1880,
+    "t": "Patient A first. The monitor shows ventricular fibrillation, and he has no pulse.\n\nBefore any limb of the algorithm, the start is the same for everyon",
+    "voiced": 11
+   },
+   {
+    "i": 2,
+    "card": "CVS08C|ACLS-45",
+    "len": 1235,
+    "t": "Here is the rule that splits the two limbs. The examiners love it, because it's a single asymmetry in an otherwise symmetrical chart.\n\n[[Adrenaline, o",
+    "voiced": 7
+   },
+   {
+    "i": 3,
+    "card": "CVS08C|ACLS-46",
+    "len": 1147,
+    "t": "Patient A has now had three shocks, and the monitor still shows VF. This is where the antiarrhythmic comes in.\n\nThere are two choices, and they are al",
+    "voiced": 8
+   },
+   {
+    "i": 4,
+    "card": "CVS08A|ACLS-12",
+    "len": 1694,
+    "t": "The reversible causes come as five H's and five T's. The list is easy. Using it is the skill.\n\n{{**5 H's** | **5 T's**\nHypovolaemia | Tension pneumoth",
+    "voiced": 9
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-089",
+  "text": "Amiodarone dose \u2014 in arrest and in AF.",
+  "n": 6,
+  "cards": [
+   "CVS08C|ACLS-46",
+   "CVS08B|ACLS-32",
+   "CVS08B|ACLS-33",
+   "HY2|CAR-04",
+   "V5-002",
+   "V5-003"
+  ],
+  "open": "Let me start with two patients and one syringe.\n\nPatient A is in cardiac arrest. He's had three shocks, and he's still in ventricular fibrillation. Yo",
+  "close": "So let's bring it together, slowly.\n\nAmiodarone is a class three antiarrhythmic that also has the actions of classes one, two and four. It slows the A",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS08C|ACLS-46",
+    "len": 558,
+    "t": "You met this card a few minutes ago, in the algorithm. In arrest, amiodarone is for VF or pulseless VT that's still there after the third shock. It's ",
+    "voiced": 2
+   },
+   {
+    "i": 1,
+    "card": "CVS08B|ACLS-32",
+    "len": 1207,
+    "t": "So the patient has a pulse. Take the simplest case first: a stable, regular, wide-complex tachycardia. Ventricular tachycardia, with a blood pressure.",
+    "voiced": 7
+   },
+   {
+    "i": 2,
+    "card": "CVS08B|ACLS-33",
+    "len": 2177,
+    "t": "New atrial fibrillation with a fast ventricular rate is the commonest arrhythmia in the ICU. Go back to Patient B, septic, on noradrenaline, at a hund",
+    "voiced": 12
+   },
+   {
+    "i": 3,
+    "card": "HY2|CAR-04",
+    "len": 1333,
+    "t": "Take a patient with atrial fibrillation at a fast rate, an ejection fraction of thirty percent, and severe heart failure. Which drugs are out, and whi",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-224",
+  "text": "What is the role of end-tidal CO2 during CPR?",
+  "n": 6,
+  "cards": [
+   "V5-004",
+   "CVS08C|ACLS-42",
+   "CVS08C|ACLS-43",
+   "CVS08C|ACLS-44",
+   "CVS08A|ACLS-13",
+   "CVS08A|ACLS-20"
+  ],
+  "open": "Let me start in the operating theatre, where you've spent three years.\n\nYour patient is asleep, and the end-tidal carbon dioxide reads thirty-five. Tu",
+  "close": "So let's bring it together, slowly.\n\nWhy it works. In arrest, ventilation is fixed, and the delivery of carbon dioxide to the lung depends on blood fl",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "CVS08C|ACLS-42",
+    "len": 1333,
+    "t": "This card is the breathing side of CPR, and capnography sits in the middle of it. One caution first: your printed card has two lines that the twenty t",
+    "voiced": 8
+   },
+   {
+    "i": 2,
+    "card": "CVS08C|ACLS-43",
+    "len": 1015,
+    "t": "Two patterns on the trace matter, and they call for opposite responses.\n\nThe first is a trace that's persistently low or nearly flat, around five to t",
+    "voiced": 5
+   },
+   {
+    "i": 3,
+    "card": "CVS08C|ACLS-44",
+    "len": 1369,
+    "t": "This card is the circulation side of CPR. Monitor the quality of CPR with the end-tidal carbon dioxide, attach the monitor and defibrillator, get intr",
+    "voiced": 7
+   },
+   {
+    "i": 4,
+    "card": "CVS08A|ACLS-13",
+    "len": 965,
+    "t": "How do you know that circulation has returned? There are three signs.\n\nA palpable pulse, with a measurable blood pressure. An abrupt, sustained rise i",
+    "voiced": 6
+   },
+   {
+    "i": 5,
+    "card": "CVS08A|ACLS-20",
+    "len": 1480,
+    "t": "For ambulance crews there's the universal termination of resuscitation rule. All three criteria must be present. The arrest was not witnessed by the c",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-225",
+  "text": "What is the evidence for adrenaline in cardiac arrest?",
+  "n": 3,
+  "cards": [
+   "HY2|CAR-13",
+   "CVS08C|ACLS-45",
+   "V5-005"
+  ],
+  "open": "Let me start with a number that should bother you.\n\nIn the largest trial of adrenaline in cardiac arrest, giving the drug tripled the chance of gettin",
+  "close": "So let's bring it together, slowly.\n\nWhy we give it. Alpha-one vasoconstriction raises the aortic diastolic pressure, and so the coronary perfusion pr",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "HY2|CAR-13",
+    "len": 1459,
+    "t": "Put all the arrest drugs on one page first.\n\nIn a shockable rhythm: adrenaline, one milligram, after the second shock, and then every three to five mi",
+    "voiced": 8
+   },
+   {
+    "i": 1,
+    "card": "CVS08C|ACLS-45",
+    "len": 564,
+    "t": "You met this card in the algorithm. One milligram every three to five minutes. As soon as possible in a non-shockable rhythm. After the initial shocks",
+    "voiced": 2
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-226",
+  "text": "What is double sequential defibrillation?",
+  "n": 5,
+  "cards": [
+   "CVS08B|ACLS-23",
+   "V5-006",
+   "V5-007",
+   "CVS08B|ACLS-24",
+   "HY2|CAR-13"
+  ],
+  "open": "Picture a man of fifty who collapses at home in ventricular fibrillation. The paramedics do everything right. Good CPR. A shock. A second shock, and a",
+  "close": "So let's bring it together, slowly.\n\nWhat it is. For VF persisting after three shocks, two defibrillators, with pads in two planes, anterolateral and ",
+  "first": null,
+  "steps": [
+   {
+    "i": 4,
+    "card": "HY2|CAR-13",
+    "len": 684,
+    "t": "You met this card in the adrenaline question, as the page of arrest drugs. Its last line was written for this moment. In refractory VF, what really ma",
+    "voiced": 2
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-090",
+  "text": "What changed in the 2025 AHA resuscitation guidelines?",
+  "n": 7,
+  "cards": [
+   "CVS08A|ACLS-01",
+   "CVS08D|ACLS-59",
+   "CVS08D|ACLS-60",
+   "CVS08D|ACLS-61",
+   "CVS08D|ACLS-70",
+   "CVS08D|ACLS-64",
+   "V5-008"
+  ],
+  "open": "Here's a question that sounds like a memory test. What changed in the twenty twenty-five resuscitation guidelines?\n\nThere are dozens of changes, and i",
+  "close": "So let's bring it together, slowly.\n\nThe frame. The twenty twenty-five American guideline, published in October of that year, has one chain of surviva",
+  "first": null,
+  "steps": [
+   {
+    "i": 3,
+    "card": "CVS08D|ACLS-61",
+    "len": 1867,
+    "t": "Post-cardiac arrest care is where the twenty twenty-five guideline changed the most, and it's the part you deliver, for days. Take it as a head-to-toe",
+    "voiced": 9
+   },
+   {
+    "i": 4,
+    "card": "CVS08D|ACLS-70",
+    "len": 1322,
+    "t": "Neuroprognostication is the decision about whether a comatose survivor will wake. The twenty twenty-five additions change its character.\n\nUntil now, e",
+    "voiced": 9
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-222",
+  "text": "How do you manage unstable tachyarrhythmia?",
+  "n": 6,
+  "cards": [
+   "CVS08B|ACLS-28",
+   "CVS08B|ACLS-25",
+   "CVS08B|ACLS-26",
+   "CVS08B|ACLS-27",
+   "CVS08A|ACLS-16",
+   "HY2|CAR-01"
+  ],
+  "open": "Let me start with two shocks.\n\nSame machine, same pads, same two hundred joules. One of them turns a fast, failing heart back into sinus rhythm. The o",
+  "close": "So let's bring it together, slowly.\n\nA tachycardia, usually at one hundred and fifty a minute or more, with any of five features: hypotension, altered",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS08B|ACLS-28",
+    "len": 2024,
+    "t": "So let's begin at the fork.\n\nA patient has a tachycardia and a pulse. The algorithm asks one question before any other. Is this rhythm causing harm, r",
+    "voiced": 9
+   },
+   {
+    "i": 1,
+    "card": "CVS08B|ACLS-25",
+    "len": 2115,
+    "t": "Go back to the two shocks from the beginning.\n\nThink about what the ventricle is doing across one heartbeat. At the R wave, the whole ventricle is dep",
+    "voiced": 10
+   },
+   {
+    "i": 2,
+    "card": "CVS08B|ACLS-26",
+    "len": 1645,
+    "t": "This is a table card, and the table changed in twenty twenty-five.\n\nAtrial fibrillation, two hundred joules. Atrial flutter, two hundred joules. Narro",
+    "voiced": 6
+   },
+   {
+    "i": 3,
+    "card": "CVS08B|ACLS-27",
+    "len": 2211,
+    "t": "You're an anaesthetist, so read this card as a short anaesthetic in a shocked patient. Because that's what it is.\n\nFirst, when. A ventricular rate of ",
+    "voiced": 11
+   },
+   {
+    "i": 4,
+    "card": "CVS08A|ACLS-16",
+    "len": 1514,
+    "t": "Polymorphic VT.\n\nIn monomorphic VT, one focus or one circuit drives the ventricle, so every QRS looks like the last. The machine can track it. In poly",
+    "voiced": 8
+   },
+   {
+    "i": 5,
+    "card": "HY2|CAR-01",
+    "len": 1933,
+    "t": "Here he is again. AF at one hundred and sixty. Pressure eighty-four over fifty. Basal crackles, saturation eighty-eight percent. Duration unknown, not",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-223",
+  "text": "How do you manage symptomatic bradycardia?",
+  "n": 6,
+  "cards": [
+   "CVS08B|ACLS-37",
+   "HY2|CAR-08",
+   "CVS08B|ACLS-36",
+   "CVS08B|ACLS-38",
+   "CVS08B|ACLS-39",
+   "CVS08B|ACLS-40"
+  ],
+  "open": "Two patients, and nearly the same numbers on both monitors.\n\nPatient A is a man of fifty-eight. Heart rate thirty-six, pressure seventy-six over forty",
+  "close": "So let's bring it together, slowly.\n\nA heart rate usually below fifty a minute, with hypotension, altered mentation, shock, ischaemic chest pain or ac",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS08B|ACLS-37",
+    "len": 1983,
+    "t": "So, the algorithm.\n\nBradycardia here means a heart rate that is typically below fifty a minute. But the number doesn't start treatment. A fit man asle",
+    "voiced": 12
+   },
+   {
+    "i": 1,
+    "card": "HY2|CAR-08",
+    "len": 2071,
+    "t": "Start with what sets the heart rate. Left alone, with no nerves attached, the sinus node would fire at about a hundred a minute. At rest, the vagus is",
+    "voiced": 10
+   },
+   {
+    "i": 2,
+    "card": "CVS08B|ACLS-36",
+    "len": 2189,
+    "t": "The clue is the PR interval, and what it does before a beat is dropped.\n\nTake them in order. First-degree block. The PR is longer than two hundred mil",
+    "voiced": 9
+   },
+   {
+    "i": 3,
+    "card": "CVS08B|ACLS-38",
+    "len": 1188,
+    "t": "Two infusions, and one unit trap.\n\nDopamine, five to twenty micrograms per kilogram per minute. Titrate to the patient's response, and when you stop i",
+    "voiced": 7
+   },
+   {
+    "i": 4,
+    "card": "CVS08B|ACLS-39",
+    "len": 2035,
+    "t": "Transcutaneous pacing. This is a practical the panel may ask you to talk through, so let's do it in order.\n\nThe indication is a haemodynamically unsta",
+    "voiced": 13
+   },
+   {
+    "i": 5,
+    "card": "CVS08B|ACLS-40",
+    "len": 1110,
+    "t": "Four categories, and every one is reversible.\n\nMyocardial ischaemia or infarction. An inferior infarct typically affects the AV node, so the block ten",
+    "voiced": 7
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-227",
+  "text": "How do you manage hyperkalaemic cardiac arrest?",
+  "n": 5,
+  "cards": [
+   "HY1|ABE-16",
+   "HY1|ABE-17",
+   "HY1|ABE-18",
+   "CVS08A|ACLS-12",
+   "V5-009"
+  ],
+  "open": "Picture a man of fifty-five. He's on dialysis three times a week, and he has missed the last two sessions. He's brought in weak and breathless. On the",
+  "close": "So let's bring it together, slowly.\n\nAn arrest, often pulseless electrical activity or asystole after a wide QRS or a sine wave, in a patient with ren",
+  "first": null,
+  "steps": [
+   {
+    "i": 3,
+    "card": "CVS08A|ACLS-12",
+    "len": 497,
+    "t": "You met this card in the first group, as the five Hs and five Ts, the reversible causes of arrest. What matters here is that potassium is one of the H",
+    "voiced": 2
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-221",
+  "text": "How do you manage cardiac arrest in pregnancy?",
+  "n": 5,
+  "cards": [
+   "OBS01|OBS-06",
+   "HY5|HEO-10",
+   "CVS08C|ACLS-51",
+   "CVS08C|ACLS-52",
+   "CVS08C|ACLS-53"
+  ],
+  "open": "A woman of twenty-nine, thirty-two weeks pregnant, admitted with breathlessness. She collapses on the ward. No pulse. The team starts compressions at ",
+  "close": "So let's bring it together, slowly.\n\nAn arrest in pregnancy. I call the maternal arrest team at once: obstetric, anaesthesia and neonatal. Compression",
+  "first": null,
+  "steps": [
+   {
+    "i": 2,
+    "card": "CVS08C|ACLS-51",
+    "len": 1662,
+    "t": "Two priorities, of equal rank. High-quality CPR. And relief of aortocaval compression.\n\nThe first is exactly what you'd do for anyone.\n\nThe second is ",
+    "voiced": 8
+   },
+   {
+    "i": 3,
+    "card": "CVS08C|ACLS-52",
+    "len": 2107,
+    "t": "The algorithm sorts the tasks into two columns. Things done for the mother, and obstetric things.\n\nThe maternal column has four. Manage the airway. Gi",
+    "voiced": 10
+   },
+   {
+    "i": 4,
+    "card": "CVS08C|ACLS-53",
+    "len": 2291,
+    "t": "This is the centre of the question.\n\nThe twenty twenty-five term is resuscitative delivery. It replaces perimortem caesarean delivery. And the change ",
+    "voiced": 13
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-093",
+  "text": "Amniotic fluid embolism.",
+  "n": 6,
+  "cards": [
+   "OBS02B|OBS-35",
+   "OBS02B|OBS-36",
+   "HY5|HEO-16",
+   "OBS02B|OBS-37",
+   "CVS08C|ACLS-53",
+   "V5-010"
+  ],
+  "open": "A woman of thirty-four, in labour at term, perfectly well. Suddenly she says she can't breathe. Within a minute her saturation is in the seventies, he",
+  "close": "So let's bring it together, slowly.\n\nWhat it is. Sudden collapse in labour or within thirty minutes of delivery of the placenta, with hypoxia and then",
+  "first": null,
+  "steps": [
+   {
+    "i": 4,
+    "card": "CVS08C|ACLS-53",
+    "len": 549,
+    "t": "You met this card in maternal arrest, and here's what matters for this question. If she arrests and the fundus is at or above the umbilicus, you prepa",
+    "voiced": 2
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-092",
+  "text": "Post-cardiac-arrest care and temperature control.",
+  "n": 7,
+  "cards": [
+   "CVS07A|PCA-02",
+   "CVS08C|ACLS-56",
+   "CVS08B|ACLS-34",
+   "CVS07A|PCA-18",
+   "CVS07B|PCA-28",
+   "CVS07B|PCA-26",
+   "V5-011"
+  ],
+  "open": "Let me start with a moment you know well.\n\nA man of fifty-four collapses at a wedding. Someone starts compressions. The ambulance crew find ventricula",
+  "close": "So let's bring it together, slowly.\n\nAfter ROSC you are treating a new disease. Post-cardiac-arrest syndrome. Ischaemia, then reperfusion. And it show",
+  "first": null,
+  "steps": [
+   {
+    "i": 2,
+    "card": "CVS08B|ACLS-34",
+    "len": 1286,
+    "t": "This is a card of numbers, so I'll give them plainly. The reasons come in the next question.\n\n{{**AHA 2025 targets after ROSC**\nMAP \u2265 65 mmHg\nSpO2 90\u2013",
+    "voiced": 8
+   },
+   {
+    "i": 3,
+    "card": "CVS07A|PCA-18",
+    "len": 2045,
+    "t": "Start with the logic. In adults, the commonest cause of a sudden arrest outside hospital is coronary disease. So for years the reflex was simple: ROSC",
+    "voiced": 12
+   },
+   {
+    "i": 4,
+    "card": "CVS07B|PCA-28",
+    "len": 2613,
+    "t": "This is a story in four acts, and if you tell it in order, the guideline writes itself.\n\nAct one. In two thousand and two, two trials appeared togethe",
+    "voiced": 12
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-228",
+  "text": "What BP and oxygen targets after ROSC?",
+  "n": 6,
+  "cards": [
+   "HY2|CAR-15",
+   "CVS07A|PCA-17",
+   "CVS08D|ACLS-61",
+   "V5-012",
+   "CVS07A|PCA-16",
+   "V5-013"
+  ],
+  "open": "Go back to our man from the wedding. Twenty minutes without a proper circulation, and now he's in your ICU with a pulse.\n\nEvery instinct you have says",
+  "close": "So let's bring it together, slowly.\n\nThe targets. A MAP of at least sixty-five. A saturation of ninety to ninety-eight percent, a PaO2 of sixty to a h",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "HY2|CAR-15",
+    "len": 2321,
+    "t": "Start with the healthy brain, because you know this curve from neuroanaesthesia.\n\nAcross a wide range of mean arterial pressure, cerebral blood flow s",
+    "voiced": 13
+   },
+   {
+    "i": 1,
+    "card": "CVS07A|PCA-17",
+    "len": 2129,
+    "t": "First ask why he's hypotensive at all. The pulse is back, so why is the pressure soft?\n\nThree reasons, and you met all of them a few minutes ago. The ",
+    "voiced": 12
+   },
+   {
+    "i": 2,
+    "card": "CVS08D|ACLS-61",
+    "len": 506,
+    "t": "You met this card in the first group, as the summary of what changed in twenty twenty-five. For this question, one line of it matters.\n\nThe American g",
+    "voiced": 3
+   },
+   {
+    "i": 4,
+    "card": "CVS07A|PCA-16",
+    "len": 2054,
+    "t": "The respiratory plan has five parts, and each has a reason.\n\nThe airway is secured. Then decompress the stomach with a nasogastric or orogastric tube.",
+    "voiced": 11
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-216",
+  "text": "How do you prognosticate after cardiac arrest?",
+  "n": 7,
+  "cards": [
+   "CVS07C|PCA-42",
+   "CVS07C|PCA-41",
+   "CVS07C|PCA-43",
+   "CVS07C|PCA-52",
+   "CVS07C|PCA-53",
+   "CVS08D|ACLS-70",
+   "V5-014"
+  ],
+  "open": "It's day three. Our man from the wedding is still comatose, and his daughter asks you, will he wake up?\n\nBefore you answer her, I want you to notice s",
+  "close": "So let's bring it together, slowly.\n\nThe principle. No single test. [[I use a multimodal approach, because a falsely pessimistic prediction leads to w",
+  "first": null,
+  "steps": [
+   {
+    "i": 5,
+    "card": "CVS08D|ACLS-70",
+    "len": 753,
+    "t": "You met this card in the first group, among the twenty twenty-five changes. Here's what matters for this question.\n\nUntil twenty twenty-five, every te",
+    "voiced": 3
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-220",
+  "text": "What is ECPR and who is a candidate?",
+  "n": 5,
+  "cards": [
+   "CVS08E|ACLS-81",
+   "CVS08E|ACLS-82",
+   "ECMO01|ECMO-16",
+   "V5-015",
+   "HY2|CAR-16"
+  ],
+  "open": "Let's change the ending of our story.\n\nThe man at the wedding collapses. Bystanders start compressions within a minute. The crew arrive, find ventricu",
+  "close": "So let's bring it together, slowly.\n\nWhat it is. [[ECPR is VA ECMO started during CPR in a refractory cardiac arrest, to perfuse the brain and heart w",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS08E|ACLS-81",
+    "len": 1623,
+    "t": "There are two kinds of ECMO, and the names tell you the whole circuit. The first letter is where the blood is taken from. The second is where it's ret",
+    "voiced": 9
+   },
+   {
+    "i": 1,
+    "card": "CVS08E|ACLS-82",
+    "len": 2312,
+    "t": "ECPR is VA ECMO, started during CPR, in a refractory cardiac arrest. Always venoarterial. That's your definition, and the letters VA must be in it.\n\nN",
+    "voiced": 13
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-217",
+  "text": "How do you risk-stratify pulmonary embolism?",
+  "n": 7,
+  "cards": [
+   "RESP06A|PE-05",
+   "RESP06B|PE-14",
+   "RESP06B|PE-16",
+   "RESP06B|PE-15",
+   "HY2|CAR-23",
+   "V5-016",
+   "V5-018"
+  ],
+  "open": "Two patients come through the emergency department on the same evening.\n\nBoth are breathless. Both go to the CT scanner. And the two scans look almost",
+  "close": "So let's say the whole answer, the way you'd say it to the panel.\n\n[[I stratify by the risk of early death, in three steps. Haemodynamics first. Then ",
+  "first": null,
+  "steps": [
+   {
+    "i": 4,
+    "card": "HY2|CAR-23",
+    "len": 1890,
+    "t": "Here is the trap I promised. And I'll be direct, because you've met it before.\n\nA patient with a proven embolism. The right ventricle is dilated on th",
+    "voiced": 10
+   }
+  ]
+ },
+ {
+  "p": "P5",
+  "q": "P5-218",
+  "text": "Spotter - echo showing RV dilatation with D-shaped septum.",
+  "n": 7,
+  "cards": [
+   "CVS06A|RVF-10",
+   "V5-019",
+   "RESP06A|PE-12",
+   "CVS06B|RVF-30",
+   "V5-020",
+   "RESP06A|PE-13",
+   "RESP06B|PE-17"
+  ],
+  "open": "Picture the moment.\n\nThe examiner turns a screen towards you. A short echo loop. A cross-section of the heart, and something is wrong with its shape. ",
+  "close": "So here is the spotter, start to finish, the way you'd say it.\n\nThis is a parasternal short-axis view. The right ventricle is dilated and the septum i",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS06A|RVF-10",
+    "len": 1986,
+    "t": "The two ventricles are not two separate pumps. They share a wall, the septum. And they share a bag, the pericardium.\n\nThat bag is the key. The pericar",
+    "voiced": 9
+   },
+   {
+    "i": 3,
+    "card": "CVS06B|RVF-30",
+    "len": 1875,
+    "t": "Move the probe to the apex, and look at all four chambers together. In this view, the right ventricle should be about two thirds the size of the left,",
+    "voiced": 9
+   }
+  ]
+ },
+ {
+  "p": "P10",
+  "q": "P10-001",
+  "text": "A labourer collapses after a long shift in a Varanasi summer, temperature 41.5 \u00b0C, confused. Take me through your management.",
+  "n": 7,
+  "cards": [
+   "V10-001",
+   "HY3|EMS-15",
+   "CVS08C|ACLS-55",
+   "V10-002",
+   "V10-004",
+   "CCM08|CNS-03",
+   "V10-003"
+  ],
+  "open": "Picture him first. A man of thirty, a construction labourer, at the end of a twelve-hour shift in a Varanasi June. His workmates carry him in. He's ho",
+  "close": "So let's bring it together, slowly, the way you'll say it.\n\nWhat it is. [[Heatstroke is a core temperature above forty degrees with brain dysfunction.",
+  "first": 1794602971620,
+  "steps": [
+   {
+    "i": 2,
+    "card": "CVS08C|ACLS-55",
+    "len": 1768,
+    "t": "Now the numbers. This card is the AHA's twenty twenty-five line on life-threatening hyperthermia, and there are three numbers to own.\n\nFirst, the wate",
+    "voiced": 8
+   }
+  ]
+ },
+ {
+  "p": "P10",
+  "q": "P10-002",
+  "text": "Classify accidental hypothermia and outline management, including when to use ECMO.",
+  "n": 7,
+  "cards": [
+   "V10-005",
+   "SPECIAL05B|POLY-16",
+   "V10-006",
+   "CVS08C|ACLS-55",
+   "CVS08E|ACLS-82",
+   "V10-007",
+   "V10-008"
+  ],
+  "open": "Let me start with a true story.\n\nIn May of nineteen ninety-nine, a young Swedish doctor named Anna B\u00e5genholm was skiing in the mountains outside Narvi",
+  "close": "So let's walk the answer through, slowly.\n\nWhat it is. A core temperature below thirty-five degrees. Four Swiss stages, by what you can see. One, shiv",
+  "first": 1794602982641,
+  "steps": [
+   {
+    "i": 3,
+    "card": "CVS08C|ACLS-55",
+    "len": 843,
+    "t": "You met this card a few minutes ago in heatstroke, for ice-water immersion. Now read the row above it. For life-threatening hypothermia, the AHA in tw",
+    "voiced": 2
+   },
+   {
+    "i": 4,
+    "card": "CVS08E|ACLS-82",
+    "len": 1699,
+    "t": "So which circuit? This card is about extracorporeal CPR in general, and hypothermia turns out to be its best case.\n\nThe configuration is venoarterial,",
+    "voiced": 7
+   }
+  ]
+ },
+ {
+  "p": "P10",
+  "q": "P10-003",
+  "text": "Ten minutes after a cefuroxime dose in theatre, BP 60 systolic, wheeze, flushed. Manage it, and tell me about refractory anaphylaxis.",
+  "n": 6,
+  "cards": [
+   "V10-009",
+   "V10-010",
+   "V10-011",
+   "V10-012",
+   "HY2|CAR-14",
+   "V10-013"
+  ],
+  "open": "This one happens in your own theatre, so picture it from your own stool.\n\nA routine case. The cefuroxime went in ten minutes ago. The monitor cycles, ",
+  "close": "So let's walk it through, slowly.\n\nWhat it is. Grade three peri-operative anaphylaxis, with the antibiotic the likely culprit. A clinical diagnosis. [",
+  "first": null,
+  "steps": [
+   {
+    "i": 4,
+    "card": "HY2|CAR-14",
+    "len": 1623,
+    "t": "NAP six told you the beta-blocked patient does worse. This card tells you what to do about him.\n\nThink about how adrenaline works on the heart and the",
+    "voiced": 7
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-003",
+  "text": "Describe the parasternal long-axis (PLAX) view: how you get it, what you see and what you measure.",
+  "n": 7,
+  "cards": [
+   "CVS05B|ECHO-22",
+   "V11-001",
+   "V11-007",
+   "V11-008",
+   "CVS05B|ECHO-33",
+   "V11-009",
+   "V11-010"
+  ],
+  "open": "Picture a man of fifty, an hour after intubation, with a systolic pressure of seventy. You have one minute and one probe. You put it at the left stern",
+  "close": "So let's bring it together, slowly.\n\nThe door is the left sternal edge, second to fourth space, marker to the right shoulder, patient on his left side",
+  "first": 1794670112478,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS05B|ECHO-22",
+    "len": 1201,
+    "t": "{{**3D model:** front of the chest. Probe at the left sternal edge, 3rd\u20134th space, marker to the right shoulder: the PLAX slice}}\n\nFind the door first",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-004",
+  "text": "Parasternal short axis at four levels: what each slice shows, the LV ring with its coronary territories, and the O versus D septum.",
+  "n": 8,
+  "cards": [
+   "CVS05B|ECHO-23",
+   "CVS05B|ECHO-24",
+   "V11-011",
+   "CVS05B|ECHO-26",
+   "CVS05B|ECHO-25",
+   "CVS10B|MI-35",
+   "V11-012",
+   "V11-013"
+  ],
+  "open": "Let me start with a picture.\n\nA grey ring in the middle of the screen, squeezing like a fist. That's the left ventricle. And hooked onto its upper lef",
+  "close": "So let's bring it together, slowly.\n\nThe short axis is the long-axis window with the probe turned ninety degrees clockwise, marker to the left shoulde",
+  "first": 1794670210160,
+  "steps": [
+   {
+    "i": 5,
+    "card": "CVS10B|MI-35",
+    "len": 1490,
+    "t": "{{**Model:** short axis, papillary level, frozen in systole. The walls of the LV ring are highlighted; the septum is on screen-left.}}\n\nTo answer, you",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-005",
+  "text": "Apical views: the 4-chamber and 5-chamber (2- and 3-chamber briefly), the RV:LV ratio, TAPSE and MAPSE on M-mode, and LVOT VTI to stroke volume.",
+  "n": 8,
+  "cards": [
+   "CVS05B|ECHO-27",
+   "V11-014",
+   "V11-015",
+   "CVS05B|ECHO-39",
+   "CVS05B|ECHO-29",
+   "HEMO03B|CO-19",
+   "V11-016",
+   "CVS05B|ECHO-30"
+  ],
+  "open": "Picture a man of sixty, ventilated for pneumonia, on noradrenaline, and his pressure is drifting down again. The nurse has a bag of fluid in her hand,",
+  "close": "So let's bring it together, slowly.\n\nProbe on the apex, marker to the patient's left. Apex on top, left heart on screen right, atria at the bottom.\n\nA",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS05B|ECHO-27",
+    "len": 1484,
+    "t": "{{**Model:** apical four-chamber view as the probe sees it. Top: apex. Screen-left: RV above RA. Screen-right: LV above LA. Septum down the middle.}}\n",
+    "voiced": 7
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-006",
+  "text": "Subcostal 4-chamber and the IVC: what you see through the liver, collapsibility versus distensibility, their limits, and the link to VExUS.",
+  "n": 7,
+  "cards": [
+   "CVS05B|ECHO-17",
+   "V11-017",
+   "CVS05B|ECHO-18",
+   "CVS05B|ECHO-19",
+   "V11-018",
+   "CVS05B|ECHO-20",
+   "V11-019"
+  ],
+  "open": "In a mock viva this week, the examiner put two numbers in front of you. An inferior vena cava with a maximum diameter of one point three six centimetr",
+  "close": "So let's bring it together, slowly.\n\nSupine, probe under the xiphoid, the liver as the window. The right ventricle is nearest the probe. It's the apic",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS05B|ECHO-17",
+    "len": 1186,
+    "t": "{{**Model:** chest and upper abdomen from the front. Probe under the xiphoid, lying almost flat; the beam passes up through the liver to the heart.}}\n",
+    "voiced": 7
+   },
+   {
+    "i": 3,
+    "card": "CVS05B|ECHO-19",
+    "len": 1505,
+    "t": "{{**RA pressure from the IVC (spontaneous breathing, sniff)**\n2.1 cm or less and >50% collapse: **3 mmHg** (0\u20135)\nOver 2.1 cm and <50% collapse: **15 m",
+    "voiced": 9
+   },
+   {
+    "i": 5,
+    "card": "CVS05B|ECHO-20",
+    "len": 1141,
+    "t": "{{**Model:** subcostal IVC view in an under-filled circulation: a thin IVC, under 1 cm, almost closing with each breath.}}\n\nYour card turns this into ",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-007",
+  "text": "How do you assess LV systolic function in an ICU patient?",
+  "n": 7,
+  "cards": [
+   "V11-027",
+   "V11-028",
+   "CVS05B|ECHO-39",
+   "CVS10B|MI-35",
+   "SOD01A|SOD-06",
+   "V11-029",
+   "V11-030"
+  ],
+  "open": "Picture two patients in neighbouring beds. Both in septic shock. Both on noradrenaline.\n\nYou put the probe on the first. The left ventricle is squeezi",
+  "close": "So let's bring it together, slowly.\n\nFirst, the eye. Two views. The walls move in, the walls thicken, the mitral leaflet nearly touches the septum. Th",
+  "first": null,
+  "steps": [
+   {
+    "i": 3,
+    "card": "CVS10B|MI-35",
+    "len": 758,
+    "t": "{{**Model:** short axis at the papillary muscles. One ring, three territories: front = LAD \u00b7 side = circumflex \u00b7 bottom = RCA}}\n\nYou met this map in t",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-008",
+  "text": "How do you assess the right ventricle on echo, and what is acute cor pulmonale?",
+  "n": 8,
+  "cards": [
+   "CVS06A|RVF-12",
+   "V11-031",
+   "CVS06A|RVF-10",
+   "CVS06B|RVF-32",
+   "CVS06B|RVF-33",
+   "CVS06B|RVF-30",
+   "V11-032",
+   "V11-033"
+  ],
+  "open": "Let me start with a patient. A man of fifty, day two of ARDS from pneumonia. The plateau pressure is twenty-nine, the PEEP is fourteen, the carbon dio",
+  "close": "So let's bring it together, slowly.\n\nThe right ventricle is the thin-walled front chamber. It tolerates volume and gives up against pressure, so it di",
+  "first": null,
+  "steps": [
+   {
+    "i": 0,
+    "card": "CVS06A|RVF-12",
+    "len": 1227,
+    "t": "{{**3D model:** camera at the feet, like an axial CT. Short-axis slice: thin crescent **RV in front**, round thick **LV behind**.}}\n\nLook at the heart",
+    "voiced": 5
+   },
+   {
+    "i": 2,
+    "card": "CVS06A|RVF-10",
+    "len": 1421,
+    "t": "{{**3D model:** short axis at papillary level, dilated RV, frozen in systole. The septum is flat: the LV is a **D**, not an **O**.}}\n\nIn the short axi",
+    "voiced": 7
+   },
+   {
+    "i": 5,
+    "card": "CVS06B|RVF-30",
+    "len": 846,
+    "t": "{{**3D model:** apical 4-chamber, dilated RV, playing. Mid free wall barely moves; the apex still contracts.}}\n\nIn nineteen ninety-six Michael McConne",
+    "voiced": 4
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-009",
+  "text": "How do you tell a pericardial effusion from tamponade on echo, and how do you drain it under echo guidance?",
+  "n": 8,
+  "cards": [
+   "V11-034",
+   "CVS01|CVS-23",
+   "CVS01|CVS-20",
+   "CVS01|CVS-24",
+   "V11-035",
+   "V11-036",
+   "CVS01|CVS-25",
+   "V11-037"
+  ],
+  "open": "A woman of fifty-five with breast cancer comes in breathless. Heart rate one hundred and twenty, blood pressure ninety systolic, neck veins full to th",
+  "close": "Let's bring it together, slowly.\n\nA black space around the heart. In the long axis, find the descending aorta. [[In front of the aorta is pericardial.",
+  "first": null,
+  "steps": [
+   {
+    "i": 2,
+    "card": "CVS01|CVS-20",
+    "len": 1569,
+    "t": "{{**3D model:** camera in front, chest and liver shown. Subcostal 4-chamber, tamponade, playing: the whole heart squeezed inside a tense sac, septum s",
+    "voiced": 8
+   },
+   {
+    "i": 3,
+    "card": "CVS01|CVS-24",
+    "len": 1017,
+    "t": "{{**3D model:** apical 4-chamber, tamponade, frozen in systole. RA wall buckled inward.\n**RA collapse > 1/3 of the cycle** \u00b7 RA: lower left of the scr",
+    "voiced": 6
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-010",
+  "text": "A patient is in shock. What does echo show in each type of shock?",
+  "n": 8,
+  "cards": [
+   "V11-038",
+   "V11-039",
+   "HEMO04|FR-11",
+   "V11-040",
+   "V11-041",
+   "CVS01|CVS-24",
+   "RESP06A|PE-12",
+   "RESP07A|PLEU-08"
+  ],
+  "open": "It's two in the morning. A man of sixty, pressure seventy systolic, cold hands, a lactate of six. He can't give a history, and the notes are thin. You",
+  "close": "So let's bring it all together, slowly.\n\nShock on echo is a short scan with a frame: pump, tank, pipes. Five looks: effusion, left ventricle, right ve",
+  "first": null,
+  "steps": [
+   {
+    "i": 5,
+    "card": "CVS01|CVS-24",
+    "len": 612,
+    "t": "{{**3D model:** subcostal 4-chamber, tamponade, early diastole: fluid between liver and RV, RV free wall dipping in.}}\n\nYou met this card in the peric",
+    "voiced": 4
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-014",
+  "text": "How do you look for a deep vein thrombosis with bedside compression ultrasound (two-point, three-point or whole-leg), and how does it link to pulmonary embolism?",
+  "n": 7,
+  "cards": [
+   "V11-048",
+   "V11-049",
+   "V11-050",
+   "V11-051",
+   "RESP06A|PE-12",
+   "CVS06B|RVF-30",
+   "V11-052"
+  ],
+  "open": "Day six in the ICU. A woman of sixty, ventilated after a laparotomy, and this morning her oxygen requirement has doubled. Her heart rate is one hundre",
+  "close": "Let's bring it together, slowly.\n\nA vein is a soft tube. [[Press, and a normal vein flattens completely. A vein that stays open holds a clot. You don'",
+  "first": null,
+  "steps": [
+   {
+    "i": 5,
+    "card": "CVS06B|RVF-30",
+    "len": 547,
+    "t": "{{**3D model:** apical 4-chamber, dilated RV, playing. Mid free wall still, apex moving: McConnell's sign.}}\n\nThe first you know from the right ventri",
+    "voiced": 0
+   }
+  ]
+ },
+ {
+  "p": "P11",
+  "q": "P11-015",
+  "text": "What is the role of echo during cardiac arrest, and how do you use it without harming CPR?",
+  "n": 7,
+  "cards": [
+   "V11-053",
+   "CVS08E|ACLS-73",
+   "V11-054",
+   "CVS08A|ACLS-12",
+   "CVS01|CVS-24",
+   "V11-055",
+   "V11-056"
+  ],
+  "open": "A man of fifty-eight collapses on the ward. The monitor shows an organised rhythm, sixty a minute. No pulse. Compressions start. Pulseless electrical ",
+  "close": "Let's bring it together, slowly.\n\nIn an arrest you can only see the heart when nobody is compressing it. So the scan is paid for in perfusion, and a p",
+  "first": null,
+  "steps": [
+   {
+    "i": 1,
+    "card": "CVS08E|ACLS-73",
+    "len": 1080,
+    "t": "{{**3D model:** subcostal 4-chamber, probe view, playing. Liver on top, RV nearest the probe.\n**Pulse check with ultrasound 21 s \u00b7 without 13 s** (Hui",
+    "voiced": 0
+   },
+   {
+    "i": 3,
+    "card": "CVS08A|ACLS-12",
+    "len": 1195,
+    "t": "{{**3D model:** subcostal 4-chamber, hypovolaemia, playing: small ventricles, walls nearly touching.\n**Ultrasound shows 4 of the Hs and Ts:** Hypovola",
+    "voiced": 0
+   },
+   {
+    "i": 4,
+    "card": "CVS01|CVS-24",
+    "len": 1045,
+    "t": "{{**3D model:** subcostal 4-chamber, tamponade, frozen in diastole: black fluid between the liver and the RV, RV free wall pushed in.}}\n\nYou met this ",
+    "voiced": 0
+   }
+  ]
+ }
+]
