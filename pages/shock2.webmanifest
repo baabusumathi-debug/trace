@@ -1,0 +1,29 @@
+{
+  "id": "./shock2.html",
+  "name": "Shock II \u2014 CCM",
+  "short_name": "Shock II",
+  "description": "Shock II \u00b7 fixing it",
+  "start_url": "./shock2.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f6",
+  "theme_color": "#6b2a1f",
+  "icons": [
+    {
+      "src": "icons/shock2-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/shock2-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/shock2-mask-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -7,12 +7,14 @@ def _t(x,y,s,sz=11,anc='middle',w=600,fill='#1d1d1f'):
     return '<text x="%s" y="%s" font-size="%s" text-anchor="%s" font-weight="%s" fill="%s">%s</text>'%(x,y,sz,anc,w,fill,s)
 
 # ---------------------------------------------------------------- heart
+_HN = [0]
 def heart(marks=None, caption=''):
     """Clean schematic of the four chambers, valves and the direction of flow.
     Right heart on the viewer's left. marks: list of (x, y, label, colour, anchor)."""
     m = marks or []
     s = ['<svg viewBox="0 0 512 330" class="dg" role="img">']
-    s.append('<defs><marker id="hf" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="%s"/></marker></defs>' % GREY)
+    _HN[0] += 1; hid = 'hf%d' % _HN[0]     # unique per drawing: a head defined in a hidden screen does not draw
+    s.append('<defs><marker id="%s" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="%s"/></marker></defs>' % (hid, GREY))
     def ch(x, y, w, h, lab, col, fill, sw=2.5, sz=17):
         return ('<rect x="%s" y="%s" width="%s" height="%s" rx="20" fill="%s" stroke="%s" stroke-width="%s"/>' % (x, y, w, h, fill, col, sw)
                 + _t(x + w / 2, y + h / 2 + 6, lab, sz, 'middle', 800, col))
@@ -26,14 +28,14 @@ def heart(marks=None, caption=''):
     def valve(x, y, lab):
         return ('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" stroke-width="4.5" stroke-linecap="round"/>' % (x - 27, y, x + 27, y, GREY)
                 + _t(x + 33, y + 4, lab, 9.5, 'start', 700, GREY)
-                + '<path d="M%s %s L%s %s" stroke="%s" stroke-width="2.5" marker-end="url(#hf)"/>' % (x, y + 4, x, y + 18, GREY))
+                + '<path d="M%s %s L%s %s" stroke="%s" stroke-width="2.5" marker-end="url(#%s)"/>' % (x, y + 4, x, y + 18, GREY, hid))
     s.append(valve(174, 155, 'tricuspid valve'))
     s.append(valve(352, 155, 'mitral valve'))
     def vvalve(x, y, lab, anc):
         return ('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" stroke-width="4.5" stroke-linecap="round"/>' % (x, y - 15, x, y + 15, GREY)
                 + _t(x + (9 if anc == 'start' else -9), y + 28, lab, 9.5, anc, 700, GREY))
     def arrow(x1, y, x2, lab, col, up=12):
-        return ('<path d="M%s %s L%s %s" stroke="%s" stroke-width="3.5" marker-end="url(#hf)"/>' % (x1, y, x2, y, GREY)
+        return ('<path d="M%s %s L%s %s" stroke="%s" stroke-width="3.5" marker-end="url(#%s)"/>' % (x1, y, x2, y, GREY, hid)
                 + _t((x1 + x2) / 2, y - up, lab, 10, 'middle', 700, col))
     s.append(arrow(34, 100, 112, 'from the body', NAVY))
     s.append(arrow(112, 222, 34, 'to the lungs', NAVY, 24))

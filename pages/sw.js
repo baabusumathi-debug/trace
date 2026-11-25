@@ -1,10 +1,10 @@
 // Study pages: network first, so an updated page arrives on its own; the cache is the offline copy.
-const V = 'pages-v4';
-const FILES = ['./', 'index.html', 'shock1.html', 'gi.html', 'endo.html', 'obs.html',
-               'manifest.webmanifest', 'shock1.webmanifest', 'gi.webmanifest', 'endo.webmanifest', 'obs.webmanifest',
+const V = 'pages-v5';
+const FILES = ['./', 'index.html', 'shock1.html', 'shock2.html', 'gi.html', 'endo.html', 'obs.html',
+               'manifest.webmanifest', 'shock1.webmanifest', 'shock2.webmanifest', 'gi.webmanifest', 'endo.webmanifest', 'obs.webmanifest',
                'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
-               'icons/shock1-192.png', 'icons/gi-192.png', 'icons/endo-192.png', 'icons/obs-192.png',
-               'icons/shock1-512.png', 'icons/gi-512.png', 'icons/endo-512.png', 'icons/obs-512.png',
+               'icons/shock1-192.png', 'icons/shock2-192.png', 'icons/gi-192.png', 'icons/endo-192.png', 'icons/obs-192.png',
+               'icons/shock1-512.png', 'icons/shock2-512.png', 'icons/gi-512.png', 'icons/endo-512.png', 'icons/obs-512.png',
                'css/ink.css', 'css/desk.css',
                'js/desk.js', 'js/ink-mount.js', 'js/notes.js', 'js/paper.js', 'js/store.js'];
 self.addEventListener('install', e => {

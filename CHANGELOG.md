@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — Shock II study page, `pages/` only — claimed 2026-11-25 16:30 IST
+In progress: none
 
 ## State (as of entry T-197)
 
@@ -21,6 +21,12 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-199 — 2026-11-25 — Claude — live — pages (sw pages-v5)
+- New study page **Shock II · fixing it** (`pages/shock2.html`, icon S2, own manifest, in the library): P12-201…206 from the live packet, 28 cards in 6 sections, the closing lesson, 6 traps and 25 closing questions. New drawings: the β1/α1 cell pathways (and where each inotrope acts; on a β-blocker), transmural pressure, PV loops for the three machines, the balloon pump's position and trace, Impella / TandemHeart / VA ECMO circuits, Harlequin, and trial bar charts.
+- Shared engine: `pages/src/packet.py` now builds every packet page; `shock1/build.py` and `shock2/build.py` are short configs over it. Shock I rebuilt through it is identical apart from the arrowhead fix below.
+- Fix (Shock I): the second heart drawing (CS-13) showed its flow arrows without heads, because both hearts defined the same marker id and the first sits in a hidden screen. Arrowhead ids are now unique per drawing; `diagcheck.py` gained an id check that flags duplicates and missing references.
+- Checked: Shock II walk 36 screens, 0 errors, 0 overflow, 25 drill reveals; 0 diagram issues on both packet pages; every drawing read against `DIAGRAMS.md`; desk on all five pages at 390, 800×1280 and 1280×860; desk walk 27/28 (the 28th is the root favicon 404).
 
 ## T-198 — 2026-11-25 — Claude — live — pages (sw pages-v4)
 - Study pages site (`pages/`, separate from the app; Naven: "make it live"). App code, `js/ink.js` and `js/db.js` untouched.

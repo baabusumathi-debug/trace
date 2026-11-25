@@ -9,6 +9,7 @@ For every <svg> on every screen it measures, in the real browser:
   3. TEXT ON LINES  — a label sitting across drawn lines or outlines: the drawing is
                       rendered without its words and the edges under each label are counted
   4. HTML ON SVG    — words in the page (captions, pins, notes) laid over a drawing
+  5. IDS            — every arrowhead/gradient id defined once and referenced correctly
 It writes a crop of every flagged drawing so each one can be looked at, and exits non-zero
 if anything is flagged. Anatomy (which side, which border, which chamber is nearest the probe)
 cannot be measured — that is the checklist in DIAGRAMS.md, read against each crop.
@@ -101,6 +102,17 @@ async (vid) => {
 }
 """.replace('%EDGE%', str(EDGE_LIMIT))
 
+def ids_check(path):
+    # an id defined twice resolves to the first copy, which may sit in a hidden screen and draw nothing
+    import re
+    h = open(path, encoding='utf-8').read()
+    defs = re.findall(r'<(?:marker|linearGradient|radialGradient|clipPath|pattern)[^>]*\sid="([^"]+)"', h)
+    refs = set(re.findall(r'url\(#([^)]+)\)', h))
+    dup = sorted(set(i for i in defs if defs.count(i) > 1)); miss = sorted(refs - set(defs))
+    for i in dup: print('   DUPLICATE ID   %s — define it once per drawing (arrowheads vanish on hidden screens)' % i)
+    for i in miss: print('   MISSING ID     url(#%s) points at nothing' % i)
+    return len(dup) + len(miss)
+
 async def main():
     os.makedirs(OUT, exist_ok=True)
     url = 'file://' + os.path.abspath(PAGE)
@@ -128,6 +140,7 @@ async def main():
                     if el: await el.screenshot(path=os.path.join(OUT, '%s_%d_%d.png' % (vid, r['si'] + 1, vw)))
             await pg.close()
         await b.close()
+    total += ids_check(PAGE)
     print('\n%d issue(s)' % total)
     sys.exit(1 if total else 0)
 
