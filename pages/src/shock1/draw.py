@@ -11,7 +11,7 @@ def heart(marks=None, caption=''):
     """Clean schematic of the four chambers, valves and the direction of flow.
     Right heart on the viewer's left. marks: list of (x, y, label, colour, anchor)."""
     m = marks or []
-    s = ['<svg viewBox="0 0 500 330" class="dg" role="img">']
+    s = ['<svg viewBox="0 0 512 330" class="dg" role="img">']
     s.append('<defs><marker id="hf" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="%s"/></marker></defs>' % GREY)
     def ch(x, y, w, h, lab, col, fill, sw=2.5, sz=17):
         return ('<rect x="%s" y="%s" width="%s" height="%s" rx="20" fill="%s" stroke="%s" stroke-width="%s"/>' % (x, y, w, h, fill, col, sw)
@@ -25,21 +25,21 @@ def heart(marks=None, caption=''):
     s.append(_t(352, 56, 'LEFT HEART', 10, 'middle', 800, RED))
     def valve(x, y, lab):
         return ('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" stroke-width="4.5" stroke-linecap="round"/>' % (x - 27, y, x + 27, y, GREY)
-                + _t(x, y - 15, lab, 9.5, 'middle', 700, GREY)
+                + _t(x + 33, y + 4, lab, 9.5, 'start', 700, GREY)
                 + '<path d="M%s %s L%s %s" stroke="%s" stroke-width="2.5" marker-end="url(#hf)"/>' % (x, y + 4, x, y + 18, GREY))
     s.append(valve(174, 155, 'tricuspid valve'))
     s.append(valve(352, 155, 'mitral valve'))
     def vvalve(x, y, lab, anc):
         return ('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" stroke-width="4.5" stroke-linecap="round"/>' % (x, y - 15, x, y + 15, GREY)
                 + _t(x + (9 if anc == 'start' else -9), y + 28, lab, 9.5, anc, 700, GREY))
-    def arrow(x1, y, x2, lab, col):
+    def arrow(x1, y, x2, lab, col, up=12):
         return ('<path d="M%s %s L%s %s" stroke="%s" stroke-width="3.5" marker-end="url(#hf)"/>' % (x1, y, x2, y, GREY)
-                + _t((x1 + x2) / 2, y - 12, lab, 10, 'middle', 700, col))
+                + _t((x1 + x2) / 2, y - up, lab, 10, 'middle', 700, col))
     s.append(arrow(34, 100, 112, 'from the body', NAVY))
-    s.append(arrow(112, 222, 34, 'to the lungs', NAVY))
+    s.append(arrow(112, 222, 34, 'to the lungs', NAVY, 24))
     s.append(vvalve(106, 222, 'pulmonary valve', 'end'))
     s.append(arrow(478, 100, 414, 'from the lungs', RED))
-    s.append(arrow(426, 226, 486, 'to the body', RED))
+    s.append(arrow(426, 226, 486, 'to the body', RED, 26))
     s.append(vvalve(430, 226, 'aortic valve', 'start'))
     for i, mk in enumerate(m):
         x, y, lab, col = mk[0], mk[1], mk[2], mk[3]
@@ -97,6 +97,20 @@ def loop(block=None, reads=True, title='Where the catheter reads each of the fou
     return ''.join(s)+'</svg>'
 
 # ---------------------------------------------------------------- Frank-Starling
+def _bez(p0,p1,p2,p3,t):
+    u=1-t; return tuple(u*u*u*a+3*u*u*t*b+3*u*t*t*c+t*t*t*d for a,b,c,d in zip(p0,p1,p2,p3))
+def _curve_y(x):
+    # the drawn curve: (60,246) C(130,244)(175,111)(250,86) then C(320,66)(390,64)(428,62)
+    segs=[((60,246),(130,244),(175,111),(250,86)),((250,86),(320,66),(390,64),(428,62))]
+    for sg in segs:
+        if sg[0][0]<=x<=sg[3][0]:
+            lo,hi=0.0,1.0
+            for _ in range(40):
+                m=(lo+hi)/2
+                if _bez(*sg,m)[0]<x: lo=m
+                else: hi=m
+            return _bez(*sg,lo)[1]
+    return 246
 def starling(mark=None, note_steep='fluid HELPS here', note_flat='fluid only floods the lungs', title='The Frank–Starling curve: is this heart still on the steep part?'):
     s=['<svg viewBox="0 0 460 296" class="dg" role="img">']
     if title: s.append(_t(230,14,title,11.5,'middle',800,NAVY))
@@ -107,14 +121,17 @@ def starling(mark=None, note_steep='fluid HELPS here', note_flat='fluid only flo
     s.append('<path d="M60 246 C130 244 175 111 250 86 C320 66 390 64 428 62" fill="none" stroke="%s" stroke-width="4"/>'%NAVY)
     s.append('<path d="M70 245 C130 242 170 126 196 108" fill="none" stroke="%s" stroke-width="9" opacity=".3"/>'%GRN)
     s.append('<path d="M300 74 C350 66 395 63 424 62" fill="none" stroke="%s" stroke-width="9" opacity=".3"/>'%RED)
-    s.append(_t(132,136,'steep',12,'middle',800,GRN))
-    s.append(_t(132,152,note_steep,9.5,'middle',600,GRN))
+    s.append(_t(100,136,'steep',12,'middle',800,GRN))
+    s.append(_t(100,152,note_steep,9.5,'middle',600,GRN))
     s.append(_t(366,102,'flat',12,'middle',800,RED))
     s.append(_t(366,118,note_flat,9.5,'middle',600,RED))
     if mark:
-        for x,y,lab,col in mark:
-            s.append('<circle cx="%s" cy="%s" r="7" fill="%s" stroke="#fff" stroke-width="2"/>'%(x,y,col))
-            s.append(_t(x,y-14,lab,10.5,'middle',800,col))
+        for x,_y,lab,col in mark:
+            y=_curve_y(x)
+            s.append('<circle cx="%s" cy="%.1f" r="7" fill="%s" stroke="#fff" stroke-width="2"/>'%(x,y,col))
+            if x<250: s.append(_t(x+14,y+18,lab,10.5,'start',800,col))      # under the steep part: open space
+            else:     s.append(_t(x,y-14,lab,10.5,'middle',800,col))        # above the flat part
+
     return ''.join(s)+'</svg>'
 
 # ---------------------------------------------------------------- arterial traces
@@ -154,9 +171,9 @@ def tubing():
     s.append(_t(425,54,'NARROW · LONG · SOFT',9.5,'middle',800,RED))
     s.append(_t(425,84,'falls among the pulse’s harmonics → resonance',10,'middle',600,GREY))
     s.append('<line x1="24" y1="104" x2="536" y2="104" stroke="%s" stroke-width="1"/>'%'#d5dbe8')
-    s.append(_t(140,126,'overshoot: none',10.5,'middle',700,GRN))
+    s.append(_t(140,119,'overshoot: none',10.5,'middle',700,GRN))
     s.append('<path d="M60 170 L84 170 L90 136 L98 150 L106 144 L116 168 L130 170 L160 170 L166 136 L174 150 L182 144 L192 168 L206 170" fill="none" stroke="%s" stroke-width="2.4"/>'%GRN)
-    s.append(_t(425,126,'overshoot: systolic reads FALSELY HIGH',10.5,'middle',700,RED))
+    s.append(_t(425,116,'overshoot: systolic reads FALSELY HIGH',10.5,'middle',700,RED))
     s.append('<path d="M322 170 L344 170 L350 122 L358 162 L364 130 L372 160 L380 140 L392 168 L406 170 L430 170 L436 122 L444 162 L450 130 L458 160 L466 140 L478 168 L492 170" fill="none" stroke="%s" stroke-width="2.4"/>'%RED)
     s.append('<line x1="316" y1="122" x2="500" y2="122" stroke="%s" stroke-width="1.4" stroke-dasharray="4 4"/>'%RED)
     s.append('<line x1="54" y1="136" x2="212" y2="136" stroke="%s" stroke-width="1.4" stroke-dasharray="4 4"/>'%GRN)
@@ -164,25 +181,32 @@ def tubing():
 
 # ---------------------------------------------------------------- chest with the three windows
 def windows(active=None):
-    s = ['<svg viewBox="0 0 440 310" class="dg" role="img">']
+    # drawn as if facing the patient: the patient's LEFT is on the viewer's RIGHT, which is where the heart sits
+    s = ['<svg viewBox="0 0 440 316" class="dg" role="img">']
     s.append('<path d="M140 40 q80 -16 160 0 l16 136 q-12 64 -96 68 q-84 -4 -96 -68 z" fill="#fdf7f2" stroke="%s" stroke-width="2.5"/>' % GREY)
     for i in range(5):
         s.append('<path d="M146 %s q74 14 148 0" fill="none" stroke="#e8ddd2" stroke-width="7"/>' % (68 + i * 24))
     s.append('<line x1="220" y1="38" x2="220" y2="188" stroke="#e8ddd2" stroke-width="11"/>')
-    s.append(_t(220, 30, 'sternum', 9.5, 'middle', 700, GREY))
+    s.append(_t(220, 21, 'sternum', 9.5, 'middle', 700, GREY))
     s.append('<path d="M206 94 q54 -10 70 52 q10 58 -42 70 q-58 8 -68 -52 q-6 -52 40 -70 z" fill="%s" stroke="%s" stroke-width="2.5"/>' % (PINK, RED))
     s.append(_t(232, 156, 'heart', 11, 'middle', 800, RED))
-    pts = [(186, 100, '1  parasternal', 'PLAX', 'end', -22, 4),
-           (246, 208, '2  apical', 'A4C', 'start', 22, 4),
-           (218, 246, '3  subcostal', 'SUB', 'middle', 0, 32)]
-    for x, y, lab, key, anc, dx, dy in pts:
+    s.append(_t(100, 62, "patient's RIGHT", 9, 'middle', 700, GREY))
+    s.append(_t(340, 62, "patient's LEFT", 9, 'middle', 700, GREY))
+    # (pin x, y, label, sub-label, key, label x, label y): labels sit outside the chest, joined by a leader
+    pts = [(244, 104, '1  parasternal', 'left sternal edge, 3rd–4th space', 'PLAX', 330, 96),
+           (270, 196, '2  apical', 'the apex beat, 5th space', 'A4C', 330, 206),
+           (220, 236, '3  subcostal', 'under the xiphisternum', 'SUB', 110, 262)]
+    for x, y, lab, sub, key, lx, ly in pts:
         on = (active == key)
         col = RED if on else GREY
-        s.append('<circle cx="%s" cy="%s" r="15" fill="%s" stroke="#fff" stroke-width="3"/>' % (x, y, col))
-        s.append(_t(x, y + 5, '◉', 13, 'middle', 800, '#fff'))
-        s.append('<text x="%s" y="%s" font-size="11" text-anchor="%s" font-weight="%s" fill="%s">%s</text>' % (
-            x + dx, y + dy, anc, 800 if on else 700, col, lab))
-    s.append(_t(220, 300, 'ultrasound cannot cross air — these are the three gaps where lung does not cover the heart', 9.5, 'middle', 600, GREY))
+        anc = 'start' if lx > x else 'end'
+        s.append('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="%s" stroke-width="1.5"/>' % (x, y, lx - 4 if anc == 'start' else lx + 4, ly - 4, col))
+        s.append('<circle cx="%s" cy="%s" r="13" fill="%s" stroke="#fff" stroke-width="3"/>' % (x, y, col))
+        s.append(_t(x, y + 5, '◉', 12, 'middle', 800, '#fff'))
+        s.append('<text x="%s" y="%s" font-size="11" text-anchor="%s" font-weight="%s" fill="%s">%s</text>' % (lx, ly, anc, 800 if on else 700, col, lab))
+        for j, line in enumerate(sub.split(', ')): s.append(_t(lx, ly + 13 + 11 * j, line, 8.5, anc, 600, col))
+    s.append(_t(220, 296, 'ultrasound cannot cross air — these are the three gaps', 9.5, 'middle', 600, GREY))
+    s.append(_t(220, 308, 'where lung does not cover the heart', 9.5, 'middle', 600, GREY))
     return ''.join(s) + '</svg>'
 
 # ---------------------------------------------------------------- echo slices
@@ -211,7 +235,7 @@ def plax(fluid=False):
     s.append(_t(330, 48, 'aortic root', 9.5, 'middle', 800, '#e7b96a'))
     s.append('<path d="M252 112 L300 88" stroke="#e7b96a" stroke-width="5"/>')
     s.append('<circle cx="352" cy="232" r="19" fill="#3a2630" stroke="#e08a84" stroke-width="2.5"/>')
-    s.append(_t(352, 236, 'DAo', 10, 'middle', 800, '#e08a84'))
+    s.append(_t(328, 248, 'DAo', 10, 'end', 800, '#e08a84'))
     m = [(252, 112, 'aortic valve — the LVOT is measured just below it', '#a35a00'),
          (244, 146, 'mitral valve', '#5a6472'),
          (198, 124, 'septum', '#5a6472'),
@@ -227,7 +251,7 @@ def plax(fluid=False):
 def a4c(mode='normal'):
     s = ['<svg viewBox="0 0 440 300" class="dg" role="img">', _sector()]
     s.append(_t(220, 10, 'APICAL FOUR-CHAMBER · probe at the APEX, marker to the LEFT', 10, 'middle', 800, NAVY))
-    s.append(_t(220, 34, 'apex is NEAREST the probe', 9, 'middle', 600, '#9aa3b5'))
+    s.append(_t(240, 30, '◂ the apex is NEAREST the probe', 9, 'start', 600, '#9aa3b5'))
     rvx = 92 if mode == 'rv' else 58
     s.append('<path d="M212 48 L%s 150 q-10 36 26 38 L212 186 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2"/>' % (212 - rvx))
     s.append(_t(212 - rvx * 0.55, 136, 'RV', 13, 'middle', 800, '#9fc0e8'))
@@ -256,29 +280,35 @@ def a4c(mode='normal'):
     return ''.join(s) + '</svg>' + _pins(m)
 
 def subcostal(eff=False):
+    # probe at the top, under the xiphisternum. The RIGHT heart lies against the liver (near field);
+    # the LEFT heart is deeper. Atria on the screen left, the apex to the screen right.
     s = ['<svg viewBox="0 0 440 290" class="dg" role="img">']
     s.append('<path d="M70 26 L370 26 L312 256 L128 256 z" fill="#111827" stroke="%s" stroke-width="2"/>' % GREY)
     s.append(_t(220, 16, 'SUBCOSTAL · probe under the XIPHISTERNUM, through the liver', 10, 'middle', 800, NAVY))
     s.append('<path d="M74 30 L366 30 L352 78 L86 78 z" fill="#3b3a2e" stroke="#9a8f6a" stroke-width="2"/>')
     s.append(_t(220, 60, 'LIVER', 11, 'middle', 800, '#d8cc9a'))
-    s.append('<path d="M128 108 q70 -16 96 26 q16 42 -26 58 q-64 16 -86 -28 q-10 -36 16 -56 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2"/>')
-    s.append(_t(170, 152, 'RV', 13, 'middle', 800, '#9fc0e8'))
-    s.append('<path d="M240 106 q62 -10 72 30 q8 36 -34 48 q-54 10 -64 -30 q-6 -36 26 -48 z" fill="#1d2b44" stroke="#8fa6c9" stroke-width="2"/>')
-    s.append(_t(280, 150, 'LV', 13, 'middle', 800, '#e7b2ad'))
-    s.append('<path d="M140 198 q58 -8 66 20 q4 24 -34 28 q-44 2 -48 -22 q-2 -22 16 -26 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2"/>')
-    s.append(_t(172, 224, 'RA', 12, 'middle', 800, '#9fc0e8'))
-    s.append('<path d="M240 200 q52 -6 58 22 q4 22 -32 24 q-40 0 -42 -22 q0 -20 16 -24 z" fill="#1d2b44" stroke="#8fa6c9" stroke-width="2"/>')
-    s.append(_t(270, 224, 'LA', 12, 'middle', 800, '#e7b2ad'))
+    s.append(_t(100, 96, 'NEAR', 8.5, 'middle', 800, '#9aa3b5'))
+    s.append(_t(140, 246, 'DEEP', 8.5, 'middle', 800, '#9aa3b5'))
+    # near field: RA (left) and RV (right)
+    s.append('<path d="M126 120 q40 -20 74 0 q12 30 -8 48 q-36 14 -62 -6 q-14 -22 -4 -42 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2"/>')
+    s.append(_t(162, 150, 'RA', 12, 'middle', 800, '#9fc0e8'))
+    s.append('<path d="M212 102 q72 -16 102 22 q12 36 -14 54 q-50 14 -84 -4 q-16 -36 -4 -72 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2"/>')
+    s.append(_t(262, 146, 'RV', 13, 'middle', 800, '#9fc0e8'))
+    # far field: LA (left) and LV (right)
+    s.append('<path d="M138 186 q46 -8 62 14 q6 26 -22 34 q-36 6 -44 -16 q-6 -22 4 -32 z" fill="#1d2b44" stroke="#8fa6c9" stroke-width="2"/>')
+    s.append(_t(168, 216, 'LA', 12, 'middle', 800, '#e7b2ad'))
+    s.append('<path d="M216 190 q60 -8 88 14 q10 28 -22 40 q-42 8 -62 -10 q-12 -22 -4 -44 z" fill="#1d2b44" stroke="#8fa6c9" stroke-width="2"/>')
+    s.append(_t(260, 222, 'LV', 13, 'middle', 800, '#e7b2ad'))
     s.append(_t(220, 278, 'the liver carries sound well, so this window survives inflated lung and works in arrest', 9.5, 'middle', 600, GREY))
-    m = [(142, 112, 'the RIGHT heart lies nearest the probe', '#1c3461')]
+    m = [(206, 100, 'the RIGHT heart lies nearest the probe', '#1c3461')]
     if eff:
-        s.append('<path d="M112 96 q110 -34 216 16 q16 104 -96 124 q-128 4 -134 -86 q-2 -36 14 -54 z" fill="none" stroke="#7fd4e8" stroke-width="11" opacity=".9"/>')
-        m += [(112, 150, 'effusion all round', '#00707d'), (212, 196, 'the right atrium collapses in diastole', '#a35a00')]
+        s.append('<ellipse cx="220" cy="176" rx="112" ry="74" fill="none" stroke="#7fd4e8" stroke-width="11" opacity=".9"/>')
+        m += [(114, 160, 'effusion all round', '#00707d'), (146, 120, 'the right atrium collapses in diastole', '#a35a00')]
     for i, p in enumerate(m): s.append(_pin(p[0], p[1], i + 1, p[3]))
     return ''.join(s) + '</svg>' + _pins(m)
 
 def ivc(state='plethoric'):
-    s = ['<svg viewBox="0 0 440 250" class="dg" role="img">']
+    s = ['<svg viewBox="0 0 440 262" class="dg" role="img">']
     s.append('<rect x="20" y="24" width="400" height="188" rx="8" fill="#111827" stroke="%s" stroke-width="2"/>' % GREY)
     s.append(_t(220, 16, 'SUBCOSTAL IVC · marker towards the HEAD', 10, 'middle', 800, NAVY))
     s.append('<path d="M28 36 L412 36 L412 76 L28 76 z" fill="#3b3a2e"/>')
@@ -286,15 +316,18 @@ def ivc(state='plethoric'):
     wide = state != 'collapsing'
     h1 = 32 if wide else 13
     s.append('<path d="M34 %s L268 %s q34 -2 48 -18 L330 108 L330 148 L316 166 q-16 14 -48 12 L34 %s z" fill="#0b1220" stroke="#7fd4e8" stroke-width="2.5"/>' % (128 - h1, 128 - h1, 128 + h1))
-    s.append(_t(150, 132, 'IVC', 13, 'middle', 800, '#7fd4e8'))
+    s.append(_t(100, 133 if wide else 182, 'IVC', 13, 'middle', 800, '#7fd4e8'))
     s.append('<path d="M330 90 q60 -8 64 38 q2 42 -46 46 q-42 0 -46 -38 q-2 -38 28 -46 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2"/>')
     s.append(_t(356, 136, 'RA', 12, 'middle', 800, '#9fc0e8'))
-    s.append('<line x1="150" y1="32" x2="150" y2="204" stroke="#ffd166" stroke-width="2.5" stroke-dasharray="7 5"/>')
+    s.append('<line x1="252" y1="84" x2="252" y2="204" stroke="#ffd166" stroke-width="2.5" stroke-dasharray="7 5"/>')
+    s.append(_t(258, 204, 'measure here, 1–2 cm from the RA', 9, 'start', 700, '#ffd166'))
     if wide:
-        s.append(_t(220, 236, 'WIDE (over 2.1 cm) and barely moving  →  right atrial pressure HIGH, about 15', 11, 'middle', 800, NAVY))
+        s.append(_t(220, 232, 'WIDE (over 2.1 cm) and barely moving', 11, 'middle', 800, NAVY))
+        s.append(_t(220, 250, '→  right atrial pressure HIGH, about 15', 11, 'middle', 800, NAVY))
     else:
         s.append('<path d="M40 120 L266 120" stroke="#9fd0a6" stroke-width="2.5" stroke-dasharray="5 4"/>')
-        s.append(_t(220, 236, 'SMALL (2.1 cm or less), collapsing over 50% on a sniff  →  right atrial pressure LOW, about 3', 11, 'middle', 800, GRN))
+        s.append(_t(220, 232, 'SMALL (2.1 cm or less), collapsing over 50% on a sniff', 11, 'middle', 800, GRN))
+        s.append(_t(220, 250, '→  right atrial pressure LOW, about 3', 11, 'middle', 800, GRN))
     return ''.join(s) + '</svg>'
 
 def psax(mode='normal'):
@@ -305,7 +338,7 @@ def psax(mode='normal'):
         s.append('<path d="M150 72 q86 0 86 52 q0 54 -86 54 q-58 0 -58 -54 q0 -52 58 -52 z" fill="#1d2b44" stroke="#e08a84" stroke-width="3.5"/>')
         s.append(_t(170, 130, 'LV', 15, 'middle', 800, '#e7b2ad'))
         s.append('<path d="M88 72 q-42 52 0 104 q36 -52 0 -104 z" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2.5"/>')
-        s.append(_t(70, 130, 'RV', 12, 'middle', 800, '#9fc0e8'))
+        s.append(_t(87, 129, 'RV', 11, 'middle', 800, '#9fc0e8'))
         s.append(_t(200, 246, 'the septum is FLATTENED: the LV is a D, not a circle', 11, 'middle', 800, '#b3261e'))
         s.append(_t(200, 262, 'the right ventricle is overloaded — PE or RV failure', 10, 'middle', 600, GREY))
     else:
@@ -313,10 +346,10 @@ def psax(mode='normal'):
         s.append('<circle cx="196" cy="124" r="%s" fill="#1d2b44" stroke="#8fa6c9" stroke-width="3"/>' % r)
         if mode == 'hyper':
             s.append('<circle cx="196" cy="124" r="14" fill="#3a2630" stroke="#e08a84" stroke-width="2"/>')
-        s.append(_t(196, 124 if mode != 'hyper' else 86, 'LV', 13, 'middle', 800, '#e7b2ad'))
+        s.append(_t(196, 124 if mode != 'hyper' else 101, 'LV', 13, 'middle', 800, '#e7b2ad'))
         s.append('<circle cx="172" cy="150" r="9" fill="#6b7f9f"/><circle cx="222" cy="150" r="9" fill="#6b7f9f"/>')
         s.append('<path d="M126 74 q-44 50 0 100" fill="#2a3a56" stroke="#8fa6c9" stroke-width="2.5"/>')
-        s.append(_t(104, 126, 'RV', 12, 'middle', 800, '#9fc0e8'))
+        s.append(_t(78, 128, 'RV', 12, 'middle', 800, '#9fc0e8'))
         if mode == 'hyper':
             s.append(_t(200, 246, 'the walls almost meet in systole — the “kissing” papillary muscles', 11, 'middle', 800, '#a35a00'))
             s.append(_t(200, 262, 'only hypovolaemia if the DIASTOLIC size is small too', 10, 'middle', 600, GREY))
@@ -334,7 +367,7 @@ def blines(mode='b'):
         p.append('<rect x="34" y="56" width="18" height="22" fill="#4c5366"/><rect x="148" y="56" width="18" height="22" fill="#4c5366"/>')
         p.append(_t(43,50,'rib',8.5,'middle',700,'#9aa3b5'))
         p.append('<line x1="10" y1="84" x2="190" y2="84" stroke="#e8edf5" stroke-width="4"/>')
-        p.append(_t(100,100,'pleural line',8.5,'middle',700,'#e8edf5'))
+        p.append(_t(100,77,'pleural line',8.5,'middle',700,'#e8edf5'))
         if kind=='b':
             for bx in (72,100,128):
                 p.append('<path d="M%s 86 L%s 186" stroke="#eaf3ff" stroke-width="7" opacity=".85"/>'%(bx,bx))
@@ -354,22 +387,33 @@ def blines(mode='b'):
     return ''.join(s)+'</svg>'
 
 def kerley():
-    s=['<svg viewBox="0 0 420 260" class="dg" role="img">']
-    s.append('<rect x="14" y="18" width="392" height="206" rx="8" fill="#0d0f14" stroke="%s" stroke-width="2"/>'%GREY)
+    # film on the right; the names sit in the left margin with leaders, so no word lies on the film
+    X = 122
+    s=['<svg viewBox="0 0 540 262" class="dg" role="img">']
+    s.append('<rect x="%s" y="18" width="392" height="206" rx="8" fill="#0d0f14" stroke="%s" stroke-width="2"/>'%(X+14,GREY))
+    s.append('<g transform="translate(%s,0)">'%X)
     s.append('<path d="M46 40 q66 -14 84 26 q16 92 -16 150 q-54 10 -70 -40 q-14 -78 2 -136 z" fill="#1a1f2b" stroke="#6d7892" stroke-width="2"/>')
     s.append('<path d="M374 40 q-66 -14 -84 26 q-16 92 16 150 q54 10 70 -40 q14 -78 -2 -136 z" fill="#1a1f2b" stroke="#6d7892" stroke-width="2"/>')
     s.append('<path d="M172 60 q38 -16 76 0 q14 64 -4 136 q-34 16 -68 0 q-18 -70 -4 -136 z" fill="#2b3142" stroke="#8c97af" stroke-width="2"/>')
-    s.append(_t(210,210,'big heart',10,'middle',800,'#cfd7e6'))
-    for i,(y) in enumerate((150,168,186)):
-        s.append('<line x1="34" y1="%s" x2="66" y2="%s" stroke="#eaf3ff" stroke-width="3.5"/>'%(y,y))
-        s.append('<line x1="354" y1="%s" x2="386" y2="%s" stroke="#eaf3ff" stroke-width="3.5"/>'%(y,y))
-    s.append(_t(64,132,'B lines',10,'middle',800,'#eaf3ff'))
-    s.append(_t(72,144,'1–2 cm · horizontal · basal',8.5,'middle',700,'#9fb3cc'))
-    for (x1,y1,x2,y2) in ((70,72,124,96),(66,96,120,116),(344,72,292,96)):
+    s.append(_t(210,134,'big',10,'middle',800,'#cfd7e6'))
+    s.append(_t(210,148,'heart',10,'middle',800,'#cfd7e6'))
+    for y in (150,166,182):       # B: short, horizontal, at the bases, running in from the pleura
+        s.append('<line x1="48" y1="%s" x2="74" y2="%s" stroke="#eaf3ff" stroke-width="3.5"/>'%(y,y))
+        s.append('<line x1="346" y1="%s" x2="372" y2="%s" stroke="#eaf3ff" stroke-width="3.5"/>'%(y,y))
+    for (x1,y1,x2,y2) in ((70,72,124,96),(66,96,120,116),(344,72,292,96)):   # A: long, deep, pointing to the hila
         s.append('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="#ffd166" stroke-width="3"/>'%(x1,y1,x2,y2))
-    s.append(_t(150,70,'A lines',10,'middle',800,'#ffd166'))
-    s.append(_t(150,58,'longer · deep · towards the hila',8.5,'middle',700,'#ffd166'))
-    s.append(_t(210,244,'Kerley lines are THICKENED, OEDEMATOUS INTERLOBULAR SEPTA — not lymphatics',10,'middle',800,NAVY))
+    s.append('</g>')
+    # margin labels and leaders (A in the upper zone, B at the base)
+    s.append('<line x1="96" y1="72" x2="%s" y2="82" stroke="#a35a00" stroke-width="1.5"/>'%(X+68))
+    s.append(_t(8,66,'A lines',11,'start',800,'#a35a00'))
+    s.append(_t(8,80,'long, deep,',9,'start',700,GREY))
+    s.append(_t(8,92,'running to the hila',9,'start',700,GREY))
+    s.append('<line x1="96" y1="166" x2="%s" y2="166" stroke="%s" stroke-width="1.5"/>'%(X+46,NAVY))
+    s.append(_t(8,160,'B lines',11,'start',800,NAVY))
+    s.append(_t(8,174,'1–2 cm, horizontal,',9,'start',700,GREY))
+    s.append(_t(8,186,'at the bases,',9,'start',700,GREY))
+    s.append(_t(8,198,'touching the pleura',9,'start',700,GREY))
+    s.append(_t(270,246,'Kerley lines are THICKENED, OEDEMATOUS INTERLOBULAR SEPTA — not lymphatics',10,'middle',800,NAVY))
     return ''.join(s)+'</svg>'
 
 # ---------------------------------------------------------------- passive leg raise

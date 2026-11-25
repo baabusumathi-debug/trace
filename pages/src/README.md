@@ -21,14 +21,17 @@ editing 250 KB of generated HTML by hand.
 2. **Then choose the visual** for each concept. Never the other way round — picking a
    layout before there is content produces a polished page with thin content.
 3. **Then QA visually.** `check.py` walks every screen in headless Chrome, measures
-   unexpected overflow, counts the reveals, and screenshots at phone and tablet widths.
-   A page is not finished until that walk is clean.
+   unexpected overflow and counts the reveals. It then runs `diagcheck.py`, which measures every
+   drawing for words on words, words on lines and words cut off at the edge.
+4. **Then read every drawing as a picture** against the anatomy checklist in `DIAGRAMS.md`
+   (sides, windows, which chamber is nearest the probe). No tool can check anatomy.
+   A page is not finished until both are clean.
 
 ## Rebuilding
 
 ```bash
-cd pages/src/shock1 && python3 build.py      # writes ../../shock1.html
-cd pages/src/shock1 && python3 check.py      # walks every screen, reports overflow
+cd pages/src/shock1 && python3 build.py      # writes ../../shock1.html (the complete live page)
+cd pages/src/shock1 && python3 check.py      # walks every screen, then checks every drawing
 ```
 
 `build.py` asserts that every card code it writes matches the packet it came from, so a
@@ -42,3 +45,10 @@ mismatch fails the build rather than shipping a wrong card.
   separates them.
 - Anything colour-coded also carries a symbol or a label.
 - Wide diagrams keep their size and scroll sideways rather than shrinking to illegible.
+
+## State of the other generators (25 Nov)
+
+`shock1` builds from the repo alone and reproduces the live page exactly. `gi`, `endo` and `obs`
+still read files from an old working folder (`/home/claude/endo`, `/home/claude/lmv/trace/data`,
+and for obs a `skel.html` that is not in the repo). Make each one self-contained the same way
+before rebuilding it.

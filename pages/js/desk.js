@@ -2,10 +2,10 @@
 // each side with its own zoom, and the S Pen over both. Controls live in the header strip.
 import { useDbName } from '../../js/db.js';
 useDbName('trace-pages');
-import { mountInk, startInk, setWriting, isWriting, onWriting, sizeAll } from './ink-mount.js';
+import { mountInk, startInk, setWriting, isWriting, onWriting, sizeAll, toast } from './ink-mount.js';
 import { Notebook, PW } from './notes.js';
-import { PAPERS, COLOURS, LAYOUTS, paperName, colourName } from './paper.js';
-import { localGet, localSet, cloudGet, makeSaver, onState } from './store.js';
+import { PAPERS, COLOURS, LAYOUTS } from './paper.js';
+import { localGet, localSet, cloudGet, makeSaver, onState, markSynced, NOTES_FILE, INK_FILE } from './store.js';
 
 const PAGE = (location.pathname.split('/').pop() || 'page').replace('.html', '') || 'page';
 const P = {
@@ -15,7 +15,8 @@ const P = {
 const land = () => matchMedia('(orientation:landscape) and (min-width:900px)').matches;
 const el = (t, c, h) => { const n = document.createElement(t); if (c) n.className = c; if (h != null) n.innerHTML = h; return n; };
 
-let study, zwrap, zw, notesPane, divider, nb, saver, inks = new Map(), base = 0;
+let study, zwrap, zw, orient, notesPane, divider, nb, saver, inkSaver, inks = new Map(), base = 0;
+let ink = { v: 1, views: {}, ts: 0 };        // every mark on the study screens: views["S1-CS-02@790"] = { objs, ts }
 
 /* ---------- layout ---------- */
 function build() {
@@ -23,8 +24,9 @@ function build() {
   document.body.classList.add('desk-on');
   const desk = el('div', 'desk');
   study = el('div', 'pane pane-study');
+  orient = el('div', 'orient'); orient.hidden = true;
   zwrap = el('div', 'zwrap'); zw = el('div', 'zw');
-  zwrap.appendChild(zw); zw.appendChild(main); study.appendChild(zwrap);
+  zwrap.appendChild(zw); zw.appendChild(main); study.append(orient, zwrap);
   divider = el('div', 'a-div', '<i></i>');
   notesPane = el('div', 'pane pane-notes');
   desk.append(study, divider, notesPane);
@@ -43,14 +45,16 @@ function strip() {
       '<span class="zlab"><b data-z-who>Study</b> <span data-z-val>100%</span></span>' +
       '<button class="sbtn tiny" data-s="zin" aria-label="Bigger">+</button>' +
       '<input type="range" min="40" max="250" step="5" value="100" data-z-range aria-label="Size">' +
+      '<button class="sbtn tiny" data-s="fit" aria-label="Fit this side to its width">⇔ Fit</button>' +
     '</span>' +
     '<button class="sbtn" data-s="set" aria-label="Settings">⚙</button>' +
-    '<span class="dot" data-dot title="Backup"></span>';
+    '<button class="sbtn tiny bk" data-s="dot" data-dot aria-label="Backup">▢</button>' +
+    '<a class="sbtn" href="./" data-s="home">← Pages</a>';
   return s;
 }
 
 /* ---------- zoom: the whole side scales, so writing stays exactly on the words ---------- */
-let zStudy = 1, zWho = 'study';
+let zStudy = 1, zWho = 'study', zH = 0;
 function baseWidth() {
   const k = land() ? 'baseL' : 'baseP';
   let b = P.get(k, 0);
@@ -61,43 +65,75 @@ function applyStudyZoom() {
   base = baseWidth();
   zw.style.width = base + 'px';
   zw.style.transform = 'scale(' + zStudy.toFixed(3) + ')';
-  const h = zw.scrollHeight || zw.offsetHeight;
+  zH = zw.scrollHeight || zw.offsetHeight;
   zwrap.style.width = Math.round(base * zStudy) + 'px';
-  zwrap.style.height = Math.round(h * zStudy) + 'px';
+  zwrap.style.height = Math.round(zH * zStudy) + 'px';
   sizeAll();
   paintZoom();
 }
+// live zoom: only the transform and the box change, around the point given, once a frame
+let sp = null;
+function studyPinchTo(z, fx, fy) {
+  z = Math.max(0.4, Math.min(2.5, z));
+  if (!sp) sp = { cx: (study.scrollLeft + fx - zwrap.offsetLeft) / zStudy, cy: (study.scrollTop + fy - zwrap.offsetTop) / zStudy };
+  zStudy = z;
+  zw.style.transform = 'scale(' + z.toFixed(4) + ')';
+  zwrap.style.width = Math.round(base * z) + 'px';
+  zwrap.style.height = Math.round(zH * z) + 'px';
+  study.scrollLeft = sp.cx * z + zwrap.offsetLeft - fx;
+  study.scrollTop = sp.cy * z + zwrap.offsetTop - fy;
+  paintZoom();
+}
+function studyPinchEnd() { sp = null; P.set('zStudy', zStudy); applyStudyZoom(); }
 function fitNotes() {
   const w = (notesPane.clientWidth || innerWidth) - 34;
   if (w > 80) { nb.setZoom(w / PW); P.set('zNotes', nb.getZoom()); paintZoom(); }
 }
 function fitStudy() { zStudy = Math.max(0.4, Math.min(2.5, (study.clientWidth - 6) / baseWidth())); applyStudyZoom(); P.set('zStudy', zStudy); }
-function setZoom(who, z) {
-  if (who === 'study') { zStudy = Math.max(0.4, Math.min(2.5, z)); P.set('zStudy', zStudy); applyStudyZoom(); }
-  else { nb.setZoom(z); P.set('zNotes', nb.getZoom()); paintZoom(); }
+const paneOf = who => who === 'study' ? study : nb.scroll;
+const zNow = who => who === 'study' ? zStudy : nb.getZoom();
+function liveZoom(who, z, fx, fy) {
+  const p = paneOf(who);
+  if (fx == null) { fx = p.clientWidth / 2; fy = p.clientHeight / 3; }
+  if (who === 'study') studyPinchTo(z, fx, fy); else { nb.pinchTo(z, fx, fy); paintZoom(); }
 }
+function endZoom(who) {
+  if (who === 'study') studyPinchEnd();
+  else { nb.pinchEnd(); P.set('zNotes', nb.getZoom()); paintZoom(); }
+}
+function setZoom(who, z) { liveZoom(who, z); endZoom(who); }
 function paintZoom() {
-  const z = zWho === 'study' ? zStudy : (nb ? nb.getZoom() : 1);
+  const z = zNow(zWho === 'notes' && nb ? 'notes' : 'study');
   const w = document.querySelector('[data-z-who]'), v = document.querySelector('[data-z-val]'), r = document.querySelector('[data-z-range]');
   if (w) w.textContent = zWho === 'study' ? 'Study' : 'Notes';
   if (v) v.textContent = Math.round(z * 100) + '%';
   if (r && document.activeElement !== r) r.value = Math.round(z * 100);
 }
 function pinch(pane, who) {
-  let g = null;
-  const pts = e => [...e.touches].slice(0, 2).map(t => [t.clientX, t.clientY]);
-  const d = q => Math.hypot(q[0][0] - q[1][0], q[0][1] - q[1][1]);
+  let g = null, raf = 0, want = null;
+  const mid = e => { const r = paneOf(who).getBoundingClientRect(), a = e.touches[0], b = e.touches[1]; return [(a.clientX + b.clientX) / 2 - r.left, (a.clientY + b.clientY) / 2 - r.top]; };
+  const dist = e => Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+  const frame = () => { raf = 0; if (want) liveZoom(who, want[0], want[1], want[2]); };
   pane.addEventListener('touchstart', e => {
-    if (e.touches.length !== 2) { g = null; return; }
+    if (e.touches.length !== 2) return;
     zWho = who; paintZoom();
-    g = { d0: d(pts(e)), z0: who === 'study' ? zStudy : nb.getZoom(), on: false }; e.preventDefault();
+    g = { d0: dist(e), z0: zNow(who), on: false }; e.preventDefault();
   }, { passive: false });
   pane.addEventListener('touchmove', e => {
     if (!g || e.touches.length !== 2) return; e.preventDefault();
-    const r = d(pts(e)) / g.d0; if (!g.on && Math.abs(r - 1) < 0.06) return; g.on = true;
-    setZoom(who, g.z0 * r);
+    const r = dist(e) / g.d0; if (!g.on && Math.abs(r - 1) < 0.04) return;
+    const m = mid(e);
+    if (!g.on) { g.on = true; if (who === 'study') sp = null; else nb.pinchStart(m[0], m[1]); }   // the point under the fingers is fixed here
+    want = [g.z0 * r, m[0], m[1]];
+    if (!raf) raf = requestAnimationFrame(frame);
   }, { passive: false });
-  pane.addEventListener('touchend', () => { g = null; });
+  const done = e => {
+    if (!g || (e.touches && e.touches.length >= 2)) return;
+    if (raf) { cancelAnimationFrame(raf); frame(); }
+    const was = g.on; g = null; want = null;
+    if (was) endZoom(who);
+  };
+  pane.addEventListener('touchend', done); pane.addEventListener('touchcancel', done);
 }
 
 /* ---------- the divider ---------- */
@@ -117,7 +153,7 @@ function setupSplit(desk) {
       P.set(land() ? 'splitL' : 'splitP', v);
       if (v <= 14) showNotes(false);
       fitStudy();
-      if (nb.getZoom() * PW > notesPane.clientWidth - 10) fitNotes(); else nb.fit();
+      if (nb.getZoom() * PW > nb.scroll.clientWidth - 10) fitNotes(); else nb.fit();
     };
     divider.addEventListener('pointermove', mv); divider.addEventListener('pointerup', up); divider.addEventListener('pointercancel', up);
   });
@@ -128,23 +164,47 @@ function showNotes(on) {
   const b = document.querySelector('[data-s="notes"]'); if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false');
   P.set('notes', on);
   if (on && parseFloat(desk.style.getPropertyValue('--split')) <= 14) desk.style.setProperty('--split', '50%');
-  if (on) setTimeout(() => { if (!P.get('zNotes', 0) || nb.getZoom() * PW > notesPane.clientWidth) fitNotes(); }, 60);
   zWho = on ? 'notes' : 'study';
-  requestAnimationFrame(() => { fitStudy(); if (nb) nb.fit(); paintZoom(); });
+  requestAnimationFrame(() => {
+    fitStudy();
+    if (on) { if (!P.get('zNotes', 0) || nb.getZoom() * PW > nb.scroll.clientWidth) fitNotes(); nb.paint(); nb.scrollToPage(nb.idx); }
+    paintZoom();
+  });
 }
 
-/* ---------- ink on the study side ---------- */
+/* ---------- ink on the study side: kept on the tablet and backed up to Drive ---------- */
 const viewNow = () => [...document.querySelectorAll('section.view')].find(v => !v.hidden) || null;
+const ikey = (id, w) => id + '@' + w;
+async function adopt(id, w) {                  // marks saved before the Drive backup existed
+  const k = ikey(id, w);
+  if (ink.views[k]) return ink.views[k];
+  const old = await localGet('pen:' + PAGE + ':' + id + ':' + w);
+  if (old && old.objs && old.objs.length && !ink.views[k]) { ink.views[k] = { objs: old.objs, ts: old.ts || 1 }; inkSaver.touch(); }
+  return ink.views[k];
+}
 function inkFor(view) {
-  if (inks.has(view.id)) return inks.get(view.id);
+  const k = ikey(view.id, base);
+  if (inks.has(k)) return inks.get(k);
+  for (const [key, o] of inks) if (o.el === view) { o.destroy(); inks.delete(key); }   // the other orientation's layer
   const h = mountInk(view, {
     width: () => base, height: () => Math.max(view.scrollHeight, view.clientHeight),
     scroller: () => study,
-    changed: () => { localSet('pen:' + PAGE + ':' + view.id + ':' + base, { objs: h.objs(), ts: Date.now() }); }
+    changed: () => { ink.views[k] = { objs: h.objs().slice(), ts: Date.now() }; ink.ts = Date.now(); inkSaver.touch(); orientNote(view); }
   });
-  inks.set(view.id, h);
-  localGet('pen:' + PAGE + ':' + view.id + ':' + base).then(r => { if (r && r.objs) h.load(r.objs); });
+  h.key = k;
+  inks.set(k, h);
+  adopt(view.id, base).then(r => { if (r && r.objs) h.load(r.objs); });
   return h;
+}
+// writing made in the other orientation sits at a different width, so it is not drawn here: say so
+async function orientNote(view) {
+  if (!view) return;
+  const other = P.get(land() ? 'baseP' : 'baseL', 0);
+  let has = false;
+  if (other && other !== base) { const r = await adopt(view.id, other); has = !!(r && r.objs && r.objs.length); }
+  const here = ink.views[ikey(view.id, base)];
+  orient.hidden = !has;
+  if (has) orient.textContent = '✎ You also have writing on this screen in ' + (land() ? 'portrait' : 'landscape') + ' — turn the tablet to see it' + (here && here.objs.length ? '' : '.');
 }
 
 /* ---------- settings ---------- */
@@ -152,30 +212,40 @@ function sheet() {
   const w = el('div', 'sheet-wrap');
   const st = nb.style();
   const row = (lab, name, items, cur) => '<div class="srow"><div class="slab">' + lab + '</div><div class="schips">' +
-    items.map(i => '<button class="chip' + (i[0] === cur ? ' on' : '') + '" data-' + name + '="' + i[0] + '">' + i[1] + '</button>').join('') + '</div></div>';
+    items.map(i => '<button class="chip' + (i[0] === cur ? ' on' : '') + '" data-' + name + '="' + i[0] + '">' + (i[0] === cur ? '✓ ' : '') + i[1] + '</button>').join('') + '</div></div>';
+  const bin = nb.trashList().slice(0, 8);
   w.innerHTML = '<div class="sheet"><div class="shead"><b>Notes</b><button class="sbtn" data-s="close">Close</button></div>' +
     '<div class="srow"><div class="slab">Apply to</div><div class="schips">' +
-      ['page', 'after', 'all'].map((k, i) => '<button class="chip' + (i === 0 ? ' on' : '') + '" data-scope="' + k + '">' +
+      ['page', 'after', 'all'].map((k, i) => '<button class="chip' + (i === 0 ? ' on' : '') + '" data-scope="' + k + '">' + (i === 0 ? '✓ ' : '') +
         ['This page', 'This page and new ones', 'The whole notebook'][i] + '</button>').join('') + '</div></div>' +
     row('Paper', 'paper', PAPERS, st.paper) +
     row('Page colour', 'colour', COLOURS.map(c => [c[0], c[1]]), st.colour) +
     row('Layout', 'layout', LAYOUTS, st.layout) +
+    (bin.length ? '<div class="srow"><div class="slab">Deleted pages</div><div class="sbin">' +
+      bin.map(t => '<div class="sbin1"><span>' + t.label + ' · ' + (t.marks ? t.marks + ' mark' + (t.marks === 1 ? '' : 's') : 'empty') + '</span><button class="chip" data-restore="' + t.id + '">↺ Restore</button></div>').join('') +
+      '</div></div>' : '') +
     '<div class="snote" data-backup></div></div>';
   let scope = 'page';
+  const mark = (sel, b) => w.querySelectorAll(sel).forEach(x => { x.classList.toggle('on', x === b); x.textContent = x.textContent.replace(/^✓ /, ''); if (x === b) x.textContent = '✓ ' + x.textContent; });
   w.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) { if (e.target === w) w.remove(); return; }
     if (b.dataset.s === 'close') { w.remove(); return; }
-    if (b.dataset.scope) { scope = b.dataset.scope; w.querySelectorAll('[data-scope]').forEach(x => x.classList.toggle('on', x === b)); return; }
-    for (const k of ['paper', 'colour', 'layout']) if (b.dataset[k]) {
-      nb.setStyle({ [k]: b.dataset[k] }, scope);
-      w.querySelectorAll('[data-' + k + ']').forEach(x => x.classList.toggle('on', x === b));
-    }
+    if (b.dataset.restore) { nb.restore(b.dataset.restore); w.remove(); return; }
+    if (b.dataset.scope) { scope = b.dataset.scope; mark('[data-scope]', b); return; }
+    for (const k of ['paper', 'colour', 'layout']) if (b.dataset[k]) { nb.setStyle({ [k]: b.dataset[k] }, scope); mark('[data-' + k + ']', b); }
   });
   document.body.appendChild(w);
   paintBackup(w.querySelector('[data-backup]'));
 }
-const DOT = { local: ['#d8a200', 'Saved on this tablet'], saving: ['#d8a200', 'Backing up…'], saved: ['#2e9d4f', 'Backed up to Drive'], offline: ['#c0392b', 'Not backed up — no connection'], nobackend: ['#8e8e93', 'Backup off — connect Trace to Drive in the app'] };
-function paintBackup(node) { if (node) node.textContent = DOT[window.__sync || 'local'][1]; }
+// the backup state is a shape, never only a colour
+const DOT = {
+  local:     ['▢', 'Saved on this tablet — waiting to back up to Drive'],
+  saving:    ['↑', 'Backing up to Drive…'],
+  saved:     ['✓', 'Backed up to Drive'],
+  offline:   ['✕', 'Not backed up — no connection. It is safe on this tablet and will go up when you are online.'],
+  nobackend: ['⊘', 'Backup is off on this device — open Trace once and connect it to Drive']
+};
+function paintBackup(node) { if (node) node.textContent = DOT[window.__sync || 'local'][0] + '  ' + DOT[window.__sync || 'local'][1]; }
 
 /* ---------- start ---------- */
 async function start() {
@@ -183,25 +253,36 @@ async function start() {
   startInk();
   const cards = [...document.querySelectorAll('section.view')].map(v => ({
     id: v.id,
-    label: v.id === 'HOME' ? 'Home' : ((v.querySelector('.chead .code') || {}).textContent || v.id)
+    label: v.id === 'HOME' ? 'Home' : ((v.querySelector('.chead .code') || v.querySelector('.top .where') || {}).textContent || v.id).trim()
   }));
   nb = new Notebook(notesPane, cards, () => saver && saver.touch());
-  saver = makeSaver(PAGE, () => nb.data);
+  saver = makeSaver('nb:' + PAGE, NOTES_FILE(PAGE), () => nb.data);
+  inkSaver = makeSaver('ink:' + PAGE, INK_FILE(PAGE), () => ink);
   onState(s => {
     window.__sync = s;
     const d = document.querySelector('[data-dot]');
-    if (d) { d.style.background = DOT[s][0]; d.title = DOT[s][1]; }
-    const n = document.querySelector('[data-backup]'); paintBackup(n);
+    if (d) { d.textContent = DOT[s][0]; d.title = DOT[s][1]; d.setAttribute('aria-label', DOT[s][1]); d.dataset.state = s; }
+    paintBackup(document.querySelector('[data-backup]'));
   });
-  const local = await localGet('nb:' + PAGE);
+  const [local, localInk] = await Promise.all([localGet('nb:' + PAGE), localGet('ink:' + PAGE)]);
+  if (localInk && localInk.views) ink = localInk;
   nb.load(local);
-  cloudGet(PAGE).then(remote => { if (remote && remote.ts && (!local || remote.ts > (local.ts || 0))) nb.load(remote); }).catch(() => {});
+  // Drive copies: whichever is newer wins, the notebook as a whole and each study screen on its own
+  Promise.all([
+    cloudGet(NOTES_FILE(PAGE)).then(remote => { if (remote && remote.ts && (!local || remote.ts > (local.ts || 0))) nb.load(remote); }),
+    cloudGet(INK_FILE(PAGE)).then(remote => {
+      if (!remote || !remote.views) return;
+      for (const [k, r] of Object.entries(remote.views)) {
+        const mine = ink.views[k];
+        if (!mine || (r.ts || 0) > (mine.ts || 0)) { ink.views[k] = r; const h = inks.get(k); if (h) h.load(r.objs); }
+      }
+    })
+  ]).then(markSynced).catch(() => {});
 
   zStudy = P.get('zStudy', 0) || 0; base = baseWidth();
   if (!zStudy) fitStudy(); else applyStudyZoom();
   const zn = P.get('zNotes', 0);
   nb.setZoom(zn || 1);
-  if (!zn) setTimeout(fitNotes, 80);
   if (P.get('notes', false)) showNotes(true);
   setupSplit(desk);
   pinch(study, 'study'); pinch(notesPane, 'notes');
@@ -212,21 +293,34 @@ async function start() {
     if (a === 'pen') setWriting(!isWriting());
     else if (a === 'notes') showNotes(!desk.classList.contains('notes-on'));
     else if (a === 'set') sheet();
-    else if (a === 'zin') setZoom(zWho, (zWho === 'study' ? zStudy : nb.getZoom()) + 0.1);
-    else if (a === 'zout') setZoom(zWho, (zWho === 'study' ? zStudy : nb.getZoom()) - 0.1);
+    else if (a === 'dot') toast(DOT[window.__sync || 'local'][0] + '  ' + DOT[window.__sync || 'local'][1]);
+    else if (a === 'home') { saver.flush(); inkSaver.flush(); }
+    else if (a === 'fit') { if (zWho === 'notes' && desk.classList.contains('notes-on')) { fitNotes(); nb.scrollToPage(nb.idx); } else fitStudy(); toast('⇔ ' + (zWho === 'notes' ? 'Notes' : 'Study') + ' fitted to its side · ' + Math.round(zNow(zWho) * 100) + '%'); }
+    else if (a === 'zin') setZoom(zWho, zNow(zWho) + 0.1);
+    else if (a === 'zout') setZoom(zWho, zNow(zWho) - 0.1);
   });
   const rng = document.querySelector('[data-z-range]');
-  rng.addEventListener('input', () => setZoom(zWho, +rng.value / 100));
+  let rr = 0;
+  rng.addEventListener('input', () => { if (rr) return; rr = requestAnimationFrame(() => { rr = 0; liveZoom(zWho, +rng.value / 100); }); });
+  rng.addEventListener('change', () => { if (rr) { cancelAnimationFrame(rr); rr = 0; liveZoom(zWho, +rng.value / 100); } endZoom(zWho); });
   study.addEventListener('pointerdown', () => { if (zWho !== 'study') { zWho = 'study'; paintZoom(); } }, true);
   notesPane.addEventListener('pointerdown', () => { if (zWho !== 'notes') { zWho = 'notes'; paintZoom(); } }, true);
   onWriting(on => { const b = document.querySelector('[data-s="pen"]'); if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
 
-  const follow = () => { const v = viewNow(); if (!v) return; inkFor(v); nb.show(v.id, 0); };
+  let shown = null;
+  const follow = () => {
+    const v = viewNow(); if (!v) return;
+    inkFor(v);
+    if (v.id !== shown) { shown = v.id; study.scrollTop = 0; nb.show(v.id, 0); applyStudyZoom(); orientNote(v); }
+  };
   follow();
   new MutationObserver(follow).observe(document.querySelector('main'), { attributes: true, attributeFilter: ['hidden'], subtree: true });
-  new ResizeObserver(() => { applyStudyZoom(); }).observe(zw);
-  addEventListener('resize', () => { base = baseWidth(); applyStudyZoom(); });
-  addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') saver.flush(); });
-  addEventListener('beforeunload', () => saver.flush());
+  let rz = 0;
+  new ResizeObserver(() => { if (sp) return; clearTimeout(rz); rz = setTimeout(applyStudyZoom, 60); }).observe(zw);
+  addEventListener('resize', () => { base = baseWidth(); applyStudyZoom(); const v = viewNow(); if (v) { inkFor(v); orientNote(v); } });
+  const flushAll = () => { saver.flush(); inkSaver.flush(); };
+  addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushAll(); });
+  addEventListener('pagehide', flushAll);
+  addEventListener('beforeunload', flushAll);
 }
 if (document.readyState === 'loading') addEventListener('DOMContentLoaded', start); else start();

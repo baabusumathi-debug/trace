@@ -92,7 +92,7 @@ dict(id='S1', q='P12-101', n='Section 1',
       title='The line is hypoperfusion, NOT blood pressure',
       note='So the wrong option to expect is that hypotension defines stage C. It is the same lesson as the last three cards, turned into a scale.')]),
   dict(code='CVS03|CS-11', t='Muscle that fails with clean coronaries', vis=[
-    D.heart([(352, 226, 'the muscle itself — the PUMP number', '#b3261e')],
+    D.heart([(312, 200, 'the muscle itself — the PUMP number', '#b3261e')],
             'With clean coronaries, the failure is in the wall'),
     V.chips([('Heart failure', 'chronic decompensating, or acute as the first presentation'),
              ('Chronic ischaemia', ''), ('Dilated cardiomyopathy', 'ALCOHOL — the asked one'),
@@ -431,7 +431,7 @@ SECTIONS += [
 # =========================================================== 5
 dict(id='S5', q='P12-105', n='Section 5',
  title='Will fluid help this heart?',
- opener=[D.starling([(132, 134, 'a responder sits HERE', '#2e6b3a'), (366, 100, 'a non-responder sits here', '#b3261e')]),
+ opener=[D.starling([(165, 0, 'a responder sits HERE', '#2e6b3a'), (366, 100, 'a non-responder sits here', '#b3261e')]),
          V.flow([('q', 'NEET asks it in many costumes', 'a CVP · a vein on ultrasound · a pressure that swings with the ventilator · a leg raise'),
                  ('step', 'They all ask the same thing', 'is this heart still on the STEEP part of its curve?'),
                  ('good', 'The order to hold', 'static numbers barely predict it · dynamic ones do better · a challenge you can take back does best')],

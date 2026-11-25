@@ -12,7 +12,8 @@ body.desk-on>header h1{font-size:14.5px;margin:0;flex:0 1 auto;white-space:nowra
 .zlab{color:#fff;font:600 11.5px/1 ui-sans-serif,system-ui,sans-serif;min-width:86px;text-align:center}
 .zlab b{font-weight:800}
 .zgrp input[type=range]{width:88px;accent-color:#fff}
-.dot{width:11px;height:11px;border-radius:50%;background:#d8a200;box-shadow:0 0 0 2px rgba(255,255,255,.35);flex:0 0 auto}
+.sbtn.bk{font-size:15px;font-weight:800;min-width:32px}
+a.sbtn{text-decoration:none}
 
 .desk{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;min-width:0}
 @media(orientation:landscape) and (min-width:900px){.desk{flex-direction:row}}
@@ -40,9 +41,20 @@ body.desk-on>header h1{font-size:14.5px;margin:0;flex:0 1 auto;white-space:nowra
 .nbb:disabled{opacity:.4}
 .nb-lab{font:700 12.5px/1 ui-sans-serif,system-ui,sans-serif;color:#1c3461;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nb-sp{flex:1 1 auto}
-.nb-scroll{flex:1 1 auto;overflow:auto;overscroll-behavior:contain;padding:12px;display:flex;justify-content:center}
-.nb-stage{position:relative;flex:0 0 auto}
-.nb-page{position:absolute;left:0;top:0;transform-origin:0 0;box-shadow:0 2px 10px rgba(0,0,0,.18);border:1px solid #bfc6d2}
+.nb-scroll{position:relative;flex:1 1 auto;overflow:auto;overscroll-behavior:contain;padding:12px 12px 28px}
+.nb-stage{position:relative;margin:0 auto}
+.nb-col{position:absolute;left:0;top:0;transform-origin:0 0}
+.nb-page{position:absolute;left:0;box-shadow:0 2px 10px rgba(0,0,0,.18);outline:1px solid #bfc6d2}
+.nb-end{margin:18px auto 10px;max-width:520px;display:flex;align-items:center;gap:10px;font:700 12.5px/1.3 ui-sans-serif,system-ui,sans-serif;color:#3d4757}
+.nb-end::before,.nb-end::after{content:"";flex:1 1 auto;border-top:2px dashed #8f99ab}
+.nb-pull{position:relative;margin:0 auto;max-width:520px;height:40px;border:1.5px dashed #8f99ab;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#e9ecf1}
+.nb-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:#c4cede}
+.nb-pt{position:relative;font:600 12.5px/1 ui-sans-serif,system-ui,sans-serif;color:#3d4757}
+.nb-pull.live{border-style:solid}
+.nb-pull.ready{border:2px solid #1c3461}
+.nb-pull.ready .nb-pt{font-weight:800;color:#1c3461}
+.nb-undo{flex:0 0 auto;display:flex;align-items:center;gap:10px;justify-content:space-between;padding:6px 10px;background:#1c3461;color:#fff;font:600 12.5px/1.2 ui-sans-serif,system-ui,sans-serif}
+.orient{position:sticky;left:0;z-index:3;box-sizing:border-box;width:100%;padding:7px 12px;background:#fff7d6;border-bottom:1px solid #e6d58f;font:600 12.5px/1.35 ui-sans-serif,system-ui,sans-serif;color:#4a3d00}
 
 /* the ink layer: Trace's own rules, so a highlight sits under the words */
 .ink-ov{position:absolute;left:0;top:0;z-index:2;pointer-events:none;touch-action:none;mix-blend-mode:multiply}
@@ -60,3 +72,14 @@ body.desk-on>header h1{font-size:14.5px;margin:0;flex:0 1 auto;white-space:nowra
 .chip{background:#f2f4f8;border:1px solid #d3d9e3;border-radius:9px;padding:7px 11px;font:600 13px/1 ui-sans-serif,system-ui,sans-serif;color:#1d1d1f;cursor:pointer}
 .chip.on{background:#1c3461;border-color:#1c3461;color:#fff}
 .snote{padding-top:10px;font:13px/1.5 ui-sans-serif,system-ui,sans-serif;color:#5a6472}
+
+.sheet.small{width:min(440px,100%);border-radius:16px;margin-bottom:auto;margin-top:22vh}
+.sact{display:flex;gap:8px;justify-content:flex-end;padding-top:12px}
+.chip.danger{background:#fff;border:2px solid #a3261b;color:#a3261b;font-weight:800}
+.sbin{display:flex;flex-direction:column;gap:6px}
+.sbin1{display:flex;align-items:center;justify-content:space-between;gap:8px;font:13px/1.3 ui-sans-serif,system-ui,sans-serif;color:#1d1d1f}
+/* a short message at the foot of the screen */
+.dk-toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:300;max-width:min(560px,92vw);
+ background:#1c1f26;color:#fff;border-radius:10px;padding:9px 14px;font:600 13px/1.35 ui-sans-serif,system-ui,sans-serif;transition:opacity .18s,transform .18s}
+.dk-toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:560px){.zgrp input[type=range]{display:none}.zlab{min-width:70px}}

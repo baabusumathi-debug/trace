@@ -1,6 +1,7 @@
 import asyncio
 from playwright.async_api import async_playwright
-URL='file:///home/claude/s1/shock1.html'
+import os, sys
+URL='file://'+os.path.abspath(sys.argv[1] if len(sys.argv)>1 else os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..','shock1.html'))
 async def main():
     async with async_playwright() as p:
         b=await p.chromium.launch(executable_path='/usr/bin/google-chrome',args=['--no-sandbox'])
@@ -29,3 +30,10 @@ async def main():
         print('doc overflow:',await pg.evaluate("()=>document.documentElement.scrollWidth-window.innerWidth"))
         await b.close()
 asyncio.run(main())
+
+# the drawings: measured overlap check (see ../DIAGRAMS.md); a non-zero exit means do not ship
+import subprocess
+here = os.path.dirname(os.path.abspath(__file__))
+rc = subprocess.call([sys.executable, os.path.join(here, '..', 'diagcheck.py'), URL[len('file://'):], os.path.join(here, 'diagcheck-out')])
+print('diagrams:', 'clean' if rc == 0 else 'ISSUES — see diagcheck-out/ and fix before pushing')
+sys.exit(rc)

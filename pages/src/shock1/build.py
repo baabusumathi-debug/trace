@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-import json, re, html, sys
+import json, re, html, sys, os
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, '..', '..', 'shock1.html')
 import vis as V, draw as D
 from content import SECTIONS, TITLE, SUB, TRAPS
 
-S1 = {q['q']: q for q in json.load(open('/home/claude/s1/S1.json'))}
+S1 = {q['q']: q for q in json.load(open(os.path.join(HERE, 'S1.json')))}
 
 def esc(s): return html.escape(s, quote=False)
 
@@ -147,12 +150,20 @@ for i, (sid, kind, h, lab) in enumerate(screens):
     body.append('<section class="view" id="%s" hidden><div class="top"><button class="home">←  All cards</button>'
                 '<span class="where">%s</span></div>%s%s</section>' % (sid, esc(lab), h, nav))
 
-CSS = open('/home/claude/s1/style.css').read()
-JS = open('/home/claude/s1/app.js').read()
+CSS = open(os.path.join(HERE, 'style.css')).read()
+# what makes it an installable page with the desk: its manifest, the desk styles, the worker and desk.js
+HEAD = ('<link rel="manifest" href="shock1.webmanifest"><meta name="theme-color" content="#1c3461">'
+        '<link rel="apple-touch-icon" href="icons/shock1-192.png"><link rel="stylesheet" href="css/ink.css">'
+        '<link rel="stylesheet" href="css/desk.css">')
+TAIL = ("""<script>if('serviceWorker' in navigator&&location.protocol!=='file:'){addEventListener('load',function(){"""
+        """navigator.serviceWorker.register('sw.js',{scope:'./'}).then(function(r){r.addEventListener('updatefound',function(){"""
+        """var n=r.installing;n&&n.addEventListener('statechange',function(){if(n.state==='installed'&&navigator.serviceWorker.controller)"""
+        """location.reload()})})}).catch(function(){})})}</script><script type="module" src="js/desk.js"></script>""")
+JS = open(os.path.join(HERE, 'app.js')).read()
 page = """<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>%s</title><style>%s</style></head><body>
-<header><h1>%s</h1></header><main>%s</main><script>%s</script></body></html>""" % (
-    esc(TITLE), CSS, esc(TITLE), ''.join(body), JS)
-open('/home/claude/s1/shock1.html', 'w').write(page)
+<title>%s</title><style>%s</style>%s</head><body>
+<header><h1>%s</h1></header><main>%s</main><script>%s</script>%s</body></html>""" % (
+    esc(TITLE), CSS, HEAD, esc(TITLE), ''.join(body), JS, TAIL)
+open(OUT, 'w').write(page)
 print('screens', len(screens), 'cards', n_card, 'bytes', len(page))
