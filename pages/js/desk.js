@@ -224,12 +224,14 @@ function sheet() {
     (bin.length ? '<div class="srow"><div class="slab">Deleted pages</div><div class="sbin">' +
       bin.map(t => '<div class="sbin1"><span>' + t.label + ' · ' + (t.marks ? t.marks + ' mark' + (t.marks === 1 ? '' : 's') : 'empty') + '</span><button class="chip" data-restore="' + t.id + '">↺ Restore</button></div>').join('') +
       '</div></div>' : '') +
+    '<div class="srow"><div class="slab">Notebook of</div><div class="schips"><button class="chip on">✓ ' + (WHO ? WHO.name : '') + '</button><button class="chip" data-s="who">Change who is writing</button></div></div>' +
     '<div class="snote" data-backup></div></div>';
   let scope = 'page';
   const mark = (sel, b) => w.querySelectorAll(sel).forEach(x => { x.classList.toggle('on', x === b); x.textContent = x.textContent.replace(/^✓ /, ''); if (x === b) x.textContent = '✓ ' + x.textContent; });
   w.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) { if (e.target === w) w.remove(); return; }
     if (b.dataset.s === 'close') { w.remove(); return; }
+    if (b.dataset.s === 'who') { saver.flush(); inkSaver.flush(); try { localStorage.removeItem(WKEY); } catch (e) { /* */ } setTimeout(() => location.reload(), 300); return; }
     if (b.dataset.restore) { nb.restore(b.dataset.restore); w.remove(); return; }
     if (b.dataset.scope) { scope = b.dataset.scope; mark('[data-scope]', b); return; }
     for (const k of ['paper', 'colour', 'layout']) if (b.dataset[k]) { nb.setStyle({ [k]: b.dataset[k] }, scope); mark('[data-' + k + ']', b); }
@@ -247,30 +249,71 @@ const DOT = {
 };
 function paintBackup(node) { if (node) node.textContent = DOT[window.__sync || 'local'][0] + '  ' + DOT[window.__sync || 'local'][1]; }
 
+/* ---------- who is writing on this tablet ----------
+   Naven's notebook keeps the original names (nb:<page>, studynotes-<page>.json), so nothing of his moves.
+   Anyone else gets their own: nb:<page>:<id>, studynotes-<page>-<id>.json. Two people sharing one Drive
+   therefore never load or overwrite each other's notes. */
+const WKEY = 'desk.writer';
+const WRITERS = [{ id: 'naven', name: 'Naven' }, { id: 'ht', name: 'HT' }];
+function readWriter() { try { const w = JSON.parse(localStorage.getItem(WKEY) || 'null'); return w && w.id ? w : null; } catch (e) { return null; } }
+function whoWrites() {
+  const known = readWriter(); if (known) return Promise.resolve(known);
+  return new Promise(res => {
+    const w = el('div', 'sheet-wrap', '<div class="sheet small"><div class="shead"><b>Who is writing on this tablet?</b></div>' +
+      '<p class="snote">Asked once. Each person gets their own notebook, saved and backed up separately, so nobody overwrites anybody.</p>' +
+      '<div class="sact" style="justify-content:flex-start;flex-wrap:wrap">' + WRITERS.map(x => '<button class="chip" data-w="' + x.id + '">' + x.name + '</button>').join('') +
+      '<span style="display:inline-flex;gap:6px"><input data-wn placeholder="Someone else: name" style="font:inherit;padding:5px 8px;border:1px solid #b9c1cf;border-radius:8px;width:11em"><button class="chip" data-w="other">OK</button></span></div></div>');
+    w.addEventListener('click', e => {
+      const b = e.target.closest('[data-w]'); if (!b) return;
+      let pick = WRITERS.find(x => x.id === b.dataset.w);
+      if (!pick) {
+        const nm = (w.querySelector('[data-wn]').value || '').trim(); if (!nm) return;
+        const id = nm.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 20) || 'guest';
+        pick = { id: id === 'naven' ? 'naven-2' : id, name: nm };
+      }
+      try { localStorage.setItem(WKEY, JSON.stringify(pick)); } catch (err) { /* */ }
+      w.remove(); res(pick);
+    });
+    document.body.appendChild(w);
+  });
+}
+let WHO = null;
+const nbKey = () => 'nb:' + PAGE + (WHO.id === 'naven' ? '' : ':' + WHO.id);
+const inkKey = () => 'ink:' + PAGE + (WHO.id === 'naven' ? '' : ':' + WHO.id);
+const fileSfx = f => WHO.id === 'naven' ? f : f.replace(/\.json$/, '-' + WHO.id + '.json');
+
 /* ---------- start ---------- */
 async function start() {
   const desk = build();
+  WHO = await whoWrites();
+  window.__writer = { who: WHO.id, nb: nbKey(), ink: inkKey(), files: [fileSfx(NOTES_FILE(PAGE)), fileSfx(INK_FILE(PAGE))] };
   startInk();
   const cards = [...document.querySelectorAll('section.view')].map(v => ({
     id: v.id,
     label: v.id === 'HOME' ? 'Home' : ((v.querySelector('.chead .code') || v.querySelector('.top .where') || {}).textContent || v.id).trim()
   }));
   nb = new Notebook(notesPane, cards, () => saver && saver.touch());
-  saver = makeSaver('nb:' + PAGE, NOTES_FILE(PAGE), () => nb.data);
-  inkSaver = makeSaver('ink:' + PAGE, INK_FILE(PAGE), () => ink);
+  saver = makeSaver(nbKey(), fileSfx(NOTES_FILE(PAGE)), () => nb.data);
+  inkSaver = makeSaver(inkKey(), fileSfx(INK_FILE(PAGE)), () => ink);
   onState(s => {
     window.__sync = s;
     const d = document.querySelector('[data-dot]');
     if (d) { d.textContent = DOT[s][0]; d.title = DOT[s][1]; d.setAttribute('aria-label', DOT[s][1]); d.dataset.state = s; }
     paintBackup(document.querySelector('[data-backup]'));
   });
-  const [local, localInk] = await Promise.all([localGet('nb:' + PAGE), localGet('ink:' + PAGE)]);
+  let [local, localInk] = await Promise.all([localGet(nbKey()), localGet(inkKey())]);
+  // HT began on the trauma page before notebooks were split: what this tablet saved there is hers
+  if (WHO.id !== 'naven' && PAGE === 'trauma' && !local && !localInk) {
+    [local, localInk] = await Promise.all([localGet('nb:' + PAGE), localGet('ink:' + PAGE)]);
+    if (local) await localSet(nbKey(), local);
+    if (localInk) await localSet(inkKey(), localInk);
+  }
   if (localInk && localInk.views) ink = localInk;
   nb.load(local);
   // Drive copies: whichever is newer wins, the notebook as a whole and each study screen on its own
   Promise.all([
-    cloudGet(NOTES_FILE(PAGE)).then(remote => { if (remote && remote.ts && (!local || remote.ts > (local.ts || 0))) nb.load(remote); }),
-    cloudGet(INK_FILE(PAGE)).then(remote => {
+    cloudGet(fileSfx(NOTES_FILE(PAGE))).then(remote => { if (remote && remote.ts && (!local || remote.ts > (local.ts || 0))) nb.load(remote); }),
+    cloudGet(fileSfx(INK_FILE(PAGE))).then(remote => {
       if (!remote || !remote.views) return;
       for (const [k, r] of Object.entries(remote.views)) {
         const mine = ink.views[k];

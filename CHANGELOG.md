@@ -22,6 +22,11 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-202 — 2026-11-26 — Claude — live — pages (sw pages-v8)
+- **One notebook per person.** HT's tablet uses the same Drive as Naven's, so both tablets would have read and written the same `studynotes-<page>.json`: her page could have opened his notes, and her writing could have saved over his file. Each tablet now asks once who is writing (Naven · HT · someone else; kept in `localStorage['desk.writer']`). Naven keeps the original names (`nb:<page>`, `ink:<page>`, `studynotes-<page>.json`, `studyink-<page>.json`), so nothing of his moves; anyone else gets their own (`nb:<page>:ht`, `studynotes-<page>-ht.json`, …). Settings shows "Notebook of <name>" with **Change who is writing**.
+- On the trauma page only, a non-Naven writer takes over the notes this tablet already holds under the old names (HT wrote there before this release).
+- Checked: two simulated tablets on one fake Drive (Naven writes → only `studynotes-trauma.json`; HT opens and sees none of his strokes, writes → only `studynotes-trauma-ht.json`; Naven reloads with his strokes intact and is not asked again); old trauma notes adopted for HT; Change who is writing asks again; desk 27/28 (the one miss is `/favicon.ico` on the local test server root), pen 3/3, trauma 19/19, all pages ok.
+
 ## T-201 — 2026-11-26 — Claude — live — pages (sw pages-v7)
 - New study page **Trauma** (`pages/trauma.html`, icon TR, own manifest, in the library) from SPECIAL05A + SPECIAL05B: 16 concepts in two groups, all 24 cards (17 bank-hit) and all 13 top-ups placed once (the build asserts it), 95 traps, 81 real bank questions, 26 mimic pairs. Card text from Drive (`Trace › decks › SPECIAL05A/05B › cards.jsonl`, copied to `pages/src/trauma/cards.jsonl`); explanations from `data/explain.json`.
 - Recall switch with **hand-picked blanks** (104), replacing the GI page's habit of hiding every bold word: equal-width boxes with a gap label, one tap uncovers one, Reveal all / Cover all again, tabs stay shut while recall is on. Rules in new `pages/src/CLOZE.md` (from Wozniak's 20 rules and Matuschak's prompt guide); the build fails on a blank that is too long, too crowded, lacks open words or is printed elsewhere on its screen, and writes `recall-read.txt` for a read-through (done: 8 blanks rewritten).
