@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: Claude — trauma study page (SPECIAL05A/05B), `pages/` only — claimed 2026-11-26 11:20 IST
+In progress: none
 
 ## State (as of entry T-197)
 
@@ -21,6 +21,13 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 | Waiting on Naven | Device check of live 1.4.0 · meditation producer, times and input source · sign-off after the visual pilot |
 
 ---
+
+## T-201 — 2026-11-26 — Claude — live — pages (sw pages-v7)
+- New study page **Trauma** (`pages/trauma.html`, icon TR, own manifest, in the library) from SPECIAL05A + SPECIAL05B: 16 concepts in two groups, all 24 cards (17 bank-hit) and all 13 top-ups placed once (the build asserts it), 95 traps, 81 real bank questions, 26 mimic pairs. Card text from Drive (`Trace › decks › SPECIAL05A/05B › cards.jsonl`, copied to `pages/src/trauma/cards.jsonl`); explanations from `data/explain.json`.
+- Recall switch with **hand-picked blanks** (104), replacing the GI page's habit of hiding every bold word: equal-width boxes with a gap label, one tap uncovers one, Reveal all / Cover all again, tabs stay shut while recall is on. Rules in new `pages/src/CLOZE.md` (from Wozniak's 20 rules and Matuschak's prompt guide); the build fails on a blank that is too long, too crowded, lacks open words or is printed elsewhere on its screen, and writes `recall-read.txt` for a read-through (done: 8 blanks rewritten).
+- New drawings: the eFAST windows and the REBOA zones; diagcheck 0 issues, anatomy read against `DIAGRAMS.md`.
+- Fix (GI, endocrine, obstetrics): the desk strip (Pen, Notes, zoom, settings, backup, ← Pages) was white on those pages' white headers and could not be seen. `pages/css/desk.css` now gives the strip its own dark ground.
+- Checked: trauma walk 19/19 (all 16 concepts at 390, 800×1280 and 1280×860 with no overflow; recall on/off, single uncover, reveal/cover, tabs, cards, miss list); desk on all six pages at three sizes.
 
 ## T-200 — 2026-11-25 — Claude — live — pages (sw pages-v6)
 - Fix (Naven: "sometimes the pen doesn't write" after changing page or card): a writing layer created while the pen was already on started switched off, so strokes did nothing until the pen was toggled. That happened on every new notebook card, on each new notebook page and on a study screen opened for the first time. `pages/js/ink-mount.js` now creates each layer in the pen's current state. Reproduced in all three cases in headless Chrome, then fixed and verified; the desk walk is unchanged.

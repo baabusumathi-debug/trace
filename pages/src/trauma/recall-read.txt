@@ -1,0 +1,185 @@
+Every concept as it reads with recall on. For each blank: would I know what is asked? Is there only one right answer?
+
+==== A1 · Who dies, and what counts as polytrauma
+Most trauma deaths come in the first hours. Polytrauma (Berlin, 2014) needs serious injury in two regions and a sign that the body is failing.
+  - Trunkey’s classic description of when injured patients die: [_____ (pattern)].
+  - Modern series: the late deaths (sepsis, organ failure, days to weeks) have shrunk with better intensive care.
+  - Brain injury kills the most patients; [_____ (cause)] is the commonest death that good care can prevent.
+  - Berlin anatomy: AIS [_____ (number)] or more, in at least two body regions.
+  - Plus one physiological criterion: SBP 90 or less · GCS 8 or less · INR 1.4 or more (or APTT 40 s or more) · age [_____ (years)] or more · an acid marker.
+  - The acid marker in Berlin is base excess −6 or worse — not [_____ (the tempting one)].
+
+==== A2 · Field triage and mechanism
+Red criteria describe what the patient HAS and send him to the highest-level centre; yellow criteria describe what HAPPENED, or who he is, and send him to a trauma centre.
+  - Red vital signs: motor GCS under [_____ (number)] · RR under 10 or over 29 · SpO₂ under 90%.
+  - Red pressure from age 65: SBP under [_____ (mmHg)], or heart rate above the systolic.
+  - Red pressure at 10–64 years: SBP under 90, or heart rate above the systolic (a shock index over 1).
+  - Red injuries: penetrating head, neck, torso or proximal limb · flail chest · pelvic fracture · two or more proximal long-bone fractures · amputation above wrist or ankle.
+  - Yellow: ejection · death in the same compartment · a fall over 10 ft · anticoagulants · pregnancy over [_____ (weeks)] weeks.
+  - Mechanism predicts injury before the examination finds it: the contact point decides.
+  - knee, femur, [_____ (which way)] hip dislocation
+  - head, C-spine, torso, and a [_____ (type)] pelvic fracture
+
+==== A3 · Scores: anatomy, physiology, both
+Anatomical scores count the injuries, physiological scores measure the derangement, and TRISS joins them — but never for triage.
+  - AIS grades one injury, from 1 (minor) to [_____ (number)] (unsurvivable).
+  - ISS takes the worst injury in each of the most injured body regions, squares each, and adds them; maximum 75.
+  - ISS over [_____ (number)] = major trauma.
+  - NISS takes the worst injuries [_____ (from where)], so it counts several in one region: better for penetrating torso injury and TBI.
+  - RTS: of its three variables, the heaviest weight (0.94) goes to [_____ (which one)]; respiratory rate carries the least.
+  - Triage RTS (0–12) under 11 = severe.
+  - TRISS (RTS + ISS + age + mechanism) is used to [_____ (purpose)] a centre’s outcomes; the ISS is unknown in the field.
+  - EMTRAS uses age, conscious level, base excess and prothrombin time — all available in minutes.
+  - total [_____ (number)], so this is major trauma
+
+==== A4 · Primary survey: airway, breathing and the chest
+Treat each threat as it is found, in the order it kills: xABCDE. The bank fills the stem with distracting injuries; the airway is still the first job.
+  - GCS [_____ (number)] or less = cannot protect the airway: intubate even with normal vital signs.
+  - Escalate: suction → [_____ (manoeuvre)] (moves the neck least) → OPA/NPA → tube by RSI with manual in-line stabilisation → surgical airway.
+  - Cannot intubate, cannot oxygenate: scalpel [_____ (procedure)] (DAS Plan D).
+  - The cervical spine is protected in A, but examined in the [_____ (which)] survey.
+  - Tension pneumothorax is decompressed on [_____ (on what)], never after waiting for an X-ray.
+  - Massive haemothorax: over [_____ (mL)] mL on insertion, or about 200 mL an hour for 2–4 hours → thoracotomy.
+  - Flail chest: the hypoxia comes from the underlying lung bruise; treat with thoracic [_____ (analgesia)] and O₂/NIV, ventilating only for failure.
+  - Blunt aortic injury tears at the [_____ (site)]; a normal chest film does not exclude it → CT angiography, not TTE or TEE.
+  - Blunt cardiac injury: ECG plus troponin I; both normal → ruled out, [_____ (next step)].
+
+==== A5 · Circulation, disability, exposure and the adjuncts
+Shock after injury is bleeding until proven otherwise, hidden in five places. FAST looks for free fluid; it cannot see everything, and a negative scan clears nothing.
+  - Five places blood hides: external · chest · abdomen · pelvis and retroperitoneum · [_____ (where)].
+  - FAST has four windows for free fluid; eFAST adds both pleural spaces.
+  - FAST cannot see the [_____ (organ)] or the retroperitoneum (pancreas, kidneys), and a negative scan does not exclude injury.
+  - The pulse rule (radial 80, femoral 70, carotid 60) [_____ (error)] the true pressure in hypovolaemia.
+  - An early haemoglobin can be normal: the lost blood has not yet been replaced by fluid; base deficit and lactate move first.
+  - D: one dilated pupil usually lies on the [_____ (which)] side as the mass lesion (uncal herniation).
+  - Blood at the meatus: no urinary catheter before a retrograde urethrogram.
+  - Two failed peripheral lines in shock → an [_____ (route)] needle next (humerus or tibia), not a central line.
+  - Hypotensive older smoker with flank pain: a bedside aortic [_____ (test)], then straight to theatre; no CT while unstable.
+
+==== A6 · Grading shock, and filling before intubating
+Pressure holds until about a third of the blood is gone, so the pulse and the shock index see shock first. The bleeding patient gets blood, and the circulation is filled before the airway is taken.
+  - Systolic pressure first falls in class [_____ (class)].
+  - In class II the systolic holds, and the only change in the pressure is a narrowed [_____ (what)].
+  - Shock index = heart rate [_____ (× or ÷)] systolic pressure; normal 0.5–0.7.
+  - HR 128, SBP 105: shock index [_____ (number)] — occult shock while the pressure looks acceptable.
+  - Transient responder = still bleeding: blood, MTP and source control, not [_____ (drug class)].
+  - Order: stop external bleeding → basic airway → blood and TXA → bind the pelvis, decompress the chest → THEN intubate.
+  - Induction in any shock: [_____ (how much)] of the usual dose, with a full paralytic dose.
+  - Neurogenic shock (cord at T6 or above): hypotension with [_____ (heart rate)] and warm skin.
+  - A thoracic sensory level needs imaging of the [_____ (what)], not only the head and neck.
+  - 30–40% lost, about [_____ (mL)] mL in an adult
+
+==== A7 · Abdomen, bladder and urethra
+Instability or peritonitis decides the operation, not the grade of the injury. FAST sees fluid, not air, and nothing behind the peritoneum.
+  - Unstable, or peritonitis → [_____ (operation)]; CT in an unstable patient wastes time.
+  - Stable solid-organ injury of any grade → non-operative care in a monitored bed.
+  - A contrast [_____ (CT sign)] means active arterial bleeding → angioembolisation.
+  - Seat-belt sign + free fluid with no solid-organ injury = [_____ (which injury)] injury → laparoscopy or open exploration.
+  - Pancreas: FAST misses it, early CT misses many, amylase is unreliable; the state of the main [_____ (structure)] decides → MRCP/ERCP.
+  - Day 3–10 after liver non-operative care: fever, RUQ pain, rising bilirubin = [_____ (diagnosis)] → drain.
+  - Pelvic fracture with gross haematuria → retrograde CT [_____ (test)]; clamping the catheter under-fills the bladder.
+  - Extraperitoneal bladder rupture → catheter drainage for about two weeks; intraperitoneal → [_____ (treatment)].
+  - After emergency splenectomy, vaccinate at about [_____ (days)] days: pneumococcal, meningococcal, Hib, yearly flu.
+
+==== A8 · Spine and cord
+Clear the neck clinically when you can, image it when you can’t, and read a cord syndrome from which tracts are lost on which side.
+  - NEXUS: no imaging if no midline tenderness, alert, sober, no focal deficit and no distracting injury.
+  - If the neck must be imaged: [_____ (test)]; MRI for a deficit or a ligament worry.
+  - The Canadian rule adds age 65+, a dangerous mechanism and an active 45° rotation test; it is more sensitive.
+  - Brown-Séquard (a stab): pain and temperature are lost on the [_____ (which)] side to the cut; best prognosis of the incomplete syndromes.
+  - Central cord (elderly, hyperextension): [_____ (which limbs)] weaker than legs, sacral sparing.
+  - Anterior cord (flexion, or after thoracic aortic repair): motor, pain and temperature lost; joint position and vibration kept; [_____ (prognosis)] prognosis.
+  - Chance fracture (lap belt, flexion–distraction): all three columns fail — [_____ (stability)], with bowel injury.
+  - Hangman’s fracture = C2 pedicles (hyperextension); Jefferson = the [_____ (level)] ring (axial load).
+  - Acute cord injury: keep MAP about 85–90 for days; methylprednisolone is no longer recommended.
+
+==== A9 · After the first day: fat embolism, compartments, clots
+Three late killers of the injured limb and lung. Each is diagnosed on clinical signs, and each is harmed by waiting for a test.
+  - Fat embolism appears [_____ (hours)] h after a long-bone or pelvic fracture.
+  - Gurd major: respiratory failure · cerebral signs · a petechial [_____ (sign)] (only about a third).
+  - Tachycardia and retinal changes are both [_____ (criterion)] criteria.
+  - Fat embolism is a clinical diagnosis of exclusion; treatment is supportive with early fracture [_____ (step)].
+  - Compartment syndrome is earliest felt as pain out of proportion and on passive [_____ (manoeuvre)]; pulses and pallor come late.
+  - Measure delta-P = [_____ (which pressure)] pressure minus compartment pressure; under 30 mmHg → fasciotomy.
+  - Never more opioids, never wait for imaging; split every dressing and keep the limb at heart level.
+  - VTE prophylaxis in major trauma: [_____ (drug class)], once bleeding is controlled; compression devices alone only while drugs are contraindicated.
+
+==== B1 · The lethal triad, and how deep the shock is
+Cold and acid stop clots forming, bleeding deepens the shock, and the shock makes more cold and acid. Lactate and base deficit measure how far down the spiral he is.
+  - The triad: core under 34 °C · pH under 7.2 · coagulopathy; each worsens the other two.
+  - The strongest predictor (Cosgriff): pH under 7.1, odds ratio about [_____ (number)].
+  - Cold hits the [_____ (what)] first: adhesion falls at about 33 °C.
+  - PT and aPTT are run at 37 °C, so they look normal while the cold patient oozes; the fix is [_____ (treatment)].
+  - After trauma, a core under [_____ (°C)] °C carries a mortality close to 100%.
+  - Acid cripples factor VIIa and the Xa/Va complex; bicarbonate alone does not restore clotting.
+  - With low ionised calcium as a fourth corner it becomes the lethal [_____ (name)].
+  - Lactate over 3 mmol/L picks up most early deaths; its 6-hour [_____ (what)] matters more than one value.
+  - [_____ (what)] raises lactate a little; base deficit is less affected.
+  - ATLS base deficit for class III shock: [_____ (range)] mEq/L.
+  - SBP 90 with lactate 3 after a crash is early shock: resuscitate and repeat the lactate — no damage control yet.
+
+==== B2 · Trauma-induced coagulopathy
+A quarter of the badly injured arrive anticoagulated by their own shock, before any fluid. Dilution, cold and acid add the later layer, the part we cause.
+  - It needs tissue injury together with hypoperfusion; neither alone produces it.
+  - Hypoperfused endothelium releases thrombomodulin; the thrombin–thrombomodulin complex activates [_____ (what)].
+  - That activated anticoagulant cleaves Va and VIIIa, so factor [_____ (letter)] is the most consistently depleted.
+  - It also switches on fibrinolysis; [_____ (factor)] reaches a critical level first.
+  - On TEG, LY30 over [_____ (number)] = hyperfibrinolysis (about tenfold mortality) → tranexamic acid.
+  - LY30 under 0.9% = shutdown: the commonest phenotype, with a thrombosis risk.
+  - The endothelium sheds its glycocalyx (syndecan-1 rises): leak, autoheparinisation; plasma helps restore it, [_____ (fluid)] worsens it.
+
+==== B3 · Damage control resuscitation
+When physiology is exhausted, keep the pressure low but adequate, give blood products instead of crystalloid, and choose a short operation.
+  - Damage control is chosen by physiology: the cold, acidotic, coagulopathic or persistently shocked patient.
+  - Laboratory triggers include lactate over [_____ (mmol/L)] mmol/L, pH under 7.2 and a LOW fibrinogen, under 1 g/L.
+  - Permissive hypotension (European guideline): SBP [_____ (mmHg)] until the bleeding is controlled.
+  - Its checks: normal mentation, a palpable pulse, a falling lactate.
+  - Not in TBI or cord injury: keep MAP [_____ (mmHg)] or more.
+  - Restrict crystalloid: it dilutes factors, disrupts clot and leaks into tissue.
+  - Give products together from the start: red cells : plasma : [_____ (third product)], about 1:1:1.
+  - Cryoprecipitate is not part of the ratio; it is for a low fibrinogen.
+  - Albumin raised mortality in TBI ([_____ (trial)]); starch needed more renal replacement (CHEST).
+
+==== B4 · Stopping the bleeding
+No resuscitation replaces stopping the bleeding: pressure, a binder, a tourniquet, embolisation or a short operation. REBOA is a bridge with doubtful benefit.
+  - Damage control surgery: abbreviated laparotomy → ICU resuscitation → a planned [_____ (stage)] at 24–48 h.
+  - The binder is centred on the greater [_____ (landmark)].
+  - It stays on until a fracture is excluded on [_____ (what)] — not because he is stable, FAST is negative, or the pelvis does not spring.
+  - Binder on, FAST negative, still unstable: the bleeding is retroperitoneal → angioembolisation or preperitoneal [_____ (step)].
+  - Binder on, FAST positive, unstable → laparotomy.
+  - REBOA controls bleeding only below the balloon, so it is useless for thoracic or subclavian bleeding.
+  - UK-REBOA (2023) was stopped for [_____ (result)].
+  - Rewarming: passive external → active external (forced air) → active internal (warm fluids, warm lavage).
+
+==== B5 · Massive transfusion, and when to stop it
+Activate on the bedside picture, start with universal products, run a fixed ratio, then switch to measured targets.
+  - Definition: [_____ (units)] or more red-cell units in 24 h · over 4 in 1 h with ongoing need · over 50% of blood volume in 3 h.
+  - Universal red cells are group O; universal plasma is group [_____ (group)], and its RhD does not matter.
+  - O RhD-negative red cells are kept for girls and women of child-bearing age; men get RhD-positive.
+  - After several units of the universal group, do not switch to the patient’s own group until the [_____ (who decides)] says it is safe.
+  - PROPPR compared 1:1:1 with a plasma- and platelet-poorer ratio: no difference in 30-day mortality, but fewer deaths from [_____ (cause)].
+  - ABC score: SBP under 90 · HR over 120 · penetrating · positive FAST; [_____ (number)] or more → activate.
+  - TASH needs Hb and base excess; 16 or more ≈ 50% chance of massive transfusion.
+  - On TEG or ROTEM, the finding that predicts death is low clot [_____ (what)], not fibrinolysis.
+
+==== B6 · The drugs: TXA, fibrinogen, calcium and the rest
+Tranexamic acid early, fibrinogen first among the factors, calcium kept normal, rFVIIa rarely — and no steroids for the cord.
+  - Tranexamic acid (CRASH-2): 1 g over 10 minutes, then 1 g over [_____ (hours)] hours.
+  - Given early it saves bleeding deaths; given late it increased them, so the window closes at [_____ (hours)] h after injury.
+  - CRASH-3 (head injury): benefit in [_____ (severity)] TBI given early, none in severe TBI.
+  - Low fibrinogen: cryoprecipitate or concentrate; FFP cannot raise it, and [_____ (product)] contains none.
+  - Cryoprecipitate carries fibrinogen, factor VIII, von Willebrand factor and [_____ (factor)]; the concentrate is fibrinogen alone.
+  - Concentrate dose when the level is unknown: about [_____ (mg/kg)] mg/kg.
+  - Citrate in each unit binds calcium; keep ionised calcium normal with calcium [_____ (salt)].
+  - rFVIIa is an off-label [_____ (its place)]: it needs fibrinogen, platelets, warmth and a normal pH to work.
+  - After cord injury, methylprednisolone is not recommended; a MAP of about [_____ (mmHg)] is what helps.
+
+==== B7 · The European numbers, and the sweep
+The European bleeding-in-trauma guideline (6th edition, 2023) in one screen, then the true-or-false sweep across both decks.
+  - Pressure: SBP 80–90 without TBI; MAP 80 or more in severe TBI.
+  - Haemoglobin target while bleeding: [_____ (g/dL)] g/dL.
+  - Start coagulation support with plasma : red cells of at least [_____ (ratio)], or fibrinogen concentrate with red cells.
+  - Platelets over 50; over [_____ (×10⁹/L)] in TBI.
+  - Fluid: isotonic crystalloid; avoid large volumes of [_____ (which fluid)].
+  - Unstable pelvis despite a binder: early packing, embolisation or surgery.
+  - HR 120, SBP 90: shock index [_____ (number)] — severe shock.

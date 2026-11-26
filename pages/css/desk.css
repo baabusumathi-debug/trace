@@ -2,7 +2,7 @@
 body.desk-on{height:100dvh;overflow:hidden;display:flex;flex-direction:column;margin:0}
 body.desk-on>header{flex:0 0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 10px}
 body.desk-on>header h1{font-size:14.5px;margin:0;flex:0 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:30vw}
-.strip{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
+.strip{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap;background:#1c3461;border-radius:12px;padding:4px 6px}  /* its own dark ground: white controls show on white headers (GI, endocrine, obstetrics, trauma) too */
 .sbtn{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.26);
  border-radius:9px;padding:5px 9px;font:600 12.5px/1 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
 .sbtn .ic{font-size:13px}
