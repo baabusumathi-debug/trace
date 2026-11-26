@@ -2,7 +2,7 @@
 
 Changelog format: 2 (stable entry IDs `T-NNN`, newest first). The rules for reading and writing this file are in `AGENTS.md` §11–§12.
 
-In progress: none
+In progress: Claude — trauma study page (SPECIAL05A/05B), `pages/` only — claimed 2026-11-26 11:20 IST
 
 ## State (as of entry T-197)
 
