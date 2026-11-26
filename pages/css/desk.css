@@ -17,7 +17,7 @@ a.sbtn{text-decoration:none}
 
 .desk{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;min-width:0}
 @media(orientation:landscape) and (min-width:900px){.desk{flex-direction:row}}
-.pane{position:relative;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain}
+.desk>.pane{position:relative;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain}
 .pane-study{flex:1 1 auto;background:#eef1f6}
 .desk.notes-on>.pane-study{flex:0 0 var(--split,50%)}
 .pane-notes{display:none;flex:1 1 0;background:#dfe3ea;overflow:hidden}

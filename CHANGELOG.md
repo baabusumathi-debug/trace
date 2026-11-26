@@ -22,6 +22,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-206 — 2026-11-26 — Claude — live — pages (sw pages-v10)
+- Fix: on the tablet, zoomed past about 134%, swiping up stopped working once the page reached the lower part. Cause: the desk's scroll-box rule was written for the class `pane`, and the trauma, GI, endocrine and obstetrics pages use that same class for their own tab panels, so every tab panel got `overscroll-behavior:contain` and swallowed any swipe that started on it instead of passing it to the page. The rule is now `.desk>.pane`, so it reaches only the desk's own two boxes (`pages/css/desk.css`). T-203's test had moved the scroll position directly and so never went through a finger swipe.
+- Checked with raw touch swipes (tablet 1462×914 and 914×1462, Notes open and shut, 100–200%): swiping down to the end and back up returns to the top on trauma, GI, obstetrics, Shock I and Shock II; endocrine unchanged by this release; desk 27/28 (local favicon only), pen 3/3, trauma 19/19, all pages ok.
+
 ## T-205 — 2026-11-26 — Claude — live — 1.4.57
 - Promoted T-204's `js/voice.js` from test 1.3.170 (Naven had allowed live pushes). Checked first on test in the Mac: the index loaded by name in about 7 s with all 3,912 clips and 3,912 word timings (the stored copy had 3,131 timings); every P12 lesson part, 3,910 of them, plays from a Michael clip, ECG 777 of 777. No other file changed.
 
