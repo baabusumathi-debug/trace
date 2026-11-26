@@ -61,11 +61,18 @@ function baseWidth() {
   if (!b) { b = Math.max(360, Math.round((land() ? Math.min(innerWidth * 0.52, 900) : innerWidth) - 8)); P.set(k, b); }
   return b;
 }
+// Sticky bars (tabs, headers) inside a scaled page move by scroll x zoom and drift down the page,
+// so while the study side is zoomed they sit in place like ordinary content.
+function markSticky() {
+  zw.querySelectorAll('*').forEach(e => { if (!e.dataset.stk && getComputedStyle(e).position === 'sticky') e.dataset.stk = '1'; });
+}
+function unstick(z) { zw.classList.toggle('unstick', Math.abs(z - 1) > 0.005); }
 function applyStudyZoom() {
   base = baseWidth();
+  unstick(zStudy);
   zw.style.width = base + 'px';
   zw.style.transform = 'scale(' + zStudy.toFixed(3) + ')';
-  zH = zw.scrollHeight || zw.offsetHeight;
+  zH = zw.offsetHeight || zw.scrollHeight;
   zwrap.style.width = Math.round(base * zStudy) + 'px';
   zwrap.style.height = Math.round(zH * zStudy) + 'px';
   sizeAll();
@@ -76,7 +83,7 @@ let sp = null;
 function studyPinchTo(z, fx, fy) {
   z = Math.max(0.4, Math.min(2.5, z));
   if (!sp) sp = { cx: (study.scrollLeft + fx - zwrap.offsetLeft) / zStudy, cy: (study.scrollTop + fy - zwrap.offsetTop) / zStudy };
-  zStudy = z;
+  zStudy = z; unstick(z);
   zw.style.transform = 'scale(' + z.toFixed(4) + ')';
   zwrap.style.width = Math.round(base * z) + 'px';
   zwrap.style.height = Math.round(zH * z) + 'px';
@@ -323,7 +330,10 @@ async function start() {
   ]).then(markSynced).catch(() => {});
 
   zStudy = P.get('zStudy', 0) || 0; base = baseWidth();
+  markSticky();
   if (!zStudy) fitStudy(); else applyStudyZoom();
+  // content that grows or shrinks (a tab opened, recall on) re-measures the scroll box, so the end stays reachable
+  if (window.ResizeObserver) { let ro = 0; new ResizeObserver(() => { if (sp || ro) return; ro = requestAnimationFrame(() => { ro = 0; if (Math.abs((zw.offsetHeight || zw.scrollHeight) - zH) > 1) applyStudyZoom(); }); }).observe(zw); }
   const zn = P.get('zNotes', 0);
   nb.setZoom(zn || 1);
   if (P.get('notes', false)) showNotes(true);

@@ -58,7 +58,11 @@ export function mountInk(el, opts) {
     el, cv, s, opts,
     size() {
       const w = opts.width ? opts.width() : el.clientWidth;
-      const ht = opts.height ? opts.height() : Math.max(el.scrollHeight, el.clientHeight);
+      // measure the page without this layer in it (the layer counted itself and so never shrank),
+      // but stay tall enough for any writing already below the content
+      cv.style.height = '0px';
+      let inkB = 0; for (const o of s.objs) { try { inkB = Math.max(inkB, objBox(o)[3]); } catch (e) { /* */ } }
+      const ht = Math.max(opts.height ? opts.height() : Math.max(el.scrollHeight, el.clientHeight), Math.ceil(inkB + 40));
       cv.style.width = w + 'px'; cv.style.height = ht + 'px'; s.render();
     },
     load(objs) { s.objs.splice(0, s.objs.length, ...(objs || [])); s.undo.length = 0; s.redo.length = 0; s.sel = null; s.render(); },

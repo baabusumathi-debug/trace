@@ -22,6 +22,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-203 — 2026-11-26 — Claude — live — pages (sw pages-v9)
+- Fix: zooming the study side (slider, + button or pinch) made the trauma page's Mimics · Traps · Cards · Asked tabs slide further down with every step, and past about 134% the page could no longer be scrolled to its ends. Cause: sticky bars inside a scaled page move by scroll × zoom, so they drift; and the ink layer measured its page's height including itself, so it could grow but never shrink, leaving the scroll box out of step with the page. Now sticky bars sit in place while the study side is zoomed (they still stick at 100%) (`pages/js/desk.js`, `pages/css/desk.css`), the scroll box re-measures whenever the page grows or shrinks (a tab opened, recall on), and the ink layer measures the page without itself while staying tall enough for any writing already below the content (`pages/js/ink-mount.js`).
+- Checked: slider and + from 100% to 250% on trauma A1 and B3, Shock I, Shock II, GI, obstetrics: tabs keep their gap, the page scrolls fully to top and bottom, no blank space after switching tabs while zoomed; writing at the bottom of a long tab survives switching to a short one; desk 27/28 (local favicon only), pen 3/3, trauma 19/19, all pages ok.
+
 ## T-202 — 2026-11-26 — Claude — live — pages (sw pages-v8)
 - **One notebook per person.** HT's tablet uses the same Drive as Naven's, so both tablets would have read and written the same `studynotes-<page>.json`: her page could have opened his notes, and her writing could have saved over his file. Each tablet now asks once who is writing (Naven · HT · someone else; kept in `localStorage['desk.writer']`). Naven keeps the original names (`nb:<page>`, `ink:<page>`, `studynotes-<page>.json`, `studyink-<page>.json`), so nothing of his moves; anyone else gets their own (`nb:<page>:ht`, `studynotes-<page>-ht.json`, …). Settings shows "Notebook of <name>" with **Change who is writing**.
 - On the trauma page only, a non-Naven writer takes over the notes this tablet already holds under the old names (HT wrote there before this release).

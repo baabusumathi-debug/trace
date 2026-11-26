@@ -83,3 +83,4 @@ a.sbtn{text-decoration:none}
  background:#1c1f26;color:#fff;border-radius:10px;padding:9px 14px;font:600 13px/1.35 ui-sans-serif,system-ui,sans-serif;transition:opacity .18s,transform .18s}
 .dk-toast.on{opacity:1;transform:translate(-50%,0)}
 @media(max-width:560px){.zgrp input[type=range]{display:none}.zlab{min-width:70px}}
+.zw.unstick [data-stk]{position:relative!important;top:auto!important}
