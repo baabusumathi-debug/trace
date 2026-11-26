@@ -22,6 +22,10 @@ This summary helps you orient. It **does not prove** that content is unchanged; 
 
 ---
 
+## T-204 — 2026-11-26 — Claude — test — 1.3.170
+- Fix (Naven: ECG packet lessons show "no voice" on live 1.4.56): the Michael voice index `VIVA-P12.kidx.json` was found by listing the whole `voice-k` folder, which now holds about 7,800 files; the bridge listing took more than the 60 s timeout, so the app silently kept its older stored index (without the 781 ECG clips and without the newer word timings). `kIndex` in `js/voice.js` now looks the index up by name (`findFile`, already in bridge v7) and re-reads it only when its Drive modified time changed. Measured on the Mac: listing aborted at 63 s; root listing 3.4 s.
+- Also protects `makeKokoro`, which reads the index before making clips and writes it back.
+
 ## T-203 — 2026-11-26 — Claude — live — pages (sw pages-v9)
 - Fix: zooming the study side (slider, + button or pinch) made the trauma page's Mimics · Traps · Cards · Asked tabs slide further down with every step, and past about 134% the page could no longer be scrolled to its ends. Cause: sticky bars inside a scaled page move by scroll × zoom, so they drift; and the ink layer measured its page's height including itself, so it could grow but never shrink, leaving the scroll box out of step with the page. Now sticky bars sit in place while the study side is zoomed (they still stick at 100%) (`pages/js/desk.js`, `pages/css/desk.css`), the scroll box re-measures whenever the page grows or shrinks (a tab opened, recall on), and the ink layer measures the page without itself while staying tall enough for any writing already below the content (`pages/js/ink-mount.js`).
 - Checked: slider and + from 100% to 250% on trauma A1 and B3, Shock I, Shock II, GI, obstetrics: tabs keep their gap, the page scrolls fully to top and bottom, no blank space after switching tabs while zoomed; writing at the bottom of a long tab survives switching to a short one; desk 27/28 (local favicon only), pen 3/3, trauma 19/19, all pages ok.

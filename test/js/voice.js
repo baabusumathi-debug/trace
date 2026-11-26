@@ -93,9 +93,14 @@ export async function kIndex(deck, fresh) {
     try {
       const fid = await kFolderId();
       if (fid) {
-        const ls = await call({ op: 'listFolder', id: fid });
-        const f = ls.find(x => x.kind === 'file' && x.name === deck + '.kidx.json');
-        if (f) { const r = await call({ op: 'readFile', id: f.id }); kidx[deck] = JSON.parse(r.text) || {}; await db.kv.set('kidx:' + deck, kidx[deck]); }
+        // T-204: find the index by name. Listing voice-k (≈8,000 clip and timing files) now outlasts the 60 s bridge timeout,
+        // which silently kept a stale stored index (the ECG clips "not made"). Re-read only when the file changed.
+        const f = await call({ op: 'findFile', folderId: fid, name: deck + '.kidx.json' });
+        const seen = await db.kv.get('kidxAt:' + deck);
+        if (f && (fresh || f.modified !== seen || !Object.keys(kidx[deck]).length)) {
+          const r = await call({ op: 'readFile', id: f.id }); kidx[deck] = JSON.parse(r.text) || {};
+          await db.kv.set('kidx:' + deck, kidx[deck]); await db.kv.set('kidxAt:' + deck, f.modified);
+        }
       }
     } catch (e) { /* offline: keep the stored index */ }
   }
