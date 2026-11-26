@@ -46,14 +46,30 @@ def flow(nodes, title='', note='', dir='v'):
     return wrap(title, h + '</div>', note)
 
 # ---------- decision branch ----------
+def _verdict(r):
+    """YES/NO answers get a mark as well as a colour (✓ / ✕); anything else is a plain bold verdict."""
+    u = str(r).strip().upper()
+    if u.startswith('YES'): return 'yes', '✓'
+    if u.startswith('NO') and (len(u) == 2 or not u[2].isalpha()): return 'no', '✕'
+    return 'neu', ''
+
 def branch(start, q, bs, title='', note=''):
-    """bs: list of (answer, result, comment)"""
-    cols = [P['navy'], P['red'], P['amber'], P['green'], P['teal'], P['grey']]
-    h = '<div class="br"><div class="br-s">%s</div><div class="fa">▼</div><div class="br-q">%s</div><div class="br-row">' % (inl(start), inl(q))
-    for i, b in enumerate(bs):
-        c = cols[i % len(cols)]
-        h += '<div class="br-b" style="--c:%s"><div class="br-a">%s</div><div class="fa">▼</div><div class="br-d"><b>%s</b>%s</div></div>' % (
-            c, inl(b[0]), inl(b[1]), ('<span>%s</span>' % inl(b[2])) if len(b) > 2 and b[2] else '')
+    """bs: list of (answer, result, comment). Up to four answers: a tree (question on top, lines down to
+    equal boxes). More than four: a verdict table, one row per situation."""
+    if len(bs) > 4:
+        h = '<div class="vq"><b>%s</b> <span>%s</span></div><table class="vt"><tr><th>The situation</th><th>Verdict</th><th>Why</th></tr>' % (inl(start), inl(q))
+        for b in bs:
+            k, m = _verdict(b[1])
+            h += '<tr><td>%s</td><td class="v %s">%s%s</td><td class="w">%s</td></tr>' % (
+                inl(b[0]), k, ('<i>%s</i>' % m) if m else '', inl(b[1]), inl(b[2]) if len(b) > 2 and b[2] else '')
+        return wrap(title, h + '</table>', note)
+    n = len(bs)
+    h = '<div class="tr3" style="--n:%d"><div class="tq"><b>%s</b><span>%s</span></div><div class="tl"></div><div class="trow">' % (n, inl(start), inl(q))
+    for b in bs:
+        k, m = _verdict(b[1])
+        h += '<div class="tb"><div class="ts">%s</div><div class="tv %s">%s%s</div>%s</div>' % (
+            inl(b[0]), k, ('<i>%s</i>' % m) if m else '', inl(b[1]),
+            ('<div class="tw">%s</div>' % inl(b[2])) if len(b) > 2 and b[2] else '')
     return wrap(title, h + '</div></div>', note)
 
 # ---------- vicious cycle ----------

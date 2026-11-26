@@ -27,6 +27,11 @@ def parse(text):
 def box_html(b):
     lines = [l for l in b.split('\n') if l.strip()]
     rows = [l for l in lines if ' | ' in l]
+    # a table only when its first row is a real header (every cell wholly bold); otherwise
+    # 'Label: a | b | c' lines are lists, shown as one line each
+    is_head = rows and all(not c.strip() or re.fullmatch(r'\*\*[^*]+\*\*', c.strip()) for c in rows[0].split('|'))
+    if len(rows) >= 2 and not is_head:
+        return '<div class="cardbox">%s</div>' % ''.join('<div>%s</div>' % md(l.replace(' | ', '  ·  ')) for l in lines)
     if len(rows) >= 2:
         head = [c.strip() for c in rows[0].split('|')]
         h = '<div class="gw"><table class="ct"><tr>%s</tr>' % ''.join('<th>%s</th>' % md(c) for c in head)
@@ -35,7 +40,7 @@ def box_html(b):
         h += '</table></div>'
         pre = [l for l in lines if ' | ' not in l]
         return ('<div class="cardbox">%s%s</div>' % (''.join('<div>%s</div>' % md(l) for l in pre), h))
-    return '<div class="cardbox">%s</div>' % ''.join('<div>%s</div>' % md(l) for l in lines)
+    return '<div class="cardbox">%s</div>' % ''.join('<div>%s</div>' % md(l.replace(' | ', '  ·  ')) for l in lines)
 
 def wrapsvg(x):
     return ('<figure class="vis"><div class="svgw">%s</div></figure>' % x) if x.lstrip().startswith('<svg') else x

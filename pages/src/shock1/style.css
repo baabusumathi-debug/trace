@@ -185,3 +185,31 @@ button.rv{font-size:12.5px;padding:3px 10px;margin-top:4px}
  .ld-x{min-width:54px;font-size:15px}
 }
 @media(max-width:420px){.cp{grid-template-columns:1fr}.tiles{grid-template-columns:1fr}}
+/* memory hooks (ECG pages): a warm box, each line led by its handle in bold */
+figure.vis.hook{background:#fffaf0;border-color:#e3c88f}
+figure.vis.hook figcaption{color:#7a4e00}
+.hk1{padding:6px 0 6px 12px;border-left:3px solid #e3c88f;margin:6px 0;font-size:15px;line-height:1.45}
+/* decision tree (up to four answers): question on top, lines down to equal boxes; ✓/✕ carry the verdict */
+.tq{border:2px solid var(--navy,#1c3461);border-radius:12px;padding:10px 12px;text-align:center}
+.tq b{display:block;font-size:15.5px}.tq span{display:block;font-size:13.5px;color:#5a6472;margin-top:2px}
+.tl{position:relative;height:30px}
+.tl:before{content:"";position:absolute;left:50%;top:0;height:14px;border-left:2px solid #8a97b4}
+.tr3 .tl:after{content:"";position:absolute;left:calc(50% / var(--n));right:calc(50% / var(--n));top:14px;border-top:2px solid #8a97b4}
+.trow{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:10px}
+.tb{position:relative;border:1.5px solid #d5dbe8;border-radius:12px;padding:10px 10px 12px;text-align:center;background:#fff}
+.tb:before{content:"";position:absolute;left:50%;top:-18px;height:16px;border-left:2px solid #8a97b4}
+.ts{font-size:14px;line-height:1.35}
+.tv{margin:8px auto 4px;font-size:19px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:6px;line-height:1.2}
+.tv.neu{font-size:16px;color:#1c3461}
+.tv i{font-style:normal;flex:none;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;color:#fff}
+.tv.yes,.v.yes{color:#2e6b3a}.tv.yes i,.v.yes i{background:#2e6b3a}.tv.no,.v.no{color:#b3261e}.tv.no i,.v.no i{background:#b3261e}
+.tw{font-size:13px;color:#5a6472;line-height:1.35}
+@media(max-width:560px){.trow{grid-template-columns:1fr}.tr3 .tl:after{display:none}.tb:before{display:none}.tb{margin-top:6px}}
+/* verdict table (more than four answers) */
+.vq{font-size:14.5px;padding:9px 12px;background:#f6f8fc;border:1px solid #e3e8f2;border-radius:10px;margin-bottom:8px}.vq span{color:#5a6472}
+table.vt{width:100%;border-collapse:collapse;font-size:14px}
+.vt th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#5a6472;padding:6px 8px;border-bottom:2px solid #d5dbe8}
+.vt td{padding:10px 8px;border-bottom:1px solid #e3e8f2;line-height:1.35}
+.vt td.v{white-space:nowrap;font-weight:900}.vt td.v.neu{color:#1c3461}
+.vt td.v i{font-style:normal;display:inline-flex;width:21px;height:21px;border-radius:50%;align-items:center;justify-content:center;color:#fff;font-size:12px;margin-right:6px}
+.vt td.w{color:#5a6472;font-size:13px}
