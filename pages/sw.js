@@ -1,10 +1,10 @@
 // Study pages: network first, so an updated page arrives on its own; the cache is the offline copy.
-const V = 'pages-v11';
-const FILES = ['./', 'index.html', 'shock1.html', 'shock2.html', 'trauma.html', 'gi.html', 'endo.html', 'obs.html', 'ecg1.html',
-               'manifest.webmanifest', 'shock1.webmanifest', 'shock2.webmanifest', 'trauma.webmanifest', 'gi.webmanifest', 'endo.webmanifest', 'obs.webmanifest', 'ecg1.webmanifest',
+const V = 'pages-v12';
+const FILES = ['./', 'index.html', 'shock1.html', 'shock2.html', 'trauma.html', 'gi.html', 'endo.html', 'obs.html', 'ecg1.html', 'ecg2.html',
+               'manifest.webmanifest', 'shock1.webmanifest', 'shock2.webmanifest', 'trauma.webmanifest', 'gi.webmanifest', 'endo.webmanifest', 'obs.webmanifest', 'ecg1.webmanifest', 'ecg2.webmanifest',
                'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png',
-               'icons/shock1-192.png', 'icons/shock2-192.png', 'icons/trauma-192.png', 'icons/gi-192.png', 'icons/endo-192.png', 'icons/obs-192.png', 'icons/ecg1-192.png',
-               'icons/shock1-512.png', 'icons/shock2-512.png', 'icons/trauma-512.png', 'icons/gi-512.png', 'icons/endo-512.png', 'icons/obs-512.png', 'icons/ecg1-512.png',
+               'icons/shock1-192.png', 'icons/shock2-192.png', 'icons/trauma-192.png', 'icons/gi-192.png', 'icons/endo-192.png', 'icons/obs-192.png', 'icons/ecg1-192.png', 'icons/ecg2-192.png',
+               'icons/shock1-512.png', 'icons/shock2-512.png', 'icons/trauma-512.png', 'icons/gi-512.png', 'icons/endo-512.png', 'icons/obs-512.png', 'icons/ecg1-512.png', 'icons/ecg2-512.png',
                'css/ink.css', 'css/desk.css',
                'js/desk.js', 'js/ink-mount.js', 'js/notes.js', 'js/paper.js', 'js/store.js'];
 self.addEventListener('install', e => {

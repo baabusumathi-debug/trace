@@ -65,6 +65,7 @@ def build(slug, TITLE, SUB, SECTIONS, TRAPS, packet, out, close_vis, close_bridg
     n_card = 0
     for si, sec in enumerate(SECTIONS):
         src = S1[sec['q']]
+        sec['n'] = '%s · %s' % (sec['n'].split(' · ')[0], sec['q'])     # the voice question number beside the section
         # ---- opener
         ok, ob, op = parse(src['open']['text'])
         h = ['<div class="shead"><span class="sn">%s</span><h2>%s</h2></div>' % (esc(sec['n']), esc(sec['title']))]

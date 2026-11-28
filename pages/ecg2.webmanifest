@@ -1,0 +1,29 @@
+{
+  "id": "./ecg2.html",
+  "name": "ECG II \u2014 CCM",
+  "short_name": "ECG II",
+  "description": "ECG II \u00b7 blocks, short circuits, drugs and what changes the waves",
+  "start_url": "./ecg2.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef1f6",
+  "theme_color": "#5b1a48",
+  "icons": [
+    {
+      "src": "icons/ecg2-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ecg2-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/ecg2-mask-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
